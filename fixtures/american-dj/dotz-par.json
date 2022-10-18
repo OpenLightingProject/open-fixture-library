@@ -4,13 +4,16 @@
   "shortName": "Dotz Par",
   "categories": ["Blinder", "Color Changer"],
   "meta": {
-    "authors": ["TAKU", "Felix Edelmann"],
+    "authors": ["TAKU", "Felix Edelmann", "JonahKr"],
     "createDate": "2018-04-09",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2021-09-13"
   },
   "links": {
     "manual": [
-      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8795/dotz_par_rev_12_14.pdf"
+      "https://cdb.s3.amazonaws.com/ItemRelatedFiles/8795/ADJ%20Dotz%20Par%20-%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/dotz-par"
     ],
     "video": [
       "https://www.youtube.com/watch?v=0KXL39CwBp8"
@@ -66,162 +69,194 @@
         {
           "dmxRange": [1, 7],
           "type": "ColorPreset",
-          "comment": "Bastard Amber"
+          "comment": "Bastard Amber",
+          "colors": ["#fcded8"]
         },
         {
           "dmxRange": [8, 15],
           "type": "ColorPreset",
-          "comment": "Medium Amber"
+          "comment": "Medium Amber",
+          "colors": ["#ffbe55"]
         },
         {
           "dmxRange": [16, 23],
           "type": "ColorPreset",
-          "comment": "Pale Amber Gold"
+          "comment": "Pale Amber Gold",
+          "colors": ["#fcd7b3"]
         },
         {
           "dmxRange": [24, 31],
           "type": "ColorPreset",
-          "comment": "Gallo Gold"
+          "comment": "Gallo Gold",
+          "colors": ["#fea562"]
         },
         {
           "dmxRange": [32, 39],
           "type": "ColorPreset",
-          "comment": "Golden Amber"
+          "comment": "Golden Amber",
+          "colors": ["#faa873"]
         },
         {
           "dmxRange": [40, 47],
           "type": "ColorPreset",
-          "comment": "Light Red"
+          "comment": "Light Red",
+          "colors": ["#f50000"]
         },
         {
           "dmxRange": [48, 55],
           "type": "ColorPreset",
-          "comment": "Medium Red"
+          "comment": "Medium Red",
+          "colors": ["#c8003c"]
         },
         {
           "dmxRange": [56, 63],
           "type": "ColorPreset",
-          "comment": "Medium Pink"
+          "comment": "Medium Pink",
+          "colors": ["#ffa0b9"]
         },
         {
           "dmxRange": [64, 71],
           "type": "ColorPreset",
-          "comment": "Broadway Pink"
+          "comment": "Broadway Pink",
+          "colors": ["#e05061"]
         },
         {
           "dmxRange": [72, 79],
           "type": "ColorPreset",
-          "comment": "Follies Pink"
+          "comment": "Follies Pink",
+          "colors": ["#ff64c8"]
         },
         {
           "dmxRange": [80, 87],
           "type": "ColorPreset",
-          "comment": "Light Lavender"
+          "comment": "Light Lavender",
+          "colors": ["#e6aafa"]
         },
         {
           "dmxRange": [88, 95],
           "type": "ColorPreset",
-          "comment": "Special Lavender"
+          "comment": "Special Lavender",
+          "colors": ["#c8b4e6"]
         },
         {
           "dmxRange": [96, 103],
           "type": "ColorPreset",
-          "comment": "Lavender"
+          "comment": "Lavender",
+          "colors": ["#b46ef0"]
         },
         {
           "dmxRange": [104, 111],
           "type": "ColorPreset",
-          "comment": "Indigo"
+          "comment": "Indigo",
+          "colors": ["#002656"]
         },
         {
           "dmxRange": [112, 119],
           "type": "ColorPreset",
-          "comment": "Hemsley Blue"
+          "comment": "Hemsley Blue",
+          "colors": ["#008ed0"]
         },
         {
           "dmxRange": [120, 127],
           "type": "ColorPreset",
-          "comment": "Tipton Blue"
+          "comment": "Tipton Blue",
+          "colors": ["#3494d1"]
         },
         {
           "dmxRange": [128, 135],
           "type": "ColorPreset",
-          "comment": "Light Steel Blue"
+          "comment": "Light Steel Blue",
+          "colors": ["#1086c9"]
         },
         {
           "dmxRange": [136, 143],
           "type": "ColorPreset",
-          "comment": "Light Sky Blue"
+          "comment": "Light Sky Blue",
+          "colors": ["#0091d4"]
         },
         {
           "dmxRange": [144, 151],
           "type": "ColorPreset",
-          "comment": "Sky Blue"
+          "comment": "Sky Blue",
+          "colors": ["#46b4f0"]
         },
         {
           "dmxRange": [152, 159],
           "type": "ColorPreset",
-          "comment": "Brilliant Blue"
+          "comment": "Brilliant Blue",
+          "colors": ["#0081b8"]
         },
         {
           "dmxRange": [160, 167],
           "type": "ColorPreset",
-          "comment": "Light Green Blue"
+          "comment": "Light Green Blue",
+          "colors": ["#005373"]
         },
         {
           "dmxRange": [168, 175],
           "type": "ColorPreset",
-          "comment": "Bright Blue"
+          "comment": "Bright Blue",
+          "colors": ["#00d2e6"]
         },
         {
           "dmxRange": [176, 183],
           "type": "ColorPreset",
-          "comment": "Primary Blue"
+          "comment": "Primary Blue",
+          "colors": ["#1064a7"]
         },
         {
           "dmxRange": [184, 191],
           "type": "ColorPreset",
-          "comment": "Congo Blue"
+          "comment": "Congo Blue",
+          "colors": ["#5000aa"]
         },
         {
           "dmxRange": [192, 199],
           "type": "ColorPreset",
-          "comment": "Pale Yellow Green"
+          "comment": "Pale Yellow Green",
+          "colors": ["#d1dbb6"]
         },
         {
           "dmxRange": [200, 207],
           "type": "ColorPreset",
-          "comment": "Moss Green"
+          "comment": "Moss Green",
+          "colors": ["#5adc5a"]
         },
         {
           "dmxRange": [208, 215],
           "type": "ColorPreset",
-          "comment": "Primary Green"
+          "comment": "Primary Green",
+          "colors": ["#4bc300"]
         },
         {
           "dmxRange": [216, 223],
           "type": "ColorPreset",
-          "comment": "Double CTB"
+          "comment": "Double CTB",
+          "colors": ["#806bde"]
         },
         {
           "dmxRange": [224, 231],
           "type": "ColorPreset",
-          "comment": "Full Red"
+          "comment": "Full Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [232, 239],
           "type": "ColorPreset",
-          "comment": "Full Green"
+          "comment": "Full Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [240, 247],
           "type": "ColorPreset",
-          "comment": "Full Blue"
+          "comment": "Full Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [248, 255],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"]
         }
       ]
     },

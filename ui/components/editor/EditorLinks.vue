@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { arrayProp, objectProp } from 'vue-ts-types';
 import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
 
 import EditorLink from './EditorLink.vue';
@@ -27,18 +28,13 @@ export default {
   components: {
     EditorLink,
   },
+  inheritAttrs: false,
   model: {
     prop: `links`,
   },
   props: {
-    links: {
-      type: Array,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    links: arrayProp().required,
+    formstate: objectProp().required,
   },
   methods: {
     async addLink() {

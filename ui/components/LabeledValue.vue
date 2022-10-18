@@ -18,7 +18,7 @@
 
 <style lang="scss" scoped>
 section {
-  padding: .5ex 0;
+  padding: 0.5ex 0;
 
   & > .label {
     color: theme-color(text-secondary);
@@ -29,46 +29,31 @@ section {
 @media (min-width: $phone-landscape) {
   section {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     align-items: flex-start;
 
     & > .label {
-      flex-basis: 10rem;
-      flex-grow: 0;
-      flex-shrink: 0;
+      flex: 0 0 10rem;
     }
 
     & > .value {
       // take up the remaining space
-      min-width: 0;
       flex-grow: 1;
       flex-shrink: 1;
+      min-width: 0;
     }
   }
 }
 </style>
 
 <script>
-/* eslint-disable vue/no-unused-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1312 */
+import { stringProp } from 'vue-ts-types';
 
 export default {
   props: {
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    value: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    name: stringProp().optional,
+    label: stringProp().optional,
+    value: stringProp().optional,
   },
 };
 </script>

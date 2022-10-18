@@ -5,7 +5,7 @@
     :aria-hidden="shown ? `false` : `true`"
     :aria-labelledby="`${id}-dialog-title`"
     :role="isAlertDialog ? `alertdialog` : undefined"
-    @click="overlayClick($event)">
+    @click.self="overlayClick($event)">
 
     <div
       ref="dialog"
@@ -24,7 +24,7 @@
           <OflSvg name="close" />
         </button>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1">
           <slot name="title">{{ title }}</slot>
         </h2>
 
@@ -53,30 +53,30 @@ $container-fade-duration: 200ms;
 
 .dialog-container {
   position: fixed;
-  z-index: 1000;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.66);
+  z-index: 1000;
   display: flex;
+  background-color: rgba(0, 0, 0, 66%);
   animation: fade-in $container-fade-duration both;
 }
 
-.dialog-container[aria-hidden='true'] {
+.dialog-container[aria-hidden="true"] {
   display: none;
 }
 
 .dialog {
-  background-color: theme-color(dialog-background);
-  color: theme-color(text-primary);
-  margin: auto;
   box-sizing: border-box;
   min-width: 20rem;
   max-width: 90%;
   max-height: 90%;
+  margin: auto;
   overflow: auto;
   overscroll-behavior: contain;
+  color: theme-color(text-primary);
+  background-color: theme-color(dialog-background);
   animation:
     fade-in 200ms $container-fade-duration both,
     scale-up 200ms $container-fade-duration both;
@@ -85,10 +85,10 @@ $container-fade-duration: 200ms;
     width: 1000px;
   }
 
-
   h2:focus {
     outline: none;
   }
+
   // fixes padding not being visible when scrollbar is present
   &.card {
     padding: 0;
@@ -103,45 +103,27 @@ $container-fade-duration: 200ms;
   // make dialogs cover the whole screen
   .dialog,
   .dialog.wide {
+    width: 100%;
     min-width: none;
     max-width: none;
-    max-height: none;
-    width: 100%;
     height: 100%;
+    max-height: none;
   }
 }
 </style>
 
-
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    id: {
-      type: String,
-      required: true,
-      validator(id) {
-        return id.endsWith(`-dialog`);
-      },
-    },
-    isAlertDialog: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    shown: {
-      type: Boolean,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: false,
-      default: ``,
-    },
-    wide: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    id: stringProp(
+      id => (typeof id === `string` && id.endsWith(`-dialog`) ? undefined : `id should end with "-dialog".`),
+    ).required,
+    isAlertDialog: booleanProp().withDefault(false),
+    shown: booleanProp().withDefault(true),
+    title: stringProp().required,
+    wide: booleanProp().withDefault(false),
   },
   data() {
     return {
@@ -178,17 +160,13 @@ export default {
       }
     },
     show() {
-      if (this.dialog) {
-        this.dialog.show();
-      }
+      this.dialog?.show();
     },
     hide() {
-      if (this.dialog) {
-        this.dialog.hide();
-      }
+      this.dialog?.hide();
     },
-    overlayClick(event) {
-      if (!this.isAlertDialog && !event.target.closest(`.dialog`)) {
+    overlayClick() {
+      if (!this.isAlertDialog) {
         this.hide();
       }
     },

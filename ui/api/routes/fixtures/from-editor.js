@@ -18,7 +18,7 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function createFixtureFromEditor({ request }) {
   try {
@@ -40,8 +40,8 @@ export async function createFixtureFromEditor({ request }) {
 
 
 /**
- * @param {Array.<Object>} fixtures The raw fixture data from the Fixture Editor.
- * @returns {Promise.<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
+ * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
+ * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
  */
 async function getFixtureCreateResult(fixtures) {
   const result = {
@@ -133,8 +133,8 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * If a new manufacturer was entered in the editor, it is also saved here.
-   * @param {Object} fixture The editor fixture object.
-   * @returns {String} The manufacturer key.
+   * @param {object} fixture The editor fixture object.
+   * @returns {string} The manufacturer key.
    */
   function getManufacturerKey(fixture) {
     if (fixture.useExistingManufacturer) {
@@ -165,9 +165,9 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {Object} fixture The editor fixture object.
-   * @param {String} manufacturerKey The manufacturer key of the fixture.
-   * @returns {String} The fixture key.
+   * @param {object} fixture The editor fixture object.
+   * @param {string} manufacturerKey The manufacturer key of the fixture.
+   * @returns {string} The fixture key.
    */
   function getFixtureKey(fixture, manufacturerKey) {
     if (`key` in fixture && fixture.key !== `[new]`) {
@@ -213,16 +213,30 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {Object} fixture The OFL fixture object to save the links to.
-   * @param {Array.<Object>} editorLinksArray The editor link object array.
+   * @param {object} fixture The OFL fixture object to save the links to.
+   * @param {object[]} editorLinksArray The editor link object array.
    */
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => url.replace(
-      /^https:\/\/youtu\.be\/([\w-]+)(\?.*|)$/,
-      (match, videoId, query) => `https://www.youtube.com/watch?v=${videoId}${query.replace(/^\?/, `&`)}`,
-    );
+    const resolveShortenedYouTubeUrl = url => {
+      if (url.startsWith(`https://youtu.be/`)) {
+        const urlObject = new URL(url);
+
+        const videoId = urlObject.pathname.slice(1);
+        const queryParameters = [...urlObject.searchParams];
+        queryParameters.unshift([`v`, videoId]);
+        const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
+
+        urlObject.host = `www.youtube.com`;
+        urlObject.pathname = `watch`;
+        urlObject.search = `?${queryParameterString}`;
+
+        return urlObject.toString();
+      }
+
+      return url;
+    };
 
     const linkTypes = Object.keys(linksProperties);
 
@@ -239,8 +253,8 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * Sanitize and save wheels from the editor's channel objects, if there are any.
-   * @param {Object} fixture The OFL fixture object to save the wheels to.
-   * @param {Object} editorFixture The editor fixture object to get the wheels from.
+   * @param {object} fixture The OFL fixture object to save the wheels to.
+   * @param {object} editorFixture The editor fixture object to get the wheels from.
    */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
@@ -359,7 +373,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   function getFineChannelAlias(channelKey, resolution) {
-    return `${channelKey} fine${resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
+    const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``;
+    return `${channelKey} fine${suffix}`;
   }
 
   function getCapabilities(channel) {
@@ -412,22 +427,21 @@ async function getFixtureCreateResult(fixtures) {
 // helper functions
 
 /**
- * @param {Object|null} object The object to check.
- * @returns {Boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
+ * @param {object | null} object The object to check.
+ * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
  */
 function isEmptyObject(object) {
   return JSON.stringify(object) === `{}`;
 }
 
 /**
- * @param {*} property The property key to check.
- * @param {Object|null} object The object to check. If it's null, false is returned.
- * @returns {Boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
+ * @param {any} property The property key to check.
+ * @param {object | null} object The object to check. If it's null, false is returned.
+ * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
-  const valueValid = objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
-  return valueValid;
+  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
 }
 
 function getComboboxInput(property, from) {
@@ -435,8 +449,8 @@ function getComboboxInput(property, from) {
 }
 
 /**
- * @param {String} string The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
   return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);

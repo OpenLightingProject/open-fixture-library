@@ -1,13 +1,11 @@
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Capability from '../../lib/model/Capability.js';
 
 export default {
   functional: true,
   props: {
-    capability: {
-      type: Capability,
-      required: true,
-    },
+    capability: instanceOfProp(Capability).required,
   },
   render(createElement, context) {
     const capability = context.props.capability;
@@ -89,7 +87,7 @@ const specialIconFunctions = {
       iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
     }
     else {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
   },
   WheelShake(capability, iconProperties) {
@@ -97,7 +95,7 @@ const specialIconFunctions = {
       iconProperties.name = `animation-gobo`;
     }
     else if (capability.wheelSlot && capability.wheelSlot[0] !== capability.wheelSlot[1]) {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
     else {
       iconProperties.name = capability.isShaking === `slot` ? `slot-shake` : `wheel-shake`;
@@ -162,7 +160,7 @@ const specialIconFunctions = {
 
 /**
  * @param {AbstractChannel} capability The capability to get an icon for.
- * @returns {Object} Object containing the props to pass to <OflSvg />
+ * @returns {object} Object containing the props to pass to <OflSvg />
  */
 function getIconProperties(capability) {
   if (capability.colors !== null) {
@@ -198,7 +196,7 @@ function getIconProperties(capability) {
 
 /**
  * @param {Capability} capability The capability model object.
- * @returns {String|null} A string describing the colors of this capability, or null if it has no colors.
+ * @returns {string | null} A string describing the colors of this capability, or null if it has no colors.
  */
 function getColorDescription(capability) {
   if (capability.colors === null) {
@@ -207,9 +205,12 @@ function getColorDescription(capability) {
 
   if (capability.colors.isStep) {
     const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
-    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
+    const allColors = capability.colors.allColors.join(`, `);
+    return `${plural}: ${allColors}`;
   }
 
-  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
+  const startColors = capability.colors.startColors.join(`, `);
+  const endColors = capability.colors.endColors.join(`, `);
+  return `transition from ${startColors} to ${endColors}`;
 }
 </script>

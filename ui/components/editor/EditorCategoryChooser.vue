@@ -5,8 +5,8 @@
         v-for="cat of value"
         :key="cat"
         :category="cat"
-        :selected="true"
-        :selectable="true"
+        selected
+        selectable
         @click="deselect(cat)"
         @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
@@ -16,8 +16,7 @@
       v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
-      :selected="false"
-      :selectable="true"
+      selectable
       @click="select(cat)"
       @focus.native="onFocus()"
       @blur.native="onBlur($event)" />
@@ -26,6 +25,7 @@
 
 
 <script>
+import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
 import CategoryBadge from '../CategoryBadge.vue';
@@ -36,14 +36,8 @@ export default {
     CategoryBadge,
   },
   props: {
-    value: {
-      type: Array,
-      required: true,
-    },
-    allCategories: {
-      type: Array,
-      required: true,
-    },
+    value: arrayProp().required,
+    allCategories: arrayProp().required,
   },
   computed: {
     selectedCategories: {

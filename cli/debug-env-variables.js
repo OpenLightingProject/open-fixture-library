@@ -23,12 +23,10 @@ console.log(`Process environment variables:`);
 printVariables();
 console.log();
 
-import(`../lib/load-env-file.js`).then(() => {
-  console.log(`Environment variables after reading .env:`);
-  printVariables();
-}).catch(error => {
-  throw error;
-});
+await import(`../lib/load-env-file.js`);
+
+console.log(`Environment variables after reading .env:`);
+printVariables();
 
 /**
  * Prints all used environment variables and their values / unset
