@@ -68,7 +68,9 @@
     "Strobe": {
       "capability": {
         "type": "StrobeSpeed",
-        "speed": "0Hz"
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
       }
     },
     "Color Macros": {
@@ -120,7 +122,8 @@
         {
           "dmxRange": [25, 27],
           "type": "ColorPreset",
-          "comment": "Amber/Green/Blue dim to bright"
+          "comment": "Amber/Green/Blue dim to bright",
+          "helpWanted": "Why are some capabilities duplicated? What is the actual color at each DMX value?"
         },
         {
           "dmxRange": [28, 28],
@@ -697,7 +700,8 @@
     "Effect Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": "slow"
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
