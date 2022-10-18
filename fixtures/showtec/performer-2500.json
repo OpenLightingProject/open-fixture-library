@@ -8,12 +8,16 @@
     "lastModifyDate": "2022-07-25"
   },
   "links": {
+    "productPage": [
+      "https://www.highlite.com/en/33141-performer-2500-fresnel.html"
+    ],
     "manual": [
       "https://all-guidesbox.com/manual/2217476/showtec-performer-2500-fresnel-tungsten-operation-user-s-manual-40.html"
-    ]
+    ],
+    "video": ["https://vimeo.com/439925462"]
   },
   "physical": {
-    "dimensions": [470, 450, 380],
+    "dimensions": [450, 380, 470],
     "weight": 10,
     "power": 265,
     "DMXconnector": "5-pin",
@@ -30,18 +34,9 @@
     "Master Dimmer": {
       "fineChannelAliases": ["Master Dimmer fine"],
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [256, 65535],
-          "type": "Intensity",
-          "brightnessStart": "dark",
-          "brightnessEnd": "bright"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Warm White": {
       "fineChannelAliases": ["Warm White fine"],
@@ -49,14 +44,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Warm White"
-      }
-    },
-    "Master Dimmer 2": {
-      "name": "Master Dimmer",
-      "fineChannelAliases": ["Master Dimmer 2 fine"],
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
       }
     },
     "Natural White": {
@@ -185,11 +172,11 @@
   },
   "modes": [
     {
-      "name": "8 Channels",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
-        "Master Dimmer 2",
-        "Master Dimmer 2 fine",
+        "Master Dimmer",
+        "Master Dimmer fine",
         "Warm White",
         "Warm White fine",
         "Natural White",
@@ -199,7 +186,7 @@
       ]
     },
     {
-      "name": "6 Channels",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
@@ -211,28 +198,19 @@
       ]
     },
     {
-      "name": "3 Channels",
+      "name": "3-channel",
       "shortName": "3ch",
-      "channels": [
-        "Master Dimmer",
-        "Warm White",
-        "Natural White"
-      ]
+      "channels": ["Master Dimmer", "Warm White", "Natural White"]
     },
     {
-      "name": "2 Channels",
+      "name": "2-channel",
       "shortName": "2ch",
-      "channels": [
-        "Master Dimmer",
-        "Master Dimmer fine"
-      ]
+      "channels": ["Master Dimmer", "Master Dimmer fine"]
     },
     {
-      "name": "1 Channel",
+      "name": "1-channel",
       "shortName": "1ch",
-      "channels": [
-        "Master Dimmer"
-      ]
+      "channels": ["Master Dimmer"]
     }
   ]
 }
