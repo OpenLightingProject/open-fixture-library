@@ -1,12 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vesuvio RGBA",
-  "shortName": "Chauvet Jet",
   "categories": ["Smoke", "Color Changer"],
   "meta": {
     "authors": ["Beerady", "Luke Nelson"],
-    "createDate": "2021-09-09",
-    "lastModifyDate": "2022-10-17"
+    "createDate": "2022-10-18",
+    "lastModifyDate": "2022-10-18"
   },
   "links": {
     "productPage": [
@@ -39,36 +38,31 @@
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightness": "off"
+        "type": "Intensity"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightness": "off"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightness": "off"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightness": "off"
+        "color": "Blue"
       }
     },
     "Amber": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Amber",
-        "brightness": "off"
+        "color": "Amber"
       }
     },
     "Strobe": {
@@ -98,7 +92,11 @@
           "type": "ColorPreset",
           "comment": "Amber/Blue dim to bright"
         },
-        { "dmxRange": [16, 16], "type": "ColorPreset", "comment": "Green" },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
         {
           "dmxRange": [17, 19],
           "type": "ColorPreset",
@@ -134,7 +132,11 @@
           "type": "ColorPreset",
           "comment": "Amber/Green/Blue dim to bright"
         },
-        { "dmxRange": [32, 32], "type": "ColorPreset", "comment": "Green" },
+        {
+          "dmxRange": [32, 32],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
         {
           "dmxRange": [33, 35],
           "type": "ColorPreset",
@@ -170,7 +172,11 @@
           "type": "ColorPreset",
           "comment": "Green/Blue dim to bright"
         },
-        { "dmxRange": [48, 48], "type": "ColorPreset", "comment": "Green" },
+        {
+          "dmxRange": [48, 48],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
         {
           "dmxRange": [49, 51],
           "type": "ColorPreset",
@@ -206,7 +212,11 @@
           "type": "ColorPreset",
           "comment": "Amber/Green/Blue dim to bright"
         },
-        { "dmxRange": [64, 64], "type": "ColorPreset", "comment": "Red" },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
         {
           "dmxRange": [65, 67],
           "type": "ColorPreset",
@@ -282,7 +292,11 @@
           "type": "ColorPreset",
           "comment": "Red/Green/Amber/Blue dim to bright"
         },
-        { "dmxRange": [96, 96], "type": "ColorPreset", "comment": "Red/Green" },
+        {
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
         {
           "dmxRange": [97, 99],
           "type": "ColorPreset",
@@ -358,7 +372,11 @@
           "type": "ColorPreset",
           "comment": "Red/Green/Amber/Blue dim to bright"
         },
-        { "dmxRange": [128, 128], "type": "ColorPreset", "comment": "Red" },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
         {
           "dmxRange": [129, 131],
           "type": "ColorPreset",
@@ -514,7 +532,11 @@
           "type": "ColorPreset",
           "comment": "Red/Green/Amber/Blue dim to bright"
         },
-        { "dmxRange": [192, 192], "type": "ColorPreset", "comment": "Red" },
+        {
+          "dmxRange": [192, 192],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
         {
           "dmxRange": [193, 195],
           "type": "ColorPreset",
@@ -681,7 +703,7 @@
   },
   "modes": [
     {
-      "name": "9 Channel",
+      "name": "9-channel",
       "shortName": "9ch",
       "channels": [
         "Fog",
