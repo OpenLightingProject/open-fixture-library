@@ -3,9 +3,9 @@
   "name": "Performer 2500",
   "categories": ["Dimmer", "Color Changer"],
   "meta": {
-    "authors": ["purple"],
-    "createDate": "2022-07-25",
-    "lastModifyDate": "2022-07-25"
+    "authors": ["purple", "Luke Nelson"],
+    "createDate": "2022-10-18",
+    "lastModifyDate": "2022-10-18"
   },
   "links": {
     "productPage": [
@@ -200,17 +200,26 @@
     {
       "name": "3-channel",
       "shortName": "3ch",
-      "channels": ["Master Dimmer", "Warm White", "Natural White"]
+      "channels": [
+        "Master Dimmer",
+        "Warm White",
+        "Natural White"
+      ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
-      "channels": ["Master Dimmer", "Master Dimmer fine"]
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine"
+      ]
     },
     {
       "name": "1-channel",
       "shortName": "1ch",
-      "channels": ["Master Dimmer"]
+      "channels": [
+        "Master Dimmer"
+      ]
     }
   ]
 }
