@@ -56,7 +56,7 @@
       }
     },
     "Strobe": {
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "ShutterStrobe",
@@ -71,7 +71,7 @@
         }
       ]
     },
-    "Colour Macros":{
+    "Colour Macros": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -176,7 +176,7 @@
           "comment": "Color Jumping stop"
         },
         {
-          "dmxRange": [128,191],
+          "dmxRange": [128, 191],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
@@ -184,7 +184,7 @@
           "comment": "Colour Jumping Speed slow -> fast / Colour 1 -> 12"
         },
         {
-          "dmxRange": [192,255],
+          "dmxRange": [192, 255],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
@@ -193,7 +193,7 @@
         }
       ]
     },
-    "Colour Temperature":{
+    "Colour Temperature":m{
       "comment": "Affects RGB and Colour Macros",
       "capabilities": [
         {
@@ -210,14 +210,14 @@
         }
       ]
     },
-    "Auto Program Speed":{
+    "Auto Program Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
-    "Sound":{
+    "Sound": {
       "comment": "If on, override everything",
       "capabilities": [
         {
@@ -233,12 +233,12 @@
         }
       ]
     },
-    "Set Dimmer Curve":{
+    "Set Dimmer Curve": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "NoFunction"
-         },
+        },
         {
           "dmxRange": [6, 63],
           "type": "Maintenance",
@@ -261,8 +261,8 @@
         }
       ]
     },
-    "Device Settings":{
-      "capabilities":[
+    "Device Settings": {
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "NoFunction"
