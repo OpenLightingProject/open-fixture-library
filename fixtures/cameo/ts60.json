@@ -66,7 +66,7 @@
           "dmxRange": [6, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "<1Hz",
+          "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
@@ -194,7 +194,6 @@
       ]
     },
     "Colour Temperature": {
-      "comment": "Affects RGB and Colour Macros",
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -218,7 +217,6 @@
       }
     },
     "Sound": {
-      "comment": "If on, override everything",
       "capabilities": [
         {
           "dmxRange": [0, 5],
