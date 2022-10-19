@@ -2,7 +2,7 @@
   <li>
     <ConditionalDetails class="channel">
       <template #summary>
-        <ChannelTypeIcon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <ChannelTypeIcon class="channel-type-icon" :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
@@ -129,20 +129,18 @@
 </template>
 
 <style lang="scss" scoped>
-summary, .summary {
-  & > .icon {
-    margin-right: 1.2ex;
-  }
+.channel-type-icon {
+  margin-right: 1.2ex;
+}
 
-  & > .help-wanted-icon {
-    fill: theme-color(yellow-background-hover);
-    margin-left: 0.7ex;
-    margin-right: 0;
-  }
+.help-wanted-icon {
+  margin-left: 0.7ex;
+  fill: theme-color(yellow-background-hover);
 }
 </style>
 
 <script>
+import { instanceOfProp, stringProp } from 'vue-ts-types';
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import FineChannel from '../../../lib/model/FineChannel.js';
@@ -164,19 +162,9 @@ export default {
     LabeledValue,
   },
   props: {
-    channel: {
-      type: AbstractChannel,
-      required: true,
-    },
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    appendToHeading: {
-      type: String,
-      required: false,
-      default: ``,
-    },
+    channel: instanceOfProp(AbstractChannel).required,
+    mode: instanceOfProp(Mode).required,
+    appendToHeading: stringProp().optional,
   },
   data() {
     return {

@@ -115,7 +115,7 @@ export async function fetchChangedComponents() {
 
   /**
    * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-   * @param {Object} fileData The file object from GitHub.
+   * @param {object} fileData The file object from GitHub.
    */
   function handleFileData(fileData) {
     if (fileData.status === `renamed`) {
@@ -131,8 +131,8 @@ export async function fetchChangedComponents() {
 
   /**
    * Parse the file type by its path and update the change summary of the file's status accordingly.
-   * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
-   * @param {String} filePath The file name, relative to the repository's root.
+   * @param {'added' | 'removed' | 'modified'} fileStatus What happened with the file in this pull request.
+   * @param {string} filePath The file name, relative to the repository's root.
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
@@ -178,10 +178,10 @@ export async function fetchChangedComponents() {
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.fileUrl).
- * @param {Object} test Information about the test script that wants to update the comment.
+ * @param {object} test Information about the test script that wants to update the comment.
  * @param {URL} test.fileUrl URL of the test file.
- * @param {String} test.name Heading to be used in the comment
- * @param {Array.<String>} test.lines The comment's lines of text
+ * @param {string} test.name Heading to be used in the comment
+ * @param {string[]} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 export async function updateComment(test) {
@@ -216,30 +216,31 @@ export async function updateComment(test) {
   }
 
   const commentBlocks = await Promise.all(commentPromises);
+  const comments = commentBlocks.flatMap(block => block.data);
 
   let equalFound = false;
-  const promises = [];
-
-  const comments = commentBlocks.flatMap(block => block.data);
-  comments.forEach(comment => {
+  const promises = comments.flatMap(comment => {
     // get rid of \r linebreaks
     comment.body = comment.body.replace(/\r/g, ``);
 
-    // the comment was created by this test script
-    if (lines[0] === comment.body.split(`\n`)[0]) {
-      if (!equalFound && message === comment.body && test.lines.length > 0) {
-        equalFound = true;
-        console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-      }
-      else {
-        console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-        promises.push(githubClient.rest.issues.deleteComment({
-          owner: repoOwner,
-          repo: repoName,
-          'comment_id': comment.id,
-        }));
-      }
+    if (lines[0] !== comment.body.split(`\n`)[0]) {
+      // the comment was not created by this test script
+      return [];
     }
+
+    if (!equalFound && message === comment.body && test.lines.length > 0) {
+      equalFound = true;
+      console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return [];
+    }
+
+    console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+
+    return githubClient.rest.issues.deleteComment({
+      owner: repoOwner,
+      repo: repoName,
+      'comment_id': comment.id,
+    });
   });
 
   if (!equalFound && test.lines.length > 0) {

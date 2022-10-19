@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="itemListStructuredData" />
-
     <h1>{{ manufacturer.name }} fixtures</h1>
 
     <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3">
@@ -51,44 +45,15 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios, $config, error }) {
-    const manufacturerKey = params.manufacturerKey;
-
+  async asyncData({ params, $axios, error }) {
+    let manufacturer;
     try {
-      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
-      const fixtures = manufacturer.fixtures;
-
-      const organizationStructuredData = {
-        '@context': `http://schema.org`,
-        '@type': `Organization`,
-        'name': manufacturer.name,
-        'brand': manufacturer.name,
-      };
-
-      if (`website` in manufacturer) {
-        organizationStructuredData.sameAs = manufacturer.website;
-      }
-
-      const itemListStructuredData = {
-        '@context': `http://schema.org`,
-        '@type': `ItemList`,
-        'itemListElement': fixtures.map((fixture, index) => ({
-          '@type': `ListItem`,
-          'position': index + 1,
-          'url': `${$config.websiteUrl}${manufacturer.key}/${fixture.key}`,
-        })),
-      };
-
-      return {
-        manufacturer,
-        fixtures,
-        organizationStructuredData,
-        itemListStructuredData,
-      };
+      manufacturer = await $axios.$get(`/api/v1/manufacturers/${params.manufacturerKey}`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturer };
   },
   head() {
     const title = this.manufacturer.name;
@@ -101,7 +66,44 @@ export default {
           content: title,
         },
       ],
+      script: [
+        {
+          hid: `organizationStructuredData`,
+          type: `application/ld+json`,
+          json: this.organizationStructuredData,
+        },
+        {
+          hid: `itemListStructuredData`,
+          type: `application/ld+json`,
+          json: this.itemListStructuredData,
+        },
+      ],
     };
+  },
+  computed: {
+    fixtures() {
+      return this.manufacturer.fixtures;
+    },
+    organizationStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `Organization`,
+        name: this.manufacturer.name,
+        brand: this.manufacturer.name,
+        sameAs: `website` in this.manufacturer ? this.manufacturer.website : undefined,
+      };
+    },
+    itemListStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `ItemList`,
+        itemListElement: this.fixtures.map((fixture, index) => ({
+          '@type': `ListItem`,
+          position: index + 1,
+          url: `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+        })),
+      };
+    },
   },
 };
 </script>

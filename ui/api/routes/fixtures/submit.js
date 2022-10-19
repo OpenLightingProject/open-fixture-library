@@ -5,10 +5,10 @@ import createPullRequest from '../../../../lib/create-github-pr.js';
 /** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
- * @typedef {Object} RequestBody
+ * @typedef {object} RequestBody
  * @property {FixtureCreateResult} fixtureCreateResult The fixtures (and manufacturers) with warnings and errors, to submit.
- * @property {String} githubUsername Author's GitHub username
- * @property {String} githubComment Author's comment.
+ * @property {string} githubUsername Author's GitHub username
+ * @property {string} githubComment Author's comment.
  */
 
 /**
@@ -35,7 +35,7 @@ export async function submitFixtures({ request }) {
     return {
       statusCode: 500,
       body: {
-        error: error.message,
+        error: `${error.toString()}\n${error.stack}`,
       },
     };
   }

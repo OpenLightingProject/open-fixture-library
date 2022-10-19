@@ -18,13 +18,11 @@ export default {
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
+  buildModules: [
+    `@nuxt/postcss8`,
+  ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
     {
       src: `~/plugins/vue-smooth-scroll.js`,
@@ -47,6 +45,7 @@ export default {
       maxAge: 2 * 365 * 24 * 60 * 60,
       preload: true,
     },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
   },
   css: [
     `~/assets/styles/style.scss`,
@@ -54,6 +53,7 @@ export default {
   ],
   publicRuntimeConfig: {
     websiteUrl,
+    searchIndexingIsAllowed: process.env.ALLOW_SEARCH_INDEXING === `allowed`,
   },
   build: {
     quiet: false,
@@ -109,9 +109,10 @@ export default {
     color: `#1e88e5`,
   },
   head() {
+    const theme = this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`);
     const htmlAttributes = {
       lang: `en`,
-      'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
+      'data-theme': theme,
     };
 
     const titleTemplate = titleChunk => {
@@ -132,6 +133,11 @@ export default {
       {
         name: `mobile-web-app-capable`,
         content: `yes`,
+      },
+      {
+        hid: `theme-color`,
+        name: `theme-color`,
+        content: theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
       },
       {
         // this enables Twitter link previews
@@ -196,7 +202,7 @@ export default {
       },
     ];
 
-    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    if (!this.$config.searchIndexingIsAllowed) {
       meta.push({
         name: `robots`,
         content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`,
@@ -239,12 +245,6 @@ export default {
         href: `/fonts/LatoLatin/LatoLatin-Regular.woff2`,
         as: `font`,
         type: `font/woff2`,
-      },
-      {
-        rel: `preload`,
-        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
-        as: `font`,
-        type: `font/woff`,
       },
     ];
 

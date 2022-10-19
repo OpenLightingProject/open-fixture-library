@@ -6,7 +6,7 @@ import importJson from '../../../../lib/import-json.js';
 /**
  * Returns information about a specific manufacturer.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
@@ -30,7 +30,7 @@ export async function getManufacturerByKey({ request }) {
         key: fixtureKey,
         name: register.filesystem[`${manufacturerKey}/${fixtureKey}`].name,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manufacturerKey}/${fixtureKey}`),
+          category => register.categories[category].includes(`${manufacturerKey}/${fixtureKey}`),
         ),
       }),
     ),

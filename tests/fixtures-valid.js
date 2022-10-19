@@ -40,12 +40,12 @@ if (cliArguments.help || (fixturePaths.length === 0 && !cliArguments.a)) {
 }
 
 /**
- * @typedef {Object} UniqueValues
- * @property {Set.<String>} manNames All manufacturer names
- * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Object.<String, Set.<String>>} fixRdmIdsInMan All RDM ids by manufacturer key
- * @property {Set.<String>} fixShortNames All fixture short names
+ * @typedef {object} UniqueValues
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Record<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Record<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Record<string, Set<string>>} fixRdmIdsInMan All RDM ids by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
  */
 /** @type {UniqueValues} */
 const uniqueValues = {
@@ -59,8 +59,43 @@ const uniqueValues = {
 
 const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
 
+try {
+  const results = await runTests();
+
+  let totalFails = 0;
+  let totalWarnings = 0;
+
+  // each file
+  for (const result of results) {
+    const failed = result.errors.length > 0;
+    totalFails += failed ? 1 : 0;
+    totalWarnings += result.warnings.length;
+
+    printFileResult(result);
+  }
+
+  // newline
+  console.log();
+
+  // summary
+  if (totalWarnings > 0) {
+    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+  }
+
+  if (totalFails === 0) {
+    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
+    process.exit(0);
+  }
+
+  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  process.exit(1);
+}
+catch (error) {
+  console.error(chalk.red(`[Error]`), `Test errored:`, error);
+}
+
 /**
- * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of result objects.
+ * @returns {Promise<object[]>} A Promise that resolves to an array of result objects.
  */
 async function runTests() {
   const promises = [];
@@ -105,9 +140,9 @@ async function runTests() {
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {String} manufacturerKey The manufacturer key.
- * @param {String} fixtureKey The fixture key.
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @param {string} manufacturerKey The manufacturer key.
+ * @param {string} fixtureKey The fixture key.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkFixtureFile(manufacturerKey, fixtureKey) {
   const filename = `${manufacturerKey}/${fixtureKey}.json`;
@@ -129,7 +164,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
 
 /**
  * Checks Manufacturers file
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkManufacturers() {
   const result = {
@@ -181,44 +216,22 @@ async function checkManufacturers() {
 }
 
 
-// print results
-runTests().then(results => {
-  let totalFails = 0;
-  let totalWarnings = 0;
+/**
+ * @param {object} result The result object for a single file.
+ */
+function printFileResult(result) {
+  const failed = result.errors.length > 0;
 
-  // each file
-  results.forEach(result => {
-    const failed = result.errors.length > 0;
+  console.log(
+    failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
+    result.name,
+  );
 
-    console.log(
-      failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
-      result.name,
-    );
-
-    totalFails += failed ? 1 : 0;
-    for (const error of result.errors) {
-      console.log(`└`, chalk.red(`Error:`), error);
-    }
-
-    totalWarnings += result.warnings.length;
-    for (const warning of result.warnings) {
-      console.log(`└`, chalk.yellow(`Warning:`), warning);
-    }
-  });
-
-  // newline
-  console.log();
-
-  // summary
-  if (totalWarnings > 0) {
-    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+  for (const error of result.errors) {
+    console.log(`└`, chalk.red(`Error:`), error);
   }
 
-  if (totalFails === 0) {
-    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
-    process.exit(0);
+  for (const warning of result.warnings) {
+    console.log(`└`, chalk.yellow(`Warning:`), warning);
   }
-
-  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
-  process.exit(1);
-}).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
+}

@@ -6,12 +6,11 @@ import http from 'http';
 import https from 'https';
 import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
-import userAgent from 'default-user-agent';
 
 import SiteCrawler from '../lib/site-crawler.js';
 
 
-const USER_AGENT = userAgent();
+const USER_AGENT = `Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0`;
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
 const TIMEOUT = 30_000;
 
@@ -22,82 +21,79 @@ const excludedUrls = [
 ];
 
 
-(async () => {
-  const testStartTime = Date.now();
-  let errored = false;
+const testStartTime = Date.now();
+let errored = false;
 
+try {
+  const crawler = new SiteCrawler();
+
+  console.log(chalk.blue.bold(`Starting OFL server ...`));
   try {
-    const crawler = new SiteCrawler();
-
-    console.log(chalk.blue.bold(`Starting OFL server ...`));
-    try {
-      await crawler.startServer();
-    }
-    catch (error) {
-      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
-    }
-    console.log();
-
-    const externalUrlSet = new Set();
-
-    crawler.on(`externalLinkFound`, url => {
-      if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
-        externalUrlSet.add(url);
-        process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
-      }
-    });
-
-    const crawlStartTime = Date.now();
-    console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
-    await crawler.crawl();
-
-    const crawlTime = Date.now() - crawlStartTime;
-    console.log(`Crawling finished after ${crawlTime / 1000}s.`);
-    console.log();
-
-    const { stdout, stderr } = await crawler.stopServer();
-    if (stdout) {
-      console.log(chalk.blueBright(`Server output (stdout):`));
-      console.log(stdout);
-    }
-    if (stderr) {
-      console.log(chalk.blueBright(`Server errors (stderr):`));
-      console.log(stderr);
-    }
-
-    const urlResults = await fetchExternalUrls(Array.from(externalUrlSet));
-    console.log();
-
-    console.log(chalk.blue.bold(`Updating GitHub issue ...`));
-    await updateGithubIssue(urlResults);
+    await crawler.startServer();
   }
   catch (error) {
-    console.error(error);
-    errored = true;
+    const header = chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
+    throw `${header} ${error.message}`;
+  }
+  console.log();
+
+  const externalUrlSet = new Set();
+
+  crawler.on(`externalLinkFound`, url => {
+    if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
+      externalUrlSet.add(url);
+      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+    }
+  });
+
+  const crawlStartTime = Date.now();
+  console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
+  await crawler.crawl();
+
+  const crawlTime = Date.now() - crawlStartTime;
+  console.log(`Crawling finished after ${crawlTime / 1000}s.`);
+  console.log();
+
+  const { stdout, stderr } = await crawler.stopServer();
+  if (stdout) {
+    console.log(chalk.blueBright(`Server output (stdout):`));
+    console.log(stdout);
+  }
+  if (stderr) {
+    console.log(chalk.blueBright(`Server errors (stderr):`));
+    console.log(stderr);
   }
 
-  const testTime = Date.now() - testStartTime;
+  const urlResults = await fetchExternalUrls([...externalUrlSet]);
   console.log();
-  console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
-  process.exit(errored ? 1 : 0);
-})();
 
+  console.log(chalk.blue.bold(`Updating GitHub issue ...`));
+  await updateGithubIssue(urlResults);
+}
+catch (error) {
+  console.error(error);
+  errored = true;
+}
 
+const testTime = Date.now() - testStartTime;
+console.log();
+console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
+process.exit(errored ? 1 : 0);
 
 
 /**
- * @typedef {Object} UrlResult
- * @property {String} url The requested URL.
- * @property {String} message User-visible information about the URL's status.
- * @property {Boolean} failed Whether the requested URL can be seen as broken.
+ * @typedef {object} UrlResult
+ * @property {string} url The requested URL.
+ * @property {string} message User-visible information about the URL's status.
+ * @property {boolean} failed Whether the requested URL can be seen as broken.
  */
 
 /**
  * Fetches the given URLs in small blocks that reduce the likelyhood of false negatives.
  * Pass / fail messages are constantly outputted to console.
  *
- * @param {Array.<String>} externalUrls The URLs to fetch.
- * @returns {Promise.<Array.<UrlResult>>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
+ * @param {string[]} externalUrls The URLs to fetch.
+ * @returns {Promise<UrlResult[]>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
  */
 async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
@@ -139,9 +135,8 @@ async function fetchExternalUrls(externalUrls) {
 }
 
 /**
- * @param {String} url The URL to check.
- *
- * @returns {Promise.<UrlResult>} Status of the checked url.
+ * @param {string} url The URL to check.
+ * @returns {Promise<UrlResult>} Status of the checked url.
  */
 async function testExternalLink(url) {
   const httpModule = url.startsWith(`https`) ? https : http;
@@ -154,9 +149,8 @@ async function testExternalLink(url) {
   return resultHEAD;
 
   /**
-   * @param {String} method The HTTP requests method, e.g. GET or HEAD.
-   *
-   * @returns {Promise.<UrlResult>} Status of the url which has been requested with the given method.
+   * @param {string} method The HTTP requests method, e.g. GET or HEAD.
+   * @returns {Promise<UrlResult>} Status of the url which has been requested with the given method.
    */
   function getResult(method) {
     const requestOptions = {
@@ -199,7 +193,7 @@ async function testExternalLink(url) {
 /**
  * Updates the GitHub issue for broken links.
  *
- * @param {Array.<UrlResult>} urlResults Fetch results of all external URLs.
+ * @param {UrlResult[]} urlResults Fetch results of all external URLs.
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
@@ -256,18 +250,18 @@ async function updateGithubIssue(urlResults) {
   await createCommentIfNeeded();
 
   /**
-   * @typedef {Object.<String, LinkStatus>} LinkData URLs pointing to the last seven statuses.
+   * @typedef {Record<string, LinkStatus[]>} LinkData URLs pointing to the last seven statuses.
    */
 
   /**
-   * @typedef {Object} LinkStatus
-   * @property {Boolean} failed Whether the requested URL can be seen as broken.
-   * @property {String|null} message User-visible information about the URL's status. May be null for passing links.
-   * @property {String|null} jobUrl Link to the workflow run page. May be null for passing links.
+   * @typedef {object} LinkStatus
+   * @property {boolean} failed Whether the requested URL can be seen as broken.
+   * @property {string | null} message User-visible information about the URL's status. May be null for passing links.
+   * @property {string | null} jobUrl Link to the workflow run page. May be null for passing links.
    */
 
   /**
-   * @param {String} body The current GitHub issue body.
+   * @param {string} body The current GitHub issue body.
    * @returns {LinkData} The link data that is read from the body.
    */
   function getLinkDataFromBody(body) {
@@ -328,7 +322,7 @@ async function updateGithubIssue(urlResults) {
         };
         const oldStatuses = oldLinkData[url];
 
-        const statuses = [currentStatus].concat(oldStatuses.slice(0, 6));
+        const statuses = [currentStatus, ...oldStatuses.slice(0, 6)];
 
         if (statuses.every(status => !status.failed)) {
           // passing for seven days -> don't add to new table but create comment
@@ -366,7 +360,7 @@ async function updateGithubIssue(urlResults) {
 
   /**
    * @param {LinkData} linkData The new link data from which to create the issue body.
-   * @returns {String} The new issue body (in Markdown and HTML) from the given link data.
+   * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
@@ -383,7 +377,7 @@ async function updateGithubIssue(urlResults) {
             return `:heavy_check_mark:`;
           }
 
-          const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+          const message = status.message.replace(/\n/g, ` `).replace(/"/g, `&quot;`);
           const emoji = getFailedEmoji(status.message);
           return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);
@@ -401,12 +395,12 @@ async function updateGithubIssue(urlResults) {
    * @returns {Promise} Promise that resolves as soon as all (or none) comments have been deleted.
    */
   async function deleteAutoGeneratedComments() {
-    const comments = (await githubClient.rest.issues.listComments({
+    const { data: comments } = await githubClient.rest.issues.listComments({
       owner: repoOwner,
       repo: repoName,
       'issue_number': process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER,
       'per_page': 100,
-    })).data;
+    });
 
     const autoGeneratedComments = comments.filter(
       comment => comment.body.startsWith(GITHUB_COMMENT_HEADING),
@@ -474,22 +468,25 @@ async function updateGithubIssue(urlResults) {
 }
 
 /**
- * @param {String} message The error message.
- * @returns {String} The emoji to display for that error message.
+ * @param {string} message The error message.
+ * @returns {string} The emoji to display for that error message.
  */
 function getFailedEmoji(message) {
   const emojis = {
     '301': `:fast_forward:`,
-    '301 Moved Permanently': `:fast_forward:`,
+    '301 moved permanently': `:fast_forward:`,
 
     '403': `:no_entry:`,
-    '403 Forbidden': `:no_entry:`,
+    '403 forbidden': `:no_entry:`,
 
     '429': `:sos:`,
-    '429 Too Many Requests': `:sos:`,
+    '429 too many requests': `:sos:`,
 
-    [`Timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
+    'certificate has expired': `:lock:`,
+    'unable to verify the first certificate': `:lock:`,
+
+    [`timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
   };
 
-  return emojis[message.trim()] || `:x:`;
+  return emojis[message.trim().toLowerCase()] || `:x:`;
 }

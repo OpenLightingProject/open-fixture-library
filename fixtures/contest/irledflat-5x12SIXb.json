@@ -3,9 +3,9 @@
   "name": "IrLEDFLAT 5x12SIXb",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Pascal Denis", "Felix Edelmann"],
+    "authors": ["Pascal Denis", "Felix Edelmann", "JonahKr"],
     "createDate": "2018-11-11",
-    "lastModifyDate": "2018-11-11"
+    "lastModifyDate": "2021-09-13"
   },
   "links": {
     "manual": [
@@ -213,6 +213,7 @@
           "dmxRange": [61, 65],
           "type": "ColorPreset",
           "comment": "Light Pink",
+          "colors": ["#ffc8d2"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -221,6 +222,7 @@
           "dmxRange": [66, 70],
           "type": "ColorPreset",
           "comment": "Light Apricot",
+          "colors": ["#fdd5b1"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -229,6 +231,7 @@
           "dmxRange": [71, 75],
           "type": "ColorPreset",
           "comment": "Light Ocre",
+          "colors": ["#e1b150"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -237,6 +240,7 @@
           "dmxRange": [76, 80],
           "type": "ColorPreset",
           "comment": "Green Pearl",
+          "colors": ["#134d24"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -245,6 +249,7 @@
           "dmxRange": [81, 85],
           "type": "ColorPreset",
           "comment": "Grey Pearl",
+          "colors": ["#dee2d9"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -253,6 +258,7 @@
           "dmxRange": [86, 90],
           "type": "ColorPreset",
           "comment": "Green Veronese",
+          "colors": ["#009b7d"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -261,6 +267,7 @@
           "dmxRange": [91, 95],
           "type": "ColorPreset",
           "comment": "Blue Lagon",
+          "colors": ["#03787c"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -269,6 +276,7 @@
           "dmxRange": [96, 100],
           "type": "ColorPreset",
           "comment": "Sky Blue",
+          "colors": ["#46b4f0"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -277,6 +285,7 @@
           "dmxRange": [101, 105],
           "type": "ColorPreset",
           "comment": "Light Blue",
+          "colors": ["#00e1eb"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -285,6 +294,7 @@
           "dmxRange": [106, 110],
           "type": "ColorPreset",
           "comment": "Cerulean Blue",
+          "colors": ["#2a52be"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -309,6 +319,7 @@
           "dmxRange": [121, 125],
           "type": "ColorPreset",
           "comment": "Amber",
+          "colors": ["#ffbf00"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -317,6 +328,7 @@
           "dmxRange": [126, 130],
           "type": "ColorPreset",
           "comment": "Sunset",
+          "colors": ["#fad6a5"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
@@ -325,6 +337,7 @@
           "dmxRange": [131, 135],
           "type": "ColorPreset",
           "comment": "Ultra violet",
+          "colors": ["#3e0694"],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }

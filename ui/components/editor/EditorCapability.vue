@@ -11,15 +11,16 @@
 
       <LabeledInput
         :formstate="formstate"
-        :multiple-inputs="true"
+        multiple-inputs
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
         <PropertyInputRange
+          ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
-          :schema-property="capabilityProperties.dmxRange"
+          :schema-property="capabilityDmxRange"
           :range-min="min"
           :range-max="max"
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
@@ -30,14 +31,14 @@
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
         @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
@@ -52,8 +53,8 @@
 
 <style lang="scss" scoped>
 .capability {
-  margin: 0 -0.5rem;
   position: relative;
+  margin: 0 -0.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid theme-color(divider);
@@ -77,24 +78,16 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
-  display: inline-block;
+.icon-button.close {
   position: absolute;
-  right: 0;
   top: 0;
-  padding: 0.3rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
+  right: 0;
 }
 </style>
 
 <script>
-import { capabilityProperties } from '../../../lib/schema-properties.js';
+import { numberProp, objectProp } from 'vue-ts-types';
+import { capabilityDmxRange } from '../../../lib/schema-properties.js';
 import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
@@ -110,27 +103,15 @@ export default {
     PropertyInputRange,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    capabilityIndex: {
-      type: Number,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    capabilityIndex: numberProp().required,
+    resolution: numberProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {
       dmxMin: 0,
-      capabilityProperties,
+      capabilityDmxRange,
     };
   },
   computed: {
@@ -194,7 +175,6 @@ export default {
     },
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const previousCapability = this.capabilities[this.capabilityIndex - 1];
@@ -223,7 +203,6 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCapability = this.capabilities[this.capabilityIndex + 1];
@@ -313,6 +292,11 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
     },
   },
 };

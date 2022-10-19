@@ -1,0 +1,230 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS 600D",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2022-09-24",
+    "lastModifyDate": "2022-09-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2022/06/LS-600d-DMX-Profile-Specification-V1.0-.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/ls-600d/"
+    ]
+  },
+  "physical": {
+    "dimensions": [308, 156, 121],
+    "weight": 4.7,
+    "power": 600,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Faulty bulb"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Pulsing"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Explosion"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Frequency": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "9"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic",
+          "comment": "10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Mode"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "FX Mode"
+        }
+      ]
+    },
+    "Lightning": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [11, 127],
+          "type": "Generic",
+          "comment": "Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Loop"
+        }
+      ]
+    },
+    "Explosion": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [11, 127],
+          "type": "Generic",
+          "comment": "Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Lighting 8-bit",
+      "shortName": "P1",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Effect 8-bit",
+      "shortName": "P2",
+      "channels": [
+        "Intensity",
+        "Effects",
+        "Frequency",
+        "Lightning",
+        "Explosion"
+      ]
+    },
+    {
+      "name": "Lighting & Effect 8-bit",
+      "shortName": "P3",
+      "channels": [
+        "Intensity",
+        "Mode Selection",
+        "Effects",
+        "Frequency",
+        "Lightning",
+        "Explosion"
+      ]
+    }
+  ]
+}

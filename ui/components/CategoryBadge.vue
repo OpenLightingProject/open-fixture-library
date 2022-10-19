@@ -3,28 +3,30 @@
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
-  border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
   background: theme-color(hover-background);
+  border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
 
   &:link,
   &:visited {
     color: theme-color(text-primary);
     fill: theme-color(icon);
   }
+
   &:hover,
   &:focus {
     background-color: theme-color(active-background);
   }
 
   &.selected {
+    cursor: grab;
     background-color: theme-color(blue-background-active);
-    cursor: move;
 
     &:link,
     &:visited {
       color: $primary-text-light;
       fill: $icon-light;
     }
+
     &:hover,
     &:focus {
       background-color: $blue-300;
@@ -32,30 +34,21 @@
   }
 
   & > .icon {
-    height: 1.7em;
     width: 1.7em;
+    height: 1.7em;
     margin-right: 4px;
   }
 }
 </style>
 
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    category: {
-      type: String,
-      required: true,
-    },
-    selected: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    selectable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    category: stringProp().required,
+    selected: booleanProp().withDefault(false),
+    selectable: booleanProp().withDefault(false),
   },
   render(createElement) {
     const classes = {
