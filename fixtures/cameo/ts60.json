@@ -272,17 +272,20 @@
         {
           "dmxRange": [64, 127],
           "type": "Maintenance",
-          "comment": "Dimmer Response Halogen (Hold 3s)"
+          "comment": "Dimmer Response Halogen",
+          "hold": "3s"
         },
         {
           "dmxRange": [128, 191],
           "type": "Maintenance",
-          "comment": "Silent Fan on (Hold 3s)"
+          "comment": "Silent Fan on",
+          "hold": "3s"
         },
         {
           "dmxRange": [192, 255],
           "type": "Maintenance",
-          "comment": "Silent Fan off (Hold 5s)"
+          "comment": "Silent Fan off",
+          "hold": "5s"
         }
       ]
     }
