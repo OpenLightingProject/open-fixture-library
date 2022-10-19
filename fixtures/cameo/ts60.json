@@ -76,8 +76,7 @@
         {
           "dmxRange": [0, 5],
           "type": "ColorPreset",
-          "comment": "Colour off",
-          "colors": ["#000000"]
+          "comment": "NoFunction"
         },
         {
           "dmxRange": [6, 13],
@@ -181,7 +180,7 @@
           "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Colour Jumping Speed slow -> fast / Colour 1 -> 12"
+          "comment": "Colour 1 -> 12"
         },
         {
           "dmxRange": [192, 255],
@@ -204,8 +203,7 @@
           "dmxRange": [6, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "7200K",
-          "colorTemperatureEnd": "3200K",
-          "comment": "7200K - 3200K @ Full on affects colours too"
+          "colorTemperatureEnd": "3200K"
         }
       ]
     },
@@ -268,7 +266,8 @@
         {
           "dmxRange": [6, 63],
           "type": "Maintenance",
-          "comment": "Dimmer Response LED (Hold 3s)"
+          "comment": "Dimmer Response LED",
+          "hold": "3s"
         },
         {
           "dmxRange": [64, 127],
