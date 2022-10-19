@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Performer 2500",
-  "categories": ["Dimmer", "Color Changer"],
+  "categories": ["Dimmer"],
   "meta": {
     "authors": ["purple", "Luke Nelson"],
     "createDate": "2022-10-18",
@@ -12,7 +12,7 @@
       "https://www.highlite.com/en/33141-performer-2500-fresnel.html"
     ],
     "manual": [
-      "https://all-guidesbox.com/manual/2217476/showtec-performer-2500-fresnel-tungsten-operation-user-s-manual-40.html"
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17429015/"
     ],
     "video": ["https://vimeo.com/439925462"]
   },
@@ -64,65 +64,47 @@
         {
           "dmxRange": [11, 35],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "2700 K"
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [36, 60],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "3000 K"
+          "colorTemperature": "3000K"
         },
         {
           "dmxRange": [61, 85],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "3200 K"
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [86, 110],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "3400 K"
+          "colorTemperature": "3400K"
         },
         {
           "dmxRange": [111, 135],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "3600 K"
+          "colorTemperature": "3600K"
         },
         {
           "dmxRange": [136, 160],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "3800 K"
+          "colorTemperature": "3800K"
         },
         {
           "dmxRange": [161, 185],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "4000 K"
+          "colorTemperature": "4000K"
         },
         {
           "dmxRange": [186, 210],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "4200 K"
+          "colorTemperature": "4200K"
         },
         {
           "dmxRange": [211, 235],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "4500 K"
+          "colorTemperature": "4500K"
         },
         {
           "dmxRange": [236, 255],
@@ -173,7 +155,7 @@
   "modes": [
     {
       "name": "8-channel",
-      "shortName": "8ch",
+      "shortName": "STD.P",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",
@@ -187,7 +169,7 @@
     },
     {
       "name": "6-channel",
-      "shortName": "6ch",
+      "shortName": "VW.F",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",
@@ -199,7 +181,7 @@
     },
     {
       "name": "3-channel",
-      "shortName": "3ch",
+      "shortName": "VW.D",
       "channels": [
         "Master Dimmer",
         "Warm White",
@@ -208,7 +190,7 @@
     },
     {
       "name": "2-channel",
-      "shortName": "2ch",
+      "shortName": "DOS",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine"
@@ -216,7 +198,7 @@
     },
     {
       "name": "1-channel",
-      "shortName": "1ch",
+      "shortName": "UNO",
       "channels": [
         "Master Dimmer"
       ]
