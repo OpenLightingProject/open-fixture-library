@@ -3,9 +3,9 @@
   "name": "ts60",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Anonymous"],
-    "createDate": "2021-05-27",
-    "lastModifyDate": "2021-05-27"
+    "authors": ["Anonymous", "Luke Nelson"],
+    "createDate": "2022-10-19",
+    "lastModifyDate": "2022-10-19"
   },
   "links": {
     "productPage": [
@@ -26,6 +26,7 @@
   },
   "availableChannels": {
     "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity"
       }
@@ -53,7 +54,23 @@
         "type": "ColorIntensity",
         "color": "White"
       }
-    }
+    },
+    "Strobe": {
+      "capabilities":[
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "<1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
   },
   "modes": [
     {
@@ -70,6 +87,11 @@
       "name": "5-channel",
       "shortName": "5ch",
       "channels": ["Dimmer", "Red", "Green", "Blue", "White"]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": ["Dimmer", "Dimmer fine", "Strobe", "Red", "Green", "Blue", "White"]
     }
   ]
 }
