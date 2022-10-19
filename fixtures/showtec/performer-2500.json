@@ -4,8 +4,8 @@
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["purple", "Luke Nelson"],
-    "createDate": "2022-10-18",
-    "lastModifyDate": "2022-10-18"
+    "createDate": "2022-10-19",
+    "lastModifyDate": "2022-10-19"
   },
   "links": {
     "productPage": [
@@ -117,7 +117,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 99],
@@ -128,7 +129,8 @@
         },
         {
           "dmxRange": [100, 109],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [110, 179],
@@ -139,7 +141,8 @@
         },
         {
           "dmxRange": [180, 189],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 255],
