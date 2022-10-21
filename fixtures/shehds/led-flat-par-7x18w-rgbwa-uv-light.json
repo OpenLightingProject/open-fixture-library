@@ -22,12 +22,12 @@
   },
   "physical": {
     "dimensions": [176, 178, 11.3],
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
     },
     "power": 126,
-    "weight": 0.9,
+    "weight": 0.9
   },
   "availableChannels": {
     "Master dimmer": {
@@ -86,7 +86,7 @@
         "speedStart": "0Hz",
         "speedEnd": "10Hz",
         "helpWanted": "At which DMX values is the strobe effect disabled?"
-      },
+      }
     },
     "Function": {
       "defaultValue": 0,
@@ -127,7 +127,7 @@
       "capability": {
         "type": "Speed",
         "speedStart": "slow",
-        "speedEnd": "fast",
+        "speedEnd": "fast"
       }
     }
   },
