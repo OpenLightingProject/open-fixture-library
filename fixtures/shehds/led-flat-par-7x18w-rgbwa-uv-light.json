@@ -4,16 +4,30 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["JMS", "le 11/10/2021", "jms27000"],
-    "createDate": "2021-10-16",
-    "lastModifyDate": "2021-10-16",
+    "createDate": "2022-10-21",
+    "lastModifyDate": "2022-10-21",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2021-10-16",
       "comment": "created by Q Light Controller Plus (version 4.12.4)"
     }
   },
+  "links": {
+    "productPage": [
+      "https://www.shehds.com/products/led-flat-par-7x12w-7x18w-rgbwauv-lighting"
+    ],
+    "manual": [
+      "https://www.shehds.com/u_file/2005/file/b01e72a1b3.pdf"
+    ]
+  },
   "physical": {
+    "dimensions": [176, 178, 11.3],
     "DMXconnector": "3-pin"
+    "bulb": {
+      "type": "LED"
+    },
+    "power": 126,
+    "weight": 0.9,
   },
   "availableChannels": {
     "Master dimmer": {
@@ -69,46 +83,47 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz",
+        "helpWanted": "At which DMX values is the strobe effect disabled?"
+      },
     },
     "Function": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [0, 50],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 1],
-          "type": "NoFunction"
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Auto Mode 1"
         },
         {
-          "dmxRange": [2, 2],
-          "type": "NoFunction"
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Auto Mode 2"
         },
         {
-          "dmxRange": [3, 3],
-          "type": "NoFunction"
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Auto Mode 3"
         },
         {
-          "dmxRange": [4, 4],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [5, 255],
-          "type": "NoFunction"
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "soundControlled": true,
+          "effectName": "Sound Mode"
         }
       ]
     },
-    "Function Speed Adjustment CH9": {
+    "Function Speed": {
       "defaultValue": 0,
       "capability": {
         "type": "Speed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "comment": "Speed"
       }
     }
   },
@@ -138,7 +153,7 @@
         "Violet",
         "Strobe",
         "Function",
-        "Function Speed Adjustment CH9"
+        "Function Speed"
       ]
     }
   ]
