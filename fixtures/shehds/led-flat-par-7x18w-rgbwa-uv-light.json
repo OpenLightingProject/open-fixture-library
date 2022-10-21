@@ -98,23 +98,27 @@
         {
           "dmxRange": [51, 100],
           "type": "Effect",
-          "effectName": "Auto Mode 1"
+          "effectName": "Auto Mode 1",
+          "helpWanted": "At which DMX value does the effect start?"
         },
         {
           "dmxRange": [101, 150],
           "type": "Effect",
-          "effectName": "Auto Mode 2"
+          "effectName": "Auto Mode 2",
+          "helpWanted": "At which DMX value does the effect start?"
         },
         {
           "dmxRange": [151, 200],
           "type": "Effect",
-          "effectName": "Auto Mode 3"
+          "effectName": "Auto Mode 3",
+          "helpWanted": "At which DMX value does the effect start?"
         },
         {
           "dmxRange": [201, 255],
           "type": "Effect",
           "soundControlled": true,
-          "effectName": "Sound Mode"
+          "effectName": "Sound Mode",
+          "helpWanted": "At which DMX value does the effect start?"
         }
       ]
     },
