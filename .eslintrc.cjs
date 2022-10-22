@@ -138,6 +138,7 @@ const enabledRuleParameters = {
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
+  'promise/no-multiple-resolved': [],
   'promise/no-nesting': [],
   'promise/no-promise-in-callback': [],
   'promise/no-return-in-finally': [],
