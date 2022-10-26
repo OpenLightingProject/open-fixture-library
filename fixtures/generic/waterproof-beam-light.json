@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Waterproof Beam Light",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Richard Johnson"],
+    "createDate": "2022-10-26",
+    "lastModifyDate": "2022-10-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.dropbox.com/s/zpx3gunjvi1qxfc/Final-Lake%20Project-0711.pdf?dl=0"
+    ]
+  },
+  "wheels": {
+    "Color": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pattern Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color + Frost": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lamp": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 ch",
+      "channels": [
+        "Color",
+        "Strobe",
+        "Dimmer",
+        "Pattern Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Prism 2",
+        "Prism Rotation 2",
+        "Color + Frost",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Reset",
+        "Lamp"
+      ]
+    }
+  ]
+}
