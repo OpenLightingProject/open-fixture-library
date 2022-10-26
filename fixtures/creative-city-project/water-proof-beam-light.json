@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Water Proof Beam Light",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ricky"],
+    "createDate": "2022-10-26",
+    "lastModifyDate": "2022-10-26"
+  },
+  "links": {
+    "productPage": [
+      "https://www.youtube.com/"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 2
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "0%"
+      }
+    },
+    "Prism2": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism2 Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "0%"
+      }
+    },
+    "Colors + Frost": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "0%"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Bulb Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Color Wheel",
+        "Strobe",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Prism2",
+        "Prism2 Rotation",
+        "Colors + Frost",
+        "Focus",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Reset",
+        "Bulb Control"
+      ]
+    }
+  ]
+}
