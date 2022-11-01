@@ -218,7 +218,7 @@ const enabledRuleParameters = {
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
-  'vue/v-on-function-call': [`always`],
+  'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
 
   // already included in presets, but needed here because we reduce severity to `warn`
