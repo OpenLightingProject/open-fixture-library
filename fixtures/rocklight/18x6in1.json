@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18x6in1",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Rockfabrik"],
+    "createDate": "2022-11-01",
+    "lastModifyDate": "2022-11-01"
+  },
+  "links": {
+    "productPage": [
+      "http://www.dmxmovingheadlight.com/18x4in1-led-par-light-zoom-2.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Funktion": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "NoFunction",
+          "comment": "Color blackoutwheel"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction",
+          "comment": "Color rotleft"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "NoFunction",
+          "comment": "color rotright"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "NoFunction",
+          "comment": "MusicPulse"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "MusicBPM"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Shutter / Strobe",
+        "Funktion",
+        "Program Speed"
+      ]
+    }
+  ]
+}
