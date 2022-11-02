@@ -2,10 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Flat Par 7x18W RGBWA+UV Light",
   "categories": ["Color Changer"],
+  "comment": "There may be multiple variants of this fixture with similar profiles. See https://github.com/OpenLightingProject/open-fixture-library/pull/2204 for more information.",
   "meta": {
-    "authors": ["jms27000"],
-    "createDate": "2022-10-21",
-    "lastModifyDate": "2022-10-21",
+    "authors": ["jms27000", "René Bütikofer"],
+    "createDate": "2022-11-02",
+    "lastModifyDate": "2022-11-02",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2021-10-16",
@@ -17,7 +18,8 @@
       "https://www.shehds.com/products/led-flat-par-7x12w-7x18w-rgbwauv-lighting"
     ],
     "manual": [
-      "https://www.shehds.com/u_file/2005/file/b01e72a1b3.pdf"
+      "https://www.shehds.com/u_file/2005/file/b01e72a1b3.pdf",
+      "https://www.shehds.com/u_file/1907/file/45918ab3df.pdf"
     ]
   },
   "physical": {
@@ -142,6 +144,21 @@
         "White",
         "Amber",
         "Violet"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet",
+        "Function",
+        "Function Speed"
       ]
     },
     {
