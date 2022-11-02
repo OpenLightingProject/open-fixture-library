@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-24",
-    "lastModifyDate": "2018-08-06",
+    "lastModifyDate": "2022-05-03",
     "importPlugin": {
       "plugin": "qlcplus_4.11.2",
       "date": "2017-01-24"
@@ -14,8 +14,8 @@
   },
   "links": {
     "manual": [
-      "http://www.sabretechnology.co.uk/pdfs/allman2.pdf",
-      "http://www.sabretechnology.co.uk/pdfs/hptwis.pdf"
+      "https://www.sabretechnology.co.uk/pdfs/allman2.pdf",
+      "https://www.sabretechnology.co.uk/pdfs/hptwis.pdf"
     ],
     "video": ["https://www.youtube.com/watch?v=AAx21-IF_zQ"]
   },
@@ -85,32 +85,24 @@
           "speed": "stop"
         },
         {
-          "dmxRange": [12, 111],
+          "dmxRange": [12, 112],
           "type": "Rotation",
-          "speed": "fast CW"
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "dmxRange": [112, 127],
-          "type": "Rotation",
-          "speed": "slow CW"
-        },
-        {
-          "dmxRange": [128, 140],
+          "dmxRange": [113, 140],
           "type": "Rotation",
           "speed": "stop"
         },
         {
-          "dmxRange": [141, 243],
+          "dmxRange": [141, 244],
           "type": "Rotation",
-          "speed": "slow CCW"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "dmxRange": [244, 254],
-          "type": "Rotation",
-          "speed": "fast CCW"
-        },
-        {
-          "dmxRange": [255, 255],
+          "dmxRange": [245, 255],
           "type": "Rotation",
           "speed": "stop"
         }

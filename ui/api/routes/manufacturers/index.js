@@ -6,7 +6,7 @@ import importJson from '../../../../lib/import-json.js';
 /**
  * Returns general information about all manufacturers.
  * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getManufacturers(context) {
   const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);

@@ -3,11 +3,11 @@
     id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
-    :shown="context !== null"
+    :shown="context !== undefined"
     :title="title"
     @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit()">
+    <form v-if="state === `ready` && context !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
         :value="location"
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import { objectProp, stringProp } from 'vue-ts-types';
 import A11yDialog from './A11yDialog.vue';
 import LabeledInput from './LabeledInput.vue';
 import LabeledValue from './LabeledValue.vue';
@@ -84,14 +85,8 @@ export default {
     prop: `context`,
   },
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
-    context: {
-      type: Object,
-      default: null,
-    },
+    type: stringProp().required,
+    context: objectProp().optional,
   },
   data: () => {
     return {
@@ -116,7 +111,11 @@ export default {
         return `Failed to send message`;
       }
 
-      return `Improve ${this.type === `plugin` ? `plugin` : `fixture`}`;
+      if (this.type === `plugin`) {
+        return `Improve plugin`;
+      }
+
+      return `Improve fixture`;
     },
     location() {
       if (this.type === `capability`) {
@@ -173,9 +172,10 @@ export default {
 
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null,
-      ).map(
-        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-      ).join(`\n`);
+      ).map(([key, value]) => {
+        const separator = value.includes(`\n`) ? `\n` : ` `;
+        return `${key}:${separator}${value}`;
+      }).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
@@ -217,7 +217,7 @@ export default {
       this.state = `ready`;
       this.issueUrl = null;
       this.error = null;
-      this.$emit(`input`, null);
+      this.$emit(`input`, undefined);
     },
   },
 };

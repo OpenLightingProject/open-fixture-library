@@ -5,14 +5,11 @@
 </template>
 
 <script>
-/* eslint-disable vue/no-unused-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1312 */
+import { instanceOfProp } from 'vue-ts-types';
 
 export default {
   props: {
-    date: {
-      type: Date,
-      required: true,
-    },
+    date: instanceOfProp(Date).required,
   },
 };
 </script>

@@ -44,13 +44,15 @@ export async function createFeedbackIssue({ request }) {
 
   const lines = Object.entries(issueContentData).filter(
     ([key, value]) => value !== null,
-  ).map(
-    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-  );
+  ).map(([key, value]) => {
+    const separator = value.includes(`\n`) ? `\n` : ` `;
+    return `**${key}**:${separator}${value}`;
+  });
 
   if (githubUsername) {
     const isValidUsername = /^[\dA-Za-z]+$/.test(githubUsername);
-    lines.push(`\nThank you ${isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`}!`);
+    const githubUsernameMarkdown = isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`;
+    lines.push(`\nThank you ${githubUsernameMarkdown}!`);
   }
 
   let issueUrl;
