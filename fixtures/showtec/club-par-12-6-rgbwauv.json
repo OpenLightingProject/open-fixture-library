@@ -9,11 +9,10 @@
   },
   "links": {
     "manual": [
-      "https://www.highlite.com/de/mwdownloads/download/link/id/17430150/",
-      "https://www.highlite.com/de/mwdownloads/download/link/id/17430148/"
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17430150/"
     ],
     "productPage": [
-      "https://www.highlite.com/de/42651-club-par-12-6-rgbwauv.html"
+      "https://www.highlite.com/en/42651-club-par-12-6-rgbwauv.html"
     ]
   },
   "availableChannels": {
@@ -63,11 +62,13 @@
         {
           "dmxRange": [0, 12],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "helpWanted": "The manual says “Closed” here, but then strobe could never be disabled. Is the light constantly on or off at DMX values 0…12 and at DMX value 255?"
         },
         {
           "dmxRange": [13, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -162,7 +163,7 @@
     "Program Duration": {
       "capability": {
         "type": "EffectDuration",
-        "durationStart": "short",
+        "durationStart": "instant",
         "durationEnd": "long"
       }
     }
