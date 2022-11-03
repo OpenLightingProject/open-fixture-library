@@ -63,7 +63,7 @@
         {
           "dmxRange": [0, 12],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [13, 255],
@@ -81,79 +81,80 @@
         },
         {
           "dmxRange": [10, 19],
-          "type": "Generic",
-          "comment": "Programm 1"
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
           "dmxRange": [20, 29],
-          "type": "Generic",
-          "comment": "Programm 2"
+          "type": "Effect",
+          "comment": "Program 2"
         },
         {
           "dmxRange": [30, 39],
-          "type": "Generic",
-          "comment": "Programm 3"
+          "type": "Effect",
+          "comment": "Program 3"
         },
         {
           "dmxRange": [40, 49],
-          "type": "Generic",
-          "comment": "Programm 4"
+          "type": "Effect",
+          "comment": "Program 4"
         },
         {
           "dmxRange": [50, 59],
-          "type": "Generic",
-          "comment": "Programm 5"
+          "type": "Effect",
+          "comment": "Program 5"
         },
         {
           "dmxRange": [60, 69],
-          "type": "Generic",
-          "comment": "Programm 6"
+          "type": "Effect",
+          "comment": "Program 6"
         },
         {
           "dmxRange": [70, 79],
-          "type": "Generic",
-          "comment": "Programm 7"
+          "type": "Effect",
+          "comment": "Program 7"
         },
         {
           "dmxRange": [80, 89],
-          "type": "Generic",
-          "comment": "Programm 8"
+          "type": "Effect",
+          "comment": "Program 8"
         },
         {
           "dmxRange": [90, 99],
-          "type": "Generic",
-          "comment": "Programm 9"
+          "type": "Effect",
+          "comment": "Program 9"
         },
         {
           "dmxRange": [100, 109],
-          "type": "Generic",
-          "comment": "Programm 10"
+          "type": "Effect",
+          "comment": "Program 10"
         },
         {
           "dmxRange": [110, 119],
-          "type": "Generic",
-          "comment": "Programm 11"
+          "type": "Effect",
+          "comment": "Program 11"
         },
         {
           "dmxRange": [120, 129],
-          "type": "Generic",
-          "comment": "Programm 12"
+          "type": "Effect",
+          "comment": "Program 12"
         },
         {
           "dmxRange": [130, 139],
-          "type": "Generic",
-          "comment": "Programm 13"
+          "type": "Effect",
+          "comment": "Program 13"
         },
         {
           "dmxRange": [140, 255],
-          "type": "Generic",
-          "comment": "Musiktaktung"
+          "type": "Effect",
+          "effectName": "Sound-controlled",
+          "soundControlled": true
         }
       ]
     },
     "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
