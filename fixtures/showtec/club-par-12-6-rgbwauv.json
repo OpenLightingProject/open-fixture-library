@@ -168,7 +168,19 @@
   },
   "modes": [
     {
-      "name": "11-Channel",
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV"
+      ]
+    },
+    {
+      "name": "11-channel",
       "shortName": "11ch",
       "channels": [
         "Dimmer",
