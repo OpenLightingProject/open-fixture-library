@@ -142,10 +142,85 @@
       ]
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe"
-      }
+      "capabilities":[
+        {
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6,255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Strobe functons": {
+      "capabilities": [
+        {
+          "dmxRange": [0,5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6,10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+        },
+        {
+          "dmxRange": [11,33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [34,56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [57,79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [80,102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random Strobe Effect",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [103,127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Break Effect",
+          "durationStart": "5s",
+          "durationEnd": "1s",
+        },
+        {
+          "dmxRange": [128,250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251,255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
     "Red": {
       "capability": {
@@ -217,6 +292,7 @@
       "channels": [
         "Dimmer",
         "Dimmer fine",
+        "Strobe functions",
         "Red",
         "Green",
         "Blue",
