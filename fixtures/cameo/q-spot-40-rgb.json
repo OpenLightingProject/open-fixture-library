@@ -34,6 +34,7 @@
   },
   "availableChannels": {
     "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity"
       }
@@ -170,13 +171,6 @@
         "color": "White"
       }
     },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "fineChannelAliases": ["Dimmer 2 fine"],
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Color Temperature": {
       "capability": {
         "type": "ColorTemperature",
@@ -221,8 +215,8 @@
     {
       "name": "9 CH",
       "channels": [
-        "Dimmer 2",
-        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
         "Red",
         "Green",
         "Blue",
