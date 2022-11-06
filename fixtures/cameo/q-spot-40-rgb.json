@@ -247,11 +247,19 @@
       }
     },
     "Color Temperature": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "cold",
-        "colorTemperatureEnd": "warm"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0,5],
+          "type": "ColorTemperature",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [6,255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        }
+      ]
     }
   },
   "modes": [
