@@ -118,7 +118,8 @@
   },
   "modes": [
     {
-      "name": "10ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Dimmer",
         "Red",
@@ -127,13 +128,14 @@
         "White",
         "Amber",
         "UV",
-        "Strobe Speed",
-        "Sound Sensitivity",
+        "Strobe",
+        "Color Macros",
         "Program Speed"
       ]
     },
     {
-      "name": "6ch",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
