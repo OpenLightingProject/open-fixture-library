@@ -264,14 +264,16 @@
   },
   "modes": [
     {
-      "name": "2 CH",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
         "Dimmer",
         "Color Macros"
       ]
     },
     {
-      "name": "3CH 1",
+      "name": "3-channel 1",
+      "shortName": "3ch 1",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -279,7 +281,8 @@
       ]
     },
     {
-      "name": "3 CH2",
+      "name": "3-channel 2",
+      "shortName": "3ch 2",
       "channels": [
         "Red",
         "Green",
@@ -287,7 +290,8 @@
       ]
     },
     {
-      "name": "4 CH",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
@@ -296,7 +300,8 @@
       ]
     },
     {
-      "name": "9 CH",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Dimmer",
         "Dimmer fine",
