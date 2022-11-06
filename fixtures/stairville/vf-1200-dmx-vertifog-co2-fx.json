@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VF-1200 DMX VertiFog CO2 FX",
+  "shortName": "VF-1200",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Hannes Rüger"],
+    "createDate": "2022-07-19",
+    "lastModifyDate": "2022-07-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/362289_c_362289_v6_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_vf_1200_dmx_vertifog_co2_fx.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i4452p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [305, 170, 390],
+    "weight": 6.6,
+    "power": 1250,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}

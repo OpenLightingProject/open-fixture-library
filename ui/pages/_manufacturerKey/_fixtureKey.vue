@@ -44,7 +44,7 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
+          @click.prevent="openHelpWantedDialog({
             context: fixture,
             type: `fixture`,
           })">

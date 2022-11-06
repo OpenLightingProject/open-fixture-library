@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Instant Hazer 1500 T Pro",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Hannes Rüger"],
+    "createDate": "2022-07-19",
+    "lastModifyDate": "2022-07-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/928754720"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/cameo_instant_hazer_1500_t_pro.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i7703p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [415, 266, 555],
+    "weight": 17.9,
+    "power": 1500,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Fan": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Fan Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Haze",
+        "Fan"
+      ]
+    }
+  ]
+}
