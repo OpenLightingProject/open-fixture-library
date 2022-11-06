@@ -1,0 +1,253 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hydrabeam CLHB400W RGBW",
+  "shortName": "CLHB400W RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["ashmotif200"],
+    "createDate": "2022-11-06",
+    "lastModifyDate": "2022-11-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/1380290362"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/lighting-effects/2140/hydrabeam-400-rgbw"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=c2tkXBbGLMY"
+    ]
+  },
+  "physical": {
+    "dimensions": [810, 250, 130],
+    "weight": 7.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "90deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "90deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 45],
+          "type": "ColorPreset",
+          "comment": "R"
+        },
+        {
+          "dmxRange": [46, 60],
+          "type": "ColorPreset",
+          "comment": "G"
+        },
+        {
+          "dmxRange": [61, 75],
+          "type": "ColorPreset",
+          "comment": "B"
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "ColorPreset",
+          "comment": "W"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "ColorPreset",
+          "comment": "RG"
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "ColorPreset",
+          "comment": "RB"
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "ColorPreset",
+          "comment": "RW"
+        },
+        {
+          "dmxRange": [136, 150],
+          "type": "ColorPreset",
+          "comment": "GB"
+        },
+        {
+          "dmxRange": [151, 165],
+          "type": "ColorPreset",
+          "comment": "GW"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "ColorPreset",
+          "comment": "BW"
+        },
+        {
+          "dmxRange": [181, 195],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [196, 210],
+          "type": "ColorPreset",
+          "comment": "RGW"
+        },
+        {
+          "dmxRange": [211, 225],
+          "type": "ColorPreset",
+          "comment": "RBW"
+        },
+        {
+          "dmxRange": [226, 240],
+          "type": "ColorPreset",
+          "comment": "GBW"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "RGBW"
+        }
+      ]
+    },
+    "Auto": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 30],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [31, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 76],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [77, 99],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [100, 122],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "off",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [123, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "56ch(14x4)",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Auto",
+        "Sound Sensitivity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
