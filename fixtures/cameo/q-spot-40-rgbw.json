@@ -42,100 +42,101 @@
     "Color Macros": {
       "capabilities":[
         {
-          "dmxRange": [0,5],
+          "dmxRange": [0, 5],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [6,13],
+          "dmxRange": [6, 13],
           "type": "ColorPreset",
           "comment": "Red"
         },
         {
-          "dmxRange": [14,21],
+          "dmxRange": [14, 21],
           "type": "ColorPreset",
           "comment": "Amber"
         },
         {
-          "dmxRange": [22,29],
+          "dmxRange": [22, 29],
           "type": "ColorPreset",
           "comment": "Yellow Warm"
         },
         {
-          "dmxRange": [30,37],
+          "dmxRange": [30, 37],
           "type": "ColorPreset",
           "comment": "Yellow"
         },
         {
-          "dmxRange": [38,45],
+          "dmxRange": [38, 45],
           "type": "ColorPreset",
           "comment": "Green"
         },
         {
-          "dmxRange": [46,53],
+          "dmxRange": [46, 53],
           "type": "ColorPreset",
           "comment": "Turquoise"
         },
         {
-          "dmxRange": [54,61],
+          "dmxRange": [54, 61],
           "type": "ColorPreset",
           "comment": "Cyan"
         },
         {
-          "dmxRange": [62,69],
+          "dmxRange": [62, 69],
           "type": "ColorPreset",
           "comment": "Blue"
         },
         {
-          "dmxRange": [70,77],
+          "dmxRange": [70, 77],
           "type": "ColorPreset",
           "comment": "Lavender"
         },
         {
-          "dmxRange": [78,85],
+          "dmxRange": [78, 85],
           "type": "ColorPreset",
           "comment": "Mauve"
         },
         {
-          "dmxRange": [86,93],
+          "dmxRange": [86, 93],
           "type": "ColorPreset",
           "comment": "Magenta"
         },
         {
-          "dmxRange": [94,101],
+          "dmxRange": [94, 101],
           "type": "ColorPreset",
           "comment": "Pink"
         },
         {
-          "dmxRange": [102,109],
+          "dmxRange": [102, 109],
           "type": "ColorPreset",
           "comment": "Warm White"
         },
         {
-          "dmxRange": [110,117],
+          "dmxRange": [110, 117],
           "type": "ColorPreset",
           "comment": "White"
         },
         {
-          "dmxRange": [118,125],
+          "dmxRange": [118, 125],
           "type": "ColorPreset",
           "comment": "Cold White"
         },
         {
-          "dmxRange": [126,127],
+          "dmxRange": [126, 127],
           "type": "Effect",
-          "comment": "Color Jumping Stop",
+          "effectPreset": "ColorJump",
           "speed": "stop"
         },
         {
-          "dmxRange": [128,191],
-          "type": "Color Jumping",
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [192,255],
+          "dmxRange": [192, 255],
           "type": "Effect",
-          "comment": "Color Fading",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -144,11 +145,12 @@
     "Strobe": {
       "capabilities":[
         {
+          "dmxRange": [0, 5],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [6,255],
+          "dmxRange": [6, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "1Hz",
@@ -159,17 +161,17 @@
     "Strobe functons": {
       "capabilities": [
         {
-          "dmxRange": [0,5],
+          "dmxRange": [0, 5],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [6,10],
+          "dmxRange": [6, 10],
           "type": "ShutterStrobe",
           "shutterEffect": "Closed"
         },
         {
-          "dmxRange": [11,33],
+          "dmxRange": [11, 33],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
           "randomTiming": true,
@@ -177,7 +179,7 @@
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [34,56],
+          "dmxRange": [34, 56],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
           "randomTiming": true,
@@ -185,7 +187,7 @@
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [57,79],
+          "dmxRange": [57, 79],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "randomTiming": true,
@@ -193,15 +195,16 @@
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [80,102],
+          "dmxRange": [80, 102],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
+          "randomTiming": true,
           "comment": "Random Strobe Effect",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [103,127],
+          "dmxRange": [103, 127],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "comment": "Strobe Break Effect",
@@ -209,14 +212,14 @@
           "durationEnd": "1s"
         },
         {
-          "dmxRange": [128,250],
+          "dmxRange": [128, 250],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         },
         {
-          "dmxRange": [251,255],
+          "dmxRange": [251, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         }
@@ -249,12 +252,12 @@
     "Color Temperature": {
       "capabilities": [
         {
-          "dmxRange": [0,5],
+          "dmxRange": [0, 5],
           "type": "ColorTemperature",
           "colorTemperature": "default"
         },
         {
-          "dmxRange": [6,255],
+          "dmxRange": [6, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "cold",
           "colorTemperatureEnd": "warm"
