@@ -4,8 +4,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["HS-Event"],
-    "createDate": "2022-11-06",
-    "lastModifyDate": "2022-11-06"
+    "createDate": "2022-11-07",
+    "lastModifyDate": "2022-11-07"
   },
   "links": {
     "productPage": [
@@ -40,7 +40,7 @@
       }
     },
     "Color Macros": {
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "NoFunction"
@@ -143,7 +143,7 @@
       ]
     },
     "Strobe": {
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "ShutterStrobe",
@@ -199,7 +199,6 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "randomTiming": true,
-          "comment": "Random Strobe Effect",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
