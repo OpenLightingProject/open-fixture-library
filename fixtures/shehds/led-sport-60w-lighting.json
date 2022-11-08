@@ -1,0 +1,449 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Sport 60W Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["", "yids"],
+    "createDate": "2022-11-08",
+    "lastModifyDate": "2022-11-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-11-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.3)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Lemon Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Sky Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Sky Blue & Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Pink & Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue & Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green & Lemon Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Lemon Yellow & Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange & Red"
+        },
+        {
+          "type": "Color",
+          "name": "Automatic"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Solid"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose"
+        },
+        {
+          "type": "Gobo",
+          "name": "Radial Dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Hexagon"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Jigsaw"
+        },
+        {
+          "type": "Gobo",
+          "name": "Solid"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Radial Dots Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Hexagon Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Jigsaw Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Automatic"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Lemon Yellow"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Sky Blue"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Sky Blue & Pink"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Pink & Blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Blue & Green"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Green & Lemon Yellow"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Lemon Yellow & Orange"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Orange & Red"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Automatic"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Solid"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Rose"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Radial Dots"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Triangle"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Hexagon"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Swirl"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Swirl"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Jigsaw"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Solid"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Rose Jitter"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Radial Dots Jitter"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Triangle Jitter"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Hexagon Jitter"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Swirl Jitter"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Swirl Jitter"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Jigsaw Jitter"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Automatic"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Auto": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [49, 99],
+          "type": "Intensity",
+          "comment": "Auto Mode 1"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Intensity",
+          "comment": "Auto Mode 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Intensity",
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color wheel",
+        "Gobo wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt speed",
+        "Auto",
+        "Reset"
+      ]
+    }
+  ]
+}
