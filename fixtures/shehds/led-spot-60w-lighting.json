@@ -1,0 +1,635 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Spot 60W Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["yids"],
+    "createDate": "2022-11-08",
+    "lastModifyDate": "2022-11-08"
+  },
+  "links": {
+    "productPage": [
+      "https://www.shehds.com/products/good-technology-led-60w-gobos-moving-head-lighting-for-dmx512-stage-effect-dj-festivals-disco-home-entertainments-in-9-11-channels"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2ob8XVgcoRw"
+    ]
+  },
+  "physical": {
+    "dimensions": [19.8, 27.2, 14.4],
+    "weight": 3.2,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Lemon Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Sky Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Sky Blue & Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Pink & Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue & Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green & Lemon Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Lemon Yellow & Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange & Red"
+        },
+        {
+          "type": "Color",
+          "name": "Automatic"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Solid"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose"
+        },
+        {
+          "type": "Gobo",
+          "name": "Radial Dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Hexagon"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Jigsaw"
+        },
+        {
+          "type": "Gobo",
+          "name": "Solid"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Radial Dots Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Hexagon Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirl Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Jigsaw Jitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Automatic"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "constant": true,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "X axis": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Y axis": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Automatic": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 48],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [49, 99],
+          "type": "Effect",
+          "effectName": "Auto run 1"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Auto run 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode"
+        }
+      ]
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "X axis 2": {
+      "name": "X axis",
+      "fineChannelAliases": ["X axis 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Y axis 2": {
+      "name": "Y axis",
+      "fineChannelAliases": ["Y axis 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "X axis",
+        "Y axis",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatic",
+        "Reset"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "X axis 2",
+        "X axis 2 fine",
+        "Y axis 2",
+        "Y axis 2 fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatic",
+        "Reset"
+      ]
+    }
+  ]
+}
