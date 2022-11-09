@@ -452,6 +452,21 @@
   },
   "modes": [
     {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "X axis",
+        "Y axis",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatic",
+        "Reset"
+      ]
+    },
+    {
       "name": "11-channel",
       "shortName": "11ch",
       "channels": [
