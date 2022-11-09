@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED Sport 60W Lighting",
+  "name": "LED Spot 60W",
   "categories": ["Moving Head"],
   "meta": {
-    "authors": ["", "yids"],
+    "authors": ["yids"],
     "createDate": "2022-11-08",
     "lastModifyDate": "2022-11-08",
     "importPlugin": {
@@ -12,8 +12,25 @@
       "comment": "created by Q Light Controller Plus (version 4.12.3)"
     }
   },
+  "links": {
+    "productPage": [
+      "https://www.shehds.com/products/good-technology-led-60w-gobos-moving-head-lighting-for-dmx512-stage-effect-dj-festivals-disco-home-entertainments-in-9-11-channels"
+    ],
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAG/UPAG904/2005/file/f56ea62fb9.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2ob8XVgcoRw"
+    ]
+  },
   "physical": {
-    "DMXconnector": "5-pin"
+    "dimensions": [19.8, 27.2, 14.4],
+    "weight": 3.2,
+    "power": 60,
+    "bulb": {
+      "type": "LED"
+    },
+    "DMXconnector": "3-pin"
   },
   "wheels": {
     "Color wheel": {
@@ -156,7 +173,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 0,
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
@@ -166,7 +182,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
@@ -175,7 +190,6 @@
       }
     },
     "Color wheel": {
-      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -270,7 +284,6 @@
       ]
     },
     "Gobo wheel": {
-      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -377,17 +390,15 @@
       ]
     },
     "Strobe": {
-      "defaultValue": 0,
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz",
         "helpWanted": "At which DMX values is strobe disabled?"
       }
     },
     "Dimmer": {
-      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
@@ -404,27 +415,39 @@
       "defaultValue": 0,
       "capabilities": [
         {
+          "dmxRange": [0, 48],
+          "type": "NoFunction"
+        },
+        {
           "dmxRange": [49, 99],
-          "type": "Intensity",
-          "comment": "Auto Mode 1"
+          "type": "Effect",
+          "effectName": "Auto Mode 1"
         },
         {
           "dmxRange": [100, 199],
-          "type": "Intensity",
-          "comment": "Auto Mode 2"
+          "type": "Effect",
+          "effectName": "Auto Mode 2"
         },
         {
           "dmxRange": [200, 255],
-          "type": "Intensity",
-          "comment": "Sound Mode"
+          "type": "Effect",
+          "soundControlled": true,
+          "effectName": "Sound Mode"
         }
       ]
     },
     "Reset": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
     }
   },
   "modes": [
