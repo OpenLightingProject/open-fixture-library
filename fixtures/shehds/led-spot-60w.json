@@ -66,34 +66,6 @@
         {
           "type": "Color",
           "name": "Sky Blue"
-        },
-        {
-          "type": "Color",
-          "name": "Sky Blue & Pink"
-        },
-        {
-          "type": "Color",
-          "name": "Pink & Blue"
-        },
-        {
-          "type": "Color",
-          "name": "Blue & Green"
-        },
-        {
-          "type": "Color",
-          "name": "Green & Lemon Yellow"
-        },
-        {
-          "type": "Color",
-          "name": "Lemon Yellow & Orange"
-        },
-        {
-          "type": "Color",
-          "name": "Orange & Red"
-        },
-        {
-          "type": "Color",
-          "name": "Automatic"
         }
       ]
     },
@@ -130,42 +102,6 @@
         {
           "type": "Gobo",
           "name": "Jigsaw"
-        },
-        {
-          "type": "Gobo",
-          "name": "Solid"
-        },
-        {
-          "type": "Gobo",
-          "name": "Rose Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Radial Dots Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Triangle Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Hexagon Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Swirl Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Swirl Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Jigsaw Jitter"
-        },
-        {
-          "type": "Gobo",
-          "name": "Automatic"
         }
       ]
     }
@@ -242,44 +178,44 @@
         {
           "dmxRange": [80, 89],
           "type": "WheelSlot",
-          "slotNumber": 9,
+          "slotNumber": 7.5,
           "comment": "Sky Blue & Pink"
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelSlot",
-          "slotNumber": 10,
+          "slotNumber": 6.5,
           "comment": "Pink & Blue"
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelSlot",
-          "slotNumber": 11,
+          "slotNumber": 5.5,
           "comment": "Blue & Green"
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelSlot",
-          "slotNumber": 12,
+          "slotNumber": 4.5,
           "comment": "Green & Lemon Yellow"
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelSlot",
-          "slotNumber": 13,
+          "slotNumber": 3.5,
           "comment": "Lemon Yellow & Orange"
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelSlot",
-          "slotNumber": 14,
+          "slotNumber": 2.5,
           "comment": "Orange & Red"
         },
         {
           "dmxRange": [140, 255],
-          "type": "WheelSlot",
-          "slotNumber": 15,
-          "comment": "Automatic"
+          "type": "Effect",
+          "effectName": "Automatic"
+          "comment": "Change Color automatic in turn"
         }
       ]
     },
@@ -336,56 +272,63 @@
         {
           "dmxRange": [64, 71],
           "type": "WheelSlot",
-          "slotNumber": 9,
+          "slotNumber": 1,
           "comment": "Solid"
         },
         {
           "dmxRange": [72, 79],
-          "type": "WheelSlot",
-          "slotNumber": 10,
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "isShaking": true,
           "comment": "Rose Jitter"
         },
         {
           "dmxRange": [80, 87],
-          "type": "WheelSlot",
-          "slotNumber": 11,
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "isShaking": true,
           "comment": "Radial Dots Jitter"
         },
         {
           "dmxRange": [88, 95],
-          "type": "WheelSlot",
-          "slotNumber": 12,
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "isShaking": true,
           "comment": "Triangle Jitter"
         },
         {
           "dmxRange": [96, 103],
-          "type": "WheelSlot",
-          "slotNumber": 13,
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "isShaking": true,
           "comment": "Hexagon Jitter"
         },
         {
           "dmxRange": [104, 111],
-          "type": "WheelSlot",
-          "slotNumber": 14,
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "isShaking": true,
           "comment": "Swirl Jitter"
         },
         {
           "dmxRange": [112, 119],
-          "type": "WheelSlot",
-          "slotNumber": 15,
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "isShaking": true,
           "comment": "Swirl Jitter"
         },
         {
           "dmxRange": [120, 127],
-          "type": "WheelSlot",
-          "slotNumber": 16,
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "isShaking": true,
           "comment": "Jigsaw Jitter"
         },
         {
           "dmxRange": [128, 255],
-          "type": "WheelSlot",
-          "slotNumber": 17,
-          "comment": "Automatic"
+          "type": "Effect",
+          "effectName": "Automatic",
+          "comment": "Change Gobo automatic in turn"
         }
       ]
     },
