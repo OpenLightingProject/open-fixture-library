@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "STRIKE M 8 CH",
+  "shortName": "STRIKE M",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Rene Bribiesca"],
+    "createDate": "2022-11-11",
+    "lastModifyDate": "2022-11-11"
+  },
+  "links": {
+    "productPage": [
+      "https://es.chauvetprofessional.com/products/color-strike-m/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Haze": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BASIC",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Haze"
+      ]
+    }
+  ]
+}
