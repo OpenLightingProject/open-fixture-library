@@ -36,8 +36,7 @@
     "Color wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "White"
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -72,8 +71,7 @@
     "Gobo wheel": {
       "slots": [
         {
-          "type": "Gobo",
-          "name": "Solid"
+          "type": "Open"
         },
         {
           "type": "Gobo",
@@ -111,18 +109,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "helpWanted": "Can you provide exact angles?"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "helpWanted": "Can you provide exact angles?"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Color wheel": {
@@ -213,9 +209,10 @@
         },
         {
           "dmxRange": [140, 255],
-          "type": "Effect",
-          "effectName": "Automatic",
-          "comment": "Change Color automatic in turn"
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this the correct effect and speed?"
         }
       ]
     },
@@ -325,10 +322,12 @@
           "comment": "Jigsaw Jitter"
         },
         {
+        {
           "dmxRange": [128, 255],
-          "type": "Effect",
-          "effectName": "Automatic",
-          "comment": "Change Gobo automatic in turn"
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this the correct effect and speed?"
         }
       ]
     },
