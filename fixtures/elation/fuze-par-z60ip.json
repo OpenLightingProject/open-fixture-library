@@ -26,27 +26,45 @@
   },
   "availableChannels": {
     "Red": {
+      "fineChannelAliases": ["Red fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "fineChannelAliases": ["White fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "5deg",
+        "angleEnd": "50deg"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
       }
     }
   },
