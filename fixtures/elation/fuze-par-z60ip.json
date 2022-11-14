@@ -222,6 +222,48 @@
         "Intensity",
         "Zoom"
       ]
+    },
+    {
+      "name": "7-channel RGBW",
+      "shortName": "7ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "8-channel RGBW",
+      "shortName": "8ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "ShutterStrobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "9-channel RGBW",
+      "shortName": "9ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "ShutterStrobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Dimmer curve mode"
+      ]
     }
   ]
 }
