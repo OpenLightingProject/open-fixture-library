@@ -168,12 +168,34 @@
   },
   "modes": [
     {
-      "name": "4CH RGBW",
+      "name": "4-channel RGBW",
+      "shortName": "4ch RGBW",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "White"
+      ]
+    },
+    {
+      "name": "4-channel HSI",
+      "shortName": "4ch HSI",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "5-channel HSI",
+      "shortName": "5ch HSI",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Zoom",
+        "Dimmer curve mode"
       ]
     }
   ]
