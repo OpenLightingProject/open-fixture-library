@@ -197,6 +197,31 @@
         "Zoom",
         "Dimmer curve mode"
       ]
+    },
+    {
+      "name": "6-channel RGBW",
+      "shortName": "6ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7-channel sRGBWI",
+      "shortName": "7ch sRGBWI",
+      "channels": [
+        "ShutterStrobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Zoom"
+      ]
     }
   ]
 }
