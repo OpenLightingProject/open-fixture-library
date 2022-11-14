@@ -31,7 +31,7 @@
     }
   },
   "availableChannels": {
-    "Shutter": {
+    "Shutter Basic": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
@@ -46,12 +46,7 @@
         }
       ]
     },
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Shutter 2": {
+    "Shutter Advanced": {
       "name": "Shutter",
       "capabilities": [
         {
@@ -228,6 +223,11 @@
         }
       ]
     },
+    "Dimmer 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Dimmer 2": {
       "name": "Dimmer",
       "capability": {
@@ -274,16 +274,16 @@
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Shutter",
-        "Dimmer"
+        "Shutter Basic",
+        "Dimmer 1"
       ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Dimmer",
-        "Shutter 2",
+        "Dimmer 1",
+        "Shutter Advanced",
         "Shutter Speed",
         "Pixels",
         "Auto Programs"
@@ -293,8 +293,8 @@
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
+        "Dimmer 1",
         "Dimmer 2",
-        "Dimmer",
         "Dimmer 3",
         "Dimmer 4",
         "Dimmer 5",
