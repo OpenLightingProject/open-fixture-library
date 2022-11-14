@@ -102,6 +102,21 @@
         }
       ]
     },
+    "Hue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Zoom": {
       "fineChannelAliases": ["Zoom fine"],
       "capability": {
