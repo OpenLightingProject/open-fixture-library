@@ -22,7 +22,10 @@
     ]
   },
   "physical": {
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
   },
   "availableChannels": {
     "Shutter": {
@@ -35,8 +38,8 @@
           "dmxRange": [4, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "26Hz"
         }
       ]
     },
