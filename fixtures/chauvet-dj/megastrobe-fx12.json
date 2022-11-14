@@ -151,68 +151,69 @@
         },
         {
           "dmxRange": [49, 64],
-          "type": "Generic",
-          "comment": "Auto Program 1"
+          "type": "Effect",
+          "effectName": "Auto Program 1"
         },
         {
           "dmxRange": [65, 80],
-          "type": "Generic",
-          "comment": "Auto Program 2 "
+          "type": "Effect",
+          "effectName": "Auto Program 2 "
         },
         {
           "dmxRange": [81, 96],
-          "type": "Generic",
-          "comment": "Auto Program 3"
+          "type": "Effect",
+          "effectName": "Auto Program 3"
         },
         {
           "dmxRange": [97, 112],
-          "type": "Generic",
-          "comment": "Auto Program 4"
+          "type": "Effect",
+          "effectName": "Auto Program 4"
         },
         {
           "dmxRange": [113, 128],
-          "type": "Generic",
-          "comment": "Auto Program 5 "
+          "type": "Effect",
+          "effectName": "Auto Program 5 "
         },
         {
           "dmxRange": [129, 144],
-          "type": "Generic",
-          "comment": "Auto Program 6"
+          "type": "Effect",
+          "effectName": "Auto Program 6"
         },
         {
           "dmxRange": [145, 160],
-          "type": "Generic",
-          "comment": "Auto Program 7"
+          "type": "Effect",
+          "effectName": "Auto Program 7"
         },
         {
           "dmxRange": [161, 176],
-          "type": "Generic",
-          "comment": "Auto Program 8"
+          "type": "Effect",
+          "effectName": "Auto Program 8"
         },
         {
           "dmxRange": [177, 192],
-          "type": "Generic",
-          "comment": "Auto Program 9"
+          "type": "Effect",
+          "effectName": "Auto Program 9"
         },
         {
           "dmxRange": [193, 208],
-          "type": "Generic",
-          "comment": "Auto Program 10"
+          "type": "Effect",
+          "effectName": "Auto Program 10"
         },
         {
           "dmxRange": [209, 224],
-          "type": "Generic",
-          "comment": "Auto Program 11"
+          "type": "Effect",
+          "effectName": "Auto Program 11"
         },
         {
           "dmxRange": [225, 240],
-          "type": "Generic",
-          "comment": "Auto Program 12"
+          "type": "Effect",
+          "effectName": "Auto Program 12"
         },
         {
           "dmxRange": [241, 255],
-          "type": "Generic",
-          "comment": "Sound Active (Set CH 4)"
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true
         }
       ]
     },
