@@ -265,7 +265,9 @@
     },
     "Shutter Effect Speed": {
       "capability": {
-        "type": "Generic"
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
