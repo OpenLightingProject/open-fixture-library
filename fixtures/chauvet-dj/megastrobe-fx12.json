@@ -60,74 +60,85 @@
         },
         {
           "dmxRange": [16, 32],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         },
         {
           "dmxRange": [33, 49],
-          "type": "Generic",
-          "comment": "PULSE STROBE"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Asynchronous"
         },
         {
           "dmxRange": [50, 66],
-          "type": "Generic",
-          "comment": "Slow on, Fast Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Asynchronous"
         },
         {
           "dmxRange": [67, 83],
-          "type": "Generic",
-          "comment": "Fast On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Asynchronous"
         },
         {
           "dmxRange": [84, 100],
-          "type": "Generic",
-          "comment": "Slow On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Asynchronous"
         },
         {
           "dmxRange": [101, 117],
-          "type": "Generic",
-          "comment": "Strobe Slow On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Asynchronous"
         },
         {
           "dmxRange": [118, 134],
-          "type": "Generic",
-          "comment": "Strobe"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [135, 151],
-          "type": "Generic",
-          "comment": "Pulse Strobe 1"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [152, 168],
-          "type": "Generic",
-          "comment": "Pulse Strobe 2"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [169, 185],
-          "type": "Generic",
-          "comment": "Slow On, Fast Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [186, 202],
-          "type": "Generic",
-          "comment": "Fast On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [203, 219],
-          "type": "Generic",
-          "comment": "Slow On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [220, 236],
-          "type": "Generic",
-          "comment": "Strobe Slow On, Slow Off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Synchronous"
         },
         {
           "dmxRange": [237, 255],
-          "type": "Generic",
-          "comment": "SHUTTER"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         }
       ]
     },
