@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "colorzoom180",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["SAM"],
+    "createDate": "2022-11-15",
+    "lastModifyDate": "2022-11-15"
+  },
+  "links": {
+    "manual": [
+      "https://docs.wixstatic.com/ugd/7e664f_746fd04c6b8f44d1bb9139dfc89a5a90.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/colorzoom-180-1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=h_e9JEvDge0"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "degreesMinMax": [10, 53]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dimmer",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
