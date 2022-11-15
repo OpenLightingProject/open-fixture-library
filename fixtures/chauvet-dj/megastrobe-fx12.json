@@ -47,101 +47,155 @@
       ]
     },
     "Shutter Advanced": {
+      "defaultValue": 0,
       "name": "Shutter",
       "capabilities": [
         {
           "dmxRange": [0, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [16, 32],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "dmxRange": [33, 49],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Asynchronous"
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [50, 66],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "comment": "Asynchronous"
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [67, 83],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "comment": "Asynchronous"
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [84, 100],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUpDown",
-          "comment": "Asynchronous"
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [101, 117],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "Asynchronous"
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [118, 134],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Closed",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [135, 151],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Synchronous - Pulse 1"
+          "comment": "Synchronous - Pulse 1",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [152, 168],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Synchronous - Pulse 2"
+          "comment": "Synchronous - Pulse 2",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [169, 185],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "comment": "Synchronous"
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [186, 202],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "comment": "Synchronous"
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [203, 219],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUpDown",
-          "comment": "Synchronous"
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [220, 236],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "Synchronous"
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         },
         {
           "dmxRange": [237, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Closed",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
         }
       ]
     },
     "Shutter Speed": {
       "capability": {
-        "type": "Generic",
-        "comment": "Sensitivity OR Shutter Speed"
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "26Hz"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "0%",
+        "soundSensitivityEnd": "100%"
       }
     },
     "Pixels": {
@@ -287,7 +341,7 @@
       "channels": [
         "Dimmer 1",
         "Shutter Advanced",
-        "Shutter Speed",
+        "Shutter Speed / Sound Sensitivity",
         "Pixels",
         "Auto Programs"
       ]
