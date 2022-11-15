@@ -51,7 +51,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 32],
@@ -98,13 +99,13 @@
           "dmxRange": [135, 151],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Synchronous"
+          "comment": "Synchronous - Pulse 1"
         },
         {
           "dmxRange": [152, 168],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Synchronous"
+          "comment": "Synchronous - Pulse 2"
         },
         {
           "dmxRange": [169, 185],
