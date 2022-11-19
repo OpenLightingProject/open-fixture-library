@@ -280,6 +280,59 @@
         "Zoom",
         "Zoom fine"
       ]
+    },
+    {
+      "name": "10-channel HSI",
+      "shortName": "10ch HSI",
+      "channels": [
+        "Shutter / Strobe",
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Color Presets",
+        "Zoom",
+        "Program Macros",
+        "Program Macro Speed",
+        "Program Macro Fade",
+        "Dimmer curve mode"
+      ]
+    },
+    {
+      "name": "12-channel sRGBI",
+      "shortName": "12ch sRGBI",
+      "channels": [
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Color Presets",
+        "Zoom",
+        "Program Macros",
+        "Program Macro Speed",
+        "Program Macro Fade",
+        "Dimmer curve mode"
+      ]
+    },
+    {
+      "name": "13-channel RGBW",
+      "shortName": "13ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Program Macros",
+        "Program Macro Speed",
+        "Program Macro Fade",
+        "Dimmer curve mode"
+      ]
     }
   ]
 }
