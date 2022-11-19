@@ -33,12 +33,12 @@
   "matrix": {
     "pixelCount": [6, 2, 1],
     "pixelGroups": {
-      "1": {"x": ["=1"], "y": ["=1"]},
-      "2": {"x": ["=2"], "y": ["=2"]},
-      "3": {"x": ["=3"], "y": ["=3"]},
-      "4": {"x": ["=4"], "y": ["=4"]},
-      "5": {"x": ["=5"], "y": ["=5"]},
-      "6": {"x": ["=6"], "y": ["=6"]}
+      "1": { "x": ["=1"], "y": ["=1"] },
+      "2": { "x": ["=2"], "y": ["=2"] },
+      "3": { "x": ["=3"], "y": ["=3"] },
+      "4": { "x": ["=4"], "y": ["=4"] },
+      "5": { "x": ["=5"], "y": ["=5"] },
+      "6": { "x": ["=6"], "y": ["=6"] }
     }
   },
   "templateChannels": {
@@ -395,9 +395,7 @@
           "insert": "matrixChannels",
           "repeatFor": "eachPixelGroup",
           "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey"
-          ]
+          "templateChannels": ["Dimmer $pixelKey"]
         },
         "Shutter Effects",
         "Shutter Effect Speed"
