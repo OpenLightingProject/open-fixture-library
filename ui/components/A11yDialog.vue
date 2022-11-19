@@ -1,21 +1,21 @@
 <template>
   <div
-    :aria-hidden="shown ? `false` : `true`"
+    :id="id"
     class="dialog-container"
-    tabindex="-1"
-    @click="overlayClick($event)">
-    <div class="dialog-overlay" tabindex="-1" />
+    :aria-hidden="shown ? `false` : `true`"
+    :aria-labelledby="`${id}-dialog-title`"
+    :role="isAlertDialog ? `alertdialog` : undefined"
+    @click.self="overlayClick($event)">
 
-    <dialog
-      :id="`${id}-dialog`"
-      :aria-labelledby="`${id}-dialog-title`"
-      :open="shown"
-      class="card"
+    <div
+      ref="dialog"
+      role="document"
+      class="dialog card"
       :class="{ wide }">
       <div>
 
         <button
-          v-if="cancellable"
+          v-if="!isAlertDialog"
           type="button"
           class="icon-button close"
           title="Close"
@@ -24,122 +24,106 @@
           <OflSvg name="close" />
         </button>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1">
           <slot name="title">{{ title }}</slot>
         </h2>
 
         <slot />
 
       </div>
-    </dialog>
+    </div>
+
   </div>
 </template>
 
 <style lang="scss" scoped>
-.dialog-container {
-  outline: none;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
-.dialog-overlay {
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.66);
+@keyframes scale-up {
+  from {
+    transform: scale(0.9);
+  }
+}
+
+$container-fade-duration: 200ms;
+
+.dialog-container {
   position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  background-color: rgba(0, 0, 0, 66%);
+  animation: fade-in $container-fade-duration both;
 }
 
-.dialog-container[aria-hidden=true],
-[data-a11y-dialog-native] > .dialog-overlay {
+.dialog-container[aria-hidden="true"] {
   display: none;
 }
 
-dialog {
-  background-color: theme-color(dialog-background);
-  color: theme-color(text-primary);
-  border: 0;
-  z-index: 1010;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  transform: translate(-50%, -50%);
+.dialog {
   box-sizing: border-box;
   min-width: 20rem;
   max-width: 90%;
   max-height: 90%;
+  margin: auto;
   overflow: auto;
   overscroll-behavior: contain;
+  color: theme-color(text-primary);
+  background-color: theme-color(dialog-background);
+  animation:
+    fade-in 200ms $container-fade-duration both,
+    scale-up 200ms $container-fade-duration both;
 
   &.wide {
     width: 1000px;
   }
 
-  &::backdrop {
-    background-color: rgba(0, 0, 0, 0.66);
-  }
-
-  &[open] {
-    display: block;
-  }
-
-  & h2:focus {
+  h2:focus {
     outline: none;
   }
-}
 
-// fixes padding not being visible when scrollbar is present
-dialog.card {
-  padding: 0;
+  // fixes padding not being visible when scrollbar is present
+  &.card {
+    padding: 0;
 
-  & > div {
-    padding: 1rem;
+    & > div {
+      padding: 1rem;
+    }
   }
 }
 
 @media (max-width: $phone) {
   // make dialogs cover the whole screen
-  dialog,
-  dialog.wide {
+  .dialog,
+  .dialog.wide {
+    width: 100%;
     min-width: none;
     max-width: none;
-    max-height: none;
-    width: 100%;
     height: 100%;
+    max-height: none;
   }
 }
 </style>
 
-
 <script>
-const A11yDialog = process.browser ? require(`a11y-dialog`) : null;
+import { booleanProp, stringProp } from 'vue-ts-types';
 
 export default {
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    cancellable: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    shown: {
-      type: Boolean,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: false,
-      default: ``,
-    },
-    wide: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    id: stringProp(
+      id => (typeof id === `string` && id.endsWith(`-dialog`) ? undefined : `id should end with "-dialog".`),
+    ).required,
+    isAlertDialog: booleanProp().withDefault(false),
+    shown: booleanProp().withDefault(true),
+    title: stringProp().required,
+    wide: booleanProp().withDefault(false),
   },
   data() {
     return {
@@ -149,19 +133,22 @@ export default {
   watch: {
     shown: `update`,
   },
-  mounted() {
-    if (A11yDialog) {
-      this.dialog = new A11yDialog(this.$el, `#header, #fixture-editor > form`);
+  async mounted() {
+    const { default: A11yDialog } = await import(`a11y-dialog`);
 
-      this.dialog.on(`show`, node => {
-        this.dialog.dialog.scrollTop = 0;
-        this.$emit(`show`);
-      });
+    this.dialog = new A11yDialog(this.$el);
 
-      this.dialog.on(`hide`, node => this.$emit(`hide`));
+    this.dialog.on(`show`, () => {
+      this.$refs.dialog.scrollTop = 0;
+      this.$emit(`show`);
+    });
 
-      this.update();
-    }
+    this.dialog.on(`hide`, () => this.$emit(`hide`));
+
+    this.update();
+  },
+  beforeDestroy() {
+    this.dialog.destroy();
   },
   methods: {
     update() {
@@ -173,17 +160,13 @@ export default {
       }
     },
     show() {
-      if (this.dialog) {
-        this.dialog.show();
-      }
+      this.dialog?.show();
     },
     hide() {
-      if (this.dialog) {
-        this.dialog.hide();
-      }
+      this.dialog?.hide();
     },
-    overlayClick(event) {
-      if (this.cancellable && event.target.matches(`dialog, .dialog-overlay`)) {
+    overlayClick() {
+      if (!this.isAlertDialog) {
         this.hide();
       }
     },

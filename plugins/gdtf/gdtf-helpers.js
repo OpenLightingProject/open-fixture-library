@@ -1,9 +1,9 @@
 /**
- * @param {Object} startNode The XML object the reference should be resolved against.
- * @param {String} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
- * @returns {Object|null} The referenced XML node object, or null if it could not be found.
+ * @param {object} startNode The XML object the reference should be resolved against.
+ * @param {string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
+ * @returns {object | null} The referenced XML node object, or null if it could not be found.
  */
-function followXmlNodeReference(startNode, nodeReference) {
+export function followXmlNodeReference(startNode, nodeReference) {
   if (!startNode || !nodeReference) {
     return null;
   }
@@ -11,13 +11,13 @@ function followXmlNodeReference(startNode, nodeReference) {
   const nameParts = nodeReference.split(`.`);
   let currentNode = startNode;
 
-  for (const nameAttr of nameParts) {
-    const nodeWithNameAttr = getChildNodes(currentNode).find(
-      node => `$` in node && node.$.Name === nameAttr,
+  for (const nameAttribute of nameParts) {
+    const nodeWithNameAttribute = getChildNodes(currentNode).find(
+      node => `$` in node && node.$.Name === nameAttribute,
     );
 
-    if (nodeWithNameAttr) {
-      currentNode = nodeWithNameAttr;
+    if (nodeWithNameAttribute) {
+      currentNode = nodeWithNameAttribute;
     }
     else {
       return null;
@@ -28,19 +28,13 @@ function followXmlNodeReference(startNode, nodeReference) {
 
 
   /**
-   * @param {Object} node The XML object.
-   * @returns {Array.<Object>} The XML objects of this node's child nodes.
+   * @param {object} node The XML object.
+   * @returns {object[]} The XML objects of this node's child nodes.
    */
   function getChildNodes(node) {
-    const childNodes = [];
-
-    Object.keys(node).forEach(tagName => {
-      if (tagName !== `$`) {
-        childNodes.push(...node[tagName]);
-      }
-    });
-
-    return childNodes;
+    return Object.entries(node).flatMap(
+      ([tagName, nodes]) => (tagName === `$` ? [] : nodes),
+    );
   }
 }
 
@@ -48,11 +42,11 @@ function followXmlNodeReference(startNode, nodeReference) {
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
  * See https://wolfcrow.com/blog/what-is-the-difference-between-cie-lab-cie-rgb-cie-xyy-and-cie-xyz/
- * @param {String} gdtfColorStr A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
- * @returns {String} The RGB hex code string in the form "#rrggbb".
+ * @param {string} gdtfColorString A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
+ * @returns {string} The RGB hex code string in the form "#rrggbb".
  */
-function getRgbColorFromGdtfColor(gdtfColorStr) {
-  /* eslint-disable camelcase, space-in-parens */
+export function getRgbColorFromGdtfColor(gdtfColorString) {
+  /* eslint-disable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
   // functions ported from https://github.com/njsmith/colorspacious
   const xyY_to_XYZ = (([x, y, Y]) => {
@@ -68,7 +62,7 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
     return [R, G, B];
   });
   const sRGB1_linear_to_sRGB1 = (RGB_linear => RGB_linear.map(c => {
-    if (c <= 0.0031308) {
+    if (c <= 0.003_130_8) {
       return 12.92 * c;
     }
 
@@ -80,7 +74,9 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
 
   // parse starting values as array
-  const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(parseFloat);
+  const [x, y, Y] = gdtfColorString.split(/\s*,\s*/).map(
+    colorComponent => Number.parseFloat(colorComponent),
+  );
 
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
@@ -107,12 +103,12 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 
-  /* eslint-enable camelcase, space-in-parens */
+  /* eslint-enable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
 
   /**
-   * @param {Number} componentValue The red / green /blue component value in the range 0…255.
-   * @returns {String} The component value encoded as a two-digit hex number.
+   * @param {number} componentValue The red / green /blue component value in the range 0…255.
+   * @returns {string} The component value encoded as a two-digit hex number.
    */
   function getHexComponent(componentValue) {
     const hex = componentValue.toString(16);
@@ -121,10 +117,10 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 }
 
 /**
- * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
  */
-function normalizeAngularSpeedDirection(gdtfCapability) {
-  if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
+export function normalizeAngularSpeedDirection(gdtfCapability) {
+  if (/CCW|counter[\s-]*clockwise/.test(gdtfCapability.$.Name)) {
     gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
     gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
   }
@@ -133,9 +129,3 @@ function normalizeAngularSpeedDirection(gdtfCapability) {
     gdtfCapability._physicalTo = Math.abs(gdtfCapability._physicalTo);
   }
 }
-
-module.exports = {
-  followXmlNodeReference,
-  getRgbColorFromGdtfColor,
-  normalizeAngularSpeedDirection,
-};

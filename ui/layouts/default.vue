@@ -25,37 +25,38 @@
   position: absolute;
   top: -1000px;
   left: -1000px;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   z-index: 9999;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 
   &:active,
   &:focus,
   &:hover {
-    left: 0;
     top: 0;
+    left: 0;
     width: auto;
     height: auto;
-    overflow: visible;
-    background: red;
-    color: #fff;
     padding: 4px;
+    overflow: visible;
+    color: #ffffff;
+    background: red;
   }
 }
 
 #content {
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden;
+  max-width: 1000px;
+  min-height: 100vh;
   padding: 5em 10px 10px;
+  margin: 0 auto;
+  overflow: hidden;
 
   @media (max-width: $tablet) {
     padding-top: 6.2em;
   }
 }
+
 #content:focus {
   outline: 0;
 }
@@ -63,8 +64,8 @@
 
 
 <script>
-import HeaderBar from '../components/HeaderBar.vue';
 import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
+import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {
@@ -79,19 +80,15 @@ export default {
     };
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
+    this.isBrowser = true;
 
-      // adapted from https://stackoverflow.com/a/30303898/451391
-      document.addEventListener(`touchstart`, this.onTouchStart, true);
-      document.addEventListener(`mousemove`, this.onMouseMove, true);
-    }
+    // adapted from https://stackoverflow.com/a/30303898/451391
+    document.addEventListener(`touchstart`, this.onTouchStart, true);
+    document.addEventListener(`mousemove`, this.onMouseMove, true);
   },
   beforeDestroy() {
-    if (process.browser) {
-      document.removeEventListener(`touchstart`, this.onTouchStart, true);
-      document.removeEventListener(`mousemove`, this.onMouseMove, true);
-    }
+    document.removeEventListener(`touchstart`, this.onTouchStart, true);
+    document.removeEventListener(`mousemove`, this.onMouseMove, true);
   },
   methods: {
     focusContent() {
@@ -100,7 +97,7 @@ export default {
 
     onMouseMove() {
       // filter emulated events coming from touch events
-      if (new Date() - this.lastTouchTime < 500) {
+      if (Date.now() - this.lastTouchTime < 500) {
         return;
       }
 
@@ -109,7 +106,7 @@ export default {
 
     onTouchStart() {
       this.isTouchScreen = true;
-      this.lastTouchTime = new Date();
+      this.lastTouchTime = Date.now();
     },
   },
 };

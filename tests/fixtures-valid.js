@@ -1,30 +1,26 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const fs = require(`fs`);
-const path = require(`path`);
-const chalk = require(`chalk`);
-const Ajv = require(`ajv`);
-const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
+import { readdir } from 'fs/promises';
+import path from 'path';
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-// interactive commandline support
-const minimist = require(`minimist`);
-
-const promisify = require(`util`).promisify;
-const readFile = promisify(fs.readFile);
-
-const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
-const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
+import getAjvValidator from '../lib/ajv-validator.js';
+import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
+import importJson from '../lib/import-json.js';
+import { checkFixture, checkUniqueness } from './fixture-valid.js';
 
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   boolean: [`h`, `a`],
   alias: { h: `help`, a: `all-fixtures` },
 });
 
+const scriptName = import.meta.url.split(`/`).pop();
 
 const helpMessage = [
   `Check validity of some/all fixtures`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} -a | -h | fixtures [...]`,
+  `Usage: node ${scriptName} -a | -h | fixtures [...]`,
   `Options:`,
   `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
   `     has to resolve to the form 'manufacturer/fixture'`,
@@ -35,21 +31,21 @@ const helpMessage = [
   `     Show this help message.`,
 ].join(`\n`);
 
-let fixturePaths = args._;
+let fixturePaths = cliArguments._;
 
 // print help and exit on -h or no fixtures given.
-if (args.help || (fixturePaths.length === 0 && !args.a)) {
+if (cliArguments.help || (fixturePaths.length === 0 && !cliArguments.a)) {
   console.log(helpMessage);
   process.exit(0);
 }
 
 /**
- * @typedef {Object} UniqueValues
- * @property {Set.<String>} manNames All manufacturer names
- * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Object.<String, Set.<String>>} fixRdmIdsInMan All RDM ids by manufacturer key
- * @property {Set.<String>} fixShortNames All fixture short names
+ * @typedef {object} UniqueValues
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Record<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Record<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Record<string, Set<string>>} fixRdmIdsInMan All RDM ids by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
  */
 /** @type {UniqueValues} */
 const uniqueValues = {
@@ -61,151 +57,22 @@ const uniqueValues = {
   fixShortNames: new Set(),
 };
 
-const promises = [];
-const fixturePath = path.join(__dirname, `..`, `fixtures`);
+const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
 
-if (args.a) {
-  for (const manKey of fs.readdirSync(fixturePath)) {
-    const manDir = path.join(fixturePath, manKey);
+try {
+  const results = await runTests();
 
-    // files in manufacturer directory
-    if (fs.statSync(manDir).isDirectory()) {
-      for (const file of fs.readdirSync(manDir)) {
-        if (path.extname(file) === `.json`) {
-          const fixKey = path.basename(file, `.json`);
-          promises.push(checkFixtureFile(manKey, fixKey));
-        }
-      }
-    }
-  }
-  promises.push(checkManufacturers());
-}
-else {
-  // sanitize given path
-  fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
-  for (const fixPath of fixturePaths) {
-    if (path.extname(fixPath) !== `.json`) {
-      // TODO: only produce this warning at a higher verbosity level
-      promises.push({
-        name: fixPath,
-        errors: [],
-        warnings: [`specified file is not a .json document`],
-      });
-      continue;
-    }
-    const fixKey = path.basename(fixPath, `.json`);
-    const manKey = path.dirname(fixPath).split(path.sep).pop();
-    promises.push(checkFixtureFile(manKey, fixKey));
-  }
-}
-
-/**
- * Checks (asynchronously) the given fixture.
- * @param {String} manKey The manufacturer key.
- * @param {String} fixKey The fixture key.
- * @returns {Promise.<Object>} A Promise resolving to a result object.
- */
-async function checkFixtureFile(manKey, fixKey) {
-  const filename = `${manKey}/${fixKey}.json`;
-  const result = {
-    name: filename,
-    errors: [],
-    warnings: [],
-  };
-
-  const filepath = path.join(fixturePath, filename);
-
-  try {
-    const data = await readFile(filepath, `utf8`);
-    const fixtureJson = JSON.parse(data);
-    Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
-  }
-  catch (error) {
-    result.errors.push(error);
-  }
-  return result;
-}
-/**
- * Checks Manufacturers file
- * @returns {Promise.<Object>} A Promise resolving to a result object.
- */
-async function checkManufacturers() {
-  const result = {
-    name: `manufacturers.json`,
-    errors: [],
-    warnings: [],
-  };
-
-  const filename = path.join(fixturePath, result.name);
-
-  try {
-    const data = await readFile(filename, `utf8`);
-    const manufacturers = JSON.parse(data);
-    const validate = (new Ajv({ verbose: true })).compile(manufacturerSchema);
-    const valid = validate(manufacturers);
-    if (!valid) {
-      throw getAjvErrorMessages(validate.errors, `manufacturers`);
-    }
-
-    for (const [manKey, manProps] of Object.entries(manufacturers)) {
-      if (manKey.startsWith(`$`)) {
-        // JSON schema property
-        continue;
-      }
-
-      // legacy purposes
-      const uniquenessTestResults = {
-        errors: [],
-      };
-      checkUniqueness(
-        uniqueValues.manNames,
-        manProps.name,
-        uniquenessTestResults,
-        `Manufacturer name '${manProps.name}' is not unique (test is not case-sensitive).`,
-      );
-      if (`rdmId` in manProps) {
-        checkUniqueness(
-          uniqueValues.manRdmIds,
-          `${manProps.rdmId}`,
-          uniquenessTestResults,
-          `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`,
-        );
-      }
-      result.errors.push(...uniquenessTestResults.errors);
-    }
-  }
-  catch (errors) {
-    const isIterable = typeof errors[Symbol.iterator] === `function`;
-    result.errors.push(...(isIterable ? errors : [errors]));
-  }
-  return result;
-}
-
-
-// print results
-Promise.all(promises).then(results => {
   let totalFails = 0;
   let totalWarnings = 0;
 
   // each file
-  results.forEach(result => {
+  for (const result of results) {
     const failed = result.errors.length > 0;
-
-    console.log(
-      failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
-      result.name,
-    );
-
     totalFails += failed ? 1 : 0;
-    for (const error of result.errors) {
-      console.log(`└`, chalk.red(`Error:`), error);
-    }
-
     totalWarnings += result.warnings.length;
-    for (const warning of result.warnings) {
-      console.log(`└`, chalk.yellow(`Warning:`), warning);
-    }
-  });
+
+    printFileResult(result);
+  }
 
   // newline
   console.log();
@@ -222,4 +89,149 @@ Promise.all(promises).then(results => {
 
   console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
-}).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
+}
+catch (error) {
+  console.error(chalk.red(`[Error]`), `Test errored:`, error);
+}
+
+/**
+ * @returns {Promise<object[]>} A Promise that resolves to an array of result objects.
+ */
+async function runTests() {
+  const promises = [];
+
+  if (cliArguments.a) {
+    const directoryEntries = await readdir(fixtureDirectoryUrl, { withFileTypes: true });
+    const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+
+    for (const manufacturerKey of manufacturerKeys) {
+      const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
+
+      for (const file of await readdir(manufacturersDirectoryUrl)) {
+        if (path.extname(file) === `.json`) {
+          const fixtureKey = path.basename(file, `.json`);
+          promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
+        }
+      }
+    }
+    promises.push(checkManufacturers());
+  }
+  else {
+    // sanitize given path
+    fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
+    for (const fixturePath of fixturePaths) {
+      if (path.extname(fixturePath) !== `.json`) {
+        // TODO: only produce this warning at a higher verbosity level
+        promises.push({
+          name: fixturePath,
+          errors: [],
+          warnings: [`specified file is not a .json document`],
+        });
+        continue;
+      }
+      const fixtureKey = path.basename(fixturePath, `.json`);
+      const manufacturerKey = path.dirname(fixturePath).split(path.sep).pop();
+      promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
+    }
+  }
+
+  return Promise.all(promises);
+}
+
+/**
+ * Checks (asynchronously) the given fixture.
+ * @param {string} manufacturerKey The manufacturer key.
+ * @param {string} fixtureKey The fixture key.
+ * @returns {Promise<object>} A Promise resolving to a result object.
+ */
+async function checkFixtureFile(manufacturerKey, fixtureKey) {
+  const filename = `${manufacturerKey}/${fixtureKey}.json`;
+  const result = {
+    name: filename,
+    errors: [],
+    warnings: [],
+  };
+
+  try {
+    const fixtureJson = await importJson(filename, fixtureDirectoryUrl);
+    Object.assign(result, await checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
+  }
+  catch (error) {
+    result.errors.push(error);
+  }
+  return result;
+}
+
+/**
+ * Checks Manufacturers file
+ * @returns {Promise<object>} A Promise resolving to a result object.
+ */
+async function checkManufacturers() {
+  const result = {
+    name: `manufacturers.json`,
+    errors: [],
+    warnings: [],
+  };
+
+  try {
+    const manufacturers = await importJson(result.name, fixtureDirectoryUrl);
+    const validate = await getAjvValidator(`manufacturers`);
+    const valid = validate(manufacturers);
+    if (!valid) {
+      throw getAjvErrorMessages(validate.errors, `manufacturers`);
+    }
+
+    for (const [manufacturerKey, manufacturerProperties] of Object.entries(manufacturers)) {
+      if (manufacturerKey.startsWith(`$`)) {
+        // JSON schema property
+        continue;
+      }
+
+      // legacy purposes
+      const uniquenessTestResults = {
+        errors: [],
+      };
+      checkUniqueness(
+        uniqueValues.manNames,
+        manufacturerProperties.name,
+        uniquenessTestResults,
+        `Manufacturer name '${manufacturerProperties.name}' is not unique (test is not case-sensitive).`,
+      );
+      if (`rdmId` in manufacturerProperties) {
+        checkUniqueness(
+          uniqueValues.manRdmIds,
+          `${manufacturerProperties.rdmId}`,
+          uniquenessTestResults,
+          `Manufacturer RDM ID '${manufacturerProperties.rdmId}' is not unique.`,
+        );
+      }
+      result.errors.push(...uniquenessTestResults.errors);
+    }
+  }
+  catch (error) {
+    const isIterable = typeof error[Symbol.iterator] === `function`;
+    result.errors.push(...(isIterable ? error : [error]));
+  }
+  return result;
+}
+
+
+/**
+ * @param {object} result The result object for a single file.
+ */
+function printFileResult(result) {
+  const failed = result.errors.length > 0;
+
+  console.log(
+    failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
+    result.name,
+  );
+
+  for (const error of result.errors) {
+    console.log(`└`, chalk.red(`Error:`), error);
+  }
+
+  for (const warning of result.warnings) {
+    console.log(`└`, chalk.yellow(`Warning:`), warning);
+  }
+}

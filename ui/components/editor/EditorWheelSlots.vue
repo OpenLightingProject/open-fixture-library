@@ -16,6 +16,7 @@
 </style>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import EditorWheelSlot from './EditorWheelSlot.vue';
 
 export default {
@@ -23,19 +24,9 @@ export default {
     EditorWheelSlot,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().optional,
   },
   computed: {
     slotDetailNumbers() {
@@ -54,9 +45,7 @@ export default {
       const length = max - min + 1;
 
       // array of integers from min to max: [min, min+1, …, max-1, max]
-      const slotNumbersInRange = Array.apply(null, Array(length)).map(
-        (item, index) => min + index,
-      ).filter(slotNumber => slotNumber >= 1);
+      const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
 
       if (slotNumbers[slotNumbers.length - 1] < slotNumbers[0]) {
         slotNumbersInRange.reverse();

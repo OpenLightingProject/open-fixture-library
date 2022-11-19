@@ -2,15 +2,22 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Flat Par QA12XS",
   "shortName": "QA12XS",
-  "categories": ["Blinder", "Color Changer", "Dimmer"],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": ["TAKU", "Flo Edelmann"],
+    "authors": ["TAKU", "Flo Edelmann", "Ken Harris"],
     "createDate": "2018-08-05",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2022-03-20"
   },
   "links": {
-    "manual": ["http://intranet.americandj.com/ItemRelatedFiles/8308/flat_par_qa12xs.pdf"],
-    "video": ["https://www.youtube.com/watch?v=JklRIKHLV3Y"]
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8308/flat_par_qa12xs.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=JklRIKHLV3Y"
+    ],
+    "productPage": [
+      "https://www.adj.com/flat-par-qa12xs"
+    ]
   },
   "physical": {
     "dimensions": [280, 115, 328],
@@ -18,7 +25,7 @@
     "power": 80,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "RGBA QUAD LED"
+      "type": "12× 5W RGBA LED"
     },
     "lens": {
       "degreesMinMax": [25, 25]

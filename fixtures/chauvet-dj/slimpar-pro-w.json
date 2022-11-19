@@ -9,9 +9,15 @@
     "lastModifyDate": "2018-08-10"
   },
   "links": {
-    "manual": ["https://www.chauvetdj.eu/wp-content/uploads/2016/01/SlimPAR_Pro_W_USB_UM_Rev2_WO-1.pdf"],
-    "productPage": ["https://www.chauvetdj.com/products/slimpar-pro-w-usb/"],
-    "video": ["https://www.youtube.com/watch?v=wV-9zR6L5sE"]
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/01/SlimPAR_PRO_W_USB_UM_Rev5.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/slimpar-pro-w-usb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wV-9zR6L5sE"
+    ]
   },
   "physical": {
     "dimensions": [253, 290, 98],
@@ -92,7 +98,7 @@
           "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [32, 63],
@@ -100,7 +106,7 @@
           "shutterEffect": "RampUp",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [64, 95],
@@ -108,7 +114,7 @@
           "shutterEffect": "RampDown",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [96, 127],
@@ -116,7 +122,7 @@
           "shutterEffect": "RampUpDown",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [128, 159],
@@ -124,7 +130,7 @@
           "effectName": "Auto fade transition",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [160, 191],
@@ -132,7 +138,7 @@
           "effectName": "Auto snap transition (3-color)",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [192, 223],
@@ -140,7 +146,7 @@
           "effectName": "Auto snap transition (7-color)",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
-           }
+          }
         },
         {
           "dmxRange": [224, 249],
@@ -149,7 +155,7 @@
           "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
-           }
+          }
         },
         {
           "dmxRange": [250, 255],
@@ -158,7 +164,7 @@
           "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
-           }
+          }
         }
       ]
     },

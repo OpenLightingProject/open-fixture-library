@@ -43,7 +43,8 @@
         v-for="(slot, index) of wheel.slots"
         :key="`slot-${index}`"
         :transform="`rotate(${slotRotateAngle * index}, 0, 0)`"
-        :class="{ slot: true, dim: highlightedSlot !== null && highlightedSlot !== index }">
+        class="slot"
+        :class="{ dim: highlightedSlot !== null && highlightedSlot !== index }">
 
         <title>{{ slotTitles[index] }}</title>
 
@@ -146,8 +147,11 @@
             <tr
               v-for="(slot, index) of wheel.slots"
               :key="`slot-${index}`"
+              tabindex="0"
               @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
-              @mouseout="highlightedSlot = null">
+              @focusin="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+              @mouseout="highlightedSlot = null"
+              @focusout="highlightedSlot = null">
               <th scope="row">Slot {{ index + 1 }}</th>
               <td>{{ slot.name }}</td>
             </tr>
@@ -162,13 +166,13 @@
 <style lang="scss" scoped>
 figure {
   box-sizing: border-box;
-  padding: 0 1rem;
-  margin: 0 0 0.5rem;
   display: inline-block;
   width: 32%;
   min-width: 18rem;
-  vertical-align: top;
+  padding: 0 1rem;
+  margin: 0 0 0.5rem;
   white-space: normal;
+  vertical-align: top;
 }
 
 svg {
@@ -178,9 +182,9 @@ svg {
 
 .slot {
   & text {
-    fill: $primary-text-dark;
-    pointer-events: none;
     font-weight: 400;
+    pointer-events: none;
+    fill: $primary-text-dark;
   }
 
   &:hover {
@@ -193,13 +197,13 @@ svg {
 }
 
 figcaption ::v-deep summary {
-  font-weight: bold;
-  text-align: center;
   position: sticky;
   top: 0;
+  font-weight: 700;
+  text-align: center;
 
-  &:not(:hover):not(:focus) {
-    background: theme-color(card-background, 0.8);
+  &:not(:hover, :focus) {
+    background: theme-color(card-background, 80%);
   }
 }
 
@@ -224,20 +228,17 @@ figcaption table {
 </style>
 
 <script>
-import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
+import { instanceOfProp } from 'vue-ts-types';
 import Wheel from '../../../lib/model/Wheel.js';
-
 import ConditionalDetails from '../ConditionalDetails.vue';
+import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
 
 export default {
   components: {
     ConditionalDetails,
   },
   props: {
-    wheel: {
-      type: Wheel,
-      required: true,
-    },
+    wheel: instanceOfProp(Wheel).required,
   },
   data() {
     return {

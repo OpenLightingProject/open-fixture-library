@@ -13,7 +13,7 @@
 
     <ul>
       <li v-for="link of Object.keys(pluginData.links)" :key="link">
-        <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
+        <a :href="pluginData.links[link]" target="_blank" rel="nofollow noopener">{{ link }}</a>
       </li>
     </ul>
 
@@ -83,22 +83,22 @@
   }
 
   & ::v-deep code {
-    background-color: theme-color(header-background);
     padding: 3px 5px;
+    background-color: theme-color(header-background);
   }
 
   & ::v-deep table {
     margin: 1rem 0;
-    border: 1px solid theme-color(divider);
     border-collapse: collapse;
+    border: 1px solid theme-color(divider);
 
-    th, td {
-      border: 1px solid theme-color(divider);
+    th,
+    td {
       padding: 1px 1ex;
+      border: 1px solid theme-color(divider);
     }
   }
 }
-
 </style>
 
 <script>
@@ -111,9 +111,8 @@ export default {
     HelpWantedMessage,
   },
   async asyncData({ params, $axios, redirect, error }) {
-    const pluginKey = decodeURIComponent(params.plugin);
+    const pluginKey = params.plugin;
     let pluginData;
-
     try {
       pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
     }
@@ -126,24 +125,15 @@ export default {
       return redirect(301, `/about/plugins/${newPluginKey}`);
     }
 
-    const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
-      os => os !== `subDirectoriesAllowed`,
-    ) : null;
-
+    return { pluginData };
+  },
+  data() {
     return {
-      pluginData,
-      fileLocationOSes,
-      exportPluginVersion: pluginData.exportPluginVersion,
-      importPluginVersion: pluginData.importPluginVersion,
+      helpWantedContext: undefined,
       libraryNames: {
         main: `Main (system) library`,
         user: `User library`,
       },
-    };
-  },
-  data() {
-    return {
-      helpWantedContext: null,
     };
   },
   head() {
@@ -158,6 +148,19 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    exportPluginVersion() {
+      return this.pluginData.exportPluginVersion;
+    },
+    importPluginVersion() {
+      return this.pluginData.importPluginVersion;
+    },
+    fileLocationOSes() {
+      return `fileLocations` in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
+        os => os !== `subDirectoriesAllowed`,
+      ) : null;
+    },
   },
   methods: {
     openHelpWantedDialog(event) {
