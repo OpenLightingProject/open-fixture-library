@@ -260,7 +260,7 @@
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32767,
       "capability": {
-      "type": "Tilt",
+        "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "275deg"
       }
@@ -268,7 +268,7 @@
     "Zoom": {
       "defaultValue": 0,
       "capability": {
-      "type": "Zoom",
+        "type": "Zoom",
         "angleStart": "narrow",
         "angleEnd": "wide",
         "helpWanted": "Correct direction?"
@@ -277,7 +277,7 @@
     "Focus": {
       "defaultValue": 0,
       "capability": {
-      "type": "Focus",
+        "type": "Focus",
         "distanceStart": "near",
         "distanceEnd": "far",
         "helpWanted": "Correct direction?"

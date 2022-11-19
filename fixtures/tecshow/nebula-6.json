@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nebula 6",
+  "shortName": "nebula6",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Esteban Zallocco"],
+    "createDate": "2022-01-03",
+    "lastModifyDate": "2022-01-03"
+  },
+  "links": {
+    "manual": [
+      "http://amproweb.com/_admin/files/02b55bNebula%206%20B.pdf"
+    ],
+    "productPage": [
+      "http://tecshow.amproweb.com/es/nebula6"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=IQQqpnKiArE"
+    ],
+    "other": [
+      "http://amproweb.com/_admin/files/6a5bd4Nebula6.zip"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 260, 360],
+    "weight": 1,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "100Hz"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "StrobeSpeed",
+          "speedStart": "100Hz",
+          "speedEnd": "0Hz",
+          "helpWanted": "A strobe speed of 100Hz is highly unlikely. Is there really an increasing strobe speed between DMX values 8 and 99 and then a decreasing strobe speed between DMX values 100 and 149?"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "strobe1"
+        },
+        {
+          "dmxRange": [200, 245],
+          "type": "Effect",
+          "effectName": "strobe2",
+          "helpWanted": "What are these two strobe effects exactly?"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "200Hz",
+          "speedEnd": "200Hz",
+          "helpWanted": "What can be selected here? A strobe speed of 200Hz is highly unlikely. Is the fastest strobe speed at DMX values 246 to 255 the same as between DMX values 99 and 100?"
+        }
+      ]
+    },
+    "Color Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset",
+          "comment": "red,yellow,magenta,green,orange,cyan,pink",
+          "colors": ["#ff0000", "#ffff00", "#ff00ff", "#00ff00", "#ff5500", "#008888", "#ff3355"],
+          "helpWanted": "Is this the activation of an auto color change effect? Is there a smooth or hard transition between those colors? Are there any differences between the DMX values?"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 199],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel Rotation",
+        "Color Macros"
+      ]
+    }
+  ]
+}

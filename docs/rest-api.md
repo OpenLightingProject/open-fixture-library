@@ -8,7 +8,7 @@ Base URLs:
 
 * <a href="https://open-fixture-library.org/api/v1">https://open-fixture-library.org/api/v1</a>
 
-* <a href="http://localhost:5000/api/v1">http://localhost:5000/api/v1</a>
+* <a href="http://localhost:3000/api/v1">http://localhost:3000/api/v1</a>
 
 <h1 id="open-fixture-library-api-root">root</h1>
 

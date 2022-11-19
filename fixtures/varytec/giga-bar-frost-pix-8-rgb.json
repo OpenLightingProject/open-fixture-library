@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Giga Bar Frost Pix 8 RGB",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Luke Nelson"],
+    "createDate": "2022-10-12",
+    "lastModifyDate": "2022-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_460683_460684_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/varytec_giga_bar_frost_pix_8_rgb.htm"
+    ],
+    "video": ["https://www.youtube.com/watch?v=PixpS09Mc-I"]
+  },
+  "physical": {
+    "dimensions": [1020, 80, 65],
+    "weight": 1.5,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Multi-function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in red",
+          "colors": ["#ff2600"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in red and green",
+          "helpWanted": "Are these patterns uni-colored (yellow in this case) or multi-colored?",
+          "colors": ["#ff2600", "#00f900"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in green",
+          "colors": ["#00f900"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in blue and green",
+          "colors": ["#0433ff", "#00f900"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in blue",
+          "colors": ["#0433ff"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in blue and red",
+          "colors": ["#0433ff", "#ff2600"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Constant uni-colored pattern in red, green and blue",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Effect",
+          "effectName": "Built-in automatic show programs",
+          "helpWanted": "At which DMX values do the effects change?",
+          "switchChannels": {
+            "Speed / Sensitivity": "Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled show",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed / Sensitivity": "Sensitivity"
+          }
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Multi-function",
+        "Speed / Sensitivity"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
