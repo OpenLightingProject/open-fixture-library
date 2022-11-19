@@ -571,6 +571,27 @@
           "comment": "Gradient Color Macro"
         }
       ]
+    },
+    "Program Macro Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Speed",
+          "speedStart": "-100%",
+          "speedEnd": "-1%"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "Speed",
+          "speedStart": "1%",
+          "speedEnd": "100%"
+        }
+      ]
     }
   },
   "modes": [
