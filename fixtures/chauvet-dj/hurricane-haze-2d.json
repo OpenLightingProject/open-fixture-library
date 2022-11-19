@@ -26,33 +26,33 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Generic",
-          "comment": "OFF"
+          "type": "Speed",
+          "speed": "stop"
         },
         {
           "dmxRange": [6, 75],
-          "type": "Generic",
-          "comment": "Level 1"
+          "type": "Speed",
+          "speed": "20%"
         },
         {
           "dmxRange": [76, 125],
-          "type": "Generic",
-          "comment": "Level 2"
+          "type": "Speed",
+          "speed": "40%"
         },
         {
           "dmxRange": [126, 165],
-          "type": "Generic",
-          "comment": "Level 3"
+          "type": "Speed",
+          "speed": "60%"
         },
         {
           "dmxRange": [166, 185],
-          "type": "Generic",
-          "comment": "Level 4"
+          "type": "Speed",
+          "speed": "80%"
         },
         {
           "dmxRange": [186, 255],
-          "type": "Generic",
-          "comment": "Level 5"
+          "type": "Speed",
+          "speed": "100%"
         }
       ]
     },
@@ -68,31 +68,31 @@
           "dmxRange": [39, 69],
           "type": "Fog",
           "fogType": "Haze",
-          "comment": "Level 1"
+          "fogOutput": "20%"
         },
         {
           "dmxRange": [70, 101],
           "type": "Fog",
           "fogType": "Haze",
-          "comment": "Level 2"
+          "fogOutput": "40%"
         },
         {
           "dmxRange": [102, 132],
           "type": "Fog",
           "fogType": "Haze",
-          "comment": "Level 3"
+          "fogOutput": "60%"
         },
         {
           "dmxRange": [133, 187],
           "type": "Fog",
           "fogType": "Haze",
-          "comment": "Level 4"
+          "fogOutput": "80%"
         },
         {
           "dmxRange": [188, 255],
           "type": "Fog",
           "fogType": "Haze",
-          "comment": "Level 5"
+          "fogOutput": "100%"
         }
       ]
     }
