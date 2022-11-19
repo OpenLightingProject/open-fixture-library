@@ -22,7 +22,7 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
-    },
+    }
   },
   "availableChannels": {
     "Red": {
@@ -75,7 +75,7 @@
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
@@ -85,7 +85,7 @@
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
@@ -98,7 +98,7 @@
         {
           "dmxRange": [224, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
+          "shutterEffect": "Open"
         }
       ]
     },
