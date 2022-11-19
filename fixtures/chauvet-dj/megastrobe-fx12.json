@@ -201,80 +201,132 @@
     "Pixels": {
       "capability": {
         "type": "Generic",
-        "comment": "Pixel, Program Speed, or Sound Active Auto"
+        "comment": "Pixel control",
+        "helpWanted": "What does this do in 'Pixel' mode?"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Is this slow -> fast or fast -> slow?"
       }
     },
     "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 48],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Pixels"
+          }
         },
         {
           "dmxRange": [49, 64],
           "type": "Effect",
-          "effectName": "Auto Program 1"
+          "effectName": "Auto Program 1",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [65, 80],
           "type": "Effect",
-          "effectName": "Auto Program 2 "
+          "effectName": "Auto Program 2",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [81, 96],
           "type": "Effect",
-          "effectName": "Auto Program 3"
+          "effectName": "Auto Program 3",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [97, 112],
           "type": "Effect",
-          "effectName": "Auto Program 4"
+          "effectName": "Auto Program 4",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [113, 128],
           "type": "Effect",
-          "effectName": "Auto Program 5 "
+          "effectName": "Auto Program 5",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [129, 144],
           "type": "Effect",
-          "effectName": "Auto Program 6"
+          "effectName": "Auto Program 6",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [145, 160],
           "type": "Effect",
-          "effectName": "Auto Program 7"
+          "effectName": "Auto Program 7",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [161, 176],
           "type": "Effect",
-          "effectName": "Auto Program 8"
+          "effectName": "Auto Program 8",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [177, 192],
           "type": "Effect",
-          "effectName": "Auto Program 9"
+          "effectName": "Auto Program 9",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [193, 208],
           "type": "Effect",
-          "effectName": "Auto Program 10"
+          "effectName": "Auto Program 10",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [209, 224],
           "type": "Effect",
-          "effectName": "Auto Program 11"
+          "effectName": "Auto Program 11",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [225, 240],
           "type": "Effect",
-          "effectName": "Auto Program 12"
+          "effectName": "Auto Program 12",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [241, 255],
           "type": "Effect",
           "effectName": "Sound Active",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -343,7 +395,7 @@
         "Dimmer 1",
         "Shutter Advanced",
         "Shutter Speed / Sound Sensitivity",
-        "Pixels",
+        "Pixels / Program Speed / Sound Sensitivity",
         "Auto Programs"
       ]
     },
