@@ -30,6 +30,24 @@
       "type": "LED"
     }
   },
+  "matrix": {
+    "pixelCount": [6, 2, 1],
+    "pixelGroups": {
+      "1": ["1", "7"],
+      "2": ["2", "8"],
+      "3": ["3", "9"],
+      "4": ["4", "10"],
+      "5": ["5", "11"],
+      "6": ["6", "12"]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
     "Shutter Basic": {
       "capabilities": [
@@ -330,41 +348,6 @@
         }
       ]
     },
-    "Dimmer 1": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 3": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 4": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 5": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 6": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Shutter Effects": {
       "capability": {
         "type": "Generic",
@@ -377,6 +360,11 @@
         "speedStart": "slow",
         "speedEnd": "fast"
       }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [
@@ -385,14 +373,14 @@
       "shortName": "2ch",
       "channels": [
         "Shutter Basic",
-        "Dimmer 1"
+        "Dimmer"
       ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Dimmer 1",
+        "Dimmer",
         "Shutter Advanced",
         "Shutter Speed / Sound Sensitivity",
         "Pixels / Program Speed / Sound Sensitivity",
@@ -403,12 +391,14 @@
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
-        "Dimmer 1",
-        "Dimmer 2",
-        "Dimmer 3",
-        "Dimmer 4",
-        "Dimmer 5",
-        "Dimmer 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        },
         "Shutter Effects",
         "Shutter Effect Speed"
       ]
