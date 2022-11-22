@@ -143,7 +143,7 @@ export default {
         location: this.location,
         helpWanted: this.context.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername !== `` ? this.githubUsername : null,
+        githubUsername: this.githubUsername === `` ? null : this.githubUsername,
       };
 
       if (this.type === `plugin`) {
