@@ -51,7 +51,7 @@ export default {
       };
 
       this.$emit(`input`, this.links.map(
-        link => (link !== updateLink ? link : updatedLink),
+        link => (link === updateLink ? updatedLink : link),
       ));
     },
     removeLink(removeLink) {

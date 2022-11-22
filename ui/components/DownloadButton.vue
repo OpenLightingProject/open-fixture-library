@@ -247,7 +247,7 @@ export default {
   },
   methods: {
     downloadDataAsFile(blob, filename = ``) {
-      if (window.navigator.msSaveBlob !== undefined) {
+      if (window.navigator.msSaveBlob) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
         window.navigator.msSaveBlob(blob, filename);

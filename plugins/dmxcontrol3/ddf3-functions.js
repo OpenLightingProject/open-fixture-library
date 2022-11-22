@@ -368,7 +368,7 @@ export default {
         }
 
         const capabilityJson = {};
-        const preferredJsonObject = !capability1.jsonObject._splitted ? capability1.jsonObject : capability2.jsonObject; // we prefer unsplitted caps
+        const preferredJsonObject = capability1.jsonObject._splitted ? capability2.jsonObject : capability1.jsonObject; // we prefer unsplitted capability
         for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
         }
@@ -544,16 +544,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.frostIntensity[0].number !== capability.frostIntensity[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
-            xmlCapability.attribute(`type`, `frost`);
-          }
-          else {
+          if (capability.frostIntensity[0].number === capability.frostIntensity[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFrostOn = capability.frostIntensity[0].number > 0;
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute(`value`, `${isFrostOn}`);
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
+            xmlCapability.attribute(`type`, `frost`);
           }
 
           xmlFrost.importDocument(xmlCapability);
