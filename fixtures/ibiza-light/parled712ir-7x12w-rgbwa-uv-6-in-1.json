@@ -1,0 +1,328 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARLED712IR 7x12W RGBWA-UV 6-in-1",
+  "shortName": "PARLED712IR",
+  "categories": ["Stand", "Blinder", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Hieros Gamos"],
+    "createDate": "2022-11-23",
+    "lastModifyDate": "2022-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.fr/manual/298325/Ibiza-Light-Parled712Ir.html"
+    ],
+    "productPage": [
+      "https://www.sound-discount.fr/fiche-produit.aspx?produitID=43241"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iEujxqwpKxA&feature=emb_title"
+    ]
+  },
+  "physical": {
+    "dimensions": [218, 123, 245],
+    "weight": 1.75,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7"
+    }
+  },
+  "availableChannels": {
+    "CH1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorIntensity",
+          "color": "Indigo"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Rose"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Red + Amber"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Red + UV"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Vert pastel"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Green + Amber"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green + UV"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Blue + White"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Blue + Amber"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Blue + UV"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "White + Amber"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "White + UV"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ColorPreset",
+          "comment": "Amber + UV"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + Amber"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ColorPreset",
+          "comment": "Green + Blanc + UV"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber + UV"
+        }
+      ]
+    },
+    "CH2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "10Hz",
+          "speedEnd": "255Hz"
+        }
+      ]
+    },
+    "CH3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "Effect",
+          "effectName": "Auto DMX"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Audio Control DMX",
+          "soundControlled": true
+        }
+      ]
+    },
+    "CH4": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Automatic DMX Speed"
+      }
+    },
+    "CH1 2": {
+      "name": "CH1",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH2 2": {
+      "name": "CH2",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH3 2": {
+      "name": "CH3",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH4 2": {
+      "name": "CH4",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CH5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightness": "off"
+      }
+    },
+    "CH6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "CH7": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH8": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "255Hz"
+        }
+      ]
+    },
+    "CH9": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "Effect",
+          "effectName": "Auto DMX",
+          "comment": "Auto DMX"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Sound Control DMX",
+          "soundControlled": true
+        }
+      ]
+    },
+    "CH10": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Automatic Program DMX Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channels",
+      "shortName": "4ch",
+      "channels": [
+        "CH1",
+        "CH2",
+        "CH3",
+        "CH4"
+      ]
+    },
+    {
+      "name": "10 channels",
+      "shortName": "10ch",
+      "channels": [
+        "CH1 2",
+        "CH2 2",
+        "CH3 2",
+        "CH4 2",
+        "CH5",
+        "CH6",
+        "CH7",
+        "CH8",
+        "CH9",
+        "CH10"
+      ]
+    }
+  ]
+}
