@@ -1,0 +1,182 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini LED Spot Beam 10W Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mosse"],
+    "createDate": "2022-11-24",
+    "lastModifyDate": "2022-11-24",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-11-24",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "PC"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "X-axis, move": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "X-axis,Fine-tuning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y-axis, move": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y-axis,Fine-tuning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Axis ,Slow to Fast": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Total dimmer, linear dimming-Dark to Bright": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe,Slow to Fast": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red light color control, channel value of 0 for the closedlight,": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green color control, channel value of 0 for the closedlight": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue light color control, channel value of 0 for closed light": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White light color control, the channel value of 0 for the closed light": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AUTO Run Mode - \nSound Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Effect",
+          "effectName": "AUTO Run mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Rest": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "X-axis, move",
+        "X-axis,Fine-tuning",
+        "Y-axis, move",
+        "Y-axis,Fine-tuning",
+        "Axis ,Slow to Fast",
+        "Total dimmer, linear dimming-Dark to Bright",
+        "Strobe,Slow to Fast",
+        "Red light color control, channel value of 0 for the closedlight,",
+        "Green color control, channel value of 0 for the closedlight",
+        "Blue light color control, channel value of 0 for closed light",
+        "White light color control, the channel value of 0 for the closed light"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "X-axis, move",
+        "X-axis,Fine-tuning",
+        "Y-axis, move",
+        "Y-axis,Fine-tuning",
+        "Axis ,Slow to Fast",
+        "Total dimmer, linear dimming-Dark to Bright",
+        "Strobe,Slow to Fast",
+        "Red light color control, channel value of 0 for the closedlight,",
+        "Green color control, channel value of 0 for the closedlight",
+        "Blue light color control, channel value of 0 for closed light",
+        "White light color control, the channel value of 0 for the closed light",
+        "AUTO Run Mode - \nSound Mode",
+        "Rest"
+      ]
+    }
+  ]
+}
