@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED FRESNEL",
+  "shortName": "FRESNEL",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["STEVE"],
+    "createDate": "2022-11-30",
+    "lastModifyDate": "2022-11-30"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "NORMAL",
+      "channels": [
+        "Dimmer",
+        "Zoom",
+        "CTO"
+      ]
+    }
+  ]
+}
