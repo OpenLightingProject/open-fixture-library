@@ -1,0 +1,237 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vizi Q Wash7",
+  "shortName": "Q7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Rey Victor"],
+    "createDate": "2022-12-01",
+    "lastModifyDate": "2022-12-01"
+  },
+  "comment": "The Vizi Q Wash7 is a 280W professional moving head wash fixture with variable zoom (5 ~ 55-degrees) and seven 40W Quad (RGBW) LEDs. At 280W, this fixture offers very powerful 5-degree beams or brilliant 55-degree washes of color. WiFLY wireless DMX on-board.",
+  "links": {
+    "manual": [
+      "https://www.adj.com/vizi-q-wash7"
+    ],
+    "productPage": [
+      "https://www.adj.com/vizi-q-wash7"
+    ],
+    "video": [
+      "https://www.adj.com/vizi-q-wash7"
+    ]
+  },
+  "physical": {
+    "dimensions": [284, 456, 202],
+    "weight": 9,
+    "power": 280,
+    "DMXconnector": "5-pin",
+    "lens": {
+      "degreesMinMax": [7, 58]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-160deg",
+        "angleEnd": "160deg"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 48,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Program auto": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Program Auto"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Duration": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Curve Dim": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "dim curve"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "Generic",
+          "comment": "Normal"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "Reset motor"
+        },
+        {
+          "dmxRange": [85, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "Generic",
+          "comment": "Internal Prog"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "basique",
+      "shortName": "basique",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Program auto",
+        "Program Speed",
+        "Program Duration",
+        "Curve Dim",
+        "Pan/Tilt Speed",
+        "Function"
+      ]
+    }
+  ]
+}
