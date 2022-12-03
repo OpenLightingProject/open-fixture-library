@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F14 HP",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Tmeyer"],
+    "createDate": "2022-12-03",
+    "lastModifyDate": "2022-12-03"
+  },
+  "links": {
+    "other": [
+      "https://desisti.it"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "10%",
+        "colorTemperatureEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine"
+      ]
+    }
+  ]
+}
