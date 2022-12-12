@@ -71,6 +71,11 @@
         {
           "dmxRange": [86, 127],
           "type": "Generic",
+          "comment": "Gel Mode"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "Generic",
           "comment": "RGBW Mode"
         },
         {
@@ -111,7 +116,6 @@
       ]
     },
     "Green Offset": {
-      "helpWanted": "Is this just intensity or are there steps?",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
