@@ -540,10 +540,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCapability(capability, errorPrefix) {
         const switchingChannelAliases = Object.keys(capability.switchChannels);
-        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
-        }
-        else {
+        if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
@@ -552,6 +549,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               result.errors.push(`${errorPrefix} references unknown channel '${channelKey}'.`);
             }
           }
+        }
+        else {
+          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
 
         checkStartEndEntities();
