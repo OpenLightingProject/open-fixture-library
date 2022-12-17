@@ -29,7 +29,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [5, 55]
+      "degreesMinMax": [7, 58]
     }
   },
   "availableChannels": {
@@ -80,7 +80,9 @@
     "Color Macros": {
       "defaultValue": "0%",
       "capability": {
-        "type": "ColorPreset"
+        "helpWanted": "What are the Color Macros?",
+        "type": "Effect",
+        "effectName": "Color Macros"
       }
     },
     "Shutter / Strobe": {
@@ -151,10 +153,82 @@
     },
     "Program auto": {
       "defaultValue": "0%",
-      "capability": {
-        "type": "Generic",
-        "comment": "Program Auto"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 20],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [161, 180],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [181, 200],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Program 14"
+        }
+      ]
     },
     "Program Speed": {
       "defaultValue": "0%",
