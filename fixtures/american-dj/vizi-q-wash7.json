@@ -2,31 +2,34 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vizi Q Wash7",
   "shortName": "Q7",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Rey Victor"],
-    "createDate": "2022-12-01",
-    "lastModifyDate": "2022-12-01"
+    "createDate": "2022-12-17",
+    "lastModifyDate": "2022-12-17"
   },
   "comment": "The Vizi Q Wash7 is a 280W professional moving head wash fixture with variable zoom (5 ~ 55-degrees) and seven 40W Quad (RGBW) LEDs. At 280W, this fixture offers very powerful 5-degree beams or brilliant 55-degree washes of color. WiFLY wireless DMX on-board.",
   "links": {
     "manual": [
-      "https://www.adj.com/vizi-q-wash7"
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/10532/ADJ%20VIZI%20Q%20WASH7%20-%20USER%20MANUAL%20.pdf"
     ],
     "productPage": [
       "https://www.adj.com/vizi-q-wash7"
     ],
     "video": [
-      "https://www.adj.com/vizi-q-wash7"
+      "https://www.youtube.com/watch?v=EHeTZ_G_8zM"
     ]
   },
   "physical": {
-    "dimensions": [284, 456, 202],
-    "weight": 9,
+    "dimensions": [284.4, 411.7, 202],
+    "weight": 8.5,
     "power": 280,
-    "DMXconnector": "5-pin",
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
     "lens": {
-      "degreesMinMax": [7, 58]
+      "degreesMinMax": [5, 55]
     }
   },
   "availableChannels": {
