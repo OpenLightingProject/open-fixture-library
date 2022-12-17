@@ -151,7 +151,7 @@
         "angleEnd": "wide"
       }
     },
-    "Program auto": {
+    "Auto Programs": {
       "defaultValue": "0%",
       "capabilities": [
         {
@@ -238,58 +238,137 @@
         "speedEnd": "fast"
       }
     },
-    "Program Duration": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "EffectDuration",
-        "durationStart": "short",
-        "durationEnd": "long"
-      }
+    "Program Fade": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "EffectParameter",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        }
+      ]
     },
-    "Curve Dim": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "Generic",
-        "comment": "dim curve"
-      }
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Default Dimmer Setting"
+        }
+      ]
     },
     "Pan/Tilt Speed": {
       "defaultValue": "100%",
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Maintenance",
+          "comment": "Blackout by movement"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
     },
-    "Function": {
+    "Maintenance Functions": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 79],
-          "type": "Generic",
-          "comment": "Normal"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [80, 84],
-          "type": "Generic",
-          "comment": "Reset motor"
+          "type": "Maintenance",
+          "comment": "All motor reset"
         },
         {
           "dmxRange": [85, 99],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [100, 255],
-          "type": "Generic",
-          "comment": "Internal Prog"
+          "dmxRange": [100, 119],
+          "type": "Maintenance",
+          "comment": "Internal Program 1"
+        },{
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "Internal Program 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Maintenance",
+          "comment": "Internal Program 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Maintenance",
+          "comment": "Internal Program 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Maintenance",
+          "comment": "Internal Program 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Maintenance",
+          "comment": "Internal Program 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Maintenance",
+          "comment": "Internal Program 7"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "basique",
-      "shortName": "basique",
+      "name": "17 Channel (Basic)",
+      "shortName": "17ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -302,12 +381,12 @@
         "Dimmer",
         "Dimmer fine",
         "Zoom",
-        "Program auto",
+        "Auto Programs",
         "Program Speed",
-        "Program Duration",
-        "Curve Dim",
+        "Program Fade",
+        "Dimmer Curve",
         "Pan/Tilt Speed",
-        "Function"
+        "Maintenance Functions"
       ]
     }
   ]
