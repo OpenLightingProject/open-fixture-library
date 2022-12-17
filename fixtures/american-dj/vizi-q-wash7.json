@@ -34,6 +34,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": "50%",
       "capability": {
         "type": "Pan",
@@ -42,6 +43,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
@@ -372,6 +374,31 @@
       "channels": [
         "Pan",
         "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Auto Programs",
+        "Program Speed",
+        "Program Fade",
+        "Dimmer Curve",
+        "Pan/Tilt Speed",
+        "Maintenance Functions"
+      ]
+    },
+    {
+      "name": "19 Channel (Standard)",
+      "shortName": "19ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Red",
         "Green",
         "Blue",
