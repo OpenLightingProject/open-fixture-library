@@ -51,34 +51,6 @@
         "angleEnd": "160deg"
       }
     },
-    "Red": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "defaultValue": "100%",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Color Macros": {
       "defaultValue": "0%",
       "capability": {
@@ -370,6 +342,46 @@
       ]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["O1", "O2"],
+        ["O3", "C", "O4"],
+        ["O5", "O6"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "Center": { "name": ["C"] },
+      "Outer": { "name": ["^O\\d+$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "17 Channel (Basic)",
@@ -377,10 +389,10 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All",
         "Color Macros",
         "Shutter / Strobe",
         "Dimmer",
@@ -402,10 +414,39 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Auto Programs",
+        "Program Speed",
+        "Program Fade",
+        "Dimmer Curve",
+        "Pan/Tilt Speed",
+        "Maintenance Functions"
+      ]
+    },
+    {
+      "name": "23 Channel (Extended)",
+      "shortName": "23ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red Center",
+        "Green Center",
+        "Blue Center",
+        "White Center",
+        "Red Outer",
+        "Green Outer",
+        "Blue Outer",
+        "White Outer",
         "Color Macros",
         "Shutter / Strobe",
         "Dimmer",
