@@ -146,11 +146,11 @@
       }
     },
     "Zoom": {
-      "defaultValue": "50%",
+      "defaultValue": "0%",
       "capability": {
         "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
+        "angleStart": "7deg",
+        "angleEnd": "58deg"
       }
     },
     "Auto Programs": {
@@ -245,14 +245,16 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "EffectParameter",
-          "parameter": "off"
+          "type": "EffectDuration",
+          "duration": "instant",
+          "helpWanted": "What does fade \"Normal\" mean in the manual? Is it instant (no fade)?"
         },
         {
           "dmxRange": [1, 255],
-          "type": "EffectParameter",
-          "parameterStart": "slow",
-          "parameterEnd": "fast"
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long",
+          "helpWanted": "Is this fade \"short to long\" or \"long to short\" like mentioned in the manual?"
         }
       ]
     },
