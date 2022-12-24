@@ -345,9 +345,9 @@
   "matrix": {
     "pixelKeys": [
       [
-        ["O1", "O2"],
-        ["O3", "C", "O4"],
-        ["O5", "O6"]
+        [null, "O1", null, "O2", null],
+        ["O3", null, "C", null, "O4"],
+        [null, "O5", null, "O6", null]
       ]
     ],
     "pixelGroups": {
