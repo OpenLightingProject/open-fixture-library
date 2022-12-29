@@ -50,7 +50,7 @@
         "speedEnd": "fast"
       }
     },
-    "Dimmer": {
+    "Master Dimmer": {
       "capability": {
         "type": "Intensity",
         "brightnessStart": "0%",
@@ -72,88 +72,274 @@
         }
       ]
     },
-    "Color Macros": {
+    "Show mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Show mode 1",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Show mode 2",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Show mode 3",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [53, 67],
+          "type": "Effect",
+          "effectName": "Show mode 4",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Show mode 5",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Show mode 6",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Show mode 7",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Show mode 8",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Show mode 9",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Show mode 10",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Show mode 11",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Show mode 12",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Show mode 13",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Show mode 14",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Show mode 15",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "Show mode 16",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Show mode speed"
+          }
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity": "Sound sensitivity"
+          }
+        }
+      ]
+    },
+    "Show mode speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Light control": {
       "capabilities": [
         {
           "dmxRange": [0, 30],
-          "type": "NoFunction"
+          "type": "Effect",
+          "effectName": "Auto color change"
         },
         {
           "dmxRange": [31, 45],
           "type": "ColorPreset",
-          "comment": "R"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [46, 60],
           "type": "ColorPreset",
-          "comment": "G"
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [61, 75],
           "type": "ColorPreset",
-          "comment": "B"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [76, 90],
           "type": "ColorPreset",
-          "comment": "W"
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [91, 105],
           "type": "ColorPreset",
-          "comment": "RG"
+          "comment": "Red + Green",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [106, 120],
           "type": "ColorPreset",
-          "comment": "RB"
+          "comment": "Red + Blue",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [121, 135],
           "type": "ColorPreset",
-          "comment": "RW"
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
           "dmxRange": [136, 150],
           "type": "ColorPreset",
-          "comment": "GB"
+          "comment": "Green + Blue",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [151, 165],
           "type": "ColorPreset",
-          "comment": "GW"
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [166, 180],
           "type": "ColorPreset",
-          "comment": "BW"
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
         },
         {
           "dmxRange": [181, 195],
           "type": "ColorPreset",
-          "comment": "RGB"
+          "comment": "Red + Green + Blue",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [196, 210],
           "type": "ColorPreset",
-          "comment": "RGW"
+          "comment": "Red + Green + White",
+          "colors": ["#ffff80"]
         },
         {
           "dmxRange": [211, 225],
           "type": "ColorPreset",
-          "comment": "RBW"
+          "comment": "Red + Blue + White",
+          "colors": ["#ff80ff"]
         },
         {
           "dmxRange": [226, 240],
           "type": "ColorPreset",
-          "comment": "GBW"
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
         },
         {
           "dmxRange": [241, 255],
           "type": "ColorPreset",
-          "comment": "RGBW"
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ffffff"]
         }
       ]
+    },
+    "Auto color change speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Auto": {
       "capabilities": [
@@ -231,14 +417,27 @@
   },
   "modes": [
     {
-      "name": "14ch",
+      "name": "6 Channel Mode",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Show Mode",
+        "Show mode speed / Sound sensitivity",
+        "Light control",
+        "Auto color change speed"
+      ]
+    },
+    {
+      "name": "14 Channel Mode",
+      "shortName": "14ch",
       "channels": [
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
         "Pan/Tilt Speed",
-        "Dimmer",
+        "Master Dimmer",
         "Strobe",
         "Color Macros",
         "Auto",
