@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hydrabeam CLHB400W RGBW",
   "shortName": "CLHB400W RGBW",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["ashmotif200"],
     "createDate": "2022-11-06",
@@ -28,16 +28,46 @@
       "type": "LED"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [["1", "2", "3", "4"]]
+    ]
+  },
+  "templateChannels": {
+    "Pan $pixelKey": {
+      "fineChannelAliases": ["Pan $pixelKey fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt $pixelKey": {
+      "fineChannelAliases": ["Tilt $pixelKey fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
-    "Pan": {
-      "fineChannelAliases": ["Pan fine"],
+    "Master Pan": {
+      "fineChannelAliases": ["Master Pan fine"],
       "capability": {
         "type": "Pan",
         "angle": "90deg"
       }
     },
-    "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
+    "Master Tilt": {
+      "fineChannelAliases": ["Master Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angle": "90deg"
@@ -390,34 +420,41 @@
         "soundSensitivityEnd": "high"
       }
     },
-    "Red": {
+    "Master Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Master Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Master Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "Master White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "Head speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     }
   },
   "modes": [
     {
-      "name": "6 Channel Mode",
+      "name": "6 Channel",
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
@@ -429,23 +466,42 @@
       ]
     },
     {
-      "name": "14 Channel Mode",
-      "shortName": "14ch",
+      "name": "10 Channel",
+      "shortName": "10ch",
       "channels": [
-        "Pan",
-        "Pan fine",
-        "Tilt",
-        "Tilt fine",
-        "Pan/Tilt Speed",
+        "Master Pan",
+        "Master Tilt",
         "Master Dimmer",
         "Strobe",
-        "Color Macros",
-        "Auto",
-        "Sound Sensitivity",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        "Show Mode",
+        "Show mode speed / Sound sensitivity",
+        "Light control",
+        "Auto color change speed",
+        "Master Pan fine",
+        "Master Tilt fine"
+      ]
+    },
+    {
+      "name": "19 Channel",
+      "shortName": "19ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Master Red",
+        "Master Green",
+        "Master Blue",
+        "Master White",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Tilt $pixelKey",
+            "Dimmer $pixelKey"
+          ]
+        },
+        "Head Speed"
       ]
     }
   ]
