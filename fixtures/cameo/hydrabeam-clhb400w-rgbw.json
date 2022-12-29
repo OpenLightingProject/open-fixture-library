@@ -322,16 +322,20 @@
   "availableChannels": {
     "Master Pan": {
       "fineChannelAliases": ["Master Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
-        "angle": "90deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Master Tilt": {
       "fineChannelAliases": ["Master Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
-        "angle": "90deg"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Pan/Tilt Speed": {
