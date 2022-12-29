@@ -56,6 +56,37 @@
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Head Speed $pixelKey simple": {
+      "name": "Head Speed $pixelKey",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Head Speed $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Use Head Speed 1"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
     }
   },
   "availableChannels": {
@@ -450,6 +481,29 @@
         "speedStart": "fast",
         "speedEnd": "slow"
       }
+    },
+    "Sound mode / Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [210, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
     }
   },
   "modes": [
@@ -502,6 +556,35 @@
           ]
         },
         "Head Speed"
+      ]
+    },
+    {
+      "name": "32 Channel",
+      "shortName": "32ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Color $pixelKey"
+          ]
+        },
+        "Sound mode / Reset",
+        "Sound sensitivity",
+        "Master Red",
+        "Master Green",
+        "Master Blue",
+        "Master White"
       ]
     }
   ]
