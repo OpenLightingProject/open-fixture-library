@@ -87,6 +87,236 @@
           "speedEnd": "slow"
         }
       ]
+    },
+    "Strobe $pixelKey": {
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "comment": "Use master color dimmers"
+        },
+        {
+          "dmxRange": [31, 45],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [46, 60],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [61, 75],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
+        },
+        {
+          "dmxRange": [136, 150],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [151, 165],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
+        },
+        {
+          "dmxRange": [181, 195],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [196, 210],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ffff80"]
+        },
+        {
+          "dmxRange": [211, 225],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "dmxRange": [226, 240],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mode $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [8, 30],
+          "type": "Effect",
+          "effectName": "Show mode 1",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [31, 53],
+          "type": "Effect",
+          "effectName": "Show mode 2",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [54, 76],
+          "type": "Effect",
+          "effectName": "Show mode 3",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [77, 99],
+          "type": "Effect",
+          "effectName": "Show mode 4",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [100, 122],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [123, 199],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Maintenance",
+          "comment": "reset",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        }
+      ]
+    },
+    "Show mode speed $pixelKey": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound sensitivity $pixelKey": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     }
   },
   "availableChannels": {
@@ -402,55 +632,6 @@
         "speedEnd": "fast"
       }
     },
-    "Auto": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [8, 30],
-          "type": "Generic"
-        },
-        {
-          "dmxRange": [31, 53],
-          "type": "Generic"
-        },
-        {
-          "dmxRange": [54, 76],
-          "type": "Generic"
-        },
-        {
-          "dmxRange": [77, 99],
-          "type": "Generic"
-        },
-        {
-          "dmxRange": [100, 122],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "off",
-          "soundSensitivityEnd": "high"
-        },
-        {
-          "dmxRange": [123, 199],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [200, 224],
-          "type": "Maintenance"
-        },
-        {
-          "dmxRange": [225, 255],
-          "type": "NoFunction"
-        }
-      ]
-    },
-    "Sound Sensitivity": {
-      "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
-      }
-    },
     "Master Red": {
       "capability": {
         "type": "ColorIntensity",
@@ -585,6 +766,33 @@
         "Master Green",
         "Master Blue",
         "Master White"
+      ]
+    },
+    {
+      "name": "56 Channel",
+      "shortName": "56ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey simple",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Color $pixelKey",
+            "Mode $pixelKey",
+            "Show mode speed / Sound sensitivity $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
