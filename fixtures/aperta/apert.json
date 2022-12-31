@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "APERT",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["jules"],
+    "createDate": "2022-12-31",
+    "lastModifyDate": "2022-12-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/aperta-3"
+    ],
+    "productPage": [
+      "https://www.star-way.com/aperta-3"
+    ],
+    "video": [
+      "https://www.star-way.com/aperta-3"
+    ]
+  },
+  "availableChannels": {
+    "TEST": {
+      "fineChannelAliases": ["TEST fine", "TEST fine^2"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "dimmer",
+      "channels": [
+        "TEST",
+        "TEST fine",
+        "TEST fine^2"
+      ]
+    }
+  ]
+}
