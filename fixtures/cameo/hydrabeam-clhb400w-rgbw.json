@@ -30,7 +30,9 @@
   },
   "matrix": {
     "pixelKeys": [
-      [["1", "2", "3", "4"]]
+      [
+        ["1", "2", "3", "4"]
+      ]
     ]
   },
   "templateChannels": {
@@ -361,7 +363,8 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -693,7 +696,7 @@
   },
   "modes": [
     {
-      "name": "6 Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
@@ -705,7 +708,7 @@
       ]
     },
     {
-      "name": "10 Channel",
+      "name": "10-channel",
       "shortName": "10ch",
       "channels": [
         "Master Pan",
@@ -721,7 +724,7 @@
       ]
     },
     {
-      "name": "19 Channel",
+      "name": "19-channel",
       "shortName": "19ch",
       "channels": [
         "Master Dimmer",
@@ -744,7 +747,7 @@
       ]
     },
     {
-      "name": "32 Channel",
+      "name": "32-channel",
       "shortName": "32ch",
       "channels": [
         "Master Dimmer",
@@ -773,7 +776,7 @@
       ]
     },
     {
-      "name": "56 Channel",
+      "name": "56-channel",
       "shortName": "56ch",
       "channels": [
         {
