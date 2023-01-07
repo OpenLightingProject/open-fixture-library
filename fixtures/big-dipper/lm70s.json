@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lm70s",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["lm70s"],
+    "createDate": "2023-01-07",
+    "lastModifyDate": "2023-01-07"
+  },
+  "links": {
+    "productPage": [
+      "https://betopperdj.com/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "lm70s",
+      "channels": [
+        "Pan"
+      ]
+    }
+  ]
+}
