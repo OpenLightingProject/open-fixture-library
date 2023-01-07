@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB RGBUV PAR Light",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Ackermann Csaba", "ackcsaba"],
+    "createDate": "2023-01-07",
+    "lastModifyDate": "2023-01-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-01-07",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [100, 100, 95],
+    "weight": 0.4,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Effect",
+          "effectName": "Total dimmer ( combined CH2, CH3, CH4)"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Jump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Voice"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Strobe (From",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 255],
+          "type": "ColorPreset",
+          "comment": "Color Selection (Combined CH1 use)"
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed adjustable (from slow to fast) (Combined CH use)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Total Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Functions",
+        "Color Selection",
+        "Speed",
+        "Total Dimmer",
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "UV Dimmer"
+      ]
+    }
+  ]
+}
