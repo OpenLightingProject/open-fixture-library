@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclFresnel TW",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Jaran Lorenzen"],
+    "createDate": "2023-01-09",
+    "lastModifyDate": "2023-01-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolights.it/en/product/ECLFRESNELTW"
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/ECLFRESNELTW"
+    ],
+    "video": [
+      "https://www.prolights.it/en/product/ECLFRESNELTW"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Royal Blue": {
+      "fineChannelAliases": ["Royal Blue fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer speed mode": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Generic",
+          "comment": "Mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Mode1 (fast speed)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Mode2 (middle speed)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "Mode3 (slow speed)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 CH",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Dimmer speed mode"
+      ]
+    }
+  ]
+}
