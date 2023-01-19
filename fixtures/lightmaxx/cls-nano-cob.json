@@ -1,0 +1,274 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLS Nano COB",
+  "categories": ["Stand", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["prtr"],
+    "createDate": "2023-01-19",
+    "lastModifyDate": "2023-01-19"
+  },
+  "comment": "4 RGB COB Spots, 30W each",
+  "links": {
+    "manual": [
+      "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/ms-ch/CHF/ViewProductAttachment-ResolveManualURL?File=DE_LIG0015657-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/de_CH/CHF/lightmaXX-CLS-Nano-COB/art-LIG0015657-000"
+    ]
+  },
+  "physical": {
+    "dimensions": [720, 200, 110],
+    "weight": 5.7,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "Generic",
+          "comment": "Full ON"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "ColorPreset",
+          "comment": "Color Change Jump"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "ColorPreset",
+          "comment": "Color Fade"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "ColorPreset",
+          "comment": "Color"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Generic",
+          "comment": "Music Mode 1"
+        },
+        {
+          "dmxRange": [220, 249],
+          "type": "Generic",
+          "comment": "Music Mode 2"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Music Mode 3"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed of Channel 6"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 1"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 1"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 1"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 2"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 2"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 2"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 3"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 3"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 3"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 4"
+      }
+    },
+    "Green 5": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 4"
+      }
+    },
+    "Blue 5": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 4"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch All Spots together RGB",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7ch All Spots together RGB + Effect",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Presets",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "12ch individual Spot Control RGB",
+      "shortName": "12ch",
+      "channels": [
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5"
+      ]
+    },
+    {
+      "name": "16ch individual Spot RGB + effects",
+      "channels": [
+        "Dimmer",
+        "Strobe Speed",
+        "Red 2",
+        "Blue 2",
+        "Green 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Color Presets",
+        "Program Speed"
+      ]
+    }
+  ]
+}
