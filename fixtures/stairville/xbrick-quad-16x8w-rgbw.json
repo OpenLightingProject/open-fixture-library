@@ -1,0 +1,631 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xBrick Quad 16x8W RGBW",
+  "shortName": "xBrick",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Maximilian B."],
+    "createDate": "2023-01-20",
+    "lastModifyDate": "2023-01-20"
+  },
+  "comment": "4 Clusters of 4 RGBW LEDs (4x4)",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_385641_r4_en_online.pdf"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i5704p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [315, 88, 195],
+    "weight": 4.3,
+    "power": 128,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 25]
+    }
+  },
+  "availableChannels": {
+    "Intensity red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Stroboscope effect": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Intensity red if channel 7 = 0...4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green if channel 7 = 0...4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue if channel 7 = 0...4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white if channel 7 = 0...4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer if channel 7 = 5...233": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Stroboscope effect if channel 7 = 5...233": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Function select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Effect",
+          "effectName": "Intensity cyan",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Intensity purple",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Intensity pink",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Intensity orange",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Intensity cold white",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Intensity bright red",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Intensity bright green",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Intensity bright blue",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Intensity yellow",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Intensity warm white",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Intensity red",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Intensity green",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Intensity blue",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Intensity amber",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Intensity all",
+          "speed": "stop",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Intensity on pre defined color"
+        },
+        {
+          "dmxRange": [80, 86],
+          "type": "Effect",
+          "effectName": "Programme 02",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [87, 93],
+          "type": "Effect",
+          "effectName": "Programme 03",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [94, 100],
+          "type": "Effect",
+          "effectName": "Programme 04",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [101, 107],
+          "type": "Effect",
+          "effectName": "Programme 05",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [108, 114],
+          "type": "Effect",
+          "effectName": "Programme 06",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [115, 121],
+          "type": "Effect",
+          "effectName": "Programme 07",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "Effect",
+          "effectName": "Programme 08",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [129, 135],
+          "type": "Effect",
+          "effectName": "Programme 09",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [136, 142],
+          "type": "Effect",
+          "effectName": "Programme 10",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [143, 149],
+          "type": "Effect",
+          "effectName": "Programme 11",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [150, 156],
+          "type": "Effect",
+          "effectName": "Programme 12",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [157, 163],
+          "type": "Effect",
+          "effectName": "Programme 13",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [164, 170],
+          "type": "Effect",
+          "effectName": "Programme 14",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [171, 177],
+          "type": "Effect",
+          "effectName": "Programme 15",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [178, 184],
+          "type": "Effect",
+          "effectName": "Programme 16",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [185, 191],
+          "type": "Effect",
+          "effectName": "Programme 17",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "Effect",
+          "effectName": "Programme 18",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [199, 205],
+          "type": "Effect",
+          "effectName": "Programme 19",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [206, 212],
+          "type": "Effect",
+          "effectName": "Programme 20",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [213, 219],
+          "type": "Effect",
+          "effectName": "Programme 21",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [220, 226],
+          "type": "Effect",
+          "effectName": "Programme 22",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [227, 233],
+          "type": "Effect",
+          "effectName": "Programme 23",
+          "comment": "Fixed Program"
+        },
+        {
+          "dmxRange": [234, 240],
+          "type": "Effect",
+          "effectName": "Sound-controlled operation, slow transition programmes 02 to 23",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled operation, fast transition programmes 02 to 23",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Intensity red segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity red segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity red segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity red segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity green segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity blue segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity white segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Function options": {
+      "capability": {
+        "type": "Generic",
+        "comment": "No function, if channel 7 = 0 ... 79, Programme speed, if channel 7 = 80 ... 233, Microphone sensitivity, if channel 7 = 234 ... 255. Values range from 0 to 255."
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Intensity red",
+        "Intensity green",
+        "Intensity blue",
+        "Intensity white"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity red",
+        "Intensity green",
+        "Intensity blue",
+        "Intensity white",
+        "Dimmer",
+        "Stroboscope effect"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity red if channel 7 = 0...4",
+        "Intensity green if channel 7 = 0...4",
+        "Intensity blue if channel 7 = 0...4",
+        "Intensity white if channel 7 = 0...4",
+        "Dimmer if channel 7 = 5...233",
+        "Stroboscope effect if channel 7 = 5...233",
+        "Function select",
+        "Function options"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Intensity red segment 1",
+        "Intensity green segment 1",
+        "Intensity blue segment 1",
+        "Intensity white segment 1",
+        "Intensity red segment 2",
+        "Intensity green segment 2",
+        "Intensity blue segment 2",
+        "Intensity white segment 2",
+        "Intensity red segment 3",
+        "Intensity green segment 3",
+        "Intensity blue segment 3",
+        "Intensity white segment 3",
+        "Intensity red segment 4",
+        "Intensity green segment 4",
+        "Intensity blue segment 4",
+        "Intensity white segment 4"
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Intensity red segment 1",
+        "Intensity green segment 1",
+        "Intensity blue segment 1",
+        "Intensity white segment 1",
+        "Intensity red segment 2",
+        "Intensity green segment 2",
+        "Intensity blue segment 2",
+        "Intensity white segment 2",
+        "Intensity red segment 3",
+        "Intensity green segment 3",
+        "Intensity blue segment 3",
+        "Intensity white segment 3",
+        "Intensity red segment 4",
+        "Intensity green segment 4",
+        "Intensity blue segment 4",
+        "Intensity white segment 4",
+        "Dimmer",
+        "Stroboscope effect"
+      ]
+    }
+  ]
+}
