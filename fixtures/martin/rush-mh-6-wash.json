@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rush MH 6 Wash",
+  "shortName": "MH 6",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jerome Meyer"],
+    "createDate": "2023-01-22",
+    "lastModifyDate": "2023-01-22"
+  },
+  "links": {
+    "productPage": [
+      "https://www.martin.com/en/products/rush-mh-6-wash"
+    ]
+  },
+  "physical": {
+    "weight": 7,
+    "power": 150,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Strobe & Pulse Effects": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer F": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Color Wheel",
+        "duration": "short"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan F": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt F": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Control Settings": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "75-79: Normal, 80-89: Fast, 90-94: Slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RUSH BEAM",
+      "shortName": "RB",
+      "channels": [
+        "Strobe & Pulse Effects",
+        "Dimmer",
+        "Dimmer F",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Wheel",
+        "Zoom",
+        "Pan",
+        "Pan F",
+        "Tilt",
+        "Tilt F",
+        "Control Settings"
+      ]
+    }
+  ]
+}
