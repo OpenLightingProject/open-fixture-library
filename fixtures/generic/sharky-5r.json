@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sharky 5R",
+  "shortName": "5R",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Nathan"],
+    "createDate": "2023-01-31",
+    "lastModifyDate": "2023-01-31"
+  },
+  "links": {
+    "other": [
+      "https://google.nl"
+    ]
+  },
+  "rdm": {
+    "modelId": 65535
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Gobo"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "stop"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Frost Filter": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Macro"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Reset"
+      }
+    },
+    "Lamp On": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Lamp ON"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 16 CH",
+      "channels": [
+        "Color Wheel",
+        "Shutter",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Gobo Wheel Rotation",
+        "Frost Filter",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Macro",
+        "Reset",
+        "Lamp On"
+      ]
+    }
+  ]
+}
