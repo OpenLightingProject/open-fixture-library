@@ -17,7 +17,7 @@
     <h2>Used resources</h2>
     <p>
       Fonts: <a href="https://www.latofonts.com/">Lato</a> and <a href="https://levien.com/type/myfonts/inconsolata.html" class="monospaced">Inconsolata</a><br>
-      Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a>
+      Icons: <a href="https://pictogrammers.com/library/mdi/">Material Design Icons</a>
     </p>
 
     <h2>Contribute</h2>
