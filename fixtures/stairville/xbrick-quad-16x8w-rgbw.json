@@ -1,16 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "xBrick Quad 16x8W RGBW",
-  "shortName": "xBrick",
+  "shortName": "xBrick RGBW",
   "categories": ["Color Changer", "Strobe"],
   "meta": {
     "authors": ["Maximilian B."],
-    "createDate": "2023-01-20",
-    "lastModifyDate": "2023-01-20"
+    "createDate": "2023-02-11",
+    "lastModifyDate": "2023-02-11"
   },
   "comment": "4 Clusters of 4 RGBW LEDs (4x4)",
   "links": {
+    "productPage": [
+      "https://www.thomann.de/stairville_xbrick_quad_16x8w_rgbw.htm"
+    ],
     "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_385641_v4_en_online.pdf",
       "https://images.thomann.de/pics/atg/atgdata/document/manual/c_385641_r4_en_online.pdf"
     ],
     "video": [
@@ -20,13 +24,13 @@
   "physical": {
     "dimensions": [315, 88, 195],
     "weight": 4.3,
-    "power": 128,
+    "power": 125,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 25]
+      "degreesMinMax": [25, 25]
     }
   },
   "matrix": {
