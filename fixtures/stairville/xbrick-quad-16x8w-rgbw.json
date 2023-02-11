@@ -29,6 +29,47 @@
       "degreesMinMax": [0, 25]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1A", "1B", null, "2A", "2B", null, "3A", "3B", null, "4A", "4B"],
+        ["1C", "1D", null, "2C", "2D", null, "3C", "3D", null, "4C", "4D"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "1": { "name": ["^1[A-D]$"] },
+      "2": { "name": ["^2[A-D]$"] },
+      "3": { "name": ["^3[A-D]$"] },
+      "4": { "name": ["^4[A-D]$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "availableChannels": {
     "Intensity red": {
       "capability": {
