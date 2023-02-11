@@ -594,10 +594,17 @@
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Intensity red",
-        "Intensity green",
-        "Intensity blue",
-        "Intensity white"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
