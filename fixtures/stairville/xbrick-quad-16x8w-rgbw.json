@@ -454,134 +454,6 @@
         }
       ]
     },
-    "Intensity red segment 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity green segment 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity blue segment 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity white segment 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity red segment 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity green segment 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity blue segment 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity white segment 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity red segment 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity green segment 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity blue segment 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity white segment 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity red segment 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity green segment 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity blue segment 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Intensity white segment 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
     "Function options": {
       "capability": {
         "type": "Generic",
@@ -644,44 +516,34 @@
       "name": "16-channel",
       "shortName": "16ch",
       "channels": [
-        "Intensity red segment 1",
-        "Intensity green segment 1",
-        "Intensity blue segment 1",
-        "Intensity white segment 1",
-        "Intensity red segment 2",
-        "Intensity green segment 2",
-        "Intensity blue segment 2",
-        "Intensity white segment 2",
-        "Intensity red segment 3",
-        "Intensity green segment 3",
-        "Intensity blue segment 3",
-        "Intensity white segment 3",
-        "Intensity red segment 4",
-        "Intensity green segment 4",
-        "Intensity blue segment 4",
-        "Intensity white segment 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "18-channel",
       "shortName": "18ch",
       "channels": [
-        "Intensity red segment 1",
-        "Intensity green segment 1",
-        "Intensity blue segment 1",
-        "Intensity white segment 1",
-        "Intensity red segment 2",
-        "Intensity green segment 2",
-        "Intensity blue segment 2",
-        "Intensity white segment 2",
-        "Intensity red segment 3",
-        "Intensity green segment 3",
-        "Intensity blue segment 3",
-        "Intensity white segment 3",
-        "Intensity red segment 4",
-        "Intensity green segment 4",
-        "Intensity blue segment 4",
-        "Intensity white segment 4",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Dimmer",
         "Stroboscope effect"
       ]
