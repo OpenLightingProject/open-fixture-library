@@ -611,10 +611,17 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Intensity red",
-        "Intensity green",
-        "Intensity blue",
-        "Intensity white",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Dimmer",
         "Stroboscope effect"
       ]
