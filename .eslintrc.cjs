@@ -138,6 +138,7 @@ const enabledRuleParameters = {
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
+  'promise/no-multiple-resolved': [],
   'promise/no-nesting': [],
   'promise/no-promise-in-callback': [],
   'promise/no-return-in-finally': [],
@@ -217,7 +218,7 @@ const enabledRuleParameters = {
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
-  'vue/v-on-function-call': [`always`],
+  'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
 
   // already included in presets, but needed here because we reduce severity to `warn`
@@ -229,6 +230,7 @@ const enabledRuleParameters = {
 const vueCoreExtensionRules = [
   `array-bracket-newline`,
   `array-bracket-spacing`,
+  `array-element-newline`,
   `arrow-spacing`,
   `block-spacing`,
   `brace-style`,
@@ -243,6 +245,7 @@ const vueCoreExtensionRules = [
   `key-spacing`,
   `keyword-spacing`,
   `max-len`,
+  `multiline-ternary`,
   `no-constant-condition`,
   `no-empty-pattern`,
   `no-extra-parens`,
@@ -364,6 +367,7 @@ module.exports = {
       rules: {
         'import/no-commonjs': `off`,
         'unicorn/prefer-module': `off`,
+        'unicorn/prefer-top-level-await': `off`,
       },
     },
     {
