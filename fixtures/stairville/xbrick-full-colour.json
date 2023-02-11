@@ -35,91 +35,42 @@
       "degreesMinMax": [30, 30]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1A", "1B", null, "2A", "2B", null, "3A", "3B", null, "4A", "4B"],
+        ["1C", "1D", null, "2C", "2D", null, "3C", "3D", null, "4C", "4D"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "1": { "name": ["^1[A-D]$"] },
+      "2": { "name": ["^2[A-D]$"] },
+      "3": { "name": ["^3[A-D]$"] },
+      "4": { "name": ["^4[A-D]$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
   "availableChannels": {
-    "Red1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Red2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Red3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Red4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Green2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Green3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Green4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Blue2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Blue3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Blue4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
     "Master Dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -141,9 +92,16 @@
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Master Dimmer",
         "Strobe Speed"
       ]
@@ -152,18 +110,16 @@
       "name": "13-channel",
       "shortName": "13ch",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
-        "Red2",
-        "Green2",
-        "Blue2",
-        "Red3",
-        "Green3",
-        "Blue3",
-        "Red4",
-        "Green4",
-        "Blue4",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Master Dimmer"
       ]
     }
