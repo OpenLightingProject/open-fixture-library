@@ -86,19 +86,12 @@
 </style>
 
 <script>
+import { objectProp, oneOfProp } from 'vue-ts-types';
+
 export default {
   props: {
-    type: {
-      type: String,
-      required: true,
-      validator(type) {
-        return [`fixture`, `capability`, `plugin`].includes(type);
-      },
-    },
-    context: {
-      type: Object,
-      required: true,
-    },
+    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
+    context: objectProp().required,
   },
   computed: {
     location() {
@@ -164,7 +157,7 @@ export default {
 
       const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
 };

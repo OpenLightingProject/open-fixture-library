@@ -72,8 +72,8 @@
 
     <div class="button-bar right">
       <button
-        type="submit"
-        :disabled="error"
+        type="button"
+        :disabled="error || !wizard.templateCapability.type"
         class="restore primary"
         @click.prevent="apply()">
         Generate capabilities
@@ -131,6 +131,7 @@ th {
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
@@ -159,18 +160,9 @@ export default {
     EditorCapabilityTypeData,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    wizard: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    resolution: numberProp().required,
+    wizard: objectProp().required,
   },
   computed: {
     capabilities() {

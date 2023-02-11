@@ -45,11 +45,11 @@
         :state="formstate"
         tag="span">
         <PropertyInputText
+          ref="newDmxConnectorInput"
           v-model="localPhysical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="schemaDefinitions.nonEmptyString"
           required
-          auto-focus
           hint="other DMX connector"
           class="addition" />
       </Validate>
@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import { objectProp, stringProp } from 'vue-ts-types';
 import {
   schemaDefinitions,
   physicalProperties,
@@ -137,18 +138,9 @@ export default {
     prop: `physical`,
   },
   props: {
-    physical: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
-    namePrefix: {
-      type: String,
-      required: true,
-    },
+    physical: objectProp().required,
+    formstate: objectProp().required,
+    namePrefix: stringProp().required,
   },
   data() {
     return {
@@ -165,6 +157,12 @@ export default {
         this.$emit(`input`, clone(this.localPhysical));
       },
       deep: true,
+    },
+    'physical.DMXconnector': async function(newValue) {
+      if (newValue === `[add-value]` && this.$root._oflRestoreComplete) {
+        await this.$nextTick();
+        this.$refs.newDmxConnectorInput.focus();
+      }
     },
   },
   mounted() {

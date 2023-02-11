@@ -140,6 +140,7 @@
 </style>
 
 <script>
+import { instanceOfProp, stringProp } from 'vue-ts-types';
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import FineChannel from '../../../lib/model/FineChannel.js';
@@ -161,19 +162,9 @@ export default {
     LabeledValue,
   },
   props: {
-    channel: {
-      type: AbstractChannel,
-      required: true,
-    },
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    appendToHeading: {
-      type: String,
-      required: false,
-      default: ``,
-    },
+    channel: instanceOfProp(AbstractChannel).required,
+    mode: instanceOfProp(Mode).required,
+    appendToHeading: stringProp().optional,
   },
   data() {
     return {

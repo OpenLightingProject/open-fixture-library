@@ -175,7 +175,7 @@ export default {
     return {
       formstate: getEmptyFormState(),
       readyToAutoSave: false,
-      restoredData: null,
+      restoredData: undefined,
       fixture: getEmptyFixture(),
       channel: getEmptyChannel(),
       githubUsername: ``,
@@ -337,7 +337,7 @@ export default {
         }
       }
       catch {
-        this.restoredData = null;
+        this.restoredData = undefined;
         this.restoreComplete();
         return;
       }

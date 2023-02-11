@@ -5,7 +5,7 @@
     :aria-hidden="shown ? `false` : `true`"
     :aria-labelledby="`${id}-dialog-title`"
     :role="isAlertDialog ? `alertdialog` : undefined"
-    @click="overlayClick($event)">
+    @click.self="overlayClick($event)">
 
     <div
       ref="dialog"
@@ -24,7 +24,7 @@
           <OflSvg name="close" />
         </button>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1">
           <slot name="title">{{ title }}</slot>
         </h2>
 
@@ -112,36 +112,18 @@ $container-fade-duration: 200ms;
 }
 </style>
 
-
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    id: {
-      type: String,
-      required: true,
-      validator(id) {
-        return id.endsWith(`-dialog`);
-      },
-    },
-    isAlertDialog: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    shown: {
-      type: Boolean,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: false,
-      default: ``,
-    },
-    wide: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    id: stringProp(
+      id => (typeof id === `string` && id.endsWith(`-dialog`) ? undefined : `id should end with "-dialog".`),
+    ).required,
+    isAlertDialog: booleanProp().withDefault(false),
+    shown: booleanProp().withDefault(true),
+    title: stringProp().required,
+    wide: booleanProp().withDefault(false),
   },
   data() {
     return {
@@ -178,17 +160,13 @@ export default {
       }
     },
     show() {
-      if (this.dialog) {
-        this.dialog.show();
-      }
+      this.dialog?.show();
     },
     hide() {
-      if (this.dialog) {
-        this.dialog.hide();
-      }
+      this.dialog?.hide();
     },
-    overlayClick(event) {
-      if (!this.isAlertDialog && !event.target.closest(`.dialog`)) {
+    overlayClick() {
+      if (!this.isAlertDialog) {
         this.hide();
       }
     },

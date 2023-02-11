@@ -3,7 +3,6 @@ import { inspect } from 'util';
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
@@ -15,6 +14,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
+import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
 
@@ -540,10 +540,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCapability(capability, errorPrefix) {
         const switchingChannelAliases = Object.keys(capability.switchChannels);
-        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
-        }
-        else {
+        if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
@@ -552,6 +549,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               result.errors.push(`${errorPrefix} references unknown channel '${channelKey}'.`);
             }
           }
+        }
+        else {
+          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
 
         checkStartEndEntities();
@@ -919,9 +919,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
-        const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
+        const coarserChannelKeys = [...coarseChannel.fineChannelAliases.filter(
           (alias, index) => index < fineChannel.resolution - 2,
-        ).concat(coarseChannel.key);
+        ), coarseChannel.key];
 
         const notInMode = coarserChannelKeys.filter(
           coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1,
@@ -938,7 +938,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    * Add a warning if there are unused channels.
    */
   function checkUnusedChannels() {
-    const unused = Array.from(definedChannelKeys).filter(
+    const unused = [...definedChannelKeys].filter(
       channelKey => !usedChannelKeys.has(channelKey),
     ).join(`, `);
 

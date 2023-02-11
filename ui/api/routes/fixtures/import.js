@@ -77,7 +77,7 @@ async function importFixture(body) {
       result.manufacturers[manufacturerKey] = oflManufacturers[manufacturerKey];
     }
 
-    result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
+    result.warnings[key] = [...result.warnings[key], ...checkResult.warnings];
     result.errors[key] = checkResult.errors;
   }
 

@@ -126,9 +126,9 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2021-09-24`,
-      climateStrikeWebsite: `https://fridaysforfuture.org/September24/`,
-      hashtags: [`UprootTheSystem`, `fridaysforfuture`, `climatestrike`],
+      strikeDateString: `2023-03-03`,
+      climateStrikeWebsite: `https://fridaysforfuture.de/globaler-klimastreik/`,
+      hashtags: [`PeopleNotProfit`, `fridaysforfuture`, `climatestrike`],
     };
   },
   created() {

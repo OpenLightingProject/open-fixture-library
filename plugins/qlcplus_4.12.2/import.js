@@ -971,7 +971,7 @@ function mergeSimilarSwitchChannels(switchChannels) {
     }
 
     const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
-    switchChannel.key = Array.from(alternatives).join(` / `);
+    switchChannel.key = [...alternatives].join(` / `);
   }
 }
 

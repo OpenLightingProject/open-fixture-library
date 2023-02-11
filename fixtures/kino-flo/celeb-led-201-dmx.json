@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Celeb LED 201 DMX",
+  "shortName": "Celeb 201",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2022-05-07",
+    "lastModifyDate": "2022-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.kinoflotest2.com/PDF/News/Operational%20Manual%20for%20the%20web/3100084%20Rev%20A%20Celeb%20201%20LED%20DMX%2007-01-2015.pdf"
+    ],
+    "productPage": [
+      "https://www.kinoflotest2.com/Products%20Button/LED/Celeb%20200%20DMX/Celeb200_DMX.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TK2RRkvcjL8"
+    ]
+  },
+  "physical": {
+    "dimensions": [61, 36, 13],
+    "weight": 6.8,
+    "power": 100,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 22],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "3030K"
+        },
+        {
+          "dmxRange": [23, 32],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3045K",
+          "colorTemperatureEnd": "3171K"
+        },
+        {
+          "dmxRange": [33, 114],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3185K",
+          "colorTemperatureEnd": "4400K"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4415K",
+          "colorTemperatureEnd": "4471K"
+        },
+        {
+          "dmxRange": [120, 181],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4485K",
+          "colorTemperatureEnd": "5400K"
+        },
+        {
+          "dmxRange": [182, 186],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5415K",
+          "colorTemperatureEnd": "5471K"
+        },
+        {
+          "dmxRange": [187, 249],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5485K",
+          "colorTemperatureEnd": "6415K"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6430K",
+          "colorTemperatureEnd": "6500K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DIMMING + CCT",
+      "shortName": "DIM+CCT",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}

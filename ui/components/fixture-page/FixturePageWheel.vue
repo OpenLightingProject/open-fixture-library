@@ -147,8 +147,11 @@
             <tr
               v-for="(slot, index) of wheel.slots"
               :key="`slot-${index}`"
+              tabindex="0"
               @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
-              @mouseout="highlightedSlot = null">
+              @focusin="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+              @mouseout="highlightedSlot = null"
+              @focusout="highlightedSlot = null">
               <th scope="row">Slot {{ index + 1 }}</th>
               <td>{{ slot.name }}</td>
             </tr>
@@ -199,7 +202,7 @@ figcaption ::v-deep summary {
   font-weight: 700;
   text-align: center;
 
-  &:not(:hover):not(:focus) {
+  &:not(:hover, :focus) {
     background: theme-color(card-background, 80%);
   }
 }
@@ -225,6 +228,7 @@ figcaption table {
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Wheel from '../../../lib/model/Wheel.js';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
@@ -234,10 +238,7 @@ export default {
     ConditionalDetails,
   },
   props: {
-    wheel: {
-      type: Wheel,
-      required: true,
-    },
+    wheel: instanceOfProp(Wheel).required,
   },
   data() {
     return {

@@ -3,7 +3,10 @@
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
       v-if="buttonStyle === `select`"
-      @change="onDownloadSelect($event)">
+      @click="selectClicked = true"
+      @keyup.enter="$event.target.blur()"
+      @change="onDownloadSelectChange($event)"
+      @blur="onDownloadSelectBlur($event)">
       <option value="" disabled selected>{{ title }}</option>
       <option v-for="plugin of exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
@@ -187,45 +190,25 @@ select {
 </style>
 
 <script>
+import { booleanProp, integerProp, objectProp, oneOfProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
     // how many fixtures will be downloaded, if !isSingle?
-    fixtureCount: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
+    fixtureCount: integerProp().withDefault(0),
     // fixtures from the editor, not yet submitted
-    editorFixtures: {
-      type: Object,
-      required: false,
-      default: undefined,
-    },
+    editorFixtures: objectProp().optional,
     // the manufacturer key and fixture key of a submitted fixture
-    fixtureKey: {
-      type: String,
-      required: false,
-      default: undefined,
-    },
+    fixtureKey: stringProp().optional,
     // the button style: default, 'home' or 'select'
-    buttonStyle: {
-      type: String,
-      required: false,
-      default: `default`,
-      validator(buttonStyle) {
-        return [`default`, `home`, `select`].includes(buttonStyle);
-      },
-    },
+    buttonStyle: oneOfProp([`default`, `home`, `select`]).withDefault(`default`),
     // show the help box
-    showHelp: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    showHelp: booleanProp().withDefault(false),
   },
   data() {
     return {
       exportPlugins: [],
+      selectClicked: false,
     };
   },
   async fetch() {
@@ -264,7 +247,7 @@ export default {
   },
   methods: {
     downloadDataAsFile(blob, filename = ``) {
-      if (window.navigator.msSaveBlob !== undefined) {
+      if (window.navigator.msSaveBlob) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
         window.navigator.msSaveBlob(blob, filename);
@@ -330,7 +313,12 @@ export default {
       event.preventDefault();
       this.formattedDownload(pluginKey);
     },
-    onDownloadSelect(event) {
+    onDownloadSelectChange(event) {
+      if (this.selectClicked) {
+        event.target.blur(); // trigger download
+      }
+    },
+    onDownloadSelectBlur(event) {
       if (event.target.value === ``) {
         // no plugin has been selected
         return;
@@ -340,6 +328,7 @@ export default {
 
       // reset the select value to make it feel more like a button
       event.target.value = ``;
+      this.selectClicked = false;
 
       if (!this.editorFixtures) {
         // download an already submitted fixture

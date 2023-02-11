@@ -170,12 +170,16 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * @returns {object} Name and DMX personalities of the latest RDM software version(both may be undefined).
+     * @returns {object} Name and DMX personalities of the latest RDM software version (both may be undefined).
      */
     function getLatestSoftwareVersion() {
-      const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
-        (maxVersion, currentVersion) => ((maxVersion && maxVersion.$.Value > currentVersion.$.Value) ? maxVersion : currentVersion),
-      );
+      let maxSoftwareVersion = undefined;
+
+      for (const rdmVersion of rdmData.SoftwareVersionID || []) {
+        if (!maxSoftwareVersion || rdmVersion.$.Value > maxSoftwareVersion.$.Value) {
+          maxSoftwareVersion = rdmVersion;
+        }
+      }
 
       if (maxSoftwareVersion) {
         return {
@@ -916,7 +920,7 @@ export async function importFixtures(buffer, filename, authorName) {
       };
     });
 
-    const matrixPixelList = Array.from(matrixPixels);
+    const matrixPixelList = [...matrixPixels];
 
     fixture.matrix = {
       pixelKeys: [
@@ -949,7 +953,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      const channelKeys = [channelKey].concat(oflChannel.fineChannelAliases);
+      const channelKeys = [channelKey, ...oflChannel.fineChannelAliases];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)

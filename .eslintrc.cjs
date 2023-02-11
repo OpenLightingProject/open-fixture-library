@@ -1,5 +1,4 @@
 const pluginPresets = {
-  'array-func': `all`,
   import: `recommended`,
   jsdoc: `recommended`,
   markdown: `recommended`,
@@ -8,6 +7,7 @@ const pluginPresets = {
   sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
+  'vuejs-accessibility': `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
 };
 
@@ -41,6 +41,7 @@ const enabledRuleParameters = {
   'no-array-constructor': [],
   'no-bitwise': [],
   'no-confusing-arrow': [{ allowParens: true }],
+  'no-constant-binary-expression': [],
   'no-else-return': [{ allowElseIf: false }],
   'no-irregular-whitespace': [],
   'no-lonely-if': [],
@@ -132,8 +133,12 @@ const enabledRuleParameters = {
   // eslint-plugin-jsonc
   'jsonc/auto': [],
 
+  // eslint-plugin-nuxt
+  'nuxt/require-func-head': [],
+
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
+  'promise/no-multiple-resolved': [],
   'promise/no-nesting': [],
   'promise/no-promise-in-callback': [],
   'promise/no-return-in-finally': [],
@@ -175,7 +180,7 @@ const enabledRuleParameters = {
     registeredComponentsOnly: false,
   }],
   'vue/component-tags-order': [{
-    order: [`template`, `style`, `script`],
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
@@ -186,15 +191,14 @@ const enabledRuleParameters = {
     extensions: [`vue`],
     shouldMatchCase: true,
   }],
+  'vue/match-component-import-name': [],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
-  'vue/no-child-content': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
-  'vue/no-invalid-model-keys': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
       `^Ofl(Svg|Time)$`, // global components
@@ -208,13 +212,13 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
-  'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
-  'vue/v-on-function-call': [`always`],
+  'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
 
   // already included in presets, but needed here because we reduce severity to `warn`
@@ -226,6 +230,7 @@ const enabledRuleParameters = {
 const vueCoreExtensionRules = [
   `array-bracket-newline`,
   `array-bracket-spacing`,
+  `array-element-newline`,
   `arrow-spacing`,
   `block-spacing`,
   `brace-style`,
@@ -240,6 +245,7 @@ const vueCoreExtensionRules = [
   `key-spacing`,
   `keyword-spacing`,
   `max-len`,
+  `multiline-ternary`,
   `no-constant-condition`,
   `no-empty-pattern`,
   `no-extra-parens`,
@@ -278,12 +284,13 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
-  `unicorn/no-array-reduce`,
-  `unicorn/no-useless-undefined`,
-  `unicorn/prefer-node-protocol`,
-  `unicorn/prefer-spread`,
+  `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
+  `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
+  `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
+  `vuejs-accessibility/form-control-has-label`,
+  `vuejs-accessibility/label-has-for`,
 ];
 
 for (const ruleName of vueCoreExtensionRules) {
@@ -360,6 +367,7 @@ module.exports = {
       rules: {
         'import/no-commonjs': `off`,
         'unicorn/prefer-module': `off`,
+        'unicorn/prefer-top-level-await': `off`,
       },
     },
     {

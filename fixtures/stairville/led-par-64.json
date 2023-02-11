@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Jászberényi Szabolcs", "Jakob"],
+    "createDate": "2021-10-04",
+    "lastModifyDate": "2021-10-04",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-10-04",
+      "comment": "created by Q Light Controller Plus (version 4.11.3 GIT)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/115048_c_115012_115025_215918_115048_215926_115050_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_led_par_64_10_mm_black_rgb.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 395, 200],
+    "weight": 1.7,
+    "power": 17,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "183× 10mm LEDs (61× red, 61× green, 61× blue)"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed / Strobe": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Fade out",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Fade in",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Fade in/out",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto mix",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "3-color chases",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "7-color chases",
+          "switchChannels": {
+            "Speed / Strobe": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound-to-light",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed / Strobe": "Strobe"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Macro",
+        "Speed / Strobe",
+        "Mode",
+        "Dimmer"
+      ]
+    }
+  ]
+}

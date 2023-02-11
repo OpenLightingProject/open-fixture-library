@@ -8,12 +8,15 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 
-export const version = `0.1.0`;
+export const version = `0.1.1`;
 
 /**
- * @param {Fixture[]} fixtures The fixtures to convert into DMXControl device definitions
- * @param {options} options Some global options
- * @returns {Promise<object[], Error>} The generated files
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const deviceDefinitions = [];
@@ -28,7 +31,7 @@ export async function exportFixtures(fixtures, options) {
             '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': version,
+            '@ddfversion': options.displayedPluginVersion ?? version,
           },
         });
 
@@ -133,10 +136,16 @@ function addFunctions(xml, mode) {
       }
     }
 
-    let xmlFunctions = [];
+    const xmlFunctions = [];
     for (const functionKey of Object.keys(functionToCapabilities)) {
       const capabilities = functionToCapabilities[functionKey];
-      xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, capabilities));
+      const functions = ddf3Functions[functionKey].create(channel, capabilities);
+      if (Array.isArray(functions)) {
+        xmlFunctions.push(...functions);
+      }
+      else {
+        xmlFunctions.push(functions);
+      }
     }
     for (const xmlFunction of xmlFunctions) {
       addChannelAttributes(xmlFunction, mode, channel);
@@ -191,7 +200,7 @@ function getChannelsPerPixel(mode) {
 
   const matrix = mode.fixture.matrix;
   if (matrix !== null) {
-    const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
+    const pixelKeys = [...matrix.pixelGroupKeys, ...matrix.getPixelKeysByOrder(`X`, `Y`, `Z`)];
     for (const key of pixelKeys) {
       channelsPerPixel.set(key, []);
     }
