@@ -60,7 +60,6 @@
       }
     },
     "Head Speed $pixelKey simple": {
-      "name": "Head Speed $pixelKey",
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -663,7 +662,7 @@
         "color": "White"
       }
     },
-    "Head speed": {
+    "Head Speed": {
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
@@ -701,7 +700,7 @@
       "channels": [
         "Master Dimmer",
         "Strobe",
-        "Show Mode",
+        "Show mode",
         "Show mode speed / Sound sensitivity",
         "Light control",
         "Auto color change speed"
@@ -715,7 +714,7 @@
         "Master Tilt",
         "Master Dimmer",
         "Strobe",
-        "Show Mode",
+        "Show mode",
         "Show mode speed / Sound sensitivity",
         "Light control",
         "Auto color change speed",
@@ -793,7 +792,7 @@
             "Strobe $pixelKey",
             "Color $pixelKey",
             "Mode $pixelKey",
-            "Show mode speed / Sound sensitivity $pixelKey",
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey",
             "Red $pixelKey",
             "Green $pixelKey",
             "Blue $pixelKey",
