@@ -548,11 +548,31 @@
       "name": "32-channel",
       "shortName": "32ch",
       "channels": [
-        "Master Dimmer",
-        "Strobe",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey simple",
+            "Color $pixelKey"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["2", "3", "4"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -560,8 +580,6 @@
             "Tilt $pixelKey",
             "Tilt $pixelKey fine",
             "Head Speed $pixelKey",
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
             "Color $pixelKey"
           ]
         },
