@@ -229,14 +229,14 @@
         "color": "White"
       }
     },
-    "Mode $pixelKey": {
+    "Show mode $pixelKey": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "NoFunction",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -244,7 +244,7 @@
           "type": "Effect",
           "effectName": "Show mode 1",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -252,7 +252,7 @@
           "type": "Effect",
           "effectName": "Show mode 2",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -260,7 +260,7 @@
           "type": "Effect",
           "effectName": "Show mode 3",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -268,7 +268,7 @@
           "type": "Effect",
           "effectName": "Show mode 4",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -277,14 +277,14 @@
           "effectName": "Sound control",
           "soundControlled": true,
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
           }
         },
         {
           "dmxRange": [123, 199],
           "type": "NoFunction",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -292,14 +292,14 @@
           "type": "Maintenance",
           "comment": "reset",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "dmxRange": [225, 255],
           "type": "NoFunction",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         }
       ]
@@ -320,215 +320,11 @@
     }
   },
   "availableChannels": {
-    "Master Pan": {
-      "fineChannelAliases": ["Master Pan fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Master Tilt": {
-      "fineChannelAliases": ["Master Tilt fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
-      }
-    },
-    "Master Dimmer": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Show mode": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [8, 22],
-          "type": "Effect",
-          "effectName": "Show mode 1",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [23, 37],
-          "type": "Effect",
-          "effectName": "Show mode 2",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [38, 52],
-          "type": "Effect",
-          "effectName": "Show mode 3",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [53, 67],
-          "type": "Effect",
-          "effectName": "Show mode 4",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [68, 82],
-          "type": "Effect",
-          "effectName": "Show mode 5",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [83, 97],
-          "type": "Effect",
-          "effectName": "Show mode 6",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [98, 112],
-          "type": "Effect",
-          "effectName": "Show mode 7",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [113, 127],
-          "type": "Effect",
-          "effectName": "Show mode 8",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [128, 142],
-          "type": "Effect",
-          "effectName": "Show mode 9",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [143, 157],
-          "type": "Effect",
-          "effectName": "Show mode 10",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [158, 172],
-          "type": "Effect",
-          "effectName": "Show mode 11",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [173, 187],
-          "type": "Effect",
-          "effectName": "Show mode 12",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [188, 202],
-          "type": "Effect",
-          "effectName": "Show mode 13",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [203, 217],
-          "type": "Effect",
-          "effectName": "Show mode 14",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [218, 232],
-          "type": "Effect",
-          "effectName": "Show mode 15",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [233, 247],
-          "type": "Effect",
-          "effectName": "Show mode 16",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [248, 255],
-          "type": "Effect",
-          "effectName": "Sound Control",
-          "soundControlled": true,
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Sound sensitivity"
-          }
-        }
-      ]
-    },
-    "Show mode speed": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Sound sensitivity": {
-      "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
       }
     },
     "Light control": {
@@ -637,30 +433,6 @@
         "speedEnd": "fast"
       }
     },
-    "Master Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Master Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Master Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Master White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Head Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -697,10 +469,17 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Master Dimmer",
-        "Strobe",
-        "Show mode",
-        "Show mode speed / Sound sensitivity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Show mode $pixelKey",
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey"
+          ]
+        },
         "Light control",
         "Auto color change speed"
       ]
@@ -709,28 +488,49 @@
       "name": "10-channel",
       "shortName": "10ch",
       "channels": [
-        "Master Pan",
-        "Master Tilt",
-        "Master Dimmer",
-        "Strobe",
-        "Show mode",
-        "Show mode speed / Sound sensitivity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Tilt $pixelKey",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Show mode $pixelKey",
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey"
+          ]
+        },
         "Light control",
         "Auto color change speed",
-        "Master Pan fine",
-        "Master Tilt fine"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey fine"
+          ]
+        }
       ]
     },
     {
       "name": "19-channel",
       "shortName": "19ch",
       "channels": [
-        "Master Dimmer",
-        "Strobe",
-        "Master Red",
-        "Master Green",
-        "Master Blue",
-        "Master White",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelABC",
@@ -766,11 +566,18 @@
           ]
         },
         "Sound mode / Reset",
-        "Sound sensitivity",
-        "Master Red",
-        "Master Green",
-        "Master Blue",
-        "Master White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Sound sensitivity $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -790,7 +597,7 @@
             "Dimmer $pixelKey",
             "Strobe $pixelKey",
             "Color $pixelKey",
-            "Mode $pixelKey",
+            "Show mode $pixelKey",
             "Show mode speed $pixelKey / Sound sensitivity $pixelKey",
             "Red $pixelKey",
             "Green $pixelKey",
