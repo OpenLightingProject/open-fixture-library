@@ -110,63 +110,54 @@
         },
         {
           "type": "Gobo",
-          "name": "gobo 1"
+          "name": "Gobo 1"
         },
         {
           "type": "Gobo",
-          "name": "gobo 2"
+          "name": "Gobo 2"
         },
         {
           "type": "Gobo",
-          "name": "gobo 3"
+          "name": "Gobo 3"
         },
         {
           "type": "Gobo",
-          "name": "gobo 4"
+          "name": "Gobo 4"
         },
         {
           "type": "Gobo",
-          "name": "gobo 5"
+          "name": "Gobo 5"
         },
         {
           "type": "Gobo",
-          "name": "gobo 6"
+          "name": "Gobo 6"
         },
         {
           "type": "Gobo",
-          "name": "gobo 7"
+          "name": "Gobo 7"
         },
         {
           "type": "Gobo",
-          "name": "gobo 8"
+          "name": "Gobo 8"
         },
         {
           "type": "Gobo",
-          "name": "gobo 9"
+          "name": "Gobo 9"
         },
         {
           "type": "Gobo",
-          "name": "gobo 10"
+          "name": "Gobo 10"
         },
         {
           "type": "Gobo",
-          "name": "gobo 11"
+          "name": "Gobo 11"
         },
         {
           "type": "Gobo",
-          "name": "gobo 12"
+          "name": "Gobo 12"
         },
         {
           "type": "Closed"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Frost"
-        },
-        {
-          "type": "Open"
         }
       ]
     }
@@ -350,11 +341,14 @@
         {
           "dmxRange": [239, 254],
           "type": "WheelSlot",
-          "slotNumber": 17
+          "slotNumberStart": 15,
+          "slotNumberEnd": 16,
+          "comment": "Strobe-effect with increasing speed"
         },
         {
           "dmxRange": [255, 255],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumber": 16
         }
       ]
     },
