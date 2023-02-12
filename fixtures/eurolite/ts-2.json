@@ -33,58 +33,73 @@
         },
         {
           "type": "Color",
-          "name": "Red"
+          "name": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "type": "Color",
-          "name": "Yellow"
+          "name": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "type": "Color",
-          "name": "Magenta"
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "type": "Color",
-          "name": "Green"
+          "name": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "type": "Color",
-          "name": "Orange"
+          "name": "Orange",
+          "colors": ["#ff8000"]
         },
         {
           "type": "Color",
-          "name": "Blue"
+          "name": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "type": "Color",
-          "name": "Pink"
+          "name": "Pink",
+          "colors": ["#ff0080"]
         },
         {
           "type": "Color",
-          "name": "light Green"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color",
-          "name": "Orange"
+          "name": "Light Green",
+          "colors": ["#00ff80"]
         },
         {
           "type": "Color",
-          "name": "Light Yellow"
+          "name": "Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "type": "Color",
-          "name": "magenta"
+          "name": "Orange",
+          "colors": ["#ff8000"]
         },
         {
           "type": "Color",
-          "name": "Red and Blue"
+          "name": "Light Yellow",
+          "colors": ["#ffff80"]
         },
         {
           "type": "Color",
-          "name": "Yellow and Green"
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red and Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow and Green",
+          "colors": ["#ffff00", "#00ff00"]
         }
       ]
     },
@@ -221,8 +236,7 @@
         {
           "dmxRange": [162, 179],
           "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "Cyan"
+          "slotNumber": 10
         },
         {
           "dmxRange": [180, 197],
