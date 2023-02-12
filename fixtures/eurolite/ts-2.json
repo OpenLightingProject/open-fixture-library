@@ -1,19 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ts-2",
-  "categories": ["Scanner"],
+  "name": "TS-2 DMX-Scanner",
+  "shortName": "TS-2",
+  "categories": ["Scanner", "Color Changer"],
   "meta": {
     "authors": ["oxim"],
-    "createDate": "2022-12-18",
-    "lastModifyDate": "2022-12-18"
+    "createDate": "2023-02-12",
+    "lastModifyDate": "2023-02-12"
   },
   "links": {
     "productPage": [
       "https://www.steinigke.fr/en/mpn51785765-eurolite-ts-2-scan.html"
+    ],
+    "manual": [
+      "https://www.steinigke.fr/download/51785765-Manual-9543-1.400-eurolite-ts-2-scan-de_en_es_fr.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=w5T1t7J5q_o"
     ]
   },
   "physical": {
-    "dimensions": [195, 290, 595],
+    "dimensions": [195, 290, 295],
     "weight": 4,
     "power": 115,
     "DMXconnector": "3-pin"
