@@ -29,11 +29,10 @@
     }
   },
   "matrix": {
-    "pixelKeys": [
-      [
-        ["1", "2", "3", "4"]
-      ]
-    ]
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "All": "all"
+    }
   },
   "templateChannels": {
     "Pan $pixelKey": {
