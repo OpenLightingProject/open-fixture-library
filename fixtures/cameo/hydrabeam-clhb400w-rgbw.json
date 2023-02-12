@@ -533,7 +533,7 @@
         },
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -552,7 +552,7 @@
         "Strobe",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -586,7 +586,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
+          "repeatFor": ["1"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -594,6 +594,27 @@
             "Tilt $pixelKey",
             "Tilt $pixelKey fine",
             "Head Speed $pixelKey simple",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Color $pixelKey",
+            "Show mode $pixelKey",
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey",
             "Dimmer $pixelKey",
             "Strobe $pixelKey",
             "Color $pixelKey",
