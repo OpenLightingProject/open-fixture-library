@@ -331,24 +331,19 @@
         {
           "dmxRange": [113, 127],
           "type": "WheelSlot",
-          "slotNumber": 15
+          "slotNumber": 1
         },
         {
           "dmxRange": [128, 238],
           "type": "WheelSlot",
-          "slotNumber": 16
-        },
-        {
-          "dmxRange": [239, 254],
-          "type": "WheelSlot",
-          "slotNumberStart": 15,
-          "slotNumberEnd": 16,
+          "slotNumberStart": 0,
+          "slotNumberEnd": 1,
           "comment": "Strobe-effect with increasing speed"
         },
         {
-          "dmxRange": [255, 255],
+          "dmxRange": [239, 255],
           "type": "WheelSlot",
-          "slotNumber": 16
+          "slotNumber": 1
         }
       ]
     },
