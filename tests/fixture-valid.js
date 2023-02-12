@@ -3,7 +3,6 @@ import { inspect } from 'util';
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
@@ -15,6 +14,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
+import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
 

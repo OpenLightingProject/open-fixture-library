@@ -230,6 +230,7 @@ const enabledRuleParameters = {
 const vueCoreExtensionRules = [
   `array-bracket-newline`,
   `array-bracket-spacing`,
+  `array-element-newline`,
   `arrow-spacing`,
   `block-spacing`,
   `brace-style`,
