@@ -113,9 +113,9 @@
   column-gap: 3rem;
 
   & > section {
-    break-inside: avoid;
-    overflow: hidden;
     padding: 0 0 1.2ex;
+    overflow: hidden;
+    break-inside: avoid;
 
     &:empty {
       display: none;
@@ -129,6 +129,7 @@
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Physical from '../../../lib/model/Physical.js';
 
 import LabeledValue from '../LabeledValue.vue';
@@ -138,10 +139,7 @@ export default {
     LabeledValue,
   },
   props: {
-    physical: {
-      type: Physical,
-      required: true,
-    },
+    physical: instanceOfProp(Physical).required,
   },
 };
 </script>

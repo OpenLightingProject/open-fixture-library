@@ -1,24 +1,31 @@
-const express = require(`express`);
-const chalk = require(`chalk`);
-const cors = require(`cors`);
-const OpenAPIBackend = require(`openapi-backend`).default;
-const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
+import { fileURLToPath } from 'url';
+import chalk from 'chalk';
+import cors from 'cors';
+import express from 'express';
+import { OpenAPIBackend } from 'openapi-backend';
+import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
+import { sendJson } from '../../lib/server-response-helpers.js';
+
+import * as routeHandlers from './routes.js';
 
 /**
- * @typedef {Object} ApiResponse
- * @property {Number} [statusCode=200] The HTTP status code set for the response.
- * @property {Object} body The response body that should be sent as JSON back to the API client.
+ * @typedef {object} ApiResponse
+ * @property {number} [statusCode=200] The HTTP status code set for the response.
+ * @property {object} body The response body that should be sent as JSON back to the API client.
  */
 
-const router = express.Router();
+const app = express();
+
+// support JSON encoded bodies
+app.use(express.json({ limit: `50mb` }));
 
 const corsWhitelist = [
-  /[/.]open-fixture-library\.org(?::\d+|)$/,
-  /[/.]open-fixture-library-pr-\d+\.herokuapp\.com$/,
+  /[./]open-fixture-library\.org(?::\d+|)$/,
+  /[./]open-fixture-library-pr-\d+\.herokuapp\.com$/,
   /\/localhost(?::\d+|)$/,
 ];
 
-router.use(cors({
+app.use(cors({
   origin(origin, callback) {
     const corsAllowed = process.env.NODE_ENV !== `production`
       || !origin // allow non XHR/fetch requests
@@ -30,99 +37,87 @@ router.use(cors({
 }));
 
 
-// The Regex is actually not unsafe, just in a more concise form than the one
-// that security/detect-unsafe-regex would not complain about.
-// eslint-disable-next-line security/detect-unsafe-regex
-const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({
-  definition: `${__dirname}/openapi.json`,
+  definition: fileURLToPath(new URL(`openapi.json`, import.meta.url)),
   strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
       base64: base64Regex,
     },
   },
-  handlers: Object.assign({},
-    requireNoCacheInDev(`./routes/get-search-results.js`),
-    requireNoCacheInDev(`./routes/submit-feedback.js`),
-    requireNoCacheInDev(`./routes/fixtures/from-editor.js`),
-    requireNoCacheInDev(`./routes/fixtures/import.js`),
-    requireNoCacheInDev(`./routes/fixtures/submit.js`),
-    requireNoCacheInDev(`./routes/manufacturers/index.js`),
-    requireNoCacheInDev(`./routes/manufacturers/_manufacturerKey.js`),
-    requireNoCacheInDev(`./routes/plugins/index.js`),
-    requireNoCacheInDev(`./routes/plugins/_pluginKey.js`),
-    {
-      validationFail(ctx, request, response) {
-        let error = ctx.validation.errors;
+  handlers: {
+    ...routeHandlers,
+    validationFail({ validation, request, operation }) {
+      let error = validation.errors;
 
-        if (typeof error !== `string`) {
-          error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
-        }
+      if (typeof error !== `string`) {
+        error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
+      }
 
-        const errorDescription = `API request for ${request.originalUrl} (${ctx.operation.operationId}) doesn't match schema:`;
+      const errorDescription = `API request for ${request.originalUrl} (${operation.operationId}) doesn't match schema:`;
 
-        console.error(chalk.bgRed(errorDescription));
-        console.error(error);
+      console.error(chalk.bgRed(errorDescription));
+      console.error(error);
 
-        return response.status(400).json({
-          error: `${errorDescription}\n${error}`,
-        });
-      },
-      notFound(ctx, request, response) {
-        return response.status(404).json({ error: `Not found` });
-      },
-      methodNotAllowed(ctx, request, response) {
-        return response.status(405).json({ error: `Method not allowed` });
-      },
-      notImplemented(ctx, request, response) {
-        return response.status(501).json({ error: `No handler registered for operation` });
-      },
-      postResponseHandler(ctx, request, response) {
-        if (!ctx.response || !ctx.operation) {
-          return null;
-        }
-
-        const { statusCode = 200, body } = /** @type {ApiResponse} */ (ctx.response);
-
-        // validate API responses in development mode
-        if (process.env.NODE_ENV !== `production`) {
-          const valid = api.validateResponse(body, ctx.operation, statusCode);
-
-          if (valid.errors) {
-            let error = valid.errors;
-
-            if (typeof error !== `string`) {
-              error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
-            }
-
-            const errorDescription = `API response for ${request.originalUrl} (${ctx.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
-
-            console.error(chalk.bgRed(errorDescription));
-            console.error(error);
-          }
-        }
-
-        return response.status(statusCode).json(body);
-      },
+      return {
+        statusCode: 400,
+        body: { error: `${errorDescription}\n${error}` },
+      };
     },
-  ),
+    notFound(context) {
+      return {
+        statusCode: 404,
+        body: { error: `Not found` },
+      };
+    },
+    methodNotAllowed(context) {
+      return {
+        statusCode: 405,
+        body: { error: `Method not allowed` },
+      };
+    },
+    notImplemented(context) {
+      return {
+        statusCode: 501,
+        body: { error: `No handler registered for operation` },
+      };
+    },
+    postResponseHandler({ request, response, operation }) {
+      if (!response || !operation) {
+        return null;
+      }
+
+      const { statusCode = 200, body } = /** @type {ApiResponse} */ response;
+
+      // validate API responses in development mode
+      if (process.env.NODE_ENV !== `production`) {
+        const valid = api.validateResponse(body, operation, statusCode);
+
+        if (valid.errors) {
+          let error = valid.errors;
+
+          if (typeof error !== `string`) {
+            error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
+          }
+
+          const errorDescription = `API response for ${request.originalUrl} (${operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+
+          console.error(chalk.bgRed(errorDescription));
+          console.error(error);
+        }
+      }
+
+      return response;
+    },
+  },
 });
 
-router.use((req, res) => api.handleRequest(req, req, res));
+app.use(async (request, response) => {
+  const { statusCode = 200, body } = await api.handleRequest(request);
+  response.statusCode = statusCode;
+  sendJson(response, body);
+});
 
-module.exports = router;
-
-/**
- * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {String} target The require path, like `./register.json`.
- * @returns {*} The result of standard require(target).
- */
-function requireNoCacheInDev(target) {
-  if (process.env.NODE_ENV !== `production`) {
-    delete require.cache[require.resolve(target)];
-  }
-
-  return require(target);
-}
+export default app;

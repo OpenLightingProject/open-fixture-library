@@ -1,36 +1,33 @@
-const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
+import xml2js from 'xml2js';
 
 /**
- * @typedef {Object} ExportFile
- * @property {String} name File name, may include slashes to provide a folder structure.
- * @property {String} content File content.
- * @property {String} mimetype File mime type.
- * @property {Array.<Fixture>|null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @property {String|null} mode Mode's shortName if given file only describes a single mode.
+ * @typedef {object} ExportFile
+ * @property {string} name File name, may include slashes to provide a folder structure.
+ * @property {string} content File content.
+ * @property {string} mimetype File mime type.
+ * @property {Fixture[] | null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @property {string | null} mode Mode's shortName if given file only describes a single mode.
  */
 
 /**
  * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {Array.<ExportFile>} allExportFiles An array of all export files.
- * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-module.exports = async function testAttributesCorrectness(exportFile, allExportFiles) {
-  const parser = new xml2js.Parser();
-
+export default async function testAttributesCorrectness(exportFile, allExportFiles) {
   try {
-    const xml = await promisify(parser.parseString)(exportFile.content);
+    const xml = await xml2js.parseStringPromise(exportFile.content);
     const errors = [];
 
-    const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
-    for (const attrDef of attrDefs) {
+    const attributeDefinitions = xml.Device.Attributes[0].AttributesDefinition;
+    for (const attributeDefinition of attributeDefinitions) {
       const usedNames = [];
-      const attrName = attrDef.$.id;
+      const attributeName = attributeDefinition.$.id;
 
-      for (const attr of attrDef.ThisAttribute) {
-        const name = attr.parameterName[0].$.id;
+      for (const attribute of attributeDefinition.ThisAttribute) {
+        const name = attribute.parameterName[0].$.id;
         if (usedNames.includes(name)) {
-          errors.push(`Duplicate parameter name: ${attrName}/${name}`);
+          errors.push(`Duplicate parameter name: ${attributeName}/${name}`);
         }
         else {
           usedNames.push(name);
@@ -42,7 +39,7 @@ module.exports = async function testAttributesCorrectness(exportFile, allExportF
       throw errors;
     }
   }
-  catch (parseErrors) {
-    throw `Error parsing XML: ${parseErrors.toString()}`;
+  catch (parseError) {
+    throw `Error parsing XML: ${parseError.toString()}`;
   }
-};
+}

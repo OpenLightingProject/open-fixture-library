@@ -26,7 +26,7 @@ Vue.use(VueForm, {
         return true;
       }
 
-      if (isNaN(range[0]) || isNaN(range[1])) {
+      if (Number.isNaN(range[0]) || Number.isNaN(range[1])) {
         // let number validator handle this
         return true;
       }
@@ -40,19 +40,19 @@ Vue.use(VueForm, {
       return dimensions === null || (dimensions[0] !== null && dimensions[1] !== null && dimensions[2] !== null);
     },
     'start-with-uppercase-or-number': function(value) {
-      return /^[A-Z0-9]/.test(value);
+      return /^[\dA-Z]/.test(value);
     },
     'no-mode-name': function(value) {
       return !/\bmode\b/i.test(value);
     },
     'no-fine-channel-name': function(value) {
-      if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(value)) {
+      if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
         return false;
       }
 
       return !/\bLSB\b|\bMSB\b/.test(value);
     },
-    'entity-complete': function(value, attrValue, vnode) {
+    'entity-complete': function(value, attributeValue, vnode) {
       const component = vnode.componentInstance;
 
       if (component.hasNumber) {
@@ -61,20 +61,20 @@ Vue.use(VueForm, {
 
       return true;
     },
-    'entities-have-same-units': function(value, attrValue, vnode) {
+    'entities-have-same-units': function(value, attributeValue, vnode) {
       return vnode.componentInstance.hasSameUnit;
     },
     'valid-color-hex-list': function(value) {
-      return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
+      return /^\s*#[\da-f]{6}(?:\s*,\s*#[\da-f]{6})*\s*$/i.test(value);
     },
-    'max-file-size': function(file, attrValue) {
+    'max-file-size': function(file, attributeValue) {
       if (typeof file === `object`) {
-        let maxSize = parseInt(attrValue, 10);
+        let maxSize = Number.parseInt(attributeValue, 10);
 
-        if (attrValue.includes(`M`)) {
+        if (attributeValue.includes(`M`)) {
           maxSize *= 1000 * 1000;
         }
-        else if (attrValue.includes(`k`)) {
+        else if (attributeValue.includes(`k`)) {
           maxSize *= 1000;
         }
 

@@ -19,21 +19,21 @@
         type="button"
         class="icon-button expand-all only-js"
         title="Expand all channels"
-        @click.prevent="openDetails">
+        @click.prevent="openDetails()">
         <OflSvg name="chevron-double-down" />
       </button>
       <button
         type="button"
         class="icon-button collapse-all only-js"
         title="Collapse all channels"
-        @click.prevent="closeDetails">
+        @click.prevent="closeDetails()">
         <OflSvg name="chevron-double-up" />
       </button>
     </template></h3>
 
     <ol class="mode-channels">
       <FixturePageChannel
-        v-for="channel in mode.channels"
+        v-for="channel of mode.channels"
         :key="channel.key"
         :channel="channel"
         :mode="mode"
@@ -47,10 +47,23 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
+}
+
+ol.mode-channels {
+  min-height: 1em;
+  padding-left: 1.9em;
+
+  // switched channels
+  ::v-deep ol {
+    padding-left: 1.1em;
+    list-style-type: lower-alpha;
+  }
 }
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
 
 import FixturePageChannel from './FixturePageChannel.vue';
@@ -62,14 +75,7 @@ export default {
     FixturePagePhysical,
   },
   props: {
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true,
-    },
+    mode: instanceOfProp(Mode).required,
   },
   data() {
     return {
@@ -81,24 +87,24 @@ export default {
       return this.mode.channels.length > 1 && this.hasDetails;
     },
   },
-  mounted() {
+  async mounted() {
     // wait for all child components to render
-    this.$nextTick(() => {
-      if (!this.$el.querySelector(`details`)) {
-        this.hasDetails = false;
-      }
-    });
+    await this.$nextTick();
+
+    if (!this.$el.querySelector(`details`)) {
+      this.hasDetails = false;
+    }
   },
   methods: {
     openDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = true;
-      });
+      }
     },
     closeDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = false;
-      });
+      }
     },
   },
 };

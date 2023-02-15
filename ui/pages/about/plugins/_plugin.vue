@@ -12,8 +12,8 @@
     <div class="plugin-description" v-html="pluginData.description" />
 
     <ul>
-      <li v-for="link in Object.keys(pluginData.links)" :key="link">
-        <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
+      <li v-for="link of Object.keys(pluginData.links)" :key="link">
+        <a :href="pluginData.links[link]" target="_blank" rel="nofollow noopener">{{ link }}</a>
       </li>
     </ul>
 
@@ -21,10 +21,12 @@
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
-      <h2 id="fixture-usage">Fixture usage</h2>
+      <h2 id="fixture-usage">Install fixture definitions</h2>
+
+      <p><NuxtLink to="/manufacturers">Browse to the fixture</NuxtLink> you want to download, then select <em>{{ pluginData.name }}</em> in the <em>Download as…</em> button.</p>
 
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="pluginData.fixtureUsage" />
@@ -37,11 +39,11 @@
         Fixture files in subdirectories are {{ pluginData.fileLocations.subDirectoriesAllowed ? `recognized` : `not recognized` }}.
       </p>
 
-      <div v-for="os in fileLocationOSes" :key="os">
+      <div v-for="os of fileLocationOSes" :key="os">
         <h3>{{ os }}</h3>
 
         <section>
-          <div v-for="library in Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
+          <div v-for="library of Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
             {{ libraryNames[library] }}: <code>{{ pluginData.fileLocations[os][library] }}</code>
           </div>
         </section>
@@ -81,22 +83,22 @@
   }
 
   & ::v-deep code {
-    background-color: theme-color(header-background);
     padding: 3px 5px;
+    background-color: theme-color(header-background);
   }
 
   & ::v-deep table {
     margin: 1rem 0;
-    border: 1px solid theme-color(divider);
     border-collapse: collapse;
+    border: 1px solid theme-color(divider);
 
-    th, td {
-      border: 1px solid theme-color(divider);
+    th,
+    td {
       padding: 1px 1ex;
+      border: 1px solid theme-color(divider);
     }
   }
 }
-
 </style>
 
 <script>
@@ -109,9 +111,8 @@ export default {
     HelpWantedMessage,
   },
   async asyncData({ params, $axios, redirect, error }) {
-    const pluginKey = decodeURIComponent(params.plugin);
+    const pluginKey = params.plugin;
     let pluginData;
-
     try {
       pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
     }
@@ -124,24 +125,15 @@ export default {
       return redirect(301, `/about/plugins/${newPluginKey}`);
     }
 
-    const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
-      os => os !== `subDirectoriesAllowed`,
-    ) : null;
-
+    return { pluginData };
+  },
+  data() {
     return {
-      pluginData,
-      fileLocationOSes,
-      exportPluginVersion: pluginData.exportPluginVersion,
-      importPluginVersion: pluginData.importPluginVersion,
+      helpWantedContext: undefined,
       libraryNames: {
         main: `Main (system) library`,
         user: `User library`,
       },
-    };
-  },
-  data() {
-    return {
-      helpWantedContext: null,
     };
   },
   head() {
@@ -156,6 +148,19 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    exportPluginVersion() {
+      return this.pluginData.exportPluginVersion;
+    },
+    importPluginVersion() {
+      return this.pluginData.importPluginVersion;
+    },
+    fileLocationOSes() {
+      return `fileLocations` in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
+        os => os !== `subDirectoriesAllowed`,
+      ) : null;
+    },
   },
   methods: {
     openHelpWantedDialog(event) {

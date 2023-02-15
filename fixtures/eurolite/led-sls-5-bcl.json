@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED SLS-5 BCL",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Christian Hollbjär", "darth62"],
+    "createDate": "2020-09-20",
+    "lastModifyDate": "2020-09-20",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-04-17",
+      "comment": "created by Q Light Controller Plus (version 4.10.5 GIT)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915390-Manual-80943-1.300-eurolite-led-sls-5-bcl-5x5w-floor-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51915390-eurolite-led-sls-5-bcl-5x5w-floor.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 270, 110],
+    "weight": 3,
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5× 5W BCL LED (White+Amber)"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Sound / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [29, 57],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [58, 82],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"],
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [83, 87],
+          "type": "Effect",
+          "effectName": "Color Dreaming 1",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [88, 92],
+          "type": "Effect",
+          "effectName": "Color Dreaming 2",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [93, 97],
+          "type": "Effect",
+          "effectName": "Color Dreaming 3",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [98, 163],
+          "type": "NoFunction",
+          "helpWanted": "Which mode is selected in this DMX range?",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [164, 168],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [169, 245],
+          "type": "NoFunction",
+          "helpWanted": "Which mode is selected in this DMX range?",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer",
+        "Sound / Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer",
+        "Strobe / Speed / Sensitivity",
+        "Effect"
+      ]
+    }
+  ]
+}

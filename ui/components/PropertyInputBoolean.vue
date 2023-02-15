@@ -11,32 +11,14 @@
 </template>
 
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: Boolean,
-      required: false,
-      default: null,
-    },
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    required: booleanProp().withDefault(false),
+    value: booleanProp().withDefault(false),
+    name: stringProp().required,
+    label: stringProp().required,
   },
   computed: {
     localValue: {
@@ -49,10 +31,10 @@ export default {
     },
   },
   methods: {
+    /** @public */
     focus() {
       this.$refs.input.focus();
     },
   },
 };
 </script>
-

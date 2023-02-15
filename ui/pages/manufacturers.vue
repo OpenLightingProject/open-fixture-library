@@ -5,7 +5,7 @@
     <div class="toc">
       Jump to:
       <a
-        v-for="(letterData, letter) in letters"
+        v-for="(letterData, letter) of letters"
         :key="letter"
         v-smooth-scroll
         :href="`#${letterData.id}`"
@@ -14,12 +14,12 @@
       </a>
     </div>
 
-    <div v-for="(letterData, letter) in letters" :key="letter">
+    <div v-for="(letterData, letter) of letters" :key="letter">
       <h2 :id="letterData.id">{{ letter }}</h2>
 
       <div class="manufacturers grid-4">
         <NuxtLink
-          v-for="manufacturer in letterData.manufacturers"
+          v-for="manufacturer of letterData.manufacturers"
           :key="manufacturer.key"
           :to="`/${manufacturer.key}`"
           :style="{ borderLeftColor: manufacturer.color }"
@@ -44,6 +44,16 @@
 
 <script>
 export default {
+  async asyncData({ $axios, error }) {
+    let manufacturers;
+    try {
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
+  },
   head() {
     const title = `Manufacturers`;
 
@@ -57,14 +67,12 @@ export default {
       ],
     };
   },
-  async asyncData({ $axios, error }) {
-    try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
+  computed: {
+    letters() {
       const letters = {};
 
-      Object.keys(manufacturers).forEach(manKey => {
-        let letter = manKey.charAt(0).toUpperCase();
+      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+        let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
           letter = `#`;
@@ -78,20 +86,15 @@ export default {
         }
 
         letters[letter].manufacturers.push({
-          key: manKey,
-          name: manufacturers[manKey].name,
-          fixtureCount: manufacturers[manKey].fixtureCount,
-          color: manufacturers[manKey].color,
+          key: manufacturerKey,
+          name: this.manufacturers[manufacturerKey].name,
+          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
+          color: this.manufacturers[manufacturerKey].color,
         });
-      });
+      }
 
-      return {
-        letters,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
+      return letters;
+    },
   },
 };
 </script>

@@ -10,8 +10,8 @@
         :maximum="end !== `invalid` ? end : rangeMax"
         :required="required || rangeIncomplete"
         :hint="startHint"
-        :lazy="true"
-        @focus.native="onFocus"
+        lazy
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     …
@@ -24,8 +24,8 @@
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
-        :lazy="true"
-        @focus.native="onFocus"
+        lazy
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     {{ unit }}
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { arrayProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
@@ -43,53 +44,16 @@ export default {
     prop: `range`,
   },
   props: {
-    range: {
-      type: Array,
-      required: false,
-      default: null,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    startHint: {
-      type: String,
-      required: false,
-      default: `start`,
-    },
-    endHint: {
-      type: String,
-      required: false,
-      default: `end`,
-    },
-    rangeMin: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    rangeMax: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    unit: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    range: arrayProp().withDefault(null),
+    name: stringProp().required,
+    startHint: stringProp().withDefault(`start`),
+    endHint: stringProp().withDefault(`end`),
+    rangeMin: numberProp().optional,
+    rangeMax: numberProp().optional,
+    schemaProperty: objectProp().required,
+    unit: stringProp().optional,
+    required: booleanProp().withDefault(false),
+    formstate: objectProp().required,
   },
   data() {
     return {
@@ -126,6 +90,7 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    /** @public */
     focus() {
       this.$refs.firstInput.focus();
     },
@@ -141,9 +106,9 @@ export default {
 };
 
 /**
- * @param {Number|null} start Start value of the range or null.
- * @param {Number|null} end End value of the range or null.
- * @returns {[Number, Number]|null} Range array with the inputs or null if both inputs were null.
+ * @param {number | null} start Start value of the range or null.
+ * @param {number | null} end End value of the range or null.
+ * @returns {[number, number] | null} Range array with the inputs or null if both inputs were null.
  */
 function getRange(start, end) {
   if (start === null && end === null) {
@@ -153,4 +118,3 @@ function getRange(start, end) {
   return [start, end];
 }
 </script>
-

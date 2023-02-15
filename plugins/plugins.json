@@ -6,8 +6,11 @@
   ],
   "exportPlugins": [
     "aglight",
+    "color-chief",
     "colorsource",
     "d-light",
+    "dmxcontrol3",
+    "dragonframe",
     "ecue",
     "millumin",
     "ofl",
@@ -17,6 +20,11 @@
   "data": {
     "aglight": {
       "name": "AGLight",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": []
+    },
+    "color-chief": {
+      "name": "Eurolite Color Chief 2.0",
       "exportPluginVersion": "1.0.0",
       "exportTests": []
     },
@@ -30,6 +38,20 @@
       "exportPluginVersion": "0.2.0",
       "exportTests": [
         "attributes-correctness"
+      ]
+    },
+    "dmxcontrol3": {
+      "name": "DMXControl 3 (DDF3)",
+      "exportPluginVersion": "0.1.1",
+      "exportTests": [
+        "channel-numbers"
+      ]
+    },
+    "dragonframe": {
+      "name": "Dragonframe",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": [
+        "json-schema-conformity"
       ]
     },
     "ecue": {
@@ -51,7 +73,7 @@
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportPluginVersion": "12.2.1",
+      "exportPluginVersion": "12.3.0",
       "exportTests": []
     },
     "op-z": {

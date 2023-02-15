@@ -16,7 +16,7 @@
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit">
+        @submit.prevent="onSubmit()">
 
         <section class="card">
           <h2>File information</h2>
@@ -30,7 +30,7 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey in plugins.importPlugins">
+              <template v-for="pluginKey of plugins.importPlugins">
                 <option :key="pluginKey" :value="pluginKey">
                   {{ plugins.data[pluginKey].name }}
                 </option>
@@ -47,9 +47,8 @@
             label="Fixture definition file"
             hint="Maximum file size is 5MB.">
             <EditorFileUpload
-              ref="fileUpload"
               v-model="file"
-              :required="true"
+              required
               name="file"
               max-file-size="5MB" />
           </LabeledInput>
@@ -98,8 +97,8 @@
         endpoint="/api/v1/fixtures/import"
         :github-username="githubUsername"
         :github-comment="githubComment"
-        @success="storePrefillData"
-        @reset="reset" />
+        @success="storePrefillData()"
+        @reset="reset()" />
 
     </ClientOnly>
   </div>
@@ -108,6 +107,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
+import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -117,6 +117,27 @@ export default {
     EditorFileUpload,
     EditorSubmitDialog,
     LabeledInput,
+  },
+  async asyncData({ $axios, error }) {
+    let plugins;
+    try {
+      plugins = await $axios.$get(`/api/v1/plugins`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { plugins };
+  },
+  data() {
+    return {
+      formstate: getEmptyFormState(),
+      plugin: ``,
+      file: undefined,
+      githubComment: ``,
+      author: ``,
+      githubUsername: ``,
+      honeypot: ``,
+    };
   },
   head() {
     const title = `Import fixture`;
@@ -129,28 +150,6 @@ export default {
           content: title,
         },
       ],
-    };
-  },
-  async asyncData({ $axios, error }) {
-    try {
-      const plugins = await $axios.$get(`/api/v1/plugins`);
-      return {
-        plugins,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-  },
-  data() {
-    return {
-      formstate: {},
-      plugin: ``,
-      file: null,
-      githubComment: ``,
-      author: ``,
-      githubUsername: ``,
-      honeypot: ``,
     };
   },
   mounted() {
@@ -179,41 +178,46 @@ export default {
         return;
       }
 
-      const fileDataUrl = await getFileDataUrl(this.file);
-      const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
+      try {
+        const fileDataUrl = await getFileDataUrl(this.file);
+        const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
 
-      this.$refs.submitDialog.validate({
-        plugin: this.plugin,
-        fileName: this.file.name,
-        fileContentBase64,
-        author: this.author,
-      });
+        this.$refs.submitDialog.validate({
+          plugin: this.plugin,
+          fileName: this.file.name,
+          fileContentBase64,
+          author: this.author,
+        });
+      }
+      catch (fileReaderError) {
+        alert(`Could not read the file.`);
+        console.error(`Could not read the file.`, fileReaderError);
+      }
 
       /**
        * @param {File} file A File object from an HTML5 file input.
-       * @returns {Promise.<String>} Resolves with the file contents as dataURL string.
+       * @returns {Promise<string>} Resolves with the file contents as dataURL string.
        */
       function getFileDataUrl(file) {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
 
-          fileReader.onload = () => {
+          fileReader.addEventListener(`load`, () => {
             resolve(fileReader.result);
-          };
-          fileReader.onerror = reject;
-          fileReader.onabort = reject;
+          });
+          fileReader.addEventListener(`error`, reject);
+          fileReader.addEventListener(`abort`, reject);
 
           fileReader.readAsDataURL(file);
         });
       }
     },
-    reset() {
-      this.$refs.fileUpload.clear();
+    async reset() {
+      this.file = undefined;
       this.githubComment = ``;
 
-      this.$nextTick(() => {
-        this.formstate._reset();
-      });
+      await this.$nextTick();
+      this.formstate._reset();
     },
     applyStoredPrefillData() {
       if (!localStorage) {

@@ -4,28 +4,26 @@
     :required="required"
     :name="name"
     type="file"
-    @change="onFileChanged">
+    @change="onFileChanged()">
 </template>
 
 <script>
+import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   model: {
-    prop: `value`,
+    prop: `file`,
   },
   props: {
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: null,
-      required: false,
-      default: null,
+    required: booleanProp().withDefault(false),
+    name: stringProp().required,
+    file: anyProp().optional,
+  },
+  watch: {
+    file(newFile) {
+      if (!newFile) {
+        this.$refs.fileInput.value = ``;
+      }
     },
   },
   mounted() {
@@ -36,15 +34,11 @@ export default {
       const file = this.$refs.fileInput.files[0];
 
       if (!file) {
-        this.$emit(`input`, null);
+        this.$emit(`input`, undefined);
         return;
       }
 
       this.$emit(`input`, file);
-    },
-    clear() {
-      this.$refs.fileInput.value = ``;
-      this.onFileChanged();
     },
   },
 };
