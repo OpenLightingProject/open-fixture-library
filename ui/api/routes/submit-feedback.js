@@ -35,7 +35,7 @@ export async function createFeedbackIssue({ request }) {
     const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;
-    issueContentData.Fixture = fixture.name;
+    issueContentData.Fixture = `[${fixture.name}](${fixture.url})`;
   }
 
   issueContentData[`Problem location`] = location;
