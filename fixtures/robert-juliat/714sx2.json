@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "714SX2",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["J2M"],
+    "createDate": "2023-02-16",
+    "lastModifyDate": "2023-02-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/Product_Specifications/Fiches_EN/Standard/DSEN074_714SX2.pdf"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.com/profilespots/700SX2.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 525, 740],
+    "weight": 23.2,
+    "power": 2500,
+    "bulb": {
+      "type": "Tungsten CP91",
+      "colorTemperature": 3200,
+      "lumens": 65000
+    },
+    "lens": {
+      "degreesMinMax": [15, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
