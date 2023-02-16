@@ -1,0 +1,358 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SG ARCHER B1",
+  "shortName": "ARCHER-B1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-02-16",
+    "lastModifyDate": "2023-02-16"
+  },
+  "links": {
+    "other": [
+      "http://sagitter.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1R"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 9"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 10"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 11"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 12"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 13"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Ciano + Giallo"
+        },
+        {
+          "type": "Color",
+          "name": "Giallo"
+        },
+        {
+          "type": "Color",
+          "name": "Giallo + Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta + Arancio"
+        },
+        {
+          "type": "Color",
+          "name": "Arancio"
+        },
+        {
+          "type": "Color",
+          "name": "Arancio + Blu"
+        },
+        {
+          "type": "Color",
+          "name": "Blu"
+        },
+        {
+          "type": "Color",
+          "name": "Blu + Lime"
+        },
+        {
+          "type": "Color",
+          "name": "Lime"
+        },
+        {
+          "type": "Color",
+          "name": "Lime + Giallo 2"
+        },
+        {
+          "type": "Color",
+          "name": "Giallo 2"
+        },
+        {
+          "type": "Color",
+          "name": "Giallo 2 + Rosa"
+        },
+        {
+          "type": "Color",
+          "name": "Rosa"
+        },
+        {
+          "type": "Color",
+          "name": "Rosa + CTB"
+        },
+        {
+          "type": "Color",
+          "name": "CTB"
+        },
+        {
+          "type": "Color",
+          "name": "CTB + CTO"
+        },
+        {
+          "type": "Color",
+          "name": "CTO"
+        }
+      ]
+    },
+    "Prism": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Prism",
+          "name": "Prisma 8 Facce",
+          "facets": 8
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "270deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 75],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 14
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 45],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [46, 171],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 18
+        },
+        {
+          "dmxRange": [172, 213],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "PrismRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13ch Standard",
+      "shortName": "13S",
+      "channels": [
+        "Pan 2",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
