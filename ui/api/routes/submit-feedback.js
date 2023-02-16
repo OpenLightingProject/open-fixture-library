@@ -24,11 +24,11 @@ export async function createFeedbackIssue({ request }) {
   const labels = [`via-editor`];
 
   if (type === `plugin`) {
-    title = `Feedback for plugin '${context}'`;
+    title = `Feedback for plugin \`${context}\``;
     labels.push(`component-plugin`);
   }
   else {
-    title = `Feedback for fixture '${context}'`;
+    title = `Feedback for fixture \`${context}\``;
     labels.push(`component-fixture`);
 
     const [manufacturerKey, fixtureKey] = context.split(`/`);
