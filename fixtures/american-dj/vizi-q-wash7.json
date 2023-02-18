@@ -32,6 +32,46 @@
       "degreesMinMax": [7, 58]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, "O1", null, "O2", null],
+        ["O3", null, "C", null, "O4"],
+        [null, "O5", null, "O6", null]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "Center": { "name": ["C"] },
+      "Outer": { "name": ["^O\\d+$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -727,46 +767,6 @@
           "type": "NoFunction"
         }
       ]
-    }
-  },
-  "matrix": {
-    "pixelKeys": [
-      [
-        [null, "O1", null, "O2", null],
-        ["O3", null, "C", null, "O4"],
-        [null, "O5", null, "O6", null]
-      ]
-    ],
-    "pixelGroups": {
-      "All": "all",
-      "Center": { "name": ["C"] },
-      "Outer": { "name": ["^O\\d+$"] }
-    }
-  },
-  "templateChannels": {
-    "Red $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     }
   },
   "modes": [
