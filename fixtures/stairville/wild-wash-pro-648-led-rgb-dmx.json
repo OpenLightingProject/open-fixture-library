@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild Wash Pro 648 LED RGB DMX",
+  "categories": ["Other", "Strobe"],
+  "meta": {
+    "authors": ["Jonas Schürmann"],
+    "createDate": "2023-02-20",
+    "lastModifyDate": "2023-02-20"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_432585_432586_481229_v3_r1_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_wild_wash_pro_648_led_rgb_dmx.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/de/thomanntv_video_stairville_wild_wash_pro_648_led_rgb_dmx_6948.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "SMD LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Music Mode": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Music Mode"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6CH",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Music Mode"
+      ]
+    }
+  ]
+}
