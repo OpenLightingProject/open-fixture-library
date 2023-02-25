@@ -1,0 +1,207 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Moving Head 19x15W RGBW Wash/Zoom",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Dimos"],
+    "createDate": "2023-02-25",
+    "lastModifyDate": "2023-02-25"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAG/UPAG904/2001/file/be4663e60a.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=KIzySRdayoo"
+    ]
+  },
+  "physical": {
+    "dimensions": [23, 19.6, 39],
+    "weight": 7.7,
+    "power": 285,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Preset color"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Generic",
+          "comment": "Program jump"
+        },
+        {
+          "dmxRange": [146, 159],
+          "type": "Generic",
+          "comment": "Program gradient"
+        },
+        {
+          "dmxRange": [160, 172],
+          "type": "Generic",
+          "comment": "Program pulse"
+        },
+        {
+          "dmxRange": [173, 200],
+          "type": "Effect",
+          "effectName": "Effect mode 1"
+        },
+        {
+          "dmxRange": [201, 230],
+          "type": "Effect",
+          "effectName": "Effect mode 2"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Effect mode 3"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "Generic",
+          "comment": "Activation CH13"
+        },
+        {
+          "dmxRange": [100, 150],
+          "type": "Generic",
+          "comment": "Self-propelled mode(1)"
+        },
+        {
+          "dmxRange": [151, 179],
+          "type": "Generic",
+          "comment": "Self-propelled mode(2)"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Generic",
+          "comment": "Voice control mode"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Chanel’s",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Color Presets",
+        "Program Speed",
+        "Program Duration",
+        "Reserved"
+      ]
+    }
+  ]
+}
