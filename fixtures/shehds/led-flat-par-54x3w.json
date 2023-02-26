@@ -1,76 +1,74 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED Flat Par 12x3W RGBW",
+  "name": "LED Flat Par 54x3W",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Potatoe", "JonahKr"],
-    "createDate": "2018-11-11",
-    "lastModifyDate": "2023-02-12"
+    "authors": ["J2M"],
+    "createDate": "2022-10-21",
+    "lastModifyDate": "2022-10-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
   },
   "links": {
     "manual": [
-      "https://www.shehds.com/u_file/1809/file/3d1a81c31b.docx"
+      "https://www.shehds.com/u_file/1908/file/4109b920cd.pdf"
     ],
     "productPage": [
-      "https://www.shehds.com/led-par-12x3w-rgbw-led-stage-light-par-light-with-dmx512-for-disco-dj-party-decoration-stage-lighting-p0087.html"
+      "https://www.shehds.com/products/fast-shipping-led-54x3w-rgbw-led-flat-par-rgbw-color-mixing-dj-wash-light-stage-uplighting-ktv-disco-dj-dmx512"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Pv0_x9BYBug"
     ]
   },
   "physical": {
-    "dimensions": [118, 105, 114],
-    "weight": 0.35,
-    "power": 36,
+    "dimensions": [260, 280, 130],
+    "weight": 0.4,
+    "power": 162,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12x3W LEDs (3 red, 3 green, 3 blue, 3 white)"
+      "type": "LED"
     }
   },
   "availableChannels": {
-    "Dimmer": {
+    "Master dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Red": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "10Hz"
-        }
-      ]
-    },
     "Program": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 50],
@@ -89,37 +87,39 @@
         {
           "dmxRange": [151, 200],
           "type": "Effect",
-          "effectName": "Color pulse"
+          "effectName": "Program pulse"
         },
         {
           "dmxRange": [201, 255],
           "type": "Effect",
-          "effectName": "Sound control",
+          "effectName": "Open sound control function",
           "soundControlled": true
         }
       ]
     },
-    "Function speed": {
+    "Strobe": {
+      "defaultValue": 0,
       "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz",
+        "helpWanted": "At which DMX values is strobe disabled?"
       }
     }
   },
   "modes": [
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
-        "Dimmer",
+        "Master dimmer",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Strobe",
         "Program",
-        "Function speed"
+        "Strobe"
       ]
     }
   ]

@@ -1,27 +1,31 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED Flat Par 12x3W RGBW",
+  "name": "LED Par 18x18W",
+  "shortName": "SheHds18x18",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Potatoe", "JonahKr"],
-    "createDate": "2018-11-11",
-    "lastModifyDate": "2023-02-12"
+    "authors": ["Jay3"],
+    "createDate": "2022-11-06",
+    "lastModifyDate": "2022-11-06"
   },
   "links": {
     "manual": [
-      "https://www.shehds.com/u_file/1809/file/3d1a81c31b.docx"
+      "https://ueeshop.ly200-cdn.com/u_file/UPAG/UPAG904/1912/file/c80fe135df.pdf"
     ],
     "productPage": [
-      "https://www.shehds.com/led-par-12x3w-rgbw-led-stage-light-par-light-with-dmx512-for-disco-dj-party-decoration-stage-lighting-p0087.html"
+      "https://www.shehds.com/products/aluminum-alloy-led-flat-par-18x18w-lighting-dj-par-cans-dmx-512-light-wash-stage-lighting"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=k7ynAEIPEuE"
     ]
   },
   "physical": {
-    "dimensions": [118, 105, 114],
-    "weight": 0.35,
-    "power": 36,
+    "dimensions": [200, 265, 115],
+    "weight": 3.15,
+    "power": 324,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12x3W LEDs (3 red, 3 green, 3 blue, 3 white)"
+      "type": "LED"
     }
   },
   "availableChannels": {
@@ -54,23 +58,28 @@
         "color": "White"
       }
     },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "10Hz"
-        }
-      ]
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
-    "Program": {
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz",
+        "helpWanted": "At which DMX values is the strobe effect disabled?"
+      }
+    },
+    "Color Macros": {
       "capabilities": [
         {
           "dmxRange": [0, 50],
@@ -89,7 +98,7 @@
         {
           "dmxRange": [151, 200],
           "type": "Effect",
-          "effectName": "Color pulse"
+          "effectName": "Color Pulse"
         },
         {
           "dmxRange": [201, 255],
@@ -99,7 +108,7 @@
         }
       ]
     },
-    "Function speed": {
+    "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
@@ -109,17 +118,31 @@
   },
   "modes": [
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
         "White",
+        "Amber",
+        "UV",
         "Strobe",
-        "Program",
-        "Function speed"
+        "Color Macros",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
       ]
     }
   ]
