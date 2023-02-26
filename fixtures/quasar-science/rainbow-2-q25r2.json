@@ -31,7 +31,7 @@
       "1/5": ["1", "2"],
       "2/5": ["3", "4"],
       "3/5": ["5", "6"],
-      "4/5": ["6", "8"],
+      "4/5": ["7", "8"],
       "5/5": ["9", "10"]
     }
   },
@@ -201,6 +201,67 @@
       "capability": {
         "type": "Generic",
         "comment": "RGB to Max Spectrum"
+      }
+    }
+  },
+  "availableChannels": {
+    "FX": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [28, 39],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        },
+        {
+          "dmxRange": [40, 51],
+          "type": "Effect",
+          "effectName": "Short Circuit"
+        },
+        {
+          "dmxRange": [52, 64],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [65, 77],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [78, 90],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [91, 102],
+          "type": "Effect",
+          "effectName": "Emergency Light"
+        },
+        {
+          "dmxRange": [103, 255],
+          "type": "NoFunction",
+          "comment": "Reserved for future use"
+        }
+      ]
+    },
+    "FX Rate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "FX Size": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
       }
     }
   },
@@ -442,7 +503,7 @@
       ]
     },
     {
-      "name": "XFade + CC - 2 Pixels",
+      "name": "XFade + CC 8-bit - 2 Pixels",
       "shortName": "P4 - 2 Pixels",
       "channels": [
         {
@@ -458,7 +519,7 @@
       ]
     },
     {
-      "name": "XFade + CC - 5 Pixels",
+      "name": "XFade + CC 8-bit - 5 Pixels",
       "shortName": "P4 - 5 Pixels",
       "channels": [
         {
@@ -505,7 +566,7 @@
       ]
     },
     {
-      "name": "XFade - 2 Pixels",
+      "name": "XFade 8-bit - 2 Pixels",
       "shortName": "P5 - 2 Pixels",
       "channels": [
         {
@@ -520,7 +581,7 @@
       ]
     },
     {
-      "name": "XFade - 5 Pixels",
+      "name": "XFade 8-bit - 5 Pixels",
       "shortName": "P5 - 5 Pixels",
       "channels": [
         {
@@ -773,6 +834,378 @@
             "Blue $pixelKey"
           ]
         }
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit",
+      "shortName": "P9",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 2 Pixels",
+      "shortName": "P9 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 5 Pixels",
+      "shortName": "P9 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 10 Pixels",
+      "shortName": "P9 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit",
+      "shortName": "P10",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 2 Pixels",
+      "shortName": "P10 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 5 Pixels",
+      "shortName": "P10 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 10 Pixels",
+      "shortName": "P10 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit",
+      "shortName": "P11",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 2 Pixels",
+      "shortName": "P11 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 5 Pixels",
+      "shortName": "P11 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 10 Pixels",
+      "shortName": "P11 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit",
+      "shortName": "P12",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 2 Pixels",
+      "shortName": "P12 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 5 Pixels",
+      "shortName": "P12 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 10 Pixels",
+      "shortName": "P12 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
       ]
     },
     {
