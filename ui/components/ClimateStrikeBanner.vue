@@ -126,8 +126,8 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2022-03-25`,
-      climateStrikeWebsite: `https://fridaysforfuture.org/march25/`,
+      strikeDateString: `2023-03-03`,
+      climateStrikeWebsite: `https://fridaysforfuture.de/globaler-klimastreik/`,
       hashtags: [`PeopleNotProfit`, `fridaysforfuture`, `climatestrike`],
     };
   },

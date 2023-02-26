@@ -44,7 +44,7 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
+          @click.prevent="openHelpWantedDialog({
             context: fixture,
             type: `fixture`,
           })">
@@ -240,7 +240,7 @@ export default {
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}`;
     },
   },
   mounted() {

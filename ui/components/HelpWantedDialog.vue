@@ -143,7 +143,7 @@ export default {
         location: this.location,
         helpWanted: this.context.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername !== `` ? this.githubUsername : null,
+        githubUsername: this.githubUsername === `` ? null : this.githubUsername,
       };
 
       if (this.type === `plugin`) {
@@ -177,7 +177,7 @@ export default {
         return `${key}:${separator}${value}`;
       }).join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
   mounted() {

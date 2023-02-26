@@ -1,0 +1,725 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vesuvio RGBA",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["Beerady", "Luke Nelson"],
+    "createDate": "2022-10-18",
+    "lastModifyDate": "2022-10-18"
+  },
+  "links": {
+    "productPage": [
+      "https://web.archive.org/web/20160421173724/http://www.chauvetprofessional.com/products/vesuvio-rgba/"
+    ],
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/06/Vesuvio-RGBA_UM_Rev4_WO.pdf"
+    ],
+    "video": ["https://www.youtube.com/watch?v=HH5G92l4USw"]
+  },
+  "rdm": {
+    "modelId": 37266,
+    "softwareVersion": "2016"
+  },
+  "physical": {
+    "dimensions": [336, 488, 231],
+    "weight": 13.6,
+    "power": 1590,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Amber/Blue"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "ColorPreset",
+          "comment": "Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [17, 19],
+          "type": "ColorPreset",
+          "comment": "Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright",
+          "helpWanted": "Why are some capabilities duplicated? What is the actual color at each DMX value?"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [29, 31],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [33, 35],
+          "type": "ColorPreset",
+          "comment": "Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [37, 39],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "ColorPreset",
+          "comment": "Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [45, 47],
+          "type": "ColorPreset",
+          "comment": "Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "ColorPreset",
+          "comment": "Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [53, 55],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorPreset",
+          "comment": "Amber/Green"
+        },
+        {
+          "dmxRange": [61, 63],
+          "type": "ColorPreset",
+          "comment": "Amber/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "ColorPreset",
+          "comment": "Red/Blue dim to bright"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [73, 75],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [81, 83],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [89, 91],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [109, 111],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [113, 115],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [117, 119],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [125, 127],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "ColorPreset",
+          "comment": "Red/Blue dim to bright"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [137, 139],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [141, 143],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [145, 147],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [153, 155],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [165, 167],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [169, 171],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [173, 175],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [177, 179],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [181, 183],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [189, 191],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [193, 195],
+          "type": "ColorPreset",
+          "comment": "Red/Blue dim to bright"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [201, 203],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "ColorPreset",
+          "comment": "Red/Amber"
+        },
+        {
+          "dmxRange": [205, 207],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [209, 211],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "ColorPreset",
+          "comment": "Red/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [217, 219],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [221, 223],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [225, 227],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [229, 231],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [233, 235],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [237, 239],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue dim to bright"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [245, 247],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Amber/Blue dim to bright"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Fog",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
