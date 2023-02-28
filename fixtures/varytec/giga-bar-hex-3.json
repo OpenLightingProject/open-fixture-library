@@ -164,9 +164,190 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [15, 255],
+          "dmxRange": [15, 22],
           "type": "ColorPreset",
-          "helpWanted": "Which colors can be selected at which DMX values?"
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 30],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Pure White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [55, 62],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["UV"]
+        },
+        {
+          "dmxRange": [63, 70],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [71, 78],
+          "type": "ColorPreset",
+          "comment": "Fuchia",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [79, 86],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [87, 94],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [95, 102],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [103, 110],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [111, 118],
+          "type": "ColorPreset",
+          "comment": "Mint",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [119, 126],
+          "type": "ColorPreset",
+          "comment": "Lime",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [127, 134],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [135, 142],
+          "type": "ColorPreset",
+          "comment": "Terra Cotta",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [143, 150],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [151, 158],
+          "type": "ColorPreset",
+          "comment": "Tan",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [159, 166],
+          "type": "ColorPreset",
+          "comment": "Gold",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [167, 174],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [175, 182],
+          "type": "ColorPreset",
+          "comment": "Redviolet",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [183, 190],
+          "type": "ColorPreset",
+          "comment": "Coral",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [191, 198],
+          "type": "ColorPreset",
+          "comment": "Aqua",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [199, 206],
+          "type": "ColorPreset",
+          "comment": "Aquamarine",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [207, 214],
+          "type": "ColorPreset",
+          "comment": "Emerald",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [215, 222],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [223, 230],
+          "type": "ColorPreset",
+          "comment": "Ice",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [231, 238],
+          "type": "ColorPreset",
+          "comment": "Rosepink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [239, 246],
+          "type": "ColorPreset",
+          "comment": "Palegreen",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [247, 254],
+          "type": "ColorPreset",
+          "comment": "Palepink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Babyblue",
+          "colors": ["#00ffff"]
         }
       ]
     }
