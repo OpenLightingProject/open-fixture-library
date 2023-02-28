@@ -70,11 +70,19 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX values is the light constantly on or off? Is the strobe frequency increasing or decreasing?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Auto Programs": {
       "capabilities": [
