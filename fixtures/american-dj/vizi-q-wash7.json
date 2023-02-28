@@ -96,9 +96,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorPreset",
-          "colors": ["#000000"],
-          "comment": "OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 4],
@@ -771,7 +769,7 @@
   },
   "modes": [
     {
-      "name": "17 Channel (Basic)",
+      "name": "17-channel Basic",
       "shortName": "17ch",
       "channels": [
         "Pan",
@@ -794,7 +792,7 @@
       ]
     },
     {
-      "name": "19 Channel (Standard)",
+      "name": "19-channel Standard",
       "shortName": "19ch",
       "channels": [
         "Pan",
@@ -819,7 +817,7 @@
       ]
     },
     {
-      "name": "23 Channel (Extended)",
+      "name": "23-channel Extended",
       "shortName": "23ch",
       "channels": [
         "Pan",
