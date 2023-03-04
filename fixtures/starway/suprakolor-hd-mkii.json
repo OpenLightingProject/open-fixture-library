@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SupraKolor HD MKII",
+  "shortName": "SK HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["PierreM"],
+    "createDate": "2023-03-04",
+    "lastModifyDate": "2023-03-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/superkolor"
+    ],
+    "productPage": [
+      "https://www.star-way.com/superkolor"
+    ],
+    "video": [
+      "https://www.star-way.com/superkolor"
+    ]
+  },
+  "physical": {
+    "dimensions": [141, 240, 290],
+    "weight": 7,
+    "power": 140,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "AR2.Z",
+      "shortName": "AR2Z",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Reserved"
+      ]
+    }
+  ]
+}
