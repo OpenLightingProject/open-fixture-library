@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PFE-120 3000K Profile Spot",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Paweł Krysztosiak"],
+    "createDate": "2023-03-08",
+    "lastModifyDate": "2023-03-08"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.de/de/mpn40001981-eurolite-led-pfe-120-3000k-profile-spot.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 1.1,
+    "softwareVersion": "1.1"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "100Hz"
+        }
+      ]
+    },
+    "Dimmer speed": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Dimmer speed 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Dimmer speed 2"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Dimmer speed 3"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Dimmer speed 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX-protocol",
+      "channels": [
+        "Dimmer 2",
+        "Strobe 2",
+        "Dimmer speed"
+      ]
+    }
+  ]
+}
