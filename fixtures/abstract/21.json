@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "21",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["55"],
+    "createDate": "2023-03-19",
+    "lastModifyDate": "2023-03-19"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=33sOgc1qC3Y"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "25",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
