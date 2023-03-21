@@ -1,0 +1,208 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Spider Light",
+  "shortName": "MSLight",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2023-03-21",
+    "lastModifyDate": "2023-03-21"
+  },
+  "comment": "Cabeza Móvil 80W led",
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FFiJrx1dgw0"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 150, 130],
+    "weight": 1.99,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 45]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "For 5 Seconds to reset"
+        }
+      ]
+    },
+    "LED 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "RED"
+      }
+    },
+    "LED 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "LED 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue 1"
+      }
+    },
+    "LED 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "LED 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "RED 2"
+      }
+    },
+    "LED 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green 2"
+      }
+    },
+    "LED 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "MARCO FUNCTION": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "EFFECT"
+      }
+    },
+    "LED 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "channels": [
+        "Pan",
+        "Pan 3",
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15 Channel",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Dimmer",
+        "Strobe",
+        "LED 1",
+        "LED 2",
+        "LED 3",
+        "LED 4",
+        "LED 5",
+        "LED 6",
+        "LED 7",
+        "LED 8",
+        "MARCO FUNCTION",
+        "Effect Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
