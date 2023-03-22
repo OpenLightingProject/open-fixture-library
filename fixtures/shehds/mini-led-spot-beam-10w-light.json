@@ -1,0 +1,182 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini LED Spot Beam 10W Light",
+  "shortName": "mini-led-spot",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["WIlliam Tessier"],
+    "createDate": "2023-03-22",
+    "lastModifyDate": "2023-03-22"
+  },
+  "comment": "Mini 10W small moving head light.",
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1907/file/ea38ccee37.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/mini-led-spot-beam-10w-lighting"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=WrfsHyYv8QA"
+    ]
+  },
+  "physical": {
+    "dimensions": [127, 135, 127],
+    "weight": 1.8,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    },
+    "lens": {
+      "degreesMinMax": [5, 15]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Generic",
+          "comment": "Auto Run Mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Sound Activated Mode"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "13 Channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Mode",
+        "Reset"
+      ]
+    }
+  ]
+}
