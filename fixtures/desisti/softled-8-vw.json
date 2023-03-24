@@ -37,7 +37,8 @@
       }
     },
     "Color Temperature": {
-      "highlightValue": "50%",
+      "defaultValue": "50%",
+      "precedence": "LTP",
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "2750K",
@@ -64,8 +65,8 @@
   },
   "modes": [
     {
-      "name": "Default",
-      "shortName": "DEF",
+      "name": "SLOT4",
+      "shortName": "S4",
       "channels": [
         "Dimmer",
         "Dimmer fine",
