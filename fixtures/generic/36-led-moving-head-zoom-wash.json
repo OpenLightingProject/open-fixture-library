@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "36 led moving head zoom wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["tdog"],
+    "createDate": "2023-03-24",
+    "lastModifyDate": "2023-03-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.maizesoft.com/dmx/"
+    ],
+    "productPage": [
+      "https://www.maizesoft.com/dmx/"
+    ],
+    "video": [
+      "https://www.maizesoft.com/dmx/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [30, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "regular",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color Presets",
+        "Effect Speed",
+        "Effect Duration"
+      ]
+    }
+  ]
+}
