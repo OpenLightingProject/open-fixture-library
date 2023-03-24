@@ -38,6 +38,7 @@
     },
     "Color Temperature": {
       "defaultValue": "50%",
+      "precedence": "LTP",
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "2750K",
