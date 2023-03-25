@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Explorer 250 Wash Pro",
-  "categories": ["Moving Head"],
+  "name": "Explorer 250 Wash",
+  "categories": ["Color Changer", "Moving Head"],
   "meta": {
     "authors": ["Luke Nelson"],
     "createDate": "2023-03-25",
@@ -11,6 +11,15 @@
       "date": "2023-03-25",
       "comment": "created by Q Light Controller Plus (version 4.12.6)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/837961/Showtec-Explorer-250-Wash.html",
+      "https://www.highlite.com/media/attachments/MANUAL/40178_MANUAL_D_V1.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=_E7AQH2ugoM"
+    ]
   },
   "physical": {
     "dimensions": [379, 476, 428],
