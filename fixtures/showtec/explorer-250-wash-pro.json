@@ -1,0 +1,688 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Explorer 250 Wash Pro",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Luke Nelson"],
+    "createDate": "2023-03-25",
+    "lastModifyDate": "2023-03-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-03-25",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [379, 476, 428],
+    "weight": 33.5,
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD 250",
+      "lumens": 6700
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [8, 22]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Open / white",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#21ff06"]
+        },
+        {
+          "type": "Color",
+          "name": "CTF 3200K",
+          "colors": ["#ffd368"]
+        },
+        {
+          "type": "Color",
+          "name": "CTF 5300K",
+          "colors": ["#edeaff"]
+        },
+        {
+          "type": "Color",
+          "name": "UV",
+          "colors": ["#8000ff"]
+        }
+      ]
+    },
+    "Effect Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/open.svg",
+          "name": "Full beam"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/gobo00058.png",
+          "name": "Frost filter"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Robe/gobo00038.svg",
+          "name": "Beam shaper"
+        }
+      ]
+    },
+    "CMY Color effect-wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Open / White"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1"
+        },
+        {
+          "type": "Color",
+          "name": "Color 2"
+        },
+        {
+          "type": "Color",
+          "name": "Color 3"
+        },
+        {
+          "type": "Color",
+          "name": "Color 4"
+        },
+        {
+          "type": "Color",
+          "name": "Color 5"
+        },
+        {
+          "type": "Color",
+          "name": "Color 6"
+        },
+        {
+          "type": "Color",
+          "name": "Color 7"
+        },
+        {
+          "type": "Color",
+          "name": "Color 8"
+        },
+        {
+          "type": "Color",
+          "name": "Color 9"
+        },
+        {
+          "type": "Color",
+          "name": "Color 10"
+        },
+        {
+          "type": "Color",
+          "name": "Color 11"
+        },
+        {
+          "type": "Color",
+          "name": "Color 12"
+        },
+        {
+          "type": "Color",
+          "name": "Color 13"
+        },
+        {
+          "type": "Color",
+          "name": "Color 14"
+        },
+        {
+          "type": "Color",
+          "name": "Color 15"
+        },
+        {
+          "type": "Color",
+          "name": "Color 16"
+        },
+        {
+          "type": "Color",
+          "name": "Color 17"
+        },
+        {
+          "type": "Color",
+          "name": "Color 18"
+        },
+        {
+          "type": "Color",
+          "name": "Color 19"
+        },
+        {
+          "type": "Color",
+          "name": "Color 20"
+        },
+        {
+          "type": "Color",
+          "name": "Color 21"
+        },
+        {
+          "type": "Color",
+          "name": "Color 22"
+        },
+        {
+          "type": "Color",
+          "name": "Color 23"
+        },
+        {
+          "type": "Color",
+          "name": "Color 24"
+        },
+        {
+          "type": "Color",
+          "name": "Color 25"
+        },
+        {
+          "type": "Color",
+          "name": "Color 26"
+        },
+        {
+          "type": "Color",
+          "name": "Color 27"
+        },
+        {
+          "type": "Color",
+          "name": "Color 28"
+        },
+        {
+          "type": "Color",
+          "name": "Color 29"
+        },
+        {
+          "type": "Color",
+          "name": "Color 30"
+        },
+        {
+          "type": "Color",
+          "name": "Color 31"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Lamp On, Off & Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 139],
+          "type": "Maintenance",
+          "comment": "Lamp on after 3 seconds, reset"
+        },
+        {
+          "dmxRange": [140, 229],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Maintenance",
+          "comment": "Lamp off after 3 seconds"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open / white"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [54, 72],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [73, 90],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "CTF 3200K"
+        },
+        {
+          "dmxRange": [91, 108],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "CTF 5300K"
+        },
+        {
+          "dmxRange": [109, 127],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Forwards rainbow effect from fast to slow"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "No rotation"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Backwards rainbow effect from slow to fast"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed / blackout"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz",
+          "comment": "Strobe effect, from slow to fast (0-10 flashes/sec.)"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse-effect 1, in sequences from"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Random strobe effect, from slow to fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CMY speed adjust": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Gradual speed adjustment from fast (0) to slow (255)"
+      }
+    },
+    "Effect Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Full beam"
+        },
+        {
+          "dmxRange": [71, 180],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Frost filter"
+        },
+        {
+          "dmxRange": [181, 255],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Beam shaper"
+        }
+      ]
+    },
+    "Keep": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Keep this Color setting"
+      }
+    },
+    "CMY Color effect-wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open / White"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Color 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Color 8"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Color 9"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Color 10"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Color 11"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Color 12"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Color 13"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Color 14"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Color 15"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Color 16"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Color 17"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Color 18"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "Color 19"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "Color 20"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "Color 21"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "Color 22"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "Color 23"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "Color 24"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "Color 25"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "WheelSlot",
+          "slotNumber": 27,
+          "comment": "Color 26"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "WheelSlot",
+          "slotNumber": 28,
+          "comment": "Color 27"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "WheelSlot",
+          "slotNumber": 29,
+          "comment": "Color 28"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "WheelSlot",
+          "slotNumber": 30,
+          "comment": "Color 29"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "WheelSlot",
+          "slotNumber": 31,
+          "comment": "Color 30"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "WheelSlot",
+          "slotNumber": 32,
+          "comment": "Color 31"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan Fine",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Lamp On, Off & Reset",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CMY speed adjust",
+        "CMY Color effect-wheel",
+        "Effect Wheel",
+        "Keep",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
