@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBUv COB PAR",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Michael O'Donnell"],
+    "createDate": "2023-03-28",
+    "lastModifyDate": "2023-03-28"
+  },
+  "comment": "8 channel generic Chinese made cob par",
+  "links": {
+    "other": [
+      "https:// no links available."
+    ]
+  },
+  "physical": {
+    "dimensions": [120, 113, 85],
+    "weight": 0.3,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED"
+    }
+  },
+  "availableChannels": {
+    "Program Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Total dimmer (Combined Ch2, Ch3, Ch4 use)"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Jump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Voice",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe (slow to fast)"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [41, 255],
+          "type": "Effect",
+          "effectName": "Color selection",
+          "comment": "Color selection (Combined Ch1 use)"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe Speed (slow to fast combined Ch1 use)"
+      }
+    },
+    "RGBUv Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Master RGBUv dimmer (combined Ch5, Ch6, Ch7, Ch8 use)"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Red dimmer"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green dimmer"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue dimmer"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "comment": "UV dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBUv COB PAR",
+      "channels": [
+        "Program Selection",
+        "Color Macros",
+        "Strobe Speed",
+        "RGBUv Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    }
+  ]
+}
