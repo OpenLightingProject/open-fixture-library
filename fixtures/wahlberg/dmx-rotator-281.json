@@ -1,0 +1,169 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DMX Rotator 281",
+  "shortName": "Rotator 281",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Dorian Regottaz"],
+    "createDate": "2023-03-29",
+    "lastModifyDate": "2023-03-29"
+  },
+  "comment": "rotating motor fixture",
+  "links": {
+    "productPage": [
+      "https://wahlberg.dk/products/dmx-rotators/dmx-rotator"
+    ]
+  },
+  "physical": {
+    "dimensions": [258, 317, 178],
+    "weight": 11.8,
+    "power": 150,
+    "DMXconnector": "5-pin XLR IP65"
+  },
+  "availableChannels": {
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": 2,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "defaultValue": 4,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "defaultValue": 5,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 4": {
+      "name": "No function",
+      "defaultValue": 6,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 5": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 5 fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "defaultValue": 3,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Speed 3": {
+      "name": "Pan/Tilt Speed",
+      "defaultValue": 4,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Pan/Tilt Speed 4": {
+      "name": "Pan/Tilt Speed",
+      "defaultValue": 5,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow CCW",
+        "speedEnd": "fast CCW"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 102],
+          "type": "Pan",
+          "angleStart": "180deg",
+          "angleEnd": "0deg"
+        },
+        {
+          "dmxRange": [103, 204],
+          "type": "Pan",
+          "angleStart": "180deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX Controle",
+      "channels": [
+        "Pan 5",
+        "Pan 5 fine",
+        "Pan/Tilt Speed 2",
+        "Pan/Tilt Speed 3",
+        "Pan/Tilt Speed 4",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
