@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WASH ZOOM 36×18 RGBWA UV",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["gonzalof_"],
+    "createDate": "2023-03-31",
+    "lastModifyDate": "2023-03-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/url?sa=t&source=web&rct=j&url=https://www.shehds.com/u_file/1912/file/53697cbd80.pdf&ved=2ahUKEwjNi6y-l4f-AhUvVqQEHcGJBk4QFnoECBwQAQ&usg=AOvVaw3XTaK9a6bvqVra1bAU1yKP"
+    ]
+  },
+  "physical": {
+    "weight": 11.1,
+    "power": 540,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 8500
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Sound Sensitivity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 253],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "high",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18 chanels",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Zoom",
+        "White",
+        "Sound Sensitivity",
+        "Program Speed",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
