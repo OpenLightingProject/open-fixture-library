@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LedBar 58",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Maxim"],
+    "createDate": "2023-04-03",
+    "lastModifyDate": "2023-04-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.youtube.com/watch?v=jEpczvU_JFE&ab_channel=NekitDesigner"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LedBar58",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "White",
+        "Color Macros"
+      ]
+    }
+  ]
+}
