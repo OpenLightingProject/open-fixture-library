@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led bar 48",
+  "shortName": "Led bar 48",
+  "categories": ["Other", "Pixel Bar"],
+  "meta": {
+    "authors": ["Maxim"],
+    "createDate": "2023-04-03",
+    "lastModifyDate": "2023-04-03"
+  },
+  "links": {
+    "other": [
+      "https://www.youtube.com/watch?v=jEpczvU_JFE&ab_channel=NekitDesigner"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "defaultValue": "100%",
+      "highlightValue": 1,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "100%",
+      "highlightValue": 2,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Cyan": {
+      "highlightValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "highlightValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "highlightValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "White": {
+      "highlightValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "highlightValue": 7,
+      "constant": true,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Led bar 48",
+      "channels": [
+        "Intensity 2",
+        "Strobe",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "White",
+        "Color Macros"
+      ]
+    }
+  ]
+}
