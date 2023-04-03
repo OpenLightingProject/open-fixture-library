@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led bar 48",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Maxim"],
+    "createDate": "2023-04-03",
+    "lastModifyDate": "2023-04-03"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=jEpczvU_JFE&ab_channel=NekitDesigner"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speed": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Led bar",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "White",
+        "Color Macros"
+      ]
+    }
+  ]
+}
