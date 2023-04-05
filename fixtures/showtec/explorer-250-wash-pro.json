@@ -352,42 +352,36 @@
         {
           "dmxRange": [0, 31],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Shutter closed / blackout"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "10Hz",
-          "comment": "Strobe effect, from slow to fast (0-10 flashes/sec.)"
+          "speedEnd": "10Hz"
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Pulse-effect 1, in sequences from"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
@@ -395,14 +389,12 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "randomTiming": true,
-          "comment": "Random strobe effect, from slow to fast"
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open"
+          "shutterEffect": "Open"
         }
       ]
     },
