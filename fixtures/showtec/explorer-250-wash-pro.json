@@ -70,6 +70,10 @@
           "type": "Color",
           "name": "UV",
           "colors": ["#8000ff"]
+        },
+        {
+          "type": "Gobo",
+          "name": "Rainbow Effect"
         }
       ]
     },
@@ -79,9 +83,7 @@
           "type": "Open"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/glass-raindrops-on-window",
-          "name": "Frost filter"
+          "type": "Frost"
         },
         {
           "type": "Gobo",
@@ -323,21 +325,24 @@
         },
         {
           "dmxRange": [128, 190],
-          "type": "WheelSlot",
+          "type": "WheelSlotRotation",
           "slotNumber": 8,
-          "comment": "Forwards rainbow effect from fast to slow"
+          "speedStart": "100%",
+          "speedEnd": "0%"
+
         },
         {
           "dmxRange": [191, 192],
-          "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "No rotation"
+          "type": "WheelSlotRotation",
+          "slotNumber": 8,
+          "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "Backwards rainbow effect from slow to fast"
+          "type": "WheelSlotRotation",
+          "slotNumber": 8,
+          "speedStart": "0%",
+          "speedEnd": "100%"
         }
       ]
     },
@@ -446,8 +451,10 @@
         },
         {
           "dmxRange": [181, 255],
-          "type": "WheelSlot",
+          "type": "WheelSlotRotation",
           "slotNumber": 3,
+          "angleStart": "0%",
+          "angleEnd": "100%",
           "comment": "Beam shaper"
         }
       ]
