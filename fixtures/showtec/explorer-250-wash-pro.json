@@ -39,9 +39,7 @@
     "Color Wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "Open / white",
-          "colors": ["#ffffff"]
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -56,7 +54,7 @@
         {
           "type": "Color",
           "name": "Green",
-          "colors": ["#21ff06"]
+          "colors": ["#00ff00"]
         },
         {
           "type": "Color",
@@ -78,18 +76,15 @@
     "Effect Wheel": {
       "slots": [
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/open.svg",
-          "name": "Full beam"
+          "type": "Open"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/gobo00058.png",
+          "resource": "gobos/glass-raindrops-on-window",
           "name": "Frost filter"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Robe/gobo00038.svg",
           "name": "Beam shaper"
         }
       ]
