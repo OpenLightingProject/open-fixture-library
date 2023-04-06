@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par",
+  "shortName": "Par",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bartek"],
+    "createDate": "2023-04-06",
+    "lastModifyDate": "2023-04-06"
+  },
+  "links": {
+    "other": [
+      "http://www.nothing.nothinmg"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer on DMX": {
+      "defaultValue": 25,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1bpm",
+        "speedEnd": "255bpm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intenisty on DMX",
+      "channels": [
+        "Dimmer on DMX"
+      ]
+    },
+    {
+      "name": "Strobo",
+      "channels": [
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
