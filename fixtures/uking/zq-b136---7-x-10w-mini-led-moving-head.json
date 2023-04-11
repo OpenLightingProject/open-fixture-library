@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ-B136 - 7 x 10W Mini LED Moving Head",
+  "shortName": "ZQ-B136",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["DC"],
+    "createDate": "2023-04-11",
+    "lastModifyDate": "2023-04-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/04/B136.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/uking-105w-rgbw-7leds-stage-lights-moving-head-dmx-dj-disco-shows-party-lighting/"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 250, 180],
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity",
+          "comment": "Master Dimmer"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "40Hz",
+          "comment": "Estimated"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 Channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Program Speed",
+        "Auto",
+        "Reset"
+      ]
+    }
+  ]
+}
