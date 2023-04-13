@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "100W 2-in-1 COB LED PAR Light",
+  "shortName": "Par Calido Frio",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Javi"],
+    "createDate": "2023-04-03",
+    "lastModifyDate": "2023-04-03"
+  },
+  "links": {
+    "other": [
+      "https://www.sonotem.net"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "dimensions": [260, 180, 238],
+    "weight": 4.6,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led",
+      "colorTemperature": 3200,
+      "lumens": 300
+    },
+    "lens": {
+      "name": "o"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUp",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "No function",
+        "Strobe Speed",
+        "White",
+        "Warm White"
+      ]
+    }
+  ]
+}
