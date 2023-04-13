@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PIXYLINE 150",
+  "shortName": "Pixyline 150",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["anonymus"],
+    "createDate": "2023-04-13",
+    "lastModifyDate": "2023-04-13"
+  },
+  "comment": "14 x 10 W RGBW, Warmwhite 3000 K, IP65\nSource lumineuse\nLinéaire RGBW\n14 x 10 W, 4-in-1 (rouge / vert / bleu / blanc chaud 3000 K)",
+  "links": {
+    "manual": [
+      "https://www.oxolight.com/product-page/pixyline-150"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/pixyline-150"
+    ],
+    "video": [
+      "https://www.facebook.com/Ambersphere/videos/oxo-pixyline-150-led-batten/389803451738198/"
+    ]
+  },
+  "physical": {
+    "dimensions": [980, 163, 170],
+    "weight": 6.5,
+    "power": 120,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED RGBW",
+      "colorTemperature": "invalid"
+    },
+    "lens": {
+      "degreesMinMax": [20, 50]
+    }
+  },
+  "availableChannels": {
+    "ADDR 001 09 CH": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ADDR 001 09 CH",
+      "shortName": "ADDR 001 09 CH",
+      "channels": [
+        "ADDR 001 09 CH"
+      ]
+    }
+  ]
+}
