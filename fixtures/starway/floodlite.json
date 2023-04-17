@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Floodlite",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["CharlyEQ"],
+    "createDate": "2023-04-17",
+    "lastModifyDate": "2023-04-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/floodlite-hd-3"
+    ],
+    "productPage": [
+      "https://www.star-way.com/floodlite-hd-3"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [11, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 CH",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
