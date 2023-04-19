@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 300",
+  "shortName": "Forza 300",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["LouisN"],
+    "createDate": "2023-04-19",
+    "lastModifyDate": "2023-04-19"
+  },
+  "comment": "LED COB Spotlight designed for audiovisual production",
+  "links": {
+    "manual": [
+      "http://en.nanlite.com/uploads/files/USER%20MANUAL/Forza%20300%20USER%20MANUAL%20(NANLITE).pdf"
+    ],
+    "productPage": [
+      "http://en.nanlite.com/products/detail/Forza-300"
+    ],
+    "video": [
+      "http://en.nanlite.com/uploads/files/videos/Forza/Introducing%20the%20NanLite%20Forza%20300!.mp4"
+    ],
+    "other": [
+      "http://www.crescit.com/a.fixture_dmx.php?action=V2pKV01GSkZNVmxSTWpsMVpFaEtkbUpJVGtWYVdGSm9ZVmQ0ZWc9PQ==&modeId=VFZSak1rNVVWVFU9&fxId=VFdwTmVrNUVSVDA9"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [330, 225, 120],
+    "weight": 2.3,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED COB",
+      "colorTemperature": 5600
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "Effect",
+          "effectName": "OFF",
+          "parameterStart": "off",
+          "parameterEnd": "off"
+        },
+        {
+          "dmxRange": [31, 61],
+          "type": "Effect",
+          "effectName": "FLASH_1",
+          "speed": "fast",
+          "duration": "0.25s"
+        },
+        {
+          "dmxRange": [62, 93],
+          "type": "Effect",
+          "effectName": "FLASH_2",
+          "speed": "slow",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [94, 125],
+          "type": "Effect",
+          "effectName": "FLASH_3",
+          "durationStart": "100ms",
+          "durationEnd": "6000ms",
+          "parameterStart": "fast",
+          "parameterEnd": "slow"
+        },
+        {
+          "dmxRange": [126, 157],
+          "type": "Effect",
+          "effectName": "STORM_1"
+        },
+        {
+          "dmxRange": [158, 188],
+          "type": "Effect",
+          "effectName": "STORM_2"
+        },
+        {
+          "dmxRange": [189, 220],
+          "type": "Effect",
+          "effectName": "STORM_3"
+        },
+        {
+          "dmxRange": [221, 252],
+          "type": "Effect",
+          "effectName": "MONITOR"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Effect",
+          "effectName": "BAD_BULB"
+        }
+      ]
+    },
+    "Effect Parameter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 93],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [94, 125],
+          "type": "Effect",
+          "effectName": "DMX EFFECTS PARAMETER #1",
+          "parameterStart": 0,
+          "parameterEnd": 19
+        },
+        {
+          "dmxRange": [126, 220],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [221, 252],
+          "type": "Effect",
+          "effectName": "DMX EFFECTS PARAMETER #1",
+          "parameterStart": 0,
+          "parameterEnd": 19
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "1",
+      "channels": [
+        "Dimmer",
+        "Effects",
+        "Effect Parameter"
+      ]
+    }
+  ]
+}
