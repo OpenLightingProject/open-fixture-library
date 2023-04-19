@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "40W Beam Spot Light RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David Oleniacz"],
+    "createDate": "2023-04-19",
+    "lastModifyDate": "2023-04-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/stores/HighIightSpIendidLife/page/C6F4337A-41CC-4560-880E-06BCA9E96924"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "SMD Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "SMD Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "SMD Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Function - DMX or Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "Ch1-Ch6 DMX Control"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Effect",
+          "effectName": "Internal Program"
+        }
+      ]
+    },
+    "Internal Program Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function - DMX or Internal Programs",
+        "Internal Program Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    }
+  ]
+}
