@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "irLED64 18x12SIX",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Edrig"],
+    "createDate": "2023-04-20",
+    "lastModifyDate": "2023-04-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.contest-lighting.com/home/downloads/IrLED64-18x12SIX_manuel.pdf"
+    ],
+    "productPage": [
+      "https://www.contest-lighting.com/home/index.php?code=H10138&cat1=l10000&cat2=l24000&cat3=l12007&lang=fr"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 270, 220],
+    "weight": 5.4,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 189],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [190, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0Hz",
+          "duration": "0ms"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 canaux RVBWAUV",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7 canaux RVBWAUV / Dimmer général et Strobe",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer"
+      ]
+    }
+  ]
+}
