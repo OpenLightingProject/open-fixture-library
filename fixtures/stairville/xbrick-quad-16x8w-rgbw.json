@@ -106,13 +106,13 @@
         "brightnessEnd": "100%"
       }
     },
-    "Stroboscope effect": {
+    "Strobe": {
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "helpWanted": "What are min/max strobe speeds?",
-        "speedStart": "0%",
-        "speedEnd": "100%"
+        "helpWanted": "At which DMX values is strobe disabled?",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Function select": {
@@ -128,7 +128,7 @@
             "Intensity white / NoFunction": "Intensity white",
             "Dimmer / NoFunction": "NoFunction",
             "Stroboscope effect / NoFunction": "NoFunction",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -142,7 +142,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -156,7 +156,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -170,7 +170,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -184,7 +184,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -198,7 +198,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -212,7 +212,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -226,7 +226,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -240,7 +240,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -254,7 +254,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -268,7 +268,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -282,7 +282,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -296,7 +296,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -310,7 +310,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -324,7 +324,7 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
@@ -339,13 +339,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "NoFunction"
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
           }
         },
         {
           "dmxRange": [80, 86],
           "type": "Effect",
-          "effectName": "Programme 02",
+          "effectName": "Program 02",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -353,13 +353,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [87, 93],
           "type": "Effect",
-          "effectName": "Programme 03",
+          "effectName": "Program 03",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -367,13 +367,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [94, 100],
           "type": "Effect",
-          "effectName": "Programme 04",
+          "effectName": "Program 04",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -381,13 +381,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [101, 107],
           "type": "Effect",
-          "effectName": "Programme 05",
+          "effectName": "Program 05",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -395,13 +395,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [108, 114],
           "type": "Effect",
-          "effectName": "Programme 06",
+          "effectName": "Program 06",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -409,13 +409,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [115, 121],
           "type": "Effect",
-          "effectName": "Programme 07",
+          "effectName": "Program 07",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -423,13 +423,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [122, 128],
           "type": "Effect",
-          "effectName": "Programme 08",
+          "effectName": "Program 08",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -437,13 +437,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [129, 135],
           "type": "Effect",
-          "effectName": "Programme 09",
+          "effectName": "Program 09",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -451,13 +451,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [136, 142],
           "type": "Effect",
-          "effectName": "Programme 10",
+          "effectName": "Program 10",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -465,13 +465,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [143, 149],
           "type": "Effect",
-          "effectName": "Programme 11",
+          "effectName": "Program 11",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -479,13 +479,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [150, 156],
           "type": "Effect",
-          "effectName": "Programme 12",
+          "effectName": "Program 12",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -493,13 +493,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [157, 163],
           "type": "Effect",
-          "effectName": "Programme 13",
+          "effectName": "Program 13",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -507,13 +507,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [164, 170],
           "type": "Effect",
-          "effectName": "Programme 14",
+          "effectName": "Program 14",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -521,13 +521,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [171, 177],
           "type": "Effect",
-          "effectName": "Programme 15",
+          "effectName": "Program 15",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -535,13 +535,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [178, 184],
           "type": "Effect",
-          "effectName": "Programme 16",
+          "effectName": "Program 16",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -549,13 +549,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [185, 191],
           "type": "Effect",
-          "effectName": "Programme 17",
+          "effectName": "Program 17",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -563,13 +563,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [192, 198],
           "type": "Effect",
-          "effectName": "Programme 18",
+          "effectName": "Program 18",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -577,13 +577,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [199, 205],
           "type": "Effect",
-          "effectName": "Programme 19",
+          "effectName": "Program 19",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -591,13 +591,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [206, 212],
           "type": "Effect",
-          "effectName": "Programme 20",
+          "effectName": "Program 20",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -605,13 +605,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [213, 219],
           "type": "Effect",
-          "effectName": "Programme 21",
+          "effectName": "Program 21",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -619,13 +619,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [220, 226],
           "type": "Effect",
-          "effectName": "Programme 22",
+          "effectName": "Program 22",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -633,13 +633,13 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [227, 233],
           "type": "Effect",
-          "effectName": "Programme 23",
+          "effectName": "Program 23",
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
             "Intensity green / NoFunction": "NoFunction",
@@ -647,14 +647,14 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Programme Speed"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [234, 240],
           "type": "Effect",
           "effectName": "Sound controlled (slow)",
-          "comment": "Sound-controlled operation, slow transition programmes 02 to 23",
+          "comment": "Sound-controlled operation, slow transition Programs 02 to 23",
           "soundControlled": true,
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
@@ -663,14 +663,14 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Microphone Sensitivity"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Microphone Sensitivity"
           }
         },
         {
           "dmxRange": [241, 255],
           "type": "Effect",
           "effectName": "Sound controlled (fast)",
-          "comment": "Sound-controlled operation, fast transition programmes 02 to 23",
+          "comment": "Sound-controlled operation, fast transition Programs 02 to 23",
           "soundControlled": true,
           "switchChannels": {
             "Intensity red / NoFunction": "NoFunction",
@@ -679,12 +679,12 @@
             "Intensity white / NoFunction": "NoFunction",
             "Dimmer / NoFunction": "Dimmer",
             "Stroboscope effect / NoFunction": "Stroboscope effect",
-            "NoFunction / Programme Speed / Microphone Sensitivity": "Microphone Sensitivity"
+            "NoFunction / Program Speed / Microphone Sensitivity": "Microphone Sensitivity"
           }
         }
       ]
     },
-    "Programme Speed": {
+    "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
@@ -754,7 +754,7 @@
         "Dimmer / NoFunction",
         "Stroboscope effect / NoFunction",
         "Function select",
-        "NoFunction / Programme Speed / Microphone Sensitivity"
+        "NoFunction / Program Speed / Microphone Sensitivity"
       ]
     },
     {
