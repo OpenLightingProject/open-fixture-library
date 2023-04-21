@@ -62,21 +62,150 @@
         {
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
       ]
     },
     "Effect": {
-      "capability": {
-        "type": "Generic"
-      }
+      "capabilities":[
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "Generic",
+          "comment": "Effect 1"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "Generic",
+          "comment": "Effect 2"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "Generic",
+          "comment": "Effect 3"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "Generic",
+          "comment": "Effect 4"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "Generic",
+          "comment": "Effect 5"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "Generic",
+          "comment": "Effect 6"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "Generic",
+          "comment": "Effect 7"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "Generic",
+          "comment": "Effect 8"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "Generic",
+          "comment": "Effect 9"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "Generic",
+          "comment": "Effect 10"
+        },
+        {
+          "dmxRange": [108,117],
+          "type": "Generic",
+          "comment": "Effect 11"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "Generic",
+          "comment": "Effect 12"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Generic",
+          "comment": "Effect 13"
+        },
+        {
+          "dmxRange": [137, 146],
+          "type": "Generic",
+          "comment": "Effect 14"
+        },
+        {
+          "dmxRange": [147, 156],
+          "type": "Generic",
+          "comment": "Effect 15"
+        },
+        {
+          "dmxRange": [157, 166],
+          "type": "Generic",
+          "comment": "Effect 16"
+        },
+        {
+          "dmxRange": [167, 176],
+          "type": "Generic",
+          "comment": "Effect 17"
+        },
+        {
+          "dmxRange": [177, 186],
+          "type": "Generic",
+          "comment": "Effect 18"
+        },
+        {
+          "dmxRange": [187, 196],
+          "type": "Generic",
+          "comment": "Effect 19"
+        },
+        {
+          "dmxRange": [197, 206],
+          "type": "Generic",
+          "comment": "Effect 20"
+        },
+        {
+          "dmxRange": [207, 216],
+          "type": "Generic",
+          "comment": "Effect 21"
+        },
+        {
+          "dmxRange": [217, 226],
+          "type": "Generic",
+          "comment": "Effect 22"
+        },
+        {
+          "dmxRange": [227, 236],
+          "type": "Generic",
+          "comment": "Effect 23"
+        },
+        {
+          "dmxRange": [237, 246],
+          "type": "Generic",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Generic",
+          "comment": "Sound Active Mode"
+        }
+      ]
     },
     "Effect Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Reset": {
@@ -148,12 +277,6 @@
         "color": "White",
         "comment": "White 2"
       }
-    },
-    "MARCO FUNCTION": {
-      "capability": {
-        "type": "Effect",
-        "effectName": "EFFECT"
-      }
     }
   },
   "modes": [
@@ -184,7 +307,7 @@
         "LED 6",
         "LED 7",
         "LED 8",
-        "MARCO FUNCTION",
+        "Effect",
         "Effect Speed",
         "Reset"
       ]
