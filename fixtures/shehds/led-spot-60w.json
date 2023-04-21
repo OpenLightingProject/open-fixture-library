@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Spot 60W",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["yids"],
     "createDate": "2022-11-14",
-    "lastModifyDate": "2022-11-14",
+    "lastModifyDate": "2023-04-20",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2022-11-08",
@@ -24,7 +24,7 @@
     ]
   },
   "physical": {
-    "dimensions": [19.8, 27.2, 14.4],
+    "dimensions": [198, 272, 144],
     "weight": 3.2,
     "power": 60,
     "bulb": {
