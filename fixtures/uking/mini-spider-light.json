@@ -1,20 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Mini Spider Light",
-  "shortName": "MSLight",
+  "shortName": "UK-MSLight",
   "categories": ["Effect"],
   "meta": {
-    "authors": ["Anonymus"],
+    "authors": ["Anonymus", "CGBassPlayer"],
     "createDate": "2023-03-21",
     "lastModifyDate": "2023-03-21"
   },
-  "comment": "Cabeza Móvil 80W led",
+  "comment": "Mini 60W Spider Light",
   "links": {
     "productPage": [
       "https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=FFiJrx1dgw0"
+      "https://www.youtube.com/watch?v=4KL1MdtnQ34"
+    ],
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B20.pdf"
     ]
   },
   "physical": {
@@ -26,7 +29,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 45]
+      "degreesMinMax": [9, 9]
     }
   },
   "availableChannels": {
@@ -46,32 +49,19 @@
       }
     },
     "Dimmer": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "slow"
-        },
-        {
-          "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "stop"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -97,7 +87,8 @@
         },
         {
           "dmxRange": [241, 255],
-          "type": "Generic",
+          "type": "Maintenance",
+          "hold": "5s",
           "comment": "For 5 Seconds to reset"
         }
       ]
@@ -173,7 +164,7 @@
   },
   "modes": [
     {
-      "name": "7 Channel",
+      "name": "7ch",
       "channels": [
         "Pan",
         "Pan 3",
@@ -185,7 +176,7 @@
       ]
     },
     {
-      "name": "15 Channel",
+      "name": "15ch",
       "channels": [
         "Pan",
         "Pan 2",
