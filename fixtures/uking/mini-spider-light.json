@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Anonymus", "CGBassPlayer"],
     "createDate": "2023-03-21",
-    "lastModifyDate": "2023-03-21"
+    "lastModifyDate": "2023-04-21"
   },
   "comment": "Mini 60W Spider Light",
   "links": {
@@ -97,14 +97,14 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "comment": "RED"
+        "comment": "Red 1"
       }
     },
     "LED 2": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "comment": "Green"
+        "comment": "Green 1"
       }
     },
     "LED 3": {
@@ -118,14 +118,14 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "comment": "White"
+        "comment": "White 1"
       }
     },
     "LED 5": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "comment": "RED 2"
+        "comment": "Red 2"
       }
     },
     "LED 6": {
@@ -138,27 +138,21 @@
     "LED 7": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue"
+        "color": "Blue",
+        "comment": "Blue 2"
+      }
+    },
+    "LED 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White 2"
       }
     },
     "MARCO FUNCTION": {
       "capability": {
         "type": "Effect",
         "effectName": "EFFECT"
-      }
-    },
-    "LED 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "135deg"
       }
     }
   },
