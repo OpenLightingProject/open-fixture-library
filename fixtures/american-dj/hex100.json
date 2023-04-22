@@ -3,7 +3,7 @@
   "name": "HEX100",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["K"],
+    "authors": ["K, CGBassPlayer"],
     "createDate": "2023-04-22",
     "lastModifyDate": "2023-04-22"
   },
@@ -16,7 +16,8 @@
     ]
   },
   "physical": {
-    "DMXconnector": "3-pin and 5-pin"
+    "DMXconnector": "3-pin and 5-pin",
+    "dimensions": [140, 172, 140]
   },
   "availableChannels": {
     "Red": {
@@ -41,7 +42,7 @@
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Amber"
+        "color": "White"
       }
     },
     "Amber": {
@@ -60,6 +61,64 @@
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "LED OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart":"slow",
+          "speedEnd":"fast",
+          "comment": "Strobing Slow - Fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse Strobing Slow - Fast`"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random Strobing Slow to Fast"
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "LED ON"
+        }
+      ]
     }
   },
   "modes": [
