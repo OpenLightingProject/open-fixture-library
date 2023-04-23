@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEAM 275",
+  "shortName": "BEAM275",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["vibeevents"],
+    "createDate": "2023-04-23",
+    "lastModifyDate": "2023-04-23"
+  },
+  "links": {
+    "other": [
+      "https://www.vibeevents.net"
+    ]
+  },
+  "physical": {
+    "dimensions": [25, 30, 20],
+    "weight": 10,
+    "power": 260,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LAMP",
+      "colorTemperature": 8000,
+      "lumens": 260
+    },
+    "lens": {
+      "name": "Big Caliber Optic",
+      "degreesMinMax": [2, 50]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism 2": {
+      "name": "Prism",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism Rotation 2": {
+      "name": "Prism Rotation",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Lamp": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Prism Rotation 3": {
+      "name": "Prism Rotation",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "EXT",
+      "channels": [
+        "Color Wheel",
+        "Strobe",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Prism 2",
+        "Prism Rotation 2",
+        "Frost",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Macros",
+        "Reset",
+        "Lamp",
+        "Pan/Tilt Speed",
+        "Color Wheel Rotation",
+        "Prism Rotation 3",
+        "Gobo Wheel Rotation"
+      ]
+    }
+  ]
+}
