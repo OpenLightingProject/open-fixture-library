@@ -1,14 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Mini Spider Light",
-  "shortName": "UK-MiniSpider",
+  "name": "ZQ-B20 Mini Spider Light",
+  "shortName": "ZQ-B20-MiniSpider",
   "categories": ["Effect"],
   "meta": {
-    "authors": ["Anonymus", "CGBassPlayer"],
+    "authors": ["CGBassPlayer"],
     "createDate": "2023-03-21",
     "lastModifyDate": "2023-04-24"
   },
-  "comment": "Mini 60W Spider Light",
   "links": {
     "productPage": [
       "https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
@@ -33,17 +32,16 @@
     }
   },
   "availableChannels": {
-    "Pan": {
+    "Tilt 1": {
       "capability": {
-        "type": "Pan",
+        "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "135deg"
       }
     },
-    "Pan 2": {
-      "name": "Pan",
+    "Tilt 2": {
       "capability": {
-        "type": "Pan",
+        "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "135deg"
       }
@@ -76,129 +74,128 @@
         },
         {
           "dmxRange": [8, 17],
-          "type": "Effect",
-          "effectName": "Effect 1"
+          "type": "Generic",
+          "comment": "Effect 1"
         },
         {
           "dmxRange": [18, 27],
-          "type": "Effect",
-          "effectName": "Effect 2"
+          "type": "Generic",
+          "comment": "Effect 2"
         },
         {
           "dmxRange": [28, 37],
-          "type": "Effect",
-          "effectName": "Effect 3"
+          "type": "Generic",
+          "comment": "Effect 3"
         },
         {
           "dmxRange": [38, 47],
-          "type": "Effect",
-          "effectName": "Effect 4"
+          "type": "Generic",
+          "comment": "Effect 4"
         },
         {
           "dmxRange": [48, 57],
-          "type": "Effect",
-          "effectName": "Effect 5"
+          "type": "Generic",
+          "comment": "Effect 5"
         },
         {
           "dmxRange": [58, 67],
-          "type": "Effect",
-          "effectName": "Effect 6"
+          "type": "Generic",
+          "comment": "Effect 6"
         },
         {
           "dmxRange": [68, 77],
-          "type": "Effect",
-          "effectName": "Effect 7"
+          "type": "Generic",
+          "comment": "Effect 7"
         },
         {
           "dmxRange": [78, 87],
-          "type": "Effect",
-          "effectName": "Effect 8"
+          "type": "Generic",
+          "comment": "Effect 8"
         },
         {
           "dmxRange": [88, 97],
-          "type": "Effect",
-          "effectName": "Effect 9"
+          "type": "Generic",
+          "comment": "Effect 9"
         },
         {
           "dmxRange": [98, 107],
-          "type": "Effect",
-          "effectName": "Effect 10"
+          "type": "Generic",
+          "comment": "Effect 10"
         },
         {
           "dmxRange": [108, 117],
-          "type": "Effect",
-          "effectName": "Effect 11"
+          "type": "Generic",
+          "comment": "Effect 11"
         },
         {
           "dmxRange": [118, 127],
-          "type": "Effect",
-          "effectName": "Effect 12"
+          "type": "Generic",
+          "comment": "Effect 12"
         },
         {
           "dmxRange": [128, 136],
-          "type": "Effect",
-          "effectName": "Effect 13"
+          "type": "Generic",
+          "comment": "Effect 13"
         },
         {
           "dmxRange": [137, 146],
-          "type": "Effect",
-          "effectName": "Effect 14"
+          "type": "Generic",
+          "comment": "Effect 14"
         },
         {
           "dmxRange": [147, 156],
-          "type": "Effect",
-          "effectName": "Effect 15"
+          "type": "Generic",
+          "comment": "Effect 15"
         },
         {
           "dmxRange": [157, 166],
-          "type": "Effect",
-          "effectName": "Effect 16"
+          "type": "Generic",
+          "comment": "Effect 16"
         },
         {
           "dmxRange": [167, 176],
-          "type": "Effect",
-          "effectName": "Effect 17"
+          "type": "Generic",
+          "comment": "Effect 17"
         },
         {
           "dmxRange": [177, 186],
-          "type": "Effect",
-          "effectName": "Effect 18"
+          "type": "Generic",
+          "comment": "Effect 18"
         },
         {
           "dmxRange": [187, 196],
-          "type": "Effect",
-          "effectName": "Effect 19"
+          "type": "Generic",
+          "comment": "Effect 19"
         },
         {
           "dmxRange": [197, 206],
-          "type": "Effect",
-          "effectName": "Effect 20"
+          "type": "Generic",
+          "comment": "Effect 20"
         },
         {
           "dmxRange": [207, 216],
-          "type": "Effect",
-          "effectName": "Effect 21"
+          "type": "Generic",
+          "comment": "Effect 21"
         },
         {
           "dmxRange": [217, 226],
-          "type": "Effect",
-          "effectName": "Effect 22"
+          "type": "Generic",
+          "comment": "Effect 22"
         },
         {
           "dmxRange": [227, 236],
-          "type": "Effect",
-          "effectName": "Effect 23"
+          "type": "Generic",
+          "comment": "Effect 23"
         },
         {
           "dmxRange": [237, 246],
-          "type": "Effect",
-          "effectName": "Auto Mode"
+          "type": "Generic",
+          "comment": "Auto Mode"
         },
         {
           "dmxRange": [247, 255],
-          "type": "Effect",
-          "effectName": "Sound Active Mode",
-          "soundControlled": true
+          "type": "Generic",
+          "comment": "Sound Active Mode"
         }
       ]
     },
@@ -219,73 +216,66 @@
           "dmxRange": [241, 255],
           "type": "Maintenance",
           "hold": "5s",
-          "comment": "For 5 Seconds to reset"
+          "comment": "Reset"
         }
       ]
     },
-    "LED 1": {
+    "Red 1": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red 1"
+        "color": "Red"
       }
     },
-    "LED 2": {
+    "Green 1": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green 1"
+        "color": "Green"
       }
     },
-    "LED 3": {
+    "Blue 1": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue 1"
+        "color": "Blue"
       }
     },
-    "LED 4": {
+    "White 1": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White 1"
+        "color": "White"
       }
     },
-    "LED 5": {
+    "Red 2": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red 2"
+        "color": "Red"
       }
     },
-    "LED 6": {
+    "Green 2": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green 2"
+        "color": "Green"
       }
     },
-    "LED 7": {
+    "Blue 2": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue 2"
+        "color": "Blue"
       }
     },
-    "LED 8": {
+    "White 2": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White 2"
+        "color": "White"
       }
     }
   },
   "modes": [
     {
-      "name": "7ch",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
-        "Pan",
-        "Pan 2",
+        "Tilt 1",
+        "Tilt 2",
         "Dimmer",
         "Strobe",
         "Effect",
@@ -294,20 +284,21 @@
       ]
     },
     {
-      "name": "15ch",
+      "name": "15-channel",
+      "shortName": "15ch",
       "channels": [
-        "Pan",
-        "Pan 2",
+        "Tilt 1",
+        "Tilt 2",
         "Dimmer",
         "Strobe",
-        "LED 1",
-        "LED 2",
-        "LED 3",
-        "LED 4",
-        "LED 5",
-        "LED 6",
-        "LED 7",
-        "LED 8",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
         "Effect",
         "Effect Speed",
         "Reset"
