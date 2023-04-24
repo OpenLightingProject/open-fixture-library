@@ -4,7 +4,7 @@
   "categories": ["Dimmer", "Color Changer"],
   "meta": {
     "authors": ["Edrig", "CGBassPlayer"],
-    "createDate": "2023-04-20",
+    "createDate": "2023-04-24",
     "lastModifyDate": "2023-04-24"
   },
   "links": {
@@ -64,11 +64,12 @@
         "color": "UV"
       }
     },
-    "DimStrobe": {
+    "Dimmer / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 189],
-          "type": "Intensity"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 250],
@@ -79,8 +80,9 @@
         },
         {
           "dmxRange": [251, 255],
-          "type": "Intensity",
-          "brightness": "bright"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Full power"
         }
       ]
     },
@@ -89,7 +91,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled, i.e. when is the light constantly on or off?"
       }
     },
     "Program": {
@@ -526,7 +529,7 @@
   },
   "modes": [
     {
-      "name": "2 Channel",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
         "Program",
@@ -534,28 +537,28 @@
       ]
     },
     {
-      "name": "4 Channel",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "DimStrobe"
+        "Dimmer / Strobe"
       ]
     },
     {
-      "name": "5 Channel",
+      "name": "5-channel",
       "shortName": "5ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "DimStrobe",
+        "Dimmer / Strobe",
         "White"
       ]
     },
     {
-      "name": "6 Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red",
@@ -567,7 +570,7 @@
       ]
     },
     {
-      "name": "7 Channel",
+      "name": "7-channel",
       "shortName": "7ch",
       "channels": [
         "Red",
@@ -576,11 +579,11 @@
         "White",
         "Amber",
         "UV",
-        "DimStrobe"
+        "Dimmer / Strobe"
       ]
     },
     {
-      "name": "8 Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Red",
@@ -594,7 +597,7 @@
       ]
     },
     {
-      "name": "9 Channel",
+      "name": "9-channel",
       "shortName": "9ch",
       "channels": [
         "Red",
