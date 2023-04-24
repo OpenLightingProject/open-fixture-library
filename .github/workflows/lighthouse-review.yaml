@@ -24,7 +24,7 @@ jobs:
           node-version: 16
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci --also=dev
+        run: npm ci --include=dev
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
