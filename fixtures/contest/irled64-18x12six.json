@@ -3,9 +3,9 @@
   "name": "irLED64 18x12SIX",
   "categories": ["Dimmer", "Color Changer"],
   "meta": {
-    "authors": ["Edrig"],
+    "authors": ["Edrig", "CGBassPlayer"],
     "createDate": "2023-04-20",
-    "lastModifyDate": "2023-04-20"
+    "lastModifyDate": "2023-04-24"
   },
   "links": {
     "manual": [
@@ -141,7 +141,7 @@
           }
         },
         {
-          "dmxRange": [26,30],
+          "dmxRange": [26, 30],
           "type": "ColorPreset",
           "comment": "Cyan",
           "colors": ["#00ffff"],
