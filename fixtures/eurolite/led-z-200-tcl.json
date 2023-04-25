@@ -3,9 +3,9 @@
   "name": "LED Z-200 TCL",
   "categories": ["Effect"],
   "meta": {
-    "authors": ["Heiko Fanieng"],
-    "createDate": "2020-05-03",
-    "lastModifyDate": "2020-05-03"
+    "authors": ["Heiko Fanieng", "CGBassPlayer"],
+    "createDate": "2023-04-25",
+    "lastModifyDate": "2023-04-25"
   },
   "links": {
     "manual": [
@@ -15,16 +15,20 @@
       "https://www.steinigke.de/de/mpn51918516-eurolite-led-z-200-strahleneffekt.html"
     ],
     "video": [
+      "https://www.youtube.com/watch?v=BH7UX8sXT7Y",
       "https://www.steinigke.de/download/51918516-Video-55873-eurolite-led-z-200-strahleneffekt-de_en_es_fr.flv"
     ]
   },
   "physical": {
-    "dimensions": [360, 380, 280],
-    "weight": 2.45,
+    "dimensions": [360, 300, 280],
+    "weight": 3,
     "power": 40,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED TCL"
+    },
+    "lens": {
+      "degreesMinMax": [125, 125]
     }
   },
   "availableChannels": {
@@ -32,81 +36,74 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Rotation",
-          "speedStart": "stop",
-          "speedEnd": "stop",
-          "comment": "No rotation"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [21, 170],
           "type": "Rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "slow CW",
-          "comment": "Step by step counter clockwise rotation"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [171, 255],
           "type": "Rotation",
           "speedStart": "slow CW",
           "speedEnd": "slow CCW",
-          "comment": "Clockwise and counter clockwise rotation"
+          "comment": "Clockwise and counter clockwise rotation",
+          "helpWanted": "What does this rotation mean?"
         }
       ]
     },
-    "LED effects": {
+    "Program": {
       "capabilities": [
         {
           "dmxRange": [0, 35],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "All LEDs on"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [36, 70],
-          "type": "Effect",
-          "effectName": "Strobe-effect",
-          "speedStart": "1Hz",
-          "speedEnd": "34Hz",
-          "comment": "Strobe-effect"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "helpWanted": "How does the strobe change in this range?"
         },
         {
           "dmxRange": [71, 105],
           "type": "Effect",
           "effectName": "Fade",
-          "comment": "Fade"
+          "helpWanted": "How does the fade change in this range?"
         },
         {
           "dmxRange": [106, 140],
           "type": "Effect",
           "effectName": "Color-change",
-          "comment": "Color-change"
+          "helpWanted": "Which colors are changing at which DMX values?"
         },
         {
           "dmxRange": [141, 175],
           "type": "Effect",
           "effectName": "Color-change + strobe",
-          "comment": "Color-change + strobe"
+          "helpWanted": "Which colors are changing at which DMX values? How does the strobe incorperate with it?"
         },
         {
           "dmxRange": [176, 210],
           "type": "Effect",
           "effectName": "Cross-fade",
-          "comment": "Cross-fade"
+          "helpWanted": "Which colors are changing at which DMX values?"
         },
         {
           "dmxRange": [211, 255],
           "type": "Effect",
           "effectName": "Cross-fade + strobe",
-          "comment": "Cross-fade + strobe"
+          "helpWanted": "Which colors are changing at which DMX values? How does the strobe incorperate with it?"
         }
       ]
     },
-    "Speed settings for control channel 2": {
+    "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "comment": "Increasing speed"
+        "helpWanted": "At which DMX values is the effect disabled?"
       }
     },
     "Red": {
@@ -130,11 +127,12 @@
   },
   "modes": [
     {
-      "name": "6chan",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Motor Rotation",
-        "LED effects",
-        "Speed settings for control channel 2",
+        "Program",
+        "Program Speed",
         "Red",
         "Green",
         "Blue"
