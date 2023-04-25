@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PavoBulb 10C",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["SlothPaladin"],
+    "createDate": "2023-04-25",
+    "lastModifyDate": "2023-04-25"
+  },
+  "comment": "RGBWW E27 bulb to use in normal fixtures",
+  "links": {
+    "manual": [
+      "https://en.nanlite.com/uploads/files/USER%20MANUAL/PavoBulb%2010C%20User%20Manual%20V2%2020220125.pdf"
+    ],
+    "productPage": [
+      "https://en.nanlite.com/products/topic/PavoBulb-10C"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yPadGcCrGOQ"
+    ],
+    "other": [
+      "https://en.nanlite.com/uploads/files/DMX_REFERENCE_GUIDE/PavoBulb_10C_DMX_REFERENCE_GUIDE_EN.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [73, 121, 73],
+    "weight": 0.17,
+    "power": 10,
+    "DMXconnector": "USB-C to DMX",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": 580
+    },
+    "lens": {
+      "degreesMinMax": [205, 205]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Green/Magenta": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "no Magenta/Green shift"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off",
+          "comment": "-100 Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off",
+          "comment": "-99 Green to -1 Green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "no Magenta/Green shift"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off",
+          "comment": "+1 Green to +99 Green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off",
+          "comment": "+100 Green"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strob"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode 2": {
+      "name": "Mode",
+      "defaultValue": 17,
+      "highlightValue": 17,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "HUE": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "359deg",
+        "comment": "HSI Color Wheel"
+      }
+    },
+    "SAT": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Saturation"
+      }
+    },
+    "Mode 3": {
+      "name": "Mode",
+      "defaultValue": 32,
+      "highlightValue": 32,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ULTIMATE DMX 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Dimmer",
+        "Mode",
+        "CCT",
+        "Green/Magenta",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - HSI",
+      "shortName": "Ultimate HSI",
+      "channels": [
+        "Dimmer",
+        "Mode 2",
+        "HUE",
+        "SAT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - RGBW",
+      "shortName": "Ultimate RGBW",
+      "channels": [
+        "Dimmer",
+        "Mode 3",
+        "Red Intensity",
+        "Green Intensity",
+        "Blue Intensity",
+        "White Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
