@@ -32,53 +32,50 @@
 <style lang="scss" scoped>
 .help-wanted {
   position: relative;
-  margin: 1ex 0;
-  background: theme-color(yellow-background);
-  border-radius: 2px;
   min-height: 32px;
   padding: 0;
+  margin: 1ex 0;
   line-height: 1.6;
+  background: theme-color(yellow-background);
+  border-radius: 2px;
 }
 
 .information {
   $icon-width: 1.4em;
   $text-margin: 0.5em;
+
   padding: 0.6em 0.7em 0.6em (0.7em + $icon-width + $text-margin);
   border-bottom: 2px solid theme-color(yellow-background-hover);
 
   & > .icon {
-    margin-left: -$icon-width - $text-margin;
+    float: left;
     padding-right: $text-margin;
     margin-top: 0.2em;
-    float: left;
+    margin-left: -$icon-width - $text-margin;
   }
 }
 
 .actions {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-evenly;
-  flex-wrap: wrap;
   font-size: 90%;
 
-  a, noscript {
-    flex-grow: 1;
-    flex-basis: 10em;
-  }
-
   a {
+    box-sizing: border-box;
     display: inline-block;
+    flex-basis: 10em;
+    flex-grow: 1;
+    width: 100%;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
 
     &:hover,
     &:focus {
       background: theme-color(yellow-background-hover);
-      fill: theme-color(text-primary);
       outline: 0;
+      fill: theme-color(text-primary);
     }
 
     & > .icon {
@@ -89,26 +86,19 @@
 </style>
 
 <script>
+import { objectProp, oneOfProp } from 'vue-ts-types';
+
 export default {
   props: {
-    type: {
-      type: String,
-      required: true,
-      validator(type) {
-        return [`fixture`, `capability`, `plugin`].includes(type);
-      }
-    },
-    context: {
-      type: Object,
-      required: true
-    }
+    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
+    context: objectProp().required,
   },
   computed: {
     location() {
       if (this.type === `capability`) {
-        const cap = this.context;
-        const channel = cap._channel;
-        return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        const capability = this.context;
+        const channel = capability._channel;
+        return `Channel "${channel.name}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
 
       return null;
@@ -153,14 +143,9 @@ export default {
     },
 
     mailtoUrl() {
-      let subject;
-
-      if (this.fixture) {
-        subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
-      }
-      else {
-        subject = `Feedback for ${this.type} '${this.context.key}'`;
-      }
+      const subject = this.fixture
+        ? `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`
+        : `Feedback for ${this.type} '${this.context.key}'`;
 
       const bodyLines = [];
       if (this.location) {
@@ -172,8 +157,8 @@ export default {
 
       const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
-  }
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    },
+  },
 };
 </script>

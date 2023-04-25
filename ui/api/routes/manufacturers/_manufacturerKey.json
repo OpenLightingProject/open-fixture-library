@@ -1,0 +1,84 @@
+{
+  "parameters": [
+    {
+      "name": "manufacturerKey",
+      "in": "path",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "pattern": "^[a-z0-9\\-]+$"
+      }
+    }
+  ],
+  "get": {
+    "operationId": "getManufacturerByKey",
+    "description": "Returns information about a specific manufacturer.",
+    "tags": ["manufacturers"],
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "website": {
+                  "type": "string"
+                },
+                "rdmId": {
+                  "type": "integer"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "fixtures": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "categories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "key",
+                "name",
+                "color",
+                "fixtures"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "404": {
+        "$ref": "../../openapi.json#/components/responses/404-NotFoundError"
+      }
+    }
+  }
+}

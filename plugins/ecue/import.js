@@ -1,78 +1,86 @@
-const colorNames = require(`color-names`);
-const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
+import colorNameList from 'color-name-list/dist/colornames.esm.mjs';
+import xml2js from 'xml2js';
 
-module.exports.version = `0.3.1`;
+export const version = `0.3.1`;
 
 const colors = {};
-for (const hex of Object.keys(colorNames)) {
-  colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
+for (const color of colorNameList) {
+  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
 }
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} filename The imported file's name.
- * @param {String} authorName The importer's name.
- * @returns {Promise.<Object, Error>} A Promise resolving to an out object
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
-module.exports.import = async function importECue(buffer, filename, authorName) {
-  const parser = new xml2js.Parser();
+export async function importFixtures(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const out = {
     manufacturers: {},
     fixtures: {},
-    warnings: {}
+    warnings: {},
   };
 
-  const xml = await promisify(parser.parseString)(buffer.toString());
+  const xml = await xml2js.parseStringPromise(buffer.toString());
 
   if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
     throw new Error(`Nothing to import.`);
   }
 
   const ecueManufacturers = xml.Document.Library[0].Fixtures[0].Manufacturer || [];
-  ecueManufacturers.forEach(manufacturer => {
-    const manName = manufacturer.$.Name;
-    const manKey = slugify(manName);
-
-    out.manufacturers[manKey] = {
-      name: manName
-    };
-
-    if (manufacturer.$.Comment !== ``) {
-      out.manufacturers[manKey].comment = manufacturer.$.Comment;
-    }
-    if (manufacturer.$.Web !== ``) {
-      out.manufacturers[manKey].website = manufacturer.$.Web;
-    }
-
-    for (const fixture of (manufacturer.Fixture || [])) {
-      addFixture(fixture, manKey);
-    }
-  });
+  for (const manufacturer of ecueManufacturers) {
+    addManufacturer(manufacturer);
+  }
 
   return out;
 
 
   /**
-   * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {Object} ecueFixture The e:cue fixture object.
-   * @param {String} manKey The manufacturer key of the fixture.
+   * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
+   * Calls {@link addFixture} for all contained fixtures.
+   * @param {object} ecueManufacturer The e:cue manufacturer object.
    */
-  function addFixture(ecueFixture, manKey) {
-    const fixture = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
-      name: ecueFixture.$.Name
+  function addManufacturer(ecueManufacturer) {
+    const manufacturerName = ecueManufacturer.$.Name;
+    const manufacturerKey = slugify(manufacturerName);
+
+    out.manufacturers[manufacturerKey] = {
+      name: manufacturerName,
     };
 
-    let fixKey = `${manKey}/${slugify(fixture.name)}`;
-    if (fixKey in out.fixtures) {
-      fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
-      out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];
+    if (ecueManufacturer.$.Comment !== ``) {
+      out.manufacturers[manufacturerKey].comment = ecueManufacturer.$.Comment;
+    }
+    if (ecueManufacturer.$.Web !== ``) {
+      out.manufacturers[manufacturerKey].website = ecueManufacturer.$.Web;
+    }
+
+    for (const fixture of (ecueManufacturer.Fixture || [])) {
+      addFixture(fixture, manufacturerKey);
+    }
+  }
+
+
+  /**
+   * Parses the e:cue fixture and add it to out.fixtures.
+   * @param {object} ecueFixture The e:cue fixture object.
+   * @param {string} manufacturerKey The manufacturer key of the fixture.
+   */
+  function addFixture(ecueFixture, manufacturerKey) {
+    const fixture = {
+      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
+      name: ecueFixture.$.Name,
+    };
+
+    let fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+    if (fixtureKey in out.fixtures) {
+      fixtureKey += `-${Math.random().toString(36).slice(2, 7)}`;
+      out.warnings[fixtureKey] = [`Fixture key '${fixtureKey}' is not unique, appended random characters.`];
     }
     else {
-      out.warnings[fixKey] = [];
+      out.warnings[fixtureKey] = [];
     }
 
     if (ecueFixture.$.NameShort !== ``) {
@@ -80,7 +88,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     }
 
     fixture.categories = [`Other`];
-    out.warnings[fixKey].push(`Please specify categories.`);
+    out.warnings[fixtureKey].push(`Please specify categories.`);
 
     fixture.meta = {
       authors: [authorName],
@@ -88,8 +96,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
         plugin: `ecue`,
-        date: timestamp
-      }
+        date: timestamp,
+      },
     };
 
     if (ecueFixture.$.Comment !== ``) {
@@ -107,42 +115,46 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     fixture.modes = [{
       name: `${ecueFixture.$.AllocateDmxChannels}-channel`,
       shortName: `${ecueFixture.$.AllocateDmxChannels}ch`,
-      channels: []
+      channels: [],
     }];
 
     for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
-      addChannelToFixture(ecueChannel, fixture, out.warnings[fixKey]);
+      addChannelToFixture(ecueChannel, fixture, out.warnings[fixtureKey]);
     }
 
-    out.fixtures[fixKey] = fixture;
+    out.fixtures[fixtureKey] = fixture;
   }
-};
+}
 
 /**
- * @param {Object} ecueFixture The e:cue fixture object.
- * @returns {Object} The OFL fixture's physical object.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
 
   if (ecueFixture.$.DimWidth !== `10` && ecueFixture.$.DimHeight !== `10` && ecueFixture.$.DimDepth !== `10`) {
-    physical.dimensions = [parseFloat(ecueFixture.$.DimWidth), parseFloat(ecueFixture.$.DimHeight), parseFloat(ecueFixture.$.DimDepth)];
+    physical.dimensions = [
+      Number.parseFloat(ecueFixture.$.DimWidth),
+      Number.parseFloat(ecueFixture.$.DimHeight),
+      Number.parseFloat(ecueFixture.$.DimDepth),
+    ];
   }
 
   if (ecueFixture.$.Weight !== `0`) {
-    physical.weight = parseFloat(ecueFixture.$.Weight);
+    physical.weight = Number.parseFloat(ecueFixture.$.Weight);
   }
 
   if (ecueFixture.$.Power !== `0`) {
-    physical.power = parseFloat(ecueFixture.$.Power);
+    physical.power = Number.parseFloat(ecueFixture.$.Power);
   }
 
   return physical;
 }
 
 /**
- * @param {Object} ecueFixture The e:cue fixture object.
- * @returns {Array.<Object>} An array of all ecue channel objects.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {object[]} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   const channels = [];
@@ -150,31 +162,25 @@ function getCombinedEcueChannels(ecueFixture) {
   const channelTypes = [`ChannelIntensity`, `ChannelColor`, `ChannelBeam`, `ChannelFocus`];
   for (const channelType of channelTypes) {
     if (ecueFixture[channelType]) {
-      channels.push(...ecueFixture[channelType].map(ch => {
+      channels.push(...ecueFixture[channelType].map(channel => {
         // save the channel type in the channel object
-        ch._ecueChannelType = channelType;
-        return ch;
+        channel._ecueChannelType = channelType;
+        return channel;
       }));
     }
   }
 
   // sort channels by (coarse) DMX channel
-  channels.sort((a, b) => {
-    if (parseInt(a.$.DmxByte0) < parseInt(b.$.DmxByte0)) {
-      return -1;
-    }
-
-    return (parseInt(a.$.DmxByte0) > parseInt(b.$.DmxByte0)) ? 1 : 0;
-  });
+  channels.sort((a, b) => Number.parseInt(a.$.DmxByte0, 10) - Number.parseInt(b.$.DmxByte0, 10));
 
   return channels;
 }
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {Object} ecueChannel The e:cue channel object.
- * @param {Object} fixture The OFL fixture object.
- * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} ecueChannel The e:cue channel object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -184,7 +190,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   let channelKey = channelName;
   if (channelKey in fixture.availableChannels) {
     warningsArray.push(`Channel key '${channelKey}' is not unique, appended random characters.`);
-    channelKey += `-${Math.random().toString(36).substr(2, 5)}`;
+    channelKey += `-${Math.random().toString(36).slice(2, 7)}`;
     channel.name = channelName;
   }
 
@@ -193,7 +199,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const shortNameFine = `${channelKey} fine`;
     channel.fineChannelAliases = [shortNameFine];
     maxDmxValue = (256 * 256) - 1;
-    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1) - 1] = shortNameFine;
+    fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte1, 10) - 1] = shortNameFine;
   }
 
   addDmxValues();
@@ -205,12 +211,14 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         End: maxDmxValue,
         Name: `0-100%`,
         AutoMenu: `1`,
-        Centre: `0`
-      }
+        Centre: `0`,
+      },
     }];
   }
 
-  channel.capabilities = ecueChannel.Range.map(getCapability);
+  channel.capabilities = ecueChannel.Range.map(
+    (ecueRange, index) => getCapability(ecueRange, index),
+  );
 
   if (channel.capabilities.length === 1) {
     channel.capability = channel.capabilities[0];
@@ -219,7 +227,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   }
 
   fixture.availableChannels[channelKey] = channel;
-  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0) - 1] = channelKey;
+  fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
 
 
   /**
@@ -227,11 +235,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function addDmxValues() {
     if (ecueChannel.$.DefaultValue !== `0`) {
-      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue);
+      channel.defaultValue = Number.parseInt(ecueChannel.$.DefaultValue, 10);
     }
 
     if (ecueChannel.$.Highlight !== `0`) {
-      channel.highlightValue = parseInt(ecueChannel.$.Highlight);
+      channel.highlightValue = Number.parseInt(ecueChannel.$.Highlight, 10);
     }
 
     if (ecueChannel.$.Constant === `1`) {
@@ -245,151 +253,149 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
   /**
    *
-   * @param {*} ecueRange The e:cue range object.
-   * @param {*} index The index of the capability / range.
-   * @returns {Object} The OFL capability object.
+   * @param {any} ecueRange The e:cue range object.
+   * @param {any} index The index of the capability / range.
+   * @returns {object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
-    const cap = {
-      dmxRange: getDmxRange()
+    const capability = {
+      dmxRange: getDmxRange(),
     };
 
     const capabilityName = ecueRange.$.Name.trim();
 
-    cap.type = getCapabilityType();
+    capability.type = getCapabilityType();
+
+    const setPanTiltAngles = () => {
+      capability.angleStart = `0%`;
+      capability.angleEnd = `100%`;
+      capability.comment = capabilityName;
+    };
 
     // capability parsers can rely on the channel type as a first distinctive feature
     const capabilityTypeParsers = {
       ColorIntensity() {
-        cap.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
-          color => channelName.toLowerCase().includes(color.toLowerCase())
+        capability.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
+          color => channelName.toLowerCase().includes(color.toLowerCase()),
         );
 
-        cap.comment = capabilityName;
+        capability.comment = capabilityName;
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
-          const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
           if (color in colors) {
-            cap.colors = [colors[color]];
+            capability.colors = [colors[color]];
           }
         }
 
-        cap.comment = getSpeedGuessedComment();
+        capability.comment = getSpeedGuessedComment();
 
-        if (`speedStart` in cap) {
-          cap.type = ecueChannel._ecueChannelType === `ChannelColor` ? `WheelRotation` : `WheelSlotRotation`;
+        if (`speedStart` in capability) {
+          capability.type = ecueChannel._ecueChannelType === `ChannelColor` ? `WheelRotation` : `WheelSlotRotation`;
         }
       },
       ColorPreset() {
-        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
         if (color in colors) {
-          cap.color = colors[color];
+          capability.color = colors[color];
         }
 
-        cap.comment = capabilityName;
+        capability.comment = capabilityName;
       },
       ShutterStrobe() {
-        if (capabilityName.match(/^(?:Blackout|(?:Shutter )?Closed?)$/i)) {
-          cap.shutterEffect = `Closed`;
+        if (/^(?:blackout|(?:shutter )?closed?)$/i.test(capabilityName)) {
+          capability.shutterEffect = `Closed`;
           return;
         }
 
-        if (capabilityName.match(/^(?:(?:Shutter )?Open|Full?)$/i)) {
-          cap.shutterEffect = `Open`;
+        if (/^(?:(?:shutter )?open|full?)$/i.test(capabilityName)) {
+          capability.shutterEffect = `Open`;
           return;
         }
 
-        if (capabilityName.match(/puls/i)) {
-          cap.shutterEffect = `Pulse`;
+        if (/puls/i.test(capabilityName)) {
+          capability.shutterEffect = `Pulse`;
         }
-        else if (capabilityName.match(/ramp\s*up/i)) {
-          cap.shutterEffect = `RampUp`;
+        else if (/ramp\s*up/i.test(capabilityName)) {
+          capability.shutterEffect = `RampUp`;
         }
-        else if (capabilityName.match(/ramp\s*down/i)) {
-          cap.shutterEffect = `RampDown`;
+        else if (/ramp\s*down/i.test(capabilityName)) {
+          capability.shutterEffect = `RampDown`;
         }
         else {
-          cap.shutterEffect = `Strobe`;
+          capability.shutterEffect = `Strobe`;
         }
 
-        if (capabilityName.match(/random/i)) {
-          cap.shutterEffect += `Random`;
+        if (/random/i.test(capabilityName)) {
+          capability.shutterEffect += `Random`;
         }
 
-        cap.comment = getSpeedGuessedComment();
+        capability.comment = getSpeedGuessedComment();
       },
-      Pan() {
-        cap.angleStart = `0%`;
-        cap.angleEnd = `100%`;
-        cap.comment = capabilityName;
-      },
-      Tilt() {
-        cap.angleStart = `0%`;
-        cap.angleEnd = `100%`;
-        cap.comment = capabilityName;
-      },
+      Pan: setPanTiltAngles,
+      Tilt: setPanTiltAngles,
       Effect() {
-        cap.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
-        cap.effectName = getSpeedGuessedComment();
+        capability.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
+        capability.effectName = getSpeedGuessedComment();
       },
       NoFunction() {
         // don't even add a comment
-      }
+      },
     };
 
-    if (cap.type in capabilityTypeParsers) {
-      capabilityTypeParsers[cap.type]();
+    if (capability.type in capabilityTypeParsers) {
+      capabilityTypeParsers[capability.type]();
     }
     else {
-      cap.comment = getSpeedGuessedComment();
+      capability.comment = getSpeedGuessedComment();
     }
 
     // delete unnecessary comments
-    if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
-      delete cap.comment;
+    if (`comment` in capability && (capability.comment === channelName || /^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/.test(capability.comment))) {
+      delete capability.comment;
     }
 
     if (ecueRange.$.AutoMenu !== `1`) {
-      cap.menuClick = `hidden`;
+      capability.menuClick = `hidden`;
     }
     else if (ecueRange.$.Centre !== `0`) {
-      cap.menuClick = `center`;
+      capability.menuClick = `center`;
     }
 
-    return cap;
+    return capability;
 
 
     /**
-     * @returns {Array.<Number>} The DMX range of this capability.
+     * @returns {number[]} The DMX range of this capability.
      */
     function getDmxRange() {
-      const dmxRangeStart = parseInt(ecueRange.$.Start);
-      let dmxRangeEnd = parseInt(ecueRange.$.End);
+      const dmxRangeStart = Number.parseInt(ecueRange.$.Start, 10);
+      let dmxRangeEnd = Number.parseInt(ecueRange.$.End, 10);
 
       if (dmxRangeEnd === -1) {
-        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start) - 1 : maxDmxValue;
+        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? Number.parseInt(ecueChannel.Range[index + 1].$.Start, 10) - 1 : maxDmxValue;
       }
 
       return [dmxRangeStart, dmxRangeEnd];
     }
 
     /**
-     * @returns {String} The parsed capability type.
+     * @returns {string} The parsed capability type.
      */
     function getCapabilityType() {
       // capability parsers can rely on the channel type as a first distinctive feature
       const capabilityTypePerChannelType = {
         ChannelColor() {
-          if (channelName.match(/\bCTO\b|\bCTB\b|temperature\b/i)) {
+          if (/\bcto\b|\bctb\b|temperature\b/i.test(channelName)) {
             return `ColorTemperature`;
           }
 
-          if (ecueChannel.Range.length === 1 && !channelName.match(/macro|wheel\b/i)) {
+          if (ecueChannel.Range.length === 1 && !/macro|wheel\b/i.test(channelName)) {
             return `ColorIntensity`;
           }
 
-          if (channelName.match(/wheel\b/i)) {
+          if (/wheel\b/i.test(channelName)) {
             return `WheelSlot`;
           }
 
@@ -400,7 +406,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           return capabilityTypePerChannelType.ChannelBeam();
         },
         ChannelFocus() {
-          if (channelName.match(/speed/i)) {
+          if (/speed/i.test(channelName)) {
             return `PanTiltSpeed`;
           }
 
@@ -419,7 +425,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             return capabilityTypePerChannelType.ChannelBeam();
           }
 
-          if (channelName.match(/continuous/i)) {
+          if (/continuous/i.test(channelName)) {
             return `${panOrTilt}Continuous`;
           }
 
@@ -432,7 +438,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             StrobeDuration: /\bstrobe duration\b/,
             ShutterStrobe: /\b(?:shutter|strobe|strb|strob|strobing)\b/,
             Intensity: /\b(?:intensity|dimmer)\b/,
-            PanTiltSpeed: /\b(?:pan[/ -]?tilt speed|p[/ -]?t speed)\b/,
+            PanTiltSpeed: /\b(?:pan[ /-]?tilt speed|p[ /-]?t speed)\b/,
             PanContinuous: /\bpan continuous\b/,
             TiltContinuous: /\btilt continuous\b/,
             EffectParameter: /\beffect param(?:eter)?\b/,
@@ -463,14 +469,14 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             Rotation: /\brotation\b/,
             Speed: /\bspeed\b/,
             Time: /\btime\b/,
-            Maintenance: /\b(?:reset|maintenance)\b/
+            Maintenance: /\b(?:reset|maintenance)\b/,
           };
 
           return Object.keys(capabilityTypeRegexps).find(
             channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
-              channelName.toLowerCase().match(capabilityTypeRegexps[channelType])
+              channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || `Generic`;
-        }
+        },
       };
 
       return capabilityTypePerChannelType[ecueChannel._ecueChannelType]();
@@ -478,28 +484,28 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     /**
      * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {String} The rest of the capabilityName.
+     * @returns {string} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
-      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
+        const directionString = direction ? (/^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`) : ``;
 
-        if (directionStr !== ``) {
-          cap.type = `Rotation`;
+        if (directionString !== ``) {
+          capability.type = `Rotation`;
         }
 
         start = start.toLowerCase();
         end = end.toLowerCase();
 
-        const startNumber = parseFloat(start);
-        const endNumber = parseFloat(end);
-        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+        const startNumber = Number.parseFloat(start);
+        const endNumber = Number.parseFloat(end);
+        if (!Number.isNaN(startNumber) && !Number.isNaN(endNumber)) {
           start = `${startNumber}Hz`;
           end = `${endNumber}Hz`;
         }
 
-        cap.speedStart = start + directionStr;
-        cap.speedEnd = end + directionStr;
+        capability.speedStart = start + directionString;
+        capability.speedEnd = end + directionString;
 
         // delete the parsed part
         return ``;
@@ -509,9 +515,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {String} str The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

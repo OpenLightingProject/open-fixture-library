@@ -31,24 +31,25 @@ summary {
   }
 
   &::after {
-    /* chevron down */
+    // chevron down
+    position: relative;
+    top: -0.2em;
+    left: 1.2ex;
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    vertical-align: middle;
+    content: "";
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.4em;
-    left: 1.2ex;
-    position: relative;
-    top: -0.2em;
-    transform: rotate(135deg);
     transition-duration: 0.2s;
     transition-property: transform, top, border-color;
-    vertical-align: middle;
-    width: 0.4em;
+    transform: rotate(135deg);
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: theme-color(hover-background);
     outline: none;
 
@@ -59,22 +60,17 @@ summary {
 }
 
 details {
-  display: block; /* needed for Edge */
+  display: block; // needed for Edge
 
   &[open] {
     padding-bottom: 2ex;
 
     & > summary::after {
-      /* chevron up */
+      // chevron up
       top: 0;
       transform: rotate(315deg);
     }
   }
-}
-
-/* hide polyfilled arrow, as we use our own */
-html.no-details details > summary::before {
-  display: none;
 }
 </style>
 
@@ -84,13 +80,13 @@ export default {
     if (this.$slots.default) {
       return createElement(`details`, [
         createElement(`summary`, this.$slots.summary),
-        this.$slots.default
+        this.$slots.default,
       ]);
     }
 
     return createElement(`div`, {
-      class: `summary`
+      class: `summary`,
     }, this.$slots.summary);
-  }
+  },
 };
 </script>

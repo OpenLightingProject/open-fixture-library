@@ -68,45 +68,22 @@
 </template>
 
 <script>
+import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
 import LabeledValue from './LabeledValue.vue';
 
 export default {
   components: {
-    LabeledValue
+    LabeledValue,
   },
   props: {
-    name: {
-      type: String,
-      required: false, // TODO: make this required
-      default: null
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: ``
-    },
-    formstate: {
-      type: Object,
-      required: false, // TODO: make this required
-      default: null
-    },
-    customValidators: {
-      type: Object,
-      required: false,
-      default: null
-    },
+    name: stringProp().optional, // TODO: make this required
+    label: stringProp().optional,
+    hint: stringProp().optional,
+    formstate: objectProp().optional, // TODO: make this required
+    customValidators: objectProp().optional,
     // avoid a label tag for multiple inputs, because it's not
     // supported by Safari
-    multipleInputs: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
+    multipleInputs: booleanProp().withDefault(false),
   },
   computed: {
     fieldState() {
@@ -119,7 +96,7 @@ export default {
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        subFieldName => subFieldName.startsWith(this.name)
+        subFieldName => subFieldName.startsWith(this.name),
       );
 
       for (const subFieldName of subFieldNames) {
@@ -143,8 +120,8 @@ export default {
     },
     isSelectField() {
       return this.name === `manufacturerKey` || this.name === `plugin` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,0 +1,47 @@
+{
+  "post": {
+    "operationId": "importFixtureFile",
+    "description": "Imports the uploaded fixture file and responds with a FixtureCreateResult.",
+    "tags": ["fixtures"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "plugin": {
+                "type": "string"
+              },
+              "fileName": {
+                "type": "string"
+              },
+              "fileContentBase64": {
+                "type": "string",
+                "format": "base64"
+              },
+              "author": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "plugin",
+              "fileName",
+              "fileContentBase64",
+              "author"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "$ref": "../../openapi.json#/components/responses/201-FixtureCreateResult"
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
+      }
+    }
+  }
+}

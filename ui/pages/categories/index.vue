@@ -4,7 +4,7 @@
 
     <div class="categories grid-3">
       <NuxtLink
-        v-for="category in categories"
+        v-for="category of categories"
         :key="category.name"
         :to="`/categories/${encodeURIComponent(category.name)}`"
         class="card card-category">
@@ -20,6 +20,16 @@
 import register from '../../../fixtures/register.json';
 
 export default {
+  data() {
+    return {
+      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
+        category => ({
+          name: category,
+          fixtureCount: register.categories[category].length,
+        }),
+      ),
+    };
+  },
   head() {
     const title = `Categories`;
 
@@ -28,20 +38,10 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
-  data() {
-    return {
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
-        catName => ({
-          name: catName,
-          fixtureCount: register.categories[catName].length
-        })
-      )
-    };
-  }
 };
 </script>

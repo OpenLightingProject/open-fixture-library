@@ -8,7 +8,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[0]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     &times;
@@ -19,7 +19,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[1]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     &times;
@@ -30,7 +30,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[2]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     {{ unit }}
@@ -38,54 +38,30 @@
 </template>
 
 <script>
+import { arrayProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
   components: {
-    PropertyInputNumber
+    PropertyInputNumber,
   },
   model: {
-    prop: `dimensions`
+    prop: `dimensions`,
   },
   props: {
-    dimensions: {
-      type: Array,
-      required: false,
-      default: null
-    },
-    hints: {
-      type: Array,
-      required: false,
-      default: () => [`x`, `y`, `z`]
-    },
-    schemaProperty: {
-      type: Object,
-      required: true
-    },
-    unit: {
-      type: String,
-      required: false,
-      default: null
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    formstate: {
-      type: Object,
-      required: true
-    }
+    dimensions: arrayProp().withDefault(null),
+    hints: arrayProp().withDefault(() => [`x`, `y`, `z`]),
+    schemaProperty: objectProp().required,
+    unit: stringProp().optional,
+    required: booleanProp().withDefault(false),
+    name: stringProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {
       validationData: {
-        'complete-dimensions': ``
-      }
+        'complete-dimensions': ``,
+      },
     };
   },
   computed: {
@@ -95,7 +71,7 @@ export default {
       },
       set(xInput) {
         this.$emit(`input`, getDimensionsArray(xInput, this.y, this.z));
-      }
+      },
     },
     y: {
       get() {
@@ -103,7 +79,7 @@ export default {
       },
       set(yInput) {
         this.$emit(`input`, getDimensionsArray(this.x, yInput, this.z));
-      }
+      },
     },
     z: {
       get() {
@@ -111,17 +87,17 @@ export default {
       },
       set(zInput) {
         this.$emit(`input`, getDimensionsArray(this.x, this.y, zInput));
-      }
+      },
     },
     dimensionsSpecified() {
       return this.dimensions !== null;
-    }
+    },
   },
   mounted() {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
-    onFocus(event) {
+    onFocus() {
       this.$emit(`focus`);
     },
     onBlur(event) {
@@ -129,17 +105,19 @@ export default {
         this.$emit(`blur`);
       }
     },
+
+    /** @public */
     focus() {
       this.$refs.xInput.focus();
-    }
-  }
+    },
+  },
 };
 
 /**
- * @param {Number|null} x X value of the dimensions array or null.
- * @param {Number|null} y Y value of the dimensions array or null.
- * @param {Number|null} z Z value of the dimensions array or null.
- * @returns {[Number, Number, Number]|null} Dimensions array with the inputs or null if all inputs were null.
+ * @param {number | null} x X value of the dimensions array or null.
+ * @param {number | null} y Y value of the dimensions array or null.
+ * @param {number | null} z Z value of the dimensions array or null.
+ * @returns {[number, number, number] | null} Dimensions array with the inputs or null if all inputs were null.
  */
 function getDimensionsArray(x, y, z) {
   if (x === null && y === null && z === null) {
@@ -149,4 +127,3 @@ function getDimensionsArray(x, y, z) {
   return [x, y, z];
 }
 </script>
-

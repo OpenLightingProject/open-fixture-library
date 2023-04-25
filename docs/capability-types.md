@@ -647,4 +647,4 @@ Use one-based numbering (e.g. `1` for *Open*, `2` for *Color/Gobo 1*). If the ca
 * Add a capability icon (see `ui/assets/icon` and maybe also the `app-fixture-capability-type-icon` component)
 * Update editor:
   * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.
-  * Import the new component in the [capability component](../ui/components/editor-capability-type-data.vue) and register it in its `components` section.
+  * Import the new component in the [capability component](../ui/components/editor/EditorCapabilityTypeData.vue) and register it in its `components` section.

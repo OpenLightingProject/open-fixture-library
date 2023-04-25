@@ -11,7 +11,7 @@
 
       <LabeledInput
         :formstate="formstate"
-        :multiple-inputs="true"
+        multiple-inputs
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
@@ -20,25 +20,25 @@
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
-          :schema-property="properties.capability.dmxRange"
+          :schema-property="capabilityDmxRange"
           :range-min="min"
           :range-max="max"
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
           :end-hint="capabilities.length === 1 ? `${max}` : `end`"
           :required="capabilities.length > 1"
-          @start-updated="onStartUpdated"
-          @end-updated="onEndUpdated" />
+          @start-updated="onStartUpdated()"
+          @end-updated="onEndUpdated()" />
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
-        @click.prevent="clear">
+        @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
@@ -53,8 +53,8 @@
 
 <style lang="scss" scoped>
 .capability {
-  margin: 0 -0.5rem;
   position: relative;
+  margin: 0 -0.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid theme-color(divider);
@@ -65,7 +65,7 @@
     margin-bottom: 0.8rem;
   }
 
-  & /deep/ summary {
+  & ::v-deep summary {
     padding: 0.3rem 0.5rem;
   }
 }
@@ -78,64 +78,40 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
-  display: inline-block;
+.icon-button.close {
   position: absolute;
-  right: 0;
   top: 0;
-  padding: 0.3rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
+  right: 0;
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import {
-  getEmptyCapability,
-  isCapabilityChanged
-} from '../../assets/scripts/editor-utils.js';
+import { numberProp, objectProp } from 'vue-ts-types';
+import { capabilityDmxRange } from '../../../lib/schema-properties.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
     ConditionalDetails,
     EditorCapabilityTypeData,
     LabeledInput,
-    PropertyInputRange
+    PropertyInputRange,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true
-    },
-    capIndex: {
-      type: Number,
-      required: true
-    },
-    resolution: {
-      type: Number,
-      required: true
-    },
-    formstate: {
-      type: Object,
-      required: true
-    }
+    channel: objectProp().required,
+    capabilityIndex: numberProp().required,
+    resolution: numberProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties,
-      capabilityTypeHint: null
+      capabilityDmxRange,
     };
   },
   computed: {
@@ -143,32 +119,34 @@ export default {
       return this.channel.capabilities;
     },
     capability() {
-      return this.capabilities[this.capIndex];
+      return this.capabilities[this.capabilityIndex];
     },
     dmxMax() {
       return Math.pow(256, this.resolution) - 1;
     },
     isChanged() {
-      return this.capabilities.some(isCapabilityChanged);
+      return this.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     },
     start() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
     },
     end() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
     },
     min() {
       let min = this.dmxMin;
-      let index = this.capIndex - 1;
+      let index = this.capabilityIndex - 1;
       while (index >= 0) {
-        const cap = this.capabilities[index];
-        if (cap.dmxRange !== null) {
-          if (cap.dmxRange[1]) {
-            min = cap.dmxRange[1] + 1;
+        const capability = this.capabilities[index];
+        if (capability.dmxRange !== null) {
+          if (capability.dmxRange[1]) {
+            min = capability.dmxRange[1] + 1;
             break;
           }
-          if (cap.dmxRange[0] !== null) {
-            min = cap.dmxRange[0] + 1;
+          if (capability.dmxRange[0] !== null) {
+            min = capability.dmxRange[0] + 1;
             break;
           }
         }
@@ -178,16 +156,16 @@ export default {
     },
     max() {
       let max = this.dmxMax;
-      let index = this.capIndex + 1;
+      let index = this.capabilityIndex + 1;
       while (index < this.capabilities.length) {
-        const cap = this.capabilities[index];
-        if (cap.dmxRange !== null) {
-          if (cap.dmxRange[0] !== null) {
-            max = cap.dmxRange[0] - 1;
+        const capability = this.capabilities[index];
+        if (capability.dmxRange !== null) {
+          if (capability.dmxRange[0] !== null) {
+            max = capability.dmxRange[0] - 1;
             break;
           }
-          if (cap.dmxRange[1] !== null) {
-            max = cap.dmxRange[1] - 1;
+          if (capability.dmxRange[1] !== null) {
+            max = capability.dmxRange[1] - 1;
             break;
           }
         }
@@ -195,41 +173,20 @@ export default {
       }
       return max;
     },
-    fieldState() {
-      const fieldNames = Object.keys(this.formstate).filter(
-        fieldName => fieldName.startsWith(`capability${this.capability.uuid}-`)
-      );
-
-      for (const fieldName of fieldNames) {
-        if (this.formstate.$error[fieldName]) {
-          return this.formstate[fieldName];
-        }
-      }
-
-      return {};
-    },
-    fieldErrors() {
-      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
-        return {};
-      }
-
-      return this.fieldState.$error;
-    }
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
-        const prevCap = this.capabilities[this.capIndex - 1];
-        if (prevCap && !isCapabilityChanged(prevCap)) {
+        const previousCapability = this.capabilities[this.capabilityIndex - 1];
+        if (previousCapability && !isCapabilityChanged(previousCapability)) {
           this.removePreviousCapability();
         }
         return;
       }
 
-      const prevCap = this.capabilities[this.capIndex - 1];
-      if (prevCap) {
-        if (isCapabilityChanged(prevCap)) {
+      const previousCapability = this.capabilities[this.capabilityIndex - 1];
+      if (previousCapability) {
+        if (isCapabilityChanged(previousCapability)) {
           if (this.start > this.min) {
             this.insertCapabilityBefore();
           }
@@ -246,19 +203,18 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
-        const nextCap = this.capabilities[this.capIndex + 1];
-        if (nextCap && !isCapabilityChanged(nextCap)) {
+        const nextCapability = this.capabilities[this.capabilityIndex + 1];
+        if (nextCapability && !isCapabilityChanged(nextCapability)) {
           this.removeNextCapability();
         }
         return;
       }
 
-      const nextCap = this.capabilities[this.capIndex + 1];
-      if (nextCap) {
-        if (isCapabilityChanged(nextCap)) {
+      const nextCapability = this.capabilities[this.capabilityIndex + 1];
+      if (nextCapability) {
+        if (isCapabilityChanged(nextCapability)) {
           if (this.end < this.max) {
             this.insertCapabilityAfter();
           }
@@ -276,18 +232,18 @@ export default {
       }
     },
     clear() {
-      const emptyCap = getEmptyCapability();
-      for (const prop of Object.keys(emptyCap)) {
-        this.capability[prop] = emptyCap[prop];
+      const emptyCapability = getEmptyCapability();
+      for (const property of Object.keys(emptyCapability)) {
+        this.capability[property] = emptyCapability[property];
       }
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors() {
-      const prevCap = this.capabilities[this.capIndex - 1];
-      const nextCap = this.capabilities[this.capIndex + 1];
+      const previousCapability = this.capabilities[this.capabilityIndex - 1];
+      const nextCapability = this.capabilities[this.capabilityIndex + 1];
 
-      if (prevCap && !isCapabilityChanged(prevCap)) {
-        if (nextCap && !isCapabilityChanged(nextCap)) {
+      if (previousCapability && !isCapabilityChanged(previousCapability)) {
+        if (nextCapability && !isCapabilityChanged(nextCapability)) {
           this.removePreviousCapability();
           this.removeCurrentCapability();
           return;
@@ -297,31 +253,33 @@ export default {
         return;
       }
 
-      if (nextCap && !isCapabilityChanged(nextCap)) {
+      if (nextCapability && !isCapabilityChanged(nextCapability)) {
         this.removeNextCapability();
       }
     },
-    insertCapabilityBefore() {
+    async insertCapabilityBefore() {
       this.$emit(`insert-capability-before`);
 
-      const dialog = this.$el.closest(`dialog`);
-      this.$nextTick(() => {
-        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capIndex - 1];
-        dialog.scrollTop += newCapability.clientHeight;
-      });
+      const dialog = this.$el.closest(`.dialog`);
+      await this.$nextTick();
+
+      const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
+      dialog.scrollTop += newCapability.clientHeight;
     },
     insertCapabilityAfter() {
       this.$emit(`insert-capability-after`);
     },
     removePreviousCapability() {
-      this.$delete(this.capabilities, this.capIndex - 1);
+      this.$delete(this.capabilities, this.capabilityIndex - 1);
     },
     removeCurrentCapability() {
-      this.$delete(this.capabilities, this.capIndex);
+      this.$delete(this.capabilities, this.capabilityIndex);
     },
     removeNextCapability() {
-      this.$delete(this.capabilities, this.capIndex + 1);
+      this.$delete(this.capabilities, this.capabilityIndex + 1);
     },
+
+    /** @public */
     cleanCapabilityData() {
       if (this.capability.dmxRange === null) {
         this.capability.dmxRange = [null, null];
@@ -334,7 +292,12 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
-    }
-  }
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
+    },
+  },
 };
 </script>

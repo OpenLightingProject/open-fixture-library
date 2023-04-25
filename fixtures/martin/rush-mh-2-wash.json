@@ -124,7 +124,7 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "comment": "burst pulse"
@@ -138,7 +138,7 @@
         {
           "dmxRange": [190, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "randomTiming": true,
@@ -167,10 +167,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "burst"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [245, 255],

@@ -2,30 +2,30 @@
   <div>
     <Draggable v-model="selectedCategories" tag="span">
       <CategoryBadge
-        v-for="cat in value"
+        v-for="cat of value"
         :key="cat"
         :category="cat"
-        :selected="true"
-        :selectable="true"
+        selected
+        selectable
         @click="deselect(cat)"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Draggable>
 
     <CategoryBadge
-      v-for="cat in unselectedCategories"
+      v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
-      :selected="false"
-      :selectable="true"
+      selectable
       @click="select(cat)"
-      @focus.native="onFocus"
+      @focus.native="onFocus()"
       @blur.native="onBlur($event)" />
   </div>
 </template>
 
 
 <script>
+import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
 import CategoryBadge from '../CategoryBadge.vue';
@@ -33,17 +33,11 @@ import CategoryBadge from '../CategoryBadge.vue';
 export default {
   components: {
     Draggable,
-    CategoryBadge
+    CategoryBadge,
   },
   props: {
-    value: {
-      type: Array,
-      required: true
-    },
-    allCategories: {
-      type: Array,
-      required: true
-    }
+    value: arrayProp().required,
+    allCategories: arrayProp().required,
   },
   computed: {
     selectedCategories: {
@@ -52,22 +46,22 @@ export default {
       },
       set(newSelectedCategories) {
         this.$emit(`input`, newSelectedCategories);
-      }
+      },
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        cat => !this.value.includes(cat)
+        category => !this.value.includes(category),
       );
-    }
+    },
   },
   methods: {
-    select(selectedCat) {
-      const updatedCategoryList = [...this.value, selectedCat];
+    select(selectedCategory) {
+      const updatedCategoryList = [...this.value, selectedCategory];
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },
-    deselect(deselectedCat) {
-      const updatedCategoryList = this.value.filter(cat => cat !== deselectedCat);
+    deselect(deselectedCategory) {
+      const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },
@@ -78,7 +72,7 @@ export default {
       if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
         this.$emit(`blur`);
       }
-    }
-  }
+    },
+  },
 };
 </script>

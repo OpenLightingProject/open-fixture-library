@@ -1,43 +1,12 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
-        <h1>
-          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
-          {{ fixture.name }}
-          <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
-        </h1>
-
-        <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
-          <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
-
-          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
-            </template>
-            <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </ConditionalDetails>
-        </section>
-      </div>
-
-      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
-    </header>
-
-    <section v-if="$scopedSlots.notice" class="card yellow">
-      <slot name="notice" />
-    </section>
-
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
       <LabeledValue
         name="categories"
         label="Categories">
         <CategoryBadge
-          v-for="cat in fixture.categories"
+          v-for="cat of fixture.categories"
           :key="cat"
           :category="cat" />
       </LabeledValue>
@@ -49,15 +18,16 @@
         label="Comment" />
 
       <section v-if="videos" class="fixture-videos">
-        <div v-for="video in videos" :key="video.url" class="fixture-video">
+        <div v-for="video of videos" :key="video.url" class="fixture-video">
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
-            :start-at="video.startAt" />
+            :start-at="video.startAt"
+            server-url="https://embetty.open-fixture-library.org" />
           <a
             :href="video.url"
-            rel="nofollow"
-            target="_blank">
+            target="_blank"
+            rel="nofollow noopener">
             <OflSvg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
@@ -65,16 +35,16 @@
       </section>
 
       <LabeledValue
-        v-if="links.length"
+        v-if="links.length > 0"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
+          <li v-for="link of links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
             <a
               :href="link.url"
               :title="link.title"
-              rel="nofollow"
-              target="_blank">
+              target="_blank"
+              rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
@@ -87,7 +57,7 @@
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
 
       <LabeledValue
         v-if="fixture.rdm !== null"
@@ -122,7 +92,7 @@
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <FixturePageWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixturePageWheel v-for="wheel of fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
@@ -130,11 +100,10 @@
 
     <section class="fixture-modes">
       <FixturePageMode
-        v-for="(mode, index) in modes"
+        v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
-        :index="index"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       <div class="clearfix" />
     </section>
 
@@ -153,67 +122,33 @@
         </a>
         <a
           href="?loadAllModes"
-          :class="[`button`, isBrowser ? `secondary` : `primary`]"
+          class="button"
+          :class="isBrowser ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
         </a>
       </div>
     </section>
-
-    <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
-      <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid-3">
-        <a
-          v-if="isBrowser"
-          href="#"
-          class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
-            context: fixture,
-            type: `fixture`
-          })">
-          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
-        </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
-          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
-        </a>
-        <a :href="mailtoUrl" class="card slim">
-          <OflSvg name="email" class="left" /><span>Send email</span>
-        </a>
-      </div>
-    </section>
-
-    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.fixture-meta {
-  margin: -1.5rem 0 1rem;
-  font-size: 0.8rem;
-  color: theme-color(text-secondary);
-
-  & > span:not(:last-child)::after {
-    content: ' | ';
-    padding: 0 0.7ex;
-  }
-}
-
 .fixture-info {
   border-top: 0.4rem solid transparent;
 }
 
-.comment /deep/ .value {
+.comment ::v-deep .value {
   white-space: pre-line;
 }
 
 .fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
   padding: 0;
+  margin: 1rem 0 0;
+  line-height: 1;
+  text-align: center;
 }
+
 .fixture-video {
   margin-bottom: 1rem;
 
@@ -229,47 +164,45 @@
 }
 
 .fixture-links {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 
   .hostname {
-    color: theme-color(text-secondary);
-    font-size: 0.9em;
     padding-left: 1ex;
+    font-size: 0.9em;
+    color: theme-color(text-secondary);
   }
 
   .link-other {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .wheels {
-  white-space: nowrap;
   overflow: hidden;
   overflow-x: auto;
+  white-space: nowrap;
 }
 </style>
 
 <script>
+import { EmbettyVideo } from 'embetty-vue';
+import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
-import plugins from '../../../plugins/plugins.json';
 
-import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
+import { linksProperties } from '../../../lib/schema-properties.js';
 
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
-import ConditionalDetails from '../../components/ConditionalDetails.vue';
-import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
 import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
-import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
 
@@ -278,55 +211,31 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
-    ConditionalDetails,
-    DownloadButton,
+    EmbettyVideo,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,
     FixturePageWheel,
-    HelpWantedDialog,
     HelpWantedMessage,
-    LabeledValue
+    LabeledValue,
   },
-  mixins: [fixtureLinksMixin],
   props: {
-    fixture: {
-      type: Fixture,
-      required: true
-    },
-    loadAllModes: {
-      type: Boolean,
-      required: false,
-      default: true
-    }
+    fixture: instanceOfProp(Fixture).required,
+    loadAllModes: booleanProp().withDefault(false),
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
-      manufacturerColor: register.colors[this.fixKey] || null,
-      plugins,
+      manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
-      helpWantedContext: null,
-      helpWantedType: ``,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
-      modeNumberLoadIncrement: 10 // how many modes a button click will load
+      modeNumberLoadIncrement: 10, // how many modes a button click will load
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
-    manKey() {
-      return this.fixture.manufacturer.key;
-    },
-    fixKey() {
-      return this.fixture.key;
-    },
-    githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
-      return `https://github.com/${slug}`;
-    },
-    branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
-    },
     modesLimited() {
       return this.fixture.modes.length > this.modeNumberLoadThreshold;
     },
@@ -341,7 +250,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Array of videos that can be embetted.
+     * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -364,13 +273,13 @@ export default {
     links() {
       const links = [];
 
-      for (const linkType of Object.keys(schemaProperties.links)) {
+      for (const linkType of Object.keys(linksProperties)) {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 
         if (linkType === `video`) {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url)
+            url => !this.videos.some(video => video.url === url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -392,7 +301,7 @@ export default {
             title,
             type: linkType,
             iconName: this.linkTypeIconNames[linkType],
-            hostname: getHostname(url)
+            hostname: getHostname(url),
           });
 
           linkDisplayNumber++;
@@ -401,22 +310,10 @@ export default {
 
       return links;
     },
-    mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
-    }
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
   },
-  methods: {
-    openHelpWantedDialog(event) {
-      this.helpWantedContext = event.context;
-      this.helpWantedType = event.type;
-    }
-  }
 };
 
 
@@ -426,19 +323,18 @@ const supportedVideoFormats = {
     regex: /\.(?:mp4|avi)$/,
     displayType: url => getHostname(url),
     videoId: (url, match) => url,
-    startAt: (url, match) => 0
+    startAt: (url, match) => 0,
   },
 
   youtube: {
     /**
-     * YouTube videos can be in one of the following formats:
+     * YouTube videos can be in the following format:
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
-     * - https://youtu.be/{videoId]}?otherParameters
      */
-    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   vimeo: {
@@ -448,10 +344,10 @@ const supportedVideoFormats = {
      * - https://vimeo.com/channels/{channelName}/{videoId}
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
-    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
+    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
     displayType: url => `Vimeo`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   facebook: {
@@ -462,15 +358,15 @@ const supportedVideoFormats = {
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
     displayType: url => `Facebook`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => 0
-  }
+    startAt: (url, match) => 0,
+  },
 
 };
 
 
 /**
- * @param {String} url The video URL.
- * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @param {string} url The video URL.
+ * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   const videoTypes = Object.keys(supportedVideoFormats);
@@ -485,7 +381,7 @@ function getEmbettableVideoData(url) {
         type,
         displayType: format.displayType(url),
         videoId: format.videoId(url, match),
-        startAt: format.startAt(url, match)
+        startAt: format.startAt(url, match),
       };
     }
   }
@@ -494,12 +390,12 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {String} url The URL to extract the hostname from.
- * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {string} url The URL to extract the hostname from.
+ * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
-  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
   return match ? match[1] : url;
 }
 

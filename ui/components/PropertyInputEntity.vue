@@ -1,16 +1,17 @@
 <template>
-  <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
+  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
     <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
+        class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
-        :required="true"
-        :minimum="minNumber !== null ? minNumber : `invalid`"
-        :maximum="maxNumber !== null ? maxNumber : `invalid`"
+        required
+        :minimum="minNumber !== undefined ? minNumber : `invalid`"
+        :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
 
@@ -19,24 +20,24 @@
       v-model="selectedUnit"
       :required="required"
       :class="{ empty: selectedUnit === `` }"
-      @input="unitSelected"
-      @focus="onFocus"
+      @input="unitSelected()"
+      @focus="onFocus()"
       @blur="onBlur($event)">
 
       <option :disabled="required" value="">unset</option>
 
-      <optgroup v-if="enumValues.length" label="Keywords">
+      <optgroup v-if="enumValues.length > 0" label="Keywords">
         <option
-          v-for="enumValue in enumValues"
+          v-for="enumValue of enumValues"
           :key="enumValue"
           :value="enumValue">{{ enumValue }}</option>
       </optgroup>
 
-      <optgroup v-if="Object.keys(units).length" label="Units">
+      <optgroup v-if="Object.keys(units).length > 0" label="Units">
         <option
-          v-for="({ displayStr }, unitName) in units"
+          v-for="({ displayString }, unitName) of units"
           :key="unitName"
-          :value="unitName">{{ displayStr }}</option>
+          :value="unitName">{{ displayString }}</option>
       </optgroup>
 
     </select>
@@ -48,6 +49,7 @@
   & select {
     width: 20ex;
   }
+
   &.wide select {
     width: 30ex;
   }
@@ -56,16 +58,19 @@
     & select {
       width: 10ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 9ex;
       margin-right: 1ex;
     }
   }
+
   &.wide.has-number {
     & select {
       width: 15ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 14ex;
       margin-right: 1ex;
     }
@@ -74,67 +79,31 @@
 </style>
 
 <script>
-import schemaProperties from '../../lib/schema-properties.js';
+import { anyProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
+import { unitsSchema } from '../../lib/schema-properties.js';
 
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
   components: {
-    PropertyInputNumber
+    PropertyInputNumber,
   },
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    value: {
-      type: null,
-      required: false,
-      default: ``
-    },
-    associatedEntity: {
-      type: null,
-      required: false,
-      default: ``
-    },
-    minNumber: {
-      type: Number,
-      required: false,
-      default: null
-    },
-    maxNumber: {
-      type: Number,
-      required: false,
-      default: null
-    },
-    name: {
-      type: String,
-      required: false,
-      default: null
-    }
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    value: anyProp().withDefault(``),
+    associatedEntity: anyProp().optional,
+    minNumber: numberProp().optional,
+    maxNumber: numberProp().optional,
+    name: stringProp().required,
+    wide: booleanProp().withDefault(false),
   },
   data() {
     return {
-      properties: schemaProperties,
       validationData: {
         'entity-complete': ``,
-        'entities-have-same-units': ``
-      }
+        'entities-have-same-units': ``,
+      },
     };
   },
   computed: {
@@ -148,23 +117,23 @@ export default {
     },
     unitNames() {
       return this.subSchemas.filter(
-        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`)
+        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`),
       ).map(
-        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``)
+        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``),
       );
     },
     units() {
       const units = {};
       for (const unitName of this.unitNames) {
-        const unitSchema = this.properties.units[unitName];
+        const unitSchema = unitsSchema[unitName];
 
-        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
-        const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
+        const unitString = `pattern` in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : ``;
+        const numberSchema = `pattern` in unitSchema ? unitsSchema.number : unitSchema;
 
         units[unitName] = {
-          unitStr,
-          displayStr: getUnitDisplayString(unitStr),
-          numberSchema
+          unitString,
+          displayString: getUnitDisplayString(unitString),
+          numberSchema,
         };
       }
 
@@ -178,20 +147,20 @@ export default {
         if (this.enumValues.includes(newUnit) || newUnit === ``) {
           this.update(newUnit);
         }
-        else if (this.units[newUnit].unitStr === ``) {
+        else if (this.units[newUnit].unitString === ``) {
           if (this.selectedNumber === ``) {
             this.update(`[no unit]`);
           }
           else {
-            this.update(parseFloat(this.selectedNumber));
+            this.update(Number.parseFloat(this.selectedNumber));
           }
           this.$emit(`unit-selected`, `[no unit]`);
         }
         else {
-          this.update(this.selectedNumber + this.units[newUnit].unitStr);
-          this.$emit(`unit-selected`, this.units[newUnit].unitStr);
+          this.update(this.selectedNumber + this.units[newUnit].unitString);
+          this.$emit(`unit-selected`, this.units[newUnit].unitString);
         }
-      }
+      },
     },
     hasNumber() {
       return hasNumber(this.selectedUnit, this.enumValues);
@@ -202,28 +171,34 @@ export default {
           return this.value;
         }
 
-        const number = parseFloat(this.value.replace(this.selectedUnit, ``));
+        const number = Number.parseFloat(this.value.replace(this.selectedUnit, ``));
 
-        return isNaN(number) ? `` : number;
+        return Number.isNaN(number) ? `` : number;
       },
       set(newNumber) {
         if (newNumber === null || newNumber === `invalid`) {
           newNumber = ``;
         }
 
-        if (this.units[this.selectedUnit].unitStr === ``) {
+        if (this.units[this.selectedUnit].unitString === ``) {
           if (newNumber === ``) {
             this.update(`[no unit]`);
           }
           else {
-            this.update(parseFloat(newNumber));
+            this.update(Number.parseFloat(newNumber));
           }
         }
         else {
-          this.update(newNumber + this.units[this.selectedUnit].unitStr);
+          this.update(newNumber + this.units[this.selectedUnit].unitString);
         }
-      }
+      },
     },
+
+    /**
+     * Used by vue-form's `entities-have-same-units` validation rule.
+     * @public
+     * @returns {boolean} True if this and the associated entity have the same unit.
+     */
     hasSameUnit() {
       if (!this.associatedEntity) {
         return true;
@@ -236,35 +211,43 @@ export default {
       }
 
       return this.selectedUnit === otherFieldSelectedUnit;
-    }
+    },
   },
   mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    /** @public */
     focus() {
-      const focusField = this.$refs.input ? this.$refs.input : this.$refs.select;
+      const focusField = this.$refs.input ?? this.$refs.select;
       focusField.focus();
     },
     update(newValue) {
       this.$emit(`input`, newValue);
     },
+
+    /**
+     * Called by {@link EditorProportionalPropertySwitcher}
+     * @param {string} newUnitString The unit string to set.
+     * @public
+     */
     setUnitString(newUnitString) {
       if (newUnitString === `[no unit]`) {
         newUnitString = ``;
       }
 
       this.selectedUnit = Object.keys(this.units).find(
-        unitName => this.units[unitName].unitStr === newUnitString
+        unitName => this.units[unitName].unitString === newUnitString,
       );
     },
-    unitSelected() {
-      // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props
-      this.$nextTick(() => this.$nextTick(() => this.focus()));
+    async unitSelected() {
+      // wait for data to change locally (emits event)
+      await this.$nextTick();
+
+      // wait for new value from props
+      await this.$nextTick();
+
+      this.focus();
     },
     onFocus() {
       this.$emit(`focus`);
@@ -273,13 +256,26 @@ export default {
       if (!(event.target && event.relatedTarget) || event.target.closest(`.entity-input`) !== event.relatedTarget.closest(`.entity-input`)) {
         this.$emit(`blur`);
       }
-    }
-  }
+    },
+  },
 };
 
 /**
- * @param {String} unitString The unit string, as required by the schema.
- * @returns {String} The unitString if it is not empty, `number` otherwise.
+ * @param {string} pattern The pattern string to parse.
+ * @returns {string} The unit string.
+ */
+function parseUnitFromPattern(pattern) {
+  if (!pattern.endsWith(`$`)) {
+    throw new Error(`Pattern does not end with '$': ${pattern}`);
+  }
+
+  const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
+  return pattern.slice(lastNumberPartIndex + 1, -1).replace(/\\/g, ``);
+}
+
+/**
+ * @param {string} unitString The unit string, as required by the schema.
+ * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
   if (unitString === ``) {
@@ -290,11 +286,11 @@ function getUnitDisplayString(unitString) {
 }
 
 /**
- * @param {String|Number|null} value The value to get the unit from.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @param {Array.<String>} unitNames List of names of allowed units.
- * @param {Object.<String, Object>} units Unit data by unit name.
- * @returns {String} The name of value's unit.
+ * @param {string | number | null} value The value to get the unit from.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @param {string[]} unitNames List of names of allowed units.
+ * @param {Record<string, object>} units Unit data by unit name.
+ * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
   if (enumValues.includes(value) || value === ``) {
@@ -302,19 +298,18 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
   }
 
   if (value === `[no unit]` || typeof value !== `string`) {
-    return unitNames.find(name => units[name].unitStr === ``);
+    return unitNames.find(name => units[name].unitString === ``);
   }
 
-  /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
-  const unit = value.replace(/^-?[0-9]+(\.[0-9]+)?/, ``);
+  const unit = value.replace(/^-?\d+(\.\d+)?/, ``);
 
-  return unitNames.find(name => units[name].unitStr === unit) || ``;
+  return unitNames.find(name => units[name].unitString === unit) || ``;
 }
 
 /**
- * @param {String} unitName A unit name or keyword.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @returns {Boolean} True if unitName indicates that a number is required.
+ * @param {string} unitName A unit name or keyword.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
   return unitName !== `` && !enumValues.includes(unitName);
