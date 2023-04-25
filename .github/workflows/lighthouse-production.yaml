@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.2
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@9.6.8
+        uses: treosh/lighthouse-ci-action@10.1.0
         with:
           urls: |
             https://open-fixture-library.org/
