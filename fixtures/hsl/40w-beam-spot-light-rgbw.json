@@ -3,14 +3,23 @@
   "name": "40W Beam Spot Light RGBW",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["David Oleniacz"],
-    "createDate": "2023-04-19",
-    "lastModifyDate": "2023-04-19"
+    "authors": ["David Oleniacz", "CGBassPlayer"],
+    "createDate": "2023-04-24",
+    "lastModifyDate": "2023-04-24"
   },
   "links": {
     "productPage": [
-      "https://www.amazon.com/stores/HighIightSpIendidLife/page/C6F4337A-41CC-4560-880E-06BCA9E96924"
+      "https://www.amazon.com/Stage-Spotlight-Beam-Light-Package/dp/B07XYYK28H"
+    ],
+    "other": [
+      "https://www.amazon.com/ask/questions/Tx3CE66RTIHOGZL/ref=ask_dp_dpmw_al_hza"
     ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "dimensions": [127, 127, 190],
+    "power": 40,
+    "weight": 1.36
   },
   "availableChannels": {
     "Red": {
@@ -61,30 +70,37 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0Hz",
-        "speedEnd": "100Hz"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
-    "Function - DMX or Internal Programs": {
+    "Program Mode": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Effect",
-          "effectName": "Ch1-Ch6 DMX Control"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 255],
           "type": "Effect",
-          "effectName": "Internal Program"
+          "effectName": "Internal Program",
+          "helpWanted": "What are the internal programs? How many are there? What are their DMX addresses?"
         }
       ]
     },
-    "Internal Program Speed": {
+    "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -92,7 +108,8 @@
   },
   "modes": [
     {
-      "name": "7ch",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Red",
         "Green",
@@ -104,12 +121,13 @@
       ]
     },
     {
-      "name": "11ch",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Dimmer",
         "Strobe",
-        "Function - DMX or Internal Programs",
-        "Internal Program Speed",
+        "Program Mode",
+        "Program Speed",
         "Red",
         "Green",
         "Blue",
