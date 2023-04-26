@@ -151,7 +151,7 @@
   "availableChannels": {
     "Pan": {
       "defaultValue": 127,
-      "fineChannelAliases": ["Pan Fine"],
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -160,7 +160,7 @@
     },
     "Tilt": {
       "defaultValue": 127,
-      "fineChannelAliases": ["Tilt Fine"],
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -168,7 +168,7 @@
       }
     },
     "Color Wheel": {
-      "fineChannelAliases": ["Color Wheel Fine"],
+      "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
           "dmxRange": [0, 6],
@@ -248,21 +248,21 @@
       ]
     },
     "Cyan": {
-      "fineChannelAliases": ["Cyan Fine"],
+      "fineChannelAliases": ["Cyan fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan"
       }
     },
     "Magenta": {
-      "fineChannelAliases": ["Magenta Fine"],
+      "fineChannelAliases": ["Magenta fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta"
       }
     },
     "Yellow": {
-      "fineChannelAliases": ["Yellow Fine"],
+      "fineChannelAliases": ["Yellow fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow"
@@ -365,7 +365,7 @@
       ]
     },
     "Gobo Wheel 1 Rotation": {
-      "fineChannelAliases": ["Gobo Wheel 1 Rotation Fine"],
+      "fineChannelAliases": ["Gobo Wheel 1 Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -552,7 +552,7 @@
       ]
     },
     "Linear Prism Rotation": {
-      "fineChannelAliases": ["Linear Prism Rotation Fine"],
+      "fineChannelAliases": ["Linear Prism Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -593,7 +593,7 @@
       ]
     },
     "Circular Prism Rotation": {
-      "fineChannelAliases": ["Circular Prism Rotation Fine"],
+      "fineChannelAliases": ["Circular Prism Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -622,7 +622,7 @@
       ]
     },
     "Focus": {
-      "fineChannelAliases": ["Focus Fine"],
+      "fineChannelAliases": ["Focus fine"],
       "capability": {
         "type": "Focus",
         "distanceStart": "near",
@@ -630,7 +630,7 @@
       }
     },
     "Zoom": {
-      "fineChannelAliases": ["Zoom Fine"],
+      "fineChannelAliases": ["Zoom fine"],
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -689,13 +689,13 @@
       ]
     },
     "Dimmer": {
-      "fineChannelAliases": ["Dimmer Fine"],
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity"
       }
     },
     "Iris": {
-      "fineChannelAliases": ["Iris Fine"],
+      "fineChannelAliases": ["Iris fine"],
       "capabilities": [
         {
           "dmxRange": [0, 191],
@@ -1159,9 +1159,9 @@
       "shortName": "26ch",
       "channels": [
         "Pan",
-        "Pan Fine",
+        "Pan fine",
         "Tilt",
-        "Tilt Fine",
+        "Tilt fine",
         "Color Wheel",
         "Cyan",
         "Magenta",
@@ -1191,31 +1191,37 @@
       "shortName": "38ch",
       "channels": [
         "Pan",
-        "Pan Fine",
+        "Pan fine",
         "Tilt",
-        "Tilt Fine",
+        "Tilt fine",
         "Color Wheel",
-        "Color Wheel Fine",
+        "Color Wheel fine",
         "Cyan",
-        "Cyan Fine",
+        "Cyan fine",
         "Magenta",
-        "Magenta Fine",
+        "Magenta fine",
         "Yellow",
-        "Yellow Fine",
+        "Yellow fine",
         "Gobo Wheel 1",
         "Gobo Wheel 1 Rotation",
-        "Gobo Wheel 1 Rotation Fine",
+        "Gobo Wheel 1 Rotation fine",
         "Gobo Wheel 2",
         "Gobo Wheel 2 Rotation",
         "Linear Prism",
         "Linear Prism Rotation",
+        "Linear Prism Rotation fine",
         "Circular Prism",
         "Circular Prism Rotation",
+        "Circular Prism Rotation fine",
         "Focus",
+        "Focus fine",
         "Zoom",
+        "Zoom fine",
         "Strobe",
         "Dimmer",
+        "Dimmer fine",
         "Iris",
+        "Iris fine",
         "Frost",
         "CMY Speed / Color Macro Speed",
         "Movement Speed",
