@@ -168,7 +168,6 @@
       }
     },
     "Color Wheel": {
-      "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
           "dmxRange": [0, 6],
@@ -246,6 +245,13 @@
           "speedEnd": "fast CCW"
         }
       ]
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Cyan": {
       "fineChannelAliases": ["Cyan fine"],
@@ -365,7 +371,6 @@
       ]
     },
     "Gobo Wheel 1 Rotation": {
-      "fineChannelAliases": ["Gobo Wheel 1 Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -388,9 +393,16 @@
           "dmxRange": [193, 255],
           "type": "Rotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CCW"
         }
       ]
+    },
+    "Gobo Wheel 1 Indexing": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Gobo Wheel 2": {
       "capabilities": [
@@ -552,7 +564,6 @@
       ]
     },
     "Linear Prism Rotation": {
-      "fineChannelAliases": ["Linear Prism Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -579,6 +590,13 @@
           "speedEnd": "fast CCW"
         }
       ]
+    },
+    "Linear Prism Indexing": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Circular Prism": {
       "capabilities": [
@@ -593,7 +611,6 @@
       ]
     },
     "Circular Prism Rotation": {
-      "fineChannelAliases": ["Circular Prism Rotation fine"],
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -620,6 +637,13 @@
           "speedEnd": "fast CCW"
         }
       ]
+    },
+    "Circular Prism Indexing": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Focus": {
       "fineChannelAliases": ["Focus fine"],
@@ -696,6 +720,7 @@
     },
     "Iris": {
       "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 191],
@@ -1195,7 +1220,7 @@
         "Tilt",
         "Tilt fine",
         "Color Wheel",
-        "Color Wheel fine",
+        "Color Wheel Rotation",
         "Cyan",
         "Cyan fine",
         "Magenta",
@@ -1204,15 +1229,15 @@
         "Yellow fine",
         "Gobo Wheel 1",
         "Gobo Wheel 1 Rotation",
-        "Gobo Wheel 1 Rotation fine",
+        "Gobo Wheel 1 Indexing",
         "Gobo Wheel 2",
         "Gobo Wheel 2 Rotation",
         "Linear Prism",
         "Linear Prism Rotation",
-        "Linear Prism Rotation fine",
+        "Linear Prism Indexing",
         "Circular Prism",
         "Circular Prism Rotation",
-        "Circular Prism Rotation fine",
+        "Circular Prism Indexing",
         "Focus",
         "Focus fine",
         "Zoom",
