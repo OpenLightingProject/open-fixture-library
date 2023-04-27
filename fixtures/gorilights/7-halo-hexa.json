@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7 Halo Hexa",
+  "shortName": "7 Halo Hexa",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Fan", "Matrix", "Blinder", "Stand", "Strobe"],
+  "meta": {
+    "authors": ["Vj Gorilla"],
+    "createDate": "2023-04-27",
+    "lastModifyDate": "2023-04-27"
+  },
+  "links": {
+    "productPage": [
+      "http://www.vjgorilla.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 6969
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGB",
+      "colorTemperature": 5000,
+      "lumens": 20000
+    }
+  },
+  "availableChannels": {
+    "Birghtness": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Brillo",
+      "channels": [
+        "Birghtness",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe",
+      "channels": [
+        "Birghtness"
+      ]
+    },
+    {
+      "name": "strobe 1",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 2",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 3",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 4",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 5",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 6",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "strobe 7",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "red all",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "green all",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "blue all",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "calido all",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion 1",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion velocidad 1",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion 2",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion velocidad 2",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion  4",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion velocidad 3",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion 4",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "animacion velocidad 4",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
