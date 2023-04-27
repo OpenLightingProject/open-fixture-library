@@ -14,17 +14,58 @@
   "links": {
     "productPage": [
       "https://www.eventsoundandlighting.com/product/hanson-pro-systems-the-original/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tTVWmepnOXw"
     ]
   },
   "physical": {
     "DMXconnector": "3-pin",
-    "dimensions": [
-      290,
-      229,
-      84
-    ],
+    "dimensions": [290, 229, 84],
+    "weight": 5.44,
     "bulb": {
-      "type": "24 RGBW LED"
+      "type": "24x LED"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Bank 1", "Bank 2", "Bank 3", "Bank 4", "Bank 5", "Bank 6"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": { "name": ["^Bank [1-6]$"]}
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "availableChannels": {
@@ -49,35 +90,6 @@
           "speedEnd": "fast"
         }
       ]
-    },
-    "Red": {
-      "defaultValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     },
     "Program": {
       "capabilities": [
@@ -156,10 +168,19 @@
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "All"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
       ]
     },
     {
@@ -170,40 +191,36 @@
         "Program",
         "Strobe",
         "Program Speed",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "All"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
       ]
     },
     {
       "name": "24-channel",
       "shortName": "24ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
       ]
     },
     {
@@ -214,30 +231,19 @@
         "Program",
         "Strobe",
         "Program Speed",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "All"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
       ]
     }
   ]
