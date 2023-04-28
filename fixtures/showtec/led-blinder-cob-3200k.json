@@ -26,51 +26,22 @@
     }
   },
   "availableChannels": {
-    "Dimmer intensity": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
-      }
-    },
     "Dimmer intensity (Left COB LED)": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Dimmer intensity (Right COB LED)": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
-    "Master Dimmer intensity": {
+    "Master Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
-    "Dimmer intensity (Right COB LED) 2": {
-      "name": "Dimmer intensity (Right COB LED)",
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Dimmer intensity (Right COB LED) 3": {
-      "name": "Dimmer intensity (Right COB LED)",
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Strobe (Dimmer must be open)": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
@@ -87,14 +58,14 @@
   },
   "modes": [
     {
-      "name": "1 channel",
+      "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "Dimmer intensity"
+        "Master Dimmer"
       ]
     },
     {
-      "name": "2 channels",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
         "Dimmer intensity (Left COB LED)",
@@ -102,22 +73,22 @@
       ]
     },
     {
-      "name": "3 channels",
+      "name": "3-channel",
       "shortName": "3ch",
       "channels": [
         "Dimmer intensity (Left COB LED)",
-        "Dimmer intensity (Right COB LED) 3",
-        "Master Dimmer intensity"
+        "Dimmer intensity (Right COB LED)",
+        "Master Dimmer"
       ]
     },
     {
-      "name": "4 channels",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Dimmer intensity (Left COB LED)",
-        "Dimmer intensity (Right COB LED) 2",
+        "Dimmer intensity (Right COB LED)",
         "Strobe (Dimmer must be open)",
-        "Master Dimmer intensity"
+        "Master Dimmer"
       ]
     }
   ]
