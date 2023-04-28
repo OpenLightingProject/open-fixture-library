@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED Blinder COB 3200K",
+  "name": "LED Blinder 2 COB",
   "categories": ["Blinder", "Dimmer", "Strobe"],
   "meta": {
-    "authors": ["Eric Bessot"],
-    "createDate": "2020-08-02",
-    "lastModifyDate": "2020-08-02"
+    "authors": ["Eric Bessot", "Luke Nelson"],
+    "createDate": "2023-04-28",
+    "lastModifyDate": "2023-04-28"
   },
   "links": {
     "manual": [
@@ -13,7 +13,7 @@
     ]
   },
   "physical": {
-    "dimensions": [393, 138, 185],
+    "dimensions": [138, 393, 185],
     "weight": 4.14,
     "power": 110,
     "DMXconnector": "3-pin",
