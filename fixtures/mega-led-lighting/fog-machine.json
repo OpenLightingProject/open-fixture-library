@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fog Machine",
+  "categories": ["Smoke", "Hazer"],
+  "meta": {
+    "authors": ["Ale Allstyle"],
+    "createDate": "2023-05-02",
+    "lastModifyDate": "2023-05-02"
+  },
+  "links": {
+    "productPage": [
+      "http://www.mjledlighting.com"
+    ]
+  },
+  "availableChannels": {
+    "Fog": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "strong"
+        }
+      ]
+    },
+    "Intensity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "strong",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "fog machine",
+      "channels": [
+        "Fog",
+        "Intensity"
+      ]
+    }
+  ]
+}
