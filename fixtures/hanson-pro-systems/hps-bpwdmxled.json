@@ -101,7 +101,7 @@
           "effectName": "LRL Single"
         },
         {
-          "dmxRange": [90, 89],
+          "dmxRange": [70, 89],
           "type": "Effect",
           "effectName": "LR Dual"
         },
@@ -231,9 +231,7 @@
         "Program Speed",
         {
           "insert": "matrixChannels",
-          "repeatFor": [
-            "All"
-          ],
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Red",
