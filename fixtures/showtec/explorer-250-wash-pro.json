@@ -4,17 +4,16 @@
   "categories": ["Color Changer", "Moving Head"],
   "meta": {
     "authors": ["Luke Nelson"],
-    "createDate": "2023-04-29",
-    "lastModifyDate": "2023-04-29",
+    "createDate": "2023-05-06",
+    "lastModifyDate": "2023-05-06",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2023-03-25",
+      "date": "2023-05-06",
       "comment": "created by Q Light Controller Plus (version 4.12.6)"
     }
   },
   "links": {
     "manual": [
-      "https://www.manualslib.com/manual/837961/Showtec-Explorer-250-Wash.html",
       "https://www.highlite.com/media/attachments/MANUAL/40178_MANUAL_D_V1.pdf"
     ],
     "video": [
@@ -94,8 +93,7 @@
     "CMY Color effect-wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "Open / White"
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -261,7 +259,8 @@
         {
           "dmxRange": [128, 139],
           "type": "Maintenance",
-          "comment": "Lamp on after 3 seconds, reset"
+          "hold": "3s",
+          "comment": "Lamp on / reset"
         },
         {
           "dmxRange": [140, 229],
@@ -270,7 +269,8 @@
         {
           "dmxRange": [230, 239],
           "type": "Maintenance",
-          "comment": "Lamp off after 3 seconds"
+          "hold": "3s",
+          "comment": "Lamp off"
         },
         {
           "dmxRange": [240, 255],
@@ -422,8 +422,7 @@
       "capability": {
         "type": "Speed",
         "speedStart": "fast",
-        "speedEnd": "slow",
-        "comment": "Gradual speed adjustment from fast (0) to slow (255)"
+        "speedEnd": "slow"
       }
     },
     "Effect Wheel": {
@@ -432,22 +431,19 @@
         {
           "dmxRange": [0, 70],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Full beam"
+          "slotNumber": 1
         },
         {
           "dmxRange": [71, 180],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Frost filter"
+          "slotNumber": 2
         },
         {
           "dmxRange": [181, 255],
           "type": "WheelSlotRotation",
           "slotNumber": 3,
           "angleStart": "0%",
-          "angleEnd": "100%",
-          "comment": "Beam shaper"
+          "angleEnd": "100%"
         }
       ]
     },
