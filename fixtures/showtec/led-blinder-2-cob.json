@@ -25,22 +25,22 @@
       "degreesMinMax": [35, 35]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [ ["L", "R"] ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
-    "Dimmer intensity (Left COB LED)": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer intensity (Right COB LED)": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Master Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Strobe": {
       "capabilities": [
         {
@@ -61,34 +61,34 @@
       "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "Master Dimmer"
+        "Dimmer Master"
       ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Dimmer intensity (Left COB LED)",
-        "Dimmer intensity (Right COB LED)"
+        "Dimmer L",
+        "Dimmer R"
       ]
     },
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Dimmer intensity (Left COB LED)",
-        "Dimmer intensity (Right COB LED)",
-        "Master Dimmer"
+        "Dimmer L",
+        "Dimmer R",
+        "Dimmer Master"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Dimmer intensity (Left COB LED)",
-        "Dimmer intensity (Right COB LED)",
+        "Dimmer L",
+        "Dimmer R",
         "Strobe",
-        "Master Dimmer"
+        "Dimmer Master"
       ]
     }
   ]
