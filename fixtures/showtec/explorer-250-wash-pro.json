@@ -69,10 +69,6 @@
           "type": "Color",
           "name": "UV",
           "colors": ["#8000ff"]
-        },
-        {
-          "type": "Gobo",
-          "name": "Rainbow Effect"
         }
       ]
     },
@@ -289,8 +285,8 @@
           "dmxRange": [128, 190],
           "type": "WheelSlotRotation",
           "slotNumber": 8,
-          "speedStart": "100%",
-          "speedEnd": "0%"
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
@@ -302,8 +298,8 @@
           "dmxRange": [193, 255],
           "type": "WheelSlotRotation",
           "slotNumber": 8,
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
