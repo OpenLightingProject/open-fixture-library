@@ -283,21 +283,18 @@
         },
         {
           "dmxRange": [128, 190],
-          "type": "WheelSlotRotation",
-          "slotNumber": 8,
+          "type": "WheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
-          "type": "WheelSlotRotation",
-          "slotNumber": 8,
+          "type": "WheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "WheelSlotRotation",
-          "slotNumber": 8,
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
