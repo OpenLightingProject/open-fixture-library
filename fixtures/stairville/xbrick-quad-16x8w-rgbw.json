@@ -5,8 +5,8 @@
   "categories": ["Color Changer", "Strobe"],
   "meta": {
     "authors": ["Maximilian B.", "Luke Nelson"],
-    "createDate": "2023-04-29",
-    "lastModifyDate": "2023-04-29"
+    "createDate": "2023-05-06",
+    "lastModifyDate": "2023-05-06"
   },
   "comment": "4 Clusters of 4 RGBW LEDs (4x4)",
   "links": {
@@ -133,8 +133,9 @@
         },
         {
           "dmxRange": [5, 9],
-          "type": "ColorIntensity",
-          "color": "Cyan",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#00ffff"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -147,8 +148,9 @@
         },
         {
           "dmxRange": [10, 14],
-          "type": "Intensity",
-          "comment": "Purple",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#800080"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -161,7 +163,9 @@
         },
         {
           "dmxRange": [15, 19],
-          "type": "Intensity",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffc0cb"],
           "comment": "Pink",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -175,8 +179,9 @@
         },
         {
           "dmxRange": [20, 24],
-          "type": "Intensity",
-          "comment": "Orange",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffa500"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -189,8 +194,9 @@
         },
         {
           "dmxRange": [25, 29],
-          "type": "ColorIntensity",
-          "color": "Cold White",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#f4fdff"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -203,7 +209,9 @@
         },
         {
           "dmxRange": [30, 34],
-          "type": "Intensity",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ff4040"],
           "comment": "Bright Red",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -217,8 +225,9 @@
         },
         {
           "dmxRange": [35, 39],
-          "type": "Intensity",
-          "comment": "Bright Green",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#57fd57"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -231,7 +240,9 @@
         },
         {
           "dmxRange": [40, 44],
-          "type": "Intensity",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#3232ff"],
           "comment": "Bright Blue",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -245,8 +256,9 @@
         },
         {
           "dmxRange": [45, 49],
-          "type": "ColorIntensity",
-          "color": "Yellow",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffff00"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -259,8 +271,9 @@
         },
         {
           "dmxRange": [50, 54],
-          "type": "ColorIntensity",
-          "color": "Warm White",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#fdf4dc"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -273,8 +286,9 @@
         },
         {
           "dmxRange": [55, 59],
-          "type": "ColorIntensity",
-          "color": "Red",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ff0000"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -287,8 +301,9 @@
         },
         {
           "dmxRange": [60, 64],
-          "type": "ColorIntensity",
-          "color": "Green",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#00ff00"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -301,8 +316,9 @@
         },
         {
           "dmxRange": [65, 69],
-          "type": "ColorIntensity",
-          "color": "Blue",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#0000ff"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -315,8 +331,9 @@
         },
         {
           "dmxRange": [70, 74],
-          "type": "ColorIntensity",
-          "color": "Amber",
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffbf00"],
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
