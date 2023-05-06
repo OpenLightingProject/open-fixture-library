@@ -36,7 +36,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "NoFunction"
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
           "dmxRange": [21, 170],
