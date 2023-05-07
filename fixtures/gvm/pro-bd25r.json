@@ -1,0 +1,526 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PRO-BD25R",
+  "shortName": "BD25R",
+  "categories": ["Pixel Bar", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Chris A Boyer"],
+    "createDate": "2023-05-07",
+    "lastModifyDate": "2023-05-07"
+  },
+  "comment": "I don't see a way to add a pixel matrix in the fixture creation wizard so I have left mode 6-20 empty so I can add them after I manually add a pixel matrix.",
+  "links": {
+    "manual": [
+      "https://gvmled.com/wp-content/uploads/2022/11/GVM-BD25R-User-Manual.pdf"
+    ],
+    "productPage": [
+      "https://gvmled.com/bd25r-exp/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6OgvIQ_1QBw"
+    ],
+    "other": [
+      "https://gvmled.com/wp-content/uploads/2022/11/gvm-pro-bd25r-dmx.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [600, 50, 46],
+    "weight": 0.8,
+    "power": 25,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 465
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "-50%",
+        "brightnessEnd": "50%"
+      }
+    },
+    "Crossfade to Color": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0° - 360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0% - 100%"
+      }
+    },
+    "Effect Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Lightning",
+          "soundControlled": true,
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "CCT Loop",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Candle",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Bad Bulb",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "TV",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Paparazzi",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Explosion",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Pulsing",
+          "comment": "Ch 5 controls CCT"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Disco",
+          "comment": "Ch 5 controls SAT"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Cop Car",
+          "comment": "Ch 5 is not used"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Party",
+          "comment": "Ch 5 controls SAT"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Hue Loop",
+          "comment": "Ch 5 controls SAT"
+        },
+        {
+          "dmxRange": [130, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "speed": "10%"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Speed",
+          "speed": "20%"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Speed",
+          "speed": "30%"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Speed",
+          "speed": "40%"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Speed",
+          "speed": "50%"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Speed",
+          "speed": "60%"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Speed",
+          "speed": "70%"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Speed",
+          "speed": "80%"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Speed",
+          "speed": "90%"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Speed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Loop"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Stop"
+        }
+      ]
+    },
+    "CCT or SAT": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Sets CCT (2700K-10000K) or SAT (0%-100%) depending on effect"
+      }
+    },
+    "Pixel FX Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Rolling",
+          "comment": "Does not use Ch 6-9"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Rainbow",
+          "comment": "Does not use Ch 6-9"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "BlockGame",
+          "comment": "Use Ch 6-9 for forward and background Hue - Sat"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "PingPong",
+          "comment": "Use Ch 6-9 for forward and background Hue - Sat"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Wave",
+          "comment": "Use Ch 6-9 for forward and background Hue - Sat"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Meteor",
+          "comment": "Use Ch 6-7 for Hue - Sat, does not use Ch 8-9"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "FX Status": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Run"
+        }
+      ]
+    },
+    "Direction": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Left"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Right"
+        }
+      ]
+    },
+    "Hue Forward": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Forward HUE(0°-360°)"
+      }
+    },
+    "Saturation Forward": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Forward Saturation"
+      }
+    },
+    "Hue Background": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background Hue"
+      }
+    },
+    "Saturation Background": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background Saturation"
+      }
+    },
+    "Placeholder": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT&RGB 8-bit PIXEL=15",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade to Color",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "CCT&HSI 8-bit PIXEL=15",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade to Color",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "CCT 8-bit PIXEL=15",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta"
+      ]
+    },
+    {
+      "name": "RGB 8-bit PIXEL=15",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "HSI 8-bit PIXEL=15",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "CCT&RGB 8-bit PIXEL=5",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT&HSI 8-bit PIXEL=5",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT 8-bit PIXEL=5",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "RGB 8-bit PIXEL=5",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "HSI 8-bit PIXEL=5",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT&RGB 8-bit PIXEL=3",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT&HSI 8-bit PIXEL=3",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT 8-bit PIXEL=3",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "RGB 8-bit PIXEL=3",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "HSI 8-bit PIXEL=3",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT&RGB 8-bit PIXEL=1",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT&HSI 8-bit PIXEL=1",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "CCT 8-bit PIXEL=1",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "RGB 8-bit PIXEL=1",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "HSI 8-bit PIXEL=1",
+      "channels": [
+        "Placeholder"
+      ]
+    },
+    {
+      "name": "EFFECT 8-bit",
+      "channels": [
+        "Intensity",
+        "Effect Type",
+        "Control",
+        "Speed",
+        "CCT or SAT"
+      ]
+    },
+    {
+      "name": "PIXEL FX 8-bit",
+      "channels": [
+        "Intensity",
+        "Pixel FX Type",
+        "FX Status",
+        "Speed",
+        "Direction",
+        "Hue Forward",
+        "Saturation Forward",
+        "Hue Background",
+        "Saturation Background"
+      ]
+    }
+  ]
+}
