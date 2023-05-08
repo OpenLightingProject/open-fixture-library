@@ -1,0 +1,316 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED CYC2 RGBAL",
+  "shortName": "CYC2",
+  "categories": ["Pixel Bar", "Other"],
+  "meta": {
+    "authors": ["Lachlan Barrett"],
+    "createDate": "2022-03-19",
+    "lastModifyDate": "2022-03-19"
+  },
+  "comment": "Cyclorama Wash",
+  "links": {
+    "manual": [
+      "https://www.showtech.com.au/webdata/LEDCYC101/downloads/LEDCYC101%20-%20LED%20Cyc2%20RGBAL%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.showtech.com.au/product/led-cyc2-rgbal/"
+    ]
+  },
+  "physical": {
+    "dimensions": [390, 310, 298],
+    "weight": 10,
+    "power": 180,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 40.2
+    },
+    "lens": {
+      "degreesMinMax": [5, 53]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "255%"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [171, 190],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [191, 210],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [211, 230],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "StrobeSpeed",
+          "speed": "fast",
+          "comment": "Lightning Strobe"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "Random Strobe"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Preset Dimmer Speed from Display Menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Generic",
+          "comment": "Dim1"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Dim2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Dim3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Dim4"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "L106"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "R05"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "L194"
+        },
+        {
+          "dmxRange": [41, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "StrobeSpeed",
+          "speed": "fast",
+          "comment": "Lightning Strobe"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "Random Strobe"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "HSIC",
+      "shortName": "HSIC",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "CCT",
+        "Strobe",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "SSP",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Color Presets",
+        "Strobe 2",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
