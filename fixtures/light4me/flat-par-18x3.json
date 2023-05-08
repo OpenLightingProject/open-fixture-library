@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flat Par 18x3",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["radosny anonimus"],
+    "createDate": "2023-01-17",
+    "lastModifyDate": "2023-01-17"
+  },
+  "links": {
+    "productPage": [
+      "http://fractallights.com/pl/produkty/LED_PAR_18_x_1W/"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 100],
+    "weight": 0.8,
+    "power": 18,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 7500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Effect",
+          "effectName": "A1-",
+          "soundControlled": true,
+          "comment": "white random on off"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color change smooth"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Jump & Strobo"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Black"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7CH",
+      "channels": [
+        "Color Macros",
+        "Color Presets",
+        "Program Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
