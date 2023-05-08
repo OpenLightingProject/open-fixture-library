@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DE - 8ch relais board",
+  "shortName": "8ch relais",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["ackcsaba"],
+    "createDate": "2023-01-11",
+    "lastModifyDate": "2023-01-11"
+  },
+  "links": {
+    "productPage": [
+      "http://www.digital-enlightenment.de/relaisboard.htm"
+    ]
+  },
+  "availableChannels": {
+    "Switch1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    },
+    "Switch8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "0-127: OFF, 128-255: ON"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dmx",
+      "channels": [
+        "Switch1",
+        "Switch2",
+        "Switch3",
+        "Switch4",
+        "Switch5",
+        "Switch6",
+        "Switch7",
+        "Switch8"
+      ]
+    }
+  ]
+}
