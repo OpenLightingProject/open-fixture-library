@@ -1,0 +1,335 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KM002RGB",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Sven Boekelder"],
+    "createDate": "2023-02-08",
+    "lastModifyDate": "2023-02-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-02-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [188, 98, 165],
+    "weight": 2.2,
+    "power": 1,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Control Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Shut off the laser diode"
+        },
+        {
+          "dmxRange": [64, 139],
+          "type": "Maintenance",
+          "comment": "Sound control mode"
+        },
+        {
+          "dmxRange": [140, 209],
+          "type": "Maintenance",
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Maintenance",
+          "comment": "Manual mode"
+        }
+      ]
+    },
+    "Pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 53],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Static patterns"
+        },
+        {
+          "dmxRange": [54, 255],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Dynamic patterns"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Normal",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Adjust at 8 speed grades",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Adjust": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Horizontal move": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 160],
+          "type": "Effect",
+          "effectName": "Manual move"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Move automatically from right to left"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Automatically move towards upside"
+        },
+        {
+          "dmxRange": [221, 250],
+          "type": "Effect",
+          "effectName": "Automatically move circularly"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Control by Channel 5 jumping movement"
+        }
+      ]
+    },
+    "Vertically move": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 160],
+          "type": "Effect",
+          "effectName": "Manual move"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Automatically move towards downside"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Automatically move towards upside"
+        },
+        {
+          "dmxRange": [221, 250],
+          "type": "Effect",
+          "effectName": "Automatically move circularly"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Control by Channel 5 jumping movement"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "No zoom"
+        },
+        {
+          "dmxRange": [11, 17],
+          "type": "Effect",
+          "effectName": "Shut off"
+        },
+        {
+          "dmxRange": [18, 92],
+          "type": "Effect",
+          "effectName": "Manual Zoom"
+        },
+        {
+          "dmxRange": [93, 146],
+          "type": "Effect",
+          "effectName": "Small to large"
+        },
+        {
+          "dmxRange": [147, 200],
+          "type": "Effect",
+          "effectName": "Large to small"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Cycleplay"
+        }
+      ]
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "comment": "Colorful colors in section"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "comment": "Moving colorful colors in section"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "ColorPreset",
+          "comment": "Change colors automatically"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "ColorPreset",
+          "comment": "Change color by sound"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Reset when DMX value larger than 200"
+      }
+    },
+    "Y axis rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 150],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Manual rotation"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Automatically rotation"
+        }
+      ]
+    },
+    "X axis rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 150],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Manual rotation"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Automatically rotation"
+        }
+      ]
+    },
+    "Patterns rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 180],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Manual rotation"
+        },
+        {
+          "dmxRange": [181, 217],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Clockwise rotation"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Rotation counterclockwise"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Control Mode",
+        "Pattern",
+        "Strobe",
+        "Adjust",
+        "Horizontal move",
+        "Vertically move",
+        "Zoom",
+        "Color",
+        "Reset",
+        "Y axis rotation",
+        "X axis rotation",
+        "Patterns rotation"
+      ]
+    }
+  ]
+}
