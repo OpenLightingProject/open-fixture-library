@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LWX10",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Kevin"],
+    "createDate": "2023-01-25",
+    "lastModifyDate": "2023-01-25"
+  },
+  "links": {
+    "manual": [
+      "https://ikancorp.com/Downloads/Lyra-Daylight-DMX.pdf"
+    ],
+    "productPage": [
+      "https://ikancorp.com/shop/studio-broadcast/dmx-lights-studio-broadcast/ikan-lwx10-lyra-1-x-1-daylight-studio-field-light-w-dmx-control/"
+    ]
+  },
+  "physical": {
+    "dimensions": [14, 14, 3],
+    "weight": 6,
+    "power": 90,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600
+    },
+    "lens": {
+      "name": "Panel",
+      "degreesMinMax": [110, 110]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
