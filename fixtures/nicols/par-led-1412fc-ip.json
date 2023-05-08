@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR LED 1412FC IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SAM"],
+    "createDate": "2022-05-03",
+    "lastModifyDate": "2022-05-03"
+  },
+  "links": {
+    "productPage": [
+      "https://www.terredeson.com/par-led-1812-x-ii.html"
+    ]
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "DIMMER SPEED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "STOBE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "AUTO MODE": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "AUTO SPEED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIMMER",
+      "channels": [
+        "DIMMER",
+        "Red",
+        "GREEN",
+        "BLUE",
+        "White",
+        "DIMMER SPEED",
+        "STOBE",
+        "AUTO MODE",
+        "AUTO SPEED"
+      ]
+    }
+  ]
+}
