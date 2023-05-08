@@ -1,0 +1,368 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WASH 7.10",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Lorenzo Andreani", "Sven Boekelder"],
+    "createDate": "2023-02-08",
+    "lastModifyDate": "2023-02-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-02-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [18, 18, 24],
+    "weight": 2.21,
+    "power": 105,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity",
+          "comment": "Dimmer Min > Max"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "Intensity",
+          "comment": "Strobe Slow > Fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "comment": "Dimmer 100%"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 21],
+          "type": "ColorPreset",
+          "comment": "White (Full RGBW)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [22, 34],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [35, 49],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [50, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 77],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#fffff5"]
+        },
+        {
+          "dmxRange": [78, 91],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#add8e6"]
+        },
+        {
+          "dmxRange": [92, 105],
+          "type": "ColorPreset",
+          "comment": "Light Red",
+          "colors": ["#ff6262"]
+        },
+        {
+          "dmxRange": [106, 119],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [120, 133],
+          "type": "ColorPreset",
+          "comment": "Blue Violet",
+          "colors": ["#aa25e6"]
+        },
+        {
+          "dmxRange": [134, 147],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff5a00"]
+        },
+        {
+          "dmxRange": [148, 161],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [162, 175],
+          "type": "ColorPreset",
+          "comment": "Vivid Tangerine",
+          "colors": ["#ffa080"]
+        },
+        {
+          "dmxRange": [176, 189],
+          "type": "ColorPreset",
+          "comment": "Crimson",
+          "colors": ["#ca163b"]
+        },
+        {
+          "dmxRange": [190, 203],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [204, 217],
+          "type": "ColorPreset",
+          "comment": "CTO",
+          "colors": ["#fff5fa"]
+        },
+        {
+          "dmxRange": [218, 231],
+          "type": "ColorPreset",
+          "comment": "Lavender Purple",
+          "colors": ["#c41aff"]
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "Auto Change Colors"
+        }
+      ]
+    },
+    "Speed Auto Change Colors": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Auto": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [38, 53],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [54, 67],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [68, 83],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [84, 97],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Auto Program 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Auto Program 1 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Auto Program 2 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Auto Program 3 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Auto Program 4 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Auto Program 5 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Auto Program 6 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Auto Program 7 (Sound Active)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 8 (Sound Active)",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Generic",
+          "comment": "All Reset (after 2 seconds)",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan Tilt Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color",
+        "Speed Auto Change Colors",
+        "Auto",
+        "Reset"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan Tilt Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
