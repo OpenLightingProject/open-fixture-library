@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RockOn-7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Nathaniel Abernathy"],
+    "createDate": "2022-10-02",
+    "lastModifyDate": "2022-10-02"
+  },
+  "comment": "MINI 4x10W RGBW LED MOVING HEAD LIGHT",
+  "links": {
+    "manual": [
+      "https://www.rockvilleaudio.com/content/Manuals/RockOn7_Manual_HR.pdf"
+    ],
+    "productPage": [
+      "https://www.rockvilleaudio.com/rockon-7/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=aCuLaJk9vgY"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 160, 200],
+    "weight": 2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "25Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Generic",
+          "comment": "Automatic Motor Movement"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic",
+          "comment": "Sound Activated Motor Movement"
+        }
+      ]
+    },
+    "Automatic Motor Speed Adjust": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Motor Speed"
+      }
+    },
+    "Color Change": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 140],
+          "type": "Generic",
+          "comment": "Automatic Color Change"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "Generic",
+          "comment": "Sound Activated Color Change"
+        }
+      ]
+    },
+    "Automatic color change speed adjust": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Automatic color change speed adjust"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset (5 min)"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 4": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 4 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 Channel DMX",
+      "channels": [
+        "Pan 4",
+        "Tilt 4",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Movement",
+        "Automatic Motor Speed Adjust",
+        "Color Change",
+        "Automatic color change speed adjust",
+        "Reset"
+      ]
+    },
+    {
+      "name": "16 Channel DMX",
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt 4",
+        "Tilt 4 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Movement",
+        "Automatic Motor Speed Adjust",
+        "Color Change",
+        "Automatic color change speed adjust",
+        "Reset"
+      ]
+    }
+  ]
+}
