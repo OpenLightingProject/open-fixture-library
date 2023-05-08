@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kinetic Led Bulb",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Zénit"],
+    "createDate": "2023-01-12",
+    "lastModifyDate": "2023-01-12"
+  },
+  "links": {
+    "productPage": [
+      "http://fyilight.com"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3700,
+      "lumens": 100
+    }
+  },
+  "availableChannels": {
+    "Subida y bajada lampara": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Ajuste fino altura": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Velocidad motor": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Estrobo": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Encendido lampara": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 CH",
+      "channels": [
+        "Subida y bajada lampara",
+        "Ajuste fino altura",
+        "Velocidad motor",
+        "Reset",
+        "Dimmer",
+        "Estrobo",
+        "Encendido lampara",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
