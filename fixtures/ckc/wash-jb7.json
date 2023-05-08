@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wash JB7",
+  "shortName": "JB7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["LEEKYUNGEUN"],
+    "createDate": "2022-08-19",
+    "lastModifyDate": "2022-08-19"
+  },
+  "links": {
+    "manual": [
+      "http://www.ckclighting.com/chanpinxilie/Moving-Wash/2021/0604/239.html"
+    ],
+    "productPage": [
+      "http://www.ckclighting.com/chanpinxilie/Moving-Wash/2021/0604/239.html"
+    ],
+    "video": [
+      "http://www.ckclighting.com/chanpinxilie/Moving-Wash/2021/0604/239.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color forground": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color background": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTB",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color fade/speed": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Patterns programs": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Patterns programs manual step": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameter": "off"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dim mode": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Control": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "STANDARD 21",
+      "shortName": "STANDARD",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color forground",
+        "Color background",
+        "Color fade/speed",
+        "Patterns programs",
+        "Patterns programs manual step",
+        "Program Speed",
+        "Zoom",
+        "Dim mode",
+        "Control"
+      ]
+    }
+  ]
+}
