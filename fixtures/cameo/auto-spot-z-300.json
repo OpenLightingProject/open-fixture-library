@@ -1,0 +1,255 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Auto Spot Z 300",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["KK"],
+    "createDate": "2022-07-04",
+    "lastModifyDate": "2022-07-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/20393/auro-spot-z300#detail-description"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/20393/auro-spot-z300#detail-downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mQZL-_6MVaE&t=4s"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo 1 Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe functions": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Colour Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Gobo Wheel 1": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Gobo Rotation": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 0,
+        "speed": "0%"
+      }
+    },
+    "Gobo Wheel 2": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism selection": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Device settings": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo 1 Rotation": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 0,
+        "speed": "0%"
+      }
+    },
+    "Auto Programm": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Auto Mvement": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Device settings 2": {
+      "name": "Device settings",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 Ch",
+      "channels": [
+        "Pan",
+        "Pan 3",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer",
+        "Dimmer 2",
+        "Strobe",
+        "Colour Wheel",
+        "Gobo Wheel 1",
+        "Gobo Rotation",
+        "Gobo Wheel 2",
+        "Zoom",
+        "Focus",
+        "Prism selection",
+        "Prism Rotation",
+        "Frost",
+        "Device settings"
+      ]
+    },
+    {
+      "name": "20 Ch",
+      "channels": [
+        "Pan",
+        "Pan 3",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer 2",
+        "Dimmer",
+        "Strobe functions",
+        "Colour Wheel",
+        "Gobo Wheel 1",
+        "Gobo 1 Rotation",
+        "Gobo Wheel 2",
+        "Zoom",
+        "Focus",
+        "Prism selection",
+        "Prism Rotation",
+        "Frost",
+        "Auto Programm",
+        "Pan/Tilt Auto Mvement",
+        "Pan/Tilt speed",
+        "Device settings 2"
+      ]
+    }
+  ]
+}
