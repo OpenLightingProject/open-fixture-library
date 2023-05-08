@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ARCPAR7",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["joannes"],
+    "createDate": "2023-02-05",
+    "lastModifyDate": "2023-02-05"
+  },
+  "links": {
+    "manual": [
+      "https://shop.esl-france.com/projecteurs-en-saillie/22956-projecteur-wash-leds-ip65-arcpar7-7x8w-rgbw-fc-15-archwork.html"
+    ]
+  },
+  "physical": {
+    "power": 56,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "15"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    }
+  ]
+}
