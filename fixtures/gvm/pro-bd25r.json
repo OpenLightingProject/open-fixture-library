@@ -23,73 +23,160 @@
       "https://gvmled.com/wp-content/uploads/2022/11/gvm-pro-bd25r-dmx.pdf"
     ]
   },
-  "physical": {
-    "dimensions": [600, 50, 46],
-    "weight": 0.8,
-    "power": 25,
-    "DMXconnector": "5-pin",
-    "bulb": {
-      "type": "LED",
-      "lumens": 465
-    }
-  },
+	"physical": {
+		"dimensions": [600, 50, 46],
+		"weight": 0.8,
+		"power": 25,
+		"DMXconnector": "5-pin",
+		"bulb": {
+			"type": "LED",
+			"lumens": 465
+		},
+		"matrixPixels": {
+			"dimensions": [40, 50, 46],
+			"spacing": [0, 0, 0]
+		}
+	},
+	"matrix": {
+		"pixelCount": [
+			15,
+			1,
+			1
+		],
+		"pixelGroups": {
+			"Master": "all",
+			"1/3": {
+				"x": [
+					"<=5"
+				]
+			},
+			"2/3": {
+				"x": [
+					">5",
+					"<=10"
+				]
+			},
+			"3/3": {
+				"x": [
+					">10"
+				]
+			},
+			"1/5": {
+				"x": [
+					"<=3"
+				]
+			},
+			"2/5": {
+				"x": [
+					">3",
+					"<=6"
+				]
+			},
+			"3/5": {
+				"x": [
+					">6",
+					"<=9"
+				]
+			},
+			"4/5": {
+				"x": [
+					">9",
+					"<=12"
+				]
+			},
+			"5/5": {
+				"x": [
+					">12"
+				]
+			},
+			"Effect Color 1": "all",
+			"Effect Color 2": "all",
+			"Effect Color 3": "all",
+			"Effect Color 4": "all"
+		}
+	},
+	"templateChannels": {
+		"Intensity $pixelKey": {
+		  "capability": {
+			"type": "Intensity"
+		  }
+		},
+		"CCT $pixelKey": {
+		  "defaultValue": 98,
+		  "capability": {
+			"type": "ColorTemperature",
+			"colorTemperatureStart": "2700K",
+			"colorTemperatureEnd": "10000K"
+		  }
+		},
+		"Green-Magenta Point $pixelKey": {
+		  "defaultValue": 127,
+		  "capabilities": [
+			{
+			  "dmxRange": [0, 1],
+			  "type": "Generic",
+			  "comment": "Full minus green"
+			},
+			{
+			  "dmxRange": [2, 125],
+			  "type": "Generic",
+			  "comment": "-99%…-1%"
+			},
+			{
+			  "dmxRange": [126, 128],
+			  "type": "Generic",
+			  "comment": "Neutral"
+			},
+			{
+			  "dmxRange": [129, 253],
+			  "type": "Generic",
+			  "comment": "1%…99%"
+			},
+			{
+			  "dmxRange": [254, 255],
+			  "type": "Generic",
+			  "comment": "Full plus green"
+			}
+		  ]
+		},
+		"Crossfade to Color $pixelKey": {
+		  "capability": {
+			"type": "Generic",
+			"comment": "Crossfade to Color"
+		  }
+		},
+		"Red $pixelKey": {
+		  "capability": {
+			"type": "ColorIntensity",
+			"color": "Red"
+		  }
+		},
+		"Green $pixelKey": {
+		  "capability": {
+			"type": "ColorIntensity",
+			"color": "Green"
+		  }
+		},
+		"Blue $pixelKey": {
+		  "capability": {
+			"type": "ColorIntensity",
+			"color": "Blue"
+		  }
+		},
+		"Hue $pixelKey": {
+		  "capability": {
+			"type": "Generic",
+			"comment": "0° - 360°"
+		  }
+		},
+		"Saturation $pixelKey": {
+		  "capability": {
+			"type": "Generic",
+			"comment": "0% - 100%"
+		  }
+		}
+	},
   "availableChannels": {
-    "Intensity": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "CCT": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "2700K",
-        "colorTemperatureEnd": "10000K"
-      }
-    },
-    "Green/Magenta": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "-50%",
-        "brightnessEnd": "50%"
-      }
-    },
-    "Crossfade to Color": {
-      "capability": {
-        "type": "Generic",
-        "comment": "Crossfade to Color"
-      }
-    },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Hue": {
-      "capability": {
-        "type": "Generic",
-        "comment": "0° - 360°"
-      }
-    },
-    "Saturation": {
-      "capability": {
-        "type": "Generic",
-        "comment": "0% - 100%"
-      }
-    },
     "Effect Type": {
       "capabilities": [
         {
@@ -361,147 +448,374 @@
   },
   "modes": [
     {
-      "name": "CCT&RGB 8-bit PIXEL=15",
-      "channels": [
-        "Intensity",
-        "CCT",
-        "Green/Magenta",
-        "Crossfade to Color",
-        "Red",
-        "Green",
-        "Blue"
-      ]
-    },
-    {
-      "name": "CCT&HSI 8-bit PIXEL=15",
-      "channels": [
-        "Intensity",
-        "CCT",
-        "Green/Magenta",
-        "Crossfade to Color",
-        "Hue",
-        "Saturation"
-      ]
-    },
-    {
-      "name": "CCT 8-bit PIXEL=15",
-      "channels": [
-        "Intensity",
-        "CCT",
-        "Green/Magenta"
-      ]
-    },
-    {
-      "name": "RGB 8-bit PIXEL=15",
-      "channels": [
-        "Intensity",
-        "Red",
-        "Green",
-        "Blue"
-      ]
-    },
-    {
-      "name": "HSI 8-bit PIXEL=15",
-      "channels": [
-        "Intensity",
-        "Hue",
-        "Saturation"
-      ]
-    },
+  "name": "CCT&RGB 8-bit PIXEL=15",
+	  "channels": [
+			"Intensity Master",
+			"CCT Master",
+			"Green-Magenta Point Master",
+			"Crossfade to Color Master",
+			"Red Master",
+			"Green Master",
+			"Blue Master"
+		  ]
+		},
+		{
+		  "name": "CCT&HSI 8-bit PIXEL=15",
+		  "channels": [
+			"Intensity Master",
+			"CCT Master",
+			"Green-Magenta Point Master",
+			"Crossfade to Color Master",
+			"Hue Master",
+			"Saturation Master"
+		  ]
+		},
+		{
+		  "name": "CCT 8-bit PIXEL=15",
+		  "channels": [
+			"Intensity Master",
+			"CCT Master",
+			"Green-Magenta Point Master"
+		  ]
+		},
+		{
+		  "name": "RGB 8-bit PIXEL=15",
+		  "channels": [
+			"Intensity Master",
+			"Red Master",
+			"Green Master",
+			"Blue Master"
+		  ]
+		},
+		{
+		  "name": "HSI 8-bit PIXEL=15",
+		  "channels": [
+			"Intensity Master",
+			"Hue Master",
+			"Saturation Master"
+		  ]
+		},
     {
       "name": "CCT&RGB 8-bit PIXEL=5",
       "channels": [
-        "Placeholder"
+		"Intensity 1/3",
+		"CCT 1/3",
+		"Green-Magenta Point 1/3",
+		"Crossfade to Color 1/3",
+		"Red 1/3",
+		"Green 1/3",
+		"Blue 1/3",
+		"Intensity 2/3",
+		"CCT 2/3",
+		"Green-Magenta Point 2/3",
+		"Crossfade to Color 2/3",
+		"Red 2/3",
+		"Green 2/3",
+		"Blue 2/3",
+		"Intensity 3/3",
+		"CCT 3/3",
+		"Green-Magenta Point 3/3",
+		"Crossfade to Color 3/3",
+		"Red 3/3",
+		"Green 3/3",
+		"Blue 3/3"
       ]
     },
+   {
+	"name": "CCT&HSI 8-bit PIXEL=5",
+	  "channels": [
+		"Intensity 1/3",
+		"CCT 1/3",
+		"Green-Magenta Point 1/3",
+		"Crossfade to Color 1/3",
+		"Hue 1/3",
+		"Saturation 1/3",
+		"Intensity 2/3",
+		"CCT 2/3",
+		"Green-Magenta Point 2/3",
+		"Crossfade to Color 2/3",
+		"Hue 2/3",
+		"Saturation 2/3",
+		"Intensity 3/3",
+		"CCT 3/3",
+		"Green-Magenta Point 3/3",
+		"Crossfade to Color 3/3",
+		"Hue 3/3",
+		"Saturation 3/3"
+	  ]
+	},
     {
-      "name": "CCT&HSI 8-bit PIXEL=5",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+		"name": "CCT 8-bit PIXEL=5",
+		"channels": [
+			"Intensity 1/3",
+			"CCT 1/3",
+			"Green-Magenta Point 1/3",
+			"Intensity 2/3",
+			"CCT 2/3",
+			"Green-Magenta Point 2/3",
+			"Intensity 3/3",
+			"CCT 3/3",
+			"Green-Magenta Point 3/3"
+		]
+	},
     {
-      "name": "CCT 8-bit PIXEL=5",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+		"name": "RGB 8-bit PIXEL=5",
+		"channels": [
+			"Intensity 1/3",
+			"Red 1/3",
+			"Green 1/3",
+			"Blue 1/3",
+			"Intensity 2/3",
+			"Red 2/3",
+			"Green 2/3",
+			"Blue 2/3",
+			"Intensity 3/3",
+			"Red 3/3",
+			"Green 3/3",
+			"Blue 3/3"
+		]
+	},
     {
-      "name": "RGB 8-bit PIXEL=5",
-      "channels": [
-        "Placeholder"
-      ]
-    },
-    {
-      "name": "HSI 8-bit PIXEL=5",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+		"name": "HSI 8-bit PIXEL=5",
+		"channels": [
+			"Intensity 1/3",
+			"Hue 1/3",
+			"Saturation 1/3",
+			"Intensity 2/3",
+			"Hue 2/3",
+			"Saturation 2/3",
+			"Intensity 3/3",
+			"Hue 3/3",
+			"Saturation 3/3"
+		]
+	},
     {
       "name": "CCT&RGB 8-bit PIXEL=3",
       "channels": [
-        "Placeholder"
-      ]
+		"Intensity 1/5",
+		"CCT 1/5",
+		"Green-Magenta Point 1/5",
+		"Crossfade to Color 1/5",
+		"Red 1/5",
+		"Green 1/5",
+		"Blue 1/5",
+		"Intensity 2/5",
+		"CCT 2/5",
+		"Green-Magenta Point 2/5",
+		"Crossfade to Color 2/5",
+		"Red 2/5",
+		"Green 2/5",
+		"Blue 2/5",
+		"Intensity 3/5",
+		"CCT 3/5",
+		"Green-Magenta Point 3/5",
+		"Crossfade to Color 3/5",
+		"Red 3/5",
+		"Green 3/5",
+		"Blue 3/5",
+		"Intensity 4/5",
+		"CCT 4/5",
+		"Green-Magenta Point 4/5",
+		"Crossfade to Color 4/5",
+		"Red 4/5",
+		"Green 4/5",
+		"Blue 4/5",
+		"Intensity 5/5",
+		"CCT 5/5",
+		"Green-Magenta Point 5/5",
+		"Crossfade to Color 5/5",
+		"Red 5/5",
+		"Green 5/5",
+		"Blue 5/5"
+	  ]
     },
     {
-      "name": "CCT&HSI 8-bit PIXEL=3",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "CCT&HSI 8-bit PIXEL=3",
+	  "channels": [
+		"Intensity 1/5",
+		"CCT 1/5",
+		"Green-Magenta Point 1/5",
+		"Crossfade to Color 1/5",
+		"Hue 1/5",
+		"Saturation 1/5",
+		"Intensity 2/5",
+		"CCT 2/5",
+		"Green-Magenta Point 2/5",
+		"Crossfade to Color 2/5",
+		"Hue 2/5",
+		"Saturation 2/5",
+		"Intensity 3/5",
+		"CCT 3/5",
+		"Green-Magenta Point 3/5",
+		"Crossfade to Color 3/5",
+		"Hue 3/5",
+		"Saturation 3/5",
+		"Intensity 4/5",
+		"CCT 4/5",
+		"Green-Magenta Point 4/5",
+		"Crossfade to Color 4/5",
+		"Hue 4/5",
+		"Saturation 4/5",
+		"Intensity 5/5",
+		"CCT 5/5",
+		"Green-Magenta Point 5/5",
+		"Crossfade to Color 5/5",
+		"Hue 5/5",
+		"Saturation 5/5"
+	  ]
+	},
     {
       "name": "CCT 8-bit PIXEL=3",
-      "channels": [
-        "Placeholder"
-      ]
+        "channels": [
+		"Intensity 1/5",
+		"CCT 1/5",
+		"Green-Magenta Point 1/5",
+		"Intensity 2/5",
+		"CCT 2/5",
+		"Green-Magenta Point 2/5",
+		"Intensity 3/5",
+		"CCT 3/5",
+		"Green-Magenta Point 3/5",
+		"Intensity 4/5",
+		"CCT 4/5",
+		"Green-Magenta Point 4/5",
+		"Intensity 5/5",
+		"CCT 5/5",
+		"Green-Magenta Point 5/5"
+	  ]
     },
     {
-      "name": "RGB 8-bit PIXEL=3",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "RGB 8-bit PIXEL=3",
+	  "channels": [
+		"Intensity 1/5",
+		"Red 1/5",
+		"Green 1/5",
+		"Blue 1/5",
+		"Intensity 2/5",
+		"Red 2/5",
+		"Green 2/5",
+		"Blue 2/5",
+		"Intensity 3/5",
+		"Red 3/5",
+		"Green 3/5",
+		"Blue 3/5",
+		"Intensity 4/5",
+		"Red 4/5",
+		"Green 4/5",
+		"Blue 4/5",
+		"Intensity 5/5",
+		"Red 5/5",
+		"Green 5/5",
+		"Blue 5/5"
+	  ]
+	},
     {
-      "name": "HSI 8-bit PIXEL=3",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "HSI 8-bit PIXEL=3",
+	  "channels": [
+		"Intensity 1/5",
+		"Hue 1/5",
+		"Saturation 1/5",
+		"Intensity 2/5",
+		"Hue 2/5",
+		"Saturation 2/5",
+		"Intensity 3/5",
+		"Hue 3/5",
+		"Saturation 3/5",
+		"Intensity 4/5",
+		"Hue 4/5",
+		"Saturation 4/5",
+		"Intensity 5/5",
+		"Hue 5/5",
+		"Saturation 5/5"
+	  ]
+	},
     {
-      "name": "CCT&RGB 8-bit PIXEL=1",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "CCT&RGB 8-bit PIXEL=1",
+	  "channels": [
+		{
+		  "insert": "matrixChannels",
+		  "repeatFor": "eachPixelABC",
+		  "channelOrder": "perPixel",
+		  "templateChannels": [
+			"Intensity $pixelKey",
+			"CCT $pixelKey",
+			"Green-Magenta Point $pixelKey",
+			"Crossfade to Color $pixelKey",
+			"Red $pixelKey",
+			"Green $pixelKey",
+			"Blue $pixelKey"
+		  ]
+		}
+	  ]
+	},
     {
-      "name": "CCT&HSI 8-bit PIXEL=1",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "CCT&HSI 8-bit PIXEL=1",
+	  "channels": [
+		{
+		  "insert": "matrixChannels",
+		  "repeatFor": "eachPixelABC",
+		  "channelOrder": "perPixel",
+		  "templateChannels": [
+			"Intensity $pixelKey",
+			"CCT $pixelKey",
+			"Green-Magenta Point $pixelKey",
+			"Crossfade to Color $pixelKey",
+			"Hue $pixelKey",
+			"Saturation $pixelKey"
+		  ]
+		}
+	  ]
+	},
     {
-      "name": "CCT 8-bit PIXEL=1",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "CCT 8-bit PIXEL=1",
+	  "channels": [
+		{
+		  "insert": "matrixChannels",
+		  "repeatFor": "eachPixelABC",
+		  "channelOrder": "perPixel",
+		  "templateChannels": [
+			"Intensity $pixelKey",
+			"CCT $pixelKey",
+			"Green-Magenta Point $pixelKey"
+		  ]
+		}
+	  ]
+	},
     {
-      "name": "RGB 8-bit PIXEL=1",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "RGB 8-bit PIXEL=1",
+	  "channels": [
+		{
+		  "insert": "matrixChannels",
+		  "repeatFor": "eachPixelABC",
+		  "channelOrder": "perPixel",
+		  "templateChannels": [
+			"Intensity $pixelKey",
+			"Red $pixelKey",
+			"Green $pixelKey",
+			"Blue $pixelKey"
+		  ]
+		}
+	  ]
+	},
     {
-      "name": "HSI 8-bit PIXEL=1",
-      "channels": [
-        "Placeholder"
-      ]
-    },
+	  "name": "HSI 8-bit PIXEL=1",
+	  "channels": [
+		{
+		  "insert": "matrixChannels",
+		  "repeatFor": "eachPixelABC",
+		  "channelOrder": "perPixel",
+		  "templateChannels": [
+			"Intensity $pixelKey",
+			"Hue $pixelKey",
+			"Saturation $pixelKey"
+		  ]
+		}
+	  ]
+	},
     {
       "name": "EFFECT 8-bit",
       "channels": [
-        "Intensity",
+        "Intensity $pixelKey",
         "Effect Type",
         "Control",
         "Speed",
@@ -511,7 +825,7 @@
     {
       "name": "PIXEL FX 8-bit",
       "channels": [
-        "Intensity",
+        "Intensity $pixelKey",
         "Pixel FX Type",
         "FX Status",
         "Speed",
