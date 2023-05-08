@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Gemini 1X1",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["SW"],
+    "createDate": "2023-01-05",
+    "lastModifyDate": "2023-01-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.litepanels.com/media/11986/lp_gemini-1x1-hard_user-manual.pdf"
+    ],
+    "productPage": [
+      "https://www.litepanels.com/en/products/gemini-1x1-hard/"
+    ],
+    "video": [
+      "https://www.google.com/search?q=gemini+1x1+video&rlz=1C1GCEB_enGB1019GB1019&sxsrf=AJOqlzVmfeL7VKhJRoN_0LBFwSzNgwtrLw%3A1672932425092&ei=Sey2Y_msBZHDgQazrLvgAw&ved=0ahUKEwi59bj33rD8AhWRYcAKHTPWDjwQ4dUDCA8&uact=5&oq=gemini+1x1+video&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCCEQoAEyBQghEKABOgkIABAHEB4QsAM6CAgAEIYDELADOgQIIxAnOgYIABAWEB46BQgAEIYDOgUIABCABDoFCAAQkQI6BwghEKABEApKBAhBGAFKBAhGGABQ3w9Y_SBgzSJoBXAAeACAAX2IAYgHkgEEMTAuMZgBAKABAcgBBcABAQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:a4075b23,vid:nHbXG-8J2EQ"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6000K"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Offset": {
+      "defaultValue": "50%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "NO Offset"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "-100%",
+          "brightnessEnd": "-100%",
+          "comment": "-100 Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "-99%",
+          "brightnessEnd": "-1%",
+          "comment": "-99 to -1 Green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "0%"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "96%",
+          "brightnessEnd": "100%",
+          "comment": "+1 to +99 Green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "96%",
+          "brightnessEnd": "100%",
+          "comment": "+100 Green"
+        }
+      ]
+    },
+    "CrossFade W to RGB": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Fan Control": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "90%",
+        "comment": "Fan Control"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT&RGBW Fixed 8-Bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green Offset",
+        "CrossFade W to RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Control",
+        "Reserved 2",
+        "Reserved 3",
+        "Reserved"
+      ]
+    }
+  ]
+}
