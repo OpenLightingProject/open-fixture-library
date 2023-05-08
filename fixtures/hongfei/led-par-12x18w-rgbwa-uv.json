@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Par 12x18w RGBWA+UV",
+  "shortName": "Flat led",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Lord Hanzus"],
+    "createDate": "2022-11-19",
+    "lastModifyDate": "2022-11-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_274654_274655_375070_v2_r4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.aliexpress.com/item/33005739774.html?spm=a2g0o.order_list.0.0.32ac1802gqZsPZ"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=QmBMEcNo_qA&ab_channel=9malls"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 190, 120],
+    "weight": 1.5,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Lamp beads",
+      "colorTemperature": 3500
+    }
+  },
+  "availableChannels": {
+    "Red dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Ultraviolet dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Total dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function Choice": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorPreset",
+          "comment": "Diff"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ColorPreset",
+          "comment": "Jump"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "Gradate"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "ColorPreset",
+          "comment": "Pulse"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Sound"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 kanalu",
+      "shortName": "6",
+      "channels": [
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "White dimmer",
+        "Amber Dimmer",
+        "Ultraviolet dimmer"
+      ]
+    },
+    {
+      "name": "10 kanalu",
+      "shortName": "10",
+      "channels": [
+        "Total dimmer",
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "White dimmer",
+        "Amber Dimmer",
+        "Ultraviolet dimmer",
+        "Total Strobe",
+        "Function Choice",
+        "Speed"
+      ]
+    }
+  ]
+}
