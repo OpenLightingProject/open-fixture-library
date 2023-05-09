@@ -1,0 +1,699 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BTF200CZ",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Niels"],
+    "createDate": "2023-05-09",
+    "lastModifyDate": "2023-05-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-05-09",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [296, 270, 341],
+    "weight": 9.7,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 60]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colour Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red 100%, Green 0-100%, Blue 0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Red 100-0%, Green 100%, Blue 0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Red 0%, Green 100%, Blue0-100%"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Red 0%, Green 100-0%, Blue 100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Red 0-100%, Green 0%, Blue 100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Red 100%, Green 0%, Blue 100-0%"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red 100%, Green 0-100%, Blue 0-100%"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "Reed 100-0%, Green 100-0%, Blue 100%"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "Red 100-0%, Green 100%, Blue 100%"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "ColorPreset",
+          "comment": "Colour temperature1 3200K"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "ColorPreset",
+          "comment": "Colour temperatur2 5600K"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Auto program": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Auto 1"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Auto 2"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "Auto 3"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Auto 4"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Auto 5"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Auto 6"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Auto 7"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Auto 8"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Auto 9"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Auto 10"
+        },
+        {
+          "dmxRange": [121, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto program speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed"
+      }
+    },
+    "Dimmer mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Effect",
+          "effectName": "Dimmer mode 0, no delay"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Effect",
+          "effectName": "Dimmer mode 1"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Effect",
+          "effectName": "Dimmer mode 2"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Effect",
+          "effectName": "Dimmer mode 3"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Effect",
+          "effectName": "Dimmer mode 4"
+        }
+      ]
+    },
+    "ID address": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "All ID ID1 to ID"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "ID1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "ID2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "ID3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "ID4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "ID5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "ID6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "ID7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "ID8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "ID9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "ID10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "ID11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "ID12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "ID13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "ID14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "ID15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "ID16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "ID17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "ID18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "ID19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "ID20"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Maintenance",
+          "comment": "ID21"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Maintenance",
+          "comment": "ID22"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Maintenance",
+          "comment": "ID23"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Maintenance",
+          "comment": "ID24"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Maintenance",
+          "comment": "ID25"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Maintenance",
+          "comment": "ID26"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Maintenance",
+          "comment": "ID27"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Maintenance",
+          "comment": "ID28"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Maintenance",
+          "comment": "ID29"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Maintenance",
+          "comment": "ID30"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Maintenance",
+          "comment": "ID31"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Maintenance",
+          "comment": "ID32"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Maintenance",
+          "comment": "ID33"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Maintenance",
+          "comment": "ID34"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Maintenance",
+          "comment": "ID35"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Maintenance",
+          "comment": "ID36"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Maintenance",
+          "comment": "ID37"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Maintenance",
+          "comment": "ID38"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Maintenance",
+          "comment": "ID39"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Maintenance",
+          "comment": "ID40"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Maintenance",
+          "comment": "ID41"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Maintenance",
+          "comment": "ID42"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Maintenance",
+          "comment": "ID43"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Maintenance",
+          "comment": "ID44"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Maintenance",
+          "comment": "ID45"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Maintenance",
+          "comment": "ID46"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Maintenance",
+          "comment": "ID47"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Maintenance",
+          "comment": "ID48"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Maintenance",
+          "comment": "ID49"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Maintenance",
+          "comment": "ID50"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "comment": "ID51"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Maintenance",
+          "comment": "ID52"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Maintenance",
+          "comment": "ID53"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Maintenance",
+          "comment": "ID54"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Maintenance",
+          "comment": "ID55"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Maintenance",
+          "comment": "ID56"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Maintenance",
+          "comment": "ID57"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Maintenance",
+          "comment": "ID58"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Maintenance",
+          "comment": "ID59"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Maintenance",
+          "comment": "ID60"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Maintenance",
+          "comment": "ID61"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Maintenance",
+          "comment": "ID62"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Maintenance",
+          "comment": "ID63"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Maintenance",
+          "comment": "ID64"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Maintenance",
+          "comment": "ID65"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "ID66"
+        }
+      ]
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Brightness": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "STAG - 12-channel",
+      "shortName": "STAG - 12ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colour Macro",
+        "Strobe",
+        "Zoom",
+        "Auto program",
+        "Auto program speed",
+        "Dimmer mode",
+        "ID address"
+      ]
+    },
+    {
+      "name": "ARC.1 - 3-channel",
+      "shortName": "ARC.1 - 3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "AR1.D - 4-channel",
+      "shortName": "AR1.D - 4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "ARC.2 - 4-channel",
+      "shortName": "ARC.2 - 4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "AR2.D - 5-channel",
+      "shortName": "AR2.D - 5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "AR2.S - 6-channel",
+      "shortName": "AR2.S - 6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSV - 3-channel",
+      "shortName": "HSV - 3ch",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Brightness"
+      ]
+    }
+  ]
+}
