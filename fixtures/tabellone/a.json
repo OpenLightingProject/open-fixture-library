@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "A",
+  "shortName": "A",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Ale"],
+    "createDate": "2023-05-11",
+    "lastModifyDate": "2023-05-11"
+  },
+  "links": {
+    "other": [
+      "http://digitalskene.com"
+    ]
+  },
+  "availableChannels": {
+    "A": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "B": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "alphabeth",
+      "shortName": "Latella",
+      "channels": [
+        "A",
+        "B"
+      ]
+    }
+  ]
+}
