@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tabellone",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["Ale"],
+    "createDate": "2023-05-11",
+    "lastModifyDate": "2023-05-11"
+  },
+  "links": {
+    "other": [
+      "http://digitalskene.com"
+    ]
+  },
+  "availableChannels": {
+    "Tabellone": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "nero"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "A"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "B"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "C"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction",
+          "comment": "stop"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "nero",
+      "shortName": "nero",
+      "channels": [
+        "Tabellone"
+      ]
+    }
+  ]
+}
