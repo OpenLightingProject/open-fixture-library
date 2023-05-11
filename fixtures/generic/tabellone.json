@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "tabellone",
+  "shortName": "tbl",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["gedl"],
+    "createDate": "2023-05-11",
+    "lastModifyDate": "2023-05-11"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "buio"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "A"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "B"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "std",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
