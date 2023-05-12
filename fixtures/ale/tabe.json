@@ -1,0 +1,371 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tabe",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Ale"],
+    "createDate": "2023-05-12",
+    "lastModifyDate": "2023-05-12"
+  },
+  "links": {
+    "manual": [
+      "http://digitalskene.com"
+    ]
+  },
+  "availableChannels": {
+    "Tabellone": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Nero"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "A"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "B"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "C"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "D"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "E"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "F"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "G"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "H"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "I"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "J"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "K"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "L"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "M"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "N"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "O"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "P"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Q"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "R"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "S"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "T"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Intensity",
+          "comment": "U"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "V"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "W"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "X"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Y"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Z"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "À"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "È"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "É"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Ì"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Ò"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Ù"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "."
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": ","
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": ":"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "!"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "?"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "'"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "9"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": ">>"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Tabellone",
+      "shortName": "Latella",
+      "channels": [
+        "Tabellone"
+      ]
+    }
+  ]
+}
