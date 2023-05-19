@@ -760,7 +760,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/gi, ``),
+    name: qlcPlusMode.$.Name.replaceAll(/\s+mode|mode\s+/gi, ``),
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-|)(?:channels?|chan|ch)/i);
@@ -1051,5 +1051,5 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

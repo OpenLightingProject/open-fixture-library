@@ -221,7 +221,7 @@ export async function updateComment(test) {
   let equalFound = false;
   const promises = comments.flatMap(comment => {
     // get rid of \r linebreaks
-    comment.body = comment.body.replace(/\r/g, ``);
+    comment.body = comment.body.replaceAll(`\r`, ``);
 
     if (lines[0] !== comment.body.split(`\n`)[0]) {
       // the comment was not created by this test script
