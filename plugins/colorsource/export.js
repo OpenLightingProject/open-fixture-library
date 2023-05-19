@@ -184,7 +184,7 @@ function getColorSourceChannels(mode, hasIntensity) {
         channelJson.type = CHANNEL_TYPE_BEAM;
       }
       else if (channel.color) { // it may also be Hue or Saturation, which have no color
-        channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+        channelJson.name = channel.color.replaceAll(` `, ``); // e.g. 'Warm White' -> 'WarmWhite'
       }
     }
 

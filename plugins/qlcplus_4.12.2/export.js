@@ -73,7 +73,7 @@ export async function exportFixtures(fixtures, options) {
 
     xml.dtd(``);
 
-    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
+    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replaceAll(/\s+/g, `-`);
 
     return {
       name: `fixtures/${sanitizedFileName}`,
