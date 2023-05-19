@@ -291,7 +291,7 @@ async function getFixtureCreateResult(fixtures) {
       });
 
       // remove trailing null slots
-      while (slots[slots.length - 1] === null) {
+      while (slots.at(-1) === null) {
         slots.pop();
       }
 
