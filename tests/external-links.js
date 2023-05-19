@@ -39,7 +39,7 @@ try {
 
   const externalUrlSet = new Set();
 
-  crawler.on(`externalLinkFound`, url => {
+  crawler.addEventListener(`externalLinkFound`, ({ url }) => {
     if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
       externalUrlSet.add(url);
       process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
