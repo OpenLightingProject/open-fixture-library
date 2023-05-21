@@ -1,0 +1,264 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB patterns",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Totti"],
+    "createDate": "2023-05-21",
+    "lastModifyDate": "2023-05-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-05-21",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [252, 71, 165],
+    "weight": 2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Mode Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Closed Light mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Pattern selection/auto & sound mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Auto/sound mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Auto/sound mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Auto/sound mode 4",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Angle Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Rotation angle selection",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Positive rotation speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Reverse rotation speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Horizontal angle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Horizontal flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Horizontal flip speed selection"
+        }
+      ]
+    },
+    "Vertical angle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Vertical flip position"
+        },
+        {
+          "dmxRange": [125, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Vertical flip speed selection"
+        }
+      ]
+    },
+    "Horizontal position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Horizontal position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Horizontal movement speed"
+        }
+      ]
+    },
+    "Vertical position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Vertical position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Vertical movement speed selection"
+        }
+      ]
+    },
+    "Patern sisze control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Fixed size"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Small to large speed"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Large to small speed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Size zoom speed"
+        }
+      ]
+    },
+    "Color control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ColorPreset",
+          "comment": "Monochrome color selection"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "comment": "Color selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Monochrome auto"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "Color mixing"
+        }
+      ]
+    },
+    "Node control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Pattern has dots and lines"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Dotted pattern, wireless strip"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Mode Selection",
+        "Pattern selection/auto & sound mode",
+        "Angle Control",
+        "Horizontal angle",
+        "Vertical angle",
+        "Horizontal position",
+        "Vertical position",
+        "Patern sisze control",
+        "Color control",
+        "Node control"
+      ]
+    }
+  ]
+}
