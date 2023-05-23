@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bar Beam 8x12W RGBW Moving Head",
+  "shortName": "SHE-BMH0812D",
+  "categories": ["Moving Head", "Pixel Bar"],
+  "meta": {
+    "authors": ["R. Wenner"],
+    "createDate": "2023-05-23",
+    "lastModifyDate": "2023-05-23"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAX/UPAX592/1905/file/7d6348eed7.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/led-8x12w-bar-beam-moving-head-light-rgbw-perfect-for-dj-party-nightclub-disco-light-christmas-sound-active-dmx-disco-1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FHwEDCEsdcE"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [1070, 80, 130],
+    "weight": 7.5,
+    "power": 96,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
+    }
+  },
+  "availableChannels": {
+    "Horizontal operation": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Speed adjustment": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Built-in effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "no effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Built-in effect 1",
+          "speed": "stop",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "Effect",
+          "effectName": "Built-in effect 2"
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "Effect",
+          "effectName": "Built-in effect 3"
+        },
+        {
+          "dmxRange": [43, 53],
+          "type": "Effect",
+          "effectName": "Built-in effect 4"
+        },
+        {
+          "dmxRange": [54, 64],
+          "type": "Effect",
+          "effectName": "Built-in effect 5"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Effect",
+          "effectName": "Built-in effect 6"
+        },
+        {
+          "dmxRange": [76, 86],
+          "type": "Effect",
+          "effectName": "Built-in effect 7"
+        },
+        {
+          "dmxRange": [87, 97],
+          "type": "Effect",
+          "effectName": "Built-in effect 8"
+        },
+        {
+          "dmxRange": [98, 108],
+          "type": "Effect",
+          "effectName": "Built-in effect 9"
+        },
+        {
+          "dmxRange": [109, 119],
+          "type": "Effect",
+          "effectName": "Built-in effect 10"
+        },
+        {
+          "dmxRange": [120, 130],
+          "type": "Effect",
+          "effectName": "Built-in effect 11",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [131, 141],
+          "type": "Effect",
+          "effectName": "Built-in effect 12"
+        },
+        {
+          "dmxRange": [142, 152],
+          "type": "Effect",
+          "effectName": "Built-in effect 13"
+        },
+        {
+          "dmxRange": [153, 163],
+          "type": "Effect",
+          "effectName": "Built-in effect 14"
+        },
+        {
+          "dmxRange": [164, 174],
+          "type": "Effect",
+          "effectName": "Built-in effect 15"
+        },
+        {
+          "dmxRange": [175, 185],
+          "type": "Effect",
+          "effectName": "Built-in effect 16"
+        },
+        {
+          "dmxRange": [186, 196],
+          "type": "Effect",
+          "effectName": "Built-in effect 17"
+        },
+        {
+          "dmxRange": [197, 207],
+          "type": "Effect",
+          "effectName": "Built-in effect 18"
+        },
+        {
+          "dmxRange": [208, 218],
+          "type": "Effect",
+          "effectName": "Built-in effect 19"
+        },
+        {
+          "dmxRange": [219, 229],
+          "type": "Effect",
+          "effectName": "Built-in effect 20"
+        },
+        {
+          "dmxRange": [230, 240],
+          "type": "Effect",
+          "effectName": "Built-in effect 21"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Effect",
+          "effectName": "Built-in effect 22"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Voice control effect"
+        }
+      ]
+    },
+    "Built-in effect speed adjustment": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Total dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "BAR1 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR1 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR1 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR1 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR2 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR2 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR2 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR2 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR3 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR3 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR3 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR3 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR4 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR4 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR4 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR4 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR5 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR5 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR5 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR5 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR6 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR6 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR6 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR6 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR7 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR7 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR7 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR7 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BAR8 Red dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BAR8 Green dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BAR8 Blue dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BAR8 White dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 9 Channel",
+      "shortName": "9CH",
+      "channels": [
+        "Horizontal operation",
+        "Speed adjustment",
+        "Built-in effects",
+        "Built-in effect speed adjustment",
+        "Total dimming",
+        "Red dimming",
+        "Green dimming",
+        "Blue dimming",
+        "White dimming"
+      ]
+    },
+    {
+      "name": "Extended 38 Channel",
+      "shortName": "38CH",
+      "channels": [
+        "Horizontal operation",
+        "Speed adjustment",
+        "Built-in effects",
+        "Built-in effect speed adjustment",
+        "Total dimming",
+        "Strobe",
+        "BAR1 Red dimming",
+        "BAR1 Green dimming",
+        "BAR1 Blue dimming",
+        "BAR1 White dimming",
+        "BAR2 Red dimming",
+        "BAR2 Green dimming",
+        "BAR2 Blue dimming",
+        "BAR2 White dimming",
+        "BAR3 Red dimming",
+        "BAR3 Green dimming",
+        "BAR3 Blue dimming",
+        "BAR3 White dimming",
+        "BAR4 Red dimming",
+        "BAR4 Green dimming",
+        "BAR4 Blue dimming",
+        "BAR4 White dimming",
+        "BAR5 Red dimming",
+        "BAR5 Green dimming",
+        "BAR5 Blue dimming",
+        "BAR5 White dimming",
+        "BAR6 Red dimming",
+        "BAR6 Green dimming",
+        "BAR6 Blue dimming",
+        "BAR6 White dimming",
+        "BAR7 Red dimming",
+        "BAR7 Green dimming",
+        "BAR7 Blue dimming",
+        "BAR7 White dimming",
+        "BAR8 Red dimming",
+        "BAR8 Green dimming",
+        "BAR8 Blue dimming",
+        "BAR8 White dimming"
+      ]
+    }
+  ]
+}
