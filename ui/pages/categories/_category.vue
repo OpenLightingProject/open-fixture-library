@@ -59,7 +59,7 @@ export default {
       return this.$route.params.category;
     },
     categoryClass() {
-      return this.categoryName.toLowerCase().replace(/\W+/g, `-`);
+      return this.categoryName.toLowerCase().replaceAll(/\W+/g, `-`);
     },
     fixtures() {
       return register.categories[this.categoryName].map(fullFixtureKey => {
