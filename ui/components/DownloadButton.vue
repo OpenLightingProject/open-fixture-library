@@ -295,7 +295,7 @@ export default {
         const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
-          filename = matches[1].replace(/["']/g, ``);
+          filename = matches[1].replaceAll(/["']/g, ``);
         }
       }
 
