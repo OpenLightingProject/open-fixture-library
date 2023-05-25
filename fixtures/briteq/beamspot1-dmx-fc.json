@@ -193,7 +193,7 @@
   "modes": [
     {
       "name": "RGB + Functions",
-      "shortName": "04CH RGB+DIM",
+      "shortName": "4ch-RGB",
       "channels": [
         "Red",
         "Green",
@@ -203,7 +203,7 @@
     },
     {
       "name": "RGBW",
-      "shortName": "04CH RGBW",
+      "shortName": "4ch-RGBW",
       "channels": [
         "Red",
         "Green",
@@ -213,7 +213,7 @@
     },
     {
       "name": "RGBW + Functions",
-      "shortName": "05CH RGBW+DIM",
+      "shortName": "5ch-RGBW",
       "channels": [
         "Red",
         "Green",
@@ -224,7 +224,7 @@
     },
     {
       "name": "RGBW + Master + Sound/Strobe",
-      "shortName": "06CH",
+      "shortName": "6ch-sound",
       "channels": [
         "Red",
         "Green",
@@ -236,7 +236,7 @@
     },
     {
       "name": "RGBW + Master + Strobe",
-      "shortName": "06CH+",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -248,7 +248,7 @@
     },
     {
       "name": "Master + Strobe + Programs + RGBW",
-      "shortName": "07CH",
+      "shortName": "7ch",
       "channels": [
         "Master Dimmer",
         "Extended Strobe",
