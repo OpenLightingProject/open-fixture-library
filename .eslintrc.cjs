@@ -325,7 +325,6 @@ module.exports = {
   },
   settings: {
     jsdoc: {
-      mode: `typescript`,
       tagNamePreference: {
         augments: `extends`,
         class: `constructor`,

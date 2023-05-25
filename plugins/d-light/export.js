@@ -181,9 +181,9 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
   // but we need to use another name syntax
   return uniqueName
     .toUpperCase()
-    .replace(/ /g, `_`)
-    .replace(/\//g, `|`)
-    .replace(/COLOR/g, `COLOUR`);
+    .replaceAll(` `, `_`)
+    .replaceAll(`/`, `|`)
+    .replaceAll(`COLOR`, `COLOUR`);
 }
 
 /**

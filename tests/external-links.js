@@ -39,7 +39,7 @@ try {
 
   const externalUrlSet = new Set();
 
-  crawler.on(`externalLinkFound`, url => {
+  crawler.addEventListener(`externalLinkFound`, ({ url }) => {
     if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
       externalUrlSet.add(url);
       process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
@@ -377,7 +377,7 @@ async function updateGithubIssue(urlResults) {
             return `:heavy_check_mark:`;
           }
 
-          const message = status.message.replace(/\n/g, ` `).replace(/"/g, `&quot;`);
+          const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
           const emoji = getFailedEmoji(status.message);
           return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);
