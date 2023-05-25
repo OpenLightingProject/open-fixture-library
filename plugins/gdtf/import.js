@@ -115,7 +115,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     const revisions = gdtfFixture.Revisions[0].Revision;
     const earliestRevision = revisions[0];
-    const latestRevision = revisions[revisions.length - 1];
+    const latestRevision = revisions.at(-1);
 
     return [earliestRevision.$.Date, latestRevision.$.Date];
   }
@@ -872,7 +872,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const dmxBreakWrappers = [];
 
       for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
-        if (dmxBreakWrappers.length === 0 || dmxBreakWrappers[dmxBreakWrappers.length - 1].dmxBreak !== gdtfChannel.$.DMXBreak) {
+        if (dmxBreakWrappers.length === 0 || dmxBreakWrappers.at(-1).dmxBreak !== gdtfChannel.$.DMXBreak) {
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
             geometry: gdtfChannel.$.Geometry,
@@ -951,7 +951,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelKey = gdtfChannel._oflChannelKey;
       const oflChannel = fixture.availableChannels[channelKey];
 
-      const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
+      const channels = dmxBreakWrappers.at(-1).channels;
 
       const channelKeys = [channelKey, ...oflChannel.fineChannelAliases];
 
@@ -1374,5 +1374,5 @@ function parseFloatWithFallback(value, fallback) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }
