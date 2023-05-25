@@ -3,9 +3,9 @@
   "name": "Performer 2500",
   "categories": ["Dimmer"],
   "meta": {
-    "authors": ["purple", "Luke Nelson", "Ryan Goodwin"],
+    "authors": ["purple", "Luke Nelson"],
     "createDate": "2022-10-19",
-    "lastModifyDate": "2023-05-25"
+    "lastModifyDate": "2022-10-19"
   },
   "links": {
     "productPage": [
@@ -159,23 +159,23 @@
   },
   "modes": [
     {
-      "name": "UNO",
-      "shortName": "1ch",
+      "name": "1-channel",
+      "shortName": "UNO",
       "channels": [
         "Master Dimmer"
       ]
     },
     {
-      "name": "DOS",
-      "shortName": "2ch",
+      "name": "2-channel",
+      "shortName": "DOS",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine"
       ]
     },
     {
-      "name": "VW.D",
-      "shortName": "3ch",
+      "name": "3-channel",
+      "shortName": "VW.D",
       "channels": [
         "Master Dimmer",
         "Warm White",
@@ -183,8 +183,8 @@
       ]
     },
     {
-      "name": "VW.F",
-      "shortName": "6ch",
+      "name": "6-channel",
+      "shortName": "VW.F",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",
@@ -195,8 +195,8 @@
       ]
     },
     {
-      "name": "STD.P",
-      "shortName": "8ch",
+      "name": "8-channel",
+      "shortName": "STD.P",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",

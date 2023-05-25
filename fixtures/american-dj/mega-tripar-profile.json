@@ -3,9 +3,9 @@
   "name": "Mega TRIPAR Profile",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Glenn Meder", "Ryan Goodwin"],
+    "authors": ["Glenn Meder"],
     "createDate": "2019-07-13",
-    "lastModifyDate": "2023-05-25"
+    "lastModifyDate": "2019-07-13"
   },
   "links": {
     "manual": [
@@ -413,14 +413,14 @@
   "modes": [
     {
       "name": "1-channel",
-      "shortName": "1ch",
+      "shortName": "Ch.01",
       "channels": [
         "Color macros"
       ]
     },
     {
       "name": "2-channel",
-      "shortName": "2ch",
+      "shortName": "Ch.02",
       "channels": [
         "Color macros",
         "Dimmer"
@@ -428,7 +428,7 @@
     },
     {
       "name": "3-channel",
-      "shortName": "3ch",
+      "shortName": "Ch.03",
       "channels": [
         "Red",
         "Green",
@@ -437,7 +437,7 @@
     },
     {
       "name": "4-channel",
-      "shortName": "4ch",
+      "shortName": "Ch.04",
       "channels": [
         "Red",
         "Green",
@@ -447,7 +447,7 @@
     },
     {
       "name": "5-channel",
-      "shortName": "5ch",
+      "shortName": "Ch.05",
       "channels": [
         "Red",
         "Green",
@@ -458,7 +458,7 @@
     },
     {
       "name": "6-channel",
-      "shortName": "6ch",
+      "shortName": "Ch.06",
       "channels": [
         "Red",
         "Green",
@@ -470,7 +470,7 @@
     },
     {
       "name": "7-channel",
-      "shortName": "7ch",
+      "shortName": "Ch.07",
       "channels": [
         "Red",
         "Green",

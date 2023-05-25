@@ -3,9 +3,9 @@
   "name": "BEAMSPOT1-DMX FC",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Aleksey Khoroshev", "Ryan Goodwin"],
+    "authors": ["Aleksey Khoroshev"],
     "createDate": "2020-01-14",
-    "lastModifyDate": "2023-05-25"
+    "lastModifyDate": "2020-01-14"
   },
   "links": {
     "manual": [
@@ -193,7 +193,7 @@
   "modes": [
     {
       "name": "RGB + Functions",
-      "shortName": "4ch-RGB",
+      "shortName": "04CH RGB+DIM",
       "channels": [
         "Red",
         "Green",
@@ -203,7 +203,7 @@
     },
     {
       "name": "RGBW",
-      "shortName": "4ch-RGBW",
+      "shortName": "04CH RGBW",
       "channels": [
         "Red",
         "Green",
@@ -213,7 +213,7 @@
     },
     {
       "name": "RGBW + Functions",
-      "shortName": "5ch-RGBW",
+      "shortName": "05CH RGBW+DIM",
       "channels": [
         "Red",
         "Green",
@@ -224,7 +224,7 @@
     },
     {
       "name": "RGBW + Master + Sound/Strobe",
-      "shortName": "6ch-sound",
+      "shortName": "06CH",
       "channels": [
         "Red",
         "Green",
@@ -236,7 +236,7 @@
     },
     {
       "name": "RGBW + Master + Strobe",
-      "shortName": "6ch",
+      "shortName": "06CH+",
       "channels": [
         "Red",
         "Green",
@@ -248,7 +248,7 @@
     },
     {
       "name": "Master + Strobe + Programs + RGBW",
-      "shortName": "7ch",
+      "shortName": "07CH",
       "channels": [
         "Master Dimmer",
         "Extended Strobe",
