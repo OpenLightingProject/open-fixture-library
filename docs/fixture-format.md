@@ -72,7 +72,7 @@ A fixture can have multiple *modes* (also sometimes called *personalities*) like
 
 A mode can contain the `physical` property to override specific physical data of the fixture. E.g. one mode could set the `power` value different than the fixture default.
 
-A mode's `shortName` must be unique amongst all modes of the respective fixture. The `shortname` should be similar to what is displayed on the device's LCD/LED displays if that information is known (e.g. from the manual). If not known, the standard `1-ch` format should be followed.
+A mode's `shortName` must be unique amongst all modes of the respective fixture. The `shortname` should be similar to what is displayed on the device's LCD/LED displays if that information is known (e.g. from the manual). If not known, the standard `1ch` format should be followed.
 
 
 ### Channels
