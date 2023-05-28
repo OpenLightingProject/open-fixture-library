@@ -1,0 +1,256 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LUXED-P12-LM",
+  "shortName": "LUXED-P12",
+  "categories": ["Blinder", "Dimmer", "Flower", "Strobe"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-05-28",
+    "lastModifyDate": "2023-05-28"
+  },
+  "links": {
+    "manual": [
+      "https://lightstar-lights.com/wp-content/uploads/2022/12/LUXED-P-Series-Manual.pdf"
+    ],
+    "productPage": [
+      "https://lightstar-lights.com/luxed-12/"
+    ],
+    "other": [
+      "https://lightstar-lights.com/wp-content/uploads/2022/10/LIGHTSTAR_DMX_MAP-13.10.2022-.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1256, 1526, 216],
+    "weight": 50,
+    "power": 2160,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED Type-Bi-Color",
+      "colorTemperature": 5000
+    }
+  },
+  "availableChannels": {
+    "WALL MODE / RANK MODE": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "highlightValue": 127,
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "50Hz"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe Duration": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 99],
+          "type": "StrobeDuration",
+          "durationStart": "0%",
+          "durationEnd": "99%"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Strobe Speed 2": {
+      "name": "Strobe Speed",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "50Hz"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe Duration 2": {
+      "name": "Strobe Duration",
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 99],
+          "type": "StrobeDuration",
+          "durationStart": "0%",
+          "durationEnd": "99%"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature 3": {
+      "name": "Color Temperature",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Strobe Speed 3": {
+      "name": "Strobe Speed",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "50Hz"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe Duration 3": {
+      "name": "Strobe Duration",
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 99],
+          "type": "StrobeDuration",
+          "durationStart": "0%",
+          "durationEnd": "99%"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CONTROLLER",
+      "shortName": "MOD",
+      "channels": [
+        "WALL MODE / RANK MODE",
+        "Dimmer",
+        "Color Temperature",
+        "Strobe Speed",
+        "Strobe Duration",
+        "Dimmer 2",
+        "Color Temperature 2",
+        "Strobe Speed 2",
+        "Strobe Duration 2",
+        "Dimmer 3",
+        "Color Temperature 3",
+        "Strobe Speed 3",
+        "Strobe Duration 3"
+      ]
+    }
+  ]
+}
