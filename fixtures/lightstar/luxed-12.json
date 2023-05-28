@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LUXED 12",
+  "shortName": "LUXED-P12-LM",
+  "categories": ["Other", "Dimmer", "Flower", "Strobe"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-05-28",
+    "lastModifyDate": "2023-05-28"
+  },
+  "comment": "This is a trial version of the DMX card of this device. It is not complete. I didn't figure out RDM.",
+  "links": {
+    "manual": [
+      "https://lightstar-lights.com/luxed-lights/"
+    ],
+    "productPage": [
+      "https://lightstar-lights.com/luxed-12/"
+    ],
+    "other": [
+      "https://lightstar-lights.com/wp-content/uploads/2022/10/LIGHTSTAR_DMX_MAP-13.10.2022-.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 50,
+    "power": 2160,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED-Bi-Color",
+      "colorTemperature": 6500
+    }
+  },
+  "availableChannels": {
+    "Generic": {
+      "defaultValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "highlightValue": 127,
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "55Hz"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe Duration": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "StrobeDuration",
+          "durationStart": "0%",
+          "durationEnd": "99%"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CONTROLLER",
+      "shortName": "MOD",
+      "channels": [
+        "Generic",
+        "Dimmer",
+        "Color Temperature",
+        "Strobe Speed",
+        "Strobe Duration"
+      ]
+    }
+  ]
+}
