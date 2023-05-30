@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lLUXED 12",
+  "categories": ["Effect", "Strobe"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-05-28",
+    "lastModifyDate": "2023-05-28"
+  },
+  "links": {
+    "manual": [
+      "https://lightstar-lights.com/luxed-12/"
+    ],
+    "productPage": [
+      "https://lightstar-lights.com/luxed-12/"
+    ],
+    "video": [
+      "https://lightstar-lights.com/luxed-12/"
+    ]
+  },
+  "availableChannels": {
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "WALL MODE"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "RANK MODE"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "LUXED 12",
+      "shortName": "LUXED 12",
+      "channels": [
+        "Effects"
+      ]
+    }
+  ]
+}
