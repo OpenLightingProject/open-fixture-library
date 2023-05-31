@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LD75R",
+  "shortName": "LD75R",
+  "categories": ["Effect", "Dimmer", "Flower", "Color Changer"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-05-31",
+    "lastModifyDate": "2023-05-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230310/1678438291595550.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [441, 410, 107],
+    "weight": 3.5,
+    "power": 75,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED - RGB",
+      "colorTemperature": 5500
+    }
+  },
+  "availableChannels": {
+    "25": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Effect",
+          "effectName": "25",
+          "parameterStart": 0,
+          "parameterEnd": 255
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "8500K"
+      }
+    },
+    "GM": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-50deg",
+        "angleEnd": "50deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "shortName": "CCT",
+      "channels": [
+        "25",
+        "Dimmer",
+        "Color Temperature",
+        "GM"
+      ]
+    }
+  ]
+}
