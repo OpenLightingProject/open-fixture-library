@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1",
+  "categories": ["Other", "Dimmer", "Flower", "Barrel Scanner"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-01",
+    "lastModifyDate": "2023-06-01"
+  },
+  "links": {
+    "other": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "1",
+      "channels": [
+        "Color Macros",
+        "Color Presets",
+        "Pan"
+      ]
+    }
+  ]
+}
