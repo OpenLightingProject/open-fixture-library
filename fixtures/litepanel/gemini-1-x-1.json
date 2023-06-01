@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Gemini 1 x 1",
+  "shortName": "G 1x1",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-06-01",
+    "lastModifyDate": "2023-06-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.litepanels.com/en/litepanels/gemini-1x1-soft-rgbww-led-panel-(standard-yoke%2C-uk-power-cable)/c-1027/p-1811"
+    ],
+    "productPage": [
+      "https://www.litepanels.com"
+    ],
+    "video": [
+      "https://www.litepanels.com/litepanels/gemini-1x1-soft/c-1027/c-1519"
+    ]
+  },
+  "physical": {
+    "weight": 5,
+    "power": 100,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 4
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "18%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green Magenta offset": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%",
+        "comment": "GM offset"
+      }
+    },
+    "Crossfade White to RGB": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Fan Speed control"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "P01: CCT & RGBW 8b",
+      "shortName": "P01",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green Magenta offset",
+        "Crossfade White to RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Control",
+        "Reserved",
+        "Reserved 2",
+        "Reserved 3"
+      ]
+    }
+  ]
+}
