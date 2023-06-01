@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MOVING HEAD CHINA",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["an"],
+    "createDate": "2023-06-01",
+    "lastModifyDate": "2023-06-01"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=bU6HnimL4hY"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 CHANEL",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Intensity",
+        "Color Wheel",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
