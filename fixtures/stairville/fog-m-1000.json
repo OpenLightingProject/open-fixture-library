@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fog M-1000",
+  "shortName": "stairville-fog-m-1000",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Brioche"],
+    "createDate": "2023-06-03",
+    "lastModifyDate": "2023-06-03"
+  },
+  "comment": "Consommation de liquides : 35 ml/min\nTemps de chauffe : environ 2 min\nSortie continue maximale : environ 7 s\nTemps de rechargement : environ 6 s\nCapacité du réservoir de liquide : 2 l\nPuissance du brouillard : environ 240 m³ / min",
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_fr_online.pdf",
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_en_online.pdf"
+    ],
+    "video": [
+      "https://www.thomann.de/fr/thomanntv_video_stairville_m_fog_1000_dmx_fog_machine_4309.html?ref=prp_dyk_vid_0"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "gdg"
+  },
+  "physical": {
+    "dimensions": [415, 234, 227],
+    "weight": 5,
+    "power": 1000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Volume d'expulsion": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Intervalle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "10s",
+          "timeEnd": "2450s",
+          "comment": "dmx value * 10s"
+        }
+      ]
+    },
+    "Durée d'expusion": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "1s",
+          "timeEnd": "245s",
+          "comment": "DMX value * 1s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channels",
+      "channels": [
+        "Volume d'expulsion",
+        "Intervalle",
+        "Durée d'expusion"
+      ]
+    }
+  ]
+}
