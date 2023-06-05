@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dynamo Scan LED",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["Brioche"],
+    "createDate": "2023-06-05",
+    "lastModifyDate": "2023-06-05"
+  },
+  "links": {
+    "manual": [
+      "http://static.boomtonedj.com/pdf/manual/40/40995_dymanoscanledmanuelfren.pdf"
+    ],
+    "productPage": [
+      "http://www.boomtonedj.com/boomtonedj-dymano-scan-led-p40995.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [361, 187, 216],
+    "weight": 3.96,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led LONG LIFe"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Stroboscopic speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "13Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "170deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "80deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "White+Purple"
+        },
+        {
+          "dmxRange": [16, 24],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [25, 31],
+          "type": "ColorPreset",
+          "comment": "Purple+Green"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [40, 255],
+          "type": "ColorPreset",
+          "comment": "a finir"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channels",
+      "shortName": "9channels",
+      "channels": [
+        "Stroboscopic speed",
+        "Dimmer",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
