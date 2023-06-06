@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Bar Beam 10x40W",
+  "shortName": "10X40W MOVING BEAM LAMP",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ebany Diaz"],
+    "createDate": "2023-06-06",
+    "lastModifyDate": "2023-06-06"
+  },
+  "comment": "GENERIC MODEL",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/18tp-LuZvn59sX0kjxZJixgaA9A4xcYdj/view?usp=drive_link"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Y-AXIS": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "TOTAL DIMMING": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBOSCOPIC SPEED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "STROBOSCOPIC SPEED 2": {
+      "name": "STROBOSCOPIC SPEED",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "RED DIMMING": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMING": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMING": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE DIMMING": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-CH",
+      "shortName": "7-CH",
+      "channels": [
+        "Y-AXIS",
+        "TOTAL DIMMING",
+        "STROBOSCOPIC SPEED 2",
+        "RED DIMMING",
+        "GREEN DIMMING",
+        "BLUE DIMMING",
+        "WHITE DIMMING"
+      ]
+    }
+  ]
+}
