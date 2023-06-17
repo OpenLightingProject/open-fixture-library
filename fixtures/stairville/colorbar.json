@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorBar",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Me"],
+    "createDate": "2023-03-18",
+    "lastModifyDate": "2023-03-18"
+  },
+  "links": {
+    "other": [
+      "https://www.shaheen.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [1072, 65, 65]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
