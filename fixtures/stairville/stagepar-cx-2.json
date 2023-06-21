@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "StagePar CX-2",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["alucula"],
+    "createDate": "2023-06-21",
+    "lastModifyDate": "2023-06-21"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/281412_c_281412_v2_r3_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "NewSource": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Colouring"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Generic",
+          "comment": "Sound Control"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "comment": "Outer Circle"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Inner Circle"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "channels": [
+        "Color Macros",
+        "Dimmer",
+        "NewSource"
+      ]
+    },
+    {
+      "name": "5 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White"
+      ]
+    }
+  ]
+}
