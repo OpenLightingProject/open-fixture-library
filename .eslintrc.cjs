@@ -277,9 +277,11 @@ const disabledRules = [
   `no-console`,
   `jsdoc/empty-tags`,
   `jsdoc/newline-after-description`,
+  `jsdoc/no-defaults`, // useful for model docs generation
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
+  `jsdoc/tag-lines`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
