@@ -1,6 +1,6 @@
 const pluginPresets = {
   import: `recommended`,
-  jsdoc: `recommended`,
+  jsdoc: `recommended-typescript-flavor`,
   markdown: `recommended`,
   nuxt: `recommended`,
   promise: `recommended`,
