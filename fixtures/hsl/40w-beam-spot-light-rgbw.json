@@ -4,8 +4,8 @@
   "categories": ["Color Changer", "Dimmer"],
   "meta": {
     "authors": ["David Oleniacz", "Ryan Goodwin"],
-    "createDate": "2023-05-24",
-    "lastModifyDate": "2023-05-24"
+    "createDate": "2023-06-24",
+    "lastModifyDate": "2023-06-24"
   },
   "links": {
     "productPage": [
@@ -49,7 +49,8 @@
     "SMD Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red"
+        "color": "Red",
+        "helpWanted": "Are the SMD LEDs the ring around the main light source?"
       }
     },
     "SMD Green": {
@@ -94,7 +95,7 @@
           "dmxRange": [6, 255],
           "type": "Effect",
           "effectName": "Internal Program",
-          "helpWanted": "What are the internal programs? How many are there? What are their DMX addresses?"
+          "helpWanted": "What are the internal programs? How many are there? What are their DMX values?"
         }
       ]
     },
