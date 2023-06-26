@@ -124,6 +124,10 @@
             "IEC C13": {
               "$ref": "definitions.json#/powerConnectorType"
             },
+            "IEC C19": {
+              "type": "string",
+              "const": "input only"
+            },
             "powerCON": {
               "$ref": "definitions.json#/powerConnectorType"
             },
@@ -138,6 +142,9 @@
               "const": "input only"
             },
             "Hardwired": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "Proprietary": {
               "$ref": "definitions.json#/powerConnectorType"
             }
           }
