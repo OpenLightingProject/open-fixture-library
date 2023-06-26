@@ -45,7 +45,7 @@
   margin: 0 0 1em;
   text-align: center;
 
-  @media (min-width: 650px) {
+  @media (width >= 650px) {
     margin: 0;
   }
 
@@ -92,12 +92,12 @@ select {
   font-weight: 700;
   line-height: 1.4;
   color: theme-color(button-secondary-text);
+  appearance: none;
   cursor: pointer;
   background: theme-color(button-secondary-background);
   border-color: theme-color(button-secondary-border);
   border-radius: 2px;
   transition: 0.1s background-color;
-  appearance: none;
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
