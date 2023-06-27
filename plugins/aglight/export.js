@@ -8,6 +8,7 @@ import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Physical.js').default} Physical */
 
 const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
 const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
@@ -39,9 +40,14 @@ export async function exportFixtures(fixtures, options) {
         jsonData.availableChannels = {};
       }
 
+      downgradePhysical(jsonData.physical);
       transformMatrixChannels(jsonData, fixture);
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
+
+      for (const mode of jsonData.modes) {
+        downgradePhysical(mode.physical);
+      }
 
       return jsonData;
     }),
@@ -52,6 +58,16 @@ export async function exportFixtures(fixtures, options) {
     mimetype: `application/aglight-fixture-library`,
     fixtures,
   }];
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
 }
 
 /**
