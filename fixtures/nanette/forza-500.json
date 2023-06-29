@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 500",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Maki"],
+    "createDate": "2023-06-29",
+    "lastModifyDate": "2023-06-29"
+  },
+  "links": {
+    "manual": [
+      "https://en.nanlite.com/uploads/files/USER%20MANUAL/Forza%20500%20USER%20MANUAL%20(NANLITE).pdf"
+    ],
+    "productPage": [
+      "https://nanliteus.com/nanlite-forza-500-ii-led-spotlight/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-48eAnhWQWs"
+    ]
+  },
+  "physical": {
+    "weight": 1,
+    "power": 500,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5200
+    }
+  },
+  "availableChannels": {
+    "Forza 500": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Forza 500",
+      "channels": [
+        "Forza 500"
+      ]
+    }
+  ]
+}
