@@ -6,6 +6,7 @@ on:
 jobs:
   external-links:
     name: Check external links
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
