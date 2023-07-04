@@ -120,6 +120,7 @@
         "powerConnectors": {
           "type": "object",
           "minProperties": 1,
+          "additionalProperties": false,
           "properties": {
             "IEC C13": {
               "$ref": "definitions.json#/powerConnectorType"
