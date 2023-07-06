@@ -3,14 +3,25 @@
   "name": "Vega BAT-1",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["lukah", "Hasky"],
-    "createDate": "2023-06-23",
-    "lastModifyDate": "2023-06-23",
+    "authors": ["lukah", "Hasky", "Ryan Goodwin"],
+    "createDate": "2023-07-06",
+    "lastModifyDate": "2023-07-06",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2023-06-23",
       "comment": "created by Q Light Controller Plus (version 4.12.7)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2405631/Lightmaxx-Vega-Bat-1.html?page=17"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_OT/EUR/lightmaXX-Vega-BAT-1-6x-10W-RGBWA-UV-Battery/art-LIG0016452-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Th-FB_z6dj0"
+    ]
   },
   "physical": {
     "power": 60,
@@ -20,6 +31,12 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Red": {
       "defaultValue": 0,
       "capability": {
@@ -62,14 +79,7 @@
         "color": "UV"
       }
     },
-    "Master dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Strobe": {
-      "defaultValue": 0,
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
@@ -78,26 +88,50 @@
         "helpWanted": "At which DMX values is strobe disabled?"
       }
     },
-    "Misc": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorPreset"
-      }
+    "Program Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 64],
+          "type": "NoFunction",
+          "comment": "Manual Color Adjustment"
+        },
+        {
+          "dmxRange": [65, 80],
+          "type": "ColorPreset",
+          "comment": "Color Macros",
+          "helpWanted": "Which color macros are available and at what values?"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
+        }
+      ]
     },
-    "Geschwindigkeit": {
+    "Program Speed": {
       "defaultValue": 0,
       "capability": {
         "type": "Speed",
-        "comment": "langsam zu schnell",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "helpWanted": "Are the automatically added speed values correct?"
+        "speedEnd": "fast"
       }
     }
   },
   "modes": [
     {
-      "name": "3 Kanäle",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Red",
         "Green",
@@ -105,7 +139,8 @@
       ]
     },
     {
-      "name": "4 Kanäle",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
@@ -114,7 +149,8 @@
       ]
     },
     {
-      "name": "6 Kanäle",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -125,18 +161,19 @@
       ]
     },
     {
-      "name": "10 Kanäle",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
+        "Dimmer",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
         "White",
         "Amber",
         "UV",
-        "Master dimmer",
-        "Strobe",
-        "Misc",
-        "Geschwindigkeit"
+        "Program Mode",
+        "Program Speed"
       ]
     }
   ]
