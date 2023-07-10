@@ -33,10 +33,9 @@
     },
     "Fan": {
       "capability": {
-        "type": "FogOutput",
-        "fogOutputStart": "weak",
-        "fogOutputEnd": "strong",
-        "comment": "Fan"
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
