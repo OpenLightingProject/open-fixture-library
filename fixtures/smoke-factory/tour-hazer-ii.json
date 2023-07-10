@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tour Hazer II",
+  "shortName": "TourHazer2",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["WaldperlachFabi"],
+    "createDate": "2023-07-10",
+    "lastModifyDate": "2023-07-10"
+  },
+  "links": {
+    "manual": [
+      "https://smoke-factory.de/pdf/datenblatt_tour_hazer_ii.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [55, 26.5, 41.5],
+    "weight": 16.5,
+    "power": 1500,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pump": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong",
+        "comment": "Fan"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Pump",
+        "Fan"
+      ]
+    }
+  ]
+}
