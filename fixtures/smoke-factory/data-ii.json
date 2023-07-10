@@ -25,7 +25,8 @@
   "availableChannels": {
     "Pump": {
       "capability": {
-        "type": "FogOutput",
+        "type": "Fog",
+        "fogType": "Fog",
         "fogOutputStart": "weak",
         "fogOutputEnd": "strong"
       }
