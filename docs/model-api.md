@@ -1981,6 +1981,7 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
     * [.depth](#Physical+depth) ⇒ <code>number</code> \| <code>null</code>
     * [.weight](#Physical+weight) ⇒ <code>number</code> \| <code>null</code>
     * [.power](#Physical+power) ⇒ <code>number</code> \| <code>null</code>
+    * [.powerConnectors](#Physical+powerConnectors) ⇒ <code>Record.&lt;string, string&gt;</code>
     * [.DMXconnector](#Physical+DMXconnector) ⇒ <code>string</code> \| <code>null</code>
     * [.hasBulb](#Physical+hasBulb) ⇒ <code>boolean</code> \| <code>null</code>
     * [.bulbType](#Physical+bulbType) ⇒ <code>string</code> \| <code>null</code>
@@ -2039,6 +2040,11 @@ Creates a new Physical instance.
 ### physical.power ⇒ <code>number</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
 **Returns**: <code>number</code> \| <code>null</code> - Power consumption of the fixture in watts. Defaults to null.  
+<a name="Physical+powerConnectors"></a>
+
+### physical.powerConnectors ⇒ <code>Record.&lt;string, string&gt;</code>
+**Kind**: instance property of [<code>Physical</code>](#Physical)  
+**Returns**: <code>Record.&lt;string, string&gt;</code> - Power connector information.  
 <a name="Physical+DMXconnector"></a>
 
 ### physical.DMXconnector ⇒ <code>string</code> \| <code>null</code>
