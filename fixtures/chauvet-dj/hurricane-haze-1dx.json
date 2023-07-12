@@ -26,12 +26,14 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction",
-          "comment": "OFF"
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "off"
         },
         {
           "dmxRange": [11, 255],
-          "type": "FogOutput",
+          "type": "Fog",
+          "fogType": "Haze",
           "fogOutputStart": "weak",
           "fogOutputEnd": "strong"
         }
