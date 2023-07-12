@@ -67,6 +67,13 @@
     "type": "string",
     "pattern": "^gobos/[a-z0-9-]+$|^gobos/aliases/[a-z0-9_.-]+/"
   },
+  "powerConnectorType": {
+    "enum": [
+      "input only",
+      "output only",
+      "input and output"
+    ]
+  },
 
   "units": {
     "number": {

@@ -3,9 +3,9 @@
   "name": "MH-X60",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Hannes Rüger"],
+    "authors": ["Hannes Rüger", "Ryan Goodwin"],
     "createDate": "2021-07-17",
-    "lastModifyDate": "2021-07-17"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -22,6 +22,9 @@
     "dimensions": [325, 290, 435],
     "weight": 10.4,
     "power": 170,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "60W LED",
