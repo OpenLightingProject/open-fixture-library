@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "movingehad",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Marnix"],
+    "createDate": "2023-07-17",
+    "lastModifyDate": "2023-07-17"
+  },
+  "links": {
+    "manual": [
+      "http://www.nos.nl"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
