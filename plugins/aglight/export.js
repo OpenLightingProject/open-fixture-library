@@ -39,9 +39,14 @@ export async function exportFixtures(fixtures, options) {
         jsonData.availableChannels = {};
       }
 
+      downgradePhysical(jsonData.physical);
       transformMatrixChannels(jsonData, fixture);
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
+
+      for (const mode of jsonData.modes) {
+        downgradePhysical(mode.physical);
+      }
 
       return jsonData;
     }),
@@ -52,6 +57,16 @@ export async function exportFixtures(fixtures, options) {
     mimetype: `application/aglight-fixture-library`,
     fixtures,
   }];
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
 }
 
 /**
