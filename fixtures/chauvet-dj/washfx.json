@@ -3,13 +3,17 @@
   "name": "WashFX",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Justin Hornsby", "Felix Edelmann"],
+    "authors": ["Justin Hornsby", "Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2017-11-21",
-    "lastModifyDate": "2018-08-10"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
-    "manual": ["https://www.chauvetdj.com/wp-content/uploads/2015/12/Wash_FX_UM_Rev1_WO-1.pdf"],
-    "productPage": ["https://www.chauvetdj.com/products/wash-fx/"],
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/Wash_FX_UM_Rev1_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/wash-fx/"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=VCuOFK6Vr9k",
       "https://www.youtube.com/watch?v=YYqyuCCxH7w"
@@ -19,6 +23,10 @@
     "dimensions": [215, 255, 180],
     "weight": 2.2,
     "power": 75,
+    "powerConnectors": {
+      "IEC C13": "input only",
+      "Hardwired": "output only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
