@@ -38,8 +38,7 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "shutter closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
@@ -50,8 +49,8 @@
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "1Hz",
-          "comment": "strobe slow fast"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
@@ -61,8 +60,7 @@
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "comment": "fast close - slow open"
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [182, 189],
@@ -72,8 +70,7 @@
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "comment": "slow close - fast open"
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [232, 239],
@@ -103,41 +100,41 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "ColorPreset",
+          "type": "Maintenance",
           "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "ColorPreset",
+          "type": "Maintenance",
           "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "ColorPreset",
+          "type": "Maintenance",
           "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "ColorPreset",
-          "comment": "ARCHITECTURAL"
+          "type": "Maintenance",
+          "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "ColorPreset",
+          "type": "Maintenance",
           "comment": "Theater"
         },
         {
           "dmxRange": [101, 255],
-          "type": "ColorPreset",
-          "comment": "default dimmer setting"
+          "type": "Maintenance",
+          "comment": "Default Dimmer Setting"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Default",
-      "shortName": "default",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Shutter / Strobe",
         "Dimmer",
