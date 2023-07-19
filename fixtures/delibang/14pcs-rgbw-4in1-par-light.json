@@ -14,21 +14,15 @@
     ]
   },
   "physical": {
+    "dimensions": [225, 225, 115],
+    "weight": 1,
+    "power": 84,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
     },
     "lens": {
       "degreesMinMax": [8, 8]
-    }
-  },
-  "wheels": {
-    "Color Macros": {
-      "slots": [
-        {
-          "type": "Color"
-        }
-      ]
     }
   },
   "availableChannels": {
