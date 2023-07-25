@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Plasma Color 72",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Tommy Confalonieri"],
+    "createDate": "2023-07-25",
+    "lastModifyDate": "2023-07-25"
+  },
+  "comment": "no manual available",
+  "links": {
+    "manual": [
+      "https://teclumen.it"
+    ]
+  },
+  "physical": {
+    "dimensions": [485, 290, 186],
+    "weight": 9.8,
+    "power": 96,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "15  (25, 40 with add on lenses)",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "constant": true,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Wheel",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
