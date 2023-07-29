@@ -9,7 +9,9 @@
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
     type="number"
-    v-on="lazy ? { change: update } : { input: update }">
+    v-on="lazy ? { change: update } : { input: update }"
+    @focus="$emit('focus', $event)"
+    @blur="$emit('blur', $event)">
 </template>
 
 <script>

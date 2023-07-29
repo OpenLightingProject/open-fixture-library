@@ -77,6 +77,12 @@ export default {
             this.$emit(`click`);
             $event.preventDefault();
           },
+          focus: () => {
+            this.$emit(`focus`);
+          },
+          blur: $event => {
+            this.$emit(`blur`, $event);
+          },
         },
       }, children);
     }

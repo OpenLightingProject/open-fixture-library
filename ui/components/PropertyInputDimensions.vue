@@ -8,8 +8,8 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[0]"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
     &times;
     <Validate :state="formstate" tag="span">
@@ -19,8 +19,8 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[1]"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
     &times;
     <Validate :state="formstate" tag="span">
@@ -30,8 +30,8 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[2]"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
     {{ unit }}
   </span>

@@ -8,8 +8,8 @@
         selected
         selectable
         @click="deselect(cat)"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Draggable>
 
     <CategoryBadge
@@ -18,8 +18,8 @@
       :category="cat"
       selectable
       @click="select(cat)"
-      @focus.native="onFocus()"
-      @blur.native="onBlur($event)" />
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
   </div>
 </template>
 

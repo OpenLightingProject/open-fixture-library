@@ -11,8 +11,8 @@
         :required="required || rangeIncomplete"
         :hint="startHint"
         lazy
-        @focus.native="onFocus($event)"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus($event)"
+        @blur="onBlur($event)" />
     </Validate>
     …
     <Validate :state="formstate" tag="span">
@@ -25,8 +25,8 @@
         :required="required || rangeIncomplete"
         :hint="endHint"
         lazy
-        @focus.native="onFocus($event)"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus($event)"
+        @blur="onBlur($event)" />
     </Validate>
     {{ unit }}
   </span>

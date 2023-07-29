@@ -11,8 +11,8 @@
         :minimum="minNumber !== undefined ? minNumber : `invalid`"
         :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
 
     <select
