@@ -234,6 +234,9 @@ export default {
   components: {
     ThemeSwitcher,
   },
+  emits: {
+    'focus-content': () => true,
+  },
   data() {
     return {
       searchQuery: this.$router.history.current.query.q || ``,

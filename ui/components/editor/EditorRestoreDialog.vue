@@ -51,6 +51,10 @@ export default {
   props: {
     restoredData: objectProp().optional,
   },
+  emits: {
+    input: value => true,
+    'restore-complete': () => true,
+  },
   computed: {
     restoredDate() {
       if (this.restoredData === undefined) {

@@ -19,6 +19,9 @@ export default {
     name: stringProp().required,
     file: anyProp().optional,
   },
+  emits: {
+    input: value => true,
+  },
   watch: {
     file(newFile) {
       if (!newFile) {

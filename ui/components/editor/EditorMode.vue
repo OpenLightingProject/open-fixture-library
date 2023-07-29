@@ -228,6 +228,10 @@ export default {
     fixture: objectProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    remove: () => true,
+    'open-channel-editor': payload => true,
+  },
   data() {
     return {
       schemaDefinitions,

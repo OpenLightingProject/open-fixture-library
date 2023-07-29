@@ -39,6 +39,11 @@ export default {
     value: arrayProp().required,
     allCategories: arrayProp().required,
   },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+  },
   computed: {
     selectedCategories: {
       get() {

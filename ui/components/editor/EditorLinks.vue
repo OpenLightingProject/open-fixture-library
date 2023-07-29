@@ -36,6 +36,9 @@ export default {
     links: arrayProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    input: value => true,
+  },
   methods: {
     async addLink() {
       const newLinks = [...this.links, getEmptyLink()];

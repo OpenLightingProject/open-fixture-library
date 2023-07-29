@@ -57,6 +57,12 @@ export default {
     name: stringProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    input: dimensions => true,
+    focus: () => true,
+    blur: () => true,
+    'vf:validate': validationData => true,
+  },
   data() {
     return {
       validationData: {

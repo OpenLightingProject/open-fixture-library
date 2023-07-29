@@ -108,6 +108,10 @@ export default {
     resolution: numberProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
+  },
   data() {
     return {
       dmxMin: 0,

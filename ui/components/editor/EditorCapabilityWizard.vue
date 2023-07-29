@@ -164,6 +164,9 @@ export default {
     resolution: numberProp().required,
     wizard: objectProp().required,
   },
+  emits: {
+    close: insertIndex => true,
+  },
   computed: {
     capabilities() {
       return this.channel.capabilities;

@@ -166,6 +166,9 @@ export default {
     mode: instanceOfProp(Mode).required,
     appendToHeading: stringProp().optional,
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   data() {
     return {
       CoarseChannel,

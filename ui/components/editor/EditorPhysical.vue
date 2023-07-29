@@ -142,6 +142,9 @@ export default {
     formstate: objectProp().required,
     namePrefix: stringProp().required,
   },
+  emits: {
+    input: value => true,
+  },
   data() {
     return {
       schemaDefinitions,

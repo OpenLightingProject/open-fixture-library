@@ -98,6 +98,13 @@ export default {
     name: stringProp().required,
     wide: booleanProp().withDefault(false),
   },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'unit-selected': unitString => true,
+    'vf:validate': validationData => true,
+  },
   data() {
     return {
       validationData: {

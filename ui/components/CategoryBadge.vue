@@ -50,6 +50,11 @@ export default {
     selected: booleanProp().withDefault(false),
     selectable: booleanProp().withDefault(false),
   },
+  emits: {
+    click: () => true,
+    focus: () => true,
+    blur: event => true,
+  },
   render(createElement) {
     const classes = {
       'category-badge': true,

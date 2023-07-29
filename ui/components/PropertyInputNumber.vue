@@ -27,6 +27,12 @@ export default {
     value: anyProp().required,
     lazy: booleanProp().withDefault(false),
   },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'vf:validate': validationData => true,
+  },
   computed: {
     min() {
       if (this.minimum !== undefined && this.minimum !== `invalid`) {

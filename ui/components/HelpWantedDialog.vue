@@ -88,6 +88,9 @@ export default {
     type: stringProp().required,
     context: objectProp().optional,
   },
+  emits: {
+    input: value => true,
+  },
   data: () => {
     return {
       state: `ready`,

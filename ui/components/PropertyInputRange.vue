@@ -55,6 +55,14 @@ export default {
     required: booleanProp().withDefault(false),
     formstate: objectProp().required,
   },
+  emits: {
+    input: range => true,
+    'start-updated': () => true,
+    'end-updated': () => true,
+    focus: () => true,
+    blur: () => true,
+    'vf:validate': validationData => true,
+  },
   data() {
     return {
       validationData: {

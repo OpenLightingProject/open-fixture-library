@@ -282,6 +282,11 @@ export default {
     channel: objectProp().required,
     fixture: objectProp().required,
   },
+  emits: {
+    'channel-changed': () => true,
+    'remove-channel': channelId => true,
+    'reset-channel': () => true,
+  },
   data() {
     return {
       formstate: getEmptyFormState(),
