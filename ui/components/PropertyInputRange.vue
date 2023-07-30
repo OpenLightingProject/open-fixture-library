@@ -41,10 +41,11 @@ export default {
     PropertyInputNumber,
   },
   model: {
-    prop: `range`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    range: arrayProp().withDefault(null),
+    modelValue: arrayProp().withDefault(null),
     name: stringProp().required,
     startHint: stringProp().withDefault(`start`),
     endHint: stringProp().withDefault(`end`),
@@ -56,7 +57,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    input: range => true,
+    'update:model-value': range => true,
     'start-updated': () => true,
     'end-updated': () => true,
     focus: () => true,
@@ -74,24 +75,24 @@ export default {
   computed: {
     start: {
       get() {
-        return this.range ? this.range[0] : null;
+        return this.modelValue ? this.modelValue[0] : null;
       },
       set(startInput) {
-        this.$emit(`input`, getRange(startInput, this.end));
+        this.$emit(`update:model-value`, getRange(startInput, this.end));
         this.$emit(`start-updated`);
       },
     },
     end: {
       get() {
-        return this.range ? this.range[1] : null;
+        return this.modelValue ? this.modelValue[1] : null;
       },
       set(endInput) {
-        this.$emit(`input`, getRange(this.start, endInput));
+        this.$emit(`update:model-value`, getRange(this.start, endInput));
         this.$emit(`end-updated`);
       },
     },
     rangeIncomplete() {
-      return this.range && (this.start === null || this.end === null);
+      return this.modelValue && (this.start === null || this.end === null);
     },
   },
   mounted() {
