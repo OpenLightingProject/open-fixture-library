@@ -275,9 +275,6 @@ export default {
     PropertyInputSelect,
     PropertyInputText,
   },
-  model: {
-    prop: `channel`,
-  },
   props: {
     channel: objectProp().required,
     fixture: objectProp().required,

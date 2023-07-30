@@ -91,7 +91,7 @@
       </VueForm>
 
       <EditorChannelDialog
-        v-model="channel"
+        :channel="channel"
         :fixture="fixture"
         @reset-channel="resetChannel()"
         @channel-changed="autoSave(`channel`)"
