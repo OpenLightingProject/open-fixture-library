@@ -219,9 +219,6 @@ export default {
     PropertyInputNumber,
     PropertyInputText,
   },
-  model: {
-    prop: `mode`,
-  },
   props: {
     mode: objectProp().required,
     index: numberProp().required,

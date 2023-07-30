@@ -41,7 +41,7 @@
           <EditorMode
             v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
-            v-model="fixture.modes[index]"
+            :mode="fixture.modes[index]"
             :index="index"
             :fixture="fixture"
             :formstate="formstate"
