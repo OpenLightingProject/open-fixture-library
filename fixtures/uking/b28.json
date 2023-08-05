@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "b28",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["andre"],
+    "createDate": "2023-08-05",
+    "lastModifyDate": "2023-08-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B28.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/b28-moving-head-light-mini-10w-spot-lighting/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin XLR IP65"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dj elektro",
+      "shortName": "gyft",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
