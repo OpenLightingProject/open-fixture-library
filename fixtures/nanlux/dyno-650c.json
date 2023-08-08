@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dyno 650C",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-08-08",
+    "lastModifyDate": "2023-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.nanlux.com/en/h-col-152.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "S",
+      "shortName": "S",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
