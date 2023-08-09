@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Par 7x12W RGBW",
+  "shortName": "LED Par 7x12W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DJ NathiS"],
+    "createDate": "2023-08-09",
+    "lastModifyDate": "2023-08-09"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1_E-cwaRPF2HxD61_goiq9XS-XMAeTPIf/view"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lighting?VariantsId=16455"
+    ]
+  },
+  "physical": {
+    "dimensions": [179, 200, 113],
+    "weight": 0.9,
+    "power": 84,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Function Selection"
+      }
+    },
+    "Function Speed Adjusement": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channels",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Function Speed Adjusement",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
