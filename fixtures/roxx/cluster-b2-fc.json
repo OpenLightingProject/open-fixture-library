@@ -1,0 +1,618 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cluster B2 FC",
+  "categories": ["Blinder", "Color Changer", "Dimmer", "Matrix"],
+  "meta": {
+    "authors": ["Max Jöhnk"],
+    "createDate": "2023-08-10",
+    "lastModifyDate": "2023-08-10"
+  },
+  "comment": "2-Lite Audience Blinder",
+  "links": {
+    "manual": [
+      "https://d33howksrrrp7h.cloudfront.net/wp-content/uploads/2023/06/Manual-Cluster-B2-FC-small.pdf"
+    ],
+    "productPage": [
+      "https://roxxlight.com/cluster-b2-fc/"
+    ],
+    "other": [
+      "https://d33howksrrrp7h.cloudfront.net/wp-content/uploads/2023/06/roxx-dmx-chart-cluster-blinder-B2-FC-rev03.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 200, 191],
+    "weight": 10.5,
+    "power": 620,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "lumens": 16215
+    },
+    "lens": {
+      "degreesMinMax": [50, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 1": {
+      "fineChannelAliases": ["Dimmer 1 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
+    },
+    "Dimmer Response": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "LED / fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Halogen / slow"
+        }
+      ]
+    },
+    "Redshift": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [85, 170],
+          "type": "Generic",
+          "comment": "Redshift Off"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Redshift On"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "fineChannelAliases": ["Master Dimmer fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Shutter": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [25, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe 1"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [70, 84],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe 2: opening pulse"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe 3: closing pulse"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Strobe 4: random strobe"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [130, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Strobe 5: random opening pulse"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Strobe 6: random closing pulse"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe 7: burst pulse"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Strobe 8: random burst pulse"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe 9: sine wave"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "comment": "Strobe 10: burst"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CTC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorTemperature",
+          "colorTemperature": "2900K"
+        },
+        {
+          "dmxRange": [5, 226],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "6500K",
+          "comment": "2000K-6500K linear in 20-21K steps"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6621K",
+          "colorTemperatureEnd": "10000K",
+          "comment": "6621K-10.000K linear in 120-121K steps"
+        }
+      ]
+    },
+    "Duration": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "0ms",
+        "timeEnd": "510ms",
+        "comment": "only affects to channel 2 - Strobe 1 025-064"
+      }
+    },
+    "Red 1": {
+      "fineChannelAliases": ["Red 1 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 1": {
+      "fineChannelAliases": ["Green 1 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 1": {
+      "fineChannelAliases": ["Blue 1 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "fineChannelAliases": ["Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Tint": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Magenta -> Neutral -> Green"
+      }
+    },
+    "Color Macro": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macro Crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 105],
+          "type": "Time",
+          "timeStart": "100ms",
+          "timeEnd": "10000ms",
+          "comment": "0,1s - 10s (0,1s steps)"
+        },
+        {
+          "dmxRange": [106, 214],
+          "type": "Time",
+          "timeStart": "11s",
+          "timeEnd": "119s",
+          "comment": "11s - 119s (1s steps)"
+        },
+        {
+          "dmxRange": [215, 244],
+          "type": "Time",
+          "timeStart": "60s",
+          "timeEnd": "290s",
+          "comment": "2m - 4m50s (10s steps)"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Time",
+          "timeStart": "300s",
+          "timeEnd": "900s",
+          "comment": "5m - 15m (1m steps)"
+        }
+      ]
+    },
+    "Device Settings": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Master Dimmer 2": {
+      "name": "Master Dimmer",
+      "fineChannelAliases": ["Master Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1CH DWE",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2CH DWE",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "4CH DWE",
+      "channels": [
+        "Dimmer",
+        "Dimmer Curve",
+        "Dimmer Response",
+        "Redshift"
+      ]
+    },
+    {
+      "name": "9CH DWE+",
+      "channels": [
+        "Master Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "CTC",
+        "Dimmer Curve",
+        "Dimmer Response",
+        "Redshift"
+      ]
+    },
+    {
+      "name": "6CH Strobe",
+      "channels": [
+        "Master Dimmer",
+        "Shutter",
+        "Duration",
+        "Dimmer 1",
+        "Dimmer 2",
+        "CTC"
+      ]
+    },
+    {
+      "name": "6CH RGB",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "10CH Basic RGB",
+      "channels": [
+        "Master Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "CTC",
+        "Tint",
+        "Color Macro",
+        "Color Macro Crossfade",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "14CH Basic RGB",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Shutter",
+        "Red 3",
+        "Red 3 fine",
+        "Green 3",
+        "Green 3 fine",
+        "Blue 3",
+        "Blue 3 fine",
+        "CTC",
+        "Tint",
+        "Color Macro",
+        "Color Macro Crossfade",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "13CH Standard RGB",
+      "channels": [
+        "Master Dimmer",
+        "Shutter",
+        "Dimmer 1",
+        "Dimmer 2",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "CTC",
+        "Tint",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "22CH Standard RGB",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Shutter",
+        "Dimmer 1",
+        "Dimmer 1 fine",
+        "Red 1",
+        "Red 1 fine",
+        "Green 1",
+        "Green 1 fine",
+        "Blue 1",
+        "Blue 1 fine",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "CTC",
+        "Tint",
+        "Device Settings"
+      ]
+    }
+  ]
+}
