@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Icon Germany: 3IN1 LED Strobe/Flood",
+  "shortName": "3IN1 LED Strobe/Flood",
+  "categories": ["Blinder", "Strobe", "Color Changer", "Dimmer", "Pixel Bar"],
+  "meta": {
+    "authors": ["BloodyLyra"],
+    "createDate": "2023-08-19",
+    "lastModifyDate": "2023-08-19"
+  },
+  "comment": "4pixel LED flood / strobelight",
+  "links": {
+    "other": [
+      "http://invalid.de"
+    ]
+  },
+  "physical": {
+    "dimensions": [430, 280, 150],
+    "weight": 9,
+    "power": 580,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 7000
+    },
+    "lens": {
+      "name": "none"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Pixel 1"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "pixel 1"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Pixel 1"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Pixel 2"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Pixel 2"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Pixel 2"
+      }
+    },
+    "Red3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Pixel 3"
+      }
+    },
+    "Green3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Pixel3"
+      }
+    },
+    "Blue3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Pixel3"
+      }
+    },
+    "Red4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Pixel 4"
+      }
+    },
+    "Green4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Pixel 4"
+      }
+    },
+    "Blue4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Pixel4"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Simple RGB",
+      "shortName": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "RGB with Dimmer and Strobe",
+      "shortName": "I S RGB",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Pixel control",
+      "shortName": "4px RGB",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Red4",
+        "Green4",
+        "Blue4"
+      ]
+    },
+    {
+      "name": "Pixel + Dimmer and Strobe",
+      "shortName": "I S 4px RGB",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Red4",
+        "Green4",
+        "Blue4"
+      ]
+    }
+  ]
+}
