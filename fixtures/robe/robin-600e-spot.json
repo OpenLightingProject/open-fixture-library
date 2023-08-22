@@ -3,9 +3,9 @@
   "name": "Robin 600E Spot",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["NiKoyes", "Flo Edelmann"],
+    "authors": ["NiKoyes", "Flo Edelmann", "Ryan Goodwin"],
     "createDate": "2018-02-02",
-    "lastModifyDate": "2018-09-04",
+    "lastModifyDate": "2023-07-12",
     "importPlugin": {
       "plugin": "qlcplus_4.11.2",
       "date": "2018-02-02",
@@ -14,7 +14,8 @@
   },
   "links": {
     "manual": [
-      "https://www.robe.cz/api/support-files/download/downloads/user_manuals/User_manual_Robin_600E_Spot.pdf"
+      "https://www.robe.cz/api/support-files/download/downloads/user_manuals/User_manual_Robin_600E_Spot.pdf",
+      "https://www.robe.cz/res/downloads/dmx_charts/Robin_600E_Spot_DMX_charts.pdf"
     ],
     "productPage": [
       "https://www.robe.cz/robin-600e-spot"
@@ -31,6 +32,9 @@
     "dimensions": [432.6, 515.8, 469.1],
     "weight": 21.7,
     "power": 750,
+    "powerConnectors": {
+      "Hardwired": "input only"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "MSR 575W/2",

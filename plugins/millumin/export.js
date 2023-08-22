@@ -164,6 +164,8 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     }
   }
 
+  delete jsonPhysical.powerConnectors;
+
   // don't return empty objects
   if (Object.keys(jsonPhysical).length > 0) {
     return jsonPhysical;
