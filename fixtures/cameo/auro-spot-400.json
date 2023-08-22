@@ -4,9 +4,9 @@
   "shortName": "CLAS400",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2019-02-08",
-    "lastModifyDate": "2019-02-08"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -23,6 +23,9 @@
     "dimensions": [405, 565, 285],
     "weight": 15.6,
     "power": 290,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "180W white LED",
