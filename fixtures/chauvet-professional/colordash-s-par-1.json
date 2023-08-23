@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORdash S-Par 1",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Max Jöhnk"],
+    "createDate": "2023-08-23",
+    "lastModifyDate": "2023-08-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/07/COLORdash_S-Par_1_UM_Rev1_WO1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/colordash-s-par-1/"
+    ],
+    "other": [
+      "https://www.chauvetprofessional.com/news/chauvet-professionals-ip65-colordash-s-par-1-rgba-wash-breaks-the-led-color-separation-barrier/"
+    ]
+  },
+  "physical": {
+    "dimensions": [231, 213, 313],
+    "weight": 6.5,
+    "power": 65,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 42]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macro + White Balance": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Program 5"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Generic",
+          "comment": "Linear Dimmer"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Nonlinear dimming curve 1 (fastest)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Nonlinear dimming curve 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "Nonlinear dimming curve 3 (slowest)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Color Macro + White Balance",
+        "Color Temperature",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
