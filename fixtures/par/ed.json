@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ed",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["say"],
+    "createDate": "2023-08-25",
+    "lastModifyDate": "2023-08-25"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=5jydEBSrVDE"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Dimmer",
+        "Pan",
+        "Tilt"
+      ]
+    }
+  ]
+}
