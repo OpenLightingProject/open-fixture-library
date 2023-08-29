@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Chauvet ovation Reve 3",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["P"],
+    "createDate": "2023-08-29",
+    "lastModifyDate": "2023-08-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ],
+    "video": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Mint": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Mint"
+      ]
+    }
+  ]
+}
