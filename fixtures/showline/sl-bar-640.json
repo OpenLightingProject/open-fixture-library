@@ -1,14 +1,14 @@
 {
-    schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-    ame": "SL BAR 640",
-    hortName": "SLBAR640",
-    ategories": ["Pixel Bar"],
-    eta": {
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SL BAR 640",
+  "shortName": "SLBAR640",
+  "categories": ["Pixel Bar"],
+  "meta": {
     "authors": ["Ryan Goodwin"],
     "createDate": "2023-09-07",
     "lastModifyDate": "2023-09-07"
-
-    inks": {
+  },
+  "links": {
     "manual": [
       "https://www.vari-lite.com/b-dam/vari-lite/products/sl-bar-640/guides-and-manuals/SL_640_USER_MANUAL.pdf"
     ],
@@ -18,8 +18,8 @@
     "video": [
       "https://www.youtube.com/watch?v=amJ6c_0bHgc"
     ]
-
-    hysical": {
+  },
+  "physical": {
     "dimensions": [1219, 227.2, 180],
     "weight": 18,
     "power": 500,
@@ -34,8 +34,8 @@
     "lens": {
       "degreesMinMax": [60, 60]
     }
-
-    atrix": {
+  },
+  "matrix": {
     "pixelCount": [12, 1, 1],
     "pixelGroups": {
       "1/1": "all",
@@ -55,8 +55,8 @@
       "5/6": ["9", "10"],
       "6/6": ["11", "12"]
     }
-
-    emplateChannels": {
+  },
+  "templateChannels": {
     "Red $pixelKey": {
       "fineChannelAliases": ["Red $pixelKey fine"],
       "defaultValue": 0,
@@ -123,8 +123,8 @@
         }
       ]
     }
-
-    vailableChannels": {
+  },
+  "availableChannels": {
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": 0,
@@ -841,8 +841,8 @@
         }
       ]
     }
-
-    odes":[
+  },
+  "modes":[
     {
       "name": "Simple 8-bit 1 Group",
       "channels": [
