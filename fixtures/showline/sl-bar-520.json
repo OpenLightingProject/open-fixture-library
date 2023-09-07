@@ -100,7 +100,7 @@
     },
     "CCT $pixelKey": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "NoFunction"
@@ -124,7 +124,7 @@
     },
     "Color Presets": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "NoFunction"
@@ -672,7 +672,7 @@
     },
     "Strobe": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 2],
           "type": "ShutterStrobe",
@@ -752,7 +752,7 @@
     },
     "Control": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "NoFunction"
@@ -832,7 +832,7 @@
       ]
     }
   },
-  "modes":[
+  "modes": [
     {
       "name": "Simple 8-bit 1 Group",
       "channels": [

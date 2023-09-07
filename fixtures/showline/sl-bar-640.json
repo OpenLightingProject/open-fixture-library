@@ -89,20 +89,20 @@
         "color": "White"
       }
     },
-    "Hue $pixelKey":{
+    "Hue $pixelKey": {
       "fineChannelAliases": ["Hue $pixelKey fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic"
       }
     },
-    "Saturation $pixelKey":{
+    "Saturation $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "Generic"
       }
     },
-    "Intensity $pixelKey":{
+    "Intensity $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "Intensity"
@@ -110,7 +110,7 @@
     },
     "CCT $pixelKey": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "NoFunction"
@@ -134,7 +134,7 @@
     },
     "Color Presets": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "NoFunction"
@@ -682,7 +682,7 @@
     },
     "Strobe": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 2],
           "type": "ShutterStrobe",
@@ -762,7 +762,7 @@
     },
     "Control": {
       "defaultValue": 0,
-      "capabilities":[
+      "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "NoFunction"
@@ -842,7 +842,7 @@
       ]
     }
   },
-  "modes":[
+  "modes": [
     {
       "name": "Simple 8-bit 1 Group",
       "channels": [
