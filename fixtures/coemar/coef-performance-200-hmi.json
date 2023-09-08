@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COEF Performance 200 HMI",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Frederic"],
+    "createDate": "2023-09-08",
+    "lastModifyDate": "2023-09-08"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=nTKXIEH5DKM"
+    ]
+  },
+  "rdm": {
+    "modelId": 35
+  },
+  "physical": {
+    "dimensions": [650, 220, 450],
+    "weight": 20,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "HMI"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "90%",
+        "angleEnd": "40%"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 3
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 4
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "150deg",
+        "angleEnd": "150deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Gobo",
+      "channels": [
+        "Gobo Wheel Rotation"
+      ]
+    },
+    {
+      "name": "Color",
+      "channels": [
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "GOBO1",
+      "channels": [
+        "Gobo Wheel"
+      ]
+    },
+    {
+      "name": "Flash",
+      "channels": [
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "Pan",
+      "channels": [
+        "Pan"
+      ]
+    },
+    {
+      "name": "Tilt",
+      "channels": [
+        "Tilt"
+      ]
+    }
+  ]
+}
