@@ -24,7 +24,7 @@
       <p>Please refer to the <a href="https://fridaysforfuture.org/">Fridays for Future website</a>.</p>
 
       <div class="hashtags">
-        <a v-for="hashtag of hashtags" :key="hashtag" :href="`https://twitter.com/hashtag/${hashtag}`">#{{ hashtag }}</a>
+        <a v-for="hashtag of hashtags" :key="hashtag" :href="`https://mastodon.social/tags/${hashtag}`">#{{ hashtag }}</a>
       </div>
     </div>
 
@@ -123,9 +123,9 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2023-03-03`,
+      strikeDateString: `2023-09-15`,
       climateStrikeWebsite: `https://fridaysforfuture.de/globaler-klimastreik/`,
-      hashtags: [`PeopleNotProfit`, `fridaysforfuture`, `climatestrike`],
+      hashtags: [`climatejustice`, `FridaysForFuture`, `climatestrike`, `ClimateForChange`],
     };
   },
   created() {
