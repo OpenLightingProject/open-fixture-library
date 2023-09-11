@@ -1,0 +1,465 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini led spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Dish.Liquidz"],
+    "createDate": "2023-09-11",
+    "lastModifyDate": "2023-09-11"
+  },
+  "comment": "*needs update on Auto Functions and LED Strip*",
+  "links": {
+    "video": [
+      "https://shor.by/DL222"
+    ]
+  },
+  "physical": {
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "StrobeSpeed",
+          "speedStart": "25Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Auto Run": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Random Color Macros"
+      }
+    },
+    "Motor Auto Run": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Reset"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [8, 21],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [22, 34],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#008000"]
+        },
+        {
+          "dmxRange": [35, 50],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "ColorPreset",
+          "comment": "yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [68, 79],
+          "type": "ColorPreset",
+          "comment": "purple",
+          "colors": ["#800080"]
+        },
+        {
+          "dmxRange": [80, 94],
+          "type": "ColorPreset",
+          "comment": "Teal",
+          "colors": ["#008080"]
+        },
+        {
+          "dmxRange": [95, 109],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [110, 121],
+          "type": "ColorPreset",
+          "comment": "Rainbow",
+          "colors": ["#ff0000", "#f05000", "#fff000", "#00f000", "#00ffff", "#0000ff", "#f000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "ColorPreset",
+          "comment": "Red Spin",
+          "colors": ["#ff0000", "#000000"]
+        },
+        {
+          "dmxRange": [129, 134],
+          "type": "ColorPreset",
+          "comment": "Green Spin",
+          "colors": ["#008000", "#000000"]
+        },
+        {
+          "dmxRange": [135, 144],
+          "type": "ColorPreset",
+          "comment": "Blue Spin",
+          "colors": ["#0000ff", "#000000"]
+        },
+        {
+          "dmxRange": [145, 154],
+          "type": "ColorPreset",
+          "comment": "Yellow Spin",
+          "colors": ["#ffff00", "#000000"]
+        },
+        {
+          "dmxRange": [155, 162],
+          "type": "ColorPreset",
+          "comment": "purple spin",
+          "colors": ["#800080", "#000000"]
+        },
+        {
+          "dmxRange": [163, 169],
+          "type": "ColorPreset",
+          "comment": "Teal Spin",
+          "colors": ["#008080", "#000000"]
+        },
+        {
+          "dmxRange": [170, 173],
+          "type": "ColorPreset",
+          "comment": "White Spion",
+          "colors": ["#ffffff", "#000000"]
+        },
+        {
+          "dmxRange": [174, 182],
+          "type": "ColorPreset",
+          "comment": "Red Yellow",
+          "colors": ["#ff0000", "#fff000"]
+        },
+        {
+          "dmxRange": [183, 191],
+          "type": "ColorPreset",
+          "comment": "Red Purple",
+          "colors": ["#ff0000", "#800080"]
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Green Yellow",
+          "colors": ["#0ff000", "#fff000"]
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Blue Purple",
+          "colors": ["#800080", "#0000ff"]
+        },
+        {
+          "dmxRange": [210, 213],
+          "type": "ColorPreset",
+          "comment": "Red Blue Green",
+          "colors": ["#ff0000", "#00f000", "#0000ff"]
+        },
+        {
+          "dmxRange": [214, 225],
+          "type": "ColorPreset",
+          "comment": "Red Yellow",
+          "colors": ["#ff0000", "#fff000"]
+        },
+        {
+          "dmxRange": [226, 233],
+          "type": "ColorPreset",
+          "comment": "Teal Green",
+          "colors": ["#008080", "#00f000"]
+        },
+        {
+          "dmxRange": [234, 241],
+          "type": "ColorPreset",
+          "comment": "purple teal",
+          "colors": ["#f000f0", "#008080"]
+        },
+        {
+          "dmxRange": [242, 249],
+          "type": "ColorPreset",
+          "comment": "RainbowSpin",
+          "colors": ["#ff0000", "#f05000", "#fff000", "#00f000", "#00ffff", "#0000ff", "#f000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Ch",
+      "shortName": "15 Ch",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Auto Run",
+        "Motor Auto Run",
+        "Reset",
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "13 Channel",
+      "shortName": "13 Ch",
+      "channels": [
+        "Pan 4",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Auto Run",
+        "Motor Auto Run",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
