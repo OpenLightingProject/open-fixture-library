@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vulkan 1200",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Julien RICHY"],
+    "createDate": "2023-08-10",
+    "lastModifyDate": "2023-08-10",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-08-10",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [275, 200, 255],
+    "weight": 4.7,
+    "power": 1200,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fumée": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Eteint",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer Rouge": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer Vert": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer Bleu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Stroboscope": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Controle de la fumée": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Controle Manuel"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "Effect",
+          "effectName": "Changeur de couleur"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Mode audio"
+        }
+      ]
+    },
+    "Vitesse changeur de couleur": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Fumée",
+        "Dimmer Rouge",
+        "Dimmer Vert",
+        "Dimmer Bleu",
+        "Stroboscope",
+        "Controle de la fumée",
+        "Vitesse changeur de couleur"
+      ]
+    }
+  ]
+}
