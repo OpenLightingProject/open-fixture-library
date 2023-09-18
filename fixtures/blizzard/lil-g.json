@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Ryan Goodwin"],
-    "createDate": "2023-05-24",
-    "lastModifyDate": "2023-05-24"
+    "createDate": "2023-09-18",
+    "lastModifyDate": "2023-09-18"
   },
   "links": {
     "manual": [
@@ -25,6 +25,9 @@
     "dimensions": [201, 317, 196],
     "weight": 3.5,
     "power": 59,
+    "powerConnectors": {
+      "powerCON": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "40W White LED",
@@ -142,12 +145,19 @@
       }
     },
     "Strobe": {
-      "capability": {
+      "capabilities": [
+      {
+        "dmxRange": [0, 0],
+        "type": "NoFunction"
+      },
+      {
+        "dmxRange": [1, 255],
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "1Hz",
         "speedEnd": "10Hz"
       }
+    ]
     },
     "Color Wheel": {
       "capabilities": [
