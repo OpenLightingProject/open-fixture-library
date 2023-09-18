@@ -146,18 +146,18 @@
     },
     "Strobe": {
       "capabilities": [
-      {
-        "dmxRange": [0, 0],
-        "type": "NoFunction"
-      },
-      {
-        "dmxRange": [1, 255],
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "1Hz",
-        "speedEnd": "10Hz"
-      }
-    ]
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
     },
     "Color Wheel": {
       "capabilities": [
