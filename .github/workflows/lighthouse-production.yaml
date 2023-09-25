@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.0
       - name: Run the Lighthouse CI
         uses: treosh/lighthouse-ci-action@10.1.0
         with:
