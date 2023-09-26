@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARKOLOR120HD",
+  "shortName": "PARKOLOR120HD",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["pldl"],
+    "createDate": "2023-09-26",
+    "lastModifyDate": "2023-09-26"
+  },
+  "links": {
+    "productPage": [
+      "https://www.star-way.com/parkolor-120hd"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "fineChannelAliases": ["Shutter fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [91, 170],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "WheelSlot",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "PARKOLOR120HD",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Zoom",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Wheel",
+        "Color Temperature",
+        "Prism"
+      ]
+    }
+  ]
+}
