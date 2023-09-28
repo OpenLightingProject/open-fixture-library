@@ -1,0 +1,396 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBL-480DMX",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Javier Sancho Garcia", "Javier Sancho"],
+    "createDate": "2023-09-28",
+    "lastModifyDate": "2023-09-28",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-09-28",
+      "comment": "created by Q Light Controller Plus (version 4.12.5 GIT)"
+    }
+  },
+  "physical": {
+    "weight": 10,
+    "power": 100,
+    "DMXconnector": "3-pin IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "matrixPixels": {
+      "spacing": [0, 0, 0]
+    }
+  },
+  "availableChannels": {
+    "Show": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "Effect",
+          "effectName": "Auto Fade"
+        },
+        {
+          "dmxRange": [29, 56],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [57, 85],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [86, 113],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [114, 141],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [142, 170],
+          "type": "Effect",
+          "effectName": "Show 5"
+        },
+        {
+          "dmxRange": [171, 198],
+          "type": "Effect",
+          "effectName": "Show 6"
+        },
+        {
+          "dmxRange": [199, 226],
+          "type": "Effect",
+          "effectName": "Show 7"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "Effect",
+          "effectName": "Show 8"
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 242],
+          "type": "Speed",
+          "comment": "Show Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "Speed",
+          "comment": "Music Controlled",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Strobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobo OFF",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "RED F1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED F8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN F1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREEN F8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE F1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUE F8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Canales",
+      "channels": [
+        "Show",
+        "Speed",
+        "Strobo",
+        "RED F1",
+        "GREEN F1",
+        "BLUE F1"
+      ]
+    },
+    {
+      "name": "9 Canales",
+      "channels": [
+        "Show",
+        "Speed",
+        "Strobo",
+        "RED F1",
+        "RED F5",
+        "GREEN F1",
+        "GREEN F5",
+        "BLUE F1",
+        "BLUE F5"
+      ]
+    },
+    {
+      "name": "15 Canales",
+      "channels": [
+        "Show",
+        "Speed",
+        "Strobo",
+        "RED F1",
+        "RED F3",
+        "RED F5",
+        "RED F7",
+        "GREEN F1",
+        "GREEN F3",
+        "GREEN F5",
+        "GREEN F7",
+        "BLUE F1",
+        "BLUE F3",
+        "BLUE F5",
+        "BLUE F7"
+      ]
+    },
+    {
+      "name": "27 Canales",
+      "channels": [
+        "Show",
+        "Speed",
+        "Strobo",
+        "RED F1",
+        "RED F2",
+        "RED F3",
+        "RED F4",
+        "RED F5",
+        "RED F6",
+        "RED F7",
+        "RED F8",
+        "GREEN F1",
+        "GREEN F2",
+        "GREEN F3",
+        "GREEN F4",
+        "GREEN F5",
+        "GREEN F6",
+        "GREEN F7",
+        "GREEN F8",
+        "BLUE F1",
+        "BLUE F2",
+        "BLUE F3",
+        "BLUE F4",
+        "BLUE F5",
+        "BLUE F6",
+        "BLUE F7",
+        "BLUE F8"
+      ]
+    },
+    {
+      "name": "24 Canales",
+      "channels": [
+        "RED F1",
+        "RED F2",
+        "RED F3",
+        "RED F4",
+        "RED F5",
+        "RED F6",
+        "RED F7",
+        "RED F8",
+        "GREEN F1",
+        "GREEN F2",
+        "GREEN F3",
+        "GREEN F4",
+        "GREEN F5",
+        "GREEN F6",
+        "GREEN F7",
+        "GREEN F8",
+        "BLUE F1",
+        "BLUE F2",
+        "BLUE F3",
+        "BLUE F4",
+        "BLUE F5",
+        "BLUE F6",
+        "BLUE F7",
+        "BLUE F8"
+      ]
+    }
+  ]
+}
