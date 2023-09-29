@@ -1,0 +1,492 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Alfie Spot3",
+  "shortName": "SPOT 3",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Caracol"],
+    "createDate": "2023-09-29",
+    "lastModifyDate": "2023-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2081819/Ampro-Tecshow-Alfie-Mini-Spot-3.html?page=6#manual"
+    ],
+    "productPage": [
+      "https://www.manualslib.com/manual/2081819/Ampro-Tecshow-Alfie-Mini-Spot-3.html?page=6#manual"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7aYvmyyMUvQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [157, 253, 253],
+    "weight": 2.6,
+    "power": 30,
+    "lens": {
+      "degreesMinMax": [12, 12]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Blanco"
+        },
+        {
+          "type": "Color",
+          "name": "Rojo"
+        },
+        {
+          "type": "Color",
+          "name": "Verde"
+        },
+        {
+          "type": "Color",
+          "name": "Azul"
+        },
+        {
+          "type": "Color",
+          "name": "Amarillo"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Cyan"
+        },
+        {
+          "type": "Color",
+          "name": "Ambar"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Blanco"
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2,
+          "comment": "Blanco - Rojo"
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Rojo"
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3,
+          "comment": "Rojo y Verde"
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Verde"
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4,
+          "comment": "Verde - Azul"
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Azul"
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5,
+          "comment": "Azul - Amarillo"
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Amarillo"
+        },
+        {
+          "dmxRange": [81, 89],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6,
+          "comment": "Amarillo - Magenta"
+        },
+        {
+          "dmxRange": [90, 98],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [99, 107],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7,
+          "comment": "Magenta - Cyan"
+        },
+        {
+          "dmxRange": [108, 116],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [117, 125],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8,
+          "comment": "Cyan - Ambar"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Ida y vuelta"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Ida y Vuelta"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Blanco"
+        },
+        {
+          "dmxRange": [144, 156],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow",
+          "comment": "Blanco"
+        },
+        {
+          "dmxRange": [157, 169],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [170, 182],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [183, 195],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeed": "slow",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [196, 208],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [209, 221],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [222, 234],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeed": "slow",
+          "shakeAngle": "narrow"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "STROBO NORMAL"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "STROBO RANDOM"
+        }
+      ]
+    },
+    "Funciones": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout en Movimiento"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blacout en Cambio de Colores"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout en cambio de Gobo"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout en cualquier cambio"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Reset",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "Generic",
+          "comment": "Sound Active"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe",
+        "Funciones"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe",
+        "Funciones"
+      ]
+    }
+  ]
+}
