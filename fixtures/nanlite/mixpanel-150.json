@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "MixPanel 60",
+  "name": "MixPanel 150",
   "categories": ["Color Changer", "Other"],
   "meta": {
     "authors": ["Dyami Caliri"],
@@ -16,9 +16,9 @@
     ]
   },
   "physical": {
-    "dimensions": [426, 370, 82],
-    "weight": 3.3,
-    "power": 64,
+    "dimensions": [482, 435, 82],
+    "weight": 4.1,
+    "power": 164,
     "DMXconnector": "5-pin"
   },
   "availableChannels": {

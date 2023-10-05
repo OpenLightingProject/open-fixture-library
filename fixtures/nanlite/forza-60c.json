@@ -191,37 +191,6 @@
         }
       ]
     },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 3],
-          "type": "Generic",
-          "comment": "Strobe off"
-        },
-        {
-          "dmxRange": [4, 4],
-          "type": "Generic",
-          "comment": "Random Fast Strobe"
-        },
-        {
-          "dmxRange": [5, 5],
-          "type": "Generic",
-          "comment": "Random Medium Strobe"
-        },
-        {
-          "dmxRange": [6, 6],
-          "type": "Generic",
-          "comment": "Random Slow Strob"
-        },
-        {
-          "dmxRange": [7, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "0.4Hz",
-          "speedEnd": "25Hz",
-          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
-        }
-      ]
-    },
     "Hue": {
       "fineChannelAliases": ["Hue fine"],
       "capability": {
