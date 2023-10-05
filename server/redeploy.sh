@@ -9,7 +9,7 @@ trap 'echo "# $(date --iso-8601=seconds): $BASH_COMMAND"' DEBUG
 cd /home/flo/open-fixture-library
 
 git pull -p
-npm ci --also=dev
+npm ci --include=dev
 npm run build
 
 if [ -e ./server ]; then

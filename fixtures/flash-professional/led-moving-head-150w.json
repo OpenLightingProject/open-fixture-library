@@ -3,9 +3,9 @@
   "name": "LED Moving Head 150W",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "Ryan Goodwin"],
     "createDate": "2019-11-21",
-    "lastModifyDate": "2019-11-21"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -22,7 +22,10 @@
     "dimensions": [250, 452, 256],
     "weight": 12,
     "power": 189,
-    "DMXconnector": "3-pin and 5-pin",
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin",
     "bulb": {
       "type": "1× 150W white LED"
     },

@@ -270,7 +270,7 @@ function parseUnitFromPattern(pattern) {
   }
 
   const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
-  return pattern.slice(lastNumberPartIndex + 1, -1).replace(/\\/g, ``);
+  return pattern.slice(lastNumberPartIndex + 1, -1).replaceAll(`\\`, ``);
 }
 
 /**
