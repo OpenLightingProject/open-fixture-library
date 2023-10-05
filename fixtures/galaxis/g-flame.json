@@ -8,7 +8,7 @@
     "createDate": "2022-12-08",
     "lastModifyDate": "2022-12-08"
   },
-  "comment": "Very versatile flame effect device due to various control inputs: DMX, 12-24V, ext. contact, radio and RS485",
+  "comment": "Very versatile flame effect device due to various control inputs: DMX, 12-24V, ext. contact, radio and RS485\n\nNote that this fixture listens to two channels that don't need to be adjacent, so they are represented by different modes here.",
   "links": {
     "manual": [
       "https://www.firing-system.com/wp-content/uploads/User-Manual-G-Flame-V2.43-036.pdf"
@@ -29,15 +29,14 @@
       "capabilities": [
         {
           "dmxRange": [0, 228],
-          "type": "Effect",
-          "effectName": "Flame Off",
+          "type": "NoFunction",
           "comment": "Flame Off"
         },
         {
           "dmxRange": [229, 255],
           "type": "Effect",
           "effectName": "Flame On",
-          "comment": "Flame On when Safety is above 6% (15)"
+          "comment": "when Safety is off"
         }
       ]
     },
@@ -47,15 +46,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Effect",
-          "effectName": "Safety ON",
-          "parameter": "off",
-          "comment": "6%"
+          "type": "Maintenance",
+          "comment": "Safety ON"
         },
         {
           "dmxRange": [16, 255],
-          "type": "Effect",
-          "effectName": "Safety OFF"
+          "type": "Maintenance",
+          "comment": "Safety OFF"
         }
       ]
     }
