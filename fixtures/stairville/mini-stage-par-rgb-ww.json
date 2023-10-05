@@ -65,7 +65,7 @@
         "color": "White"
       }
     },
-    "Fixed colour pattern": {
+    "Fixed color pattern": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -103,7 +103,7 @@
         {
           "dmxRange": [0, 31],
           "type": "Effect",
-          "effectName": "Constant colour, the hue is set by channels 1 to 4"
+          "effectName": "Constant color, the hue is set by channels 1 to 4"
         },
         {
           "dmxRange": [32, 63],
@@ -128,12 +128,12 @@
         {
           "dmxRange": [160, 191],
           "type": "Effect",
-          "effectName": "Chase (4 colours), speed controlled by channel 6, channels 1 to 5 without function"
+          "effectName": "Chase (4 colors), speed controlled by channel 6, channels 1 to 5 without function"
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
-          "effectName": "Chase (12 colours), speed controlled by channel 6, channels 1 to 5 without function"
+          "effectName": "Chase (12 colors), speed controlled by channel 6, channels 1 to 5 without function"
         },
         {
           "dmxRange": [224, 255],
@@ -155,22 +155,22 @@
         {
           "dmxRange": [0, 63],
           "type": "Effect",
-          "effectName": "Constant colour, the hue is set by channels 2 to 5"
+          "effectName": "Constant color, the hue is set by channels 2 to 5"
         },
         {
           "dmxRange": [64, 127],
           "type": "Effect",
-          "effectName": "Automatic colour change with 7 colours, channels 2 to 5 without function"
+          "effectName": "Automatic color change with 7 colors, channels 2 to 5 without function"
         },
         {
           "dmxRange": [128, 191],
           "type": "Effect",
-          "effectName": "Automatic colour change with 12 colours, channels 2 to 5 without function"
+          "effectName": "Automatic color change with 12 colors, channels 2 to 5 without function"
         },
         {
           "dmxRange": [192, 255],
           "type": "Effect",
-          "effectName": "Automatic colour change with 4 colours, channels 2 to 5 without function"
+          "effectName": "Automatic color change with 4 colors, channels 2 to 5 without function"
         }
       ]
     },
@@ -205,12 +205,7 @@
     {
       "name": "4-channel",
       "shortName": "4ch",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White"
-      ]
+      "channels": ["Red", "Green", "Blue", "White"]
     },
     {
       "name": "6-channel",
@@ -232,7 +227,7 @@
         "Green",
         "Blue",
         "White",
-        "Fixed colour pattern",
+        "Fixed color pattern",
         "Strobe effect",
         "Mode selection",
         "Dimmer"
