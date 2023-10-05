@@ -70,8 +70,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Effect",
-          "effectName": "No fixed colour and movement pattern"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 255],
@@ -86,8 +85,7 @@
         {
           "dmxRange": [0, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Full brightness, no strobe effect"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 255],
@@ -181,34 +179,24 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Speed",
-          "comment": "No automatic colour change",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
           "dmxRange": [11, 100],
-          "type": "Speed",
+          "type": "EffectSpeed",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Automatic colour change as set by channel 1, decreasing speed from"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [101, 150],
-          "type": "Speed",
-          "comment": "No automatic colour change",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
           "dmxRange": [151, 255],
-          "type": "Speed",
-          "comment": "Automatic colour change as set by channel 1, speed changing randomly",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "type": "Effect",
+          "effectName": "Random speed"
         }
       ]
     }
