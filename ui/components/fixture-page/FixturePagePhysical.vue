@@ -34,6 +34,18 @@
       </LabeledValue>
     </section>
 
+    <section v-if="powerConnectors.length > 0" class="power">
+      <h4>Power connectors</h4>
+
+      <LabeledValue
+        v-for="connector of powerConnectors"
+        :key="connector.name"
+        :name="connector.name"
+        :label="connector.name">
+        {{ connector.value }}
+      </LabeledValue>
+    </section>
+
     <section v-if="physical.hasBulb" class="bulb">
       <h4>Bulb</h4>
 
@@ -140,6 +152,14 @@ export default {
   },
   props: {
     physical: instanceOfProp(Physical).required,
+  },
+  computed: {
+    powerConnectors() {
+      return Object.entries(this.physical.powerConnectors).map(([name, value]) => ({
+        name,
+        value,
+      }));
+    },
   },
 };
 </script>
