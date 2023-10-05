@@ -4,9 +4,9 @@
   "shortName": "SCX500",
   "categories": ["Scanner", "Color Changer"],
   "meta": {
-    "authors": ["Michael Stiller"],
+    "authors": ["Michael Stiller", "Ryan Goodwin"],
     "createDate": "2019-01-14",
-    "lastModifyDate": "2019-01-14"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -24,6 +24,9 @@
     "dimensions": [445, 178, 204],
     "weight": 6.7,
     "power": 164,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "H5 MR16 halogen",
