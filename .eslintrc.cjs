@@ -1,6 +1,6 @@
 const pluginPresets = {
   import: `recommended`,
-  jsdoc: `recommended`,
+  jsdoc: `recommended-typescript-flavor`,
   markdown: `recommended`,
   nuxt: `recommended`,
   promise: `recommended`,
@@ -230,6 +230,7 @@ const enabledRuleParameters = {
 const vueCoreExtensionRules = [
   `array-bracket-newline`,
   `array-bracket-spacing`,
+  `array-element-newline`,
   `arrow-spacing`,
   `block-spacing`,
   `brace-style`,
@@ -276,9 +277,10 @@ const disabledRules = [
   `no-console`,
   `jsdoc/empty-tags`,
   `jsdoc/newline-after-description`,
-  `jsdoc/no-undefined-types`,
+  `jsdoc/no-defaults`, // useful for model docs generation
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
+  `jsdoc/tag-lines`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
@@ -324,7 +326,6 @@ module.exports = {
   },
   settings: {
     jsdoc: {
-      mode: `typescript`,
       tagNamePreference: {
         augments: `extends`,
         class: `constructor`,

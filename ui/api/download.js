@@ -3,9 +3,9 @@ import express from 'express';
 import JSZip from 'jszip';
 
 import importJson from '../../lib/import-json.js';
-import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
 import Fixture from '../../lib/model/Fixture.js';
 import Manufacturer from '../../lib/model/Manufacturer.js';
+import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
 import { sendJson, sendAttachment } from '../../lib/server-response-helpers.js';
 /** @typedef {import('http').ServerResponse} ServerResponse */
 
