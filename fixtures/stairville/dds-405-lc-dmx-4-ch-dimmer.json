@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DDS-405 LC DMX 4 Ch. Dimmer",
+  "shortName": "DDS-405 LC",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["JackOB"],
+    "createDate": "2023-10-08",
+    "lastModifyDate": "2023-10-08"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_428993_v3_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_dds_405_lc_dmx_4_ch._dimmer.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 93, 265],
+    "weight": 2.9,
+    "power": 2300,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Dimmer Ch1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer Ch2": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer Ch3": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer Ch4": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "default",
+      "channels": [
+        "Dimmer Ch1",
+        "Dimmer Ch2",
+        "Dimmer Ch3",
+        "Dimmer Ch4"
+      ]
+    }
+  ]
+}
