@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sss",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["fs"],
+    "createDate": "2023-10-09",
+    "lastModifyDate": "2023-10-09"
+  },
+  "links": {
+    "manual": [
+      "http://127.0.0.1"
+    ],
+    "productPage": [
+      "http://127.0.0.1"
+    ],
+    "video": [
+      "http://127.0.0.1"
+    ]
+  },
+  "rdm": {
+    "modelId": 333
+  },
+  "availableChannels": {
+    "Shutter": {
+      "fineChannelAliases": ["Shutter fine"],
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "fast CW",
+        "speedEnd": "stop"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2",
+      "shortName": "33",
+      "channels": [
+        "Shutter",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "ss",
+      "channels": [
+        "Shutter"
+      ]
+    },
+    {
+      "name": "m3",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "m4",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
