@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation F-55FC",
+  "shortName": "F-55FC",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["StageCulture"],
+    "createDate": "2023-10-10",
+    "lastModifyDate": "2023-10-10"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-f-55fc/"
+    ]
+  },
+  "wheels": {
+    "Virtual Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "slow"
+      }
+    },
+    "Virtual Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Dimmer Reset"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Red Shift On"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Red Shift Off"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "linear dimmer curve"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Square dimmer curve"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "inverse square dimmer curve"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Dimmer Speed OFF"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Dimmer Speed 1 Fastest"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Dimmer Speed 2"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Dimmer Speed 3 Slowest"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "XFade OFF"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "XFade 1 Fastest"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "XFade 2"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "XFade 3"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Xfade 4 Slowest"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "shortName": "16CH",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Virtual Color Wheel",
+        "Color Temperature",
+        "Control"
+      ]
+    }
+  ]
+}
