@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MaxBar 180",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["NickFR"],
+    "createDate": "2023-10-11",
+    "lastModifyDate": "2023-10-11"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/55/55696_manualmaxbar180.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [480, 104, 147.5],
+    "weight": 3.2,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer (Linear)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer (Non Linear)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 34],
+          "type": "Effect",
+          "effectName": "Dim=OFF"
+        },
+        {
+          "dmxRange": [35, 59],
+          "type": "Effect",
+          "effectName": "Dim=1"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Dim=2"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Dim=3"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Effect",
+          "effectName": "Dim=4"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Effect",
+          "effectName": "Dim=5"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Dim=6"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Dim=7"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "Dim=8"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer (Linear)",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Dimmer (Non Linear)"
+      ]
+    }
+  ]
+}
