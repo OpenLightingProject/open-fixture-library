@@ -5,8 +5,8 @@
   "categories": ["Effect"],
   "meta": {
     "authors": ["William Tessier"],
-    "createDate": "2023-10-05",
-    "lastModifyDate": "2023-10-05"
+    "createDate": "2023-10-12",
+    "lastModifyDate": "2023-10-12"
   },
   "comment": "Very versatile flame effect device due to various control inputs: DMX, 12-24V, ext. contact, radio and RS485\n\nNote that this fixture listens to two channels that don't need to be adjacent, so they are represented by different modes here.",
   "links": {
@@ -23,7 +23,7 @@
   "physical": {
     "dimensions": [300, 300, 350],
     "weight": 10.5,
-    "DMXconnector": "5-pin IP65"
+    "DMXconnector": "5-pin XLR IP65"
   },
   "availableChannels": {
     "Flame": {
