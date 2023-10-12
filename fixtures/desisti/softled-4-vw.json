@@ -4,9 +4,9 @@
   "shortName": "SLED4VW",
   "categories": ["Dimmer"],
   "meta": {
-    "authors": ["Lukas Runge"],
-    "createDate": "2023-03-23",
-    "lastModifyDate": "2023-03-23"
+    "authors": ["Lukas Runge", "Luke Nelson"],
+    "createDate": "2023-10-12",
+    "lastModifyDate": "2023-10-12"
   },
   "links": {
     "manual": [
@@ -18,7 +18,7 @@
   },
   "physical": {
     "dimensions": [465, 480, 132],
-    "weight": 6,
+    "weight": 6.7,
     "power": 205,
     "DMXconnector": "5-pin",
     "bulb": {
@@ -27,49 +27,103 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": "0%",
-      "highlightValue": "100%",
-      "precedence": "HTP",
       "capability": {
         "type": "Intensity"
       }
     },
-    "Color Temperature": {
-      "defaultValue": "50%",
-      "precedence": "LTP",
+    "CCT Linear Mode": {
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "2750K",
-        "colorTemperatureEnd": "6600K"
+        "colorTemperatureEnd": "6900K"
       }
     },
+    "CCT Step Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "ColorTemperature",
+          "colorTemperature": "2750K"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "ColorTemperature",
+          "colorTemperature": "2880K"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [234, 253],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6900K"
+        }
+      ]
+    },
     "Color Temperature Mode": {
-      "defaultValue": "0%",
-      "constant": true,
-      "precedence": "LTP",
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Generic",
-          "comment": "Linear Mode"
+          "type": "Maintenance",
+          "switchChannels": {
+            "CCT Linear Mode / CCT Step Mode": "CCT Linear Mode"
+          }
         },
         {
           "dmxRange": [128, 255],
-          "type": "Generic",
-          "comment": "Step Mode"
+          "type": "Maintenance",
+          "switchChannels": {
+            "CCT Linear Mode / CCT Step Mode": "CCT Step Mode"
+          }
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "SLOT4",
-      "shortName": "S4",
+      "name": "DMX Control",
+      "shortName": "DMX",
       "channels": [
         "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
+        "CCT Linear Mode / CCT Step Mode",
         "Color Temperature Mode"
       ]
     }
