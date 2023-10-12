@@ -3,9 +3,9 @@
   "name": "CLS Nano COB",
   "categories": ["Stand", "Color Changer", "Dimmer", "Effect"],
   "meta": {
-    "authors": ["prtr"],
-    "createDate": "2023-02-12",
-    "lastModifyDate": "2023-02-12"
+    "authors": ["prtr", "Luke Nelson"],
+    "createDate": "2023-10-12",
+    "lastModifyDate": "2023-10-12"
   },
   "comment": "4 RGB COB Spots, 30W each",
   "links": {
@@ -13,8 +13,7 @@
       "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/ms-ch/CHF/ViewProductAttachment-ResolveManualURL?File=DE_LIG0015657-000.pdf"
     ],
     "productPage": [
-      "https://www.dv247.com/en_GB/GBP/lightmaXX-CLS-Nano-COB/art-LIG0015657-000",
-      "https://www.musicstore.com/de_CH/CHF/lightmaXX-CLS-Nano-COB/art-LIG0015657-000"
+      "https://www.musicstore.com/en_OE/EUR/lightmaXX-CLS-Nano-COB/art-LIG0015657-000"
     ],
     "video": [
       "https://www.youtube.com/watch?v=_Jfp0JCAOns"
@@ -69,9 +68,10 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobing disabled?"
       }
-    },
+    },    
     "Color Presets": {
       "capabilities": [
         {
@@ -88,19 +88,17 @@
           "dmxRange": [100, 129],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "Color change erratic"
+          "comment": "erratic"
         },
         {
           "dmxRange": [130, 159],
           "type": "Effect",
-          "effectPreset": "ColorFade",
-          "comment": "Color change fade"
+          "effectPreset": "ColorFade"
         },
         {
           "dmxRange": [160, 189],
           "type": "Effect",
-          "effectPreset": "ColorJump",
-          "comment": "Color change"
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [190, 219],
@@ -137,16 +135,9 @@
       "shortName": "4ch",
       "channels": [
         "Dimmer",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
+        "Red All",
+        "Green All",
+        "Blue All"
       ]
     },
     {
@@ -155,16 +146,9 @@
       "channels": [
         "Dimmer",
         "Strobe",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
+        "Red All",
+        "Green All",
+        "Blue All",
         "Color Presets",
         "Program Speed"
       ]
