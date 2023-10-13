@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BAR 240-10 RGB",
+  "shortName": "B24010RGB",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["snuffish"],
+    "createDate": "2023-10-13",
+    "lastModifyDate": "2023-10-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.emnordic.no/storage/A8AADEAFF93A05BA9B3E2DCC30ABD308958E4164DBF21EA6B8B850CB47FF1D7A/cdf88f7887724ae8a4929e6bc980d4b7/pdf/media/1b173edd8e434b90ae80d0de00ffb3bf/562621.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
