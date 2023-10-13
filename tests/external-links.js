@@ -382,7 +382,8 @@ async function updateGithubIssue(urlResults) {
           return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);
 
-        return `| ${url} <td nowrap>${statusIcons}</td>`;
+        const link = `<a href="${url}" target="_blank">${url}</a>`;
+        return `| ${link} <td nowrap>${statusIcons}</td>`;
       }),
     ];
 
