@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BAR 240-10 RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["snuffish"],
+    "createDate": "2023-10-14",
+    "lastModifyDate": "2023-10-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.emnordic.no/storage/A8AADEAFF93A05BA9B3E2DCC30ABD308958E4164DBF21EA6B8B850CB47FF1D7A/cdf88f7887724ae8a4929e6bc980d4b7/pdf/media/1b173edd8e434b90ae80d0de00ffb3bf/562621.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [965, 64, 153],
+    "weight": 4.3,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red",
+        "colors": ["#ff0000"]
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green",
+        "colors": ["#00ff00"]
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue",
+        "colors": ["#0000ff"]
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3CHN",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
