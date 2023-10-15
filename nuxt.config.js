@@ -81,6 +81,16 @@ export default {
           removeSVGTagAttrs: false,
         },
       });
+
+      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      const javascriptRule = config.module.rules.find(rule => rule.type === `javascript/auto`);
+      const originalExclude = javascriptRule.exclude;
+      javascriptRule.exclude = {
+        and: [
+          originalExclude,
+          { not: [/node_modules\/a11y-dialog/] },
+        ],
+      };
     },
   },
   render: {
