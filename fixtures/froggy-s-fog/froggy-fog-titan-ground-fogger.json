@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Froggy Fog Titan Ground Fogger",
+  "shortName": "Ground Fogger",
+  "categories": ["Hazer", "Fan", "Smoke"],
+  "meta": {
+    "authors": ["The Chaz"],
+    "createDate": "2023-10-07",
+    "lastModifyDate": "2023-10-07"
+  },
+  "links": {
+    "productPage": [
+      "https://www.froggysfog.com/froggys-fog-titan-ice-ground-fog-machine.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Fog Intensity": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Titan",
+      "channels": [
+        "Fog Intensity",
+        "Fan Speed"
+      ]
+    }
+  ]
+}
