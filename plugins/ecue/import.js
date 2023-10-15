@@ -5,7 +5,7 @@ export const version = `0.3.1`;
 
 const colors = {};
 for (const color of colorNameList) {
-  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
+  colors[color.name.toLowerCase().replaceAll(/\s/g, ``)] = color.hex;
 }
 
 /**
@@ -283,7 +283,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
-          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
+          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
           if (color in colors) {
             capability.colors = [colors[color]];
           }
@@ -296,7 +296,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         }
       },
       ColorPreset() {
-        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
+        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
         if (color in colors) {
           capability.color = colors[color];
         }
@@ -519,5 +519,5 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }
