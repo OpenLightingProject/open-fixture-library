@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ken Harris", "Flo Edelmann"],
     "createDate": "2022-03-07",
-    "lastModifyDate": "2022-07-16"
+    "lastModifyDate": "2023-10-15"
   },
   "links": {
     "manual": [
@@ -565,8 +565,8 @@
     "Movement Macro Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Control": {
