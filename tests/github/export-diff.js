@@ -153,7 +153,7 @@ async function getDiffTasks(changedComponents) {
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions[previousVersions.length - 1];
+        const lastVersion = previousVersions.at(-1);
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
           tasks.push(...usableTestFixtures.map(manufacturerFixture => ({

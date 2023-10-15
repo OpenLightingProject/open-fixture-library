@@ -4,9 +4,9 @@
   "shortName": "AsteraFP3Hyperion",
   "categories": ["Pixel Bar", "Color Changer", "Blinder", "Strobe"],
   "meta": {
-    "authors": ["Jack Crombie", "Felix Edelmann", "Dyami Caliri"],
+    "authors": ["Jack Crombie", "Felix Edelmann", "Dyami Caliri", "Ryan Goodwin"],
     "createDate": "2021-01-11",
-    "lastModifyDate": "2021-01-11"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -23,6 +23,9 @@
     "dimensions": [2031, 42, 42],
     "weight": 2.9,
     "power": 92,
+    "powerConnectors": {
+      "Proprietary": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
