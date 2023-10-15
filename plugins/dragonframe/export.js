@@ -31,6 +31,12 @@ export async function exportFixtures(fixtures, options) {
     jsonData.manufacturerKey = fixture.manufacturer.key;
     jsonData.oflURL = fixture.url;
 
+    downgradePhysical(jsonData.physical);
+
+    for (const mode of jsonData.modes) {
+      downgradePhysical(mode.physical);
+    }
+
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(jsonData),
@@ -57,4 +63,14 @@ export async function exportFixtures(fixtures, options) {
   });
 
   return files;
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
 }

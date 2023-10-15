@@ -201,7 +201,7 @@ export const importHelpers = {
 
     const stopRegex = /\s*\b(?:stop(?:ped)?|no rotation|no rotate)\b\s*/gi;
     if (stopRegex.test(capabilityName)) {
-      return capabilityName.replace(stopRegex, () => {
+      return capabilityName.replaceAll(stopRegex, () => {
         capability.speed = `stop`;
         return ``;
       });
