@@ -103,6 +103,7 @@
         {
           "dmxRange": [0, 127],
           "type": "Maintenance",
+          "comment": "Linear Mode",
           "switchChannels": {
             "CCT Linear Mode / CCT Step Mode": "CCT Linear Mode"
           }
@@ -110,6 +111,7 @@
         {
           "dmxRange": [128, 255],
           "type": "Maintenance",
+          "comment": "Step Mode",
           "switchChannels": {
             "CCT Linear Mode / CCT Step Mode": "CCT Step Mode"
           }
