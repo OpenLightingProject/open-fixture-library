@@ -376,7 +376,7 @@ async function updateGithubIssue(urlResults) {
       }).join(`&nbsp;`);
       const link = `<a href="${url}" target="_blank">${url}</a>`;
       return `<tr><td>${link}</td><td nowrap>${statusIcons}</td></tr>`;
-    })
+    });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
       ``,
@@ -388,7 +388,7 @@ async function updateGithubIssue(urlResults) {
       `<th nowrap>today … 6 days ago</th>`,
       `</tr>`,
       ...rows,
-      `</table>`
+      `</table>`,
     ];
     return lines.join(`\n`);
   }
