@@ -364,29 +364,32 @@ async function updateGithubIssue(urlResults) {
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+    const rows = Object.entries(linkData).map(([url, statuses]) => {
+      const statusIcons = statuses.map(status => {
+        if (!status.failed) {
+          return `:heavy_check_mark:`;
+        }
+
+        const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
+        const emoji = getFailedEmoji(status.message);
+        return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
+      }).join(`&nbsp;`);
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      return `<tr><td>${link}</td><td nowrap>${statusIcons}</td></tr>`;
+    })
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
       ``,
       `**Last updated:** ${new Date().toISOString()}`,
       ``,
-      `| URL <th nowrap>today … 6 days ago</th>`,
-      `|--------------------------------------|`,
-      ...Object.entries(linkData).map(([url, statuses]) => {
-        const statusIcons = statuses.map(status => {
-          if (!status.failed) {
-            return `:heavy_check_mark:`;
-          }
-
-          const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
-          const emoji = getFailedEmoji(status.message);
-          return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
-        }).join(`&nbsp;`);
-
-        const link = `<a href="${url}" target="_blank">${url}</a>`;
-        return `| ${link} <td nowrap>${statusIcons}</td>`;
-      }),
+      `<table>`,
+      `<tr>`,
+      `<th>URL</th>`,
+      `<th nowrap>today … 6 days ago</th>`,
+      `</tr>`,
+      ...rows,
+      `</table>`
     ];
-
     return lines.join(`\n`);
   }
 
