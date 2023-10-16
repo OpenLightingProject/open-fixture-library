@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colors SonicStrobe",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gil Dieu"],
+    "createDate": "2023-10-16",
+    "lastModifyDate": "2023-10-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-10-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6200
+    }
+  },
+  "availableChannels": {
+    "Strobe Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed Slow to Fast": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed increasing",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Flash duration increasing",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Led Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Led Speed Slow to Fast": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Led strobe"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Auto Programmes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Programme 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Programme 2"
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Programme 3"
+        },
+        {
+          "dmxRange": [53, 82],
+          "type": "Effect",
+          "effectName": "Programme 4"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Programme 5"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Programme 6"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Programme 7"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Programme 8"
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Programme 9"
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Programme 10"
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Programme 11"
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Programme 12"
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Programme 13"
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Programme 14"
+        },
+        {
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "Programme 15"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Programme 16"
+        }
+      ]
+    },
+    "Programme running speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Running speed"
+      }
+    },
+    "Mixed colours for automatic programmes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "Mixed colours"
+        }
+      ]
+    },
+    "Background colour": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Automatic"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset",
+          "comment": "R/G/B/RG/GB/RGB"
+        }
+      ]
+    },
+    "Direction of effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Bottom to top"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Top to bottom"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Strobe Intensity",
+        "Strobe Speed Slow to Fast",
+        "Flash Duration",
+        "Led Intensity",
+        "Led Speed Slow to Fast",
+        "Red",
+        "Green",
+        "Blue",
+        "Auto Programmes",
+        "Programme running speed",
+        "Mixed colours for automatic programmes",
+        "Background colour",
+        "Direction of effect"
+      ]
+    }
+  ]
+}
