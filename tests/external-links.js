@@ -269,10 +269,10 @@ async function updateGithubIssue(urlResults) {
 
     try {
       const lines = body.split(/\r?\n/); // support both \n and \r\n newline types
-      const firstContentLine = lines.findIndex(line => line.startsWith(`|`)) + 2;
+      const firstContentLine = lines.indexOf(`<table>`) + 2;
       lines.splice(0, firstContentLine); // delete first lines which only hold general data
       for (const line of lines) {
-        const [, url, lastResults] = line.match(/^\| (.*) <td nowrap>(.*)<\/td>$/);
+        const [, lastResults, url] = line.match(/<tr><td nowrap>(.*?)<\/td><td><a href="(.*?)"/);
 
         linkData[url] = lastResults.split(`&nbsp;`).map(item => {
           if (item === `:heavy_check_mark:`) {
