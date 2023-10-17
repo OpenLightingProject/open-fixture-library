@@ -270,7 +270,7 @@ async function updateGithubIssue(urlResults) {
     try {
       const lines = body.split(/\r?\n/); // support both \n and \r\n newline types
       for (const line of lines) {
-        if (!line.startsWith(`<tr><td nowrap>`) {
+        if (!line.startsWith(`<tr><td nowrap>`)) {
           continue;
         }
 
