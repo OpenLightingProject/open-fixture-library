@@ -19,10 +19,13 @@
     ]
   },
   "physical": {
-    "dimensions": [231, 213, 313],
+    "dimensions": [231, 169, 313],
     "weight": 6.5,
     "power": 65,
     "DMXconnector": "5-pin",
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    }
     "bulb": {
       "type": "LED"
     },
