@@ -212,6 +212,7 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
+  'vue/no-use-v-else-with-v-for': [],
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
