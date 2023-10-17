@@ -375,7 +375,7 @@ async function updateGithubIssue(urlResults) {
         return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
       }).join(`&nbsp;`);
       const link = `<a href="${url}" target="_blank">${url}</a>`;
-      return `<tr><td>${link}</td><td nowrap>${statusIcons}</td></tr>`;
+      return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
     });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
@@ -383,10 +383,7 @@ async function updateGithubIssue(urlResults) {
       `**Last updated:** ${new Date().toISOString()}`,
       ``,
       `<table>`,
-      `<tr>`,
-      `<th>URL</th>`,
-      `<th nowrap>today … 6 days ago</th>`,
-      `</tr>`,
+      `<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>`,
       ...rows,
       `</table>`,
     ];
