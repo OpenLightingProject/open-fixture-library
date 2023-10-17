@@ -359,21 +359,27 @@ async function updateGithubIssue(urlResults) {
   }
 
   /**
+   * @param {LinkStatus} status The status to get the linked emoji for.
+   * @returns {string} An emoji, wrapped in a link to the failed job if applicable.
+   */
+  function getStatusEmojiLink(status) {
+    if (!status.failed) {
+      return `:heavy_check_mark:`;
+    }
+
+    const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
+    const emoji = getFailedEmoji(status.message);
+    return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
+  }
+
+  /**
    * @param {LinkData} linkData The new link data from which to create the issue body.
    * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
     const rows = Object.entries(linkData).map(([url, statuses]) => {
-      const statusIcons = statuses.map(status => {
-        if (!status.failed) {
-          return `:heavy_check_mark:`;
-        }
-
-        const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
-        const emoji = getFailedEmoji(status.message);
-        return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
-      }).join(`&nbsp;`);
+      const statusIcons = statuses.map(status => getStatusEmojiLink(status)).join(`&nbsp;`);
       const link = `<a href="${url}" target="_blank">${url}</a>`;
       return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
     });
