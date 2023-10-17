@@ -142,31 +142,31 @@
         "speedEnd": "fast"
       }
     },
-    "Dimmer Speed": {
+    "Dimmer Curve": {
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Preset dimmer speed from display menu"
         },
         {
           "dmxRange": [52, 101],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Linear Dimmer"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Nonlinear dimming curve 1 (fastest)"
         },
         {
           "dmxRange": [153, 203],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Nonlinear dimming curve 2"
         },
         {
           "dmxRange": [204, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Nonlinear dimming curve 3 (slowest)"
         }
       ]
@@ -209,7 +209,7 @@
         "Color Temperature",
         "Auto Programs",
         "Auto Speed",
-        "Dimmer Speed"
+        "Dimmer Curve"
       ]
     }
   ]
