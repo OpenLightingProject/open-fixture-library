@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "cst-2ch",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Valerio"],
+    "createDate": "2023-10-18",
+    "lastModifyDate": "2023-10-18"
+  },
+  "links": {
+    "manual": [
+      "http://www.google.com"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Valerio",
+      "channels": [
+        "Intensity",
+        "Intensity 2"
+      ]
+    }
+  ]
+}
