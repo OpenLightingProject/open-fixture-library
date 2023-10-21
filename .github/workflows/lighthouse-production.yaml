@@ -7,6 +7,7 @@ jobs:
   production:
     name: Production
     runs-on: ubuntu-latest
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
