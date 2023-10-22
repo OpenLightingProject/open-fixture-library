@@ -93,6 +93,88 @@
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Plate flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterDuration",
+          "duration": "instant",
+          "comment": "On, no flash/strobe"
+        }
+      ]
+    },
+    "Plate flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Beam flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterDuration",
+          "duration": "instant",
+          "comment": "On, no flash/strobe"
+        }
+      ]
+    },
+    "Beam flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
     }
   },
   "modes": [
@@ -108,6 +190,22 @@
         "Green",
         "Blue",
         "Beam"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue"
       ]
     }
   ]
