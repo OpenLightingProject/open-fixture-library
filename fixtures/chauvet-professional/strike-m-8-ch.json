@@ -1,16 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "STRIKE M 8 CH",
-  "shortName": "STRIKE M",
-  "categories": ["Blinder", "Color Changer"],
+  "name": "Color STRIKE M",
+  "categories": ["Blinder", "Color Changer", "Strobe", "Moving Head"],
   "meta": {
-    "authors": ["Rene Bribiesca"],
-    "createDate": "2022-11-11",
-    "lastModifyDate": "2022-11-11"
+    "authors": ["Rene Bribiesca", "Luke Nelson"],
+    "createDate": "2023-10-22",
+    "lastModifyDate": "2023-10-22"
   },
   "links": {
     "productPage": [
-      "https://es.chauvetprofessional.com/products/color-strike-m/"
+      "https://www.chauvetprofessional.com/products/color-strike-m/"
+    ],
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2021/09/Color_STRIKE_M_UM_Rev10.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TTobzCb1Xoc"
     ]
   },
   "physical": {
