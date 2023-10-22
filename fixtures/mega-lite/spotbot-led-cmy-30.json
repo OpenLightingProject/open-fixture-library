@@ -523,21 +523,21 @@
         {
           "dmxRange": [0, 127],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo wheel",
+          "wheel": "Rotating Gobo Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 191],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo wheel",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo wheel",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -658,7 +658,7 @@
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [128, 191],
+          "dmxRange": [192, 255],
           "type": "IrisEffect",
           "effectName": "Pulse Close",
           "speedStart": "slow",
