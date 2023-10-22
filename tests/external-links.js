@@ -18,6 +18,7 @@ const excludedUrls = [
   `https://open-fixture-library.org`, // exclude canonical URLs
   `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
   `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+  `https://web.archive.org/`, // Wayback Machine links are designed to be available "forever" and we don't want to put unnecessary load on their servers.
 ];
 
 
@@ -40,7 +41,7 @@ try {
   const externalUrlSet = new Set();
 
   crawler.addEventListener(`externalLinkFound`, ({ url }) => {
-    if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
+    if (excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
       externalUrlSet.add(url);
       process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
     }
