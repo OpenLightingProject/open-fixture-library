@@ -195,9 +195,6 @@ const enabledRuleParameters = {
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
-  'vue/no-deprecated-scope-attribute': [],
-  'vue/no-deprecated-slot-attribute': [],
-  'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
@@ -212,6 +209,7 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
+  'vue/no-use-v-else-with-v-for': [],
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
@@ -220,6 +218,38 @@ const enabledRuleParameters = {
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
+
+  // Vue 3 migration
+  'vue/no-deprecated-data-object-declaration': [],
+  // 'vue/no-deprecated-destroyed-lifecycle': [], // impossible to fix in Vue 2 (without Composition API)
+  'vue/no-deprecated-dollar-listeners-api': [],
+  'vue/no-deprecated-dollar-scopedslots-api': [],
+  'vue/no-deprecated-events-api': [],
+  'vue/no-deprecated-filter': [],
+  'vue/no-deprecated-functional-template': [],
+  'vue/no-deprecated-html-element-is': [],
+  'vue/no-deprecated-inline-template': [],
+  'vue/no-deprecated-model-definition': [{
+    allowVue3Compat: true,
+  }],
+  'vue/no-deprecated-props-default-this': [],
+  'vue/no-deprecated-router-link-tag-prop': [],
+  'vue/no-deprecated-scope-attribute': [],
+  'vue/no-deprecated-slot-attribute': [],
+  'vue/no-deprecated-slot-scope-attribute': [],
+  'vue/no-deprecated-v-bind-sync': [],
+  'vue/no-deprecated-v-is': [],
+  'vue/no-deprecated-v-on-native-modifier': [],
+  'vue/no-deprecated-v-on-number-modifiers': [],
+  'vue/no-deprecated-vue-config-keycodes': [],
+  'vue/no-expose-after-await': [],
+  'vue/no-lifecycle-after-await': [],
+  'vue/no-watch-after-await': [],
+  'vue/prefer-import-from-vue': [],
+  'vue/require-explicit-emits': [],
+  'vue/require-slots-as-functions': [],
+  'vue/require-toggle-inside-transition': [],
+  'vue/v-on-event-hyphenation': [],
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],

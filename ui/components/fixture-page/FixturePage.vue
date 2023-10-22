@@ -223,6 +223,9 @@ export default {
     fixture: instanceOfProp(Fixture).required,
     loadAllModes: booleanProp().withDefault(false),
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
