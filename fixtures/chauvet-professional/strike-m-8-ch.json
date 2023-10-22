@@ -19,9 +19,13 @@
     ]
   },
   "physical": {
+    "dimensions": [175.4, 312.5, 407],
+    "weight": 12.1,
+    "DMXconnector": "5-pin XLR IP65",
     "bulb": {
       "type": "LED"
-    }
+    },
+    "power": 740
   },
   "availableChannels": {
     "Tilt": {
