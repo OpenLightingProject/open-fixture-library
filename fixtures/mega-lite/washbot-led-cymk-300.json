@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Ryan Goodwin"],
-    "createDate": "2023-10-10",
-    "lastModifyDate": "2023-10-10"
+    "createDate": "2023-10-22",
+    "lastModifyDate": "2023-10-22"
   },
   "links": {
     "manual": [
@@ -22,6 +22,7 @@
     "dimensions": [431, 260, 685],
     "weight": 23.2,
     "power": 363,
+    "DMXconnector": "3-pin and 5-pin",
     "powerConnectors": {
       "powerCON": "input and output"
     },
@@ -360,7 +361,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 128,
+      "defaultValue": 32896,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -369,7 +370,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 128,
+      "defaultValue": 32896,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -502,8 +503,8 @@
       ]
     },
     "Focus": {
-      "defaultValue": 127,
       "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 32639,
       "capability": {
         "type": "Focus",
         "distanceStart": "near",
@@ -511,8 +512,8 @@
       }
     },
     "Zoom": {
-      "defaultValue": 127,
       "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32639,
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -546,7 +547,7 @@
   },
   "modes": [
     {
-      "name": "20 channel",
+      "name": "20-channel",
       "shortName": "20ch",
       "channels": [
         "Pan",
@@ -572,7 +573,7 @@
       ]
     },
     {
-      "name": "23 channel",
+      "name": "23-channel",
       "shortName": "23ch",
       "channels": [
         "Pan",
