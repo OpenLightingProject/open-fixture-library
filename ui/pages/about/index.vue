@@ -3,7 +3,7 @@
     <h1>About</h1>
 
     <p>Created by Florian and Felix Edelmann.</p>
-    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
+    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://www.tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
 
     <h2>Documentation</h2>
     <p>The developer documentation can be found at the <a href="https://github.com/OpenLightingProject/open-fixture-library/tree/master/docs">GitHub repository</a>. It contains an explanation of the <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md">JSON fixture format</a> we use internally, and from which fixture definitions in other formats can be exported by <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/plugins.md">plugins</a>.</p>
