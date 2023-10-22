@@ -39,10 +39,37 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Open"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [80, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [150, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [220, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
     "Red": {
       "capability": {
@@ -62,7 +89,7 @@
         "color": "Blue"
       }
     },
-    "Haze": {
+    "Beam": {
       "capability": {
         "type": "Intensity"
       }
@@ -70,7 +97,8 @@
   },
   "modes": [
     {
-      "name": "BASIC",
+      "name": "8 Channel",
+      "shortName": "8ch",
       "channels": [
         "Tilt",
         "Tilt fine",
@@ -79,7 +107,7 @@
         "Red",
         "Green",
         "Blue",
-        "Haze"
+        "Beam"
       ]
     }
   ]
