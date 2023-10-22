@@ -34,7 +34,7 @@
     }
   },
   "wheels": {
-    "Color Section 1": {
+    "Color Selection 1": {
       "slots": [
         {
           "type": "Open"
@@ -61,7 +61,7 @@
         }
       ]
     },
-    "Color Section 2": {
+    "Color Selection 2": {
       "slots": [
         {
           "type": "Open"
@@ -88,7 +88,7 @@
         }
       ]
     },
-    "Color Section 3": {
+    "Color Selection 3": {
       "slots": [
         {
           "type": "Open"
@@ -182,7 +182,7 @@
     }
   },
   "availableChannels": {
-    "Color Section 1": {
+    "Color Selection 1": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -211,7 +211,7 @@
         }
       ]
     },
-    "Color Section 2": {
+    "Color Selection 2": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -240,7 +240,7 @@
         }
       ]
     },
-    "Color Section 3": {
+    "Color Selection 3": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -545,7 +545,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 128,
+      "defaultValue": 32896,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -554,7 +554,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 128,
+      "defaultValue": 32896,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -718,8 +718,8 @@
       ]
     },
     "Focus": {
-      "defaultValue": 110,
       "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 32639,
       "capability": {
         "type": "Focus",
         "distanceStart": "near",
@@ -727,8 +727,8 @@
       }
     },
     "Zoom": {
-      "defaultValue": 127,
       "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32639,
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -770,7 +770,7 @@
   },
   "modes": [
     {
-      "name": "21 channel",
+      "name": "21-channel",
       "shortName": "21ch",
       "channels": [
         "Pan",
@@ -781,9 +781,9 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Color Section 1",
-        "Color Section 2",
-        "Color Section 3",
+        "Color Selection 1",
+        "Color Selection 2",
+        "Color Selection 3",
         "Static Gobo Wheel",
         "Rotating Gobo Wheel",
         "Gobo Rotation",
@@ -797,7 +797,7 @@
       ]
     },
     {
-      "name": "26 channel",
+      "name": "26-channel",
       "shortName": "26ch",
       "channels": [
         "Pan",
@@ -810,9 +810,9 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Color Section 1",
-        "Color Section 2",
-        "Color Section 3",
+        "Color Selection 1",
+        "Color Selection 2",
+        "Color Selection 3",
         "Static Gobo Wheel",
         "Rotating Gobo Wheel",
         "Gobo Rotation",
