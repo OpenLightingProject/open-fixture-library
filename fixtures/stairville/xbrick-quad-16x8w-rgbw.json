@@ -1,0 +1,855 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xBrick Quad 16x8W RGBW",
+  "shortName": "xBrick RGBW",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Maximilian B.", "Luke Nelson"],
+    "createDate": "2023-10-09",
+    "lastModifyDate": "2023-10-09"
+  },
+  "comment": "4 Clusters of 4 RGBW LEDs (4x4)",
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/stairville_xbrick_quad_16x8w_rgbw.htm"
+    ],
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_385641_v4_en_online.pdf",
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_385641_r4_en_online.pdf"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i5704p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [315, 88, 195],
+    "weight": 4.3,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1A", "1B", null, "2A", "2B", null, "3A", "3B", null, "4A", "4B"],
+        ["1C", "1D", null, "2C", "2D", null, "3C", "3D", null, "4C", "4D"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "1": { "name": ["^1[A-D]$"] },
+      "2": { "name": ["^2[A-D]$"] },
+      "3": { "name": ["^3[A-D]$"] },
+      "4": { "name": ["^4[A-D]$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Intensity red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX values is strobe disabled?",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "Intensity red",
+            "Intensity green / NoFunctionG": "Intensity green",
+            "Intensity blue / NoFunctionB": "Intensity blue",
+            "Intensity white / NoFunctionW": "Intensity white",
+            "Dimmer / NoFunctionD": "NoFunctionD",
+            "Strobe / NoFunctionS": "NoFunctionS",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Cyan",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#800080"],
+          "comment": "Purple",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffc0cb"],
+          "comment": "Pink",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffa500"],
+          "comment": "Orange",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#f4fdff"],
+          "comment": "Cold White",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ff4040"],
+          "comment": "Bright Red",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#57fd57"],
+          "comment": "Bright Green",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#3232ff"],
+          "comment": "Bright Blue",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Yellow",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#fdf4dc"],
+          "comment": "Warm White",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Red",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Green",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Blue",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffbf00"],
+          "comment": "Amber",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "All",
+          "helpWanted": "What does this do?",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "NoFunction"
+          }
+        },
+        {
+          "dmxRange": [80, 86],
+          "type": "Effect",
+          "effectName": "Program 02",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [87, 93],
+          "type": "Effect",
+          "effectName": "Program 03",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [94, 100],
+          "type": "Effect",
+          "effectName": "Program 04",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 107],
+          "type": "Effect",
+          "effectName": "Program 05",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [108, 114],
+          "type": "Effect",
+          "effectName": "Program 06",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [115, 121],
+          "type": "Effect",
+          "effectName": "Program 07",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "Effect",
+          "effectName": "Program 08",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [129, 135],
+          "type": "Effect",
+          "effectName": "Program 09",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [136, 142],
+          "type": "Effect",
+          "effectName": "Program 10",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [143, 149],
+          "type": "Effect",
+          "effectName": "Program 11",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [150, 156],
+          "type": "Effect",
+          "effectName": "Program 12",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [157, 163],
+          "type": "Effect",
+          "effectName": "Program 13",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [164, 170],
+          "type": "Effect",
+          "effectName": "Program 14",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 177],
+          "type": "Effect",
+          "effectName": "Program 15",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [178, 184],
+          "type": "Effect",
+          "effectName": "Program 16",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [185, 191],
+          "type": "Effect",
+          "effectName": "Program 17",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "Effect",
+          "effectName": "Program 18",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [199, 205],
+          "type": "Effect",
+          "effectName": "Program 19",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [206, 212],
+          "type": "Effect",
+          "effectName": "Program 20",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [213, 219],
+          "type": "Effect",
+          "effectName": "Program 21",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [220, 226],
+          "type": "Effect",
+          "effectName": "Program 22",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [227, 233],
+          "type": "Effect",
+          "effectName": "Program 23",
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [234, 240],
+          "type": "Effect",
+          "effectName": "Sound controlled (slow)",
+          "comment": "Sound-controlled operation, slow transition Programs 02 to 23",
+          "soundControlled": true,
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Microphone Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled (fast)",
+          "comment": "Sound-controlled operation, fast transition Programs 02 to 23",
+          "soundControlled": true,
+          "switchChannels": {
+            "Intensity red / NoFunctionR": "NoFunctionR",
+            "Intensity green / NoFunctionG": "NoFunctionG",
+            "Intensity blue / NoFunctionB": "NoFunctionB",
+            "Intensity white / NoFunctionW": "NoFunctionW",
+            "Dimmer / NoFunctionD": "Dimmer",
+            "Strobe / NoFunctionS": "Strobe",
+            "NoFunction / Program Speed / Microphone Sensitivity": "Microphone Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Slow to Fast or Fast to Slow?"
+      }
+    },
+    "Microphone Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high",
+        "helpWanted": "Low to High or High to Low?"
+      }
+    },
+    "NoFunction": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionD": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionS": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionR": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionG": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionB": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunctionW": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity red / NoFunctionR",
+        "Intensity green / NoFunctionG",
+        "Intensity blue / NoFunctionB",
+        "Intensity white / NoFunctionW",
+        "Dimmer / NoFunctionD",
+        "Strobe / NoFunctionS",
+        "Function select",
+        "NoFunction / Program Speed / Microphone Sensitivity"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}

@@ -77,6 +77,9 @@ export default {
   props: {
     mode: instanceOfProp(Mode).required,
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   data() {
     return {
       hasDetails: true,

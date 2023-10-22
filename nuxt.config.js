@@ -18,9 +18,6 @@ export default {
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
-  buildModules: [
-    `@nuxt/postcss8`,
-  ],
   plugins: [
     `~/plugins/global-components.js`,
     `~/plugins/vue-form.js`,
@@ -84,6 +81,16 @@ export default {
           removeSVGTagAttrs: false,
         },
       });
+
+      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      const javascriptRule = config.module.rules.find(rule => rule.type === `javascript/auto`);
+      const originalExclude = javascriptRule.exclude;
+      javascriptRule.exclude = {
+        and: [
+          originalExclude,
+          { not: [/node_modules\/a11y-dialog/] },
+        ],
+      };
     },
   },
   render: {
