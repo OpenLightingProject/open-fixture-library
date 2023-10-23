@@ -72,6 +72,11 @@ export default {
     canRemove: booleanProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    'set-type': type => true,
+    'set-url': url => true,
+    remove: () => true,
+  },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {

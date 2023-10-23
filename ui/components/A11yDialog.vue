@@ -122,6 +122,10 @@ export default {
     title: stringProp().required,
     wide: booleanProp().withDefault(false),
   },
+  emits: {
+    show: () => true,
+    hide: () => true,
+  },
   data() {
     return {
       dialog: null,
