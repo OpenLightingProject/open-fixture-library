@@ -219,14 +219,15 @@ export default {
     PropertyInputNumber,
     PropertyInputText,
   },
-  model: {
-    prop: `mode`,
-  },
   props: {
     mode: objectProp().required,
     index: numberProp().required,
     fixture: objectProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    remove: () => true,
+    'open-channel-editor': payload => true,
   },
   data() {
     return {
