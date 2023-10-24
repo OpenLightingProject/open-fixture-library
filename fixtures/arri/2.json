@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2",
+  "shortName": "2",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-01",
+    "lastModifyDate": "2023-06-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "8500K"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    }
+  ]
+}
