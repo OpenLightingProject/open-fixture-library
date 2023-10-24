@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dyno 1200C",
+  "categories": [
+    "Color Changer"
+  ],
+  "meta": {
+    "authors": [
+      "Showrunner"
+    ],
+    "createDate": "2022-12-06",
+    "lastModifyDate": "2022-12-06"
+  },
+  "helpWanted": "fill out the rest of the modes",
+  "links": {
+    "other": [
+      "https://www.nanluxamericas.com/dyno-series-1",
+      "https://www.nanlux.com/en/h-col-152.html",
+      "https://download.s21i.faiusr.com/22292231/0/0/ABUIABA9GAAgrfmshgYoop7W5gE.pdf?f=Dyno+650C%EF%BC%8F1200C+DMX+REFERENCE+GUIDE.pdf&v=1623932078",
+      "https://www.prolightdirect.co.uk/wp-content/uploads/Dyno-650C%EF%BC%8FDyno-1200C-DMX-REFERENCE-GUIDE%EF%BC%88V1-20201012%EF%BC%89-002.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Green-Magenta Point": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral/No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "-100 Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99 to -1 Green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral/No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1 to 99 Green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "+100 Green"
+        }
+      ]
+    },
+    "Cross Fade to Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "White … RGBW/HSI color"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fan Control": {
+      "name": "Fan Control",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "Full Speed"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Generic",
+          "comment": "Half Speed"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Off"
+        }
+      ]
+    },
+    "CCT Lighting Mode": {
+      "name": "CCT Lighting Mode",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "Use CCT lighting mode setting of fixture menu"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Generic",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Boost"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Cross Fade to Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Control",
+        "CCT Lighting Mode"
+      ]
+    }
+  ]
+}
