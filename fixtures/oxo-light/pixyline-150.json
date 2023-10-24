@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixyline 150",
+  "shortName": "Pixyline 150",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Chagouli"],
+    "createDate": "2023-10-24",
+    "lastModifyDate": "2023-10-24"
+  },
+  "links": {
+    "manual": [
+      "https://docs.wixstatic.com/ugd/7e664f_c54f4245ce8d449fbb17177a7bc2eab1.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/pixyline-150"
+    ],
+    "video": [
+      "https://www.facebook.com/watch/?v=389803451738198"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 Channels",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
