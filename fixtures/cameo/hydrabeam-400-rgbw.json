@@ -472,17 +472,10 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
-            "Show mode $pixelKey",
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey"
-          ]
-        },
+        "Dimmer All",
+        "Strobe All",
+        "Show mode All",
+        "Show mode speed All / Sound sensitivity All",
         "Light control",
         "Auto color change speed"
       ]
@@ -491,19 +484,12 @@
       "name": "10-channel",
       "shortName": "10ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Tilt $pixelKey",
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
-            "Show mode $pixelKey",
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey"
-          ]
-        },
+        "Pan All",
+        "Tilt All",
+        "Dimmer All",
+        "Strobe All",
+        "Show mode All",
+        "Show mode speed All / Sound sensitivity All",
         "Light control",
         "Auto color change speed",
         {
@@ -521,19 +507,12 @@
       "name": "19-channel",
       "shortName": "19ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey"
-          ]
-        },
+        "Dimmer All",
+        "Strobe All",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelXYZ",
@@ -551,28 +530,14 @@
       "name": "32-channel",
       "shortName": "32ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        },
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Pan $pixelKey fine",
-            "Tilt $pixelKey",
-            "Tilt $pixelKey fine",
-            "Head Speed $pixelKey simple",
-            "Color $pixelKey"
-          ]
-        },
+        "Dimmer All",
+        "Strobe All",
+        "Pan 1",
+        "Pan 1 fine",
+        "Tilt 1",
+        "Tilt 1 fine",
+        "Head Speed 1 simple",
+        "Color 1",
         {
           "insert": "matrixChannels",
           "repeatFor": ["2", "3", "4"],
@@ -587,45 +552,31 @@
           ]
         },
         "Sound mode / Reset",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["All"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Sound sensitivity $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey"
-          ]
-        }
+        "Sound sensitivity All",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All"
       ]
     },
     {
       "name": "56-channel",
       "shortName": "56ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Pan $pixelKey fine",
-            "Tilt $pixelKey",
-            "Tilt $pixelKey fine",
-            "Head Speed $pixelKey simple",
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
-            "Color $pixelKey",
-            "Show mode $pixelKey",
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey"
-          ]
-        },
+        "Pan 1",
+        "Pan 1 fine",
+        "Tilt 1",
+        "Tilt 1 fine",
+        "Head Speed 1 simple",
+        "Dimmer 1",
+        "Strobe 1",
+        "Color 1",
+        "Show mode 1",
+        "Show mode speed 1 / Sound sensitivity 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
         {
           "insert": "matrixChannels",
           "repeatFor": ["2", "3", "4"],
