@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclFresnel 2KTW",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2023-10-24",
+    "lastModifyDate": "2023-10-24"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=40245&ID_USER="
+    ],
+    "productPage": [
+      "https://www.prolights.it/"
+    ]
+  },
+  "physical": {
+    "dimensions": [421, 537, 456],
+    "weight": 17.2,
+    "power": 400,
+    "lens": {
+      "name": "fresnel zoom lens 9.84\" - 250mm / 0.39''",
+      "degreesMinMax": [17, 76]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Orange": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Royal Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "HUE": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer Speed Mode": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Orange",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "CTO",
+        "HUE",
+        "Color Macros",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}
