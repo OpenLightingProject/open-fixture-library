@@ -243,7 +243,7 @@
           }
         },
         {
-          "dmxRange": [8, 30],
+          "dmxRange": [8, 22],
           "type": "Effect",
           "effectName": "Show mode 1",
           "switchChannels": {
@@ -251,7 +251,7 @@
           }
         },
         {
-          "dmxRange": [31, 53],
+          "dmxRange": [23, 37],
           "type": "Effect",
           "effectName": "Show mode 2",
           "switchChannels": {
@@ -259,7 +259,7 @@
           }
         },
         {
-          "dmxRange": [54, 76],
+          "dmxRange": [38, 52],
           "type": "Effect",
           "effectName": "Show mode 3",
           "switchChannels": {
@@ -267,7 +267,7 @@
           }
         },
         {
-          "dmxRange": [77, 99],
+          "dmxRange": [53, 67],
           "type": "Effect",
           "effectName": "Show mode 4",
           "switchChannels": {
@@ -275,34 +275,107 @@
           }
         },
         {
-          "dmxRange": [100, 122],
+          "dmxRange": [68, 82],
           "type": "Effect",
-          "effectName": "Sound control",
-          "soundControlled": true,
+          "effectName": "Show mode 5",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Show mode 6",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Show mode 7",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Show mode 8",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Show mode 9",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Show mode 10",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Show mode 11",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Show mode 12",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Show mode 13",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Show mode 14",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Show mode 15",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "Show mode 16",
+          "switchChannels": {
+            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
+          }
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound control mode",
           "switchChannels": {
             "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [123, 199],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [200, 224],
-          "type": "Maintenance",
-          "comment": "reset",
-          "switchChannels": {
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [225, 255],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed $pixelKey / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         }
       ]
