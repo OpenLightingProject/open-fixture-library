@@ -25,7 +25,10 @@
     "power": 100,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "4× 10W Cree RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 4.5]
     }
   },
   "matrix": {
@@ -101,8 +104,8 @@
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
