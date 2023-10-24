@@ -21,10 +21,6 @@ export default {
   plugins: [
     `~/plugins/global-components.js`,
     `~/plugins/vue-form.js`,
-    {
-      src: `~/plugins/vue-smooth-scroll.js`,
-      ssr: false,
-    },
   ],
   serverMiddleware: [
     {
