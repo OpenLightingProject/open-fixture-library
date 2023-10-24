@@ -239,6 +239,10 @@ export default {
     githubUsername: stringProp().optional,
     githubComment: stringProp().optional,
   },
+  emits: {
+    success: () => true,
+    reset: () => true,
+  },
   data() {
     return {
       state: `closed`,

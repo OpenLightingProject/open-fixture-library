@@ -44,7 +44,7 @@
     </section>
 
     <EditorCapabilityTypeData
-      v-model="wizard.templateCapability"
+      :capability="wizard.templateCapability"
       :channel="channel" />
 
     <table class="capabilities-table">
@@ -163,6 +163,9 @@ export default {
     channel: objectProp().required,
     resolution: numberProp().required,
     wizard: objectProp().required,
+  },
+  emits: {
+    close: insertIndex => true,
   },
   computed: {
     capabilities() {

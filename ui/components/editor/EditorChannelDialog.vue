@@ -275,12 +275,14 @@ export default {
     PropertyInputSelect,
     PropertyInputText,
   },
-  model: {
-    prop: `channel`,
-  },
   props: {
     channel: objectProp().required,
     fixture: objectProp().required,
+  },
+  emits: {
+    'channel-changed': () => true,
+    'remove-channel': channelId => true,
+    'reset-channel': () => true,
   },
   data() {
     return {

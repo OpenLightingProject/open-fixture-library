@@ -41,7 +41,7 @@
           <EditorMode
             v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
-            v-model="fixture.modes[index]"
+            :mode="fixture.modes[index]"
             :index="index"
             :fixture="fixture"
             :formstate="formstate"
@@ -91,7 +91,7 @@
       </VueForm>
 
       <EditorChannelDialog
-        v-model="channel"
+        :channel="channel"
         :fixture="fixture"
         @reset-channel="resetChannel()"
         @channel-changed="autoSave(`channel`)"
