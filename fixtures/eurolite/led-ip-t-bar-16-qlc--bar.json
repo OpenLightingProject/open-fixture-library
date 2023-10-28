@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED IP T-BAR 16 QLC- BAR",
+  "categories": ["Color Changer", "Effect", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["SebD"],
+    "createDate": "2023-10-28",
+    "lastModifyDate": "2023-10-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/eurolite/led-ip-t-bar-8-qcl/mode-d-emploi"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/eurolite_led_ip_t_bar_16_qcl_bar.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=St04qfc_xlk"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "515576"
+  },
+  "physical": {
+    "dimensions": [1065, 126.5, 100],
+    "weight": 5.95,
+    "power": 50,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Brightness": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "NoFunction",
+          "comment": "Speed increase"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto controlled programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Speed  internal programs": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "slow > fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 canaux",
+      "rdmPersonalityIndex": 9,
+      "channels": [
+        "Brightness",
+        "Strobe Effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Auto controlled programs",
+        "Speed  internal programs"
+      ]
+    }
+  ]
+}
