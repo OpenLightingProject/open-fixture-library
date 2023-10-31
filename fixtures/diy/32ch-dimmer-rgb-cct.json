@@ -1,0 +1,419 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "32CH Dimmer/ RGB CCT",
+  "shortName": "32 CH Dimmer",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Jacob Kluge"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "comment": "DIY Dimmer",
+  "links": {
+    "other": [
+      "https://www.amazon.de/dp/B075HC8481?ref=ppx_yo2ov_dt_b_product_details&th=1"
+    ]
+  },
+  "physical": {
+    "dimensions": [187, 145, 35],
+    "weight": 757,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red 1": {
+      "fineChannelAliases": ["Red 1 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "1 Red": {
+      "fineChannelAliases": ["1 Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1 Green": {
+      "fineChannelAliases": ["1 Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1 Blue": {
+      "fineChannelAliases": ["1 Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "1 Warmwhite": {
+      "fineChannelAliases": ["1 Warmwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "1 Coolwhite": {
+      "fineChannelAliases": ["1 Coolwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "2 Red": {
+      "fineChannelAliases": ["2 Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2 Green": {
+      "fineChannelAliases": ["2 Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "2 Blue": {
+      "fineChannelAliases": ["2 Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "2 Warmwhite": {
+      "fineChannelAliases": ["2 Warmwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "2 Coolwhite": {
+      "fineChannelAliases": ["2 Coolwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "3 Red": {
+      "fineChannelAliases": ["3 Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "3 Green": {
+      "fineChannelAliases": ["3 Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3 Blue": {
+      "fineChannelAliases": ["3 Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3 Warmwhite": {
+      "fineChannelAliases": ["3 Warmwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "3 Coolwhite": {
+      "fineChannelAliases": ["3 Coolwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "4 Red": {
+      "fineChannelAliases": ["4 Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4 Green": {
+      "fineChannelAliases": ["4 Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "4 Blue": {
+      "fineChannelAliases": ["4 Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4 Warmwhite": {
+      "fineChannelAliases": ["4 Warmwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "4 Coolwhite": {
+      "fineChannelAliases": ["4 Coolwhite fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Reserved1": {
+      "fineChannelAliases": ["Reserved1 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved2": {
+      "fineChannelAliases": ["Reserved2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved3": {
+      "fineChannelAliases": ["Reserved3 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved4": {
+      "fineChannelAliases": ["Reserved4 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved5": {
+      "fineChannelAliases": ["Reserved5 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "1 Red 2": {
+      "name": "1 Red",
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1 Green 2": {
+      "name": "1 Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1 Blue 2": {
+      "name": "1 Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "1 Warmwhite 2": {
+      "name": "1 Warmwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "1 Coolwhite 2": {
+      "name": "1 Coolwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "2 Red 2": {
+      "name": "2 Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2 Green 2": {
+      "name": "2 Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "2 Blue 2": {
+      "name": "2 Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "2 Warmwhite 2": {
+      "name": "2 Warmwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "2 Coolwhite 2": {
+      "name": "2 Coolwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "3 Red 2": {
+      "name": "3 Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "3 Green 2": {
+      "name": "3 Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3 Blue 2": {
+      "name": "3 Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3 Warmwhite 2": {
+      "name": "3 Warmwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "3 Coolwhite 2": {
+      "name": "3 Coolwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "4 Red 2": {
+      "name": "4 Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4 Green 2": {
+      "name": "4 Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "4 Blue 2": {
+      "name": "4 Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4 Warmwhite 2": {
+      "name": "4 Warmwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "4 Coolwhite 2": {
+      "name": "4 Coolwhite",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "32CH Dim 16bit",
+      "shortName": "Dim16bit",
+      "channels": [
+        "1 Red",
+        "1 Red fine",
+        "1 Green",
+        "1 Green fine",
+        "1 Blue",
+        "1 Blue fine",
+        "1 Warmwhite",
+        "1 Warmwhite fine",
+        "1 Coolwhite",
+        "1 Coolwhite fine",
+        "2 Red",
+        "2 Red fine",
+        "2 Green",
+        "2 Green fine",
+        "2 Blue",
+        "2 Blue fine",
+        "2 Warmwhite",
+        "2 Warmwhite fine",
+        "2 Coolwhite",
+        "2 Coolwhite fine",
+        "3 Red",
+        "3 Red fine",
+        "3 Green",
+        "3 Green fine",
+        "3 Blue",
+        "3 Blue fine",
+        "3 Warmwhite",
+        "3 Warmwhite fine",
+        "3 Coolwhite",
+        "3 Coolwhite fine",
+        "4 Red",
+        "4 Red fine",
+        "4 Green",
+        "4 Green fine",
+        "4 Blue",
+        "4 Blue fine",
+        "4 Warmwhite",
+        "4 Warmwhite fine",
+        "4 Coolwhite",
+        "4 Coolwhite fine"
+      ]
+    },
+    {
+      "name": "32CH Dim 8bit",
+      "shortName": "Dim8bit",
+      "channels": [
+        "1 Red 2",
+        "1 Green 2",
+        "1 Blue 2",
+        "1 Warmwhite 2",
+        "1 Coolwhite 2",
+        "2 Red 2",
+        "2 Green 2",
+        "2 Blue 2",
+        "2 Warmwhite 2",
+        "2 Coolwhite 2",
+        "3 Red 2",
+        "3 Green 2",
+        "3 Blue 2",
+        "3 Warmwhite 2",
+        "3 Coolwhite 2",
+        "4 Red 2",
+        "4 Green 2",
+        "4 Blue 2",
+        "4 Warmwhite 2",
+        "4 Coolwhite 2"
+      ]
+    }
+  ]
+}
