@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "tree",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "comment": "just test",
+  "links": {
+    "manual": [
+      "http://baidu.com"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "red",
+      "shortName": "r",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
