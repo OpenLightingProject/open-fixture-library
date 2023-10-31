@@ -1,0 +1,578 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "6xRGBCCT",
+  "shortName": "RGBCCT",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["JackOB"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "comment": "DIY Project\n6x RGB CCT Stripes",
+  "links": {
+    "productPage": [
+      "https://www.amazon.de/gp/product/B075HC8481/ref=ox_sc_act_title_1?smid=A2P8OYELLY8086&th=1"
+    ]
+  },
+  "physical": {
+    "dimensions": [187, 145, 35],
+    "weight": 757,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "1 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "1 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "2 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "5 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "5 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "5 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "5 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "6 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "6 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "6 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "6 WW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "1 CW 2": {
+      "name": "1 CW",
+      "fineChannelAliases": ["1 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "2 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "3 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "4 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "5 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "6 CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Dimmer 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "1 Red 2": {
+      "name": "1 Red",
+      "fineChannelAliases": ["1 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1 Green 2": {
+      "name": "1 Green",
+      "fineChannelAliases": ["1 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1 Blue 2": {
+      "name": "1 Blue",
+      "fineChannelAliases": ["1 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "1 WW 2": {
+      "name": "1 WW",
+      "fineChannelAliases": ["1 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "2 Red 2": {
+      "name": "2 Red",
+      "fineChannelAliases": ["2 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2 Green 2": {
+      "name": "2 Green",
+      "fineChannelAliases": ["2 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "2 Blue 2": {
+      "name": "2 Blue",
+      "fineChannelAliases": ["2 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "2 WW 2": {
+      "name": "2 WW",
+      "fineChannelAliases": ["2 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "3 Red 2": {
+      "name": "3 Red",
+      "fineChannelAliases": ["3 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "3 Green 2": {
+      "name": "3 Green",
+      "fineChannelAliases": ["3 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3 Blue 2": {
+      "name": "3 Blue",
+      "fineChannelAliases": ["3 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3 WW 2": {
+      "name": "3 WW",
+      "fineChannelAliases": ["3 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "4 Red 2": {
+      "name": "4 Red",
+      "fineChannelAliases": ["4 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4 Green 2": {
+      "name": "4 Green",
+      "fineChannelAliases": ["4 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "4 Blue 2": {
+      "name": "4 Blue",
+      "fineChannelAliases": ["4 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4 WW 2": {
+      "name": "4 WW",
+      "fineChannelAliases": ["4 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "5 Red 2": {
+      "name": "5 Red",
+      "fineChannelAliases": ["5 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "5 Green 2": {
+      "name": "5 Green",
+      "fineChannelAliases": ["5 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "5 Blue 2": {
+      "name": "5 Blue",
+      "fineChannelAliases": ["5 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "5 WW 2": {
+      "name": "5 WW",
+      "fineChannelAliases": ["5 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "6 Red 2": {
+      "name": "6 Red",
+      "fineChannelAliases": ["6 Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "6 Green 2": {
+      "name": "6 Green",
+      "fineChannelAliases": ["6 Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "6 Blue 2": {
+      "name": "6 Blue",
+      "fineChannelAliases": ["6 Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "6 WW 2": {
+      "name": "6 WW",
+      "fineChannelAliases": ["6 WW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "2 CW 2": {
+      "name": "2 CW",
+      "fineChannelAliases": ["2 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "3 CW 2": {
+      "name": "3 CW",
+      "fineChannelAliases": ["3 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "4 CW 2": {
+      "name": "4 CW",
+      "fineChannelAliases": ["4 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "5 CW 2": {
+      "name": "5 CW",
+      "fineChannelAliases": ["5 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "6 CW 2": {
+      "name": "6 CW",
+      "fineChannelAliases": ["6 CW 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Dimmer 1 2": {
+      "name": "Dimmer 1",
+      "fineChannelAliases": ["Dimmer 1 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2 2": {
+      "name": "Dimmer 2",
+      "fineChannelAliases": ["Dimmer 2 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8bit",
+      "shortName": "8bit",
+      "channels": [
+        "1 Red",
+        "1 Green",
+        "1 Blue",
+        "1 WW",
+        "2 Red",
+        "2 Green",
+        "2 Blue",
+        "2 WW",
+        "3 Red",
+        "3 Green",
+        "3 Blue",
+        "3 WW",
+        "4 Red",
+        "4 Green",
+        "4 Blue",
+        "4 WW",
+        "5 Red",
+        "5 Green",
+        "5 Blue",
+        "5 WW",
+        "6 Red",
+        "6 Green",
+        "6 Blue",
+        "6 WW",
+        "1 CW",
+        "2 CW",
+        "3 CW",
+        "4 CW",
+        "5 CW",
+        "6 CW",
+        "Dimmer 1",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "16bit",
+      "shortName": "16 bit",
+      "channels": [
+        "1 Red 2",
+        "1 Red 2 fine",
+        "1 Green 2",
+        "1 Green 2 fine",
+        "1 Blue 2",
+        "1 Blue 2 fine",
+        "1 WW 2",
+        "1 WW 2 fine",
+        "2 Red 2",
+        "2 Red 2 fine",
+        "2 Green 2",
+        "2 Green 2 fine",
+        "2 Blue 2",
+        "2 Blue 2 fine",
+        "2 WW 2",
+        "2 WW 2 fine",
+        "3 Red 2",
+        "3 Red 2 fine",
+        "3 Green 2",
+        "3 Green 2 fine",
+        "3 Blue 2",
+        "3 Blue 2 fine",
+        "3 WW 2",
+        "3 WW 2 fine",
+        "4 Red 2",
+        "4 Red 2 fine",
+        "4 Green 2",
+        "4 Green 2 fine",
+        "4 Blue 2",
+        "4 Blue 2 fine",
+        "4 WW 2",
+        "4 WW 2 fine",
+        "5 Red 2",
+        "5 Red 2 fine",
+        "5 Green 2",
+        "5 Green 2 fine",
+        "5 Blue 2",
+        "5 Blue 2 fine",
+        "5 WW 2",
+        "5 WW 2 fine",
+        "6 Red 2",
+        "6 Red 2 fine",
+        "6 Green 2",
+        "6 Green 2 fine",
+        "6 Blue 2",
+        "6 Blue 2 fine",
+        "6 WW 2",
+        "6 WW 2 fine",
+        "1 CW 2",
+        "1 CW 2 fine",
+        "2 CW 2",
+        "2 CW 2 fine",
+        "3 CW 2",
+        "3 CW 2 fine",
+        "4 CW 2",
+        "4 CW 2 fine",
+        "5 CW 2",
+        "5 CW 2 fine",
+        "6 CW 2",
+        "6 CW 2 fine",
+        "Dimmer 1 2",
+        "Dimmer 1 2 fine",
+        "Dimmer 2 2",
+        "Dimmer 2 2 fine"
+      ]
+    }
+  ]
+}
