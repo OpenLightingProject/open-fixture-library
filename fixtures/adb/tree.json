@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "tree",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "links": {
+    "manual": [
+      "http://dk.com"
+    ]
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "red",
+      "channels": [
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
