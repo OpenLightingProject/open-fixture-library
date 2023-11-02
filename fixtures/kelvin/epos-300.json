@@ -34,7 +34,7 @@
         "type": "Intensity"
       }
     },
-    "Output type 8bit": {
+    "Output type": {
       "name": "Output type",
       "defaultValue": 0,
       "capabilities": [
@@ -60,25 +60,9 @@
         "colorTemperatureEnd": "20000K"
       }
     },
-    "Green-magenta point 8bit": {
+    "Green-magenta point": {
       "name": "Green-magenta point",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "type": "Generic",
-          "dmxRange": [0, 124],
-          "comment": "Neutral"
-        },
-        {
-          "type": "Generic",
-          "dmxRange": [125, 255],
-          "comment": "-0.027 to 0.027"
-        }
-      ]
-    },
-    "Green-magenta point 16bit": {
-      "name": "Green-magenta point",
-      "fineChannelAliases": ["Green-magenta point 16bit fine"],
+      "fineChannelAliases": ["Green-magenta point fine"],
       "defaultValue": 0,
       "capabilities": [
         {
@@ -102,25 +86,9 @@
         "comment": "0.0 to 360.0"
       }
     },
-    "Saturation 8bit": {
+    "Saturation": {
       "name": "Saturation",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "type": "Generic",
-          "dmxRange": [0, 84],
-          "comment": "Default 100%"
-        },
-        {
-          "type": "Generic",
-          "dmxRange": [85, 255],
-          "comment": "0% to 100%"
-        }
-      ]
-    },
-    "Saturation 16bit": {
-      "name": "Saturation",
-      "fineChannelAliases": ["Saturation 16bit fine"],
+      "fineChannelAliases": ["Saturation fine"],
       "defaultValue": 0,
       "capabilities": [
         {
@@ -135,25 +103,9 @@
         }
       ]
     },
-    "Intensity 8bit": {
+    "Intensity": {
       "name": "Intensity",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "type": "Generic",
-          "dmxRange": [0, 84],
-          "comment": "Default 50%"
-        },
-        {
-          "type": "Generic",
-          "dmxRange": [85, 255],
-          "comment": "0% to 100%"
-        }
-      ]
-    },
-    "Intensity 16bit": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 16bit fine"],
+      "fineChannelAliases": ["Intensity fine"],
       "defaultValue": 0,
       "capabilities": [
         {
@@ -168,7 +120,7 @@
         }
       ]
     },
-    "HSI Colorspace 8bit": {
+    "HSI Colorspace": {
       "name": "HSI Colorspace",
       "defaultValue": 0,
       "capabilities": [
@@ -246,7 +198,7 @@
         "color": "Blue"
       }
     },
-    "RGB Colorspace 8bit": {
+    "RGB Colorspace": {
       "name": "RGB Colorspace",
       "defaultValue": 0,
       "capabilities": [
@@ -315,7 +267,7 @@
         "comment": "0.0 to 0.8"
       }
     },
-    "Brand and Category 8bit": {
+    "Brand and Category": {
       "name": "Brand and Category",
       "defaultValue": 0,
       "capabilities": [
@@ -384,7 +336,7 @@
         "colorTemperatureEnd": "10000K"
       }
     },
-    "Selected effect 8bit": {
+    "Selected effect": {
       "name": "Selected effect",
       "defaultValue": 0,
       "capabilities": [
@@ -430,7 +382,7 @@
         }
       ]
     },
-    "Effect state 8bit": {
+    "Effect state": {
       "name": "Effect state",
       "defaultValue": 0,
       "capabilities": [
@@ -605,9 +557,9 @@
       "name": "CCT 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "CCT",
-        "Green-magenta point 8bit"
+        "Green-magenta point"
       ]
     },
     {
@@ -615,22 +567,22 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "CCT",
         "CCT fine",
-        "Green-magenta point 16bit",
-        "Green-magenta point 16bit fine"
+        "Green-magenta point",
+        "Green-magenta point fine"
       ]
     },
     {
       "name": "HSI 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "Hue",
-        "Saturation 8bit",
-        "Intensity 8bit",
-        "HSI Colorspace 8bit",
+        "Saturation",
+        "Intensity",
+        "HSI Colorspace",
         "HSI Device white point"
       ]
     },
@@ -639,14 +591,14 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "Hue",
         "Hue fine",
-        "Saturation 16bit",
-        "Saturation 16bit fine",
-        "Intensity 16bit",
-        "Intensity 16bit fine",
-        "HSI Colorspace 8bit",
+        "Saturation",
+        "Saturation fine",
+        "Intensity",
+        "Intensity fine",
+        "HSI Colorspace",
         "HSI Device white point",
         "HSI Device white point fine"
       ]
@@ -655,11 +607,11 @@
       "name": "RGB 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "Red",
         "Green",
         "Blue",
-        "RGB Colorspace 8bit",
+        "RGB Colorspace",
         "RGB Device white point"
       ]
     },
@@ -668,14 +620,14 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "Red",
         "Red fine",
         "Green",
         "Green fine",
         "Blue",
         "Blue fine",
-        "RGB Colorspace 8bit",
+        "RGB Colorspace",
         "RGB Device white point",
         "RGB Device white point fine"
       ]
@@ -684,7 +636,7 @@
       "name": "XY 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "x",
         "y"
       ]
@@ -694,7 +646,7 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "x",
         "x fine",
         "y",
@@ -705,8 +657,8 @@
       "name": "Gel 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
-        "Brand and Category 8bit",
+        "Output type",
+        "Brand and Category",
         "Gel Index",
         "Base CCT"
       ]
@@ -716,8 +668,8 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
-        "Brand and Category 8bit",
+        "Output type",
+        "Brand and Category",
         "Gel Index",
         "Base CCT",
         "Base CCT fine"
@@ -727,9 +679,9 @@
       "name": "Effect 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
-        "Selected effect 8bit",
-        "Effect state 8bit",
+        "Output type",
+        "Selected effect",
+        "Effect state",
         "Parameter 1",
         "Parameter 2",
         "Parameter 3",
@@ -750,9 +702,9 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
-        "Selected effect 8bit",
-        "Effect state 8bit",
+        "Output type",
+        "Selected effect",
+        "Effect state",
         "Parameter 1",
         "Parameter 1 fine",
         "Parameter 2",
@@ -785,14 +737,14 @@
       "name": "CCT and HSI 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "CCT",
-        "Green-magenta point 8bit",
+        "Green-magenta point",
         "Crossfade",
         "Hue",
-        "Saturation 8bit",
-        "Intensity 8bit",
-        "HSI Colorspace 8bit",
+        "Saturation",
+        "Intensity",
+        "HSI Colorspace",
         "HSI Device white point"
       ]
     },
@@ -801,20 +753,20 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "CCT",
         "CCT fine",
-        "Green-magenta point 16bit",
-        "Green-magenta point 16bit fine",
+        "Green-magenta point",
+        "Green-magenta point fine",
         "Crossfade",
         "Crossfade fine",
         "Hue",
         "Hue fine",
-        "Saturation 16bit",
-        "Saturation 16bit fine",
-        "Intensity 16bit",
-        "Intensity 16bit fine",
-        "HSI Colorspace 8bit",
+        "Saturation",
+        "Saturation fine",
+        "Intensity",
+        "Intensity fine",
+        "HSI Colorspace",
         "HSI Device white point",
         "HSI Device white point fine"
       ]
@@ -823,14 +775,14 @@
       "name": "CCT and RGB 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "CCT",
-        "Green-magenta point 8bit",
+        "Green-magenta point",
         "Crossfade",
         "Red",
         "Green",
         "Blue",
-        "RGB Colorspace 8bit",
+        "RGB Colorspace",
         "RGB Device white point"
       ]
     },
@@ -839,11 +791,11 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "CCT",
         "CCT fine",
-        "Green-magenta point 16bit",
-        "Green-magenta point 16bit fine",
+        "Green-magenta point",
+        "Green-magenta point fine",
         "Crossfade",
         "Crossfade fine",
         "Red",
@@ -852,7 +804,7 @@
         "Green fine",
         "Blue",
         "Blue fine",
-        "RGB Colorspace 8bit",
+        "RGB Colorspace",
         "RGB Device white point",
         "RGB Device white point fine"
       ]
@@ -861,7 +813,7 @@
       "name": "RGBACL 8bit",
       "channels": [
         "Main intensity",
-        "Output type 8bit",
+        "Output type",
         "Red",
         "Green",
         "Blue",
@@ -875,7 +827,7 @@
       "channels": [
         "Main intensity",
         "Main intensity fine",
-        "Output type 8bit",
+        "Output type",
         "Red",
         "Red fine",
         "Green",
