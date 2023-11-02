@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "cct",
+  "shortName": "c",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-11-02",
+    "lastModifyDate": "2023-11-02"
+  },
+  "links": {
+    "manual": [
+      "http://www."
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "red",
+      "shortName": "r",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
