@@ -34,6 +34,9 @@ rules:
     - true
     - ignorePseudoElements: ["v-deep"]
 
+  # simplify rules
+  scss/block-no-redundant-nesting: true
+
   # prevent comments in generated CSS
   scss/comment-no-loud: true
 
