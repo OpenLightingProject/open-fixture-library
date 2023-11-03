@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "cct",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-11-03",
+    "lastModifyDate": "2023-11-03"
+  },
+  "links": {
+    "manual": [
+      "http://www.kt.cn"
+    ]
+  },
+  "availableChannels": {
+    "Effect Speed": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "KL": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "red",
+      "shortName": "r",
+      "channels": [
+        "Effect Speed",
+        "KL"
+      ]
+    }
+  ]
+}
