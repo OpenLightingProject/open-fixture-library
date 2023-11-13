@@ -1,0 +1,516 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02001 ili ZQ-B242",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Andy Boy"],
+    "createDate": "2023-11-13",
+    "lastModifyDate": "2023-11-13",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-11-13",
+      "comment": "created by Q Light Controller Plus (version 5.0.0 Beta 2)"
+    }
+  },
+  "physical": {
+    "dimensions": [220, 330, 220],
+    "weight": 3.1,
+    "power": 26,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1700
+    }
+  },
+  "wheels": {
+    "Pattern": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00060.svg",
+          "name": "Pattern 2 - Flower"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00008.svg",
+          "name": "Pattern 3 - Circles"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00027.svg",
+          "name": "Pattern 4 - Triangle"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00038.svg",
+          "name": "Pattern 5 - Star"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00037.svg",
+          "name": "Pattern 6 - Sunburst"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00046.svg",
+          "name": "Pattern 7 - Spiral"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00097.svg",
+          "name": "Pattern 8 - Triangle Breakup"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00060.svg",
+          "name": "Pattern 2 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00008.svg",
+          "name": "Pattern 3 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00027.svg",
+          "name": "Pattern 4 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00038.svg",
+          "name": "Pattern 5 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00037.svg",
+          "name": "Pattern 6 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00046.svg",
+          "name": "Pattern 7 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00097.svg",
+          "name": "Pattern 8 Dither slow to fast"
+        },
+        {
+          "type": "Gobo",
+          "name": "Pattern Slow Fast"
+        },
+        {
+          "type": "Gobo",
+          "name": "Neznam"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#fc012f"]
+        },
+        {
+          "dmxRange": [15, 21],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#24ff1e"]
+        },
+        {
+          "dmxRange": [22, 28],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0e00ff"]
+        },
+        {
+          "dmxRange": [29, 35],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#f9ff0b"]
+        },
+        {
+          "dmxRange": [36, 42],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#febb0e"]
+        },
+        {
+          "dmxRange": [43, 49],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#80fcff"]
+        },
+        {
+          "dmxRange": [50, 56],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#fd7ad3"]
+        },
+        {
+          "dmxRange": [57, 127],
+          "type": "ColorPreset",
+          "comment": "Half Color",
+          "colors": ["#fd97f3", "#24ff0a"]
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "ColorPreset",
+          "comment": "Fast Slow Stop"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorPreset",
+          "comment": "Slow Fast"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "ColorPreset",
+          "comment": "Neznam"
+        }
+      ]
+    },
+    "Pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Pattern 1 - Clear"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Pattern 2 - Flower"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Pattern 3 - Circles"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Pattern 4 - Triangle"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Pattern 5 - Star"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Pattern 6 - Sunburst"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Pattern 7 - Spiral"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Pattern 8 - Triangle Breakup"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Pattern 1 Dither slow to fast"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Pattern 2 Dither slow to fast"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Pattern 3 Dither slow to fast"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Pattern 4 Dither slow to fast"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Pattern 5 Dither slow to fast"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Pattern 6 Dither slow to fast"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Pattern 7 Dither slow to fast"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Pattern 8 Dither slow to fast"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pattern Fast Slow Stop"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Pattern Slow Fast"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Neznam"
+        }
+      ]
+    },
+    "Dimming": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Intensity",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "Intensity",
+          "comment": "Dimming Slow Fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "Intensity",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "Intensity",
+          "comment": "Fast ON Slow OFF"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "Intensity",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "Intensity",
+          "comment": "Fast OFF Slow ON"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Intensity",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Tilt/Pan speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Model": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Other Mode"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Automatic Mode 3"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Automatic Mode 2"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Automatic Mode 1"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Automatic Mode 0"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [120, 199],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "Effect",
+          "effectName": "Sound Mode 0",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Reset"
+        }
+      ]
+    },
+    "Dim Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Effect",
+          "effectName": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "Building"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "Theatre",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Effect",
+          "effectName": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Color Select",
+        "Pattern",
+        "Dimming",
+        "Strobe",
+        "Tilt/Pan speed",
+        "Model",
+        "Dim Modes"
+      ]
+    }
+  ]
+}
