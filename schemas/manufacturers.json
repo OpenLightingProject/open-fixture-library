@@ -24,8 +24,8 @@
       "website": { "$ref": "definitions.json#/urlString" },
       "rdmId": {
         "type": "integer",
-        "minimum": 0,
-        "maximum": 65536
+        "minimum": 1,
+        "maximum": 32767
       }
     },
     "required": ["name"],
