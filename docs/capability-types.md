@@ -215,7 +215,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">duration<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top">Entity <em>Time</em></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-slot" rowspan="2">
@@ -377,7 +377,7 @@ To make common percentage values more readable, one can use specific keywords to
     EffectDuration
   </th>
   <td valign="top">duration<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>
 <tr>
