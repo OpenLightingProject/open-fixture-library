@@ -248,7 +248,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top">Entity <em>SlotNumber</em></td>
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
 <tr>
@@ -272,7 +272,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top">Entity <em>SlotNumber</em></td>
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
 <tr>
