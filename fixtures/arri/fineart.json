@@ -1,0 +1,5422 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fineart",
+  "shortName": "ts",
+  "categories": ["Dimmer", "Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-11-14",
+    "lastModifyDate": "2023-11-14"
+  },
+  "links": {
+    "manual": [
+      "http://localhost:3000/fixture-editor"
+    ],
+    "productPage": [
+      "http://localhost:3000/fixture-editor"
+    ],
+    "video": [
+      "http://localhost:3000/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature CCT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "2000K"
+      }
+    },
+    "Color Temperature CCT 2": {
+      "name": "Color Temperature CCT",
+      "fineChannelAliases": ["Color Temperature CCT 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green - Magenta Point": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99 % ...-1 %"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1 % ... 99 %"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "Green - Magenta Point 2": {
+      "name": "Green - Magenta Point",
+      "fineChannelAliases": ["Green - Magenta Point 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9831, 30145],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30146, 39976],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Cross Fade to Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "White ...RGBACL Color"
+      }
+    },
+    "Cross Fade to Color 2": {
+      "name": "Cross Fade to Color",
+      "fineChannelAliases": ["Cross Fade to Color 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "White ... RGBACL Color"
+      }
+    },
+    "Intensity Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Red 2": {
+      "name": "Intensity Red",
+      "fineChannelAliases": ["Intensity Red 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Green 2": {
+      "name": "Intensity Green",
+      "fineChannelAliases": ["Intensity Green 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Blue 2": {
+      "name": "Intensity Blue",
+      "fineChannelAliases": ["Intensity Blue 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Amber 2": {
+      "name": "Intensity Amber",
+      "fineChannelAliases": ["Intensity Amber 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Cyan 2": {
+      "name": "Intensity Cyan",
+      "fineChannelAliases": ["Intensity Cyan 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Lime": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Lime 2": {
+      "name": "Intensity Lime",
+      "fineChannelAliases": ["Intensity Lime 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity White 2": {
+      "name": "Intensity White",
+      "fineChannelAliases": ["Intensity White 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT Value": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "CCT Value 2": {
+      "name": "CCT Value",
+      "fineChannelAliases": ["CCT Value 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Green - Magenta Value": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "0%-4%"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "5%-8%"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "9%-47%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "48%-57%"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "58%-96%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "97% 100%"
+        }
+      ]
+    },
+    "Green - Magenta Value 2": {
+      "name": "Green - Magenta Value",
+      "fineChannelAliases": ["Green - Magenta Value 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic",
+          "comment": "0% 7%"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic",
+          "comment": "8% 15%"
+        },
+        {
+          "dmxRange": [9831, 30145],
+          "type": "Generic",
+          "comment": "16% 46%"
+        },
+        {
+          "dmxRange": [30146, 39976],
+          "type": "Generic",
+          "comment": "47% 61%"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic",
+          "comment": "62% 92%"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic",
+          "comment": "93% 100%"
+        }
+      ]
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0-360"
+      }
+    },
+    "Hue 2": {
+      "name": "Hue",
+      "fineChannelAliases": ["Hue 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0...360"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0...Full Saturation"
+      }
+    },
+    "Saturation 2": {
+      "name": "Saturation",
+      "fineChannelAliases": ["Saturation 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0...Full Saturation"
+      }
+    },
+    "CCT value for calibrated RGBW white point": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0%-100%"
+      }
+    },
+    "CCT value for calibrated RGBW white point 2": {
+      "name": "CCT value for calibrated RGBW white point",
+      "fineChannelAliases": ["CCT value for calibrated RGBW white point 2 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0% 100%"
+      }
+    },
+    "G/M value for calibrated RGBW white point": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0%...100%"
+      }
+    },
+    "G/M value for calibrated RGBW white point 2": {
+      "name": "G/M value for calibrated RGBW white point",
+      "fineChannelAliases": ["G/M value for calibrated RGBW white point 2 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0%...100%"
+      }
+    },
+    "Gel, Color Matching Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "Generic",
+          "comment": "0%...33%"
+        },
+        {
+          "dmxRange": [85, 170],
+          "type": "Generic",
+          "comment": "34%...66%"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "67%...100%"
+        }
+      ]
+    },
+    "Gel, Color Matching Selection 2": {
+      "name": "Gel, Color Matching Selection",
+      "fineChannelAliases": ["Gel, Color Matching Selection 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 21759],
+          "type": "Generic",
+          "comment": "0%...33%"
+        },
+        {
+          "dmxRange": [21760, 43775],
+          "type": "Generic",
+          "comment": "34%...67%"
+        },
+        {
+          "dmxRange": [43776, 65535],
+          "type": "Generic",
+          "comment": "68%...100%"
+        }
+      ]
+    },
+    "Gel, Brand": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Rosco"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "LEE Filters"
+        }
+      ]
+    },
+    "Gel, Category": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "toswitching"
+      }
+    },
+    "Gel, Category 2": {
+      "name": "Gel, Category",
+      "fineChannelAliases": ["Gel, Category 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "toswitching"
+      }
+    },
+    "Rosco gel Category": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Color Correction"
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "Generic",
+          "comment": "CalColor"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Storaro Selection"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Cinelux"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Rosco gel Category 2": {
+      "name": "Rosco gel Category",
+      "fineChannelAliases": ["Rosco gel Category 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 13055],
+          "type": "Generic",
+          "comment": "Color Correction"
+        },
+        {
+          "dmxRange": [13056, 26111],
+          "type": "Generic",
+          "comment": "CalColor"
+        },
+        {
+          "dmxRange": [26112, 39167],
+          "type": "Generic",
+          "comment": "Storaro Selection"
+        },
+        {
+          "dmxRange": [39168, 52223],
+          "type": "Generic",
+          "comment": "Cinelux"
+        },
+        {
+          "dmxRange": [52224, 65535],
+          "type": "Generic"
+        }
+      ]
+    },
+    "LEE gel Category": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Color Correction"
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "Generic",
+          "comment": "Color Filters"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "600 Series"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Cosmetic Filters"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "700 Series"
+        }
+      ]
+    },
+    "LEE gel Category 2": {
+      "name": "LEE gel Category",
+      "fineChannelAliases": ["LEE gel Category 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13055],
+          "type": "Generic",
+          "comment": "Color Correction"
+        },
+        {
+          "dmxRange": [13056, 26111],
+          "type": "Generic",
+          "comment": "Color Filters"
+        },
+        {
+          "dmxRange": [26112, 39167],
+          "type": "Generic",
+          "comment": "600 Series"
+        },
+        {
+          "dmxRange": [39168, 52223],
+          "type": "Generic",
+          "comment": "Cosmetic Filters"
+        },
+        {
+          "dmxRange": [52224, 65535],
+          "type": "Generic",
+          "comment": "700 Series"
+        }
+      ]
+    },
+    "Gel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gel 2": {
+      "name": "Gel",
+      "fineChannelAliases": ["Gel 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rosco: Color Correction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Full CTB"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic",
+          "comment": "3/4 CTB"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic",
+          "comment": "1/2 CTB"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic",
+          "comment": "1/3 CTB"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic",
+          "comment": "Tough MT2"
+        },
+        {
+          "dmxRange": [66, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: Color Correction 2": {
+      "name": "Rosco: Color Correction",
+      "fineChannelAliases": ["Rosco: Color Correction 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Full CTB"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic",
+          "comment": "Tough MT2"
+        },
+        {
+          "dmxRange": [16896, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: CalColor": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "15 Blue"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic",
+          "comment": "90 Lavender"
+        },
+        {
+          "dmxRange": [66, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: CalColor 2": {
+      "name": "Rosco: CalColor",
+      "fineChannelAliases": ["Rosco: CalColor 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "15 Blue"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic",
+          "comment": "90 Lavender"
+        },
+        {
+          "dmxRange": [16896, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: Storaro Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "VS Red"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic",
+          "comment": "VS Magenta"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: Storaro Selection 2": {
+      "name": "Rosco: Storaro Selection",
+      "fineChannelAliases": ["Rosco: Storaro Selection 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "VS Red"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic",
+          "comment": "VS Magenta"
+        },
+        {
+          "dmxRange": [5120, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: Cinelux": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Bastard Amber"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Generic",
+          "comment": "Chocolate"
+        },
+        {
+          "dmxRange": [92, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Rosco: Cinelux 2": {
+      "name": "Rosco: Cinelux",
+      "fineChannelAliases": ["Rosco: Cinelux 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Bastard Amber"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16896, 17407],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17408, 17919],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17920, 18431],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18432, 18943],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18944, 19455],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19456, 19967],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19968, 20479],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20480, 20991],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20992, 21503],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21504, 22015],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22016, 22527],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22528, 23039],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [23040, 23551],
+          "type": "Generic",
+          "comment": "Chocolate"
+        },
+        {
+          "dmxRange": [23552, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: Color Correction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Double CTB"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic",
+          "comment": "1/8 Minus Green"
+        },
+        {
+          "dmxRange": [78, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: Color Correction 2": {
+      "name": "Lee: Color Correction",
+      "fineChannelAliases": ["Lee: Color Correction 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Double CTB"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16896, 17407],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17408, 17919],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17920, 18431],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18432, 18943],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18944, 19455],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19456, 19967],
+          "type": "Generic",
+          "comment": "1/8 Minus Green"
+        },
+        {
+          "dmxRange": [19968, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: Color Filters": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Rose Pink"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [148, 149],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [150, 151],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [152, 153],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [156, 157],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [158, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Generic",
+          "comment": "Regal Blue"
+        },
+        {
+          "dmxRange": [178, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: Color Filters 2": {
+      "name": "Lee: Color Filters",
+      "fineChannelAliases": ["Lee: Color Filters 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Summer Blue"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16896, 17407],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17408, 17919],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17920, 18431],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18432, 18943],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18944, 19455],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19456, 19967],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19968, 20479],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20480, 20991],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20992, 21503],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21504, 22015],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22016, 22527],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22528, 23039],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [23040, 23551],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [23552, 24063],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24064, 24575],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24576, 25087],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [25088, 25599],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [25600, 26111],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26112, 26623],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26624, 27135],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [27136, 27647],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [27648, 28159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28160, 28671],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28672, 29183],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [29184, 29695],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [29696, 30207],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30208, 30719],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30720, 31231],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [31232, 31743],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [31744, 32255],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32256, 32767],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32768, 33279],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [33280, 33791],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [33792, 34303],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34304, 34815],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34816, 35327],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [35328, 35839],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [35840, 36351],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36352, 36863],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36864, 37375],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [37376, 37887],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [37888, 38399],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38400, 38911],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38912, 39423],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [39424, 39935],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [39936, 40447],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40448, 40959],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40960, 41471],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [41472, 41983],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [41984, 42495],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42496, 43007],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [43008, 43519],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [43520, 44031],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44032, 44543],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44544, 45055],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [45056, 45567],
+          "type": "Generic",
+          "comment": "Regal Blue"
+        },
+        {
+          "dmxRange": [45568, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: 600 Series": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Arctic White"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic",
+          "comment": "LO Sodium"
+        },
+        {
+          "dmxRange": [18, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: 600 Series 2": {
+      "name": "Lee: 600 Series",
+      "fineChannelAliases": ["Lee: 600 Series 2 fine"],
+      "defaultValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Arctic White"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic",
+          "comment": "LO Sodium"
+        },
+        {
+          "dmxRange": [4608, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: Cosmetic Filters": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Cosmetic Peach"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic",
+          "comment": "Daylight Blue Frost"
+        },
+        {
+          "dmxRange": [36, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee:Cosmetic Filters": {
+      "fineChannelAliases": ["Lee:Cosmetic Filters fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Cosmetic Peach"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic",
+          "comment": "Daylight Blue Frost"
+        },
+        {
+          "dmxRange": [9216, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: 700 Series": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Perfect Lavende"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic",
+          "comment": "Magical Magenta"
+        },
+        {
+          "dmxRange": [82, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Lee: 700 Series 2": {
+      "name": "Lee: 700 Series",
+      "fineChannelAliases": ["Lee: 700 Series 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 511],
+          "type": "Generic",
+          "comment": "Perfect Lavender"
+        },
+        {
+          "dmxRange": [512, 1023],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1024, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2047],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2048, 2559],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2560, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3583],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3584, 4095],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4096, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5120, 5631],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5632, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6655],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6656, 7167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7168, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8192, 8703],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8704, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9727],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9728, 10239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10240, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11263],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11264, 11775],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11776, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 12799],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12800, 13311],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13312, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14335],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14336, 14847],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14848, 15359],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15360, 15871],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15872, 16383],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16384, 16895],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16896, 17407],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17408, 17919],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [17920, 18431],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18432, 18943],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18944, 19455],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19456, 19967],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [19968, 20479],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20480, 20991],
+          "type": "Generic",
+          "comment": "Magical Magenta"
+        },
+        {
+          "dmxRange": [20992, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "X": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0-0.8"
+      }
+    },
+    "Y": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0-0.8"
+      }
+    },
+    "X 2": {
+      "name": "X",
+      "fineChannelAliases": ["X 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0-0.8"
+      }
+    },
+    "Y 2": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0-0.8"
+      }
+    },
+    "Source Category": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Incandescent"
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "Generic",
+          "comment": "Fluorescent"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Discharge"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Other"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Source Category 2": {
+      "name": "Source Category",
+      "fineChannelAliases": ["Source Category 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13055],
+          "type": "Generic",
+          "comment": "Incandescent"
+        },
+        {
+          "dmxRange": [13056, 26111],
+          "type": "Generic",
+          "comment": "Fluorescent"
+        },
+        {
+          "dmxRange": [26112, 39167],
+          "type": "Generic",
+          "comment": "Discharge"
+        },
+        {
+          "dmxRange": [39168, 52223],
+          "type": "Generic",
+          "comment": "Other"
+        },
+        {
+          "dmxRange": [52224, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Source": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Source 2": {
+      "name": "Source",
+      "fineChannelAliases": ["Source 2 fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Incandescent": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "Tungsten Bulb"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 8],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 14],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 26],
+          "type": "Generic",
+          "comment": "Grow Light"
+        },
+        {
+          "dmxRange": [27, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Incandescent 2": {
+      "name": "Incandescent",
+      "fineChannelAliases": ["Incandescent 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 767],
+          "type": "Generic",
+          "comment": "Tungsten Bulb"
+        },
+        {
+          "dmxRange": [768, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2303],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2304, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3839],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3840, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5375],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5376, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6911],
+          "type": "Generic",
+          "comment": "Grow Light"
+        },
+        {
+          "dmxRange": [6912, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Fluorescent": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "CFL Soft White"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 8],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 14],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 26],
+          "type": "Generic",
+          "comment": "CFL Blacklight"
+        },
+        {
+          "dmxRange": [27, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Fluorescent 2": {
+      "name": "Fluorescent",
+      "fineChannelAliases": ["Fluorescent 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 767],
+          "type": "Generic",
+          "comment": "CFL Soft White"
+        },
+        {
+          "dmxRange": [768, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2303],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2304, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3839],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3840, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5375],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5376, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6911],
+          "type": "Generic",
+          "comment": "CFL Blacklight"
+        },
+        {
+          "dmxRange": [6912, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Discharge": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "HMI"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 8],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 14],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "Generic",
+          "comment": "Xenon"
+        },
+        {
+          "dmxRange": [24, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Discharge 2": {
+      "name": "Discharge",
+      "fineChannelAliases": ["Discharge 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 767],
+          "type": "Generic",
+          "comment": "HMI"
+        },
+        {
+          "dmxRange": [768, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2303],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2304, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3839],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3840, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5375],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5376, 6143],
+          "type": "Generic",
+          "comment": "Xenon"
+        },
+        {
+          "dmxRange": [6144, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Other": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 8],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 14],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 26],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [27, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 32],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [33, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 38],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [39, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 44],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [45, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 50],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 56],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "Generic",
+          "comment": "Violet Glow Stick"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Us"
+        }
+      ]
+    },
+    "Other 2": {
+      "name": "Other",
+      "fineChannelAliases": ["Other 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 767],
+          "type": "Generic",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [768, 1535],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1536, 2303],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2304, 3071],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3072, 3839],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3840, 4607],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4608, 5375],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5376, 6143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6144, 6911],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6912, 7679],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [7680, 8447],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8448, 9215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9216, 9983],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9984, 10751],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10752, 11519],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [11520, 12287],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12288, 13055],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13056, 13823],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13824, 14591],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14592, 15359],
+          "type": "Generic",
+          "comment": "Violet Glow Stick"
+        },
+        {
+          "dmxRange": [15360, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Effect Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Party Effect"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Clouds Passing"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Club Lights"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Cop Car"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Light Strobe"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Paparazzi"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Television"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Explosion"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Fluorescent Flicker"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Welding"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Generic",
+          "comment": "eserved for Future Use"
+        }
+      ]
+    },
+    "Effect Selection 2": {
+      "name": "Effect Selection",
+      "fineChannelAliases": ["Effect Selection 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Party  Parameter1 Saturation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "20000K",
+          "comment": "CCT 2.000 K ... 20.000 K"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "0 ...100 % Saturation"
+        }
+      ]
+    },
+    "Party Parameter2 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "60Hz",
+        "speedEnd": "1Hz",
+        "comment": "Loop 60 s ... 1 s"
+      }
+    },
+    "Party Parameter1 Saturation": {
+      "fineChannelAliases": ["Party Parameter1 Saturation fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "CCT 2.000 K ...20.000 K"
+        },
+        {
+          "dmxRange": [1, 65535],
+          "type": "Generic",
+          "comment": "0 ...100 % Saturation"
+        }
+      ]
+    },
+    "Party Parameter2 Speed 2": {
+      "name": "Party Parameter2 Speed",
+      "fineChannelAliases": ["Party Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "60Hz",
+        "speedEnd": "1Hz",
+        "comment": "Loop 60 s ... 1 s"
+      }
+    },
+    "Candle Parameter1 CCT Range": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1400K",
+          "colorTemperatureEnd": "1700K"
+        },
+        {
+          "dmxRange": [85, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1700K",
+          "colorTemperatureEnd": "2000K"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "2300K"
+        }
+      ]
+    },
+    "Candle Parameter2 Speed Range": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "120Hz",
+        "comment": "1 ...120 Changes / Min"
+      }
+    },
+    "Candle Parameter1 CCT Range 2": {
+      "name": "Candle Parameter1 CCT Range",
+      "fineChannelAliases": ["Candle Parameter1 CCT Range 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 21759],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1400K",
+          "colorTemperatureEnd": "1700K"
+        },
+        {
+          "dmxRange": [21760, 43775],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1700K",
+          "colorTemperatureEnd": "2000K"
+        },
+        {
+          "dmxRange": [43776, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "2300K"
+        }
+      ]
+    },
+    "Candle Parameter2 Speed Range 2": {
+      "name": "Candle Parameter2 Speed Range",
+      "fineChannelAliases": ["Candle Parameter2 Speed Range 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "120Hz",
+        "comment": "1 ...120 Changes / Min"
+      }
+    },
+    "Clouds Passing Parameter1 Offset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Offset Number 0 - 50 (Every 5 DMX values is a new Offset)"
+      }
+    },
+    "Clouds Passing Parameter2 Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "2 x Slower...Default Speed"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Default Speed ... 2 x Faster"
+        }
+      ]
+    },
+    "Clouds Passing Parameter1 Offset 2": {
+      "name": "Clouds Passing Parameter1 Offset",
+      "fineChannelAliases": ["Clouds Passing Parameter1 Offset 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Offset Number 0 - 50 (Every 5 DMX values is a new Offset)"
+      }
+    },
+    "Clouds Passing Parameter2 Speed 2": {
+      "name": "Clouds Passing Parameter2 Speed",
+      "fineChannelAliases": ["Clouds Passing Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Generic",
+          "comment": "2 x Slower ...Default Speed"
+        },
+        {
+          "dmxRange": [32768, 65535],
+          "type": "Generic",
+          "comment": "Default Speed ... 2 x Faster"
+        }
+      ]
+    },
+    "Effect Sync": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "If bumped to 255 (100%), the loop will start at zero (or depending on the offset value)"
+      }
+    },
+    "Effect Sync 2": {
+      "name": "Effect Sync",
+      "fineChannelAliases": ["Effect Sync 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "If bumped to 255 (100%), the loop will start at zero (or depending on the offset value)"
+      }
+    },
+    "Club Lights Parameter1 Color Variety": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "3 Colors"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "6 Colors"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "9 Colors"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "12 Colors"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "15 Colors"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "18 Colors"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "21 Colors"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "24 Colors"
+        }
+      ]
+    },
+    "Club Lights Parameter1 Color Variety 2": {
+      "name": "Club Lights Parameter1 Color Variety",
+      "fineChannelAliases": ["Club Lights Parameter1 Color Variety 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8191],
+          "type": "Generic",
+          "comment": "3 Colors"
+        },
+        {
+          "dmxRange": [8192, 16383],
+          "type": "Generic",
+          "comment": "6 Colors"
+        },
+        {
+          "dmxRange": [16384, 24575],
+          "type": "Generic",
+          "comment": "9 Colors"
+        },
+        {
+          "dmxRange": [24576, 32767],
+          "type": "Generic",
+          "comment": "12 Colors"
+        },
+        {
+          "dmxRange": [32768, 40959],
+          "type": "Generic",
+          "comment": "15 Colors"
+        },
+        {
+          "dmxRange": [40960, 49151],
+          "type": "Generic",
+          "comment": "18 Colors"
+        },
+        {
+          "dmxRange": [49152, 57343],
+          "type": "Generic",
+          "comment": "21 Colors"
+        },
+        {
+          "dmxRange": [57344, 65535],
+          "type": "Generic",
+          "comment": "24 Colors"
+        }
+      ]
+    },
+    "Club Lights Parameter2 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "120Hz"
+      }
+    },
+    "Club Lights Parameter2 Speed 2": {
+      "name": "Club Lights Parameter2 Speed",
+      "fineChannelAliases": ["Club Lights Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "120Hz"
+      }
+    },
+    "Cop Car Parameter1 Color Combinations": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "Generic",
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "Generic",
+          "comment": "Blue and Red"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "Generic",
+          "comment": "Blue and White"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "Generic",
+          "comment": "Blue, Red and White"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "Generic",
+          "comment": "Blue and Amber"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "Generic",
+          "comment": "Blue, Red and Amber"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "Generic",
+          "comment": "Red and Amber"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "Generic",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Red"
+        }
+      ]
+    },
+    "Cop Car Parameter1 Color Combinations 2": {
+      "name": "Cop Car Parameter1 Color Combinations",
+      "fineChannelAliases": ["Cop Car Parameter1 Color Combinations 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7167],
+          "type": "Generic",
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [7168, 14335],
+          "type": "Generic",
+          "comment": "Blue and Red"
+        },
+        {
+          "dmxRange": [14336, 21503],
+          "type": "Generic",
+          "comment": "Blue and White"
+        },
+        {
+          "dmxRange": [21504, 28671],
+          "type": "Generic",
+          "comment": "Blue, Red and White"
+        },
+        {
+          "dmxRange": [28672, 35839],
+          "type": "Generic",
+          "comment": "Blue and Amber"
+        },
+        {
+          "dmxRange": [35840, 43007],
+          "type": "Generic",
+          "comment": "Blue, Red and Amber"
+        },
+        {
+          "dmxRange": [43008, 50175],
+          "type": "Generic",
+          "comment": "Red and Amber"
+        },
+        {
+          "dmxRange": [50176, 57343],
+          "type": "Generic",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [57344, 65535],
+          "type": "Generic",
+          "comment": "Red"
+        }
+      ]
+    },
+    "Cop Car Parameter2 Flash Pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "Single Flash"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Double Flash"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Quint All Flash"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Quint Flash"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Quad Flash"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Cycle Al"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Cop Car Parameter2 Flash Pattern 2": {
+      "name": "Cop Car Parameter2 Flash Pattern",
+      "fineChannelAliases": ["Cop Car Parameter2 Flash Pattern 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8191],
+          "type": "Generic",
+          "comment": "Single Flash"
+        },
+        {
+          "dmxRange": [8192, 16383],
+          "type": "Generic",
+          "comment": "Double Flash"
+        },
+        {
+          "dmxRange": [16384, 24575],
+          "type": "Generic",
+          "comment": "Quint All Flash"
+        },
+        {
+          "dmxRange": [24576, 32767],
+          "type": "Generic",
+          "comment": "Quint Flash"
+        },
+        {
+          "dmxRange": [32768, 40959],
+          "type": "Generic",
+          "comment": "Quad Flash"
+        },
+        {
+          "dmxRange": [40960, 49151],
+          "type": "Generic",
+          "comment": "Cycle All"
+        },
+        {
+          "dmxRange": [49152, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Fire Parameter1 Offset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1800K",
+          "colorTemperatureEnd": "2200K"
+        },
+        {
+          "dmxRange": [85, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2200K",
+          "colorTemperatureEnd": "2600K"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2600K",
+          "colorTemperatureEnd": "3000K"
+        }
+      ]
+    },
+    "Fire Parameter1 Offset 2": {
+      "name": "Fire Parameter1 Offset",
+      "fineChannelAliases": ["Fire Parameter1 Offset 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 21759],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1800K",
+          "colorTemperatureEnd": "2200K"
+        },
+        {
+          "dmxRange": [21760, 43775],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2200K",
+          "colorTemperatureEnd": "2600K"
+        },
+        {
+          "dmxRange": [43776, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2600K",
+          "colorTemperatureEnd": "3000K"
+        }
+      ]
+    },
+    "Fire Parameter2 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "180Hz",
+        "comment": "1 ... 180 Changes / Min"
+      }
+    },
+    "Fire Parameter2 Speed 2": {
+      "name": "Fire Parameter2 Speed",
+      "fineChannelAliases": ["Fire Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "180Hz",
+        "comment": "1 ... 180 Changes / Min"
+      }
+    },
+    "Fireworks Parameter1 Color Combinations": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Colors"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Colors and White"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Fireworks Parameter1 Color Combinations 2": {
+      "name": "Fireworks Parameter1 Color Combinations",
+      "fineChannelAliases": ["Fireworks Parameter1 Color Combinations 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16383],
+          "type": "Generic",
+          "comment": "Colors"
+        },
+        {
+          "dmxRange": [16384, 32767],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [32768, 49151],
+          "type": "Generic",
+          "comment": "Colors and White"
+        },
+        {
+          "dmxRange": [49152, 65535],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Fireworks Parameter2 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "10 ... 0,5 s Between Fireworks"
+      }
+    },
+    "Fireworks Parameter2 Speed 2": {
+      "name": "Fireworks Parameter2 Speed",
+      "fineChannelAliases": ["Fireworks Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "10...0,5 s Between Fireworks"
+      }
+    },
+    "Light Strobe Parameter1 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "25Hz",
+        "comment": "1 ... 25 Flashes / Second"
+      }
+    },
+    "Light Strobe Parameter1 Speed 2": {
+      "name": "Light Strobe Parameter1 Speed",
+      "fineChannelAliases": ["Light Strobe Parameter1 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "1Hz",
+        "speedEnd": "25Hz",
+        "comment": "1 ... 25 Flashes / Second"
+      }
+    },
+    "Light Strobe Parameter2 Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K",
+        "comment": "CCT 2.000 K ...20.000 K"
+      }
+    },
+    "Light Strobe Parameter2 Color Temperature 2": {
+      "name": "Light Strobe Parameter2 Color Temperature",
+      "fineChannelAliases": ["Light Strobe Parameter2 Color Temperature 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K",
+        "comment": "CCT 2.000 K ...20.000 K"
+      }
+    },
+    "Lightning Parameter1 Frequency": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "Generic",
+          "comment": "2 ... 14 Lightning Strikes Set"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Random"
+        }
+      ]
+    },
+    "Lightning Parameter1 Frequency 2": {
+      "name": "Lightning Parameter1 Frequency",
+      "fineChannelAliases": ["Lightning Parameter1 Frequency 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 65534],
+          "type": "Generic",
+          "comment": "2 ... 14 Lightning Strikes Set"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Generic",
+          "comment": "Random"
+        }
+      ]
+    },
+    "Paparazzi Parameter1 Frequency": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "6 ... 120 Flashes / Min"
+      }
+    },
+    "Paparazzi Parameter1 Frequency 2": {
+      "name": "Paparazzi Parameter1 Frequency",
+      "fineChannelAliases": ["Paparazzi Parameter1 Frequency 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "6 ... 120 Flashes / Min"
+      }
+    },
+    "Lightning Parameter2 Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "Speed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Random"
+        }
+      ]
+    },
+    "Lightning Parameter2 Speed 2": {
+      "name": "Lightning Parameter2 Speed",
+      "fineChannelAliases": ["Lightning Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 65534],
+          "type": "Speed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Generic",
+          "comment": "Random"
+        }
+      ]
+    },
+    "Paparazzi Parameter2 Flash Type": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Flash Bulb"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Modern Flash"
+        }
+      ]
+    },
+    "Paparazzi Parameter2 Flash Type 2": {
+      "name": "Paparazzi Parameter2 Flash Type",
+      "fineChannelAliases": ["Paparazzi Parameter2 Flash Type 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 65534],
+          "type": "Generic",
+          "comment": "Flash Bulb"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Generic",
+          "comment": "Modern Flash"
+        }
+      ]
+    },
+    "Pulsing Parameter1 Frequency": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "5...90 Pulses / Min"
+      }
+    },
+    "Pulsing Parameter1 Frequency 2": {
+      "name": "Pulsing Parameter1 Frequency",
+      "fineChannelAliases": ["Pulsing Parameter1 Frequency 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "5 ... 90 Pulses / Min"
+      }
+    },
+    "Pulsing Parameter2 Pulse Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "4 ... 0.25 Seconds"
+      }
+    },
+    "Pulsing Parameter2 Pulse Duration 2": {
+      "name": "Pulsing Parameter2 Pulse Duration",
+      "fineChannelAliases": ["Pulsing Parameter2 Pulse Duration 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "4 ... 0.25 Seconds"
+      }
+    },
+    "Television Parameter1 CCT Range": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "4700K"
+        },
+        {
+          "dmxRange": [85, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4700K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Television Parameter1 CCT Range 2": {
+      "name": "Television Parameter1 CCT Range",
+      "fineChannelAliases": ["Television Parameter1 CCT Range 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 21759],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "4700K"
+        },
+        {
+          "dmxRange": [21760, 43775],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4700K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [43776, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Television Parameter2 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "4Hz",
+        "speedEnd": "24Hz"
+      }
+    },
+    "Television Parameter2 Speed 2": {
+      "name": "Television Parameter2 Speed",
+      "fineChannelAliases": ["Television Parameter2 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "4Hz",
+        "speedEnd": "24Hz"
+      }
+    },
+    "Explosion Parameter1 Decay": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Decay 4 ... 0.5 Seconds"
+      }
+    },
+    "Explosion Parameter1 Decay 2": {
+      "name": "Explosion Parameter1 Decay",
+      "fineChannelAliases": ["Explosion Parameter1 Decay 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Decay 4 ... 0.5 Seconds"
+      }
+    },
+    "Explosion Parameter2 Trigger": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Manual (bump intensity to explode)"
+      }
+    },
+    "Explosion Parameter2 Trigger 2": {
+      "name": "Explosion Parameter2 Trigger",
+      "fineChannelAliases": ["Explosion Parameter2 Trigger 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Manual (bump intensity to explode)"
+      }
+    },
+    "Fluorescent Flicker Parameter1 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "2Hz",
+        "speedEnd": "6Hz"
+      }
+    },
+    "Fluorescent Flicker Parameter1 Speed 2": {
+      "name": "Fluorescent Flicker Parameter1 Speed",
+      "fineChannelAliases": ["Fluorescent Flicker Parameter1 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "2Hz",
+        "speedEnd": "6Hz"
+      }
+    },
+    "Fluorescent Flicker Parameter2 Frequency": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "3 ... 10 Flickers per Second"
+      }
+    },
+    "Fluorescent Flicker Parameter2 Frequency 2": {
+      "name": "Fluorescent Flicker Parameter2 Frequency",
+      "fineChannelAliases": ["Fluorescent Flicker Parameter2 Frequency 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "3 ... 10 Flickers per Second"
+      }
+    },
+    "Welding Parameter1 Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Welding Parameter1 Speed 2": {
+      "name": "Welding Parameter1 Speed",
+      "fineChannelAliases": ["Welding Parameter1 Speed 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Welding Parameter1 Min Intensity Level": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "75%"
+      }
+    },
+    "Welding Parameter1 Min Intensity Level-18": {
+      "fineChannelAliases": ["Welding Parameter1 Min Intensity Level-18 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "75%"
+      }
+    },
+    "Color Mode Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "CCT & Green - Magenta Point"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "HSI"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Calibrated RGBW / Direct RGBACL"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Gel Selection"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Source Matching"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "x, y Coordinates"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Effects"
+        },
+        {
+          "dmxRange": [70, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Effect Parameter 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Effect Parameter 1"
+      }
+    },
+    "Effect Parameter 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Parameter 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Parameter 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Parameter 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Parameter 6": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gel, Brand 2": {
+      "name": "Gel, Brand",
+      "fineChannelAliases": ["Gel, Brand 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Generic",
+          "comment": "Rosco"
+        },
+        {
+          "dmxRange": [32768, 65535],
+          "type": "Generic",
+          "comment": "LEE Filters"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "P01: CCT 8Bit",
+      "shortName": "P01",
+      "rdmPersonalityIndex": 6,
+      "channels": [
+        "Dimmer",
+        "Color Temperature CCT",
+        "Green - Magenta Point"
+      ]
+    },
+    {
+      "name": "P02: CCT 16Bit",
+      "shortName": "P02",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature CCT 2",
+        "Color Temperature CCT 2 fine",
+        "Green - Magenta Point 2",
+        "Green - Magenta Point 2 fine"
+      ]
+    },
+    {
+      "name": "P03: CCT & RGBACL  8Bit",
+      "shortName": "P03",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Dimmer",
+        "Color Temperature CCT",
+        "Green - Magenta Point",
+        "Cross Fade to Color",
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity Amber",
+        "Intensity Cyan",
+        "Intensity Lime",
+        "Intensity White",
+        "CCT Value",
+        "Green - Magenta Value"
+      ]
+    },
+    {
+      "name": "P04: CCT & RGBACL  16Bit",
+      "shortName": "P04",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature CCT 2",
+        "Color Temperature CCT 2 fine",
+        "Green - Magenta Point 2",
+        "Green - Magenta Point 2 fine",
+        "Cross Fade to Color 2",
+        "Cross Fade to Color 2 fine",
+        "Intensity Red 2",
+        "Intensity Red 2 fine",
+        "Intensity Green 2",
+        "Intensity Green 2 fine",
+        "Intensity Blue 2",
+        "Intensity Blue 2 fine",
+        "Intensity Amber 2",
+        "Intensity Amber 2 fine",
+        "Intensity Cyan 2",
+        "Intensity Cyan 2 fine",
+        "Intensity Lime 2",
+        "Intensity Lime 2 fine",
+        "Intensity White 2",
+        "Intensity White 2 fine",
+        "CCT Value 2",
+        "CCT Value 2 fine",
+        "Green - Magenta Value 2",
+        "Green - Magenta Value 2 fine"
+      ]
+    },
+    {
+      "name": "P05: CCT & HSI 8Bit",
+      "shortName": "P05",
+      "channels": [
+        "Dimmer",
+        "Color Temperature CCT",
+        "Green - Magenta Point",
+        "Cross Fade to Color",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "P06: CCT & HSI 16Bit",
+      "shortName": "P06",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature CCT 2",
+        "Color Temperature CCT 2 fine",
+        "Green - Magenta Point 2",
+        "Green - Magenta Point 2 fine",
+        "Cross Fade to Color 2",
+        "Cross Fade to Color 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine"
+      ]
+    },
+    {
+      "name": "P07: RGBACL 8Bit",
+      "shortName": "P07",
+      "channels": [
+        "Dimmer",
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity Amber",
+        "Intensity Cyan",
+        "Intensity Lime",
+        "Intensity White",
+        "CCT value for calibrated RGBW white point",
+        "G/M value for calibrated RGBW white point"
+      ]
+    },
+    {
+      "name": "P08: RGBACL 16Bit",
+      "shortName": "P08",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Intensity Red 2",
+        "Intensity Red 2 fine",
+        "Intensity Green 2",
+        "Intensity Green 2 fine",
+        "Intensity Blue 2",
+        "Intensity Blue 2 fine",
+        "Intensity Amber 2",
+        "Intensity Amber 2 fine",
+        "Intensity Cyan 2",
+        "Intensity Cyan 2 fine",
+        "Intensity Lime 2",
+        "Intensity Lime 2 fine",
+        "Intensity White 2",
+        "Intensity White 2 fine",
+        "CCT value for calibrated RGBW white point 2",
+        "CCT value for calibrated RGBW white point 2 fine",
+        "G/M value for calibrated RGBW white point 2",
+        "G/M value for calibrated RGBW white point 2 fine"
+      ]
+    },
+    {
+      "name": "P09: HSI 8Bit",
+      "shortName": "P09",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "P10: HSI 16Bit",
+      "shortName": "P10",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine"
+      ]
+    },
+    {
+      "name": "P11: Gel Selection 8Bit",
+      "shortName": "P11",
+      "channels": [
+        "Dimmer",
+        "Color Temperature CCT",
+        "Gel, Color Matching Selection",
+        "Gel, Brand",
+        "Gel, Category",
+        "Gel"
+      ]
+    },
+    {
+      "name": "P12: Gel Selection 16Bit",
+      "shortName": "P12",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature CCT 2",
+        "Color Temperature CCT 2 fine",
+        "Gel, Color Matching Selection 2",
+        "Gel, Brand 2",
+        "Gel, Category 2",
+        "Gel 2"
+      ]
+    },
+    {
+      "name": "P13: x, y Coordinates 8Bit",
+      "shortName": "P13",
+      "channels": [
+        "Dimmer",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "name": "P14: x, y Coordinates 16Bit",
+      "shortName": "P14",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "X 2",
+        "X 2 fine",
+        "Y 2",
+        "Y 2 fine"
+      ]
+    },
+    {
+      "name": "P15: Source Matching 8Bit",
+      "shortName": "P15",
+      "channels": [
+        "Dimmer",
+        "Source Category",
+        "Source"
+      ]
+    },
+    {
+      "name": "P15: Source Matching 16Bit",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Source Category 2",
+        "Source 2"
+      ]
+    },
+    {
+      "name": "P17: Lighting Effects 8Bit",
+      "shortName": "P17",
+      "channels": [
+        "Dimmer",
+        "Effect Selection",
+        "Effect Parameter 1",
+        "Effect Parameter 2",
+        "Effect Parameter 3",
+        "Effect Parameter 4",
+        "Effect Parameter 5",
+        "Effect Parameter 6"
+      ]
+    },
+    {
+      "name": "P18: Lighting Effects 16Bit",
+      "shortName": "P18",
+      "channels": [
+        "Dimmer 2",
+        "Effect Selection 2"
+      ]
+    },
+    {
+      "name": "P19: Ultimate 8Bit",
+      "shortName": "P19",
+      "channels": [
+        "Dimmer",
+        "Color Mode Selection"
+      ]
+    }
+  ]
+}
