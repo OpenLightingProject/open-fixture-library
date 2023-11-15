@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "tree",
+  "shortName": "ts",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Amy"],
+    "createDate": "2023-11-15",
+    "lastModifyDate": "2023-11-15"
+  },
+  "links": {
+    "video": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Maintenance",
+        "parameter": -1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "test",
+      "shortName": "t",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
