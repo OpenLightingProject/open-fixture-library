@@ -40,7 +40,7 @@ export async function exportFixtures(fixtures, options) {
       addProcedures(xml, mode);
 
       deviceDefinitions.push({
-        name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, `-`),
+        name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replaceAll(/\s+/g, `-`),
         content: xml.end({
           pretty: true,
           indent: `  `,

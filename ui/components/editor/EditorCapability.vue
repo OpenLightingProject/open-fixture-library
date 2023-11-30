@@ -42,7 +42,7 @@
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -108,6 +108,10 @@ export default {
     resolution: numberProp().required,
     formstate: objectProp().required,
   },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
+  },
   data() {
     return {
       dmxMin: 0,
@@ -130,10 +134,10 @@ export default {
       );
     },
     start() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
     },
     end() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
     },
     min() {
       let min = this.dmxMin;

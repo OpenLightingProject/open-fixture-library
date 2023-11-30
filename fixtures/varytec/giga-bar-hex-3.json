@@ -3,9 +3,9 @@
   "name": "Giga Bar HEX 3",
   "categories": ["Color Changer", "Strobe", "Effect"],
   "meta": {
-    "authors": ["Erik Pade", "Flo Edelmann"],
+    "authors": ["Erik Pade", "Flo Edelmann", "Chemin Rouge Evenements", "Luke Nelson"],
     "createDate": "2021-09-19",
-    "lastModifyDate": "2021-09-19"
+    "lastModifyDate": "2023-02-28"
   },
   "links": {
     "manual": [
@@ -70,11 +70,19 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX values is the light constantly on or off? Is the strobe frequency increasing or decreasing?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Auto Programs": {
       "capabilities": [
@@ -164,9 +172,190 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [15, 255],
+          "dmxRange": [15, 22],
           "type": "ColorPreset",
-          "helpWanted": "Which colors can be selected at which DMX values?"
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 30],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [41, 47],
+          "type": "ColorPreset",
+          "comment": "Pure White",
+          "colors": ["#fffffc"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [63, 70],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [71, 78],
+          "type": "ColorPreset",
+          "comment": "Fuchsia",
+          "colors": ["#b83dae"]
+        },
+        {
+          "dmxRange": [79, 86],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [87, 94],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [95, 102],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#8e44c6"]
+        },
+        {
+          "dmxRange": [103, 110],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [111, 118],
+          "type": "ColorPreset",
+          "comment": "Mint",
+          "colors": ["#aefac6"]
+        },
+        {
+          "dmxRange": [119, 126],
+          "type": "ColorPreset",
+          "comment": "Lime",
+          "colors": ["#bfff00"]
+        },
+        {
+          "dmxRange": [127, 134],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#73abeb"]
+        },
+        {
+          "dmxRange": [135, 142],
+          "type": "ColorPreset",
+          "comment": "Terra Cotta",
+          "colors": ["#c9643b"]
+        },
+        {
+          "dmxRange": [143, 150],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#33d79a"]
+        },
+        {
+          "dmxRange": [151, 158],
+          "type": "ColorPreset",
+          "comment": "Tan",
+          "colors": ["#d2b48c"]
+        },
+        {
+          "dmxRange": [159, 166],
+          "type": "ColorPreset",
+          "comment": "Gold",
+          "colors": ["#ffd700"]
+        },
+        {
+          "dmxRange": [167, 174],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [175, 182],
+          "type": "ColorPreset",
+          "comment": "Redviolet",
+          "colors": ["#b62e46"]
+        },
+        {
+          "dmxRange": [183, 190],
+          "type": "ColorPreset",
+          "comment": "Coral",
+          "colors": ["#ff7c7c"]
+        },
+        {
+          "dmxRange": [191, 198],
+          "type": "ColorPreset",
+          "comment": "Aqua",
+          "colors": ["#13eac9"]
+        },
+        {
+          "dmxRange": [199, 206],
+          "type": "ColorPreset",
+          "comment": "Aquamarine",
+          "colors": ["#7fffd4"]
+        },
+        {
+          "dmxRange": [207, 214],
+          "type": "ColorPreset",
+          "comment": "Emerald",
+          "colors": ["#50c878"]
+        },
+        {
+          "dmxRange": [215, 222],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#cfb5e2"]
+        },
+        {
+          "dmxRange": [223, 230],
+          "type": "ColorPreset",
+          "comment": "Ice",
+          "colors": ["#d6fffa"]
+        },
+        {
+          "dmxRange": [231, 238],
+          "type": "ColorPreset",
+          "comment": "Rosepink",
+          "colors": ["#f97a8c"]
+        },
+        {
+          "dmxRange": [239, 246],
+          "type": "ColorPreset",
+          "comment": "Palegreen",
+          "colors": ["#abeca2"]
+        },
+        {
+          "dmxRange": [247, 254],
+          "type": "ColorPreset",
+          "comment": "Palepink",
+          "colors": ["#e8c3d4"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Babyblue",
+          "colors": ["#9ed7fc"]
         }
       ]
     }

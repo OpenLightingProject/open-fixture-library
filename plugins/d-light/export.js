@@ -169,24 +169,21 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
     return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
   }
 
-  switch (attribute) {
-    case `FOCUS`:
-      return channel.type.toUpperCase(); // PAN or TILT
+  if (attribute === `FOCUS`) {
+    return channel.type.toUpperCase(); // PAN or TILT
+  }
 
-    case `INTENSITY`:
-      if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
-        return `DIMMER`;
-      }
-      break;
+  if (attribute === `INTENSITY` && indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
+    return `DIMMER`;
   }
 
   // in all other attributes, custom text is allowed
   // but we need to use another name syntax
   return uniqueName
     .toUpperCase()
-    .replace(/ /g, `_`)
-    .replace(/\//g, `|`)
-    .replace(/COLOR/g, `COLOUR`);
+    .replaceAll(` `, `_`)
+    .replaceAll(`/`, `|`)
+    .replaceAll(`COLOR`, `COLOUR`);
 }
 
 /**

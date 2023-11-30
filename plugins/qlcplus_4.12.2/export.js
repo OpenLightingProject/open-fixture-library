@@ -73,7 +73,7 @@ export async function exportFixtures(fixtures, options) {
 
     xml.dtd(``);
 
-    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
+    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replaceAll(/\s+/g, `-`);
 
     return {
       name: `fixtures/${sanitizedFileName}`,
@@ -120,10 +120,7 @@ async function addChannel(xml, channel, customGobos) {
   }
 
   const channelPreset = getChannelPreset(channel);
-  if (channelPreset !== null) {
-    xmlChannel.attribute(`Preset`, channelPreset);
-  }
-  else {
+  if (channelPreset === null) {
     xmlChannel.element({
       Group: {
         '@Byte': 0,
@@ -133,13 +130,16 @@ async function addChannel(xml, channel, customGobos) {
 
     if (channelType === `Intensity`) {
       xmlChannel.element({
-        Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
+        Colour: channel.color === null ? `Generic` : channel.color.replace(/^(?:Warm|Cold) /, ``),
       });
     }
 
     for (const capability of channel.capabilities) {
       await addCapability(xmlChannel, capability, customGobos);
     }
+  }
+  else {
+    xmlChannel.attribute(`Preset`, channelPreset);
   }
 
   for (const fineChannel of channel.fineChannels) {
@@ -203,7 +203,7 @@ async function addFineChannel(xml, fineChannel, customGobos) {
 
   if (channelType === `Intensity`) {
     xmlFineChannel.element({
-      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
+      Colour: fineChannel.coarseChannel.color === null ? `Generic` : fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``),
     });
   }
 
@@ -236,7 +236,10 @@ async function addCapability(xmlChannel, capability, customGobos) {
     res2: null,
   } : await getCapabilityPreset(capability);
 
-  if (preset !== null) {
+  if (preset === null) {
+    await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
+  }
+  else {
     xmlCapability.attribute(`Preset`, preset.presetName);
 
     if (preset.res1 !== null) {
@@ -250,9 +253,6 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res2 !== null) {
       xmlCapability.attribute(`Res2`, preset.res2);
     }
-  }
-  else {
-    await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
   }
 }
 

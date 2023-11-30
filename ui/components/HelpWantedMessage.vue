@@ -93,6 +93,9 @@ export default {
     type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
     context: objectProp().required,
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   computed: {
     location() {
       if (this.type === `capability`) {
@@ -157,7 +160,7 @@ export default {
 
       const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
 };

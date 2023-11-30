@@ -41,7 +41,7 @@
         :schema-property="physicalProperties.DMXconnector"
         addition-hint="other DMX connector" />
       <Validate
-        v-if="physical.DMXconnector === `[add-value]`"
+        v-if="modelValue.DMXconnector === `[add-value]`"
         :state="formstate"
         tag="span">
         <PropertyInputText
@@ -135,12 +135,16 @@ export default {
     PropertyInputText,
   },
   model: {
-    prop: `physical`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    physical: objectProp().required,
+    modelValue: objectProp().required,
     formstate: objectProp().required,
     namePrefix: stringProp().required,
+  },
+  emits: {
+    'update:model-value': value => true,
   },
   data() {
     return {
@@ -148,17 +152,17 @@ export default {
       physicalProperties,
       physicalBulbProperties,
       physicalLensProperties,
-      localPhysical: clone(this.physical),
+      localPhysical: clone(this.modelValue),
     };
   },
   watch: {
     localPhysical: {
       handler() {
-        this.$emit(`input`, clone(this.localPhysical));
+        this.$emit(`update:model-value`, clone(this.localPhysical));
       },
       deep: true,
     },
-    'physical.DMXconnector': async function(newValue) {
+    'modelValue.DMXconnector': async function(newValue) {
       if (newValue === `[add-value]` && this.$root._oflRestoreComplete) {
         await this.$nextTick();
         this.$refs.newDmxConnectorInput.focus();
