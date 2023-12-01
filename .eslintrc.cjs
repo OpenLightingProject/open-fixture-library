@@ -204,11 +204,11 @@ const enabledRuleParameters = {
     ],
   }],
   'vue/no-undef-properties': [],
+  'vue/no-unused-emit-declarations': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
   }],
-  'vue/no-unused-emit-declarations': [],
   'vue/no-unused-refs': [],
   'vue/no-use-v-else-with-v-for': [],
   'vue/no-v-text': [],
