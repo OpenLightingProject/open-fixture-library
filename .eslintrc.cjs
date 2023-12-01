@@ -209,6 +209,7 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
+  'vue/no-unused-emit-declarations': [],
   'vue/no-use-v-else-with-v-for': [],
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
@@ -216,6 +217,7 @@ const enabledRuleParameters = {
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
+  'vue/v-if-else-key': [],
   'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
 
