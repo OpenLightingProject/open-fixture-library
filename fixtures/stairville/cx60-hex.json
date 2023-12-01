@@ -1,0 +1,236 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.4.0/schemas/fixture.json",
+  "name": "CX60 Hex",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Leon Dietrich"],
+    "createDate": "2023-10-07",
+    "lastModifyDate": "2023-10-07"
+  },
+  "comment": "Stairville CX 60 Hex, LED-Par Lamp",
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_469039_469040_469056_469058_523399_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/cat_BF_stairville.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FAIM-LrFix4"
+    ]
+  },
+  "physical": {
+    "dimensions": [405, 275, 275],
+    "weight": 3.3,
+    "power": 170,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6700,
+      "lumens": 8500
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Use color defined in color channels"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "14 color automatic switching"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "24 color automatic switching"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "6 color automatic switching"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No automatic changes"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Behaviour based on channel 1: 64..127 fast to slow; 128 .. 191 slow to fast; 192 .. 255 based on microphone"
+        }
+      ]
+    },
+    "ColorPattern": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "Disabled"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Selection of color pattern (1/31)"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Increasing Speed"
+        }
+      ]
+    },
+    "FadeControl": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "No fade-out effect"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Fade-out, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Fade-in, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Fade-In-Out, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Automatic Effect, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "4 color Chase Effect, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "12 color Chase Effect, Speed controlled by channel 8"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Controlled by microphone"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Mode",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "ColorPattern",
+        "Strobe Speed",
+        "FadeControl",
+        "Dimmer"
+      ]
+    }
+  ],
+  "fixtureKey": "cx60-hex",
+  "manufacturerKey": "stairville",
+  "oflURL": "https://open-fixture-library.org/stairville/cx60-hex"
+}
