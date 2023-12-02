@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "pure ligt",
+  "shortName": "muvy spotone",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["theo"],
+    "createDate": "2023-12-02",
+    "lastModifyDate": "2023-12-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/download/1916522/Purelight-Muvy-Spotone.html"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/fr_FR/EUR/PURElight-MUVY-SpotOne-Duo-Set/art-LIG252"
+    ]
+  },
+  "physical": {
+    "dimensions": [15.9, 14.7, 26.5],
+    "weight": 3,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1x 30w Cree led,white"
+    },
+    "lens": {
+      "name": "muvy spotone",
+      "degreesMinMax": [0, 230]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": 100,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dimer",
+      "channels": [
+        "Intensity",
+        "Intensity fine"
+      ]
+    }
+  ]
+}
