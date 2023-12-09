@@ -11,8 +11,8 @@
         :minimum="minNumber !== undefined ? minNumber : `invalid`"
         :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
 
     <select
@@ -97,6 +97,13 @@ export default {
     maxNumber: numberProp().optional,
     name: stringProp().required,
     wide: booleanProp().withDefault(false),
+  },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'unit-selected': unitString => true,
+    'vf:validate': validationData => true,
   },
   data() {
     return {
