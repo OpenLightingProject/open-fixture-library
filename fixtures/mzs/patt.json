@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Patt",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["MZS"],
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12"
+  },
+  "links": {
+    "other": [
+      "https://aliexpress.ru/item/1005003564102803.html?sku_id=12000026301836185&spm=a2g2w.productlist.search_results.0.6dae1d6fgDHcz3"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "5Hz",
+        "speedEnd": "30Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Patt1",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    }
+  ]
+}
