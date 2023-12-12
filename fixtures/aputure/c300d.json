@@ -1,18 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "C300d",
+  "name": "LS C300d",
   "shortName": "C300d",
   "categories": ["Dimmer", "Effect"],
   "meta": {
     "authors": ["alexis"],
-    "createDate": "2022-07-06",
-    "lastModifyDate": "2022-07-06"
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12"
   },
   "links": {
     "manual": [
       "https://www.aputure.com/wp-content/uploads/2019/10/LS-C300d-II_Product_Manual_EN.pdf",
       "https://www.aputure.com/wp-content/uploads/2022/06/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf"
     ]
+  },
+  "physical": {
+    "dimensions": [215.6, 344.5, 298.4],
+    "power": 350,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
   },
   "availableChannels": {
     "Dimmer": {
