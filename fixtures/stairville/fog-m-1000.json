@@ -32,12 +32,13 @@
     "DMXconnector": "3-pin"
   },
   "availableChannels": {
-    "Volume d'expulsion": {
+    "Volume": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction"
+          "type": "FogOutput",
+          "fogOutput": "off"
         },
         {
           "dmxRange": [11, 255],
@@ -47,7 +48,7 @@
         }
       ]
     },
-    "Intervalle": {
+    "Interval": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -58,12 +59,11 @@
           "dmxRange": [11, 255],
           "type": "Time",
           "timeStart": "10s",
-          "timeEnd": "2450s",
-          "comment": "dmx value * 10s"
+          "timeEnd": "2450s"
         }
       ]
     },
-    "Durée d'expusion": {
+    "Duration": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -74,19 +74,19 @@
           "dmxRange": [11, 255],
           "type": "Time",
           "timeStart": "1s",
-          "timeEnd": "245s",
-          "comment": "DMX value * 1s"
+          "timeEnd": "245s"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "3 channels",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
-        "Volume d'expulsion",
-        "Intervalle",
-        "Durée d'expusion"
+        "Volume",
+        "Interval",
+        "Duration"
       ]
     }
   ]
