@@ -4,8 +4,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Ludovic - ZGen", "ZGen"],
-    "createDate": "2023-10-13",
-    "lastModifyDate": "2023-10-13",
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2023-10-13",
@@ -24,7 +24,12 @@
     ]
   },
   "physical": {
-    "DMXconnector": "5-pin",
+    "DMXconnector": "3-pin",
+    "power": 12,
+    "weight": 1.7,
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
     "bulb": {
       "type": "LED"
     }
