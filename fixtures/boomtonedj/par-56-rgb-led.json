@@ -111,7 +111,8 @@
   },
   "modes": [
     {
-      "name": "7 canaux",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -123,7 +124,8 @@
       ]
     },
     {
-      "name": "3 canaux",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": ["Red", "Blue", "Green"]
     }
   ]
