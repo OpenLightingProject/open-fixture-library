@@ -77,9 +77,6 @@ export default {
     WheelSlotOpen,
     WheelSlotPrism,
   },
-  model: {
-    prop: `capability`,
-  },
   props: {
     channel: objectProp().required,
     slotNumber: integerProp().required,

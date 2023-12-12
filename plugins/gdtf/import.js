@@ -953,7 +953,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       const channels = dmxBreakWrappers.at(-1).channels;
 
-      const channelKeys = [channelKey, ...oflChannel.fineChannelAliases];
+      const channelKeys = [channelKey, ...(oflChannel.fineChannelAliases ?? [])];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)
