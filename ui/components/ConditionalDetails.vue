@@ -1,24 +1,16 @@
-<!-- Usage:
+<template>
+  <details v-if="$slots.default">
+    <summary>
+      <slot name="summary" />
+    </summary>
 
-1. with content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
+    <slot />
+  </details>
 
-    World
-  </ConditionalDetails>
-
-  renders:
-  <details><summary>Hello</summary>World</details>
-
-2. without content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
-  </ConditionalDetails>
-
-  renders:
-  <div class="summary">Hello</div>
-
--->
+  <div v-else class="summary">
+    <slot name="summary" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 summary {
@@ -73,20 +65,3 @@ details {
   }
 }
 </style>
-
-<script>
-export default {
-  render(createElement) {
-    if (this.$slots.default) {
-      return createElement(`details`, [
-        createElement(`summary`, this.$slots.summary),
-        this.$slots.default,
-      ]);
-    }
-
-    return createElement(`div`, {
-      class: `summary`,
-    }, this.$slots.summary);
-  },
-};
-</script>
