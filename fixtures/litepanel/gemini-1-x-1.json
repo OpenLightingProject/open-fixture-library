@@ -1,32 +1,37 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Gemini 1 x 1",
-  "shortName": "G 1x1",
+  "name": "Gemini 1x1 Soft RGBWW LED Panel",
+  "shortName": "Gemini 1x1",
   "categories": ["Color Changer", "Dimmer"],
   "meta": {
     "authors": ["Anonymous"],
-    "createDate": "2023-06-01",
-    "lastModifyDate": "2023-06-01"
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12"
   },
   "links": {
     "manual": [
-      "https://www.litepanels.com/en/litepanels/gemini-1x1-soft-rgbww-led-panel-(standard-yoke%2C-uk-power-cable)/c-1027/p-1811"
+      "https://www.litepanels.com/wp-content/uploads/2023/06/945-1101_documents_1_gemini-1x1-user-manual.pdf"
     ],
     "productPage": [
-      "https://www.litepanels.com"
+      "https://www.litepanels.com/en/product/gemini-1x1-soft-rgbww-led-panel-(standard-yoke,-uk-power-cable)/"
+    ],
+    "other": [
+      "https://www.litepanels.com/wp-content/uploads/2023/06/lp_gemini_dmx_function_chart.pdf",
+      "https://www.litepanels.com/wp-content/uploads/2023/06/945-1101_documents_2_gemini-1x1-setup-guide.pdf",
+      "https://www.litepanels.com/wp-content/uploads/2023/06/945-1101_documents_4_gemini-1x1-effects-details.pdf"
+
     ],
     "video": [
-      "https://www.litepanels.com/litepanels/gemini-1x1-soft/c-1027/c-1519"
+      "https://www.youtube.com/watch?v=Qq-YZmp7xWY"
     ]
   },
   "physical": {
-    "weight": 5,
-    "power": 100,
+    "weight": 5.3,
+    "power": 200,
     "DMXconnector": "5-pin",
+    "dimensions": [320, 320, 118],
     "bulb": {
-      "type": "LED",
-      "colorTemperature": 3200,
-      "lumens": 4
+      "type": "LED"
     }
   },
   "availableChannels": {
