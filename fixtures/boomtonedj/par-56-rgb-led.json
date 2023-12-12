@@ -35,7 +35,7 @@
     }
   },
   "availableChannels": {
-    "Dimmer général": {
+    "Dimmer": {
       "defaultValue": 0,
       "capability": {
         "type": "Intensity"
@@ -77,34 +77,35 @@
       "capabilities": [
         {
           "dmxRange": [0, 100],
-          "type": "Intensity",
-          "comment": "Changeur de couleur rapide"
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [101, 150],
-          "type": "Intensity",
-          "comment": "Changeur de couleur lent"
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         },
         {
           "dmxRange": [151, 200],
-          "type": "Intensity",
-          "comment": "MODE AUDIO1"
+          "type": "Effect",
+          "effectName": "Sound active mode 1",
+          "soundControlled": true
         },
         {
           "dmxRange": [201, 255],
-          "type": "Intensity",
-          "comment": "MODE AUDIO2"
+          "type": "Effect",
+          "effectName": "Sound active mode 2",
+          "soundControlled": true
         }
       ]
     },
-    "Variation de vitesse": {
+    "Effect Speed": {
       "defaultValue": 0,
       "capability": {
         "type": "Speed",
-        "comment": "Variation de vitesse des programmes du canal 6",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "Are the automatically added speed values correct?"
+        "helpWanted": "Is this slow to fast or fast to slow?"
       }
     }
   },
@@ -112,22 +113,18 @@
     {
       "name": "7 canaux",
       "channels": [
-        "Dimmer général",
+        "Dimmer",
         "Strobe",
         "Red",
         "Blue",
         "Green",
         "Mode",
-        "Variation de vitesse"
+        "Effect Speed"
       ]
     },
     {
       "name": "3 canaux",
-      "channels": [
-        "Red",
-        "Blue",
-        "Green"
-      ]
+      "channels": ["Red", "Blue", "Green"]
     }
   ]
 }
