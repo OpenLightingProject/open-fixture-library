@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "P600Bi Hard",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Godox"],
+    "createDate": "2023-11-23",
+    "lastModifyDate": "2023-11-23"
+  },
+  "links": {
+    "manual": [
+      "http://godox.com/static/upload/file/20230530/1685409955767272.pdf",
+      "http://godox.com/static/upload/file/20230530/1685409918717461.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-a/P600Bi-Hard.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GinVqqIzXa0&t=5s",
+      "https://www.youtube.com/watch?v=7SLAdydEgMs&t=2s"
+    ]
+  },
+  "physical": {
+    "weight": 10,
+    "power": 650,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "fineChannelAliases": ["Color Temperature 2 fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8-Bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "CCT 16-Bit",
+      "channels": [
+        "Intensity 2",
+        "Intensity 2 fine",
+        "Color Temperature 2",
+        "Color Temperature 2 fine"
+      ]
+    }
+  ]
+}
