@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "illusion 2",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tom Mulder"],
+    "createDate": "2023-11-22",
+    "lastModifyDate": "2023-11-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.manua.ls/beamz/illusion-2/manual?p=34"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "random"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [31, 55],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [56, 80],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [81, 105],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [106, 130],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [131, 155],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [156, 180],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [181, 205],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Light groen"
+        },
+        {
+          "dmxRange": [206, 230],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Paars"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "SMD ring stobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer SMD ring": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "SMD Ring Program": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "SMD ring stobe",
+        "Dimmer SMD ring",
+        "SMD Ring Program"
+      ]
+    }
+  ]
+}
