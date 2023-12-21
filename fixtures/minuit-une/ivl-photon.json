@@ -1,0 +1,301 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IVL_Photon",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Florian Declercq", "Captainflo"],
+    "createDate": "2023-12-21",
+    "lastModifyDate": "2023-12-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-12-21",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 23],
+          "type": "Maintenance",
+          "comment": "IVL OFF"
+        },
+        {
+          "dmxRange": [24, 36],
+          "type": "Maintenance",
+          "comment": "Reset MOTOR"
+        },
+        {
+          "dmxRange": [37, 51],
+          "type": "Maintenance",
+          "comment": "Reset SOURCE"
+        },
+        {
+          "dmxRange": [52, 64],
+          "type": "Maintenance",
+          "comment": "Reset ALL"
+        },
+        {
+          "dmxRange": [65, 125],
+          "type": "Maintenance",
+          "comment": "IVL ON fast mode"
+        },
+        {
+          "dmxRange": [126, 255],
+          "type": "Maintenance",
+          "comment": "IVL ON normal mode"
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [15, 27],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [28, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe BPM",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Shutter range": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Gobo Split": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "1 Beam"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "2 Beams"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "4 Beams"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "8 Beams"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "16 Beams"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "32 Beams"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "64 Beams"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "128 Beams"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "256 Beams"
+        }
+      ]
+    },
+    "Gobo Index": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Index"
+      }
+    },
+    "Index Fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Gobo Rot": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [13, 122],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Spin CW"
+        },
+        {
+          "dmxRange": [123, 133],
+          "type": "WheelSlotRotation",
+          "speed": "stop",
+          "comment": "Rel"
+        },
+        {
+          "dmxRange": [134, 242],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Spin CCW"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Gobo Size": {
+      "fineChannelAliases": ["Gobo Size Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Zoom spd": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom Speed"
+      }
+    },
+    "TILT": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red C-Mix"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green C-Mix"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue C-Mix"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "STANDARD",
+      "channels": [
+        "Control",
+        "Shutter",
+        "Shutter range",
+        "Gobo Split",
+        "Gobo Index",
+        "Index Fine",
+        "Gobo Rot",
+        "Gobo Size",
+        "Gobo Size Fine",
+        "Zoom",
+        "Zoom Fine",
+        "Zoom spd",
+        "TILT",
+        "Tilt Fine",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "TILT Cell 1",
+      "channels": [
+        "TILT",
+        "Tilt Fine",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
