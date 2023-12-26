@@ -93,6 +93,9 @@ export default {
     type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
     context: objectProp().required,
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   computed: {
     location() {
       if (this.type === `capability`) {
