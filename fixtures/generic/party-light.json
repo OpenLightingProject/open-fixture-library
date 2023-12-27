@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Party Light",
+  "categories": ["Laser", "Effect", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Andy"],
+    "createDate": "2023-12-27",
+    "lastModifyDate": "2023-12-27"
+  },
+  "links": {
+    "video": [
+      "https://google.com"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Donner Shizzle",
+      "channels": [
+        "Red",
+        "Green",
+        "Prism Rotation"
+      ]
+    }
+  ]
+}
