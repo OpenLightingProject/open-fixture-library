@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash Zoom 36x18W RGBWA UV Moving HeadLighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["gonzalof_6"],
+    "createDate": "2023-04-03",
+    "lastModifyDate": "2023-04-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1912/file/53697cbd80.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 11.1,
+    "power": 540,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 8500
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Sound": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "high",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg",
+        "comment": "control fino del PAN+"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg",
+        "comment": "Control fino del TILT"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "RESET"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "EMPTY"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Zoom",
+        "Sound",
+        "Program Speed",
+        "Pan 2",
+        "Tilt 2",
+        "Reserved",
+        "No function"
+      ]
+    }
+  ]
+}
