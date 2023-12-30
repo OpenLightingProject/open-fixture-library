@@ -4,13 +4,13 @@
   "shortName": "ADJStingerSpot",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["unk", "Felix Edelmann"],
+    "authors": ["unk", "Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2019-04-02",
-    "lastModifyDate": "2019-04-02"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
-      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/11167/stinger-spot-manual-rev-8-18.pdf"
+      "https://cdb.s3.amazonaws.com/ItemRelatedFiles/11167/ADJ%20Stinger%20Spot%20-%20User%20Manual.pdf"
     ],
     "productPage": [
       "https://www.adj.com/stinger-spot"
@@ -23,6 +23,9 @@
     "dimensions": [174, 273, 145],
     "weight": 3,
     "power": 36,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "10W white LED"

@@ -1,60 +1,91 @@
-const path = require(`path`);
+import { fileURLToPath } from 'url';
 
-module.exports = {
+import register from './fixtures/register.json';
+import { fixtureFromRepository } from './lib/model.js';
+import plugins from './plugins/plugins.json';
+
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
+
+export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
-    `@nuxtjs/style-resources`,
+    `nuxt-helmet`,
+    `cookie-universal-nuxt`,
+    `@nuxtjs/robots`,
+    `@nuxtjs/sitemap`,
   ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
+  ],
+  serverMiddleware: [
     {
-      src: `~/plugins/vue-smooth-scroll.js`,
-      ssr: false,
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
     },
   ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
   ],
-  styleResources: {
-    scss: [
-      `~/assets/styles/vars.scss`,
-      `~/assets/styles/theming.scss`,
-      `~/assets/styles/mixins.scss`,
-    ],
+  publicRuntimeConfig: {
+    websiteUrl,
+    searchIndexingIsAllowed: process.env.ALLOW_SEARCH_INDEXING === `allowed`,
   },
   build: {
-    extend(config, ctx) {
+    quiet: false,
+    loaders: {
+      // condense whitespace in Vue templates
+      vue: {
+        compilerOptions: {
+          whitespace: `condense`,
+        },
+      },
+      // automatically `@use` global SCSS definitions
+      scss: {
+        additionalData: `@use "~/assets/styles/global.scss" as *;`,
+      },
+    },
+    extend(config, context) {
       // exclude /assets/icons from url-loader
-      const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
-      urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = fileURLToPath(new URL(`ui/assets/icons/`, import.meta.url));
+      const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
+      urlLoader.exclude = iconsPath;
 
       // include /assets/icons for svg-inline-loader
       config.module.rules.push({
         test: /\.svg$/,
-        include: [
-          path.resolve(__dirname, `ui/assets/icons`),
-        ],
+        include: [iconsPath],
         loader: `svg-inline-loader`,
         options: {
           removeSVGTagAttrs: false,
         },
       });
 
-      // condense whitespace in Vue templates
-      const vueLoader = config.module.rules.find(rule => rule.loader === `vue-loader`);
-      vueLoader.options.compilerOptions = {
-        preserveWhitespace: false,
-        whitespace: `condense`,
+      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      const javascriptRule = config.module.rules.find(rule => rule.type === `javascript/auto`);
+      const originalExclude = javascriptRule.exclude;
+      javascriptRule.exclude = {
+        and: [
+          originalExclude,
+          { not: [/node_modules\/a11y-dialog/] },
+        ],
       };
     },
   },
@@ -81,8 +112,10 @@ module.exports = {
     color: `#1e88e5`,
   },
   head() {
-    const htmlAttrs = {
+    const theme = this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`);
+    const htmlAttributes = {
       lang: `en`,
+      'data-theme': theme,
     };
 
     const titleTemplate = titleChunk => {
@@ -90,8 +123,7 @@ module.exports = {
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
     };
 
-    const websitePath = this.$route.path.replace(/\/$/, ``); // remove trailing slash
-    const canonicalUrl = `https://open-fixture-library.org${websitePath}`;
+    const canonicalUrl = this.$config.websiteUrl.slice(0, -1) + this.$route.path.replace(/\/$/, ``); // remove trailing slash
 
     const meta = [
       {
@@ -104,6 +136,11 @@ module.exports = {
       {
         name: `mobile-web-app-capable`,
         content: `yes`,
+      },
+      {
+        hid: `theme-color`,
+        name: `theme-color`,
+        content: theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
       },
       {
         // this enables Twitter link previews
@@ -168,7 +205,7 @@ module.exports = {
       },
     ];
 
-    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    if (!this.$config.searchIndexingIsAllowed) {
       meta.push({
         name: `robots`,
         content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`,
@@ -212,19 +249,74 @@ module.exports = {
         as: `font`,
         type: `font/woff2`,
       },
-      {
-        rel: `preload`,
-        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
-        as: `font`,
-        type: `font/woff`,
-      },
     ];
 
     return {
-      htmlAttrs,
+      htmlAttrs: htmlAttributes,
       titleTemplate,
       meta,
       link,
     };
+  },
+  robots() {
+    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+      return {
+        UserAgent: `*`,
+        Disallow: `/`,
+      };
+    }
+
+    return {
+      UserAgent: `*`,
+      Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
+      Allow: `/`,
+      Sitemap: `${websiteUrl}sitemap.xml`,
+    };
+  },
+  sitemap: {
+    hostname: websiteUrl,
+    gzip: true,
+    async routes() {
+      const staticUrls = [
+        { url: `/`, changefreq: `daily` },
+        { url: `/fixture-editor`, changefreq: `monthly` },
+        { url: `/import-fixture-file`, changefreq: `monthly` },
+        { url: `/manufacturers`, changefreq: `monthly` },
+        { url: `/categories`, changefreq: `monthly` },
+        { url: `/about`, changefreq: `monthly` },
+        { url: `/about/plugins`, changefreq: `monthly` },
+        { url: `/rdm`, changefreq: `yearly` },
+        { url: `/search`, changefreq: `yearly` },
+      ];
+
+      const manufacturerUrlPromises = Object.keys(register.manufacturers).flatMap(manufacturerKey => [
+        Promise.resolve({ url: `/${manufacturerKey}`, changefreq: `weekly` }),
+
+        // fixture URLs
+        ...register.manufacturers[manufacturerKey].map(async fixtureKey => {
+          const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
+          return {
+            url: `/${manufacturerKey}/${fixtureKey}`,
+            changefreq: `monthly`,
+            lastmod: fixture.meta.lastModifyDate.toISOString(),
+          };
+        }),
+      ]);
+
+      const categoryUrls = Object.keys(register.categories).map(
+        category => ({ url: `/categories/${category}`, changefreq: `weekly` }),
+      );
+
+      const pluginUrls = Object.keys(plugins.data).filter(key => !plugins.data[key].outdated).map(
+        pluginKey => ({ url: `/about/plugins/${pluginKey}`, changefreq: `monthly` }),
+      );
+
+      return [
+        ...staticUrls,
+        ...await Promise.all(manufacturerUrlPromises),
+        ...categoryUrls,
+        ...pluginUrls,
+      ];
+    },
   },
 };

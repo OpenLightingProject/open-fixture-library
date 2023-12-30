@@ -79,7 +79,7 @@ To make common percentage values more readable, one can use specific keywords to
     ShutterStrobe
   </th>
   <td valign="top">shutterEffect<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
-  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code>, <code>Spikes</code></td>
+  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code>, <code>Spikes</code>, <code>Burst</code></td>
   <td valign="top"></td>
 </tr>
 <tr>
@@ -215,7 +215,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">duration<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top">Entity <em>Time</em></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-slot" rowspan="2">
@@ -248,7 +248,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top">Entity <em>SlotNumber</em></td>
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
 <tr>
@@ -272,7 +272,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top">Entity <em>SlotNumber</em></td>
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
 <tr>
@@ -377,7 +377,7 @@ To make common percentage values more readable, one can use specific keywords to
     EffectDuration
   </th>
   <td valign="top">duration<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>
 <tr>
@@ -647,4 +647,4 @@ Use one-based numbering (e.g. `1` for *Open*, `2` for *Color/Gobo 1*). If the ca
 * Add a capability icon (see `ui/assets/icon` and maybe also the `app-fixture-capability-type-icon` component)
 * Update editor:
   * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.
-  * Import the new component in the [capability component](../ui/components/editor-capability-type-data.vue) and register it in its `components` section.
+  * Import the new component in the [capability component](../ui/components/editor/EditorCapabilityTypeData.vue) and register it in its `components` section.

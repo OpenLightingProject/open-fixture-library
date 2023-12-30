@@ -1,0 +1,22 @@
+# See https://help.github.com/en/github/administering-a-repository/keeping-your-dependencies-updated-automatically
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+    ignore:
+      - dependency-name: "eslint-plugin-jsdoc"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"

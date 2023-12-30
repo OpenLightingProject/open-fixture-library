@@ -1,0 +1,77 @@
+{
+  "get": {
+    "operationId": "getPlugins",
+    "description": "Returns general information about import and export plugins.",
+    "tags": ["plugins"],
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "importPlugins": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exportPlugins": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "data": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "outdated": {
+                        "constant": true
+                      },
+                      "newPlugin": {
+                        "type": "string"
+                      },
+                      "importPluginVersion": {
+                        "type": "string"
+                      },
+                      "exportPluginVersion": {
+                        "type": "string"
+                      },
+                      "exportTests": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "dependencies": {
+                      "outdated": ["newPlugin"],
+                      "newPlugin": ["outdated"],
+                      "exportPluginVersion": ["exportTests"],
+                      "exportTests": ["exportPluginVersion"]
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "importPlugins",
+                "exportPlugins",
+                "data"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

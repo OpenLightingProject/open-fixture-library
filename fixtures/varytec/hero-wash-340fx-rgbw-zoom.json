@@ -1,0 +1,416 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Wash 340FX RGBW Zoom",
+  "shortName": "Hero Wash 340FX",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Kai Otte", "Ryan Goodwin"],
+    "createDate": "2021-07-09",
+    "lastModifyDate": "2023-07-12"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_449223_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/varytec_hero_wash_340fx_rgbw_zoom.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Jzb-RsAqWRc"
+    ],
+    "other": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/misc/449223_photometric_data.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [255, 187, 368],
+    "weight": 6.1,
+    "power": 134,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3× 40W RGBW LED",
+      "colorTemperature": 6461
+    },
+    "lens": {
+      "degreesMinMax": [4, 45]
+    }
+  },
+  "wheels": {
+    "Beam Split Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Red, White"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Green, White"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Blue, White"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Red, Green"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Green, Blue"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Red, Blue"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Red, Green, Blue"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "comment": "Green, Blue, White"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "comment": "Red, Blue, White"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "comment": "Red, Green, Blue, White"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Beam Split Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 100],
+          "type": "WheelSlot",
+          "wheel": "Beam Split Wheel",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.5
+        },
+        {
+          "dmxRange": [101, 133],
+          "type": "WheelShake",
+          "wheel": "Beam Split Wheel",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Yo-Yo Effect"
+        },
+        {
+          "dmxRange": [134, 194],
+          "type": "WheelRotation",
+          "wheel": "Beam Split Wheel",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [195, 255],
+          "type": "WheelRotation",
+          "wheel": "Beam Split Wheel",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 1"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 2"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 3"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 4"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "soundSensitivityStart": "off",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 31],
+          "type": "ColorTemperature",
+          "colorTemperature": "2400K"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorTemperature",
+          "colorTemperature": "8400K"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "9600K"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "10800K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Zoom",
+        "Beam Split Effect",
+        "Auto Programs"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macros",
+        "Zoom",
+        "Beam Split Effect",
+        "Auto Programs"
+      ]
+    }
+  ]
+}

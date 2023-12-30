@@ -1,99 +1,91 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const path = require(`path`);
+import '../../lib/load-env-file.js';
 
-const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const plugins = require(`../../plugins/plugins.json`);
-const exportPlugins = plugins.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
-const pullRequest = require(`./pull-request.js`);
+import diffPluginOutputs from '../../lib/diff-plugin-outputs.js';
+import importJson from '../../lib/import-json.js';
+import * as pullRequest from './pull-request.js';
 
-require(`../../lib/load-env-file.js`);
-
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`,
-);
 
 /**
- * @typedef {Object} Task
- * @property {String} manFix The combined manufacturer / fixture key.
- * @property {String} currentPluginKey The plugin key in the current repo version.
- * @property {String} comparePluginKey The plugin key that should be compared against.
+ * @typedef {object} Task
+ * @property {string} manufacturerFixture The combined manufacturer / fixture key.
+ * @property {string} currentPluginKey The plugin key in the current repo version.
+ * @property {string} comparePluginKey The plugin key that should be compared against.
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
-(async () => {
-  try {
-    await pullRequest.checkEnv();
-  }
-  catch (error) {
-    console.error(error);
-    process.exit(0); // if the environment is not correct, just exit without failing
-  }
+try {
+  await pullRequest.checkEnv();
+  await pullRequest.init();
+  const changedComponents = await pullRequest.fetchChangedComponents();
 
-  try {
-    await pullRequest.init();
-    const changedComponents = await pullRequest.fetchChangedComponents();
+  const tasks = await getDiffTasks(changedComponents);
 
-    const tasks = getDiffTasks(changedComponents);
-
-    if (tasks.length === 0) {
-      await pullRequest.updateComment({
-        filename: path.relative(path.join(__dirname, `../../`), __filename),
-        name: `Plugin export diff`,
-        lines: [],
-      });
-      return;
-    }
-
-    const lines = [
-      `You can view your uncommitted changes in plugin exports manually by executing:`,
-      `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
-      ``,
-    ];
-
-    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
-
-    for (const task of tasks) {
-      const taskResultLines = await performTask(task);
-
-      // GitHub's official maximum comment length is 2^16=65536, but it's actually 2^18=262144.
-      // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260000) {
-        lines.push(tooLongMessage);
-        break;
-      }
-
-      lines.push(...taskResultLines);
-    }
-
+  if (tasks.length === 0) {
     await pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      fileUrl: new URL(import.meta.url),
       name: `Plugin export diff`,
-      lines,
+      lines: [],
     });
+    process.exit(0);
   }
-  catch (error) {
-    console.error(error);
-    process.exit(1);
+
+  const lines = [
+    `You can view your uncommitted changes in plugin exports manually by executing:`,
+    `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
+    ``,
+  ];
+
+  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+
+  for (const task of tasks) {
+    const taskResultLines = await performTask(task);
+
+    // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
+    // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
+    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
+      lines.push(tooLongMessage);
+      break;
+    }
+
+    lines.push(...taskResultLines);
   }
-})();
+
+  await pullRequest.updateComment({
+    fileUrl: new URL(import.meta.url),
+    name: `Plugin export diff`,
+    lines,
+  });
+}
+catch (error) {
+  console.error(error);
+  process.exit(1);
+}
 
 
 
 /**
- * @param {Object} changedComponents The PR's changed OFL components.
- * @returns {Array.<Task>} An array of diff tasks to perform.
+ * @param {object} changedComponents The PR's changed OFL components.
+ * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
-function getDiffTasks(changedComponents) {
-  const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-  const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
-  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+async function getDiffTasks(changedComponents) {
+  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
 
-  /** @type {Array.<Task>} */
-  return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
-    .filter((task, index, arr) => {
-      const firstEqualTask = arr.find(otherTask =>
-        task.manFix === otherTask.manFix &&
+  const plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  const usablePlugins = plugins.exportPlugins.filter(
+    // don't diff new plugins and the ofl plugin (which essentially exports the source files)
+    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
+  );
+  const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
+  const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
+
+  /** @type {Task[]} */
+  return [...getTasksForModel(), ...(await getTasksForPlugins()), ...getTasksForFixtures()]
+    .filter((task, index, array) => {
+      const firstEqualTask = array.find(otherTask =>
+        task.manufacturerFixture === otherTask.manufacturerFixture &&
         task.currentPluginKey === otherTask.currentPluginKey &&
         task.comparePluginKey === otherTask.comparePluginKey,
       );
@@ -102,12 +94,12 @@ function getDiffTasks(changedComponents) {
       return task === firstEqualTask;
     })
     .sort((a, b) => {
-      const manFixCompare = a.manFix.localeCompare(b.manFix);
+      const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
       const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
 
-      if (manFixCompare !== 0) {
-        return manFixCompare;
+      if (manufacturerFixtureCompare !== 0) {
+        return manufacturerFixtureCompare;
       }
 
       if (currentPluginCompare !== 0) {
@@ -118,7 +110,7 @@ function getDiffTasks(changedComponents) {
     });
 
   /**
-   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+   * @returns {Task[]} What export diff tasks have to be done due to changes in the model. May be empty.
    */
   function getTasksForModel() {
     const tasks = [];
@@ -127,9 +119,9 @@ function getDiffTasks(changedComponents) {
       changedComponents.modified.model ||
       changedComponents.removed.model) {
 
-      for (const manFix of usableTestFixtures) {
+      for (const manufacturerFixture of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({
-          manFix,
+          manufacturerFixture,
           currentPluginKey: pluginKey,
           comparePluginKey: pluginKey,
         })));
@@ -140,15 +132,15 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+   * @returns {Promise<Task[]>} A Promise that resolves to what export diff tasks have to be done due to changes in plugins. May be empty.
    */
-  function getTasksForPlugins() {
+  async function getTasksForPlugins() {
     const tasks = [];
 
     const changedPlugins = changedComponents.modified.exports;
     for (const changedPlugin of changedPlugins) {
-      tasks.push(...usableTestFixtures.map(manFix => ({
-        manFix,
+      tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+        manufacturerFixture,
         currentPluginKey: changedPlugin,
         comparePluginKey: changedPlugin,
       })));
@@ -157,15 +149,15 @@ function getDiffTasks(changedComponents) {
     const addedPlugins = changedComponents.added.exports;
     const removedPlugins = changedComponents.removed.exports;
     for (const addedPlugin of addedPlugins) {
-      const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+      const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, import.meta.url);
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions[previousVersions.length - 1];
+        const lastVersion = previousVersions.at(-1);
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map(manFix => ({
-            manFix,
+          tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+            manufacturerFixture,
             currentPluginKey: addedPlugin,
             comparePluginKey: lastVersion,
           })));
@@ -177,14 +169,14 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+   * @returns {Task[]} What export diff tasks have to be done due to changes in fixtures. May be empty.
    */
   function getTasksForFixtures() {
     const tasks = [];
 
-    for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
+    for (const [manufacturerKey, fixtureKey] of changedComponents.modified.fixtures) {
       tasks.push(...usablePlugins.map(pluginKey => ({
-        manFix: `${manKey}/${fixKey}`,
+        manufacturerFixture: `${manufacturerKey}/${fixtureKey}`,
         currentPluginKey: pluginKey,
         comparePluginKey: pluginKey,
       })));
@@ -196,10 +188,10 @@ function getDiffTasks(changedComponents) {
 
 /**
  * @param {Task} task The export diff task to fulfill.
- * @returns {Promise.<Array.<String>>} An array of message lines.
+ * @returns {Promise<string[]>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.GITHUB_PR_BASE_REF, [task.manufacturerFixture]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
@@ -207,7 +199,7 @@ async function performTask(task) {
 
   const lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`,
+    `<summary>${emoji} <strong>${task.manufacturerFixture}:</strong> ${pluginDisplayName}</summary>`,
   ];
 
   if (changeFlags.nothingChanged) {
@@ -217,22 +209,33 @@ async function performTask(task) {
     lines.push(`<blockquote>`);
 
     if (changeFlags.hasRemoved) {
-      lines.push(`<strong>Removed files</strong>`);
-      lines.push(`<ul>`, ...output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(
+        `<strong>Removed files</strong>`,
+        `<ul>`,
+        ...output.removedFiles.map(file => `<li>${file}</li>`),
+        `</ul>`,
+      );
     }
 
     if (changeFlags.hasAdded) {
-      lines.push(`<strong>Added files</strong>`);
-      lines.push(`<ul>`, ...output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(
+        `<strong>Added files</strong>`,
+        `<ul>`,
+        ...output.addedFiles.map(file => `<li>${file}</li>`),
+        `</ul>`,
+      );
     }
 
     for (const file of Object.keys(output.changedFiles)) {
-      lines.push(`<details>`);
-      lines.push(`<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`, ``);
-      lines.push(`\`\`\`diff`);
-      lines.push(output.changedFiles[file]);
-      lines.push(`\`\`\``);
-      lines.push(`</details>`);
+      lines.push(
+        `<details>`,
+        `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
+        ``,
+        `\`\`\`diff`,
+        output.changedFiles[file],
+        `\`\`\``,
+        `</details>`,
+      );
     }
 
     lines.push(`</blockquote>`);
@@ -244,15 +247,15 @@ async function performTask(task) {
 }
 
 /**
- * @typedef {Object} ChangeFlags
- * @property {Boolean} hasRemoved Whether any files were removed.
- * @property {Boolean} hasAdded Whether any files were added.
- * @property {Boolean} hasChanged Whether any files were changed.
- * @property {Boolean} nothingChanged Whether changed at all.
+ * @typedef {object} ChangeFlags
+ * @property {boolean} hasRemoved Whether any files were removed.
+ * @property {boolean} hasAdded Whether any files were added.
+ * @property {boolean} hasChanged Whether any files were changed.
+ * @property {boolean} nothingChanged Whether changed at all.
  */
 
 /**
- * @param {Object} diffOutput Output object from {@link diffPluginOutputs}.
+ * @param {object} diffOutput Output object from {@link diffPluginOutputs}.
  * @returns {ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {
@@ -270,7 +273,7 @@ function getChangeFlags(diffOutput) {
 
 /**
  * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
- * @returns {String} String containing a GitHub emoji depicting the changes.
+ * @returns {string} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {

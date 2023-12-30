@@ -1,15 +1,9 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="productModelStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
-
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>
-          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
+          <NuxtLink :to="`/${manufacturerKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
           <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
         </h1>
@@ -18,8 +12,8 @@
           <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
           <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
@@ -28,10 +22,10 @@
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
         </section>
-      </div>
+      </template>
 
-      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
-    </header>
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" show-help />
+    </FixtureHeader>
 
     <section v-if="redirect" class="card yellow">
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
@@ -39,8 +33,8 @@
 
     <FixturePage
       :fixture="fixture"
-      :load-all-modes="loadAllModes"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      :load-all-modes="`loadAllModes` in $route.query"
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
@@ -50,7 +44,7 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
+          @click.prevent="openHelpWantedDialog({
             context: fixture,
             type: `fixture`,
           })">
@@ -76,76 +70,109 @@
   color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
     padding: 0 0.7ex;
+    content: " | ";
   }
 }
 </style>
 
 <script>
-import packageJson from '../../../package.json';
 import register from '../../../fixtures/register.json';
-import plugins from '../../../plugins/plugins.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
+import FixtureHeader from '../../components/FixtureHeader.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
+
+const redirectReasonExplanations = {
+  FixtureRenamed: `The fixture was renamed.`,
+  SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
+};
 
 export default {
   components: {
     ConditionalDetails,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
     HelpWantedDialog,
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
-  async asyncData({ params, query, app, redirect }) {
-    const manKey = params.manufacturerKey;
-    const fixKey = params.fixtureKey;
+  async asyncData({ params, query, $axios, redirect, error }) {
+    const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
+    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
     if (redirectTo) {
-      redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
-      return {};
+      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
-    const fixtureJson = await app.$axios.$get(`/${manKey}/${fixKey}.json`);
-
-    let redirectObj = null;
-    if (query.redirectFrom) {
-      const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
-
-      const reasonExplanations = {
-        FixtureRenamed: `The fixture was renamed.`,
-        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
-      };
-
-      redirectObj = {
-        from: query.redirectFrom,
-        reason: reasonExplanations[redirectJson.reason],
-      };
+    let fixtureJson;
+    let manufacturerJson;
+    let plugins;
+    let redirectObject;
+    try {
+      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
+        $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
+        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
+        $axios.$get(`/api/v1/plugins`),
+        fetchRedirectObject($axios, query.redirectFrom),
+      ]);
+    }
+    catch (requestError) {
+      return error(requestError);
     }
 
     return {
-      isBrowser: false,
       plugins,
-      manKey,
-      fixKey,
+      manufacturerKey,
+      manufacturerJson,
+      fixtureKey,
       fixtureJson,
-      redirect: redirectObj,
-      loadAllModes: `loadAllModes` in query,
-      helpWantedContext: null,
+      redirect: redirectObject,
+    };
+  },
+  data() {
+    return {
+      isBrowser: false,
+      helpWantedContext: undefined,
       helpWantedType: ``,
+    };
+  },
+  head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+      script: [
+        {
+          hid: `productModelStructuredData`,
+          type: `application/ld+json`,
+          json: this.productModelStructuredData,
+        },
+        {
+          hid: `breadcrumbListStructuredData`,
+          type: `application/ld+json`,
+          json: this.breadcrumbListStructuredData,
+        },
+      ],
     };
   },
   computed: {
     fixture() {
-      return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
+      const manufacturer = new Manufacturer(this.manufacturerKey, this.manufacturerJson);
+      return new Fixture(manufacturer, this.fixtureKey, this.fixtureJson);
     },
     productModelStructuredData() {
       const data = {
@@ -154,7 +181,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.manKey}`,
+          'url': `${this.$config.websiteUrl}${this.manufacturerKey}`,
         },
       };
 
@@ -179,7 +206,7 @@ export default {
             '@type': `ListItem`,
             'position': 1,
             'item': {
-              '@id': `${packageJson.homepage}manufacturers`,
+              '@id': `${this.$config.websiteUrl}manufacturers`,
               'name': `Manufacturers`,
             },
           },
@@ -187,7 +214,7 @@ export default {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${packageJson.homepage}${this.manKey}`,
+              '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
               'name': this.fixture.manufacturer.name,
             },
           },
@@ -203,35 +230,21 @@ export default {
       };
     },
     githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
+      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
       return `https://github.com/${slug}`;
     },
     branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
+      // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
+      return gitRef.split(`/`).pop();
     },
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
+      const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}`;
     },
   },
-  head() {
-    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
   },
   methods: {
     openHelpWantedDialog(event) {
@@ -241,4 +254,21 @@ export default {
   },
 };
 
+/**
+ * @param {any} axios The Axios instance.
+ * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @returns {object} The redirect object.
+ */
+async function fetchRedirectObject(axios, redirectFrom) {
+  if (!redirectFrom) {
+    return undefined;
+  }
+
+  const redirectJson = await axios.$get(`/${redirectFrom}.json`);
+
+  return {
+    from: redirectFrom,
+    reason: redirectReasonExplanations[redirectJson.reason],
+  };
+}
 </script>

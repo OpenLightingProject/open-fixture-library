@@ -1,10 +1,10 @@
 <template>
   <A11yDialog
-    id="chooseChannelEditMode"
-    :cancellable="false"
+    id="choose-channel-edit-mode-dialog"
+    is-alert-dialog
     :shown="channel.editMode === `edit-?`"
     title="Edit channel in all modes or just in this one?"
-    @show="onChooseChannelEditModeDialogOpen">
+    @show="onChooseChannelEditModeDialogOpen()">
 
     <div class="button-bar right">
       <button
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import A11yDialog from '../A11yDialog.vue';
 
 export default {
@@ -32,14 +33,8 @@ export default {
     A11yDialog,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    fixture: objectProp().required,
   },
   methods: {
     onChooseChannelEditModeDialogOpen() {
@@ -55,14 +50,14 @@ export default {
       // else duplicate makes no sense here -> continue directly
       this.chooseChannelEditMode(`edit-all`);
     },
-    chooseChannelEditMode(editMode) {
+    async chooseChannelEditMode(editMode) {
       // close this dialog
       this.channel.editMode = ``;
 
-      this.$nextTick(() => {
-        // open channel dialog
-        this.channel.editMode = editMode;
-      });
+      await this.$nextTick();
+
+      // open channel dialog
+      this.channel.editMode = editMode;
     },
   },
 };

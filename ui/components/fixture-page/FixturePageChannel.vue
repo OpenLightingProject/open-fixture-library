@@ -2,7 +2,7 @@
   <li>
     <ConditionalDetails class="channel">
       <template #summary>
-        <ChannelTypeIcon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <ChannelTypeIcon class="channel-type-icon" :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
@@ -27,7 +27,7 @@
 
         <ol>
           <FixturePageChannel
-            v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
+            v-for="(ranges, switchToChannelKey) of channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
@@ -37,7 +37,7 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) in ranges">
+              <template v-for="(range, index) of ranges">
                 {{ index > 0 ? ` or ` : `` }}
                 <span :key="range.toString()" style="white-space: nowrap;">
                   {{ range.toString() }}
@@ -77,7 +77,7 @@
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`,
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel.key) + 1})`,
           ).join(`, `) }}
         </LabeledValue>
 
@@ -129,31 +129,18 @@
 </template>
 
 <style lang="scss" scoped>
-summary, .summary {
-  & > .icon {
-    margin-right: 1.2ex;
-  }
-
-  & > .help-wanted-icon {
-    fill: theme-color(yellow-background-hover);
-    margin-left: 0.7ex;
-    margin-right: 0;
-  }
+.channel-type-icon {
+  margin-right: 1.2ex;
 }
 
-ol.mode-channels {
-  padding-left: 1.9em;
-  min-height: 1em;
-
-  /* switched channels */
-  & ol {
-    list-style-type: lower-alpha;
-    padding-left: 1.1em;
-  }
+.help-wanted-icon {
+  margin-left: 0.7ex;
+  fill: theme-color(yellow-background-hover);
 }
 </style>
 
 <script>
+import { instanceOfProp, stringProp } from 'vue-ts-types';
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import FineChannel from '../../../lib/model/FineChannel.js';
@@ -161,10 +148,10 @@ import Mode from '../../../lib/model/Mode.js';
 import NullChannel from '../../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
-import ConditionalDetails from '../ConditionalDetails.vue';
 import ChannelTypeIcon from '../ChannelTypeIcon.vue';
-import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
+import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledValue from '../LabeledValue.vue';
+import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
 
 export default {
   name: `FixturePageChannel`,
@@ -175,19 +162,12 @@ export default {
     LabeledValue,
   },
   props: {
-    channel: {
-      type: AbstractChannel,
-      required: true,
-    },
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    appendToHeading: {
-      type: String,
-      required: false,
-      default: ``,
-    },
+    channel: instanceOfProp(AbstractChannel).required,
+    mode: instanceOfProp(Mode).required,
+    appendToHeading: stringProp().optional,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     return {
