@@ -72,6 +72,7 @@
     "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
+    "@stylistic/stylelint-config": "~1.0.1",
     "broken-link-checker": "^0.7.8",
     "dir-compare": "^4.2.0",
     "disparity": "^3.2.0",
@@ -90,11 +91,10 @@
     "libxmljs": "^1.0.11",
     "minimist": "^1.2.8",
     "postcss-html": "^1.5.0",
-    "stylelint": "~15.11.0",
+    "stylelint": "~16.1.0",
     "stylelint-config-html": "~1.1.0",
     "stylelint-config-recess-order": "~4.4.0",
-    "stylelint-config-standard-scss": "~11.1.0",
-    "stylelint-stylistic": "~0.4.3",
+    "stylelint-config-standard-scss": "~12.0.0",
     "terminate": "^2.6.1",
     "widdershins": "^4.0.1"
   },
