@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 1200/1200-B",
+  "shortName": "Evoke 1200",
+  "categories": ["Dimmer", "Effect", "Fan"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-02",
+    "lastModifyDate": "2023-06-02"
+  },
+  "links": {
+    "manual": [
+      "https://22292231.s21i.faiusr.com/61/ABUIABA9GAAg9InImgYoqt-GnQI.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlux.com/en/h-col-175.html"
+    ],
+    "other": [
+      "https://22292231.s21i.faiusr.com/61/ABUIABA9GAAglK3ejgYo5KqnkwE.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 10,
+    "power": 1200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "FAN": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "FAN 2": {
+      "name": "FAN",
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "SMART"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "FULL SPEED"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "HALF SPEED"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "FAN OFF"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "StrobeDuration",
+          "duration": "0%",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "StrobeDuration",
+          "duration": "1.6%",
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "StrobeDuration",
+          "duration": "2%",
+          "comment": "Random Medium"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "StrobeDuration",
+          "duration": "2.4%",
+          "comment": "Random Slow"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe(0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Evoke 1200",
+      "shortName": "Evoke 1200",
+      "channels": [
+        "Dimmer",
+        "FAN"
+      ]
+    },
+    {
+      "name": "Evoke 1200-B",
+      "shortName": "Evoke 1200-B",
+      "channels": [
+        "Dimmer 2",
+        "Color Temperature",
+        "FAN 2",
+        "Strobe",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
