@@ -503,13 +503,11 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Prism",
-          "comment": "Prism OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [128, 255],
-          "type": "Prism",
-          "comment": "Prism ON"
+          "type": "Prism"
         }
       ]
     },
