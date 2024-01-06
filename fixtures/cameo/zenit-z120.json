@@ -86,6 +86,7 @@
       ]
     },
     "Red": {
+      "fineChannelAliases": ["Red fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
@@ -94,6 +95,7 @@
       }
     },
     "Green": {
+      "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
@@ -102,6 +104,7 @@
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
@@ -110,6 +113,7 @@
       }
     },
     "White": {
+      "fineChannelAliases": ["White fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
@@ -236,6 +240,7 @@
       ]
     },
     "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -267,9 +272,81 @@
           "comment": "reset all functions"
         }
       ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "3200K"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
     }
   },
   "modes": [
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
     {
       "name": "9ch",
       "channels": [
@@ -281,6 +358,62 @@
         "White",
         "Color Macros",
         "Zoom",
+        "Settings"
+      ]
+    },
+    {
+      "name": "10 channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Zoom",
+        "Zoom fine"
+      ]
+    },
+    {
+      "name": "11 channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Zoom",
+        "Dimmer Curve",
+        "Settings"
+      ]
+    },
+    {
+      "name": "17 channel",
+      "shortName": "17ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Macros",
+        "Color Temperature",
+        "Zoom",
+        "Zoom fine",
+        "Dimmer Curve",
         "Settings"
       ]
     }
