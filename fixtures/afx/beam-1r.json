@@ -567,8 +567,7 @@
         {
           "dmxRange": [0, 3],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Close"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [4, 130],
@@ -576,28 +575,24 @@
           "shutterEffect": "Pulse",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "duration": "instant",
-          "comment": "Pulse (flow to fast)"
+          "duration": "instant"
         },
         {
           "dmxRange": [131, 135],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [136, 251],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe (slow to fast)"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [252, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open"
+          "shutterEffect": "Open"
         }
       ]
     },
