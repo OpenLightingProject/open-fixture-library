@@ -610,11 +610,13 @@
         {
           "dmxRange": [40, 59],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Lamp ON"
         },
         {
           "dmxRange": [60, 79],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Lamp OFF"
         },
         {
@@ -624,16 +626,19 @@
         {
           "dmxRange": [100, 149],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Reset small motors"
         },
         {
           "dmxRange": [150, 199],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Reset X/Y motors"
         },
         {
           "dmxRange": [200, 255],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Reset all motors"
         }
       ]
