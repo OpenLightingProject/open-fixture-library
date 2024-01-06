@@ -257,13 +257,14 @@
         {
           "dmxRange": [128, 191],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "dimmer response HALOGEN"
         },
         {
           "dmxRange": [192, 255],
           "type": "Maintenance",
           "hold": "5s",
-          "comment": "reset all fonctions"
+          "comment": "reset all functions"
         }
       ]
     }
