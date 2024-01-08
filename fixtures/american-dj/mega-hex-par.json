@@ -29,7 +29,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 25]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -114,9 +114,10 @@
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "Lightning",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
