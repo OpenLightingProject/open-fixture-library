@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cloud bicolour",
+  "shortName": "Cloud",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-01-08",
+    "lastModifyDate": "2024-01-08"
+  },
+  "links": {
+    "other": [
+      "https://www.cirrolite.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [30, 20, 10],
+    "weight": 2,
+    "power": 50,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm white": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold white": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Warm white",
+        "Cold white"
+      ]
+    }
+  ]
+}
