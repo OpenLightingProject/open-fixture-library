@@ -16,6 +16,22 @@
       "https://www.youtube.com/watch?v=q3aCVNj3t7M"
     ]
   },
+  "physical": {
+    "dimensions": [230, 230, 300],
+    "weight": 8.3,
+    "power": 180,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1× RGBW LED",
+      "lumens": 2117
+    },
+    "lens": {
+      "degreesMinMax": [7, 55]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
