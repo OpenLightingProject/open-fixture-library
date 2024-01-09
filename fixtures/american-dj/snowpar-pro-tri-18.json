@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SnowPAR Pro Tri 18",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["ItsMeBrille"],
+    "createDate": "2021-12-09",
+    "lastModifyDate": "2021-12-09"
+  },
+  "links": {
+    "productPage": [
+      "https://snowlighting.no/product/snowpar-pro-tri-18/"
+    ]
+  },
+  "physical": {
+    "dimensions": [256, 285, 96],
+    "weight": 3,
+    "power": 62,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED RGB",
+      "lumens": 2323
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "0Hz"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
