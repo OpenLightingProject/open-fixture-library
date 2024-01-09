@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Beam+Wash 19x15W RGBW Zoom Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Dimos"],
+    "createDate": "2023-02-25",
+    "lastModifyDate": "2023-02-25"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAG/UPAG904/2001/file/be4663e60a.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=BO3zSts2pDI"
+    ]
+  },
+  "physical": {
+    "dimensions": [23, 19.6, 39],
+    "weight": 7.7,
+    "power": 285,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Chanel’s",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine"
+      ]
+    }
+  ]
+}
