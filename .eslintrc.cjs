@@ -182,6 +182,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
+  'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
