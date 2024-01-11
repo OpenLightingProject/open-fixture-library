@@ -1,0 +1,206 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FREQ 16 Strobe",
+  "shortName": "ADJ frq16 str",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Roger"],
+    "createDate": "2021-10-06",
+    "lastModifyDate": "2021-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/634079/American-Dj-Freq-16-Strobe.html"
+    ],
+    "productPage": [
+      "https://www.adj.com/freq-16-strobe"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 5": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 6": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 7": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 8": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 9": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 10": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 11": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 12": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 13": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 14": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 15": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 16": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow Open - Fast Close"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Fast Open - Slow Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18 Channel",
+      "shortName": "18ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4",
+        "Dimmer 5",
+        "Dimmer 6",
+        "Dimmer 7",
+        "Dimmer 8",
+        "Dimmer 9",
+        "Dimmer 10",
+        "Dimmer 11",
+        "Dimmer 12",
+        "Dimmer 13",
+        "Dimmer 14",
+        "Dimmer 15",
+        "Dimmer 16",
+        "Master Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
