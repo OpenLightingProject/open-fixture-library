@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB Panel Light LD75R",
+  "shortName": "LD75R-",
+  "categories": ["Dimmer", "Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-02",
+    "lastModifyDate": "2023-06-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs"
+    ],
+    "productPage": [
+      "https://godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [441, 410, 107],
+    "weight": 3.5,
+    "power": 75,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0…100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "8500K",
+        "comment": "2800...8500K"
+      }
+    },
+    "Effects1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Preset 01 CCT"
+      }
+    },
+    "Green-Magenta Point Green-Magenta Point": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "No function": {
+      "defaultValue": 125,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Effects1",
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point Green-Magenta Point",
+        "Hue",
+        "Saturation"
+      ]
+    }
+  ]
+}
