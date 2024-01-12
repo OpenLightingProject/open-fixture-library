@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB Panel Light LD75R",
+  "shortName": "Light LD75R-",
+  "categories": ["Dimmer", "Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-02",
+    "lastModifyDate": "2023-06-02"
+  },
+  "links": {
+    "manual": [
+      "https://godox.com/static/upload/file/20230310/1678438291595550.pdf"
+    ],
+    "productPage": [
+      "https://godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [441, 410, 107],
+    "weight": 3.5,
+    "power": 75,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "availableChannels": {
+    "Mod 65": {
+      "defaultValue": 65,
+      "highlightValue": 65,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "cct"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "8500K"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0…100%"
+      }
+    },
+    "Green-Magenta Point 8 b": {
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Generic",
+        "comment": "Full minus green...Full plus green"
+      }
+    },
+    "Mod 25": {
+      "defaultValue": 25,
+      "highlightValue": 25,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "cct"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Mod 25",
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8 b"
+      ]
+    },
+    {
+      "name": "HSI",
+      "shortName": "HSI",
+      "channels": [
+        "Mod 65",
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    }
+  ]
+}
