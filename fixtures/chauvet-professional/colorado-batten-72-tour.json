@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORado Batten 72 Tour",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Anthony Dempsey"],
+    "createDate": "2023-01-30",
+    "lastModifyDate": "2023-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.eu/wp-content/uploads//2015/07/COLORado_Batten_72_Tour_UM_Rev6_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.eu/products/colorado-batten-72-tour/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=NARho4PnA8I&ab_channel=CHAUVETProfessional"
+    ]
+  },
+  "availableChannels": {
+    "Block 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Block 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Block 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Block 1 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Block 1 Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Block 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Block 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Block 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Block 2 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Block 2 Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Block 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Block 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Block 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Block 3 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Block 3 Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Block2",
+      "channels": [
+        "Block 1 Red",
+        "Block 1 Green",
+        "Block 1 Blue",
+        "Block 1 White",
+        "Block 1 Amber",
+        "Block 2 Red",
+        "Block 2 Green",
+        "Block 2 Blue",
+        "Block 2 White",
+        "Block 2 Amber",
+        "Block 3 Red",
+        "Block 3 Green",
+        "Block 3 Blue",
+        "Block 3 White",
+        "Block 3 Amber"
+      ]
+    }
+  ]
+}
