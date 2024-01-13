@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Parkolor 120 HD",
+  "shortName": "PK 120HD",
+  "categories": ["Dimmer", "Color Changer", "Other"],
+  "meta": {
+    "authors": ["Tristan"],
+    "createDate": "2023-11-17",
+    "lastModifyDate": "2023-11-17"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/225465_PARKOLOR120HD/225465_PARKOLOR120HDV3_FR.pdf"
+    ],
+    "productPage": [
+      "https://www.star-way.com/parkolor-120hd-3"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?time_continue=2&v=eirqRnycTm4&embeds_referring_euri=https%3A%2F%2Fwww.freevox.fr%2F&source_ve_path=Mjg2NjY&feature=emb_logo"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 400, 240],
+    "weight": 7.2,
+    "power": 145,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "SOURCE A LED COB RGBW"
+    },
+    "lens": {
+      "degreesMinMax": [7, 39]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [91, 170],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "50%"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "51%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "parkolor 120 HD",
+      "shortName": "PK 120 HD",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
