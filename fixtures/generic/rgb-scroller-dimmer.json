@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB Scroller Dimmer",
+  "shortName": "RGB Dim",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Carlos Ruiz"],
+    "createDate": "2024-01-13",
+    "lastModifyDate": "2024-01-13"
+  },
+  "links": {
+    "other": [
+      "https://www.fotoeventos.net"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "1%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "rgbdim",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    }
+  ]
+}
