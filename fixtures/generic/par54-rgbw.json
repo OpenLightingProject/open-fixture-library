@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR54 RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gregg Carreno"],
+    "createDate": "2023-11-17",
+    "lastModifyDate": "2023-11-17"
+  },
+  "links": {
+    "manual": [
+      "https://en.hongyilights.com/products/54x3w-rgbw-flat-led-par-light.pdf"
+    ],
+    "productPage": [
+      "https://en.hongyilights.com/products/54x3w-rgbw-flat-led-par-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 85, 245],
+    "weight": 1.5,
+    "power": 54,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "5%",
+        "speedEnd": "100%"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Color Macros",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
