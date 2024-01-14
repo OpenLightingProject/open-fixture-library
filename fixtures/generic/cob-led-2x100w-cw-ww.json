@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB LED 2x100W CW/WW",
+  "shortName": "COB 2x100w",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["João Pedro Buchalla"],
+    "createDate": "2023-07-06",
+    "lastModifyDate": "2023-07-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.lumenstore.com.br/Content/Images/uploaded/manual/NE-COB.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Warm White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Cold White 2": {
+      "name": "Cold White",
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Warm White 2": {
+      "name": "Warm White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "Extended",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Effect Speed",
+        "Cold White 2",
+        "Warm White 2"
+      ]
+    }
+  ]
+}
