@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DLEDRAMA-BI",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["David Huss"],
+    "createDate": "2024-01-16",
+    "lastModifyDate": "2024-01-16"
+  },
+  "links": {
+    "productPage": [
+      "https://www.dedoweigertfilm.de/dwf-en/products/dedolight/Ledrama.php"
+    ]
+  },
+  "physical": {
+    "dimensions": [800, 580, 130],
+    "weight": 21,
+    "power": 220,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 11287
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "5600K"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-Bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "16-Bit",
+      "channels": [
+        "Intensity 2",
+        "Intensity 2 fine",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
