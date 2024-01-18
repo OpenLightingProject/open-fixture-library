@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Follow Spot 120ST",
+  "shortName": "120ST",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Ryan Goodwin"],
+    "createDate": "2023-05-24",
+    "lastModifyDate": "2023-05-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/09/LED_Followspot_120ST_UM_Rev3.pdf",
+      "https://www.chauvetdj.com/wp-content/uploads/2016/09/LED_Followspot_120ST_QRG_Rev2_ML6_Print.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/led-followspot-120st/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mxAcqb5Cw1A"
+    ]
+  },
+  "physical": {
+    "dimensions": [279, 341, 582],
+    "weight": 6,
+    "power": 185,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "120W LED"
+    },
+    "lens": {
+      "degreesMinMax": [5, 20]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Cool White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Warm White",
+          "colors": ["#fdf4dc"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#7000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff7000"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "16Hz"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3-ch",
+      "channels": [
+        "Dimmer",
+        "Color Wheel",
+        "Strobe"
+      ]
+    }
+  ]
+}
