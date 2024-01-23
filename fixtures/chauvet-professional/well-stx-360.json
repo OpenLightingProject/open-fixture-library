@@ -1,0 +1,599 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "well stx 360",
+  "shortName": "STX 360",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["FB"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2022/02/WELL_STX_360_UM_Rev5.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/well-stx-360/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ddB-YN60bm0&t=6s"
+    ]
+  },
+  "availableChannels": {
+    "RED1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN1": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE1": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE1": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED2": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN2": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE2": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE2": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED3": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN3": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE3": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE3": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED4": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN4": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE4": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE4": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED5": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN5": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE5": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE5": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED6": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN6": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE6": {
+      "defaultValue": 23,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE6": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED7": {
+      "defaultValue": 25,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN7": {
+      "defaultValue": 26,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE7": {
+      "defaultValue": 27,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE7": {
+      "defaultValue": 28,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED8": {
+      "defaultValue": 29,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN8": {
+      "defaultValue": 30,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE8": {
+      "defaultValue": 31,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE8": {
+      "defaultValue": 32,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED9": {
+      "defaultValue": 33,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN9": {
+      "defaultValue": 34,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE9": {
+      "defaultValue": 35,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE9": {
+      "defaultValue": 36,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED10": {
+      "defaultValue": 37,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN10": {
+      "defaultValue": 38,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE10": {
+      "defaultValue": 39,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE10": {
+      "defaultValue": 40,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED11": {
+      "defaultValue": 41,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN11": {
+      "defaultValue": 42,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE11": {
+      "defaultValue": 43,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE11": {
+      "defaultValue": 44,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED12": {
+      "defaultValue": 45,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN12": {
+      "defaultValue": 46,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE12": {
+      "defaultValue": 47,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE12": {
+      "defaultValue": 48,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED13": {
+      "defaultValue": 49,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN13": {
+      "defaultValue": 50,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE13": {
+      "defaultValue": 51,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE13": {
+      "defaultValue": 52,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED14": {
+      "defaultValue": 53,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN14": {
+      "defaultValue": 54,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE14": {
+      "defaultValue": 55,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE14": {
+      "defaultValue": 56,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED15": {
+      "defaultValue": 57,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN15": {
+      "defaultValue": 58,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE15": {
+      "defaultValue": 59,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE15": {
+      "defaultValue": 60,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED16": {
+      "defaultValue": 61,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN16": {
+      "defaultValue": 62,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE16": {
+      "defaultValue": 63,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE16": {
+      "defaultValue": 64,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 65,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "DIMMER": {
+      "defaultValue": 66,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "DIMMER SPEED": {
+      "defaultValue": 67,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 51],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Intensity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "67 ch",
+      "shortName": "67ch",
+      "channels": [
+        "RED1",
+        "GREEN1",
+        "BLUE1",
+        "WHITE1",
+        "RED2",
+        "GREEN2",
+        "BLUE2",
+        "WHITE2",
+        "RED3",
+        "GREEN3",
+        "BLUE3",
+        "WHITE3",
+        "RED4",
+        "GREEN4",
+        "BLUE4",
+        "WHITE4",
+        "RED5",
+        "GREEN5",
+        "BLUE5",
+        "WHITE5",
+        "RED6",
+        "GREEN6",
+        "BLUE6",
+        "WHITE6",
+        "RED7",
+        "GREEN7",
+        "BLUE7",
+        "WHITE7",
+        "RED8",
+        "GREEN8",
+        "BLUE8",
+        "WHITE8",
+        "RED9",
+        "GREEN9",
+        "BLUE9",
+        "WHITE9",
+        "RED10",
+        "GREEN10",
+        "BLUE10",
+        "WHITE10",
+        "RED11",
+        "GREEN11",
+        "BLUE11",
+        "WHITE11",
+        "RED12",
+        "GREEN12",
+        "BLUE12",
+        "WHITE12",
+        "RED13",
+        "GREEN13",
+        "BLUE13",
+        "WHITE13",
+        "RED14",
+        "GREEN14",
+        "BLUE14",
+        "WHITE14",
+        "RED15",
+        "GREEN15",
+        "BLUE15",
+        "WHITE15",
+        "RED16",
+        "GREEN16",
+        "BLUE16",
+        "WHITE16",
+        "Strobe",
+        "DIMMER",
+        "DIMMER SPEED"
+      ]
+    }
+  ]
+}
