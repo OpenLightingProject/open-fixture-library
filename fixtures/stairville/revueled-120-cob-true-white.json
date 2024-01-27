@@ -1,35 +1,33 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "RevueLED 120 COB True White",
-  "categories": ["Dimmer", "Color Changer"],
+  "shortName": "RevueLed 120 COB",
+  "categories": ["Dimmer"],
   "meta": {
-    "authors": ["Hannes Rüger"],
-    "createDate": "2021-07-17",
-    "lastModifyDate": "2021-07-17"
+    "authors": ["NJRogelj"],
+    "createDate": "2024-01-27",
+    "lastModifyDate": "2024-01-27"
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/443734_c_443734_v2_en_online.pdf"
-    ],
-    "productPage": [
-      "https://www.thomann.de/intl/stairville_revueled_120_cob_true_white.htm"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_443734_v2_r1_en_online.pdf"
     ]
   },
   "physical": {
-    "dimensions": [440, 250, 160],
+    "dimensions": [250, 160, 440],
     "weight": 5.5,
     "power": 120,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "1× 120W COB CW/WW LED",
-      "lumens": 7000
+      "type": "COB LED"
     },
     "lens": {
       "degreesMinMax": [50, 50]
     }
   },
   "availableChannels": {
-    "Dimmer": {
+    "Intensity": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
@@ -38,8 +36,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "Color temperature adjustment (2800K…7800K) follows dimmer value"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 255],
@@ -49,24 +46,24 @@
         }
       ]
     },
-    "Intensity Warm White": {
+    "Warm White": {
+      "defaultValue": 0,
       "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
+        "type": "Intensity"
       }
     },
-    "Intensity Cold White": {
+    "Cold White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Cold White"
+        "color": "White"
       }
     },
     "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 255],
@@ -79,45 +76,45 @@
   },
   "modes": [
     {
-      "name": "1-channel",
+      "name": "1 channel",
       "shortName": "1ch",
       "channels": [
-        "Dimmer"
+        "Intensity"
       ]
     },
     {
-      "name": "2-channel 1",
-      "shortName": "2ch-1",
+      "name": "2 channel-1",
+      "shortName": "2ch1",
       "channels": [
-        "Dimmer",
+        "Intensity",
         "Color Temperature"
       ]
     },
     {
-      "name": "2-channel 2",
-      "shortName": "2ch-2",
+      "name": "2 channel-2",
+      "shortName": "2ch2",
       "channels": [
-        "Intensity Warm White",
-        "Intensity Cold White"
+        "Warm White",
+        "Cold White"
       ]
     },
     {
-      "name": "3-channel",
+      "name": "3 channel",
       "shortName": "3ch",
       "channels": [
-        "Dimmer",
+        "Intensity",
         "Strobe",
         "Color Temperature"
       ]
     },
     {
-      "name": "4-channel",
+      "name": "4 channel",
       "shortName": "4ch",
       "channels": [
-        "Dimmer",
+        "Intensity",
         "Strobe",
-        "Intensity Warm White",
-        "Intensity Cold White"
+        "Warm White",
+        "Cold White"
       ]
     }
   ]
