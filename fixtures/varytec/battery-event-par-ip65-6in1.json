@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Battery Event Par IP65 6in1",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["B the pulp"],
+    "createDate": "2021-11-30",
+    "lastModifyDate": "2021-11-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manuals.ca/varytec/event-par-ip65/manual"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/varytec_battery_event_par_ip65_6in1.htm"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Speed of the selscted show": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Brightness": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect/Increasing speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Selecting an automatic show": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Sound Control": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "durationStart": "short",
+        "durationEnd": "long",
+        "parameter": "big",
+        "soundControlled": true,
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Brightness",
+        "Strobe effect/Increasing speed",
+        "Selecting an automatic show",
+        "Speed of the selscted show",
+        "Sound Control"
+      ]
+    }
+  ]
+}
