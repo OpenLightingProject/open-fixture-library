@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MT PRO",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["gabriel"],
+    "createDate": "2024-01-30",
+    "lastModifyDate": "2024-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MT%20Pro/All%20Files/MT-Pro-DMX-Profile-Specification-V1.2.pdf"
+    ],
+    "productPage": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MT%20Pro/All%20Files/MT-Pro-DMX-Profile-Specification-V1.2.pdf"
+    ],
+    "video": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MT%20Pro/All%20Files/MT-Pro-DMX-Profile-Specification-V1.2.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTC": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB",
+      "channels": [
+        "Intensity",
+        "CTC"
+      ]
+    }
+  ]
+}
