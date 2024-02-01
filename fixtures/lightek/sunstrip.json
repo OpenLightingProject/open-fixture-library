@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sunstrip",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Haffi"],
+    "createDate": "2022-10-03",
+    "lastModifyDate": "2022-10-03"
+  },
+  "links": {
+    "productPage": [
+      "https://techtop.co.il/blog/barands/lightek/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer6": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer7": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer8": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer9": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer10": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer11": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer12": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12CH",
+      "channels": [
+        "Dimmer1",
+        "Dimmer2",
+        "Dimmer3",
+        "Dimmer4",
+        "Dimmer5",
+        "Dimmer6",
+        "Dimmer7",
+        "Dimmer8",
+        "Dimmer9",
+        "Dimmer10",
+        "Dimmer11",
+        "Dimmer12"
+      ]
+    }
+  ]
+}
