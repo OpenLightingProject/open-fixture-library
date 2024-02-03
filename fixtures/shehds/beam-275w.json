@@ -1,0 +1,292 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEAM 275w",
+  "shortName": "Beam 275",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["André Nunes"],
+    "createDate": "2024-02-03",
+    "lastModifyDate": "2024-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/?gad_source=1&gclid=Cj0KCQiA5fetBhC9ARIsAP1UMgHChll3elAq7r7RvkbrlYCU_4_yONd-op77VHApqNeD2kxQqGrwPxkaAkDQEALw_wcB"
+    ],
+    "video": [
+      "https://www.shehds.com/?gad_source=1&gclid=Cj0KCQiA5fetBhC9ARIsAP1UMgHChll3elAq7r7RvkbrlYCU_4_yONd-op77VHApqNeD2kxQqGrwPxkaAkDQEALw_wcB"
+    ],
+    "other": [
+      "https://www.shehds.com/?gad_source=1&gclid=Cj0KCQiA5fetBhC9ARIsAP1UMgHChll3elAq7r7RvkbrlYCU_4_yONd-op77VHApqNeD2kxQqGrwPxkaAkDQEALw_wcB"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 500, 230],
+    "weight": 14,
+    "power": 275,
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Gobo Shake": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Pan fine"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Rainbow": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow effect"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Color"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Gobo Shake": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelShake",
+        "slotNumber": 3
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "PrismRotation",
+        "angle": "0%"
+      }
+    },
+    "Reset": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "RESET AT 200"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "defaultValue": "50%",
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "0%"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "Beam 275w",
+      "channels": [
+        "Pan 3",
+        "Tilt 3",
+        "Pan 4",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Rainbow",
+        "Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Color Macros",
+        "Gobo Wheel",
+        "Gobo Shake",
+        "Zoom",
+        "Prism",
+        "Prism Rotation",
+        "Reset"
+      ]
+    }
+  ]
+}
