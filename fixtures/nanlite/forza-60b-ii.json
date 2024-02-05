@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 60B II",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-02-05",
+    "lastModifyDate": "2024-02-05"
+  },
+  "links": {
+    "manual": [
+      "http://images.salsify.com/image/upload/s--alm01uj---/kcnb52odru7cgk7c39hh.pdf",
+      "https://cdn-aliyun.nanlite.com/release/1691141173548-171268-1124121241519342-Forza_60B_II_DMX_REFERENCE_GUIDE_EN.pdf"
+    ],
+    "productPage": [
+      "https://nanliteus.com/nanlite-forza-60b-ii-bi-color-led-spotlight/"
+    ]
+  },
+  "physical": {
+    "dimensions": [84, 105, 200],
+    "weight": 1.5,
+    "power": 72,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Fan on"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strob"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit Reduced",
+      "channels": [
+        "Dimmer",
+        "CCT"
+      ]
+    },
+    {
+      "name": "CCT 8bit Full",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    }
+  ]
+}
