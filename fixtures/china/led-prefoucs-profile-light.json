@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led prefoucs profile light",
+  "shortName": "profile",
+  "categories": ["Dimmer", "Moving Head"],
+  "meta": {
+    "authors": ["LEEKYUNGEUN"],
+    "createDate": "2024-02-05",
+    "lastModifyDate": "2024-02-05"
+  },
+  "links": {
+    "manual": [
+      "http://a.co.kr"
+    ],
+    "productPage": [
+      "http://a.co.kr"
+    ],
+    "video": [
+      "http://a.co.kr"
+    ]
+  },
+  "availableChannels": {
+    "3200k dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "5600k dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "3200k dimmer",
+        "5600k dimmer",
+        "CTC",
+        "Intensity"
+      ]
+    }
+  ]
+}
