@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACT Flood 100 RGBW",
+  "shortName": "ACT Flood 100 RGBW",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Showtec"],
+    "createDate": "2024-02-06",
+    "lastModifyDate": "2024-02-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/it/34020-act-pc-60-rgbw.html"
+    ]
+  },
+  "availableChannels": {
+    "ACT Flood 100 RGBW": {
+      "fineChannelAliases": ["ACT Flood 100 RGBW fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ACT Flood 100 RGBW",
+      "channels": [
+        "ACT Flood 100 RGBW",
+        "ACT Flood 100 RGBW fine"
+      ]
+    }
+  ]
+}
