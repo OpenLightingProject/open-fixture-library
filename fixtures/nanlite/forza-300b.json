@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FORZA 300B",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Cousbou"],
+    "createDate": "2024-02-06",
+    "lastModifyDate": "2024-02-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.nanlite.com.tr/uploads/files/DMX_REFERENCE_GUIDE/Forza%20300B%20DMX%20REFERENCE%20GUIDE%20V1%2020201114%20W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-forza-300-300b-500-500b-ii?t=1707210836050#/en/Forza-300/300B/500/500B-II"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=WM38vAyZ_7w"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "FAN": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "FAN ON"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "FAN OFF"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "FAN"
+      ]
+    }
+  ]
+}
