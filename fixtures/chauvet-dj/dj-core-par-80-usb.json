@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJ Core par 80 USB",
+  "shortName": "CORE80",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["FB"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "productPage": [
+      "https://fr.chauvetdj.com/products/corepar-80-usb/"
+    ],
+    "video": [
+      "https://www.youtube.com/embed/oubLpVDRh0Y?rel=0&autoplay=1"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [25, 70]
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "COLOR MACRO": {
+      "defaultValue": 4,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "CHANEL SHUTTER": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
+        }
+      ]
+    },
+    "EFFECT MACRO": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "50Hz"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "DIMMER": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CORE80",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "COLOR MACRO",
+        "CHANEL SHUTTER",
+        "EFFECT MACRO",
+        "DIMMER"
+      ]
+    }
+  ]
+}
