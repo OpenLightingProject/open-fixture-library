@@ -1,0 +1,259 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "275w Beam Moving Head Lighting",
+  "shortName": "Beam 275w",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["André Nunes"],
+    "createDate": "2024-02-03",
+    "lastModifyDate": "2024-02-03"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=geTKfpbsDZ8&t=5s"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [230, 500, 290],
+    "weight": 14,
+    "power": 275,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "bulb",
+      "colorTemperature": 8000
+    }
+  },
+  "wheels": {
+    "Gobo Shake": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "highlightValue": 128,
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "0%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Tilt",
+          "angle": "270deg"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "TiltContinuous",
+          "speed": "0%"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 1,
+      "highlightValue": "1%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "rainbow"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "5%",
+      "highlightValue": "2%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [51, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Wheel": {
+      "highlightValue": "1%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "color optional"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "color flow fast to slow"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "color flow slow to fast"
+        }
+      ]
+    },
+    "Color Effect": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "half color off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "half color on"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic",
+        "comment": "From fast to slow"
+      }
+    },
+    "Gobo Shake": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "ON Gobo Shake"
+        },
+        {
+          "dmxRange": [1, 191],
+          "type": "NoFunction",
+          "comment": "From Fast to Slow"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction",
+          "comment": "OFF Gobo Shake"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Prism",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW"
+      }
+    },
+    "Prism Rotation": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW"
+      }
+    },
+    "Reset": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Generic",
+          "comment": "TURN OFF"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "NoFunction",
+          "comment": "TURN ON"
+        },
+        {
+          "dmxRange": [206, 250],
+          "type": "Generic",
+          "comment": "NOTHING"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "RESET"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "Beam 275w",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Color Effect",
+        "Gobo",
+        "Gobo Shake",
+        "Zoom",
+        "Prism",
+        "Prism Rotation",
+        "Reset"
+      ]
+    }
+  ]
+}
