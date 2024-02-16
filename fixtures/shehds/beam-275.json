@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEAM 275",
+  "shortName": "Beam 275w",
+  "categories": ["Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["André Nunes"],
+    "createDate": "2024-02-05",
+    "lastModifyDate": "2024-02-05"
+  },
+  "links": {
+    "productPage": [
+      "https://www.shehds.com/products/beam-275w-moving-head-lighting-14-gobos-professional-stage-performance-lights"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "5%",
+      "highlightValue": "5%",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Rainbow Effect": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Rainbow Effect"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "constant": true,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Effect": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Color Effect"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "Gobo Wheel"
+      }
+    },
+    "Gobo Shake": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved": {
+      "defaultValue": "1%",
+      "highlightValue": "1%",
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Rainbow Effect",
+        "Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Color Effect",
+        "Gobo Wheel",
+        "Gobo Shake",
+        "Zoom",
+        "Prism",
+        "Prism Rotation",
+        "Reserved"
+      ]
+    }
+  ]
+}
