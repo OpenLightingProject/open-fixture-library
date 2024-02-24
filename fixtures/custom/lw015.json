@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LW015",
+  "shortName": "LW015",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["TuTran"],
+    "createDate": "2024-02-24",
+    "lastModifyDate": "2024-02-24"
+  },
+  "links": {
+    "manual": [
+      "http://yxclight.com"
+    ],
+    "productPage": [
+      "http://yxclight.com/lw015"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=fXTRZwHdNbk"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "slow reverse"
+      }
+    },
+    "Effect Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Jump change"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Gradient change"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Pulse change"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Voice control"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB 3CH",
+      "shortName": "RGB 3CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7CH with Effect",
+      "shortName": "7CH with Effect",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Effect Duration",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
