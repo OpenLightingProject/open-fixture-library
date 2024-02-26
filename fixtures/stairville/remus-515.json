@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Remus 515",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["LGK"],
+    "createDate": "2024-02-26",
+    "lastModifyDate": "2024-02-26"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_531015_v2_en_online.pdf?_gl=1*h8qh7y*_ga*MTI4Mjk4NDE1Mi4xNzA4OTU3MzAx*_ga_QNTG1E3BFT*MTcwODk1NzMwMS4xLjEuMTcwODk2MjIwNi4wLjAuMA..*_fplc*WngzSGlEbWZRSXhaOHFxc01obDlRT1lLTnJaVyUyQmJRZlJOemg4RFlyQ2RTc3BFSWM3N0swMTdXJTJGNnhWeTRnb1prbml3JTJGTFZtJTJCV0RHa2I2ZnVvOEI3JTJCVkEyem5mSDdhWmoxTGVmJTJGT25FRjFWeEhZSXBPZ0FPbDh0eE9FanRnJTNEJTNE"
+    ],
+    "productPage": [
+      "https://www.thomann.de/nl/stairville_remus_hexspot_515.htm"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [225, 230, 190],
+    "weight": 2.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBWAUV",
+      "colorTemperature": 3500
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channel",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Macros"
+      ]
+    }
+  ]
+}
