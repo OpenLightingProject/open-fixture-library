@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Remus QuadZoom 610",
+  "shortName": "Remus QuadZoom 610",
+  "categories": ["Dimmer", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Bryan Delain"],
+    "createDate": "2024-02-27",
+    "lastModifyDate": "2024-02-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/3275359/Thomann-Remus-Quadzoom-610.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 230, 190],
+    "weight": 2.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 1702
+    },
+    "lens": {
+      "degreesMinMax": [15, 60]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "7280K"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
