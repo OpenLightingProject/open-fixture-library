@@ -1,0 +1,166 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HOLDLAMP Moving Head Lights 19x15W RGBW 4-in-1 LED Stage Light with Zoom Beam Wash Effect by Sound Activated Auto DMX Control for Wedding DJ Disco Parties Nightclub Show Bar (4 Packs)HOLDLAMP Moving Head Lights 19x15W RGBW 4-in-1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Matt Hedgcorth"],
+    "createDate": "2024-02-27",
+    "lastModifyDate": "2024-02-27"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAX/UPAX592/2001/file/be4663e60a.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 230, 370],
+    "weight": 2.27,
+    "power": 300,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Functional Mode",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "5deg",
+        "comment": "X-axis Fine Tune"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "5deg",
+        "comment": "Y-axis fine tuning"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Effect",
+          "effectName": "Auto"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Channel",
+      "shortName": "16Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Focus",
+        "Effect",
+        "Effect Speed",
+        "Pan 2",
+        "Tilt 2",
+        "No function",
+        "Auto"
+      ]
+    }
+  ]
+}
