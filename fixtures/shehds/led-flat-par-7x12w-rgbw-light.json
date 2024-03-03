@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 7x12W RGBW Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["yids"],
+    "createDate": "2022-11-08",
+    "lastModifyDate": "2022-11-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwixuObOrZ_7AhU3xQIHHUVYBuAQFnoECAoQAQ&url=https%3A%2F%2Fshehds-svet.ru%2Fusermanual%2FSHE-FP0712D-BF.pdf&usg=AOvVaw1rbHuojK8VBHJelKPjqXJ6"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lightinghttps://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwixuObOrZ_7AhU3xQIHHUVYBuAQFnoECAoQAQ&url=https%3A%2F%2Fshehds-svet.ru%2Fusermanual%2FSHE-FP0712D-BF.pdf&usg=AOvVaw1rbHuojK8VBHJelKPjqXJ6"
+    ]
+  },
+  "physical": {
+    "dimensions": [17.5, 21, 10],
+    "weight": 0.75,
+    "power": 84,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Function": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Function Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Function Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
