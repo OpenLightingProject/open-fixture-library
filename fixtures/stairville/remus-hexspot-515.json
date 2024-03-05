@@ -257,14 +257,16 @@
   },
   "modes": [
     {
-      "name": "2 channel",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
         "Dimmer",
         "Color Temperature"
       ]
     },
     {
-      "name": "3 channel",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Shutter / Strobe",
@@ -272,7 +274,8 @@
       ]
     },
     {
-      "name": "6 channel",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -283,7 +286,8 @@
       ]
     },
     {
-      "name": "9 channel",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Dimmer",
         "Shutter / Strobe",
@@ -297,7 +301,8 @@
       ]
     },
     {
-      "name": "11 channel",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Dimmer",
         "Shutter / Strobe",
