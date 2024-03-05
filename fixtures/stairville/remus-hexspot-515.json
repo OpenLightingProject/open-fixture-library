@@ -158,9 +158,9 @@
     "Color Macros": {
       "capabilities": [
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [0, 10],
           "type": "NoFunction",
-          "helpWanted": "Does this enable RGBWAUV, or is it actually a blackout?"
+          "helpWanted": "The manual lists 0…5 as Blackout and doesn't mention 6…10. Are these distinct capabilities?"
         },
         {
           "dmxRange": [11, 13],
