@@ -175,7 +175,7 @@
         },
         {
           "dmxRange": [30, 101],
-          "type": "NoFunction",
+          "type": "ColorPreset",
           "helpWanted": "What ranges/colors are here?"
         },
         {
@@ -210,7 +210,7 @@
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [128, 191],
+          "dmxRange": [192, 255],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
