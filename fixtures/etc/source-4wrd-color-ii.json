@@ -66,8 +66,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction",
-          "comment": "Strobe Disabled"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [1, 254],
@@ -78,15 +78,17 @@
         },
         {
           "dmxRange": [255, 255],
-          "type": "NoFunction",
-          "comment": "Strobe Disabled"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Default",
+      "name": "6-channel",
+      "shortName": "6ch",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Intensity",
         "Red",
