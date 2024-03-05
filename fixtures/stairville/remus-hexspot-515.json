@@ -35,13 +35,6 @@
       }
     },
     "Color Temperature": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "3200K",
-        "colorTemperatureEnd": "7280K"
-      }
-    },
-    "Color Temperature 2": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -313,7 +306,7 @@
         "Amber",
         "UV",
         "Color Macros",
-        "Color Temperature 2",
+        "Color Temperature",
         "Dimmer Curve"
       ]
     }
