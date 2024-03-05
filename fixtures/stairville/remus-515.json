@@ -37,11 +37,88 @@
         "type": "Intensity"
       }
     },
+    "Color Temperature": {
+      "type": "ColorTemperature",
+      "colorTemperatureStart": "3200K",
+      "colorTemperatureEnd": "7280K"
+    },
+    "Color Temperature 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "7280K"
+        }
+      ]
+    },
     "Shutter / Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Open"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "helpWanted": "Is this increasing speed, too?"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
     "Red": {
       "capability": {
@@ -80,12 +157,132 @@
       }
     },
     "Color Macros": {
-      "capability": {
-        "type": "NoFunction"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "helpWanted": "Does this enable RGBWAUV, or is it actually a blackout?"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "colors": ["#ffd000"],
+          "comment": "Warm yellow"
+        },
+        {
+          "dmxRange": [30, 101],
+          "type": "NoFunction",
+          "helpWanted": "What ranges/colors are here?"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "colors": ["#ffeebe"],
+          "comment": "Warm white"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "colors": ["#ccffff"],
+          "comment": "Cool white"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear course"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponential course"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic course"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-curve shaped course"
+        }
+      ]
+    },
   "modes": [
+    {
+      "name": "2 channel",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "3 channel",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "6 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
     {
       "name": "9 channel",
       "channels": [
@@ -98,6 +295,21 @@
         "Amber",
         "UV",
         "Color Macros"
+      ]
+    },
+    "name": "11 channel",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Macros",
+        "Color Temperature 2",
+        "Dimmer Curve"
       ]
     }
   ]
