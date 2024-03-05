@@ -148,13 +148,15 @@
   "modes": [
     {
       "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
         "Dimmer",
         "Color Macros"
       ]
     },
     {
-      "name": "3-channel mode 1",
+      "name": "3-channel 1",
+      "shortName": "3ch1",
       "channels": [
         "Red",
         "Green",
@@ -162,7 +164,8 @@
       ]
     },
     {
-      "name": "3-channel mode 2",
+      "name": "3-channel 2",
+      "shortName": "3ch2",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -171,6 +174,7 @@
     },
     {
       "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Dimmer",
         "Strobe",
