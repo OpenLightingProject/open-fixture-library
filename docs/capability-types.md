@@ -78,12 +78,12 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/strobe.svg" />
     ShutterStrobe
   </th>
-  <td valign="top">shutterEffect<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">shutterEffect<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code>, <code>Spikes</code>, <code>Burst</code></td>
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">soundControlled<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></td>
+  <td valign="top">soundControlled<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></td>
   <td valign="top">Entity <em>Boolean</em></td>
   <td valign="top">Defaults to <code>false</code></td>
 </tr>
@@ -98,7 +98,7 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">randomTiming<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></td>
+  <td valign="top">randomTiming<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></td>
   <td valign="top">Entity <em>Boolean</em></td>
   <td valign="top">Defaults to <code>false</code></td>
 </tr>
@@ -134,7 +134,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/dimmer.svg" />
     ColorIntensity
   </th>
-  <td valign="top">color<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">color<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">one of our predefined Single Colors:
     <code>Red</code>, <code>Green</code>, <code>Blue</code>, <code>Cyan</code>, <code>Magenta</code>, <code>Yellow</code>, <code>Amber</code>, <code>White</code>, <code>Warm White</code>, <code>Cold White</code>, <code>UV</code>, <code>Lime</code>, <code>Indigo</code>
   </td>
@@ -222,7 +222,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/gobo.svg" />
     WheelSlot
   </th>
-  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name</td>
   <td valign="top">Defaults to channel name</td>
 </tr>
@@ -237,12 +237,12 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/slot-shake.svg" />
     WheelShake
   </th>
-  <td valign="top">isShaking<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">isShaking<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>wheel</code> or <code>slot</code></td>
   <td valign="top">Defaults to <code>wheel</code>.</td>
 </tr>
 <tr>
-  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
 </tr>
@@ -266,7 +266,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     WheelSlotRotation
   </th>
-  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
 </tr>
@@ -289,7 +289,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     WheelRotation
   </th>
-  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">wheel<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name.</td>
 </tr>
@@ -307,12 +307,12 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/effect.svg" />
     Effect
   </th>
-  <td valign="top">effectName<br><sub>🆚 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">effectName<br><sub>🆚 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Free text describing the effect</td>
   <td rowspan="2">either <em>effectName</em> or <em>effectPreset</em> is allowed</td>
 </tr>
 <tr>
-  <td valign="top">effectPreset<br><sub>🆚 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">effectPreset<br><sub>🆚 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>ColorJump</code> or <code>ColorFade</code></td>
 </tr>
 <tr>
@@ -331,7 +331,7 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">soundControlled<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></td>
+  <td valign="top">soundControlled<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></td>
   <td valign="top">Entity <em>Boolean</em></td>
   <td valign="top">Defaults to <code>false</code></td>
 </tr>
@@ -430,7 +430,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/iris.svg" />
     IrisEffect
   </th>
-  <td valign="top">effectName<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">effectName<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Free text describing the effect</td>
   <td valign="top"></td>
 </tr>
@@ -453,7 +453,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/frost.svg" />
     FrostEffect
   </th>
-  <td valign="top">effectName<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">effectName<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Free text describing the effect</td>
   <td valign="top"></td>
 </tr>
@@ -493,7 +493,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/blade-insertion.svg" />
     BladeInsertion
   </th>
-  <td valign="top">blade<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">blade<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Top</code>, <code>Right</code>, <code>Bottom</code>, <code>Left</code> or a number if the position is unknown</td>
   <td valign="top"></td>
 </tr>
@@ -507,7 +507,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     BladeRotation
   </th>
-  <td valign="top">blade<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">blade<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Top</code>, <code>Right</code>, <code>Bottom</code>, <code>Left</code> or a number if the position is unknown</td>
   <td valign="top"></td>
 </tr>
@@ -531,7 +531,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/hazer.svg" />
     Fog
   </th>
-  <td valign="top">fogType<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">fogType<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Fog</code> or <code>Haze</code></td>
   <td valign="top"></td>
 </tr>
@@ -555,7 +555,7 @@ To make common percentage values more readable, one can use specific keywords to
     <img src="../ui/assets/icons/fixture/hazer.svg" />
     FogType
   </th>
-  <td valign="top">fogType<br><sub>🌟 required</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">fogType<br><sub>🌟 required</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Fog</code> or <code>Haze</code></td>
   <td valign="top"></td>
 </tr>
@@ -600,7 +600,7 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">hold<br><sub>❔ optional</sub><br><sub>🐾 <a href="#must-be-stepped">must be stepped</a></td>
+  <td valign="top">hold<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></td>
   <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>
@@ -618,7 +618,7 @@ To make common percentage values more readable, one can use specific keywords to
 
 #### Must be stepped
 
-Properties that must be stepped (they have a 🐾 footsteps icon next to them) can't be appended with `Start` or `End`. E.g. only `effectName` (not `effectNameStart`/`effectNameEnd`) is allowed, while both `speed` and `speedStart`/`speedEnd` are valid.
+Properties that must be stepped (they have a 👣 footsteps icon next to them) can't be appended with `Start` or `End`. E.g. only `effectName` (not `effectNameStart`/`effectNameEnd`) is allowed, while both `speed` and `speedStart`/`speedEnd` are valid.
 
 #### Property *colors*
 
