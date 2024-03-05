@@ -111,13 +111,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
-          "colors": ["#000000"]
+          "type": "NoFunction"
         },
         {
           "dmxRange": [5, 80],
           "type": "ColorPreset",
-          "comment": "Colour Macro (Colour 1 ~ Colour 15)",
+          "comment": "Color 1…15",
           "helpWanted": "What colors at what values?"
         },
         {
