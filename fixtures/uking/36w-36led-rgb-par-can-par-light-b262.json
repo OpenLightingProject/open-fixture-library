@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "36W 36LED RGB Par Can Par Light B262",
+  "categories": ["Color Changer", "Other", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-03-05",
+    "lastModifyDate": "2024-03-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/get-started/manuals/"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/par-can-b262-36w-36led-rgb-par-light-uking/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=P78wPS66ASM"
+    ]
+  },
+  "physical": {
+    "dimensions": [18, 18, 10],
+    "weight": 0.48,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": "invalid"
+    },
+    "lens": {
+      "name": "-"
+    }
+  },
+  "availableChannels": {
+    "No function": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "No function",
+        "No function 2",
+        "No function 3",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
