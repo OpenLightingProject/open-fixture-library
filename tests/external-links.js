@@ -484,21 +484,28 @@ async function updateGithubIssue(urlResults) {
  * @returns {string} The emoji to display for that error message.
  */
 function getFailedEmoji(message) {
-  const emojis = {
-    '301': `⏩`,
-    '301 moved permanently': `⏩`,
-
-    '403': `⛔`,
-    '403 forbidden': `⛔`,
-
-    '429': `🆘`,
-    '429 too many requests': `🆘`,
-
-    'certificate has expired': `🔒`,
-    'unable to verify the first certificate': `🔒`,
-
-    [`timeout of ${TIMEOUT}ms exceeded.`]: `⌛`,
-  };
-
-  return emojis[message.trim().toLowerCase()] || `❌`;
+  switch (message.trim().toLowerCase()) {
+    case `301`:
+    case `301 moved permanently`: {
+      return `⏩`;
+    }
+    case `403`:
+    case `403 forbidden`: {
+      return `⛔`;
+    }
+    case `429`:
+    case `429 too many requests`: {
+      return `🆘`;
+    }
+    case `certificate has expired`:
+    case `unable to verify the first certificate`: {
+      return `🔒`;
+    }
+    case `timeout of ${TIMEOUT}ms exceeded.`: {
+      return `⌛`;
+    }
+    default: {
+      return `❌`;
+    }
+  }
 }
