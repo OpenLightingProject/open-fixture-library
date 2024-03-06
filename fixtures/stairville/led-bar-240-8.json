@@ -1,23 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Bar 240/8",
-  "shortName": "StairvilleLedBar240/8",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": ["Pixel Bar"],
   "meta": {
-    "authors": ["kiki"],
-    "createDate": "2019-05-14",
-    "lastModifyDate": "2022-06-10"
-  },
-  "links": {
-    "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/294835_c_294835_v3_r3_en_online.pdf"
-    ],
-    "productPage": [
-      "https://www.thomann.de/intl/stairville_led_bar_2408_rgb_dmx_30.htm"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=n5rRgpYDY7M"
-    ]
+    "authors": ["kiki", "Adrien"],
+    "createDate": "2024-03-06",
+    "lastModifyDate": "2024-03-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-03-06",
+      "comment": "created by OFL – https://open-fixture-library.org/stairville/led-bar-240-8 (version 1.3.0)"
+    }
   },
   "physical": {
     "dimensions": [1064, 65, 88],
@@ -31,15 +24,15 @@
       "degreesMinMax": [30, 30]
     },
     "matrixPixels": {
-      "dimensions": [125, 60, 0],
       "spacing": [0, 0, 0]
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1],
-    "pixelGroups": {
-      "Master": "all"
-    }
+    "pixelCount": [
+      8,
+      1,
+      1
+    ]
   },
   "availableChannels": {
     "Programs": {
@@ -119,19 +112,16 @@
         },
         {
           "dmxRange": [64, 231],
-          "type": "Effect",
-          "effectName": "Preprogrammed shows",
-          "helpWanted": "Which shows can be selected at which DMX values?",
+          "type": "ColorPreset",
+          "comment": "Preprogrammed shows",
           "switchChannels": {
             "Show Speed / Sound Sensitivity": "Show Speed"
           }
         },
         {
           "dmxRange": [232, 255],
-          "type": "Effect",
-          "effectName": "Sound-controlled shows",
-          "soundControlled": true,
-          "helpWanted": "Which shows can be selected at which DMX values?",
+          "type": "ColorPreset",
+          "comment": "Sound-controlled shows",
           "switchChannels": {
             "Show Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -139,17 +129,20 @@
       ]
     },
     "Show Speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "EffectSpeed",
+        "type": "Speed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "comment": "Effect speed slow…fast"
       }
     },
     "Sound Sensitivity": {
+      "defaultValue": 0,
       "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
+        "type": "Effect",
+        "effectName": "Sound sensitivity low…high",
+        "soundControlled": true
       }
     },
     "Dimmer": {
@@ -159,38 +152,207 @@
       }
     },
     "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 2],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
         },
         {
           "dmxRange": [3, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Strobe slow…fast"
         }
       ]
-    }
-  },
-  "templateChannels": {
-    "Red $pixelKey": {
+    },
+    "Red 1": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green $pixelKey": {
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue $pixelKey": {
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue Master": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -198,6 +360,7 @@
       }
     }
   },
+  "templateChannels": {},
   "modes": [
     {
       "name": "2-channel",
@@ -231,16 +394,30 @@
       "name": "24-channel",
       "shortName": "24ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8"
       ]
     }
   ]
