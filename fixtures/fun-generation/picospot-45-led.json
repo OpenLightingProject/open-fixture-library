@@ -3,9 +3,9 @@
   "name": "PicoSpot 45 LED",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Peter Käning", "Flo Edelmann"],
     "createDate": "2019-08-21",
-    "lastModifyDate": "2019-08-21"
+    "lastModifyDate": "2023-02-05"
   },
   "links": {
     "manual": [
@@ -228,25 +228,104 @@
     "Gobo Wheel": {
       "capabilities": [
         {
-          "dmxRange": [0, 124],
+          "dmxRange": [0, 15],
           "type": "WheelSlot",
-          "slotNumberStart": 1,
-          "slotNumberEnd": 8,
-          "helpWanted": "At which DMX value can which gobo be selected? Are split positions between two gobos possible?"
+          "slotNumber": 1
         },
         {
-          "dmxRange": [125, 249],
+          "dmxRange": [16, 31],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [112, 124],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [125, 140],
           "type": "WheelShake",
-          "slotNumberStart": 2,
-          "slotNumberEnd": 8,
-          "helpWanted": "At which DMX value can which gobo be selected? Are split positions between two gobos possible?"
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [141, 156],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [157, 172],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [173, 188],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [189, 204],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [205, 220],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 236],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [237, 249],
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [250, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "helpWanted": "Is this really wheel rotation? The manual mentions 'Gobo wheel selection'."
+          "speedEnd": "fast CW"
         }
       ]
     },

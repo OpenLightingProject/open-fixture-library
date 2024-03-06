@@ -34,6 +34,18 @@
       </LabeledValue>
     </section>
 
+    <section v-if="powerConnectors.length > 0" class="power">
+      <h4>Power connectors</h4>
+
+      <LabeledValue
+        v-for="connector of powerConnectors"
+        :key="connector.name"
+        :name="connector.name"
+        :label="connector.name">
+        {{ connector.value }}
+      </LabeledValue>
+    </section>
+
     <section v-if="physical.hasBulb" class="bulb">
       <h4>Bulb</h4>
 
@@ -113,9 +125,9 @@
   column-gap: 3rem;
 
   & > section {
-    break-inside: avoid;
-    overflow: hidden;
     padding: 0 0 1.2ex;
+    overflow: hidden;
+    break-inside: avoid;
 
     &:empty {
       display: none;
@@ -129,19 +141,25 @@
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Physical from '../../../lib/model/Physical.js';
 
 import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {
-    LabeledValue
+    LabeledValue,
   },
   props: {
-    physical: {
-      type: Physical,
-      required: true
-    }
-  }
+    physical: instanceOfProp(Physical).required,
+  },
+  computed: {
+    powerConnectors() {
+      return Object.entries(this.physical.powerConnectors).map(([name, value]) => ({
+        name,
+        value,
+      }));
+    },
+  },
 };
 </script>

@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 // crypto is expected to be installed globally
 
@@ -14,9 +14,9 @@ const pm2AppConfig = pm2config.apps.find(app => app.name === `ofl`);
 const deploymentConfig = {
   env: pm2AppConfig.env,
   action: ``,
-  webhookPort: 40010,
+  webhookPort: 40_010,
   webhookPath: `/`,
-  webhookSecret: secrets.OFL_WEBHOOK_SECRET
+  webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
 
@@ -58,11 +58,11 @@ function startServer() {
  * Handle a received request from the server and check if it is valid. If so,
  * call @see redeploy to update the corresponding app.
  *
- * @param {String} url The absolute path the request was received at.
- * @param {String} body The JSON string from GitHub.
- * @param {Object.<String, String>} headers Headers of the request.
+ * @param {string} url The absolute path the request was received at.
+ * @param {string} body The JSON string from GitHub.
+ * @param {Record<string, string>} headers Headers of the request.
  */
-function processRequest(url, body, headers) { // eslint-disable-line complexity
+function processRequest(url, body, headers) {
   console.log(`Received webhook request at ${url}`);
 
   if (deploymentConfig.webhookPath !== url) {
@@ -74,7 +74,8 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
 
   const xub = `X-Hub-Signature`;
   const received = headers[xub] || headers[xub.toLowerCase()];
-  const expected = `sha1=${hmac.digest(`hex`)}`;
+  const digest = hmac.digest(`hex`);
+  const expected = `sha1=${digest}`;
 
   if (received !== expected) {
     console.error(`Wrong secret: Expected '${expected}', received '${received}'`);
@@ -103,7 +104,7 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
 
 /**
  * Calls redeploy bash script and notify admin via email if script fails.
- * @param {Object} webhookPayload The data delivered by GitHub via the webhook.
+ * @param {object} webhookPayload The data delivered by GitHub via the webhook.
  */
 function redeploy(webhookPayload) {
   try {
@@ -111,7 +112,7 @@ function redeploy(webhookPayload) {
       cwd: `/home/flo`,
       env: Object.assign({}, process.env, deploymentConfig.env),
       encoding: `utf8`,
-      stdio: `pipe`
+      stdio: `pipe`,
     });
     console.log(`Successfully deployed.`);
   }
@@ -120,14 +121,14 @@ function redeploy(webhookPayload) {
     console.log(`Notify admin via email about failed deployment...`);
 
     const subject = `OFL Deployment failed`;
-    let body = (new Date()).toISOString();
+    let body = new Date().toISOString();
     body += `\n\nsubprocess status: ${error.status}, signal: ${error.signal}`;
     body += `\n\nsubprocess stdout:\n${error.stdout}`;
     body += `\n\nsubprocess stderr:\n${error.stderr}`;
     body += `\n\nwebhook payload: ${JSON.stringify(webhookPayload, null, 2)}`;
 
     execSync(`mail -s "${subject}" root`, {
-      input: body
+      input: body,
     });
   }
 }

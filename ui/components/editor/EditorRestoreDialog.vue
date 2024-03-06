@@ -1,8 +1,8 @@
 <template>
   <A11yDialog
-    id="restore"
-    :cancellable="false"
-    :shown="restoredData !== null"
+    id="restore-dialog"
+    is-alert-dialog
+    :shown="modelValue !== undefined"
     title="Auto-saved fixture data found">
 
     Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?
@@ -11,13 +11,13 @@
       <button
         type="submit"
         class="discard secondary"
-        @click.prevent="discardRestored">
+        @click.prevent="discardRestored()">
         Discard data
       </button>
       <button
         type="submit"
         class="restore primary"
-        @click.prevent="applyRestored">
+        @click.prevent="applyRestored()">
         Restore to continue work
       </button>
     </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import {
   getEmptyFixture,
   getEmptyLink,
@@ -35,90 +36,90 @@ import {
   getEmptyFineChannel,
   getEmptyCapability,
   getSanitizedChannel,
-  clone
+  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
 
 export default {
   components: {
-    A11yDialog
+    A11yDialog,
   },
   model: {
-    prop: `restoredData`
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    restoredData: {
-      type: Object,
-      required: false,
-      default: null
-    }
+    modelValue: objectProp().optional,
+  },
+  emits: {
+    'update:model-value': value => true,
+    'restore-complete': () => true,
   },
   computed: {
     restoredDate() {
-      if (this.restoredData === null) {
-        return null;
+      if (this.modelValue === undefined) {
+        return undefined;
       }
-      return (new Date(this.restoredData.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
-    }
+      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
+    },
   },
   methods: {
     discardRestored() {
       // put all items except the last one back
       localStorage.setItem(`autoSave`, JSON.stringify(JSON.parse(localStorage.getItem(`autoSave`)).slice(0, -1)));
 
-      this.$emit(`input`, null);
+      this.$emit(`update:model-value`, undefined);
       this.$emit(`restore-complete`);
     },
 
-    applyRestored() {
-      const restoredData = clone(this.restoredData);
+    async applyRestored() {
+      const modelValue = clone(this.modelValue);
 
       // closes dialog
-      this.$emit(`input`, null);
+      this.$emit(`update:model-value`, undefined);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
-      this.$nextTick(() => {
-        this.$parent.fixture = getRestoredFixture(restoredData.fixture);
-        this.$parent.channel = getRestoredChannel(restoredData.channel, true);
+      await this.$nextTick();
 
-        this.$nextTick(() => {
-          this.$emit(`restore-complete`);
-        });
-      });
-    }
-  }
+      this.$parent.fixture = getRestoredFixture(modelValue.fixture);
+      this.$parent.channel = getRestoredChannel(modelValue.channel, true);
+
+      await this.$nextTick();
+      this.$emit(`restore-complete`);
+    },
+  },
 };
 
 /**
- * @param {Object} fixture The fixture object from the saved user data.
- * @returns {Object} A fixture editor fixture object with all required properties.
+ * @param {object} fixture The fixture object from the saved user data.
+ * @returns {object} A fixture editor fixture object with all required properties.
  */
 function getRestoredFixture(fixture) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
 
-  restoredFixture.links.forEach((link, index) => {
+  for (const [index, link] of restoredFixture.links.entries()) {
     restoredFixture.links[index] = Object.assign(getEmptyLink(), link);
-  });
+  }
 
   restoredFixture.physical = Object.assign(getEmptyPhysical(), restoredFixture.physical);
 
-  restoredFixture.modes.forEach((mode, index) => {
+  for (const [index, mode] of restoredFixture.modes.entries()) {
     restoredFixture.modes[index] = Object.assign(getEmptyMode(), mode);
     restoredFixture.modes[index].physical = Object.assign(getEmptyPhysical(), mode.physical);
-  });
+  }
 
-  Object.keys(restoredFixture.availableChannels).forEach(chKey => {
-    restoredFixture.availableChannels[chKey] = getRestoredChannel(restoredFixture.availableChannels[chKey], false);
-  });
+  for (const channelKey of Object.keys(restoredFixture.availableChannels)) {
+    restoredFixture.availableChannels[channelKey] = getRestoredChannel(restoredFixture.availableChannels[channelKey], false);
+  }
 
   return restoredFixture;
 }
 
 /**
- * @param {Object} channel The channel object from the saved user data.
+ * @param {object} channel The channel object from the saved user data.
  * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
- * @returns {Object} A fixture editor channel object with all required properties.
+ * @returns {object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {
   if (`coarseChannelId` in channel) {
@@ -132,17 +133,17 @@ function getRestoredChannel(channel, isChannelDialog) {
 
   const restoredChannel = Object.assign(emptyChannel, channel);
 
-  restoredChannel.capabilities.forEach((cap, index) => {
+  for (const [index, capability] of restoredChannel.capabilities.entries()) {
     restoredChannel.capabilities[index] = Object.assign(
       getEmptyCapability(),
-      cap
+      capability,
     );
-  });
+  }
 
   if (isChannelDialog) {
     restoredChannel.wizard.templateCapability = Object.assign(
       getEmptyCapability(),
-      restoredChannel.wizard.templateCapability
+      restoredChannel.wizard.templateCapability,
     );
   }
 

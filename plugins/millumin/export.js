@@ -1,29 +1,30 @@
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
-const { CoarseChannel } = require(`../../lib/model.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-module.exports.version = `0.4.0`;
+export const version = `0.4.0`;
 
 // needed for export test
-module.exports.supportedOflVersion = `7.3.0`;
+export const supportedOflVersion = `7.3.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.export = async function exportMillumin(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
-  const outFiles = fixtures.map(fixture => {
+  return fixtures.map(fixture => {
     const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
-    const milluminJson = {};
+    const milluminJson = {
+      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
+      name: oflJson.name,
+    };
 
-    milluminJson.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
-    milluminJson.name = oflJson.name;
     addIfValidData(milluminJson, `shortName`, oflJson.shortName);
     milluminJson.categories = getDowngradedCategories(oflJson.categories);
     milluminJson.meta = oflJson.meta;
@@ -39,64 +40,60 @@ module.exports.export = async function exportMillumin(fixtures, options) {
     addIfValidData(milluminJson, `matrix`, getDowngradedMatrix(oflJson.matrix, fixture));
 
     if (oflJson.availableChannels) {
-      milluminJson.availableChannels = {};
-      Object.entries(oflJson.availableChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.availableChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
-      });
+      milluminJson.availableChannels = Object.fromEntries(Object.entries(oflJson.availableChannels).map(
+        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+      ));
     }
 
     if (oflJson.templateChannels) {
-      milluminJson.templateChannels = {};
-      Object.entries(oflJson.templateChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.templateChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
-      });
+      milluminJson.templateChannels = Object.fromEntries(Object.entries(oflJson.templateChannels).map(
+        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+      ));
     }
 
     milluminJson.modes = oflJson.modes;
 
     milluminJson.fixtureKey = fixture.key;
     milluminJson.manufacturerKey = fixture.manufacturer.key;
-    milluminJson.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+    milluminJson.oflURL = fixture.url;
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(milluminJson),
       mimetype: `application/ofl-fixture`,
-      fixtures: [fixture]
+      fixtures: [fixture],
     };
   });
-
-  return outFiles;
-};
+}
 
 /**
  * Replaces the fixture's categories array with one that only includes categories
  * from the supported OFL schema version.
- * @param {Array.<String>} categories The fixture's categories array.
- * @returns {Array.<String>} A filtered categories array.
+ * @param {string[]} categories The fixture's categories array.
+ * @returns {string[]} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
-  const replaceCats = {
-    'Barrel Scanner': `Effect`
+  const replaceCategories = {
+    'Barrel Scanner': `Effect`,
   };
-  const ignoredCats = [`Pixel Bar`, `Stand`];
+  const ignoredCategories = new Set([`Pixel Bar`, `Stand`]);
 
-  const downgradedCategories = categories.map(cat => {
-    if (ignoredCats.includes(cat)) {
-      return null;
+  const downgradedCategories = categories.flatMap(category => {
+    if (ignoredCategories.has(category)) {
+      return [];
     }
 
-    if (cat in replaceCats) {
-      cat = replaceCats[cat];
+    if (category in replaceCategories) {
+      category = replaceCategories[category];
 
-      if (categories.includes(cat)) {
+      if (categories.includes(category)) {
         // replaced category is already used
-        return null;
+        return [];
       }
     }
 
-    return cat;
-  }).filter(cat => cat !== null);
+    return category;
+  });
 
   if (downgradedCategories.length === 0) {
     downgradedCategories.push(`Other`);
@@ -108,40 +105,35 @@ function getDowngradedCategories(categories) {
 /**
  * Replaces the fixture's physical JSON object with one that fits to the supported OFL schema version.
  * Specifically, the outdated focus property (with type, panMax and tiltMax) is generated and added if needed.
- * @param {Object} jsonPhysical The physical JSON that should be downgraded. May be an empty object.
+ * @param {object} jsonPhysical The physical JSON that should be downgraded. May be an empty object.
  * @param {Fixture} fixture The fixture whose physical data should be downgraded.
- * @returns {Object} The downgraded physical JSON object.
+ * @returns {object} The downgraded physical JSON object.
  */
 function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   const focusTypesCategories = {
     Head: `Moving Head`,
     Mirror: `Scanner`,
     Barrel: `Barrel Scanner`,
-    Fixed: null
+    Fixed: null,
   };
   const type = Object.keys(focusTypesCategories).find(
-    focusType => fixture.categories.includes(focusTypesCategories[focusType])
+    focusType => fixture.categories.includes(focusTypesCategories[focusType]),
   ) || null;
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-    const capabilities = [];
-    fixture.coarseChannels.forEach(ch => {
-      if (ch.capabilities) {
-        capabilities.push(...ch.capabilities);
-      }
-    });
+    const capabilities = fixture.coarseChannels.flatMap(channel => channel.capabilities || []);
 
-    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return `infinite`;
     }
 
-    const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
-    const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-    const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+    const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
+    const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > -Infinity) {
+    if (panTiltMax > Number.NEGATIVE_INFINITY) {
       return panTiltMax;
     }
 
@@ -151,15 +143,15 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   const focus = {
     type,
     panMax,
-    tiltMax
+    tiltMax,
   };
 
   // remove null properties
-  Object.entries(focus).filter(
-    ([key, value]) => value === null
-  ).forEach(
-    ([key, value]) => delete focus[key]
-  );
+  for (const [key, value] of Object.entries(focus)) {
+    if (value === null) {
+      delete focus[key];
+    }
+  }
 
   if (Object.keys(focus).length > 0) {
     jsonPhysical.focus = focus;
@@ -172,6 +164,8 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     }
   }
 
+  delete jsonPhysical.powerConnectors;
+
   // don't return empty objects
   if (Object.keys(jsonPhysical).length > 0) {
     return jsonPhysical;
@@ -180,25 +174,25 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
 }
 
 /**
- * @param {Object|undefined} jsonMatrix The matrix JSON data (if present) that should be downgraded.
+ * @param {object | undefined} jsonMatrix The matrix JSON data (if present) that should be downgraded.
  * @param {Fixture} fixture The fixture the matrix belongs to.
- * @returns {Object} A downgraded version of the specified matrix object.
+ * @returns {object} A downgraded version of the specified matrix object.
  */
 function getDowngradedMatrix(jsonMatrix, fixture) {
   if (jsonMatrix && jsonMatrix.pixelGroups) {
-    Object.keys(jsonMatrix.pixelGroups).forEach(groupKey => {
+    for (const groupKey of Object.keys(jsonMatrix.pixelGroups)) {
       jsonMatrix.pixelGroups[groupKey] = fixture.matrix.pixelGroups[groupKey];
-    });
+    }
   }
 
   return jsonMatrix;
 }
 
 /**
- * @param {String} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
- * @param {Object} jsonChannel The channel JSON data that should be downgraded.
+ * @param {string} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
+ * @param {object} jsonChannel The channel JSON data that should be downgraded.
  * @param {Fixture} fixture The fixture the channel belongs to.
- * @returns {Object} A downgraded version of the specified channel object.
+ * @returns {object} A downgraded version of the specified channel object.
  */
 function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   const channel = new CoarseChannel(channelKey, jsonChannel, fixture);
@@ -219,56 +213,52 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    channel.capabilities.forEach(cap => {
-      const downgradedCap = {
-        range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
-        name: cap.name
+    for (const capability of channel.capabilities) {
+      const downgradedCapability = {
+        range: [capability.rawDmxRange.start, capability.rawDmxRange.end],
+        name: capability.name,
       };
 
-      addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);
-      if (cap.colors && cap.colors.allColors.length <= 2) {
-        downgradedCap.color = cap.colors.allColors[0];
+      addIfValidData(downgradedCapability, `menuClick`, capability.jsonObject.menuClick);
+      if (capability.colors && capability.colors.allColors.length <= 2) {
+        downgradedCapability.color = capability.colors.allColors[0];
 
-        if (cap.colors.allColors[1]) {
-          downgradedCap.color2 = cap.colors.allColors[1];
+        if (capability.colors.allColors[1]) {
+          downgradedCapability.color2 = capability.colors.allColors[1];
         }
       }
-      addIfValidData(downgradedCap, `helpWanted`, cap.jsonObject.helpWanted);
-      addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
+      addIfValidData(downgradedCapability, `helpWanted`, capability.jsonObject.helpWanted);
+      addIfValidData(downgradedCapability, `switchChannels`, capability.jsonObject.switchChannels);
 
-      downgradedChannel.capabilities.push(downgradedCap);
-    });
+      downgradedChannel.capabilities.push(downgradedCapability);
+    }
   }
 
   return downgradedChannel;
 
   /**
-   * @returns {Boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
+   * @returns {boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
    */
   function capabilitiesNeeded() {
     const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `NoFunction`];
-    if (channel.capabilities.length === 1 && trivialCapabilityTypes.includes(channel.capabilities[0].type)) {
-      return false;
-    }
-
-    return true;
+    return channel.capabilities.length !== 1 || !trivialCapabilityTypes.includes(channel.capabilities[0].type);
   }
 }
 
 /**
  * Saves the given data (or value, if given) into obj[property] if data is valid,
  * i.e. it is neither undefined, nor null, nor false.
- * @param {Object} obj The object where the property should be created.
- * @param {String} property The name of the property added to obj.
- * @param {*} data If this is valid, the property is added to obj.
- * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
+ * @param {object} object The object where the property should be created.
+ * @param {string} property The name of the property added to obj.
+ * @param {any} data If this is valid, the property is added to obj.
+ * @param {any} value The property value, if data is valid. Defaults to `data`.
  */
-function addIfValidData(obj, property, data, value = undefined) {
+function addIfValidData(object, property, data, value) {
   if (value === undefined) {
     value = data;
   }
 
   if (data !== undefined && data !== null && data !== false) {
-    obj[property] = value;
+    object[property] = value;
   }
 }
