@@ -32,9 +32,10 @@
     }
   },
   "availableChannels": {
-    "Dimmer": {
+    "White": {
       "capability": {
-        "type": "Intensity"
+        "type": "ColorIntensity",
+        "color": "White"
       }
     },
     "Shutter / Strobe": {
@@ -54,7 +55,7 @@
     {
       "name": "1ch",
       "channels": [
-        "Dimmer"
+        "White"
       ]
     },
     {
@@ -62,7 +63,7 @@
       "channels": [
         "Master Dimmer",
         "Shutter / Strobe",
-        "Dimmer"
+        "White"
       ]
     }
   ]
