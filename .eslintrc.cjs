@@ -1,7 +1,7 @@
 const pluginPresets = {
   import: `recommended`,
   jsdoc: `recommended-typescript-flavor`,
-  markdown: `recommended`,
+  markdown: `recommended-legacy`,
   nuxt: `recommended`,
   promise: `recommended`,
   sonarjs: `recommended`,
