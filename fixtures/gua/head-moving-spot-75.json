@@ -1,0 +1,443 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Head Moving Spot 75",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Freasy", "fer"],
+    "createDate": "2024-03-10",
+    "lastModifyDate": "2024-03-10",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-03-10",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [270, 140, 380],
+    "weight": 1.8,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "75W LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "wheels": {
+    "Gobo": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00064.svg",
+          "name": "GoboAnillo"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00008.svg",
+          "name": "Gobo Estrella"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00010.png",
+          "name": "Gobo Triple"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00016.svg",
+          "name": "Gobo Tetris"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/gobo00008.svg",
+          "name": "Gobo Puntos"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00027.svg",
+          "name": "Gobo Espiral"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Unknown",
+          "name": "Change slow to fast"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "White (Open)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000", "#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00", "#ff5500"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#ff5500"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff", "#00ff00"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Cyan/Magenta",
+          "colors": ["#55ffff", "#ff55ff"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Magenta/Blue",
+          "colors": ["#ff55ff", "#0000ff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Blue/Green",
+          "colors": ["#0000ff", "#00ff00"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Green/Yellow",
+          "colors": ["#00ff00", "#ffff00"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Yellow/Orange",
+          "colors": ["#ffff00", "#ffaa00"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Orange/Red",
+          "colors": ["#ffaa00", "#ff0000"]
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Rotation"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open(White)"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "GoboAnillo"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo Estrella"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo Triple"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo Tetris"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo Puntos"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo Espiral"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo Dither Anillo"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo dither Estrella"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo Dither triple"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo Dither Tetris"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo Dither Puntos"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo Ditehr espiral"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo Dither cebra"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Change slow to fast"
+        }
+      ]
+    },
+    "Strobe 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Strobe Open"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe from slow to fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Strobe open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color & Gobo Macros 1 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Color & Gobo macro 1"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Color & Gobo macro 2"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Effect",
+          "effectName": "Color & Gobo macro 3"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Effect",
+          "effectName": "Color & Gobo macro 4"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 4",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Movement Macros 1 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Effect",
+          "effectName": "X axsis auto"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "y axis auto"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Reset (5Second)",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Gobo",
+        "Strobe 1",
+        "Dimmer",
+        "Speed",
+        "Color & Gobo Macros 1 1",
+        "Movement Macros 1 1"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Color",
+        "Gobo",
+        "Strobe 1",
+        "Dimmer",
+        "Speed",
+        "Color & Gobo Macros 1 1",
+        "Movement Macros 1 1"
+      ]
+    }
+  ]
+}
