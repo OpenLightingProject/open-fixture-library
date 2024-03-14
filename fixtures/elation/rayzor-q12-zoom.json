@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rayzor Q12 Zoom",
+  "shortName": "Canon",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/9885/elation_rayzor_q12_zoom_user_manual_ver_1.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/rayzor-q12-zoom"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=XxVjH9ziiUY"
+    ]
+  },
+  "physical": {
+    "dimensions": [214, 434, 302],
+    "weight": 10.4,
+    "power": 260,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid"
+    },
+    "lens": {
+      "degreesMinMax": [0, 360]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "fineChannelAliases": ["Strobe fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "constant": true,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Macros": {
+      "fineChannelAliases": ["Color Macros fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "fineChannelAliases": ["Strobe 2 fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "fineChannelAliases": ["Color Presets fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Mode": {
+      "fineChannelAliases": ["Color Mode fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Chase Macro": {
+      "fineChannelAliases": ["Chase Macro fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Chase Speed": {
+      "fineChannelAliases": ["Chase Speed fine"],
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "20-channel",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe 2",
+        "Dimmer 3",
+        "Zoom",
+        "Zoom fine",
+        "Color Macros",
+        "Color Presets",
+        "Color Mode",
+        "Chase Macro",
+        "Chase Speed",
+        "Chase Speed fine"
+      ]
+    }
+  ]
+}
