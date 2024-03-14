@@ -1,0 +1,472 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 60C",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-10-04",
+    "lastModifyDate": "2023-10-04"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691132637566-173998-1124121241512490-Forza+60C+Manual%EF%BC%88NANLITE%EF%BC%89V1+20220409+W.pdf",
+      "https://cdn-aliyun.nanlite.com/release/1691141511427-746640-1-Forza_60C_DMX_REFERENCE_GUIDE_EN+V1+20220430+W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/service-productDetail?t=1696461343993&type=download-item&id=34#/en/Forza-60C"
+    ]
+  },
+  "physical": {
+    "dimensions": [88, 110, 224],
+    "weight": 1.08,
+    "power": 88,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "G/M 8bit": {
+      "name": "G/M",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "G/M 16bit": {
+      "name": "G/M",
+      "fineChannelAliases": ["G/M 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "CCT for RGBW": {
+      "fineChannelAliases": ["CCT for RGBW fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "G/M for RGBW 8bit": {
+      "name": "G/M for RGBW",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "G/M for RGBW 16bit": {
+      "name": "G/M for RGBW",
+      "fineChannelAliases": ["G/M for RGBW 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Cross Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Cross Fade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT for RGBW",
+        "G/M for RGBW 8bit"
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Cross Fade",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CCT for RGBW",
+        "CCT for RGBW fine",
+        "G/M for RGBW 16bit",
+        "G/M for RGBW 16bit fine"
+      ]
+    },
+    {
+      "name": "CCT & RGBACL 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Cross Fade",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime"
+      ]
+    },
+    {
+      "name": "CCT & RGBACL 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Cross Fade",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "Lime",
+        "Lime fine"
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Cross Fade",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Cross Fade",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT for RGBW",
+        "G/M for RGBW 8bit"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CCT for RGBW",
+        "CCT for RGBW fine",
+        "G/M for RGBW 16bit",
+        "G/M for RGBW 16bit fine"
+      ]
+    },
+    {
+      "name": "RGBACL 8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime"
+      ]
+    },
+    {
+      "name": "RGBACL 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "Lime",
+        "Lime fine"
+      ]
+    }
+  ]
+}
