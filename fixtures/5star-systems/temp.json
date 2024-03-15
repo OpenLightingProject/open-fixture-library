@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Temp",
+  "shortName": "Short name",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Angel Parada"],
+    "createDate": "2024-03-15",
+    "lastModifyDate": "2024-03-15"
+  },
+  "comment": "This is a demo to connect things",
+  "links": {
+    "manual": [
+      "https://google.com"
+    ]
+  },
+  "availableChannels": {
+    "Fog Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "TEst",
+      "channels": [
+        "Fog Intensity"
+      ]
+    }
+  ]
+}
