@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS200 FC",
+  "shortName": "ts200",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["Sergio"],
+    "createDate": "2024-03-21",
+    "lastModifyDate": "2024-03-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.manual.com.ve/cameo/ts-200-fc/manual"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/es/soluciones/dj-y-musicos/iluminacion-estatica/focos-de-teatro/20479/ts-200-fc"
+    ],
+    "video": [
+      "https://youtube.com/watch?v=fVKi5BTIJb0"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 5": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 6": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 channel",
+      "shortName": "1chann",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "3 channels",
+      "shortName": "3chan",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2",
+        "Dimmer 3"
+      ]
+    }
+  ]
+}
