@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TO-QUA-18",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["masaki"],
+    "createDate": "2024-03-22",
+    "lastModifyDate": "2024-03-22"
+  },
+  "links": {
+    "productPage": [
+      "https://www.tomoca.co.jp/brand/tomoca-l/%E5%B1%8B%E5%A4%96%E6%BC%94%E5%87%BA%E7%94%A8led/to-qua-18bar-1m/"
+    ]
+  },
+  "availableChannels": {
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "72ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "W"
+      ]
+    }
+  ]
+}
