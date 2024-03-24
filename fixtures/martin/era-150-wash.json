@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ERA 150 WASH",
+  "categories": ["Color Changer", "Dimmer", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["pldl"],
+    "createDate": "2022-12-15",
+    "lastModifyDate": "2022-12-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en-US/site_elements/era-150-wash-user-guide"
+    ],
+    "productPage": [
+      "https://www.martin.com/products/era-150-wash#description"
+    ]
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "255%"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "speed": "0%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "CONTROL": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ERA 150 WASH",
+      "shortName": "ERA 150 WASH",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer 2",
+        "Red",
+        "Red 2",
+        "Green",
+        "Green 2",
+        "Blue",
+        "Blue 2",
+        "CTC",
+        "Color Wheel",
+        "Zoom",
+        "Zoom 2",
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "CONTROL"
+      ]
+    }
+  ]
+}
