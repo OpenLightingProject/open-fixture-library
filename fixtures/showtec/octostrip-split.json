@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "OCTOSTRIP SPLIT",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["YOYO"],
+    "createDate": "2024-03-25",
+    "lastModifyDate": "2024-03-25"
+  },
+  "links": {
+    "manual": [
+      "https://assets.highlite.com/media/attachments/MANUAL/42230_MANUAL_F_V1.pdf"
+    ],
+    "productPage": [
+      "https://assets.highlite.com/media/attachments/MANUAL/42230_MANUAL_F_V1.pdf"
+    ],
+    "other": [
+      "https://assets.highlite.com/media/attachments/MANUAL/42230_MANUAL_F_V1.pdf"
+    ]
+  },
+  "availableChannels": {
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "V": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "OCTO 1",
+      "shortName": "OCTO 1",
+      "channels": [
+        "R",
+        "V",
+        "Blue"
+      ]
+    }
+  ]
+}
