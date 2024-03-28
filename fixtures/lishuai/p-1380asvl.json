@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "P-1380ASVL",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-05-28",
+    "lastModifyDate": "2024-05-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.lishuai-lighting.com/products/sort-detailxohyn/100w-p-1380asvl-led-panel-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [632, 72, 382],
+    "weight": 4.9,
+    "power": 100,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "10%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "5600K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
