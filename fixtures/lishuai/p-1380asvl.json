@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "P-1380ASVL",
-  "categories": ["Dimmer"],
+  "categories": ["Other"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2024-05-28",
-    "lastModifyDate": "2024-05-28"
+    "createDate": "2024-03-28",
+    "lastModifyDate": "2024-03-30"
   },
   "links": {
     "productPage": [
@@ -13,7 +13,7 @@
     ]
   },
   "physical": {
-    "dimensions": [632, 72, 382],
+    "dimensions": [630, 130, 440],
     "weight": 4.9,
     "power": 100,
     "bulb": {
@@ -24,9 +24,7 @@
     "Intensity": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "10%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Color Temperature": {
