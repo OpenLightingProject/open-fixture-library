@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PS40",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MSZ"],
+    "createDate": "2024-03-31",
+    "lastModifyDate": "2024-03-31"
+  },
+  "links": {
+    "manual": [
+      "https://sonomateriel.com/amfile/file/download/file/997/product/576/"
+    ]
+  },
+  "rdm": {
+    "modelId": 12201338
+  },
+  "physical": {
+    "dimensions": [160, 125, 180],
+    "weight": 1.5,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "LED",
+      "degreesMinMax": [2, 5]
+    }
+  },
+  "availableChannels": {
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Generic",
+          "comment": "Master Dimmer"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "StrobeSpeed",
+          "speedStart": "2Hz",
+          "speedEnd": "15Hz",
+          "comment": "Strobe Speed"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Reserved"
+      ]
+    }
+  ]
+}
