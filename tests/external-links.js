@@ -286,7 +286,7 @@ async function updateGithubIssue(urlResults) {
             };
           }
 
-          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">\w+<\/a>/);
+          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">[^<]+<\/a>/);
 
           return {
             failed: true,
