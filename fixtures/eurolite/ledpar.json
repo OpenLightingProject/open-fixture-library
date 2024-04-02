@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDPAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Alex"],
+    "createDate": "2024-04-02",
+    "lastModifyDate": "2024-04-02"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=HT0P59F9_p8"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity"
+      ]
+    }
+  ]
+}
