@@ -1,0 +1,470 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ELP PAR",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Gabrielle"],
+    "createDate": "2024-04-02",
+    "lastModifyDate": "2024-04-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/elp-par-user-guide-0cdfc385-56e4-4d59-b094-c7b138be0b68"
+    ],
+    "productPage": [
+      "https://www.martin.com/products/elp-par"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=QspPA_hyqvk"
+    ]
+  },
+  "physical": {
+    "dimensions": [287, 401, 312],
+    "weight": 7.8,
+    "power": 280,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "colorTemperature": 12850,
+      "lumens": 3.5
+    },
+    "lens": {
+      "degreesMinMax": [4.2, 58]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "12Hz"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "12850K"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "ColorPreset",
+          "comment": "Moroccan pink (LEE 790)",
+          "colors": ["#ff9142"]
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "ColorPreset",
+          "comment": "Pink (LEE 157)",
+          "colors": ["#ff6e37"]
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "ColorPreset",
+          "comment": "Special Rose Pink (LEE 332)",
+          "colors": ["#ff2b3d"]
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "ColorPreset",
+          "comment": "Folies Pink (LEE 328)",
+          "colors": ["#ff5057"]
+        },
+        {
+          "dmxRange": [19, 20],
+          "type": "ColorPreset",
+          "comment": "Fuchsia Pink (LEE 345)",
+          "colors": ["#ff858a"]
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "ColorPreset",
+          "comment": "Surprise Pink (LEE 194)",
+          "colors": ["#ffa990"]
+        },
+        {
+          "dmxRange": [23, 24],
+          "type": "ColorPreset",
+          "comment": "Congo Blue (LEE 181)",
+          "colors": ["#7f54ff"]
+        },
+        {
+          "dmxRange": [25, 26],
+          "type": "ColorPreset",
+          "comment": "Tokyo Blue (LEE 107)",
+          "colors": ["#0047ff"]
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "Deep Blue (LEE 120)",
+          "colors": ["#0076ff"]
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "ColorPreset",
+          "comment": "Just Blue (LEE 079)",
+          "colors": ["#00b4ff"]
+        },
+        {
+          "dmxRange": [31, 32],
+          "type": "ColorPreset",
+          "comment": "Medium Blue (LEE 132)",
+          "colors": ["#00b4ff"]
+        },
+        {
+          "dmxRange": [33, 34],
+          "type": "ColorPreset",
+          "comment": "Double CT Blue (LEE 200)",
+          "colors": ["#fbfff7"]
+        },
+        {
+          "dmxRange": [35, 36],
+          "type": "ColorPreset",
+          "comment": "Slate Blue (LEE 161)",
+          "colors": ["#e8ffdb"]
+        },
+        {
+          "dmxRange": [37, 38],
+          "type": "ColorPreset",
+          "comment": "Full CT Blue (LEE 201)",
+          "colors": ["#ffd498"]
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "ColorPreset",
+          "comment": "Half CT Blue (LEE 202)",
+          "colors": ["#ffc577"]
+        },
+        {
+          "dmxRange": [41, 42],
+          "type": "ColorPreset",
+          "comment": "Steel Blue (LEE 117)",
+          "colors": ["#ffe789"]
+        },
+        {
+          "dmxRange": [43, 44],
+          "type": "ColorPreset",
+          "comment": "Lighter Blue (LEE 353)",
+          "colors": ["#c9ffae"]
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "ColorPreset",
+          "comment": "Light Blue (LEE 118)",
+          "colors": ["#4effd1"]
+        },
+        {
+          "dmxRange": [47, 48],
+          "type": "ColorPreset",
+          "comment": "Medium Blue Green (LEE 116)",
+          "colors": ["#00ffa8"]
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "ColorPreset",
+          "comment": "Dark Green (LEE  124)",
+          "colors": ["#6bff45"]
+        },
+        {
+          "dmxRange": [51, 52],
+          "type": "ColorPreset",
+          "comment": "Primary Green (LEE 139)",
+          "colors": ["#60ff00"]
+        },
+        {
+          "dmxRange": [53, 54],
+          "type": "ColorPreset",
+          "comment": "Moss Green (LEE 089)",
+          "colors": ["#ccff32"]
+        },
+        {
+          "dmxRange": [55, 56],
+          "type": "ColorPreset",
+          "comment": "Fern Green (LEE 122)",
+          "colors": ["#e6ff3c"]
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "ColorPreset",
+          "comment": "Jas Green (LEE 738)",
+          "colors": ["#f7ff00"]
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "ColorPreset",
+          "comment": "Lime Green (LEE 088)",
+          "colors": ["#ffcf1e"]
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow (LEE 100)",
+          "colors": ["#ffb300"]
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "comment": "Deep Amber (LEE 104)",
+          "colors": ["#ff9700"]
+        },
+        {
+          "dmxRange": [65, 66],
+          "type": "ColorPreset",
+          "comment": "Chrome Orange (LEE 179)",
+          "colors": ["#ff8900"]
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "ColorPreset",
+          "comment": "Orange (LEE 105)",
+          "colors": ["#ff7800"]
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "ColorPreset",
+          "comment": "Gold Amber (LEE 021)",
+          "colors": ["#ff6b00"]
+        },
+        {
+          "dmxRange": [71, 72],
+          "type": "ColorPreset",
+          "comment": "Millennium Gold (LEE 778)",
+          "colors": ["#ff6100"]
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber (LEE 135)",
+          "colors": ["#ff5300"]
+        },
+        {
+          "dmxRange": [75, 76],
+          "type": "ColorPreset",
+          "comment": "Flame Red (LEE 164)",
+          "colors": ["#ff6100"]
+        },
+        {
+          "dmxRange": [77, 78],
+          "type": "ColorPreset",
+          "comment": "Red Magenta (LEE 113)",
+          "colors": ["#ff2b27"]
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "ColorPreset",
+          "comment": "Medium Lavender (LEE 343)",
+          "colors": ["#ff8af4"]
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "ColorPreset",
+          "comment": "Blanc pur",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [83, 84],
+          "type": "ColorPreset",
+          "comment": "Rouge pur",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "ColorPreset",
+          "comment": "Jaune pur",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [87, 88],
+          "type": "ColorPreset",
+          "comment": "Vert pur",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [89, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan pur",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "ColorPreset",
+          "comment": "Bleu pur",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [93, 94],
+          "type": "ColorPreset",
+          "comment": "Magenta pur",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue (LEE 115)",
+          "colors": ["#74ff9c"]
+        },
+        {
+          "dmxRange": [97, 98],
+          "type": "ColorPreset",
+          "comment": "Dark Lavender (LEE 180)",
+          "colors": ["#ff98e5"]
+        },
+        {
+          "dmxRange": [99, 100],
+          "type": "ColorPreset",
+          "comment": "Double CT Orange (LEE 287)",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [101, 102],
+          "type": "ColorPreset",
+          "comment": "Full CT Orange (LEE 204)",
+          "colors": ["#ff962a"]
+        },
+        {
+          "dmxRange": [103, 104],
+          "type": "ColorPreset",
+          "comment": "Half CT Orange (LEE 205)",
+          "colors": ["#ffa23d"]
+        },
+        {
+          "dmxRange": [105, 106],
+          "type": "ColorPreset",
+          "comment": "Deep Straw",
+          "colors": ["#ff9000"]
+        },
+        {
+          "dmxRange": [107, 190],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [191, 214],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [220, 243],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Settings unavailable": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "14ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Intensity",
+        "Intensity fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "CTC",
+        "Color Presets",
+        "Zoom",
+        "Zoom fine",
+        "Settings unavailable"
+      ]
+    }
+  ]
+}
