@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rage 1800LED",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["J2M"],
+    "createDate": "2022-10-12",
+    "lastModifyDate": "2022-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [285, 255, 570],
+    "weight": 6.7,
+    "power": 1800,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Smoke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Smoke"
+      }
+    },
+    "Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Auto program": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Auto program from slow to fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Smoke",
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Auto program"
+      ]
+    }
+  ]
+}
