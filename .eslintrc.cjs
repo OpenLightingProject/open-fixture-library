@@ -1,7 +1,7 @@
 const pluginPresets = {
   import: `recommended`,
   jsdoc: `recommended-typescript-flavor`,
-  markdown: `recommended`,
+  markdown: `recommended-legacy`,
   nuxt: `recommended`,
   promise: `recommended`,
   sonarjs: `recommended`,
@@ -182,6 +182,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
+  'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
@@ -204,6 +205,7 @@ const enabledRuleParameters = {
     ],
   }],
   'vue/no-undef-properties': [],
+  'vue/no-unused-emit-declarations': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
@@ -216,6 +218,7 @@ const enabledRuleParameters = {
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
+  'vue/v-if-else-key': [],
   'vue/v-on-handler-style': [`inline`],
   'vue/v-slot-style': [`shorthand`],
 
