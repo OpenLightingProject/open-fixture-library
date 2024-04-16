@@ -1,3 +1,4 @@
+<!-- eslint-disable-next-line vue/enforce-style-attribute -- scoped styles don't work for functional components -->
 <style lang="scss">
 .icon {
   display: inline-block;

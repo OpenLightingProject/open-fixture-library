@@ -3,9 +3,9 @@
   "name": "Mega Hex Par",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Christopher Haywood"],
+    "authors": ["Christopher Haywood", "Ken Harris"],
     "createDate": "2019-02-27",
-    "lastModifyDate": "2019-02-27"
+    "lastModifyDate": "2024-01-08"
   },
   "links": {
     "manual": [
@@ -29,7 +29,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 25]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -114,9 +114,10 @@
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "Lightning",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
