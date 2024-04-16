@@ -1,7 +1,7 @@
 const pluginPresets = {
   import: `recommended`,
   jsdoc: `recommended-typescript-flavor`,
-  markdown: `recommended`,
+  markdown: `recommended-legacy`,
   nuxt: `recommended`,
   promise: `recommended`,
   sonarjs: `recommended`,
@@ -182,6 +182,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
+  'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
