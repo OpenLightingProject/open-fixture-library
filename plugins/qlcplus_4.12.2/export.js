@@ -414,7 +414,14 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
 
       // add whitespace
-      const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+      let connector = physical.DMXconnector;
+
+      if (connector === `3.5mm stereo jack`) {
+        connector = `3.5 mm stereo jack`;
+      }
+      else if (connector === `RJ45`) {
+        connector = `Other`;
+      }
 
       return {
         DmxConnector: connector || `Other`,
