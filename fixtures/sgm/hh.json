@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "hh",
+  "shortName": "hh",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["klkl"],
+    "createDate": "2024-04-23",
+    "lastModifyDate": "2024-04-23"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 211,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast",
+        "comment": "ghgdhghgh"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ggh",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
