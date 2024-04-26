@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Blaze Fog 800",
+  "shortName": "blaze fog 8ch",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["roni"],
+    "createDate": "2024-04-26",
+    "lastModifyDate": "2024-04-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.youtube.com/"
+    ],
+    "productPage": [
+      "https://www.youtube.com/"
+    ],
+    "video": [
+      "https://www.youtube.com/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channels",
+      "channels": [
+        "Fog",
+        "Red",
+        "Dimmer",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
