@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBWAUV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Teatro y Su Doble"],
+    "createDate": "2024-04-27",
+    "lastModifyDate": "2024-04-27"
+  },
+  "links": {
+    "other": [
+      "https://images.jumpseller.com/store/onoffstore1/14742986/attachments/2953720b0cb7c92e8c0ddb4541f32c50/LPC006.pdf?1659640526"
+    ]
+  },
+  "availableChannels": {
+    "Intensidad": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Obturador/estroboscópico": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Macros de colores": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Fx1"
+      }
+    },
+    "Ajustes preestablecidos de color": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Rojo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Azul": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanco": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Ambar": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Intensidad",
+        "Obturador/estroboscópico",
+        "Macros de colores",
+        "Ajustes preestablecidos de color",
+        "Rojo",
+        "Verde",
+        "Azul",
+        "Blanco",
+        "Ambar",
+        "UV"
+      ]
+    }
+  ]
+}
