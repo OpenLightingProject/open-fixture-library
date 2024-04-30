@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "S-Par9UV",
+  "shortName": "PARUV",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Fernando Medina"],
+    "createDate": "2024-04-30",
+    "lastModifyDate": "2024-04-30"
+  },
+  "links": {
+    "manual": [
+      "http://schalterusa.com.mx/product/canon-par-64-9x9w-rgb-ultravioleta-luz-negra/"
+    ],
+    "productPage": [
+      "http://schalterusa.com.mx/product/canon-par-64-9x9w-rgb-ultravioleta-luz-negra/"
+    ],
+    "video": [
+      "http://schalterusa.com.mx/product/canon-par-64-9x9w-rgb-ultravioleta-luz-negra/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led 12 w",
+      "colorTemperature": 5200
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Par 9 UV",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Blue",
+        "Green",
+        "UV",
+        "Strobe",
+        "Color Macros",
+        "Color Macros 2"
+      ]
+    }
+  ]
+}
