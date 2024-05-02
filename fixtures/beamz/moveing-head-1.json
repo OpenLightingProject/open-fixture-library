@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moveing head 1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Luis"],
+    "createDate": "2024-05-02",
+    "lastModifyDate": "2024-05-02"
+  },
+  "comment": "1",
+  "links": {
+    "other": [
+      "https://www.amazon.de/HOLDLAMP-B%C3%BChnenlicht-Partylichter-Fernbedienung-Lichteffekt/dp/B09B1Q8QLW/ref=sr_1_2_sspa?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=36IMTBFC5JUHU&dib=eyJ2IjoiMSJ9.MrMhR4kU_RSScIv_4FXopAv8HGxVjd2CebW_9BJw484rWLfyoSFDF2wxhdNfHv90kllgFR_inA2_QpUBNA4k77MmkbKPnu9amUOULlJh1HnWABZYZtafoU3nYBDh6V5jasS5RHn5vzanaSbPhx91WZ8ID8cxg65Xmyy2Ve-JbUUnLtpikqBpcmPKB8vUINZl_7AZVk_6CnHSzHr6aUKym6XDVaynUiLe8SElmxVS18jzvfakIW3YxWtkCyJnECHIP1Ta4lrJT_W54nx8Xg30L4-FPLAp7hO7W2vmlaoa74E.IniH5nsqYe5MhJZVF6wBq7hQcIttEOhFlfj1fngS19Y&dib_tag=se&keywords=mini-led-spot+dmx&qid=1714656696&sprefix=mini-led-spot+dmx%2Caps%2C87&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Rainbow"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo1"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Speed pan": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "slow CCW"
+      }
+    },
+    "Tild": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt speed": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speedStart": "slow CCW",
+        "speedEnd": "slow CCW"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Color"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 2
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "MAIN",
+      "shortName": "MAIN",
+      "channels": [
+        "Pan",
+        "Speed pan",
+        "Tild",
+        "Tilt speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
