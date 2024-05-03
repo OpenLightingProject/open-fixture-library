@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Stryder SFB150",
-  "categories": ["Dimmer"],
+  "categories": ["Other"],
   "meta": {
     "authors": ["Dyami Caliri"],
     "createDate": "2024-05-02",
@@ -16,8 +16,8 @@
     ]
   },
   "physical": {
-    "dimensions": [482, 254, 254],
-    "weight": 5.9,
+    "dimensions": [406, 254, 178],
+    "weight": 4.8,
     "power": 98,
     "DMXconnector": "5-pin",
     "bulb": {
