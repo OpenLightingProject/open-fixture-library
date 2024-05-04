@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED ML-56 RGB 7ch",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Euro-ledpar 7 ch"],
+    "createDate": "2024-05-04",
+    "lastModifyDate": "2024-05-04"
+  },
+  "links": {
+    "manual": [
+      "http://www.eurolite.nl"
+    ],
+    "productPage": [
+      "http://www.eurolite.nl"
+    ],
+    "video": [
+      "http://youtube.com/watch"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe Speed",
+        "Dimmer",
+        "Intensity"
+      ]
+    }
+  ]
+}
