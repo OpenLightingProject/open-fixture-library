@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MiniCube 6ct",
+  "shortName": "MiniCube 6ct",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Doc"],
+    "createDate": "2024-05-05",
+    "lastModifyDate": "2024-05-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.contest-lighting.com/downloads/MINICUBE_manuel-V2-2015-05-web.pdf&ved=2ahUKEwjq4MDQwfaFAxV0VqQEHRFHCPUQFnoECA8QAQ&usg=AOvVaw0HKh6WnV3cns9KdQwIDT9V"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Dimmer /Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 112],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [113, 245],
+          "type": "StrobeSpeed",
+          "speed": "1Hz"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Audio"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "C02",
+      "shortName": "C02",
+      "channels": [
+        "Color Macros",
+        "Dimmer /Strobe"
+      ]
+    }
+  ]
+}
