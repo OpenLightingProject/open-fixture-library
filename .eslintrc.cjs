@@ -4,7 +4,7 @@ const pluginPresets = {
   markdown: `recommended-legacy`,
   nuxt: `recommended`,
   promise: `recommended`,
-  sonarjs: `recommended`,
+  sonarjs: `recommended-legacy`,
   unicorn: `recommended`,
   vue: `recommended`,
   'vuejs-accessibility': `recommended`,
