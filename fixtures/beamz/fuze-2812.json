@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FUZE 2812",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Caleb"],
+    "createDate": "2024-05-06",
+    "lastModifyDate": "2024-05-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2024/03/150.350-Fuze2812-Moving-Head_manual_V1.2.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/fuze2812-wash-moving-head-with-zoom/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ns21Var4-Ao&t=1s&ab_channel=TroniosBV"
+    ]
+  },
+  "physical": {
+    "weight": 6,
+    "power": 12,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "6 in 1 LED",
+      "colorTemperature": "invalid",
+      "lumens": 11.0001
+    },
+    "lens": {
+      "degreesMinMax": [0, 360]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "21CH",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
