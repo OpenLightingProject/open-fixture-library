@@ -39,14 +39,7 @@
     "Color Wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Pink",
-          "colors": ["#ff00ff"]
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -60,6 +53,16 @@
         },
         {
           "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
           "name": "Yellow",
           "colors": ["#ffff00"]
         },
@@ -70,11 +73,8 @@
         },
         {
           "type": "Color",
-          "name": "Orange",
-          "colors": ["#ffaa00"]
-        },
-        {
-          "type": "Open"
+          "name": "Pink",
+          "colors": ["#ff00ff"]
         }
       ]
     },
