@@ -1,3 +1,4 @@
+<!-- eslint-disable-next-line vue/enforce-style-attribute -- scoped styles don't work for functional components -->
 <style lang="scss">
 .icon {
   display: inline-block;
@@ -95,7 +96,7 @@ function getSvg(name, category = undefined, title) {
     return ``;
   }
 
-  const kebabName = name.replace(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replace(/\W+/g, `-`);
+  const kebabName = name.replaceAll(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replaceAll(/\W+/g, `-`);
   const svgBasename = (category ? `${category}/` : ``) + kebabName;
   let svg = ``;
 

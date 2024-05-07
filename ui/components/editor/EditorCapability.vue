@@ -42,7 +42,7 @@
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -107,6 +107,10 @@ export default {
     capabilityIndex: numberProp().required,
     resolution: numberProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
   },
   data() {
     return {

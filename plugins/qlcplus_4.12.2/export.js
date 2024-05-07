@@ -73,7 +73,7 @@ export async function exportFixtures(fixtures, options) {
 
     xml.dtd(``);
 
-    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
+    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replaceAll(/\s+/g, `-`);
 
     return {
       name: `fixtures/${sanitizedFileName}`,
@@ -414,7 +414,14 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
 
       // add whitespace
-      const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+      let connector = physical.DMXconnector;
+
+      if (connector === `3.5mm stereo jack`) {
+        connector = `3.5 mm stereo jack`;
+      }
+      else if (connector === `RJ45`) {
+        connector = `Other`;
+      }
 
       return {
         DmxConnector: connector || `Other`,
