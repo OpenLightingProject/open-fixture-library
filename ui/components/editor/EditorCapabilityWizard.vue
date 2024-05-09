@@ -44,7 +44,7 @@
     </section>
 
     <EditorCapabilityTypeData
-      v-model="wizard.templateCapability"
+      :capability="wizard.templateCapability"
       :channel="channel" />
 
     <table class="capabilities-table">
@@ -164,6 +164,9 @@ export default {
     resolution: numberProp().required,
     wizard: objectProp().required,
   },
+  emits: {
+    close: insertIndex => true,
+  },
   computed: {
     capabilities() {
       return this.channel.capabilities;
@@ -248,7 +251,7 @@ export default {
      * @returns {number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites.at(-1).dmxRange[1];
     },
 
     /**

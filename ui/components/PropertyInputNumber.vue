@@ -9,7 +9,9 @@
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
     type="number"
-    v-on="lazy ? { change: update } : { input: update }">
+    v-on="lazy ? { change: update } : { input: update }"
+    @focus="$emit('focus', $event)"
+    @blur="$emit('blur', $event)">
 </template>
 
 <script>
@@ -24,6 +26,12 @@ export default {
     maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
     value: anyProp().required,
     lazy: booleanProp().withDefault(false),
+  },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'vf:validate': validationData => true,
   },
   computed: {
     min() {

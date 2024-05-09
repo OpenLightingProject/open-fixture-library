@@ -4,9 +4,9 @@
   "shortName": "ZQ-B20-MiniSpider",
   "categories": ["Effect"],
   "meta": {
-    "authors": ["CGBassPlayer"],
+    "authors": ["Ryan Goodwin"],
     "createDate": "2023-04-24",
-    "lastModifyDate": "2023-04-24"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "productPage": [
@@ -23,6 +23,9 @@
     "dimensions": [280, 150, 130],
     "weight": 1.99,
     "power": 80,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
