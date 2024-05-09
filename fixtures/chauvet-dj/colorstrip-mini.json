@@ -1,0 +1,323 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORStrip Mini",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Andrew Grant"],
+    "createDate": "2024-05-09",
+    "lastModifyDate": "2024-05-09"
+  },
+  "comment": "The COLORstrip Mini is a 19-inch long four-channel DMX-512 controlled LED linear wash light. Static colors and RGB color mixing can be done with or without a DMX controller. Blackout, static, dimmer and strobe are included.\n\nAdditional features include built-in automated and sound-activated programs via master/slave or DMX. Up to 31 units can be linked master/slave for a color-changing runway effect.",
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/COLORstrip-COLORstrip_Mini_UM_Rev4.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/colorstrip-mini/"
+    ]
+  },
+  "physical": {
+    "dimensions": [482, 155, 52],
+    "weight": 1.5,
+    "power": 40,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 1192
+    }
+  },
+  "availableChannels": {
+    "Channel 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Red 0-100%"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Green 0-100%"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Blue 0-100%"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Yellow 0-100%"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Magenta 0-100%"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Cyan 0-100%"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "White 0-100%"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Color Chases"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Effect",
+          "effectName": "RGB Color Mixing",
+          "comment": "Channels 2-4"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Effect",
+          "effectName": "Color Fade"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound-Active",
+          "soundControlled": true,
+          "soundSensitivityStart": "0%",
+          "soundSensitivityEnd": "100%",
+          "comment": "Sound-Active"
+        }
+      ]
+    },
+    "Run Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Fade Speed"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Static Colors",
+      "channels": [
+        "Channel 1"
+      ]
+    },
+    {
+      "name": "Color Chases",
+      "channels": [
+        "Channel 1"
+      ]
+    },
+    {
+      "name": "RGB Color Mixing",
+      "channels": [
+        "Channel 1"
+      ]
+    },
+    {
+      "name": "Color Fade",
+      "channels": [
+        "Channel 1"
+      ]
+    },
+    {
+      "name": "Sound-Active",
+      "channels": [
+        "Channel 1"
+      ]
+    },
+    {
+      "name": "Run Speed",
+      "channels": [
+        "Channel 1",
+        "Run Speed"
+      ]
+    },
+    {
+      "name": "Red (when Ch. 1 is 210-219)",
+      "channels": [
+        "Channel 1",
+        "Red"
+      ]
+    },
+    {
+      "name": "Fade Speed (when Ch. 1 is 220-229)",
+      "channels": [
+        "Channel 1",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "Strobe (when Ch. 1 is 010-119)",
+      "channels": [
+        "Channel 1",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Green (when Ch. 1 is 210-219)",
+      "channels": [
+        "Channel 1",
+        "Green"
+      ]
+    },
+    {
+      "name": "Blue (when Ch. 1 is 210-119)",
+      "channels": [
+        "Channel 1",
+        "Blue"
+      ]
+    }
+  ]
+}
