@@ -342,7 +342,7 @@ export default {
         return;
       }
 
-      console.log(`restore`, JSON.parse(JSON.stringify(this.restoredData)));
+      console.log(`restore`, structuredClone(this.restoredData));
     },
 
     /**

@@ -116,7 +116,6 @@ import {
   physicalBulbProperties,
   physicalLensProperties,
 } from '../../../lib/schema-properties.js';
-import { clone } from '../../assets/scripts/editor-utils.js';
 
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputDimensions from '../PropertyInputDimensions.vue';
@@ -152,13 +151,13 @@ export default {
       physicalProperties,
       physicalBulbProperties,
       physicalLensProperties,
-      localPhysical: clone(this.modelValue),
+      localPhysical: structuredClone(this.modelValue),
     };
   },
   watch: {
     localPhysical: {
       handler() {
-        this.$emit(`update:model-value`, clone(this.localPhysical));
+        this.$emit(`update:model-value`, structuredClone(this.localPhysical));
       },
       deep: true,
     },
