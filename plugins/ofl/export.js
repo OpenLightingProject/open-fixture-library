@@ -24,7 +24,7 @@ export async function exportFixtures(fixtures, options) {
     usedManufacturers.add(fixture.manufacturer.key);
 
 
-    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+    const jsonData = structuredClone(fixture.jsonObject);
     jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/fixture.json`;
 
     jsonData.fixtureKey = fixture.key;

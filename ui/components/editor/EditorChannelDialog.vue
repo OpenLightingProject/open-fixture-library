@@ -252,7 +252,6 @@ import {
   getSanitizedChannel,
   isChannelChanged,
   isCapabilityChanged,
-  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -428,7 +427,7 @@ export default {
 
     copyPropertiesFromChannel(channel) {
       for (const property of Object.keys(channel)) {
-        this.channel[property] = clone(channel[property]);
+        this.channel[property] = structuredClone(channel[property]);
       }
     },
 

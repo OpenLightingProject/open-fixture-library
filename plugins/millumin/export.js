@@ -19,7 +19,7 @@ export const supportedOflVersion = `7.3.0`;
 export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
   return fixtures.map(fixture => {
-    const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
+    const oflJson = structuredClone(fixture.jsonObject);
     const milluminJson = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
       name: oflJson.name,
