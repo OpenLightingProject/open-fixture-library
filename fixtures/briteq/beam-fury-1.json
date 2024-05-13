@@ -68,7 +68,7 @@
           "dmxRange": [236, 245],
           "type": "Maintenance",
           "hold": "3s",
-          "comment": "All Motor Reset (after 3s)"
+          "comment": "All Motor Reset"
         },
         {
           "dmxRange": [246, 255],
@@ -216,49 +216,49 @@
           "type": "ColorPreset",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffff00"],
-          "comment": "from RED to YELLOW"
+          "comment": "Red…Yellow"
         },
         {
           "dmxRange": [40, 71],
           "type": "ColorPreset",
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#00ff00"],
-          "comment": "from YELLOW to GREEN"
+          "comment": "Yellow…Green"
         },
         {
           "dmxRange": [72, 103],
           "type": "ColorPreset",
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#00ffff"],
-          "comment": "from GREEN to CYAN"
+          "comment": "Green…Cyan"
         },
         {
           "dmxRange": [104, 135],
           "type": "ColorPreset",
           "colorsStart": ["#00ffff"],
           "colorsEnd": ["#0000ff"],
-          "comment": "from CYAN to BLUE"
+          "comment": "Cyan…Blue"
         },
         {
           "dmxRange": [136, 167],
           "type": "ColorPreset",
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ff00ff"],
-          "comment": "from BLUE to MAGENTA"
+          "comment": "Blue…Magenta"
         },
         {
           "dmxRange": [168, 199],
           "type": "ColorPreset",
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#ff0000"],
-          "comment": "from MAGENTA to RED"
+          "comment": "Magenta…Red"
         },
         {
           "dmxRange": [200, 231],
           "type": "ColorPreset",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffffff"],
-          "comment": "from RED to WHITE"
+          "comment": "Red…White"
         },
         {
           "dmxRange": [232, 255],
