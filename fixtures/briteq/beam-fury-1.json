@@ -38,52 +38,20 @@
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": 0,
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "630deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "630deg",
+        "comment": "Range may be limited to 540deg in config menu"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": "270deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "270deg",
+        "angleStart": "0deg",
         "angleEnd": "270deg"
-      }
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "630deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 3": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angle": "270deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -329,10 +297,10 @@
     {
       "name": "14ch",
       "channels": [
-        "Pan 3",
-        "Pan 3 fine",
-        "Tilt 3",
-        "Tilt 3 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Pan Continuous Rotation",
         "Tilt Continuous Rotation",
