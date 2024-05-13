@@ -213,63 +213,62 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Effect",
-          "effectName": "Normal Color",
+          "type": "NoFunction",
           "comment": "Normal"
         },
         {
           "dmxRange": [8, 39],
-          "type": "Effect",
-          "effectName": "RED to YELLOW",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "from RED to YELLOW"
         },
         {
           "dmxRange": [40, 71],
-          "type": "Effect",
-          "effectName": "YELLOW to GREEN",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "from YELLOW to GREEN"
         },
         {
           "dmxRange": [72, 103],
-          "type": "Effect",
-          "effectName": "GREEN to CYAN",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "from GREEN to CYAN"
         },
         {
           "dmxRange": [104, 135],
-          "type": "Effect",
-          "effectName": "CYAN to BLUE",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "from CYAN to BLUE"
         },
         {
           "dmxRange": [136, 167],
-          "type": "Effect",
-          "effectName": "BLUE to MAGENTA",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "from BLUE to MAGENTA"
         },
         {
           "dmxRange": [168, 199],
-          "type": "Effect",
-          "effectName": "MAGENTA to RED",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "from MAGENTA to RED"
         },
         {
           "dmxRange": [200, 231],
-          "type": "Effect",
-          "effectName": "RED to WHITE",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "from RED to WHITE"
         },
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Crossfading colors",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
