@@ -64,14 +64,12 @@
         },
         {
           "dmxRange": [226, 235],
-          "type": "Intensity",
-          "brightness": "off",
+          "type": "Maintenance",
           "comment": "blackout by movement"
         },
         {
           "dmxRange": [236, 245],
           "type": "Maintenance",
-          "parameter": "long",
           "hold": "3s",
           "comment": "All Motor Reset (after 3s)"
         },
