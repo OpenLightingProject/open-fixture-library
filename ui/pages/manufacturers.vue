@@ -7,9 +7,9 @@
       <a
         v-for="(letterData, letter) of letters"
         :key="letter"
-        v-smooth-scroll
         :href="`#${letterData.id}`"
-        class="jump-link">
+        class="jump-link"
+        @click="setScrollBehavior()">
         {{ letter }}
       </a>
     </div>
@@ -38,12 +38,27 @@
 }
 
 .jump-link {
-  margin: 0 0.5ex;
+  padding: 8px;
+  margin: 0 2px;
+}
+
+h2 {
+  scroll-margin-top: 80px;
 }
 </style>
 
 <script>
 export default {
+  async asyncData({ $axios, error }) {
+    let manufacturers;
+    try {
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
+  },
   head() {
     const title = `Manufacturers`;
 
@@ -57,14 +72,12 @@ export default {
       ],
     };
   },
-  async asyncData({ $axios, error }) {
-    try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
+  computed: {
+    letters() {
       const letters = {};
 
-      Object.keys(manufacturers).forEach(manKey => {
-        let letter = manKey.charAt(0).toUpperCase();
+      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+        let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
           letter = `#`;
@@ -78,20 +91,23 @@ export default {
         }
 
         letters[letter].manufacturers.push({
-          key: manKey,
-          name: manufacturers[manKey].name,
-          fixtureCount: manufacturers[manKey].fixtureCount,
-          color: manufacturers[manKey].color,
+          key: manufacturerKey,
+          name: this.manufacturers[manufacturerKey].name,
+          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
+          color: this.manufacturers[manufacturerKey].color,
         });
-      });
+      }
 
-      return {
-        letters,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
+      return letters;
+    },
+  },
+  destroyed() {
+    document.documentElement.style.scrollBehavior = ``;
+  },
+  methods: {
+    setScrollBehavior() {
+      document.documentElement.style.scrollBehavior = `smooth`;
+    },
   },
 };
 </script>

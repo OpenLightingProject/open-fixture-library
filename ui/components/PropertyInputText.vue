@@ -1,47 +1,42 @@
 <template>
   <input
-    ref="input"
+    v-model.trim="localValue"
     :required="required"
     :placeholder="hint"
     :pattern="schemaProperty.pattern"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
-    :value="value"
     type="text"
-    @input="update"
-    @blur="onBlur">
+    @input="update()"
+    @blur="onBlur()">
 </template>
 
 <script>
+import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: null,
-      required: true,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    value: anyProp().required,
+  },
+  emits: {
+    input: value => true,
+    blur: value => true,
+    'vf:validate': validationData => true,
+  },
+  data() {
+    return {
+      localValue: ``,
+    };
   },
   computed: {
-    // Used by vue-form
-    validationData() { // eslint-disable-line vue/no-unused-properties
+    /**
+     * @public
+     * @returns {Record<string, string | null>} Validation data for vue-form
+     */
+    validationData() {
       return {
         pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
         minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
@@ -49,29 +44,33 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    value: {
+      handler(newValue) {
+        this.localValue = newValue ? String(newValue) : ``;
+      },
+      immediate: true,
+    },
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      this.$emit(`input`, this.$refs.input.value);
+      this.$emit(`input`, this.localValue);
     },
-    onBlur() {
-      this.$emit(`blur`, this.$refs.input.value);
+    async onBlur() {
+      await this.$nextTick();
+      this.$emit(`blur`, this.localValue);
     },
   },
 };
 </script>
-

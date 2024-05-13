@@ -3,7 +3,7 @@
     <h1>About</h1>
 
     <p>Created by Florian and Felix Edelmann.</p>
-    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
+    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://www.tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
 
     <h2>Documentation</h2>
     <p>The developer documentation can be found at the <a href="https://github.com/OpenLightingProject/open-fixture-library/tree/master/docs">GitHub repository</a>. It contains an explanation of the <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md">JSON fixture format</a> we use internally, and from which fixture definitions in other formats can be exported by <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/plugins.md">plugins</a>.</p>
@@ -17,14 +17,14 @@
     <h2>Used resources</h2>
     <p>
       Fonts: <a href="https://www.latofonts.com/">Lato</a> and <a href="https://levien.com/type/myfonts/inconsolata.html" class="monospaced">Inconsolata</a><br>
-      Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a>
+      Icons: <a href="https://pictogrammers.com/library/mdi/">Material Design Icons</a>
     </p>
 
     <h2>Contribute</h2>
     <p>See the <a href="https://github.com/OpenLightingProject/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
 
     <h2 id="contact">Contact</h2>
-    <p><a href="mailto:florian-edelmann@online.de">florian-edelmann@online.de</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
+    <p><a href="mailto:flo@open-fixture-library.org">flo@open-fixture-library.org</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
 
     <h2>Privacy</h2>
     <p>We respect users' privacy and thus collect as few data as possible. No personal data about our visitors is stored on our server or sent to other sites without users' consent. The communication between users' browsers and our server is encrypted via HTTPS. Videos are embetted with <a href="https://github.com/heiseonline/embetty">embetty</a>, so no information is sent from users' browsers to the video hosting platform (e.g. YouTube) until the video is played. The fixture editor only uses the entered data to open a pull request in our public GitHub repository; this means that the chosen author name and GitHub username – the only personal data – will be made public. Unfinished fixtures and the last submitted author name / GitHub username are saved locally in users' browsers. Other technical measures to improve privacy and security <a href="https://observatory.mozilla.org/analyze/open-fixture-library.org">are implemented</a>.</p>
@@ -44,6 +44,7 @@ h2 {
 
 .monospaced {
   font-family: $font-stack-code;
+  font-weight: 400;
 }
 </style>
 

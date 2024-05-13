@@ -3,7 +3,7 @@
     <h1 v-if="searchFor">Search <em>{{ searchFor }}</em></h1>
     <h1 v-else>Search</h1>
 
-    <form class="filter" action="/search" @submit.prevent="onSubmit">
+    <form class="filter" action="/search" @submit.prevent="onSubmit()">
       <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
       </LabeledInput>
@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="(man, manKey) of manufacturers"
-            :key="manKey"
-            :selected="manufacturersQuery.includes(manKey)"
-            :value="manKey">{{ man.name }}</option>
+            v-for="(man, manufacturerKey) of manufacturers"
+            :key="manufacturerKey"
+            :selected="manufacturersQuery.includes(manufacturerKey)"
+            :value="manufacturerKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -95,39 +95,28 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
-  async asyncData({ query, $axios, error }) {
+  async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        searchFor: ``,
-        searchQuery: ``,
-        manufacturersQuery: [],
-        categoriesQuery: [],
-        detailsInitiallyOpen: null,
-        results: [],
-        manufacturers,
-        categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
-        loading: false,
-        isBrowser: false,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
+  },
+  data() {
+    return {
+      searchFor: ``,
+      searchQuery: ``,
+      manufacturersQuery: [],
+      categoriesQuery: [],
+      detailsInitiallyOpen: null,
+      results: [],
+      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+      loading: false,
+      isBrowser: false,
+    };
   },
   async fetch() {
     this.loading = true;
@@ -149,22 +138,35 @@ export default {
         categoriesQuery: sanitizedQuery.categories,
       });
     }
-    catch (requestError) {
+    catch {
       this.results = [];
     }
     finally {
       this.loading = false;
     }
   },
+  head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
   computed: {
     fixtureResults() {
       return this.results.map(key => {
-        const man = key.split(`/`)[0];
+        const manufacturer = key.split(`/`)[0];
 
         return {
           key,
-          name: `${this.manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man],
+          name: `${this.manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
+          color: register.colors[manufacturer],
         };
       });
     },
@@ -194,8 +196,8 @@ export default {
 };
 
 /**
- * @param {Object} query The raw query returned by Vue Router
- * @returns {Object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @param {object} query The raw query returned by Vue Router
+ * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || ``).trim();

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hurricane Haze 1DX",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["David Oleniacz"],
+    "createDate": "2023-07-11",
+    "lastModifyDate": "2023-07-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2017/01/Hurricane_Haze_1DX_UM_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/hurricane-haze-1dx/"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 223, 278],
+    "weight": 3.3,
+    "power": 303,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Haze"
+      ]
+    }
+  ]
+}

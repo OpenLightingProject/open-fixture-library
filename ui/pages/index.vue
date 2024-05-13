@@ -1,23 +1,17 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="websiteStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>Open Fixture Library</h1>
-      </div>
+      </template>
 
-      <DownloadButton :fixture-count="fixtureCount" button-style="home" />
-    </header>
+      <DownloadButton :fixture-count="fixtureCount" button-style="home" show-help />
+    </FixtureHeader>
 
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
 
-    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every <NuxtLink to="/about/plugins">supported lighting software</NuxtLink>. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
+    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every <NuxtLink to="/about/plugins">supported lighting software</NuxtLink>. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/CONTRIBUTING.md">contribute</a> and help to improve! Thanks!</p>
 
 
     <div class="grid-3 centered">
@@ -74,6 +68,8 @@
 
     </div>
 
+    <p><strong>🙏 Help wanted!</strong> There are <a href="https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc">a lot of pull requests</a> for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/CONTRIBUTING.md#fixtures">step-by-step instructions for fixture reviews</a>.</p>
+
     <div class="grid-3 centered">
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Abug" rel="nofollow" class="card slim">
         <OflSvg name="lightbulb-on-outline" class="left" />
@@ -92,26 +88,25 @@
 </template>
 
 <script>
-import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
+import FixtureHeader from '../components/FixtureHeader.vue';
 
 export default {
   components: {
     DownloadButton,
+    FixtureHeader,
   },
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        manufacturers,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
   },
   data() {
     return {
@@ -119,28 +114,41 @@ export default {
       recentContributors: [],
 
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
+        fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
       ).length,
-
-      websiteStructuredData: {
-        '@context': `http://schema.org`,
-        '@type': `WebSite`,
-        'name': `Open Fixture Library`,
-        'url': packageJson.homepage,
-        'potentialAction': {
-          '@type': `SearchAction`,
-          'target': `${packageJson.homepage}search?q={search_term_string}`,
-          'query-input': `required name=search_term_string`,
+    };
+  },
+  head() {
+    return {
+      script: [
+        {
+          hid: `websiteStructuredData`,
+          type: `application/ld+json`,
+          json: {
+            '@context': `http://schema.org`,
+            '@type': `WebSite`,
+            name: `Open Fixture Library`,
+            url: this.$config.websiteUrl,
+            potentialAction: {
+              '@type': `SearchAction`,
+              target: `${this.$config.websiteUrl}search?q={search_term_string}`,
+              'query-input': `required name=search_term_string`,
+            },
+          },
         },
-      },
-      organizationStructuredData: {
-        '@context': `http://schema.org`,
-        '@type': `Organization`,
-        'name': `Open Fixture Library`,
-        'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
-        'url': packageJson.homepage,
-        'logo': `${packageJson.homepage}ofl-logo.svg`,
-      },
+        {
+          hid: `organizationStructuredData`,
+          type: `application/ld+json`,
+          json: {
+            '@context': `http://schema.org`,
+            '@type': `Organization`,
+            name: `Open Fixture Library`,
+            description: `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
+            url: this.$config.websiteUrl,
+            logo: `${this.$config.websiteUrl}ofl-logo.svg`,
+          },
+        },
+      ],
     };
   },
   created() {
@@ -161,7 +169,7 @@ export default {
         return {
           name: contributor,
           number: register.contributors[contributor].fixtures.length,
-          latestFixtureKey: latestFixtureKey,
+          latestFixtureKey,
           latestFixtureName: this.getFixtureName(latestFixtureKey),
         };
       },
@@ -169,12 +177,12 @@ export default {
   },
   methods: {
     /**
-     * @param {String} fixtureKey The combined manufacturer / fixture key.
-     * @returns {String} The manufacturer and fixture names, separated by a space.
+     * @param {string} fixtureKey The combined manufacturer / fixture key.
+     * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manKey = fixtureKey.split(`/`)[0];
-      const manufacturerName = this.manufacturers[manKey].name;
+      const manufacturerKey = fixtureKey.split(`/`)[0];
+      const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 
       return `${manufacturerName} ${fixtureName}`;
@@ -184,8 +192,8 @@ export default {
 
 
 /**
- * @param {String} contributor The contributor name.
- * @returns {String} The combined key of the latest fixture contributed to by this contributor.
+ * @param {string} contributor The contributor name.
+ * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(

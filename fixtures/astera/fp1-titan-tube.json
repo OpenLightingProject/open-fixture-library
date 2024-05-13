@@ -4,16 +4,17 @@
   "shortName": "AsteraFP1Titan",
   "categories": ["Pixel Bar", "Color Changer", "Blinder", "Strobe"],
   "meta": {
-    "authors": ["Jack Crombie", "Felix Edelmann"],
+    "authors": ["Jack Crombie", "Felix Edelmann", "Dyami Caliri"],
     "createDate": "2019-07-09",
-    "lastModifyDate": "2019-07-09"
+    "lastModifyDate": "2021-01-11"
   },
   "links": {
     "manual": [
-      "https://astera-led.com/Downloads/manual/Titan%20Manual.pdf"
+      "https://astera-led.com/Downloads/manual/FP1_TitanTube_Manual.pdf",
+      "https://astera-led.com/Downloads/Profile/Titan%20Tube%20DMX%20Profiles.pdf"
     ],
     "productPage": [
-      "https://astera-led.com/titan/"
+      "https://astera-led.com/products/titan/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=V83BQca2MDY"
@@ -52,6 +53,7 @@
   },
   "templateChannels": {
     "Dimmer $pixelKey": {
+      "fineChannelAliases": ["Dimmer $pixelKey fine"],
       "capability": {
         "type": "Intensity"
       }
@@ -100,6 +102,51 @@
           "helpWanted": "Does this capability already begin at DMX value 4 (with 2080K)?"
         }
       ]
+    },
+    "CCT $pixelKey": {
+      "capability":
+        {
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1750K",
+          "colorTemperatureEnd": "9910K"
+        }
+    },
+    "Crossfade $pixelKey": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "CCT crossfade to RGB"
+        }
+    },
+    "Green-Magenta Point $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Generic",
+          "comment": "-99%…100%"
+        }
+      ]
+    },
+    "Hue $pixelKey": {
+      "fineChannelAliases": ["Hue $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
     },
     "LEE Color Gel $pixelKey": {
       "defaultValue": 0,
@@ -2603,6 +2650,53 @@
             "Strobe $pixelKey"
           ]
         }
+      ]
+    },
+    {
+      "name": "89: D CCT GM CRO RGB",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point Master",
+        "Crossfade Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "90: D CCT GM HUE SAT",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point Master",
+        "Hue Master",
+        "Saturation Master"
+      ]
+    },
+    {
+      "name": "91: D16 CCT GM CRO RGB",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "Green-Magenta Point Master",
+        "Crossfade Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "92: D16 CCT GM H SAT",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "Green-Magenta Point Master",
+        "Hue Master",
+        "Hue Master fine",
+        "Saturation Master"
       ]
     }
   ]

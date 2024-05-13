@@ -1,18 +1,24 @@
 name: Test
 on: pull_request
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   required:
     name: Required
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.3
-      - name: Setup Node.js v12
-        uses: actions/setup-node@v2.1.1
+        uses: actions/checkout@v4.1.5
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4.0.2
         with:
-          node-version: 12
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Build
+        run: npm run build
       - name: Run ESLint
         run: npm run lint:eslint
       - name: Run Stylelint
@@ -23,5 +29,49 @@ jobs:
         run: npm run test:fixtures-valid
       - name: Run http-status test
         run: npm run test:http-status
-      - name: Run make-targets-updated test
-        run: npm run test:make-targets-updated
+      - name: Run built-files-committed test
+        run: npm run test:built-files-committed
+  status:
+    name: Status
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+      GITHUB_PR_HEAD_REF: origin/${{ github.head_ref }}
+      GITHUB_PR_BASE_REF: origin/${{ github.base_ref }}
+      GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.5
+        with:
+          fetch-depth: 0 # complete history for all branches and tags
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: |
+          sudo pip install lxml # for QLC+ fixture-tool-validation export test
+          npm ci
+      - name: Build
+        run: npm run build
+      - name: Run export-diff test
+        run: node tests/github/export-diff.js
+      - name: Run exports-valid test
+        run: node tests/github/exports-valid.js
+      - name: Run schema-version-reminder
+        run: node tests/github/schema-version-reminder.js
+  markdown-link-check:
+    name: Markdown Links
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.5
+      - name: Check Markdown Links in modified files
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'
+          check-modified-files-only: 'yes'
+          base-branch: 'master'

@@ -1,94 +1,96 @@
-#!/usr/bin/node
-const path = require(`path`);
-const minimist = require(`minimist`);
-const chalk = require(`chalk`);
+#!/usr/bin/env node
+import path from 'path';
+import { fileURLToPath } from 'url';
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-const plugins = require(`../plugins/plugins.json`);
-const { fixtureFromFile, fixtureFromRepository } = require(`../lib/model.js`);
+import importJson from '../lib/import-json.js';
+import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 
-const testFixtures = require(`../tests/test-fixtures.json`);
+const failLabel = chalk.red(`[FAIL]`);
+const passLabel = chalk.green(`[PASS]`);
 
-const args = minimist(process.argv.slice(2), {
-  string: [`p`],
-  boolean: [`h`],
-  alias: { p: `plugin`, h: `help` },
-});
+try {
+  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+  const testFixtures = await importJson(`../tests/test-fixtures.json`, import.meta.url);
 
-const helpMessage = [
-  `Run the plugin's export tests against the specified fixtures`,
-  `(or the test fixtures, if no fixtures are specified).`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin> [ <fixtures> ]`,
-  `Options:`,
-  `  --plugin,   -p: Key of the plugin whose export tests should be called`,
-  `  --help,     -h: Show this help message.`,
-].join(`\n`);
+  const cliArguments = minimist(process.argv.slice(2), {
+    string: [`p`],
+    boolean: [`h`],
+    alias: { p: `plugin`, h: `help` },
+  });
 
-if (args.help) {
-  console.log(helpMessage);
-  process.exit(0);
-}
+  const scriptName = import.meta.url.split(`/`).pop();
 
-if (!args.plugin) {
-  console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
-  console.log(helpMessage);
-  process.exit(1);
-}
+  const helpMessage = [
+    `Run the plugin's export tests against the specified fixtures`,
+    `(or the test fixtures, if no fixtures are specified).`,
+    `Usage: node ${scriptName} -p <plugin> [ <fixtures> ]`,
+    `Options:`,
+    `  --plugin,   -p: Key of the plugin whose export tests should be called`,
+    `  --help,     -h: Show this help message.`,
+  ].join(`\n`);
 
-if (!plugins.exportPlugins.includes(args.plugin)) {
-  console.error(`${chalk.red(`[Error]`)} Plugin '${args.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
-  process.exit(1);
-}
-
-const pluginData = plugins.data[args.plugin];
-if (pluginData.exportTests.length === 0) {
-  console.log(`${chalk.green(`[PASS]`)} Plugin '${args.plugin}' has no export tests.`);
-  process.exit(0);
-}
-
-let fixtures;
-if (args._.length === 0) {
-  fixtures = testFixtures.map(
-    fixture => fixtureFromRepository(fixture.man, fixture.key),
-  );
-}
-else {
-  fixtures = args._.map(
-    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)),
-  );
-}
-
-const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-
-(async () => {
-  try {
-    const files = await pluginExport.export(fixtures, {
-      baseDir: path.join(__dirname, `..`),
-      date: new Date(),
-    });
-
-    await Promise.all(pluginData.exportTests.map(async testKey => {
-      const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
-
-      const outputPerFile = await Promise.all(files.map(async file => {
-        try {
-          await exportTest(file, files);
-          return `${chalk.green(`[PASS]`)} ${file.name}`;
-        }
-        catch (err) {
-          const errors = Array.isArray(err) ? err : [err];
-
-          return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
-            errors.map(error => `- ${error}`),
-          ).join(`\n`);
-        }
-      }));
-
-      console.log(`\n${chalk.yellow(`Test ${testKey}`)}`);
-      console.log(outputPerFile.join(`\n`));
-    }));
+  if (cliArguments.help) {
+    console.log(helpMessage);
+    process.exit(0);
   }
-  catch (error) {
-    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
+
+  if (!cliArguments.plugin) {
+    console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
+    console.log(helpMessage);
     process.exit(1);
   }
-})();
+
+  if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
+    console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins:`, plugins.exportPlugins.join(`, `));
+    process.exit(1);
+  }
+
+  const pluginData = plugins.data[cliArguments.plugin];
+  if (pluginData.exportTests.length === 0) {
+    console.log(chalk.green(`[PASS]`), `Plugin '${cliArguments.plugin}' has no export tests.`);
+    process.exit(0);
+  }
+
+  const fixtures = cliArguments._.length === 0
+    ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
+    : cliArguments._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
+
+  const exportPlugin = await import(`../plugins/${cliArguments.plugin}/export.js`);
+
+  const files = await exportPlugin.exportFixtures(
+    await Promise.all(fixtures),
+    {
+      baseDirectory: fileURLToPath(new URL(`../`, import.meta.url)),
+      date: new Date(),
+    },
+  );
+
+  await Promise.all(pluginData.exportTests.map(async testKey => {
+    const { default: exportTest } = await import(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
+
+    const outputPerFile = await Promise.all(files.map(async file => {
+      try {
+        await exportTest(file, files);
+        return `${passLabel} ${file.name}`;
+      }
+      catch (testError) {
+        const errors = Array.isArray(testError) ? testError : [testError];
+
+        return [
+          `${failLabel} ${file.name}`,
+          ...errors.map(error => `- ${error}`),
+        ].join(`\n`);
+      }
+    }));
+
+    console.log();
+    console.log(chalk.yellow(`Test ${testKey}`));
+    console.log(outputPerFile.join(`\n`));
+  }));
+}
+catch (error) {
+  console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
+  process.exit(1);
+}

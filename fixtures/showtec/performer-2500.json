@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Performer 2500",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["purple", "Luke Nelson"],
+    "createDate": "2022-10-19",
+    "lastModifyDate": "2022-10-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.highlite.com/en/33141-performer-2500-fresnel.html"
+    ],
+    "manual": [
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17429015/"
+    ],
+    "video": [
+      "https://vimeo.com/439925462"
+    ]
+  },
+  "physical": {
+    "dimensions": [450, 380, 470],
+    "weight": 10,
+    "power": 265,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 6959
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "fineChannelAliases": ["Master Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Natural White": {
+      "fineChannelAliases": ["Natural White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 35],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [36, 60],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [61, 85],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [86, 110],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [111, 135],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [136, 160],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [161, 185],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [186, 210],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [211, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz",
+          "randomTiming": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "UNO",
+      "channels": [
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "DOS",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "VW.D",
+      "channels": [
+        "Master Dimmer",
+        "Warm White",
+        "Natural White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "VW.F",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Warm White",
+        "Warm White fine",
+        "Natural White",
+        "Natural White fine"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "STD.P",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Warm White",
+        "Warm White fine",
+        "Natural White",
+        "Natural White fine",
+        "CCT",
+        "Strobe"
+      ]
+    }
+  ]
+}

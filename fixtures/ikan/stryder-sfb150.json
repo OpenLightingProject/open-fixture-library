@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stryder SFB150",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-05-07",
+    "lastModifyDate": "2024-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://ikancorp.com/Downloads/SFB150-QuickStartGuide.pdf"
+    ],
+    "productPage": [
+      "https://ikancorp.com/shop/studio-broadcast/dmx-lights-studio-broadcast/stryder-fanless-bi-color-2800k-6500k-150-watt-led-fresnel-light-w-dmx/"
+    ]
+  },
+  "physical": {
+    "dimensions": [406, 254, 178],
+    "weight": 4.8,
+    "power": 98,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Intensity",
+        "CCT"
+      ]
+    }
+  ]
+}

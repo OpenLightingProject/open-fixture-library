@@ -1,0 +1,249 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HotBox EXA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-04-03",
+    "lastModifyDate": "2022-04-03"
+  },
+  "links": {
+    "manual": [
+      "https://api.blizzard.lighting/public/Products/hotbox%20exa/downloads/HotBox%20EXA%20Manual%20Rev%20A%20(Web).pdf"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/hotbox-exa"
+    ]
+  },
+  "physical": {
+    "dimensions": [127, 102, 127],
+    "weight": 2.7,
+    "power": 58,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7× 15W RGBAW+UV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [26, 26]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Fade, Color Change, Sound Active": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
+        },
+        {
+          "dmxRange": [128, 164],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [165, 191],
+          "type": "Effect",
+          "effectName": "Fade In / Fade Out, Auto Run"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Fade Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "comment": "As set in the control menu display"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Maintenance",
+          "comment": "Mode 0 = 8-bit, 256 dimming steps"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Maintenance",
+          "comment": "Mode 1 = 32-bit, 0-25% intensity range"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Maintenance",
+          "comment": "Mode 2 = 32-bit, 0-50% intensity range"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Maintenance",
+          "comment": "Mode 3 = 32-bit, 0-75% intensity range"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Maintenance",
+          "comment": "Mode 4 = 32-bit, full intensity dimming"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Fade, Color Change, Sound Active",
+        "Fade Speed",
+        "Dimmer Control"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Fade, Color Change, Sound Active",
+        "Fade Speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Hue",
+        "White",
+        "Dimmer"
+      ]
+    }
+  ]
+}

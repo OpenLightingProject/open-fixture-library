@@ -1,18 +1,16 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
-const minimist = require(`minimist`);
-const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
+import { readFile } from 'fs/promises';
+import minimist from 'minimist';
 
-const { checkFixture } = require(`../tests/fixture-valid.js`);
-const plugins = require(`../plugins/plugins.json`);
-const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
-const createPullRequest = require(`../lib/create-github-pr.js`);
+import createPullRequest from '../lib/create-github-pr.js';
+import fixtureJsonStringify from '../lib/fixture-json-stringify.js';
+import importJson from '../lib/import-json.js';
+import { checkFixture } from '../tests/fixture-valid.js';
 
 /** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`, `a`],
   boolean: `c`,
   alias: {
@@ -22,55 +20,63 @@ const args = minimist(process.argv.slice(2), {
   },
 });
 
-const filename = args._[0];
-const authorName = args[`author-name`];
+await checkCliArguments();
 
-if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !authorName) {
-  console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);
+const filename = cliArguments._[0];
+
+try {
+  const buffer = await readFile(filename);
+
+  const plugin = await import(`../plugins/${cliArguments.plugin}/import.js`);
+  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, cliArguments[`author-name`]);
+
+  /** @type {FixtureCreateResult} */
+  const result = {
+    manufacturers,
+    fixtures,
+    warnings,
+    errors: {},
+  };
+
+  for (const key of Object.keys(result.fixtures)) {
+    const [manufacturerKey, fixtureKey] = key.split(`/`);
+
+    const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
+
+    result.warnings[key].push(...checkResult.warnings);
+    result.errors[key] = checkResult.errors;
+  }
+
+  if (cliArguments[`create-pull-request`]) {
+    try {
+      const pullRequestUrl = await createPullRequest(result);
+      console.log(`URL: ${pullRequestUrl}`);
+    }
+    catch (error) {
+      console.log(fixtureJsonStringify(result));
+      console.error(`Error creating pull request: ${error.message}`);
+    }
+  }
+  else {
+    console.log(fixtureJsonStringify(result));
+  }
+}
+catch (error) {
+  console.error(`Error parsing '${filename}':`);
+  console.error(error);
   process.exit(1);
 }
 
-(async () => {
-  try {
-    const buffer = await readFile(filename);
 
-    const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    const { manufacturers, fixtures, warnings } = await plugin.import(buffer, filename, authorName);
+/**
+ * Checks the command line interface arguments parsed by minimist.
+ */
+async function checkCliArguments() {
+  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
-    /** @type {FixtureCreateResult} */
-    const result = {
-      manufacturers,
-      fixtures,
-      warnings,
-      errors: {},
-    };
-
-    for (const key of Object.keys(result.fixtures)) {
-      const [manKey, fixKey] = key.split(`/`);
-
-      const checkResult = checkFixture(manKey, fixKey, result.fixtures[key]);
-
-      result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
-      result.errors[key] = checkResult.errors;
-    }
-
-    if (args[`create-pull-request`]) {
-      try {
-        const pullRequestUrl = await createPullRequest(result);
-        console.log(`URL: ${pullRequestUrl}`);
-      }
-      catch (error) {
-        console.log(fixtureJsonStringify(result));
-        console.error(`Error creating pull request: ${error.message}`);
-      }
-    }
-    else {
-      console.log(fixtureJsonStringify(result));
-    }
-  }
-  catch (error) {
-    console.error(`Error parsing '${filename}':`);
-    console.error(error);
+  if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !cliArguments[`author-name`]) {
+    const importPlugins = plugins.importPlugins.join(`, `);
+    console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${importPlugins}`);
     process.exit(1);
   }
-})();
+}

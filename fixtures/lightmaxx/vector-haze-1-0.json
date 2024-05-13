@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vector Haze 1.0",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2022-11-17",
+    "lastModifyDate": "2022-11-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/en_US/ms-us/USD/ViewProductAttachment-ResolveManualURL?File=EN_LIG0015638-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_US/USD/lightmaXX-Vector-Haze-1-0/art-LIG0015638-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=MAu3bCSxxIo"
+    ]
+  },
+  "physical": {
+    "dimensions": [495, 235, 405],
+    "weight": 16.7,
+    "power": 1100,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Fan Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Haze Output": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Fan Speed",
+        "Haze Output"
+      ]
+    }
+  ]
+}

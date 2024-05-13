@@ -3,9 +3,9 @@
   "name": "LED Flat Par 12x3W RGBW",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Potatoe"],
+    "authors": ["Potatoe", "JonahKr"],
     "createDate": "2018-11-11",
-    "lastModifyDate": "2018-11-11"
+    "lastModifyDate": "2023-02-12"
   },
   "links": {
     "manual": [
@@ -55,13 +55,20 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "10Hz",
-        "speedEnd": "0Hz",
-        "helpWanted": "At which DMX value is the LED constantly on/off (no strobe)?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
     },
     "Program": {
       "capabilities": [
@@ -94,7 +101,7 @@
     },
     "Function speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -102,7 +109,8 @@
   },
   "modes": [
     {
-      "name": "Basic",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Dimmer",
         "Red",
