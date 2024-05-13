@@ -298,7 +298,7 @@ export async function importFixtures(buffer, filename, authorName) {
       // if channel was already split, skip splitting it again, else
       // split channel such that followerChannelFunction is the only child
       if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-        const channelCopy = JSON.parse(JSON.stringify(followerChannel));
+        const channelCopy = structuredClone(followerChannel);
         channelCopy.$.Name += `_OflSplit`;
         relation.followerGdtfChannel = channelCopy;
 

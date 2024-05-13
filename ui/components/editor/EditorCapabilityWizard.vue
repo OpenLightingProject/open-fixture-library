@@ -135,7 +135,6 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-  clone,
 } from "../../assets/scripts/editor-utils.js";
 
 import LabeledValue from '../LabeledValue.vue';
@@ -216,7 +215,7 @@ export default {
           this.wizard.start + ((index + 1) * this.wizard.width) - 1,
         ];
         capability.type = this.wizard.templateCapability.type;
-        capability.typeData = clone(this.wizard.templateCapability.typeData);
+        capability.typeData = structuredClone(this.wizard.templateCapability.typeData);
         replaceHashWithIndex(capability.typeData, index);
 
         capabilities.push(capability);

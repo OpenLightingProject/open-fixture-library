@@ -36,7 +36,6 @@ import {
   getEmptyFineChannel,
   getEmptyCapability,
   getSanitizedChannel,
-  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -74,7 +73,7 @@ export default {
     },
 
     async applyRestored() {
-      const modelValue = clone(this.modelValue);
+      const modelValue = structuredClone(this.modelValue);
 
       // closes dialog
       this.$emit(`update:model-value`, undefined);

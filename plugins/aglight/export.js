@@ -30,7 +30,7 @@ export async function exportFixtures(fixtures, options) {
   const library = {
     version: displayedPluginVersion,
     fixtures: fixtures.map(fixture => {
-      const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+      const jsonData = structuredClone(fixture.jsonObject);
       jsonData.fixtureKey = fixture.key;
       jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
       jsonData.oflURL = fixture.url;
@@ -86,7 +86,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
 
   fixtureJson.availableChannels = Object.fromEntries(
     availableAndMatrixChannels.map(channel => {
-      let channelJsonObject = JSON.parse(JSON.stringify(channel.jsonObject));
+      let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
         channelJsonObject = Object.assign({}, channelJsonObject, {
