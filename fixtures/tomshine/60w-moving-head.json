@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "60W Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["WhatWeAre interactive studio"],
+    "createDate": "2024-05-14",
+    "lastModifyDate": "2024-05-14"
+  },
+  "links": {
+    "manual": [
+      "https://m.media-amazon.com/images/I/81OaUX942PL.pdf"
+    ],
+    "productPage": [
+      "https://www.tomshine.com/p-l1614eu.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 270, 225],
+    "weight": 2.3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Red": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Motor Auto": {
+      "defaultValue": 12,
+      "constant": true,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Motor Sound Sensitivity": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "LED Auto": {
+      "defaultValue": "14%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "LED Sound Sensitivity": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reset": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Motor Auto",
+        "Motor Sound Sensitivity",
+        "LED Auto",
+        "LED Sound Sensitivity",
+        "Reset"
+      ]
+    }
+  ]
+}
