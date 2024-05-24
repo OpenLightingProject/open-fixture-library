@@ -1,0 +1,750 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Robin Spiider M1",
+  "shortName": "Spiider",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Flower", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["BOIG Laurent"],
+    "createDate": "2024-05-24",
+    "lastModifyDate": "2024-05-24"
+  },
+  "comment": "Mode 1",
+  "links": {
+    "manual": [
+      "https://www.robe.cz/res/downloads/dmx_charts/Robin_SPIIDER_DMX_charts.pdf"
+    ],
+    "productPage": [
+      "https://www.robe.cz/spiider#downloads"
+    ]
+  },
+  "physical": {
+    "dimensions": [390, 477, 252],
+    "weight": 13.3,
+    "power": 660,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "RGBW",
+      "lumens": 11000
+    },
+    "lens": {
+      "degreesMinMax": [4, 50]
+    }
+  },
+  "wheels": {
+    "Virtual Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Power/Special Fonctions": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Virtual Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Zone1 Red": {
+      "fineChannelAliases": ["Zone1 Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone1 Red 2": {
+      "name": "Zone1 Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone1 Green": {
+      "fineChannelAliases": ["Zone1 Green fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone1 Green 2": {
+      "name": "Zone1 Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red Zone1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Zone1 2": {
+      "name": "Red Zone1",
+      "fineChannelAliases": ["Red Zone1 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Zone1": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone1 Blue": {
+      "fineChannelAliases": ["Zone1 Blue fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone1 Blue 2": {
+      "name": "Zone1 Blue",
+      "fineChannelAliases": ["Zone1 Blue 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone1 White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone1 White 2": {
+      "name": "Zone1 White",
+      "fineChannelAliases": ["Zone1 White 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone1 Blue 3": {
+      "name": "Zone1 Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone2 Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone2 Red 2": {
+      "name": "Zone2 Red",
+      "fineChannelAliases": ["Zone2 Red 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone2 Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone2 Green 2": {
+      "name": "Zone2 Green",
+      "fineChannelAliases": ["Zone2 Green 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone2 Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone2 Blue 2": {
+      "name": "Zone2 Blue",
+      "fineChannelAliases": ["Zone2 Blue 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone2 White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone2 White 2": {
+      "name": "Zone2 White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone3 Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone3 Red 2": {
+      "name": "Zone3 Red",
+      "fineChannelAliases": ["Zone3 Red 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone2 White 3": {
+      "name": "Zone2 White",
+      "fineChannelAliases": ["Zone2 White 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone3 Red 3": {
+      "name": "Zone3 Red",
+      "fineChannelAliases": ["Zone3 Red 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone3 Green": {
+      "fineChannelAliases": ["Zone3 Green fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone3 Blue": {
+      "fineChannelAliases": ["Zone3 Blue fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone3 White": {
+      "fineChannelAliases": ["Zone3 White fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "8000K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pixel Effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pixel Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pixel Effect Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flower Effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Flower Effect Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Flower Effect Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Flower Effect Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Flower Effect White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Flower Effect Color Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Flower Effect Shutter Strobe": {
+      "defaultValue": 33,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Flower Effect Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 32,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Zone1 Red 3": {
+      "name": "Zone1 Red",
+      "fineChannelAliases": ["Zone1 Red 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone1 Green 3": {
+      "name": "Zone1 Green",
+      "fineChannelAliases": ["Zone1 Green 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone1 Blue 4": {
+      "name": "Zone1 Blue",
+      "fineChannelAliases": ["Zone1 Blue 4 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone1 White 3": {
+      "name": "Zone1 White",
+      "fineChannelAliases": ["Zone1 White 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone2 Red 3": {
+      "name": "Zone2 Red",
+      "fineChannelAliases": ["Zone2 Red 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone2 Green 3": {
+      "name": "Zone2 Green",
+      "fineChannelAliases": ["Zone2 Green 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone2 Blue 3": {
+      "name": "Zone2 Blue",
+      "fineChannelAliases": ["Zone2 Blue 3 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone3 Green 2": {
+      "name": "Zone3 Green",
+      "fineChannelAliases": ["Zone3 Green 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone3 Blue 2": {
+      "name": "Zone3 Blue",
+      "fineChannelAliases": ["Zone3 Blue 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone3 White 2": {
+      "name": "Zone3 White",
+      "fineChannelAliases": ["Zone3 White 2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Robin Spiider",
+      "shortName": "Spiider",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Pan/Tilt Speed",
+        "Power/Special Fonctions",
+        "Virtual Color Wheel",
+        "Zone1 Red 3",
+        "Zone1 Red 3 fine",
+        "Zone1 Green 3",
+        "Zone1 Green 3 fine",
+        "Zone1 Blue 4",
+        "Zone1 Blue 4 fine",
+        "Zone1 White 3",
+        "Zone1 White 3 fine",
+        "Zone2 Red 3",
+        "Zone2 Red 3 fine",
+        "Zone2 Green 3",
+        "Zone2 Green 3 fine",
+        "Zone2 Blue 3",
+        "Zone2 Blue 3 fine",
+        "Zone2 White 3",
+        "Zone2 White 3 fine",
+        "Zone3 Red 3",
+        "Zone3 Red 3 fine",
+        "Zone3 Green 2",
+        "Zone3 Green 2 fine",
+        "Zone3 Blue 2",
+        "Zone3 Blue 2 fine",
+        "Zone3 White 2",
+        "Zone3 White 2 fine",
+        "CTC",
+        "Color Macros",
+        "Pixel Effect",
+        "Pixel Effect Speed",
+        "Pixel Effect Fade",
+        "Flower Effect",
+        "Flower Effect Red",
+        "Flower Effect Green",
+        "Flower Effect Blue",
+        "Flower Effect White",
+        "Flower Effect Color Macro",
+        "Flower Effect Shutter Strobe",
+        "Flower Effect Dimmer",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
