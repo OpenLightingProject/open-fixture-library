@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Infinibar",
+  "shortName": "Infinibar mode:4",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Rune"],
+    "createDate": "2024-05-25",
+    "lastModifyDate": "2024-05-25"
+  },
+  "comment": "Aputure Infinibar mode 4 RGB",
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/Infinibar/All%20Files/INFINIBAR-Product-Manual-V1.0.pdf?_gl=1*tcpw01*_gcl_au*MTk5MjM5ODk3NC4xNzEzNjg4MjAy"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/infinibar-pb12/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ll0SKzBkgx0&si=_uMfgTHgLMcvz3Rb"
+    ]
+  },
+  "physical": {
+    "dimensions": [1200, 45, 43],
+    "weight": 1.96
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4: RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
