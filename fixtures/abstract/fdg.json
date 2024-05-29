@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fdg",
+  "shortName": "dfg",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["fgdg"],
+    "createDate": "2024-05-29",
+    "lastModifyDate": "2024-05-29"
+  },
+  "links": {
+    "video": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dg",
+      "shortName": "dfg",
+      "channels": [
+        "Strobe",
+        "Red"
+      ]
+    }
+  ]
+}
