@@ -1,22 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "iMove 5S",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Duende AV", "Flo Edelmann"],
-    "createDate": "2020-09-20",
-    "lastModifyDate": "2020-09-20"
-  },
-  "links": {
-    "manual": [
-      "https://jb-systems.eu/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1437572496.pdf"
-    ],
-    "productPage": [
-      "https://jb-systems.eu/imove-5s-elc-250w-24v-incl"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=OQB-kBAp3eU"
-    ]
+    "authors": ["Duende AV", "Flo Edelmann", "FunkyKwak"],
+    "createDate": "2024-05-30",
+    "lastModifyDate": "2024-05-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-05-30",
+      "comment": "created by OFL – https://open-fixture-library.org/jb-systems/imove-5s (version 1.3.0)"
+    }
   },
   "physical": {
     "dimensions": [290, 330, 380],
@@ -38,59 +32,61 @@
         },
         {
           "type": "Gobo",
-          "resource": "gobos/10-circles"
+          "resource": "gobos/aliases/qlcplus/ofl/10-circles.svg",
+          "name": "Gobo 10 circles"
         },
         {
           "type": "Gobo",
-          "name": "Donut"
+          "name": "Gobo Donut"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/biohazard"
+          "resource": "gobos/biohazard",
+          "name": "Gobo Biohazard"
         },
         {
           "type": "Gobo",
-          "name": "Spider web"
+          "name": "Gobo Spider web"
         },
         {
           "type": "Gobo",
-          "name": "3 circling drops"
+          "name": "Gobo 3 circling drops"
         },
         {
           "type": "Gobo",
-          "name": "Sprinkles"
+          "name": "Gobo Sprinkles"
         },
         {
           "type": "Gobo",
-          "name": "Segmented square"
+          "name": "Gobo Segmented square"
         },
         {
           "type": "Gobo",
-          "name": "Radioactive"
+          "name": "Gobo Radioactive"
         },
         {
           "type": "Gobo",
-          "name": "Emblem"
+          "name": "Gobo Emblem"
         },
         {
           "type": "Gobo",
-          "name": "5-pointed star"
+          "name": "Gobo 5-pointed star"
         },
         {
           "type": "Gobo",
-          "name": "5 dots row"
+          "name": "Gobo 5 dots row"
         },
         {
           "type": "Gobo",
-          "name": "Segmented circle"
+          "name": "Gobo Segmented circle"
         },
         {
           "type": "Gobo",
-          "name": "Atomic orbits"
+          "name": "Gobo Atomic orbits"
         },
         {
           "type": "Gobo",
-          "name": "Cross pattern"
+          "name": "Gobo Cross pattern"
         }
       ]
     },
@@ -155,10 +151,98 @@
           "colors": ["#ff88ff"]
         }
       ]
+    },
+    "Color Wheel Split": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00c200"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Green / Magenta",
+          "colors": ["#00c200", "#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#99ccff"]
+        },
+        {
+          "type": "Color",
+          "name": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Red / Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "UV Purple",
+          "colors": ["#8800ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green",
+          "colors": ["#8aff8a"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Light Green / Orange",
+          "colors": ["#8aff8a", "#ff8800"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff8800"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Orange / Yellow",
+          "colors": ["#ff8800", "#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Yellow / Pink",
+          "colors": ["#ffff00", "#ff88ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff88ff"]
+        }
+      ]
     }
   },
   "availableChannels": {
     "Pan": {
+      "defaultValue": 0,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -166,6 +250,7 @@
       }
     },
     "Tilt": {
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -173,303 +258,341 @@
       }
     },
     "Shutter / Shaking": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
         },
         {
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Strobe slow…fast"
         },
         {
           "dmxRange": [132, 247],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
+          "slotNumber": 4,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo Wheel shake"
         },
         {
           "dmxRange": [248, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
         }
       ]
     },
     "Gobo Wheel": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 8],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "Open"
         },
         {
           "dmxRange": [9, 17],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "comment": "Gobo 10 circles"
         },
         {
           "dmxRange": [18, 25],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 3,
+          "comment": "Gobo Donut"
         },
         {
           "dmxRange": [26, 34],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 4,
+          "comment": "Gobo Biohazard"
         },
         {
           "dmxRange": [35, 43],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 5,
+          "comment": "Gobo Spider web"
         },
         {
           "dmxRange": [44, 51],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 6,
+          "comment": "Gobo 3 circling drops"
         },
         {
           "dmxRange": [52, 59],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 7,
+          "comment": "Gobo Sprinkles"
         },
         {
           "dmxRange": [60, 68],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 8,
+          "comment": "Gobo Segmented square"
         },
         {
           "dmxRange": [69, 76],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "slotNumber": 9,
+          "comment": "Gobo Radioactive"
         },
         {
           "dmxRange": [77, 85],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumber": 10,
+          "comment": "Gobo Emblem"
         },
         {
           "dmxRange": [86, 93],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 11,
+          "comment": "Gobo 5-pointed star"
         },
         {
           "dmxRange": [94, 102],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumber": 12,
+          "comment": "Gobo 5 dots row"
         },
         {
           "dmxRange": [103, 110],
           "type": "WheelSlot",
-          "slotNumber": 13
+          "slotNumber": 13,
+          "comment": "Gobo Segmented circle"
         },
         {
           "dmxRange": [111, 119],
           "type": "WheelSlot",
-          "slotNumber": 14
+          "slotNumber": 14,
+          "comment": "Gobo Atomic orbits"
         },
         {
           "dmxRange": [120, 127],
           "type": "WheelSlot",
-          "slotNumber": 15
+          "slotNumber": 15,
+          "comment": "Gobo Cross pattern"
         },
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "comment": "Gobo Wheel rotation CW slow…fast"
         }
       ]
     },
     "Color Wheel": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "Open"
         },
         {
           "dmxRange": [11, 21],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "comment": "Green"
         },
         {
           "dmxRange": [22, 31],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 3,
+          "comment": "Magenta"
         },
         {
           "dmxRange": [32, 42],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 4,
+          "comment": "Light Blue"
         },
         {
           "dmxRange": [43, 53],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 5,
+          "comment": "Amber"
         },
         {
           "dmxRange": [54, 63],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 6,
+          "comment": "Red"
         },
         {
           "dmxRange": [64, 74],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 7,
+          "comment": "Blue"
         },
         {
           "dmxRange": [75, 85],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 8,
+          "comment": "UV Purple"
         },
         {
           "dmxRange": [86, 95],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "slotNumber": 9,
+          "comment": "Light Green"
         },
         {
           "dmxRange": [96, 106],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumber": 10,
+          "comment": "Orange"
         },
         {
           "dmxRange": [107, 117],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 11,
+          "comment": "Yellow"
         },
         {
           "dmxRange": [118, 127],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumber": 12,
+          "comment": "Pink"
         },
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "comment": "Color Wheel rotation CW slow…fast"
         }
       ]
     },
     "Color Wheel Split": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "Open"
         },
         {
           "dmxRange": [8, 15],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "comment": "Green"
         },
         {
           "dmxRange": [16, 22],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 2.5
+          "slotNumber": 3,
+          "comment": "Split Green / Magenta"
         },
         {
           "dmxRange": [23, 30],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 3
+          "slotNumber": 4,
+          "comment": "Magenta"
         },
         {
           "dmxRange": [31, 37],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 4
+          "slotNumber": 5,
+          "comment": "Light Blue"
         },
         {
           "dmxRange": [38, 45],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 5
+          "slotNumber": 6,
+          "comment": "Amber"
         },
         {
           "dmxRange": [46, 52],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 6
+          "slotNumber": 7,
+          "comment": "Red"
         },
         {
           "dmxRange": [53, 60],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 6.5
+          "slotNumber": 8,
+          "comment": "Split Red / Blue"
         },
         {
           "dmxRange": [61, 67],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 7
+          "slotNumber": 9,
+          "comment": "Blue"
         },
         {
           "dmxRange": [68, 75],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 8
+          "slotNumber": 10,
+          "comment": "UV Purple"
         },
         {
           "dmxRange": [76, 82],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 9
+          "slotNumber": 11,
+          "comment": "Light Green"
         },
         {
           "dmxRange": [83, 90],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 9.5
+          "slotNumber": 12,
+          "comment": "Split Light Green / Orange"
         },
         {
           "dmxRange": [91, 97],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 10
+          "slotNumber": 13,
+          "comment": "Orange"
         },
         {
           "dmxRange": [98, 105],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 10.5
+          "slotNumber": 14,
+          "comment": "Split Orange / Yellow"
         },
         {
           "dmxRange": [106, 112],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 11
+          "slotNumber": 15,
+          "comment": "Yellow"
         },
         {
           "dmxRange": [113, 120],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 11.5
+          "slotNumber": 16,
+          "comment": "Split Yellow / Pink"
         },
         {
           "dmxRange": [121, 127],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
-          "slotNumber": 12
+          "slotNumber": 17,
+          "comment": "Pink"
         },
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
-          "wheel": "Color Wheel",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "comment": "Color Wheel rotation CW slow…fast"
         }
       ]
     }
@@ -477,7 +600,6 @@
   "modes": [
     {
       "name": "Normal",
-      "shortName": "no",
       "channels": [
         "Pan",
         "Tilt",
@@ -488,7 +610,6 @@
     },
     {
       "name": "Split Color",
-      "shortName": "SC",
       "channels": [
         "Pan",
         "Tilt",
