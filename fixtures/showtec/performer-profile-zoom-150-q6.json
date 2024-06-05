@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Performer Profile Zoom 150 Q6",
+  "categories": ["Dimmer", "Strobe", "Other", "Color Changer"],
+  "meta": {
+    "authors": ["Anto"],
+    "createDate": "2024-06-05",
+    "lastModifyDate": "2024-06-05"
+  },
+  "comment": "Performer Profile Zoom 150 Q6\nZoom : 25-50° - IRC > 95 - 1800-1000K - DMX In/Out XLR 5 points- powerCON True One In/Out - RGB Blanc variable - Livré avec 4 couteaux et cordon d'alimention\n''Dim To Warm'' : Non\nContrôle : DMX - RDM ; Local\nConnecteur(s) en Entrée \"In\" : DMX 5 points\nEntrée ''In'' Alimentation : powerCON 16 A True1 - True One\nSortie ''Out'' Alimentation : powerCON 16 A True1 - True One\nConnecteur(s) en sortie \"Out\" : DMX 5 points\nConsommation électrique : 170,00 W\nCouleur : Noir\nLivré avec accessoires : Cordon powerCON True One\nIndice de protection IP - Étanchéité : IP 20\nIndice de Rendu des Couleurs (IRC ou CRI) : >/= 95\nTempérature de couleur Kelvin : 1800 à 10000 K\nAngle de projection : 25 à 50°\nDimmable : 0 à 100%\nFlicker-free : Oui\nLyre ou type d'accroche : Lyre percée simple\nPhotométrie : @2 m : 1588 Lux - @3 m : 706 Lux - @5 m : 254 Lux\nPuissance de la Led : 150 W\nCouleur de Led : RGBA + Lime + Cyan\nType de Zoom : Zoom manuel\nSource lumineuse : Led\nType de fixation : Trou ø 10 mm\nMonture : Obj. non interchangeable - Monobloc\nPoids (net) : 6 g\nDimensions (hors emballage) : Longueur : 56,8 cm - Largeur : 22,4 cm - Hauteur/Epaisseur/Profondeur : 19,1 cm",
+  "links": {
+    "manual": [
+      "https://www.la-bs.com/fr/art/profile-q6_showtec-projecteur-de-decoupe-led-150w-rgbacl-showtec.htm"
+    ],
+    "productPage": [
+      "https://www.la-bs.com/fr/art/profile-q6_showtec-projecteur-de-decoupe-led-150w-rgbacl-showtec.htm"
+    ]
+  },
+  "physical": {
+    "power": 150,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Cyan": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan",
+        "Strobe"
+      ]
+    }
+  ]
+}
