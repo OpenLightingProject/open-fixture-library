@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PIKO PAR I",
+  "categories": ["Color Changer", "Blinder", "Strobe", "Other"],
+  "meta": {
+    "authors": ["minuspluslinus"],
+    "createDate": "2024-06-11",
+    "lastModifyDate": "2024-06-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2274580/Purelight-Piko-Par-I.html?page=7#manual"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/PURElight-PIKO-PAR-I-14x10W-RGBW/art-LIG0017001-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6Zc-x0hdezk"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 80, 185],
+    "weight": 0.8,
+    "power": 100,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "slow"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4Ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8Ch",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Effect",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
