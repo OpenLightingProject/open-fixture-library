@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORBAND Q3BT",
+  "shortName": "COLORBAND",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["JEM"],
+    "createDate": "2021-09-30",
+    "lastModifyDate": "2021-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2019/06/COLORband_Q3BT_UM_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/colorband-q3bt/"
+    ],
+    "video": [
+      "https://www.youtube.com/embed/viAwVIKhVSo?rel=0&autoplay=1"
+    ]
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "AMBER": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE SPEED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "AMBER",
+        "DIMMER",
+        "STROBE SPEED"
+      ]
+    }
+  ]
+}
