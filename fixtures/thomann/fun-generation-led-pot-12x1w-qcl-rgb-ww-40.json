@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fun Generation LED Pot 12x1W QCL RGB WW 40°",
+  "shortName": "Paretti",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Minno"],
+    "createDate": "2023-10-13",
+    "lastModifyDate": "2023-10-13"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_409499_428047_512677_512675_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/it/fun_generation_led_pot_12x1w_qcl_rgb_ww_428047.htm"
+    ]
+  },
+  "rdm": {
+    "modelId": "invalid"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6c",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    }
+  ]
+}
