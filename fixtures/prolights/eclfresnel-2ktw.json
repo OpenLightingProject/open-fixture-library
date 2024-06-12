@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclFresnel 2KTW",
+  "shortName": "LED-Fres",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["JT"],
+    "createDate": "2023-10-13",
+    "lastModifyDate": "2023-10-13"
+  },
+  "links": {
+    "productPage": [
+      "https://www.prolights.it/product/ECLFR2KT"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Indigo": {
+      "fineChannelAliases": ["Indigo fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "DimmerSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Indigo",
+        "Indigo fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Shutter",
+        "DimmerSpeed"
+      ]
+    }
+  ]
+}
