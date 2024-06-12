@@ -1,0 +1,231 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7r 230w moving head light 16ch",
+  "shortName": "7r 230w 16ch",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["Hristo Vasilev"],
+    "createDate": "2023-11-15",
+    "lastModifyDate": "2023-11-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/product/230w-stage-moving-head-light-15-gobos-and-14-colors-rainbow-effect-dmx512-control/"
+    ],
+    "productPage": [
+      "https://www.uking-online.com"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=JxesznU8nkc"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 300, 400],
+    "weight": 10,
+    "power": 230,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "rgbw"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "fineChannelAliases": ["Pan/Tilt Speed fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Frost": {
+      "fineChannelAliases": ["Frost fine"],
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Shutter / Strobe": {
+      "fineChannelAliases": ["Shutter / Strobe fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "fineChannelAliases": ["Color Presets fine"],
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    },
+    "Gobo Wheel": {
+      "fineChannelAliases": ["Gobo Wheel fine"],
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 20
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "fineChannelAliases": ["Prism fine"],
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "fineChannelAliases": ["Prism Rotation fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "0%"
+      }
+    },
+    "Reserved": {
+      "fineChannelAliases": ["Reserved fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function": {
+      "fineChannelAliases": ["No function fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7r",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Frost",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Color Presets",
+        "Fog",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Prism",
+        "Prism Rotation",
+        "No function"
+      ]
+    }
+  ]
+}
