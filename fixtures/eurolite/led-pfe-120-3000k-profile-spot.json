@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PFE-120 3000K Profile Spot",
+  "shortName": "PFE-120 3000K",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["NJRogelj"],
+    "createDate": "2024-01-27",
+    "lastModifyDate": "2024-01-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.at/download/40001981-Manual-96405-1.100-eurolite-led-pfe-120-3000k-profile-spot-de_en.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [615, 280, 420],
+    "weight": 10,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "120",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [14, 41]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Dimmer speed 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Dimmer speed 2"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Dimmer speed 3"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Dimmer speed 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Dimmer speed"
+      ]
+    }
+  ]
+}
