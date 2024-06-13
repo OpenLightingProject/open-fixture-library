@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LSM900LED",
+  "categories": ["Smoke", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Maxime G."],
+    "createDate": "2023-01-21",
+    "lastModifyDate": "2023-01-21"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/54958556/ibiza-light-lsm900led-900w-fog-machine---6x3w-3-en-1-led-..."
+    ]
+  },
+  "availableChannels": {
+    "Fog Intensity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Sauts de Couleur, lent vers rapide",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Fondu de couleur, lent vers rapide",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RESET": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fumée",
+      "channels": [
+        "Fog Intensity",
+        "Color Presets",
+        "Red",
+        "Green",
+        "Blue",
+        "RESET"
+      ]
+    }
+  ]
+}
