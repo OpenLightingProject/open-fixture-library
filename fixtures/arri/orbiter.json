@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Orbiter",
+  "shortName": "orbiter",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["HM"],
+    "createDate": "2023-05-12",
+    "lastModifyDate": "2023-05-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.arri.com/resource/blob/304796/8768e110c12ec6c209eb7dffe8bd1d08/l5-0037325-arri-orbiter-user-manual-en-jul2022-l03917-data.pdf"
+    ],
+    "productPage": [
+      "https://www.arri.com/en/lighting/led/orbiter"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=oCkh0DAXjms"
+    ]
+  },
+  "physical": {
+    "dimensions": [411, 330, 410],
+    "weight": 14.9,
+    "power": 400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBACL",
+      "shortName": "RGBACL",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime"
+      ]
+    }
+  ]
+}
