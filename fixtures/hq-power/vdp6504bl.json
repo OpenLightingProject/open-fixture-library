@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VDP6504BL",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["George van Deurs Goss"],
+    "createDate": "2023-11-10",
+    "lastModifyDate": "2023-11-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2285408/Hq-Power-Vdp6504bl.html?page=1#manual"
+    ]
+  },
+  "physical": {
+    "weight": 5.8,
+    "power": 2600,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Halogen DWE 650W"
+    }
+  },
+  "availableChannels": {
+    "ON": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 CH",
+      "channels": [
+        "ON"
+      ]
+    }
+  ]
+}
