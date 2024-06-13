@@ -1,0 +1,458 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "eclipse RGB",
+  "categories": ["Effect", "Laser"],
+  "meta": {
+    "authors": ["BLDGBLKS"],
+    "createDate": "2023-01-30",
+    "lastModifyDate": "2023-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/632724/Chauvet-Eclipse-Rgb.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RL-w58WjADg"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Auto Mode": {
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "DMX Mode"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow",
+          "comment": "Automatic Slow"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "fast",
+          "comment": "Automatic Fast"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "0%",
+          "soundSensitivityEnd": "100%",
+          "comment": "Sound Active"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Random Effect",
+          "comment": "Random Effect"
+        }
+      ]
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [5, 28],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [29, 56],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [57, 84],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        },
+        {
+          "dmxRange": [85, 112],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Red off + Green Strobe"
+        },
+        {
+          "dmxRange": [113, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Red strobe + Green strobe"
+        },
+        {
+          "dmxRange": [141, 168],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Red on + Green strobe"
+        },
+        {
+          "dmxRange": [169, 197],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Red strobe + Green on"
+        },
+        {
+          "dmxRange": [198, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "randomTiming": true,
+          "comment": "Red + Green strobe"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "randomTiming": true,
+          "comment": "Red + Green alternating strobe"
+        }
+      ]
+    },
+    "Strobe (laser)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Strobe (slow to fast)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Rotation (laser)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Clockwise rotation (slow to fast)"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Counterclockwise rotation (slow to fast)"
+        }
+      ]
+    },
+    "Vibration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectName": "Vibration",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Vibration (slow to fast)"
+        }
+      ]
+    },
+    "Flash": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectName": "Flash",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "comment": "Flash (slow to fast)"
+        }
+      ]
+    },
+    "Red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Fad in (0-100%)"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Intensity",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Fade out (100%-0)"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Alternating fade (100%-0-100%)"
+        }
+      ]
+    },
+    "Green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Fade in (0-100%)"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Intensity",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Fade out (100%-0)"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Alternating fade (100%-0-100%)"
+        }
+      ]
+    },
+    "Blue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Fade in (0-100%)"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Intensity",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Fade out (100%-0)"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Alternating fade (100%-0-100%)"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "0-100%"
+      }
+    },
+    "Strobe (LED)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Strobe (slow to fast)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Rotation (LED)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Clockwise rotation (slow to fast)"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Counterclockwise (slow to fast)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Automatic",
+      "channels": [
+        "Auto Mode"
+      ]
+    },
+    {
+      "name": "Color",
+      "channels": [
+        "Color"
+      ]
+    },
+    {
+      "name": "Strobe (laser)",
+      "channels": [
+        "Strobe (laser)"
+      ]
+    },
+    {
+      "name": "Rotation (laser)",
+      "channels": [
+        "Rotation (laser)"
+      ]
+    },
+    {
+      "name": "Vibration",
+      "channels": [
+        "Vibration"
+      ]
+    },
+    {
+      "name": "Flash",
+      "channels": [
+        "Flash"
+      ]
+    },
+    {
+      "name": "Red",
+      "channels": [
+        "Red"
+      ]
+    },
+    {
+      "name": "Green",
+      "channels": [
+        "Green"
+      ]
+    },
+    {
+      "name": "Blue",
+      "channels": [
+        "Blue"
+      ]
+    },
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Strobe (LED)",
+      "channels": [
+        "Strobe (LED)"
+      ]
+    },
+    {
+      "name": "Rotation (LED)",
+      "channels": [
+        "Rotation (LED)"
+      ]
+    }
+  ]
+}
