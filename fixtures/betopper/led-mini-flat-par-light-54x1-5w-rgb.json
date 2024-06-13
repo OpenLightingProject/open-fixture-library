@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Mini Flat Par Light 54x1.5W RGB",
+  "shortName": "LPC008S",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2024-04-07",
+    "lastModifyDate": "2024-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/LPC007-LPC008_LPC08-H_BETOPPER_DJ_PAR_Light_User_Manual.pdf"
+    ],
+    "productPage": [
+      "https://betopperdj.com/collections/par-light/products/betopper-54x1-5w-rgb-3-in-1-led-mini-flat-par-light-lpc008s"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4bCRhVhhiTM"
+    ]
+  },
+  "physical": {
+    "dimensions": [565, 315, 540],
+    "weight": 2.3,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0.289Hz",
+        "speedEnd": "16.667Hz"
+      }
+    },
+    "Choose": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorIntensity",
+          "color": "Indigo"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Sound Activated Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "Generic",
+          "comment": "Sound Red"
+        },
+        {
+          "dmxRange": [31, 60],
+          "type": "Generic",
+          "comment": "Sound Green"
+        },
+        {
+          "dmxRange": [61, 92],
+          "type": "Generic",
+          "comment": "Sound Blue"
+        },
+        {
+          "dmxRange": [93, 123],
+          "type": "Generic",
+          "comment": "Sound White"
+        },
+        {
+          "dmxRange": [124, 154],
+          "type": "Generic",
+          "comment": "Sound Yellow"
+        },
+        {
+          "dmxRange": [155, 185],
+          "type": "Generic",
+          "comment": "Sound White"
+        },
+        {
+          "dmxRange": [186, 216],
+          "type": "Generic",
+          "comment": "Sound Change"
+        },
+        {
+          "dmxRange": [217, 247],
+          "type": "Generic",
+          "comment": "Sound White"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Sound Change Color"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channel",
+      "shortName": "7",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Choose",
+        "Sound Activated Color"
+      ]
+    }
+  ]
+}
