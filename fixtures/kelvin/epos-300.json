@@ -1,0 +1,846 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Epos 300",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Bjorn"],
+    "createDate": "2023-10-09",
+    "lastModifyDate": "2023-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.kelvinlight.com/app/uploads/2023/08/Epos-300-User-Manual-EN-V1.0-May-2023-2.pdf",
+      "https://github.com/KelvinLights/Kelvin-DMX-Protocol/"
+    ],
+    "productPage": [
+      "https://www.kelvinlight.com/product/epos_300_full_color_spectrum_rgbacl_led_studio_light/"
+    ]
+  },
+  "physical": {
+    "dimensions": [17, 33, 13],
+    "weight": 7,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Main intensity": {
+      "name": "Main intensity",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Main intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Output type": {
+      "name": "Output type",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "Constant output"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 255],
+          "comment": "Maximum output"
+        }
+      ]
+    },
+    "CCT": {
+      "name": "CCT",
+      "defaultValue": 0,
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1700K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green-magenta point": {
+      "name": "Green-magenta point",
+      "fineChannelAliases": ["Green-magenta point fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 31906],
+          "comment": "Neutral"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [31907, 65535],
+          "comment": "-0.027 to 0.027"
+        }
+      ]
+    },
+    "Hue": {
+      "name": "Hue",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0 to 360.0"
+      }
+    },
+    "Saturation": {
+      "name": "Saturation",
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 21844],
+          "comment": "Default 100%"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [21845, 65535],
+          "comment": "0% to 100%"
+        }
+      ]
+    },
+    "Intensity": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 21844],
+          "comment": "Default 50%"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [21845, 65535],
+          "comment": "0% to 100%"
+        }
+      ]
+    },
+    "HSI Colorspace": {
+      "name": "HSI Colorspace",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "Device"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 1],
+          "comment": "sRGB/Rec. 709"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [2, 2],
+          "comment": "Adobe RGB"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [3, 3],
+          "comment": "Adobe Wide"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [4, 4],
+          "comment": "ProPhoto"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [5, 5],
+          "comment": "DCI P3"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [6, 255],
+          "comment": "Rec. 2020"
+        }
+      ]
+    },
+    "HSI Device white point": {
+      "name": "HSI Device white point",
+      "defaultValue": 0,
+      "fineChannelAliases": ["HSI Device white point fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Red": {
+      "name": "Red",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "name": "Green",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "name": "Blue",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB Colorspace": {
+      "name": "RGB Colorspace",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "Device"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 1],
+          "comment": "sRGB/Rec. 709"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [2, 2],
+          "comment": "Adobe RGB"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [3, 3],
+          "comment": "Adobe Wide"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [4, 4],
+          "comment": "ProPhoto"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [5, 5],
+          "comment": "DCI P3"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [6, 255],
+          "comment": "Rec. 2020"
+        }
+      ]
+    },
+    "RGB Device white point": {
+      "name": "RGB Device white point",
+      "defaultValue": 0,
+      "fineChannelAliases": ["RGB Device white point fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "x": {
+      "name": "x",
+      "defaultValue": 0,
+      "fineChannelAliases": ["x fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0 to 0.8"
+      }
+    },
+    "y": {
+      "name": "y",
+      "defaultValue": 0,
+      "fineChannelAliases": ["y fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0 to 0.8"
+      }
+    },
+    "Brand and Category": {
+      "name": "Brand and Category",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "Rosco CalColor"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 1],
+          "comment": "Rosco Cinelux"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [2, 2],
+          "comment": "Rosco Color Correction"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [3, 3],
+          "comment": "Lee 0 Series"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [4, 4],
+          "comment": "Lee 100 Series"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [5, 5],
+          "comment": "Lee 200 and 300 Series"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [6, 6],
+          "comment": "Lee 500 Series"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [7, 7],
+          "comment": "Lee 700 Series"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [8, 255],
+          "comment": "Lee Color Correction"
+        }
+      ]
+    },
+    "Gel Index": {
+      "name": "Gel Index",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "See gel overview"
+      }
+    },
+    "Base CCT": {
+      "name": "Base CCT",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Base CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Selected effect": {
+      "name": "Selected effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "None"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 1],
+          "comment": "Fire"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [2, 2],
+          "comment": "CCT chase"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [3, 3],
+          "comment": "Color chase"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [4, 4],
+          "comment": "Pulse"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [5, 5],
+          "comment": "Strobe"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [6, 6],
+          "comment": "Lightning"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [7, 255],
+          "comment": "Dimming"
+        }
+      ]
+    },
+    "Effect state": {
+      "name": "Effect state",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "dmxRange": [0, 0],
+          "comment": "Play"
+        },
+        {
+          "type": "Generic",
+          "dmxRange": [1, 255],
+          "comment": "Stop"
+        }
+      ]
+    },
+    "Parameter 1": {
+      "name": "Parameter 1",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 1 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 2": {
+      "name": "Parameter 2",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 2 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 3": {
+      "name": "Parameter 3",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 3 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 4": {
+      "name": "Parameter 4",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 4 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 5": {
+      "name": "Parameter 5",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 5 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 6": {
+      "name": "Parameter 6",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 6 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 7": {
+      "name": "Parameter 7",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 7 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 8": {
+      "name": "Parameter 8",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 8 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 9": {
+      "name": "Parameter 9",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 9 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 10": {
+      "name": "Parameter 10",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 10 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 11": {
+      "name": "Parameter 11",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 11 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 12": {
+      "name": "Parameter 12",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 12 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Parameter 13": {
+      "name": "Parameter 13",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Parameter 13 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "See effects overview"
+      }
+    },
+    "Crossfade": {
+      "name": "Crossfade",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Crossfade fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0 to 1.0"
+      }
+    },
+    "Amber": {
+      "name": "Amber",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "name": "Cyan",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Cyan fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "name": "Lime",
+      "defaultValue": 0,
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "CCT",
+        "Green-magenta point"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "CCT",
+        "CCT fine",
+        "Green-magenta point",
+        "Green-magenta point fine"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "HSI Colorspace",
+        "HSI Device white point"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Intensity",
+        "Intensity fine",
+        "HSI Colorspace",
+        "HSI Device white point",
+        "HSI Device white point fine"
+      ]
+    },
+    {
+      "name": "RGB 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB Colorspace",
+        "RGB Device white point"
+      ]
+    },
+    {
+      "name": "RGB 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "RGB Colorspace",
+        "RGB Device white point",
+        "RGB Device white point fine"
+      ]
+    },
+    {
+      "name": "XY 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "x",
+        "y"
+      ]
+    },
+    {
+      "name": "XY 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "x",
+        "x fine",
+        "y",
+        "y fine"
+      ]
+    },
+    {
+      "name": "Gel 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "Brand and Category",
+        "Gel Index",
+        "Base CCT"
+      ]
+    },
+    {
+      "name": "Gel 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "Brand and Category",
+        "Gel Index",
+        "Base CCT",
+        "Base CCT fine"
+      ]
+    },
+    {
+      "name": "Effect 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "Selected effect",
+        "Effect state",
+        "Parameter 1",
+        "Parameter 2",
+        "Parameter 3",
+        "Parameter 4",
+        "Parameter 5",
+        "Parameter 6",
+        "Parameter 7",
+        "Parameter 8",
+        "Parameter 9",
+        "Parameter 10",
+        "Parameter 11",
+        "Parameter 12",
+        "Parameter 13"
+      ]
+    },
+    {
+      "name": "Effect 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "Selected effect",
+        "Effect state",
+        "Parameter 1",
+        "Parameter 1 fine",
+        "Parameter 2",
+        "Parameter 2 fine",
+        "Parameter 3",
+        "Parameter 3 fine",
+        "Parameter 4",
+        "Parameter 4 fine",
+        "Parameter 5",
+        "Parameter 5 fine",
+        "Parameter 6",
+        "Parameter 6 fine",
+        "Parameter 7",
+        "Parameter 7 fine",
+        "Parameter 8",
+        "Parameter 8 fine",
+        "Parameter 9",
+        "Parameter 9 fine",
+        "Parameter 10",
+        "Parameter 10 fine",
+        "Parameter 11",
+        "Parameter 11 fine",
+        "Parameter 12",
+        "Parameter 12 fine",
+        "Parameter 13",
+        "Parameter 13 fine"
+      ]
+    },
+    {
+      "name": "CCT and HSI 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "CCT",
+        "Green-magenta point",
+        "Crossfade",
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "HSI Colorspace",
+        "HSI Device white point"
+      ]
+    },
+    {
+      "name": "CCT and HSI 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "CCT",
+        "CCT fine",
+        "Green-magenta point",
+        "Green-magenta point fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Intensity",
+        "Intensity fine",
+        "HSI Colorspace",
+        "HSI Device white point",
+        "HSI Device white point fine"
+      ]
+    },
+    {
+      "name": "CCT and RGB 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "CCT",
+        "Green-magenta point",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB Colorspace",
+        "RGB Device white point"
+      ]
+    },
+    {
+      "name": "CCT and RGB 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "CCT",
+        "CCT fine",
+        "Green-magenta point",
+        "Green-magenta point fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "RGB Colorspace",
+        "RGB Device white point",
+        "RGB Device white point fine"
+      ]
+    },
+    {
+      "name": "RGBACL 8bit",
+      "channels": [
+        "Main intensity",
+        "Output type",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime"
+      ]
+    },
+    {
+      "name": "RGBACL 16bit",
+      "channels": [
+        "Main intensity",
+        "Main intensity fine",
+        "Output type",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "Lime",
+        "Lime fine"
+      ]
+    }
+  ]
+}
