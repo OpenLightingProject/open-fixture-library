@@ -1,0 +1,651 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACME BW-545",
+  "shortName": "BW-545",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Le Hoang"],
+    "createDate": "2022-01-13",
+    "lastModifyDate": "2022-01-13",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2022-01-13",
+      "comment": "GDTF v1.0 fixture type ID: A908B635-3CEA-43FC-96D6-8B85FC187ED3"
+    }
+  },
+  "comment": "BW-545: ACME BW-545  3W LED",
+  "wheels": {
+    "Color 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#e41701"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#e42801"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#e48100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#e4ce02"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#c6e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#9be400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#81e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#70e402"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#24e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 12",
+          "colors": ["#02e4bd"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 13",
+          "colors": ["#08cee4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 14",
+          "colors": ["#00a4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 15",
+          "colors": ["#009be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 16",
+          "colors": ["#0593e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 17",
+          "colors": ["#065fe4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 18",
+          "colors": ["#0934e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 19",
+          "colors": ["#0034e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 20",
+          "colors": ["#081be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 21",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 22",
+          "colors": ["#ac04e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 23",
+          "colors": ["#9300e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 24",
+          "colors": ["#b506e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 25",
+          "colors": ["#8a06e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 26",
+          "colors": ["#8a01e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 27",
+          "colors": ["#b501e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 28",
+          "colors": ["#bd01e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 29",
+          "colors": ["#e40093"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 30",
+          "colors": ["#e40179"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 31",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 32",
+          "colors": ["#e4cece"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "R": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "C1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 30],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [31, 38],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [39, 46],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [47, 54],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [55, 61],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [78, 84],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [85, 92],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [93, 100],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [101, 108],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [109, 115],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [116, 123],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [124, 131],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [140, 146],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [147, 154],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [155, 162],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [163, 169],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [170, 177],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [178, 185],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [186, 193],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [194, 200],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [201, 208],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [209, 216],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [217, 223],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 33
+        }
+      ]
+    },
+    "Strobe1": {
+      "defaultValue": 12,
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "12Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0cd",
+        "brightnessEnd": "1cd"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "defaultValue": 0,
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0cd",
+        "brightnessEnd": "1cd"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1 7 DMX",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "C1",
+        "Strobe1",
+        "Dim"
+      ]
+    },
+    {
+      "name": "Mode 2 6 DMX",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Dim",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 3 5 DMX",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Dim"
+      ]
+    },
+    {
+      "name": "Mode 4 4 DMX",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White"
+      ]
+    }
+  ]
+}
