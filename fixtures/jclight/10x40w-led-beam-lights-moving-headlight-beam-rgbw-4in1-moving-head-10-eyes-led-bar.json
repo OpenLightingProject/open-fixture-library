@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "10x40w Led Beam Lights Moving Headlight Beam Rgbw 4in1 Moving Head 10 eyes Led Bar",
+  "shortName": "10 x 40w Led Beam Lights",
+  "categories": ["Pixel Bar", "Other"],
+  "meta": {
+    "authors": ["Dan Gillen"],
+    "createDate": "2023-06-26",
+    "lastModifyDate": "2023-06-26"
+  },
+  "comment": "Wash Lights",
+  "links": {
+    "productPage": [
+      "https://www.alibaba.com/product-detail/10x40w-Led-Beam-Lights-Dj-Club_1600473709214.html?spm=a2700.9114905.0.0.XOYG0f"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "2": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red"
+      }
+    },
+    "4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe Slow to Fast"
+        }
+      ]
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "constant": true,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Tilt",
+      "channels": [
+        "Tilt"
+      ]
+    },
+    {
+      "name": "Red",
+      "channels": [
+        "Red"
+      ]
+    },
+    {
+      "name": "Green",
+      "channels": [
+        "Green"
+      ]
+    },
+    {
+      "name": "Blue",
+      "channels": [
+        "Blue"
+      ]
+    },
+    {
+      "name": "White",
+      "channels": [
+        "White"
+      ]
+    }
+  ]
+}
