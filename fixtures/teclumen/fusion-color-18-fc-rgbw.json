@@ -1,0 +1,279 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusion Color 18 FC  RGBW",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Tommy Confalonieri"],
+    "createDate": "2023-07-24",
+    "lastModifyDate": "2023-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/it/6823504/teclumen-fusion-color-18-fc-rgbw-user-manual"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 230, 413],
+    "weight": 7.6,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "spot-ish",
+      "degreesMinMax": [17, 17]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White with Color Temperature control": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Red controllofine": {
+      "fineChannelAliases": ["Red controllofine fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 4 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "ColorIntensity",
+          "color": "Green"
+        }
+      ]
+    },
+    "Green 3": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "+ white from 251 to 255"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Black": {
+      "capability": {
+        "type": "Generic",
+        "comment": "listed as black"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "0: RGBW, 7 canali",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Wheel",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "1: RGBW, 8 canali",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Wheel",
+        "Dimmer",
+        "White with Color Temperature control"
+      ]
+    },
+    {
+      "name": "2: RGBW, 13 canali (16bit)",
+      "channels": [
+        "Red 4",
+        "Red 4 fine",
+        "Green 3",
+        "Green 3 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Strobe",
+        "Color Wheel",
+        "White with Color Temperature control",
+        "Dimmer 2",
+        "Dimmer 2 fine"
+      ]
+    },
+    {
+      "name": "3: RGBW, 4 canali",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "4: HSV + bianco, 4 canali",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5: CMYK, 5 canali",
+      "channels": [
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Black",
+        "Strobe"
+      ]
+    }
+  ]
+}
