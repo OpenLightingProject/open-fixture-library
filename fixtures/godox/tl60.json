@@ -1,0 +1,322 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TL60",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-03-31",
+    "lastModifyDate": "2023-03-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230308/1678245488701107.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/TL60.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HpLcJlkywzk"
+    ]
+  },
+  "physical": {
+    "dimensions": [48, 48, 750],
+    "weight": 0.73,
+    "power": 18,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Cross gradient": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "CCT … HSI Mix"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "Mode HSI": {
+      "name": "Mode",
+      "defaultValue": 52,
+      "highlightValue": 52,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to HSI Mode"
+      }
+    },
+    "Mode RGBW": {
+      "name": "Mode",
+      "defaultValue": 104,
+      "highlightValue": 104,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to RGBW Mode"
+      }
+    },
+    "Mode FX": {
+      "name": "Mode",
+      "defaultValue": 157,
+      "highlightValue": 157,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to FX Mode"
+      }
+    },
+    "Mode Filter": {
+      "name": "Mode",
+      "defaultValue": 209,
+      "highlightValue": 209,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Filter Mode"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Light effect type": {
+      "name": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Effect",
+          "effectName": "RGB recycle"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Effect",
+          "effectName": "Flash"
+        },
+        {
+          "dmxRange": [37, 56],
+          "type": "Effect",
+          "effectName": "Party"
+        },
+        {
+          "dmxRange": [57, 75],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "Effect",
+          "effectName": "Broken Bulb"
+        },
+        {
+          "dmxRange": [96, 113],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [114, 133],
+          "type": "Effect",
+          "effectName": "Candle"
+        },
+        {
+          "dmxRange": [134, 151],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [152, 170],
+          "type": "Effect",
+          "effectName": "Firework"
+        },
+        {
+          "dmxRange": [171, 189],
+          "type": "Effect",
+          "effectName": "Police car"
+        },
+        {
+          "dmxRange": [190, 208],
+          "type": "Effect",
+          "effectName": "Firetruck"
+        },
+        {
+          "dmxRange": [209, 228],
+          "type": "Effect",
+          "effectName": "Ambulance"
+        },
+        {
+          "dmxRange": [229, 247],
+          "type": "Effect",
+          "effectName": "Music"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "SOS"
+        }
+      ]
+    },
+    "Light effect gear": {
+      "name": "Gear",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "I"
+        },
+        {
+          "dmxRange": [86, 171],
+          "type": "Generic",
+          "comment": "II"
+        },
+        {
+          "dmxRange": [172, 255],
+          "type": "Generic",
+          "comment": "III"
+        }
+      ]
+    },
+    "Filter selection": {
+      "name": "Filter",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Left"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Right"
+        }
+      ]
+    },
+    "Filter switch": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT-HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Cross gradient",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "ULTIMATE 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Mode CCT",
+        "Dimmer",
+        "CCT"
+      ]
+    },
+    {
+      "name": "ULTIMATE 8bit - HSI",
+      "shortName": "Ultimate HSI",
+      "channels": [
+        "Mode HSI",
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - RGBW",
+      "shortName": "Ultimate RGBW",
+      "channels": [
+        "Mode RGBW",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - FX",
+      "shortName": "Ultimate FX",
+      "channels": [
+        "Mode FX",
+        "Dimmer",
+        "Light effect type",
+        "Light effect gear"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - Filter",
+      "shortName": "Ultimate Filter",
+      "channels": [
+        "Mode Filter",
+        "Dimmer",
+        "Filter selection",
+        "Filter switch"
+      ]
+    }
+  ]
+}
