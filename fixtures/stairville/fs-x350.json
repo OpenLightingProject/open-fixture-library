@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FS x350",
+  "shortName": "LED 300W Follow Spot",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Aaron Archibold"],
+    "createDate": "2023-02-17",
+    "lastModifyDate": "2023-02-17"
+  },
+  "comment": "Released April 2021",
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_478626_537967_v2_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED 300",
+      "lumens": 1000
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 39],
+          "type": "ColorPreset",
+          "comment": "WHITE / RED"
+        },
+        {
+          "dmxRange": [40, 63],
+          "type": "ColorPreset",
+          "comment": "RED"
+        },
+        {
+          "dmxRange": [64, 87],
+          "type": "ColorPreset",
+          "comment": "RED / GREEN"
+        },
+        {
+          "dmxRange": [88, 111],
+          "type": "ColorPreset",
+          "comment": "GREEN"
+        },
+        {
+          "dmxRange": [112, 135],
+          "type": "ColorPreset",
+          "comment": "GREEN / YELLOW"
+        },
+        {
+          "dmxRange": [136, 159],
+          "type": "ColorPreset",
+          "comment": "YELLOW"
+        },
+        {
+          "dmxRange": [160, 183],
+          "type": "ColorPreset",
+          "comment": "YELLOW / BLUE"
+        },
+        {
+          "dmxRange": [184, 207],
+          "type": "ColorPreset",
+          "comment": "BLUE"
+        },
+        {
+          "dmxRange": [208, 231],
+          "type": "ColorPreset",
+          "comment": "BLUE / ORANCE"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "ORANGE"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [21, 49],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [50, 101],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "2700K"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8000K"
+        }
+      ]
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "Generic",
+          "comment": "RESET FIXTURE"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6 Ch",
+      "channels": [
+        "Color Wheel",
+        "Color Temperature",
+        "Iris",
+        "Dimmer",
+        "Strobe",
+        "Reset"
+      ]
+    }
+  ]
+}
