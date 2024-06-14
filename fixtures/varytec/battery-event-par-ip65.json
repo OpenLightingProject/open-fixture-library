@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Battery Event Par IP65",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Touhami"],
+    "createDate": "2023-08-26",
+    "lastModifyDate": "2023-08-26"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_435604_v3_r2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/varytec_battery_event_par_ip65_6in1.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 282, 150],
+    "weight": 5.5,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "6 LEDs RGBAW+UV 15 Watt"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Automatic shows": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Turned off"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Effect",
+          "effectName": "Colour change"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled show"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe Speed",
+        "Automatic shows"
+      ]
+    }
+  ]
+}
