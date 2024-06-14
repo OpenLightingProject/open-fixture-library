@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Black spot 18 RGB",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Michel Taheij"],
+    "createDate": "2022-05-20",
+    "lastModifyDate": "2022-05-20"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/465199_c_463465_465199_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/nl/fun_generation_black_spot_18_rgb.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/nl/fun_generation_black_spot_18_rgb.htm"
+    ]
+  },
+  "availableChannels": {
+    "Strobe effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [1, 9],
+          "type": "NoFunction",
+          "comment": "LEDs of"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "100Hz"
+        }
+      ]
+    },
+    "Intensity red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Strobe effect",
+        "Intensity red",
+        "Intensity green",
+        "Intensity blue"
+      ]
+    }
+  ]
+}
