@@ -1,0 +1,1017 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "maTrixx FX-550 DMX",
+  "shortName": "FX550",
+  "categories": ["Flower", "Effect"],
+  "meta": {
+    "authors": ["Gamby"],
+    "createDate": "2024-04-09",
+    "lastModifyDate": "2024-04-09"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/229427_bda_fx550_dmx_uk_screen.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=g9U2-CuVsvs&si=XoI53kguwEycBBVR"
+    ]
+  },
+  "physical": {
+    "dimensions": [288, 260, 244],
+    "weight": 4,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pattern/Macro 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Pattern/Macro 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Pattern/Macro 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 5"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 6"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 7"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 8"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 9"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Pattern/Macro 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Pattern/Macro 5": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Pattern/Macro 6": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    },
+    "Pattern/Macro 7": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Pattern 01"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Pattern 02"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Pattern 03"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Pattern 04"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Pattern 05"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pattern 06"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pattern 07"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Pattern 08"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Pattern 09"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Macro 01"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Macro 02"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Macro 03"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Macro 04"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Macro 05"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Macro 06"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Macro 07"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Macro 08"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Macro 09"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Stand-alone"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX512",
+      "shortName": "512",
+      "channels": [
+        "Pattern/Macro 1",
+        "Pattern/Macro 2",
+        "Pattern/Macro 3",
+        "Pattern/Macro 4",
+        "Pattern/Macro 5",
+        "Pattern/Macro 6",
+        "Pattern/Macro 7",
+        "Strobe Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
