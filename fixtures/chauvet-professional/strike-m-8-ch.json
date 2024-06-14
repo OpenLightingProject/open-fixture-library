@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color STRIKE M",
+  "categories": ["Blinder", "Color Changer", "Strobe", "Moving Head"],
+  "meta": {
+    "authors": ["Rene Bribiesca", "Luke Nelson"],
+    "createDate": "2023-10-22",
+    "lastModifyDate": "2023-10-22"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/color-strike-m/"
+    ],
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2021/09/Color_STRIKE_M_UM_Rev10.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TTobzCb1Xoc"
+    ]
+  },
+  "physical": {
+    "dimensions": [175.4, 312.5, 407],
+    "weight": 12.1,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "power": 740
+  },
+  "availableChannels": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [80, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [150, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }, {
+          "dmxRange": [220, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Beam": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Plate flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterDuration",
+          "duration": "instant",
+          "comment": "On, no flash/strobe"
+        }
+      ]
+    },
+    "Plate flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Beam flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterDuration",
+          "duration": "instant",
+          "comment": "On, no flash/strobe"
+        }
+      ]
+    },
+    "Beam flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Beam"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue"
+      ]
+    },
+    {
+      "name": "13 Channel",
+      "shortName": "13ch"
+    },
+    {
+      "name": "24 Channel",
+      "shortName": "24ch"
+    },
+    {
+      "name": "30 Channel",
+      "shortName": "30ch"
+    },
+    {
+      "name": "40 Channel",
+      "shortName": "40ch"
+    },
+    {
+      "name": "74 Channel",
+      "shortName": "74ch"
+    },
+    {
+      "name": "97 Channel",
+      "shortName": "97ch"
+    }
+  ]
+}
