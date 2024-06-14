@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Zoom 1915",
+  "shortName": "bt-mhz1915",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["KCB"],
+    "createDate": "2023-10-11",
+    "lastModifyDate": "2023-10-11"
+  },
+  "links": {
+    "manual": [
+      "https://personalities.avolites.com/"
+    ],
+    "productPage": [
+      "https://personalities.avolites.com/"
+    ],
+    "video": [
+      "https://personalities.avolites.com/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "360deg",
+        "comment": "jhgf"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pan",
+      "shortName": "Pan",
+      "channels": [
+        "Pan"
+      ]
+    }
+  ]
+}
