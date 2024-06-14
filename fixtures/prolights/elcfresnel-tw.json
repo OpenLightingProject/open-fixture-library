@@ -1,0 +1,497 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ElcFresnel TW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["WBT", "Wolfgang Borchert Theater"],
+    "createDate": "2023-01-10",
+    "lastModifyDate": "2023-01-10",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-01-10",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [283, 283, 343],
+    "weight": 7.5,
+    "power": 260,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000,
+      "lumens": 6000
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [17, 91]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityMasterDimmerFine."
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Royal Blue": {
+      "fineChannelAliases": ["Royal Blue fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [31, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [131, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 42],
+          "type": "ColorPreset",
+          "comment": "2800K-4000K"
+        },
+        {
+          "dmxRange": [43, 77],
+          "type": "ColorPreset",
+          "comment": "4001K-5000K"
+        },
+        {
+          "dmxRange": [78, 112],
+          "type": "ColorPreset",
+          "comment": "5001K-6000K"
+        },
+        {
+          "dmxRange": [113, 147],
+          "type": "ColorPreset",
+          "comment": "6001K-7000K"
+        },
+        {
+          "dmxRange": [148, 182],
+          "type": "ColorPreset",
+          "comment": "7001K-8000K"
+        },
+        {
+          "dmxRange": [183, 217],
+          "type": "ColorPreset",
+          "comment": "8001K-9000K"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "ColorPreset",
+          "comment": "9001K-10000K"
+        }
+      ]
+    },
+    "Hue": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "ColorPreset",
+          "comment": "-25 to 0"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "0 to +25"
+        }
+      ]
+    },
+    "Crossfade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Fades from Colortemp mode to Colormix mode"
+      }
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "ColorPreset",
+          "comment": "Amber Shift on"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorPreset",
+          "comment": "Color Macro"
+        }
+      ]
+    },
+    "CTO on Colors": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "warm",
+        "helpWanted": "Can you provide exact color temperature values in Kelvin?"
+      }
+    },
+    "Dimmer Speed Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Speed",
+          "comment": "from display menu",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Speed",
+          "comment": "Mode off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Speed",
+          "comment": "Mode1 (fasts peed)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Speed",
+          "comment": "Mode2 (middle speed)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Speed",
+          "comment": "Mode3 (slow speed)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "5-channel 1",
+      "shortName": "5ch 1",
+      "channels": [
+        "Dimmer",
+        "CTO",
+        "Hue",
+        "Color macro",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "5-channel 2",
+      "shortName": "5ch 2",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "CTO",
+        "Color macro",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "7-channel 1",
+      "shortName": "7ch 1",
+      "channels": [
+        "Red",
+        "Amber",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "7-channel 2",
+      "shortName": "7ch 2",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Amber",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Color macro",
+        "Dimmer",
+        "Red",
+        "Amber",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Amber",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "Strobe 1",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Strobe 1",
+        "Red",
+        "Amber",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "CTO",
+        "Hue",
+        "Color macro",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Strobe 1",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "19-channel",
+      "shortName": "19ch",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Strobe 1",
+        "CTO",
+        "Hue",
+        "Color macro",
+        "Dimmer Speed Mode"
+      ]
+    },
+    {
+      "name": "21-channel",
+      "shortName": "21ch",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "Strobe 2",
+        "CTO",
+        "Hue",
+        "Crossfade",
+        "Red",
+        "Red fine",
+        "Amber",
+        "Amber fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Color macro",
+        "CTO on Colors",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}
