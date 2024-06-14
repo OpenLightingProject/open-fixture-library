@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Dekker",
+  "shortName": "ADJ Mini Dekker",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["David"],
+    "createDate": "2023-12-06",
+    "lastModifyDate": "2023-12-06"
+  },
+  "links": {
+    "manual": [
+      "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Mini%20Dekker_FR%2005152019.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/adj_mini_dekker.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=NVdXlT4Tggo"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dmx Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Dimmer",
+        "Effect Speed",
+        "Color Macros",
+        "Dmx Mode"
+      ]
+    }
+  ]
+}
