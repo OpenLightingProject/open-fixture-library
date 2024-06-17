@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compact PAR 60 COB RGBW",
+  "shortName": "PAR COB 60 RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Paul Deschamps"],
+    "createDate": "2022-02-06",
+    "lastModifyDate": "2022-02-06"
+  },
+  "comment": "Discontinued...",
+  "links": {
+    "manual": [
+      "https://chinnicks.com/wp-content/uploads/2019/11/Compact-Par-60-COB-RGBW-User-Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.highlite.com/fr/42583-compact-par-60-cob-rgbw.html"
+    ],
+    "video": [
+      "https://vimeo.com/165294288"
+    ]
+  },
+  "physical": {
+    "dimensions": [263, 142, 283],
+    "weight": 2.4,
+    "power": 64,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED COB RGBW 60W",
+      "colorTemperature": 6500,
+      "lumens": 1833
+    },
+    "lens": {
+      "name": "Removable Fresnel Lens",
+      "degreesMinMax": [16, 88]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
