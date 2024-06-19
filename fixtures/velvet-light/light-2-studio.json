@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LIGHT 2 STUDIO",
+  "shortName": "VELVET LIGHT 2 STUDIO",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["Hugo BASSEREAU"],
+    "createDate": "2023-10-10",
+    "lastModifyDate": "2023-10-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.velvetlight.tv/wp-content/uploads/2022/07/VELVET_Usermanual_LightSeries_Web.pdf"
+    ],
+    "productPage": [
+      "https://www.velvetlight.tv/product/velvet-light-2-studio/"
+    ]
+  },
+  "physical": {
+    "dimensions": [670, 308, 68],
+    "weight": 5.9,
+    "power": 160,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Color Temperature",
+        "Dimmer"
+      ]
+    }
+  ]
+}
