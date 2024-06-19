@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini LED Moving Head",
+  "categories": ["Moving Head", "Flower"],
+  "meta": {
+    "authors": ["lest"],
+    "createDate": "2024-06-02",
+    "lastModifyDate": "2024-06-02"
+  },
+  "comment": "7×15W RGBW 4 in 1 LED",
+  "links": {
+    "manual": [
+      "http://test.de"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "power": 105,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pan",
+      "channels": [
+        "Pan",
+        "Pan 2"
+      ]
+    }
+  ]
+}
