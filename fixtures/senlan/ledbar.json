@@ -1,0 +1,390 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDBAR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["SRS"],
+    "createDate": "2024-06-22",
+    "lastModifyDate": "2024-06-22"
+  },
+  "comment": "Senlan",
+  "links": {
+    "other": [
+      "https://business.google.com/site/l/12372379526805802376?hl=en"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Show": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "3 ch": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2 2": {
+      "name": "Red 2",
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2 2": {
+      "name": "Green 2",
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2 2": {
+      "name": "Blue 2",
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 23,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 9": {
+      "name": "Red",
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "A001 2ch",
+      "channels": [
+        "Show",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "C001 3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "D001 4ch",
+      "channels": [
+        "Dimmer",
+        "Red 9",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "E001 6ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2 2",
+        "Green 2 2",
+        "Blue 2 2"
+      ]
+    },
+    {
+      "name": "H001 7ch",
+      "channels": [
+        "Dimmer",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Strobe",
+        "Color Macros",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "L001 12ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2 2",
+        "Green 2 2",
+        "Blue 2 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
+      ]
+    },
+    {
+      "name": "P001 24ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2 2",
+        "Green 2 2",
+        "Blue 2 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8"
+      ]
+    }
+  ]
+}
