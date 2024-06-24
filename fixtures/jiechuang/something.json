@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Something",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["CHOI"],
+    "createDate": "2024-06-24",
+    "lastModifyDate": "2024-06-24"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=6F6OR3nBlDM&t=1588s"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "BASIC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "BRIGHT"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "NoFunction",
+          "comment": "BILNK"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "NoFunction",
+          "comment": "?"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "NoFunction",
+          "comment": "?"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "NoFunction",
+          "comment": "RED"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "NoFunction",
+          "comment": "GREEN"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "NoFunction",
+          "comment": "BLUE"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "NoFunction",
+          "comment": "WHITE"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "??",
+      "channels": [
+        "Intensity",
+        "Dimmer",
+        "No function",
+        "No function 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
