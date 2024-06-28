@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AURA XiP",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Argo"],
+    "createDate": "2024-06-28",
+    "lastModifyDate": "2024-06-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.martin.com/en/products/mac-aura-xip"
+    ]
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "instant"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Compact",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
