@@ -1,0 +1,481 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "S-Tribe",
+  "shortName": "ST",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Jo"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2024-04-15",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2024-06-29",
+      "comment": "GDTF v1.2 fixture type ID: 0810BA18-AA72-42FE-A65B-7C2AC0EDD1BF"
+    }
+  },
+  "wheels": {
+    "NewWheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Wheel Slot 1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "White": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Sh1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "slow"
+        },
+        {
+          "dmxRange": [21, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "med"
+        },
+        {
+          "dmxRange": [71, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "fast"
+        },
+        {
+          "dmxRange": [121, -1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [0, 129],
+          "type": "Unknown (Dummy)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "slow"
+        },
+        {
+          "dmxRange": [131, 179],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "med"
+        },
+        {
+          "dmxRange": [181, 244],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [245, -1],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "fast"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Dummy)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Sh1 2": {
+      "name": "Sh1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "slow"
+        },
+        {
+          "dmxRange": [21, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "med"
+        },
+        {
+          "dmxRange": [71, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "fast"
+        },
+        {
+          "dmxRange": [121, -1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [0, 129],
+          "type": "Unknown (Dummy)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "slow"
+        },
+        {
+          "dmxRange": [131, 179],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "med"
+        },
+        {
+          "dmxRange": [181, 244],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [245, -1],
+          "type": "Unknown (StrobeModeRandom)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "fast"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Dummy)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Flicker mode 1"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Flicker mode 2"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Flicker mode 3"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dimming curve linear"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dimming curve logarythmic"
+        },
+        {
+          "dmxRange": [91, 245],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Default Settings"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "Sh1",
+        "Sh1 2",
+        null,
+        null,
+        null,
+        null,
+        "Ctrl1"
+      ]
+    }
+  ]
+}
