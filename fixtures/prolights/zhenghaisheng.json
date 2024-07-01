@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "zhenghaisheng",
+  "shortName": "Aglare  Lghting",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["fairground"],
+    "createDate": "2024-07-01",
+    "lastModifyDate": "2024-07-01"
+  },
+  "comment": "Aglare Lighting is a leading manufacturer of LED lights for amusement industry and carnival. We supply full series of LED lights for amusement parks, carnival rides ,funfair and midway rides. The main products are fairground light bulbs,carousel lights, carnival rides lights,turbo lights,cabochon Bulbs,rgb flood lights for all amusement rides' illumination.",
+  "links": {
+    "manual": [
+      "https://www.aglare.com/index.php?m=home&c=View&a=download_addfile&file_url=/uploads/soft/20221014/1-221014134235219.pdf"
+    ],
+    "productPage": [
+      "https://www.aglare.com/amusement-lamp/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GVF2TFij3UA"
+    ]
+  },
+  "rdm": {
+    "modelId": 5
+  },
+  "physical": {
+    "dimensions": [3, 2, 60],
+    "weight": 0.5,
+    "power": 0.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 3000
+    },
+    "lens": {
+      "name": "auto program",
+      "degreesMinMax": [3, 8]
+    }
+  },
+  "availableChannels": {
+    "Green": {
+      "defaultValue": 10,
+      "highlightValue": 10,
+      "precedence": "HTP",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "defaultValue": 7,
+      "highlightValue": 9,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blue": {
+      "defaultValue": 6,
+      "highlightValue": 11,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "White": {
+      "defaultValue": 9,
+      "highlightValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "amusement lighting",
+      "shortName": "amusement lights",
+      "rdmPersonalityIndex": 10,
+      "physical": {
+        "dimensions": [3, 2, 60],
+        "weight": 3,
+        "power": 3,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "LED",
+          "colorTemperature": 6000,
+          "lumens": 4000
+        },
+        "lens": {
+          "name": "led",
+          "degreesMinMax": [2, 3]
+        }
+      },
+      "channels": [
+        "Green",
+        "Red",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
