@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "zhenghaisheng",
+  "shortName": "Aglare  Lghting",
+  "categories": ["Other", "Pixel Bar", "Barrel Scanner", "Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["fairground"],
+    "createDate": "2024-07-01",
+    "lastModifyDate": "2024-07-01"
+  },
+  "comment": "Aglare focuses on the lighting of amusement rides and carnival rides .provide fairground light bulbs,carousel lights,amusement light, cabochon bulbs,carnival turbo lights,carnival lights led,turbo light bulbs,pixel led lights,digital addressable rgb led pixel modules,rgb flood lights etc.",
+  "links": {
+    "manual": [
+      "https://www.aglare.com/index.php?m=home&c=View&a=download_addfile&file_url=/uploads/soft/20221014/1-22101413404WH.pdf"
+    ],
+    "productPage": [
+      "https://www.aglare.com/amusement-lamp/"
+    ],
+    "video": [
+      "https://www.youtube.com/channel/UC-wF3QrRCAUNWs45GVC0qTQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [9, 5, 60],
+    "weight": 3.6,
+    "power": 5,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6,
+      "lumens": 5
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 5,
+      "highlightValue": 8,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "amusement lighting",
+      "shortName": "amusement lights",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
