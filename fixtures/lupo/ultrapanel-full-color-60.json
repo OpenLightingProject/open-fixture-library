@@ -1,0 +1,310 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ultrapanel Full Color 60",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-10-24",
+    "lastModifyDate": "2023-10-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.lupo.it/download-file?id=1UphgNNR7MiMnJ9WUS9wugAt1K3Ve_F-J"
+    ],
+    "productPage": [
+      "https://www.lupo.it/en/video/ultrapanel-color-60-hard-full-color"
+    ]
+  },
+  "physical": {
+    "dimensions": [650, 340, 110],
+    "weight": 9,
+    "power": 400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "6500K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "G/M Point 8bit": {
+      "name": "G/M Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Generic",
+          "comment": "-100%…+100%"
+        }
+      ]
+    },
+    "G/M Point 16bit": {
+      "name": "G/M Point",
+      "fineChannelAliases": ["G/M Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 500],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [501, 65535],
+          "type": "Generic",
+          "comment": "-100%…+100%"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Strobe 16bit": {
+      "name": "Strobe",
+      "fineChannelAliases": ["Strobe 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1300],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1301, 65535],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "G/M Point 8bit",
+        "CCT"
+      ]
+    },
+    {
+      "name": "CCT + Strobe 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M Point 8bit",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M Point 16bit",
+        "G/M Point 16bit fine"
+      ]
+    },
+    {
+      "name": "CCT + Strobe 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M Point 16bit",
+        "G/M Point 16bit fine",
+        "Strobe 16bit",
+        "Strobe 16bit fine"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "HSI + Strobe 8bit",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "HSI + Strobe 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Strobe 16bit",
+        "Strobe 16bit fine"
+      ]
+    },
+    {
+      "name": "RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT",
+        "G/M Point 8bit"
+      ]
+    },
+    {
+      "name": "RGBW + Strobe 8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT",
+        "G/M Point 8bit",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CCT",
+        "CCT fine",
+        "G/M Point 16bit",
+        "G/M Point 16bit fine"
+      ]
+    },
+    {
+      "name": "RGBW + Strobe 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CCT",
+        "CCT fine",
+        "G/M Point 16bit",
+        "G/M Point 16bit fine",
+        "Strobe 16bit",
+        "Strobe 16bit fine"
+      ]
+    }
+  ]
+}

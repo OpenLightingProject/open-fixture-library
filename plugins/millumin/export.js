@@ -19,51 +19,66 @@ export const supportedOflVersion = `7.3.0`;
 export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
   return fixtures.map(fixture => {
-    const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
-    const milluminJson = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
-      name: oflJson.name,
-    };
-
-    addIfValidData(milluminJson, `shortName`, oflJson.shortName);
-    milluminJson.categories = getDowngradedCategories(oflJson.categories);
-    milluminJson.meta = oflJson.meta;
-    addIfValidData(milluminJson, `comment`, oflJson.comment);
-
-    if (oflJson.links && oflJson.links.manual) {
-      milluminJson.manualURL = fixture.getLinksOfType(`manual`)[0];
+    try {
+      return getFixtureFile(fixture);
     }
-
-    addIfValidData(milluminJson, `helpWanted`, oflJson.helpWanted);
-    addIfValidData(milluminJson, `rdm`, oflJson.rdm);
-    addIfValidData(milluminJson, `physical`, getDowngradedFixturePhysical(oflJson.physical || {}, fixture));
-    addIfValidData(milluminJson, `matrix`, getDowngradedMatrix(oflJson.matrix, fixture));
-
-    if (oflJson.availableChannels) {
-      milluminJson.availableChannels = Object.fromEntries(Object.entries(oflJson.availableChannels).map(
-        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
-      ));
+    catch (error) {
+      throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+        cause: error,
+      });
     }
-
-    if (oflJson.templateChannels) {
-      milluminJson.templateChannels = Object.fromEntries(Object.entries(oflJson.templateChannels).map(
-        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
-      ));
-    }
-
-    milluminJson.modes = oflJson.modes;
-
-    milluminJson.fixtureKey = fixture.key;
-    milluminJson.manufacturerKey = fixture.manufacturer.key;
-    milluminJson.oflURL = fixture.url;
-
-    return {
-      name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: fixtureJsonStringify(milluminJson),
-      mimetype: `application/ofl-fixture`,
-      fixtures: [fixture],
-    };
   });
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @returns {object} The generated fixture JSON file.
+ */
+function getFixtureFile(fixture) {
+  const oflJson = structuredClone(fixture.jsonObject);
+  const milluminJson = {
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
+    name: oflJson.name,
+  };
+
+  addIfValidData(milluminJson, `shortName`, oflJson.shortName);
+  milluminJson.categories = getDowngradedCategories(oflJson.categories);
+  milluminJson.meta = oflJson.meta;
+  addIfValidData(milluminJson, `comment`, oflJson.comment);
+
+  if (oflJson.links && oflJson.links.manual) {
+    milluminJson.manualURL = fixture.getLinksOfType(`manual`)[0];
+  }
+
+  addIfValidData(milluminJson, `helpWanted`, oflJson.helpWanted);
+  addIfValidData(milluminJson, `rdm`, oflJson.rdm);
+  addIfValidData(milluminJson, `physical`, getDowngradedFixturePhysical(oflJson.physical || {}, fixture));
+  addIfValidData(milluminJson, `matrix`, getDowngradedMatrix(oflJson.matrix, fixture));
+
+  if (oflJson.availableChannels) {
+    milluminJson.availableChannels = Object.fromEntries(Object.entries(oflJson.availableChannels).map(
+      ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+    ));
+  }
+
+  if (oflJson.templateChannels) {
+    milluminJson.templateChannels = Object.fromEntries(Object.entries(oflJson.templateChannels).map(
+      ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+    ));
+  }
+
+  milluminJson.modes = oflJson.modes;
+
+  milluminJson.fixtureKey = fixture.key;
+  milluminJson.manufacturerKey = fixture.manufacturer.key;
+  milluminJson.oflURL = fixture.url;
+
+  return {
+    name: `${fixture.manufacturer.key}/${fixture.key}.json`,
+    content: fixtureJsonStringify(milluminJson),
+    mimetype: `application/ofl-fixture`,
+    fixtures: [fixture],
+  };
 }
 
 /**
@@ -163,6 +178,8 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
       jsonPhysical.matrixPixels = matrixPixels;
     }
   }
+
+  delete jsonPhysical.powerConnectors;
 
   // don't return empty objects
   if (Object.keys(jsonPhysical).length > 0) {

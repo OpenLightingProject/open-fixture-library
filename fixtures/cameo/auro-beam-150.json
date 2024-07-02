@@ -4,16 +4,16 @@
   "shortName": "CLABEAM150",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Ray Tone"],
+    "authors": ["Ray Tone", "Ryan Goodwin"],
     "createDate": "2020-03-28",
-    "lastModifyDate": "2020-03-28"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
       "https://www.cameolight.com/en/downloads/file/id/-406287878"
     ],
     "productPage": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/2064/auro-beam-150"
+      "https://www.gak.co.uk/en/cameo-auro-beam-150/913984"
     ],
     "video": [
       "https://www.youtube.com/watch?v=Zsb151QKp7M"
@@ -24,7 +24,10 @@
     "dimensions": [375, 260, 180],
     "weight": 5.5,
     "power": 130,
-    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "LED",
       "lumens": 1700

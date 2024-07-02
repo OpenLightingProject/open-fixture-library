@@ -25,44 +25,64 @@ export async function exportFixtures(fixtures, options) {
   for (const fixture of fixtures) {
     // add device for each mode
     for (const mode of fixture.modes) {
-      const xml = xmlbuilder.begin()
-        .declaration(`1.0`)
-        .element({
-          Device: {
-            'OFL_Export': {
-              '@id': options.displayedPluginVersion || version,
-              '#text': fixture.url,
-            },
-            frames: {
-              '@id': mode.channels.length,
-            },
-            ManufacturerName: fixture.manufacturer.name,
-            ModelName: `${fixture.name} (${mode.name})`,
-            creationDate: fixture.meta.createDate.toISOString().split(`T`)[0],
-          },
-        })
-        .element(`Attributes`);
-
-      // channels are grouped by their channel type which is called AttributesDefinition in D::Light
-      const channelsByAttribute = getChannelsByAttribute(mode.channels);
-      for (const attribute of Object.keys(channelsByAttribute)) {
-        addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
+      try {
+        deviceFiles.push(exportFixtureMode(fixture, mode, options));
       }
-
-      deviceFiles.push({
-        name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
-        content: xml.end({
-          pretty: true,
-          indent: `  `,
-        }),
-        mimetype: `application/xml`,
-        fixtures: [fixture],
-        mode: mode.shortName,
-      });
+      catch (error) {
+        throw new Error(`Exporting fixture mode ${fixture.manufacturer.key}/${fixture.key}/${mode.shortName} failed: ${error}`, {
+          cause: error,
+        });
+      }
     }
   }
 
   return deviceFiles;
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {Mode} mode The mode to export.
+ * @param {object} options Global options.
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {object} The generated file.
+ */
+function exportFixtureMode(fixture, mode, options) {
+  const xml = xmlbuilder.begin()
+    .declaration(`1.0`)
+    .element({
+      Device: {
+        'OFL_Export': {
+          '@id': options.displayedPluginVersion || version,
+          '#text': fixture.url,
+        },
+        frames: {
+          '@id': mode.channels.length,
+        },
+        ManufacturerName: fixture.manufacturer.name,
+        ModelName: `${fixture.name} (${mode.name})`,
+        creationDate: fixture.meta.createDate.toISOString().split(`T`)[0],
+      },
+    })
+    .element(`Attributes`);
+
+  // channels are grouped by their channel type which is called AttributesDefinition in D::Light
+  const channelsByAttribute = getChannelsByAttribute(mode.channels);
+  for (const attribute of Object.keys(channelsByAttribute)) {
+    addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
+  }
+
+  return {
+    name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
+    content: xml.end({
+      pretty: true,
+      indent: `  `,
+    }),
+    mimetype: `application/xml`,
+    fixtures: [fixture],
+    mode: mode.shortName,
+  };
 }
 
 /**
@@ -169,24 +189,21 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
     return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
   }
 
-  switch (attribute) {
-    case `FOCUS`:
-      return channel.type.toUpperCase(); // PAN or TILT
+  if (attribute === `FOCUS`) {
+    return channel.type.toUpperCase(); // PAN or TILT
+  }
 
-    case `INTENSITY`:
-      if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
-        return `DIMMER`;
-      }
-      break;
+  if (attribute === `INTENSITY` && indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
+    return `DIMMER`;
   }
 
   // in all other attributes, custom text is allowed
   // but we need to use another name syntax
   return uniqueName
     .toUpperCase()
-    .replace(/ /g, `_`)
-    .replace(/\//g, `|`)
-    .replace(/COLOR/g, `COLOUR`);
+    .replaceAll(` `, `_`)
+    .replaceAll(`/`, `|`)
+    .replaceAll(`COLOR`, `COLOUR`);
 }
 
 /**
