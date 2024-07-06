@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "StagePropeller",
+  "categories": ["Fan"],
+  "meta": {
+    "authors": ["Kochi"],
+    "createDate": "2024-07-06",
+    "lastModifyDate": "2024-07-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-07-06",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [1400, 1400, 300],
+    "weight": 80,
+    "power": 1495,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Fan Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Fan Direction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "13deg",
+          "comment": "Normal"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "13deg",
+          "comment": "Reverse"
+        }
+      ]
+    },
+    "LED Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 7-channel",
+      "shortName": "Standard 7ch",
+      "channels": [
+        "Fan Speed",
+        "Fan Direction",
+        "LED Green",
+        "LED Blue",
+        "LED Red",
+        "LED Master",
+        "LED Strobe"
+      ]
+    },
+    {
+      "name": "Neuer Modus",
+      "channels": []
+    }
+  ]
+}
