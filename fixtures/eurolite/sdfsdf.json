@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sdfsdf",
+  "shortName": "sdfsdf",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["asdfasdf"],
+    "createDate": "2024-07-06",
+    "lastModifyDate": "2024-07-06"
+  },
+  "links": {
+    "manual": [
+      "https://sdfsdf.com"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
