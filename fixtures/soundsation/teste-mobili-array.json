@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Teste mobili Array",
+  "shortName": "MHL-4H",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["anonimo"],
+    "createDate": "2024-07-07",
+    "lastModifyDate": "2024-07-07"
+  },
+  "links": {
+    "other": [
+      "https://prova.it"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "availableChannels": {
+    "Intensità": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rosso": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Rossp"
+      }
+    },
+    "Verde": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Verde"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "prova",
+      "channels": [
+        "Intensità",
+        "Rosso",
+        "Verde"
+      ]
+    }
+  ]
+}
