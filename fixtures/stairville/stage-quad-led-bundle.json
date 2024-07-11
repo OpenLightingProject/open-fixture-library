@@ -1,0 +1,339 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Quad LED Bundle",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Trerkstar1989"],
+    "createDate": "2024-07-11",
+    "lastModifyDate": "2024-07-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.bedienungsanleitu.ng/stairville/stage-quad-led-bundle/anleitung"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_stage_quad_led_bundle_rgb_ww.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [1200, 330, 70],
+    "weight": 12.5,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "28x RGBWW-LEDs je 4W"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Spot 1": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 1": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 1": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Spot 1": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Spot 2": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 2": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 2": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Spot 2": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Spot 3": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 3": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 3": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Spot 3": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Spot 4": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 4": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 4": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Spot 4": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red all LED": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green all LED": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue all LED": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White all LED": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Show 0-22 / Musikgesteuert": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 241],
+          "type": "Generic",
+          "comment": "Shows 10er schritte 01-22"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Abhängig von Kanal 6": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Kanal 6"
+        },
+        {
+          "dmxRange": [11, 16],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "ColorPreset",
+          "comment": "cold White"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "ColorPreset",
+          "comment": "Pompadour"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "ColorPreset",
+          "comment": "light green"
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "ColorPreset",
+          "comment": "light blue"
+        },
+        {
+          "dmxRange": [153, 167],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [168, 186],
+          "type": "ColorPreset",
+          "comment": "warm white"
+        },
+        {
+          "dmxRange": [187, 201],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [202, 220],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [238, 254],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe Speed 2": {
+      "name": "Strobe Speed",
+      "defaultValue": 8,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18Ch",
+      "channels": [
+        "Dimmer",
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "White Spot 2",
+        "Red Spot 3",
+        "Green Spot 3",
+        "Blue Spot 3",
+        "White Spot 3",
+        "Red Spot 4",
+        "Green Spot 4",
+        "Blue Spot 4",
+        "White Spot 4",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "8CH",
+      "channels": [
+        "Dimmer",
+        "Red all LED",
+        "Green all LED",
+        "Blue all LED",
+        "White all LED",
+        "Show 0-22 / Musikgesteuert",
+        "Abhängig von Kanal 6",
+        "Strobe Speed 2"
+      ]
+    }
+  ]
+}
