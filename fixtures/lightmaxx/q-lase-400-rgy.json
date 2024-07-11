@@ -1,0 +1,252 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q Lase 400 RGY",
+  "shortName": "400  RGY",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Trerkstar1989"],
+    "createDate": "2024-07-11",
+    "lastModifyDate": "2024-07-11"
+  },
+  "links": {
+    "manual": [
+      "http://ls-systems.be/matos/lumiere/effet/LIGHTMAXX%20-%20Q-LASE%20600%20RGB.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Auto Activate / Sound Activate": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 41],
+          "type": "NoFunction",
+          "comment": "Laser OFF"
+        },
+        {
+          "dmxRange": [42, 83],
+          "type": "Generic",
+          "comment": "DMX Mode, CH2 - CH12 Valid"
+        },
+        {
+          "dmxRange": [84, 125],
+          "type": "Generic",
+          "comment": "Build Cartoon Graphics auto Running Mode"
+        },
+        {
+          "dmxRange": [126, 167],
+          "type": "Generic",
+          "comment": "Build Beam Graphics auto Running Mode"
+        },
+        {
+          "dmxRange": [168, 209],
+          "type": "Generic",
+          "comment": "Build Beam Graphics Sound"
+        },
+        {
+          "dmxRange": [210, 251],
+          "type": "Generic",
+          "comment": "Build Cartoon Graphics Sound"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "DMX Mode, CH2 - CH12 Valid"
+        }
+      ]
+    },
+    "Pattern select": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Generic",
+        "comment": "Patternselect"
+      }
+    },
+    "Rotation": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Manual rotation"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "auto Counter-Clockwise Rotation"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Auto counter-Clockwise rotation"
+        }
+      ]
+    },
+    "Axis X Rolling": {
+      "defaultValue": 4,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manuel Rotation"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Rolling"
+        }
+      ]
+    },
+    "Axis Y Rolling": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Rolling"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Rolling"
+        }
+      ]
+    },
+    "Axis X Moving": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Choose Moving Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Moving"
+        }
+      ]
+    },
+    "Axis Y Moving": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Choose Moving Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Moving"
+        }
+      ]
+    },
+    "Pattern Size / Zooming": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Pattern Size"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Auto Zooming (-) Slow to fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Auto Zooming (+) Slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Auto Zooming (+/-) Slow to fast"
+        }
+      ]
+    },
+    "Drawing": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Generic",
+        "comment": "Auto Drawing slow to fast"
+      }
+    },
+    "Scanning Speed / display dot": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Choose Scanning Speed slow to fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Choose lenght of dot"
+        }
+      ]
+    },
+    "Color Setting": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "Normal Color"
+        },
+        {
+          "dmxRange": [25, 199],
+          "type": "Generic",
+          "comment": "Choose every single Color"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "Every Single Color Changing one by one"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "All The Colours Changing Slow to fast"
+        }
+      ]
+    },
+    "Color Change Speed": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Adjust color changing speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12CH",
+      "shortName": "Default",
+      "channels": [
+        "Auto Activate / Sound Activate",
+        "Pattern select",
+        "Rotation",
+        "Axis X Rolling",
+        "Axis Y Rolling",
+        "Axis X Moving",
+        "Axis Y Moving",
+        "Pattern Size / Zooming",
+        "Drawing",
+        "Scanning Speed / display dot",
+        "Color Setting",
+        "Color Change Speed"
+      ]
+    }
+  ]
+}
