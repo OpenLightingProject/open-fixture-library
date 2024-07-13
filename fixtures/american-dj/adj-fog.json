@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Adj_fog",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["NEXTONPRO"],
+    "createDate": "2024-07-13",
+    "lastModifyDate": "2024-07-13"
+  },
+  "links": {
+    "productPage": [
+      "https://www.djsuperstore.com/american-dj-fog-fury-jett-vertical-fog-machine-with-rgba-effect/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "smoke",
+      "shortName": "fog",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}
