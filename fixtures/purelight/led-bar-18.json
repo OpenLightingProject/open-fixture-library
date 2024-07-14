@@ -1,0 +1,230 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BAR 18",
+  "categories": ["Pixel Bar", "Effect"],
+  "meta": {
+    "authors": ["V Liivla"],
+    "createDate": "2024-07-14",
+    "lastModifyDate": "2024-07-14"
+  },
+  "comment": "18x 3W RGB",
+  "links": {
+    "manual": [
+      "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/en_US/ms-ot/EUR/ViewProductAttachment-ResolveManualURL?File=EN_LIG0017356-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_OT/EUR/PURElight-LED-BAR-18-3W-RGB-/art-LIG0017356-000"
+    ],
+    "video": [
+      "https://www.musicstore.com/en_OT/EUR/PURElight-LED-BAR-18-3W-RGB-/art-LIG0017356-000"
+    ]
+  },
+  "physical": {
+    "dimensions": [1050, 80, 105],
+    "weight": 4,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Multi Colour LED"
+    },
+    "lens": {
+      "degreesMinMax": [35, 35]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Manual Dimming",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "Effect",
+          "effectName": "Integrated efects"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Music Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Segment Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment Red 2": {
+      "name": "Segment Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment Green 2": {
+      "name": "Segment Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment Blue 2": {
+      "name": "Segment Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment Red 3": {
+      "name": "Segment Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment Green 3": {
+      "name": "Segment Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment Blue 3": {
+      "name": "Segment Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe",
+        "Effect",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "13ch",
+      "channels": [
+        "Segment Red",
+        "Segment Green",
+        "Segment Blue",
+        "Segment Red 2",
+        "Segment Green 2",
+        "Segment Blue 2",
+        "Segment Red 3",
+        "Segment Green 3",
+        "Segment Blue 3",
+        "No function",
+        "Shutter / Strobe",
+        "Effect",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
