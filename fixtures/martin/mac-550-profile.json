@@ -1,0 +1,1135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mac 550 Profile",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["David Deive", "Fred Quimby"],
+    "createDate": "2024-07-16",
+    "lastModifyDate": "2024-07-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-07-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [450, 645, 365],
+    "weight": 31,
+    "power": 600,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "HTI 400W",
+      "colorTemperature": 7500,
+      "lumens": 9300
+    },
+    "lens": {
+      "degreesMinMax": [14, 30]
+    }
+  },
+  "availableChannels": {
+    "Obturador, Strobe, Reset, Lamp On-Off": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Intensity",
+          "comment": "Obturador cerrado"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [50, 72],
+          "type": "Intensity",
+          "comment": "Strobe, rápido a lento"
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Intensity",
+          "comment": "Pulso de apertura, rápido a lento"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Intensity",
+          "comment": "Pulso de cierre, rápido a lento"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "Intensity",
+          "comment": "Strobe aleatorio, rápido"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "Intensity",
+          "comment": "Strobe aleatorio, medio"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "Intensity",
+          "comment": "Strobe aleatorio, rápido"
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "Intensity",
+          "comment": "Pulso apertura aleatorio, rápido"
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "Intensity",
+          "comment": "Pulso apertura aleatorio, lento"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "Intensity",
+          "comment": "Ppulso cierre aleatorio, rápido"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "Intensity",
+          "comment": "Pulso cierre aleatorio, lento"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Intensity",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Intensity",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "Intensity",
+          "comment": "Obturador abierto"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "comment": "Lamp off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rueda de color 1": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "Rojo 308"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "ColorPreset",
+          "comment": "Magenta 507"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Púrpura 502"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorPreset",
+          "comment": "Azul 104"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "ColorPreset",
+          "comment": "Verde 206"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "ColorPreset",
+          "comment": "Amarillo 601"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "Naranja 306"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorPreset",
+          "comment": "Púrpura 509"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "ColorPreset",
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [154, 158],
+          "type": "ColorPreset",
+          "comment": "Púrpura 509"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "ColorPreset",
+          "comment": "Naranja 306"
+        },
+        {
+          "dmxRange": [164, 168],
+          "type": "ColorPreset",
+          "comment": "Amarillo 601"
+        },
+        {
+          "dmxRange": [169, 173],
+          "type": "ColorPreset",
+          "comment": "Verde 206"
+        },
+        {
+          "dmxRange": [174, 178],
+          "type": "ColorPreset",
+          "comment": "Azul 104"
+        },
+        {
+          "dmxRange": [179, 183],
+          "type": "ColorPreset",
+          "comment": "Púrpura 502"
+        },
+        {
+          "dmxRange": [184, 188],
+          "type": "ColorPreset",
+          "comment": "Magenta 507"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "ColorPreset",
+          "comment": "Rojo 308"
+        },
+        {
+          "dmxRange": [194, 198],
+          "type": "ColorPreset",
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [199, 219],
+          "type": "ColorPreset",
+          "comment": "CW, rápido a lento"
+        },
+        {
+          "dmxRange": [220, 240],
+          "type": "ColorPreset",
+          "comment": "CCW, lento a rápido"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "Aleatorio rápido"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "Aleatorio medio"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Aleatorio lento"
+        }
+      ]
+    },
+    "Rueda de color 2": {
+      "defaultValue": 4,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "Verde"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "ColorPreset",
+          "comment": "Azul"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Rojo"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorPreset",
+          "comment": "Rosa"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "ColorPreset",
+          "comment": "Amarillo"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "ColorPreset",
+          "comment": "Half minus green"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "ctc 5500-4200"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorPreset",
+          "comment": "ctc 3200-4100"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "ColorPreset",
+          "comment": "abierto"
+        },
+        {
+          "dmxRange": [154, 158],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [164, 168],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [169, 173],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [174, 178],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [179, 183],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [184, 188],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [194, 198],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [199, 219],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [220, 240],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Rueda de gobo 1": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "fire sun"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "rotator"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "indigo waves"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "limbo"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "water4"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "flames6"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "fire sun rot"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "rotator rot"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "indigo waves rot"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "limbo rot"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "water4 rot"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "flames6 rot"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "gobo1 shake"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "gobo2 shake"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "WheelShake",
+          "slotNumber": 16,
+          "comment": "gobo3 shake"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "WheelShake",
+          "slotNumber": 17,
+          "comment": "gobo4 shake"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "WheelShake",
+          "slotNumber": 18,
+          "comment": "gobo5 shake"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "WheelShake",
+          "slotNumber": 19,
+          "comment": "gobo6 shake"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "gobo6 rot vib"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "gobo5 rot vib"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "gobo4 rot vib"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "gobo3 rot vib"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "gobo2 rot vib"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "gobo1 rot vib"
+        },
+        {
+          "dmxRange": [204, 229],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "CW lento a rápido"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "WheelSlot",
+          "slotNumber": 27,
+          "comment": "CCW rápido a lento"
+        }
+      ]
+    },
+    "Gobo 1, rotación": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Ángulo de rotación 0-395º"
+      }
+    },
+    "Rueda de gobo 1 rotación fina": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Rueda de gobo1, rotación fina"
+      }
+    },
+    "Rueda de gobo 2": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "abierta"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "crackle"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "triangles2"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "tye dye"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "splodge"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "ninestar"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "bio"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "leaf breakup"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "zig zags"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "two tone"
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "abierta"
+        },
+        {
+          "dmxRange": [113, 121],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "two tone"
+        },
+        {
+          "dmxRange": [122, 130],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "zig zags"
+        },
+        {
+          "dmxRange": [131, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "leaf breakup"
+        },
+        {
+          "dmxRange": [140, 148],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "bio"
+        },
+        {
+          "dmxRange": [149, 157],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "ninestar"
+        },
+        {
+          "dmxRange": [158, 166],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "splodge"
+        },
+        {
+          "dmxRange": [167, 175],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "tye dye"
+        },
+        {
+          "dmxRange": [176, 184],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "triangles2"
+        },
+        {
+          "dmxRange": [185, 193],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "crackle"
+        },
+        {
+          "dmxRange": [194, 202],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "abierta"
+        },
+        {
+          "dmxRange": [203, 221],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "CW rápido-lento"
+        },
+        {
+          "dmxRange": [222, 240],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "CCW lento-rápido"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "aleatorio rápido"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "aleatorio medio"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "aleatorio lento"
+        }
+      ]
+    },
+    "Macros de gobo-color": {
+      "defaultValue": 9,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "sin macro"
+        },
+        {
+          "dmxRange": [16, 55],
+          "type": "Effect",
+          "effectName": "rueda de gobo 2 vibración lento-rápido"
+        },
+        {
+          "dmxRange": [56, 95],
+          "type": "Effect",
+          "effectName": "rueda de color 1 vibración lento-rápido"
+        },
+        {
+          "dmxRange": [96, 135],
+          "type": "Effect",
+          "effectName": "rueda de color 2 vibración lento-rápido"
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "Effect",
+          "effectName": "rueda de gobo 2 y color 1 vibración lento-rápido"
+        },
+        {
+          "dmxRange": [176, 215],
+          "type": "Effect",
+          "effectName": "rueda de gobo 2 y color 2 vibración lento-rápido"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Effect",
+          "effectName": "rueda de gobo 2 color 1 color 2 vibración lento-rápido"
+        }
+      ]
+    },
+    "Gobo animado, ángulo y función": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Posición indexado vertical"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "posición indexado horizontal"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "rotación continua vertical"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "rotación continua horizontal"
+        },
+        {
+          "dmxRange": [50, 139],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "posición indexada en ángulo, vertical a horizontal"
+        },
+        {
+          "dmxRange": [140, 229],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "rotación contínua en ángulo, horizontal a vertical"
+        },
+        {
+          "dmxRange": [230, 235],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "abierto"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "macro1"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "macro2"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "macro3"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "macro4"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "macro5"
+        }
+      ]
+    },
+    "Rueda de gobo animado, ángulo/velocidad": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "prisma": {
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Prism",
+          "comment": "prisma fuera"
+        },
+        {
+          "dmxRange": [20, 79],
+          "type": "Prism",
+          "comment": "prisma dentro CCW rápido-lento"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Prism",
+          "comment": "prisma dentro sin rotación"
+        },
+        {
+          "dmxRange": [90, 149],
+          "type": "Prism",
+          "comment": "prisma dentro CW lento-rápido"
+        },
+        {
+          "dmxRange": [150, 215],
+          "type": "Prism",
+          "comment": "prisma fuera"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Prism",
+          "comment": "macro1"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Prism",
+          "comment": "macro2"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Prism",
+          "comment": "macro3"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Prism",
+          "comment": "macro4"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Prism",
+          "comment": "macro5"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Prism",
+          "comment": "macro6"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Prism",
+          "comment": "macro7"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Prism",
+          "comment": "macro8"
+        }
+      ]
+    },
+    "iris": {
+      "defaultValue": 13,
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "control grueso de diámetro",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "cerrado",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [216, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso de apertura rápido-lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [230, 243],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso de cierre rápido-lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [244, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso apertura aleatorio rápido",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [247, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso apertura aleatorio lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso cierre aleatorio rápido",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulso cierre aleatorio lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "focus": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "Intensity",
+        "comment": "infinito-cerca"
+      }
+    },
+    "zoom": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Generic",
+        "comment": "abierto-cerrado"
+      }
+    },
+    "pan": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "izquierda-derecha"
+      }
+    },
+    "pan fino": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "izquierda-derecha"
+      }
+    },
+    "tilt": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "246deg",
+        "comment": "izquierda-derecha"
+      }
+    },
+    "tilt fino": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "246deg",
+        "comment": "izquierda-derecha"
+      }
+    },
+    "velocidad pan-tilt": {
+      "defaultValue": 20,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Speed",
+          "comment": "tracking",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [3, 242],
+          "type": "Speed",
+          "comment": "rápido-lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [243, 245],
+          "type": "Speed",
+          "comment": "tracking PTSP SLOW",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Speed",
+          "comment": "tracking PTSP NORM",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Speed",
+          "comment": "tracking PTSP FAST",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Speed",
+          "comment": "blackout durante movimiento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "20-channel",
+      "shortName": "20ch",
+      "channels": [
+        "Obturador, Strobe, Reset, Lamp On-Off",
+        "Dimmer",
+        "Rueda de color 1",
+        "Rueda de color 2",
+        "Rueda de gobo 1",
+        "Gobo 1, rotación",
+        "Rueda de gobo 1 rotación fina",
+        "Rueda de gobo 2",
+        "Macros de gobo-color",
+        "Gobo animado, ángulo y función",
+        "Rueda de gobo animado, ángulo/velocidad",
+        "prisma",
+        "iris",
+        "focus",
+        "zoom",
+        "pan",
+        "pan fino",
+        "tilt",
+        "tilt fino",
+        "velocidad pan-tilt"
+      ]
+    }
+  ]
+}
