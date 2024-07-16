@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 550 Profile",
+  "shortName": "MAC 550",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Fred Quimby"],
+    "createDate": "2024-07-16",
+    "lastModifyDate": "2024-07-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/user-manual-50387775-4e49-49fb-af82-27d2d92107eb"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-550"
+    ]
+  },
+  "availableChannels": {
+    "Shutter, Strobe, Initialisation, Lamp On/Of": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Shutter, Strobe, Initialisation, Lamp On/Of"
+      ]
+    }
+  ]
+}
