@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theatre COB 200RGB+WW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Benjamin Blaikner/ Theater der Mitte"],
+    "createDate": "2024-07-18",
+    "lastModifyDate": "2024-07-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/at/eurolite_led_theatre_cob_200_rgbww.htm"
+    ],
+    "productPage": [
+      "https://www.thomann.de/at/eurolite_led_theatre_cob_200_rgbww.htm"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White"
+      ]
+    }
+  ]
+}
