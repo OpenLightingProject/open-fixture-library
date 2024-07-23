@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AX2-100",
+  "categories": ["Pixel Bar", "Other"],
+  "meta": {
+    "authors": ["Argo"],
+    "createDate": "2024-07-23",
+    "lastModifyDate": "2024-07-23"
+  },
+  "links": {
+    "productPage": [
+      "https://astera-led.com/products/ax2-pixelbar/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Dim RGB",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
