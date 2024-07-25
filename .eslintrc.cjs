@@ -254,6 +254,10 @@ const enabledRuleParameters = {
   'vue/require-toggle-inside-transition': [],
   'vue/v-on-event-hyphenation': [],
 
+  // eslint-plugin-vuejs-accessibility
+  'vuejs-accessibility/no-aria-hidden-on-focusable': [],
+  'vuejs-accessibility/no-role-presentation-on-focusable': [],
+
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],
   'unicorn/no-array-for-each': [],
