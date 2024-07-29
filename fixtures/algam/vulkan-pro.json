@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "vulkan pro",
+  "shortName": "vulkan pro",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["mattecant"],
+    "createDate": "2024-07-29",
+    "lastModifyDate": "2024-07-29"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.algam.net/pub/collections//documents_AE/ALGLIG/VULKAN_PRO_MANUAL.pdf"
+    ],
+    "productPage": [
+      "https://www.algameko.com/it/macchine-fumo/algam-lighting/vulkan-pro-macchina-del-fumo-verticaleorizzontale-effetto-co2"
+    ]
+  },
+  "physical": {
+    "dimensions": [370, 190, 350],
+    "weight": 9.1,
+    "power": 1500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led",
+      "colorTemperature": 0,
+      "lumens": 0
+    },
+    "lens": {
+      "name": "n/d",
+      "degreesMinMax": [0, 0]
+    }
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe/ Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto program": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "shortName": "7ch",
+      "channels": [
+        "Fog Output",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe/ Speed",
+        "Auto program"
+      ]
+    }
+  ]
+}
