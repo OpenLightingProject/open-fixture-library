@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ledkit7",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["furio"],
+    "createDate": "2024-07-31",
+    "lastModifyDate": "2024-07-31",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-07-31",
+      "comment": "created by Q Light Controller Plus (version 4.12.8 GIT)"
+    }
+  },
+  "physical": {
+    "power": 300,
+    "DMXconnector": "3-pin IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 239],
+          "type": "Effect",
+          "effectName": "auto"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "sound",
+          "soundControlled": true
+        }
+      ]
+    },
+    "2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "flash",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "red"
+      }
+    },
+    "4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "green"
+      }
+    },
+    "5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "blu"
+      }
+    },
+    "6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "white"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ok",
+      "channels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  ]
+}
