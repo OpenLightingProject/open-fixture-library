@@ -1,0 +1,293 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exatile Pixel",
+  "shortName": "Pixel",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Skouza97"],
+    "createDate": "2024-07-18",
+    "lastModifyDate": "2024-07-18"
+  },
+  "links": {
+    "productPage": [
+      "https://exalux.eu/product/exatile-pixel-multi-purpose-full-color-led-pixel-tile/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=X9_B4jfhJ5s"
+    ]
+  },
+  "physical": {
+    "dimensions": [598, 598, 128],
+    "weight": 6.35,
+    "power": 120,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "1%"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Intensity",
+          "brightnessStart": "1.1%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "Intensity",
+          "brightnessStart": "4.2%",
+          "brightnessEnd": "9%"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Intensity",
+          "brightnessStart": "9.5%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "2400K",
+          "comment": "Pas de 40K"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2410K",
+          "colorTemperatureEnd": "2800K"
+        },
+        {
+          "dmxRange": [51, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2825K",
+          "colorTemperatureEnd": "5800K"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5850K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Color G/M": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Correction Magenta"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "StrobeSpeed",
+          "speed": "0Hz"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "0deg",
+        "angleEnd": "359deg"
+      }
+    },
+    "Saturation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Presets R": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Presets G": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Presets B": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color WW": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%"
+      }
+    },
+    "Coordonné X": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "0%",
+        "distanceEnd": "70%"
+      }
+    },
+    "Coordonné Y": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "0%",
+        "distanceEnd": "70%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity+CCT+G/M",
+      "shortName": "CCT+GM",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Color G/M"
+      ]
+    },
+    {
+      "name": "Intensity+CCT+G/M+Strobe",
+      "shortName": "CCT+Strobe",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Color G/M",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Intensity+Hue+Saturation",
+      "shortName": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "Intensity+Hue+Saturation+Strobe",
+      "shortName": "HSI+Strobe",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Color RGB",
+      "shortName": "RGB",
+      "channels": [
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B"
+      ]
+    },
+    {
+      "name": "Color RGB+Strobe",
+      "shortName": "RGB+Strobe",
+      "channels": [
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Color RGBW",
+      "shortName": "RGBW",
+      "channels": [
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B",
+        "Color WW"
+      ]
+    },
+    {
+      "name": "Color RGBW+ Strobe",
+      "shortName": "RGBW+Strobe",
+      "channels": [
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B",
+        "Color WW",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "Dim+RGB",
+      "shortName": "Dim+RGB",
+      "channels": [
+        "Intensity",
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B"
+      ]
+    },
+    {
+      "name": "Dim+RGB+Strobe",
+      "shortName": "Dim+RGB+Strobe",
+      "channels": [
+        "Intensity",
+        "Color Presets R",
+        "Color Presets G",
+        "Color Presets B",
+        "Strobe"
+      ]
+    }
+  ]
+}
