@@ -1,0 +1,271 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 360 Degree Tube",
+  "categories": ["Other", "Pixel Bar"],
+  "meta": {
+    "authors": ["Daniel Gallerand"],
+    "createDate": "2024-08-14",
+    "lastModifyDate": "2024-08-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.thinklite.com/product/t8-led-360-degree-dual-shine-tubes/"
+    ]
+  },
+  "physical": {
+    "dimensions": [4, 4, 2000],
+    "weight": 1.2,
+    "power": 200,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "SD Card Effect"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Blue / Small White"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Color Change"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Blue / Big White"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Rainbow Move"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Blue / Magenta"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Blue / Yellow"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Blue / Red"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Green / Pink"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Green / Red"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Cyan / White"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Slow RGB Change"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Blink Red"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Blink Green"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Blink Blue"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Red to Blue"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "RGB Random"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Green / Cyan / Blue"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Color Dim Slow"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Cyan Random Flash"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Color Float"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "White / Cyan fast"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "White / Cyan"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "White / Pink"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "White / Green"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "White / Yellow"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "White / Red"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "White / Blue"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Color Snake"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Fast RGB Snake"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Smooth RGB Snake"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Art-Net / Programmer Mode"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red-Mask": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "bright",
+        "brightnessEnd": "dark"
+      }
+    },
+    "Green-Mask": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "bright",
+        "brightnessEnd": "dark"
+      }
+    },
+    "Blue-Mask": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "bright",
+        "brightnessEnd": "dark"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Allways Off"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Allways On"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Record": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Record Effect"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "channels": [
+        "Mode Selection",
+        "Effect Speed",
+        "Dimmer",
+        "Red-Mask",
+        "Green-Mask",
+        "Blue-Mask",
+        "Shutter / Strobe",
+        "Record"
+      ]
+    }
+  ]
+}
