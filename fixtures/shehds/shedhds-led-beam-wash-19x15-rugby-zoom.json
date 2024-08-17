@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "shedhds led beam wash 19x15 rugby zoom",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["logela"],
+    "createDate": "2024-08-17",
+    "lastModifyDate": "2024-08-17"
+  },
+  "links": {
+    "productPage": [
+      "https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwicoczZ7vuHAxUkEQYAHUg4B8AYABAFGgJ3cw&ae=2&co=1&gclid=Cj0KCQjwlIG2BhC4ARIsADBgpVT7CDFqrv_IQXwh9XklRVq613Dursp1_fON-u8F4FkAIM1-xAgQK38aArrFEALw_wcB&ohost=www.google.com&cid=CAESVeD2rbDytRjzFcMf_r3N6iZLKQZNsro0mqPlSXcFYuKDxQIm7-fsXoMR0l_VH5dEb2mcC5Jq--Z-qvfrRxM7giC8UUHF2UTVfklP9Vtotsdk_GRBwBc&sig=AOD64_2KIfPUMbtZ-rzel4t-5WA5Ti34xQ&q&adurl&ved=2ahUKEwjckMbZ7vuHAxWWR_EDHVlaF5UQ0Qx6BAgKEAE&nis=8&dct=1&suid=19824954485"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channel",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Dimmer",
+        "Program Speed",
+        "Dimmer 2",
+        "Dimmer 3"
+      ]
+    }
+  ]
+}
