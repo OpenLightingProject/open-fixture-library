@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Moving Head 7Z",
+  "shortName": "7Z",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["herma"],
+    "createDate": "2024-08-20",
+    "lastModifyDate": "2024-08-20"
+  },
+  "links": {
+    "productPage": [
+      "http://www.etec-professional.de/"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 145, 330],
+    "weight": 4.2,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [6, 36]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "StrobeSpeed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "White": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "No function": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "defaultValue": 13,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 14,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "6deg",
+        "angleEnd": "36deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LED Moving Head 7Z",
+      "shortName": "7Z",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "No function",
+        "No function 2",
+        "Color Macros",
+        "Zoom"
+      ]
+    }
+  ]
+}
