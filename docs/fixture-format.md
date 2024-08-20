@@ -326,7 +326,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
   - `["Red Middle ring", "Green Middle ring", "Blue Middle ring"]`
   - `["Red Outer ring", "Green Outer ring", "Blue Outer ring"]`
 * `"perChannel"`: For the above [matrix structure](#matrix-structure) example, this results in 
-  - `["Red Inner ring", " Red Middle ring", "Red Outer ring"]`
+  - `["Red Inner ring", "Red Middle ring", "Red Outer ring"]`
   - `["Green Inner ring", "Green Middle ring", "Green Outer ring"]`
   - `["Blue Inner ring", "Blue Middle ring", "Blue Outer ring"]`
 
