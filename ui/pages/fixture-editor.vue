@@ -222,7 +222,7 @@ export default {
     },
 
     openChannelEditor(channelData) {
-      this.channel = Object.assign({}, this.channel, channelData);
+      this.channel = { ...this.channel, ...channelData };
     },
 
     resetChannel() {

@@ -73,13 +73,14 @@ export default {
       svgMarkup = getSvg(context.props.name, context.props.type, context.props.title);
     }
 
-    return createElement(`span`, Object.assign({}, context.data, {
+    return createElement(`span`, {
+      ...context.data,
       class: [`icon`, context.data.class],
       attrs: hasTitle ? {} : { 'aria-hidden': `true` },
       domProps: {
         innerHTML: svgMarkup,
       },
-    }));
+    });
   },
 };
 

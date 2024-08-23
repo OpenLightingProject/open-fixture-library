@@ -22,7 +22,8 @@ export async function getManufacturerByKey({ request }) {
   }
 
   const register = await importJson(`../../../../fixtures/register.json`, import.meta.url);
-  const manufacturer = Object.assign({}, manufacturers[manufacturerKey], {
+  const manufacturer = {
+    ...manufacturers[manufacturerKey],
     key: manufacturerKey,
     color: register.colors[manufacturerKey],
     fixtures: (register.manufacturers[manufacturerKey] || []).map(
@@ -34,7 +35,7 @@ export async function getManufacturerByKey({ request }) {
         ),
       }),
     ),
-  });
+  };
 
   return {
     body: manufacturer,
