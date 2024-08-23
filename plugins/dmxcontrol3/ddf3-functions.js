@@ -83,13 +83,9 @@ export default {
 
         const typePerShutterEffect = {
           Strobe: capability.randomTiming ? `random` : `linear`,
-          Pulse: `pulse`,
           RampUp: `ramp up`,
           RampDown: `ramp down`,
           RampUpDown: `ramp up/down`,
-          Lightning: `lightning`,
-          Spikes: `spikes`,
-          Burst: `burst`,
         };
         return typePerShutterEffect[capability.shutterEffect] ?? capability.shutterEffect.toLowerCase();
       }
