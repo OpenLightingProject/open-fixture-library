@@ -165,6 +165,18 @@ export const importHelpers = {
   },
 
   /**
+   * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+   * @returns {string} The normalized direction suffix.
+   */
+  getDirectionSuffix(direction) {
+    if (!direction) {
+      return ``;
+    }
+
+    return /counter|ccw/i.test(direction) ? ` CCW` : ` CW`;
+  },
+
+  /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
    * @param {string} capabilityName The capability name to extract information from.
@@ -175,9 +187,8 @@ export const importHelpers = {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
     if (speedRegex.test(capabilityName)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionString = direction ? (/counter|ccw/i.test(direction) ? ` CCW` : ` CW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = importHelpers.getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -191,8 +202,8 @@ export const importHelpers = {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;
@@ -282,10 +293,20 @@ const channelPresets = {
   },
   IntensityWhite: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `White`) || exportHelpers.isColorIntensity(capability, `Warm White`) || exportHelpers.isColorIntensity(capability, `Cold White`),
-    importCapability: ({ channelName }) => ({
-      type: `ColorIntensity`,
-      color: /\bcold\b/i.test(channelName) ? `Cold White` : (/\bwarm\b/i.test(channelName) ? `Warm White` : `White`),
-    }),
+    importCapability: ({ channelName }) => {
+      let color = `White`;
+      if (/\bwarm\b/i.test(channelName)) {
+        color = `Warm White`;
+      }
+      else if (/\bcold\b/i.test(channelName)) {
+        color = `Cold White`;
+      }
+
+      return {
+        type: `ColorIntensity`,
+        color,
+      };
+    },
   },
   IntensityUV: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `UV`),

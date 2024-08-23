@@ -110,7 +110,7 @@ function redeploy(webhookPayload) {
   try {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
-      env: Object.assign({}, process.env, deploymentConfig.env),
+      env: { ...process.env, ...deploymentConfig.env },
       encoding: `utf8`,
       stdio: `pipe`,
     });

@@ -48,6 +48,7 @@ const enabledRuleParameters = {
   'no-loop-func': [],
   'no-mixed-operators': [],
   'no-multi-spaces': [],
+  'no-nested-ternary': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
   'no-restricted-imports': [{
@@ -64,11 +65,13 @@ const enabledRuleParameters = {
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: `none` }],
+  // 'no-useless-assignment': [], // TODO: enable when migrated to ESLint v9
   'no-var': [],
   'object-curly-spacing': [`always`],
   'object-shorthand': [`always`, { avoidQuotes: true }],
   'prefer-arrow-callback': [],
   'prefer-const': [{ destructuring: `all` }],
+  'prefer-object-spread': [],
   'prefer-rest-params': [],
   'prefer-template': [],
   'quotes': [`backtick`, { allowTemplateLiterals: true }],
