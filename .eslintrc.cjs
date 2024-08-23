@@ -69,6 +69,7 @@ const enabledRuleParameters = {
   'object-shorthand': [`always`, { avoidQuotes: true }],
   'prefer-arrow-callback': [],
   'prefer-const': [{ destructuring: `all` }],
+  'prefer-object-spread': [],
   'prefer-rest-params': [],
   'prefer-template': [],
   'quotes': [`backtick`, { allowTemplateLiterals: true }],
