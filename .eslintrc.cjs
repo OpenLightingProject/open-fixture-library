@@ -48,6 +48,7 @@ const enabledRuleParameters = {
   'no-loop-func': [],
   'no-mixed-operators': [],
   'no-multi-spaces': [],
+  'no-nested-ternary': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
   'no-restricted-imports': [{
