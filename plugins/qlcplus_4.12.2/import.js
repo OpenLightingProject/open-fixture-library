@@ -10,7 +10,7 @@ import {
 
 const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
-export const version = `1.1.0`;
+export const version = `1.1.1`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -571,7 +571,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       channelNameInWheels: trimmedChannelName in (fixture.wheels || {}),
       qlcPlusCapability,
       capabilityName,
-      index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
+      index: qlcPlusChannel.Capability?.indexOf(qlcPlusCapability) ?? 0,
       res1: qlcPlusCapability.$.Res1,
       res2: qlcPlusCapability.$.Res2,
       panMax,

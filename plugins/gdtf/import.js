@@ -670,11 +670,11 @@ export async function importFixtures(buffer, filename, authorName) {
         }
 
         // save the inherited result for later access
-        gdtfAttributes[attributeName] = Object.assign(
-          {},
-          getCapabilityTypeData(capabilityTypeData.inheritFrom),
-          capabilityTypeData,
-        );
+        gdtfAttributes[attributeName] = {
+
+          ...getCapabilityTypeData(capabilityTypeData.inheritFrom),
+          ...capabilityTypeData,
+        };
         delete gdtfAttributes[attributeName].inheritFrom;
 
         return gdtfAttributes[attributeName];

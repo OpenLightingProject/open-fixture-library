@@ -475,7 +475,7 @@ export default {
         WheelShake: /\bshake\b/i,
         WheelSlotRotation: /gobo ?\d* (?:rotation|index)/i,
         WheelRotation: /wheels? ?\d* (?:rotation|index)/i,
-        WheelSlot: /wheel|dis[ck]|gobos? ?\d*$/i,
+        WheelSlot: /wheel|dis[ck]|(?:gobos? ?\d*$)/i,
         EffectSpeed: /^(?:effect|program|macro) speed$/i,
         EffectDuration: /^(?:effect|program|macro) (?:time|duration)$/i,
         SoundSensitivity: /^(?:sound|mic|microphone) sensitivity$/i,

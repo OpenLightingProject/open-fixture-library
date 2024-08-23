@@ -2,7 +2,6 @@
   <button
     v-if="cssVariablesSupported"
     type="button"
-    aria-hidden="true"
     :title="`Switch to ${otherTheme} theme`"
     @click.prevent="toggleTheme()">
     <OflSvg name="theme-light-dark" />

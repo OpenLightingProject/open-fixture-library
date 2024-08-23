@@ -380,6 +380,6 @@ export default {
  * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {
-  return Object.assign({}, capability, { source });
+  return { ...capability, source };
 }
 </script>
