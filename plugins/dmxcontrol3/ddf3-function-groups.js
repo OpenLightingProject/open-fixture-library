@@ -14,7 +14,7 @@ export default [
         for (const strobeCapability of strobe.children) {
           if (strobeCapability.attribs.type.value !== `open`) {
             const xmlSpeedRange = xmlStrobe.element(`range`);
-            xmlSpeedRange.attribs = Object.assign({}, speedCapability.attribs);
+            xmlSpeedRange.attribs = { ...speedCapability.attribs };
             xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
 
             xmlSpeedRange.element(`step`, {

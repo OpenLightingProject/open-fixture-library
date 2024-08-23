@@ -2,7 +2,7 @@ reportNeedlessDisables: true
 reportInvalidScopeDisables: true
 reportDescriptionlessDisables: true
 extends:
-  - stylelint-stylistic/config
+  - '@stylistic/stylelint-config'
   - stylelint-config-standard-scss
   - stylelint-config-html/vue
   - stylelint-config-recess-order
@@ -37,15 +37,18 @@ rules:
   # simplify rules
   scss/block-no-redundant-nesting: true
 
+  # make imported files more explicit
+  scss/load-partial-extension: always
+
   # prevent comments in generated CSS
   scss/comment-no-loud: true
 
   # special `@if`/`@else` formatting
-  stylistic/block-closing-brace-newline-after:
+  '@stylistic/block-closing-brace-newline-after':
     - always
     - ignoreAtRules:
       - if
       - else
 
   # allow grouping in Sass lists
-  stylistic/value-list-max-empty-lines: 1
+  '@stylistic/value-list-max-empty-lines': 1

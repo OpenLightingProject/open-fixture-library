@@ -1,3 +1,4 @@
+<!-- eslint-disable-next-line vue/enforce-style-attribute -- scoped styles don't work for functional components -->
 <style lang="scss">
 .icon {
   display: inline-block;
@@ -72,13 +73,14 @@ export default {
       svgMarkup = getSvg(context.props.name, context.props.type, context.props.title);
     }
 
-    return createElement(`span`, Object.assign({}, context.data, {
+    return createElement(`span`, {
+      ...context.data,
       class: [`icon`, context.data.class],
       attrs: hasTitle ? {} : { 'aria-hidden': `true` },
       domProps: {
         innerHTML: svgMarkup,
       },
-    }));
+    });
   },
 };
 
@@ -97,7 +99,7 @@ function getSvg(name, category = undefined, title) {
 
   const kebabName = name.replaceAll(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replaceAll(/\W+/g, `-`);
   const svgBasename = (category ? `${category}/` : ``) + kebabName;
-  let svg = ``;
+  let svg;
 
   if (svgBasename in icons) {
     svg = icons[svgBasename].trim();
