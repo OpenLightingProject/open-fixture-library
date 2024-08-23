@@ -99,7 +99,7 @@ function getSvg(name, category = undefined, title) {
 
   const kebabName = name.replaceAll(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replaceAll(/\W+/g, `-`);
   const svgBasename = (category ? `${category}/` : ``) + kebabName;
-  let svg = ``;
+  let svg;
 
   if (svgBasename in icons) {
     svg = icons[svgBasename].trim();

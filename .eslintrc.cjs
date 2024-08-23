@@ -65,6 +65,7 @@ const enabledRuleParameters = {
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: `none` }],
+  // 'no-useless-assignment': [], // TODO: enable when migrated to ESLint v9
   'no-var': [],
   'object-curly-spacing': [`always`],
   'object-shorthand': [`always`, { avoidQuotes: true }],
