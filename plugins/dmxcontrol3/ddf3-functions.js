@@ -89,8 +89,9 @@ export default {
           RampUpDown: `ramp up/down`,
           Lightning: `lightning`,
           Spikes: `spikes`,
+          Burst: `burst`,
         };
-        return typePerShutterEffect[capability.shutterEffect];
+        return typePerShutterEffect[capability.shutterEffect] ?? capability.shutterEffect.toLowerCase();
       }
     },
   },
