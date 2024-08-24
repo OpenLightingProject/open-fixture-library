@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BBP96W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Glitch"],
+    "createDate": "2024-08-24",
+    "lastModifyDate": "2024-08-24",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-08-24",
+      "comment": "created by Q Light Controller Plus (version 4.10.5b)"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "physical": {
+        "dimensions": [130, 130, 130],
+        "weight": 1.6,
+        "power": 24,
+        "bulb": {
+          "lumens": 3350
+        },
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [26, 26]
+        }
+      },
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
