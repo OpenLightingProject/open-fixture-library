@@ -1,0 +1,220 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Spot 90",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Kpumba"],
+    "createDate": "2024-08-27",
+    "lastModifyDate": "2024-08-27"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_449224_481677_v5_es_online.pdf?_gl=1*1r9p97o*_gcl_au*MTc1NTU0NDE3OC4xNzI0NzYzMzY2*FPAU*MTI0MDEwNzg3Ny4xNzI0NzYzMzU5*_ga*MTcxNTAwNTIxMy4xNzI0NzYzMzU3*_ga_QNTG1E3BFT*MTcyNDc2MzM1Ny4xLjEuMTcyNDc2MzM3My4wLjAuMTM3MDA4ODA3NA..*_fplc*JTJGU1ZTQk42JTJGSzd3bWdvNnIyTlBxdmpMdGJjUjBLcGRaV25mS0ZzcVc0Tmg1WVpuZjFmJTJGTzdZemE0RzFLYVhnYmFSSnk1dDYzME1QMWZPbGUxOU9pUjRkJTJGWmlYWHdlN3Q3Sno0U2I1ZFpPdUpQZiUyQm0lMkJNWlMxRWlUcjJGak5RJTNEJTNE"
+    ],
+    "productPage": [
+      "https://www.thomann.de/es/varytec_hero_spot_90.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iX50syxWkQQ&embeds_referring_euri=https%3A%2F%2Fwww.thomann.de%2F"
+    ]
+  },
+  "physical": {
+    "dimensions": [268, 382, 255],
+    "weight": 7.2,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1 LED de 90 W",
+      "colorTemperature": 10800
+    }
+  },
+  "wheels": {
+    "Color Presets": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "128deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [14, 31],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [32, 49],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [50, 67],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [68, 85],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [86, 103],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [104, 121],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [122, 130],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [131, 139],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [140, 195],
+          "type": "ColorPreset",
+          "comment": "Rotation color"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "ColorPreset",
+          "comment": "Detention rotation"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "ColorPreset",
+          "comment": "Rotation color invers"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6 CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Intensity",
+        "Shutter",
+        "Color Presets",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "16 Channel",
+      "shortName": "16 CH",
+      "channels": [
+        "Pan 2",
+        "Pan",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Shutter",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
