@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Smartwash1910TEST",
+  "shortName": "Smartwash1910",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Theater der Mitte"],
+    "createDate": "2024-08-28",
+    "lastModifyDate": "2024-08-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.color-imagination.com"
+    ],
+    "productPage": [
+      "https://www.color-imagination.com"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Maintenance",
+          "comment": "Light off"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "Maintenance",
+          "comment": "Light on"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Pan",
+        "Tilt"
+      ]
+    }
+  ]
+}
