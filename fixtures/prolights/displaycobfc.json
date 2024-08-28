@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DISPLAYCOBFC",
+  "shortName": "DisplayCOB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Theater der Mitte"],
+    "createDate": "2024-08-28",
+    "lastModifyDate": "2024-08-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolights.it/product/DISPLAYCOBFC"
+    ],
+    "productPage": [
+      "https://www.prolights.it/product/DISPLAYCOBFC"
+    ]
+  },
+  "physical": {
+    "dimensions": [166, 118, 250],
+    "weight": 1.85,
+    "power": 60,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "strobe slow...fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "comment": "color macros"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "RGB Mode"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Maintenance",
+          "comment": "Pulse effect 0-100%"
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "Maintenance",
+          "comment": "Pulse effect 100%-0"
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Maintenance",
+          "comment": "Pulse effect 100%-0-100%"
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Maintenance",
+          "comment": "Auto fade transition"
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Maintenance",
+          "comment": "Auto snap transition (3 colors)"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Maintenance",
+          "comment": "Auto snap transition (7 colors)"
+        }
+      ]
+    },
+    "Dimmer Speed Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 1 (fast speed)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 2 (middle speed)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 3 (slow speed)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Macros",
+        "Auto Mode",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}
