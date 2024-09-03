@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "C-1180ASV",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-03-28",
+    "lastModifyDate": "2024-03-30"
+  },
+  "links": {
+    "productPage": [
+      "https://www.lishuai-lighting.com/products/sort-detailvzayy/100w-c-1180asv-high-power-ultra-soft-led-studio-light-dmx-controlled"
+    ]
+  },
+  "physical": {
+    "dimensions": [1260, 292, 95],
+    "weight": 7.3,
+    "power": 100,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "5600K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
