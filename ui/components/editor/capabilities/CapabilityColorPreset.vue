@@ -24,6 +24,7 @@
 
     <LabeledInput
       v-if="colorPreview !== null"
+      key="color-preview"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
@@ -36,6 +37,7 @@
 
     <LabeledInput
       v-if="colorPreviewStart !== null || colorPreviewEnd !== null"
+      key="color-preview-start-end"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
