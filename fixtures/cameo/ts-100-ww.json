@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS 100 WW",
+  "shortName": "ts-100-ww",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-09-03",
+    "lastModifyDate": "2024-09-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-2008593426"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/19235/ts-100-ww"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 370, 310],
+    "weight": 7.4,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3100,
+      "lumens": 4100
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [14, 38]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Set Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
+    },
+    "Device settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response LED"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response Halogen"
+        },
+        {
+          "dmxRange": [128, 154],
+          "type": "Maintenance",
+          "parameter": 650,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [155, 181],
+          "type": "Maintenance",
+          "parameter": 1530,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [182, 208],
+          "type": "Maintenance",
+          "parameter": 3600,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [209, 235],
+          "type": "Maintenance",
+          "parameter": 25,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Set Dimmer Curve",
+        "Device settings"
+      ]
+    }
+  ]
+}
