@@ -271,7 +271,7 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
 </tr>
 <tr>
-  <td valign="top">slotNumber<br><sub>❔ optional</sub></td>
+  <td valign="top">slotNumber<br><sub>❔ optional</sub><br><sub>👣 <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Entity <em>SlotNumber</em></td>
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
