@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "UV Eco Bar",
+  "shortName": "uv-eco-bar",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-09-03",
+    "lastModifyDate": "2024-09-03"
+  },
+  "comment": "18x3W UV LEDs",
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/6914/ADJ%20Eco%20UV%20Bar%20DMX%20-%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/eco-uv-bar-dmx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mEH-cVF_iB4"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 60, 115],
+    "weight": 2.4,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 10000
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "UV light intensity"
+      }
+    },
+    "Strobing": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "slow"
+      }
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction",
+          "comment": "No Dimmer Curve"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic",
+          "comment": "Dimmer Curve 1"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Generic",
+          "comment": "Dimmer Curve 2"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Generic",
+          "comment": "Dimmer Curve 3"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "Dimmer Curve 4"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Generic",
+          "comment": "Delay Mode Control (works in conjuction with Dealy Mode in the main settings menu)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Dimmer",
+        "Strobing",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
