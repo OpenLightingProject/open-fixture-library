@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "UV Eco Bar",
   "shortName": "uv-eco-bar",
-  "categories": ["Dimmer"],
+  "categories": ["Other"],
   "meta": {
     "authors": ["Nikita"],
     "createDate": "2024-09-03",
@@ -26,24 +26,33 @@
     "power": 60,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
-      "colorTemperature": 10000
+      "type": "LED"
     }
   },
   "availableChannels": {
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
+        "type": "ColorIntensity",
         "brightnessStart": "0%",
         "brightnessEnd": "100%",
-        "comment": "UV light intensity"
+        "color": "UV"
       }
     },
     "Strobing": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "slow"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Dimmer Curve": {
       "capabilities": [
@@ -54,28 +63,28 @@
         },
         {
           "dmxRange": [21, 40],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Dimmer Curve 1"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Dimmer Curve 2"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Dimmer Curve 3"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Dimmer Curve 4"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Generic",
-          "comment": "Delay Mode Control (works in conjuction with Dealy Mode in the main settings menu)"
+          "type": "Maintenance",
+          "comment": "Delay Mode Control (works in conjunction with Delay Mode in the main settings menu)"
         }
       ]
     }
