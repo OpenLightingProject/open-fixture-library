@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EHA-L2600-Party Light",
+  "shortName": "Laser 1",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Henning Penske-Chyhir"],
+    "createDate": "2024-09-08",
+    "lastModifyDate": "2024-09-08"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopifycdn.net/s/files/1/0810/7199/7211/files/EHA-L2600-Party-Light.pdf?v=1704938302"
+    ],
+    "productPage": [
+      "https://www.ehaho.com/products/ehaho-l2600-stage-laser-lights"
+    ]
+  },
+  "availableChannels": {
+    "Laser ON/OFF": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Laser OFF"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Laser ON"
+        }
+      ]
+    },
+    "Ueberschreitung der Grenzen und Muster": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Ausserhalb der grenze überqueren"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Ausserhalb der Grenzen Wiedereintritt"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Ausserhalb von Grenzen Ausblenden"
+        },
+        {
+          "dmxRange": [150, 249],
+          "type": "Generic",
+          "comment": "Muster herauszoomen"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Speichern von"
+        }
+      ]
+    },
+    "Gruppenauswahl": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 223],
+          "type": "Generic",
+          "comment": "Gruppe 1"
+        },
+        {
+          "dmxRange": [224, 243],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "Generic",
+          "comment": "Gruppe 0"
+        }
+      ]
+    },
+    "Musterauswahl": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Musterauswahl"
+      }
+    },
+    "Muster Zoom Ein_Aus": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Statische Mustergröße"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Dynamischer Zoom"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Dynamischer Zoom 2"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Dynamischer Zoom 3"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Dynamischer Zoom Rotation"
+        }
+      ]
+    },
+    "Muster Rotation": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Statische Rotation"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Dyn Rotation Kreise 1"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Dyn Rotation Kreise 2"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Dyn Rotaion Uhrzeiger"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Dyn Rotation G Uhrzeiger"
+        }
+      ]
+    },
+    "X Bewegung": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Stat X in Bewegung"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Dyn Aufw Welle"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Dyn Abw Welle"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Dyn Links"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Dyn rechts"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "SIMPLE Laser",
+      "channels": [
+        "Laser ON/OFF",
+        "Ueberschreitung der Grenzen und Muster",
+        "Gruppenauswahl",
+        "Musterauswahl",
+        "Muster Zoom Ein_Aus",
+        "Muster Rotation",
+        "X Bewegung"
+      ]
+    }
+  ]
+}
