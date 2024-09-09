@@ -3,13 +3,14 @@
   "name": "TS 200 FC",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["jhuitila"],
+    "authors": ["jhuitila", "Zaraka"],
     "createDate": "2023-12-08",
-    "lastModifyDate": "2023-12-08"
+    "lastModifyDate": "2024-09-09"
   },
   "links": {
     "manual": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/20479/ts-200-fc#detail-downloads"
+      "https://www.cameolight.com/en/downloads/file/id/-204356236",
+      "https://www.cameolight.com/en/downloads/file/id/966404022"
     ],
     "productPage": [
       "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/20479/ts-200-fc"
@@ -22,13 +23,7 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "fineChannelAliases": ["Dimmer 2 fine"],
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity"
       }
@@ -219,14 +214,87 @@
           "type": "Maintenance"
         }
       ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
     }
   },
   "modes": [
     {
-      "name": "14 CH",
+      "name": "1 CH",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3 CH 1",
       "channels": [
         "Dimmer",
-        "Dimmer 2",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3 CH 2 HSI coarse",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "3 CH 3 CCT coarse",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Tint"
+      ]
+    },
+    {
+      "name": "6 CH Direct",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan"
+      ]
+    },
+    {
+      "name": "12 CH HSI fine",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe functions",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "CCT",
+        "Tint",
+        "Color Macros",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "14 CH Direct fine",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
         "Strobe functions",
         "Red",
         "Green",
