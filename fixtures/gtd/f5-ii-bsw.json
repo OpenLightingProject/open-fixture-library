@@ -1,0 +1,464 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F5 II BSW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["makun"],
+    "createDate": "2024-09-09",
+    "lastModifyDate": "2024-09-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.gtd-lighting.com/product/33.html"
+    ],
+    "productPage": [
+      "https://www.gtd-lighting.com/product/33.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [556, 832, 557],
+    "weight": 50,
+    "power": 800,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "MSD Platinum 500L",
+      "colorTemperature": 7500,
+      "lumens": 13000
+    },
+    "lens": {
+      "name": "Beam 1.7°   Spot 1.7°-26°  Wash 3.4°-38° High-precision glass lenses, electronic linear HD focus",
+      "degreesMinMax": [1.7, 38]
+    }
+  },
+  "wheels": {
+    "Color Wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "CTO"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 135],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "random"
+        }
+      ]
+    },
+    "Color Wheel Rotation 1": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Color Wheel 2": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [11, 49],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [50, 127],
+          "type": "WheelShake",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CCW",
+        "speedEnd": "fast CCW"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CCW",
+        "speedEnd": "fast CCW"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Effect wheel rotation (Fire)"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 127],
+          "type": "Generic",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "index"
+        },
+        {
+          "dmxRange": [128, 187],
+          "type": "Rotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [188, 195],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "Rotation",
+          "speed": "fast CCW"
+        }
+      ]
+    },
+    "Prism 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation 2": {
+      "capability": {
+        "type": "Rotation",
+        "speed": "fast CW"
+      }
+    },
+    "Prism macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 135],
+          "type": "Effect",
+          "effectName": "macro synchro from slow to fast",
+          "speed": "slow",
+          "duration": "short",
+          "parameter": "fast"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Frost": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": "low",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan f": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt f": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "1deg"
+      }
+    },
+    "Scan speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Controll": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [21, 41],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [42, 62],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [63, 83],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [84, 104],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [105, 125],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [126, 146],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [147, 167],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [168, 188],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [189, 209],
+          "type": "Maintenance",
+          "comment": "110 / 205 bild in program"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Temperature",
+        "Color Macros",
+        "Color Wheel Rotation 1",
+        "Color Wheel 2",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation 2",
+        "Effect Speed",
+        "Focus",
+        "Zoom",
+        "Prism 1",
+        "Prism Rotation",
+        "Prism 2",
+        "Prism Rotation 2",
+        "Prism macro",
+        "Frost",
+        "Pan",
+        "Pan f",
+        "Tilt",
+        "Tilt f",
+        "Scan speed",
+        "Controll"
+      ]
+    }
+  ]
+}
