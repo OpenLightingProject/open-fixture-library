@@ -194,7 +194,7 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 6],
+          "dmxRange": [0, 5],
           "type": "NoFunction"
         },
         {
@@ -325,28 +325,28 @@
           "comment": "0s"
         },
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [6, 105],
           "type": "Maintenance",
           "parameterStart": 0.1,
           "parameterEnd": 10,
           "comment": "0.1-10s (0.1s Steps)"
         },
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [106, 214],
           "type": "Maintenance",
           "parameterStart": 11,
           "parameterEnd": 119,
           "comment": "11-119s (1s Steps)"
         },
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [215, 244],
           "type": "Maintenance",
           "parameterStart": 120,
           "parameterEnd": 290,
           "comment": "120-290s (10s Steps)"
         },
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [245, 255],
           "type": "Maintenance",
           "parameterStart": 300,
           "parameterEnd": 900,
