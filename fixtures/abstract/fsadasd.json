@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fsadasd",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["ddd"],
+    "createDate": "2024-09-10",
+    "lastModifyDate": "2024-09-10"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=mEH-cVF_iB4"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
