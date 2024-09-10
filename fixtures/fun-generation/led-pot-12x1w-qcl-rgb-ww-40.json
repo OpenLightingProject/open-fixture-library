@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Fun Generation LED Pot 12x1W QCL RGB WW 40°",
+  "name": "LED Pot 12x1W QCL RGB WW 40°",
   "shortName": "FunGenLEDPotQCL40",
   "categories": [
     "Color Changer"
@@ -93,7 +93,9 @@
             255
           ],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe"
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
