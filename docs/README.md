@@ -45,6 +45,7 @@ Make sure you have these dependencies installed:
 
 * [Git](https://gitforwindows.org/)
 * [Node.js](https://nodejs.org/en/download/)
+  * On the *Tools for Native Modules* page, activate the checkbox *Automatically install the necessary tools. [...]*
 
 Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
 
