@@ -40,36 +40,28 @@
       "fineChannelAliases": ["Red fine"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "fineChannelAliases": ["Blue fine"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Lime": {
       "fineChannelAliases": ["Lime fine"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Lime",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Lime"
       }
     },
     "Color Macros": {
@@ -105,7 +97,7 @@
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Pulse Effect in Sequences"
+          "comment": "in sequences"
         },
         {
           "dmxRange": [160, 191],
@@ -131,8 +123,7 @@
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
-        "angleEnd": "wide",
-        "comment": "minimum to maximum beam angle"
+        "angleEnd": "wide"
       }
     },
     "Zoom Presets": {
@@ -178,9 +169,7 @@
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Color Temperature": {
@@ -188,7 +177,7 @@
         "type": "ColorTemperature",
         "colorTemperatureStart": "2700K",
         "colorTemperatureEnd": "7000K",
-        "comment": "Linear"
+        "comment": "linear"
       }
     },
     "Color Temperature Macros": {
@@ -266,7 +255,7 @@
           "type": "Maintenance",
           "parameterStart": "fast",
           "parameterEnd": "slow",
-          "comment": "Dim speed fast to slow (0.1s - 10s)"
+          "comment": "Dimmer speed fast to slow (0.1s - 10s)"
         },
         {
           "dmxRange": [161, 255],
@@ -419,65 +408,64 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Maintenance",
-          "parameter": "off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [32, 63],
-          "type": "Maintenance",
-          "comment": "Auto Program 1"
+          "type": "Effect",
+          "effectName": "Auto Program 1"
         },
         {
           "dmxRange": [64, 95],
-          "type": "Maintenance",
-          "comment": "Auto Program 2"
+          "type": "Effect",
+          "effectName": "Auto Program 2"
         },
         {
           "dmxRange": [96, 127],
-          "type": "Maintenance",
-          "comment": "Auto Program 3"
+          "type": "Effect",
+          "effectName": "Auto Program 3"
         },
         {
           "dmxRange": [128, 159],
-          "type": "Maintenance",
-          "comment": "Auto Program 4"
+          "type": "Effect",
+          "effectName": "Auto Program 4"
         },
         {
           "dmxRange": [160, 191],
-          "type": "Maintenance",
-          "comment": "Auto Program 5"
+          "type": "Effect",
+          "effectName": "Auto Program 5"
         },
         {
           "dmxRange": [192, 223],
-          "type": "Maintenance",
-          "comment": "Auto Program 6"
+          "type": "Effect",
+          "effectName": "Auto Program 6"
         },
         {
           "dmxRange": [224, 255],
-          "type": "Maintenance",
-          "comment": "Auto Program 7"
+          "type": "Effect",
+          "effectName": "Auto Program 7"
         }
       ]
     },
     "Auto Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
     "Auto Program Fade": {
       "capability": {
-        "type": "EffectParameter",
-        "parameterStart": "low",
-        "parameterEnd": "high",
-        "comment": "minimum to maximum fade"
+        "type": "EffectDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
       }
     }
   },
   "modes": [
     {
-      "name": "6ch",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -488,7 +476,8 @@
       ]
     },
     {
-      "name": "9ch",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Red",
         "Green",
@@ -502,7 +491,8 @@
       ]
     },
     {
-      "name": "10ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Red",
         "Red fine",
@@ -517,7 +507,8 @@
       ]
     },
     {
-      "name": "12ch",
+      "name": "12-channel",
+      "shortName": "12ch",
       "channels": [
         "Red",
         "Green",
@@ -534,7 +525,8 @@
       ]
     },
     {
-      "name": "15ch",
+      "name": "15-channel",
+      "shortName": "15ch",
       "channels": [
         "Red",
         "Green",
@@ -554,7 +546,8 @@
       ]
     },
     {
-      "name": "18ch",
+      "name": "18-channel",
+      "shortName": "18ch",
       "channels": [
         "Red",
         "Green",
