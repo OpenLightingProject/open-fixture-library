@@ -5,8 +5,8 @@
   "categories": ["Other"],
   "meta": {
     "authors": ["Nikita"],
-    "createDate": "2024-09-03",
-    "lastModifyDate": "2024-09-03"
+    "createDate": "2024-09-11",
+    "lastModifyDate": "2024-09-11"
   },
   "comment": "18x3W UV LEDs",
   "links": {
@@ -33,8 +33,6 @@
     "Dimmer": {
       "capability": {
         "type": "ColorIntensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
         "color": "UV"
       }
     },
@@ -92,6 +90,7 @@
   "modes": [
     {
       "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Strobing",
