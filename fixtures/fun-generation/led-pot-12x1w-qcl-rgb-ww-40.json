@@ -109,7 +109,7 @@
           ],
           "type": "NoFunction",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -120,7 +120,7 @@
           "type": "Effect",
           "effectName": "Program 01",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "Color Presets"
           }
         },
         {
@@ -131,7 +131,7 @@
           "type": "Effect",
           "effectName": "Program 02",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -142,7 +142,7 @@
           "type": "Effect",
           "effectName": "Program 03",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -153,7 +153,7 @@
           "type": "Effect",
           "effectName": "Program 04",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -164,7 +164,7 @@
           "type": "Effect",
           "effectName": "Program 05",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -175,7 +175,7 @@
           "type": "Effect",
           "effectName": "Program 06",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -186,7 +186,7 @@
           "type": "Effect",
           "effectName": "Program 07",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -197,7 +197,7 @@
           "type": "Effect",
           "effectName": "Program 08",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -208,7 +208,7 @@
           "type": "Effect",
           "effectName": "Program 09",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -219,7 +219,7 @@
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -230,7 +230,7 @@
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -241,7 +241,7 @@
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -252,7 +252,7 @@
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -263,7 +263,7 @@
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
-            "Color Presets / Sound Control": "Color Presets"
+            "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
@@ -275,10 +275,15 @@
           "effectName": "Sound control",
           "soundControlled": true,
           "switchChannels": {
-            "Color Presets / Sound Control": "Sound Control"
+            "No Function / Color Presets / Sound Control": "Sound Control"
           }
         }
       ]
+    },
+    "No Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
     },
     "Color Presets": {
       "capabilities": [
@@ -501,7 +506,7 @@
         "Blue",
         "White",
         "Program",
-        "Color Presets / Sound Control",
+        "No Function / Color Presets / Sound Control",
         "Strobe"
       ]
     }
