@@ -252,10 +252,10 @@
         },
         {
           "dmxRange": [141, 160],
-          "type": "Maintenance",
-          "parameterStart": "fast",
-          "parameterEnd": "slow",
-          "comment": "Dimmer speed fast to slow (0.1s - 10s)"
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "10s",
+          "comment": "Dimmer speed"
         },
         {
           "dmxRange": [161, 255],
