@@ -45,8 +45,6 @@ Make sure you have these dependencies installed:
 
 * [Git](https://gitforwindows.org/)
 * [Node.js](https://nodejs.org/en/download/)
-* [windows-build-tools](https://www.npmjs.com/package/windows-build-tools)
-  - [Open a Terminal as Administrator](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) and run `npm install --global windows-build-tools --vs2015`
 
 Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
 
