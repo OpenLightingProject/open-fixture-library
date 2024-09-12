@@ -65,9 +65,396 @@
       }
     },
     "Color Macros": {
-      "capability": {
-        "type": "NoFunction"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorPreset",
+          "colors": ["#60ffee"],
+          "comment": "Red: 80, Green: 255, Blue: 234, Lime: 80"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "colors": ["#60ffa8"],
+          "comment": "Red: 80, Green: 255, Blue: 164, Lime: 80"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "colors": ["#5cff73"],
+          "comment": "Red: 77, Green: 255, Blue: 112, Lime: 77"
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "ColorPreset",
+          "colors": ["#85ff57"],
+          "comment": "Red: 117, Green: 255, Blue: 83, Lime: 83"
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "ColorPreset",
+          "colors": ["#afff50"],
+          "comment": "Red: 160, Green: 255, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorPreset",
+          "colors": ["#efff57"],
+          "comment": "Red: 223, Green: 255, Blue: 83, Lime: 83"
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "ColorPreset",
+          "colors": ["#ffff50"],
+          "comment": "Red: 255, Green: 243, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "ColorPreset",
+          "colors": ["#ffd64d"],
+          "comment": "Red: 255, Green: 200, Blue: 74, Lime: 74"
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "ColorPreset",
+          "colors": ["#ffb550"],
+          "comment": "Red: 255, Green: 166, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorPreset",
+          "colors": ["#ff8b4d"],
+          "comment": "Red: 255, Green: 125, Blue: 74, Lime: 74"
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "ColorPreset",
+          "colors": ["#ff6f50"],
+          "comment": "Red: 255, Green: 97, Blue: 77, Lime: 71"
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "ColorPreset",
+          "colors": ["#ff5850"],
+          "comment": "Red: 255, Green: 74, Blue: 77, Lime: 71"
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "ColorPreset",
+          "colors": ["#ff638a"],
+          "comment": "Red: 255, Green: 83, Blue: 134, Lime: 83"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorPreset",
+          "colors": ["#ff6fba"],
+          "comment": "Red: 255, Green: 93, Blue: 182, Lime: 93"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "ColorPreset",
+          "colors": ["#ff73f0"],
+          "comment": "Red: 255, Green: 96, Blue: 236, Lime: 96"
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "ColorPreset",
+          "colors": ["#ff6fff"],
+          "comment": "Red: 238, Green: 93, Blue: 255, Lime: 93"
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "ColorPreset",
+          "colors": ["#b468ff"],
+          "comment": "Red: 163, Green: 87, Blue: 255, Lime: 87"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "colors": ["#a86cff"],
+          "comment": "Red: 150, Green: 90, Blue: 255, Lime: 90"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "colors": ["#735cff"],
+          "comment": "Red: 100, Green: 77, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "ColorPreset",
+          "colors": ["#5c73ff"],
+          "comment": "Red: 77, Green: 100, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorPreset",
+          "colors": ["#50a1ff"],
+          "comment": "Red: 67, Green: 148, Blue: 255, Lime: 67"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorPreset",
+          "colors": ["#5cd2ff"],
+          "comment": "Red: 77, Green: 195, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "ColorPreset",
+          "colors": ["#5cf9ff"],
+          "comment": "Red: 77, Green: 234, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "ColorPreset",
+          "colors": ["#baff97"],
+          "comment": "Red: 158, Green: 255, Blue: 144, Lime: 144"
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "ColorPreset",
+          "colors": ["#ffffa0"],
+          "comment": "Red: 255, Green: 251, Blue: 153, Lime: 153"
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "ColorPreset",
+          "colors": ["#ffcc9a"],
+          "comment": "Red: 255, Green: 175, Blue: 147, Lime: 147"
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "ColorPreset",
+          "colors": ["#ffa5c0"],
+          "comment": "Red: 255, Green: 138, Blue: 186, Lime: 138"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorPreset",
+          "colors": ["#ffb0ff"],
+          "comment": "Red: 255, Green: 147, Blue: 251, Lime: 147"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorPreset",
+          "colors": ["#b2a2ff"],
+          "comment": "Red: 151, Green: 135, Blue: 255, Lime: 138"
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "ColorPreset",
+          "colors": ["#7714ff"],
+          "comment": "Red: 99, Green: 0, Blue: 255, Lime: 100"
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "ColorPreset",
+          "colors": ["#a5c4ff"],
+          "comment": "Red: 138, Green: 169, Blue: 255, Lime: 138"
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red: 255, Green: 255, Blue: 255, Lime: 255"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "ColorPreset",
+          "colors": ["#ffce8f"],
+          "comment": "Red: 255, Green: 206, Blue: 143, Lime: 0"
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "ColorPreset",
+          "colors": ["#feb199"],
+          "comment": "Red: 254, Green: 177, Blue: 153, Lime: 0"
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "ColorPreset",
+          "colors": ["#fec08a"],
+          "comment": "Red: 254, Green: 192, Blue: 138, Lime: 0"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ColorPreset",
+          "colors": ["#fea562"],
+          "comment": "Red: 254, Green: 165, Blue: 98, Lime: 0"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorPreset",
+          "colors": ["#fe7900"],
+          "comment": "Red: 254, Green: 121, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "ColorPreset",
+          "colors": ["#b01100"],
+          "comment": "Red: 176, Green: 17, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "ColorPreset",
+          "colors": ["#60000b"],
+          "comment": "Red: 96, Green: 0, Blue: 11, Lime: 0"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "ColorPreset",
+          "colors": ["#ea8bab"],
+          "comment": "Red: 234, Green: 139, Blue: 171, Lime: 0"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "ColorPreset",
+          "colors": ["#e00561"],
+          "comment": "Red: 224, Green: 5, Blue: 97, Lime: 0"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "ColorPreset",
+          "colors": ["#af4dad"],
+          "comment": "Red: 175, Green: 77, Blue: 173, Lime: 0"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "ColorPreset",
+          "colors": ["#7782c7"],
+          "comment": "Red: 119, Green: 130, Blue: 199, Lime: 0"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "ColorPreset",
+          "colors": ["#93a4d4"],
+          "comment": "Red: 147, Green: 164, Blue: 212, Lime: 0"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorPreset",
+          "colors": ["#5802a3"],
+          "comment": "Red: 88, Green: 2, Blue: 163, Lime: 0"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorPreset",
+          "colors": ["#002656"],
+          "comment": "Red: 0, Green: 38, Blue: 86, Lime: 0"
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "ColorPreset",
+          "colors": ["#008ed0"],
+          "comment": "Red: 0, Green: 142, Blue: 208, Lime: 0"
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "ColorPreset",
+          "colors": ["#3494d1"],
+          "comment": "Red: 52, Green: 148, Blue: 209, Lime: 0"
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "ColorPreset",
+          "colors": ["#0186cc"],
+          "comment": "Red: 1, Green: 134, Blue: 204, Lime: 0"
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "ColorPreset",
+          "colors": ["#0091d4"],
+          "comment": "Red: 0, Green: 145, Blue: 212, Lime: 0"
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "ColorPreset",
+          "colors": ["#0079c0"],
+          "comment": "Red: 0, Green: 121, Blue: 192, Lime: 0"
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "ColorPreset",
+          "colors": ["#0081b8"],
+          "comment": "Red: 0, Green: 129, Blue: 184, Lime: 0"
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "ColorPreset",
+          "colors": ["#005373"],
+          "comment": "Red: 0, Green: 83, Blue: 115, Lime: 0"
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "ColorPreset",
+          "colors": ["#0061a6"],
+          "comment": "Red: 0, Green: 97, Blue: 166, Lime: 0"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorPreset",
+          "colors": ["#0164a7"],
+          "comment": "Red: 1, Green: 100, Blue: 167, Lime: 0"
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "ColorPreset",
+          "colors": ["#002856"],
+          "comment": "Red: 0, Green: 40, Blue: 86, Lime: 0"
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "ColorPreset",
+          "colors": ["#d1dbb6"],
+          "comment": "Red: 209, Green: 219, Blue: 182, Lime: 0"
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "ColorPreset",
+          "colors": ["#2aa555"],
+          "comment": "Red: 42, Green: 165, Blue: 85, Lime: 0"
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "ColorPreset",
+          "colors": ["#002e23"],
+          "comment": "Red: 0, Green: 46, Blue: 35, Lime: 0"
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "ColorPreset",
+          "colors": ["#086bde"],
+          "comment": "Red: 8, Green: 107, Blue: 222, Lime: 0"
+        },
+        {
+          "dmxRange": [241, 244],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red: 255, Green: 0, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Red: 0, Green: 255, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Red: 0, Green: 0, Blue: 255, Lime: 0"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset",
+          "colors": ["#33330c"],
+          "comment": "Red: 0, Green: 0, Blue: 0, Lime: 255"
+        }
+      ]
     },
     "Shutter / Strobe": {
       "capabilities": [
@@ -362,7 +749,8 @@
         {
           "dmxRange": [166, 180],
           "type": "Maintenance",
-          "parameter": 10000
+          "parameter": 10000,
+          "comment": "Hz"
         },
         {
           "dmxRange": [181, 195],
