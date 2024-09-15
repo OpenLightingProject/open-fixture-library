@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W COB",
+  "shortName": "HYU-COB-200",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Herbi Kaufmann"],
+    "createDate": "2024-09-15",
+    "lastModifyDate": "2024-09-15"
+  },
+  "links": {
+    "productPage": [
+      "https://www.aliexpress.com/store/1160563?spm=a2g0o.order_list.order_list_main.94.757f5c5fMxG9lZ"
+    ]
+  },
+  "physical": {
+    "dimensions": [223, 223, 240],
+    "weight": 4,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB 200W"
+    }
+  },
+  "availableChannels": {
+    "R Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "G Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "B Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "W Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Total Strobe speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "CH1-CH7 Control"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "NoFunction",
+          "comment": "Diferent color Output"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction",
+          "comment": "Color Jump Change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "NoFunction",
+          "comment": "Colors gradate"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "NoFunction",
+          "comment": "Color Pulse Change"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Sound Active"
+        }
+      ]
+    },
+    "Function/Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-CH (d001)",
+      "channels": [
+        "R Dimmer",
+        "G Dimmer",
+        "B Dimmer",
+        "W Dimmer"
+      ]
+    },
+    {
+      "name": "8-CH (a001)",
+      "channels": [
+        "Master Dimmer",
+        "R Dimmer",
+        "G Dimmer",
+        "B Dimmer",
+        "W Dimmer",
+        "Total Strobe speed",
+        "Function",
+        "Function/Speed"
+      ]
+    }
+  ]
+}
