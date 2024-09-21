@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "parkostef",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["stef"],
+    "createDate": "2024-09-21",
+    "lastModifyDate": "2024-09-21"
+  },
+  "links": {
+    "productPage": [
+      "http://ftp.technique.freevox.fr/STARWAY/1-OLD-PRODUCTS/PARKOLOR48HD.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "parkostef",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "No function"
+      ]
+    }
+  ]
+}
