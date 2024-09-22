@@ -1,0 +1,1045 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "19x40WBEEEYE",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Andylundu"],
+    "createDate": "2024-09-22",
+    "lastModifyDate": "2024-09-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-09-22",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Raw DMX",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Raw DMX"
+      }
+    },
+    "Barrel Roll": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "0-60"
+        },
+        {
+          "dmxRange": [128, 155],
+          "type": "Generic",
+          "comment": "None"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Generic",
+          "comment": "Clockwise"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Anti clockwise"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Raw DMX"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [4, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red C-Mix"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green C-Mix"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue C-Mix"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White C-Mix"
+      }
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "CTO C-Mix"
+      }
+    },
+    "Static effect": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "None"
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "Effect",
+          "effectName": "Single color effect 1"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "Effect",
+          "effectName": "Single color effect 2"
+        },
+        {
+          "dmxRange": [16, 18],
+          "type": "Effect",
+          "effectName": "Single color effect 3"
+        },
+        {
+          "dmxRange": [19, 21],
+          "type": "Effect",
+          "effectName": "Single color effect 4"
+        },
+        {
+          "dmxRange": [22, 24],
+          "type": "Effect",
+          "effectName": "Single color effect 5"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "Effect",
+          "effectName": "Single color effect 6"
+        },
+        {
+          "dmxRange": [28, 30],
+          "type": "Effect",
+          "effectName": "Single color effect 7"
+        },
+        {
+          "dmxRange": [31, 33],
+          "type": "Effect",
+          "effectName": "Single color effect 8"
+        },
+        {
+          "dmxRange": [34, 36],
+          "type": "Effect",
+          "effectName": "Single color effect 9"
+        },
+        {
+          "dmxRange": [37, 39],
+          "type": "Effect",
+          "effectName": "Single color effect 10"
+        },
+        {
+          "dmxRange": [40, 42],
+          "type": "Effect",
+          "effectName": "Single color effect 11"
+        },
+        {
+          "dmxRange": [43, 45],
+          "type": "Effect",
+          "effectName": "Single color effect 12"
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "Effect",
+          "effectName": "Single color effect 13"
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "Effect",
+          "effectName": "Single color effect 14"
+        },
+        {
+          "dmxRange": [52, 54],
+          "type": "Effect",
+          "effectName": "Single color effect 15"
+        },
+        {
+          "dmxRange": [55, 57],
+          "type": "Effect",
+          "effectName": "Single color effect 16"
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "Effect",
+          "effectName": "Single color effect 17"
+        },
+        {
+          "dmxRange": [61, 63],
+          "type": "Effect",
+          "effectName": "Single color effect 18"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "Effect",
+          "effectName": "Single color effect 19"
+        },
+        {
+          "dmxRange": [67, 69],
+          "type": "Effect",
+          "effectName": "Single color effect 20"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "Effect",
+          "effectName": "Single color effect 21"
+        },
+        {
+          "dmxRange": [73, 75],
+          "type": "Effect",
+          "effectName": "Single color effect 22"
+        },
+        {
+          "dmxRange": [76, 78],
+          "type": "Effect",
+          "effectName": "Single color effect 23"
+        },
+        {
+          "dmxRange": [79, 81],
+          "type": "Effect",
+          "effectName": "Single color effect 24"
+        },
+        {
+          "dmxRange": [82, 84],
+          "type": "Effect",
+          "effectName": "Single color effect 25"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "Effect",
+          "effectName": "Single color effect 26"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Effect",
+          "effectName": "Single color effect 27"
+        },
+        {
+          "dmxRange": [91, 93],
+          "type": "Effect",
+          "effectName": "Single color effect 28"
+        },
+        {
+          "dmxRange": [94, 96],
+          "type": "Effect",
+          "effectName": "Single color effect 29"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Effect",
+          "effectName": "Single color effect 30"
+        },
+        {
+          "dmxRange": [100, 102],
+          "type": "Effect",
+          "effectName": "Single color effect 31"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "Effect",
+          "effectName": "Single color effect 32"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "Effect",
+          "effectName": "Single color effect 33"
+        },
+        {
+          "dmxRange": [109, 111],
+          "type": "Effect",
+          "effectName": "Single color effect 34"
+        },
+        {
+          "dmxRange": [112, 114],
+          "type": "Effect",
+          "effectName": "Single color effect 35"
+        },
+        {
+          "dmxRange": [115, 117],
+          "type": "Effect",
+          "effectName": "Single color effect 36"
+        },
+        {
+          "dmxRange": [118, 120],
+          "type": "Effect",
+          "effectName": "Single color effect 37"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "Effect",
+          "effectName": "Single color effect 38"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "Effect",
+          "effectName": "Single color effect 39"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "Effect",
+          "effectName": "Single color effect 40"
+        },
+        {
+          "dmxRange": [130, 132],
+          "type": "Effect",
+          "effectName": "Single color effect 41"
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "Effect",
+          "effectName": "Single color effect 42"
+        },
+        {
+          "dmxRange": [136, 138],
+          "type": "Effect",
+          "effectName": "Single color effect 43"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "Effect",
+          "effectName": "Single color effect 44"
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "Effect",
+          "effectName": "Single color effect 45"
+        },
+        {
+          "dmxRange": [145, 147],
+          "type": "Effect",
+          "effectName": "Single color effect 46"
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "Effect",
+          "effectName": "Single color effect 47"
+        },
+        {
+          "dmxRange": [151, 153],
+          "type": "Effect",
+          "effectName": "Single color effect 48"
+        },
+        {
+          "dmxRange": [154, 156],
+          "type": "Effect",
+          "effectName": "Single color effect 49"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "Effect",
+          "effectName": "Single color effect 50"
+        },
+        {
+          "dmxRange": [160, 162],
+          "type": "Effect",
+          "effectName": "Single color effect 51"
+        },
+        {
+          "dmxRange": [163, 165],
+          "type": "Effect",
+          "effectName": "Single color effect 52"
+        },
+        {
+          "dmxRange": [166, 168],
+          "type": "Effect",
+          "effectName": "Single color effect 53"
+        },
+        {
+          "dmxRange": [169, 171],
+          "type": "Effect",
+          "effectName": "Single color effect 54"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "Effect",
+          "effectName": "Single color effect 55"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "Effect",
+          "effectName": "Single color effect 56"
+        },
+        {
+          "dmxRange": [178, 180],
+          "type": "Effect",
+          "effectName": "Single color effect 57"
+        },
+        {
+          "dmxRange": [181, 183],
+          "type": "Effect",
+          "effectName": "Single color effect 58"
+        },
+        {
+          "dmxRange": [184, 186],
+          "type": "Effect",
+          "effectName": "Single color effect 59"
+        },
+        {
+          "dmxRange": [187, 189],
+          "type": "Effect",
+          "effectName": "Single color effect 60"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "Effect",
+          "effectName": "Single color effect 61"
+        },
+        {
+          "dmxRange": [193, 195],
+          "type": "Effect",
+          "effectName": "Single color effect 62"
+        },
+        {
+          "dmxRange": [196, 198],
+          "type": "Effect",
+          "effectName": "Single color effect 63"
+        },
+        {
+          "dmxRange": [199, 201],
+          "type": "Effect",
+          "effectName": "Single color effect 64"
+        },
+        {
+          "dmxRange": [202, 204],
+          "type": "Effect",
+          "effectName": "Single color effect 65"
+        },
+        {
+          "dmxRange": [205, 207],
+          "type": "Effect",
+          "effectName": "Single color effect 66"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "Effect",
+          "effectName": "Single color effect 67"
+        },
+        {
+          "dmxRange": [211, 213],
+          "type": "Effect",
+          "effectName": "Mixing effect 1"
+        },
+        {
+          "dmxRange": [214, 216],
+          "type": "Effect",
+          "effectName": "Mixing effect 2"
+        },
+        {
+          "dmxRange": [217, 219],
+          "type": "Effect",
+          "effectName": "Mixing effect 3"
+        },
+        {
+          "dmxRange": [220, 222],
+          "type": "Effect",
+          "effectName": "Mixing effect 4"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Effect",
+          "effectName": "Mixing effect 5"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "Effect",
+          "effectName": "Mixing effect 6"
+        },
+        {
+          "dmxRange": [229, 231],
+          "type": "Effect",
+          "effectName": "Mixing effect 7"
+        },
+        {
+          "dmxRange": [232, 234],
+          "type": "Effect",
+          "effectName": "Mixing effect 8"
+        },
+        {
+          "dmxRange": [235, 237],
+          "type": "Effect",
+          "effectName": "Mixing effect 9"
+        },
+        {
+          "dmxRange": [238, 240],
+          "type": "Effect",
+          "effectName": "Mixing effect 10"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "Effect",
+          "effectName": "Mixing effect 11"
+        },
+        {
+          "dmxRange": [244, 246],
+          "type": "Effect",
+          "effectName": "Mixing effect 12"
+        },
+        {
+          "dmxRange": [247, 249],
+          "type": "Effect",
+          "effectName": "Mixing effect 13"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "Effect",
+          "effectName": "Mixing effect 14"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Effect",
+          "effectName": "Mixing effect 15"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Reset 5s"
+        }
+      ]
+    },
+    "Effect Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect fade"
+      }
+    },
+    "Effect rotate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect rotate"
+      }
+    },
+    "Ring Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Strobe Hz",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Ring Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red C-Mix"
+      }
+    },
+    "Ring Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green C-Mix"
+      }
+    },
+    "Ring Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue C-Mix"
+      }
+    },
+    "Ring Mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Raw DMX"
+      }
+    },
+    "RingColour": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Raw DMX"
+      }
+    },
+    "BG Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Raw DMX"
+      }
+    },
+    "Ring Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Dynamic effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "None"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 1"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 2"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 3"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 4"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 5"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 6"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 7"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 8"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 9"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 10"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 11"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 12"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 13"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 14"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 15"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 16"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 17"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 18"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 19"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 20"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 21"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 22"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 23"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 24"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 25"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 26"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 27"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 28"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 29"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Single color dynamic effect 30"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 1"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 2"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 3"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 4"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 5"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 6"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 7"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 8"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 9"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 10"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 11"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 12"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 13"
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 14"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 15"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Mixing color dynamic effect 16"
+        }
+      ]
+    },
+    "Dynamic effect speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "comment": "Clockwise Rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "comment": "Anti clockwise Rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "BackColor-R": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BackColor-G": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BackColor-B": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BackColor-W": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "31-channel",
+      "shortName": "31ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt fine",
+        "P/T Speed",
+        "Zoom",
+        "Barrel Roll",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color macro",
+        "Static effect",
+        "Dynamic effect",
+        "Dynamic effect speed",
+        "BackColor-R",
+        "BackColor-G",
+        "BackColor-B",
+        "BackColor-W",
+        "Reset",
+        "Ring Strobe",
+        "Ring Red",
+        "Ring Green",
+        "Ring Blue",
+        "Ring Mode",
+        "Ring Speed",
+        "RingColour",
+        "BG Dimmer"
+      ]
+    },
+    {
+      "name": "33-channel",
+      "shortName": "33ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt fine",
+        "P/T Speed",
+        "Zoom",
+        "Barrel Roll",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color macro",
+        "Effect Fade",
+        "Effect rotate",
+        "Static effect",
+        "Dynamic effect",
+        "Dynamic effect speed",
+        "BackColor-R",
+        "BackColor-G",
+        "BackColor-B",
+        "BackColor-W",
+        "Reset",
+        "Ring Strobe",
+        "Ring Red",
+        "Ring Green",
+        "Ring Blue",
+        "Ring Mode",
+        "Ring Speed",
+        "RingColour",
+        "BG Dimmer"
+      ]
+    }
+  ]
+}
