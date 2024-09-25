@@ -84,7 +84,7 @@ export default {
       javascriptRule.exclude = {
         and: [
           originalExclude,
-          { not: [/node_modules\/a11y-dialog/] },
+          { not: [/node_modules[/\\]a11y-dialog/] },
         ],
       };
     },

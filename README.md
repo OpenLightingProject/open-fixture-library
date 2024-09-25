@@ -1,6 +1,6 @@
 # Open Fixture Library<br><a href="https://open-fixture-library.org/">open-fixture-library.org</a>
 
-[![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/open-fixture-library.org?publish)](https://observatory.mozilla.org/analyze/open-fixture-library.org)
+[![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/open-fixture-library.org?publish)](https://developer.mozilla.org/en-US/observatory/analyze?host=open-fixture-library.org)
 [![Beacon](https://img.shields.io/badge/dynamic/json?color=blue&label=Beacon&query=%24.co2&suffix=%20CO%E2%82%82%2Fview&url=https%3A%2F%2Fdigitalbeacon.co%2Fbadge%3Furl%3Dhttps%253A%252F%252Fopen-fixture-library.org&cacheSeconds=604800)](https://digitalbeacon.co/report/open-fixture-library-org)
 
 [<img alt="OFL logo" src="https://cdn.rawgit.com/OpenLightingProject/open-fixture-library/master/ui/static/ofl-logo.svg" width="250" />](ui/static/ofl-logo.svg)

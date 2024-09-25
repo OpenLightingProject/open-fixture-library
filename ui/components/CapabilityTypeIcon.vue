@@ -15,21 +15,24 @@ export default {
       const resource = wheelSlot[0].resource;
 
       if (resource && resource.hasImage) {
-        const data = Object.assign({}, context.data, {
-          attrs: Object.assign({}, context.data.attrs, {
+        const data = {
+          ...context.data,
+          attrs: {
+            ...context.data.attrs,
             src: resource.imageDataUrl,
             title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
-          }),
+          },
           class: [context.data.class, `icon`, `gobo-icon`],
-        });
+        };
 
         return createElement(`img`, data);
       }
     }
 
-    return createElement(`OflSvg`, Object.assign({}, context.data, {
+    return createElement(`OflSvg`, {
+      ...context.data,
       props: getIconProperties(capability),
-    }));
+    });
   },
 };
 

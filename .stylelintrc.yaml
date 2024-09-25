@@ -37,6 +37,9 @@ rules:
   # simplify rules
   scss/block-no-redundant-nesting: true
 
+  # make imported files more explicit
+  scss/load-partial-extension: always
+
   # prevent comments in generated CSS
   scss/comment-no-loud: true
 

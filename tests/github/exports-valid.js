@@ -93,7 +93,7 @@ try {
     ``,
   ];
 
-  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
   for (const task of tasks) {
     const taskResultLines = await getTaskPromise(task);
@@ -223,7 +223,7 @@ async function getTaskPromise(task) {
   const plugin = await import(`../../plugins/${task.pluginKey}/export.js`);
   const { default: test } = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
 
-  let emoji = `:heavy_check_mark:`;
+  let emoji = `✔️`;
   const detailListItems = [];
 
   try {
@@ -238,18 +238,18 @@ async function getTaskPromise(task) {
     const resultListItems = await Promise.all(files.map(async file => {
       try {
         await test(file, files);
-        return `:heavy_check_mark: ${file.name}`;
+        return `✔️ ${file.name}`;
       }
       catch (error) {
-        emoji = `:x:`;
+        emoji = `❌`;
         const errors = [error].flat().join(`<br />\n`);
-        return `<details><summary>:x: ${file.name}</summary>${errors}</details>`;
+        return `<details><summary>❌ ${file.name}</summary>${errors}</details>`;
       }
     }));
     detailListItems.push(...resultListItems);
   }
   catch (error) {
-    emoji = `:heavy_exclamation_mark:`;
+    emoji = `❗`;
     detailListItems.push(`Unable to export fixture: ${error.message}`);
     testErrored = true;
   }

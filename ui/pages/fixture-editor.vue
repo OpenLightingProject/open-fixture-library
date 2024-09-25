@@ -222,7 +222,7 @@ export default {
     },
 
     openChannelEditor(channelData) {
-      this.channel = Object.assign({}, this.channel, channelData);
+      this.channel = { ...this.channel, ...channelData };
     },
 
     resetChannel() {
@@ -342,7 +342,7 @@ export default {
         return;
       }
 
-      console.log(`restore`, JSON.parse(JSON.stringify(this.restoredData)));
+      console.log(`restore`, structuredClone(this.restoredData));
     },
 
     /**
