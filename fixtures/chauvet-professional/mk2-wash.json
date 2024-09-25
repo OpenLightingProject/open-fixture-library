@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MK2 wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["TDL"],
+    "createDate": "2024-09-25",
+    "lastModifyDate": "2024-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2016/05/Maverick_MK2_Wash_UM_Rev4_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/maverick-mk2-wash/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GuoQrd_sCo4"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "540deg"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Led macro / auto program": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Led macro / auto program speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Led built in delay": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Background colour": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Background intensity": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter": {
+      "highlightValue": "8.79%",
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Control": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "single control basic (20)",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "CTC",
+        "Color Macros",
+        "Gobo",
+        "Led macro / auto program",
+        "Led macro / auto program speed",
+        "Led built in delay",
+        "Background colour",
+        "Background intensity",
+        "Dimmer",
+        "Shutter",
+        "Zoom",
+        "Control",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
