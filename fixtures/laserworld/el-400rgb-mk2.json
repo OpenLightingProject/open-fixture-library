@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-400RGB MK2",
+  "shortName": "EL-400RGB MK2",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2024-09-28",
+    "lastModifyDate": "2024-09-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/download-file-1780-EL_400RGB_MK2_web.html"
+    ],
+    "productPage": [
+      "https://laserworld.com"
+    ]
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Laser Aus"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Musik Modus"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Auto Modus"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Statische Muster"
+        },
+        {
+          "dmxRange": [200, 253],
+          "type": "Effect",
+          "effectName": "Dynamische Muster"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Effect",
+          "effectName": "Dynamische Muster"
+        }
+      ]
+    },
+    "Musterauswahl": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Musterauswahl"
+      }
+    },
+    "X-Achse": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Mitte"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Position"
+        }
+      ]
+    },
+    "Y-Achse": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Y-Achse"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Position"
+        }
+      ]
+    },
+    "Scan Geschwindigkeit": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Scan Geschwindigkeit"
+      }
+    },
+    "Muster Geschwindigkeit": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Muster Geschwindigkeit"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Colour": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour"
+      }
+    },
+    "Colour Segment": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour Segment"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Mode",
+        "Musterauswahl",
+        "X-Achse",
+        "Y-Achse",
+        "Scan Geschwindigkeit",
+        "Muster Geschwindigkeit",
+        "Zoom",
+        "Colour",
+        "Colour Segment"
+      ]
+    }
+  ]
+}
