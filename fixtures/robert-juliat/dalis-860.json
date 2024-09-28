@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dalis 860",
+  "shortName": "Dalis",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["PierreM"],
+    "createDate": "2024-09-28",
+    "lastModifyDate": "2024-09-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/PDF/Documents/DN41077600b_m_DALIS_860_v2.pdf"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.fr/Ambiance/Dalis.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=V7vq6__V01g"
+    ]
+  },
+  "physical": {
+    "weight": 1.1,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Royal Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cold White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Duration": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "StrobeDuration",
+          "duration": "0ms",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeDuration",
+          "durationStart": "1ms",
+          "durationEnd": "85ms",
+          "comment": "On"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "5.8Hz",
+        "speedEnd": "11.5Hz"
+      }
+    },
+    "Reponse Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "4s",
+          "comment": "Dimmer Timing"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Time",
+          "time": "0s",
+          "comment": "Off"
+        }
+      ]
+    },
+    "Control Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "RDM Off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Full1groupmode8b",
+      "shortName": "Mode3",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Royal Blue",
+        "Cyan",
+        "Amber",
+        "Cold White",
+        "Warm White",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Reponse Time",
+        "Control Mode"
+      ]
+    }
+  ]
+}
