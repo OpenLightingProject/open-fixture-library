@@ -84,14 +84,27 @@
         }
       ]
     },
-    "Strobe": {
-      "capability": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [
+            0,
+            0
+          ],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [
+            1,
+            255
+          ],
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0%",
-        "speedEnd": "100%",
-        "helpWanted": "At which DMX values is strobe disabled? That should be a separate capability."
+          "speedEnd": "100%"
       }
+      ]
     },
     "Color Macro Advanced": {
       "name": "Color Macro",
@@ -200,7 +213,7 @@
       "shortName": "3ch1",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Shutter / Strobe",
         "Color Macro Advanced"
       ]
     },
@@ -218,7 +231,7 @@
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Shutter / Strobe",
         "Red",
         "Green",
         "Blue",
