@@ -87,23 +87,17 @@
     "Shutter / Strobe": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [
-            1,
-            255
-          ],
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0%",
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
           "speedEnd": "100%"
-      }
+        }
       ]
     },
     "Color Macro Advanced": {
