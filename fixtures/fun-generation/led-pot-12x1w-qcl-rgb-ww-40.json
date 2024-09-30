@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Pot 12x1W QCL RGB WW 40°",
   "shortName": "FunGenLEDPotQCL40",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Minno", "Paul Rogalski"
-    ],
+    "authors": ["Minno", "Paul Rogalski"],
     "createDate": "2023-10-13",
     "lastModifyDate": "2024-09-09"
   },
@@ -24,11 +20,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      168,
-      172,
-      130
-    ],
+    "dimensions": [168, 172, 130],
     "weight": 0.42,
     "power": 17,
     "DMXconnector": "3-pin",
@@ -36,10 +28,7 @@
       "type": "12x 1W QCL-LEDs (RGBWW)"
     },
     "lens": {
-      "degreesMinMax": [
-        40,
-        40
-      ]
+      "degreesMinMax": [40, 40]
     }
   },
   "availableChannels": {
@@ -80,18 +69,12 @@
     "Strobe": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [
-            1,
-            255
-          ],
+          "dmxRange": [1, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
@@ -103,20 +86,14 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction",
           "switchChannels": {
             "No Function / Color Presets / Sound Control": "No Function"
           }
         },
         {
-          "dmxRange": [
-            1,
-            16
-          ],
+          "dmxRange": [1, 16],
           "type": "Effect",
           "effectName": "Program 01",
           "switchChannels": {
@@ -124,10 +101,7 @@
           }
         },
         {
-          "dmxRange": [
-            17,
-            33
-          ],
+          "dmxRange": [17, 33],
           "type": "Effect",
           "effectName": "Program 02",
           "switchChannels": {
@@ -135,10 +109,7 @@
           }
         },
         {
-          "dmxRange": [
-            34,
-            50
-          ],
+          "dmxRange": [34, 50],
           "type": "Effect",
           "effectName": "Program 03",
           "switchChannels": {
@@ -146,10 +117,7 @@
           }
         },
         {
-          "dmxRange": [
-            51,
-            67
-          ],
+          "dmxRange": [51, 67],
           "type": "Effect",
           "effectName": "Program 04",
           "switchChannels": {
@@ -157,10 +125,7 @@
           }
         },
         {
-          "dmxRange": [
-            68,
-            84
-          ],
+          "dmxRange": [68, 84],
           "type": "Effect",
           "effectName": "Program 05",
           "switchChannels": {
@@ -168,10 +133,7 @@
           }
         },
         {
-          "dmxRange": [
-            85,
-            101
-          ],
+          "dmxRange": [85, 101],
           "type": "Effect",
           "effectName": "Program 06",
           "switchChannels": {
@@ -179,10 +141,7 @@
           }
         },
         {
-          "dmxRange": [
-            102,
-            118
-          ],
+          "dmxRange": [102, 118],
           "type": "Effect",
           "effectName": "Program 07",
           "switchChannels": {
@@ -190,10 +149,7 @@
           }
         },
         {
-          "dmxRange": [
-            119,
-            135
-          ],
+          "dmxRange": [119, 135],
           "type": "Effect",
           "effectName": "Program 08",
           "switchChannels": {
@@ -201,10 +157,7 @@
           }
         },
         {
-          "dmxRange": [
-            136,
-            152
-          ],
+          "dmxRange": [136, 152],
           "type": "Effect",
           "effectName": "Program 09",
           "switchChannels": {
@@ -212,10 +165,7 @@
           }
         },
         {
-          "dmxRange": [
-            153,
-            169
-          ],
+          "dmxRange": [153, 169],
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
@@ -223,10 +173,7 @@
           }
         },
         {
-          "dmxRange": [
-            170,
-            186
-          ],
+          "dmxRange": [170, 186],
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
@@ -234,10 +181,7 @@
           }
         },
         {
-          "dmxRange": [
-            187,
-            203
-          ],
+          "dmxRange": [187, 203],
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
@@ -245,10 +189,7 @@
           }
         },
         {
-          "dmxRange": [
-            204,
-            220
-          ],
+          "dmxRange": [204, 220],
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
@@ -256,10 +197,7 @@
           }
         },
         {
-          "dmxRange": [
-            221,
-            237
-          ],
+          "dmxRange": [221, 237],
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
@@ -267,10 +205,7 @@
           }
         },
         {
-          "dmxRange": [
-            238,
-            255
-          ],
+          "dmxRange": [238, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true,
@@ -288,180 +223,100 @@
     "Color Presets": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            15
-          ],
+          "dmxRange": [0, 15],
           "type": "ColorPreset",
           "comment": "Blackout",
-          "colors": [
-            "#000000"
-          ]
+          "colors": ["#000000"]
         },
         {
-          "dmxRange": [
-            16,
-            31
-          ],
+          "dmxRange": [16, 31],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
-          "dmxRange": [
-            32,
-            47
-          ],
+          "dmxRange": [32, 47],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": [
-            "#00ff00"
-          ]
+          "colors": ["#00ff00"]
         },
         {
-          "dmxRange": [
-            48,
-            63
-          ],
+          "dmxRange": [48, 63],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": [
-            "#0000ff"
-          ]
+          "colors": ["#0000ff"]
         },
         {
-          "dmxRange": [
-            64,
-            79
-          ],
+          "dmxRange": [64, 79],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         },
         {
-          "dmxRange": [
-            80,
-            95
-          ],
+          "dmxRange": [80, 95],
           "type": "ColorPreset",
           "comment": "Amber",
-          "colors": [
-            "#ff9600"
-          ]
+          "colors": ["#ff9600"]
         },
         {
-          "dmxRange": [
-            96,
-            111
-          ],
+          "dmxRange": [96, 111],
           "type": "ColorPreset",
           "comment": "Orange",
-          "colors": [
-            "#ffb400"
-          ]
+          "colors": ["#ffb400"]
         },
         {
-          "dmxRange": [
-            112,
-            127
-          ],
+          "dmxRange": [112, 127],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
-          "dmxRange": [
-            128,
-            143
-          ],
+          "dmxRange": [128, 143],
           "type": "ColorPreset",
           "comment": "Purple",
-          "colors": [
-            "#ff00ff"
-          ]
+          "colors": ["#ff00ff"]
         },
         {
-          "dmxRange": [
-            144,
-            159
-          ],
+          "dmxRange": [144, 159],
           "type": "ColorPreset",
           "comment": "Pink",
-          "colors": [
-            "#ff008c"
-          ]
+          "colors": ["#ff008c"]
         },
         {
-          "dmxRange": [
-            160,
-            175
-          ],
+          "dmxRange": [160, 175],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": [
-            "#00ffff"
-          ]
+          "colors": ["#00ffff"]
         },
         {
-          "dmxRange": [
-            176,
-            191
-          ],
+          "dmxRange": [176, 191],
           "type": "ColorPreset",
           "comment": "Light Red",
-          "colors": [
-            "#ff8080"
-          ]
+          "colors": ["#ff8080"]
         },
         {
-          "dmxRange": [
-            192,
-            207
-          ],
+          "dmxRange": [192, 207],
           "type": "ColorPreset",
           "comment": "Light Green",
-          "colors": [
-            "#80ff80"
-          ]
+          "colors": ["#80ff80"]
         },
         {
-          "dmxRange": [
-            208,
-            223
-          ],
+          "dmxRange": [208, 223],
           "type": "ColorPreset",
           "comment": "Light Blue",
-          "colors": [
-            "#8080ff"
-          ]
+          "colors": ["#8080ff"]
         },
         {
-          "dmxRange": [
-            224,
-            239
-          ],
+          "dmxRange": [224, 239],
           "type": "ColorPreset",
           "comment": "Warm White",
-          "colors": [
-            "#ffc828"
-          ]
+          "colors": ["#ffc828"]
         },
         {
-          "dmxRange": [
-            240,
-            255
-          ],
+          "dmxRange": [240, 255],
           "type": "ColorPreset",
           "comment": "Cold White",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         }
       ]
     },
