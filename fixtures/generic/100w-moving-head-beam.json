@@ -1,0 +1,472 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "100W Moving Head Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Hello Club"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "other": [
+      "http://www.amazon.de"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "PATTERN 1"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo",
+          "name": "PATTERN 2"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 3"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 4"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 5"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 6"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 7"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 8"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 1 DITH"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 2 DITH"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 3 DITH"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 4 DITH"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "PATTERN 5 DITH"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "RED",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "YELLOW",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "GREEN",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "ORANGE",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "BLUE",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "PURPLE",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "LIGHT BLUE",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "ATOMATIC COLOR CHANGE"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 40
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 48
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 56
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "slotNumber": 64
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 72
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 80
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 88
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 96
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 104
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 112
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Prism",
+          "speed": "0%",
+          "comment": "PRSIM CLOSE"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "Prism",
+          "speed": "100%",
+          "comment": "PRISM OPEN"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "No function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Speed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Speed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "No function 2": {
+      "name": "No function",
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "MODUS",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
