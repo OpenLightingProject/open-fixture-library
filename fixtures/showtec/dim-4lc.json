@@ -1,0 +1,225 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DIM-4LC",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17431130"
+    ],
+    "productPage": [
+      "https://www.highlite.com/en/products/entertainment-lighting/light-controllers/50443-dim-4lc.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 220, 82],
+    "weight": 3.5,
+    "power": 3000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer (All Channels)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Switch (All Channels)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Dimmer (Channel 1+2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 3+4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Switch (Channel 1+2)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Switch (Channel 3+4)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Dimmer (Channel 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Switch (Channel 1)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Switch (Channel 2)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Switch (Channel 3)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Switch (Channel 4)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel 1",
+      "shortName": "1ch1",
+      "channels": [
+        "Dimmer (All Channels)"
+      ]
+    },
+    {
+      "name": "1-channel 2",
+      "shortName": "1ch2",
+      "channels": [
+        "Switch (All Channels)"
+      ]
+    },
+    {
+      "name": "2-channel 1",
+      "shortName": "2ch1",
+      "channels": [
+        "Dimmer (Channel 1+2)",
+        "Dimmer (Channel 3+4)"
+      ]
+    },
+    {
+      "name": "2-channel 2",
+      "shortName": "2ch2",
+      "channels": [
+        "Switch (Channel 1+2)",
+        "Switch (Channel 3+4)"
+      ]
+    },
+    {
+      "name": "4-channel 1",
+      "shortName": "4ch1",
+      "channels": [
+        "Dimmer (Channel 1)",
+        "Dimmer (Channel 2)",
+        "Dimmer (Channel 3)",
+        "Dimmer (Channel 4)"
+      ]
+    },
+    {
+      "name": "4-channel 2",
+      "shortName": "4ch2",
+      "channels": [
+        "Switch (Channel 1)",
+        "Switch (Channel 2)",
+        "Switch (Channel 3)",
+        "Switch (Channel 4)"
+      ]
+    }
+  ]
+}
