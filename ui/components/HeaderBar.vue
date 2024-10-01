@@ -220,8 +220,8 @@ header {
 
     form,
     form div {
-      flex-basis: 0;
       flex-grow: 1;
+      flex-basis: 0;
     }
   }
 }
