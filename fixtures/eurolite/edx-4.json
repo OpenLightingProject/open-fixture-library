@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EDX-4",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.yumpu.com/fr/document/view/29436703/4-channel-dmx-dimmer-pack"
+    ],
+    "productPage": [
+      "https://www.recordcase.de/en/eurolite-4-channel-dmx-dimmer-pack-edx-4"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 165, 110],
+    "weight": 3,
+    "power": 3680,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer (All Channels)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 2)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 3)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer (Channel 4)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer (All Channels)"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer (Channel 1)",
+        "Dimmer (Channel 2)",
+        "Dimmer (Channel 3)",
+        "Dimmer (Channel 4)"
+      ]
+    }
+  ]
+}
