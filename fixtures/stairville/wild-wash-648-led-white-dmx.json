@@ -2,11 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Wild Wash 648 LED White DMX",
   "shortName": "WildWash648LEDWhite",
+  "comment": "The fixture isn't sold anymore.",
   "categories": ["Strobe", "Blinder"],
   "meta": {
     "authors": ["Paul Rogalski"],
-    "createDate": "2024-10-01",
-    "lastModifyDate": "2024-10-01"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
   "links": {
     "manual": [
@@ -25,8 +26,23 @@
       "degreesMinMax": [75, 75]
     }
   },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    }
+  },
   "availableChannels": {
-    "Shutter / Strobe (1ch)": {
+    "Shutter / Strobe 1": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -43,13 +59,7 @@
         }
       ]
     },
-    "Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Shutter / Strobe": {
+    "Shutter / Strobe 2": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -84,7 +94,7 @@
         "durationEnd": "510ms"
       }
     },
-    "Shutter / Strobe (3ch2)": {
+    "Shutter / Strobe 3": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -150,6 +160,39 @@
         }
       ]
     },
+    "Strobe Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "helpWanted": "This range is missing in the manual. Has it actually no function?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Automatic strobe programs with alternating segments"
+        }
+      ]
+    },
+    "Strobe Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "helpWanted": "This range is missing in the manual. Has it actually no function?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
     "Sound Sensitivity": {
       "capabilities": [
         {
@@ -164,30 +207,6 @@
           "soundSensitivityEnd": "high"
         }
       ]
-    },
-    "Dimmer (Segment 1)": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Segment 2)": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Segment 4)": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Segment 3)": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
     }
   },
   "modes": [
@@ -195,23 +214,23 @@
       "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "Shutter / Strobe (1ch)"
+        "Shutter / Strobe 1"
       ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Dimmer",
-        "Shutter / Strobe"
+        "Dimmer Master",
+        "Shutter / Strobe 2"
       ]
     },
     {
       "name": "3-channel 1",
       "shortName": "3ch1",
       "channels": [
-        "Dimmer",
-        "Shutter / Strobe",
+        "Dimmer Master",
+        "Shutter / Strobe 2",
         "Strobe Flash Duration"
       ]
     },
@@ -219,8 +238,8 @@
       "name": "3-channel 2",
       "shortName": "3ch2",
       "channels": [
-        "Dimmer",
-        "Shutter / Strobe (3ch2)",
+        "Dimmer Master",
+        "Shutter / Strobe 3",
         "Sound Sensitivity"
       ]
     },
@@ -228,8 +247,11 @@
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Dimmer",
-        "Shutter / Strobe (3ch2)"
+        "Dimmer Master",
+        "Shutter / Strobe 3",
+        "Strobe Programs",
+        "Strobe Program Speed",
+        "Sound Sensitivity"
       ]
     },
     {
@@ -237,12 +259,12 @@
       "shortName": "7ch",
       "channels": [
         "Dimmer",
-        "Shutter / Strobe",
+        "Shutter / Strobe 2",
         "Strobe Flash Duration",
-        "Dimmer (Segment 1)",
-        "Dimmer (Segment 2)",
-        "Dimmer (Segment 3)",
-        "Dimmer (Segment 4)"
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
       ]
     }
   ]
