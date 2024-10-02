@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "TS 100 WW",
-  "shortName": "ts-100-ww",
+  "shortName": "CLTS100WW",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Nikita"],
-    "createDate": "2024-09-03",
-    "lastModifyDate": "2024-09-03"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
   "links": {
     "manual": [
@@ -20,7 +20,7 @@
     "dimensions": [320, 370, 310],
     "weight": 7.4,
     "power": 120,
-    "DMXconnector": "3-pin",
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "LED",
       "colorTemperature": 3100,
@@ -36,20 +36,11 @@
       "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "fineChannelAliases": ["Dimmer 2 fine"],
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Strobe": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -59,12 +50,12 @@
         {
           "dmxRange": [6, 255],
           "type": "StrobeSpeed",
-          "speedStart": "1Hz",
+          "speedStart": "0Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Set Dimmer Curve": {
+    "Dimmer Curve": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -72,27 +63,27 @@
         },
         {
           "dmxRange": [6, 63],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Linear Dimmer Curve"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Exponential Dimmer Curve"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Logarithmic Dimmer Curve"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Generic",
-          "comment": "S-Curve Dimmer Curve"
+          "type": "Maintenance",
+          "comment": "S-shaped Dimmer Curve"
         }
       ]
     },
-    "Device settings": {
+    "Device Settings": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -157,7 +148,7 @@
       "channels": [
         "Dimmer",
         "Dimmer fine",
-        "Strobe"
+        "Shutter / Strobe"
       ]
     },
     {
@@ -165,9 +156,9 @@
       "channels": [
         "Dimmer",
         "Dimmer fine",
-        "Strobe",
-        "Set Dimmer Curve",
-        "Device settings"
+        "Shutter / Strobe",
+        "Dimmer Curve",
+        "Device Settings"
       ]
     }
   ]
