@@ -1,11 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "EDX-4",
+  "comment": "4-channel DMX dimmer pack",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Paul Rogalski"],
-    "createDate": "2024-10-01",
-    "lastModifyDate": "2024-10-01"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
   "links": {
     "manual": [
@@ -21,32 +22,18 @@
     "power": 3680,
     "DMXconnector": "3-pin"
   },
-  "availableChannels": {
-    "Dimmer (All Channels)": {
-      "defaultValue": 0,
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
       "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Channel 1)": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Channel 2)": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Channel 3)": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer (Channel 4)": {
-      "capability": {
-        "type": "Intensity"
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
@@ -55,17 +42,17 @@
       "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "Dimmer (All Channels)"
+        "Dimmer Master"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Dimmer (Channel 1)",
-        "Dimmer (Channel 2)",
-        "Dimmer (Channel 3)",
-        "Dimmer (Channel 4)"
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
       ]
     }
   ]
