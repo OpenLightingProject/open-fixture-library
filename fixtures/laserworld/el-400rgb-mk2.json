@@ -1,20 +1,28 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "EL-400RGB MK2",
-  "shortName": "EL-400RGB MK2",
-  "categories": ["Laser"],
+  "categories": ["Laser", "Color Changer"],
   "meta": {
     "authors": ["Anon"],
-    "createDate": "2024-09-28",
-    "lastModifyDate": "2024-09-28"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
   "links": {
     "manual": [
       "https://www.laserworld.com/en/download-file-1780-EL_400RGB_MK2_web.html"
     ],
     "productPage": [
-      "https://laserworld.com"
+      "https://www.laserworld.com/en/laserworld-el/laserworld-el-400rgb"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GKitAO4Y21o"
     ]
+  },
+  "physical": {
+    "dimensions": [255, 245, 100],
+    "weight": 3.1,
+    "power": 30,
+    "DMXconnector": "3-pin"
   },
   "availableChannels": {
     "Mode": {
@@ -22,114 +30,120 @@
         {
           "dmxRange": [0, 49],
           "type": "NoFunction",
-          "comment": "Laser Aus"
+          "comment": "Laser off"
         },
         {
           "dmxRange": [50, 99],
           "type": "Effect",
-          "effectName": "Musik Modus"
+          "effectName": "Sound mode",
+          "soundControlled": true
         },
         {
           "dmxRange": [100, 149],
           "type": "Effect",
-          "effectName": "Auto Modus"
+          "effectName": "Automatic mode"
         },
         {
           "dmxRange": [150, 199],
           "type": "Effect",
-          "effectName": "Statische Muster"
+          "effectName": "Static pattern"
         },
         {
-          "dmxRange": [200, 253],
+          "dmxRange": [200, 255],
           "type": "Effect",
-          "effectName": "Dynamische Muster"
-        },
-        {
-          "dmxRange": [254, 255],
-          "type": "Effect",
-          "effectName": "Dynamische Muster"
+          "effectName": "Dynamic pattern"
         }
       ]
     },
-    "Musterauswahl": {
+    "Pattern Selection": {
       "capability": {
         "type": "Effect",
-        "effectName": "Musterauswahl"
+        "effectName": "Pattern Selection"
       }
     },
-    "X-Achse": {
+    "Horizontal Angle": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Effect",
-          "effectName": "Mitte"
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
         },
         {
           "dmxRange": [11, 255],
-          "type": "Effect",
-          "effectName": "Position"
+          "type": "BeamPosition",
+          "horizontalAngleStart": "left",
+          "horizontalAngleEnd": "right",
+          "helpWanted": "Are the horizontal angle start and end values correct?"
         }
       ]
     },
-    "Y-Achse": {
+    "Vertical Angle": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Effect",
-          "effectName": "Y-Achse"
+          "type": "BeamPosition",
+          "verticalAngle": "center"
         },
         {
           "dmxRange": [11, 255],
-          "type": "Effect",
-          "effectName": "Position"
+          "type": "BeamPosition",
+          "verticalAngleStart": "bottom",
+          "verticalAngleEnd": "top",
+          "helpWanted": "Are the vertical angle start and end values correct?"
         }
       ]
     },
-    "Scan Geschwindigkeit": {
+    "Scanning Speed": {
       "capability": {
-        "type": "Effect",
-        "effectName": "Scan Geschwindigkeit"
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "Are the scanning speed start and end values correct?"
       }
     },
-    "Muster Geschwindigkeit": {
+    "Dynamic Pattern Speed": {
       "capability": {
-        "type": "Effect",
-        "effectName": "Muster Geschwindigkeit"
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "Are the dynamic pattern speed start and end values correct?"
       }
     },
     "Zoom": {
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
-        "angleEnd": "wide"
+        "angleEnd": "wide",
+        "helpWanted": "Are the zoom start and end values correct?"
       }
     },
-    "Colour": {
+    "Color": {
       "capability": {
         "type": "Effect",
-        "effectName": "Colour"
+        "effectName": "Color"
       }
     },
-    "Colour Segment": {
+    "Color Segment": {
       "capability": {
         "type": "Effect",
-        "effectName": "Colour Segment"
+        "effectName": "Color Segment"
       }
     }
   },
   "modes": [
     {
-      "name": "Standard",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Mode",
-        "Musterauswahl",
-        "X-Achse",
-        "Y-Achse",
-        "Scan Geschwindigkeit",
-        "Muster Geschwindigkeit",
+        "Pattern Selection",
+        "Horizontal Angle",
+        "Vertical Angle",
+        "Scanning Speed",
+        "Dynamic Pattern Speed",
         "Zoom",
-        "Colour",
-        "Colour Segment"
+        "Color",
+        "Color Segment"
       ]
     }
   ]
