@@ -1,0 +1,731 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "30 Spot Ring",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Luna", "mlunax"],
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-10-02",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#aa0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00aa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff5500"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#55007f"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00aaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple Cyan",
+          "colors": ["#5500ff", "#00aaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange Purple",
+          "colors": ["#ff5500", "#00aaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green Purple",
+          "colors": ["#00aa00", "#ff5500"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue Green",
+          "colors": ["#0000ff", "#00aa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow Blue",
+          "colors": ["#ffff00", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red Yellow",
+          "colors": ["#ff0004", "#ffff00"]
+        },
+        {
+          "type": "Unknown",
+          "name": "Auto - speed"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Sun"
+        },
+        {
+          "type": "Gobo",
+          "name": "Star"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "Open Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower with hands"
+        },
+        {
+          "type": "Gobo",
+          "name": "Stars"
+        },
+        {
+          "type": "Gobo",
+          "name": "Shards"
+        },
+        {
+          "type": "Gobo",
+          "name": "Auto mode - speed"
+        }
+      ]
+    },
+    "Ring wheel": {
+      "slots": [
+        {
+          "type": "Unknown",
+          "name": "Disabled"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#aa0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00aa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#55007f"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Unknown",
+          "name": "Auto"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple Cyan"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange Purple"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Green Purple"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Blue Green"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Yellow Blue"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Red Yellow"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Auto - speed"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Sun"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Star"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Flower"
+        },
+        {
+          "dmxRange": [32, 40],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Open Flower"
+        },
+        {
+          "dmxRange": [41, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Flower with hands"
+        },
+        {
+          "dmxRange": [48, 56],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Stars"
+        },
+        {
+          "dmxRange": [57, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Shards"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Open - shake"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Sun - shake"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Star - shake"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Flower - shake"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Open Flower - shake"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Flower with hands - shake"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Stars - shake"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 16,
+          "comment": "Shards - shake"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Auto mode - speed"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe (Slow to fast)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Disabled",
+          "helpWanted": "Unknown QLC+ capability preset LampOff, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Functions Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Generic",
+          "comment": "Auto mode 3",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Generic",
+          "comment": "Auto mode 2",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Generic",
+          "comment": "Auto mode 1",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Generic",
+          "comment": "Auto mode 0",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Generic",
+          "comment": "Sound mode 3",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Generic",
+          "comment": "Sound mode 2",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Generic",
+          "comment": "Sound mode 1",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "Sound mode 0",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    },
+    "Maintenance": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Generic",
+          "comment": "Disabled",
+          "helpWanted": "Unknown QLC+ capability preset LampOff, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "X Control"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "Y Control"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "XY control",
+          "helpWanted": "Unknown QLC+ capability preset ResetPanTilt, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    },
+    "Ring wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "Disabled",
+          "helpWanted": "Unknown QLC+ capability preset LampOff, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [5, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 34],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [35, 49],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [50, 64],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [65, 79],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 94],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [95, 109],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Slow Changes"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Red - Rotating Ring"
+        },
+        {
+          "dmxRange": [126, 133],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Green - Rotating Ring"
+        },
+        {
+          "dmxRange": [134, 141],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Blue - Rotating Ring"
+        },
+        {
+          "dmxRange": [142, 149],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Yellow - Rotating Ring"
+        },
+        {
+          "dmxRange": [150, 157],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Purple - Rotating Ring"
+        },
+        {
+          "dmxRange": [158, 165],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Cyan - Rotating Ring"
+        },
+        {
+          "dmxRange": [166, 173],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "White - Rotating Ring"
+        },
+        {
+          "dmxRange": [174, 181],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Red - Green - Rotating Ring"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Red - White - Rotating Ring"
+        },
+        {
+          "dmxRange": [190, 197],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Green - Yellow - Rotating Ring"
+        },
+        {
+          "dmxRange": [198, 205],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "Blue - White - Rotating Ring"
+        },
+        {
+          "dmxRange": [206, 213],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Rainbow - Rotating Ring"
+        },
+        {
+          "dmxRange": [214, 221],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Rainbow 2 - Rotating Ring"
+        },
+        {
+          "dmxRange": [222, 229],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "White Yellow Green - Rotating Ring"
+        },
+        {
+          "dmxRange": [230, 237],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "White Purple Blue - Rotating Ring"
+        },
+        {
+          "dmxRange": [238, 246],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "Rainbow 3 - Rotating Ring"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Generic",
+          "comment": "Auto",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color wheel",
+        "Gobo wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt speed",
+        "Functions Modes",
+        "Maintenance",
+        "Ring wheel"
+      ]
+    }
+  ]
+}
