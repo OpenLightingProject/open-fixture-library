@@ -30,7 +30,14 @@
     }
   },
   "availableChannels": {
-    "No Function": {
+    "No Function 1": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No Function 2": {
+      "name": "No Function",
       "capability": {
         "type": "NoFunction"
       }
@@ -42,8 +49,8 @@
           "dmxRange": [0, 10],
           "type": "NoFunction",
           "switchChannels": {
-            "No Function / Color Presets": "No Function",
-            "No Function / Effect Speed / Strobe Speed": "No Function"
+            "No Function / Color Presets": "No Function 1",
+            "No Function / Effect Speed / Strobe Speed": "No Function 2"
           }
         },
         {
@@ -52,7 +59,7 @@
           "effectName": "Static Color",
           "switchChannels": {
             "No Function / Color Presets": "Color Presets",
-            "No Function / Effect Speed / Strobe Speed": "No Function"
+            "No Function / Effect Speed / Strobe Speed": "No Function 2"
           }
         },
         {
@@ -79,7 +86,7 @@
           "effectPreset": "ColorJump",
           "switchChannels": {
             "No Function / Color Presets": "Color Presets",
-            "No Function / Effect Speed / Strobe Speed": "No Function"
+            "No Function / Effect Speed / Strobe Speed": "No Function 2"
           },
           "soundControlled": true
         },
