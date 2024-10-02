@@ -55,38 +55,38 @@
   },
   "modes": [
     {
-      "name": "1-channel 1",
-      "shortName": "1ch1",
+      "name": "1-channel Dimmer",
+      "shortName": "1ch",
       "channels": [
         "Dimmer Master"
       ]
     },
     {
-      "name": "1-channel 2",
-      "shortName": "1ch2",
+      "name": "1-channel Switch",
+      "shortName": "1ch-switch",
       "channels": [
         "Switch Master"
       ]
     },
     {
-      "name": "2-channel 1",
-      "shortName": "2ch1",
+      "name": "2-channel Dimmer",
+      "shortName": "2ch",
       "channels": [
         "Dimmer 1/2",
         "Dimmer 3/4"
       ]
     },
     {
-      "name": "2-channel 2",
-      "shortName": "2ch2",
+      "name": "2-channel Switch",
+      "shortName": "2ch-switch",
       "channels": [
         "Switch 1/2",
         "Switch 3/4"
       ]
     },
     {
-      "name": "4-channel 1",
-      "shortName": "4ch1",
+      "name": "4-channel Dimmer",
+      "shortName": "4ch",
       "channels": [
         "Dimmer 1",
         "Dimmer 2",
@@ -95,8 +95,8 @@
       ]
     },
     {
-      "name": "4-channel 2",
-      "shortName": "4ch2",
+      "name": "4-channel Switch",
+      "shortName": "4ch-switch",
       "channels": [
         "Switch 1",
         "Switch 2",
