@@ -5,8 +5,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Paul Rogalski"],
-    "createDate": "2024-09-29",
-    "lastModifyDate": "2024-09-29"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
   "links": {
     "manual": [
@@ -30,38 +30,67 @@
     }
   },
   "availableChannels": {
-    "Special Function": {
+    "No Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Special Functions": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "No Function / Color Presets": "No Function",
+            "No Function / Effect Speed / Strobe Speed": "No Function"
+          }
         },
         {
           "dmxRange": [11, 50],
-          "type": "Generic",
-          "comment": "Static Color"
+          "type": "Effect",
+          "effectName": "Static Color",
+          "switchChannels": {
+            "No Function / Color Presets": "Color Presets",
+            "No Function / Effect Speed / Strobe Speed": "No Function"
+          }
         },
         {
           "dmxRange": [51, 100],
           "type": "Effect",
-          "effectPreset": "ColorJump"
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "No Function / Color Presets": "Color Presets",
+            "No Function / Effect Speed / Strobe Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [101, 150],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "No Function / Color Presets": "Color Presets",
+            "No Function / Effect Speed / Strobe Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [151, 200],
           "type": "Effect",
           "effectPreset": "ColorJump",
+          "switchChannels": {
+            "No Function / Color Presets": "Color Presets",
+            "No Function / Effect Speed / Strobe Speed": "No Function"
+          },
           "soundControlled": true
         },
         {
           "dmxRange": [201, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe"
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "No Function / Color Presets": "Color Presets",
+            "No Function / Effect Speed / Strobe Speed": "Strobe Speed"
+          }
         }
       ]
     },
@@ -184,7 +213,7 @@
         }
       ]
     },
-    "Program Speed": {
+    "Effect Speed": {
       "defaultValue": 0,
       "capability": {
         "type": "EffectSpeed",
@@ -192,38 +221,56 @@
         "speedEnd": "fast"
       }
     },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity"
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Red": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red"
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Green": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green"
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Blue": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue"
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "UV": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "UV"
+        "color": "UV",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
@@ -232,9 +279,9 @@
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
-        "Special Function",
-        "Color Presets",
-        "Program Speed",
+        "Special Functions",
+        "No Function / Color Presets",
+        "No Function / Effect Speed / Strobe Speed",
         "Dimmer",
         "Red",
         "Green",
