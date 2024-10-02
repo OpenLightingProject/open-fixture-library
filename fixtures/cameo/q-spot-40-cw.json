@@ -1,20 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Q-Spot 40 CW",
-  "shortName": "q-spot-40-cw",
+  "shortName": "CLQS40CW",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Nikita"],
-    "createDate": "2024-09-04",
-    "lastModifyDate": "2024-09-04"
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
   },
-  "comment": "Available in black and white housing",
+  "comment": "Available in black and white housing (WH suffix), not sold anymore.",
   "links": {
     "manual": [
-      "https://www.cameolight.com/en/downloads/file/id/-2054555622"
-    ],
-    "productPage": [
-      "https://www.cameolight.com/en/series/q-spot-series/18002/q-spot-40-ww"
+      "https://www.cameolight.com/en/downloads/file/id/-1935126342"
     ],
     "video": [
       "https://www.youtube.com/watch?v=RzElVR8wCVA"
@@ -25,6 +22,12 @@
     "weight": 2.2,
     "power": 55,
     "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 25]
+    },
     "bulb": {
       "type": "LED",
       "colorTemperature": 6500,
@@ -36,11 +39,11 @@
       "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "Strobe functions": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -64,6 +67,8 @@
           "dmxRange": [34, 56],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "randomTiming": true
         },
         {
@@ -92,8 +97,9 @@
         },
         {
           "dmxRange": [128, 250],
-          "type": "StrobeSpeed",
-          "speedStart": "1Hz",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
           "speedEnd": "20Hz"
         },
         {
@@ -106,11 +112,12 @@
   },
   "modes": [
     {
-      "name": "3ch",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Dimmer fine",
-        "Strobe functions"
+        "Shutter / Strobe"
       ]
     }
   ]
