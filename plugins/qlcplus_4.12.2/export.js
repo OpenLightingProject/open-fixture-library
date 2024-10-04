@@ -11,10 +11,10 @@ import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 import {
+  exportHelpers,
+  getCapabilityPreset,
   getChannelPreset,
   getFineChannelPreset,
-  getCapabilityPreset,
-  exportHelpers,
 } from './presets.js';
 
 export const version = `1.3.0`;

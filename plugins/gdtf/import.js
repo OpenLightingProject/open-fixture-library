@@ -3,9 +3,9 @@ import xml2js from 'xml2js';
 
 import importJson from '../../lib/import-json.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import { scaleDmxValue, scaleDmxRangeIndividually } from '../../lib/scale-dmx-values.js';
+import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-values.js';
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
-import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers.js';
+import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
 export const version = `0.2.0`;
 
