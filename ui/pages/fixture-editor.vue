@@ -131,9 +131,9 @@ import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
-  getEmptyFormState,
-  getEmptyFixture,
   getEmptyChannel,
+  getEmptyFixture,
+  getEmptyFormState,
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
 
