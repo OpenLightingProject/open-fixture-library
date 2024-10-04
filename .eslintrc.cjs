@@ -103,6 +103,10 @@ const enabledRuleParameters = {
       order: `asc`,
       caseInsensitive: true,
     },
+    named: {
+      enabled: true,
+      cjsExports: false,
+    },
   }],
 
   // eslint-plugin-jsdoc
