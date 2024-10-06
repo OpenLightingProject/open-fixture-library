@@ -1,0 +1,520 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MW1",
+  "categories": [
+    "Moving Head",
+    "Color Changer"
+  ],
+  "meta": {
+    "authors": ["Ryan Goodwin"],
+    "createDate": "2024-10-06",
+    "lastModifyDate": "2024-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.mega.lighting/_files/ugd/21ff82_e921a48d91974862860f4e5f05ed7f30.pdf"
+    ],
+    "productPage": [
+      "https://www.mega.lighting/mw1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=StuUWiJoji8",
+      "https://www.youtube.com/watch?v=pS-_VBK4j8k"
+    ]
+  },
+  "physical": {
+    "dimensions": [323.85, 228.6, 393.7],
+    "weight": 8.6,
+    "power": 376,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "7x Osram RGBW 40W LED"
+    },
+    "lens": {
+      "degreesMinMax": [9, 44]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, "7", null, "2", null],
+        ["6", null, "1", null, "3"],
+        [null, "5", null, "4", null]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": [
+        "Pan fine"
+      ],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": [
+        "Tilt fine"
+      ],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "18Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "18Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "18Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Shutter Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 6],
+          "type": "Effect",
+          "effectName": "Light 1"
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "Effect",
+          "effectName": "Light 2"
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "Effect",
+          "effectName": "Light 3"
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "Effect",
+          "effectName": "Light 4"
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "Effect",
+          "effectName": "Light 5"
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "Effect",
+          "effectName": "Light 6"
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "Effect",
+          "effectName": "Light 7"
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "Effect",
+          "effectName": "Light 2+3"
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "Effect",
+          "effectName": "Light 4+5"
+        },
+        {
+          "dmxRange": [63, 69],
+          "type": "Effect",
+          "effectName": "Light 6+7"
+        },
+        {
+          "dmxRange": [70, 76],
+          "type": "Effect",
+          "effectName": "Light 1+2+3"
+        },
+        {
+          "dmxRange": [77, 83],
+          "type": "Effect",
+          "effectName": "Light 1+4+5"
+        },
+        {
+          "dmxRange": [84, 90],
+          "type": "Effect",
+          "effectName": "Light 1+6+7"
+        },
+        {
+          "dmxRange": [91, 97],
+          "type": "Effect",
+          "effectName": "Light 1+2"
+        },
+        {
+          "dmxRange": [98, 104],
+          "type": "Effect",
+          "effectName": "Light 3+6"
+        },
+        {
+          "dmxRange": [105, 111],
+          "type": "Effect",
+          "effectName": "Light 2+3+5+6"
+        },
+        {
+          "dmxRange": [112, 118],
+          "type": "Effect",
+          "effectName": "Light 1+3+6"
+        },
+        {
+          "dmxRange": [119, 125],
+          "type": "Effect",
+          "effectName": "Light 2+4+6"
+        },
+        {
+          "dmxRange": [126, 132],
+          "type": "Effect",
+          "effectName": "Light 1+2+3+5+6"
+        },
+        {
+          "dmxRange": [133, 139],
+          "type": "Effect",
+          "effectName": "Light 2+3+4+5+6+7"
+        },
+        {
+          "dmxRange": [140, 146],
+          "type": "Effect",
+          "effectName": "Light 2,3,4,5,6 M"
+        },
+        {
+          "dmxRange": [147, 153],
+          "type": "Effect",
+          "effectName": "Light 2+3,4+5,6+7 M"
+        },
+        {
+          "dmxRange": [154, 160],
+          "type": "Effect",
+          "effectName": "Light 1+2,1+3,1+4,1+5,1+6,1+7 M"
+        },
+        {
+          "dmxRange": [161, 167],
+          "type": "Effect",
+          "effectName": "Light 1+2+3, 1+4+5, 1+6+7 M"
+        },
+        {
+          "dmxRange": [168, 174],
+          "type": "Effect",
+          "effectName": "Light 2+3+4, 3+4+5, 4+5+6, 5+6+7, 6+7+2, 7+2+3 M"
+        },
+        {
+          "dmxRange": [175, 181],
+          "type": "Effect",
+          "effectName": "Light 1+2+3+4, 1+3+4+5, 1+4+5+6, 1+5+6+7, 1+6+7+2, 1+7+2+3 M"
+        },
+        {
+          "dmxRange": [182, 188],
+          "type": "Effect",
+          "effectName": "Light 2+5, 3+6, 4+7 M"
+        },
+        {
+          "dmxRange": [189, 195],
+          "type": "Effect",
+          "effectName": "Light 2+3+5+6, 3+4+6+7,4+5+7+1 M"
+        },
+        {
+          "dmxRange": [196, 202],
+          "type": "Effect",
+          "effectName": "Light 1+2+5,1+3+6,1+4+7 M"
+        },
+        {
+          "dmxRange": [203, 209],
+          "type": "Effect",
+          "effectName": "Light 1+2+3+5+6, 1+3+4+6+7, 1+4+5+7+1 M"
+        },
+        {
+          "dmxRange": [210, 216],
+          "type": "Effect",
+          "effectName": "Light 1+2+3+5+6, 1+3+4+6+7, 1+4+5+7+1 M"
+        },
+        {
+          "dmxRange": [217, 223],
+          "type": "Effect",
+          "effectName": "Light 1, 2+3+4+5+6+7"
+        },
+        {
+          "dmxRange": [224, 230],
+          "type": "Effect",
+          "effectName": "Light 1, 2+3+4+5+6+7 Color"
+        },
+        {
+          "dmxRange": [231, 237],
+          "type": "Effect",
+          "effectName": "Light 1,2+3+4+5+6+7 Color"
+        },
+        {
+          "dmxRange": [238, 244],
+          "type": "Effect",
+          "effectName": "Light 1, 2+3, 4+5, 6+7 Color"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Light Random Color"
+        }
+      ]
+    },
+    "Shutter Macro Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter Macro Background Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "What colors are at what values?"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8653K",
+          "colorTemperatureEnd": "2823K"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Pre Built Patterns",
+          "helpWanted": "What are the patterns available?"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "44deg",
+        "angleEnd": "9deg"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Fixture Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11Ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "P/T Speed",
+        "Shutter",
+        "Hue",
+        "Saturation",
+        "Dimmer",
+        "Zoom",
+        "Control"
+      ]
+    },
+    {
+      "name": "14 Channel",
+      "shortName": "14Ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Hue",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All",
+        "Shutter",
+        "Dimmer",
+        "Zoom",
+        "Macros"
+      ]
+    },
+    {
+      "name": "18 Channel",
+      "shortName": "18Ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "P/T Speed",
+        "Dimmer",
+        "Shutter",
+        "Red All",
+        "Green All",
+        "Blue All",
+        "White All",
+        "CTO",
+        "Hue",
+        "Shutter Macros",
+        "Shutter Macro Speed",
+        "Shutter Macro Background Color",
+        "Zoom",
+        "Control"
+      ]
+    },
+    {
+      "name": "38 Channel",
+      "shortName": "38Ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "P/T Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Zoom",
+        "Control",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
