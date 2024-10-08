@@ -29,14 +29,7 @@
     }
   },
   "availableChannels": {
-    "No Function 1": {
-      "name": "No Function",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "No Function 2": {
-      "name": "No Function",
+    "No Function": {
       "capability": {
         "type": "NoFunction"
       }
@@ -48,8 +41,7 @@
           "dmxRange": [0, 10],
           "type": "NoFunction",
           "switchChannels": {
-            "No Function / Color Presets": "No Function 1",
-            "Speed": "No Function 2"
+            "Speed": "No Function"
           }
         },
         {
@@ -57,8 +49,7 @@
           "type": "Effect",
           "effectName": "Static Color",
           "switchChannels": {
-            "No Function / Color Presets": "Color Presets",
-            "Speed": "No Function 2"
+            "Speed": "No Function"
           }
         },
         {
@@ -66,7 +57,6 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
-            "No Function / Color Presets": "Color Presets",
             "Speed": "Effect Speed"
           }
         },
@@ -75,7 +65,6 @@
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
-            "No Function / Color Presets": "Color Presets",
             "Speed": "Effect Speed"
           }
         },
@@ -84,8 +73,7 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
-            "No Function / Color Presets": "Color Presets",
-            "Speed": "No Function 2"
+            "Speed": "No Function"
           },
           "soundControlled": true
         },
@@ -94,7 +82,6 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "switchChannels": {
-            "No Function / Color Presets": "Color Presets",
             "Speed": "Strobe Speed"
           }
         }
@@ -286,7 +273,7 @@
       "shortName": "8ch",
       "channels": [
         "Special Functions",
-        "No Function / Color Presets",
+        "Color Presets",
         "Speed",
         "Dimmer",
         "Red",
