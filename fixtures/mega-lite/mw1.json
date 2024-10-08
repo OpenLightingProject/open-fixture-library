@@ -1,10 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "MW1",
-  "categories": [
-    "Moving Head",
-    "Color Changer"
-  ],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Ryan Goodwin"],
     "createDate": "2024-10-06",
@@ -77,9 +74,7 @@
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": [
-        "Pan fine"
-      ],
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32512,
       "capability": {
         "type": "Pan",
@@ -88,9 +83,7 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": [
-        "Tilt fine"
-      ],
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32512,
       "capability": {
         "type": "Tilt",
