@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
-import eslint from '@eslint/js';
+import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
@@ -365,7 +365,7 @@ export default [
       `tmp/`,
     ],
   },
-  eslint.configs.recommended,
+  eslintJs.configs.recommended,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJsdoc.configs[`flat/recommended-typescript-flavor`],
   ...eslintPluginNuxtConfigRecommended,
