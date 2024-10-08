@@ -1,12 +1,10 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
+import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
@@ -14,10 +12,14 @@ import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 
-const flatCompat = new FlatCompat({
-  baseDirectory: path.dirname(fileURLToPath(import.meta.url)),
-});
-const eslintPluginNuxtConfigRecommended = fixupConfigRules(flatCompat.extends(`plugin:eslint-plugin-nuxt/recommended`));
+const eslintPluginNuxtConfigAll = {
+  plugins: {
+    nuxt: fixupPluginRules(eslintPluginNuxt),
+  },
+  rules: Object.fromEntries(
+    Object.keys(eslintPluginNuxt.rules).map(ruleName => [`nuxt/${ruleName}`, `error`]),
+  ),
+};
 
 const enabledRuleParameters = {
   // Core ESLint rules
@@ -147,9 +149,6 @@ const enabledRuleParameters = {
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
-
-  // eslint-plugin-nuxt
-  'nuxt/require-func-head': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
@@ -368,13 +367,13 @@ export default [
   eslintJs.configs.recommended,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJsdoc.configs[`flat/recommended-typescript-flavor`],
-  ...eslintPluginNuxtConfigRecommended,
+  eslintPluginNuxtConfigAll,
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs[`flat/recommended`],
   ...eslintPluginVue.configs[`flat/vue2-recommended`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
-  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue` and `nuxt`
+  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
   {
     languageOptions: {
       globals: globals.node,
