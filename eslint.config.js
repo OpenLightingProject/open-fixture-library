@@ -380,7 +380,6 @@ export default [
       ecmaVersion: 2022,
       sourceType: `module`,
     },
-
     rules: {
       ...Object.fromEntries(
         Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
@@ -392,7 +391,6 @@ export default [
         disabledRules.map(ruleName => [ruleName, `off`]),
       ),
     },
-
     settings: {
       jsdoc: {
         tagNamePreference: {
