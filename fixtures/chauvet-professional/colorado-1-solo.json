@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Da Graca Neves Eric", "Ken Harris"],
     "createDate": "2022-04-19",
-    "lastModifyDate": "2022-04-19"
+    "lastModifyDate": "2024-10-08"
   },
   "links": {
     "productPage": [
@@ -282,7 +282,8 @@
         },
         {
           "dmxRange": [10, 99],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "25Hz"
         },
