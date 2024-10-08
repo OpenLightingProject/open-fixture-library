@@ -38,9 +38,7 @@
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Shutter / Strobe": {
