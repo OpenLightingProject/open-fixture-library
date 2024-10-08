@@ -12,13 +12,14 @@ import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 
-const eslintPluginNuxtConfigAll = {
+const eslintPluginNuxtConfigRecommended = {
   plugins: {
     nuxt: fixupPluginRules(eslintPluginNuxt),
   },
-  rules: Object.fromEntries(
-    Object.keys(eslintPluginNuxt.rules).map(ruleName => [`nuxt/${ruleName}`, `error`]),
-  ),
+  rules: {
+    ...eslintPluginNuxt.configs.base.rules,
+    ...eslintPluginNuxt.configs.recommended.rules,
+  },
 };
 
 const enabledRuleParameters = {
@@ -149,6 +150,9 @@ const enabledRuleParameters = {
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
+
+  // eslint-plugin-nuxt
+  'nuxt/require-func-head': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
@@ -367,7 +371,7 @@ export default [
   eslintJs.configs.recommended,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJsdoc.configs[`flat/recommended-typescript-flavor`],
-  eslintPluginNuxtConfigAll,
+  eslintPluginNuxtConfigRecommended,
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs[`flat/recommended`],
