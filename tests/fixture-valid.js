@@ -558,6 +558,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
+          StrobeSpeed: checkStrobeSpeedCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           WheelSlot: checkWheelCapability,
@@ -608,6 +609,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             if (capability.randomTiming) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
             }
+          }
+        }
+
+        /**
+         * Type-specific checks for StrobeSpeed capabilities.
+         */
+        function checkStrobeSpeedCapability() {
+          const otherCapabilityHasShutterStrobe = channel.capabilities.some(otherCapability => otherCapability.type === `ShutterStrobe`);
+          const hasOtherStrobeChannel = fixture.coarseChannels.some(otherChannel => otherChannel !== channel && otherChannel.type === `Strobe`);
+          if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
+            result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "strobe"?`);
           }
         }
 
