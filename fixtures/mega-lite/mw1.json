@@ -23,7 +23,7 @@
     ]
   },
   "physical": {
-    "dimensions": [323.85, 228.6, 393.7],
+    "dimensions": [324, 229, 394],
     "weight": 8.6,
     "power": 376,
     "powerConnectors": {
@@ -51,28 +51,24 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "highlightValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green $pixelKey": {
-      "highlightValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue $pixelKey": {
-      "highlightValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White $pixelKey": {
-      "highlightValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -430,8 +426,8 @@
   },
   "modes": [
     {
-      "name": "11 Channel",
-      "shortName": "11Ch",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -447,8 +443,8 @@
       ]
     },
     {
-      "name": "14 Channel",
-      "shortName": "14Ch",
+      "name": "14-channel",
+      "shortName": "14ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -467,8 +463,8 @@
       ]
     },
     {
-      "name": "18 Channel",
-      "shortName": "18Ch",
+      "name": "18-channel",
+      "shortName": "18ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -491,8 +487,8 @@
       ]
     },
     {
-      "name": "38 Channel",
-      "shortName": "38Ch",
+      "name": "38-channel",
+      "shortName": "38ch",
       "channels": [
         "Pan",
         "Pan fine",
