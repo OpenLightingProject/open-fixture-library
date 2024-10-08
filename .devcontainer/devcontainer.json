@@ -1,10 +1,10 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-	"name": "Node.js",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
-	"containerEnv": {
-		"HOST": "0.0.0.0" // Let Nuxt listen on all interfaces, otherwise container port forwarding doesn't work.
-	},
-	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && npm install"
+  "name": "Node.js",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "containerEnv": {
+    "HOST": "0.0.0.0" // Let Nuxt listen on all interfaces, otherwise container port forwarding doesn't work.
+  },
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && npm install"
 }
