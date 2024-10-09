@@ -131,9 +131,9 @@ import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
-  getEmptyFormState,
-  getEmptyFixture,
   getEmptyChannel,
+  getEmptyFixture,
+  getEmptyFormState,
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
 
@@ -271,7 +271,7 @@ export default {
         const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
         const channelPosition = channelMode.channels.indexOf(channelUuid);
-        if (channelPosition > -1) {
+        if (channelPosition !== -1) {
           // remove channel reference from mode
           channelMode.channels.splice(channelPosition, 1);
         }
