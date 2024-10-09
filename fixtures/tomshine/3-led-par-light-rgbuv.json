@@ -72,10 +72,10 @@
           "dmxRange": [151, 200],
           "type": "Effect",
           "effectPreset": "ColorJump",
+          "soundControlled": true,
           "switchChannels": {
             "Speed": "No Function"
-          },
-          "soundControlled": true
+          }
         },
         {
           "dmxRange": [201, 255],
