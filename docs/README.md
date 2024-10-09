@@ -58,6 +58,34 @@ npm run build
 
 Continue with [UI docs](ui.md).
 
+### Dev Container
+
+Make sure you have these dependencies installed:
+
+* [Git](https://git-scm.com/downloads)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+  * **Windows-only:** [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) + [WSL integration](https://docs.docker.com/desktop/wsl/) in Docker Desktop enabled
+* [VS Code](https://code.visualstudio.com/Download)
+  * [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed
+  * **Windows-only:** [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension installed
+
+Open a terminal and run:
+
+```sh
+git clone https://github.com/OpenLightingProject/open-fixture-library.git
+code open-fixture-library
+```
+
+In VS Code, select <kbd>F1</kbd> -> *Dev Containers: Reopen in Container*, which reopens the repository in a container and runs `npm install`.
+
+Open a terminal in VS Code and run:
+
+```sh
+npm run build
+```
+
+Continue with [UI docs](ui.md).
+
 ## Contributing
 
 Please see [`CONTRIBUTING.md`](CONTRIBUTING.md).
