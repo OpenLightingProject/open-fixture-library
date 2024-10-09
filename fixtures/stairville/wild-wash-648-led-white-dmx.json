@@ -1,0 +1,269 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild Wash 648 LED White DMX",
+  "shortName": "WildWash648LEDWhite",
+  "comment": "The fixture isn't sold anymore.",
+  "categories": ["Strobe", "Blinder"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-09",
+    "lastModifyDate": "2024-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1253143/Stairville-Wild-Wash-132-Led-Rgb-Dmx.html#product-Wild%20Wash%20648%20LED%20RGB%20DMX"
+    ]
+  },
+  "physical": {
+    "dimensions": [335, 182, 93],
+    "weight": 3.25,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "648x 0.2 W LED"
+    },
+    "lens": {
+      "degreesMinMax": [75, 75]
+    }
+  },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Flash Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "510ms"
+      }
+    },
+    "Shutter / Strobe Advanced": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "helpWanted": "This range is missing in the manual. Has it actually no function?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Automatic strobe programs with alternating segments"
+        }
+      ]
+    },
+    "Strobe Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "helpWanted": "This range is missing in the manual. Has it actually no function?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer Master",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Dimmer Master",
+        "Shutter / Strobe",
+        "Strobe Flash Duration"
+      ]
+    },
+    {
+      "name": "3-channel 2",
+      "shortName": "3ch2",
+      "channels": [
+        "Dimmer Master",
+        "Shutter / Strobe Advanced",
+        "Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer Master",
+        "Shutter / Strobe Advanced",
+        "Strobe Programs",
+        "Strobe Program Speed",
+        "Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer Master",
+        "Shutter / Strobe",
+        "Strobe Flash Duration",
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}
