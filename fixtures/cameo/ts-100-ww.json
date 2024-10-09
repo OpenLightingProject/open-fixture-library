@@ -137,13 +137,15 @@
   },
   "modes": [
     {
-      "name": "1ch",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Dimmer"
       ]
     },
     {
-      "name": "3ch",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Dimmer fine",
@@ -151,7 +153,8 @@
       ]
     },
     {
-      "name": "5ch",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Dimmer",
         "Dimmer fine",
