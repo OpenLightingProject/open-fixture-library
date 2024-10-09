@@ -463,4 +463,10 @@ export default [
       'unicorn/prevent-abbreviations': `off`,
     },
   },
+  {
+    files: [`.devcontainer/devcontainer.json`],
+    rules: {
+      'jsonc/no-comments': `off`,
+    },
+  },
 ];
