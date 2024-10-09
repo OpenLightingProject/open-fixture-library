@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
   "name": "Node.js",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "containerEnv": {
     "HOST": "0.0.0.0" // Let Nuxt listen on all interfaces, otherwise container port forwarding doesn't work.
   },
