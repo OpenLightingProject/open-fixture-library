@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
       - name: Setup Node.js v20
         uses: actions/setup-node@v4.0.4
         with:
@@ -26,3 +26,7 @@ jobs:
           GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
           NODE_ENV: production
+      - name: Check Markdown Links in all files
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'
