@@ -111,10 +111,10 @@
 <script>
 import { objectProp, stringProp } from 'vue-ts-types';
 import {
-  schemaDefinitions,
-  physicalProperties,
   physicalBulbProperties,
   physicalLensProperties,
+  physicalProperties,
+  schemaDefinitions,
 } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
