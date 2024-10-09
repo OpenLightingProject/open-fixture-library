@@ -125,8 +125,9 @@
     },
     "Color Segment": {
       "capability": {
-        "type": "Effect",
-        "effectName": "Color Segment"
+        "type": "Generic",
+        "comment": "Color Segment",
+        "helpWanted": "What does 'Color Segment' mean and is there a better fitting capability type?"
       }
     }
   },
