@@ -40,7 +40,7 @@
     }
   },
   "availableChannels": {
-    "Shutter / Strobe 1": {
+    "Strobe": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -57,7 +57,7 @@
         }
       ]
     },
-    "Shutter / Strobe 2": {
+    "Shutter / Strobe": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -92,7 +92,7 @@
         "durationEnd": "510ms"
       }
     },
-    "Shutter / Strobe 3": {
+    "Shutter / Strobe Advanced": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -212,7 +212,7 @@
       "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "Shutter / Strobe 1"
+        "Strobe"
       ]
     },
     {
@@ -220,7 +220,7 @@
       "shortName": "2ch",
       "channels": [
         "Dimmer Master",
-        "Shutter / Strobe 2"
+        "Shutter / Strobe"
       ]
     },
     {
@@ -228,7 +228,7 @@
       "shortName": "3ch1",
       "channels": [
         "Dimmer Master",
-        "Shutter / Strobe 2",
+        "Shutter / Strobe",
         "Strobe Flash Duration"
       ]
     },
@@ -237,7 +237,7 @@
       "shortName": "3ch2",
       "channels": [
         "Dimmer Master",
-        "Shutter / Strobe 3",
+        "Shutter / Strobe Advanced",
         "Sound Sensitivity"
       ]
     },
@@ -246,7 +246,7 @@
       "shortName": "5ch",
       "channels": [
         "Dimmer Master",
-        "Shutter / Strobe 3",
+        "Shutter / Strobe Advanced",
         "Strobe Programs",
         "Strobe Program Speed",
         "Sound Sensitivity"
@@ -257,7 +257,7 @@
       "shortName": "7ch",
       "channels": [
         "Dimmer Master",
-        "Shutter / Strobe 2",
+        "Shutter / Strobe",
         "Strobe Flash Duration",
         "Dimmer 1",
         "Dimmer 2",
