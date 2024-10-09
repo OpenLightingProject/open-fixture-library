@@ -14,7 +14,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
+import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
 

@@ -28,13 +28,13 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import {
-  getEmptyFixture,
-  getEmptyLink,
-  getEmptyPhysical,
-  getEmptyMode,
+  getEmptyCapability,
   getEmptyChannel,
   getEmptyFineChannel,
-  getEmptyCapability,
+  getEmptyFixture,
+  getEmptyLink,
+  getEmptyMode,
+  getEmptyPhysical,
   getSanitizedChannel,
 } from '../../assets/scripts/editor-utils.js';
 

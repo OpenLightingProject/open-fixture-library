@@ -11,13 +11,13 @@ import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 import {
+  exportHelpers,
+  getCapabilityPreset,
   getChannelPreset,
   getFineChannelPreset,
-  getCapabilityPreset,
-  exportHelpers,
 } from './presets.js';
 
-export const version = `1.3.0`;
+export const version = `1.3.1`;
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -436,11 +436,23 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       // add whitespace
       let connector = physical.DMXconnector;
 
-      if (connector === `3.5mm stereo jack`) {
-        connector = `3.5 mm stereo jack`;
-      }
-      else if (connector === `RJ45`) {
-        connector = `Other`;
+      switch (connector) {
+        case `3.5mm stereo jack`: {
+          connector = `3.5 mm stereo jack`;
+          break;
+        }
+        case `3-pin XLR IP65`: {
+          connector = `3-pin IP65`;
+          break;
+        }
+        case `5-pin XLR IP65`: {
+          connector = `5-pin IP65`;
+          break;
+        }
+        case `RJ45`: {
+          connector = `Other`;
+          break;
+        }
       }
 
       return {
