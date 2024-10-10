@@ -1,14 +1,25 @@
-const pluginPresets = {
-  import: `recommended`,
-  jsdoc: `recommended-typescript-flavor`,
-  markdown: `recommended-legacy`,
-  nuxt: `recommended`,
-  promise: `recommended`,
-  sonarjs: `recommended-legacy`,
-  unicorn: `recommended`,
-  vue: `recommended`,
-  'vuejs-accessibility': `recommended`,
-  jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
+import { fixupPluginRules } from '@eslint/compat';
+import eslintJs from '@eslint/js';
+import eslintMarkdown from '@eslint/markdown';
+import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
+import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import eslintPluginNuxt from 'eslint-plugin-nuxt';
+import eslintPluginPromise from 'eslint-plugin-promise';
+import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import eslintPluginVue from 'eslint-plugin-vue';
+import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
+import globals from 'globals';
+
+const eslintPluginNuxtConfigRecommended = {
+  plugins: {
+    nuxt: fixupPluginRules(eslintPluginNuxt),
+  },
+  rules: {
+    ...eslintPluginNuxt.configs.base.rules,
+    ...eslintPluginNuxt.configs.recommended.rules,
+  },
 };
 
 const enabledRuleParameters = {
@@ -102,6 +113,10 @@ const enabledRuleParameters = {
     alphabetize: {
       order: `asc`,
       caseInsensitive: true,
+    },
+    named: {
+      enabled: true,
+      cjsExports: false,
     },
   }],
 
@@ -327,6 +342,7 @@ const disabledRules = [
   `unicorn/no-process-exit`,
   `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
   `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
+  `unicorn/prefer-global-this`,
   `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
@@ -340,98 +356,117 @@ for (const ruleName of vueCoreExtensionRules) {
   }
 }
 
-module.exports = {
-  env: {
-    es6: true,
-    node: true,
+export default [
+  {
+    ignores: [
+      `package-lock.json`,
+      `fixtures/register.json`,
+      `server/ofl-secrets.json`,
+      `.vscode/`,
+      `.nuxt/`,
+      `node_modules/`,
+      `tmp/`,
+    ],
   },
-  parserOptions: {
-    ecmaVersion: 2022,
-  },
-  plugins: Object.keys(pluginPresets),
-  extends: [
-    `eslint:recommended`,
-    ...Object.entries(pluginPresets).map(([plugin, preset]) => `plugin:${plugin}/${preset}`),
-  ],
-  rules: {
-    ...Object.fromEntries(
-      Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
-        ruleName,
-        [warnRules.has(ruleName) ? `warn` : `error`, ...parameters],
-      ]),
-    ),
-    ...Object.fromEntries(
-      disabledRules.map(ruleName => [ruleName, `off`]),
-    ),
-  },
-  settings: {
-    jsdoc: {
-      tagNamePreference: {
-        augments: `extends`,
-        class: `constructor`,
-        file: `fileoverview`,
-        fires: `emits`,
-        linkcode: `link`,
-        linkplain: `link`,
-        overview: `fileoverview`,
-      },
-      preferredTypes: {
-        '*': `any`,
-        array: `Array`,
-        Boolean: `boolean`,
-        Number: `number`,
-        Object: `object`,
-        String: `string`,
-        '.<>': `<>`,
-        'Array<>': `[]`,
-        'object<>': `Record<>`,
-        'Object<>': `Record<>`,
+  eslintJs.configs.recommended,
+  eslintPluginImport.flatConfigs.recommended,
+  eslintPluginJsdoc.configs[`flat/recommended-typescript-flavor`],
+  eslintPluginNuxtConfigRecommended,
+  eslintPluginPromise.configs[`flat/recommended`],
+  eslintPluginSonarjs.configs.recommended,
+  eslintPluginUnicorn.configs[`flat/recommended`],
+  ...eslintPluginVue.configs[`flat/vue2-recommended`],
+  ...eslintPluginVueA11y.configs[`flat/recommended`],
+  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
+  {
+    languageOptions: {
+      globals: globals.node,
+      ecmaVersion: 2022,
+      sourceType: `module`,
+    },
+    rules: {
+      ...Object.fromEntries(
+        Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
+          ruleName,
+          [warnRules.has(ruleName) ? `warn` : `error`, ...parameters],
+        ]),
+      ),
+      ...Object.fromEntries(
+        disabledRules.map(ruleName => [ruleName, `off`]),
+      ),
+    },
+    settings: {
+      jsdoc: {
+        tagNamePreference: {
+          augments: `extends`,
+          class: `constructor`,
+          file: `fileoverview`,
+          fires: `emits`,
+          linkcode: `link`,
+          linkplain: `link`,
+          overview: `fileoverview`,
+        },
+        preferredTypes: {
+          '*': `any`,
+          array: `Array`,
+          Boolean: `boolean`,
+          Number: `number`,
+          Object: `object`,
+          String: `string`,
+          '.<>': `<>`,
+          'Array<>': `[]`,
+          'object<>': `Record<>`,
+          'Object<>': `Record<>`,
+        },
       },
     },
   },
-  ignorePatterns: [`package-lock.json`],
-  overrides: [
-    {
-      files: [`**/*.md/*.js`],
-      rules: {
-        'no-unused-vars': `off`,
-        'jsdoc/require-jsdoc': `off`,
-        'import/no-unresolved': `off`,
-      },
+  ...eslintMarkdown.configs.processor,
+  {
+    files: [`**/*.md/*.js`],
+    rules: {
+      'jsdoc/require-jsdoc': `off`,
+      'import/no-unresolved': `off`,
     },
-    {
-      files: [`**/*.cjs`, `server/**.js`],
-      parserOptions: {
-        sourceType: `script`,
-      },
-      rules: {
-        'import/no-commonjs': `off`,
-        'unicorn/prefer-module': `off`,
-        'unicorn/prefer-top-level-await': `off`,
-      },
+  },
+  {
+    files: [`**/*.cjs`, `server/**.js`],
+    languageOptions: {
+      sourceType: `script`,
     },
-    {
-      files: [`**/*.vue`],
+    rules: {
+      'import/no-commonjs': `off`,
+      'unicorn/prefer-module': `off`,
+      'unicorn/prefer-top-level-await': `off`,
     },
-    {
-      files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
-      rules: {
-        'vue/multi-word-component-names': `off`,
-      },
+  },
+  {
+    files: [`**/*.vue`],
+  },
+  {
+    files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
+    rules: {
+      'vue/multi-word-component-names': `off`,
     },
-    {
-      files: [`fixtures/**/*.json`],
-      rules: {
-        // allow alignment of pixel keys in matrix
-        'no-multi-spaces': [`error`, {
-          exceptions: {
-            JSONArrayExpression: true,
-          },
-        }],
-        'jsonc/array-bracket-spacing': `off`,
+  },
+  {
+    files: [`fixtures/**/*.json`],
+    rules: {
+      // allow alignment of pixel keys in matrix
+      'no-multi-spaces': [`error`, {
+        exceptions: {
+          JSONArrayExpression: true,
+        },
+      }],
+      'jsonc/array-bracket-spacing': `off`,
 
-        'unicorn/prevent-abbreviations': `off`,
-      },
+      'unicorn/prevent-abbreviations': `off`,
     },
-  ],
-};
+  },
+  {
+    files: [`.devcontainer/devcontainer.json`],
+    rules: {
+      'jsonc/no-comments': `off`,
+    },
+  },
+];
