@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 7x12W RGBW",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Karel"],
+    "createDate": "2024-10-11",
+    "lastModifyDate": "2024-10-11"
+  },
+  "links": {
+    "manual": [
+      "https://shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lighting"
+    ],
+    "productPage": [
+      "https://shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lighting"
+    ],
+    "video": [
+      "https://shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lighting"
+    ]
+  },
+  "rdm": {
+    "modelId": "invalid"
+  },
+  "physical": {
+    "dimensions": [178, 179, 113],
+    "weight": 0.9,
+    "power": 84,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Function"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PAR",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
