@@ -1,0 +1,856 @@
+{
+    "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+    "name": "Framebot 600",
+    "categories": ["Moving Head", "Color Changer"],
+    "meta": {
+      "authors": ["Ryan Goodwin"],
+      "createDate": "2024-10-12",
+      "lastModifyDate": "2024-10-12"
+    },
+    "links": {
+      "manual": [
+        "https://www.mega.lighting/_files/ugd/21ff82_b4f803e84eb04f0f92f7a38066073ab8.pdf"
+      ],
+      "productPage": [
+        "https://www.mega.lighting/blank-5-1-1-3-1-1"
+      ],
+      "video": [
+        "https://www.youtube.com/watch?v=RWwEGS5yn6A"
+      ]
+    },
+    "physical": {
+      "dimensions": [389, 339, 635],
+      "weight": 25.4,
+      "power": 807,
+      "powerConnectors": {
+        "powerCON TRUE1": "input only"
+      },
+      "DMXconnector": "3-pin and 5-pin",
+      "bulb": {
+        "type": "580W White LED"
+      },
+      "lens": {
+        "degreesMinMax": [6.5, 42]
+      }
+    },
+    "wheels": {
+      "Color Wheel": {
+        "slots":[
+          {
+            "type": "Open"
+          },
+          {
+            "type": "Color",
+            "name": "Red",
+            "colors": ["#ff0000"]
+          },
+          {
+            "type": "Color",
+            "name": "Yellow",
+            "colors": ["#ffff00"]
+          },
+          {
+            "type": "Color",
+            "name": "Green",
+            "colors": ["#00ff00"]
+          },
+          {
+            "type": "Color",
+            "name": "Blue",
+            "colors": ["#0000ff"]
+          },
+          {
+            "type": "Color",
+            "name": "Orange",
+            "colors": ["#ff8000"]
+          },
+          {
+            "type": "Color",
+            "name": "Dark Blue",
+            "colors": ["#000080"]
+          }
+        ]
+      },
+      "Rotating Gobo Wheel": {
+        "slots": [
+          {
+            "type": "Open"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          }
+        ]
+      },
+      "Static Gobo Wheel": {
+        "slots": [
+          {
+            "type": "Open"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          },
+          {
+            "type": "Gobo"
+          }
+        ]
+      },
+      "Colormation": {
+        "slots": [
+          {
+            "type": "Open"
+          },
+          {
+            "type": "Gobo"
+          }
+        ]
+      }
+    },
+
+    "availableChannels": {
+      "Pan": {
+        "fineChannelAliases": ["Pan fine"],
+        "defaultValue": 32768,
+        "capability": {
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
+        }
+      },
+      "Tilt": {
+        "fineChannelAliases": ["Tilt fine"],
+        "defaultValue": 32768,
+        "capability": {
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg"
+        }
+      },
+      "Pan/Tilt Speed": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      },
+      "Color Wheel":{
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 7],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [8, 15],
+            "type": "WheelSlot",
+            "slotNumber": 2
+          },
+          {
+            "dmxRange": [16, 23],
+            "type": "WheelSlot",
+            "slotNumber": 3
+          },
+          {
+            "dmxRange": [24, 31],
+            "type": "WheelSlot",
+            "slotNumber": 4
+          },
+          {
+            "dmxRange": [32, 39],
+            "type": "WheelSlot",
+            "slotNumber": 5
+          },
+          {
+            "dmxRange": [40, 47],
+            "type": "WheelSlot",
+            "slotNumber": 6
+          },
+          {
+            "dmxRange": [48, 55],
+            "type": "WheelSlot",
+            "slotNumber": 7
+          },
+          {
+            "dmxRange": [56, 63],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [64, 221],
+            "type": "Generic",
+            "comment": "Color By Position",
+            "helpWanted": "What ranges cover each color position?"
+          },
+          {
+            "dmxRange": [222, 239],
+            "type": "WheelRotation",
+            "speedStart":"fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [240, 255],
+            "type": "WheelRotation",
+            "speedStart":"slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Rotating Gobo Wheel":{
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 7],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [8, 15],
+            "type": "WheelSlot",
+            "slotNumber": 2
+          },
+          {
+            "dmxRange": [16, 23],
+            "type": "WheelSlot",
+            "slotNumber": 3
+          },
+          {
+            "dmxRange": [24, 31],
+            "type": "WheelSlot",
+            "slotNumber": 4
+          },
+          {
+            "dmxRange": [32, 39],
+            "type": "WheelSlot",
+            "slotNumber": 5
+          },
+          {
+            "dmxRange": [40, 47],
+            "type": "WheelSlot",
+            "slotNumber": 6
+          },
+          {
+            "dmxRange": [48, 55],
+            "type": "WheelSlot",
+            "slotNumber": 7
+          },
+          {
+            "dmxRange": [56, 63],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [64, 221],
+            "type": "Generic",
+            "comment": "Gobo By Position",
+            "helpWanted": "What ranges cover each gobo position?"
+          },
+          {
+            "dmxRange": [222, 239],
+            "type": "WheelRotation",
+            "speedStart":"fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [240, 255],
+            "type": "WheelRotation",
+            "speedStart":"slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Gobo Rotation": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 3],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [4, 123],
+            "type": "WheelSlotRotation",
+            "wheel": "Rotating Gobo Wheel",
+            "angleStart": "0deg",
+            "angleEnd": "360deg"
+          },
+          {
+            "dmxRange": [124, 187],
+            "type": "WheelSlotRotation",
+            "wheel": "Rotating Gobo Wheel",
+            "speedStart": "fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [188, 191],
+            "type": "WheelSlotRotation",
+            "wheel": "Rotating Gobo Wheel",
+            "speed": "stop"
+          },
+          {
+            "dmxRange": [192, 255],
+            "type": "WheelSlotRotation",
+            "wheel": "Rotating Gobo Wheel",
+            "speedStart": "slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Static Gobo Wheel": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 7],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [8, 15],
+            "type": "WheelSlot",
+            "slotNumber": 2
+          },
+          {
+            "dmxRange": [16, 23],
+            "type": "WheelSlot",
+            "slotNumber": 3
+          },
+          {
+            "dmxRange": [24, 31],
+            "type": "WheelSlot",
+            "slotNumber": 4
+          },
+          {
+            "dmxRange": [32, 39],
+            "type": "WheelSlot",
+            "slotNumber": 5
+          },
+          {
+            "dmxRange": [40, 47],
+            "type": "WheelSlot",
+            "slotNumber": 6
+          },
+          {
+            "dmxRange": [48, 55],
+            "type": "WheelSlot",
+            "slotNumber": 7
+          },
+          {
+            "dmxRange": [56, 63],
+            "type": "WheelSlot",
+            "slotNumber": 8
+          },
+          {
+            "dmxRange": [64, 71],
+            "type": "WheelSlot",
+            "slotNumber": 9
+          },
+          {
+            "dmxRange": [72, 143],
+            "type": "Generic",
+            "comment": "Gobo By Position",
+            "helpWanted": "What ranges cover each gobo position?"
+          },
+          {
+            "dmxRange": [144, 199],
+            "type": "WheelRotation",
+            "speedStart":"fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [200, 255],
+            "type": "WheelRotation",
+            "speedStart":"slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Colormation": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 7],
+            "type": "WheelSlot",
+            "slotNumber": 1
+          },
+          {
+            "dmxRange": [8, 255],
+            "type": "WheelSlot",
+            "slotNumber": 2
+          }
+        ]
+      },
+      "Colormation Rotation": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 7],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [8, 127],
+            "type": "WheelRotation",
+            "wheel": "Colormation",
+            "speedStart": "fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [128, 135],
+            "type": "WheelRotation",
+            "wheel": "Colormation",
+            "speed": "stop"
+          },
+          {
+            "dmxRange": [136, 255],
+            "type": "WheelRotation",
+            "wheel": "Colormation",
+            "speedStart": "slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Cyan": {
+        "capability": {
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        }
+      },
+      "Magenta": {
+        "capability": {
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        }
+      },
+      "Yellow": {
+        "capability": {
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        }
+      },
+      "Kelvin": {
+        "capability": {
+          "type": "ColorTemperature",
+          "colorTemperature": "6408K"
+        }
+      },
+      "Dimmer": {
+        "fineChannelAliases": ["Dimmer fine"],
+        "capability": {
+          "type": "Intensity"
+        }
+      },
+      "Dimmer Refresh": {
+        "defaultValue": 0,
+        "capabilities":[
+          {
+            "dmxRange": [0, 63],
+            "type": "Generic",
+            "comment": "Refresh Rate 1200"
+          },
+          {
+            "dmxRange": [64, 127],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [128, 191],
+            "type": "Generic",
+            "comment": "Refresh Rate 13672"
+          },
+          {
+            "dmxRange": [192, 255],
+            "type": "NoFunction"
+          }
+        ]
+      },
+      "Shutter": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 3],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Open"
+          },
+          {
+            "dmxRange": [4, 103],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Strobe",
+            "speedStart": "slow",
+            "speedEnd": "fast"
+          },
+          {
+            "dmxRange": [104, 107],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Open"
+          },
+          {
+            "dmxRange": [108, 207],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Pulse",
+            "speedStart": "slow",
+            "speedEnd": "fast"
+          },
+          {
+            "dmxRange": [208, 212],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Open"
+          },
+          {
+            "dmxRange": [213, 251],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Strobe",
+            "speedStart": "slow",
+            "speedEnd": "fast",
+            "randomTiming": true
+          },
+          {
+            "dmxRange": [252, 255],
+            "type": "ShutterStrobe",
+            "shutterEffect": "Open"
+          }
+        ]
+      },
+      "Prism": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 31],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [32, 255],
+            "type": "Prism"
+          }
+        ]
+      },
+      "Prism Rotation": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 3],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [4, 123],
+            "type": "PrismRotation",
+            "angleStart": "0deg",
+            "angleEnd": "360deg"
+          },
+          {
+            "dmxRange": [124, 187],
+            "type": "PrismRotation",
+            "speedStart":"fast CCW",
+            "speedEnd": "slow CCW"
+          },
+          {
+            "dmxRange": [188, 191],
+            "type": "PrismRotation",
+            "speed": "stop"
+          },
+          {
+            "dmxRange": [192, 255],
+            "type": "PrismRotation",
+            "speedStart": "slow CW",
+            "speedEnd": "fast CW"
+          }
+        ]
+      },
+      "Zoom": {
+        "fineChannelAliases": ["Zoom fine"],
+        "capability": {
+          "type": "Zoom",
+          "angleStart":"narrow",
+          "angleEnd": "wide"
+        }
+      },
+      "Focus": {
+        "fineChannelAliases": ["Focus fine"],
+        "capability": {
+          "type": "Focus",
+          "distanceStart": "far",
+          "distanceEnd": "near"
+        }
+      },
+      "Iris": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 127],
+            "type": "Iris",
+            "openPercentStart": "open",
+            "openPercentEnd": "closed"
+          },
+          {
+            "dmxRange": [128, 135],
+            "type": "Iris",
+            "openPercent": "closed"
+          },
+          {
+            "dmxRange": [136, 173],
+            "type": "IrisEffect",
+            "effectName": "Pulse Closed to Open",
+            "speedStart": "slow",
+            "speedEnd": "fast"
+          },
+          {
+            "dmxRange": [174, 211],
+            "type": "IrisEffect",
+            "effectName": "Pulse Open to Closed",
+            "speedStart": "slow",
+            "speedEnd": "fast"
+          },
+          {
+            "dmxRange": [212, 249],
+            "type": "IrisEffect",
+            "effectName": "Iris Bounce",
+            "speedStart":"slow",
+            "speedEnd": "fast"
+          },
+          {
+            "dmxRange": [250, 255],
+            "type": "Iris",
+            "openPercent": "closed"
+          }
+        ]
+      },
+      "Frost": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 9],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [10, 255],
+            "type": "Frost",
+            "frostIntensityStart": "off",
+            "frostIntensityEnd": "high"
+          }
+        ]
+      },
+      "Control": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 19],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [20, 29],
+            "type": "Maintenance",
+            "comment": "Reset All",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [30, 39],
+            "type": "Maintenance",
+            "comment": "Reset Pan/Tilt",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [40, 49],
+            "type": "Maintenance",
+            "comment": "Reset Color/Gobo/CMYK",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [50, 59],
+            "type": "Maintenance",
+            "comment": "Reset Zoom/Focus/Prism/Frost",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [60, 69],
+            "type": "Maintenance",
+            "comment": "Reset Colormation/Iris/Framing",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [70, 79],
+            "type": "Maintenance",
+            "comment": "Display Default",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [80, 89],
+            "type": "Maintenance",
+            "comment": "Display Off",
+            "hold": "8s"
+          },
+          {
+            "dmxRange": [90, 255],
+            "type": "NoFunction"
+          }
+        ]
+      },
+      "Frame 1A": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 1A Engage"
+        }
+      },
+      "Frame 1B": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 1B Engage"
+        }
+      },
+      "Frame 2A": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 2A Engage"
+        }
+      },
+      "Frame 2B": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 2B Engage"
+        }
+      },
+      "Frame 3A": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 3A Engage"
+        }
+      },
+      "Frame 3B": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 3B Engage"
+        }
+      },
+      "Frame 4A": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 4A Engage"
+        }
+      },
+      "Frame 4B": {
+        "defaultValue": 0,
+        "capability": {
+          "type": "Generic",
+          "comment": "Frame 4B Engage"
+        }
+      },
+      "Frame Rotation": {
+        "fineChannelAliases": ["Frame Rotation fine"],
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 2039],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [2040, 61200],
+            "type": "Generic",
+            "comment": "Frame Rotation"
+          },
+          {
+            "dmxRange": [61201, 65535],
+            "type": "Generic",
+            "comment": "Frame Bounce"
+          }
+        ]
+      },
+      "Frame Macro": {
+        "defaultValue": 0,
+        "capabilities": [
+          {
+            "dmxRange": [0, 3],
+            "type": "NoFunction"
+          },
+          {
+            "dmxRange": [4, 255],
+            "type": "Generic",
+            "comment": "Frame Macro (1-63)",
+            "helpWanted": "What range is each macro?"
+          }
+        ]
+      }
+    },
+    "modes": [
+      {
+        "name": "39-channel",
+        "shortName": "39ch",
+        "channels": [
+          "Pan",
+          "Pan fine",
+          "Tilt",
+          "Tilt fine",
+          "Color Wheel",
+          "Cyan",
+          "Magenta",
+          "Yellow",
+          "Kelvin",
+          "Static Gobo Wheel",
+          "Rotating Gobo Wheel",
+          "Gobo Rotation",
+          "Dimmer",
+          "Dimmer fine",
+          "Shutter",
+          "Dimmer Refresh",
+          "Prism",
+          "Prism Rotation",
+          "Zoom",
+          "Zoom fine",
+          "Focus",
+          "Focus fine",
+          "Iris",
+          "Frost",
+          "Colormation",
+          "Colormation Rotation",
+          "Frame 1A",
+          "Frame 1B",
+          "Frame 2A",
+          "Frame 2B",
+          "Frame 3A",
+          "Frame 3B",
+          "Frame 4A",
+          "Frame 4B",
+          "Frame Rotation",
+          "Frame Rotation fine",
+          "Frame Macro",
+          "Pan/Tilt Speed",
+          "Control"
+        ]
+      }
+    ]
+  }
+  
