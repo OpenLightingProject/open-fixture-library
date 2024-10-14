@@ -130,10 +130,10 @@
     "Colormation": {
       "slots": [
         {
-          "type": "Open"
+          "type": "AnimationGoboStart"
         },
         {
-          "type": "Gobo"
+          "type": "AnimationGoboEnd"
         }
       ]
     }
@@ -210,9 +210,9 @@
         },
         {
           "dmxRange": [64, 221],
-          "type": "Generic",
-          "comment": "Color By Position",
-          "helpWanted": "What ranges cover each color position?"
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [222, 239],
@@ -273,9 +273,9 @@
         },
         {
           "dmxRange": [64, 221],
-          "type": "Generic",
-          "comment": "Gobo By Position",
-          "helpWanted": "What ranges cover each gobo position?"
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [222, 239],
@@ -377,9 +377,9 @@
         },
         {
           "dmxRange": [72, 143],
-          "type": "Generic",
-          "comment": "Gobo By Position",
-          "helpWanted": "What ranges cover each gobo position?"
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [144, 199],
@@ -400,13 +400,15 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "WheelSlot",
-          "slotNumber": 1
+          "type": "NoFunction",
+          "comment": "Open"
         },
         {
           "dmxRange": [8, 255],
-          "type": "WheelSlot",
-          "slotNumber": 2
+          "type": "Effect",
+          "effectName": "Colormation insertion",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
         }
       ]
     },
@@ -797,8 +799,8 @@
         },
         {
           "dmxRange": [4, 255],
-          "type": "Generic",
-          "comment": "Frame Macro (1-63)",
+          "type": "Effect",
+          "effectName": "Frame Macro (1-63)",
           "helpWanted": "What range is each macro?"
         }
       ]
