@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 7x18W RGBWA+UV Light",
+  "categories": ["Color Changer"],
+  "comment": "There may be multiple variants of this fixture with similar profiles. See https://github.com/OpenLightingProject/open-fixture-library/pull/2204 for more information.",
+  "meta": {
+    "authors": ["jms27000", "René Bütikofer", "Flo Edelmann"],
+    "createDate": "2022-11-02",
+    "lastModifyDate": "2023-02-05",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-10-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "links": {
+    "productPage": [
+      "https://shehds.com/products/led-flat-par-7x12w-7x18w-rgbwauv-lighting"
+    ],
+    "manual": [
+      "https://web.archive.org/web/20221023054132/https://www.shehds.com/u_file/1907/file/45918ab3df.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [176, 178, 11.3],
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "power": 126,
+    "weight": 0.9
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Violet": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Color Presets"
+          }
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Static color",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Color Presets"
+          }
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Random colors",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Function Speed"
+          }
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Random colors",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Function Speed"
+          }
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Random colors, fade to black",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Function Speed"
+          }
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "soundControlled": true,
+          "effectName": "Sound Mode",
+          "comment": "Static color flashing on beat",
+          "switchChannels": {
+            "Function Speed / Color Presets": "Color Presets"
+          }
+        }
+      ]
+    },
+    "Function Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colors": ["#fff6da"]
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet",
+        "Function",
+        "Function Speed / Color Presets"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet",
+        "Strobe",
+        "Function",
+        "Function Speed / Color Presets"
+      ]
+    }
+  ]
+}

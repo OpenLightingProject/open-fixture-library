@@ -1,20 +1,19 @@
 name: Test
 on: pull_request
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   required:
     name: Required
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
       - name: Checkout
-        uses: actions/checkout@v2.4.0
-      - name: Setup Node.js v14
-        uses: actions/setup-node@v2.5.1
+        uses: actions/checkout@v4.2.1
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4.0.4
         with:
-          node-version: 14
+          node-version: 20
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -42,18 +41,14 @@ jobs:
       GITHUB_PR_BASE_REF: origin/${{ github.base_ref }}
       GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v4.2.1
         with:
           fetch-depth: 0 # complete history for all branches and tags
-      - name: Setup Node.js v14
-        uses: actions/setup-node@v2.5.1
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4.0.4
         with:
-          node-version: 14
+          node-version: 20
           cache: 'npm'
       - name: Install dependencies
         run: |
@@ -73,9 +68,9 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v4.2.1
       - name: Check Markdown Links in modified files
-        uses: gaurav-nelson/github-action-markdown-link-check@1.0.13
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-verbose-mode: 'yes'
           check-modified-files-only: 'yes'

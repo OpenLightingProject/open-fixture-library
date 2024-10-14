@@ -1,12 +1,11 @@
 <template>
-  <a
+  <button
     v-if="cssVariablesSupported"
-    href="#theme"
-    aria-hidden="true"
+    type="button"
     :title="`Switch to ${otherTheme} theme`"
     @click.prevent="toggleTheme()">
     <OflSvg name="theme-light-dark" />
-  </a>
+  </button>
 </template>
 
 <script>

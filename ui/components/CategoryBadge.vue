@@ -18,7 +18,7 @@
   }
 
   &.selected {
-    cursor: move;
+    cursor: grab;
     background-color: theme-color(blue-background-active);
 
     &:link,
@@ -42,22 +42,18 @@
 </style>
 
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    category: {
-      type: String,
-      required: true,
-    },
-    selected: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    selectable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    category: stringProp().required,
+    selected: booleanProp().withDefault(false),
+    selectable: booleanProp().withDefault(false),
+  },
+  emits: {
+    click: () => true,
+    focus: () => true,
+    blur: event => true,
   },
   render(createElement) {
     const classes = {
@@ -85,6 +81,12 @@ export default {
           click: $event => {
             this.$emit(`click`);
             $event.preventDefault();
+          },
+          focus: () => {
+            this.$emit(`focus`);
+          },
+          blur: $event => {
+            this.$emit(`blur`, $event);
           },
         },
       }, children);

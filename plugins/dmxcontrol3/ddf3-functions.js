@@ -83,14 +83,11 @@ export default {
 
         const typePerShutterEffect = {
           Strobe: capability.randomTiming ? `random` : `linear`,
-          Pulse: `pulse`,
           RampUp: `ramp up`,
           RampDown: `ramp down`,
           RampUpDown: `ramp up/down`,
-          Lightning: `lightning`,
-          Spikes: `spikes`,
         };
-        return typePerShutterEffect[capability.shutterEffect];
+        return typePerShutterEffect[capability.shutterEffect] ?? capability.shutterEffect.toLowerCase();
       }
     },
   },
@@ -184,10 +181,15 @@ export default {
       const capabilitiesPerColor = {};
 
       for (const capability of capabilities) {
-        if (!(capability.color in capabilitiesPerColor)) {
-          capabilitiesPerColor[capability.color] = [];
+        let color = capability.color;
+        if (color === `Warm White` || color === `Cold White`) {
+          color = `White`;
         }
-        capabilitiesPerColor[capability.color].push(capability);
+
+        if (!(color in capabilitiesPerColor)) {
+          capabilitiesPerColor[color] = [];
+        }
+        capabilitiesPerColor[color].push(capability);
       }
 
       delete capabilitiesPerColor.null; // NoFunction caps will be ignored
@@ -343,9 +345,9 @@ export default {
           return null;
         }
 
-        const filterDistiguishableKeys = key => ![`dmxRange`, `_splitted`, `menuClick`].includes(key);
-        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter(key => filterDistiguishableKeys(key));
-        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter(key => filterDistiguishableKeys(key));
+        const filterDistinguishableKeys = key => ![`dmxRange`, `_splitted`, `menuClick`].includes(key);
+        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter(key => filterDistinguishableKeys(key));
+        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter(key => filterDistinguishableKeys(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some(key => {
           const value1 = capability1.jsonObject[key];
@@ -363,7 +365,7 @@ export default {
         }
 
         const capabilityJson = {};
-        const preferredJsonObject = !capability1.jsonObject._splitted ? capability1.jsonObject : capability2.jsonObject; // we prefer unsplitted caps
+        const preferredJsonObject = capability1.jsonObject._splitted ? capability2.jsonObject : capability1.jsonObject; // we prefer unsplitted capability
         for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
         }
@@ -539,16 +541,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.frostIntensity[0].number !== capability.frostIntensity[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
-            xmlCapability.attribute(`type`, `frost`);
-          }
-          else {
+          if (capability.frostIntensity[0].number === capability.frostIntensity[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFrostOn = capability.frostIntensity[0].number > 0;
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute(`value`, `${isFrostOn}`);
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
+            xmlCapability.attribute(`type`, `frost`);
           }
 
           xmlFrost.importDocument(xmlCapability);
@@ -608,7 +610,7 @@ export default {
       // group adjacent capabilities by comment
       const capabilitiesGroupedByComment = [];
       for (const capability of capabilities) {
-        const lastGroup = capabilitiesGroupedByComment[capabilitiesGroupedByComment.length - 1];
+        const lastGroup = capabilitiesGroupedByComment.at(-1);
 
         if (lastGroup && lastGroup[0].type === capability.type && lastGroup[0].comment === capability.comment) {
           // push to last group
@@ -622,7 +624,7 @@ export default {
 
       for (const commentGroup of capabilitiesGroupedByComment) {
         const firstCapability = commentGroup[0];
-        const lastCapability = commentGroup[commentGroup.length - 1];
+        const lastCapability = commentGroup.at(-1);
 
         const xmlStep = xmlPrism.element(`step`, {
           type: firstCapability.type === `NoFunction` ? `open` : `prism`,

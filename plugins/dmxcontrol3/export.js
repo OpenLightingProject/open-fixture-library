@@ -8,12 +8,15 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 
-export const version = `0.1.0`;
+export const version = `0.1.2`;
 
 /**
- * @param {Fixture[]} fixtures The fixtures to convert into DMXControl device definitions
- * @param {options} options Some global options
- * @returns {Promise<object[], Error>} The generated files
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const deviceDefinitions = [];
@@ -21,35 +24,55 @@ export async function exportFixtures(fixtures, options) {
   for (const fixture of fixtures) {
     // add device for each mode
     for (const mode of fixture.modes) {
-      const xml = xmlbuilder.begin()
-        .declaration(`1.0`, `utf-8`)
-        .element({
-          device: {
-            '@type': `DMXDevice`,
-            '@dmxaddresscount': mode.channelKeys.length,
-            '@dmxcversion': 3,
-            '@ddfversion': version,
-          },
+      try {
+        deviceDefinitions.push(exportFixtureMode(fixture, mode, options));
+      }
+      catch (error) {
+        throw new Error(`Exporting fixture mode ${fixture.manufacturer.key}/${fixture.key}/${mode.shortName} failed: ${error}`, {
+          cause: error,
         });
-
-      addInformation(xml, mode);
-      addFunctions(xml, mode);
-      addProcedures(xml, mode);
-
-      deviceDefinitions.push({
-        name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, `-`),
-        content: xml.end({
-          pretty: true,
-          indent: `  `,
-        }),
-        mimetype: `application/xml`,
-        fixtures: [fixture],
-        mode: mode.shortName,
-      });
+      }
     }
   }
 
   return deviceDefinitions;
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {Mode} mode The mode to export.
+ * @param {object} options Global options.
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {object} The generated file.
+ */
+function exportFixtureMode(fixture, mode, options) {
+  const xml = xmlbuilder.begin()
+    .declaration(`1.0`, `utf-8`)
+    .element({
+      device: {
+        '@type': `DMXDevice`,
+        '@dmxaddresscount': mode.channelKeys.length,
+        '@dmxcversion': 3,
+        '@ddfversion': options.displayedPluginVersion ?? version,
+      },
+    });
+
+  addInformation(xml, mode);
+  addFunctions(xml, mode);
+  addProcedures(xml, mode);
+
+  return {
+    name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replaceAll(/\s+/g, `-`),
+    content: xml.end({
+      pretty: true,
+      indent: `  `,
+    }),
+    mimetype: `application/xml`,
+    fixtures: [fixture],
+    mode: mode.shortName,
+  };
 }
 
 /**
@@ -133,10 +156,16 @@ function addFunctions(xml, mode) {
       }
     }
 
-    let xmlFunctions = [];
+    const xmlFunctions = [];
     for (const functionKey of Object.keys(functionToCapabilities)) {
       const capabilities = functionToCapabilities[functionKey];
-      xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, capabilities));
+      const functions = ddf3Functions[functionKey].create(channel, capabilities);
+      if (Array.isArray(functions)) {
+        xmlFunctions.push(...functions);
+      }
+      else {
+        xmlFunctions.push(functions);
+      }
     }
     for (const xmlFunction of xmlFunctions) {
       addChannelAttributes(xmlFunction, mode, channel);
@@ -191,7 +220,7 @@ function getChannelsPerPixel(mode) {
 
   const matrix = mode.fixture.matrix;
   if (matrix !== null) {
-    const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
+    const pixelKeys = [...matrix.pixelGroupKeys, ...matrix.getPixelKeysByOrder(`X`, `Y`, `Z`)];
     for (const key of pixelKeys) {
       channelsPerPixel.set(key, []);
     }

@@ -8,11 +8,11 @@
         class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         required
-        :minimum="minNumber !== null ? minNumber : `invalid`"
-        :maximum="maxNumber !== null ? maxNumber : `invalid`"
+        :minimum="minNumber !== undefined ? minNumber : `invalid`"
+        :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
-        @focus.native="onFocus()"
-        @blur.native="onBlur($event)" />
+        @focus="onFocus()"
+        @blur="onBlur($event)" />
     </Validate>
 
     <select
@@ -79,6 +79,7 @@
 </style>
 
 <script>
+import { anyProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
 import { unitsSchema } from '../../lib/schema-properties.js';
 
 import PropertyInputNumber from './PropertyInputNumber.vue';
@@ -88,50 +89,21 @@ export default {
     PropertyInputNumber,
   },
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: null,
-      required: false,
-      default: ``,
-    },
-    associatedEntity: {
-      type: null,
-      required: false,
-      default: ``,
-    },
-    minNumber: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    maxNumber: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    wide: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    value: anyProp().withDefault(``),
+    associatedEntity: anyProp().optional,
+    minNumber: numberProp().optional,
+    maxNumber: numberProp().optional,
+    name: stringProp().required,
+    wide: booleanProp().withDefault(false),
+  },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'unit-selected': unitString => true,
+    'vf:validate': validationData => true,
   },
   data() {
     return {
@@ -249,15 +221,12 @@ export default {
     },
   },
   mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    /** @public */
     focus() {
-      const focusField = this.$refs.input ? this.$refs.input : this.$refs.select;
+      const focusField = this.$refs.input ?? this.$refs.select;
       focusField.focus();
     },
     update(newValue) {
@@ -308,7 +277,7 @@ function parseUnitFromPattern(pattern) {
   }
 
   const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
-  return pattern.slice(lastNumberPartIndex + 1, -1).replace(/\\/g, ``);
+  return pattern.slice(lastNumberPartIndex + 1, -1).replaceAll(`\\`, ``);
 }
 
 /**

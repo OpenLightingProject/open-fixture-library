@@ -7,11 +7,12 @@ jobs:
   production:
     name: Production
     runs-on: ubuntu-latest
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v4.2.1
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@9.3.0
+        uses: treosh/lighthouse-ci-action@12.1.0
         with:
           urls: |
             https://open-fixture-library.org/

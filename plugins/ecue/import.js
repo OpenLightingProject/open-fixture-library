@@ -5,7 +5,7 @@ export const version = `0.3.1`;
 
 const colors = {};
 for (const color of colorNameList) {
-  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
+  colors[color.name.toLowerCase().replaceAll(/\s/g, ``)] = color.hex;
 }
 
 /**
@@ -177,6 +177,18 @@ function getCombinedEcueChannels(ecueFixture) {
 }
 
 /**
+ * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+ * @returns {string} The normalized direction suffix.
+ */
+function getDirectionSuffix(direction) {
+  if (!direction) {
+    return ``;
+  }
+
+  return /^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`;
+}
+
+/**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
  * @param {object} ecueChannel The e:cue channel object.
  * @param {object} fixture The OFL fixture object.
@@ -283,7 +295,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
-          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
+          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
           if (color in colors) {
             capability.colors = [colors[color]];
           }
@@ -296,7 +308,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         }
       },
       ColorPreset() {
-        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
+        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
         if (color in colors) {
           capability.color = colors[color];
         }
@@ -488,9 +500,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
-        const directionString = direction ? (/^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -504,8 +515,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;
@@ -519,5 +530,5 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

@@ -11,13 +11,13 @@ import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 import {
+  exportHelpers,
+  getCapabilityPreset,
   getChannelPreset,
   getFineChannelPreset,
-  getCapabilityPreset,
-  exportHelpers,
 } from './presets.js';
 
-export const version = `1.3.0`;
+export const version = `1.3.1`;
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -31,58 +31,14 @@ export async function exportFixtures(fixtures, options) {
   const customGobos = {};
 
   const outFiles = await Promise.all(fixtures.map(async fixture => {
-    const xml = xmlbuilder.begin()
-      .declaration(`1.0`, `UTF-8`)
-      .element({
-        FixtureDefinition: {
-          '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
-          Creator: {
-            Name: `OFL – ${fixture.url}`,
-            Version: options.displayedPluginVersion || version,
-            Author: fixture.meta.authors.join(`, `),
-          },
-          Manufacturer: fixture.manufacturer.name,
-          Model: fixture.name,
-          Type: getFixtureType(fixture),
-        },
+    try {
+      return await getFixtureFile(fixture, options, customGobos);
+    }
+    catch (error) {
+      throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+        cause: error,
       });
-
-    for (const channel of fixture.coarseChannels) {
-      await addChannel(xml, channel, customGobos);
     }
-
-    const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
-    const tiltMax = getPanTiltMax(`Tilt`, fixture.coarseChannels);
-    const useGlobalPhysical = fixture.modes.every(mode => {
-      if (mode.physicalOverride !== null) {
-        return false;
-      }
-
-      const modePanMax = getPanTiltMax(`Pan`, mode.channels);
-      const modeTiltMax = getPanTiltMax(`Tilt`, mode.channels);
-      return (modePanMax === 0 || panMax === modePanMax) && (modeTiltMax === 0 || tiltMax === modeTiltMax);
-    });
-
-    for (const mode of fixture.modes) {
-      addMode(xml, mode, !useGlobalPhysical);
-    }
-
-    if (useGlobalPhysical) {
-      addPhysical(xml, fixture.physical || new Physical({}), fixture);
-    }
-
-    xml.dtd(``);
-
-    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
-
-    return {
-      name: `fixtures/${sanitizedFileName}`,
-      content: xml.end({
-        pretty: true,
-        indent: ` `,
-      }),
-      mimetype: `application/x-qlc-fixture`,
-    };
   }));
 
   // add gobo images not included in QLC+ to exported files
@@ -99,6 +55,70 @@ export async function exportFixtures(fixtures, options) {
   }
 
   return outFiles;
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @returns {Promise<object>} The generated fixture file.
+ */
+async function getFixtureFile(fixture, options, customGobos) {
+  const xml = xmlbuilder.begin()
+    .declaration(`1.0`, `UTF-8`)
+    .element({
+      FixtureDefinition: {
+        '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
+        Creator: {
+          Name: `OFL – ${fixture.url}`,
+          Version: options.displayedPluginVersion || version,
+          Author: fixture.meta.authors.join(`, `),
+        },
+        Manufacturer: fixture.manufacturer.name,
+        Model: fixture.name,
+        Type: getFixtureType(fixture),
+      },
+    });
+
+  for (const channel of fixture.coarseChannels) {
+    await addChannel(xml, channel, customGobos);
+  }
+
+  const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
+  const tiltMax = getPanTiltMax(`Tilt`, fixture.coarseChannels);
+  const useGlobalPhysical = fixture.modes.every(mode => {
+    if (mode.physicalOverride !== null) {
+      return false;
+    }
+
+    const modePanMax = getPanTiltMax(`Pan`, mode.channels);
+    const modeTiltMax = getPanTiltMax(`Tilt`, mode.channels);
+    return (modePanMax === 0 || panMax === modePanMax) && (modeTiltMax === 0 || tiltMax === modeTiltMax);
+  });
+
+  for (const mode of fixture.modes) {
+    addMode(xml, mode, !useGlobalPhysical);
+  }
+
+  if (useGlobalPhysical) {
+    addPhysical(xml, fixture.physical || new Physical({}), fixture);
+  }
+
+  xml.dtd(``);
+
+  const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replaceAll(/\s+/g, `-`);
+
+  return {
+    name: `fixtures/${sanitizedFileName}`,
+    content: xml.end({
+      pretty: true,
+      indent: ` `,
+    }),
+    mimetype: `application/x-qlc-fixture`,
+  };
 }
 
 /**
@@ -120,10 +140,7 @@ async function addChannel(xml, channel, customGobos) {
   }
 
   const channelPreset = getChannelPreset(channel);
-  if (channelPreset !== null) {
-    xmlChannel.attribute(`Preset`, channelPreset);
-  }
-  else {
+  if (channelPreset === null) {
     xmlChannel.element({
       Group: {
         '@Byte': 0,
@@ -133,13 +150,16 @@ async function addChannel(xml, channel, customGobos) {
 
     if (channelType === `Intensity`) {
       xmlChannel.element({
-        Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
+        Colour: channel.color === null ? `Generic` : channel.color.replace(/^(?:Warm|Cold) /, ``),
       });
     }
 
     for (const capability of channel.capabilities) {
       await addCapability(xmlChannel, capability, customGobos);
     }
+  }
+  else {
+    xmlChannel.attribute(`Preset`, channelPreset);
   }
 
   for (const fineChannel of channel.fineChannels) {
@@ -203,7 +223,7 @@ async function addFineChannel(xml, fineChannel, customGobos) {
 
   if (channelType === `Intensity`) {
     xmlFineChannel.element({
-      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
+      Colour: fineChannel.coarseChannel.color === null ? `Generic` : fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``),
     });
   }
 
@@ -236,7 +256,10 @@ async function addCapability(xmlChannel, capability, customGobos) {
     res2: null,
   } : await getCapabilityPreset(capability);
 
-  if (preset !== null) {
+  if (preset === null) {
+    await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
+  }
+  else {
     xmlCapability.attribute(`Preset`, preset.presetName);
 
     if (preset.res1 !== null) {
@@ -250,9 +273,6 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res2 !== null) {
       xmlCapability.attribute(`Res2`, preset.res2);
     }
-  }
-  else {
-    await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
   }
 }
 
@@ -414,7 +434,26 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
 
       // add whitespace
-      const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+      let connector = physical.DMXconnector;
+
+      switch (connector) {
+        case `3.5mm stereo jack`: {
+          connector = `3.5 mm stereo jack`;
+          break;
+        }
+        case `3-pin XLR IP65`: {
+          connector = `3-pin IP65`;
+          break;
+        }
+        case `5-pin XLR IP65`: {
+          connector = `5-pin IP65`;
+          break;
+        }
+        case `RJ45`: {
+          connector = `Other`;
+          break;
+        }
+      }
 
       return {
         DmxConnector: connector || `Other`,

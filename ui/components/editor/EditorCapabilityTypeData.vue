@@ -9,8 +9,7 @@
         v-model="capability.type"
         :class="{ empty: capability.type === `` }"
         :name="`capability${capability.uuid}-type`"
-        :required="required"
-        @change="changeCapabilityType()">
+        :required="required">
 
         <option value="" disabled>Please select a capability type</option>
 
@@ -33,6 +32,7 @@
 </template>
 
 <script>
+import { booleanProp, objectProp } from 'vue-ts-types';
 import { capabilityTypes } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
@@ -128,27 +128,11 @@ export default {
     CapabilityMaintenance,
     CapabilityGeneric,
   },
-  model: {
-    prop: `capability`,
-  },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().optional,
+    required: booleanProp().withDefault(false),
   },
   data() {
     return {
@@ -156,11 +140,10 @@ export default {
       capabilityTypeHint: null,
     };
   },
-  methods: {
-    /**
-     * Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
-     */
-    async changeCapabilityType() {
+  watch: {
+    'capability.type': async function() {
+      // Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
+
       await this.$nextTick();
 
       const defaultData = this.$refs.capabilityTypeData.defaultData;
@@ -174,7 +157,8 @@ export default {
         ? this.$refs.capabilityTypeData.hint
         : null;
     },
-
+  },
+  methods: {
     /**
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
      * @public

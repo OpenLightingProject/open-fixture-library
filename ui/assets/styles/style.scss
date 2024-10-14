@@ -326,6 +326,7 @@ a.button {
   height: #{$icon-size + 2 * $padding};
   padding: 0 0 0 #{$icon-size + 2 * $padding};
   overflow: hidden;
+  font-size: 1em;
   color: theme-color(icon);
   vertical-align: middle;
   cursor: pointer;
@@ -485,7 +486,7 @@ a.button {
   }
 
   .grid-4 > & {
-    @media (min-width: 440px) {
+    @media (width >= 440px) {
       display: inline-block;
       width: calc((100% - #{$card-spacing}) / 2);
       vertical-align: top;
@@ -502,7 +503,7 @@ a.button {
       }
     }
 
-    @media (min-width: 650px) {
+    @media (width >= 650px) {
       width: calc((100% - 2 * #{$card-spacing}) / 3);
 
       &:nth-child(3n+1) {
@@ -515,7 +516,7 @@ a.button {
       }
     }
 
-    @media (min-width: 920px) {
+    @media (width >= 920px) {
       width: calc((100% - 3 * #{$card-spacing}) / 4);
 
       &:nth-child(4n+1) {

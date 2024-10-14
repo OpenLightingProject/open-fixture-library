@@ -11,28 +11,17 @@
 </template>
 
 <script>
+import { booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    required: booleanProp().withDefault(false),
+    value: booleanProp().withDefault(false),
+    name: stringProp().required,
+    label: stringProp().required,
+  },
+  emits: {
+    input: value => true,
   },
   computed: {
     localValue: {

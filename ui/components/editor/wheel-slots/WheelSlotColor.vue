@@ -47,7 +47,8 @@
 </template>
 
 <script>
-import { schemaDefinitions, entitiesSchema } from '../../../../lib/schema-properties.js';
+import { objectProp } from 'vue-ts-types';
+import { entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -61,15 +62,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    wheelSlot: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    wheelSlot: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

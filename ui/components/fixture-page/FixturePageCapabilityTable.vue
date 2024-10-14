@@ -127,6 +127,7 @@ th {
 </style>
 
 <script>
+import { instanceOfProp, numberProp } from 'vue-ts-types';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 
@@ -139,18 +140,12 @@ export default {
     HelpWantedMessage,
   },
   props: {
-    channel: {
-      type: CoarseChannel,
-      required: true,
-    },
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    resolutionInMode: {
-      type: Number,
-      required: true,
-    },
+    channel: instanceOfProp(CoarseChannel).required,
+    mode: instanceOfProp(Mode).required,
+    resolutionInMode: numberProp().required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   computed: {
     capabilities() {

@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import { schemaDefinitions, capabilityTypes, entitiesSchema } from '../../../../lib/schema-properties.js';
+import { objectProp } from 'vue-ts-types';
+import { capabilityTypes, entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -53,15 +54,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;

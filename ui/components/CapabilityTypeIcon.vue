@@ -1,13 +1,11 @@
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Capability from '../../lib/model/Capability.js';
 
 export default {
   functional: true,
   props: {
-    capability: {
-      type: Capability,
-      required: true,
-    },
+    capability: instanceOfProp(Capability).required,
   },
   render(createElement, context) {
     const capability = context.props.capability;
@@ -17,21 +15,24 @@ export default {
       const resource = wheelSlot[0].resource;
 
       if (resource && resource.hasImage) {
-        const data = Object.assign({}, context.data, {
-          attrs: Object.assign({}, context.data.attrs, {
+        const data = {
+          ...context.data,
+          attrs: {
+            ...context.data.attrs,
             src: resource.imageDataUrl,
             title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
-          }),
+          },
           class: [context.data.class, `icon`, `gobo-icon`],
-        });
+        };
 
         return createElement(`img`, data);
       }
     }
 
-    return createElement(`OflSvg`, Object.assign({}, context.data, {
+    return createElement(`OflSvg`, {
+      ...context.data,
       props: getIconProperties(capability),
-    }));
+    });
   },
 };
 
@@ -89,7 +90,7 @@ const specialIconFunctions = {
       iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
     }
     else {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
   },
   WheelShake(capability, iconProperties) {
@@ -97,7 +98,7 @@ const specialIconFunctions = {
       iconProperties.name = `animation-gobo`;
     }
     else if (capability.wheelSlot && capability.wheelSlot[0] !== capability.wheelSlot[1]) {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
     else {
       iconProperties.name = capability.isShaking === `slot` ? `slot-shake` : `wheel-shake`;

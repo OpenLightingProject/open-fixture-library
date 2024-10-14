@@ -12,35 +12,23 @@
 </template>
 
 <script>
+import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: null,
-      required: true,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    value: anyProp().required,
+  },
+  emits: {
+    input: value => true,
+    blur: value => true,
+    'vf:validate': validationData => true,
   },
   data() {
     return {
-      localValue: this.value ? String(this.value) : ``,
+      localValue: ``,
     };
   },
   computed: {
@@ -56,26 +44,31 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    value: {
+      handler(newValue) {
+        this.localValue = newValue ? String(newValue) : ``;
+      },
+      immediate: true,
+    },
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
       this.$el.focus();
     },
     update() {
       this.$emit(`input`, this.localValue);
     },
-    onBlur() {
+    async onBlur() {
+      await this.$nextTick();
       this.$emit(`blur`, this.localValue);
     },
   },

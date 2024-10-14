@@ -46,7 +46,7 @@
       multiple-inputs
       name="links"
       label="Relevant links">
-      <EditorLinks v-model="fixture.links" :formstate="formstate" />
+      <EditorLinks v-model="fixture.links" name="links" :formstate="formstate" />
     </LabeledInput>
 
     <LabeledInput
@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { fixtureProperties } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
@@ -93,18 +94,9 @@ export default {
     PropertyInputTextarea,
   },
   props: {
-    fixture: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
-    manufacturers: {
-      type: Object,
-      required: true,
-    },
+    fixture: objectProp().required,
+    formstate: objectProp().required,
+    manufacturers: objectProp().required,
   },
   data() {
     return {

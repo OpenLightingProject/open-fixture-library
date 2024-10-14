@@ -1,0 +1,573 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Teatro LED Spot 100 PC",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Victor Hampel", "Flo Edelmann"],
+    "createDate": "2022-06-09",
+    "lastModifyDate": "2022-06-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1370155/Ignition-Teatro-Led-Spot-100-Pc.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [214, 188, 315],
+    "weight": 5.5,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "name": "Ø 120mm PC lens",
+      "degreesMinMax": [12, 79]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [30, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "durationStart": "3.27s",
+          "durationEnd": "0.03s"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "durationStart": "42.6s",
+          "durationEnd": "0.12s"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "durationStart": "42.6s",
+          "durationEnd": "0.12s"
+        },
+        {
+          "dmxRange": [180, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [230, 235],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Single flash 30 ms"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 24],
+          "type": "Maintenance",
+          "comment": "Smooth: off",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [25, 26],
+          "type": "Maintenance",
+          "comment": "Smooth: 1 (25ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "Maintenance",
+          "comment": "Smooth: 2 (50ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "Maintenance",
+          "comment": "Smooth: 3 (75ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [31, 32],
+          "type": "Maintenance",
+          "comment": "Smooth: 4 (100ms, default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [33, 34],
+          "type": "Maintenance",
+          "comment": "Smooth: 5 (125ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [35, 36],
+          "type": "Maintenance",
+          "comment": "Smooth: 6 (150ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [37, 38],
+          "type": "Maintenance",
+          "comment": "Smooth: 7 (175ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "Maintenance",
+          "comment": "Smooth: 8 (200ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [41, 42],
+          "type": "Maintenance",
+          "comment": "Smooth: 9 (225ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [43, 44],
+          "type": "Maintenance",
+          "comment": "Smooth: 10 (250ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "Maintenance",
+          "comment": "Smooth: 11 (275ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [47, 48],
+          "type": "Maintenance",
+          "comment": "Smooth: 12 (300ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "Maintenance",
+          "comment": "Smooth: 13 (325ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [51, 52],
+          "type": "Maintenance",
+          "comment": "Smooth: 14 (350ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [53, 54],
+          "type": "Maintenance",
+          "comment": "Smooth: 15 (375ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [55, 56],
+          "type": "Maintenance",
+          "comment": "Smooth: 16 (400ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "Maintenance",
+          "comment": "Smooth: 17 (425ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "Maintenance",
+          "comment": "Smooth: 18 (450ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "Maintenance",
+          "comment": "Smooth: 19 (475ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "Maintenance",
+          "comment": "Smooth: 20 (500ms)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [65, 74],
+          "type": "Maintenance",
+          "comment": "Gamma correction: quadratic (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [75, 84],
+          "type": "Maintenance",
+          "comment": "Gamma correction: linear",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [85, 104],
+          "type": "Maintenance",
+          "comment": "Output frequency: 610Hz (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Maintenance",
+          "comment": "Output frequency: 800Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Maintenance",
+          "comment": "Output frequency: 1000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Maintenance",
+          "comment": "Output frequency: 1500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Maintenance",
+          "comment": "Output frequency: 2000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Maintenance",
+          "comment": "Output frequency: 2500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Maintenance",
+          "comment": "Output frequency: 3000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Maintenance",
+          "comment": "Output frequency: 3500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Maintenance",
+          "comment": "Output frequency: 4000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Maintenance",
+          "comment": "Output frequency: 4500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Maintenance",
+          "comment": "Output frequency: 5000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Maintenance",
+          "comment": "Output frequency: 5500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Maintenance",
+          "comment": "Output frequency: 6000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Maintenance",
+          "comment": "Output frequency: 6500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Maintenance",
+          "comment": "Output frequency: 7000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Maintenance",
+          "comment": "Output frequency: 7500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Maintenance",
+          "comment": "Output frequency: 8000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Maintenance",
+          "comment": "Output frequency: 8500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Maintenance",
+          "comment": "Output frequency: 9000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Maintenance",
+          "comment": "Output frequency: 9500Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Maintenance",
+          "comment": "Output frequency: 10000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Maintenance",
+          "comment": "Output frequency: 11000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Maintenance",
+          "comment": "Output frequency: 12000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Maintenance",
+          "comment": "Output frequency: 13000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Maintenance",
+          "comment": "Output frequency: 14000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Maintenance",
+          "comment": "Output frequency: 15000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Maintenance",
+          "comment": "Output frequency: 16000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Maintenance",
+          "comment": "Output frequency: 17000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Maintenance",
+          "comment": "Output frequency: 18000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Maintenance",
+          "comment": "Output frequency: 19000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Maintenance",
+          "comment": "Output frequency: 20000Hz",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [135, 144],
+          "type": "Maintenance",
+          "comment": "Boost: on (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [145, 154],
+          "type": "Maintenance",
+          "comment": "Boost: off",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [155, 164],
+          "type": "Maintenance",
+          "comment": "Display stand-by: off (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [165, 174],
+          "type": "Maintenance",
+          "comment": "Display stand-by: on",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [175, 176],
+          "type": "Maintenance",
+          "comment": "No DMX action: keep last DMX (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [177, 178],
+          "type": "Maintenance",
+          "comment": "No DMX action: blackout",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [179, 180],
+          "type": "Maintenance",
+          "comment": "No DMX action: LED on @ 100% (ZOOM @ 50%)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [181, 182],
+          "type": "Maintenance",
+          "comment": "No DMX action: LED on @ 60% (ZOOM @ 50%)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "Maintenance",
+          "comment": "No DMX action: custom (default: Dimmer 255; Shutter 015; Zoom 128)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [185, 194],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [195, 204],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [205, 214],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [215, 224],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [225, 234],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Maintenance",
+          "comment": "Fan mode: standard",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Maintenance",
+          "comment": "Fan mode: silent (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "Maintenance",
+          "comment": "Zoom mode: standard",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "Maintenance",
+          "comment": "Zoom mode: silent (default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Maintenance",
+          "comment": "Set all default values",
+          "hold": "5s"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "comment": "Reset Zoom",
+          "hold": "3s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Functions",
+        "Zoom",
+        "Reset"
+      ]
+    }
+  ]
+}

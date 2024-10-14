@@ -64,8 +64,8 @@
   a {
     box-sizing: border-box;
     display: inline-block;
-    flex-basis: 10em;
     flex-grow: 1;
+    flex-basis: 10em;
     width: 100%;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);
@@ -86,19 +86,15 @@
 </style>
 
 <script>
+import { objectProp, oneOfProp } from 'vue-ts-types';
+
 export default {
   props: {
-    type: {
-      type: String,
-      required: true,
-      validator(type) {
-        return [`fixture`, `capability`, `plugin`].includes(type);
-      },
-    },
-    context: {
-      type: Object,
-      required: true,
-    },
+    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
+    context: objectProp().required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   computed: {
     location() {
@@ -164,7 +160,7 @@ export default {
 
       const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
 };

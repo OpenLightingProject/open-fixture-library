@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -27,15 +28,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    wheelSlot: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    wheelSlot: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

@@ -1,0 +1,213 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS 300x",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Peter Zuiderent", "Flo Edelmann"],
+    "createDate": "2022-05-07",
+    "lastModifyDate": "2022-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2020/04/LS_300x-Product_Manual_EN.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/ls-300x/"
+    ],
+    "other": [
+      "https://www.aputure.com/wp-content/uploads/2021/02/LS-300x-DMX-Table.xlsx"
+    ]
+  },
+  "physical": {
+    "dimensions": [298, 216, 345],
+    "weight": 11.4,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 195],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Frequency Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "9"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic",
+          "comment": "10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "R"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Mode"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "FX Mode"
+        }
+      ]
+    },
+    "FX Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Pulsing"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Explosion"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Start Trigger": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Start Point"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Generic",
+          "comment": "Single Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Cycle Mode (Lightning)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Intensity",
+        "CCT Control",
+        "Frequency Control",
+        "Mode Selection",
+        "FX Control",
+        "Start Trigger"
+      ]
+    }
+  ]
+}

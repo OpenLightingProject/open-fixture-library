@@ -2,15 +2,15 @@ import xml2js from 'xml2js';
 
 import importJson from '../../lib/import-json.js';
 import {
-  getCapabilityFromChannelPreset,
-  getCapabilityFromCapabilityPreset,
   capabilityPresets,
+  getCapabilityFromCapabilityPreset,
+  getCapabilityFromChannelPreset,
   importHelpers,
 } from './presets.js';
 
 const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
-export const version = `1.1.0`;
+export const version = `1.1.1`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -571,7 +571,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       channelNameInWheels: trimmedChannelName in (fixture.wheels || {}),
       qlcPlusCapability,
       capabilityName,
-      index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
+      index: qlcPlusChannel.Capability?.indexOf(qlcPlusCapability) ?? 0,
       res1: qlcPlusCapability.$.Res1,
       res2: qlcPlusCapability.$.Res2,
       panMax,
@@ -760,7 +760,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/gi, ``),
+    name: qlcPlusMode.$.Name.replaceAll(/\s+mode|mode\s+/gi, ``),
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-|)(?:channels?|chan|ch)/i);
@@ -971,7 +971,7 @@ function mergeSimilarSwitchChannels(switchChannels) {
     }
 
     const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
-    switchChannel.key = Array.from(alternatives).join(` / `);
+    switchChannel.key = [...alternatives].join(` / `);
   }
 }
 
@@ -1051,5 +1051,5 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

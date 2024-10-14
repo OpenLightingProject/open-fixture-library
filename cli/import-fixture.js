@@ -43,7 +43,7 @@ try {
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
-    result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
+    result.warnings[key].push(...checkResult.warnings);
     result.errors[key] = checkResult.errors;
   }
 

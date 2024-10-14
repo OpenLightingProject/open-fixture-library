@@ -47,6 +47,7 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
 }
 
 ol.mode-channels {
@@ -62,6 +63,7 @@ ol.mode-channels {
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
 
 import FixturePageChannel from './FixturePageChannel.vue';
@@ -73,10 +75,10 @@ export default {
     FixturePagePhysical,
   },
   props: {
-    mode: {
-      type: Mode,
-      required: true,
-    },
+    mode: instanceOfProp(Mode).required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     return {

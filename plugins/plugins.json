@@ -42,7 +42,7 @@
     },
     "dmxcontrol3": {
       "name": "DMXControl 3 (DDF3)",
-      "exportPluginVersion": "0.1.0",
+      "exportPluginVersion": "0.1.2",
       "exportTests": [
         "channel-numbers"
       ]
@@ -73,7 +73,7 @@
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportPluginVersion": "12.3.0",
+      "exportPluginVersion": "12.5.0",
       "exportTests": []
     },
     "op-z": {
@@ -103,8 +103,8 @@
     },
     "qlcplus_4.12.2": {
       "name": "QLC+ 4.12.2",
-      "importPluginVersion": "1.1.0",
-      "exportPluginVersion": "1.3.0",
+      "importPluginVersion": "1.1.1",
+      "exportPluginVersion": "1.3.1",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "UV Eco Bar",
+  "shortName": "uv-eco-bar",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-09-11",
+    "lastModifyDate": "2024-09-11"
+  },
+  "comment": "18x3W UV LEDs",
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/6914/ADJ%20Eco%20UV%20Bar%20DMX%20-%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/eco-uv-bar-dmx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mEH-cVF_iB4"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 60, 115],
+    "weight": 2.4,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction",
+          "comment": "No Dimmer Curve"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 1"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 2"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 3"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 4"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Delay Mode Control (works in conjunction with Delay Mode in the main settings menu)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobing",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}

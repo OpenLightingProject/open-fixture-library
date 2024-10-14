@@ -44,7 +44,7 @@
     </section>
 
     <EditorCapabilityTypeData
-      v-model="wizard.templateCapability"
+      :capability="wizard.templateCapability"
       :channel="channel" />
 
     <table class="capabilities-table">
@@ -72,8 +72,8 @@
 
     <div class="button-bar right">
       <button
-        type="submit"
-        :disabled="error"
+        type="button"
+        :disabled="error || !wizard.templateCapability.type"
         class="restore primary"
         @click.prevent="apply()">
         Generate capabilities
@@ -131,10 +131,10 @@ th {
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-  clone,
 } from "../../assets/scripts/editor-utils.js";
 
 import LabeledValue from '../LabeledValue.vue';
@@ -159,18 +159,12 @@ export default {
     EditorCapabilityTypeData,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    wizard: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    resolution: numberProp().required,
+    wizard: objectProp().required,
+  },
+  emits: {
+    close: insertIndex => true,
   },
   computed: {
     capabilities() {
@@ -221,7 +215,7 @@ export default {
           this.wizard.start + ((index + 1) * this.wizard.width) - 1,
         ];
         capability.type = this.wizard.templateCapability.type;
-        capability.typeData = clone(this.wizard.templateCapability.typeData);
+        capability.typeData = structuredClone(this.wizard.templateCapability.typeData);
         replaceHashWithIndex(capability.typeData, index);
 
         capabilities.push(capability);
@@ -256,7 +250,7 @@ export default {
      * @returns {number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites.at(-1).dmxRange[1];
     },
 
     /**
@@ -386,6 +380,6 @@ export default {
  * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {
-  return Object.assign({}, capability, { source });
+  return { ...capability, source };
 }
 </script>

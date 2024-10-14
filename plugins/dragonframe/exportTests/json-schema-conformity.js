@@ -18,7 +18,7 @@ const SCHEMA_FILES = [
   `wheel-slot.json`,
 ];
 
-const schemaPromises = getSchemas();
+const schemas = await getSchemas();
 
 /**
  * @typedef {object} ExportFile
@@ -36,7 +36,6 @@ const schemaPromises = getSchemas();
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testJsonSchemaConformity(exportFile, allExportFiles) {
-  const schemas = await schemaPromises;
   const ajv = new Ajv({
     schemas,
     strict: false,

@@ -4,9 +4,9 @@
   "shortName": "RGBWAUV",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Shuichi", "Flo Edelmann"],
+    "authors": ["Shuichi", "Flo Edelmann", "Ryan Goodwin"],
     "createDate": "2021-09-19",
-    "lastModifyDate": "2021-09-19"
+    "lastModifyDate": "2023-04-20"
   },
   "availableChannels": {
     "Red": {
@@ -20,7 +20,7 @@
       "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red"
+        "color": "Green"
       }
     },
     "Blue": {

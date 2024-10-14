@@ -203,9 +203,9 @@
 </style>
 
 <script>
+import { stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
-import { clone } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
@@ -234,20 +234,13 @@ export default {
     FixtureHeader,
   },
   props: {
-    endpoint: {
-      type: String,
-      required: true,
-    },
-    githubUsername: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    githubComment: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    endpoint: stringProp().required,
+    githubUsername: stringProp().optional,
+    githubComment: stringProp().optional,
+  },
+  emits: {
+    success: () => true,
+    reset: () => true,
   },
   data() {
     return {
@@ -358,7 +351,7 @@ export default {
     async validate(requestBody) {
       this.requestBody = requestBody;
 
-      console.log(`validate`, clone(this.requestBody));
+      console.log(`validate`, structuredClone(this.requestBody));
 
       this.state = `validating`;
       try {
@@ -389,11 +382,11 @@ export default {
     async onSubmit() {
       this.requestBody = {
         fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername,
-        githubComment: this.githubComment,
+        githubUsername: this.githubUsername ?? null,
+        githubComment: this.githubComment ?? null,
       };
 
-      console.log(`submit`, clone(this.requestBody));
+      console.log(`submit`, structuredClone(this.requestBody));
 
       this.state = `uploading`;
       try {
