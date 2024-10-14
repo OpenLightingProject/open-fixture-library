@@ -296,7 +296,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 3],
-          "type": "NoFunction"
+          "type": "WheelSlotRotation",
+          "angle": "0deg"
         },
         {
           "dmxRange": [4, 123],
@@ -417,7 +418,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction"
+          "type": "WheelSlotRotation",
+          "speed": "stop"
         },
         {
           "dmxRange": [8, 127],
@@ -506,8 +508,8 @@
           "dmxRange": [4, 103],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [104, 107],
@@ -518,8 +520,8 @@
           "dmxRange": [108, 207],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [208, 212],
@@ -530,8 +532,8 @@
           "dmxRange": [213, 251],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz",
           "randomTiming": true
         },
         {
@@ -717,57 +719,72 @@
     "Frame 1A": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 1A Engage"
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 1B": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 1B Engage"
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 2A": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 2A Engage"
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 2B": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 2B Engage"
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 3A": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 3A Engage"
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 3B": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 3B Engage"
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
-    },
-    "Frame 4A": {
+    },"Frame 4A": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 4A Engage"
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame 4B": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "Frame 4B Engage"
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
       }
     },
     "Frame Rotation": {
@@ -776,17 +793,21 @@
       "capabilities": [
         {
           "dmxRange": [0, 2039],
-          "type": "NoFunction"
+          "type": "BladeSystemRotation",
+          "angle": "0deg"
         },
         {
           "dmxRange": [2040, 61200],
-          "type": "Generic",
-          "comment": "Frame Rotation"
+          "type": "BladeSystemRotation",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
         },
         {
           "dmxRange": [61201, 65535],
-          "type": "Generic",
-          "comment": "Frame Bounce"
+          "type": "BladeSystemRotation",
+          "comment": "Frame Bounce",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
         }
       ]
     },
