@@ -189,8 +189,17 @@ function mergeColorChannels(prismaticJson, oflJson) {
  * @returns {boolean} True if all RGB channels are present, false otherwise.
  */
 function checkRGBChannelExistence(prismaticJson, redChannelName, greenChannelName, blueChannelName) {
-  return prismaticJson.modes.some(mode =>
-    mode.channels.some(channel => [redChannelName, greenChannelName, blueChannelName].includes(channel)));
+  return checkChannelExistence(prismaticJson, redChannelName) && checkChannelExistence(prismaticJson, greenChannelName) && checkChannelExistence(prismaticJson, blueChannelName);
+}
+
+/**
+ * Check if channel is present in the Prismatic JSON object.
+ * @param {object} prismaticJson The Prismatic JSON object.
+ * @param {string} channelName The name of the channel.
+ * @returns {boolean} True if channel is present, false otherwise
+ */
+function checkChannelExistence(prismaticJson, channelName) {
+  return prismaticJson.modes.some(mode => mode.channels.includes(channelName));
 }
 
 /**
@@ -212,22 +221,30 @@ function mergeFineChannels(prismaticJson, oflJson) {
     const alias16Bit = channel.fineChannelAliases[0];
     const alias24Bit = channel.fineChannelAliases.length > 1 ? channel.fineChannelAliases[1] : ``;
 
-    // Add 16 bit channel to parameters
-    prismaticJson.parameters.push({
-      id: alias16Bit,
-      name: alias16Bit,
-      type: ParameterType.Bit16,
-    });
-    // Add 24 bit channel to parameters if it exists
-    if (alias24Bit.length > 0) {
+    updateFineChannelModes(prismaticJson, channelName, alias16Bit, alias24Bit);
+
+    // Actually remove 8 bit channel if it is not used in any mode
+    if (!checkChannelExistence(prismaticJson, channelName)) {
+      delete oflJson.availableChannels[channelName];
+    }
+
+    // Add 16 bit channel to parameters if it is used in any mode
+    if (checkChannelExistence(prismaticJson, alias16Bit)) {
+      prismaticJson.parameters.push({
+        id: alias16Bit,
+        name: alias16Bit,
+        type: ParameterType.Bit16,
+      });
+    }
+
+    // Add 24 bit channel to parameters if it is used in any mode
+    if (alias24Bit.length > 0 && checkChannelExistence(prismaticJson, alias24Bit)) {
       prismaticJson.parameters.push({
         id: alias24Bit,
         name: alias24Bit,
         type: ParameterType.Bit24,
       });
     }
-
-    updateFineChannelModes(prismaticJson, channelName, alias16Bit, alias24Bit);
   }
 }
 
