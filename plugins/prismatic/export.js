@@ -172,22 +172,25 @@ function mergeColorChannels(prismaticJson, oflJson) {
   }
 
   // Check if there are any RGB channels left
-  let colorChannelExists = false;
-  for (const mode of prismaticJson.modes) {
-    for (const channel in mode.channels) {
-      if (channel === redChannelName || channel === greenChannelName || channel === blueChannelName) {
-        colorChannelExists = true;
-        break;
-      }
-    }
-  }
-
   // If there are no RGB channels left, we can remove the RGB channels from the available channels
-  if (!colorChannelExists) {
+  if (!checkRGBChannelExistence(prismaticJson, redChannelName, greenChannelName, blueChannelName)) {
     delete oflJson.availableChannels[redChannelName];
     delete oflJson.availableChannels[greenChannelName];
     delete oflJson.availableChannels[blueChannelName];
   }
+}
+
+/**
+ * Check if RGB channels are present in the Prismatic JSON object.
+ * @param {object} prismaticJson The Prismatic JSON object.
+ * @param {string} redChannelName The name of the red channel.
+ * @param {string} greenChannelName The name of the green channel.
+ * @param {string} blueChannelName The name of the blue channel.
+ * @returns {boolean} True if all RGB channels are present, false otherwise.
+ */
+function checkRGBChannelExistence(prismaticJson, redChannelName, greenChannelName, blueChannelName) {
+  return prismaticJson.modes.some(mode =>
+    mode.channels.some(channel => [redChannelName, greenChannelName, blueChannelName].includes(channel)));
 }
 
 /**
@@ -200,7 +203,7 @@ function mergeFineChannels(prismaticJson, oflJson) {
   // channel name presence means 8bit, if multiple aliases are mentioned, the size increase to 16bit or 24bit
 
   // Go through available channel and check if we have fine channels
-  for (const [name, channel] of Object.entries(oflJson.availableChannels)) {
+  for (const [channelName, channel] of Object.entries(oflJson.availableChannels)) {
     // check if fineChannelAliases is present, is array and is not empty
     if (!channel.fineChannelAliases || !Array.isArray(channel.fineChannelAliases) || channel.fineChannelAliases.length === 0) {
       continue;
@@ -224,22 +227,33 @@ function mergeFineChannels(prismaticJson, oflJson) {
       });
     }
 
-    // Go through modes and search for channel name and its aliases
-    for (const mode of prismaticJson.modes) {
-      const channels = mode.channels;
-      for (let index = 0; index < channels.length - 1; index++) {
-        // check for 24 bit channel, watch out if we are not at the end of the array
-        if (alias24Bit.length > 0 && index < channels.length - 2 && channels[index] === name && channels[index + 1] === alias16Bit && channels[index + 2] === alias24Bit) {
-          // Replace the 3 channels with the 24 bit channel
-          channels.splice(index, 3, alias24Bit);
-          break;
-        }
-        // check for 16 bit
-        if (channels[index] === name && channels[index + 1] === alias16Bit) {
-          // Replace the 2 channels with the 16 bit channel
-          channels.splice(index, 2, alias16Bit);
-          break;
-        }
+    updateFineChannelModes(prismaticJson, channelName, alias16Bit, alias24Bit);
+  }
+}
+
+/**
+ * Helper function to update oflJson modes with new Prismatics fine channels.
+ * @param {object} prismaticJson The Prismatic JSON object.
+ * @param {string} channelName The name of the channel.
+ * @param {string} alias16Bit  The name of the 16 bit channel.
+ * @param {string} alias24Bit  The name of the 24 bit channel (if it exists).
+ */
+function updateFineChannelModes(prismaticJson, channelName, alias16Bit, alias24Bit) {
+  // Go through modes and search for channel name and its aliases
+  for (const mode of prismaticJson.modes) {
+    const channels = mode.channels;
+    for (let index = 0; index < channels.length - 1; index++) {
+      // check for 24 bit channel, watch out if we are not at the end of the array
+      if (alias24Bit.length > 0 && index < channels.length - 2 && channels[index] === channelName && channels[index + 1] === alias16Bit && channels[index + 2] === alias24Bit) {
+        // Replace the 3 channels with the 24 bit channel
+        channels.splice(index, 3, alias24Bit);
+        break;
+      }
+      // check for 16 bit
+      if (channels[index] === channelName && channels[index + 1] === alias16Bit) {
+        // Replace the 2 channels with the 16 bit channel
+        channels.splice(index, 2, alias16Bit);
+        break;
       }
     }
   }
