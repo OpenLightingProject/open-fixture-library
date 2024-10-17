@@ -151,7 +151,7 @@ function mergeColorChannels(prismaticJson, oflJson) {
   for (const mode of prismaticJson.modes) {
     // Modes are objects, we are interested in the channels array, which contain strings of names
     const channels = mode.channels;
-    // Go through the channels and check if there is Red channel
+    // Go through the channels and check if there is Red channel followed by Green channel followed by Blue channel
     for (let index = 0; index < channels.length - 2; index++) {
       if (channels[index] === redChannelName && channels[index + 1] === greenChannelName && channels[index + 2] === blueChannelName) {
         // Found RGB channels, we can add the parameter
