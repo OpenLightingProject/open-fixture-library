@@ -5,10 +5,7 @@ import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
 
-const ignoredSassDeprecations = [
-  `legacy-js-api`, // can only be fixed with Nuxt.js v3
-  `color-functions`, // TODO: remove when color functions have been migrated
-];
+const ignoredSassDeprecations = [`legacy-js-api`]; // can only be fixed with Nuxt.js v3
 const sassDeprecationIds = Object.values(sass.deprecations).flatMap(deprecation =>
   (deprecation.status === `active` && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
 );
