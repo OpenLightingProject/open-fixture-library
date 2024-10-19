@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZEP ROBERT JULIA",
+  "shortName": "ZEP",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["PLDL"],
+    "createDate": "2024-10-19",
+    "lastModifyDate": "2024-10-19"
+  },
+  "comment": "PC LED 300 WATTS WW CW",
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ],
+    "video": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 100],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "7200K"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ZEP ROBERT JULIA",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Color Temperature",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
