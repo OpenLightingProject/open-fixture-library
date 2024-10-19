@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZEP 300 WW WC",
+  "shortName": "ZEP",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["PLDL"],
+    "createDate": "2024-10-19",
+    "lastModifyDate": "2024-10-19"
+  },
+  "comment": "PC et Decoupe ZEP 300 WW WC",
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ],
+    "video": [
+      "https://www.robertjuliat.fr/Theatre/ZEP_340_360_LED.html"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "7200K"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ZEP",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Color Temperature",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
