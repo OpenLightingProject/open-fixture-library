@@ -1,0 +1,492 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ELP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Patin"],
+    "createDate": "2024-10-19",
+    "lastModifyDate": "2024-10-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-10-19",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "availableChannels": {
+    "Stroboscope": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "fermé",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "lent -> rapide",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "aléatoire lent->rapide",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimmer rapide": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED rapide": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN rapide": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 34],
+          "type": "Intensity",
+          "comment": "1800K"
+        },
+        {
+          "dmxRange": [35, 118],
+          "type": "Intensity",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [119, 128],
+          "type": "Intensity",
+          "comment": "6500"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Intensity",
+          "comment": "12 850 K"
+        }
+      ]
+    },
+    "roue de couleur": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "roue de couleur virtuelle"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "ColorPreset",
+          "comment": "ouvert (blanc)"
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "ColorPreset",
+          "comment": "Morocan Pink (lee 790)"
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "ColorPreset",
+          "comment": "Pink (Lee 157)"
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "ColorPreset",
+          "comment": "Speciale rose pink (lee 332)"
+        },
+        {
+          "dmxRange": [19, 20],
+          "type": "ColorPreset",
+          "comment": "Follies pink (lee 328)"
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "ColorPreset",
+          "comment": "Fuschia (lee 194)"
+        },
+        {
+          "dmxRange": [23, 24],
+          "type": "ColorPreset",
+          "comment": "Surprise pink"
+        },
+        {
+          "dmxRange": [25, 26],
+          "type": "ColorPreset",
+          "comment": "Congo blue (lee 181)"
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "Tokyo blue (071)"
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "ColorPreset",
+          "comment": "DEEP blue (120)"
+        },
+        {
+          "dmxRange": [31, 32],
+          "type": "ColorPreset",
+          "comment": "just blue (079)"
+        },
+        {
+          "dmxRange": [33, 34],
+          "type": "ColorPreset",
+          "comment": "medium blue (132)"
+        },
+        {
+          "dmxRange": [35, 36],
+          "type": "ColorPreset",
+          "comment": "double CTB (200)"
+        },
+        {
+          "dmxRange": [37, 38],
+          "type": "ColorPreset",
+          "comment": "state blue (161)"
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "ColorPreset",
+          "comment": "Full ctB (201)"
+        },
+        {
+          "dmxRange": [41, 42],
+          "type": "ColorPreset",
+          "comment": "Half CTB (202)"
+        },
+        {
+          "dmxRange": [43, 44],
+          "type": "ColorPreset",
+          "comment": "Steel blue (117)"
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "ColorPreset",
+          "comment": "lighter blue (353)"
+        },
+        {
+          "dmxRange": [47, 48],
+          "type": "ColorPreset",
+          "comment": "light blue (118)"
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "ColorPreset",
+          "comment": "Medium blue green (116)"
+        },
+        {
+          "dmxRange": [51, 52],
+          "type": "ColorPreset",
+          "comment": "dark green"
+        },
+        {
+          "dmxRange": [53, 54],
+          "type": "ColorPreset",
+          "comment": "primary green"
+        },
+        {
+          "dmxRange": [55, 56],
+          "type": "ColorPreset",
+          "comment": "moss green"
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "ColorPreset",
+          "comment": "fern green"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "ColorPreset",
+          "comment": "jas green"
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "ColorPreset",
+          "comment": "lime green"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "comment": "spring yellow"
+        },
+        {
+          "dmxRange": [65, 66],
+          "type": "ColorPreset",
+          "comment": "deep amber"
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "ColorPreset",
+          "comment": "chrome orange"
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "ColorPreset",
+          "comment": "orange (lee 105)"
+        },
+        {
+          "dmxRange": [71, 72],
+          "type": "ColorPreset",
+          "comment": "gold amber"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "ColorPreset",
+          "comment": "millenium gold"
+        },
+        {
+          "dmxRange": [75, 76],
+          "type": "ColorPreset",
+          "comment": "deep golden amber"
+        },
+        {
+          "dmxRange": [77, 78],
+          "type": "ColorPreset",
+          "comment": "flame red (164)"
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "ColorPreset",
+          "comment": "red magenta"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "ColorPreset",
+          "comment": "medium lavender"
+        },
+        {
+          "dmxRange": [83, 84],
+          "type": "ColorPreset",
+          "comment": "blanc pur"
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "ColorPreset",
+          "comment": "rouge pur"
+        },
+        {
+          "dmxRange": [87, 88],
+          "type": "ColorPreset",
+          "comment": "jaune pur"
+        },
+        {
+          "dmxRange": [89, 90],
+          "type": "ColorPreset",
+          "comment": "vert pur"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "ColorPreset",
+          "comment": "cyan pur"
+        },
+        {
+          "dmxRange": [93, 94],
+          "type": "ColorPreset",
+          "comment": "bleu pur"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "magenta pur"
+        },
+        {
+          "dmxRange": [97, 98],
+          "type": "ColorPreset",
+          "comment": "peacock blue"
+        },
+        {
+          "dmxRange": [99, 100],
+          "type": "ColorPreset",
+          "comment": "dark lavender"
+        },
+        {
+          "dmxRange": [101, 102],
+          "type": "ColorPreset",
+          "comment": "double CTO (287)"
+        },
+        {
+          "dmxRange": [103, 104],
+          "type": "ColorPreset",
+          "comment": "full cto"
+        },
+        {
+          "dmxRange": [105, 106],
+          "type": "ColorPreset",
+          "comment": "half cto"
+        },
+        {
+          "dmxRange": [107, 190],
+          "type": "ColorPreset",
+          "comment": "deep straw"
+        },
+        {
+          "dmxRange": [191, 214],
+          "type": "ColorPreset",
+          "comment": "rotation continue"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "ColorPreset",
+          "comment": "sens horaire (lent -> rapide)"
+        },
+        {
+          "dmxRange": [220, 243],
+          "type": "ColorPreset",
+          "comment": "arret (pos actuelle) sens anti horaire"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorPreset",
+          "comment": "couleur aleatoir rapide"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "ColorPreset",
+          "comment": "couleur aleatoire medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "couleur aleatoire lent"
+        }
+      ]
+    },
+    "zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "controle/reglages": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "dimmer précis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge précis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green précis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue précis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "zoom précis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Stroboscope",
+        "Dimmer rapide",
+        "dimmer précis",
+        "RED rapide",
+        "Rouge précis",
+        "GREEN rapide",
+        "Green précis",
+        "BLUE",
+        "Blue précis",
+        "CTC",
+        "roue de couleur",
+        "zoom",
+        "zoom précis",
+        "controle/reglages"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Stroboscope",
+        "Dimmer rapide",
+        "dimmer précis",
+        "RED rapide",
+        "GREEN rapide",
+        "BLUE",
+        "CTC",
+        "zoom",
+        "zoom précis"
+      ]
+    }
+  ]
+}
