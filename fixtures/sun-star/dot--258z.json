@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DOT- 258Z",
+  "shortName": "Dto258",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Alejandro Carrasco"],
+    "createDate": "2024-10-22",
+    "lastModifyDate": "2024-10-22"
+  },
+  "links": {
+    "productPage": [
+      "https://sunstar.com.mx/landing-junio-2024/?gad_source=2&gclid=Cj0KCQjwmt24BhDPARIsAJFYKk0O8RrY6jOaJccFGCElJuVVWCPGV7KfQC-AXa2Oq71Zd65zPRcbb0saAgKKEALw_wcB"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DOT-258Z",
+      "shortName": "Dot258",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Effect Speed",
+        "Focus",
+        "No function"
+      ]
+    }
+  ]
+}
