@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Ryan Goodwin"],
-    "createDate": "2024-10-12",
-    "lastModifyDate": "2024-10-12"
+    "createDate": "2024-10-21",
+    "lastModifyDate": "2024-10-21"
   },
   "links": {
     "manual": [
@@ -46,8 +46,8 @@
       ]
     ],
     "pixelGroups": {
-      "RGB": {"name": ["^C"]},
-      "White": {"name": ["^W"]}
+      "RGB": { "name": ["^C"] },
+      "White": { "name": ["^W"] }
     }
   },
   "templateChannels": {
@@ -69,11 +69,52 @@
         "color": "Blue"
       }
     },
-    "$pixelKey White Intensity": {
+    "$pixelKey Intensity": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
+    },
+    "$pixelKey Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [2, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [171, 213],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Individual pixel Strobe"
+        }
+      ]
     }
   },
   "availableChannels": {
@@ -106,6 +147,562 @@
     "Dimmer": {
       "capability": {
         "type": "Intensity"
+      }
+    },
+    "Shutter Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 12],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [13, 23],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [24, 34],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [35, 45],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [46, 56],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [57, 67],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [68, 78],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [79, 89],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        },
+        {
+          "dmxRange": [90, 100],
+          "type": "Effect",
+          "effectName": "Macro 9"
+        },
+        {
+          "dmxRange": [101, 111],
+          "type": "Effect",
+          "effectName": "Macro 10"
+        },
+        {
+          "dmxRange": [112, 122],
+          "type": "Effect",
+          "effectName": "Macro 11"
+        },
+        {
+          "dmxRange": [123, 133],
+          "type": "Effect",
+          "effectName": "Macro 12"
+        },
+        {
+          "dmxRange": [134, 144],
+          "type": "Effect",
+          "effectName": "Macro 13"
+        },
+        {
+          "dmxRange": [145, 155],
+          "type": "Effect",
+          "effectName": "Macro 14"
+        },
+        {
+          "dmxRange": [156, 166],
+          "type": "Effect",
+          "effectName": "Macro 15"
+        },
+        {
+          "dmxRange": [167, 177],
+          "type": "Effect",
+          "effectName": "Macro 16"
+        },
+        {
+          "dmxRange": [178, 188],
+          "type": "Effect",
+          "effectName": "Macro 17"
+        },
+        {
+          "dmxRange": [189, 199],
+          "type": "Effect",
+          "effectName": "Macro 18"
+        },
+        {
+          "dmxRange": [200, 210],
+          "type": "Effect",
+          "effectName": "Macro 19"
+        },
+        {
+          "dmxRange": [211, 221],
+          "type": "Effect",
+          "effectName": "Macro 20"
+        },
+        {
+          "dmxRange": [222, 232],
+          "type": "Effect",
+          "effectName": "Macro 21"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Macro 22"
+        }
+      ]
+    },
+    "Shutter Macro Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 12],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [13, 23],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [24, 34],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [35, 45],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [46, 56],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [57, 67],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [68, 78],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [79, 89],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        },
+        {
+          "dmxRange": [90, 100],
+          "type": "Effect",
+          "effectName": "Macro 9"
+        },
+        {
+          "dmxRange": [101, 111],
+          "type": "Effect",
+          "effectName": "Macro 10"
+        },
+        {
+          "dmxRange": [112, 122],
+          "type": "Effect",
+          "effectName": "Macro 11"
+        },
+        {
+          "dmxRange": [123, 133],
+          "type": "Effect",
+          "effectName": "Macro 12"
+        },
+        {
+          "dmxRange": [134, 144],
+          "type": "Effect",
+          "effectName": "Macro 13"
+        },
+        {
+          "dmxRange": [145, 155],
+          "type": "Effect",
+          "effectName": "Macro 14"
+        },
+        {
+          "dmxRange": [156, 166],
+          "type": "Effect",
+          "effectName": "Macro 15"
+        },
+        {
+          "dmxRange": [167, 177],
+          "type": "Effect",
+          "effectName": "Macro 16"
+        },
+        {
+          "dmxRange": [178, 188],
+          "type": "Effect",
+          "effectName": "Macro 17"
+        },
+        {
+          "dmxRange": [189, 199],
+          "type": "Effect",
+          "effectName": "Macro 18"
+        },
+        {
+          "dmxRange": [200, 210],
+          "type": "Effect",
+          "effectName": "Macro 19"
+        },
+        {
+          "dmxRange": [211, 221],
+          "type": "Effect",
+          "effectName": "Macro 20"
+        },
+        {
+          "dmxRange": [222, 232],
+          "type": "Effect",
+          "effectName": "Macro 21"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Macro 22"
+        }
+      ]
+    },
+    "Color Macro Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Alpha Numeric Display": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 6],
+          "type": "Effect",
+          "effectName": "0"
+        },
+        {
+          "dmxRange": [7, 12],
+          "type": "Effect",
+          "effectName": "1"
+        },
+        {
+          "dmxRange": [13, 18],
+          "type": "Effect",
+          "effectName": "2"
+        },
+        {
+          "dmxRange": [19, 24],
+          "type": "Effect",
+          "effectName": "3"
+        },
+        {
+          "dmxRange": [25, 30],
+          "type": "Effect",
+          "effectName": "4"
+        },
+        {
+          "dmxRange": [31, 36],
+          "type": "Effect",
+          "effectName": "5"
+        },
+        {
+          "dmxRange": [37, 42],
+          "type": "Effect",
+          "effectName": "6"
+        },
+        {
+          "dmxRange": [43, 48],
+          "type": "Effect",
+          "effectName": "7"
+        },
+        {
+          "dmxRange": [49, 54],
+          "type": "Effect",
+          "effectName": "8"
+        },
+        {
+          "dmxRange": [55, 60],
+          "type": "Effect",
+          "effectName": "9"
+        },
+        {
+          "dmxRange": [61, 66],
+          "type": "Effect",
+          "effectName": "A"
+        },
+        {
+          "dmxRange": [67, 72],
+          "type": "Effect",
+          "effectName": "B"
+        },
+        {
+          "dmxRange": [73, 78],
+          "type": "Effect",
+          "effectName": "C"
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "Effect",
+          "effectName": "D"
+        },
+        {
+          "dmxRange": [85, 90],
+          "type": "Effect",
+          "effectName": "E"
+        },
+        {
+          "dmxRange": [91, 96],
+          "type": "Effect",
+          "effectName": "F"
+        },
+        {
+          "dmxRange": [97, 102],
+          "type": "Effect",
+          "effectName": "G"
+        },
+        {
+          "dmxRange": [103, 108],
+          "type": "Effect",
+          "effectName": "H"
+        },
+        {
+          "dmxRange": [109, 114],
+          "type": "Effect",
+          "effectName": "I"
+        },
+        {
+          "dmxRange": [115, 120],
+          "type": "Effect",
+          "effectName": "J"
+        },
+        {
+          "dmxRange": [121, 126],
+          "type": "Effect",
+          "effectName": "K"
+        },
+        {
+          "dmxRange": [127, 132],
+          "type": "Effect",
+          "effectName": "L"
+        },
+        {
+          "dmxRange": [133, 138],
+          "type": "Effect",
+          "effectName": "M"
+        },
+        {
+          "dmxRange": [139, 144],
+          "type": "Effect",
+          "effectName": "N"
+        },
+        {
+          "dmxRange": [145, 150],
+          "type": "Effect",
+          "effectName": "O"
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "Effect",
+          "effectName": "P"
+        },
+        {
+          "dmxRange": [157, 162],
+          "type": "Effect",
+          "effectName": "Q"
+        },
+        {
+          "dmxRange": [163, 168],
+          "type": "Effect",
+          "effectName": "R"
+        },
+        {
+          "dmxRange": [169, 174],
+          "type": "Effect",
+          "effectName": "S"
+        },
+        {
+          "dmxRange": [175, 180],
+          "type": "Effect",
+          "effectName": "T"
+        },
+        {
+          "dmxRange": [181, 186],
+          "type": "Effect",
+          "effectName": "U"
+        },
+        {
+          "dmxRange": [187, 192],
+          "type": "Effect",
+          "effectName": "V"
+        },
+        {
+          "dmxRange": [193, 198],
+          "type": "Effect",
+          "effectName": "W"
+        },
+        {
+          "dmxRange": [199, 204],
+          "type": "Effect",
+          "effectName": "X"
+        },
+        {
+          "dmxRange": [205, 210],
+          "type": "Effect",
+          "effectName": "Y"
+        },
+        {
+          "dmxRange": [211, 216],
+          "type": "Effect",
+          "effectName": "Z"
+        },
+        {
+          "dmxRange": [217, 222],
+          "type": "Effect",
+          "effectName": "Right Arrow"
+        },
+        {
+          "dmxRange": [223, 228],
+          "type": "Effect",
+          "effectName": "Down Arrow"
+        },
+        {
+          "dmxRange": [229, 234],
+          "type": "Effect",
+          "effectName": "Up Arrow"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Left Arrow"
+        }
+      ]
+    },
+    "Background Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Background Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Background Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 19],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [110, 139],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Effect",
+          "effectName": "Macro 9"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Macro 10"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Macro 11"
+        }
+      ]
+    },
+    "White Macro Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Control": {
@@ -141,9 +738,29 @@
           "templateChannels": [
             "$pixelKey Red Intensity",
             "$pixelKey Green Intensity",
-            "$pixelKey Blue Intensity"
+            "$pixelKey Blue Intensity",
+            "$pixelKey Strobe"
           ]
         },
+        "Shutter Macros",
+        "Shutter Macro Speed",
+        "Color Macros",
+        "Color Macro Speed",
+        "Alpha Numeric Display",
+        "Background Red",
+        "Background Green",
+        "Background Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["White"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity",
+            "$pixelKey Strobe"
+          ]
+        },
+        "White Macros",
+        "White Macro Speed",
         "Control"
       ]
     },
@@ -173,7 +790,7 @@
           ],
           "channelOrder": "perPixel",
           "templateChannels": [
-            "$pixelKey White Intensity"
+            "$pixelKey Intensity"
           ]
         },
         {
