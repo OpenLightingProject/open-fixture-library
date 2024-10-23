@@ -172,9 +172,8 @@
         {
           "dmxRange": [6, 255],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "2800K-8000K"
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
         }
       ]
     },
@@ -350,7 +349,7 @@
         }
       ]
     },
-    "Color Mode": {
+    "Color Mode Crossfade": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -600,7 +599,7 @@
         "CCT",
         "Tint",
         "Color Macros",
-        "Color Mode",
+        "Color Mode Crossfade",
         "Device Settings"
       ]
     },
@@ -619,7 +618,7 @@
         "CCT",
         "Tint",
         "Color Macros",
-        "Color Mode",
+        "Color Mode Crossfade",
         "Device Settings"
       ]
     }
