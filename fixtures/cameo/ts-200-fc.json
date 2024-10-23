@@ -24,7 +24,11 @@
   "physical": {
     "lens": {
       "name": "Fresnell"
-    }
+    },
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin",
   },
   "availableChannels": {
     "Dimmer": {
@@ -82,18 +86,16 @@
         {
           "dmxRange": [103, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Stobe break effect"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [128, 250],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "1Hz-20Hz"
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [251, 255],
@@ -113,8 +115,8 @@
           "dmxRange": [6, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
