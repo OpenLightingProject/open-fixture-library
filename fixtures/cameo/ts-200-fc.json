@@ -184,11 +184,17 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 255],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightnessStart": "dark",
-          "brightnessEnd": "bright",
+          "dmxRange": [1, 127],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "affects only CCT"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#00ff00"],
           "comment": "affects only CCT"
         }
       ]
