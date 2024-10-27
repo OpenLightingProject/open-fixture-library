@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wash zoom",
+  "shortName": "washz",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tanakron"],
+    "createDate": "2024-10-27",
+    "lastModifyDate": "2024-10-27"
+  },
+  "links": {
+    "other": [
+      "https://www.google.com/"
+    ]
+  },
+  "availableChannels": {
+    "1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "22": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "333": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "4444": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "1",
+      "channels": [
+        "1",
+        "22",
+        "333",
+        "4444"
+      ]
+    }
+  ]
+}
