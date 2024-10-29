@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam 200",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Александр", "DJ ALEX51"],
+    "createDate": "2024-10-29",
+    "lastModifyDate": "2024-10-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-10-29",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "power": 350,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "HTI 250W"
+    }
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    },
+    "Gobo wheel": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Color wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Prism rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "Prism rotation2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "AUTO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "RESET": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Beam 14-channelnal",
+      "shortName": "Beam 14chnal",
+      "channels": [
+        "Color wheel",
+        "Strobe",
+        "Master dimmer",
+        "Gobo wheel",
+        "Prism rotation",
+        "Prism rotation2",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "AUTO",
+        "RESET"
+      ]
+    }
+  ]
+}
