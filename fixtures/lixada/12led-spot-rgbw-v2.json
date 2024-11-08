@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "12LED Spot RGBW (V2)",
+  "shortName": "RGBW LED Spot",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Moritz"],
+    "createDate": "2024-11-08",
+    "lastModifyDate": "2024-11-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.lixada.com"
+    ],
+    "productPage": [
+      "https://www.lixada.com"
+    ],
+    "video": [
+      "https://www.lixada.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [120, 120, 90],
+    "weight": 0.36,
+    "power": 12,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer CH 5-8": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "Allowed Strobe effect CH 1-2"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "ColorJump+fadeout"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed CH3": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Lixada RGBW 12LED Spot (V2)",
+      "shortName": "RGBW Spot 8CH",
+      "channels": [
+        "Master Dimmer CH 5-8",
+        "Speed",
+        "Effects",
+        "Speed CH3",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
