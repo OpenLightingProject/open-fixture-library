@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "500mw",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["LISTEK"],
+    "createDate": "2024-11-11",
+    "lastModifyDate": "2024-11-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "weight": 1.4,
+    "power": 1,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "500mw"
+    }
+  },
+  "availableChannels": {
+    "mode selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "closed light mode"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "manual mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "auto mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "sound mode"
+        }
+      ]
+    },
+    "manual mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "angle control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "rotation angle"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "pozitiwe"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "anty"
+        }
+      ]
+    },
+    "horizontal angle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "flip"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "slip speed"
+        }
+      ]
+    },
+    "vertical angle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "flip"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "flip speed"
+        }
+      ]
+    },
+    "horizontal position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "horizontal movement"
+        }
+      ]
+    },
+    "vertical position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "vertical movement"
+        }
+      ]
+    },
+    "pattern size control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "fixed size",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "choose",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "choose2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "size zoom",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "color control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ColorPreset",
+          "comment": "monochrome color"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "comment": "color mixing"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "auto"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "cyk",
+      "channels": [
+        "mode selection",
+        "manual mode",
+        "angle control",
+        "horizontal angle",
+        "vertical angle",
+        "horizontal position",
+        "vertical position",
+        "pattern size control",
+        "color control"
+      ]
+    }
+  ]
+}
