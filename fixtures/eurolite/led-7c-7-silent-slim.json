@@ -49,8 +49,10 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "Effect",
-          "effectName": "Strobe with increasing speed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -79,14 +81,14 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "Cold White"
       }
     },
     "Warm white": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "Warm White"
       }
     },
     "Amber": {
@@ -227,23 +229,27 @@
         {
           "dmxRange": [10, 69],
           "type": "Effect",
-          "effectName": "Color fade with increasing speed"
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [70, 129],
           "type": "Effect",
-          "effectName": "Color switch with increasing speed"
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [130, 189],
           "type": "Effect",
-          "effectName": "Sound controlled color fade",
+          "effectPreset": "ColorFade",
           "soundControlled": true
         },
         {
           "dmxRange": [190, 255],
           "type": "Effect",
-          "effectName": "Sound controled color switch",
+          "effectPreset": "ColorJump",
           "soundControlled": true
         }
       ]
