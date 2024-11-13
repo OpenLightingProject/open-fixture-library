@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flare",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Argo"],
+    "createDate": "2024-11-13",
+    "lastModifyDate": "2024-11-13"
+  },
+  "links": {
+    "video": [
+      "https://www.fos-lighting.eu/?gad_source=1&gclid=CjwKCAiAudG5BhAREiwAWMlSjB3mhNsAyqHD4dXIu2DThIX5gHsts1bGqiL2JJJhnquEJImpbTmjsBoCgkEQAvD_BwE"
+    ]
+  },
+  "rdm": {
+    "modelId": 0,
+    "softwareVersion": "1"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
