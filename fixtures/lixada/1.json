@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tony"],
+    "createDate": "2024-11-15",
+    "lastModifyDate": "2024-11-15"
+  },
+  "links": {
+    "video": [
+      "https://open-fixture-library.org/stage-right/stage-wash-7x10w-led-moving-head?redirectFrom=lixada%2Fmini-moving-head-rgbw"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Patch_1",
+      "channels": [
+        "Pan",
+        "Tilt"
+      ]
+    }
+  ]
+}
