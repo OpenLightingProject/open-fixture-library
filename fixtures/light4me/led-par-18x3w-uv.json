@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 18x3W UV",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2024-11-16",
+    "lastModifyDate": "2024-11-16"
+  },
+  "links": {
+    "productPage": [
+      "https://light4me.pl/en/product/light4me-led-par-18x3w-uv/"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 100],
+    "weight": 0.8,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x3W UV LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "UV 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "UV 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "UV 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Macros"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "UV 1",
+        "UV 2",
+        "UV 3",
+        "Macro Speed",
+        "Strobe",
+        "Macros"
+      ]
+    }
+  ]
+}
