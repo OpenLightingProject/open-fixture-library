@@ -1,6 +1,6 @@
 /* Based on the ofl export plugin */
 
-import namedColors from 'color-name-list/dist/colornames.esm.mjs';
+import { colornames as colorNames } from 'color-name-list';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
 import importJson from '../../lib/import-json.js';
@@ -158,7 +158,7 @@ function transformNonNumericValues(fixtureJson) {
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
  */
 function processColor(capability) {
-  const namedColor = namedColors.find(color => color.name === capability.color);
+  const namedColor = colorNames.find(color => color.name === capability.color);
   if (namedColor && namedColor.hex) {
     capability.color = namedColor.hex;
   }
