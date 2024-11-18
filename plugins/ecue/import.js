@@ -1,10 +1,10 @@
-import colorNameList from 'color-name-list/dist/colornames.esm.mjs';
+import { colornames as colorNames } from 'color-name-list';
 import xml2js from 'xml2js';
 
 export const version = `0.3.1`;
 
 const colors = {};
-for (const color of colorNameList) {
+for (const color of colorNames) {
   colors[color.name.toLowerCase().replaceAll(/\s/g, ``)] = color.hex;
 }
 
