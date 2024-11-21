@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CP400",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Thomas"],
+    "createDate": "2024-11-21",
+    "lastModifyDate": "2024-11-21"
+  },
+  "links": {
+    "productPage": [
+      "https://fr.audiofanzine.com/changeur-de-couleurs/clay-paky/CP-Color-400/petites-annonces/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Cyan": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Magenta": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "basic",
+      "channels": [
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow"
+      ]
+    }
+  ]
+}
