@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CP400",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Thomas"],
+    "createDate": "2024-11-21",
+    "lastModifyDate": "2024-11-21"
+  },
+  "links": {
+    "productPage": [
+      "https://www.soundlightup.com/produits/clay-paky-cp400"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "basic",
+      "channels": [
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow"
+      ]
+    }
+  ]
+}
