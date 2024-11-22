@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Multibeam LED FC",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Djef"],
+    "createDate": "2023-04-05",
+    "lastModifyDate": "2023-04-05"
+  },
+  "links": {
+    "manual": [
+      "http://artdam.asso.fr/pdf/oxomultibeamledfcnotice.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/"
+    ],
+    "other": [
+      "https://www.oxolight.com/shop?page=2"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [14, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "99Hz"
+      }
+    },
+    "Mode": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe Speed",
+        "Mode",
+        "Dimmer"
+      ]
+    }
+  ]
+}
