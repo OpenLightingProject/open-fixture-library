@@ -1,0 +1,170 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash 7x18 RGBWA+UV",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["yids"],
+    "createDate": "2022-12-17",
+    "lastModifyDate": "2022-12-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1912/file/cffb00b834.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/factory-outlet-led-7x18w-moving-head-light-6in1-rgbwauv-professional-for-effect-stage-for-disco-dj-music-party-club-dance-1"
+    ]
+  },
+  "physical": {
+    "dimensions": [17.6, 17.5, 14.5],
+    "weight": 3.5,
+    "power": 126,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "X-axis": {
+      "fineChannelAliases": ["X-axis fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y-axis": {
+      "fineChannelAliases": ["Y-axis fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Axis speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Global Dimmmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Full Brightness"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Selection/Combination/Jump": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Auto Color Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Motor Mode Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "X/Y Axis speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channel",
+      "shortName": "15ch",
+      "channels": [
+        "X-axis",
+        "X-axis fine",
+        "Y-axis",
+        "Y-axis fine",
+        "Axis speed",
+        "Global Dimmmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Selection/Combination/Jump",
+        "Auto Color Speed",
+        "Motor Mode Speed"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "X-axis",
+        "Y-axis",
+        "Global Dimmmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "X/Y Axis speed"
+      ]
+    }
+  ]
+}
