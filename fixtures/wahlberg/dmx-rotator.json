@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DMX Rotator",
+  "shortName": "Rotator",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bram Delafonteyne"],
+    "createDate": "2023-04-22",
+    "lastModifyDate": "2023-04-22"
+  },
+  "links": {
+    "manual": [
+      "https://wahlberg.dk/media/1185/281805006_manual_rotatordoc.pdf"
+    ],
+    "productPage": [
+      "https://wahlberg.dk/products/dmx-rotators/dmx-rotator"
+    ],
+    "video": [
+      "https://www.youtube.com/@wahlbergmotiondesign9306"
+    ]
+  },
+  "physical": {
+    "dimensions": [228, 178, 228],
+    "weight": 7.6,
+    "power": 150,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Position": {
+      "fineChannelAliases": ["Position fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CW": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 75],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Generic",
+          "comment": "CW"
+        }
+      ]
+    },
+    "CCW": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 75],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Generic",
+          "comment": "CCW"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "Generic",
+          "comment": "Position"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 137],
+          "type": "Generic",
+          "comment": "Position with Soft Limit"
+        },
+        {
+          "dmxRange": [138, 203],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "Angular mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Slow Speed",
+      "channels": [
+        "Position",
+        "Position fine",
+        "Speed",
+        "CW",
+        "CCW",
+        "Mode"
+      ]
+    }
+  ]
+}
