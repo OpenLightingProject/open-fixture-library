@@ -1,0 +1,413 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "C-PartyRocker",
+  "categories": ["Stand", "Laser", "Strobe"],
+  "meta": {
+    "authors": ["xb"],
+    "createDate": "2023-03-16",
+    "lastModifyDate": "2023-03-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.es/manual/136015/Cloud-Night-C-Partyrocker.html#manual"
+    ],
+    "other": [
+      "http://www.dune-sono.com"
+    ]
+  },
+  "availableChannels": {
+    "Red — Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green — Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue — Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer — Derby 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [192, 200],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "RGB 100%"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Clockwise"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse",
+          "comment": "Anti clockwise"
+        }
+      ]
+    },
+    "Red — PAR 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green - PAR 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue — PAR 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe — PAR 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "UNUSED": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red — PAR 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green — PAR 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue — PAR 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "UNUSED 2": {
+      "name": "UNUSED",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red — Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green — Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue  — Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [192, 200],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "RGB 100%"
+        }
+      ]
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Clockwise"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Anti clockwise"
+        }
+      ]
+    },
+    "Red — Laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Green — Laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Pan/Tilt Speed — Laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Clockwise"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Anti clockwise"
+        }
+      ]
+    },
+    "Strobe — LED 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Strobe — LED 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Strobe — LED 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Strobe — LED 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Intensity",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "27 ch",
+      "shortName": "27 ch",
+      "channels": [
+        "Red — Derby 1",
+        "Green — Derby 1",
+        "Blue — Derby 1",
+        "Dimmer — Derby 1",
+        "Pan/Tilt Speed",
+        "Red — PAR 1",
+        "Green - PAR 1",
+        "Blue — PAR 1",
+        "Strobe — PAR 1",
+        "UNUSED",
+        "Red — PAR 2",
+        "Green — PAR 2",
+        "Blue — PAR 2",
+        "Strobe",
+        "UNUSED 2",
+        "Red — Derby 2",
+        "Green — Derby 2",
+        "Blue  — Derby 2",
+        "Dimmer",
+        "Pan/Tilt Speed 2",
+        "Red — Laser",
+        "Green — Laser",
+        "Pan/Tilt Speed — Laser",
+        "Strobe — LED 1",
+        "Strobe — LED 2",
+        "Strobe — LED 3",
+        "Strobe — LED 4"
+      ]
+    }
+  ]
+}
