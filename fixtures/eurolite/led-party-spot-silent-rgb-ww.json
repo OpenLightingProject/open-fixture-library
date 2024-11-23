@@ -1,0 +1,222 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PARty Spot Silent RGB/WW",
+  "shortName": "EurolitePARtySpotSilent",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tero Korpela"],
+    "createDate": "2024-11-23",
+    "lastModifyDate": "2024-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/42110203-Manual-149388-1.000-eurolite-led-party-spot-silent-rgb-ww-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn42110203-eurolite-led-party-spot-silent-rgb-ww.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=YATlZarOS6U"
+    ]
+  },
+  "physical": {
+    "dimensions": [155, 190, 90],
+    "weight": 0.47,
+    "power": 17,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 x 5 W COB 4in1 QCL RGB/WW (homogenous color mix)"
+    },
+    "lens": {
+      "degreesMinMax": [12, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Sound Control / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto-Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic",
+          "comment": "Auto-Program 1"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Generic",
+          "comment": "Auto-Program 2"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Generic",
+          "comment": "Auto-Program 3"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "Auto-Program 4"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Generic",
+          "comment": "Auto-Program 5"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Generic",
+          "comment": "Auto-Program 6"
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "Generic",
+          "comment": "Auto-Program 7"
+        },
+        {
+          "dmxRange": [161, 180],
+          "type": "Generic",
+          "comment": "Auto-Program 8"
+        },
+        {
+          "dmxRange": [181, 200],
+          "type": "Generic",
+          "comment": "Auto-Program 9"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Generic",
+          "comment": "Auto-Program 10"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Generic",
+          "comment": "Auto-Programs in an endless loop"
+        }
+      ]
+    },
+    "Speed / Sound Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Speed of the auto-programs"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Dimmer",
+        "Sound Control / Strobe"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Dimmer",
+        "Strobe",
+        "Auto-Programs",
+        "Speed / Sound Control"
+      ]
+    }
+  ]
+}
