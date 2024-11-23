@@ -1,0 +1,725 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam 230",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-11-23",
+    "lastModifyDate": "2024-11-23"
+  },
+  "links": {
+    "other": [
+      "https://www.nolink.com"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Colour1"
+        },
+        {
+          "type": "Color",
+          "name": "Colour2"
+        },
+        {
+          "type": "Color",
+          "name": "Colour3"
+        },
+        {
+          "type": "Color",
+          "name": "Colour4"
+        },
+        {
+          "type": "Color",
+          "name": "Colour5"
+        },
+        {
+          "type": "Color",
+          "name": "Colour6"
+        },
+        {
+          "type": "Color",
+          "name": "Colour7"
+        },
+        {
+          "type": "Color",
+          "name": "Colour8"
+        },
+        {
+          "type": "Color",
+          "name": "Colour9"
+        },
+        {
+          "type": "Color",
+          "name": "Colour10"
+        },
+        {
+          "type": "Color",
+          "name": "Colour11"
+        },
+        {
+          "type": "Color",
+          "name": "Colour12"
+        },
+        {
+          "type": "Color",
+          "name": "Colour13"
+        },
+        {
+          "type": "Color",
+          "name": "Colour14"
+        },
+        {
+          "type": "Color",
+          "name": "rainbow f-s"
+        },
+        {
+          "type": "Color",
+          "name": "rainbow s-f"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo9"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo10"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo11"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo12"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo13"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo14"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo15"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo16"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo17"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo",
+          "name": "rainbow s-f"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "0%",
+        "frostIntensityEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "0%"
+        },
+        {
+          "dmxRange": [3, 50],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [51, 240],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "100%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [9, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [63, 69],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [70, 76],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [77, 83],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [84, 90],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [91, 97],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [98, 104],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [105, 111],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [112, 118],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [119, 127],
+          "type": "WheelSlot",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "rainbow f-s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelSlot",
+          "slotNumber": 20
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "PrismRotation",
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Effect Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [106, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "SAX1",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Duration",
+        "Frost",
+        "Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Prism",
+        "Prism Rotation",
+        "Effect Duration"
+      ]
+    }
+  ]
+}
