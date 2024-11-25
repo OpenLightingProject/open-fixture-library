@@ -320,20 +320,6 @@
         }
       ]
     },
-    "Strobe Speed": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "0%",
-          "speedEnd": "100%"
-        }
-      ]
-    },
     "Color Temperature": {
       "capabilities": [
         {
@@ -431,7 +417,7 @@
       "shortName": "10ch",
       "channels": [
         "Master Dimmer",
-        "Strobe Speed",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
