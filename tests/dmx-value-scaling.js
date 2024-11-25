@@ -2,8 +2,8 @@
 import chalk from 'chalk';
 
 import {
-  scaleDmxValue,
   scaleDmxRange,
+  scaleDmxValue,
 } from '../lib/scale-dmx-values.js';
 
 

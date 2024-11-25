@@ -246,12 +246,12 @@ import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
-  getEmptyFormState,
   getEmptyCapability,
   getEmptyFineChannel,
+  getEmptyFormState,
   getSanitizedChannel,
-  isChannelChanged,
   isCapabilityChanged,
+  isChannelChanged,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -475,7 +475,7 @@ export default {
         WheelShake: /\bshake\b/i,
         WheelSlotRotation: /gobo ?\d* (?:rotation|index)/i,
         WheelRotation: /wheels? ?\d* (?:rotation|index)/i,
-        WheelSlot: /wheel|dis[ck]|gobos? ?\d*$/i,
+        WheelSlot: /wheel|dis[ck]|(?:gobos? ?\d*$)/i,
         EffectSpeed: /^(?:effect|program|macro) speed$/i,
         EffectDuration: /^(?:effect|program|macro) (?:time|duration)$/i,
         SoundSensitivity: /^(?:sound|mic|microphone) sensitivity$/i,

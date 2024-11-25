@@ -105,9 +105,10 @@ function transformMatrixChannels(fixtureJson, fixture) {
       let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
-        channelJsonObject = Object.assign({}, channelJsonObject, {
+        channelJsonObject = {
+          ...channelJsonObject,
           pixelKey: channel.pixelKey,
-        });
+        };
       }
 
       return [channel.key, channelJsonObject];

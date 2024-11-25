@@ -81,7 +81,7 @@
 
 <script>
 import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
+import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
