@@ -62,7 +62,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
@@ -287,8 +288,7 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Speed internal programs, increasing"
+        "speedEnd": "fast"
       }
     },
     "Strobe 2": {
