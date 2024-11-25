@@ -67,10 +67,10 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "0%",
-          "speedEnd": "100%",
-          "comment": "Strobe with increasing speed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -78,8 +78,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction",
-          "comment": "Red"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 19],
@@ -186,93 +185,102 @@
         },
         {
           "dmxRange": [10, 19],
-          "type": "Generic",
-          "comment": "Auto program 1"
+          "type": "Effect",
+          "effectName": "Auto program 1"
         },
         {
           "dmxRange": [20, 29],
-          "type": "Generic",
-          "comment": "Auto program 2"
+          "type": "Effect",
+          "effectName": "Auto program 2"
         },
         {
           "dmxRange": [30, 39],
-          "type": "Generic",
-          "comment": "Auto program 3"
+          "type": "Effect",
+          "effectName": "Auto program 3"
         },
         {
           "dmxRange": [40, 49],
-          "type": "Generic",
-          "comment": "Auto program 4"
+          "type": "Effect",
+          "effectName": "Auto program 4"
         },
         {
           "dmxRange": [50, 59],
-          "type": "Generic",
-          "comment": "Auto program 5"
+          "type": "Effect",
+          "effectName": "Auto program 5"
         },
         {
           "dmxRange": [60, 69],
-          "type": "Generic",
-          "comment": "Auto program 6"
+          "type": "Effect",
+          "effectName": "Auto program 6"
         },
         {
           "dmxRange": [70, 79],
-          "type": "Generic",
-          "comment": "Auto program 7"
+          "type": "Effect",
+          "effectName": "Auto program 7"
         },
         {
           "dmxRange": [80, 89],
-          "type": "Generic",
-          "comment": "Auto program 8"
+          "type": "Effect",
+          "effectName": "Auto program 8"
         },
         {
           "dmxRange": [90, 99],
-          "type": "Generic",
-          "comment": "Auto program 9"
+          "type": "Effect",
+          "effectName": "Auto program 9"
         },
         {
           "dmxRange": [100, 109],
-          "type": "Generic",
-          "comment": "Sound control program 1"
+          "type": "Effect",
+          "effectName": "Sound control program 1",
+          "soundControlled": true
         },
         {
           "dmxRange": [110, 119],
-          "type": "Generic",
-          "comment": "Sound control program 2"
+          "type": "Effect",
+          "effectName": "Sound control program 2",
+          "soundControlled": true
         },
         {
           "dmxRange": [120, 129],
-          "type": "Generic",
-          "comment": "Sound control program 3"
+          "type": "Effect",
+          "effectName": "Sound control program 3",
+          "soundControlled": true
         },
         {
           "dmxRange": [130, 139],
-          "type": "Generic",
-          "comment": "Sound control program 4"
+          "type": "Effect",
+          "effectName": "Sound control program 4",
+          "soundControlled": true
         },
         {
           "dmxRange": [140, 149],
-          "type": "Generic",
-          "comment": "Sound control program 5"
+          "type": "Effect",
+          "effectName": "Sound control program 5",
+          "soundControlled": true
         },
         {
           "dmxRange": [150, 159],
-          "type": "Generic",
-          "comment": "Sound control program 6"
+          "type": "Effect",
+          "effectName": "Sound control program 6",
+          "soundControlled": true
         },
         {
           "dmxRange": [160, 169],
-          "type": "Generic",
-          "comment": "Sound control program 7"
+          "type": "Effect",
+          "effectName": "Sound control program 7",
+          "soundControlled": true
         },
         {
           "dmxRange": [170, 179],
-          "type": "Generic",
-          "comment": "Sound control program 8"
+          "type": "Effect",
+          "effectName": "Sound control program 8",
+          "soundControlled": true
         },
         {
           "dmxRange": [180, 255],
-          "type": "Generic",
-          "comment": "Sound control program 9"
+          "type": "Effect",
+          "effectName": "Sound control program 9",
+          "soundControlled": true
         }
       ]
     },
@@ -293,7 +301,9 @@
         },
         {
           "dmxRange": [1, 5],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Music-controlled program",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
         },
@@ -303,9 +313,10 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -332,50 +343,42 @@
         {
           "dmxRange": [10, 39],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "1800K",
-          "colorTemperatureEnd": "1800K"
+          "colorTemperature": "1800K"
         },
         {
           "dmxRange": [40, 69],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "2200K",
-          "colorTemperatureEnd": "2200K"
+          "colorTemperature": "2200K"
         },
         {
           "dmxRange": [70, 99],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "2700K",
-          "colorTemperatureEnd": "2700K"
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [100, 129],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "3200K",
-          "colorTemperatureEnd": "3200K"
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [130, 159],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "4300K",
-          "colorTemperatureEnd": "4300K"
+          "colorTemperature": "4300K"
         },
         {
           "dmxRange": [160, 189],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "5600K",
-          "colorTemperatureEnd": "5600K"
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [190, 219],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "6500K",
-          "colorTemperatureEnd": "6500K"
+          "colorTemperature": "6500K"
         },
         {
           "dmxRange": [220, 255],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "8000K",
-          "colorTemperatureEnd": "8000K"
+          "colorTemperature": "8000K"
         }
       ]
     }
