@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PB12",
+  "shortName": "",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["yourbartender"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2024-04-29",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2024-11-26",
+      "comment": "GDTF v1.2 fixture type ID: E369B2CA-8FD5-402F-B1F1-B27372FEC60C"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Unknown (Intensity)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Profile 1: RGB",
+      "channels": [
+        "Intensity",
+        "R",
+        "G",
+        "B"
+      ]
+    }
+  ]
+}
