@@ -1,0 +1,281 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 200W BSW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tom"],
+    "createDate": "2024-11-26",
+    "lastModifyDate": "2024-11-26"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=WwVM3fh6DKA&ab_channel=FranceEffect"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "VERT"
+        },
+        {
+          "type": "Color",
+          "name": "BLEU"
+        },
+        {
+          "type": "Color",
+          "name": "JAUNE"
+        },
+        {
+          "type": "Color",
+          "name": "MAGENTA"
+        },
+        {
+          "type": "Color",
+          "name": "VERT POMME"
+        },
+        {
+          "type": "Color",
+          "name": "LAVENDER"
+        },
+        {
+          "type": "Color",
+          "name": "ORANGE"
+        },
+        {
+          "type": "Color",
+          "name": "ROSE"
+        },
+        {
+          "type": "Color",
+          "name": "BLANC"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color",
+          "name": "BLANC"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [4, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 0,
+        "slotNumberEnd": 13
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 0,
+        "slotNumberEnd": 10
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CCW"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "RESET"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Shutter",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Focus",
+        "Zoom",
+        "Macro",
+        "Control"
+      ]
+    }
+  ]
+}
