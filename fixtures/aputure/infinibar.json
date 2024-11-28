@@ -1,0 +1,596 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Infinibar",
+  "shortName": "PB 12",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Rune"],
+    "createDate": "2024-05-14",
+    "lastModifyDate": "2024-05-15",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2024-05-25",
+      "comment": "GDTF v1.2 fixture type ID: 1F4ED6DB-10BD-4B83-A6DE-96695886A823"
+    }
+  },
+  "comment": "Infinibar PB 12",
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "Tint": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Unknown (Tint)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Unknown (Tint)",
+          "physical": -100,
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Unknown (Tint)",
+          "physicalStart": -99,
+          "physicalEnd": -1,
+          "comment": "Minus green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Unknown (Tint)",
+          "physical": 0,
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Unknown (Tint)",
+          "physicalStart": 1,
+          "physicalEnd": 99,
+          "comment": "Plus green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Unknown (Tint)",
+          "physical": 100,
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Color Crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "No Color"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Full"
+        }
+      ]
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        }
+      ]
+    },
+    "Color Crossfade 2": {
+      "name": "Color Crossfade",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (ColorCrossfade)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "No Color"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown (ColorCrossfade)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (ColorCrossfade)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Full"
+        }
+      ]
+    },
+    "H": {
+      "capability": {
+        "type": "Unknown (HSB_Hue)",
+        "physicalStart": "0deg",
+        "physicalEnd": "1deg"
+      }
+    },
+    "S": {
+      "capability": {
+        "type": "Unknown (HSB_Saturation)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe1 2": {
+      "name": "Strobe1",
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        }
+      ]
+    },
+    "Base CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1
+        }
+      ]
+    },
+    "X": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (CIE_X)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Y": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (CIE_Y)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Base CCT 2": {
+      "name": "Base CCT",
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (BaseCTC)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1 - CCTRGB 1px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 2 -CCT 1px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 3 - CCTHSI 1px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade 2",
+        "H",
+        "S",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 4 - RGB 1px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2",
+        "Strobe1 2"
+      ]
+    },
+    {
+      "name": "Mode 5 - HSI 1px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 6 -XY 1px",
+      "channels": [
+        "Dim 2",
+        "X",
+        "Y",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 9 - CCTRGB 4px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 10 - CCTRGB 6px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 11 -CCTRGB 8px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 12 -CCTRGB 12px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 13 - CCTRGB 16Px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 14 - CCTRGB 24px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 15 - CCTRGB 32px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 16 - CCTRGB 48px",
+      "channels": [
+        "Dim",
+        "CTC",
+        "Tint",
+        "Color Crossfade",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode 17 - RGB 4px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 18 - RGB 6px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 19 - RGB 8px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 20 - RGB 12px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 21 - RGB 16px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 22 - RGB 24px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 23 -RGB 32px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 24 - RGB 48px",
+      "channels": [
+        "Dim 2",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "Mode 25 - HSI 4px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT"
+      ]
+    },
+    {
+      "name": "Mode 26 - HSI 6px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT"
+      ]
+    },
+    {
+      "name": "Mode 27 - HSI 8px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT"
+      ]
+    },
+    {
+      "name": "Mode 28 - HSI 12px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT 2"
+      ]
+    },
+    {
+      "name": "Mode 29 - HSI 16px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT 2"
+      ]
+    },
+    {
+      "name": "Mode 30 - HSI 24px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT 2"
+      ]
+    },
+    {
+      "name": "Mode 31 - HSI 32px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT 2"
+      ]
+    },
+    {
+      "name": "Mode 32 - HSI 48px",
+      "channels": [
+        "Dim 2",
+        "H",
+        "S",
+        "Base CCT 2"
+      ]
+    }
+  ]
+}
