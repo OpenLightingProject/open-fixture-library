@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "beam02",
+  "shortName": "WECAN",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["dany"],
+    "createDate": "2024-11-29",
+    "lastModifyDate": "2024-11-29"
+  },
+  "comment": "pinspot",
+  "links": {
+    "manual": [
+      "http://www.wecanlight.com/en/Photo_Show.asp?InfoId=73&ClassId=2"
+    ],
+    "productPage": [
+      "http://www.wecanlight.com/en/Photo_Show.asp?InfoId=73&ClassId=2"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=L5-zAxY95-U"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "wkl-beam02",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
