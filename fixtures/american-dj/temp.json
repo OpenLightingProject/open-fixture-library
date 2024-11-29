@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TEMP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Poliforma"],
+    "createDate": "2024-11-29",
+    "lastModifyDate": "2024-11-29"
+  },
+  "links": {
+    "other": [
+      "http://facebook.com"
+    ]
+  },
+  "availableChannels": {
+    "Reserved": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
