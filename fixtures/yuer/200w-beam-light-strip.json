@@ -1,0 +1,265 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W Beam Light + Strip",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tommy Kavounidis", "TommyKMusic"],
+    "createDate": "2024-11-30",
+    "lastModifyDate": "2024-11-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-30",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "power": 280,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "X Axis": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "X Axis fine tuning": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y Axis": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y Axis fine tuning": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "XY Speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Horizontal/vertical speed from"
+      }
+    },
+    "Total Dimming": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Turn on Strobe": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Closed Light",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "The strobe speed is from slow to fast, 1-20Hz.",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Consecrate",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Colour": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [80, 139],
+          "type": "ColorPreset",
+          "comment": "Half color effect 1-6"
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "ColorPreset",
+          "comment": "The color wheel rotates forward, and the speed is slow to fast."
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "ColorPreset",
+          "comment": "The color wheel is reversed and the speed is slow to fast."
+        }
+      ]
+    },
+    "Pattern": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "The pattern rotates in reverse, and the speed is from slow to fast."
+      }
+    },
+    "Prism": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Prism",
+          "comment": "Prism off"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism",
+          "comment": "18 prism open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "The prism rotates 360, and the speed changes from slow to fast."
+        }
+      ]
+    },
+    "Colorful": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Colorful open"
+      }
+    },
+    "Self-propelled/voice control": {
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Effect",
+          "effectName": "1-11 channels are valid."
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Effect",
+          "effectName": "Self-propelled mode 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "Self-propelled mode 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Effect",
+          "effectName": "Self-propelled mode 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Effect",
+          "effectName": "Self-propelled mode 4"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Effect",
+          "effectName": "Voice control mode 1"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "Voice control mode 2"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Voice control mode 3"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Voice control mode 4"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 13,
+      "capabilities": [
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "Automatic detection of x-axis"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "Y axis automatic detection"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Maintenance",
+          "comment": "XY axis automatic detection"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Wait for 3 seconds, and the lamps will be reset."
+        }
+      ]
+    },
+    "Light strip scene": {
+      "defaultValue": 14,
+      "capabilities": [
+        {
+          "dmxRange": [5, 74],
+          "type": "Effect",
+          "effectName": "Color selection of light strip"
+        },
+        {
+          "dmxRange": [75, 248],
+          "type": "Effect",
+          "effectName": "Selection of light strip effect"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "Effect",
+          "effectName": "Random effect of light strip"
+        }
+      ]
+    },
+    "Scene speed": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed from fast to slow (valid at 14: 075-248)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": []
+}
