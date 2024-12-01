@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Tero Korpela"],
     "createDate": "2024-11-23",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2024-12-01"
   },
   "links": {
     "manual": [
@@ -108,58 +108,69 @@
         },
         {
           "dmxRange": [21, 40],
-          "type": "Generic",
-          "comment": "Auto-Program 1"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 1",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"]
         },
         {
           "dmxRange": [41, 60],
-          "type": "Generic",
-          "comment": "Auto-Program 2"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 2",
+          "colors": ["#ff0000", "#00ff00"]
         },
         {
           "dmxRange": [61, 80],
-          "type": "Generic",
-          "comment": "Auto-Program 3"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 3",
+          "colors": ["#ff0000", "#0000ff"]
         },
         {
           "dmxRange": [81, 100],
-          "type": "Generic",
-          "comment": "Auto-Program 4"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 4",
+          "colors": ["#ff0000", "#ffffdd"]
         },
         {
           "dmxRange": [101, 120],
-          "type": "Generic",
-          "comment": "Auto-Program 5"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 5",
+          "colors": ["#00ff00", "#0000ff"]
         },
         {
           "dmxRange": [121, 140],
-          "type": "Generic",
-          "comment": "Auto-Program 6"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 6",
+          "colors": ["#00ff00", "#ffffdd"]
         },
         {
           "dmxRange": [141, 160],
-          "type": "Generic",
-          "comment": "Auto-Program 7"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 7",
+          "colors": ["#0000ff", "#ffffdd"]
         },
         {
           "dmxRange": [161, 180],
-          "type": "Generic",
-          "comment": "Auto-Program 8"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 8",
+          "colors": ["#00ffff", "#ff00ff", "#ffff00"]
         },
         {
           "dmxRange": [181, 200],
-          "type": "Generic",
-          "comment": "Auto-Program 9"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 9",
+          "colors": ["#ffffdd", "#ffffff"]
         },
         {
           "dmxRange": [201, 220],
-          "type": "Generic",
-          "comment": "Auto-Program 10"
+          "type": "ColorPreset",
+          "comment": "Auto-Program 10",
+          "colors": ["#0000ff", "#ffff00"]
         },
         {
           "dmxRange": [221, 255],
-          "type": "Generic",
-          "comment": "Auto-Programs in an endless loop"
+          "type": "ColorPreset",
+          "comment": "Auto-Programs in an endless loop",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ff0000", "#00ff00", "#ff0000", "#0000ff", "#ff0000", "#ffffdd", "#00ff00", "#0000ff", "#00ff00", "#ffffdd", "#0000ff", "#ffffdd", "#00ffff", "#ff00ff", "#ffff00", "#ffffdd", "#ffffff", "#0000ff", "#ffff00"]
         }
       ]
     },
@@ -167,7 +178,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 200],
-          "type": "Speed",
+          "type": "EffectSpeed",
           "speedStart": "slow",
           "speedEnd": "fast",
           "comment": "Speed of the auto-programs"
@@ -175,8 +186,9 @@
         {
           "dmxRange": [201, 255],
           "type": "Effect",
-          "effectName": "Sound control",
-          "soundControlled": true
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "soundSensitivity": "high"
         }
       ]
     }
