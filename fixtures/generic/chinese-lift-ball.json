@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Chinese Lift Ball",
+  "shortName": "Lift Ball",
+  "categories": ["Other", "Effect"],
+  "meta": {
+    "authors": ["Alex Tauber"],
+    "createDate": "2024-12-01",
+    "lastModifyDate": "2024-12-01"
+  },
+  "comment": "One of those weird motorized lift ball fixtures",
+  "links": {
+    "productPage": [
+      "https://www.ebay.ca/itm/123294697588"
+    ]
+  },
+  "physical": {
+    "dimensions": [355, 355, 355],
+    "weight": 4,
+    "power": 140,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 0,
+      "lumens": 3000
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Fog": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutput": "50%"
+      }
+    },
+    "Fan Output": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity",
+        "Shutter / Strobe",
+        "Fog",
+        "Fan Output",
+        "Reserved",
+        "Reserved 2",
+        "Reserved 3"
+      ]
+    }
+  ]
+}
