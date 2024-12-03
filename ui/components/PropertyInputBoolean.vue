@@ -20,6 +20,9 @@ export default {
     name: stringProp().required,
     label: stringProp().required,
   },
+  emits: {
+    input: value => true,
+  },
   computed: {
     localValue: {
       get() {

@@ -3,9 +3,9 @@
   "name": "GigBAR 2",
   "categories": ["Stand", "Color Changer", "Laser"],
   "meta": {
-    "authors": ["Flo Edelmann", "Felix Edelmann"],
+    "authors": ["Flo Edelmann", "Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2017-10-16",
-    "lastModifyDate": "2018-08-24"
+    "lastModifyDate": "2023-07-12"
   },
   "comment": "Par 1 and 2 can only mix 3 colors together at the same time.",
   "links": {
@@ -21,6 +21,10 @@
     "dimensions": [1185, 387, 110],
     "weight": 6.6,
     "power": 64,
+    "powerConnectors": {
+      "IEC C13": "input only",
+      "Hardwired": "output only"
+    },
     "DMXconnector": "3-pin"
   },
   "matrix": {

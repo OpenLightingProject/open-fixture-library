@@ -4,9 +4,9 @@
   "shortName": "Hero Wash 340FX",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Kai Otte"],
+    "authors": ["Kai Otte", "Ryan Goodwin"],
     "createDate": "2021-07-09",
-    "lastModifyDate": "2021-07-09"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -26,6 +26,9 @@
     "dimensions": [255, 187, 368],
     "weight": 6.1,
     "power": 134,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "3× 40W RGBW LED",

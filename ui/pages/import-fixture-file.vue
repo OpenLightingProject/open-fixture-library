@@ -45,12 +45,12 @@
             :formstate="formstate"
             name="file"
             label="Fixture definition file"
-            hint="Maximum file size is 5MB.">
+            hint="Maximum file size is 50MB.">
             <EditorFileUpload
               v-model="file"
               required
               name="file"
-              max-file-size="5MB" />
+              max-file-size="50MB" />
           </LabeledInput>
 
           <LabeledInput :formstate="formstate" name="githubComment" label="Comment">

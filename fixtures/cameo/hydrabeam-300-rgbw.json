@@ -4,12 +4,14 @@
   "shortName": "CLHB300RGBW",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "Ryan Goodwin"],
     "createDate": "2017-07-24",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
-    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"],
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=_tO2vB15ieE",
       "https://www.youtube.com/watch?v=OY2TEMiPsCY"
@@ -19,6 +21,9 @@
     "dimensions": [380, 240, 380],
     "weight": 5.5,
     "power": 60,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"

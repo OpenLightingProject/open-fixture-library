@@ -1,0 +1,962 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore LP12Z IP",
+  "shortName": "encore-lp12z-ip",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-09-12",
+    "lastModifyDate": "2024-09-12"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/13583/ADJ%20Encore%20LP12Z%20IP%20-%20User%20Manual%2002-22-2024.pdf",
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/13583/ADJ%20Encore%20LP12Z%20IP%20-%20DMX%20Traits.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/encore-lp12z-ip"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=f_LbX1cYPYw",
+      "https://www.youtube.com/shorts/7YWwZOtYoiw",
+      "https://www.youtube.com/shorts/4KwpsqBNHNc"
+    ]
+  },
+  "physical": {
+    "dimensions": [371, 316, 346],
+    "weight": 7.5,
+    "power": 227,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4400
+    },
+    "lens": {
+      "degreesMinMax": [5, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorPreset",
+          "colors": ["#60ffee"],
+          "comment": "Red: 80, Green: 255, Blue: 234, Lime: 80"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "colors": ["#60ffa8"],
+          "comment": "Red: 80, Green: 255, Blue: 164, Lime: 80"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "colors": ["#5cff73"],
+          "comment": "Red: 77, Green: 255, Blue: 112, Lime: 77"
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "ColorPreset",
+          "colors": ["#85ff57"],
+          "comment": "Red: 117, Green: 255, Blue: 83, Lime: 83"
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "ColorPreset",
+          "colors": ["#afff50"],
+          "comment": "Red: 160, Green: 255, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorPreset",
+          "colors": ["#efff57"],
+          "comment": "Red: 223, Green: 255, Blue: 83, Lime: 83"
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "ColorPreset",
+          "colors": ["#ffff50"],
+          "comment": "Red: 255, Green: 243, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "ColorPreset",
+          "colors": ["#ffd64d"],
+          "comment": "Red: 255, Green: 200, Blue: 74, Lime: 74"
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "ColorPreset",
+          "colors": ["#ffb550"],
+          "comment": "Red: 255, Green: 166, Blue: 77, Lime: 77"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorPreset",
+          "colors": ["#ff8b4d"],
+          "comment": "Red: 255, Green: 125, Blue: 74, Lime: 74"
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "ColorPreset",
+          "colors": ["#ff6f50"],
+          "comment": "Red: 255, Green: 97, Blue: 77, Lime: 71"
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "ColorPreset",
+          "colors": ["#ff5850"],
+          "comment": "Red: 255, Green: 74, Blue: 77, Lime: 71"
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "ColorPreset",
+          "colors": ["#ff638a"],
+          "comment": "Red: 255, Green: 83, Blue: 134, Lime: 83"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorPreset",
+          "colors": ["#ff6fba"],
+          "comment": "Red: 255, Green: 93, Blue: 182, Lime: 93"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "ColorPreset",
+          "colors": ["#ff73f0"],
+          "comment": "Red: 255, Green: 96, Blue: 236, Lime: 96"
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "ColorPreset",
+          "colors": ["#ff6fff"],
+          "comment": "Red: 238, Green: 93, Blue: 255, Lime: 93"
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "ColorPreset",
+          "colors": ["#b468ff"],
+          "comment": "Red: 163, Green: 87, Blue: 255, Lime: 87"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "colors": ["#a86cff"],
+          "comment": "Red: 150, Green: 90, Blue: 255, Lime: 90"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "colors": ["#735cff"],
+          "comment": "Red: 100, Green: 77, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "ColorPreset",
+          "colors": ["#5c73ff"],
+          "comment": "Red: 77, Green: 100, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorPreset",
+          "colors": ["#50a1ff"],
+          "comment": "Red: 67, Green: 148, Blue: 255, Lime: 67"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorPreset",
+          "colors": ["#5cd2ff"],
+          "comment": "Red: 77, Green: 195, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "ColorPreset",
+          "colors": ["#5cf9ff"],
+          "comment": "Red: 77, Green: 234, Blue: 255, Lime: 77"
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "ColorPreset",
+          "colors": ["#baff97"],
+          "comment": "Red: 158, Green: 255, Blue: 144, Lime: 144"
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "ColorPreset",
+          "colors": ["#ffffa0"],
+          "comment": "Red: 255, Green: 251, Blue: 153, Lime: 153"
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "ColorPreset",
+          "colors": ["#ffcc9a"],
+          "comment": "Red: 255, Green: 175, Blue: 147, Lime: 147"
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "ColorPreset",
+          "colors": ["#ffa5c0"],
+          "comment": "Red: 255, Green: 138, Blue: 186, Lime: 138"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorPreset",
+          "colors": ["#ffb0ff"],
+          "comment": "Red: 255, Green: 147, Blue: 251, Lime: 147"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorPreset",
+          "colors": ["#b2a2ff"],
+          "comment": "Red: 151, Green: 135, Blue: 255, Lime: 138"
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "ColorPreset",
+          "colors": ["#7714ff"],
+          "comment": "Red: 99, Green: 0, Blue: 255, Lime: 100"
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "ColorPreset",
+          "colors": ["#a5c4ff"],
+          "comment": "Red: 138, Green: 169, Blue: 255, Lime: 138"
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red: 255, Green: 255, Blue: 255, Lime: 255"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "ColorPreset",
+          "colors": ["#ffce8f"],
+          "comment": "Red: 255, Green: 206, Blue: 143, Lime: 0"
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "ColorPreset",
+          "colors": ["#feb199"],
+          "comment": "Red: 254, Green: 177, Blue: 153, Lime: 0"
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "ColorPreset",
+          "colors": ["#fec08a"],
+          "comment": "Red: 254, Green: 192, Blue: 138, Lime: 0"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ColorPreset",
+          "colors": ["#fea562"],
+          "comment": "Red: 254, Green: 165, Blue: 98, Lime: 0"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorPreset",
+          "colors": ["#fe7900"],
+          "comment": "Red: 254, Green: 121, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "ColorPreset",
+          "colors": ["#b01100"],
+          "comment": "Red: 176, Green: 17, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "ColorPreset",
+          "colors": ["#60000b"],
+          "comment": "Red: 96, Green: 0, Blue: 11, Lime: 0"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "ColorPreset",
+          "colors": ["#ea8bab"],
+          "comment": "Red: 234, Green: 139, Blue: 171, Lime: 0"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "ColorPreset",
+          "colors": ["#e00561"],
+          "comment": "Red: 224, Green: 5, Blue: 97, Lime: 0"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "ColorPreset",
+          "colors": ["#af4dad"],
+          "comment": "Red: 175, Green: 77, Blue: 173, Lime: 0"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "ColorPreset",
+          "colors": ["#7782c7"],
+          "comment": "Red: 119, Green: 130, Blue: 199, Lime: 0"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "ColorPreset",
+          "colors": ["#93a4d4"],
+          "comment": "Red: 147, Green: 164, Blue: 212, Lime: 0"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorPreset",
+          "colors": ["#5802a3"],
+          "comment": "Red: 88, Green: 2, Blue: 163, Lime: 0"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorPreset",
+          "colors": ["#002656"],
+          "comment": "Red: 0, Green: 38, Blue: 86, Lime: 0"
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "ColorPreset",
+          "colors": ["#008ed0"],
+          "comment": "Red: 0, Green: 142, Blue: 208, Lime: 0"
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "ColorPreset",
+          "colors": ["#3494d1"],
+          "comment": "Red: 52, Green: 148, Blue: 209, Lime: 0"
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "ColorPreset",
+          "colors": ["#0186cc"],
+          "comment": "Red: 1, Green: 134, Blue: 204, Lime: 0"
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "ColorPreset",
+          "colors": ["#0091d4"],
+          "comment": "Red: 0, Green: 145, Blue: 212, Lime: 0"
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "ColorPreset",
+          "colors": ["#0079c0"],
+          "comment": "Red: 0, Green: 121, Blue: 192, Lime: 0"
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "ColorPreset",
+          "colors": ["#0081b8"],
+          "comment": "Red: 0, Green: 129, Blue: 184, Lime: 0"
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "ColorPreset",
+          "colors": ["#005373"],
+          "comment": "Red: 0, Green: 83, Blue: 115, Lime: 0"
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "ColorPreset",
+          "colors": ["#0061a6"],
+          "comment": "Red: 0, Green: 97, Blue: 166, Lime: 0"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorPreset",
+          "colors": ["#0164a7"],
+          "comment": "Red: 1, Green: 100, Blue: 167, Lime: 0"
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "ColorPreset",
+          "colors": ["#002856"],
+          "comment": "Red: 0, Green: 40, Blue: 86, Lime: 0"
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "ColorPreset",
+          "colors": ["#d1dbb6"],
+          "comment": "Red: 209, Green: 219, Blue: 182, Lime: 0"
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "ColorPreset",
+          "colors": ["#2aa555"],
+          "comment": "Red: 42, Green: 165, Blue: 85, Lime: 0"
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "ColorPreset",
+          "colors": ["#002e23"],
+          "comment": "Red: 0, Green: 46, Blue: 35, Lime: 0"
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "ColorPreset",
+          "colors": ["#086bde"],
+          "comment": "Red: 8, Green: 107, Blue: 222, Lime: 0"
+        },
+        {
+          "dmxRange": [241, 244],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red: 255, Green: 0, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Red: 0, Green: 255, Blue: 0, Lime: 0"
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Red: 0, Green: 0, Blue: 255, Lime: 0"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset",
+          "colors": ["#33330c"],
+          "comment": "Red: 0, Green: 0, Blue: 0, Lime: 255"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "in sequences"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Zoom",
+          "angle": "5deg",
+          "comment": "Normal"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Zoom",
+          "angle": "6deg",
+          "comment": "Very Narrow Spot"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Zoom",
+          "angle": "10deg",
+          "comment": "Narrow"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Zoom",
+          "angle": "30deg",
+          "comment": "Medium Flood"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Zoom",
+          "angle": "40deg",
+          "comment": "Wide Flood"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Zoom",
+          "angle": "50deg",
+          "comment": "Very Wide Flood"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7000K",
+        "comment": "linear"
+      }
+    },
+    "Color Temperature Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 54],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [55, 109],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [110, 164],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [165, 219],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        }
+      ]
+    },
+    "Dim mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Maintenance",
+          "comment": "Stage 2"
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "10s",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "Inv Squa"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "S Curve"
+        },
+        {
+          "dmxRange": [81, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Special Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        },
+        {
+          "dmxRange": [16, 30],
+          "type": "Maintenance",
+          "parameter": 900,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [31, 45],
+          "type": "Maintenance",
+          "parameter": 1000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [46, 60],
+          "type": "Maintenance",
+          "parameter": 1100,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [61, 75],
+          "type": "Maintenance",
+          "parameter": 1200,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "Maintenance",
+          "parameter": 1300,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "Maintenance",
+          "parameter": 1400,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "Maintenance",
+          "parameter": 1500,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "Maintenance",
+          "parameter": 2500,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [136, 150],
+          "type": "Maintenance",
+          "parameter": 4000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [151, 165],
+          "type": "Maintenance",
+          "parameter": 5000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "Maintenance",
+          "parameter": 10000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [181, 195],
+          "type": "Maintenance",
+          "parameter": 15000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [196, 210],
+          "type": "Maintenance",
+          "parameter": 20000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [211, 225],
+          "type": "Maintenance",
+          "parameter": 25000,
+          "comment": "Hz"
+        },
+        {
+          "dmxRange": [226, 229],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Enable Zoom Mode 1"
+        },
+        {
+          "dmxRange": [230, 233],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Enable Zoom Mode 2"
+        },
+        {
+          "dmxRange": [234, 238],
+          "type": "Maintenance",
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [239, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Program Fade": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Zoom",
+        "Zoom Presets"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Zoom Presets"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Zoom",
+        "Zoom Presets"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color Macros",
+        "Color Temperature",
+        "Color Temperature Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Zoom Presets"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color Macros",
+        "Color Temperature",
+        "Color Temperature Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Zoom Presets",
+        "Dim mode",
+        "Dimmer Curve",
+        "Special Functions"
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color Macros",
+        "Color Temperature",
+        "Color Temperature Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Zoom Presets",
+        "Auto Program",
+        "Auto Program Speed",
+        "Auto Program Fade",
+        "Dim mode",
+        "Dimmer Curve",
+        "Special Functions"
+      ]
+    }
+  ]
+}
