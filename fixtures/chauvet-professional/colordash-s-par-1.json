@@ -1,0 +1,348 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORdash S-Par 1",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Max Jöhnk", "Ryan Goodwin"],
+    "createDate": "2023-10-18",
+    "lastModifyDate": "2023-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/07/COLORdash_S-Par_1_UM_Rev1_WO1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/colordash-s-par-1/"
+    ],
+    "other": [
+      "https://www.chauvetprofessional.com/news/chauvet-professionals-ip65-colordash-s-par-1-rgba-wash-breaks-the-led-color-separation-barrier/"
+    ]
+  },
+  "physical": {
+    "dimensions": [231, 169, 313],
+    "weight": 6.5,
+    "power": 65,
+    "DMXconnector": "5-pin",
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 42]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macro + White Balance": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "RGBA white",
+          "colors": ["#ffebd9"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White 1",
+          "colors": ["#ffffff"],
+          "helpWanted": "What is the difference between all the white presets?"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White 2",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White 3",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White 4",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White 5",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White 6",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White 7",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White 8",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White 9",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White 10",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White 11",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Program 5"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Nonlinear dimming curve 1 (fastest)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Nonlinear dimming curve 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Nonlinear dimming curve 3 (slowest)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Color Macro + White Balance",
+        "Color Temperature",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}

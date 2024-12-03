@@ -64,8 +64,8 @@
   a {
     box-sizing: border-box;
     display: inline-block;
-    flex-basis: 10em;
     flex-grow: 1;
+    flex-basis: 10em;
     width: 100%;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);
@@ -92,6 +92,9 @@ export default {
   props: {
     type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
     context: objectProp().required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   computed: {
     location() {

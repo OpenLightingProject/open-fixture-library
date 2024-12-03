@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
 
-  "version": "12.3.0",
+  "version": "12.5.0",
 
   "type": "object",
   "properties": {
@@ -117,6 +117,39 @@
           "type": "number",
           "exclusiveMinimum": 0
         },
+        "powerConnectors": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "IEC C13": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "IEC C19": {
+              "type": "string",
+              "const": "input only"
+            },
+            "powerCON": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "powerCON TRUE1": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "powerCON TRUE1 TOP": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "powerCON 32 A": {
+              "type": "string",
+              "const": "input only"
+            },
+            "Hardwired": {
+              "$ref": "definitions.json#/powerConnectorType"
+            },
+            "Proprietary": {
+              "$ref": "definitions.json#/powerConnectorType"
+            }
+          }
+        },
         "DMXconnector": {
           "$comment": "additions are welcome",
           "enum": [
@@ -126,7 +159,8 @@
             "5-pin",
             "5-pin XLR IP65",
             "3-pin and 5-pin",
-            "3.5mm stereo jack"
+            "3.5mm stereo jack",
+            "RJ45"
           ]
         },
         "bulb": {

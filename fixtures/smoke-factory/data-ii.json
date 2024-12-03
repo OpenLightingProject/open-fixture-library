@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Data II",
+  "shortName": "Data2",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["WaldperlachFabi"],
+    "createDate": "2023-07-10",
+    "lastModifyDate": "2023-07-10"
+  },
+  "links": {
+    "manual": [
+      "https://smoke-factory.de/pdf/datenblatt_data_ii.pdf"
+    ],
+    "productPage": [
+      "https://smoke-factory.de/produkt/data-ii/?lang=en"
+    ]
+  },
+  "physical": {
+    "dimensions": [58.5, 23, 24.7],
+    "weight": 12.8,
+    "power": 2600,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pump": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Pump",
+        "Fan"
+      ]
+    }
+  ]
+}

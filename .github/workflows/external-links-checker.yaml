@@ -6,14 +6,15 @@ on:
 jobs:
   external-links:
     name: Check external links
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.2
-      - name: Setup Node.js v16
-        uses: actions/setup-node@v3.6.0
+        uses: actions/checkout@v4.2.2
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4.1.0
         with:
-          node-version: 16
+          node-version: 20
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -25,3 +26,7 @@ jobs:
           GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
           NODE_ENV: production
+      - name: Check Markdown Links in all files
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'

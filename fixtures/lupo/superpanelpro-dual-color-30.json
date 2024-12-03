@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SuperpanelPRO Dual Color 30",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-10-24",
+    "lastModifyDate": "2023-10-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.lupo.it/download-file?id=1UphgNNR7MiMnJ9WUS9wugAt1K3Ve_F-J"
+    ],
+    "productPage": [
+      "https://www.lupo.it/en/video/superpanelpro-30-dual-color-hard"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7JACuyHTCr8"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 353, 117],
+    "weight": 4.9,
+    "power": 220,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "6500K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Strobe 16bit": {
+      "name": "Strobe",
+      "fineChannelAliases": ["Strobe 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1300],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1301, 65535],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT"
+      ]
+    },
+    {
+      "name": "CCT + Strobe 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine"
+      ]
+    },
+    {
+      "name": "CCT + Strobe 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Strobe 16bit",
+        "Strobe 16bit fine"
+      ]
+    }
+  ]
+}
