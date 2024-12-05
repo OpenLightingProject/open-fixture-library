@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 35 MKII",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["janni", "Jannis K."],
+    "createDate": "2024-12-05",
+    "lastModifyDate": "2024-12-05",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-05",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    },
+    "Gobo wheel": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Motor Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "MotorSpeed:"
+      }
+    },
+    "Automatic": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "Other Ch Functions"
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Effect",
+          "effectName": "Automatic-modes"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Voice Control Mode"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Effect",
+          "effectName": "X-Final Motion"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Y-Final Motion"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Reset"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 109],
+          "type": "Effect",
+          "effectName": "Color Selection"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "Effect",
+          "effectName": "Color Auto Operation"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color wheel",
+        "Gobo wheel",
+        "Strobe",
+        "Dimmer",
+        "Motor Speed",
+        "Automatic",
+        "Mode",
+        "Auto Mode"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color wheel",
+        "Gobo wheel",
+        "Strobe",
+        "Dimmer",
+        "Motor Speed",
+        "Automatic",
+        "Mode",
+        "Auto Mode"
+      ]
+    }
+  ]
+}
