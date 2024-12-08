@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Eurolite NH10",
+  "shortName": "NH10",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["David Gruener"],
+    "createDate": "2024-12-08",
+    "lastModifyDate": "2024-12-08"
+  },
+  "links": {
+    "other": [
+      "https://github.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [10, 10, 10],
+    "weight": 5,
+    "power": 20,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "defaultValue": 0,
+      "highlightValue": 150,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "off",
+          "comment": "Haze OFF"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "strong",
+          "comment": "Left ON"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "strong",
+          "comment": "BOTH ON"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "strong",
+          "comment": "Right"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "shortName": "Auto",
+      "channels": [
+        "Haze"
+      ]
+    }
+  ]
+}
