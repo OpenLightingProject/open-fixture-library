@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EPRO100",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["mkobzar", "Mikhail Kobzar"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [380, 110, 110],
+    "weight": 3.25,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 9000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [50, 60]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Master dimmer"
+      ]
+    }
+  ]
+}
