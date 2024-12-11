@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED CHAUVET COLORADO",
+  "shortName": "COLORADO",
+  "categories": ["Color Changer", "Dimmer", "Other"],
+  "meta": {
+    "authors": ["Dario"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2018/01/COLORado_3_Solo_UM_Rev6.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/colorado-3-solo/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Hue 2": {
+      "name": "Hue",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ChauvetCOLORADO3Solo9Ch",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Hue 2",
+        "Saturation",
+        "Color Macros",
+        "Strobe",
+        "Zoom",
+        "Zoom 2",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
