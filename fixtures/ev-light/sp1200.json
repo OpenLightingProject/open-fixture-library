@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SP1200",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["mkobzar", "Mikhail Kobzar"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [324, 444, 545],
+    "weight": 11.6,
+    "power": 450,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 40500
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "S dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimmer ，from dark to bright"
+      }
+    },
+    "L dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimmer ，from dark to bright"
+      }
+    },
+    "A dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimmer ，from dark to bright"
+      }
+    },
+    "C dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimmer，from dark to bright"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "2000K-12000K"
+      }
+    },
+    "Color paper": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "0-5: null； 6-255：normal strobe"
+      }
+    },
+    "Function selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "0-50: blank 51 - 100: jump 101 - 150:gradient 151-200:pulse change 201-255:sound control"
+      }
+    },
+    "Function speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Speed all": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Speed all"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master dimmer",
+        "CCT",
+        "Color paper",
+        "Function speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "W dimmer",
+        "S dimmer",
+        "L dimmer",
+        "A dimmer",
+        "C dimmer"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "W dimmer",
+        "S dimmer",
+        "L dimmer",
+        "A dimmer",
+        "C dimmer",
+        "CCT",
+        "Color paper",
+        "Strobe",
+        "Function selection",
+        "Function speed",
+        "Speed all"
+      ]
+    }
+  ]
+}
