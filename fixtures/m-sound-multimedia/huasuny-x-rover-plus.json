@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Huasuny X-Rover Plus",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["PKTest"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11"
+  },
+  "links": {
+    "productPage": [
+      "https://m-sound.pl/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "360deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "MacroSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro color1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Macro color2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "RedMain": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GreenMain": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BlueMain": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "WhiteMain": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "112 channels",
+      "shortName": "112 channels",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Macro",
+        "MacroSpeed",
+        "Macro color1",
+        "Macro color2",
+        "RedMain",
+        "GreenMain",
+        "BlueMain",
+        "WhiteMain",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "White2"
+      ]
+    }
+  ]
+}
