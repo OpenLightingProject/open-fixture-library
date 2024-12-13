@@ -1,0 +1,254 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB30RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MARK", "Anon"],
+    "createDate": "2024-12-13",
+    "lastModifyDate": "2024-12-13",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-13",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [170, 220, 200],
+    "weight": 1.1,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1097
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Strope (0-100%)"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Magenta"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Cyan"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Dark Orange"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Green Yellow"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Salmon"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Turquoise"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Light Green"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Orange"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Lavender"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Light Blue"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Dark Blue"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Pink"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "Full On"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Sound Program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Sound Program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Sound Program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Sound Program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "Effect",
+          "effectName": "Sound Program 5",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Auto and Sound Program Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Macro",
+        "Mode",
+        "Speed"
+      ]
+    }
+  ]
+}
