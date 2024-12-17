@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bar 350",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["TryToMusic GbR"],
+    "createDate": "2024-12-17",
+    "lastModifyDate": "2024-12-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.musikhaus-korn.de/de/involight-led-bar-350/pd/123172/druck"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 76, 77],
+    "weight": 4,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dp1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
