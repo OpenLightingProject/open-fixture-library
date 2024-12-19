@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor Stage PAR 12 × 3W Tri",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Moritz A. Vieli"],
+    "createDate": "2024-12-19",
+    "lastModifyDate": "2024-12-19"
+  },
+  "comment": "There is also an 8 channel mode, used to group fixtures together. This mode is not covered here.",
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_256293_v9_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_outdoor_stage_par_12x3w_tri.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [246, 300, 200],
+    "weight": 3.5,
+    "power": 42,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
