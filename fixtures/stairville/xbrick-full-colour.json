@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xBrick Full-Colour",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["fintch"],
+    "createDate": "2023-02-11",
+    "lastModifyDate": "2024-11-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-06-15",
+      "comment": "created by Q Light Controller Plus (version 4.4.1)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_259187_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_xbrick_fullcolour_16x3w.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i1301p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 175, 72],
+    "weight": 3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1A", "1B", null, "2A", "2B", null, "3A", "3B", null, "4A", "4B"],
+        ["1C", "1D", null, "2C", "2D", null, "3C", "3D", null, "4C", "4D"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all",
+      "1": { "name": ["^1[A-D]$"] },
+      "2": { "name": ["^2[A-D]$"] },
+      "3": { "name": ["^3[A-D]$"] },
+      "4": { "name": ["^4[A-D]$"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Master Dimmer",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Master Dimmer"
+      ]
+    }
+  ]
+}

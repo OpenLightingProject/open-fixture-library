@@ -1,7 +1,15 @@
-const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
-const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
-const { CoarseChannel } = require(`../../../../lib/model.js`);
-const importJson = require(`../../../../lib/import-json.js`);
+import importJson from '../../../../lib/import-json.js';
+import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
+import {
+  capabilityTypes,
+  channelProperties,
+  fixtureProperties,
+  linksProperties,
+  modeProperties,
+  physicalProperties,
+  wheelSlotTypes,
+} from '../../../../lib/schema-properties.js';
+import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -10,9 +18,9 @@ const importJson = require(`../../../../lib/import-json.js`);
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
-async function createFixtureFromEditor({ request }) {
+export async function createFixtureFromEditor({ request }) {
   try {
     const fixtureCreateResult = await getFixtureCreateResult(request.requestBody);
     return {
@@ -32,8 +40,8 @@ async function createFixtureFromEditor({ request }) {
 
 
 /**
- * @param {Array.<Object>} fixtures The raw fixture data from the Fixture Editor.
- * @returns {Promise.<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
+ * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
+ * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
  */
 async function getFixtureCreateResult(fixtures) {
   const result = {
@@ -43,7 +51,7 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
 
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
@@ -61,50 +69,58 @@ async function getFixtureCreateResult(fixtures) {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
     };
 
-    for (const property of Object.keys(schemaProperties.fixture)) {
-      if (property === `physical`) {
-        const physical = getPhysical(fixture.physical);
-        if (!isEmptyObject(physical)) {
-          result.fixtures[key].physical = physical;
+    for (const property of Object.keys(fixtureProperties)) {
+      switch (property) {
+        case `physical`: {
+          const physical = getPhysical(fixture.physical);
+          if (!isEmptyObject(physical)) {
+            result.fixtures[key].physical = physical;
+          }
+          break;
         }
-      }
-      else if (property === `meta`) {
-        const now = new Date().toISOString().replace(/T.*/, ``);
+        case `meta`: {
+          const now = new Date().toISOString().replace(/T.*/, ``);
 
-        result.fixtures[key].meta = {
-          authors: [fixture.metaAuthor],
-          createDate: now,
-          lastModifyDate: now,
-        };
-      }
-      else if (property === `links`) {
-        addLinks(result.fixtures[key], fixture.links);
-      }
-      else if (property === `availableChannels`) {
-        result.fixtures[key].availableChannels = {};
-        for (const channelId of Object.keys(fixture.availableChannels)) {
-          addAvailableChannel(key, fixture.availableChannels, channelId);
+          result.fixtures[key].meta = {
+            authors: [fixture.metaAuthor],
+            createDate: now,
+            lastModifyDate: now,
+          };
+          break;
         }
-      }
-      else if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
-        result.fixtures[key].rdm = {
-          modelId: fixture.rdmModelId,
-        };
-        if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
-          result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+        case `links`: {
+          addLinks(result.fixtures[key], fixture.links);
+          break;
         }
-      }
-      else if (property === `modes`) {
-        result.fixtures[key].modes = [];
-        for (const mode of fixture.modes) {
-          addMode(key, mode);
+        case `availableChannels`: {
+          result.fixtures[key].availableChannels = {};
+          for (const channelId of Object.keys(fixture.availableChannels)) {
+            addAvailableChannel(key, fixture.availableChannels, channelId);
+          }
+          break;
         }
-      }
-      else if (property === `wheels`) {
-        addWheels(result.fixtures[key], fixture);
-      }
-      else if (propertyExistsIn(property, fixture)) {
-        result.fixtures[key][property] = fixture[property];
+        default: {
+          if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
+            result.fixtures[key].rdm = {
+              modelId: fixture.rdmModelId,
+            };
+            if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
+              result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+            }
+          }
+          else if (property === `modes`) {
+            result.fixtures[key].modes = [];
+            for (const mode of fixture.modes) {
+              addMode(key, mode);
+            }
+          }
+          else if (property === `wheels`) {
+            addWheels(result.fixtures[key], fixture);
+          }
+          else if (propertyExistsIn(property, fixture)) {
+            result.fixtures[key][property] = fixture[property];
+          }
+        }
       }
     }
 
@@ -117,8 +133,8 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * If a new manufacturer was entered in the editor, it is also saved here.
-   * @param {Object} fixture The editor fixture object.
-   * @returns {String} The manufacturer key.
+   * @param {object} fixture The editor fixture object.
+   * @returns {string} The manufacturer key.
    */
   function getManufacturerKey(fixture) {
     if (fixture.useExistingManufacturer) {
@@ -149,9 +165,9 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {Object} fixture The editor fixture object.
-   * @param {String} manufacturerKey The manufacturer key of the fixture.
-   * @returns {String} The fixture key.
+   * @param {object} fixture The editor fixture object.
+   * @param {string} manufacturerKey The manufacturer key of the fixture.
+   * @returns {string} The fixture key.
    */
   function getFixtureKey(fixture, manufacturerKey) {
     if (`key` in fixture && fixture.key !== `[new]`) {
@@ -174,11 +190,11 @@ async function getFixtureCreateResult(fixtures) {
   function getPhysical(from) {
     const physical = {};
 
-    for (const property of Object.keys(schemaProperties.physical)) {
-      if (schemaProperties.physical[property].type === `object`) {
+    for (const property of Object.keys(physicalProperties)) {
+      if (physicalProperties[property].type === `object`) {
         physical[property] = {};
 
-        for (const subProperty of Object.keys(schemaProperties.physical[property].properties)) {
+        for (const subProperty of Object.keys(physicalProperties[property].properties)) {
           if (propertyExistsIn(subProperty, from[property])) {
             physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
@@ -197,18 +213,32 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {Object} fixture The OFL fixture object to save the links to.
-   * @param {Array.<Object>} editorLinksArray The editor link object array.
+   * @param {object} fixture The OFL fixture object to save the links to.
+   * @param {object[]} editorLinksArray The editor link object array.
    */
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => url.replace(
-      /^https:\/\/youtu\.be\/([\w-]+)(\?.*|)$/,
-      (match, videoId, query) => `https://www.youtube.com/watch?v=${videoId}${query.replace(/^\?/, `&`)}`,
-    );
+    const resolveShortenedYouTubeUrl = url => {
+      if (url.startsWith(`https://youtu.be/`)) {
+        const urlObject = new URL(url);
 
-    const linkTypes = Object.keys(schemaProperties.links);
+        const videoId = urlObject.pathname.slice(1);
+        const queryParameters = [...urlObject.searchParams];
+        queryParameters.unshift([`v`, videoId]);
+        const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
+
+        urlObject.host = `www.youtube.com`;
+        urlObject.pathname = `watch`;
+        urlObject.search = `?${queryParameterString}`;
+
+        return urlObject.toString();
+      }
+
+      return url;
+    };
+
+    const linkTypes = Object.keys(linksProperties);
 
     for (const linkType of linkTypes) {
       const linksOfType = editorLinksArray
@@ -223,12 +253,12 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * Sanitize and save wheels from the editor's channel objects, if there are any.
-   * @param {Object} fixture The OFL fixture object to save the wheels to.
-   * @param {Object} editorFixture The editor fixture object to get the wheels from.
+   * @param {object} fixture The OFL fixture object to save the wheels to.
+   * @param {object} editorFixture The editor fixture object to get the wheels from.
    */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
-      editorChannel => editorChannel.wheel && editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
+      editorChannel => editorChannel.wheel && editorChannel.wheel.slots.some(
         editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``,
       ),
     );
@@ -249,7 +279,7 @@ async function getFixtureCreateResult(fixtures) {
           type: editorWheelSlot.type,
         };
 
-        const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
+        const wheelSlotSchema = wheelSlotTypes[wheelSlot.type];
 
         for (const slotProperty of Object.keys(wheelSlotSchema.properties)) {
           if (propertyExistsIn(slotProperty, editorWheelSlot.typeData)) {
@@ -261,7 +291,7 @@ async function getFixtureCreateResult(fixtures) {
       });
 
       // remove trailing null slots
-      while (slots[slots.length - 1] === null) {
+      while (slots.at(-1) === null) {
         slots.pop();
       }
 
@@ -281,7 +311,7 @@ async function getFixtureCreateResult(fixtures) {
 
     const channel = {};
 
-    for (const property of Object.keys(schemaProperties.channel)) {
+    for (const property of Object.keys(channelProperties)) {
       if (property === `capabilities`) {
         const capabilities = getCapabilities(from);
 
@@ -343,14 +373,15 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   function getFineChannelAlias(channelKey, resolution) {
-    return `${channelKey} fine${resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
+    const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``;
+    return `${channelKey} fine${suffix}`;
   }
 
   function getCapabilities(channel) {
     return channel.capabilities.map(editorCapability => {
       const capability = {};
 
-      const capabilitySchema = schemaProperties.capabilityTypes[editorCapability.type];
+      const capabilitySchema = capabilityTypes[editorCapability.type];
 
       for (const capabilityProperty of Object.keys(capabilitySchema.properties)) {
         if (propertyExistsIn(capabilityProperty, editorCapability)) {
@@ -373,7 +404,7 @@ async function getFixtureCreateResult(fixtures) {
   function addMode(fixtureKey, from) {
     const mode = {};
 
-    for (const property of Object.keys(schemaProperties.mode)) {
+    for (const property of Object.keys(modeProperties)) {
       if (property === `physical`) {
         const physical = getPhysical(from.physical);
         if (!isEmptyObject(physical)) {
@@ -396,22 +427,21 @@ async function getFixtureCreateResult(fixtures) {
 // helper functions
 
 /**
- * @param {Object|null} object The object to check.
- * @returns {Boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
+ * @param {object | null} object The object to check.
+ * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
  */
 function isEmptyObject(object) {
   return JSON.stringify(object) === `{}`;
 }
 
 /**
- * @param {*} property The property key to check.
- * @param {Object|null} object The object to check. If it's null, false is returned.
- * @returns {Boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
+ * @param {any} property The property key to check.
+ * @param {object | null} object The object to check. If it's null, false is returned.
+ * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
-  const valueValid = objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
-  return valueValid;
+  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
 }
 
 function getComboboxInput(property, from) {
@@ -419,11 +449,9 @@ function getComboboxInput(property, from) {
 }
 
 /**
- * @param {String} string The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }
-
-module.exports = { createFixtureFromEditor };

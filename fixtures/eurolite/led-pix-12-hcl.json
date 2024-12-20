@@ -3,9 +3,9 @@
   "name": "LED PIX-12 HCL",
   "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": ["Nominari UG"],
+    "authors": ["Nominari UG", "JonahKr"],
     "createDate": "2019-01-15",
-    "lastModifyDate": "2019-01-15"
+    "lastModifyDate": "2021-09-13"
   },
   "links": {
     "manual": [
@@ -397,127 +397,152 @@
         {
           "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "comment": "Amber"
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
         },
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "comment": "UV"
+          "comment": "UV",
+          "colors": ["#8800ff"]
         },
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "comment": "Red + Green"
+          "comment": "Red + Green aka Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [80, 89],
           "type": "ColorPreset",
-          "comment": "Red + Blue"
+          "comment": "Red + Blue aka Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "comment": "Red + White"
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorPreset",
-          "comment": "Red + Amber"
+          "comment": "Red + Amber",
+          "colors": ["#ff6000"]
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorPreset",
-          "comment": "Red + UV"
+          "comment": "Red + UV",
+          "colors": ["#ff0000", "#8800ff"]
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "comment": "Green + Blue"
+          "comment": "Green + Blue aka Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorPreset",
-          "comment": "Green + White"
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorPreset",
-          "comment": "Green + Amber"
+          "comment": "Green + Amber",
+          "colors": ["#80df00"]
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorPreset",
-          "comment": "Green + UV"
+          "comment": "Green + UV",
+          "colors": ["#00ff00", "#8800ff"]
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue"
+          "comment": "Red + Green + Blue aka White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
-          "comment": "Green + Blue + White"
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorPreset",
-          "comment": "Blue + White + Amber"
+          "comment": "Blue + White + Amber",
+          "colors": ["#bf9f80"]
         },
         {
           "dmxRange": [190, 199],
           "type": "ColorPreset",
-          "comment": "White + Amber + UV"
+          "comment": "White + Amber + UV",
+          "colors": ["#ffdf80", "#8800ff"]
         },
         {
           "dmxRange": [200, 209],
           "type": "ColorPreset",
-          "comment": "Amber + UV + Red"
+          "comment": "Amber + Red + UV",
+          "colors": ["#ff6060", "#8800ff"]
         },
         {
           "dmxRange": [210, 219],
           "type": "ColorPreset",
-          "comment": "Red + Blue + White + UV"
+          "comment": "Red + Blue + White + UV",
+          "colors": ["#ff80ff", "#8800ff"]
         },
         {
           "dmxRange": [220, 229],
           "type": "ColorPreset",
-          "comment": "Red + Green + White + UV"
+          "comment": "Red + Green + White + UV",
+          "colors": ["#ffff80", "#8800ff"]
         },
         {
           "dmxRange": [230, 239],
           "type": "ColorPreset",
-          "comment": "Red + Green + White + Amber"
+          "comment": "Red + Green + White + Amber",
+          "colors": ["#ffdf40"]
         },
         {
           "dmxRange": [240, 249],
           "type": "ColorPreset",
-          "comment": "Green + Blue + Amber + UV"
+          "comment": "Green + Blue + Amber + UV",
+          "colors": ["#80df80", "#8800ff"]
         },
         {
           "dmxRange": [250, 255],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White + Amber + UV"
+          "comment": "Red + Green + Blue + White + Amber + UV",
+          "colors": ["#ffdf80", "#8800ff"]
         }
       ]
     }

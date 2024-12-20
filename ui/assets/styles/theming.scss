@@ -1,29 +1,37 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
+@use "./vars.scss";
 
-@use './vars.scss';
-
-// Function to get a theme color CSS variable (with fallback to light themed color).
-//
-// Usage:
-//     background: linear-gradient(to top, red, theme-color(primary));
-//
-// Output:
-//     background: linear-gradient(to top, red, rgba(255, 127, 0, 1));
-//     background: linear-gradient(to top, red, rgba(var(--theme-primary, 255, 127, 0), 1));
-@function theme-color($color-name, $alpha: 1) {
+/// Function to get a theme color CSS variable (with fallback to light themed color).
+///
+/// Usage:
+///     background: linear-gradient(to top, red, theme-color(primary));
+///
+/// Output:
+///     background: linear-gradient(to top, red, rgba(255, 127, 0, 1));
+///     background: linear-gradient(to top, red, rgba(var(--theme-primary, 255, 127, 0), 1));
+@function theme-color($color-name, $opacity: 100%) {
   $default-theme: map.get(vars.$themes, light);
 
-  @if (map.has-key($default-theme, $color-name) == false) {
+  @if map.has-key($default-theme, $color-name) == false {
     @error "Theme color #{$color-name} doesn't exist in light theme.";
   }
 
-  $themed-color: map.get($default-theme, $color-name);
-  $alpha: $alpha * color.alpha($themed-color);
+  @if math.unit($opacity) != "%" {
+    @error "Second parameter of theme-color needs to be a percentage value, like 50%.";
+  }
 
-  @return #{'rgba(var(--theme-' + $color-name + ', ' + colorToRgbString($themed-color) + '), ' + $alpha + ')'};
+  $themed-color: map.get($default-theme, $color-name);
+  $alpha: math.div($opacity, 100%) * color.channel($themed-color, "alpha");
+
+  @return #{"rgba(var(--theme-#{$color-name}, #{color-to-rgb-string($themed-color)}), #{$alpha})"};
 }
 
-@function colorToRgbString($hexColor) {
-  @return "#{color.red($hexColor)}, #{color.green($hexColor)}, #{color.blue($hexColor)}";
+@function color-to-rgb-string($hexColor) {
+  $red: color.channel($hexColor, "red");
+  $green: color.channel($hexColor, "green");
+  $blue: color.channel($hexColor, "blue");
+
+  @return "#{$red}, #{$green}, #{$blue}";
 }

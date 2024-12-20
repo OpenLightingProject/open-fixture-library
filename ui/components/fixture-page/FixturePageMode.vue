@@ -47,21 +47,23 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
 }
 
 ol.mode-channels {
-  padding-left: 1.9em;
   min-height: 1em;
+  padding-left: 1.9em;
 
   // switched channels
   ::v-deep ol {
-    list-style-type: lower-alpha;
     padding-left: 1.1em;
+    list-style-type: lower-alpha;
   }
 }
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
 
 import FixturePageChannel from './FixturePageChannel.vue';
@@ -73,10 +75,10 @@ export default {
     FixturePagePhysical,
   },
   props: {
-    mode: {
-      type: Mode,
-      required: true,
-    },
+    mode: instanceOfProp(Mode).required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     return {

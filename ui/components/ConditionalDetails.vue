@@ -1,24 +1,16 @@
-<!-- Usage:
+<template>
+  <details v-if="$slots.default">
+    <summary>
+      <slot name="summary" />
+    </summary>
 
-1. with content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
+    <slot />
+  </details>
 
-    World
-  </ConditionalDetails>
-
-  renders:
-  <details><summary>Hello</summary>World</details>
-
-2. without content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
-  </ConditionalDetails>
-
-  renders:
-  <div class="summary">Hello</div>
-
--->
+  <div v-else class="summary">
+    <slot name="summary" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 summary {
@@ -32,23 +24,24 @@ summary {
 
   &::after {
     // chevron down
+    position: relative;
+    top: -0.2em;
+    left: 1.2ex;
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    vertical-align: middle;
+    content: "";
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.4em;
-    left: 1.2ex;
-    position: relative;
-    top: -0.2em;
-    transform: rotate(135deg);
     transition-duration: 0.2s;
     transition-property: transform, top, border-color;
-    vertical-align: middle;
-    width: 0.4em;
+    transform: rotate(135deg);
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: theme-color(hover-background);
     outline: none;
 
@@ -71,26 +64,4 @@ details {
     }
   }
 }
-
-// hide polyfilled arrow, as we use our own
-html.no-details details > summary::before {
-  display: none;
-}
 </style>
-
-<script>
-export default {
-  render(createElement) {
-    if (this.$slots.default) {
-      return createElement(`details`, [
-        createElement(`summary`, this.$slots.summary),
-        this.$slots.default,
-      ]);
-    }
-
-    return createElement(`div`, {
-      class: `summary`,
-    }, this.$slots.summary);
-  },
-};
-</script>

@@ -7,9 +7,9 @@
       <a
         v-for="(letterData, letter) of letters"
         :key="letter"
-        v-smooth-scroll
         :href="`#${letterData.id}`"
-        class="jump-link">
+        class="jump-link"
+        @click="setScrollBehavior()">
         {{ letter }}
       </a>
     </div>
@@ -38,19 +38,45 @@
 }
 
 .jump-link {
-  margin: 0 0.5ex;
+  padding: 8px;
+  margin: 0 2px;
+}
+
+h2 {
+  scroll-margin-top: 80px;
 }
 </style>
 
 <script>
 export default {
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
+  },
+  head() {
+    const title = `Manufacturers`;
 
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
+  computed: {
+    letters() {
       const letters = {};
 
-      for (const manufacturerKey of Object.keys(manufacturers)) {
+      for (const manufacturerKey of Object.keys(this.manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
@@ -66,32 +92,22 @@ export default {
 
         letters[letter].manufacturers.push({
           key: manufacturerKey,
-          name: manufacturers[manufacturerKey].name,
-          fixtureCount: manufacturers[manufacturerKey].fixtureCount,
-          color: manufacturers[manufacturerKey].color,
+          name: this.manufacturers[manufacturerKey].name,
+          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
+          color: this.manufacturers[manufacturerKey].color,
         });
       }
 
-      return {
-        letters,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
+      return letters;
+    },
   },
-  head() {
-    const title = `Manufacturers`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
+  destroyed() {
+    document.documentElement.style.scrollBehavior = ``;
+  },
+  methods: {
+    setScrollBehavior() {
+      document.documentElement.style.scrollBehavior = `smooth`;
+    },
   },
 };
 </script>

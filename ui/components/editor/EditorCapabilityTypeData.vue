@@ -9,8 +9,7 @@
         v-model="capability.type"
         :class="{ empty: capability.type === `` }"
         :name="`capability${capability.uuid}-type`"
-        :required="required"
-        @change="changeCapabilityType()">
+        :required="required">
 
         <option value="" disabled>Please select a capability type</option>
 
@@ -33,53 +32,54 @@
 </template>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { booleanProp, objectProp } from 'vue-ts-types';
+import { capabilityTypes } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
 
-import CapabilityNoFunction from './capabilities/NoFunction.vue';
-import CapabilityShutterStrobe from './capabilities/ShutterStrobe.vue';
-import CapabilityStrobeSpeed from './capabilities/StrobeSpeed.vue';
-import CapabilityStrobeDuration from './capabilities/StrobeDuration.vue';
-import CapabilityIntensity from './capabilities/Intensity.vue';
-import CapabilityColorIntensity from './capabilities/ColorIntensity.vue';
-import CapabilityColorPreset from './capabilities/ColorPreset.vue';
-import CapabilityColorTemperature from './capabilities/ColorTemperature.vue';
-import CapabilityPan from './capabilities/Pan.vue';
-import CapabilityPanContinuous from './capabilities/PanContinuous.vue';
-import CapabilityTilt from './capabilities/Tilt.vue';
-import CapabilityTiltContinuous from './capabilities/TiltContinuous.vue';
-import CapabilityPanTiltSpeed from './capabilities/PanTiltSpeed.vue';
-import CapabilityWheelSlot from './capabilities/WheelSlot.vue';
-import CapabilityWheelShake from './capabilities/WheelShake.vue';
-import CapabilityWheelSlotRotation from './capabilities/WheelSlotRotation.vue';
-import CapabilityWheelRotation from './capabilities/WheelRotation.vue';
-import CapabilityEffect from './capabilities/Effect.vue';
-import CapabilityEffectSpeed from './capabilities/EffectSpeed.vue';
-import CapabilityEffectDuration from './capabilities/EffectDuration.vue';
-import CapabilityEffectParameter from './capabilities/EffectParameter.vue';
-import CapabilitySoundSensitivity from './capabilities/SoundSensitivity.vue';
-import CapabilityBeamAngle from './capabilities/BeamAngle.vue';
-import CapabilityBeamPosition from './capabilities/BeamPosition.vue';
-import CapabilityFocus from './capabilities/Focus.vue';
-import CapabilityZoom from './capabilities/Zoom.vue';
-import CapabilityIris from './capabilities/Iris.vue';
-import CapabilityIrisEffect from './capabilities/IrisEffect.vue';
-import CapabilityFrost from './capabilities/Frost.vue';
-import CapabilityFrostEffect from './capabilities/FrostEffect.vue';
-import CapabilityPrism from './capabilities/Prism.vue';
-import CapabilityPrismRotation from './capabilities/PrismRotation.vue';
-import CapabilityBladeInsertion from './capabilities/BladeInsertion.vue';
-import CapabilityBladeRotation from './capabilities/BladeRotation.vue';
-import CapabilityBladeSystemRotation from './capabilities/BladeSystemRotation.vue';
-import CapabilityFog from './capabilities/Fog.vue';
-import CapabilityFogOutput from './capabilities/FogOutput.vue';
-import CapabilityFogType from './capabilities/FogType.vue';
-import CapabilityRotation from './capabilities/Rotation.vue';
-import CapabilitySpeed from './capabilities/Speed.vue';
-import CapabilityTime from './capabilities/Time.vue';
-import CapabilityMaintenance from './capabilities/Maintenance.vue';
-import CapabilityGeneric from './capabilities/Generic.vue';
+import CapabilityBeamAngle from './capabilities/CapabilityBeamAngle.vue';
+import CapabilityBeamPosition from './capabilities/CapabilityBeamPosition.vue';
+import CapabilityBladeInsertion from './capabilities/CapabilityBladeInsertion.vue';
+import CapabilityBladeRotation from './capabilities/CapabilityBladeRotation.vue';
+import CapabilityBladeSystemRotation from './capabilities/CapabilityBladeSystemRotation.vue';
+import CapabilityColorIntensity from './capabilities/CapabilityColorIntensity.vue';
+import CapabilityColorPreset from './capabilities/CapabilityColorPreset.vue';
+import CapabilityColorTemperature from './capabilities/CapabilityColorTemperature.vue';
+import CapabilityEffect from './capabilities/CapabilityEffect.vue';
+import CapabilityEffectDuration from './capabilities/CapabilityEffectDuration.vue';
+import CapabilityEffectParameter from './capabilities/CapabilityEffectParameter.vue';
+import CapabilityEffectSpeed from './capabilities/CapabilityEffectSpeed.vue';
+import CapabilityFocus from './capabilities/CapabilityFocus.vue';
+import CapabilityFog from './capabilities/CapabilityFog.vue';
+import CapabilityFogOutput from './capabilities/CapabilityFogOutput.vue';
+import CapabilityFogType from './capabilities/CapabilityFogType.vue';
+import CapabilityFrost from './capabilities/CapabilityFrost.vue';
+import CapabilityFrostEffect from './capabilities/CapabilityFrostEffect.vue';
+import CapabilityGeneric from './capabilities/CapabilityGeneric.vue';
+import CapabilityIntensity from './capabilities/CapabilityIntensity.vue';
+import CapabilityIris from './capabilities/CapabilityIris.vue';
+import CapabilityIrisEffect from './capabilities/CapabilityIrisEffect.vue';
+import CapabilityMaintenance from './capabilities/CapabilityMaintenance.vue';
+import CapabilityNoFunction from './capabilities/CapabilityNoFunction.vue';
+import CapabilityPan from './capabilities/CapabilityPan.vue';
+import CapabilityPanContinuous from './capabilities/CapabilityPanContinuous.vue';
+import CapabilityPanTiltSpeed from './capabilities/CapabilityPanTiltSpeed.vue';
+import CapabilityPrism from './capabilities/CapabilityPrism.vue';
+import CapabilityPrismRotation from './capabilities/CapabilityPrismRotation.vue';
+import CapabilityRotation from './capabilities/CapabilityRotation.vue';
+import CapabilityShutterStrobe from './capabilities/CapabilityShutterStrobe.vue';
+import CapabilitySoundSensitivity from './capabilities/CapabilitySoundSensitivity.vue';
+import CapabilitySpeed from './capabilities/CapabilitySpeed.vue';
+import CapabilityStrobeDuration from './capabilities/CapabilityStrobeDuration.vue';
+import CapabilityStrobeSpeed from './capabilities/CapabilityStrobeSpeed.vue';
+import CapabilityTilt from './capabilities/CapabilityTilt.vue';
+import CapabilityTiltContinuous from './capabilities/CapabilityTiltContinuous.vue';
+import CapabilityTime from './capabilities/CapabilityTime.vue';
+import CapabilityWheelRotation from './capabilities/CapabilityWheelRotation.vue';
+import CapabilityWheelShake from './capabilities/CapabilityWheelShake.vue';
+import CapabilityWheelSlot from './capabilities/CapabilityWheelSlot.vue';
+import CapabilityWheelSlotRotation from './capabilities/CapabilityWheelSlotRotation.vue';
+import CapabilityZoom from './capabilities/CapabilityZoom.vue';
 
 export default {
   components: {
@@ -128,44 +128,22 @@ export default {
     CapabilityMaintenance,
     CapabilityGeneric,
   },
-  model: {
-    prop: `capability`,
-  },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().optional,
+    required: booleanProp().withDefault(false),
   },
   data() {
     return {
-      properties: schemaProperties,
+      capabilityTypes: Object.keys(capabilityTypes),
       capabilityTypeHint: null,
     };
   },
-  computed: {
-    capabilityTypes() {
-      return this.properties.capability.type.enum;
-    },
-  },
-  methods: {
-    /**
-     * Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
-     */
-    async changeCapabilityType() {
+  watch: {
+    'capability.type': async function() {
+      // Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
+
       await this.$nextTick();
 
       const defaultData = this.$refs.capabilityTypeData.defaultData;
@@ -179,7 +157,8 @@ export default {
         ? this.$refs.capabilityTypeData.hint
         : null;
     },
-
+  },
+  methods: {
     /**
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
      * @public

@@ -1,42 +1,61 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
+import sass from 'sass';
 
-import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
+import plugins from './plugins/plugins.json';
 
-const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+const ignoredSassDeprecations = [`legacy-js-api`]; // can only be fixed with Nuxt.js v3
+const sassDeprecationIds = Object.values(sass.deprecations).flatMap(deprecation =>
+  (deprecation.status === `active` && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
+);
+
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
 export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `nuxt-helmet`,
     `cookie-universal-nuxt`,
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
+  ],
+  serverMiddleware: [
     {
-      src: `~/plugins/vue-smooth-scroll.js`,
-      ssr: false,
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
     },
   ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
   ],
   publicRuntimeConfig: {
     websiteUrl,
+    searchIndexingIsAllowed: process.env.ALLOW_SEARCH_INDEXING === `allowed`,
   },
   build: {
+    quiet: false,
     loaders: {
       // condense whitespace in Vue templates
       vue: {
@@ -47,11 +66,15 @@ export default {
       // automatically `@use` global SCSS definitions
       scss: {
         additionalData: `@use "~/assets/styles/global.scss" as *;`,
+        sassOptions: {
+          fatalDeprecations: sassDeprecationIds,
+          silenceDeprecations: ignoredSassDeprecations,
+        },
       },
     },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const iconsPath = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = fileURLToPath(new URL(`ui/assets/icons/`, import.meta.url));
       const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
       urlLoader.exclude = iconsPath;
 
@@ -64,6 +87,16 @@ export default {
           removeSVGTagAttrs: false,
         },
       });
+
+      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      const javascriptRule = config.module.rules.find(rule => rule.type === `javascript/auto`);
+      const originalExclude = javascriptRule.exclude;
+      javascriptRule.exclude = {
+        and: [
+          originalExclude,
+          { not: [/node_modules[/\\]a11y-dialog/] },
+        ],
+      };
     },
   },
   render: {
@@ -89,9 +122,10 @@ export default {
     color: `#1e88e5`,
   },
   head() {
+    const theme = this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`);
     const htmlAttributes = {
       lang: `en`,
-      'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
+      'data-theme': theme,
     };
 
     const titleTemplate = titleChunk => {
@@ -112,6 +146,11 @@ export default {
       {
         name: `mobile-web-app-capable`,
         content: `yes`,
+      },
+      {
+        hid: `theme-color`,
+        name: `theme-color`,
+        content: theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
       },
       {
         // this enables Twitter link previews
@@ -176,7 +215,7 @@ export default {
       },
     ];
 
-    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    if (!this.$config.searchIndexingIsAllowed) {
       meta.push({
         name: `robots`,
         content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`,
@@ -219,12 +258,6 @@ export default {
         href: `/fonts/LatoLatin/LatoLatin-Regular.woff2`,
         as: `font`,
         type: `font/woff2`,
-      },
-      {
-        rel: `preload`,
-        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
-        as: `font`,
-        type: `font/woff`,
       },
     ];
 

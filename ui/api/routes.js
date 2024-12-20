@@ -1,11 +1,9 @@
-module.exports = {
-  ...require(`./routes/get-search-results.js`),
-  ...require(`./routes/submit-feedback.js`),
-  ...require(`./routes/fixtures/from-editor.js`),
-  ...require(`./routes/fixtures/import.js`),
-  ...require(`./routes/fixtures/submit.js`),
-  ...require(`./routes/manufacturers/index.js`),
-  ...require(`./routes/manufacturers/_manufacturerKey.js`),
-  ...require(`./routes/plugins/index.js`),
-  ...require(`./routes/plugins/_pluginKey.js`),
-};
+export { getSearchResults } from './routes/get-search-results.js';
+export { createFeedbackIssue } from './routes/submit-feedback.js';
+export { createFixtureFromEditor } from './routes/fixtures/from-editor.js';
+export { importFixtureFile } from './routes/fixtures/import.js';
+export { submitFixtures } from './routes/fixtures/submit.js';
+export { getManufacturers } from './routes/manufacturers/index.js';
+export { getManufacturerByKey } from './routes/manufacturers/_manufacturerKey.js';
+export { getPlugins } from './routes/plugins/index.js';
+export { getPluginByKey } from './routes/plugins/_pluginKey.js';

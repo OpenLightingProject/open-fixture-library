@@ -8,7 +8,14 @@ export const constants = {
 };
 
 /**
- * @returns {Object} An empty fixture object.
+ * @returns {object} An empty object to be used as a form state for `vue-form`.
+ */
+export function getEmptyFormState() {
+  return {};
+}
+
+/**
+ * @returns {object} An empty fixture object.
  */
 export function getEmptyFixture() {
   return {
@@ -39,8 +46,8 @@ export function getEmptyFixture() {
 
 
 /**
- * @param {String} linkType The type of the new link.
- * @returns {Object} An empty fixture link object.
+ * @param {string} linkType The type of the new link.
+ * @returns {object} An empty fixture link object.
  */
 export function getEmptyLink(linkType = `manual`) {
   return {
@@ -52,7 +59,7 @@ export function getEmptyLink(linkType = `manual`) {
 
 
 /**
- * @returns {Object} An empty fixture's or mode's physical object.
+ * @returns {object} An empty fixture's or mode's physical object.
  */
 export function getEmptyPhysical() {
   return {
@@ -75,7 +82,7 @@ export function getEmptyPhysical() {
 
 
 /**
- * @returns {Object} An empty mode object.
+ * @returns {object} An empty mode object.
  */
 export function getEmptyMode() {
   return {
@@ -91,7 +98,7 @@ export function getEmptyMode() {
 
 
 /**
- * @returns {Object} An empty channel object.
+ * @returns {object} An empty channel object.
  */
 export function getEmptyChannel() {
   return {
@@ -122,9 +129,9 @@ export function getEmptyChannel() {
 
 
 /**
- * @param {String} coarseChannelId The UUID of the coarse channel.
- * @param {Number} resolution The resolution of the newly created fine channel.
- * @returns {Object} An empty fine channel object for the given coarse channel.
+ * @param {string} coarseChannelId The UUID of the coarse channel.
+ * @param {number} resolution The resolution of the newly created fine channel.
+ * @returns {object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
@@ -136,7 +143,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
 
 
 /**
- * @returns {Object} An empty capability object.
+ * @returns {object} An empty capability object.
  */
 export function getEmptyCapability() {
   return {
@@ -150,7 +157,7 @@ export function getEmptyCapability() {
 
 
 /**
- * @returns {Object} An empty wheel slot object.
+ * @returns {object} An empty wheel slot object.
  */
 export function getEmptyWheelSlot() {
   return {
@@ -162,8 +169,8 @@ export function getEmptyWheelSlot() {
 
 
 /**
- * @param {Object} channel The channel object.
- * @returns {Boolean} False if the channel object is still empty / unchanged, true otherwise.
+ * @param {object} channel The channel object.
+ * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
   return Object.keys(channel).some(property => {
@@ -191,8 +198,8 @@ export function isChannelChanged(channel) {
 
 
 /**
- * @param {Object} capability The capability object.
- * @returns {Boolean} False if the capability object is still empty / unchanged, true otherwise.
+ * @param {object} capability The capability object.
+ * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
   if (capability.dmxRange !== null) {
@@ -208,8 +215,8 @@ export function isCapabilityChanged(capability) {
 
 
 /**
- * @param {String|null} hexString A string of comma-separated hex values, or null.
- * @returns {Array.<String>|null} The hex codes as array of strings.
+ * @param {string | null} hexString A string of comma-separated hex values, or null.
+ * @returns {string[] | null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {
@@ -229,23 +236,14 @@ export function colorsHexStringToArray(hexString) {
 
 
 /**
- * @param {Object} channel The channel object that shall be sanitized.
- * @returns {Object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
+ * @param {object} channel The channel object that shall be sanitized.
+ * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const sanitizedChannel = clone(channel);
+  const sanitizedChannel = structuredClone(channel);
   delete sanitizedChannel.editMode;
   delete sanitizedChannel.modeId;
   delete sanitizedChannel.wizard;
 
   return sanitizedChannel;
-}
-
-
-/**
- * @param {*} object The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
- * @returns {*} A deep clone.
- */
-export function clone(object) {
-  return JSON.parse(JSON.stringify(object));
 }

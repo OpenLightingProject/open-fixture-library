@@ -2,12 +2,15 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json",
 
-  "version": "12.2.1",
+  "version": "12.5.0",
 
   "type": "object",
   "properties": {
+    "$schema": {
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json"
+    },
     "name": {
-      "$comment": "unique in manufacturer",
+      "description": "unique in manufacturer",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "redirectTo": {
@@ -21,10 +24,6 @@
       ]
     }
   },
-  "patternProperties": {
-    "^\\$schema$": {
-      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json"
-    }
-  },
+  "required": ["$schema", "name", "redirectTo", "reason"],
   "additionalProperties": false
 }

@@ -7,7 +7,8 @@
             v-for="(pixelKey, xIndex) of row"
             :key="xIndex"
             :style="pixelSizing"
-            :class="{ pixel: true, highlight: highlightedPixelKeys.includes(pixelKey) }">{{ pixelKey || '' }}</div>
+            class="pixel"
+            :class="{ highlight: highlightedPixelKeys.includes(pixelKey) }">{{ pixelKey || '' }}</div>
         </div>
       </div>
       <span class="hint">Front view</span>
@@ -24,8 +25,11 @@
           :label="key"
           :value="value"
           name="pixel-group"
+          tabindex="0"
           @mouseover="highlightedPixelKeys = matrix.pixelGroups[key]"
-          @mouseout="highlightedPixelKeys = []" />
+          @focusin="highlightedPixelKeys = matrix.pixelGroups[key]"
+          @mouseout="highlightedPixelKeys = []"
+          @focusout="highlightedPixelKeys = []" />
       </div>
     </section>
   </div>
@@ -33,12 +37,12 @@
 
 <style lang="scss" scoped>
 .z-level {
-  border-collapse: collapse;
-  border-spacing: 0;
-  overflow: auto;
   padding-top: 1px;
   padding-left: 1px;
   margin-bottom: 8px;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .row {
@@ -48,25 +52,21 @@
 }
 
 .pixel {
-  display: inline-block;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
+  justify-content: center;
+  margin-left: -1px;
+  font-size: 90%;
   line-height: 1.4em;
   text-align: center;
-  margin-left: -1px;
-  vertical-align: top;
-  font-size: 90%;
-  border: 1px solid transparent;
   white-space: normal;
+  vertical-align: top;
+  border: 1px solid transparent;
   transition: background-color 0.2s;
 
   &:not(:empty) {
-    border-color: theme-color(icon-inactive);
     background-color: theme-color(card-background);
+    border-color: theme-color(icon-inactive);
   }
 
   &.highlight {
@@ -81,6 +81,7 @@
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Matrix from '../../../lib/model/Matrix.js';
 import Physical from '../../../lib/model/Physical.js';
 
@@ -91,14 +92,8 @@ export default {
     LabeledValue,
   },
   props: {
-    matrix: {
-      type: Matrix,
-      required: true,
-    },
-    physical: {
-      type: Physical,
-      required: true,
-    },
+    matrix: instanceOfProp(Matrix).required,
+    physical: instanceOfProp(Physical).optional,
   },
   data() {
     return {
@@ -110,7 +105,7 @@ export default {
     pixelSizing() {
       let sizing = `height: ${this.baseHeight}em; `;
 
-      if (this.physical !== null && this.physical.hasMatrixPixels) {
+      if (this.physical?.hasMatrixPixels) {
         const scale = this.baseHeight / this.physical.matrixPixelsDimensions[1];
         sizing += `width: ${this.physical.matrixPixelsDimensions[0] * scale}em; `;
         sizing += `margin-right: ${this.physical.matrixPixelsSpacing[0] * scale}em; `;
@@ -142,15 +137,15 @@ export default {
           return [groupKey, resolvedPixelsKeys.join(`, `)];
         }
 
-        const constraintTexts = constraintAxes.map(axis => {
+        const constraintText = constraintAxes.map(axis => {
           const axisConstraints = group[axis].map(
             constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
-          );
+          ).join(`, `);
 
-          return `${axis.toUpperCase()} coordinate is ${axisConstraints.join(`, `)}`;
-        });
+          return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
+        }).join(` and `);
 
-        return [groupKey, `Pixels where ${constraintTexts.join(` and `)}`];
+        return [groupKey, `Pixels where ${constraintText}`];
       });
     },
   },

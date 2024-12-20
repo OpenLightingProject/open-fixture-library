@@ -1,16 +1,16 @@
-const importJson = require(`../../../../lib/import-json.js`);
-const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
+import importJson from '../../../../lib/import-json.js';
+import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
 /** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
- * @typedef {Object} RequestBody
- * @property {String} plugin Import plugin key.
- * @property {String} fileName Imported file's name.
- * @property {String} fileContentBase64 Imported file's content, as base64 encoded string.
- * @property {String} author Author's name.
+ * @typedef {object} RequestBody
+ * @property {string} plugin Import plugin key.
+ * @property {string} fileName Imported file's name.
+ * @property {string} fileContentBase64 Imported file's content, as base64 encoded string.
+ * @property {string} author Author's name.
  */
 
 /**
@@ -18,7 +18,7 @@ const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-async function importFixtureFile({ request }) {
+export async function importFixtureFile({ request }) {
   try {
     const fixtureCreateResult = await importFixture(request.requestBody);
     return {
@@ -42,13 +42,13 @@ async function importFixtureFile({ request }) {
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
  */
 async function importFixture(body) {
-  const { importPlugins } = await importJson(`../../../../plugins/plugins.json`, __dirname);
+  const { importPlugins } = await importJson(`../../../../plugins/plugins.json`, import.meta.url);
 
   if (!body.plugin || !importPlugins.includes(body.plugin)) {
     throw new Error(`'${body.plugin}' is not a valid import plugin.`);
   }
 
-  const plugin = require(`../../../../plugins/${body.plugin}/import.js`);
+  const plugin = await import(`../../../../plugins/${body.plugin}/import.js`);
   const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
@@ -66,7 +66,7 @@ async function importFixture(body) {
     errors: {},
   };
 
-  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
 
   for (const [key, fixture] of Object.entries(result.fixtures)) {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
@@ -77,11 +77,9 @@ async function importFixture(body) {
       result.manufacturers[manufacturerKey] = oflManufacturers[manufacturerKey];
     }
 
-    result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
+    result.warnings[key] = [...result.warnings[key], ...checkResult.warnings];
     result.errors[key] = checkResult.errors;
   }
 
   return result;
 }
-
-module.exports = { importFixtureFile };

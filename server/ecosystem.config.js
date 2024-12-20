@@ -23,7 +23,8 @@ module.exports = {
   apps: [
     {
       name: `ofl`,
-      script: `main.js`,
+      script: `./node_modules/nuxt/bin/nuxt.js`,
+      args: `start`,
       cwd: `/home/flo/open-fixture-library`,
       'log_date_format': `YYYY-MM-DD HH:mm:ss Z`,
       env: environmentVariablesOfl,

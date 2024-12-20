@@ -1,0 +1,667 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nova P300c",
+  "categories": ["Dimmer", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Peter Zuiderent", "Flo Edelmann"],
+    "createDate": "2022-05-07",
+    "lastModifyDate": "2022-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2020/06/Nova_P300c_Manual_20200722-EN.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/nova-p300c/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=qr-QiRpwijI"
+    ],
+    "other": [
+      "https://www.aputure.com/wp-content/uploads/2021/02/Nova-P300c-DMX-Table_2020-12-09.xlsx"
+    ]
+  },
+  "physical": {
+    "dimensions": [562, 457, 166],
+    "weight": 10.35,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Gel CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    },
+    "CCT <-> RGB": {
+      "capability": {
+        "type": "Generic",
+        "comment": "crossfade to color"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green/Magenta Point": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Generic",
+          "comment": "-1.0"
+        },
+        {
+          "dmxRange": [12, 120],
+          "type": "Generic",
+          "comment": "-0.9 … -0.1"
+        },
+        {
+          "dmxRange": [121, 132],
+          "type": "Generic",
+          "comment": "0"
+        },
+        {
+          "dmxRange": [133, 241],
+          "type": "Generic",
+          "comment": "0.1 … 0.9"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Generic",
+          "comment": "1.0"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1° … 360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT <-> HSI": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Cross Fade To Color"
+      }
+    },
+    "Gel R/L": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Generic",
+          "comment": "L"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Generic",
+          "comment": "R"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gel Series": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "R-Col.corr/L-Col.corr"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "R-Cal color/L-Cal.Filter"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "R-Storaro/L-600 Series"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "R-Cinelux/L-Cosmetic"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "R-Backup/L-700 Series"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gel Model": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Gel Model selection (dependent on Gel R/L and Gel Series)"
+      }
+    },
+    "Source": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Tungsten Bulb"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic",
+          "comment": "Incandescent"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic",
+          "comment": "Halogeen"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic",
+          "comment": "Antique Bulb"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic",
+          "comment": "Warm Antique Bulb"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic",
+          "comment": "Christmas lights"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic",
+          "comment": "Night Light"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic",
+          "comment": "Infrared Heat Lamp"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic",
+          "comment": "Grow Light"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic",
+          "comment": "CFL Soft White"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic",
+          "comment": "CFL Bright White"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic",
+          "comment": "CFL Cool White"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic",
+          "comment": "CFL Daylight"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic",
+          "comment": "Cool White 1"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic",
+          "comment": "Cool White 2"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic",
+          "comment": "Cool White 3"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic",
+          "comment": "Warm White"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic",
+          "comment": "CFL BlackLight"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic",
+          "comment": "HMI"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic",
+          "comment": "High Presure Sodium"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic",
+          "comment": "Low Presure Sodium"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic",
+          "comment": "Mercury Vapor"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic",
+          "comment": "Metal Halyde"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic",
+          "comment": "Ceramic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic",
+          "comment": "Carbon Arc"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic",
+          "comment": "Xenon"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic",
+          "comment": "Gas Fire"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic",
+          "comment": "Sun Direct"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic",
+          "comment": "Sun Overcast"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic",
+          "comment": "Sun Blue Hour"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic",
+          "comment": "Mobile Phone"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic",
+          "comment": "Computer Monitor"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic",
+          "comment": "Electroluminescence"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic",
+          "comment": "Blow Torch"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic",
+          "comment": "Road Flare"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic",
+          "comment": "Amber Caution"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic",
+          "comment": "Green Traffic Light"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic",
+          "comment": "Yellow Traffic Light"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic",
+          "comment": "Red Traffic Light"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic",
+          "comment": "Blue Glow Stick"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Generic",
+          "comment": "Green Glow Stick"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Generic",
+          "comment": "Red Glow Stick"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Generic",
+          "comment": "Yellow Glow Stick"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Generic",
+          "comment": "Pink Glow Stick"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Generic",
+          "comment": "Violet Glow Stick"
+        },
+        {
+          "dmxRange": [92, 255],
+          "type": "Generic",
+          "comment": "Backup"
+        }
+      ]
+    },
+    "X": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 … 0.8"
+      }
+    },
+    "Y": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 … 0.8"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Club Lights"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Paperazzi"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Explosion"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Welding"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Cop Car"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Color Chase"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Party Lights"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Generic",
+          "comment": "Backup"
+        }
+      ]
+    },
+    "Effect Parameter 1": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 2": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 3": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 4": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 5": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 6": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 7": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT&RGB",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point",
+        "CCT <-> RGB",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point"
+      ]
+    },
+    {
+      "name": "CCT&HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point",
+        "CCT <-> HSI",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "GEL",
+      "channels": [
+        "Intensity",
+        "Gel CCT",
+        "Gel R/L",
+        "Gel Series",
+        "Gel Model"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "Source",
+      "channels": [
+        "Intensity",
+        "Source"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "X-Y",
+      "channels": [
+        "Intensity",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "name": "Effect",
+      "channels": [
+        "Effect",
+        "Intensity",
+        "Effect Parameter 1",
+        "Effect Parameter 2",
+        "Effect Parameter 3",
+        "Effect Parameter 4",
+        "Effect Parameter 5",
+        "Effect Parameter 6",
+        "Effect Parameter 7",
+        "Effect Parameter 8"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
 @use "sass:string";
-
 @use "./theming.scss";
 
 $animation-number: 0 !default;
@@ -7,7 +6,9 @@ $animation-number: 0 !default;
 @mixin animation-keyframes {
   $animation-number: $animation-number + 1 !global;
   $name: string.unquote("ofl-animation-#{$animation-number}");
+
   animation-name: $name;
+
   @at-root {
     @keyframes #{$name} {
       @content;
@@ -15,36 +16,35 @@ $animation-number: 0 !default;
   }
 }
 
-
-// Usage:
-//   @include mobile-hover-emulation((
-//     background-color: <hover theme color name>,
-//     // ...
-//   ), 0.1s, 0.3s);
-//
-// Result:
-//   & {
-//     transition-duration: 0.1s;
-//   }
-//
-//   #ofl-root.no-touch &:hover {
-//     background-color: <themed hover color>;
-//   }
-//   #ofl-root.touch &:hover {
-//     animation-delay: 0.3s;
-//     animation-duration: 0.1s;
-//     animation-fill-mode: both;
-//     animation-name: ofl-animation-1;
-//   }
-//
-//   @keyframes ofl-animation-1 {
-//     from {
-//       background-color: <themed hover color>;
-//     }
-//     to {
-//       background-color: unset;
-//     }
-//   }
+/// Usage:
+///   @include mobile-hover-emulation((
+///     background-color: <hover theme color name>,
+///     // ...
+///   ), 0.1s, 0.3s);
+///
+/// Result:
+///   & {
+///     transition-duration: 0.1s;
+///   }
+///
+///   #ofl-root.no-touch &:hover {
+///     background-color: <themed hover color>;
+///   }
+///   #ofl-root.touch &:hover {
+///     animation-delay: 0.3s;
+///     animation-duration: 0.1s;
+///     animation-fill-mode: both;
+///     animation-name: ofl-animation-1;
+///   }
+///
+///   @keyframes ofl-animation-1 {
+///     from {
+///       background-color: <themed hover color>;
+///     }
+///     to {
+///       background-color: unset;
+///     }
+///   }
 @mixin mobile-hover-emulation($transition-map, $transition-duration: 0.2s, $mobile-hover-delay: 0.2s) {
   transition-duration: $transition-duration;
 
@@ -55,8 +55,8 @@ $animation-number: 0 !default;
   }
 
   #ofl-root.touch &:hover {
-    animation-delay: $mobile-hover-delay;
     animation-duration: $transition-duration;
+    animation-delay: $mobile-hover-delay;
     animation-fill-mode: both;
 
     @include animation-keyframes {
@@ -65,6 +65,7 @@ $animation-number: 0 !default;
           #{$property}: theming.theme-color($color-name);
         }
       }
+
       to {
         @each $property, $color-name in $transition-map {
           #{$property}: unset;

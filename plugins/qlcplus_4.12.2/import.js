@@ -1,25 +1,24 @@
-const xml2js = require(`xml2js`);
+import xml2js from 'xml2js';
 
-const importJson = require(`../../lib/import-json.js`);
-
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
-
-const {
-  getCapabilityFromChannelPreset,
-  getCapabilityFromCapabilityPreset,
+import importJson from '../../lib/import-json.js';
+import {
   capabilityPresets,
+  getCapabilityFromCapabilityPreset,
+  getCapabilityFromChannelPreset,
   importHelpers,
-} = require(`./presets.js`);
+} from './presets.js';
 
-module.exports.version = `1.1.0`;
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
+
+export const version = `1.1.1`;
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} filename The imported file's name.
- * @param {String} authorName The importer's name.
- * @returns {Promise.<Object, Error>} A Promise resolving to an out object
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
-module.exports.importFixtures = async function importQlcPlus(buffer, filename, authorName) {
+export async function importFixtures(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const warnings = [];
@@ -36,7 +35,7 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
   const manufacturerKey = slugify(qlcPlusFixture.Manufacturer[0]);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
-  const oflManufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const oflManufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   const manufacturers = {};
   if (!(manufacturerKey in oflManufacturers)) {
@@ -99,11 +98,11 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
       [fixtureKey]: warnings,
     },
   };
-};
+}
 
 /**
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @returns {Array.<String>} The OFL fixture categories.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {string[]} The OFL fixture categories.
  */
 function getOflCategories(qlcPlusFixture) {
   const category = qlcPlusFixture.Type[0];
@@ -117,8 +116,8 @@ function getOflCategories(qlcPlusFixture) {
 
 /**
  * Adds a global physical object to the OFL fixture object, if necessary.
- * @param {Object} fixture The OFL fixture object.
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
  */
 function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const allModesHavePhysical = qlcPlusFixture.Mode.every(mode => `Physical` in mode);
@@ -138,8 +137,8 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
 }
 
 /**
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @returns {Object} The OFL matrix object (may be empty).
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {object} The OFL matrix object (may be empty).
  */
 function getOflMatrix(qlcPlusFixture) {
   const matrix = {};
@@ -176,7 +175,7 @@ const slotTypeFunctions = {
         if (goboKey) {
           slot.resource = `gobos/${goboKey}`;
 
-          const resource = await importJson(`../../resources/gobos/${goboKey}.json`, __dirname);
+          const resource = await importJson(`../../resources/gobos/${goboKey}.json`, import.meta.url);
 
           if (resource.name === capability._) {
             useResourceName = true;
@@ -228,8 +227,8 @@ const slotTypeFunctions = {
 
 /**
  * Try to extract (guessed) wheels from all channels / capabilities.
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @returns {Promise.<Object|undefined>} A Promise that resolves to the OFL wheels object or undefined if there are no wheels.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {Promise<object | undefined>} A Promise that resolves to the OFL wheels object or undefined if there are no wheels.
  */
 async function getOflWheels(qlcPlusFixture) {
   const wheels = {};
@@ -257,8 +256,8 @@ async function getOflWheels(qlcPlusFixture) {
 
 
   /**
-   * @param {Object} qlcPlusChannel The QLC+ channel object.
-   * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of OFL slot objects.
+   * @param {object} qlcPlusChannel The QLC+ channel object.
+   * @returns {Promise<object[]>} A Promise that resolves to an array of OFL slot objects.
    */
   async function getSlots(qlcPlusChannel) {
     const slots = [];
@@ -503,9 +502,9 @@ const parserPerChannelType = {
 
 /**
  * Adds a QLC+ channel to the OFL fixture's availableChannels object.
- * @param {Object} fixture The OFL fixture object.
- * @param {Object} qlcPlusChannel The QLC+ channel object.
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
  */
 function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
@@ -552,8 +551,8 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
 
   /**
-   * @param {Object} qlcPlusCapability The QLC+ capability object.
-   * @returns {Object} The OFL capability object.
+   * @param {object} qlcPlusCapability The QLC+ capability object.
+   * @returns {object} The OFL capability object.
    */
   function getOflCapability(qlcPlusCapability) {
     const capability = {
@@ -572,7 +571,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       channelNameInWheels: trimmedChannelName in (fixture.wheels || {}),
       qlcPlusCapability,
       capabilityName,
-      index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
+      index: qlcPlusChannel.Capability?.indexOf(qlcPlusCapability) ?? 0,
       res1: qlcPlusCapability.$.Res1,
       res2: qlcPlusCapability.$.Res2,
       panMax,
@@ -619,9 +618,9 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 }
 
 /**
- * @param {Object} qlcPlusPhysical The QLC+ mode's physical object.
- * @param {Object|undefined} [oflFixturePhysical={}] The OFL fixture's physical object.
- * @returns {Object} The OFL mode's physical object.
+ * @param {object} qlcPlusPhysical The QLC+ mode's physical object.
+ * @param {object | undefined} [oflFixturePhysical={}] The OFL fixture's physical object.
+ * @returns {object} The OFL mode's physical object.
  */
 function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
   const physical = {};
@@ -740,9 +739,9 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
 
   /**
    * Helper function to get data from the OFL fixture's physical data.
-   * @param {String} section The section object property name.
-   * @param {String} property The property name in the section,
-   * @returns {*} The property data, or undefined.
+   * @param {string} section The section object property name.
+   * @param {string} property The property name in the section,
+   * @returns {any} The property data, or undefined.
    */
   function getOflFixturePhysicalProperty(section, property) {
     if (!(section in oflFixturePhysical)) {
@@ -754,14 +753,14 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
 }
 
 /**
- * @param {Object} qlcPlusMode The QLC+ mode object.
- * @param {Object|undefined} oflFixturePhysical The OFL fixture's physical object.
- * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
- * @returns {Object} The OFL mode object.
+ * @param {object} qlcPlusMode The QLC+ mode object.
+ * @param {object | undefined} oflFixturePhysical The OFL fixture's physical object.
+ * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
+ * @returns {object} The OFL mode object.
  */
 function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/gi, ``),
+    name: qlcPlusMode.$.Name.replaceAll(/\s+mode|mode\s+/gi, ``),
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-|)(?:channels?|chan|ch)/i);
@@ -784,25 +783,34 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
     mode.channels[Number.parseInt(channel.$.Number, 10)] = channel._;
   }
 
-  if (`Head` in qlcPlusMode) {
-    qlcPlusMode.Head.forEach((head, index) => {
-      if (head.Channel === undefined) {
-        return;
-      }
-
-      const channelList = head.Channel.map(channel => mode.channels[Number.parseInt(channel, 10)]).join(`, `);
-
-      warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
-    });
-  }
+  addHeadWarnings(qlcPlusMode, mode, warningsArray);
 
   return mode;
 }
 
 /**
- * @param {Object} fixture The OFL fixture object.
- * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} qlcPlusMode The QLC+ mode object.
+ * @param {object} mode The corresponding OFL mode object.
+ * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
+ */
+function addHeadWarnings(qlcPlusMode, mode, warningsArray) {
+  if (`Head` in qlcPlusMode) {
+    for (const [index, head] of qlcPlusMode.Head.entries()) {
+      if (head.Channel === undefined) {
+        continue;
+      }
+
+      const channelList = head.Channel.map(channel => mode.channels[Number.parseInt(channel, 10)]).join(`, `);
+
+      warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
+    }
+  }
+}
+
+/**
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   const fineChannelRegex = /\s*fine\s*|\s*16[\s_-]*bit\s*/i;
@@ -836,8 +844,8 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
 
 
   /**
-   * @param {String} qlcPlusFineChannel The key of the fine channel.
-   * @returns {String|null} The key of the corresponding coarse channel, or null if it could not be detected.
+   * @param {string} qlcPlusFineChannel The key of the fine channel.
+   * @returns {string | null} The key of the corresponding coarse channel, or null if it could not be detected.
    */
   function getCoarseChannelKey(qlcPlusFineChannel) {
     const fineChannelKey = qlcPlusFineChannel.$.Name;
@@ -892,19 +900,18 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
 /**
  * Add switchChannels from capability Aliases to channels' capabilities and
  * update the channel keys in modes.
- * @param {Object} fixture The OFL fixture object.
- * @param {Object} qlcPlusFixture The QCL+ fixture object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QCL+ fixture object.
  */
 function addSwitchingChannels(fixture, qlcPlusFixture) {
-  qlcPlusFixture.Channel.forEach(qlcPlusChannel => {
-    const hasAliases = (qlcPlusChannel.Capability || []).some(capability => capability.$.Preset === `Alias`);
-    if (!hasAliases) {
-      return;
+  for (const qlcPlusChannel of qlcPlusFixture.Channel) {
+    if (!hasAliases(qlcPlusChannel)) {
+      continue;
     }
 
     const switchChannels = [];
-    qlcPlusChannel.Capability.forEach((capability, index) => {
-      (capability.Alias || []).forEach(alias => {
+    for (const [index, capability] of qlcPlusChannel.Capability.entries()) {
+      for (const alias of (capability.Alias || [])) {
         const switchChannel = switchChannels.find(channel => channel.default === alias.$.Channel && channel.modes.includes(alias.$.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.$.With;
@@ -918,70 +925,98 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
             },
           });
         }
-      });
-    });
-
-    // try to merge similar switchChannels
-    switchChannels.forEach((switchChannel, switchChannelIndex) => {
-      const switchToEntries = Object.entries(switchChannel.switchTo);
-
-      for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
-        const otherSwitchChannel = switchChannels[index];
-
-        if (otherSwitchChannel.default !== switchChannel.default) {
-          continue;
-        }
-
-        const otherSwitchTo = otherSwitchChannel.switchTo;
-        const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
-          ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
-        );
-
-        if (!switchToSame) {
-          continue;
-        }
-
-        switchChannel.modes.push(...otherSwitchChannel.modes);
-        switchChannels.splice(index, 1);
-        index--;
       }
+    }
 
-      const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
-      switchChannel.key = Array.from(alternatives).join(` / `);
-    });
-
-    // append mode names to switching channel keys if necessary, update switching channels in modes
-    switchChannels.forEach(switchChannel => {
-      const swChannelsWithSameKey = switchChannels.filter(channel => channel.key === switchChannel.key);
-
-      if (swChannelsWithSameKey.length > 1) {
-        swChannelsWithSameKey.forEach(channel => {
-          channel.key += ` (${channel.modes.join(`, `)})`;
-        });
-      }
-
-      const usingModes = fixture.modes.filter(mode => switchChannel.modes.includes(mode.name));
-      usingModes.forEach(mode => {
-        const index = mode.channels.indexOf(switchChannel.default);
-
-        mode.channels[index] = switchChannel.key;
-      });
-    });
-
-    // add switchChannels to capabilities
-    fixture.availableChannels[qlcPlusChannel.$.Name].capabilities.forEach((capability, index) => {
-      capability.switchChannels = {};
-
-      switchChannels.forEach(switchChannel => {
-        capability.switchChannels[switchChannel.key] = switchChannel.switchTo[index] || switchChannel.default;
-      });
-    });
-  });
+    mergeSimilarSwitchChannels(switchChannels);
+    replaceSwitchingChannelsInModes(switchChannels, fixture.modes);
+    addSwitchChannelsToCapabilities(switchChannels, fixture.availableChannels[qlcPlusChannel.$.Name]);
+  }
 }
 
 /**
- * @param {Object} fixture The OFL fixture object.
- * @param {Object} qlcPlusFixture The QCL+ fixture object.
+ * @param {object} qlcPlusChannel The QLC+ channel object to check.
+ * @returns {boolean} True if there is at least one capability with an Alias attribute, false otherwise.
+ */
+function hasAliases(qlcPlusChannel) {
+  return (qlcPlusChannel.Capability || []).some(capability => capability.$.Preset === `Alias`);
+}
+
+/**
+ * @param {object[]} switchChannels The array of switch channels.
+ */
+function mergeSimilarSwitchChannels(switchChannels) {
+  for (const [switchChannelIndex, switchChannel] of switchChannels.entries()) {
+    const switchToEntries = Object.entries(switchChannel.switchTo);
+
+    for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
+      const otherSwitchChannel = switchChannels[index];
+
+      if (otherSwitchChannel.default !== switchChannel.default) {
+        continue;
+      }
+
+      const otherSwitchTo = otherSwitchChannel.switchTo;
+      const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
+        ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
+      );
+
+      if (!switchToSame) {
+        continue;
+      }
+
+      switchChannel.modes.push(...otherSwitchChannel.modes);
+      switchChannels.splice(index, 1);
+      index--;
+    }
+
+    const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
+    switchChannel.key = [...alternatives].join(` / `);
+  }
+}
+
+/**
+ * Replaces references to all switch channels' default channels with the switch
+ * channel itself. If multiple switch channels have the same key, appends the
+ * mode names to make them unique.
+ * @param {object[]} switchChannels The array of switch channels.
+ * @param {object[]} oflModes The array of OFL modes.
+ */
+function replaceSwitchingChannelsInModes(switchChannels, oflModes) {
+  for (const switchChannel of switchChannels) {
+    const swChannelsWithSameKey = switchChannels.filter(channel => channel.key === switchChannel.key);
+
+    if (swChannelsWithSameKey.length > 1) {
+      for (const channel of swChannelsWithSameKey) {
+        const channelModes = channel.modes.join(`, `);
+        channel.key += ` (${channelModes})`;
+      }
+    }
+
+    const usingModes = oflModes.filter(mode => switchChannel.modes.includes(mode.name));
+    for (const mode of usingModes) {
+      const index = mode.channels.indexOf(switchChannel.default);
+
+      mode.channels[index] = switchChannel.key;
+    }
+  }
+}
+
+/**
+ * @param {object[]} switchChannels The array of switch channels.
+ * @param {object} oflTriggerChannel The OFL trigger channel.
+ */
+function addSwitchChannelsToCapabilities(switchChannels, oflTriggerChannel) {
+  for (const [index, capability] of oflTriggerChannel.capabilities.entries()) {
+    capability.switchChannels = Object.fromEntries(switchChannels.map(
+      switchChannel => [switchChannel.key, switchChannel.switchTo[index] || switchChannel.default],
+    ));
+  }
+}
+
+/**
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QCL+ fixture object.
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
   // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
@@ -1012,9 +1047,9 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
 }
 
 /**
- * @param {String} string The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

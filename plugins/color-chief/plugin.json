@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Eurolite Color Chief 2.0",
+  "description": [
+    "<p>The <em>Color Chief</em> DMX controller offers an innovative control",
+    "concept combining easy handling with astounding results. It has been",
+    "developed especially for both colored spot lights and simpler light",
+    "effects. Altogether, the Color Chief can control a total of 8 spot lights",
+    "with up to 4 segments each.</p>"
+  ],
+  "links": {
+    "Website": "https://www.steinigke.de/en/mpn70064575-eurolite-dmx-led-color-chief-controller.html",
+    "Manual, software and library download": "https://www.steinigke.de/en/mpn70064575-eurolite-dmx-led-color-chief-controller.html#support",
+    "Fixture format documentation": "https://github.com/OpenLightingProject/open-fixture-library/issues/684#issuecomment-939321680"
+  },
+  "fixtureUsage": [
+    "<p>Place the downloaded <code>*.lib</code> fixture files into a folder",
+    "called <code>COLORCHIEF</code> in the root of the USB stick.<br>",
+    "The corresponding <code>*.txt</code> files are a human readable form",
+    "of how the channels are mapped to the control elements.</p>"
+  ],
+  "helpWanted": "Is it possible for multiple patched fixtures to have the same DMX start address in the Color Chief configuration? This is currently needed for large fixture modes that occupy more than 4 segments, e.g. Showtec Pixel Bar 12 MKII's RGB Individual mode."
+}

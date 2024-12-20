@@ -95,26 +95,28 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  async asyncData({ query, $axios, error }) {
+  async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        searchFor: ``,
-        searchQuery: ``,
-        manufacturersQuery: [],
-        categoriesQuery: [],
-        detailsInitiallyOpen: null,
-        results: [],
-        manufacturers,
-        categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
-        loading: false,
-        isBrowser: false,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
+  },
+  data() {
+    return {
+      searchFor: ``,
+      searchQuery: ``,
+      manufacturersQuery: [],
+      categoriesQuery: [],
+      detailsInitiallyOpen: null,
+      results: [],
+      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+      loading: false,
+      isBrowser: false,
+    };
   },
   async fetch() {
     this.loading = true;
@@ -194,8 +196,8 @@ export default {
 };
 
 /**
- * @param {Object} query The raw query returned by Vue Router
- * @returns {Object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @param {object} query The raw query returned by Vue Router
+ * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || ``).trim();

@@ -35,17 +35,17 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 A very simple export plugin looks like this:
 
 ```js
-module.exports.version = `0.1.0`; // semantic versioning of export plugin
+export const version = `0.1.0`; // semantic versioning of export plugin
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
- * @param {Object} options Some global options, for example:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory
+ * @param {Fixture[]} fixtures An array of Fixture objects, see our fixture model
+ * @param {object} options Some global options, for example:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} All generated files (see file schema above)
  */
-module.exports.exportFixtures = async function exportPluginName(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const outfiles = [];
 
   for (const fixture of fixtures) {
@@ -62,7 +62,7 @@ module.exports.exportFixtures = async function exportPluginName(fixtures, option
   }
 
   return outfiles;
-};
+}
 ```
 
 ## Importing
@@ -92,15 +92,15 @@ If the file can not be parsed by the import plugin or contains errors, the retur
 Example:
 
 ```js
-module.exports.version = `0.1.0`; // semantic versioning of import plugin
+export const version = `0.1.0`; // semantic versioning of import plugin
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} fileName The imported file's name.
- * @param {String} authorName The importer's name.
- * @returns {Promise.<Object, Error>} A Promise that resolves to an out object (see above) or rejects with an error.
+ * @param {string} fileName The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise<object, Error>} A Promise that resolves to an out object (see above) or rejects with an error.
  */
-module.exports.importFixtures = async function importPluginName(buffer, fileName, authorName) {
+export async function importFixtures(buffer, fileName, authorName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -129,7 +129,7 @@ module.exports.importFixtures = async function importPluginName(buffer, fileName
   out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
 
   return out;
-};
+}
 ```
 
 ## Export tests
@@ -141,18 +141,18 @@ A plugin's export test takes an exported file object as argument and evaluates i
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
-const xml2js = require(`xml2js`);
+import xml2js from 'xml2js';
 
 /**
- * @param {Object} exportFile The file returned by the plugins' export module.
- * @param {String} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {String} exportFile.content File content.
- * @param {String} exportFile.mimetype File mime type.
- * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {string} exportFile.content File content.
+ * @param {string} exportFile.mimetype File mime type.
+ * @param {Fixture[] | null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {string | null} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-module.exports = async function testValueCorrectness(exportFile) {
+export default async function testValueCorrectness(exportFile) {
   const xml = await xml2js.parseStringPromise(exportFile.content);
 
   const errors = [];
@@ -168,7 +168,7 @@ module.exports = async function testValueCorrectness(exportFile) {
   }
 
   // everything's ok
-};
+}
 ```
 
 You can execute an export test from the command line:

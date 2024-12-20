@@ -3,13 +3,13 @@
   "name": "Lux Ld01",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Thomaxz"],
+    "authors": ["Thomaxz", "Ryan Goodwin"],
     "createDate": "2019-11-01",
-    "lastModifyDate": "2019-11-01"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
-      "https://manualzz.com/download/943540"
+      "https://www.manualslib.com/manual/752487/Qtx-Lux-Ld01.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=EKwxFZwRC3M"
@@ -19,6 +19,9 @@
     "dimensions": [173, 249, 173],
     "weight": 3.8,
     "power": 83.6,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "14W RGB LED"

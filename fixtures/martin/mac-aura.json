@@ -13,6 +13,9 @@
     "manual": [
       "https://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf"
     ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-aura"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=PKBiIK7Yr1E",
       "https://www.youtube.com/watch?v=8kL6YO1U70Q"
@@ -139,10 +142,9 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -154,11 +156,10 @@
         {
           "dmxRange": [190, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "randomTiming": true,
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -185,10 +186,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1477,10 +1477,9 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1492,11 +1491,10 @@
         {
           "dmxRange": [190, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "randomTiming": true,
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1523,10 +1521,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {

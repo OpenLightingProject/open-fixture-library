@@ -1,0 +1,417 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Megastrobe FX12",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Tryll", "Luke Nelson"],
+    "createDate": "2022-11-28",
+    "lastModifyDate": "2022-11-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/02/MegaStrobe-_FX12_UM_Rev2_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/megastrobe-fx12/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gEhNeplETGI"
+    ],
+    "other": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/02/MegaStrobe_FX12_QRG_Rev3_ML_WO.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 1.9,
+    "power": 66,
+    "dimensions": [350, 171, 98],
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["LED 1", "LED 2", "LED 3", "LED 4", "LED 5", "LED 6"],
+        ["LED 7", "LED 8", "LED 9", "LED 10", "LED 11", "LED 12"]
+      ]
+    ],
+    "pixelGroups": {
+      "1": ["LED 1", "LED 7"],
+      "2": ["LED 2", "LED 8"],
+      "3": ["LED 3", "LED 9"],
+      "4": ["LED 4", "LED 10"],
+      "5": ["LED 5", "LED 11"],
+      "6": ["LED 6", "LED 12"]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "availableChannels": {
+    "Shutter Basic": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "26Hz"
+        }
+      ]
+    },
+    "Shutter Advanced": {
+      "defaultValue": 0,
+      "name": "Shutter",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 32],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed Sound Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [33, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 66],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [67, 83],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [84, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 117],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Asynchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [118, 134],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [135, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Synchronous - Pulse 1",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [152, 168],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Synchronous - Pulse 2",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [169, 185],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [186, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [203, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [220, 236],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Synchronous",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [237, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "switchChannels": {
+            "Shutter Speed / Sound Sensitivity": "Shutter Speed"
+          }
+        }
+      ]
+    },
+    "Shutter Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "26Hz"
+      }
+    },
+    "Program Speed Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "0%",
+        "soundSensitivityEnd": "100%"
+      }
+    },
+    "Shutter Speed Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "0%",
+        "soundSensitivityEnd": "100%"
+      }
+    },
+    "Pixels": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pixel control",
+        "helpWanted": "What does this do in 'Pixel' mode?"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Is this slow -> fast or fast -> slow?"
+      }
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 48],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Pixels"
+          }
+        },
+        {
+          "dmxRange": [49, 64],
+          "type": "Effect",
+          "effectName": "Auto Program 1",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [65, 80],
+          "type": "Effect",
+          "effectName": "Auto Program 2",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [81, 96],
+          "type": "Effect",
+          "effectName": "Auto Program 3",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [97, 112],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [113, 128],
+          "type": "Effect",
+          "effectName": "Auto Program 5",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [129, 144],
+          "type": "Effect",
+          "effectName": "Auto Program 6",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [145, 160],
+          "type": "Effect",
+          "effectName": "Auto Program 7",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [161, 176],
+          "type": "Effect",
+          "effectName": "Auto Program 8",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [177, 192],
+          "type": "Effect",
+          "effectName": "Auto Program 9",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [193, 208],
+          "type": "Effect",
+          "effectName": "Auto Program 10",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [209, 224],
+          "type": "Effect",
+          "effectName": "Auto Program 11",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [225, 240],
+          "type": "Effect",
+          "effectName": "Auto Program 12",
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "switchChannels": {
+            "Pixels / Program Speed / Sound Sensitivity": "Program Speed Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Shutter Effects": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What effects and at what values?"
+      }
+    },
+    "Shutter Effect Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Shutter Basic",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Shutter Advanced",
+        "Shutter Speed / Sound Sensitivity",
+        "Pixels / Program Speed / Sound Sensitivity",
+        "Auto Programs"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": ["Dimmer $pixelKey"]
+        },
+        "Shutter Effects",
+        "Shutter Effect Speed"
+      ]
+    }
+  ]
+}

@@ -1,16 +1,11 @@
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-const { v5: uuidv5 } = require(`uuid`);
+import { v5 as uuidv5 } from 'uuid';
 
-const {
-  CoarseChannel,
-  FineChannel,
-  SwitchingChannel,
-} = require(`../../lib/model.js`);
-const { scaleDmxValue } = require(`../../lib/scale-dmx-values.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
+import { scaleDmxValue } from '../../lib/scale-dmx-values.js';
 
-module.exports.name = `ColorSource`;
-module.exports.version = `0.1.0`;
+export const version = `0.1.0`;
 
 const EDITOR_VERSION = `1.1.1.9.0.4`;
 
@@ -24,13 +19,13 @@ const CHANNEL_TYPE_COLOR = 5;
 const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`; // seed for UUIDs
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date | null} options.date The current time.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.exportFixtures = function exportColorSource(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const exportJson = {
     date: options.date.toISOString().replace(/\.\d{3}Z$/, `Z`),
     editorVersion: EDITOR_VERSION,
@@ -41,39 +36,56 @@ module.exports.exportFixtures = function exportColorSource(fixtures, options) {
     const fixtureUuidNamespace = uuidv5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
 
     for (const mode of fixture.modes) {
-      const dcid = uuidv5(mode.name, fixtureUuidNamespace);
-      const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
-      const parameters = getColorSourceChannels(mode, hasIntensity);
-
-      const fixtureJson = {
-        dcid,
-        colortable: getColorTable(parameters) || `11111111-1111-1111-1111-111111111111`,
-        commands: getCommands(mode),
-        hasIntensity,
-        manufacturerName: fixture.manufacturer.name,
-        maxOffset: mode.channels.length - 1,
-        modeName: mode.name,
-        modelName: fixture.name,
-        parameters,
-      };
-
-      removeEmptyProperties(fixtureJson);
-
-      exportJson.personalities.push(fixtureJson);
+      exportJson.personalities.push(getColorSourcePersonality(fixture, fixtureUuidNamespace, mode));
     }
   }
 
-  return Promise.resolve([{
+  return [{
     name: `userlib.jlib`,
     content: JSON.stringify(exportJson, null, 2),
     mimetype: `application/json`,
     fixtures,
-  }]);
-};
+  }];
+}
 
 /**
- * @param {Array.<Object>} colorSourceChannels A ColorSource fixture's parameter property.
- * @returns {String|null} The UUID of a suitable color table or null if no color table fits.
+ * @param {Fixture} fixture The fixture to export.
+ * @param {string} fixtureUuidNamespace The UUID namespace for the fixture.
+ * @param {Mode} mode The mode to export.
+ * @returns {object} The generated fixture JSON.
+ */
+function getColorSourcePersonality(fixture, fixtureUuidNamespace, mode) {
+  try {
+    const dcid = uuidv5(mode.name, fixtureUuidNamespace);
+    const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
+    const parameters = getColorSourceChannels(mode, hasIntensity);
+
+    const fixtureJson = {
+      dcid,
+      colortable: getColorTable(parameters) || `11111111-1111-1111-1111-111111111111`,
+      commands: getCommands(mode),
+      hasIntensity,
+      manufacturerName: fixture.manufacturer.name,
+      maxOffset: mode.channels.length - 1,
+      modeName: mode.name,
+      modelName: fixture.name,
+      parameters,
+    };
+
+    removeEmptyProperties(fixtureJson);
+
+    return fixtureJson;
+  }
+  catch (error) {
+    throw new Error(`Exporting fixture mode ${fixture.manufacturer.key}/${fixture.key}/${mode.shortName} failed: ${error}`, {
+      cause: error,
+    });
+  }
+}
+
+/**
+ * @param {object[]} colorSourceChannels A ColorSource fixture's parameter property.
+ * @returns {string | null} The UUID of a suitable color table or null if no color table fits.
  */
 function getColorTable(colorSourceChannels) {
   const colorChannels = colorSourceChannels.filter(channel => channel.type === CHANNEL_TYPE_COLOR);
@@ -119,7 +131,7 @@ function getColorTable(colorSourceChannels) {
 
 /**
  * @param {Mode} mode The personality's mode.
- * @returns {Array.<Object>} Array of ColorSource commands (e. g. set channel X to value Y after Z seconds), may be empty. The commands are generated by Maintenance capabilities with hold time set.
+ * @returns {object[]} Array of ColorSource commands (e. g. set channel X to value Y after Z seconds), may be empty. The commands are generated by Maintenance capabilities with hold time set.
  */
 function getCommands(mode) {
   const commands = [];
@@ -146,7 +158,7 @@ function getCommands(mode) {
                 dmx: channelIndex,
                 value: -1,
               }],
-              wait: capability.hold.getBaseUnitEntity().number,
+              wait: capability.hold.baseUnitEntity.number,
             },
           ],
         });
@@ -159,8 +171,8 @@ function getCommands(mode) {
 
 /**
  * @param {Mode} mode The personality's mode.
- * @param {Boolean} hasIntensity Whether the mode has an intensity channel. Should be equal to `fixtureJson.hasIntensity`.
- * @returns {Array.<Object>} ColorSource channel objects of all mode channels.
+ * @param {boolean} hasIntensity Whether the mode has an intensity channel. Should be equal to `fixtureJson.hasIntensity`.
+ * @returns {object[]} ColorSource channel objects of all mode channels.
  */
 function getColorSourceChannels(mode, hasIntensity) {
   return mode.channels.flatMap((channel, channelIndex) => {
@@ -189,7 +201,7 @@ function getColorSourceChannels(mode, hasIntensity) {
         channelJson.type = CHANNEL_TYPE_BEAM;
       }
       else if (channel.color) { // it may also be Hue or Saturation, which have no color
-        channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+        channelJson.name = channel.color.replaceAll(` `, ``); // e.g. 'Warm White' -> 'WarmWhite'
       }
     }
 
@@ -213,7 +225,7 @@ function getColorSourceChannels(mode, hasIntensity) {
 
   /**
    * Adds information to given channel JSON that is specific to (and only makes sense for) coarse channels.
-   * @param {Object} channelJson The ColorSource channel JSON to which the data is added.
+   * @param {object} channelJson The ColorSource channel JSON to which the data is added.
    * @param {CoarseChannel} channel The OFL channel whose information should be used.
    */
   function addColorSourceChannelDetails(channelJson, channel) {
@@ -267,7 +279,7 @@ function getColorSourceChannels(mode, hasIntensity) {
 
   /**
    * @param {CoarseChannel} channel The OFL channel whose information should be used.
-   * @returns {Boolean} Whether the channel belongs to a pixel or pixel group that is not the master pixel group.
+   * @returns {boolean} Whether the channel belongs to a pixel or pixel group that is not the master pixel group.
    */
   function isMatrixChannel(channel) {
     if (!channel.pixelKey) {
@@ -284,7 +296,7 @@ function getColorSourceChannels(mode, hasIntensity) {
 
 /**
  * @param {AbstractChannel} channel The OFL channel of which the ColorSource channel type should be returned.
- * @returns {Number} One of ColorSource's channel types as positive integer.
+ * @returns {number} One of ColorSource's channel types as positive integer.
  */
 function getColorSourceChannelType(channel) {
   if (channel.type === `NoFunction`) {
@@ -310,25 +322,21 @@ function getColorSourceChannelType(channel) {
   return CHANNEL_TYPE_BEAM;
 
   /**
-   * @returns {Boolean} Whether the channel is pan, tilt or pan/tilt speed.
+   * @returns {boolean} Whether the channel is pan, tilt or pan/tilt speed.
    */
   function isTypePosition() {
     if ([`Pan`, `Tilt`].includes(channel.type)) {
       return true;
     }
 
-    if (channel.capabilities && channel.capabilities.some(capability => capability.type === `PanTiltSpeed`)) {
-      return true;
-    }
-
-    return false;
+    return (channel.capabilities || []).some(capability => capability.type === `PanTiltSpeed`);
   }
 }
 
 /**
  * Removes null values and empty arrays from the given object.
  * This function is destructive, i.e. it mutates the given object.
- * @param {Object} object The object whose properties should be cleaned up.
+ * @param {object} object The object whose properties should be cleaned up.
  */
 function removeEmptyProperties(object) {
   for (const [key, value] of Object.entries(object)) {

@@ -1,0 +1,241 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Nano PAR",
+  "shortName": "LED Nano PAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Peter Eisemann", "Flo Edelmann"],
+    "createDate": "2021-10-30",
+    "lastModifyDate": "2021-10-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/en_US/-/EUR/ViewProductAttachment-ResolveManualURL?File=EN_LIG0013274-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_US/USD/lightmaXX-LED-NANO-PAR-black-12-1W-LED-RGBW/art-LIG0013274-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=UakWorWVxpE"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 140, 115],
+    "weight": 0.4,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12× 1W LED"
+    },
+    "lens": {
+      "name": "15mm Edison EDOL 25",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Maintenance",
+          "comment": "Static Colors",
+          "helpWanted": "What does channel 2 control exactly when not in static colors mode?"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Sound Flash",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Color Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "Effect",
+          "effectName": "Color Chase"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#00ff00", "#ff0000"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"]
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Program",
+        "Color Program",
+        "Program Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,428 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Giga Bar HEX 3",
+  "categories": ["Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["Erik Pade", "Flo Edelmann", "Chemin Rouge Evenements", "Luke Nelson"],
+    "createDate": "2021-09-19",
+    "lastModifyDate": "2023-02-28"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/472654_c_472654_472655_r2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/varytec_giga_bar_hex_3.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i8849p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [360, 150, 64],
+    "weight": 1.2,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3× 12W RGBAWUV LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Auto Program Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 22],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 30],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [41, 47],
+          "type": "ColorPreset",
+          "comment": "Pure White",
+          "colors": ["#fffffc"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [63, 70],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [71, 78],
+          "type": "ColorPreset",
+          "comment": "Fuchsia",
+          "colors": ["#b83dae"]
+        },
+        {
+          "dmxRange": [79, 86],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [87, 94],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [95, 102],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#8e44c6"]
+        },
+        {
+          "dmxRange": [103, 110],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [111, 118],
+          "type": "ColorPreset",
+          "comment": "Mint",
+          "colors": ["#aefac6"]
+        },
+        {
+          "dmxRange": [119, 126],
+          "type": "ColorPreset",
+          "comment": "Lime",
+          "colors": ["#bfff00"]
+        },
+        {
+          "dmxRange": [127, 134],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#73abeb"]
+        },
+        {
+          "dmxRange": [135, 142],
+          "type": "ColorPreset",
+          "comment": "Terra Cotta",
+          "colors": ["#c9643b"]
+        },
+        {
+          "dmxRange": [143, 150],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#33d79a"]
+        },
+        {
+          "dmxRange": [151, 158],
+          "type": "ColorPreset",
+          "comment": "Tan",
+          "colors": ["#d2b48c"]
+        },
+        {
+          "dmxRange": [159, 166],
+          "type": "ColorPreset",
+          "comment": "Gold",
+          "colors": ["#ffd700"]
+        },
+        {
+          "dmxRange": [167, 174],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [175, 182],
+          "type": "ColorPreset",
+          "comment": "Redviolet",
+          "colors": ["#b62e46"]
+        },
+        {
+          "dmxRange": [183, 190],
+          "type": "ColorPreset",
+          "comment": "Coral",
+          "colors": ["#ff7c7c"]
+        },
+        {
+          "dmxRange": [191, 198],
+          "type": "ColorPreset",
+          "comment": "Aqua",
+          "colors": ["#13eac9"]
+        },
+        {
+          "dmxRange": [199, 206],
+          "type": "ColorPreset",
+          "comment": "Aquamarine",
+          "colors": ["#7fffd4"]
+        },
+        {
+          "dmxRange": [207, 214],
+          "type": "ColorPreset",
+          "comment": "Emerald",
+          "colors": ["#50c878"]
+        },
+        {
+          "dmxRange": [215, 222],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#cfb5e2"]
+        },
+        {
+          "dmxRange": [223, 230],
+          "type": "ColorPreset",
+          "comment": "Ice",
+          "colors": ["#d6fffa"]
+        },
+        {
+          "dmxRange": [231, 238],
+          "type": "ColorPreset",
+          "comment": "Rosepink",
+          "colors": ["#f97a8c"]
+        },
+        {
+          "dmxRange": [239, 246],
+          "type": "ColorPreset",
+          "comment": "Palegreen",
+          "colors": ["#abeca2"]
+        },
+        {
+          "dmxRange": [247, 254],
+          "type": "ColorPreset",
+          "comment": "Palepink",
+          "colors": ["#e8c3d4"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Babyblue",
+          "colors": ["#9ed7fc"]
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe",
+        "Auto Programs"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe",
+        "Auto Program Selection",
+        "Program Speed / Sound Sensitivity",
+        "Color Macros"
+      ]
+    }
+  ]
+}

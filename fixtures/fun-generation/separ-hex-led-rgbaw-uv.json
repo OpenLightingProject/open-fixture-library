@@ -1,0 +1,420 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SePar Hex LED RGBAW UV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann", "Christian Kuster"],
+    "createDate": "2022-04-11",
+    "lastModifyDate": "2022-04-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-04-07",
+      "comment": "created by OFL – https://open-fixture-library.org/fun-generation/separ-quad-led-rgbw (version 1.3.0)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_440827_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/fun_generation_separ_hex_led_rgbaw_uv_ir.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i7285p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 175, 115],
+    "weight": 1.1,
+    "power": 21,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x 8W RGBAW UV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [1, 14],
+          "type": "ColorPreset",
+          "comment": "Automatic show 1",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Color Presets"
+          }
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ColorPreset",
+          "comment": "Automatic show 2",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "ColorPreset",
+          "comment": "Automatic show 3",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "ColorPreset",
+          "comment": "Automatic show 4",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "ColorPreset",
+          "comment": "Automatic show 5",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "ColorPreset",
+          "comment": "Automatic show 6",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ColorPreset",
+          "comment": "Automatic show 7",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "ColorPreset",
+          "comment": "Automatic show 8",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "ColorPreset",
+          "comment": "Automatic show 9",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "ColorPreset",
+          "comment": "Automatic show 10",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ColorPreset",
+          "comment": "Automatic show 11",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "ColorPreset",
+          "comment": "Automatic show 12",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "ColorPreset",
+          "comment": "Automatic show 13",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "ColorPreset",
+          "comment": "Automatic show 14",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ColorPreset",
+          "comment": "Automatic show 15",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "ColorPreset",
+          "comment": "Automatic show 16",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Music-controlled show",
+          "switchChannels": {
+            "Speed / Color Presets / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "ColorPreset",
+          "comment": "Red + Amber",
+          "colors": ["#ff5f00"]
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "ColorPreset",
+          "comment": "Red + 82% Green",
+          "colors": ["#ffd900"]
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "ColorPreset",
+          "comment": "Red + UV",
+          "colors": ["#ff0000", "#8800ff"]
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ColorPreset",
+          "comment": "Red + 27% Blue + 27% UV",
+          "colors": ["#ff0043", "#321d3c"]
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "ColorPreset",
+          "comment": "Red + 66% White",
+          "colors": ["#e08585"]
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "ColorPreset",
+          "comment": "Green + 66% White",
+          "colors": ["#85e085"]
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ColorPreset",
+          "comment": "Blue + 66% White",
+          "colors": ["#8585e0"]
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "ColorPreset",
+          "comment": "Red + 70% Green + 50% White + Amber",
+          "colors": ["#eec03a"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber + UV",
+          "colors": ["#ebc247", "#8800ff"]
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Program",
+        "Speed / Color Presets / Sound Sensitivity",
+        "Strobe"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,690 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB5 2P RGB WW Compact LED Bar",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Murph", "Flo Edelmann"],
+    "createDate": "2021-10-29",
+    "lastModifyDate": "2024-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_448711_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_clb5_2p_rgb_ww_compact_led_bar.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [473, 253, 67],
+    "weight": 3.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "14× 4W RGBWW LEDs"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Auto Shows": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "Generic",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "Auto show 01",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Effect",
+          "effectName": "Auto show 02",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Effect",
+          "effectName": "Auto show 03",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Effect",
+          "effectName": "Auto show 04",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Effect",
+          "effectName": "Auto show 05",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Effect",
+          "effectName": "Auto show 06",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Effect",
+          "effectName": "Auto show 07",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Effect",
+          "effectName": "Auto show 08",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Effect",
+          "effectName": "Auto show 09",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Effect",
+          "effectName": "Auto show 10",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Effect",
+          "effectName": "Auto show 11",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Effect",
+          "effectName": "Auto show 12",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Effect",
+          "effectName": "Auto show 13",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Effect",
+          "effectName": "Auto show 14",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Effect",
+          "effectName": "Auto show 15",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Auto show 16",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Auto show 17",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Auto show 18",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Auto show 19",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Auto show 20",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Auto show 21",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Auto show 22",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Auto show 23",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Auto show 24",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Auto show 25",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Auto show 26",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Auto show 27",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Auto show 28",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Auto show 29",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Sound-controlled show",
+          "switchChannels": {
+            "Color Macros / Show Speed / Sound Shows": "Sound Shows"
+          }
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Black",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff9600"]
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Light Orange",
+          "colors": ["#ffb400"]
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff00bc"]
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "comment": "Light Red",
+          "colors": ["#ffd2d2"]
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#d2ffd2"]
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#d2d2ff"]
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffd861"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Full White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Show Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Shows": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Effect",
+          "effectName": "Sound show 01",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "Effect",
+          "effectName": "Sound show 02",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "Effect",
+          "effectName": "Sound show 03",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "Effect",
+          "effectName": "Sound show 04",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "Effect",
+          "effectName": "Sound show 05",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "Effect",
+          "effectName": "Sound show 06",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "Effect",
+          "effectName": "Sound show 07",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "Effect",
+          "effectName": "Sound show 08",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "Effect",
+          "effectName": "Sound show 09",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [81, 89],
+          "type": "Effect",
+          "effectName": "Sound show 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [90, 98],
+          "type": "Effect",
+          "effectName": "Sound show 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [99, 107],
+          "type": "Effect",
+          "effectName": "Sound show 12",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [108, 116],
+          "type": "Effect",
+          "effectName": "Sound show 13",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [117, 125],
+          "type": "Effect",
+          "effectName": "Sound show 14",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [126, 134],
+          "type": "Effect",
+          "effectName": "Sound show 15",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [135, 143],
+          "type": "Effect",
+          "effectName": "Sound show 16",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [144, 152],
+          "type": "Effect",
+          "effectName": "Sound show 17",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [153, 161],
+          "type": "Effect",
+          "effectName": "Sound show 18",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [162, 170],
+          "type": "Effect",
+          "effectName": "Sound show 19",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [171, 179],
+          "type": "Effect",
+          "effectName": "Sound show 20",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [180, 188],
+          "type": "Effect",
+          "effectName": "Sound show 21",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [189, 197],
+          "type": "Effect",
+          "effectName": "Sound show 22",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [198, 206],
+          "type": "Effect",
+          "effectName": "Sound show 23",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [207, 215],
+          "type": "Effect",
+          "effectName": "Sound show 24",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 224],
+          "type": "Effect",
+          "effectName": "Sound show 25",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [225, 233],
+          "type": "Effect",
+          "effectName": "Sound show 26",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [234, 242],
+          "type": "Effect",
+          "effectName": "Sound show 27",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [243, 251],
+          "type": "Effect",
+          "effectName": "Sound show 28",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Sound show 29",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2",
+        "Auto Shows",
+        "Color Macros / Show Speed / Sound Shows",
+        "Strobe"
+      ]
+    }
+  ]
+}

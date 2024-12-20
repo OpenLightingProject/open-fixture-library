@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-const chalk = require(`chalk`);
+import chalk from 'chalk';
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
-const {
-  scaleDmxValue,
+import {
   scaleDmxRange,
-} = require(`../lib/scale-dmx-values.js`);
+  scaleDmxValue,
+} from '../lib/scale-dmx-values.js';
 
 
 let errorCount = 0;
@@ -29,7 +26,8 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(chalk.red(`[FAIL]`), `Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  const message = errorCount === 1 ? `Test failed with 1 error.` : `Test failed with ${errorCount} errors.`;
+  console.log(chalk.red(`[FAIL]`), message);
   process.exit(1);
 }
 else {
@@ -139,10 +137,10 @@ function testScaleDmxValuesDown() {
 /**
  * Tests if scaling the given DMX value from the current resolution to the desired resolution
  * actually returns the desired DMX value.
- * @param {Number} dmxValue The original DMX value in the current resolution.
- * @param {Number} currentResolution The resolution of dmxValue.
- * @param {Number} desiredResolution The resolution that dmxValue should be scaled to.
- * @param {Number} desiredDmxValue The correct value for dmxValue in the desired resolution.
+ * @param {number} dmxValue The original DMX value in the current resolution.
+ * @param {number} currentResolution The resolution of dmxValue.
+ * @param {number} desiredResolution The resolution that dmxValue should be scaled to.
+ * @param {number} desiredDmxValue The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desiredDmxValue) {
   dmxValue = Number.parseInt(dmxValue, 10);
@@ -230,10 +228,10 @@ function testScaleDmxRangesDown() {
 /**
  * Tests if scaling the given DMX value from the current resolution to the desired resolution
  * actually returns the desired DMX value.
- * @param {Number} dmxRange The original DMX value in the current resolution.
- * @param {Number} currentResolution The resolution of dmxValue.
- * @param {Number} desiredResolution The resolution that dmxValue should be scaled to.
- * @param {Number} desiredDmxRange The correct value for dmxValue in the desired resolution.
+ * @param {number} dmxRange The original DMX value in the current resolution.
+ * @param {number} currentResolution The resolution of dmxValue.
+ * @param {number} desiredResolution The resolution that dmxValue should be scaled to.
+ * @param {number} desiredDmxRange The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desiredDmxRange) {
   testArraysEqual(
@@ -247,7 +245,7 @@ function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desir
  * Creates random capability ranges in the given resolution, scales them down to the next-lower resolution
  * and checks for overlaps in the scaled ranges.
  * Original ranges always span more than 1 DMX value in the lowest resolution.
- * @param {Number} resolution The resolution of the original ranges. Must be 2 or higher.
+ * @param {number} resolution The resolution of the original ranges. Must be 2 or higher.
  */
 function testRandomChannelDownscaling(resolution) {
   const capabilityRanges = getRandomCapabilityRanges();
@@ -270,7 +268,7 @@ function testRandomChannelDownscaling(resolution) {
   }
 
   /**
-   * @returns {Array.<[Number, Number]>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
+   * @returns {[number, number][]} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
    */
   function getRandomCapabilityRanges() {
     const minimumRangeWidth = Math.pow(256, resolution - 1) - 1; // without a minimum, overlaps would not be avoidable
@@ -283,7 +281,7 @@ function testRandomChannelDownscaling(resolution) {
         ? Math.floor((Math.random() * (maximumRangeWidth - (2 * minimumRangeWidth))) + minimumRangeWidth)
         : remainingDmxValues;
 
-      const lastDmxValue = ranges.length > 0 ? ranges[ranges.length - 1][1] : -1;
+      const lastDmxValue = ranges.length > 0 ? ranges.at(-1)[1] : -1;
       ranges.push([lastDmxValue + 1, lastDmxValue + rangeWidth]);
       remainingDmxValues -= rangeWidth;
     }
@@ -294,9 +292,9 @@ function testRandomChannelDownscaling(resolution) {
 
 /**
  * The test passes if the given value equals the desired value. The description is used to log the test result to console.
- * @param {String} description A string describing the given value. Probably a description of a function call.
- * @param {*} value The value with unknown correctness. Probably the return value of a function call.
- * @param {*} desiredValue The correct value. Probably a hardcoded value.
+ * @param {string} description A string describing the given value. Probably a description of a function call.
+ * @param {any} value The value with unknown correctness. Probably the return value of a function call.
+ * @param {any} desiredValue The correct value. Probably a hardcoded value.
  */
 function testEqual(description, value, desiredValue) {
   parseTestResult(
@@ -309,9 +307,9 @@ function testEqual(description, value, desiredValue) {
 /**
  * The test passes if the given array equals the desired array (not the identity, but the elements are compared).
  * The description is used to log the test result to console.
- * @param {String} description A string describing the given value. Probably a description of a function call.
- * @param {Array.<*>} array The array with unknown correctness. Probably the return value of a function call.
- * @param {Array.<*>} desiredArray The correct array. Probably filled with hardcoded values.
+ * @param {string} description A string describing the given value. Probably a description of a function call.
+ * @param {any[]} array The array with unknown correctness. Probably the return value of a function call.
+ * @param {any[]} desiredArray The correct array. Probably filled with hardcoded values.
  */
 function testArraysEqual(description, array, desiredArray) {
   const correctLengths = array.length === desiredArray.length;
@@ -319,18 +317,21 @@ function testArraysEqual(description, array, desiredArray) {
     (value, index) => array[index] === value,
   );
 
+  const arrayString = array.join(`, `);
+  const desiredArrayString = desiredArray.join(`, `);
+
   parseTestResult(
     correctLengths && desiredElementsInArray,
-    `${description} should be [${desiredArray.join(`, `)}].`,
-    `${description} should be [${desiredArray.join(`, `)}] but is [${array.join(`, `)}].`,
+    `${description} should be [${desiredArrayString}].`,
+    `${description} should be [${desiredArrayString}] but is [${arrayString}].`,
   );
 }
 
 /**
  * Prints the test result (pass or fail) to the console and increase errorCount if needed.
- * @param {Boolean} passed Whether the test didn't error.
- * @param {String} passString The message if the test passed.
- * @param {String} failString The message if the test failed.
+ * @param {boolean} passed Whether the test didn't error.
+ * @param {string} passString The message if the test passed.
+ * @param {string} failString The message if the test failed.
  */
 function parseTestResult(passed, passString, failString) {
   if (passed) {

@@ -4,16 +4,19 @@
   "shortName": "StageRightWash7x10W-MH",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "martin3000", "sirexeclp", "Ryan Goodwin"],
     "createDate": "2019-03-29",
-    "lastModifyDate": "2019-10-30"
+    "lastModifyDate": "2023-07-12"
   },
+  "comment": "This fixture is sold under different brands / names.",
   "links": {
     "manual": [
-      "https://downloads.monoprice.com/files/manuals/612870_Manual_170822.pdf"
+      "https://downloads.monoprice.com/files/manuals/612870_Manual_170822.pdf",
+      "https://images-na.ssl-images-amazon.com/images/I/817xvVgs88L.pdf"
     ],
     "productPage": [
-      "https://www.monoprice.com/product?p_id=612870"
+      "https://www.monoprice.com/product?p_id=612870",
+      "https://www.lixada.com/p-l0761us.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=GOy2Memx1qQ"
@@ -23,9 +26,12 @@
     "dimensions": [240, 300, 240],
     "weight": 3.8,
     "power": 80,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x10W RGBW LEDs"
+      "type": "7× 10W RGBW LEDs"
     }
   },
   "availableChannels": {
@@ -51,14 +57,19 @@
       "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer / Strobe": {
       "capabilities": [
         {
-          "dmxRange": [0, 134],
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
           "type": "Intensity"
         },
         {
@@ -70,9 +81,8 @@
         },
         {
           "dmxRange": [240, 255],
-          "type": "Intensity",
-          "brightness": "bright",
-          "helpWanted": "Is this capability correct?"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -104,17 +114,19 @@
         "color": "White"
       }
     },
-    "Random Color Effect": {
+    "Color Presets": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 231],
-          "type": "NoFunction"
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         },
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Random color mixing"
+          "effectPreset": "ColorJump",
+          "comment": "Seven Colors"
         }
       ]
     },
@@ -158,16 +170,22 @@
       ]
     },
     "Reset": {
-      "capability": {
-        "type": "Maintenance",
-        "helpWanted": "At which DMX value is a reset done? How many seconds must that DMX value be set?"
-      }
-    },
-    "Master Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "helpWanted": "How many seconds must that DMX value be set?"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
@@ -177,7 +195,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Master Dimmer",
+        "Dimmer / Strobe",
         "Red",
         "Green",
         "Blue",
@@ -200,7 +218,7 @@
         "Green",
         "Blue",
         "White",
-        "Random Color Effect",
+        "Color Presets",
         "Color Effect Speed",
         "Auto / Sound Mode",
         "Reset"

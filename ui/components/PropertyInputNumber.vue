@@ -1,6 +1,5 @@
 <template>
   <input
-    ref="input"
     :required="required"
     :min="min"
     :max="max"
@@ -10,54 +9,33 @@
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
     type="number"
-    v-on="lazy ? { change: update } : { input: update }">
+    v-on="lazy ? { change: update } : { input: update }"
+    @focus="$emit('focus', $event)"
+    @blur="$emit('blur', $event)">
 </template>
 
 <script>
+import { anyProp, booleanProp, objectProp, oneOfTypesProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    minimum: {
-      type: [Number, String], // can be the string `invalid`
-      required: false,
-      default: null,
-    },
-    maximum: {
-      type: [Number, String], // can be the string `invalid`
-      required: false,
-      default: null,
-    },
-    value: {
-      type: null,
-      required: true,
-    },
-    lazy: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    minimum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
+    maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
+    value: anyProp().required,
+    lazy: booleanProp().withDefault(false),
+  },
+  emits: {
+    input: value => true,
+    focus: () => true,
+    blur: () => true,
+    'vf:validate': validationData => true,
   },
   computed: {
     min() {
-      if (this.minimum !== null && this.minimum !== `invalid`) {
+      if (this.minimum !== undefined && this.minimum !== `invalid`) {
         return this.minimum;
       }
 
@@ -68,7 +46,7 @@ export default {
       return this.exclusiveMinimum;
     },
     max() {
-      if (this.maximum !== null && this.maximum !== `invalid`) {
+      if (this.maximum !== undefined && this.maximum !== `invalid`) {
         return this.maximum;
       }
 
@@ -98,7 +76,7 @@ export default {
 
     /**
      * @public
-     * @returns {Record.<String, String | null>} Validation data for vue-form
+     * @returns {Record<string, string | null>} Validation data for vue-form
      */
     validationData() {
       return {
@@ -111,24 +89,22 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      const input = this.$refs.input;
+      const input = this.$el;
       if (input.validity && input.validity.badInput) {
         this.$emit(`input`, `invalid`);
         return;

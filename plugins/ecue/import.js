@@ -1,20 +1,20 @@
-const colorNameList = require(`color-name-list`);
-const xml2js = require(`xml2js`);
+import colorNameList from 'color-name-list/dist/colornames.esm.mjs';
+import xml2js from 'xml2js';
 
-module.exports.version = `0.3.1`;
+export const version = `0.3.1`;
 
 const colors = {};
 for (const color of colorNameList) {
-  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
+  colors[color.name.toLowerCase().replaceAll(/\s/g, ``)] = color.hex;
 }
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} filename The imported file's name.
- * @param {String} authorName The importer's name.
- * @returns {Promise.<Object, Error>} A Promise resolving to an out object
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
-module.exports.importFixtures = async function importECue(buffer, filename, authorName) {
+export async function importFixtures(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const out = {
@@ -40,7 +40,7 @@ module.exports.importFixtures = async function importECue(buffer, filename, auth
   /**
    * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
    * Calls {@link addFixture} for all contained fixtures.
-   * @param {Object} ecueManufacturer The e:cue manufacturer object.
+   * @param {object} ecueManufacturer The e:cue manufacturer object.
    */
   function addManufacturer(ecueManufacturer) {
     const manufacturerName = ecueManufacturer.$.Name;
@@ -65,8 +65,8 @@ module.exports.importFixtures = async function importECue(buffer, filename, auth
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {Object} ecueFixture The e:cue fixture object.
-   * @param {String} manufacturerKey The manufacturer key of the fixture.
+   * @param {object} ecueFixture The e:cue fixture object.
+   * @param {string} manufacturerKey The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manufacturerKey) {
     const fixture = {
@@ -124,11 +124,11 @@ module.exports.importFixtures = async function importECue(buffer, filename, auth
 
     out.fixtures[fixtureKey] = fixture;
   }
-};
+}
 
 /**
- * @param {Object} ecueFixture The e:cue fixture object.
- * @returns {Object} The OFL fixture's physical object.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
@@ -153,8 +153,8 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {Object} ecueFixture The e:cue fixture object.
- * @returns {Array.<Object>} An array of all ecue channel objects.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {object[]} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   const channels = [];
@@ -177,10 +177,22 @@ function getCombinedEcueChannels(ecueFixture) {
 }
 
 /**
+ * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+ * @returns {string} The normalized direction suffix.
+ */
+function getDirectionSuffix(direction) {
+  if (!direction) {
+    return ``;
+  }
+
+  return /^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`;
+}
+
+/**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {Object} ecueChannel The e:cue channel object.
- * @param {Object} fixture The OFL fixture object.
- * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} ecueChannel The e:cue channel object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -253,9 +265,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
   /**
    *
-   * @param {*} ecueRange The e:cue range object.
-   * @param {*} index The index of the capability / range.
-   * @returns {Object} The OFL capability object.
+   * @param {any} ecueRange The e:cue range object.
+   * @param {any} index The index of the capability / range.
+   * @returns {object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
     const capability = {
@@ -265,6 +277,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const capabilityName = ecueRange.$.Name.trim();
 
     capability.type = getCapabilityType();
+
+    const setPanTiltAngles = () => {
+      capability.angleStart = `0%`;
+      capability.angleEnd = `100%`;
+      capability.comment = capabilityName;
+    };
 
     // capability parsers can rely on the channel type as a first distinctive feature
     const capabilityTypeParsers = {
@@ -277,7 +295,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
-          const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
           if (color in colors) {
             capability.colors = [colors[color]];
           }
@@ -290,7 +308,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         }
       },
       ColorPreset() {
-        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replaceAll(/\s/g, ``);
         if (color in colors) {
           capability.color = colors[color];
         }
@@ -327,16 +345,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
         capability.comment = getSpeedGuessedComment();
       },
-      Pan() {
-        capability.angleStart = `0%`;
-        capability.angleEnd = `100%`;
-        capability.comment = capabilityName;
-      },
-      Tilt() {
-        capability.angleStart = `0%`;
-        capability.angleEnd = `100%`;
-        capability.comment = capabilityName;
-      },
+      Pan: setPanTiltAngles,
+      Tilt: setPanTiltAngles,
       Effect() {
         capability.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
         capability.effectName = getSpeedGuessedComment();
@@ -369,7 +379,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {Array.<Number>} The DMX range of this capability.
+     * @returns {number[]} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = Number.parseInt(ecueRange.$.Start, 10);
@@ -383,7 +393,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     /**
-     * @returns {String} The parsed capability type.
+     * @returns {string} The parsed capability type.
      */
     function getCapabilityType() {
       // capability parsers can rely on the channel type as a first distinctive feature
@@ -486,13 +496,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     /**
      * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {String} The rest of the capabilityName.
+     * @returns {string} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
-        const directionString = direction ? (/^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -506,8 +515,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;
@@ -517,9 +526,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {String} string The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

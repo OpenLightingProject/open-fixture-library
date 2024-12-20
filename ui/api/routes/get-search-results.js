@@ -1,4 +1,4 @@
-const importJson = require(`../../../lib/import-json.js`);
+import importJson from '../../../lib/import-json.js';
 
 let register;
 let manufacturers;
@@ -9,13 +9,13 @@ let manufacturers;
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
-async function getSearchResults({ request }) {
+export async function getSearchResults({ request }) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.requestBody;
 
-  register = await importJson(`../../../fixtures/register.json`, __dirname);
-  manufacturers = await importJson(`../../../fixtures/manufacturers.json`, __dirname);
+  register = await importJson(`../../../fixtures/register.json`, import.meta.url);
+  manufacturers = await importJson(`../../../fixtures/manufacturers.json`, import.meta.url);
 
   const results = Object.keys(register.filesystem).filter(
     key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
@@ -27,9 +27,9 @@ async function getSearchResults({ request }) {
 
 /**
  * Test if a fixture matches the search query.
- * @param {String} searchQuery Search query that the user entered.
- * @param {String} fixtureKey Key of the fixture to test.
- * @returns {Boolean} True if the fixture matches the search query, false otherwise.
+ * @param {string} searchQuery Search query that the user entered.
+ * @param {string} fixtureKey Key of the fixture to test.
+ * @returns {boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
   const manufacturer = fixtureKey.split(`/`)[0];
@@ -40,9 +40,9 @@ function queryMatch(searchQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the manufacturer query.
- * @param {Array.<String>} manufacturersQuery Selected manufacturers.
- * @param {String} fixtureKey Key of the fixture to test.
- * @returns {Boolean} True if the fixture matches the manufacturer query, false otherwise.
+ * @param {string[]} manufacturersQuery Selected manufacturers.
+ * @param {string} fixtureKey Key of the fixture to test.
+ * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
   const manufacturer = fixtureKey.split(`/`)[0];
@@ -54,16 +54,14 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the category query.
- * @param {Array.<String>} categoriesQuery Selected categories.
- * @param {String} fixtureKey Key of the fixture to test.
- * @returns {Boolean} True if the fixture matches the category query, false otherwise.
+ * @param {string[]} categoriesQuery Selected categories.
+ * @param {string} fixtureKey Key of the fixture to test.
+ * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */
 function categoryMatch(categoriesQuery, fixtureKey) {
   return categoriesQuery.length === 0 ||
     (categoriesQuery.length === 1 && categoriesQuery[0] === ``) ||
     categoriesQuery.some(
-      cat => cat in register.categories && register.categories[cat].includes(fixtureKey),
+      category => register.categories[category]?.includes(fixtureKey),
     );
 }
-
-module.exports = { getSearchResults };

@@ -17,8 +17,8 @@
         ref="firstInput"
         v-model="mode.name"
         :name="`mode-${index}-name`"
-        :schema-property="properties.definitions.modeNameString.allOf[1]"
-        :required="true"
+        :schema-property="schemaDefinitions.modeNameString.allOf[1]"
+        required
         no-mode-name
         hint="e.g. Extended"
         title="The name must not contain the word 'mode'." />
@@ -28,7 +28,7 @@
       <PropertyInputText
         v-model="mode.shortName"
         :name="`mode-${index}-shortName`"
-        :schema-property="properties.definitions.modeNameString.allOf[1]"
+        :schema-property="schemaDefinitions.modeNameString.allOf[1]"
         no-mode-name
         hint="e.g. ext; defaults to name"
         title="The short name must not contain the word 'mode'." />
@@ -42,7 +42,7 @@
       <PropertyInputNumber
         v-model="mode.rdmPersonalityIndex"
         :name="`mode-${index}-rdmPersonalityIndex`"
-        :schema-property="properties.mode.rdmPersonalityIndex" />
+        :schema-property="modeProperties.rdmPersonalityIndex" />
     </LabeledInput>
 
 
@@ -76,8 +76,9 @@
       <Draggable :list="mode.channels" v-bind="dragOptions">
         <TransitionGroup class="mode-channels" tag="ol">
           <li
-            v-for="channelUuid of mode.channels"
+            v-for="(channelUuid, channelIndex) of mode.channels"
             :key="channelUuid"
+            :value="channelIndex + 1"
             :data-channel-uuid="channelUuid">
 
             <span class="channel-name">{{ getChannelName(channelUuid) }}</span>
@@ -85,28 +86,32 @@
             <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid"> {{ channelUuid }}</code>
 
             <span class="channel-buttons">
-              <a
-                href="#move"
-                title="Drag to change channel order"
-                class="drag-handle"
+              <button
+                type="button"
+                title="Drag or press ↓↑ to change channel order"
+                class="drag-handle icon-button"
+                @keyup.up.prevent="moveChannel(channelUuid, -1)"
+                @keyup.down.prevent="moveChannel(channelUuid, 1)"
                 @click.prevent>
                 <OflSvg name="move" />
-              </a>
+              </button>
 
-              <a
+              <button
                 v-if="!isFineChannel(channelUuid)"
-                href="#channel-editor"
+                type="button"
+                class="icon-button"
                 title="Edit channel"
                 @click.prevent="editChannel(channelUuid)">
                 <OflSvg name="pencil" />
-              </a>
+              </button>
 
-              <a
-                href="#remove"
+              <button
+                type="button"
+                class="icon-button"
                 title="Remove channel"
                 @click.prevent="removeChannel(channelUuid)">
                 <OflSvg name="close" />
-              </a>
+              </button>
             </span>
 
           </li>
@@ -139,15 +144,15 @@
 }
 
 .mode-channels {
-  margin: 0 0 1ex;
   padding-top: 4px;
   padding-bottom: 4px;
+  margin: 0 0 1ex;
 
   & li {
     position: relative;
   }
 
-  & a:focus {
+  & button:focus {
     opacity: 1;
   }
 
@@ -155,22 +160,24 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: theme-color(card-background, 0);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background-color: theme-color(card-background, 0%);
     transition: background-color 0.1s, box-shadow 0.1s;
 
-    & a {
+    & button {
       opacity: 0;
       transition: opacity 0.1s;
-      padding: 0.3em;
     }
   }
 
   // has to be a separate rule because older browsers would ignore the whole rule
   & .channel-buttons:focus-within {
-    background-color: theme-color(card-background, 1);
+    background-color: theme-color(card-background);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
-    & a {
+    & button {
       opacity: 1;
     }
   }
@@ -178,31 +185,31 @@
   & li:hover .channel-buttons,
   & li.sortable-chosen .channel-buttons,
   & li.sortable-ghost .channel-buttons {
-    background-color: theme-color(card-background, 1);
+    background-color: theme-color(card-background);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
-    & a {
+    & button {
       opacity: 1;
     }
   }
 
   & .drag-handle {
-    cursor: move;
+    cursor: grab;
   }
 }
 </style>
 
-
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import { constants } from '../../assets/scripts/editor-utils.js';
-
+import { numberProp, objectProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
-import EditorPhysical from './EditorPhysical.vue';
+import { modeProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
+import { constants } from '../../assets/scripts/editor-utils.js';
+
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
+import EditorPhysical from './EditorPhysical.vue';
 
 export default {
   components: {
@@ -212,32 +219,24 @@ export default {
     PropertyInputNumber,
     PropertyInputText,
   },
-  model: {
-    prop: `mode`,
-  },
   props: {
-    mode: {
-      type: Object,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    mode: objectProp().required,
+    index: numberProp().required,
+    fixture: objectProp().required,
+    formstate: objectProp().required,
+  },
+  emits: {
+    remove: () => true,
+    'open-channel-editor': payload => true,
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      modeProperties,
       dragOptions: {
+        animation: 200,
         handle: `.drag-handle`,
+        emptyInsertThreshold: 20,
         group: {
           name: `mode`,
           pull: `clone`,
@@ -271,12 +270,11 @@ export default {
               return true;
             }
 
-            const nextCoarserChannelFound = targetMode.channels.some(uuid => {
+            // return whether next coarser channel can be found in target mode
+            return targetMode.channels.some(uuid => {
               const otherChannel = this.fixture.availableChannels[uuid];
               return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.resolution === channel.resolution - 1;
             });
-
-            return nextCoarserChannelFound;
           },
           revertClone: true,
         },
@@ -319,6 +317,16 @@ export default {
     },
     isFineChannel(channelUuid) {
       return `coarseChannelId` in this.fixture.availableChannels[channelUuid];
+    },
+    moveChannel(channelUuid, delta) {
+      const channelIndex = this.mode.channels.indexOf(channelUuid);
+      const newIndex = channelIndex + delta;
+      if (newIndex < 0 || newIndex >= this.mode.channels.length) {
+        return;
+      }
+
+      this.mode.channels.splice(channelIndex, 1);
+      this.mode.channels.splice(newIndex, 0, channelUuid);
     },
     removeChannel(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];

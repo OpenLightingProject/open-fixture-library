@@ -1,6 +1,5 @@
 <template>
   <select
-    ref="input"
     v-model="localValue"
     :required="required"
     :class="{ empty: value === `` }">
@@ -10,37 +9,23 @@
       :key="item"
       :value="item">{{ item }}</option>
     <option
-      v-if="additionHint !== null"
+      v-if="additionHint"
       value="[add-value]">{{ additionHint }}</option>
   </select>
 </template>
 
 <script>
+import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    additionHint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: null,
-      required: true,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    additionHint: stringProp().optional,
+    value: anyProp().required,
+  },
+  emits: {
+    input: value => true,
   },
   computed: {
     localValue: {
@@ -52,14 +37,10 @@ export default {
       },
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-  },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
   },
 };

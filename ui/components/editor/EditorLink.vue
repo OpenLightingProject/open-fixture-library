@@ -1,5 +1,5 @@
 <template>
-  <div class="linkRow">
+  <div class="link-row">
     <select ref="linkTypeSelect" v-model="type">
       <option
         v-for="linkType of linkTypes"
@@ -13,40 +13,46 @@
       <PropertyInputText
         v-model="url"
         :name="`links-${link.uuid}`"
-        :schema-property="properties.definitions.urlString"
+        :schema-property="schemaDefinitions.urlString"
         type="url"
         :hint="placeholder"
         required />
     </Validate>
 
-    <a
+    <button
       v-if="canRemove"
-      href="#remove-link"
+      type="button"
+      class="icon-button"
       title="Remove link"
       @click.prevent="$emit(`remove`)">
       <OflSvg name="close" />
-    </a>
+    </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.linkRow {
+.link-row {
   margin-bottom: 4px;
+
+  select {
+    width: 17ex;
+    margin-right: 1ex;
+  }
+
+  & > .icon {
+    margin-right: 0.5ex;
+  }
 }
 
-select {
-  width: 17ex;
-  margin-right: 1ex;
-}
-
-.icon {
-  margin-right: 0.5ex;
+.icon-button {
+  margin-left: 0.5ex;
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import { booleanProp, objectProp } from 'vue-ts-types';
+import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
 
@@ -61,25 +67,23 @@ export default {
   components: {
     PropertyInputText,
   },
-  mixins: [fixtureLinksMixin],
   props: {
-    link: {
-      type: Object,
-      required: true,
-    },
-    canRemove: {
-      type: Boolean,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    link: objectProp().required,
+    canRemove: booleanProp().required,
+    formstate: objectProp().required,
+  },
+  emits: {
+    'set-type': type => true,
+    'set-url': url => true,
+    remove: () => true,
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
-      properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.links),
+      schemaDefinitions,
+      linkTypes: Object.keys(linksProperties),
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {

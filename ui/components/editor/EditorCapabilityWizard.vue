@@ -44,25 +44,25 @@
     </section>
 
     <EditorCapabilityTypeData
-      v-model="wizard.templateCapability"
+      :capability="wizard.templateCapability"
       :channel="channel" />
 
     <table class="capabilities-table">
       <colgroup>
-        <col style="width: 5.8ex">
-        <col style="width: 1ex">
-        <col style="width: 5.8ex">
+        <col style="width: 5.8ex;">
+        <col style="width: 1ex;">
+        <col style="width: 5.8ex;">
         <col>
       </colgroup>
       <thead><tr>
-        <th colspan="3" style="text-align: center">DMX values</th>
+        <th colspan="3" style="text-align: center;">DMX values</th>
         <th>Capability</th>
       </tr></thead>
       <tbody>
         <tr v-for="capability of allCapabilities" :key="capability.uuid" :class="capability.source">
-          <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
-          <td class="capability-dmxRange-separator"><code>…</code></td>
-          <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>
+          <td class="capability-dmx-range-start"><code>{{ capability.dmxRange[0] }}</code></td>
+          <td class="capability-dmx-range-separator"><code>…</code></td>
+          <td class="capability-dmx-range-end"><code>{{ capability.dmxRange[1] }}</code></td>
           <td class="capability-type">{{ capability.type }}</td>
         </tr>
       </tbody>
@@ -72,8 +72,8 @@
 
     <div class="button-bar right">
       <button
-        type="submit"
-        :disabled="error"
+        type="button"
+        :disabled="error || !wizard.templateCapability.type"
         class="restore primary"
         @click.prevent="apply()">
         Generate capabilities
@@ -88,40 +88,42 @@
 
 .capabilities-table {
   margin-top: 1em;
-  border-collapse: collapse;
   table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th {
-  font-weight: normal;
+  font-weight: 400;
   color: theme-color(text-secondary);
 }
 
-td, th {
+td,
+th {
   padding: 0 4px;
   vertical-align: top;
 }
 
-.capability-dmxRange0 {
-  text-align: right;
+.capability-dmx-range-start {
   padding-right: 2px;
+  text-align: right;
 }
 
-.capability-dmxRange-separator {
-  text-align: center;
-  padding-left: 0;
+.capability-dmx-range-separator {
   padding-right: 0;
+  padding-left: 0;
+  text-align: center;
 }
 
-.capability-dmxRange1 {
-  text-align: left;
+.capability-dmx-range-end {
   padding-left: 2px;
+  text-align: left;
 }
 
 .inherited,
 .inherited code {
   color: theme-color(text-disabled);
 }
+
 .computed,
 .computed code {
   color: theme-color(text-primary);
@@ -129,14 +131,27 @@ td, th {
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-  clone,
 } from "../../assets/scripts/editor-utils.js";
 
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
+
+/**
+ * @param {object} capabilityTypeData The generated capability's type data.
+ * @param {number} index The index of the generated capability.
+ */
+function replaceHashWithIndex(capabilityTypeData, index) {
+  if (`effectName` in capabilityTypeData) {
+    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
+  }
+  if (`comment` in capabilityTypeData) {
+    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
+  }
+}
 
 export default {
   components: {
@@ -144,18 +159,12 @@ export default {
     EditorCapabilityTypeData,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    wizard: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    resolution: numberProp().required,
+    wizard: objectProp().required,
+  },
+  emits: {
+    close: insertIndex => true,
   },
   computed: {
     capabilities() {
@@ -163,14 +172,14 @@ export default {
     },
 
     /**
-     * @returns {Number} Maximum allowed DMX value.
+     * @returns {number} Maximum allowed DMX value.
      */
     dmxMax() {
       return Math.pow(256, this.resolution) - 1;
     },
 
     /**
-     * @returns {Number} Index in capabilities array where the generated capabilities need to be inserted.
+     * @returns {number} Index in capabilities array where the generated capabilities need to be inserted.
      */
     insertIndex() {
       // loop from inherited capabilities array end to start
@@ -184,7 +193,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
+     * @returns {object[]} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
      */
     computedCapabilites() {
       const capabilities = [];
@@ -206,14 +215,8 @@ export default {
           this.wizard.start + ((index + 1) * this.wizard.width) - 1,
         ];
         capability.type = this.wizard.templateCapability.type;
-        capability.typeData = clone(this.wizard.templateCapability.typeData);
-
-        const textProperties = [`effectName`, `comment`];
-        textProperties.forEach(textProperty => {
-          if (textProperty in capability.typeData) {
-            capability.typeData[textProperty] = capability.typeData[textProperty].replace(/#/, index + 1);
-          }
-        });
+        capability.typeData = structuredClone(this.wizard.templateCapability.typeData);
+        replaceHashWithIndex(capability.typeData, index);
 
         capabilities.push(capability);
       }
@@ -222,7 +225,7 @@ export default {
     },
 
     /**
-     * @returns {Number} Number of (empty) capabilities to remove after the generated ones.
+     * @returns {number} Number of (empty) capabilities to remove after the generated ones.
      */
     removeCount() {
       const nextCapability = this.capabilities[this.insertIndex];
@@ -244,15 +247,15 @@ export default {
     },
 
     /**
-     * @returns {Number} DMX value range end of the last generated capability.
+     * @returns {number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites.at(-1).dmxRange[1];
     },
 
     /**
      * @see {@link getCapabilityWithSource}
-     * @returns {Array.<Object>} Array of all capabilities (generated and inherited), combined with their source.
+     * @returns {object[]} Array of all capabilities (generated and inherited), combined with their source.
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
@@ -273,7 +276,7 @@ export default {
 
     /**
      * Performs validation of the user input.
-     * @returns {String|null} A string with an validation error, or null if there is no error.
+     * @returns {string | null} A string with an validation error, or null if there is no error.
      */
     validationError() {
       if (this.wizard.start < 0) {
@@ -292,7 +295,7 @@ export default {
     },
 
     /**
-     * @returns {String|null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
+     * @returns {string | null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
      */
     error() {
       if (this.validationError) {
@@ -372,11 +375,11 @@ export default {
 };
 
 /**
- * @param {Object} capability The "full" capability object.
- * @param {String} source The source of the capability (inherited or computed).
- * @returns {Object} A capability object that additionally contains the specified source.
+ * @param {object} capability The "full" capability object.
+ * @param {string} source The source of the capability (inherited or computed).
+ * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {
-  return Object.assign({}, capability, { source });
+  return { ...capability, source };
 }
 </script>

@@ -2,14 +2,14 @@
  * @fileoverview Channel and capability presets, together with functions to export or import them.
  */
 
-const importJson = require(`../../lib/import-json.js`);
+import importJson from '../../lib/import-json.js';
 
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
 
 // ########## Helper functions ##########
 
-const exportHelpers = {
+export const exportHelpers = {
   isIncreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) < Math.abs(capability.speed[1].number),
   isDecreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) > Math.abs(capability.speed[1].number),
   isStopped: capability => capability.speed !== null && capability.speed[0].number === 0 && capability.speed[1].number === 0,
@@ -49,7 +49,7 @@ const exportHelpers = {
   },
 };
 
-const importHelpers = {
+export const importHelpers = {
   getColorIntensityCap: color => ({
     type: `ColorIntensity`,
     color,
@@ -165,19 +165,30 @@ const importHelpers = {
   },
 
   /**
+   * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+   * @returns {string} The normalized direction suffix.
+   */
+  getDirectionSuffix(direction) {
+    if (!direction) {
+      return ``;
+    }
+
+    return /counter|ccw/i.test(direction) ? ` CCW` : ` CW`;
+  },
+
+  /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
-   * @param {String} capabilityName The capability name to extract information from.
-   * @param {Object} capability The OFL capability object to add found properties to.
-   * @returns {String} The rest of the capabilityName.
+   * @param {string} capabilityName The capability name to extract information from.
+   * @param {object} capability The OFL capability object to add found properties to.
+   * @returns {string} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, capability) {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
     if (speedRegex.test(capabilityName)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionString = direction ? (/counter|ccw/i.test(direction) ? ` CCW` : ` CW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = importHelpers.getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -191,8 +202,8 @@ const importHelpers = {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;
@@ -201,7 +212,7 @@ const importHelpers = {
 
     const stopRegex = /\s*\b(?:stop(?:ped)?|no rotation|no rotate)\b\s*/gi;
     if (stopRegex.test(capabilityName)) {
-      return capabilityName.replace(stopRegex, () => {
+      return capabilityName.replaceAll(stopRegex, () => {
         capability.speed = `stop`;
         return ``;
       });
@@ -211,6 +222,24 @@ const importHelpers = {
   },
 };
 
+const createWheelRotationCapability = () => ({
+  type: `WheelRotation`,
+  wheel: ``,
+  speedStart: `slow`,
+  speedEnd: `fast`,
+});
+
+const createFocusNearToFarCapability = () => ({
+  type: `Focus`,
+  distanceStart: `near`,
+  distanceEnd: `far`,
+});
+
+const createFocusFarToNearCapability = () => ({
+  type: `Focus`,
+  distanceStart: `far`,
+  distanceEnd: `near`,
+});
 
 
 // ########## Channel presets ##########
@@ -264,10 +293,20 @@ const channelPresets = {
   },
   IntensityWhite: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `White`) || exportHelpers.isColorIntensity(capability, `Warm White`) || exportHelpers.isColorIntensity(capability, `Cold White`),
-    importCapability: ({ channelName }) => ({
-      type: `ColorIntensity`,
-      color: /\bcold\b/i.test(channelName) ? `Cold White` : (/\bwarm\b/i.test(channelName) ? `Warm White` : `White`),
-    }),
+    importCapability: ({ channelName }) => {
+      let color = `White`;
+      if (/\bwarm\b/i.test(channelName)) {
+        color = `Warm White`;
+      }
+      else if (/\bcold\b/i.test(channelName)) {
+        color = `Cold White`;
+      }
+
+      return {
+        type: `ColorIntensity`,
+        color,
+      };
+    },
   },
   IntensityUV: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `UV`),
@@ -383,12 +422,7 @@ const channelPresets = {
   },
   ColorWheel: {
     isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Color`,
-    importCapability: () => ({
-      type: `WheelRotation`,
-      wheel: ``,
-      speedStart: `slow`,
-      speedEnd: `fast`,
-    }),
+    importCapability: createWheelRotationCapability,
   },
   ColorRGBMixer: {
     isApplicable: capability => channelPresets.IntensityHue.isApplicable(capability),
@@ -424,12 +458,7 @@ const channelPresets = {
 
   GoboWheel: {
     isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Gobo`,
-    importCapability: () => ({
-      type: `WheelRotation`,
-      wheel: ``,
-      speedStart: `slow`,
-      speedEnd: `fast`,
-    }),
+    importCapability: createWheelRotationCapability,
   },
   GoboIndex: {
     isApplicable: capability => capability.type === `WheelSlotRotation` && capability.wheels[0].type === `Gobo`,
@@ -480,19 +509,11 @@ const channelPresets = {
 
   BeamFocusNearFar: {
     isApplicable: capability => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `near`,
-      distanceEnd: `far`,
-    }),
+    importCapability: createFocusNearToFarCapability,
   },
   BeamFocusFarNear: {
     isApplicable: capability => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `far`,
-      distanceEnd: `near`,
-    }),
+    importCapability: createFocusFarToNearCapability,
   },
   BeamZoomSmallBig: {
     isApplicable: capability => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
@@ -537,9 +558,9 @@ const channelPresets = {
 
 /**
  * @param {CoarseChannel} channel The OFL channel object.
- * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
-function getChannelPreset(channel) {
+export function getChannelPreset(channel) {
   if (channel.capabilities.length > 1) {
     return null;
   }
@@ -550,13 +571,13 @@ function getChannelPreset(channel) {
 }
 
 /**
- * @param {String} preset The channel preset to import.
- * @param {String} channelName The channel name.
- * @param {Number} panMax The maximum pan angle, or 0.
- * @param {Number} tiltMax The maximum tilt angle, or 0.
- * @returns {Object} The OFL capability object.
+ * @param {string} preset The channel preset to import.
+ * @param {string} channelName The channel name.
+ * @param {number} panMax The maximum pan angle, or 0.
+ * @param {number} tiltMax The maximum tilt angle, or 0.
+ * @returns {object} The OFL capability object.
  */
-function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
+export function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
   if (preset in channelPresets) {
     return channelPresets[preset].importCapability({
       channelName,
@@ -666,9 +687,9 @@ const fineChannelPresets = {
 
 /**
  * @param {FineChannel} fineChannel The OFL fine channel object.
- * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
-function getFineChannelPreset(fineChannel) {
+export function getFineChannelPreset(fineChannel) {
   const coarseChannel = fineChannel.coarseChannel;
   const coarseChannelPreset = getChannelPreset(coarseChannel);
 
@@ -684,7 +705,7 @@ function getFineChannelPreset(fineChannel) {
 
 // ########## Capability presets ##########
 
-const capabilityPresets = {
+export const capabilityPresets = {
 
   // shutter capabilities
 
@@ -708,46 +729,46 @@ const capabilityPresets = {
 
   StrobeFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`),
   },
   StrobeFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`),
   },
   PulseFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`),
   },
   PulseFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`),
   },
   RampUpFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`),
   },
   RampUpFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`),
   },
   RampDownFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`),
   },
   RampDownFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`),
   },
 
@@ -998,19 +1019,11 @@ const capabilityPresets = {
   },
   NearToFar: {
     isApplicable: capability => capability.distance !== null && capability.distance[0].number < capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `near`,
-      distanceEnd: `far`,
-    }),
+    importCapability: createFocusNearToFarCapability,
   },
   FarToNear: {
     isApplicable: capability => capability.distance !== null && capability.distance[0].number > capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `far`,
-      distanceEnd: `near`,
-    }),
+    importCapability: createFocusFarToNearCapability,
   },
   SmallToBig: {
     isApplicable: capability => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number < capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === `small` && capability.parameter[1].keyword === `big`),
@@ -1023,17 +1036,17 @@ const capabilityPresets = {
 };
 
 /**
- * @typedef {Object} CapabilityPreset
- * @property {String} presetName The name of the QLC+ capability preset.
- * @property {String|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
- * @property {String|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
+ * @typedef {object} CapabilityPreset
+ * @property {string} presetName The name of the QLC+ capability preset.
+ * @property {string | null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
+ * @property {string | null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
  */
 
 /**
  * @param {Capability} capability The OFL capability object.
- * @returns {Promise.<CapabilityPreset|null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
+ * @returns {Promise<CapabilityPreset | null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
  */
-async function getCapabilityPreset(capability) {
+export async function getCapabilityPreset(capability) {
   const foundPresetName = Object.keys(capabilityPresets).find(
     presetName => capabilityPresets[presetName].isApplicable(capability),
   );
@@ -1051,11 +1064,11 @@ async function getCapabilityPreset(capability) {
 }
 
 /**
- * @param {String} preset The capability preset to import.
- * @param {Object} capabilityData Additional data about capability and channel.
- * @returns {Object} The OFL capability object.
+ * @param {string} preset The capability preset to import.
+ * @param {object} capabilityData Additional data about capability and channel.
+ * @returns {object} The OFL capability object.
  */
-function getCapabilityFromCapabilityPreset(preset, capabilityData) {
+export function getCapabilityFromCapabilityPreset(preset, capabilityData) {
   if (preset in capabilityPresets) {
     const capability = capabilityPresets[preset].importCapability(capabilityData);
 
@@ -1075,20 +1088,3 @@ function getCapabilityFromCapabilityPreset(preset, capabilityData) {
     helpWanted: `Unknown QLC+ capability preset ${preset}, Res1="${capabilityData.res1}", Res2="${capabilityData.res2}".`,
   };
 }
-
-
-module.exports = {
-  channelPresets,
-  getChannelPreset,
-  getCapabilityFromChannelPreset,
-
-  fineChannelPresets,
-  getFineChannelPreset,
-
-  capabilityPresets,
-  getCapabilityPreset,
-  getCapabilityFromCapabilityPreset,
-
-  importHelpers,
-  exportHelpers,
-};

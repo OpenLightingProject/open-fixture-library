@@ -11,6 +11,7 @@
         }"
         :name="`wheel-slot${slot.uuid}-type`"
         label="Slot type">
+        <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
         <select
           v-model="slot.type"
           :class="{ empty: slot.type === `` }"
@@ -45,21 +46,22 @@
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { integerProp, objectProp } from 'vue-ts-types';
+import { wheelSlotTypes } from '../../../lib/schema-properties.js';
 import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
 
-import WheelSlotAnimationGoboEnd from './wheel-slots/AnimationGoboEnd.vue';
-import WheelSlotAnimationGoboStart from './wheel-slots/AnimationGoboStart.vue';
-import WheelSlotClosed from './wheel-slots/Closed.vue';
-import WheelSlotColor from './wheel-slots/Color.vue';
-import WheelSlotFrost from './wheel-slots/Frost.vue';
-import WheelSlotGobo from './wheel-slots/Gobo.vue';
-import WheelSlotIris from './wheel-slots/Iris.vue';
-import WheelSlotOpen from './wheel-slots/Open.vue';
-import WheelSlotPrism from './wheel-slots/Prism.vue';
+import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
+import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
+import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';
+import WheelSlotColor from './wheel-slots/WheelSlotColor.vue';
+import WheelSlotFrost from './wheel-slots/WheelSlotFrost.vue';
+import WheelSlotGobo from './wheel-slots/WheelSlotGobo.vue';
+import WheelSlotIris from './wheel-slots/WheelSlotIris.vue';
+import WheelSlotOpen from './wheel-slots/WheelSlotOpen.vue';
+import WheelSlotPrism from './wheel-slots/WheelSlotPrism.vue';
 
 export default {
   components: {
@@ -75,38 +77,18 @@ export default {
     WheelSlotOpen,
     WheelSlotPrism,
   },
-  model: {
-    prop: `capability`,
-  },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    slotNumber: {
-      type: Number,
-      required: true,
-      valid(slotNumber) {
-        // only integer slot numbers are allowed
-        return slotNumber % 1 === 0;
-      },
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    channel: objectProp().required,
+    slotNumber: integerProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {
-      properties: schemaProperties,
+      slotTypes: Object.keys(wheelSlotTypes),
       open: false,
     };
   },
   computed: {
-    slotTypes() {
-      return this.properties.wheelSlot.type.enum;
-    },
     slot() {
       return this.channel.wheel.slots[this.slotNumber - 1];
     },

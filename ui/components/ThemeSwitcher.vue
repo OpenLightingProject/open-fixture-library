@@ -1,12 +1,11 @@
 <template>
-  <a
+  <button
     v-if="cssVariablesSupported"
-    href="#theme"
-    aria-hidden="true"
+    type="button"
     :title="`Switch to ${otherTheme} theme`"
     @click.prevent="toggleTheme()">
     <OflSvg name="theme-light-dark" />
-  </a>
+  </button>
 </template>
 
 <script>
@@ -32,6 +31,20 @@ export default {
       prefersDarkMediaQuery: null,
     };
   },
+  head() {
+    return {
+      htmlAttrs: {
+        'data-theme': this.theme,
+      },
+      meta: [
+        {
+          hid: `theme-color`,
+          name: `theme-color`,
+          content: this.theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
+        },
+      ],
+    };
+  },
   computed: {
     otherTheme() {
       return this.theme === `light` ? `dark` : `light`;
@@ -40,8 +53,6 @@ export default {
   watch: {
     theme: {
       handler(theme) {
-        document.documentElement.setAttribute(`data-theme`, theme);
-
         // set cookie for server-side rendering
         this.$cookies.set(cookieName, theme, cookieOptions);
       },

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const chalk = require(`chalk`);
+import chalk from 'chalk';
 
 const usedVariables = [
   `ALLOW_SEARCH_INDEXING`,
@@ -8,6 +8,7 @@ const usedVariables = [
   `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
   `NODE_ENV`,
   `PORT`,
+  `HOST`,
   `WEBSITE_URL`,
   `GITHUB_PR_NUMBER`,
   `GITHUB_PR_HEAD_REF`,
@@ -23,7 +24,7 @@ console.log(`Process environment variables:`);
 printVariables();
 console.log();
 
-require(`../lib/load-env-file`);
+await import(`../lib/load-env-file.js`);
 
 console.log(`Environment variables after reading .env:`);
 printVariables();

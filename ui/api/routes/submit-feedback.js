@@ -1,5 +1,5 @@
-const createIssue = require(`../../../lib/create-github-issue.js`);
-const { fixtureFromRepository } = require(`../../../lib/model.js`);
+import createIssue from '../../../lib/create-github-issue.js';
+import { fixtureFromRepository } from '../../../lib/model.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../index.js').ApiResponse} ApiResponse */
@@ -9,7 +9,7 @@ const { fixtureFromRepository } = require(`../../../lib/model.js`);
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-async function createFeedbackIssue({ request }) {
+export async function createFeedbackIssue({ request }) {
   const {
     type,
     context,
@@ -24,18 +24,18 @@ async function createFeedbackIssue({ request }) {
   const labels = [`via-editor`];
 
   if (type === `plugin`) {
-    title = `Feedback for plugin '${context}'`;
+    title = `Feedback for plugin \`${context}\``;
     labels.push(`component-plugin`);
   }
   else {
-    title = `Feedback for fixture '${context}'`;
+    title = `Feedback for fixture \`${context}\``;
     labels.push(`component-fixture`);
 
     const [manufacturerKey, fixtureKey] = context.split(`/`);
     const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;
-    issueContentData.Fixture = fixture.name;
+    issueContentData.Fixture = `[${fixture.name}](${fixture.url})`;
   }
 
   issueContentData[`Problem location`] = location;
@@ -44,13 +44,15 @@ async function createFeedbackIssue({ request }) {
 
   const lines = Object.entries(issueContentData).filter(
     ([key, value]) => value !== null,
-  ).map(
-    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-  );
+  ).map(([key, value]) => {
+    const separator = value.includes(`\n`) ? `\n` : ` `;
+    return `**${key}**:${separator}${value}`;
+  });
 
   if (githubUsername) {
     const isValidUsername = /^[\dA-Za-z]+$/.test(githubUsername);
-    lines.push(`\nThank you ${isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`}!`);
+    const githubUsernameMarkdown = isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`;
+    lines.push(`\nThank you ${githubUsernameMarkdown}!`);
   }
 
   let issueUrl;
@@ -71,5 +73,3 @@ async function createFeedbackIssue({ request }) {
     },
   };
 }
-
-module.exports = { createFeedbackIssue };

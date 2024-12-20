@@ -1,30 +1,32 @@
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-const { CoarseChannel } = require(`../../lib/model.js`);
-const { FineChannel } = require(`../../lib/model.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-const { NullChannel } = require(`../../lib/model.js`);
-const { SwitchingChannel } = require(`../../lib/model.js`);
+import NullChannel from '../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-module.exports.version = `0.1.0`;
+export const version = `0.1.0`;
 
 const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
 
+let usedKnobs = {};
+
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const exportJson = {
     profiles: [],
     config: [],
   };
 
-  const usedKnobs = {};
+  usedKnobs = {};
 
   for (const fixture of fixtures) {
     const fixtureKey = `${fixture.manufacturer.key}/${fixture.key}`;
@@ -55,76 +57,77 @@ module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
     mimetype: `application/json`,
     fixtures,
   }];
+}
 
 
-
-  /**
-   * @param {AbstractChannel} channel The OFL channel object.
-   * @param {String} fixtureKey The OFL fixture key.
-   * @returns {String} The OP-Z channel type.
-   */
-  function getOpZChannelType(channel, fixtureKey) {
-    if (channel instanceof SwitchingChannel) {
-      channel = channel.defaultChannel;
-    }
-
-    if (channel instanceof NullChannel || channel instanceof FineChannel) {
-      return `off`;
-    }
-
-    const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
-
-    const opZChannelTypes = {
-      [`${defaultValue}`]: () => channel.isConstant || channel.type === `Shutter`,
-      'red': () => channel.color === `Red`,
-      'green': () => channel.color === `Green`,
-      'blue': () => channel.color === `Blue`,
-      'white': () => channel.color === `White`,
-      'color': () => channel.type === `Multi-Color`,
-      'intensity': () => channel.type === `Intensity`,
-      'fog': () => channel.type === `Fog`,
-      // 'knob1': () => false,
-      // 'knob2': () => false,
-      // 'knob3': () => false,
-      // 'knob4': () => false,
-      // 'knob5': () => false,
-      // 'knob6': () => false,
-      // 'knob7': () => false,
-      // 'knob8': () => false,
-      // 'on': () => false,
-      'off': () => channel.type === `Maintenance`,
-    };
-
-    const channelType = Object.keys(opZChannelTypes).find(
-      type => opZChannelTypes[type](),
-    );
-    if (channelType) {
-      return channelType;
-    }
-
-    return getKnobType() || `${defaultValue}`;
-
-
-    /**
-     * Try to use a `knobX` OP-Z channel type for this channel. A channel used
-     * across different modes will get the same knob again. null is returned
-     * for all channels after all knobs are already assigned.
-     * @returns {String|null} The OP-Z channel type `knobX` if applicable, null otherwise.
-     */
-    function getKnobType() {
-      const channelKey = `${fixtureKey}/${channel.key}`;
-      if (channelKey in usedKnobs) {
-        return usedKnobs[channelKey];
-      }
-
-      const usedKnobCount = Object.keys(usedKnobs).length;
-      if (usedKnobCount < MAX_KNOBS) {
-        usedKnobs[channelKey] = `knob${usedKnobCount + 1}`;
-
-        return usedKnobs[channelKey];
-      }
-
-      return null;
-    }
+/**
+ * @param {AbstractChannel} channel The OFL channel object.
+ * @param {string} fixtureKey The OFL fixture key.
+ * @returns {string} The OP-Z channel type.
+ */
+function getOpZChannelType(channel, fixtureKey) {
+  if (channel instanceof SwitchingChannel) {
+    channel = channel.defaultChannel;
   }
-};
+
+  if (channel instanceof NullChannel || channel instanceof FineChannel) {
+    return `off`;
+  }
+
+  const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
+
+  const opZChannelTypes = {
+    [`${defaultValue}`]: () => channel.isConstant || channel.type === `Shutter`,
+    'red': () => channel.color === `Red`,
+    'green': () => channel.color === `Green`,
+    'blue': () => channel.color === `Blue`,
+    'white': () => channel.color === `White`,
+    'color': () => channel.type === `Multi-Color`,
+    'intensity': () => channel.type === `Intensity`,
+    'fog': () => channel.type === `Fog`,
+    // 'knob1': () => false,
+    // 'knob2': () => false,
+    // 'knob3': () => false,
+    // 'knob4': () => false,
+    // 'knob5': () => false,
+    // 'knob6': () => false,
+    // 'knob7': () => false,
+    // 'knob8': () => false,
+    // 'on': () => false,
+    'off': () => channel.type === `Maintenance`,
+  };
+
+  const channelType = Object.keys(opZChannelTypes).find(
+    type => opZChannelTypes[type](),
+  );
+  if (channelType) {
+    return channelType;
+  }
+
+  return getKnobType(channel, fixtureKey) || `${defaultValue}`;
+}
+
+
+/**
+ * Try to use a `knobX` OP-Z channel type for this channel. A channel used
+ * across different modes will get the same knob again. null is returned
+ * for all channels after all knobs are already assigned.
+ * @param {AbstractChannel} channel The OFL channel object.
+ * @param {string} fixtureKey The OFL fixture key.
+ * @returns {string | null} The OP-Z channel type `knobX` if applicable, null otherwise.
+ */
+function getKnobType(channel, fixtureKey) {
+  const channelKey = `${fixtureKey}/${channel.key}`;
+  if (channelKey in usedKnobs) {
+    return usedKnobs[channelKey];
+  }
+
+  const usedKnobCount = Object.keys(usedKnobs).length;
+  if (usedKnobCount < MAX_KNOBS) {
+    usedKnobs[channelKey] = `knob${usedKnobCount + 1}`;
+
+    return usedKnobs[channelKey];
+  }
+
+  return null;
+}

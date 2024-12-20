@@ -1,22 +1,24 @@
 <template>
   <A11yDialog
-    id="help-wanted"
+    id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
-    :shown="context !== null"
+    :shown="modelValue !== undefined"
     :title="title"
     @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit()">
+    <form v-if="state === `ready` && modelValue !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
+        key="location"
         :value="location"
         label="Location" />
 
       <LabeledValue
-        v-if="context.helpWanted !== null"
+        v-if="modelValue.helpWanted !== null"
+        key="help-wanted"
         label="Problem description">
-        <span v-html="context.helpWanted" />
+        <span v-html="modelValue.helpWanted" />
       </LabeledValue>
 
       <LabeledInput name="message" label="Message">
@@ -40,7 +42,7 @@
     </template>
 
     <template v-else-if="state === `success`">
-      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
+      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank" rel="noopener">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
@@ -56,7 +58,13 @@
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
+        <a
+          href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
+          class="button primary"
+          target="_blank"
+          rel="noopener">
+          Create issue on GitHub
+        </a>
       </div>
     </template>
 
@@ -64,6 +72,7 @@
 </template>
 
 <script>
+import { objectProp, stringProp } from 'vue-ts-types';
 import A11yDialog from './A11yDialog.vue';
 import LabeledInput from './LabeledInput.vue';
 import LabeledValue from './LabeledValue.vue';
@@ -75,17 +84,15 @@ export default {
     LabeledValue,
   },
   model: {
-    prop: `context`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
-    context: {
-      type: Object,
-      default: null,
-    },
+    type: stringProp().required,
+    modelValue: objectProp().optional,
+  },
+  emits: {
+    'update:model-value': value => true,
   },
   data: () => {
     return {
@@ -110,11 +117,15 @@ export default {
         return `Failed to send message`;
       }
 
-      return `Improve ${this.type === `plugin` ? `plugin` : `fixture`}`;
+      if (this.type === `plugin`) {
+        return `Improve plugin`;
+      }
+
+      return `Improve fixture`;
     },
     location() {
       if (this.type === `capability`) {
-        const capability = this.context;
+        const capability = this.modelValue;
         const channel = capability._channel;
         return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
@@ -123,11 +134,11 @@ export default {
     },
     fixture() {
       if (this.type === `fixture`) {
-        return this.context;
+        return this.modelValue;
       }
 
       if (this.type === `capability`) {
-        return this.context._channel.fixture;
+        return this.modelValue._channel.fixture;
       }
 
       return null;
@@ -136,13 +147,13 @@ export default {
       const sendObject = {
         type: this.type,
         location: this.location,
-        helpWanted: this.context.helpWanted,
+        helpWanted: this.modelValue.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername !== `` ? this.githubUsername : null,
+        githubUsername: this.githubUsername === `` ? null : this.githubUsername,
       };
 
       if (this.type === `plugin`) {
-        sendObject.context = this.context.key;
+        sendObject.context = this.modelValue.key;
       }
       else {
         const manufacturerKey = this.fixture.manufacturer.key;
@@ -157,21 +168,22 @@ export default {
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
     },
     mailtoUrl() {
-      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.context}'`;
+      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.modelValue}'`;
 
       const mailBodyData = {
         'Problem location': this.location,
-        'Problem description': this.context.helpWanted,
+        'Problem description': this.modelValue.helpWanted,
         'Message': this.message,
       };
 
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null,
-      ).map(
-        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-      ).join(`\n`);
+      ).map(([key, value]) => {
+        const separator = value.includes(`\n`) ? `\n` : ` `;
+        return `${key}:${separator}${value}`;
+      }).join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
   mounted() {
@@ -211,7 +223,7 @@ export default {
       this.state = `ready`;
       this.issueUrl = null;
       this.error = null;
-      this.$emit(`input`, null);
+      this.$emit(`update:model-value`, undefined);
     },
   },
 };

@@ -11,7 +11,7 @@
 
       <LabeledInput
         :formstate="formstate"
-        :multiple-inputs="true"
+        multiple-inputs
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
@@ -20,7 +20,7 @@
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
-          :schema-property="properties.capability.dmxRange"
+          :schema-property="capabilityDmxRange"
           :range-min="min"
           :range-max="max"
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
@@ -31,18 +31,18 @@
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
         @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -53,8 +53,8 @@
 
 <style lang="scss" scoped>
 .capability {
-  margin: 0 -0.5rem;
   position: relative;
+  margin: 0 -0.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid theme-color(divider);
@@ -78,33 +78,22 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
-  display: inline-block;
+.icon-button.close {
   position: absolute;
-  right: 0;
   top: 0;
-  padding: 0.3rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
+  right: 0;
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import {
-  getEmptyCapability,
-  isCapabilityChanged,
-} from '../../assets/scripts/editor-utils.js';
+import { numberProp, objectProp } from 'vue-ts-types';
+import { capabilityDmxRange } from '../../../lib/schema-properties.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
@@ -114,27 +103,19 @@ export default {
     PropertyInputRange,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    capabilityIndex: {
-      type: Number,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    capabilityIndex: numberProp().required,
+    resolution: numberProp().required,
+    formstate: objectProp().required,
+  },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
   },
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties,
+      capabilityDmxRange,
     };
   },
   computed: {
@@ -153,10 +134,10 @@ export default {
       );
     },
     start() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
     },
     end() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
     },
     min() {
       let min = this.dmxMin;
@@ -198,7 +179,6 @@ export default {
     },
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const previousCapability = this.capabilities[this.capabilityIndex - 1];
@@ -227,7 +207,6 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCapability = this.capabilities[this.capabilityIndex + 1];
@@ -317,6 +296,11 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
     },
   },
 };

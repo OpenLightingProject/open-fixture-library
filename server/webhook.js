@@ -2,7 +2,7 @@
 
 // crypto is expected to be installed globally
 
-const crypto = require(`crypto`);
+const { createHmac } = require(`crypto`);
 const http = require(`http`);
 const { execSync } = require(`child_process`);
 
@@ -58,9 +58,9 @@ function startServer() {
  * Handle a received request from the server and check if it is valid. If so,
  * call @see redeploy to update the corresponding app.
  *
- * @param {String} url The absolute path the request was received at.
- * @param {String} body The JSON string from GitHub.
- * @param {Object.<String, String>} headers Headers of the request.
+ * @param {string} url The absolute path the request was received at.
+ * @param {string} body The JSON string from GitHub.
+ * @param {Record<string, string>} headers Headers of the request.
  */
 function processRequest(url, body, headers) {
   console.log(`Received webhook request at ${url}`);
@@ -69,12 +69,13 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = crypto.createHmac(`sha1`, deploymentConfig.webhookSecret);
+  const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
   hmac.update(body, `utf-8`);
 
   const xub = `X-Hub-Signature`;
   const received = headers[xub] || headers[xub.toLowerCase()];
-  const expected = `sha1=${hmac.digest(`hex`)}`;
+  const digest = hmac.digest(`hex`);
+  const expected = `sha1=${digest}`;
 
   if (received !== expected) {
     console.error(`Wrong secret: Expected '${expected}', received '${received}'`);
@@ -103,13 +104,13 @@ function processRequest(url, body, headers) {
 
 /**
  * Calls redeploy bash script and notify admin via email if script fails.
- * @param {Object} webhookPayload The data delivered by GitHub via the webhook.
+ * @param {object} webhookPayload The data delivered by GitHub via the webhook.
  */
 function redeploy(webhookPayload) {
   try {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
-      env: Object.assign({}, process.env, deploymentConfig.env),
+      env: { ...process.env, ...deploymentConfig.env },
       encoding: `utf8`,
       stdio: `pipe`,
     });

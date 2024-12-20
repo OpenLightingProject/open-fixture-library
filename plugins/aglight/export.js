@@ -1,48 +1,43 @@
 /* Based on the ofl export plugin */
 
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
-const namedColors = require(`color-name-list`);
+import namedColors from 'color-name-list/dist/colornames.esm.mjs';
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
-const { Entity, NullChannel } = require(`../../lib/model.js`);
-const importJson = require(`../../lib/import-json.js`);
+import importJson from '../../lib/import-json.js';
+import Entity from '../../lib/model/Entity.js';
+import NullChannel from '../../lib/model/NullChannel.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
 const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
 
-module.exports.version = `1.0.0`;
+export const version = `1.0.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportAGLight(fixtures, options) {
-  const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
+export async function exportFixtures(fixtures, options) {
+  const displayedPluginVersion = options.displayedPluginVersion || version;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   const library = {
     version: displayedPluginVersion,
     fixtures: fixtures.map(fixture => {
-      const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-      jsonData.fixtureKey = fixture.key;
-      jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
-      jsonData.oflURL = fixture.url;
-
-      if (!jsonData.availableChannels) {
-        jsonData.availableChannels = {};
+      try {
+        return exportFixture(fixture, manufacturers);
       }
-
-      transformMatrixChannels(jsonData, fixture);
-      transformSingleCapabilityToArray(jsonData);
-      transformNonNumericValues(jsonData);
-
-      return jsonData;
+      catch (error) {
+        throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+          cause: error,
+        });
+      }
     }),
   };
   return [{
@@ -51,12 +46,49 @@ module.exports.exportFixtures = async function exportAGLight(fixtures, options) 
     mimetype: `application/aglight-fixture-library`,
     fixtures,
   }];
-};
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {object} manufacturers The manufacturers object.
+ * @returns {object} The generated fixture JSON.
+ */
+function exportFixture(fixture, manufacturers) {
+  const jsonData = structuredClone(fixture.jsonObject);
+  jsonData.fixtureKey = fixture.key;
+  jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
+  jsonData.oflURL = fixture.url;
+
+  if (!jsonData.availableChannels) {
+    jsonData.availableChannels = {};
+  }
+
+  downgradePhysical(jsonData.physical);
+  transformMatrixChannels(jsonData, fixture);
+  transformSingleCapabilityToArray(jsonData);
+  transformNonNumericValues(jsonData);
+
+  for (const mode of jsonData.modes) {
+    downgradePhysical(mode.physical);
+  }
+
+  return jsonData;
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
+}
 
 /**
  * Resolves matrix channels in modes' channel lists.
  * It also adds the resolved template channels to `availableChannels` and adds a `pixelKey` property.
- * @param {Object} fixtureJson The fixture JSON object where the resolved matrix channels should be saved to.
+ * @param {object} fixtureJson The fixture JSON object where the resolved matrix channels should be saved to.
  * @param {Fixture} fixture The fixture whose template channels should be resolved.
  */
 function transformMatrixChannels(fixtureJson, fixture) {
@@ -70,12 +102,13 @@ function transformMatrixChannels(fixtureJson, fixture) {
 
   fixtureJson.availableChannels = Object.fromEntries(
     availableAndMatrixChannels.map(channel => {
-      let channelJsonObject = JSON.parse(JSON.stringify(channel.jsonObject));
+      let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
-        channelJsonObject = Object.assign({}, channelJsonObject, {
+        channelJsonObject = {
+          ...channelJsonObject,
           pixelKey: channel.pixelKey,
-        });
+        };
       }
 
       return [channel.key, channelJsonObject];
@@ -88,7 +121,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
 /**
  * All channels with a single capability are converted to `capabilities: [capability]`,
  * and a `singleCapability` attribute with the value true is added.
- * @param {Object} fixtureJson The fixture whose channels should be processed
+ * @param {object} fixtureJson The fixture whose channels should be processed
  */
 function transformSingleCapabilityToArray(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
@@ -103,7 +136,7 @@ function transformSingleCapabilityToArray(fixtureJson) {
 /**
  * Replace capability properties' entity strings with unitless numbers, and
  * ColorIntensity capabilities' color property with its hex value.
- * @param {Object} fixtureJson The fixture whose capabilities should be processed
+ * @param {object} fixtureJson The fixture whose capabilities should be processed
  */
 function transformNonNumericValues(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
@@ -118,45 +151,46 @@ function transformNonNumericValues(fixtureJson) {
       }
     }
   }
+}
 
-  /**
-   * @param {Object} capability The capability where the color name in the color attribute should be replaced with its hex value
-   */
-  function processColor(capability) {
-    const namedColor = namedColors.find(color => color.name === capability.color);
-    if (namedColor && namedColor.hex) {
-      capability.color = namedColor.hex;
+
+/**
+ * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
+ */
+function processColor(capability) {
+  const namedColor = namedColors.find(color => color.name === capability.color);
+  if (namedColor && namedColor.hex) {
+    capability.color = namedColor.hex;
+  }
+  else {
+    // If the color was not found, just ignore it
+    // console.log(`#### color not found`, capability.color);
+  }
+}
+
+/**
+ * @param {string} entityString The property value where the entity number should be extracted from.
+ * @returns {number | string} A unitless number, or the original property value if it can't be parsed as an entity.
+ */
+function getEntityNumber(entityString) {
+  try {
+    const entity = Entity.createFromEntityString(entityString);
+
+    if (entity.keyword !== null) {
+      return entityString;
     }
-    else {
-      // If the color was not found, just ignore it
-      // console.log(`#### color not found`, capability.color);
+
+    if (entity.unit === `s`) {
+      return entity.number * 1000;
+    }
+
+    if (units.has(entity.unit)) {
+      return entity.number;
     }
   }
-
-  /**
-   * @param {String} entityString The property value where the entity number should be extracted from.
-   * @returns {Number|String} A unitless number, or the original property value if it can't be parsed as an entity.
-   */
-  function getEntityNumber(entityString) {
-    try {
-      const entity = Entity.createFromEntityString(entityString);
-
-      if (entity.keyword !== null) {
-        return entityString;
-      }
-
-      if (entity.unit === `s`) {
-        return entity.number * 1000;
-      }
-
-      if (units.has(entity.unit)) {
-        return entity.number;
-      }
-    }
-    catch {
-      // string could not be parsed as an entity
-    }
-
-    return entityString;
+  catch {
+    // string could not be parsed as an entity
   }
+
+  return entityString;
 }

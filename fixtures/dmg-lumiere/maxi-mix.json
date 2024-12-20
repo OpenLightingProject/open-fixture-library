@@ -1,0 +1,634 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAXI MIX",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2021-04-26",
+    "lastModifyDate": "2021-04-26"
+  },
+  "links": {
+    "manual": [
+      "https://emea.rosco.com/sites/default/files/content/resource/2022-08/Rosco_DMG_User_ManualMAXIMIX2022.pdf"
+    ],
+    "productPage": [
+      "https://emea.rosco.com/en/product/dmg-maxi"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=sV_cSc4ulkA"
+    ]
+  },
+  "physical": {
+    "dimensions": [120, 36, 8.5],
+    "weight": 8,
+    "power": 360,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "ColorTemperature",
+          "colorTemperature": "1700K"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorTemperature",
+          "colorTemperature": "1750K"
+        },
+        {
+          "dmxRange": [13, 242],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1750K",
+          "colorTemperatureEnd": "9950K"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "ColorTemperature",
+          "colorTemperature": "9950K"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
+        }
+      ]
+    },
+    "Green-Magenta Point": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [16, 114],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [115, 140],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [141, 239],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "White Base Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    },
+    "Memory # Hundreds": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "0"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "9"
+        }
+      ]
+    },
+    "Memory # Tens": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "0"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "9"
+        }
+      ]
+    },
+    "Memory # Singles": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "0"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "9"
+        }
+      ]
+    },
+    "Hue": {
+      "name": "Hue",
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9727],
+          "type": "Generic",
+          "comment": "0°"
+        },
+        {
+          "dmxRange": [9728, 55808],
+          "type": "Generic",
+          "comment": "0-360°"
+        },
+        {
+          "dmxRange": [55809, 65535],
+          "type": "Generic",
+          "comment": "360°"
+        }
+      ]
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 26],
+          "type": "Generic",
+          "comment": "0%"
+        },
+        {
+          "dmxRange": [27, 224],
+          "type": "Generic",
+          "comment": "1-99%"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "100%"
+        }
+      ]
+    },
+    "Hue Gel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "-10…10"
+      }
+    },
+    "Saturation Gel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "-20…20"
+      }
+    },
+    "Colorspace X Position": {
+      "fineChannelAliases": ["Colorspace X Position fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Colorspace Y Position": {
+      "fineChannelAliases": ["Colorspace Y Position fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "Dimmer curve linear"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Dimmer curve square"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "Dimmer curve s curve"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "Dimmer curve Tungsten"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "CRMX unlink"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Maintenance",
+          "comment": "Bluetooth on"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Maintenance",
+          "comment": "Bluetooth off"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Maintenance",
+          "comment": "RDM off"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Maintenance",
+          "comment": "RDM on"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Maintenance",
+          "comment": "Slew Off"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Maintenance",
+          "comment": "Slew Set"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Maintenance",
+          "comment": "Save in myMIX"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effects Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Cross Fade to Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "CCT … Color Mix"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [17, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "17.8Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1: White 8-bit",
+      "shortName": "White",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point"
+      ]
+    },
+    {
+      "name": "2: Color 8-bit",
+      "shortName": "Color",
+      "channels": [
+        "Dimmer",
+        "White Base Color",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "3: Gel 8-bit",
+      "shortName": "Gel",
+      "channels": [
+        "Dimmer",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
+        "White Base Color",
+        "Hue Gel",
+        "Saturation Gel"
+      ]
+    },
+    {
+      "name": "4: Pro 8-bit",
+      "shortName": "Pro8",
+      "channels": [
+        "Dimmer",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Hue",
+        "Saturation",
+        "White Base Color",
+        "Hue Gel",
+        "Saturation Gel",
+        "Effects Speed",
+        "Colorspace X Position",
+        "Colorspace Y Position",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "5: Pro 16-bit",
+      "shortName": "Pro16",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "White Base Color",
+        "Hue Gel",
+        "Saturation Gel",
+        "Effects Speed",
+        "Colorspace X Position",
+        "Colorspace X Position fine",
+        "Colorspace Y Position",
+        "Colorspace Y Position fine",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "6: Full 8-bit",
+      "shortName": "Full8",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Cross Fade to Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Lime",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "7: Full 16-bit",
+      "shortName": "Full16",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Cross Fade to Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Lime",
+        "Strobe",
+        "Control"
+      ]
+    }
+  ]
+}

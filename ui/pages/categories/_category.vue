@@ -3,7 +3,7 @@
     <h1>{{ categoryName }} fixtures</h1>
 
     <div class="card">
-      <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
+      <ul class="list fixtures" :class="`category-${categoryClass}`">
         <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
             :to="fixture.link"
@@ -14,7 +14,8 @@
               v-for="cat of fixture.categories"
               :key="cat"
               :name="cat"
-              :class="{ inactive: cat !== categoryName, right: true }"
+              class="right"
+              :class="{ inactive: cat !== categoryName }"
               type="fixture" />
           </NuxtLink>
         </li>
@@ -30,22 +31,15 @@ export default {
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
-  async asyncData({ params, $axios, error }) {
-    const categoryName = decodeURIComponent(params.category);
-
+  async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        categoryName,
-        categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
-        fixtures: [],
-        manufacturers,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
   },
   head() {
     const title = this.categoryName;
@@ -60,22 +54,30 @@ export default {
       ],
     };
   },
-  created() {
-    this.fixtures = register.categories[this.categoryName].map(fullFixtureKey => {
-      const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
-      const manufacturerName = this.manufacturers[manufacturerKey].name;
-      const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
+  computed: {
+    categoryName() {
+      return this.$route.params.category;
+    },
+    categoryClass() {
+      return this.categoryName.toLowerCase().replaceAll(/\W+/g, `-`);
+    },
+    fixtures() {
+      return register.categories[this.categoryName].map(fullFixtureKey => {
+        const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
+        const manufacturerName = this.manufacturers[manufacturerKey].name;
+        const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 
-      return {
-        key: fullFixtureKey,
-        link: `/${fullFixtureKey}`,
-        name: `${manufacturerName} ${fixtureName}`,
-        categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(fullFixtureKey),
-        ),
-        color: this.manufacturers[manufacturerKey].color,
-      };
-    });
+        return {
+          key: fullFixtureKey,
+          link: `/${fullFixtureKey}`,
+          name: `${manufacturerName} ${fixtureName}`,
+          categories: Object.keys(register.categories).filter(
+            category => register.categories[category].includes(fullFixtureKey),
+          ),
+          color: this.manufacturers[manufacturerKey].color,
+        };
+      });
+    },
   },
 };
 </script>

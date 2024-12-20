@@ -29,7 +29,7 @@
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="properties.definitions.nonEmptyString"
+        :schema-property="schemaDefinitions.nonEmptyString"
         :valid-color-hex-list="propertyName === `colorsHexString`" />
 
       <span v-if="hint" class="hint">{{ hint }}</span>
@@ -67,7 +67,7 @@
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
-          :schema-property="properties.definitions.nonEmptyString"
+          :schema-property="schemaDefinitions.nonEmptyString"
           :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="start" />
 
@@ -79,14 +79,14 @@
       </Component>
 
       <span class="separator">
-        <a
+        <button
           :tabindex="swapButtonTabIndex"
-          href="#swap"
-          class="swap"
+          type="button"
+          class="swap icon-button"
           title="Swap start and end values"
           @click.prevent="swapStartEnd()">
           <OflSvg name="swap-horizontal" />
-        </a>
+        </button>
         …
       </span>
 
@@ -120,7 +120,7 @@
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
-          :schema-property="properties.definitions.nonEmptyString"
+          :schema-property="schemaDefinitions.nonEmptyString"
           :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="end" />
 
@@ -150,35 +150,44 @@
 
 .separator {
   position: relative;
-  vertical-align: -8px;
   margin: 0 1ex;
+  vertical-align: -8px;
 
-  a.swap {
+  .icon-button.swap {
     position: absolute;
-    bottom: 4px;
-    left: -1px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1rem;
+    background: none;
+    border: none;
   }
 }
 
 .proportional-capability-data {
-  & a.swap {
+  & .icon-button.swap {
     opacity: 0;
     transition-property: opacity, fill;
   }
 
-  &:hover a.swap,
-  & a.swap:focus {
+  &:hover .icon-button.swap,
+  & .icon-button.swap:focus {
     opacity: 1;
   }
 
-  &:focus-within a.swap {
+  &:focus-within .icon-button.swap {
     opacity: 1;
   }
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
+import {
+  capabilityTypes,
+  entitiesSchema,
+  schemaDefinitions,
+  unitsSchema,
+} from '../../../lib/schema-properties.js';
 
 import PropertyInputEntity from '../PropertyInputEntity.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
@@ -191,38 +200,23 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    propertyName: {
-      type: String,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    propertyName: stringProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    formstate: objectProp().optional,
   },
   data() {
+    const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);
+
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      slotNumberSchema: unitsSchema[slotNumberUnit],
     };
   },
   computed: {
     entity() {
-      const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
+      const capabilitySchema = capabilityTypes[this.capability.type];
       if (!capabilitySchema) {
         return ``;
       }
@@ -239,7 +233,7 @@ export default {
         return null;
       }
 
-      return this.properties.entities[this.entity];
+      return entitiesSchema[this.entity];
     },
     propertyDataStepped: {
       get() {
@@ -290,10 +284,6 @@ export default {
     },
 
     // slotNumber entity requires a bit of special handling
-    slotNumberSchema() {
-      const unit = this.properties.entities.slotNumber.$ref.replace(`#/units/`, ``);
-      return this.properties.units[unit];
-    },
     slotNumberStepped: {
       get() {
         return this.capability.typeData[this.propertyName];

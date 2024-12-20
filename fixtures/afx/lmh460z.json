@@ -4,22 +4,19 @@
   "shortName": "LMH460Z",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Folson_dev"],
+    "authors": ["Folson_dev", "Ryan Goodwin"],
     "createDate": "2019-03-22",
-    "lastModifyDate": "2019-03-22"
+    "lastModifyDate": "2023-07-12"
   },
   "comment": "Wash Zoom LED",
   "links": {
-    "productPage": [
-      "https://www.afx-light.com/afx-led-moving-head-wash-36x10w-4-in-1-rgbw-led-zoom.html"
+    "manual": [
+      "https://manual-hub.com/manuals/afx-lmh460z-01-pdf-manual/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=Y6BBSuRVWwQ",
       "https://www.youtube.com/watch?v=vEnjSQS7QY0",
       "https://www.youtube.com/watch?v=-POl9ZfaeQs"
-    ],
-    "other": [
-      "https://www.afx-light.com/media/catalog/product/fiches/LMH460Z-2_F_fr.pdf"
     ]
   },
   "helpWanted": "Please provide a manual.",
@@ -27,6 +24,9 @@
     "dimensions": [350, 400, 260],
     "weight": 9,
     "power": 400,
+    "powerConnectors": {
+      "powerCON": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "36x 10W RGBW LED",

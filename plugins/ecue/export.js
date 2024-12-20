@@ -1,24 +1,24 @@
-const xmlbuilder = require(`xmlbuilder`);
+import xmlbuilder from 'xmlbuilder';
 
-const { CoarseChannel } = require(`../../lib/model.js`);
-const { FineChannel } = require(`../../lib/model.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
-const { NullChannel } = require(`../../lib/model.js`);
-const { Physical } = require(`../../lib/model.js`);
-const { SwitchingChannel } = require(`../../lib/model.js`);
+import NullChannel from '../../lib/model/NullChannel.js';
+import Physical from '../../lib/model/Physical.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-module.exports.version = `0.3.0`;
+export const version = `0.3.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportECue(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};
@@ -83,39 +83,46 @@ module.exports.exportFixtures = async function exportECue(fixtures, options) {
     mimetype: `application/xml`,
     fixtures,
   }];
-};
+}
 
 /**
- * @param {Object} xmlManufacturer The xmlbuilder <Manufacturer> object.
+ * @param {object} xmlManufacturer The xmlbuilder <Manufacturer> object.
  * @param {Fixture} fixture The OFL fixture object.
  */
 function addFixture(xmlManufacturer, fixture) {
-  const fixtureCreationDate = dateToString(fixture.meta.createDate);
-  const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
+  try {
+    const fixtureCreationDate = dateToString(fixture.meta.createDate);
+    const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
-  for (const mode of fixture.modes) {
-    const physical = mode.physical || new Physical({});
+    for (const mode of fixture.modes) {
+      const physical = mode.physical || new Physical({});
 
-    const xmlFixture = xmlManufacturer.element(`Fixture`, {
-      '_CreationDate': fixtureCreationDate,
-      '_ModifiedDate': fixtureModifiedDate,
-      'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
-      'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
-      'Comment': getFixtureComment(fixture),
-      'AllocateDmxChannels': mode.channels.length,
-      'Weight': physical.weight || 0,
-      'Power': physical.power || 0,
-      'DimWidth': physical.width || 10,
-      'DimHeight': physical.height || 10,
-      'DimDepth': physical.depth || 10,
+      const xmlFixture = xmlManufacturer.element(`Fixture`, {
+        '_CreationDate': fixtureCreationDate,
+        '_ModifiedDate': fixtureModifiedDate,
+        'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
+        'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
+        'Comment': getFixtureComment(fixture),
+        'AllocateDmxChannels': mode.channels.length,
+        'Weight': physical.weight || 0,
+        'Power': physical.power || 0,
+        'DimWidth': physical.width || 10,
+        'DimHeight': physical.height || 10,
+        'DimDepth': physical.depth || 10,
+      });
+
+      handleMode(xmlFixture, mode);
+    }
+  }
+  catch (error) {
+    throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+      cause: error,
     });
-
-    handleMode(xmlFixture, mode);
   }
 }
 
 /**
- * @param {Object} xmlFixture The xmlbuilder <Fixture> object.
+ * @param {object} xmlFixture The xmlbuilder <Fixture> object.
  * @param {Mode} mode The OFL mode object.
  */
 function handleMode(xmlFixture, mode) {
@@ -183,7 +190,7 @@ function handleMode(xmlFixture, mode) {
 
 /**
  * @param {Fixture} fixture The OFL fixture object.
- * @returns {String} The comment to use in the exported fixture.
+ * @returns {string} The comment to use in the exported fixture.
  */
 function getFixtureComment(fixture) {
   const generatedString = `generated by the Open Fixture Library – ${fixture.url}`;
@@ -195,15 +202,15 @@ function getFixtureComment(fixture) {
 
 /**
  * @param {CoarseChannel} channel The OFL channel object.
- * @returns {String} The e:cue channel type for the channel.
+ * @returns {string} The e:cue channel type for the channel.
  */
 function getChannelType(channel) {
   switch (channel.type) {
     case `Multi-Color`:
     case `Single Color`:
-    case `Color Temperature`:
+    case `Color Temperature`: {
       return `ChannelColor`;
-
+    }
     case `Iris`:
     case `Zoom`:
     case `Shutter`:
@@ -213,25 +220,26 @@ function getChannelType(channel) {
     case `Effect`:
     case `Speed`:
     case `Maintenance`:
-    case `NoFunction`:
+    case `NoFunction`: {
       return `ChannelBeam`;
-
+    }
     case `Pan`:
     case `Tilt`:
-    case `Focus`:
+    case `Focus`: {
       return `ChannelFocus`;
-
+    }
     case `Intensity`:
     case `Fog`:
-    default:
+    default: {
       return `ChannelIntensity`;
+    }
   }
 }
 
 /**
- * @param {Object} xmlChannel The xmlbuilder <Channel*> object.
+ * @param {object} xmlChannel The xmlbuilder <Channel*> object.
  * @param {CoarseChannel} channel The OFL channel object.
- * @param {Number} resolution The resolution of the channel in the current mode.
+ * @param {number} resolution The resolution of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, resolution) {
   for (const capability of channel.capabilities) {
@@ -248,7 +256,7 @@ function addCapabilities(xmlChannel, channel, resolution) {
 
 /**
  * @param {Date} date The date to format.
- * @returns {String} The date in YYYY-MM-DD#HH:mm:ss format.
+ * @returns {string} The date in YYYY-MM-DD#HH:mm:ss format.
  */
 function dateToString(date) {
   return date.toISOString().replace(/T/, `#`).replace(/\..+/, ``);

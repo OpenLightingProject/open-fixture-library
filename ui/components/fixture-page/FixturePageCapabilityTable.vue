@@ -1,16 +1,16 @@
 <template>
   <table class="capabilities-table">
     <colgroup>
-      <col style="width: 5.8ex">
-      <col style="width: 1ex">
-      <col style="width: 5.8ex">
-      <col style="width: 1.8em">
+      <col style="width: 5.8ex;">
+      <col style="width: 1ex;">
+      <col style="width: 5.8ex;">
+      <col style="width: 1.8em;">
       <col>
-      <col style="width: 1.8em">
+      <col style="width: 1.8em;">
     </colgroup>
     <thead>
       <tr>
-        <th colspan="3" style="text-align: center">DMX values</th>
+        <th colspan="3" style="text-align: center;">DMX values</th>
         <th /> <!-- icon -->
         <th>Capability</th>
         <th /> <!-- menuClick -->
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <template v-for="(cap, index) of capabilities">
-        <tr :key="`cap-${index}`" :class="`capability capability-${cap.model.type}`">
+        <tr :key="`cap-${index}`" class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
@@ -31,7 +31,7 @@
 
           <td
             :title="cap.model.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.model.menuClick} of capability`"
-            class="capability-menuClick">
+            class="capability-menu-click">
             <OflSvg :name="`capability-${cap.model.menuClick}`" />
           </td>
         </tr>
@@ -64,61 +64,61 @@
 
 <style lang="scss" scoped>
 .capabilities-table {
-  border-collapse: collapse;
-  table-layout: fixed;
   width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th {
-  font-weight: normal;
+  font-weight: 400;
   color: theme-color(text-secondary);
 }
 
-td, th {
+td,
+th {
   padding: 0 4px;
   vertical-align: top;
 }
 
-.capability-NoFunction,
-.capability-NoFunction + .switch-to-channel {
+.capability[data-capability-type="NoFunction"],
+.capability[data-capability-type="NoFunction"] + .switch-to-channel {
   opacity: 0.6;
 }
 
 .capability-range0 {
-  text-align: right;
   padding-right: 2px;
+  text-align: right;
 }
 
 .capability-range-separator {
-  text-align: center;
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
+  text-align: center;
 }
 
 .capability-range1 {
-  text-align: left;
   padding-left: 2px;
+  text-align: left;
 }
 
 .capability-icon .gobo-icon {
-  transition: transform 0.4s;
   pointer-events: none;
+  transition: transform 0.4s;
 }
 
 .capability-icon:hover .gobo-icon {
-  transform: scale(4);
   z-index: 1;
+  transform: scale(4);
 }
 
-
-.capability-menuClick {
+.capability-menu-click {
   text-align: right;
 }
 
 .switch-to-channel > td {
-  line-height: 1rem;
   padding-bottom: 4px;
   font-size: 82%;
+  line-height: 1rem;
 
   & > .switching-channel-key {
     color: theme-color(text-secondary);
@@ -127,6 +127,7 @@ td, th {
 </style>
 
 <script>
+import { instanceOfProp, numberProp } from 'vue-ts-types';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 
@@ -139,18 +140,12 @@ export default {
     HelpWantedMessage,
   },
   props: {
-    channel: {
-      type: CoarseChannel,
-      required: true,
-    },
-    mode: {
-      type: Mode,
-      required: true,
-    },
-    resolutionInMode: {
-      type: Number,
-      required: true,
-    },
+    channel: instanceOfProp(CoarseChannel).required,
+    mode: instanceOfProp(Mode).required,
+    resolutionInMode: numberProp().required,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   computed: {
     capabilities() {

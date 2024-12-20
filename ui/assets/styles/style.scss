@@ -1,23 +1,23 @@
-@use './fonts.scss';
+@use "./fonts.scss";
 
 @each $theme-name, $theme in $themes {
   [data-theme="#{$theme-name}"] {
     @each $color-name, $color in $theme {
-      --theme-#{$color-name}: #{colorToRgbString($color)};
+      --theme-#{$color-name}: #{ color-to-rgb-string($color) };
     }
   }
 }
 
-
-html, body {
-  margin: 0;
+html,
+body {
   padding: 0;
+  margin: 0;
   font: 12pt/2 $font-stack-text;
   color: theme-color(text-primary);
-  background-color: theme-color(page-background);
   word-wrap: break-word;
-  text-rendering: optimizeLegibility;
+  background-color: theme-color(page-background);
   transition: background-color 0.3s, color 0.3s;
+  text-rendering: optimizelegibility;
 }
 
 html {
@@ -30,28 +30,28 @@ html {
 }
 
 h1 {
-  font-weight: 300;
+  margin: 1.5rem 0;
   font-size: 2rem;
+  font-weight: 300;
   line-height: 2.5rem;
-  margin: 1.5rem 0 1.5rem;
 }
 
 h2 {
-  font-weight: 400;
   margin: 0;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 h3 {
-  font-weight: 800;
-  font-size: 1.2rem;
   margin: 1rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 h4 {
-  font-weight: 800;
-  font-size: 1rem;
   margin: 0.8rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 p {
@@ -76,9 +76,9 @@ label {
 
 .hint {
   display: block;
-  color: theme-color(text-secondary);
   font-size: 0.8rem;
   line-height: 1.5;
+  color: theme-color(text-secondary);
 }
 
 template {
@@ -88,12 +88,14 @@ template {
 #ofl-root.js .no-js {
   display: none;
 }
+
 #ofl-root.no-js .only-js {
   display: none;
 }
 
 code {
   font-family: $font-stack-code;
+  font-weight: 400;
   color: theme-color(text-secondary);
 }
 
@@ -105,8 +107,8 @@ code.channel-key {
 }
 
 a {
-  text-decoration: none;
   color: theme-color(link);
+  text-decoration: none;
   fill: theme-color(icon);
   transition: color 0.1s, fill 0.1s, background-color 0.1s;
 
@@ -125,33 +127,35 @@ textarea {
 select {
   width: 30ex;
 }
-input[type=number] {
+
+input[type="number"] {
   width: 10ex;
 }
+
 textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url] {
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"] {
   width: 40ex;
 }
 
 select,
 textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url],
-input[type=number] {
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="number"] {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0.4em;
+  font-family: $font-stack-text;
+  font-size: 0.95em;
+  color: theme-color(text-primary);
   background: theme-color(form-field-background);
   border: 1px solid theme-color(form-field-border);
-  color: theme-color(text-primary);
   border-radius: 3px;
-  font-size: 0.95em;
-  font-family: $font-stack-text;
   transition: background-color 0.2s, border-color 0.2s;
 
   &:focus {
@@ -165,28 +169,29 @@ input[type=number] {
 
   &.vf-touched.vf-invalid,
   &.vf-submitted.vf-invalid,
-  &.vf-touched[class^=vf-invalid-],
+  &.vf-touched[class^="vf-invalid-"],
   .vf-touched.vf-invalid &,
   .vf-submitted.vf-invalid &,
-  .vf-touched[class^=vf-invalid-] & {
+  .vf-touched[class^="vf-invalid-"] & {
     border-color: red;
-    box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 4px rgba(255, 0, 0, 40%);
   }
 }
 
 textarea[readonly] {
-  line-height: 1.3;
-  font-size: 0.9em;
-  font-family: $font-stack-code;
-  white-space: pre-wrap;
-  background: theme-color(header-background);
-  color: theme-color(text-primary);
-  padding: 1em;
-  border: none;
   width: 100%;
   height: 15em;
+  padding: 1em;
   overflow: auto;
+  font-family: $font-stack-code;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1.3;
+  color: theme-color(text-primary);
+  white-space: pre-wrap;
   resize: none;
+  background: theme-color(header-background);
+  border: none;
 }
 
 .error-message {
@@ -194,18 +199,18 @@ textarea[readonly] {
   color: red;
 
   & div::before {
-    content: '!';
     display: inline-block;
-    height: 1em;
-    line-height: 1em;
     width: 1em;
+    height: 1em;
     margin: -2px 1ex 0 0;
+    font-weight: 700;
+    line-height: 1em;
+    color: white;
     text-align: center;
+    vertical-align: middle;
+    content: "!";
     background: red;
     border-radius: 9999px;
-    color: white;
-    font-weight: 600;
-    vertical-align: middle;
   }
 }
 
@@ -214,49 +219,38 @@ input.addition {
 }
 
 select.empty {
-  color: theme-color(text-secondary);
   font-style: italic;
+  color: theme-color(text-secondary);
 
   & > option {
-    color: theme-color(text-primary);
     font-style: normal;
+    color: theme-color(text-primary);
   }
 }
 
-input::-webkit-input-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-}
-input::-moz-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-  opacity: 1;
-}
-input:-ms-input-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-}
 input::placeholder {
-  color: theme-color(text-secondary);
   font-style: italic;
-  opacity: 1;
+  color: theme-color(text-secondary);
+  opacity: 1; // Firefox sets a default opacity
 }
 
-button, a.button {
-  &.primary, &.secondary {
-    border-radius: 2px;
-    border: 1px solid;
+button,
+a.button {
+  &.primary,
+  &.secondary {
     display: inline-block;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9em;
-    line-height: 1.4;
     padding: 0.5em 3ex;
+    font-size: 0.9em;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 2px;
     transition: 0.2s background-color;
 
     &.inline {
-      font-size: 0.85em;
       padding: 4px 6px;
+      font-size: 0.85em;
     }
 
     &:disabled {
@@ -271,9 +265,9 @@ button, a.button {
   }
 
   &.primary {
+    color: theme-color(button-primary-text);
     background-color: theme-color(button-primary-background);
     border-color: theme-color(button-primary-border);
-    color: theme-color(button-primary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -283,9 +277,9 @@ button, a.button {
   }
 
   &.secondary {
+    color: theme-color(button-secondary-text);
     background-color: theme-color(button-secondary-background);
     border-color: theme-color(button-secondary-border);
-    color: theme-color(button-secondary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -315,47 +309,47 @@ button, a.button {
   }
 }
 
-
 @media (max-width: $tablet) {
-  html, body {
+  html,
+  body {
     font-size: 14px;
   }
 }
-
 
 .icon-button {
   $icon-size: 1.4em;
   $padding: 0.3em;
 
-  display: inline-block;
   position: relative;
-  padding: 0 0 0 #{$icon-size + 2*$padding};
+  display: inline-block;
   width: 0;
-  height: #{$icon-size + 2*$padding};
+  height: #{$icon-size + 2 * $padding};
+  padding: 0 0 0 #{$icon-size + 2 * $padding};
   overflow: hidden;
+  font-size: 1em;
+  color: theme-color(icon);
+  vertical-align: middle;
+  cursor: pointer;
   border: 1px solid;
   border-radius: 3px;
-  cursor: pointer;
-  vertical-align: middle;
-  color: theme-color(icon);
 
   &::-moz-focus-inner {
     border: 0;
   }
 
   & > .icon {
-    display: block;
     position: absolute;
-    width: $icon-size;
-    height: $icon-size;
     top: $padding;
     left: $padding;
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
     fill: currentcolor;
   }
 
   &:not(.close) {
-    background-color: theme-color(button-primary-background, 0);
-    border-color: theme-color(button-primary-background, 0);
+    background-color: theme-color(button-primary-background, 0%);
+    border-color: theme-color(button-primary-background, 0%);
 
     @include mobile-hover-emulation((
       background-color: button-primary-background-hover,
@@ -368,31 +362,31 @@ button, a.button {
     }
 
     &:active {
-      background-color: theme-color(blue-background-active);
-      border-color: rgba($blue-300, 0);
       color: $primary-text-light;
+      background-color: theme-color(blue-background-active);
+      border-color: rgba($blue-300, 0%);
     }
   }
 
   &.close {
-    background-color: rgba($red-700, 0);
-    border-color: rgba($red-700, 0);
+    background-color: rgba($red-700, 0%);
+    border-color: rgba($red-700, 0%);
 
     &:focus {
-      border-color: $red-700;
       color: theme-color(icon);
+      border-color: $red-700;
       outline: none;
     }
 
     &:hover {
-      background-color: $red-700;
       color: $primary-text-light;
+      background-color: $red-700;
     }
 
     &:active {
-      background-color: $red-300;
-      border-color: rgba($red-700, 0);
       color: $primary-text-light;
+      background-color: $red-300;
+      border-color: rgba($red-700, 0%);
     }
   }
 }
@@ -400,14 +394,14 @@ button, a.button {
 .card {
   $card-spacing: 1rem;
 
-  text-align: left;
+  position: relative;
+  box-sizing: border-box;
   padding: 1rem;
   margin-bottom: $card-spacing;
-  box-shadow: 0 2px 4px theme-color(divider);
-  box-sizing: border-box;
+  text-align: left;
   background-color: theme-color(card-background);
   border-radius: 3px;
-  position: relative;
+  box-shadow: 0 2px 4px theme-color(divider);
   fill: theme-color(icon);
   transition: background-color 0.3s;
 
@@ -447,10 +441,10 @@ button, a.button {
   }
 
   &:target {
-    animation-delay: 0.5s;
     animation-duration: 1.2s;
-    animation-fill-mode: backwards;
     animation-timing-function: ease;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 
     @include animation-keyframes {
       from {
@@ -467,9 +461,9 @@ button, a.button {
 
       & > h2,
       & > .name {
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       &:nth-child(2n) {
@@ -483,6 +477,7 @@ button, a.button {
       &:nth-child(3n+1) {
         margin-left: 0;
       }
+
       &:nth-child(3n+2),
       &:nth-child(3n) {
         margin-left: $card-spacing;
@@ -491,16 +486,16 @@ button, a.button {
   }
 
   .grid-4 > & {
-    @media (min-width: 440px) {
+    @media (width >= 440px) {
       display: inline-block;
       width: calc((100% - #{$card-spacing}) / 2);
       vertical-align: top;
 
       & > h2,
       & > .name {
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       &:nth-child(2n) {
@@ -508,24 +503,26 @@ button, a.button {
       }
     }
 
-    @media (min-width: 650px) {
+    @media (width >= 650px) {
       width: calc((100% - 2 * #{$card-spacing}) / 3);
 
       &:nth-child(3n+1) {
         margin-left: 0;
       }
+
       &:nth-child(3n+2),
       &:nth-child(3n) {
         margin-left: $card-spacing;
       }
     }
 
-    @media (min-width: 920px) {
+    @media (width >= 920px) {
       width: calc((100% - 3 * #{$card-spacing}) / 4);
 
       &:nth-child(4n+1) {
         margin-left: 0;
       }
+
       &:nth-child(4n+2),
       &:nth-child(4n+3),
       &:nth-child(4n) {
@@ -548,14 +545,13 @@ button, a.button {
 
     & li:first-child a {
       margin-top: 0;
-
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
 
     & li:last-child a {
-      border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
     }
   }
 
@@ -574,17 +570,17 @@ button, a.button {
 
 .list a,
 a.card.slim {
-  margin-top: 1px;
   padding: 0.5rem 1rem;
+  margin-top: 1px;
 }
 
 .list,
 .card.slim {
   a,
   a .hint {
-    white-space: nowrap;
-    text-overflow: ellipsis;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .icon {
@@ -594,24 +590,27 @@ a.card.slim {
     &.left {
       margin-right: 1em;
     }
+
     &.right {
       margin-left: 1em;
     }
   }
 }
 
-a.card, .link, .list a {
-  transition: background-color .2s, fill .2s;
-  text-decoration: none;
-  color: theme-color(text-primary);
+a.card,
+.link,
+.list a {
   display: block;
+  color: theme-color(text-primary);
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.2s, fill 0.2s;
 
   &:hover,
   &:focus {
     background-color: theme-color(hover-background);
-    fill: theme-color(text-primary);
     outline: none;
+    fill: theme-color(text-primary);
 
     &.dark {
       fill: $primary-text-light;
@@ -641,8 +640,8 @@ a.card, .link, .list a {
 
 .card-category,
 .big-button {
-  padding-left: 5rem;
   min-height: 5rem;
+  padding-left: 5rem;
 
   & > .icon {
     position: absolute;
@@ -664,16 +663,17 @@ a.card, .link, .list a {
 // display mode cards in a 2-col layout
 @media (min-width: $tablet) {
   .fixture-mode {
-    width: calc(50% - .5rem);
+    width: calc(50% - 0.5rem);
 
     &:nth-child(odd) {
-      margin-right: .5rem;
       float: left;
+      margin-right: 0.5rem;
       clear: left;
     }
+
     &:nth-child(even) {
-      margin-left: .5rem;
       float: right;
+      margin-left: 0.5rem;
       clear: right;
     }
   }
@@ -685,10 +685,11 @@ a.card, .link, .list a {
     height: 24px;
 
     &.left {
-      margin-right: .6em;
+      margin-right: 0.6em;
     }
+
     &.right {
-      margin-left: .6em;
+      margin-left: 0.6em;
     }
   }
 }

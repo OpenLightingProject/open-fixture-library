@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-const { readdir } = require(`fs/promises`);
-const path = require(`path`);
-const chalk = require(`chalk`);
-const minimist = require(`minimist`);
+import { readdir } from 'fs/promises';
+import path from 'path';
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-const getAjvValidator = require(`../lib/ajv-validator.js`);
-const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
-const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
-const importJson = require(`../lib/import-json.js`);
+import getAjvValidator from '../lib/ajv-validator.js';
+import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
+import importJson from '../lib/import-json.js';
+import { checkFixture, checkUniqueness } from './fixture-valid.js';
 
 
 const cliArguments = minimist(process.argv.slice(2), {
@@ -16,10 +16,11 @@ const cliArguments = minimist(process.argv.slice(2), {
   alias: { h: `help`, a: `all-fixtures` },
 });
 
+const scriptName = import.meta.url.split(`/`).pop();
 
 const helpMessage = [
   `Check validity of some/all fixtures`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} -a | -h | fixtures [...]`,
+  `Usage: node ${scriptName} -a | -h | fixtures [...]`,
   `Options:`,
   `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
   `     has to resolve to the form 'manufacturer/fixture'`,
@@ -39,12 +40,12 @@ if (cliArguments.help || (fixturePaths.length === 0 && !cliArguments.a)) {
 }
 
 /**
- * @typedef {Object} UniqueValues
- * @property {Set.<String>} manNames All manufacturer names
- * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Object.<String, Set.<String>>} fixRdmIdsInMan All RDM ids by manufacturer key
- * @property {Set.<String>} fixShortNames All fixture short names
+ * @typedef {object} UniqueValues
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Record<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Record<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Record<string, Set<string>>} fixRdmIdsInMan All RDM ids by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
  */
 /** @type {UniqueValues} */
 const uniqueValues = {
@@ -56,22 +57,57 @@ const uniqueValues = {
   fixShortNames: new Set(),
 };
 
-const fixtureDirectory = path.join(__dirname, `..`, `fixtures/`);
+const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
+
+try {
+  const results = await runTests();
+
+  let totalFails = 0;
+  let totalWarnings = 0;
+
+  // each file
+  for (const result of results) {
+    const failed = result.errors.length > 0;
+    totalFails += failed ? 1 : 0;
+    totalWarnings += result.warnings.length;
+
+    printFileResult(result);
+  }
+
+  // newline
+  console.log();
+
+  // summary
+  if (totalWarnings > 0) {
+    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+  }
+
+  if (totalFails === 0) {
+    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
+    process.exit(0);
+  }
+
+  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  process.exit(1);
+}
+catch (error) {
+  console.error(chalk.red(`[Error]`), `Test errored:`, error);
+}
 
 /**
- * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of result objects.
+ * @returns {Promise<object[]>} A Promise that resolves to an array of result objects.
  */
 async function runTests() {
   const promises = [];
 
   if (cliArguments.a) {
-    const directoryEntries = await readdir(fixtureDirectory, { withFileTypes: true });
+    const directoryEntries = await readdir(fixtureDirectoryUrl, { withFileTypes: true });
     const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 
     for (const manufacturerKey of manufacturerKeys) {
-      const manufacturersDirectory = path.join(fixtureDirectory, manufacturerKey);
+      const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
 
-      for (const file of await readdir(manufacturersDirectory)) {
+      for (const file of await readdir(manufacturersDirectoryUrl)) {
         if (path.extname(file) === `.json`) {
           const fixtureKey = path.basename(file, `.json`);
           promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
@@ -104,9 +140,9 @@ async function runTests() {
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {String} manufacturerKey The manufacturer key.
- * @param {String} fixtureKey The fixture key.
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @param {string} manufacturerKey The manufacturer key.
+ * @param {string} fixtureKey The fixture key.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkFixtureFile(manufacturerKey, fixtureKey) {
   const filename = `${manufacturerKey}/${fixtureKey}.json`;
@@ -117,7 +153,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
   };
 
   try {
-    const fixtureJson = await importJson(filename, fixtureDirectory);
+    const fixtureJson = await importJson(filename, fixtureDirectoryUrl);
     Object.assign(result, await checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
   }
   catch (error) {
@@ -128,7 +164,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
 
 /**
  * Checks Manufacturers file
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkManufacturers() {
   const result = {
@@ -138,7 +174,7 @@ async function checkManufacturers() {
   };
 
   try {
-    const manufacturers = await importJson(result.name, fixtureDirectory);
+    const manufacturers = await importJson(result.name, fixtureDirectoryUrl);
     const validate = await getAjvValidator(`manufacturers`);
     const valid = validate(manufacturers);
     if (!valid) {
@@ -180,44 +216,22 @@ async function checkManufacturers() {
 }
 
 
-// print results
-runTests().then(results => {
-  let totalFails = 0;
-  let totalWarnings = 0;
+/**
+ * @param {object} result The result object for a single file.
+ */
+function printFileResult(result) {
+  const failed = result.errors.length > 0;
 
-  // each file
-  results.forEach(result => {
-    const failed = result.errors.length > 0;
+  console.log(
+    failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
+    result.name,
+  );
 
-    console.log(
-      failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
-      result.name,
-    );
-
-    totalFails += failed ? 1 : 0;
-    for (const error of result.errors) {
-      console.log(`└`, chalk.red(`Error:`), error);
-    }
-
-    totalWarnings += result.warnings.length;
-    for (const warning of result.warnings) {
-      console.log(`└`, chalk.yellow(`Warning:`), warning);
-    }
-  });
-
-  // newline
-  console.log();
-
-  // summary
-  if (totalWarnings > 0) {
-    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+  for (const error of result.errors) {
+    console.log(`└`, chalk.red(`Error:`), error);
   }
 
-  if (totalFails === 0) {
-    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
-    process.exit(0);
+  for (const warning of result.warnings) {
+    console.log(`└`, chalk.yellow(`Warning:`), warning);
   }
-
-  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
-  process.exit(1);
-}).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
+}

@@ -28,6 +28,7 @@
 
   "type": "object",
   "properties": {
+    "$schema": { "const": "../../schemas/plugin.json" },
     "name": {
       "type": "string"
     },
@@ -42,12 +43,12 @@
     "links": {
       "type": "object",
       "minProperties": 1,
-      "properties": {
-        "Website": { "$ref": "#/definitions/urlString" },
-        "Fixture library download": { "$ref": "#/definitions/urlString" },
-        "Fixture format documentation": { "$ref": "#/definitions/urlString" }
-      },
-      "additionalProperties": { "$ref": "#/definitions/urlString" }
+      "additionalProperties": { "$ref": "#/definitions/urlString" },
+      "default": {
+        "Website": "",
+        "Fixture library download": "",
+        "Fixture format documentation": ""
+      }
     },
     "fixtureUsage": { "$ref": "#/definitions/htmlStringLines" },
     "fileLocations": {
@@ -56,21 +57,18 @@
       "properties": {
         "subDirectoriesAllowed": {
           "type": "boolean"
-        },
-        "Windows": { "$ref": "#/definitions/fileLocations" },
-        "Mac OS": { "$ref": "#/definitions/fileLocations" },
-        "Linux": { "$ref": "#/definitions/fileLocations" }
+        }
       },
-      "additionalProperties": { "$ref": "#/definitions/fileLocations" }
+      "additionalProperties": { "$ref": "#/definitions/fileLocations" },
+      "default": {
+        "Windows": "",
+        "Mac OS": "",
+        "Linux": ""
+      }
     },
     "additionalInfo": { "$ref": "#/definitions/htmlStringLines" },
     "helpWanted": { "type": "string" }
   },
-  "required": ["name", "description", "links"],
-  "patternProperties": {
-    "^\\$schema$": {
-      "const": "../../schemas/plugin.json"
-    }
-  },
+  "required": ["$schema", "name", "description", "links"],
   "additionalProperties": false
 }

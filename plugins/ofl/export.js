@@ -1,20 +1,21 @@
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
-const importJson = require(`../../lib/import-json.js`);
+import { fixtureSchema } from '../../lib/esm-shim.cjs';
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
+import importJson from '../../lib/import-json.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-module.exports.version = require(`../../schemas/fixture.json`).version;
+export const version = fixtureSchema.version;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportOfl(fixtures, options) {
-  const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
+export async function exportFixtures(fixtures, options) {
+  const displayedPluginVersion = options.displayedPluginVersion || version;
 
   const usedManufacturers = new Set();
 
@@ -22,23 +23,17 @@ module.exports.exportFixtures = async function exportOfl(fixtures, options) {
   const files = fixtures.map(fixture => {
     usedManufacturers.add(fixture.manufacturer.key);
 
-
-    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/fixture.json`;
-
-    jsonData.fixtureKey = fixture.key;
-    jsonData.manufacturerKey = fixture.manufacturer.key;
-    jsonData.oflURL = fixture.url;
-
-    return {
-      name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: fixtureJsonStringify(jsonData),
-      mimetype: `application/ofl-fixture`,
-      fixtures: [fixture],
-    };
+    try {
+      return getFixtureFile(fixture, displayedPluginVersion);
+    }
+    catch (error) {
+      throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+        cause: error,
+      });
+    }
   });
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   // manufacturers.json file
   const usedManufacturerData = {
@@ -56,4 +51,25 @@ module.exports.exportFixtures = async function exportOfl(fixtures, options) {
   });
 
   return files;
-};
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {string} displayedPluginVersion The plugin version that should be displayed in the exported file.
+ * @returns {object} The generated fixture JSON file.
+ */
+function getFixtureFile(fixture, displayedPluginVersion) {
+  const jsonData = structuredClone(fixture.jsonObject);
+  jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/fixture.json`;
+
+  jsonData.fixtureKey = fixture.key;
+  jsonData.manufacturerKey = fixture.manufacturer.key;
+  jsonData.oflURL = fixture.url;
+
+  return {
+    name: `${fixture.manufacturer.key}/${fixture.key}.json`,
+    content: fixtureJsonStringify(jsonData),
+    mimetype: `application/ofl-fixture`,
+    fixtures: [fixture],
+  };
+}

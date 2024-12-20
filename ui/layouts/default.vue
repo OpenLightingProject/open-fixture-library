@@ -25,37 +25,38 @@
   position: absolute;
   top: -1000px;
   left: -1000px;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   z-index: 9999;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 
   &:active,
   &:focus,
   &:hover {
-    left: 0;
     top: 0;
+    left: 0;
     width: auto;
     height: auto;
-    overflow: visible;
-    background: red;
-    color: #fff;
     padding: 4px;
+    overflow: visible;
+    color: #ffffff;
+    background: red;
   }
 }
 
 #content {
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden;
+  max-width: 1000px;
+  min-height: 100vh;
   padding: 5em 10px 10px;
+  margin: 0 auto;
+  overflow: hidden;
 
   @media (max-width: $tablet) {
     padding-top: 6.2em;
   }
 }
+
 #content:focus {
   outline: 0;
 }
@@ -63,8 +64,8 @@
 
 
 <script>
-import HeaderBar from '../components/HeaderBar.vue';
 import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
+import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {

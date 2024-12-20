@@ -1,0 +1,736 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORado 1 Solo",
+  "shortName": "Solo 1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Da Graca Neves Eric", "Ken Harris"],
+    "createDate": "2022-04-19",
+    "lastModifyDate": "2024-10-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/colorado-1-solo/"
+    ],
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads//2018/01/COLORado_1_Solo_UM_Rev8.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=0hqRufKRupk"
+    ]
+  },
+  "physical": {
+    "dimensions": [242, 176, 346],
+    "weight": 5.4,
+    "power": 65,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "lumens": 780
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [4, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 195],
+          "type": "ColorPreset",
+          "comment": "Full White"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorPreset",
+          "comment": "White 1"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White 2"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White 3"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White 4"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White 5"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White 6"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White 7"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White  8"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White 9"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White 10"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White 11"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White 12"
+        }
+      ]
+    },
+    "White Color Macros": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "White 1"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "White 2"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "White 3"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "White 4"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "White 5"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "White 6"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "White 7"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White  8"
+        },
+        {
+          "dmxRange": [171, 190],
+          "type": "ColorPreset",
+          "comment": "White 9"
+        },
+        {
+          "dmxRange": [191, 210],
+          "type": "ColorPreset",
+          "comment": "White 10"
+        },
+        {
+          "dmxRange": [211, 230],
+          "type": "ColorPreset",
+          "comment": "White 11"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorPreset",
+          "comment": "White 12"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "Auto 1",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Auto 2",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Auto 3",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Auto 4",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Auto 5",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Auto 6",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Auto 7",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Auto 8",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "comment": "Auto 9",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "comment": "Auto 10",
+          "switchChannels": {
+            "Red / Step Duration": "Red",
+            "Green / Fade Duration": "Green",
+            "Dimmer fine / Step Duration": "Dimmer fine",
+            "Red / Fade Duration": "Red"
+          }
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "comment": "Custom 1",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "ColorPreset",
+          "comment": "Custom 2",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "ColorPreset",
+          "comment": "Custom 3",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "ColorPreset",
+          "comment": "Custom 4",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "ColorPreset",
+          "comment": "Custom 5",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "ColorPreset",
+          "comment": "Custom 6",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ColorPreset",
+          "comment": "Custom 7",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "ColorPreset",
+          "comment": "Custom 8",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "ColorPreset",
+          "comment": "Custom 9",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorPreset",
+          "comment": "Custom 10",
+          "switchChannels": {
+            "Red / Step Duration": "Step Duration",
+            "Green / Fade Duration": "Fade Duration",
+            "Dimmer fine / Step Duration": "Step Duration",
+            "Red / Fade Duration": "Fade Duration"
+          }
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Only when using Auto 1-10"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "4deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Zoom Control": {
+      "name": "Zoom",
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance",
+          "comment": "Reset Zoom"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Preset Dimmer From Display Menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Maintenance",
+          "comment": "NonLinear Dimmer Curve 1 (Fastest)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Maintenance",
+          "comment": "NonLinear Dimmer Curve 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "comment": "NonLinear Dimmer Curve 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Maintenance",
+          "comment": "NonLinear Dimmer Curve 4 (Slowest)"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Step Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "long",
+        "durationEnd": "short",
+        "helpWanted": "Is this the correct direction (same as menu control)?"
+      }
+    },
+    "Fade Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "long",
+        "durationEnd": "short",
+        "helpWanted": "Is this the correct direction (same as menu control)?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Std. Y",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine / Step Duration",
+        "Red / Fade Duration",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Macros",
+        "Strobe",
+        "Programs",
+        "Auto Speed",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "TR16",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine / Step Duration",
+        "Red / Fade Duration",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Macros",
+        "Strobe",
+        "Programs",
+        "Auto Speed",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "TOUR",
+      "channels": [
+        "Dimmer",
+        "Red / Step Duration",
+        "Green / Fade Duration",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Programs",
+        "Auto Speed",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "SSP",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "HSIC",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "White Color Macros",
+        "Strobe",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}

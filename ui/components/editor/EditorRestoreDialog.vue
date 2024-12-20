@@ -2,7 +2,7 @@
   <A11yDialog
     id="restore-dialog"
     is-alert-dialog
-    :shown="restoredData !== null"
+    :shown="modelValue !== undefined"
     title="Auto-saved fixture data found">
 
     Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?
@@ -26,16 +26,16 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import {
-  getEmptyFixture,
-  getEmptyLink,
-  getEmptyPhysical,
-  getEmptyMode,
+  getEmptyCapability,
   getEmptyChannel,
   getEmptyFineChannel,
-  getEmptyCapability,
+  getEmptyFixture,
+  getEmptyLink,
+  getEmptyMode,
+  getEmptyPhysical,
   getSanitizedChannel,
-  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -45,21 +45,22 @@ export default {
     A11yDialog,
   },
   model: {
-    prop: `restoredData`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    restoredData: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    modelValue: objectProp().optional,
+  },
+  emits: {
+    'update:model-value': value => true,
+    'restore-complete': () => true,
   },
   computed: {
     restoredDate() {
-      if (this.restoredData === null) {
-        return null;
+      if (this.modelValue === undefined) {
+        return undefined;
       }
-      return (new Date(this.restoredData.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
+      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
     },
   },
   methods: {
@@ -67,21 +68,21 @@ export default {
       // put all items except the last one back
       localStorage.setItem(`autoSave`, JSON.stringify(JSON.parse(localStorage.getItem(`autoSave`)).slice(0, -1)));
 
-      this.$emit(`input`, null);
+      this.$emit(`update:model-value`, undefined);
       this.$emit(`restore-complete`);
     },
 
     async applyRestored() {
-      const restoredData = clone(this.restoredData);
+      const modelValue = structuredClone(this.modelValue);
 
       // closes dialog
-      this.$emit(`input`, null);
+      this.$emit(`update:model-value`, undefined);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
       await this.$nextTick();
 
-      this.$parent.fixture = getRestoredFixture(restoredData.fixture);
-      this.$parent.channel = getRestoredChannel(restoredData.channel, true);
+      this.$parent.fixture = getRestoredFixture(modelValue.fixture);
+      this.$parent.channel = getRestoredChannel(modelValue.channel, true);
 
       await this.$nextTick();
       this.$emit(`restore-complete`);
@@ -90,8 +91,8 @@ export default {
 };
 
 /**
- * @param {Object} fixture The fixture object from the saved user data.
- * @returns {Object} A fixture editor fixture object with all required properties.
+ * @param {object} fixture The fixture object from the saved user data.
+ * @returns {object} A fixture editor fixture object with all required properties.
  */
 function getRestoredFixture(fixture) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
@@ -115,9 +116,9 @@ function getRestoredFixture(fixture) {
 }
 
 /**
- * @param {Object} channel The channel object from the saved user data.
+ * @param {object} channel The channel object from the saved user data.
  * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
- * @returns {Object} A fixture editor channel object with all required properties.
+ * @returns {object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {
   if (`coarseChannelId` in channel) {

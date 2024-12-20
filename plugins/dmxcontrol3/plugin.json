@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "DMXControl 3 (DDF3)",
+  "description": [
+    "<p>Free lighting software, especially common in Germany, developed and",
+    "distributed by the non-profit association DMXControl Projects e.V.,",
+    "works only on Windows.</p>",
+    "",
+    "<p>This plugin handles <em>Device Definition Files</em> (<em>DDF</em>)",
+    "of version 3, used in DMXControl 3. They are saved as XML files",
+    "(one file per mode) and can be created with the DDFCreator program.</p>"
+  ],
+  "links": {
+    "Website": "https://www.dmxcontrol.de/",
+    "Tutorial on how to create a device definition (German)": "https://wiki-de.dmxcontrol-projects.org/index.php?title=Lektion_20_Tut3",
+    "Device definition specification (German)": "https://wiki-de.dmxcontrol-projects.org/index.php?title=DDF_DMXC3"
+  },
+  "fixtureUsage": [
+    "<p>Import fixture in Device Listing window (Devices &gt; Device Listing),",
+    "then patch it (Display &gt; Patch).</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "Windows": {
+      "main": "C:\\Program Files\\DMXControl3\\Kernel\\Devices\\"
+    }
+  },
+  "additionalInfo": [
+    "<p>Definition files may be stored in subfolders, but the filenames still",
+    "need to be unique (<code>Devices\\manA\\fix123.xml</code> and",
+    "<code>Devices\\manB\\fix123.xml</code> doesn't work). Note that the",
+    "DDFCreator software doesn't recognize subfolders.</p>"
+  ],
+  "helpWanted": "Note that this plugin does not produce very reliable DDF3 fixture definitions yet, so please double-check the output and report any issues. Code contributions via pull requests are of course very welcome!"
+}

@@ -48,7 +48,7 @@
     "format": "color-hex"
   },
   "dimensionsXYZ": {
-    "$comment": "width, height, depth (in mm)",
+    "description": "width, height, depth (in mm)",
     "type": "array",
     "minItems": 3,
     "maxItems": 3,
@@ -65,9 +65,13 @@
   },
   "goboResourceString": {
     "type": "string",
-    "oneOf": [
-      { "pattern": "^gobos/[a-z0-9-]+$" },
-      { "pattern": "^gobos/aliases/[a-z0-9_.-]+/" }
+    "pattern": "^gobos/[a-z0-9-]+$|^gobos/aliases/[a-z0-9_.-]+/"
+  },
+  "powerConnectorType": {
+    "enum": [
+      "input only",
+      "output only",
+      "input and output"
     ]
   },
 

@@ -63,6 +63,8 @@ A fixture's `shortName` must be unique amongst all fixtures.
 
 The `physical` section describes properties not directly used in the DMX protocol, but often in lighting control software to display a preview of the fixtures in action.
 
+The `lastModifyDate` should *NOT* be updated when updating fixture data that is not related to the fixtures capabilities or attributes. This includes things such as changing an author's names, updating links, or updating the order of channel modes.
+
 
 ### Modes
 
@@ -70,7 +72,7 @@ A fixture can have multiple *modes* (also sometimes called *personalities*) like
 
 A mode can contain the `physical` property to override specific physical data of the fixture. E.g. one mode could set the `power` value different than the fixture default.
 
-A mode's `shortName` must be unique amongst all modes of the respective fixture.
+A mode's `shortName` must be unique amongst all modes of the respective fixture. The `shortname` should be similar to what is displayed on the device's LCD/LED displays if that information is known (e.g. from the manual). If not known, the standard `1ch` format should be followed.
 
 
 ### Channels
@@ -371,7 +373,7 @@ By setting the property `isShaking` to `slot`, one can specify that only the cur
 
 We link to [Open Lighting's RDM database](http://rdm.openlighting.org) if possible. Thus, we need to specify the RDM manufacturer ID per manufacturer and the RDM model ID per fixture. Additionally, each mode is mapped to the respective RDM personality via the `rdmPersonalityIndex` property. To ensure compatibility, we also track, for which RDM fixture software (firmware) version the mode indices are specified.
 
-If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`main.js`](../main.js) and `views/pages/rdm-*.js`).
+If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`ui/pages/rdm.vue`](../ui/pages/rdm.vue)).
 
 
 ## Fixture redirects

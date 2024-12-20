@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nebula 18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous", "JonahKr"],
+    "createDate": "2021-07-06",
+    "lastModifyDate": "2021-07-06"
+  },
+  "links": {
+    "manual": [
+      "http://amproweb.com/_admin/files/750646Tecshow%20Nebula%2018%20B.pdf"
+    ],
+    "productPage": [
+      "http://tecshow.amproweb.com/en/nebula18"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=i1yWs5f5GKQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 125, 310],
+    "weight": 6,
+    "DMXconnector": "3-pin",
+    "power": 216,
+    "bulb": {
+      "type": "18 RGBAW+UV 12W LEDs",
+      "lumens": 4389
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which colors can be selected at which DMX values?"
+      }
+    },
+    "Strobe Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "The manual doesn't specify the exact behavior."
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "helpWanted": "The manual doesn't specify the exact behavior."
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect 1",
+          "helpWanted": "The manual doesn't specify the exact behavior."
+        },
+        {
+          "dmxRange": [200, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect 2",
+          "helpWanted": "The manual doesn't specify the exact behavior."
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Color Walking": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "White - Red - Yellow - Pink - Green - Orange - Blue - Light salmon pink"
+        }
+      ]
+    },
+    "Effect Speed / Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 199],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "helpWanted": "Is this capability low…high or high…low?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "UV",
+        "Amber"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "UV",
+        "Amber",
+        "Color",
+        "Strobe Effect",
+        "Color Walking",
+        "Effect Speed / Sound Sensitivity"
+      ]
+    }
+  ]
+}

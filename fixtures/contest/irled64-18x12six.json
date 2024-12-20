@@ -1,0 +1,614 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "irLED64 18x12SIX",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Edrig", "Ryan Goodwin"],
+    "createDate": "2023-04-24",
+    "lastModifyDate": "2023-04-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.contest-lighting.com/downloads/IrLED64-18x12SIX_manuel-V1-en.pdf"
+    ],
+    "productPage": [
+      "https://www.contest-lighting.com/en/index.php?code=H10138&cat1=l10000&cat2=l24000&cat3=l12007&lang=en"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 270, 220],
+    "weight": 5.4,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 189],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [190, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Full power"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled, i.e. when is the light constantly on or off?"
+      }
+    },
+    "Program": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Off",
+          "colors": ["#000000"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff7f00"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff007f"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "Cold White",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "Full White",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "comment": "Light Pink",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "comment": "Light Apricot",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "comment": "Light Ocre",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "comment": "Green Pearl",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "ColorPreset",
+          "comment": "Grey Pearl",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorPreset",
+          "comment": "Green Vernoese",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "ColorPreset",
+          "comment": "Blue Lagon",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "ColorPreset",
+          "comment": "Cerulean Blue",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "Fluo",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "Candy",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "ColorPreset",
+          "comment": "Sunset",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorPreset",
+          "comment": "Ultra Violet",
+          "colors": ["#8800ff"],
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "ColorPreset",
+          "comment": "Ultra Green",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "ColorPreset",
+          "comment": "Ultra Blue",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "ColorPreset",
+          "comment": "Ultra Pink",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "ColorPreset",
+          "comment": "Ultra Light",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
+          }
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Effect",
+          "effectName": "Macro 1",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Effect",
+          "effectName": "Macro 2",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Effect",
+          "effectName": "Macro 3",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Effect",
+          "effectName": "Macro 4",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Effect",
+          "effectName": "Macro 5",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "Effect",
+          "effectName": "Macro 6",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "Effect",
+          "effectName": "Macro 7",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "Effect",
+          "effectName": "Macro 8",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "Effect",
+          "effectName": "Macro 9",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "Effect",
+          "effectName": "Macro 10",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "Effect",
+          "effectName": "Macro 11",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "Effect",
+          "effectName": "Macro 12",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Effect",
+          "effectName": "Macro 13",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Effect",
+          "effectName": "Macro 14",
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [226, 233],
+          "type": "Effect",
+          "effectName": "Music-sensitive Macro 1",
+          "soundControlled": true,
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [234, 241],
+          "type": "Effect",
+          "effectName": "Music-sensitive Macro 7",
+          "soundControlled": true,
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [242, 249],
+          "type": "Effect",
+          "effectName": "Music-sensitive Macro 11",
+          "soundControlled": true,
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Music-sensitive Macro 14",
+          "soundControlled": true,
+          "switchChannels": {
+            "Dimmer / Macro Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mic Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Program",
+        "Dimmer / Macro Speed / Mic Sensitivity"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer / Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer / Strobe",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer / Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer / Macro Speed / Mic Sensitivity",
+        "Strobe",
+        "Program"
+      ]
+    }
+  ]
+}

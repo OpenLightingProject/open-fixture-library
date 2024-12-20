@@ -77,17 +77,18 @@
 
     <div v-else-if="state === `preview`">
       <div v-if="previewFixture" class="fixture-page">
-        <header class="fixture-header">
-          <h1 class="title">
-            {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
-            <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
-          </h1>
+        <FixtureHeader>
+          <template #title>
+            <h1>
+              {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
+              <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
+            </h1>
+          </template>
 
           <DownloadButton
             v-if="previewFixtureResults.errors.length === 0"
-            :show-help="false"
             :editor-fixtures="previewFixtureCreateResult" />
-        </header>
+        </FixtureHeader>
 
         <section v-if="previewFixtureResults.warnings.length > 0" class="card yellow">
           <strong>Warnings:<br></strong>
@@ -118,7 +119,7 @@
 
     <div v-else-if="state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
-      <a :href="pullRequestUrl" target="_blank">pull request</a>).
+      <a :href="pullRequestUrl" target="_blank" rel="noopener">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
       Thank you for your contribution!
 
@@ -128,9 +129,14 @@
         <DownloadButton
           v-if="!hasValidationErrors"
           button-style="select"
-          :show-help="false"
           :editor-fixtures="fixtureCreateResult" />
-        <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
+        <a
+          :href="pullRequestUrl"
+          class="button primary"
+          target="_blank"
+          rel="noopener">
+          See pull request
+        </a>
       </div>
     </div>
 
@@ -138,7 +144,10 @@
       Unfortunately, there was an error while uploading. Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
-        target="_blank">manually submit them to GitHub</a>.
+        target="_blank"
+        rel="noopener">
+        manually submit them to GitHub
+      </a>.
 
       <textarea v-model="rawData" readonly />
 
@@ -147,7 +156,10 @@
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
-          target="_blank">Submit manually</a>
+          target="_blank"
+          rel="noopener">
+          Submit manually
+        </a>
       </div>
     </div>
 
@@ -160,15 +172,15 @@
 }
 
 .preview-fixture-chooser {
-  vertical-align: middle;
-  font-size: 1rem;
   width: 350px;
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
 .fixture-page {
-  background: theme-color(page-background);
+  padding: 0.1rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
-  padding: .1rem 1rem 1rem;
+  background: theme-color(page-background);
 
   & ::v-deep .help-wanted .actions {
     cursor: not-allowed;
@@ -183,22 +195,22 @@
 .button-bar {
   position: sticky;
   bottom: 0;
-  background: theme-color(dialog-background);
   padding: 0.6rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
+  background: theme-color(dialog-background);
   box-shadow: 0 0 4px theme-color(icon-inactive);
 }
 </style>
 
 <script>
-import { clone } from '../../assets/scripts/editor-utils.js';
-
-import Manufacturer from '../../../lib/model/Manufacturer';
-import Fixture from '../../../lib/model/Fixture';
+import { stringProp } from 'vue-ts-types';
+import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
 import FixturePage from '../fixture-page/FixturePage.vue';
+import FixtureHeader from '../FixtureHeader.vue';
 
 const stateTitles = {
   closed: `Closed`,
@@ -219,22 +231,16 @@ export default {
     A11yDialog,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
   },
   props: {
-    endpoint: {
-      type: String,
-      required: true,
-    },
-    githubUsername: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    githubComment: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    endpoint: stringProp().required,
+    githubUsername: stringProp().optional,
+    githubComment: stringProp().optional,
+  },
+  emits: {
+    success: () => true,
+    reset: () => true,
   },
   data() {
     return {
@@ -267,8 +273,8 @@ export default {
       const rawData = JSON.stringify(this.requestBody, null, 2);
 
       if (this.state === `error`) {
-        // eslint-disable-next-line quotes, prefer-template
-        return '```json\n' + rawData + '\n```\n\n' + this.error;
+        const backticks = '```'; // eslint-disable-line quotes
+        return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
       }
 
       return rawData;
@@ -340,12 +346,12 @@ export default {
     /**
      * Called from fixture editor to open the dialog.
      * @public
-     * @param {*} requestBody The data to pass to the API endpoint.
+     * @param {any} requestBody The data to pass to the API endpoint.
      */
     async validate(requestBody) {
       this.requestBody = requestBody;
 
-      console.log(`validate`, clone(this.requestBody));
+      console.log(`validate`, structuredClone(this.requestBody));
 
       this.state = `validating`;
       try {
@@ -376,11 +382,11 @@ export default {
     async onSubmit() {
       this.requestBody = {
         fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername,
-        githubComment: this.githubComment,
+        githubUsername: this.githubUsername ?? null,
+        githubComment: this.githubComment ?? null,
       };
 
-      console.log(`submit`, clone(this.requestBody));
+      console.log(`submit`, structuredClone(this.requestBody));
 
       this.state = `uploading`;
       try {

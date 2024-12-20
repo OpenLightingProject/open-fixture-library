@@ -1,26 +1,30 @@
-const express = require(`express`);
-const chalk = require(`chalk`);
-const cors = require(`cors`);
-const OpenAPIBackend = require(`openapi-backend`).default;
-const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
+import { fileURLToPath } from 'url';
+import chalk from 'chalk';
+import cors from 'cors';
+import express from 'express';
+import { OpenAPIBackend } from 'openapi-backend';
+import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
+import { sendJson } from '../../lib/server-response-helpers.js';
 
-const routeHandlers = require(`./routes.js`);
+import * as routeHandlers from './routes.js';
 
 /**
- * @typedef {Object} ApiResponse
- * @property {Number} [statusCode=200] The HTTP status code set for the response.
- * @property {Object} body The response body that should be sent as JSON back to the API client.
+ * @typedef {object} ApiResponse
+ * @property {number} [statusCode=200] The HTTP status code set for the response.
+ * @property {object} body The response body that should be sent as JSON back to the API client.
  */
 
-const router = express.Router();
+const app = express();
+
+// support JSON encoded bodies
+app.use(express.json({ limit: `50mb` }));
 
 const corsWhitelist = [
   /[./]open-fixture-library\.org(?::\d+|)$/,
-  /[./]open-fixture-library-pr-\d+\.herokuapp\.com$/,
   /\/localhost(?::\d+|)$/,
 ];
 
-router.use(cors({
+app.use(cors({
   origin(origin, callback) {
     const corsAllowed = process.env.NODE_ENV !== `production`
       || !origin // allow non XHR/fetch requests
@@ -32,13 +36,10 @@ router.use(cors({
 }));
 
 
-// The Regex is actually not unsafe, just in a more concise form than the one
-// that security/detect-unsafe-regex would not complain about.
-// eslint-disable-next-line security/detect-unsafe-regex
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({
-  definition: `${__dirname}/openapi.json`,
+  definition: fileURLToPath(new URL(`openapi.json`, import.meta.url)),
   strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
@@ -47,41 +48,51 @@ const api = new OpenAPIBackend({
   },
   handlers: {
     ...routeHandlers,
-    validationFail(context, request, response) {
-      let error = context.validation.errors;
+    validationFail({ validation, request, operation }) {
+      let error = validation.errors;
 
       if (typeof error !== `string`) {
         error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
       }
 
-      const errorDescription = `API request for ${request.originalUrl} (${context.operation.operationId}) doesn't match schema:`;
+      const errorDescription = `API request for ${request.originalUrl} (${operation.operationId}) doesn't match schema:`;
 
       console.error(chalk.bgRed(errorDescription));
       console.error(error);
 
-      return response.status(400).json({
-        error: `${errorDescription}\n${error}`,
-      });
+      return {
+        statusCode: 400,
+        body: { error: `${errorDescription}\n${error}` },
+      };
     },
-    notFound(context, request, response) {
-      return response.status(404).json({ error: `Not found` });
+    notFound(context) {
+      return {
+        statusCode: 404,
+        body: { error: `Not found` },
+      };
     },
-    methodNotAllowed(context, request, response) {
-      return response.status(405).json({ error: `Method not allowed` });
+    methodNotAllowed(context) {
+      return {
+        statusCode: 405,
+        body: { error: `Method not allowed` },
+      };
     },
-    notImplemented(context, request, response) {
-      return response.status(501).json({ error: `No handler registered for operation` });
+    notImplemented(context) {
+      return {
+        statusCode: 501,
+        body: { error: `No handler registered for operation` },
+      };
     },
-    postResponseHandler(context, request, response) {
-      if (!context.response || !context.operation) {
+    postResponseHandler({ request, response, operation }) {
+      if (!response || !operation) {
         return null;
       }
 
-      const { statusCode = 200, body } = /** @type {ApiResponse} */ (context.response);
+      const { statusCode = 200, body } = /** @type {ApiResponse} */ response;
 
       // validate API responses in development mode
       if (process.env.NODE_ENV !== `production`) {
-        const valid = api.validateResponse(body, context.operation, statusCode);
+        const valid = api.validateResponse(body, operation, statusCode);
 
         if (valid.errors) {
           let error = valid.errors;
@@ -90,18 +101,22 @@ const api = new OpenAPIBackend({
             error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
           }
 
-          const errorDescription = `API response for ${request.originalUrl} (${context.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+          const errorDescription = `API response for ${request.originalUrl} (${operation.operationId}, status code ${statusCode}) doesn't match schema:`;
 
           console.error(chalk.bgRed(errorDescription));
           console.error(error);
         }
       }
 
-      return response.status(statusCode).json(body);
+      return response;
     },
   },
 });
 
-router.use((request, response) => api.handleRequest(request, request, response));
+app.use(async (request, response) => {
+  const { statusCode = 200, body } = await api.handleRequest(request);
+  response.statusCode = statusCode;
+  sendJson(response, body);
+});
 
-module.exports = router;
+export default app;

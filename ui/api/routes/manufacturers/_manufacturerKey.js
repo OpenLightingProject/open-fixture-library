@@ -1,4 +1,4 @@
-const importJson = require(`../../../../lib/import-json.js`);
+import importJson from '../../../../lib/import-json.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -6,12 +6,12 @@ const importJson = require(`../../../../lib/import-json.js`);
 /**
  * Returns information about a specific manufacturer.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
-async function getManufacturerByKey({ request }) {
+export async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
   if (!(manufacturerKey in manufacturers) || manufacturerKey === `$schema`) {
     return {
       statusCode: 404,
@@ -21,8 +21,9 @@ async function getManufacturerByKey({ request }) {
     };
   }
 
-  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
-  const manufacturer = Object.assign({}, manufacturers[manufacturerKey], {
+  const register = await importJson(`../../../../fixtures/register.json`, import.meta.url);
+  const manufacturer = {
+    ...manufacturers[manufacturerKey],
     key: manufacturerKey,
     color: register.colors[manufacturerKey],
     fixtures: (register.manufacturers[manufacturerKey] || []).map(
@@ -30,16 +31,13 @@ async function getManufacturerByKey({ request }) {
         key: fixtureKey,
         name: register.filesystem[`${manufacturerKey}/${fixtureKey}`].name,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manufacturerKey}/${fixtureKey}`),
+          category => register.categories[category].includes(`${manufacturerKey}/${fixtureKey}`),
         ),
       }),
     ),
-  });
+  };
 
   return {
     body: manufacturer,
   };
 }
-
-
-module.exports = { getManufacturerByKey };
