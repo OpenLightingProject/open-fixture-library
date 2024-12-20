@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pollux 1200",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["freestyler laser fixture"],
+    "createDate": "2024-12-20",
+    "lastModifyDate": "2024-12-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2024/10/152.528_152.526_Pollux-Series_QSG_V2.0.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [215, 215, 191],
+    "weight": 2.5,
+    "power": 55
+  },
+  "availableChannels": {
+    "Model Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Maintenance",
+          "comment": "Audio Mode"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Maintenance",
+          "comment": "PRG Mode"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Maintenance",
+          "comment": "ILD Mode"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Maintenance",
+          "comment": "Manual Mode"
+        }
+      ]
+    },
+    "Pattern/folder select": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Mode"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Model Select",
+      "channels": [
+        "Model Select",
+        "Pattern/folder select",
+        "Strobe"
+      ]
+    }
+  ]
+}
