@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "EPRO100",
-  "categories": ["Color Changer"],
+  "categories": ["Dimmer"],
   "meta": {
     "authors": ["mkobzar", "Mikhail Kobzar"],
     "createDate": "2024-12-11",
@@ -11,6 +11,11 @@
       "date": "2024-12-11",
       "comment": "created by Q Light Controller Plus (version 4.13.1)"
     }
+  },
+  "links": {
+    "productPage": [
+      "http://evlightled.com/en/product.php?id=381"
+    ]
   },
   "physical": {
     "dimensions": [380, 110, 110],
