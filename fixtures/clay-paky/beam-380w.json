@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam 380W",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Kilian Lopes"],
+    "createDate": "2024-12-26",
+    "lastModifyDate": "2024-12-26"
+  },
+  "links": {
+    "productPage": [
+      "https://www.alibaba.com/product-detail/_1600733078380.html?from=share&ckvia=share_027707afd3c14c8eb750a2b5da0d409b"
+    ]
+  },
+  "physical": {
+    "dimensions": [370, 550, 270],
+    "weight": 15,
+    "power": 380,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 6000,
+      "lumens": 350000
+    }
+  },
+  "wheels": {
+    "Couleur": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Couleur": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 15
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "24Hz"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 14
+      }
+    },
+    "Prism 1": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism 1 Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Prism 2 Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macro": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Lamp": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "380W Beam",
+      "channels": [
+        "Couleur",
+        "Strobe Speed",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism 1",
+        "Prism 1 Rotation",
+        "Prism 2 Rotation",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Macro",
+        "Reset",
+        "Lamp"
+      ]
+    }
+  ]
+}
