@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MC-PRO",
+  "shortName": "MC-PRO",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Arié van Egmond"],
+    "createDate": "2024-12-26",
+    "lastModifyDate": "2024-12-26"
+  },
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MC%20Pro/All%20Files/MC-Pro-Product-Manual-V1.1.pdf?_gl=1*q0kmn5*_gcl_au*MTQzMjUwODc4My4xNzI4NTUxNTc5"
+    ],
+    "productPage": [
+      "https://aputure.com/products/mc-pro?Title=Default+Title"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=BwnGeklsSUw&ab_channel=Aputure"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G/M": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "25Hz"
+      }
+    },
+    "CCT-RGB": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channels",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M",
+        "CCT-RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
