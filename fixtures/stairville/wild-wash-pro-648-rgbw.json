@@ -1,0 +1,618 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild Wash Pro 648 RGBW",
+  "shortName": "Wild Wash RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Theater der Mitte"],
+    "createDate": "2024-12-26",
+    "lastModifyDate": "2024-12-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/at/stairville_wild_wash_pro_648_rgbw.htm"
+    ],
+    "productPage": [
+      "https://www.thomann.de/at/stairville_wild_wash_pro_648_rgbw.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/at/stairville_wild_wash_pro_648_rgbw.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [385, 255, 95],
+    "weight": 3.25,
+    "power": 150,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "comment": "LEDs on"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "comment": "LEDs off"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "Maintenance",
+          "comment": "Impulses, increasing speed"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "Maintenance",
+          "comment": "Increasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "Maintenance",
+          "comment": "Decreasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "Maintenance",
+          "comment": "Random Strobe effect, increasing speed"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Maintenance",
+          "comment": "Burst strobe, 5 s to 1 s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "Maintenance",
+          "comment": "Strobe effect, speed increasing from 1 Hz to 20 Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "LEDs on"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "LEDs off (blackout)"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "comment": "Warm yellow"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Warm white"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Cold white"
+        },
+        {
+          "dmxRange": [126, 128],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "ColorPreset",
+          "comment": "Colour change from colour 1 to colour 12, speed increasing"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "Gradual colour change from colour 1 to colour 12, speed increasing"
+        }
+      ]
+    },
+    "Constant strobe pulses": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "1ms",
+        "durationEnd": "510ms",
+        "comment": "Strobe impulse duration, increasing from 1 ms to 510 ms"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer patterns": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [17, 34],
+          "type": "Maintenance",
+          "comment": "Pattern 1"
+        },
+        {
+          "dmxRange": [35, 48],
+          "type": "Maintenance",
+          "comment": "Pattern 2"
+        },
+        {
+          "dmxRange": [49, 60],
+          "type": "Maintenance",
+          "comment": "Pattern 3"
+        },
+        {
+          "dmxRange": [61, 73],
+          "type": "Maintenance",
+          "comment": "Pattern 4"
+        },
+        {
+          "dmxRange": [74, 86],
+          "type": "Maintenance",
+          "comment": "Pattern 5"
+        },
+        {
+          "dmxRange": [87, 99],
+          "type": "Maintenance",
+          "comment": "Pattern 6"
+        },
+        {
+          "dmxRange": [100, 112],
+          "type": "Maintenance",
+          "comment": "Pattern 7"
+        },
+        {
+          "dmxRange": [113, 125],
+          "type": "Maintenance",
+          "comment": "Pattern 8"
+        },
+        {
+          "dmxRange": [126, 138],
+          "type": "Maintenance",
+          "comment": "Pattern 9"
+        },
+        {
+          "dmxRange": [139, 151],
+          "type": "Maintenance",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [152, 164],
+          "type": "Maintenance",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [165, 177],
+          "type": "Maintenance",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [178, 190],
+          "type": "Maintenance",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [191, 203],
+          "type": "Maintenance",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [204, 216],
+          "type": "Maintenance",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [217, 229],
+          "type": "Maintenance",
+          "comment": "Pattern 16"
+        },
+        {
+          "dmxRange": [230, 242],
+          "type": "Maintenance",
+          "comment": "Pattern 17"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "Maintenance",
+          "comment": "Pattern 18"
+        }
+      ]
+    },
+    "Running speed dimmer patterns": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Change, increasing speed"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Gradual transient, increasing speed"
+        }
+      ]
+    },
+    "Sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "off",
+          "soundSensitivityEnd": "off",
+          "comment": "Sound control off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound control on, increasing sensitivity"
+        }
+      ]
+    },
+    "Red Segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel 1",
+      "shortName": "2ch-1",
+      "channels": [
+        "Dimmer",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "2-channel 2",
+      "shortName": "2ch-2",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Constant strobe pulses"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Color Macros",
+        "Sound control"
+      ]
+    },
+    {
+      "name": "9-channel 1",
+      "shortName": "9ch-1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Sound control"
+      ]
+    },
+    {
+      "name": "9-channel 2",
+      "shortName": "9ch-2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Constant strobe pulses",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Red Segment 1",
+        "Green Segment 1",
+        "Blue Segment 1",
+        "White Segment 1",
+        "Red Segment 2",
+        "Green Segment 2",
+        "Blue Segment 2",
+        "White Segment 2",
+        "Red Segment 3",
+        "Green Segment 3",
+        "Blue Segment 3",
+        "White Segment 3",
+        "Red Segment 4",
+        "Green Segment 4",
+        "Blue Segment 4",
+        "White Segment 4"
+      ]
+    },
+    {
+      "name": "21-channel 1",
+      "shortName": "21ch-1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Red Segment 1",
+        "Green Segment 1",
+        "Blue Segment 1",
+        "White Segment 1",
+        "Red Segment 2",
+        "Green Segment 2",
+        "Blue Segment 2",
+        "White Segment 2",
+        "Red Segment 3",
+        "Green Segment 3",
+        "Blue Segment 3",
+        "White Segment 3",
+        "Red Segment 4",
+        "Green Segment 4",
+        "Blue Segment 4",
+        "White Segment 4",
+        "Sound control"
+      ]
+    },
+    {
+      "name": "21-channel 2",
+      "shortName": "21ch-2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Constant strobe pulses",
+        "Dimmer patterns",
+        "Running speed dimmer patterns",
+        "Red Segment 1",
+        "Green Segment 1",
+        "Blue Segment 1",
+        "White Segment 1",
+        "Red Segment 2",
+        "Green Segment 2",
+        "Blue Segment 2",
+        "White Segment 2",
+        "Red Segment 3",
+        "Green Segment 3",
+        "Blue Segment 3",
+        "White Segment 3",
+        "Red Segment 4",
+        "Green Segment 4",
+        "Blue Segment 4",
+        "White Segment 4"
+      ]
+    }
+  ]
+}
