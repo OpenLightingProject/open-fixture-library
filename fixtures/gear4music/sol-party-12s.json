@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SOL-PARTY-12S",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["SBTech"],
+    "createDate": "2024-12-27",
+    "lastModifyDate": "2024-12-27"
+  },
+  "links": {
+    "manual": [
+      "https://r2.gear4music.com/media/43/432662/download_432662.pdf"
+    ],
+    "productPage": [
+      "https://www.gear4music.com/PA-DJ-and-Lighting/DISC-Sol-21W-3-in-1-LED-Party-Mini-Par-Light-with-Strobe-by-Gear4music/2IF4"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hJc6PBcMK3Y"
+    ]
+  },
+  "physical": {
+    "power": 21,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimming": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Dimming": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimming": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimming": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimming": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Par/Strobe Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Generic",
+          "comment": "Par and Strobe Flash Together"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Generic",
+          "comment": "Par Light Flash Only"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Strobe Light Flash Only"
+        }
+      ]
+    },
+    "Strobe Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter Closed"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter Speed - Quick to Slow"
+        }
+      ]
+    },
+    "Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Manual"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic",
+          "comment": "Jump Mode"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Fade Mode"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Fade Through Black Mode"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Sound Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Master Dimming",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Par/Strobe Mode",
+        "Strobe Shutter",
+        "Modes"
+      ]
+    }
+  ]
+}
