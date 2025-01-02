@@ -1,0 +1,327 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB5 6P RGB WW Compact LED Bar",
+  "shortName": "CLB5 6P",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Subjekt_91"],
+    "createDate": "2023-11-26",
+    "lastModifyDate": "2023-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_460583_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_clb5_6p_rgb_ww_compact_led_bar.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wWsKyDovmKU"
+    ]
+  },
+  "physical": {
+    "dimensions": [984, 68, 240],
+    "weight": 7.75,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "14× 4W RGBWW LEDs"
+    }
+  },
+  "availableChannels": {
+    "Red Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Preprogrammed automatic show": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Preprogrammed automatic show 1-38 and Sound-controled"
+      }
+    },
+    "Function depending on setting of channel 6": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Red Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Red Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Red Spot 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 3": {
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Red Spot 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Red Spot 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Red Spot 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White Spot 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master",
+        "Automatic show",
+        "Function depending on setting of channel 6",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "24 Channel",
+      "shortName": "24ch",
+      "channels": [
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2",
+        "Red Spot 3",
+        "Green Spot 3",
+        "Blue Spot 3",
+        "Warm White Spot 3",
+        "Red Spot 4",
+        "Green Spot 4",
+        "Blue Spot 4",
+        "Warm White Spot 4",
+        "Red Spot 5",
+        "Green Spot 5",
+        "Blue Spot 5",
+        "Warm White Spot 5",
+        "Red Spot 6",
+        "Green Spot 6",
+        "Blue Spot 6",
+        "Warm White Spot 6"
+      ]
+    },
+    {
+      "name": "26 Channel",
+      "shortName": "26ch",
+      "channels": [
+        "Dimmer",
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2",
+        "Red Spot 3",
+        "Green Spot 3",
+        "Blue Spot 3",
+        "Warm White Spot 3",
+        "Red Spot 4",
+        "Green Spot 4",
+        "Blue Spot 4",
+        "Warm White Spot 4",
+        "Red Spot 5",
+        "Green Spot 5",
+        "Blue Spot 5",
+        "Warm White Spot 5",
+        "Red Spot 6",
+        "Green Spot 6",
+        "Blue Spot 6",
+        "Warm White Spot 6",
+        "Strobe"
+      ]
+    }
+  ]
+}
