@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "custom 16bit dimmer led",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Cousin"],
+    "createDate": "2025-01-09",
+    "lastModifyDate": "2025-01-09"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor",
+      "https://open-fixture-library.org/fixture-editor",
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "physical": {
+    "weight": 1,
+    "power": 1,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "1",
+      "channels": [
+        "Intensity",
+        "Intensity fine"
+      ]
+    }
+  ]
+}
