@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pro Spot ARC RGBA",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Dp"],
+    "createDate": "2024-12-20",
+    "lastModifyDate": "2024-12-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2348681/Lightmaxx-Pro-Spot-Arc-Rgbw.html?page=12#manual"
+    ],
+    "productPage": [
+      "https://www.manualslib.com/manual/2348681/Lightmaxx-Pro-Spot-Arc-Rgbw.html?page=12#manual"
+    ],
+    "video": [
+      "https://www.manualslib.com/manual/2348681/Lightmaxx-Pro-Spot-Arc-Rgbw.html?page=12#manual"
+    ]
+  },
+  "physical": {
+    "dimensions": [188, 273, 282],
+    "weight": 4.6,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "STANDARD",
+      "channels": [
+        "RED",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
