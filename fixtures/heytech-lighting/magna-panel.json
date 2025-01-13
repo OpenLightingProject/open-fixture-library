@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Magna-Panel",
+  "shortName": "Magna-Panel",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Lucas van der Heijden"],
+    "createDate": "2025-01-13",
+    "lastModifyDate": "2025-01-13"
+  },
+  "links": {
+    "productPage": [
+      "https://www.heytechlighting.com/magna-panel/"
+    ]
+  },
+  "physical": {
+    "power": 400,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "RGBW, 18x20W"
+    },
+    "lens": {
+      "name": "25",
+      "degreesMinMax": [25, 30]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [14, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "Effect",
+          "effectName": "Color Macro"
+        },
+        {
+          "dmxRange": [100, 139],
+          "type": "Effect",
+          "effectName": "3 colors change"
+        },
+        {
+          "dmxRange": [140, 179],
+          "type": "Effect",
+          "effectName": "7 colors change"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "7 colors fade"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "7 colors strobe 1"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "7 colors strobe 2"
+        }
+      ]
+    },
+    "Auto mode Speed, slow to fast": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 Channels",
+      "shortName": "5Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Channels",
+      "shortName": "8Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Auto Mode",
+        "Auto mode Speed, slow to fast"
+      ]
+    }
+  ]
+}
