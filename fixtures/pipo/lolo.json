@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lolo",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["PIPOLILO"],
+    "createDate": "2025-01-13",
+    "lastModifyDate": "2025-01-13"
+  },
+  "links": {
+    "other": [
+      "https://www.leboncoin.fr/ad/photo_audio_video/2911715304",
+      "https://www.leboncoin.fr/ad/photo_audio_video/2911715304",
+      "https://www.leboncoin.fr/ad/photo_audio_video/2911715304"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "YO",
+      "channels": [
+        "1"
+      ]
+    }
+  ]
+}
