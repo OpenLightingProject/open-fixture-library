@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "JJ PS",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["JJ PS"],
+    "createDate": "2025-01-13",
+    "lastModifyDate": "2025-01-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.leboncoin.fr/ad/photo_audio_video/2911715304"
+    ]
+  },
+  "availableChannels": {
+    "1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "4": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "JJ PS",
+      "channels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    }
+  ]
+}
