@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BJY-PHJ700u2",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["M.Nehlis"],
+    "createDate": "2024-12-28",
+    "lastModifyDate": "2024-12-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.vevor.de/kalte-funkenmaschine-c_11702/vevor-funkenmaschine-700-w-pyrotechnikmaschine-aluminiumlegierung-feuerwerksmaschine-dmx-controller-einstellbar-2-5m-cold-spark-machine-7-min-pro-nachladen-ideal-fuer-hochzeit-dj-show-partys-p_010237723540?utm_source=google&utm_medium=cpc&utm_id=20112701724&ad_group=148602838283&ad_id=658124541270&utm_term=&gad_source=1&gclid=Cj0KCQiA4L67BhDUARIsADWrl7GC_JPovSJO3MvewsZy8ealRdZjX9PPwTkxdQGjEOzJffqp3ABOsagaAgUPEALw_wcB"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Preheat off": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Preheat off"
+        },
+        {
+          "dmxRange": [11, 239],
+          "type": "Maintenance",
+          "comment": "invalid"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Preheat to open"
+        }
+      ]
+    },
+    "Spray height": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Intensity",
+          "comment": "close"
+        },
+        {
+          "dmxRange": [16, 74],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "Spray height 1"
+        },
+        {
+          "dmxRange": [75, 134],
+          "type": "Intensity",
+          "comment": "Spray height 2"
+        },
+        {
+          "dmxRange": [135, 194],
+          "type": "Intensity",
+          "comment": "Spray height 3"
+        },
+        {
+          "dmxRange": [195, 255],
+          "type": "Intensity",
+          "comment": "Clear stock"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Preheat",
+      "channels": [
+        "Preheat off"
+      ]
+    },
+    {
+      "name": "Spray height",
+      "channels": [
+        "Spray height"
+      ]
+    }
+  ]
+}
