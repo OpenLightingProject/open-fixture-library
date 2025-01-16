@@ -1,0 +1,433 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB2.4",
+  "shortName": "CLB2.4",
+  "categories": ["Pixel Bar", "Strobe"],
+  "meta": {
+    "authors": ["Hieros Gamos"],
+    "createDate": "2024-11-19",
+    "lastModifyDate": "2024-11-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/349574_c_349574_v7_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_clb2.4_compact_led_par_system.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=adoDZz_CZns"
+    ]
+  },
+  "physical": {
+    "dimensions": [1100, 250, 230],
+    "weight": 5.6,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red (Par 1+2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 1+2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 1+2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (Par 3+4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 3+4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 3+4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red (Par 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (Par 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (Par 3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (Par 4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Par 4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Par 4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (All Par)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (All Par)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (All Par)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "Effect",
+          "effectName": "FX 01"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "Effect",
+          "effectName": "FX 02"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "Effect",
+          "effectName": "FX 03"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "Effect",
+          "effectName": "FX 04"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "Effect",
+          "effectName": "FX 05"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "Effect",
+          "effectName": "FX 06"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "Effect",
+          "effectName": "FX 07"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "Effect",
+          "effectName": "FX 08"
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "Effect",
+          "effectName": "FX 09"
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "Effect",
+          "effectName": "FX 10"
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "Effect",
+          "effectName": "FX 11"
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "Effect",
+          "effectName": "FX 12"
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "Effect",
+          "effectName": "FX 13"
+        },
+        {
+          "dmxRange": [234, 251],
+          "type": "Effect",
+          "effectName": "FX 14"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Sound Control"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "ColorPreset",
+          "comment": "LED Off"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "Effect",
+          "effectName": "Orange"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "Effect",
+          "effectName": "Light Red"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "Effect",
+          "effectName": "Light Green"
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "ColorPreset",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "ColorPreset",
+          "comment": "Warm White"
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [234, 251],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "Ambre"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channels (Par 1+2+3+4)",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channels (Par 1+2+3+4)",
+      "shortName": "4ch",
+      "channels": [
+        "Intensity",
+        "Red (All Par)",
+        "Green (All Par)",
+        "Blue (All Par)"
+      ]
+    },
+    {
+      "name": "8 Channels (Par 1 + 2 / Par 3 + 4)",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity",
+        "Red (Par 1+2)",
+        "Green (Par 1+2)",
+        "Blue (Par 1+2)",
+        "Red (Par 3+4)",
+        "Green (Par 3+4)",
+        "Blue (Par 3+4)",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "14 Channels (PAR 1/Par 2/Par 3/Par 4",
+      "shortName": "14ch",
+      "channels": [
+        "Intensity",
+        "Red (Par 1)",
+        "Green (Par 1)",
+        "Blue (Par 1)",
+        "Red (Par 2)",
+        "Green (Par 2)",
+        "Blue (Par 2)",
+        "Red (Par 3)",
+        "Green (Par 3)",
+        "Blue (Par 3)",
+        "Red (Par 4)",
+        "Green (Par 4)",
+        "Blue (Par 4)",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "2 Channel (Color Presets+Automatic show)",
+      "shortName": "2ch",
+      "channels": [
+        "Effects",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "7 Channel (RGB+Automatic Show)",
+      "shortName": "7ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Effects",
+        "Effect Speed",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
