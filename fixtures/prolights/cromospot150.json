@@ -1,0 +1,500 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CromoSpot150",
+  "shortName": "CromoSpot150",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FrancoPiccolo"],
+    "createDate": "2025-01-16",
+    "lastModifyDate": "2025-01-16"
+  },
+  "comment": "Movinghead",
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=10085&ID_USER=7413&__hstc=244193946.9ea772b6afd30d829a034b7914e00af7.1737031808336.1737031808336.1737031808336.1&__hssc=244193946.7.1737031808336&__hsfp=1436914090"
+    ],
+    "productPage": [
+      "https://prolights.it/product/CROMOSPOT150"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4kdG620DlVM"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 370, 210],
+    "weight": 7,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2470
+    },
+    "lens": {
+      "degreesMinMax": [16, 16]
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Gobo1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo7"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "ColorPreset",
+          "comment": "light blue"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "ColorPreset",
+          "comment": "light green"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow 5 linear effect"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "WheelShake",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "WheelShake",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "WheelShake",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "WheelShake",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "WheelShake",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "WheelShake",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "WheelShake",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Flow Effect"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [3, 6],
+          "type": "Generic",
+          "comment": "Slowest"
+        },
+        {
+          "dmxRange": [7, 128],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [129, 179],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "Reverse rotate slowest"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Generic",
+          "comment": "Reverse rotate from slow to fast"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "In 3-facet prism"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "CONTROL": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "Pan/Tilt Black Actived dopo 3 sec"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "Pan/Tilt Black Deactived dopo 3 sec"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "Auto1"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "Auto2"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "Sound1"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "Sound2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "Custom"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "Test"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "PAN f": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PAN Fine"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "TILT Fine"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [3, 6],
+          "type": "Generic",
+          "comment": "Slowest"
+        },
+        {
+          "dmxRange": [7, 128],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [129, 179],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "NoFunction",
+          "comment": "Reverse rotate slowest"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "NoFunction",
+          "comment": "Reverse rotate from slow to fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "ch9",
+      "shortName": "9",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Prism",
+        "Dimmer",
+        "Strobe",
+        "CONTROL"
+      ]
+    },
+    {
+      "name": "ch2",
+      "shortName": "9",
+      "channels": [
+        "Pan",
+        "PAN f",
+        "Tilt 2",
+        "Tilt 3",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation 2",
+        "Prism",
+        "Dimmer",
+        "Strobe",
+        "CONTROL"
+      ]
+    }
+  ]
+}
