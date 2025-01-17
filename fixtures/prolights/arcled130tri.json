@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ArcLed130Tri",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Franco piccolo"],
+    "createDate": "2025-01-17",
+    "lastModifyDate": "2025-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolights.it/en/product/ARCLED7314TRI#:~:text=Arcled7314tri_USER_MANUAL_ITEN.pdf"
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/ARCLED7314TRI"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=DRJFQzjOSVc"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 210, 160],
+    "weight": 2.5,
+    "power": 35,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "3ch",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
