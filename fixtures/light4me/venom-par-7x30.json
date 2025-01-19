@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VENOM PAR 7x30",
+  "categories": ["Dimmer", "Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["Karel z Hor"],
+    "createDate": "2025-01-19",
+    "lastModifyDate": "2025-01-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.muziker.cz/light4me-venom-par-7x30w"
+    ]
+  },
+  "rdm": {
+    "modelId": 65535
+  },
+  "physical": {
+    "dimensions": [230, 150, 230],
+    "weight": 2.2,
+    "power": 180,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode1",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Macro",
+        "Color selection"
+      ]
+    }
+  ]
+}
