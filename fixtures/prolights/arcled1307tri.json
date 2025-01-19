@@ -1,0 +1,662 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ARCLED1307TRI",
+  "shortName": "ARCLED1307TRI",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["FrancoPiccolo"],
+    "createDate": "2025-01-19",
+    "lastModifyDate": "2025-01-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolights.it/en/product/ARCLED7314TRI#:~:text=Arcled7314tri_USER_MANUAL_ITEN.pdf"
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/ARCLED7314TRI"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=DRJFQzjOSVc"
+    ]
+  },
+  "physical": {
+    "dimensions": [243, 193, 157],
+    "weight": 2.5,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 1200,
+      "lumens": 540
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 35],
+          "type": "Generic",
+          "comment": "R*:100%/G*:Up/B*:0%"
+        },
+        {
+          "dmxRange": [36, 60],
+          "type": "Generic",
+          "comment": "R*:Down/G:100%/B:0%"
+        },
+        {
+          "dmxRange": [61, 85],
+          "type": "Generic",
+          "comment": "R*:0%/G:100%/B:Up"
+        },
+        {
+          "dmxRange": [86, 110],
+          "type": "Generic",
+          "comment": "R*:0%/G:100%/B:100%"
+        },
+        {
+          "dmxRange": [111, 135],
+          "type": "Generic",
+          "comment": "R*:Up/G:0%/B:100%"
+        },
+        {
+          "dmxRange": [136, 160],
+          "type": "Generic",
+          "comment": "R:100/G:0%/B:Down"
+        },
+        {
+          "dmxRange": [161, 185],
+          "type": "Generic",
+          "comment": "R:100%/G:0Up/B:Up"
+        },
+        {
+          "dmxRange": [186, 210],
+          "type": "Generic",
+          "comment": "R:Down/G:Down/B:100%"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "Generic",
+          "comment": "White 1:3200k"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Generic",
+          "comment": "White 2:3400k"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Generic",
+          "comment": "White 3:4200k"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Generic",
+          "comment": "White 4:4900k"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Generic",
+          "comment": "White 5:5600k"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Generic",
+          "comment": "White 6:5900k"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Generic",
+          "comment": "White 7:6500k"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Generic",
+          "comment": "White 8:7200k"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "White 9:8500k"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Auto+ Custom Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "AUTO 1"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "AUTO 2"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "AUTO 3"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "AUTO 4"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "AUTO 5"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "AUTO 6"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "AUTO 7"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "AUTO 8"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "AUTO 9"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "AUTO 10"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "CUSTOM 1"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "CUSTOM 2"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Generic",
+          "comment": "CUSTOM 3"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "CUSTOM 4"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "CUSTOM 5"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "CUSTOM 6"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Generic",
+          "comment": "CUSTOM 7"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Generic",
+          "comment": "CUSTOM 8"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Generic",
+          "comment": "CUSTOM 9"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Generic",
+          "comment": "CUSTOM 10"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Speed Adjustament Ch7, Auto1-Auto9": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Autospeed"
+      }
+    },
+    "ID Addresss": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "ID1-ID66"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "ID1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "ID2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "ID3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "ID4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "ID5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "ID6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "ID7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "ID8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "ID9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "ID10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "ID11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "ID12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "ID13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "ID14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "ID15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "ID16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "ID17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "ID18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "ID19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "ID20"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Generic",
+          "comment": "ID21"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Generic",
+          "comment": "ID22"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Generic",
+          "comment": "ID23"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Generic",
+          "comment": "ID24"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Generic",
+          "comment": "ID25"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Generic",
+          "comment": "ID26"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Generic",
+          "comment": "ID27"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Generic",
+          "comment": "ID28"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Generic",
+          "comment": "ID29"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Generic",
+          "comment": "ID30"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Generic",
+          "comment": "ID31"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Generic",
+          "comment": "ID32"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Generic",
+          "comment": "ID33"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Generic",
+          "comment": "ID34"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Generic",
+          "comment": "ID35"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Generic",
+          "comment": "ID36"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Generic",
+          "comment": "ID37"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Generic",
+          "comment": "ID38"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Generic",
+          "comment": "ID39"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Generic",
+          "comment": "ID40"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Generic",
+          "comment": "ID41"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Generic",
+          "comment": "ID42"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Generic",
+          "comment": "ID43"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Generic",
+          "comment": "ID44"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Generic",
+          "comment": "ID45"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Generic",
+          "comment": "ID46"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Generic",
+          "comment": "ID47"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Generic",
+          "comment": "ID48"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Generic",
+          "comment": "ID49"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Generic",
+          "comment": "ID50"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Generic",
+          "comment": "ID51"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Generic",
+          "comment": "ID52"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Generic",
+          "comment": "ID53"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Generic",
+          "comment": "ID54"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Generic",
+          "comment": "ID55"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Generic",
+          "comment": "ID56"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Generic",
+          "comment": "ID57"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Generic",
+          "comment": "ID58"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Generic",
+          "comment": "ID59"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Generic",
+          "comment": "ID60"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Generic",
+          "comment": "ID61"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Generic",
+          "comment": "ID62"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Generic",
+          "comment": "ID63"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Generic",
+          "comment": "ID64"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Generic",
+          "comment": "ID65"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "I266"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3",
+      "shortName": "STAGE1",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Temperature",
+        "Strobe",
+        "Auto+ Custom Programs",
+        "Auto Speed Adjustament Ch7, Auto1-Auto9",
+        "ID Addresss"
+      ]
+    },
+    {
+      "name": "2",
+      "shortName": "ARC1+D",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "1",
+      "shortName": "ARC1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
