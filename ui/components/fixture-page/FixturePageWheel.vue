@@ -171,8 +171,8 @@ figure {
   min-width: 18rem;
   padding: 0 1rem;
   margin: 0 0 0.5rem;
-  white-space: normal;
   vertical-align: top;
+  white-space: normal;
 }
 
 svg {
