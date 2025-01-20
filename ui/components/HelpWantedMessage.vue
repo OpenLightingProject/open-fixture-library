@@ -73,8 +73,8 @@
 
     &:hover,
     &:focus {
-      background: theme-color(yellow-background-hover);
       outline: 0;
+      background: theme-color(yellow-background-hover);
       fill: theme-color(text-primary);
     }
 
