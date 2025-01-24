@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3-Way mini",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Erick Hoffmann", "DerHoffmann"],
+    "createDate": "2025-01-24",
+    "lastModifyDate": "2025-01-24",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-01-24",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [280, 260, 330],
+    "weight": 3.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 6]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Weel Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "comment": "Offset Position",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "comment": "Vorwärts Rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "comment": "Rückwärts Rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Makros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 249],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Auto Show"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Makro Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-Kanal Modus",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Weel Rotation",
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Makros",
+        "Reset"
+      ]
+    },
+    {
+      "name": "14-Kanal Modus",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Weel Rotation",
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Makros",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15-Kanal Modus",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Weel Rotation",
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Makros",
+        "Makro Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
