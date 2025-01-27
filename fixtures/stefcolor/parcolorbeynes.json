@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "parcolorbeynes",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["stefcolor"],
+    "createDate": "2025-01-27",
+    "lastModifyDate": "2025-01-27"
+  },
+  "links": {
+    "manual": [
+      "https://fr.tuto.com/formateur/reactivezone.htm"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "parkostef",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
