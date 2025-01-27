@@ -379,6 +379,10 @@ export default [
   ...eslintPluginVueA11y.configs[`flat/recommended`],
   ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: `error`,
+      reportUnusedInlineConfigs: `error`,
+    },
     languageOptions: {
       globals: globals.node,
       ecmaVersion: 2022,
