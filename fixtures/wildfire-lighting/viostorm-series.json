@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VioStorm Series",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Tim Linamen"],
+    "createDate": "2025-01-30",
+    "lastModifyDate": "2025-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://wildfirelighting.com/wp-content/uploads/2018/09/Manual-VioStorm-Series-English-French-Canadian-215-005-05.pdf"
+    ],
+    "productPage": [
+      "https://wildfirelighting.com/products/viostorm-uv-led-lighting-series/"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 393, 285],
+    "weight": 6.05,
+    "power": 175,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 65],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [66, 125],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [126, 185],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [186, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Effect",
+          "effectName": "Slow fade 1m"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Effect",
+          "effectName": "Slow fade 2m"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Effect",
+          "effectName": "Slow fade 3m"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Effect",
+          "effectName": "Slow fade 4m"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Effect",
+          "effectName": "Slow fade 5m"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Effect",
+          "effectName": "Slow fade 6m"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Effect",
+          "effectName": "Slow fade 7m"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Effect",
+          "effectName": "Slow fade 8m"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Effect",
+          "effectName": "Slow fade 9m"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Slow fade 10m"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Effects",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
