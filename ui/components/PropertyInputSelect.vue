@@ -24,6 +24,9 @@ export default {
     additionHint: stringProp().optional,
     value: anyProp().required,
   },
+  emits: {
+    input: value => true,
+  },
   computed: {
     localValue: {
       get() {

@@ -51,7 +51,7 @@
 
 <script>
 import { booleanProp, objectProp } from 'vue-ts-types';
-import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
+import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
@@ -71,6 +71,11 @@ export default {
     link: objectProp().required,
     canRemove: booleanProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    'set-type': type => true,
+    'set-url': url => true,
+    remove: () => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;

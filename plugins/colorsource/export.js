@@ -36,25 +36,7 @@ export async function exportFixtures(fixtures, options) {
     const fixtureUuidNamespace = uuidv5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
 
     for (const mode of fixture.modes) {
-      const dcid = uuidv5(mode.name, fixtureUuidNamespace);
-      const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
-      const parameters = getColorSourceChannels(mode, hasIntensity);
-
-      const fixtureJson = {
-        dcid,
-        colortable: getColorTable(parameters) || `11111111-1111-1111-1111-111111111111`,
-        commands: getCommands(mode),
-        hasIntensity,
-        manufacturerName: fixture.manufacturer.name,
-        maxOffset: mode.channels.length - 1,
-        modeName: mode.name,
-        modelName: fixture.name,
-        parameters,
-      };
-
-      removeEmptyProperties(fixtureJson);
-
-      exportJson.personalities.push(fixtureJson);
+      exportJson.personalities.push(getColorSourcePersonality(fixture, fixtureUuidNamespace, mode));
     }
   }
 
@@ -64,6 +46,41 @@ export async function exportFixtures(fixtures, options) {
     mimetype: `application/json`,
     fixtures,
   }];
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {string} fixtureUuidNamespace The UUID namespace for the fixture.
+ * @param {Mode} mode The mode to export.
+ * @returns {object} The generated fixture JSON.
+ */
+function getColorSourcePersonality(fixture, fixtureUuidNamespace, mode) {
+  try {
+    const dcid = uuidv5(mode.name, fixtureUuidNamespace);
+    const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
+    const parameters = getColorSourceChannels(mode, hasIntensity);
+
+    const fixtureJson = {
+      dcid,
+      colortable: getColorTable(parameters) || `11111111-1111-1111-1111-111111111111`,
+      commands: getCommands(mode),
+      hasIntensity,
+      manufacturerName: fixture.manufacturer.name,
+      maxOffset: mode.channels.length - 1,
+      modeName: mode.name,
+      modelName: fixture.name,
+      parameters,
+    };
+
+    removeEmptyProperties(fixtureJson);
+
+    return fixtureJson;
+  }
+  catch (error) {
+    throw new Error(`Exporting fixture mode ${fixture.manufacturer.key}/${fixture.key}/${mode.shortName} failed: ${error}`, {
+      cause: error,
+    });
+  }
 }
 
 /**
@@ -184,7 +201,7 @@ function getColorSourceChannels(mode, hasIntensity) {
         channelJson.type = CHANNEL_TYPE_BEAM;
       }
       else if (channel.color) { // it may also be Hue or Saturation, which have no color
-        channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+        channelJson.name = channel.color.replaceAll(` `, ``); // e.g. 'Warm White' -> 'WarmWhite'
       }
     }
 

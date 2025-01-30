@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SoftLED 4 VW",
+  "shortName": "SLED4VW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Lukas Runge", "Luke Nelson"],
+    "createDate": "2023-10-15",
+    "lastModifyDate": "2023-10-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.desisti.it/soft-led-4/"
+    ],
+    "productPage": [
+      "https://www.desisti.it/wp-content/uploads/2018/10/CE-Instruction-Manual-De-Sisti-SOFT-LED-4VW.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [465, 480, 132],
+    "weight": 6.7,
+    "power": 205,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT Linear Mode": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2750K",
+        "colorTemperatureEnd": "6900K"
+      }
+    },
+    "CCT Step Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "ColorTemperature",
+          "colorTemperature": "2750K"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "ColorTemperature",
+          "colorTemperature": "2880K"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [234, 253],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6900K"
+        }
+      ]
+    },
+    "Color Temperature Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Linear Mode",
+          "switchChannels": {
+            "CCT Linear Mode / CCT Step Mode": "CCT Linear Mode"
+          }
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Step Mode",
+          "switchChannels": {
+            "CCT Linear Mode / CCT Step Mode": "CCT Step Mode"
+          }
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "SLOT4",
+      "shortName": "S4",
+      "channels": [
+        "Dimmer",
+        "CCT Linear Mode / CCT Step Mode",
+        "Color Temperature Mode"
+      ]
+    }
+  ]
+}

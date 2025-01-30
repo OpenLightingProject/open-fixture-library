@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ken Harris", "Flo Edelmann"],
     "createDate": "2022-03-07",
-    "lastModifyDate": "2022-07-16"
+    "lastModifyDate": "2024-01-08"
   },
   "links": {
     "manual": [
@@ -91,7 +91,9 @@
         {
           "dmxRange": [70, 84],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown"
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [85, 89],
@@ -101,7 +103,9 @@
         {
           "dmxRange": [90, 104],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp"
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [105, 109],
@@ -112,7 +116,9 @@
           "dmxRange": [110, 124],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true
+          "randomTiming": true,
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [125, 129],
@@ -123,7 +129,9 @@
           "dmxRange": [130, 144],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "randomTiming": true
+          "randomTiming": true,
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [145, 149],
@@ -134,7 +142,9 @@
           "dmxRange": [150, 164],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "randomTiming": true
+          "randomTiming": true,
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [165, 169],
@@ -144,7 +154,9 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse"
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [185, 189],
@@ -165,7 +177,9 @@
         {
           "dmxRange": [210, 224],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDown"
+          "shutterEffect": "RampUpDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [225, 229],
@@ -175,7 +189,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse"
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [245, 255],
@@ -470,8 +486,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "11deg",
-        "angleEnd": "48deg"
+        "angleStart": "8deg",
+        "angleEnd": "30deg"
       }
     },
     "Movement Macros": {
@@ -565,8 +581,8 @@
     "Movement Macro Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Control": {
