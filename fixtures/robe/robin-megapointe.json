@@ -1,0 +1,3773 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Robin MegaPointe",
+  "shortName": "MegaPointe",
+  "categories": ["Moving Head", "Effect", "Strobe", "Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-02-02",
+    "lastModifyDate": "2025-02-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.robelighting.de/res/downloads/user_manuals/User_manual_Robin_MegaPointe.pdf"
+    ],
+    "productPage": [
+      "https://www.robelighting.de/megapointe"
+    ]
+  },
+  "physical": {
+    "dimensions": [396.2, 638.2, 253.6],
+    "weight": 22,
+    "power": 670,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "burner",
+      "colorTemperature": 6500,
+      "lumens": 16008
+    },
+    "lens": {
+      "degreesMinMax": [1.8, 42]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Red"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light Green"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Lavender"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Dark Green"
+        },
+        {
+          "type": "Color",
+          "colorTemperature": "2700K"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "CTO",
+          "colorTemperature": "3200K"
+        },
+        {
+          "type": "Color",
+          "name": "UV (Kongo blue)"
+        },
+        {
+          "type": "Color",
+          "name": "White"
+        }
+      ]
+    },
+    "Color Wheel - positioning": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Virtual Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 10 (Medium Bastard Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 10 (Medium Yellow)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 19 (Fire)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 26 (Bright Red)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 58 (Lavender)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 68 (Sky Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 71 (Tokyo Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 79 (Just Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 88 (Lime Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 90 (Dark Yellow Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 100 (Spring Yellow)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 101 (Yellow)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 102 (Light Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 103 (Straw)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 104 (Deep Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 105 (Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 106 (Primary Red)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 111 (Dark Pink)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 115 (Peacock Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 116 (Medium Blue-Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 117 (Steel Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 118 (Light Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 119 (Dark Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 120 (Deep Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 121 (Filter Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 128 (Bright Pink)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 131 (Marine Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 132 (Medium Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 134 (Golden Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 135 (Deep Golden Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 136 (Pale Lavender)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 137 (Special Lavender)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 138 (Pale Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 139 (Primary Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 141 (Bright Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 147 (Apricot)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 148 (Bright Rose)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 152 (Pale Gold)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 154 (Pale Rose)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 157 (Pink)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 158 (Deep Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 162 (Bastard Amber)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 164 (Flame Red)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 165 (Daylight Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 169 (Lilac Tint)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 170 (Deep Lavender)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 172 (Lagoon Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 179 (Chrome Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 180 (Dark Lavender)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 181 (Congo Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 197 (Alice Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 201 (Full C.T. Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 202 (Half C.T. Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 203 (Quarter C.T. Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 204 (Full C.T. Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 205 (Half C.T. Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 206 (Quarter C.T. Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 247 (Filter Minus Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 248 (Half Minus Green)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 281 (Three Quarter C.T. Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 285 (Three Quarter C.T. Orange)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 352 (Glacier Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 353 (Lighter Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 715 (Cabana Blue)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 778 (Millennium Gold)"
+        },
+        {
+          "type": "Color",
+          "name": "Filter 793 (Vanity Fair)"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Effect wheel Positioning": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Static Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 9"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 10"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam reducer 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam reducer 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam reducer 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam reducer 4"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Effect wheel animations": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 9"
+        },
+        {
+          "type": "Gobo",
+          "name": "Animation Macro 10"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Hole (flat field)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 9"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Prism wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 1 - 6-facet linear",
+          "facets": 6
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 2 - cylindrical"
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 3 - 8-facet 12° circular",
+          "facets": 8
+        }
+      ]
+    },
+    "Prism wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 1 - 6-facet linear",
+          "facets": 6
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 2 - 32-facet circular",
+          "facets": 32
+        },
+        {
+          "type": "Prism",
+          "name": "Prism 3 - 8-facet 18° circular",
+          "facets": 8
+        }
+      ]
+    },
+    "Pattern selection": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 1"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 2"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 3"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 4"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 5"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 6"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 7"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 8"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 9"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 10"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 11"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 12"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 13"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 14"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 15"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 16"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 17"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 18"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 19"
+        },
+        {
+          "type": "Prism",
+          "name": "Pattern 20"
+        }
+      ]
+    },
+    "Beam shaper selection": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam Shaper 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam Shaper 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam Shaper 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Beam Shaper 4"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "265deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "fast",
+          "comment": "0.2sec to 25.5sec"
+        }
+      ]
+    },
+    "Power/Special functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Reserved; To activate following functions, stop in DMX value for at least 3 s and shutter must be closed (except CRI setting) at least 3 sec. („Shutter,Strobe“ channel 37/33 must be at range: 0-31 DMX). Corresponding menu items are temporarily overridden except DMX Input."
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "DMX input: Wired DMX, *function is active only 10 seconds after switching the fixture on"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "DMX input: Wireless DMX, *function is active only 10 seconds after switching the fixture on"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "Graphic display On"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "Graphic display Off"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "High CRI / To activate CRI setting, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "Standard CRI / To activate CRI setting, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "Eco mode (Lamp power 380W)"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "Standard mode (Lamp power 470W)"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "Close promiximity mode On"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "Close promiximity mode Off"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "Fans mode: Auto"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "Fans mode: High"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "Dimmer curve: Square law"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "Dimmer curve: linear"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "Autofocus On"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "Autofocus Off"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "Pan/Tilt speed mode"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "Pan/Tilt time mode"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Generic",
+          "comment": "Blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Generic",
+          "comment": "Disabled blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Generic",
+          "comment": "Blackout while prism wheel 1 (wheel 2) moving"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Generic",
+          "comment": "Disabled blackout while prism wheel 1 (wheel 2) moving"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "Parking position On"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "Parking position Off"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Lamp On / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pan/Tilt reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Colour system reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Gobo wheels reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Dimmer/Shutter/Hot Spot reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Zoom/focus/frost/prism reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Effect wheel reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Total reset  / To activate function, stop in DMX value for at least 3 seconds"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Lamp Off"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Generic",
+          "comment": "RoboSpot enabled / The function is only applicable when the RoboSpot is connected."
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Generic",
+          "comment": "RoboSpot disabled - except handle faders and pan/tilt  / The function is only applicable when the RoboSpot is connected."
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "RoboSpot fully disabled  / The function is only applicable when the RoboSpot is connected."
+        }
+      ]
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 129],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 15
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 15
+        },
+        {
+          "dmxRange": [190, 215],
+          "type": "Effect",
+          "effectName": "rainbow forward",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [218, 243],
+          "type": "Effect",
+          "effectName": "Backwards rainbow",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "random colour selection by audio control",
+          "soundControlled": true,
+          "comment": "Set microphone sensitivity in menu „Personality“"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Auto random colour selection from fast to slow",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Color Wheel - positioning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 0,
+        "slotNumberEnd": 15,
+        "comment": "fine positioning"
+      }
+    },
+    "Virtual Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [1, 132],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 67
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "NoFunction",
+          "comment": "Raw DMX"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "CMY & Colour wheel time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Function is Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Zoom & Focus & Frost & Prism time": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Function is off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "25.5s",
+          "comment": "Time of zoom/focus movement"
+        }
+      ]
+    },
+    "Effect wheel Positioning": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 127],
+          "type": "Effect",
+          "effectName": "proportional indexing"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Ramping from open to full position"
+        },
+        {
+          "dmxRange": [171, 213],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Ramping from open to half position"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Ramp. from half position to full position"
+        }
+      ]
+    },
+    "Effect Wheel Rotation": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Static Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [4, 63],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [64, 87],
+          "type": "WheelSlot",
+          "slotNumberStart": 12,
+          "slotNumberEnd": 15
+        },
+        {
+          "dmxRange": [88, 167],
+          "type": "WheelShake",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [168, 199],
+          "type": "WheelShake",
+          "slotNumberStart": 12,
+          "slotNumberEnd": 15
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "WheelShake",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [202, 222],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [223, 243],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Random gobo selection by audio control",
+          "speed": "slow CW",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Effect wheel animations": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 23],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [24, 43],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [44, 255],
+          "type": "NoFunction",
+          "comment": "Raw DMX"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "slotNumber": 1,
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "WheelSlotRotation",
+          "slotNumber": 2,
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [5, 31],
+          "type": "WheelRotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [32, 59],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 11,
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [60, 129],
+          "type": "WheelShake",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 11,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [130, 199],
+          "type": "WheelShake",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "WheelShake",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [202, 222],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [223, 243],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Rot. gobo indexing & rotation": {
+      "fineChannelAliases": ["Rot. gobo indexing & rotation fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism wheel 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [4, 15],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [16, 27],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 4,
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "NoFunction",
+          "comment": "Raw DMX"
+        }
+      ]
+    },
+    "Prism wheel 1 indexing /rotation": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism wheel 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [4, 15],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [16, 27],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 4,
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "NoFunction",
+          "comment": "Raw DMX"
+        }
+      ]
+    },
+    "Prism wheel 2 indexing/rotation": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Pattern selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [4, 27],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 13
+        },
+        {
+          "dmxRange": [28, 67],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 21
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "NoFunction",
+          "comment": "Raw DMX"
+        }
+      ]
+    },
+    "Pattern rotation and indexing": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Beam shaper selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [4, 19],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [20, 35],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [36, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Beam shaper rotation and indexing": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Frost",
+          "frostIntensity": "off"
+        },
+        {
+          "dmxRange": [1, 50],
+          "type": "Frost",
+          "frostIntensityStart": "0%",
+          "frostIntensityEnd": "50%"
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Frost",
+          "frostIntensity": "low"
+        },
+        {
+          "dmxRange": [54, 63],
+          "type": "FrostEffect",
+          "effectName": "Pulse Closing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [64, 73],
+          "type": "FrostEffect",
+          "effectName": "Pulse opening",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [74, 83],
+          "type": "Generic",
+          "comment": "Ramping from fast to slow"
+        },
+        {
+          "dmxRange": [84, 86],
+          "type": "Frost",
+          "frostIntensity": "low"
+        },
+        {
+          "dmxRange": [87, 136],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
+        },
+        {
+          "dmxRange": [137, 139],
+          "type": "Frost",
+          "frostIntensity": "high"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "FrostEffect",
+          "effectName": "Pukse Closing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "FrostEffect",
+          "effectName": "Pulse opening",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Ramping from fast to slow"
+        },
+        {
+          "dmxRange": [170, 172],
+          "type": "Frost",
+          "frostIntensity": "high"
+        },
+        {
+          "dmxRange": [173, 222],
+          "type": "Frost",
+          "frostIntensityStart": "0%",
+          "frostIntensityEnd": "100%"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Frost",
+          "frostIntensity": "100%"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "FrostEffect",
+          "effectName": "Pulse closing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "FrostEffect",
+          "effectName": "Pulse opening",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Ramping from fast to slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Hot-Spot control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Automatic Hot-Spot control"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Hot-Spot control (of image centre)"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 16-bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Color Wheel - positioning",
+        "Virtual Color Wheel",
+        "Effect Speed",
+        "CMY & Colour wheel time",
+        "Zoom & Focus & Frost & Prism time",
+        "Effect wheel Positioning",
+        "Effect Wheel Rotation",
+        "Effect wheel animations",
+        "Static Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Rot. gobo indexing & rotation",
+        "Rot. gobo indexing & rotation fine",
+        "Prism wheel 1",
+        "Prism wheel 1 indexing /rotation",
+        "Prism wheel 2",
+        "Prism wheel 2 indexing/rotation",
+        "Pattern selection",
+        "Pattern rotation and indexing",
+        "Beam shaper selection",
+        "Beam shaper rotation and indexing",
+        "Frost",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Hot-Spot control",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "Reduced 8-bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Virtual Color Wheel",
+        "Effect Speed",
+        "CMY & Colour wheel time",
+        "Zoom & Focus & Frost & Prism time",
+        "Effect wheel Positioning",
+        "Effect Wheel Rotation",
+        "Effect wheel animations",
+        "Static Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Rot. gobo indexing & rotation",
+        "Prism wheel 1",
+        "Prism wheel 1 indexing /rotation",
+        "Prism wheel 2",
+        "Prism wheel 2 indexing/rotation",
+        "Pattern selection",
+        "Pattern rotation and indexing",
+        "Beam shaper selection",
+        "Beam shaper rotation and indexing",
+        "Frost",
+        "Zoom",
+        "Focus",
+        "Hot-Spot control",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
