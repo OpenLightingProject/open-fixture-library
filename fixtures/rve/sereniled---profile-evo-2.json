@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SERENILED - Profile Evo 2",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Mouflon"],
+    "createDate": "2025-02-03",
+    "lastModifyDate": "2025-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.rvetec.com/gb/index.php?controller=attachment&id_attachment=135",
+      "https://www.rvetec.com/gb/index.php?controller=attachment&id_attachment=191"
+    ]
+  },
+  "physical": {
+    "dimensions": [892, 505, 314],
+    "weight": 16.9,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 13588
+    },
+    "lens": {
+      "degreesMinMax": [15, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SERENILED - Profile Evo 2 - 3200K",
+      "shortName": "Sereniled 10/29",
+      "physical": {
+        "dimensions": [314, 2544, 762],
+        "weight": 17,
+        "power": 150,
+        "DMXconnector": "5-pin",
+        "bulb": {
+          "type": "LED",
+          "colorTemperature": 3200,
+          "lumens": 13588
+        },
+        "lens": {
+          "degreesMinMax": [10, 29]
+        }
+      },
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
