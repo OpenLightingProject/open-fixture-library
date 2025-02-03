@@ -80,49 +80,74 @@
       ]
     },
     "Program": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Strobe": "Strobe"
+          }
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          },
           "comment": "when Ch. 1-3 are active"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          },
           "comment": "when Ch. 1-3 are active"
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          },
           "comment": "when Ch. 1-3 are active"
         },
         {
           "dmxRange": [128, 159],
           "type": "Effect",
-          "effectName": "Automatic fade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 191],
           "type": "Effect",
-          "effectName": "Automatic 3-color snap"
+          "effectName": "Automatic 3-color snap",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          }
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
-          "effectName": "Automatic 7-color snap"
+          "effectName": "Automatic 7-color snap",
+          "switchChannels": {
+            "Program Speed / Strobe": "Program Speed"
+          }
         },
         {
           "dmxRange": [224, 255],
           "type": "Effect",
           "effectName": "Sound-active 7-color snap",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Strobe": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -207,12 +232,10 @@
         "Green",
         "Blue",
         "Color Macros",
-        "Strobe",
+        "Strobe / Program Speed / Sound Sensitivity",
         "Program",
         "Dimmer",
-        "Dimmer speed",
-        "Sound Sensitivity",
-        "Program Speed"
+        "Dimmer speed"
       ]
     }
   ]
