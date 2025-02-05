@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cirrus 1000",
+  "shortName": "Cirrus 1000",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Tom Rgh"],
+    "createDate": "2025-02-05",
+    "lastModifyDate": "2025-02-05"
+  },
+  "comment": "Machine à fumée lourde",
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/69/69937_cirrus1000-manual-fren.pdf?_gl=1*1diavtu*_up*MQ..*_gs*MQ..*_ga*ODk3NTk5MTM4LjE3Mzg3ODExNzM.*_ga_17YNWB2EZT*MTczODc4MTE3Mi4xLjAuMTczODc4MTE3Mi42MC4wLjA.*_gcl_aw*R0NMLjE3Mzg3ODExNzMuQ2p3S0NBaUF0WXk5QmhCY0Vpd0FOV1FRTHlSZUhqZDdRUk9vazB4d2VObkRubTBGMExpcXUwOU9wMVVycHRoNlVCYmRrd25ZN0lERVJob0M4dkVRQXZEX0J3RQ..*_gcl_au*MTc1ODIzNjQwNC4xNzM4NzgxMTcz&gclid=CjwKCAiAtYy9BhBcEiwANWQQLyReHjd7QROok0xweNnDnm0F0Liqu09Op1Urpth6UBbdkwnY7IDERhoC8vEQAvD_BwE&gbraid=0AAAAAD-GHlvW0KzMVPRZ8NdauTRvNVixP"
+    ],
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-cirrus-1000-p69937.html?_mkpid=393&_mkpc=G/SRC/FR/fr/Shopping/OK/I/_MEGABEST&_mkpd=%7C%7Cc%7C%7C%7C%7C&gad_source=1&gbraid=0AAAAAD-GHlvW0KzMVPRZ8NdauTRvNVixP&gclid=CjwKCAiAtYy9BhBcEiwANWQQLyReHjd7QROok0xweNnDnm0F0Liqu09Op1Urpth6UBbdkwnY7IDERhoC8vEQAvD_BwE#from-src=20231220goo222"
+    ],
+    "video": [
+      "https://www.sonovente.com/boomtonedj-cirrus-1000-p69937.html?_mkpid=393&_mkpc=G/SRC/FR/fr/Shopping/OK/I/_MEGABEST&_mkpd=%7C%7Cc%7C%7C%7C%7C&gad_source=1&gbraid=0AAAAAD-GHlvW0KzMVPRZ8NdauTRvNVixP&gclid=CjwKCAiAtYy9BhBcEiwANWQQLyReHjd7QROok0xweNnDnm0F0Liqu09Op1Urpth6UBbdkwnY7IDERhoC8vEQAvD_BwE#video"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [0, , ],
+    "weight": 10,
+    "power": 220,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Vitesse d'effet": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Débit Fumée": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Réglage du ventilateur 0-100%",
+      "shortName": "Réglage du ventilateur 0-100%",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Vitesse d'effet"
+      ]
+    },
+    {
+      "name": "Réglage du débit 0-100%",
+      "shortName": "Réglage du débit 0-100%",
+      "channels": [
+        "Débit Fumée"
+      ]
+    }
+  ]
+}
