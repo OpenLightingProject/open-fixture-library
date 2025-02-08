@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pinspot RGBW",
+  "shortName": "ZQ07010",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2025-02-08",
+    "lastModifyDate": "2025-02-08"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1rK7Giyl4zF935c1wPj9J3ERg1DGUW4q9/view"
+    ],
+    "productPage": ["https://www.uking-online.com/product/uking-pinspot-light-rgbw-10w-led-beam-pin-spot-by-dmx-512-sound-activated-controlled-spotlight-for-mirror-ball-party-wedding-dj-disco-shows-spot-lighting-black/"]
+  },
+  "physical": {
+    "dimensions": [163, 140, 91],
+    "weight": 0.45,
+    "power": 10,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [9, 134],
+          "type": "Intensity",
+          "comment": "Overwrites individual colors"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Special Functions":
+    {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 31],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 colors + red background"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 colors + green background"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 colors + blue background"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 colors + white background"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Cycling all 4 colors"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue + White"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Sound Control 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Effect",
+          "effectName": "Sound Control 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound Control 3",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Special Functions"
+      ]
+    }
+  ]
+}
