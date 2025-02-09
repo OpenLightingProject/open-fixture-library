@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Helios COB 200W RGBW",
+  "shortName": "Helios COB",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Simon PROUVEZE"],
+    "createDate": "2025-02-09",
+    "lastModifyDate": "2025-02-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/fr/marques/43715-helios-200-cob-q4.html"
+    ],
+    "productPage": [
+      "https://www.highlite.com/fr/marques/43715-helios-200-cob-q4.html"
+    ],
+    "video": [
+      "https://www.ltt-versand.de/fr/lumiere/projecteurs/projecteurs-a-led/autres-projecteurs-a-led/11749/showtec-helios-200-cob-q4"
+    ]
+  },
+  "physical": {
+    "dimensions": [269, 204, 437],
+    "weight": 5.2,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED COB 4in1",
+      "lumens": 2036
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow",
+          "comment": "from Flash to fast strob"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SLAVE",
+      "shortName": "Helios COB RGBW",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
