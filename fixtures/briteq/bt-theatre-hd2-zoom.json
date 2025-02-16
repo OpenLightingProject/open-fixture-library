@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-THEATRE HD2 zoom",
+  "shortName": "BT",
+  "categories": ["Color Changer", "Strobe", "Effect", "Other", "Dimmer"],
+  "meta": {
+    "authors": ["ƒ¥#œ∂™¶2wx1"],
+    "createDate": "2025-02-16",
+    "lastModifyDate": "2025-02-16"
+  },
+  "links": {
+    "productPage": [
+      "https://briteq-lighting.com/bt-theatre-hd2"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "1": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ewqa",
+      "physical": {
+        "bulb": {
+          "colorTemperature": 0
+        }
+      },
+      "channels": [
+        "1"
+      ]
+    }
+  ]
+}
