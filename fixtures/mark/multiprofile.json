@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MULTIPROFILE",
+  "shortName": "MARK MULTIPROFILE ZOOM",
+  "categories": ["Dimmer", "Strobe", "Color Changer", "Effect", "Other"],
+  "meta": {
+    "authors": ["annonymous"],
+    "createDate": "2025-02-16",
+    "lastModifyDate": "2025-02-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/MULTIPROFILE_ZOOM_LED_RGBW_17-50_v1_0.pdf"
+    ],
+    "productPage": [
+      "https://productos.equipson.es/store-multiprofile-zoom-led-rgbw-17-50"
+    ]
+  },
+  "availableChannels": {
+    "MARK MULTIPROFILE ZOOM": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "MARK MULTIPROFILE ZOOM",
+      "channels": [
+        "MARK MULTIPROFILE ZOOM"
+      ]
+    }
+  ]
+}
