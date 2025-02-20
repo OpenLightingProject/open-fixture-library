@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PFE-100 RGBW Profile Spot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Sashill"],
+    "createDate": "2023-09-08",
+    "lastModifyDate": "2023-09-08"
+  },
+  "comment": "LED RGBW Profile Spotlight",
+  "links": {
+    "manual": [
+      "http://images.prolighting.de/manuals/40001982-MANUAL-110-de-en_00096392.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 10,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Profiel Spotlight",
+      "degreesMinMax": [14, 41]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RGBW Colorblend": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Colorblend"
+      }
+    },
+    "Color change & Color fade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 134],
+          "type": "ColorPreset",
+          "comment": "Color fade with increasing speed"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "Color change with increasing speed"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Dimmer Speed 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Dimmer Speed 2"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Dimmer Speed 3"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Dimmer Speed 4"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGBW Colorblend",
+        "Color change & Color fade",
+        "Strobe",
+        "Dimmer Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
