@@ -1,0 +1,385 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Volkslicht Zoom LED",
+  "shortName": "Volkslicht Zoom",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["julh27"],
+    "createDate": "2025-01-11",
+    "lastModifyDate": "2025-01-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.germanlightproducts.com/wp-content/uploads/2013/12/Volkslicht-Zoom-RGB-Manual-V1.6-EN.pdf"
+    ],
+    "productPage": [
+      "https://www.germanlightproducts.com/product/volkslicht-zoom/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gqfevrjsp98"
+    ]
+  },
+  "physical": {
+    "dimensions": [585, 242, 356],
+    "weight": 7.8,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 26]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "660deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angle": "2.6deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg"
+      }
+    },
+    "Color (fixed)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Colors adjustable via RGB"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "CTO",
+          "colorTemperature": "CTO"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "CTB",
+          "colorTemperature": "CTB"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect Stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect random colors"
+        }
+      ]
+    },
+    "Red": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "stop",
+          "speedEnd": "stop",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "25Hz"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "50Hz"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "7200K"
+      }
+    },
+    "Special": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "RESET"
+        }
+      ]
+    },
+    "Movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Effect",
+          "effectName": "Pan",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Tilt",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Pan Tilt",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Pan Tilt Inverse",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Circle",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Circle Inverse",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Lying eight",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Random movement",
+          "comment": "Size 1-4 with each 0/90/180/270 degree"
+        }
+      ]
+    },
+    "Speed Pan Tilt": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "PanTiltSpeed",
+          "speedStart": "stop",
+          "speedEnd": "stop",
+          "comment": "Pan Tilt relative movement"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pan Min. 660° = 200s, Tilt Min. 300° = 110"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide",
+        "comment": "10-22 degree"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color (fixed)",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter",
+        "Dimmer",
+        "Color Temperature",
+        "Special",
+        "Movement",
+        "Speed Pan Tilt",
+        "Zoom"
+      ]
+    }
+  ]
+}
