@@ -1,0 +1,531 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mighty Bar",
+  "shortName": "EQLED64",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["C Ramskill"],
+    "createDate": "2024-10-08",
+    "lastModifyDate": "2024-10-08"
+  },
+  "comment": "The Mighty Bar is a discontinued 4-par LED light bar similar to the GigaBar and MicroPar from Equinox",
+  "links": {
+    "manual": [
+      "https://www.prolight.co.uk/ftp-in/EQLED64_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.prolight.co.uk"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=_Dt04aWBS3w"
+    ]
+  },
+  "physical": {
+    "dimensions": [1005, 291, 95],
+    "weight": 9.7,
+    "power": 260,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "28x 8W Quad-Colour LEDs",
+      "lumens": 3200
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "15 Colour Sound/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "EffectParameter",
+          "parameterStart": "short",
+          "parameterEnd": "long"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Colour Mix": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Colour Mix (CH 4, 5, 6 &7)"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Red/Green",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Green/Blue",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue/White",
+          "colors": ["#8080ff"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "White/Red",
+          "colors": ["#ff8080"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Green/White",
+          "colors": ["#80ff80"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Red/Blue",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Green/Blue/White",
+          "colors": ["#80ffff"]
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Red/Green/White",
+          "colors": ["#ffff80"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Red/Blue/White",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue/White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Dream",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Meteor",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Fade",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Change",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Flow 1",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Flow 2",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Flow 3",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Flow 4",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Flow 5",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Flow 6",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Flow 7",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Flow 8",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Flow 9",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Sound",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffff00", "#00ffff", "#8080ff", "#ff8080", "#80ff80", "#ff80ff", "#ffffff", "#80ffff", "#ffff80", "#ff80ff", "#ffffff"]
+        }
+      ]
+    },
+    "Flash": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "IEC Power Out 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    },
+    "IEC Power Out 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Channel DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Dimmer",
+        "15 Colour Sound/Strobe"
+      ]
+    },
+    {
+      "name": "9 Channel DMX",
+      "channels": [
+        "Colour Mix",
+        "Master Dimmer",
+        "Flash",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "IEC Power Out 1",
+        "IEC Power Out 2"
+      ]
+    },
+    {
+      "name": "16 Channel DMX",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4"
+      ]
+    },
+    {
+      "name": "19 Channel DMX",
+      "channels": [
+        "Colour Mix",
+        "Master Dimmer",
+        "Flash",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4"
+      ]
+    }
+  ]
+}
