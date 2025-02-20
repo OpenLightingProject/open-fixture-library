@@ -1,0 +1,1353 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PavoSlim 60C",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-09-10",
+    "lastModifyDate": "2024-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1706153017558-391202-1124121241512490-PavoSlim+60C+Manual%EF%BC%88NANLITE%EF%BC%89CP00050-BZ-002_C01+W.pdf"
+    ],
+    "productPage": [
+      "https://nanlite.com/product-pavoslim-60c-120c?t=1725981527884#/en/PavoSlim-60C/60C"
+    ],
+    "other": [
+      "https://cdn-aliyun.nanlite.com/release/1703218484897-153703-1124121241519342-PavoSlim_60C_120C_DMX_REFERENCE_GUIDE_EN.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [306.3, 300.65, 18.6],
+    "weight": 0.94,
+    "power": 72,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Green-Magenta Point 8bit": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit": {
+      "name": "Green-Magenta Point",
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strob"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Mode HSI": {
+      "name": "Mode",
+      "defaultValue": 43,
+      "highlightValue": 43,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to HSI Mode"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Mode RGBW": {
+      "name": "Mode",
+      "defaultValue": 85,
+      "highlightValue": 85,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to RGBW Mode"
+      }
+    },
+    "Cross Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mode GEL": {
+      "name": "Mode",
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to GEL Mode"
+      }
+    },
+    "Gel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Clear",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ColorPreset",
+          "comment": "Double CTB",
+          "colors": ["#6fbcff"]
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "ColorPreset",
+          "comment": "Full CTB",
+          "colors": ["#dbf5ff"]
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "ColorPreset",
+          "comment": "3/4 CTB",
+          "colors": ["#79a7d7"]
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ColorPreset",
+          "comment": "1/2 CTB",
+          "colors": ["#fffce6"]
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ColorPreset",
+          "comment": "1/4 CTB",
+          "colors": ["#ffe9c7"]
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorPreset",
+          "comment": "1/8 CTB",
+          "colors": ["#ebf0ff"]
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "ColorPreset",
+          "comment": "Double CTO",
+          "colors": ["#ff7a21"]
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "ColorPreset",
+          "comment": "Full CTO",
+          "colors": ["#ffad49"]
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "ColorPreset",
+          "colors": ["#deb182"],
+          "comment": "3/4 CTO"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "1/2 CTO",
+          "colors": ["#ffd585"]
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "1/4 CTO",
+          "colors": ["#ffebbf"]
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "1/8 CTO",
+          "colors": ["#fff5d8"]
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "comment": "Full CTS",
+          "colors": ["#edb461"]
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "comment": "1/2 CTS",
+          "colors": ["#f8d5ae"]
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "comment": "1/4 CTS",
+          "colors": ["#fbe8d4"]
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "1/8 CTS",
+          "colors": ["#fdf2e7"]
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "Plus Green",
+          "colors": ["#ffed8f"]
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "1/2 Plus Green",
+          "colors": ["#ffe49b"]
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "comment": "1/4 Plus Green",
+          "colors": ["#ffe0a3"]
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "ColorPreset",
+          "comment": "1/8 Plus Green",
+          "colors": ["#ffd093"]
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "ColorPreset",
+          "comment": "Minus Green",
+          "colors": ["#ffbdaa"]
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "ColorPreset",
+          "comment": "1/2 Minus Green",
+          "colors": ["#ffccab"]
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "ColorPreset",
+          "comment": "1/4 Minus Green",
+          "colors": ["#ffd5ad"]
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "ColorPreset",
+          "comment": "1/8 Minus Green",
+          "colors": ["#ffeab3"]
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "ColorPreset",
+          "comment": "Apricot",
+          "colors": ["#ffa255"]
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "ColorPreset",
+          "comment": "Gold Tint",
+          "colors": ["#ffb78b"]
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "ColorPreset",
+          "comment": "Medium Bastard Amber",
+          "colors": ["#ffb783"]
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "ColorPreset",
+          "comment": "Bastard Amber",
+          "colors": ["#ffc290"]
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "comment": "Pale Gold",
+          "colors": ["#ffb684"]
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "comment": "Pale Salmon",
+          "colors": ["#ffae8f"]
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "comment": "Pale Rose",
+          "colors": ["#ffbd92"]
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "ColorPreset",
+          "comment": "Light Pink",
+          "colors": ["#ffbaa1"]
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "ColorPreset",
+          "comment": "Medium Pink",
+          "colors": ["#ff9f98"]
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "ColorPreset",
+          "comment": "Light Rose",
+          "colors": ["#ff8d7e"]
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "ColorPreset",
+          "comment": "English Rose",
+          "colors": ["#ffa76b"]
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "ColorPreset",
+          "comment": "Light Salmon",
+          "colors": ["#ff9a83"]
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "ColorPreset",
+          "comment": "Middle Rose",
+          "colors": ["#ff9ba1"]
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "ColorPreset",
+          "comment": "Dark Pink",
+          "colors": ["#ff7194"]
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff716e"]
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "ColorPreset",
+          "comment": "Loving Amber",
+          "colors": ["#ff9d75"]
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "ColorPreset",
+          "comment": "Flesh Pink",
+          "colors": ["#ff7487"]
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "ColorPreset",
+          "comment": "Paler Lavender",
+          "colors": ["#ffe5ca"]
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "ColorPreset",
+          "comment": "Surprise Pink",
+          "colors": ["#e5c7ff"]
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "ColorPreset",
+          "comment": "Lavender Tint",
+          "colors": ["#ffdab5"]
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "comment": "Light Lavender",
+          "colors": ["#ffdcf6"]
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "ColorPreset",
+          "colors": ["#854bb8"],
+          "comment": "Fuchsia Pink"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "ColorPreset",
+          "comment": "Special Lavender",
+          "colors": ["#d6c1ff"]
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "ColorPreset",
+          "comment": "Pale Lavender",
+          "colors": ["#ffd0cd"]
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "comment": "Deep Lavender",
+          "colors": ["#ffc0e1"]
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "ColorPreset",
+          "comment": "Lilac Tint",
+          "colors": ["#ffd9c1"]
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Rose Purple",
+          "colors": ["#ff95e0"]
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "ColorPreset",
+          "comment": "Medium Purple",
+          "colors": ["#ff50f1"]
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#ff00f1"]
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "ColorPreset",
+          "comment": "Bright Pink",
+          "colors": ["#ff2e9b"]
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "ColorPreset",
+          "comment": "Follies Pink",
+          "colors": ["#f46c93"]
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "ColorPreset",
+          "comment": "Rose Pink",
+          "colors": ["#ff8fb9"]
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "ColorPreset",
+          "comment": "Smokey Pink",
+          "colors": ["#ff8987"]
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "ColorPreset",
+          "comment": "Scarlet",
+          "colors": ["#ff5647"]
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "ColorPreset",
+          "comment": "Special Rose Pink",
+          "colors": ["#ff3a89"]
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorPreset",
+          "comment": "Bright Rose",
+          "colors": ["#ff536c"]
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "ColorPreset",
+          "comment": "Dark Magenta",
+          "colors": ["#ff0055"]
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff0059"]
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "ColorPreset",
+          "comment": "Bright Red",
+          "colors": ["#ff0012"]
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorPreset",
+          "comment": "Primary Red",
+          "colors": ["#ff0018"]
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "ColorPreset",
+          "comment": "Plasa Red",
+          "colors": ["#ff2707"]
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "ColorPreset",
+          "comment": "Medium Red",
+          "colors": ["#ff0020"]
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "ColorPreset",
+          "comment": "Light Red",
+          "colors": ["#ff3914"]
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorPreset",
+          "comment": "Flame Red",
+          "colors": ["#ff3622"]
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "ColorPreset",
+          "comment": "Fire",
+          "colors": ["#ff391b"]
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "ColorPreset",
+          "comment": "Sunset Red",
+          "colors": ["#ff6f2f"]
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber",
+          "colors": ["#ff4200"]
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "ColorPreset",
+          "comment": "Gold Amber",
+          "colors": ["#ff7600"]
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "ColorPreset",
+          "comment": "Deep Orange",
+          "colors": ["#ff7800"]
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "ColorPreset",
+          "comment": "Golden Amber",
+          "colors": ["#ff8944"]
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach",
+          "colors": ["#ffa25b"]
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "ColorPreset",
+          "comment": "1/4 Mustard Yellow",
+          "colors": ["#f4c443"]
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "ColorPreset",
+          "comment": "1/2 Mustard Yellow",
+          "colors": ["#d7ad3a"]
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "ColorPreset",
+          "comment": "Mustard Yellow",
+          "colors": ["#bfa235"]
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "ColorPreset",
+          "comment": "Urban Sodium",
+          "colors": ["#ee7d40"]
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "ColorPreset",
+          "comment": "LO Sodium",
+          "colors": ["#572d0d"]
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "ColorPreset",
+          "comment": "Amber Delight",
+          "colors": ["#c06826"]
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "ColorPreset",
+          "comment": "Industry Sodium",
+          "colors": ["#c3a96c"]
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "ColorPreset",
+          "comment": "Chocolate",
+          "colors": ["#ffbc77"]
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "ColorPreset",
+          "comment": "Dark Salmon",
+          "colors": ["#ff814c"]
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "ColorPreset",
+          "comment": "Dark Amber",
+          "colors": ["#ff4f0a"]
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "comment": "Chrome Orange",
+          "colors": ["#ff9e00"]
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "ColorPreset",
+          "comment": "Medium Amber",
+          "colors": ["#ff9123"]
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "ColorPreset",
+          "comment": "Deep Straw",
+          "colors": ["#ff9f00"]
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "ColorPreset",
+          "comment": "Light Amber",
+          "colors": ["#ffba45"]
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorPreset",
+          "comment": "Pale Yellow",
+          "colors": ["#ffd78c"]
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "ColorPreset",
+          "comment": "Medium Yellow",
+          "colors": ["#ffd21c"]
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow",
+          "colors": ["#ffd930"]
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffc600"]
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "ColorPreset",
+          "comment": "Deep Amber",
+          "colors": ["#ffa704"]
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "comment": "Straw Tint",
+          "colors": ["#ffc069"]
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#ffd88f"]
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "ColorPreset",
+          "comment": "Pale Amber Gold",
+          "colors": ["#ffc176"]
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "ColorPreset",
+          "comment": "No Color Straw",
+          "colors": ["#ffd79c"]
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "ColorPreset",
+          "comment": "Slate Blue",
+          "colors": ["#67cdff"]
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "ColorPreset",
+          "comment": "Pale Navy Blue",
+          "colors": ["#50e5ff"]
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "ColorPreset",
+          "comment": "Mist Blue",
+          "colors": ["#fff9db"]
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "ColorPreset",
+          "comment": "Pale Blue",
+          "colors": ["#f6ffeb"]
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "ColorPreset",
+          "comment": "Alice Blue",
+          "colors": ["#3aa0ff"]
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "ColorPreset",
+          "comment": "True Blue",
+          "colors": ["#64deff"]
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "ColorPreset",
+          "comment": "Evening Blue",
+          "colors": ["#00a1ff"]
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "ColorPreset",
+          "comment": "Just Blue",
+          "colors": ["#007bff"]
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "ColorPreset",
+          "comment": "Dark Blue",
+          "colors": ["#0069ff"]
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "ColorPreset",
+          "comment": "Deeper Blue",
+          "colors": ["#0075ff"]
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "ColorPreset",
+          "comment": "Deep Blue",
+          "colors": ["#0062ff"]
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "ColorPreset",
+          "comment": "Regal Blue",
+          "colors": ["#2d72ff"]
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "Zenith Blue",
+          "colors": ["#005fff"]
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "comment": "Palace Blue",
+          "colors": ["#00d2ff"]
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "comment": "Tokyo Blue",
+          "colors": ["#0040ff"]
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "ColorPreset",
+          "comment": "Congo Blue",
+          "colors": ["#1a44ff"]
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "ColorPreset",
+          "comment": "S.M. Lavender",
+          "colors": ["#8017ca"]
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "comment": "Dark Lavender",
+          "colors": ["#8866ff"]
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#af7cff"]
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "Pale Violet",
+          "colors": ["#afaeff"]
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "Daylight Blue",
+          "colors": ["#00c2ff"]
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#00acff"]
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "ColorPreset",
+          "comment": "Medium Blue",
+          "colors": ["#00a0ff"]
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "ColorPreset",
+          "comment": "Moonlight Blue",
+          "colors": ["#00cfff"]
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "ColorPreset",
+          "comment": "Bright Blue",
+          "colors": ["#00c8ff"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "No Color Blue",
+          "colors": ["#7df5ff"]
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "comment": "Summer Blue",
+          "colors": ["#a8fffc"]
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "comment": "Lagoon Blue",
+          "colors": ["#00f3ff"]
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Medium Blue-Green",
+          "colors": ["#00ffe1"]
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue",
+          "colors": ["#00ffd8"]
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "ColorPreset",
+          "comment": "Marine Blue",
+          "colors": ["#8fffd3"]
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ColorPreset",
+          "comment": "Special Steel Blue",
+          "colors": ["#6eecd7"]
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "ColorPreset",
+          "comment": "Steel Blue",
+          "colors": ["#ffc8de"]
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "ColorPreset",
+          "comment": "Dark Steel Blue",
+          "colors": ["#abe0ff"]
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Cornflower",
+          "colors": ["#6eecd7"]
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#00a0ff"]
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorPreset",
+          "colors": ["#0083cf"],
+          "comment": "Glacier Blue"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "ColorPreset",
+          "colors": ["#00aadc"],
+          "comment": "Lighter Blue"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "ColorPreset",
+          "comment": "Special Medium Blue",
+          "colors": ["#2e6cbd"]
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "ColorPreset",
+          "comment": "Soft Green",
+          "colors": ["#7df2c1"]
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ColorPreset",
+          "colors": ["#00a796"],
+          "comment": "Jade"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#cfff53"]
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "ColorPreset",
+          "comment": "Fern Green",
+          "colors": ["#8fff60"]
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "ColorPreset",
+          "comment": "Dark Green",
+          "colors": ["#00ff66"]
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "ColorPreset",
+          "comment": "Primary Green",
+          "colors": ["#4bff00"]
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "comment": "Forest Green",
+          "colors": ["#3d8a56"]
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "comment": "Pale Green",
+          "colors": ["#fff87c"]
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "ColorPreset",
+          "comment": "Fluorescent Green",
+          "colors": ["#a9ffc1"]
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "ColorPreset",
+          "comment": "Dark Yellow Green",
+          "colors": ["#3aff42"]
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "ColorPreset",
+          "comment": "Moss Green",
+          "colors": ["#a7ff58"]
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "ColorPreset",
+          "comment": "Lime Green",
+          "colors": ["#fffe4c"]
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "ColorPreset",
+          "comment": "Emulated White Flame Green",
+          "colors": ["#ffe89c"]
+        },
+        {
+          "dmxRange": [152, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gel CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Cross Fade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Cross Fade",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Dimmer",
+        "Mode CCT",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - HSI",
+      "shortName": "Ultimate HSI",
+      "channels": [
+        "Dimmer",
+        "Mode HSI",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - RGBW",
+      "shortName": "Ultimate RGBW",
+      "channels": [
+        "Dimmer",
+        "Mode RGBW",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - GEL",
+      "shortName": "Ultimate GEL",
+      "channels": [
+        "Dimmer",
+        "Mode GEL",
+        "Gel CCT",
+        "Gel"
+      ]
+    }
+  ]
+}
