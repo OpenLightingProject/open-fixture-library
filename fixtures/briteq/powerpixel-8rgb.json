@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Powerpixel-8rgb",
+  "shortName": "Power pixel 8",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["AB"],
+    "createDate": "2021-10-06",
+    "lastModifyDate": "2021-10-06"
+  },
+  "links": {
+    "productPage": [
+      "https://briteq-lighting.com/fr/powerpixel8-rgb"
+    ]
+  },
+  "physical": {
+    "dimensions": [880, 60, 170],
+    "weight": 8.16,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "COB"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer strob": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "REd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GReen": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "ReD": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GrEen": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BlUe": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "DImmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "DIMmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "DIMMer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB",
+      "shortName": "Ch 3",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE"
+      ]
+    },
+    {
+      "name": "RGB + master dim sound strobe",
+      "shortName": "Ch 4",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "Dimmer strob"
+      ]
+    },
+    {
+      "name": "RGB + Master Dim + Sound/strobe",
+      "shortName": "Ch 5",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "All projectors individually + 3ch for special functions",
+      "shortName": "Ch 5",
+      "channels": [
+        "Color Macros",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Color Macros 2"
+      ]
+    },
+    {
+      "name": "Powerpixel 4-RGB only",
+      "shortName": "Ch 6",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "All projectors individually Rgb + dim",
+      "shortName": "Ch 12",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "Red",
+        "Green",
+        "Blue",
+        "REd",
+        "GReen",
+        "BLue",
+        "ReD",
+        "GrEen",
+        "BlUe"
+      ]
+    },
+    {
+      "name": "All projectors individually RGB + Dim controller",
+      "shortName": "Ch 16",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "DImmer",
+        "REd",
+        "GReen",
+        "BLue",
+        "DIMmer",
+        "ReD",
+        "GrEen",
+        "BlUe",
+        "DIMMer"
+      ]
+    }
+  ]
+}
