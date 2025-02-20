@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HF-900",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["informatique 18", "La purge 18"],
+    "createDate": "2023-10-29",
+    "lastModifyDate": "2023-10-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-10-29",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [280, 461, 253],
+    "weight": 10,
+    "power": 800,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Quantité brouillard": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Quantité brouillard (0 - 100%)"
+      }
+    },
+    "Vitesse vantilateur": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Vitesse vantilateur (0 - 100%)"
+      }
+    },
+    "Hazer/Brouillard": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Hazer"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "Brouillard"
+        }
+      ]
+    },
+    "Mode brouillard": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "selection brouillard"
+      }
+    },
+    "Mode fumée": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "brouillard",
+      "channels": [
+        "Quantité brouillard",
+        "Vitesse vantilateur",
+        "Mode brouillard"
+      ]
+    },
+    {
+      "name": "fumée",
+      "channels": [
+        "Quantité brouillard",
+        "Mode fumée"
+      ]
+    },
+    {
+      "name": "Variable",
+      "channels": [
+        "Quantité brouillard",
+        "Vitesse vantilateur",
+        "Hazer/Brouillard"
+      ]
+    }
+  ]
+}
