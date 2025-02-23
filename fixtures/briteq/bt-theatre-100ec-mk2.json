@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-THEATRE 100EC Mk2",
+  "shortName": "BTTHEATRE100ECMk2",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Gaël Vandezande"],
+    "createDate": "2025-02-23",
+    "lastModifyDate": "2025-02-23"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/bt-theatre-100ec-mk2"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/bt-theatre-100ec-mk2"
+    ]
+  },
+  "physical": {
+    "dimensions": [278, 305, 336],
+    "weight": 6.2,
+    "power": 125,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "COB",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [10, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2 channels",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
