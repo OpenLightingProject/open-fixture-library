@@ -1,0 +1,197 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led moving Head 90W Spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jacks"],
+    "createDate": "2025-02-26",
+    "lastModifyDate": "2025-02-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.coyolighting.com/product/90w-led-spot-moving-head-light/"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 255, 360],
+    "weight": 7.6,
+    "power": 140,
+    "bulb": {
+      "type": "1x90w white LED"
+    },
+    "lens": {
+      "name": "45000@1m",
+      "degreesMinMax": [0, 14]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 2,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "270deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Color Wheel Rotation": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel": {
+      "fineChannelAliases": ["Gobo Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 219],
+          "type": "WheelSlotRotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "fineChannelAliases": ["Gobo Wheel 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 219],
+          "type": "WheelSlotRotation",
+          "speed": "slow CCW"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "WheelSlotRotation",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "fineChannelAliases": ["Gobo Wheel Rotation 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [11, 249],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelSlot",
+          "slotNumber": 0
+        }
+      ]
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "0%",
+        "distanceEnd": "100%"
+      }
+    },
+    "Prism": {
+      "fineChannelAliases": ["Prism fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "slow CCW"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "fineChannelAliases": ["Pan/Tilt Speed fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reserved": {
+      "fineChannelAliases": ["Reserved fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "parameter": "instant"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Jacks",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel Rotation",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation 2",
+        "Focus",
+        "Prism",
+        "Pan/Tilt Speed",
+        "Pan fine",
+        "Tilt fine",
+        "Reserved"
+      ]
+    }
+  ]
+}
