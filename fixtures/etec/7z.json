@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7Z",
+  "shortName": "led moving head 7Z",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["herm"],
+    "createDate": "2025-02-28",
+    "lastModifyDate": "2025-02-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.etec-professional.de"
+    ]
+  },
+  "physical": {
+    "power": 110,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "s"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "fast",
+          "comment": "speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeDuration",
+          "durationStart": "99ms",
+          "durationEnd": "100ms"
+        }
+      ]
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 17],
+          "type": "ColorPreset",
+          "comment": "Rot"
+        },
+        {
+          "dmxRange": [18, 25],
+          "type": "ColorPreset",
+          "comment": "Grün"
+        },
+        {
+          "dmxRange": [26, 33],
+          "type": "ColorPreset",
+          "comment": "Blau"
+        },
+        {
+          "dmxRange": [34, 41],
+          "type": "ColorPreset",
+          "comment": "Weiss"
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "ColorPreset",
+          "comment": "Rot+grün"
+        },
+        {
+          "dmxRange": [50, 57],
+          "type": "ColorPreset",
+          "comment": "Rotblau"
+        },
+        {
+          "dmxRange": [58, 65],
+          "type": "ColorPreset",
+          "comment": "Grünblau"
+        },
+        {
+          "dmxRange": [66, 73],
+          "type": "ColorPreset",
+          "comment": "Rotgrünblau"
+        },
+        {
+          "dmxRange": [74, 81],
+          "type": "ColorPreset",
+          "comment": "Rotgrünblauweis"
+        },
+        {
+          "dmxRange": [82, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "6deg",
+        "angleEnd": "36deg"
+      }
+    },
+    "Automatik": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 128],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [129, 249],
+          "type": "Generic",
+          "comment": "Sound"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction",
+          "comment": "reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7Z",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color",
+        "Color Temperature",
+        "Zoom",
+        "Automatik"
+      ]
+    }
+  ]
+}
