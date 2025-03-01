@@ -1,0 +1,272 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB Panel Light LD75R",
+  "shortName": "LD75R",
+  "categories": ["Other", "Dimmer", "Flower", "Color Changer", "Barrel Scanner"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-01",
+    "lastModifyDate": "2023-06-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230310/1678438291595550.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [441, 410, 107],
+    "weight": 3.5,
+    "power": 75,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500
+    }
+  },
+  "availableChannels": {
+    "0-51": {
+      "defaultValue": 25,
+      "highlightValue": 25,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "CCT"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "8500K"
+      }
+    },
+    "GM": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-50deg",
+        "angleEnd": "50deg",
+        "comment": "G/M  0=5500K"
+      }
+    },
+    "52-103": {
+      "defaultValue": 75,
+      "highlightValue": 75,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 103],
+          "type": "Generic",
+          "comment": "HSI"
+        },
+        {
+          "dmxRange": [104, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue": {
+      "defaultValue": 50,
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg",
+        "comment": "Hue"
+      }
+    },
+    "104-155": {
+      "defaultValue": 125,
+      "highlightValue": 125,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 103],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [104, 155],
+          "type": "Generic",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [156, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "50%",
+      "highlightValue": "50%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "156-207": {
+      "defaultValue": 175,
+      "highlightValue": 175,
+      "constant": true,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 155],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [156, 207],
+          "type": "Generic",
+          "comment": "FX"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "HUE"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Effect",
+          "effectName": "фотовспышка",
+          "comment": "фотовспышка"
+        },
+        {
+          "dmxRange": [37, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "1-2-3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "shortName": "CCT",
+      "channels": [
+        "0-51",
+        "Dimmer",
+        "Color Temperature",
+        "GM"
+      ]
+    },
+    {
+      "name": "HSI",
+      "shortName": "HSI",
+      "channels": [
+        "52-103",
+        "Dimmer 2",
+        "Hue"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "RGB",
+      "channels": [
+        "104-155",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "FX",
+      "shortName": "FX",
+      "channels": [
+        "156-207",
+        "Dimmer",
+        "Effects",
+        "1-2-3"
+      ]
+    }
+  ]
+}
