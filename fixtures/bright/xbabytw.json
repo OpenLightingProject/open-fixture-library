@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xbabytw",
+  "shortName": "baby",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["jens"],
+    "createDate": "2025-03-10",
+    "lastModifyDate": "2025-03-10"
+  },
+  "links": {
+    "video": [
+      "https://stageline.no/lyd/stativ/streaming-og-podcast-tilbehør/bright-xbaby-color-rgbw-led-fresnel-black-powercon-xline/888723"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Strobe",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
