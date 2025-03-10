@@ -1,0 +1,516 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Trusslight Par36",
+  "shortName": "TR36",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tommix"],
+    "createDate": "2025-01-23",
+    "lastModifyDate": "2025-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2024/12/151.172-TP36-Truss-Par_manual_V2.0.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 1898
+  },
+  "physical": {
+    "weight": 1.1,
+    "power": 25,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "10%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "1%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Dark Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Salmon"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Turquise"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorIntensity",
+          "color": "Indigo",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Pink"
+        }
+      ]
+    },
+    "Auto/Sound": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Generic",
+          "comment": "Colour Blending  (rate)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Color Change  (rate)"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Sound Color Blending (rate)"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Sound Color change (rate)"
+        }
+      ]
+    },
+    "Red 3": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Red (0-100%)"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Green (0-100%)"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Green (0-100%)"
+      }
+    },
+    "UV 2": {
+      "name": "UV",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "UV"
+      }
+    },
+    "Color Macro 2": {
+      "name": "Color Macro",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "0%"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Dark Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Green Yellow"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Salmon"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorIntensity",
+          "color": "Indigo",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Pink"
+        }
+      ]
+    },
+    "Auto/Sound 2": {
+      "name": "Auto/Sound",
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Generic",
+          "comment": "Colour Blending  (rate)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Color Change  (rate)"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Sound Color Blending (rate)"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Sound Color change (rate)"
+        }
+      ]
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel RGB",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channel RGB+UV",
+      "shortName": "4chuv",
+      "channels": [
+        "Red 2",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macro",
+        "Auto/Sound"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red 3",
+        "Green 2",
+        "Blue 2",
+        "UV 2",
+        "Color Macro 2",
+        "Auto/Sound 2"
+      ]
+    }
+  ]
+}
