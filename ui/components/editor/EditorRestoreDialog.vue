@@ -28,15 +28,14 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import {
-  getEmptyFixture,
-  getEmptyLink,
-  getEmptyPhysical,
-  getEmptyMode,
+  getEmptyCapability,
   getEmptyChannel,
   getEmptyFineChannel,
-  getEmptyCapability,
+  getEmptyFixture,
+  getEmptyLink,
+  getEmptyMode,
+  getEmptyPhysical,
   getSanitizedChannel,
-  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -74,7 +73,7 @@ export default {
     },
 
     async applyRestored() {
-      const modelValue = clone(this.modelValue);
+      const modelValue = structuredClone(this.modelValue);
 
       // closes dialog
       this.$emit(`update:model-value`, undefined);
