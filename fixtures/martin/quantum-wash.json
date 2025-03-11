@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "QUANTUM WASH",
+  "shortName": "QUANTUM WASH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["PLDL"],
+    "createDate": "2025-03-11",
+    "lastModifyDate": "2025-03-11"
+  },
+  "links": {
+    "productPage": [
+      "https://www.martin.com/en/products/mac-quantum-wash"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "100deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "100deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "100deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Fixture control": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BASIQUE",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer 2",
+        "Red",
+        "Red 2",
+        "Green",
+        "Green 2",
+        "Blue",
+        "Blue 2",
+        "CTC",
+        "Color Wheel",
+        "Zoom",
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Fixture control"
+      ]
+    }
+  ]
+}
