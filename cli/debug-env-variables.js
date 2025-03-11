@@ -8,6 +8,7 @@ const usedVariables = [
   `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
   `NODE_ENV`,
   `PORT`,
+  `HOST`,
   `WEBSITE_URL`,
   `GITHUB_PR_NUMBER`,
   `GITHUB_PR_HEAD_REF`,
