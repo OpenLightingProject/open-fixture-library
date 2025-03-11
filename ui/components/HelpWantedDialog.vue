@@ -10,11 +10,13 @@
     <form v-if="state === `ready` && modelValue !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
+        key="location"
         :value="location"
         label="Location" />
 
       <LabeledValue
         v-if="modelValue.helpWanted !== null"
+        key="help-wanted"
         label="Problem description">
         <span v-html="modelValue.helpWanted" />
       </LabeledValue>

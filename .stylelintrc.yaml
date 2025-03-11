@@ -40,6 +40,12 @@ rules:
   # prevent comments in generated CSS
   scss/comment-no-loud: true
 
+  # prevent deprecated color functions
+  scss/function-color-channel: true
+
+  # make imported files more explicit
+  scss/load-partial-extension: always
+
   # special `@if`/`@else` formatting
   '@stylistic/block-closing-brace-newline-after':
     - always
