@@ -169,10 +169,39 @@
           "slotNumber": 8
         },
         {
-          "dmxRange": [57, 127],
-          "type": "Generic",
-          "comment": "Split colors",
-          "helpWanted": "Which splits at what values, exactly?"
+          "dmxRange": [57, 66],
+          "type": "WheelSlot",
+          "slotNumber": 1.5
+        },
+        {
+          "dmxRange": [67, 76],
+          "type": "WheelSlot",
+          "slotNumber": 2.5
+        },
+        {
+          "dmxRange": [77, 86],
+          "type": "WheelSlot",
+          "slotNumber": 3.5
+        },
+        {
+          "dmxRange": [87, 96],
+          "type": "WheelSlot",
+          "slotNumber": 4.5
+        },
+        {
+          "dmxRange": [97, 106],
+          "type": "WheelSlot",
+          "slotNumber": 5.5
+        },
+        {
+          "dmxRange": [107, 116],
+          "type": "WheelSlot",
+          "slotNumber": 6.5
+        },
+        {
+          "dmxRange": [117, 127],
+          "type": "WheelSlot",
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [128, 189],
@@ -188,8 +217,9 @@
         {
           "dmxRange": [194, 255],
           "type": "WheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Strangely, both wheel rotation ranges go in the same direction: open, red, orange, yellow, etc.  (The manual never states a direction for either range.)"
         }
       ]
     },
@@ -289,8 +319,9 @@
         {
           "dmxRange": [194, 255],
           "type": "WheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Like the color wheel, this one is always CW"
         }
       ]
     },
