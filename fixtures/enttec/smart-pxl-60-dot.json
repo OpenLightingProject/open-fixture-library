@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SMART PXL 60 Dot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Yestalgia", "Lachlan Hicks"],
+    "createDate": "2022-11-09",
+    "lastModifyDate": "2022-11-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-11-09",
+      "comment": "created by Q Light Controller Plus (version 4.12.7 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [76, 58, 45],
+    "weight": 0.07,
+    "power": 3,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 39
+    },
+    "lens": {
+      "degreesMinMax": [180, 180]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-bit - RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-bit - RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16-bit - RGB",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "16-bit - RGBW",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    }
+  ]
+}
