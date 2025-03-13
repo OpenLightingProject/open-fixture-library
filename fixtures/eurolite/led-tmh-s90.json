@@ -1,0 +1,496 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-S90",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-10-27",
+    "lastModifyDate": "2023-10-27"
+  },
+  "links": {
+    "other": [
+      "https://google.de"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "white/red"
+        },
+        {
+          "type": "Color",
+          "name": "red"
+        },
+        {
+          "type": "Color",
+          "name": "red/green"
+        },
+        {
+          "type": "Color",
+          "name": "green"
+        },
+        {
+          "type": "Color",
+          "name": "green/blue"
+        },
+        {
+          "type": "Color",
+          "name": "blue"
+        },
+        {
+          "type": "Color",
+          "name": "blue/yellow"
+        },
+        {
+          "type": "Color",
+          "name": "yellow"
+        },
+        {
+          "type": "Color",
+          "name": "yellow/orange"
+        },
+        {
+          "type": "Color",
+          "name": "orange"
+        },
+        {
+          "type": "Color",
+          "name": "orange/lightblue"
+        },
+        {
+          "type": "Color",
+          "name": "lightblue"
+        },
+        {
+          "type": "Color",
+          "name": "lightblue/magenta"
+        },
+        {
+          "type": "Color",
+          "name": "magenta"
+        },
+        {
+          "type": "Color",
+          "name": "magenta/white"
+        },
+        {
+          "type": "Color",
+          "name": "rainbow forwards downspeed"
+        },
+        {
+          "type": "Color",
+          "name": "rainbow backwards upped"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Spiral3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Woolmark"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dot Circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Star 3D"
+        },
+        {
+          "type": "Gobo",
+          "name": "Square"
+        },
+        {
+          "type": "Gobo",
+          "name": "Fan"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Spiral3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Woolmark"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Dot Circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Star 3D"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Square"
+        },
+        {
+          "type": "Gobo",
+          "name": "Slow-Fast>Fan"
+        },
+        {
+          "type": "Gobo",
+          "name": "CW"
+        },
+        {
+          "type": "Gobo",
+          "name": "CCW"
+        },
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-100deg",
+        "angleEnd": "100deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "strobespeed"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 1,
+        "slotNumberEnd": 18
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [150, 202],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [130, 192],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [137, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Prism",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
