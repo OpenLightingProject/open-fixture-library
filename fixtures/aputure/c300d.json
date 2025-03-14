@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS C300d",
+  "shortName": "C300d",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["alexis", "Luke Nelson"],
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C300d-II_Product_Manual_EN.pdf",
+      "https://www.aputure.com/wp-content/uploads/2022/06/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [215.6, 344.5, 298.4],
+    "power": 350,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode Selection": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "comment": "Manual Mode",
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [128, 255],
+          "comment": "FX Mode",
+          "type": "Maintenance"
+        }
+      ]
+    },
+    "FX Control": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Paparazzi",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Fireworks",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Faulty bulb",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Lightning",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Lightning Mode Options"
+          }
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "TV",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Pulsing",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Strobe",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Explosion",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Explosion Mode Options"
+          }
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Undefined / Lightning Mode Options / Explosion Mode Options": "Undefined"
+          }
+        }
+      ]
+    },
+    "FX Frequency Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "comment": "1",
+          "helpWanted": "What speeds do these numbers represent?",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [20, 39],
+          "comment": "2",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [40, 59],
+          "comment": "3",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [60, 79],
+          "comment": "4",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 99],
+          "comment": "5",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [100, 119],
+          "comment": "6",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 139],
+          "comment": "7",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [140, 159],
+          "comment": "8",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 179],
+          "comment": "9",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 199],
+          "comment": "10",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 219],
+          "comment": "R",
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lightning Mode Options": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Single Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Cycle Mode"
+        }
+      ]
+    },
+    "Explosion Mode Options": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Single Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Undefined": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Mode Selection",
+        "FX Control",
+        "FX Frequency Control",
+        "Undefined / Lightning Mode Options / Explosion Mode Options"
+      ]
+    }
+  ]
+}
