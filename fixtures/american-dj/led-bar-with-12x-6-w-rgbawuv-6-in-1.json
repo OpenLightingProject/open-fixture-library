@@ -1,0 +1,525 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bar with 12x 6 W RGBAWUV 6-in-1",
+  "shortName": "UB 12 H",
+  "categories": ["Color Changer", "Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["Erich Lamaprt"],
+    "createDate": "2023-09-06",
+    "lastModifyDate": "2023-09-06"
+  },
+  "comment": "• 41.75-inch (1 meter) indoor Linear Bar with 12x 6W HEX LEDs (RGBAW+UV)\n\n• Great for Stage or Wall Washing!\n\n• 4 DMX Channel Modes: 6, 10, 12 and 36 channels\n\n• 5 operational modes: Auto (Program Run), Sound Active, RGBAW+UV Dimmer, Static Color and DMX-512 Mode\n\n• 3 or 6-Section Pixel control \n\n• Patent Pending Quick Align (Magnetic) \n\n• Beam Angle: 40 degrees\n\n• Flicker Free\n\n• 4-Button DMX LED Display \n\n• 35 built-in Color Macros\n\n• LED pulse & strobe effect\n\n• Electronic Dimming: 0-100%\n\n• Includes mounting brackets to mount on a wall \n\n   or set on the ground\n\n• Compatible with the ADJ UC IR wireless remote (included) and the Airstream IR APP\n\n• Long Life LEDs (Rated at approximately\n\n   50,000 hrs.)\n\n• Power Draw: 88W @ 120V.\n\n• Linkable: DMX via 3-pin XLR cable; Power via IEC. Daisy-chain power (Up to 7 UB 12H fixtures max., @ 120V can be power linked)\n• With Wired Digital Communication Network\n\n• Multi-voltage operation: AC 100V-240V 50/60Hz\n\n• Dimensions (LxWxH): 41.75” x 2.5” x 3.75”/ 1060 x 63 x 90mm\n\n• Weight: 6 lbs./ 2.7 kg.\n\n• cETLus Approved (Control #4002034)",
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11251/ADJ%20UB%2012H%20-%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/ub-12h"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=PB04xao2bjo"
+    ]
+  },
+  "physical": {
+    "dimensions": [1060, 90, 63],
+    "weight": 2.7,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 6 W RGBAWUV 6-in-1"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 2 2": {
+      "name": "Red 2",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 7": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 7": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 7": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 7": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 7": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "StrobeDuration",
+          "duration": "short"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "10%",
+          "brightnessEnd": "20%"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity",
+          "brightnessStart": "20%",
+          "brightnessEnd": "40%"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity",
+          "brightnessStart": "40%",
+          "brightnessEnd": "60%"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity",
+          "brightnessStart": "20%",
+          "brightnessEnd": "80%"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Intensity",
+          "brightnessStart": "40%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Intensity",
+          "brightnessStart": "10%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Red 2 3": {
+      "name": "Red 2",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "36-Channel",
+      "shortName": "36ch",
+      "channels": [
+        "Red 1",
+        "Blue 1",
+        "Green 1",
+        "White 1",
+        "Amber 1",
+        "UV 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Amber 2",
+        "White 2",
+        "UV 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Amber 3",
+        "UV 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Amber 4",
+        "UV 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 5",
+        "Amber 5",
+        "UV 5",
+        "Red 6",
+        "Blue 6",
+        "Green 6",
+        "White 6",
+        "Amber 6",
+        "UV 6"
+      ]
+    }
+  ]
+}
