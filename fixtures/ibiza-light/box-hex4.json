@@ -1,0 +1,297 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BOX-HEX4",
+  "shortName": "ibiza-box-hex4",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Matteo Piccina"],
+    "createDate": "2022-02-15",
+    "lastModifyDate": "2022-02-15"
+  },
+  "links": {
+    "manual": [
+      "https://lotronic.net/gb/index.php?controller=attachment&id_attachment=302"
+    ],
+    "productPage": [
+      "https://lotronic.net/gb/projector-on-battery/725-BOX-HEX4-5420047138774.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [144, 185, 144],
+    "weight": 2.2,
+    "power": 48,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#5f4b8b"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Dark Orange",
+          "colors": ["#ff8c00"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Green yellow",
+          "colors": ["#adff2f"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Salmon",
+          "colors": ["#fa8072"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#30d5c8"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#e4d96f"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Light blue",
+          "colors": ["#add8e6"]
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Dark blue",
+          "colors": ["#00008b"]
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        }
+      ]
+    },
+    "Master dimming": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Master dimming"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUp",
+        "speedStart": "stop",
+        "speedEnd": "fast",
+        "comment": "Stroboscope (Rate 0-100%)"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "Color blending",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Color change",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "Sound color blending",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Sound color change",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master dimming",
+        "Shutter / Strobe",
+        "Color Presets",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master dimming",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Color Macros"
+      ]
+    }
+  ]
+}
