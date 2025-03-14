@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "54LED 3W RGBW",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["CHOI"],
+    "createDate": "2024-06-24",
+    "lastModifyDate": "2024-06-24"
+  },
+  "links": {
+    "productPage": [
+      "https://korean.alibaba.com/p-detail/54led-60704286784.html?spm=a2700.galleryofferlist.normal_offer.d_image.5ae629ae7GPnQn"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Choi.Y.H",
+      "channels": [
+        "Dimmer",
+        "Strobe Speed",
+        "No function",
+        "No function 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
