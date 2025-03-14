@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LCB140",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-03-14",
+    "lastModifyDate": "2025-03-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/02/150.703-LCB140-LED-Bar-12x6W-manual-V2.0.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/lcb140-led-bar-12x-6w/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=MbRy2QhLDkg"
+    ]
+  },
+  "rdm": {
+    "modelId": 150.703
+  },
+  "physical": {
+    "dimensions": [1025, 65, 65],
+    "weight": 3.25,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BEAMZ LCB140",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Color Macros"
+      ]
+    }
+  ]
+}
