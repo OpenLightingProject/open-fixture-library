@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DR7",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Annelise"],
+    "createDate": "2025-03-18",
+    "lastModifyDate": "2025-03-18"
+  },
+  "comment": "Pan/Tilt Ceiling Spot",
+  "links": {
+    "manual": [
+      "https://www.luminii.com/brands/rcl/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Relay": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "255%",
+        "brightnessEnd": "255%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "1",
+        "No function",
+        "Tilt",
+        "Relay"
+      ]
+    }
+  ]
+}
