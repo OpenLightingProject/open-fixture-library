@@ -1,0 +1,621 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KL Fresnel 6 FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DerHoffmann"],
+    "createDate": "2025-03-17",
+    "lastModifyDate": "2025-03-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-03-17",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [280, 584, 344],
+    "weight": 8.4,
+    "power": 219,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "colorTemperature": 6500,
+      "lumens": 7200
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [10, 32]
+    }
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Virtual Swatch Book"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Fast"
+        },
+        {
+          "type": "Color",
+          "name": "Medium"
+        },
+        {
+          "type": "Color",
+          "name": "Slow"
+        },
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter, strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Function (shutter open)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe effect"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Function (shutter open)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse effect in sequences",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Function (shutter open)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe effect"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Function (shutter open)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Mint": {
+      "fineChannelAliases": ["Mint fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 23],
+          "type": "ColorPreset",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [24, 85],
+          "type": "ColorPreset",
+          "comment": "CTO, 2400K - 8500K"
+        },
+        {
+          "dmxRange": [86, 255],
+          "type": "ColorPreset",
+          "comment": "8500K"
+        }
+      ]
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 179],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Virtual Swatch Book"
+        },
+        {
+          "dmxRange": [180, 201],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [224, 234],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Fast"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Green shift": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Intensity",
+          "comment": "Full Minus tto Neutral"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "Neutral White"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Intensity",
+          "comment": "Neutral to Full Plus Green"
+        }
+      ]
+    },
+    "Dim Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Intensity",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Intensity",
+          "comment": "Stage 2"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Intensity",
+          "comment": "0s"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Intensity",
+          "comment": "0.1s"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Intensity",
+          "comment": "0.2s"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Intensity",
+          "comment": "0.3s"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Intensity",
+          "comment": "0.4s"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Intensity",
+          "comment": "0.5s"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "comment": "0.6s"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "0.7s"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Intensity",
+          "comment": "0.8s"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Intensity",
+          "comment": "0.9s"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Intensity",
+          "comment": "1.0s"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Intensity",
+          "comment": "1.5s"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Intensity",
+          "comment": "2.0s"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Intensity",
+          "comment": "3.0s"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Intensity",
+          "comment": "4.0s"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Intensity",
+          "comment": "5.0s"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Intensity",
+          "comment": "6.0s"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Intensity",
+          "comment": "7.0s"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Intensity",
+          "comment": "8.0s"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Intensity",
+          "comment": "9.0s"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Intensity",
+          "comment": "10s"
+        },
+        {
+          "dmxRange": [142, 255],
+          "type": "Intensity",
+          "comment": "Idle"
+        }
+      ]
+    },
+    "Control Refresh Rates": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Maintenance",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Fan Mode Auto"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "Fan Mode Silent"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Fan Mode High"
+        },
+        {
+          "dmxRange": [60, 99],
+          "type": "Maintenance",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [100, 168],
+          "type": "Maintenance",
+          "comment": "900 Hz -> 25,000 Hz"
+        },
+        {
+          "dmxRange": [169, 200],
+          "type": "Maintenance",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Maintenance",
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Maintenance",
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Maintenance",
+          "comment": "Inverse Square"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "comment": "S-Curve"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "comment": "Idle"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel Dimmer",
+      "shortName": "1ch Dimmer",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "6-channel Dimmer Color",
+      "shortName": "6ch Dimmer Color",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter, strobe",
+        "CTO",
+        "Color wheel",
+        "Control Refresh Rates"
+      ]
+    },
+    {
+      "name": "11-channel Standard",
+      "shortName": "11ch Standard",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter, strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Mint",
+        "Amber",
+        "CTO",
+        "Color wheel",
+        "Control Refresh Rates"
+      ]
+    },
+    {
+      "name": "18-channel Extended",
+      "shortName": "18ch Extended",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter, strobe",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Mint",
+        "Mint fine",
+        "Amber",
+        "Amber fine",
+        "CTO",
+        "Color wheel",
+        "Green shift",
+        "Dim Modes",
+        "Control Refresh Rates"
+      ]
+    },
+    {
+      "name": "9-channel CMY",
+      "shortName": "9ch CMY",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter, strobe",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color wheel",
+        "Control Refresh Rates"
+      ]
+    },
+    {
+      "name": "14-channel CMY Extended",
+      "shortName": "14ch CMY Extended",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter, strobe",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "Color wheel",
+        "Green shift",
+        "Dim Modes",
+        "Control Refresh Rates"
+      ]
+    }
+  ]
+}
