@@ -299,7 +299,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
     {
       "insert": "matrixChannels", // static value for matrix channels
       "repeatFor": "eachPixelXYZ", // see below
-      "channelOrder": "perPixel", // or "perChannel"
+      "channelOrder": "perPixel", // see below
       "templateChannels": [
         "Red $pixelKey",
         "Green $pixelKey",
@@ -319,6 +319,16 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
 * `"eachPixelGroup"`: Gets computed into an array of all pixel group keys, ordered by appearance in the JSON file.
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
+`channelOrder` defines how the channels are ordered. Possible values are:
+
+* `"perPixel"`: For the above [matrix structure](#matrix-structure) example, this results in
+  - `["Red Inner ring", "Green Inner ring", "Blue Inner ring"]`
+  - `["Red Middle ring", "Green Middle ring", "Blue Middle ring"]`
+  - `["Red Outer ring", "Green Outer ring", "Blue Outer ring"]`
+* `"perChannel"`: For the above [matrix structure](#matrix-structure) example, this results in 
+  - `["Red Inner ring", "Red Middle ring", "Red Outer ring"]`
+  - `["Green Inner ring", "Green Middle ring", "Green Outer ring"]`
+  - `["Blue Inner ring", "Blue Middle ring", "Blue Outer ring"]`
 
 ### Wheels
 
