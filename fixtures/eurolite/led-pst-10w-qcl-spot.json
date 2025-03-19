@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PST-10W QCL Spot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Lars K"],
+    "createDate": "2024-10-03",
+    "lastModifyDate": "2024-10-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51916152-Manual-137964-1.100-eurolite-led-pst-10-qcl-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51916152-eurolite-led-pst-10-qcl-spot.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
