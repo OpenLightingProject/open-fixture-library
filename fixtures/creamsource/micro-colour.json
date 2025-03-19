@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Micro Colour",
+  "shortName": "Micro Colour",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Alexander"],
+    "createDate": "2024-08-03",
+    "lastModifyDate": "2024-08-03"
+  },
+  "comment": "This is incomplete, with only the first few modes added.",
+  "links": {
+    "manual": [
+      "https://21632152.fs1.hubspotusercontent-na1.net/hubfs/21632152/CS_MicroColor_DMX_V1.2.pdf"
+    ],
+    "productPage": [
+      "https://creamsource.com/product/micro-colour/"
+    ]
+  },
+  "physical": {
+    "dimensions": [223, 207, 108],
+    "weight": 3.4,
+    "power": 80,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 15000,
+      "lumens": 3439
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Master Level": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2200K",
+        "colorTemperatureEnd": "15000K"
+      }
+    },
+    "Green/Magenta": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CCT-Colour Crossfade": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Bits - CCT and RGBW",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "CCT-Colour Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Hue/Saturation",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "CCT-Colour Crossfade",
+        "Hue",
+        "Saturation"
+      ]
+    }
+  ]
+}
