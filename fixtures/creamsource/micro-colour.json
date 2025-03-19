@@ -1,0 +1,1605 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Micro Colour",
+  "categories": ["Dimmer", "Effect", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Alexander"],
+    "createDate": "2024-08-14",
+    "lastModifyDate": "2024-08-14"
+  },
+  "links": {
+    "manual": [
+      "https://21632152.fs1.hubspotusercontent-na1.net/hubfs/21632152/Creamsource-Micro-Colour-User-Guide.pdf"
+    ],
+    "productPage": [
+      "https://creamsource.com/product/micro-colour/"
+    ]
+  },
+  "physical": {
+    "dimensions": [223, 207, 108],
+    "weight": 3.4,
+    "power": 80,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "CCT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2200K",
+        "colorTemperatureEnd": "15000K"
+      }
+    },
+    "Master Level": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green/Magenta": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "-1%"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Colour Crossfade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "X Coordinate": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y Coordinate": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effects Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Random Effect"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Flash Frames Effect"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Dual Level Effect"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Timed Flash Effect"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Colour Cycle Effect"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Candle & Fire Effect"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Emergency Effect"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Television Effect"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Paparazzi Effect"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Party Effect"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Pulse Effect"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Effect",
+          "effectName": "RESERVED",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Effects Channel 1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effects Channel 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effects Channel 3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effects Channel 4": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Channel 4"
+      }
+    },
+    "Effects Channel 5": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Channel 5"
+      }
+    },
+    "Gel Library": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "LEE Color Filters"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "LEE Cosmetic"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "LEE 600 Series"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "LEE 700 Series"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "LEE Color Correction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Rosco Cinelux"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Rosco CalColor"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Rosco Storaro Selection"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Rosco Color Correction"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "NoFunction",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Gel Swatch": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [148, 149],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [150, 151],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [152, 153],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [156, 157],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [158, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [178, 255],
+          "type": "NoFunction",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Gel Source": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    },
+    "Bump Green/Magenta": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Bump Red/Cyan": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Bump Blue/Yellow": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Bump Saturation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Master Level - 16": {
+      "fineChannelAliases": ["Master Level - 16 fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-Master": {
+      "fineChannelAliases": ["16-Master fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-CCT": {
+      "fineChannelAliases": ["16-CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2200K",
+        "colorTemperatureEnd": "15000K"
+      }
+    },
+    "16-Green/Magenta": {
+      "fineChannelAliases": ["16-Green/Magenta fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [5001, 35267],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "-1%"
+        },
+        {
+          "dmxRange": [35268, 35268],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [35269, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "16-Red": {
+      "fineChannelAliases": ["16-Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "16-Green": {
+      "fineChannelAliases": ["16-Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "16-Blue": {
+      "fineChannelAliases": ["16-Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "16-Colour Crossfade": {
+      "fineChannelAliases": ["16-Colour Crossfade fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-White": {
+      "fineChannelAliases": ["16-White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "16-Hue": {
+      "fineChannelAliases": ["16-Hue fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-Saturation": {
+      "fineChannelAliases": ["16-Saturation fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-X Coordinate": {
+      "fineChannelAliases": ["16-X Coordinate fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-Y Coordinate": {
+      "fineChannelAliases": ["16-Y Coordinate fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "16-Bump Red/Cyan": {
+      "fineChannelAliases": ["16-Bump Red/Cyan fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [5001, 35267],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [35268, 35268],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [35269, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "16-Bump Green/Magenta": {
+      "fineChannelAliases": ["16-Bump Green/Magenta fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [5001, 35267],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [35268, 35268],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [35269, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "16-Bump Blue/Yellow": {
+      "fineChannelAliases": ["16-Bump Blue/Yellow fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [5001, 35267],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [35268, 35268],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [35269, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "16-Bump Saturation": {
+      "fineChannelAliases": ["16-Bump Saturation fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [5001, 35267],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "-100%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [35268, 35268],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%"
+        },
+        {
+          "dmxRange": [35269, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        }
+      ]
+    },
+    "Scenario Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "SCENARIO 1: 8 Bit, CCT and RGBW"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Generic",
+          "comment": "SCENARIO 2: 8 Bit, CCT"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "SCENARIO 3: 8 Bit, CCT and Hue/Saturation"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "SCENARIO 4: 8 Bit, RGBW"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "SCENARIO 5: 8 Bit, Hue/Saturation"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "SCENARIO 6: 16 Bit, CCT and RGBW"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "SCENARIO 7: 16 Bit, CCT"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "SCENARIO 8: 16 Bit, CCT and Hue/  Saturation"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "SCENARIO 9: 16 Bit, RGBW"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "SCENARIO 10: 16 Bit, Hue/Saturation"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "SCENARIO 11: 8 Bit, xy Coordinates"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "SCENARIO 12: 8 Bit, CCT and   xy Coordinates"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "SCENARIO 13: 16 Bit, xy Coordinates"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "SCENARIO 14: 16 Bit, CCT and   xy Coordinates"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "SCENARIO15: 8 Bit, CCT and Hue/   Saturation with Effects"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "SCENARIO 16: 8 Bit, CCT and RGBW   with Effects"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "SCENARIO 17: 8 Bit, CCT and   xy Coordinates with   Effects"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "SCENARIO 18: 16 Bit, CCT and Hue/   Saturation with Effects"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "SCENARIO 19: 16 Bit, CCT and RGBW   with Effects"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "SCENARIO 20: 16 Bit, CCT and   xy Coordinates with   Effects"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Generic",
+          "comment": "SCENARIO 21: 8 Bit, Gels"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "SCENARIO 22: 8 Bit, CCT and Gels"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Generic",
+          "comment": "SCENARIO 23: 8 Bit, CCT and Gels   with Effects"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Generic",
+          "comment": "SCENARIO 24: 16 Bit, Gels"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "SCENARIO 25: 16 Bit, CCT and Gels"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "SCENARIO 26: 16 Bit, CCT and Gels   with Effects"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Generic",
+          "comment": "SCENARIO 27: 8 Bit, Gels with   Colour Bump"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Generic",
+          "comment": "SCENARIO 28: 8 Bit, CCT and Gels   with Colour Bump"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Generic",
+          "comment": "SCENARIO 29: 16 Bit, Gels with   Colour Bump"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Generic",
+          "comment": "SCENARIO 30: 16 Bit, CCT and Gels   with Colour Bump"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "NoFunction",
+          "comment": "RESERVED"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Bits - CCT and RGBW",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Hue/Saturation",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "8 Bits - RGBW",
+      "channels": [
+        "Master Level",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Bits - Hue/Saturation",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and RGBW",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "16-Red",
+        "16-Red fine",
+        "16-Green",
+        "16-Green fine",
+        "16-Blue",
+        "16-Blue fine",
+        "16-White",
+        "16-White fine"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and Hue/Saturation",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Hue",
+        "16-Hue fine",
+        "16-Saturation",
+        "16-Saturation fine"
+      ]
+    },
+    {
+      "name": "16 Bits - RGBW",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-Red",
+        "16-Red fine",
+        "16-Green",
+        "16-Green fine",
+        "16-Blue",
+        "16-Blue fine"
+      ]
+    },
+    {
+      "name": "16 Bits - Hue/Saturation",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-Hue",
+        "16-Hue fine",
+        "16-Saturation",
+        "16-Saturation fine"
+      ]
+    },
+    {
+      "name": "8 Bits - xy Coordinates",
+      "channels": [
+        "Master Level",
+        "X Coordinate",
+        "Y Coordinate"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and xy Coordinates",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "X Coordinate",
+        "Y Coordinate"
+      ]
+    },
+    {
+      "name": "16 Bits - xy Coordinates",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-X Coordinate",
+        "16-X Coordinate fine",
+        "16-Y Coordinate",
+        "16-Y Coordinate fine"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and xy Coordinates",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "16-X Coordinate",
+        "16-X Coordinate fine",
+        "16-Y Coordinate",
+        "16-Y Coordinate fine"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Hue/Saturation with Effects",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and RGBW with Effects",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and xy Coordinates with Effects",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "X Coordinate",
+        "Y Coordinate",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and Hue/Saturation with Effects 16 Bits - CCT and Hue/Saturation with Effects",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "16-Hue",
+        "16-Hue fine",
+        "16-Saturation",
+        "16-Saturation fine",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and RGBW with Effects",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "16-Red",
+        "16-Red fine",
+        "16-Green",
+        "16-Green fine",
+        "16-Blue",
+        "16-Blue fine",
+        "16-White",
+        "16-White fine",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and xy Coordinates with Effects",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "16-X Coordinate",
+        "16-X Coordinate fine",
+        "16-Y Coordinate",
+        "16-Y Coordinate fine",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "8 Bits - Gels",
+      "channels": [
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Gels",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Gels with Effects",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "16 Bits - Gels",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and Gels",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and Gels with Effects",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Effects Mode",
+        "Effects Channel 1",
+        "Effects Channel 2",
+        "Effects Channel 3",
+        "Effects Channel 4",
+        "Effects Channel 5"
+      ]
+    },
+    {
+      "name": "8 Bits - Gels with Colour Bump",
+      "channels": [
+        "Master Level",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Green/Magenta",
+        "Bump Blue/Yellow",
+        "Bump Saturation"
+      ]
+    },
+    {
+      "name": "8 Bits - CCT and Gels with Colour Bump",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Green/Magenta",
+        "Bump Blue/Yellow",
+        "Bump Saturation"
+      ]
+    },
+    {
+      "name": "16 Bits - Gels with Colour Bump",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "16-Bump Red/Cyan",
+        "16-Bump Red/Cyan fine",
+        "16-Bump Green/Magenta",
+        "16-Bump Green/Magenta fine",
+        "16-Bump Blue/Yellow",
+        "16-Bump Blue/Yellow fine",
+        "16-Bump Saturation",
+        "16-Bump Saturation fine"
+      ]
+    },
+    {
+      "name": "16 Bits - CCT and Gels with Colour Bump",
+      "channels": [
+        "16-Master",
+        "16-Master fine",
+        "16-CCT",
+        "16-CCT fine",
+        "16-Green/Magenta",
+        "16-Green/Magenta fine",
+        "16-Colour Crossfade",
+        "16-Colour Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "16-Bump Red/Cyan",
+        "16-Bump Red/Cyan fine",
+        "16-Bump Green/Magenta",
+        "16-Bump Green/Magenta fine",
+        "16-Bump Blue/Yellow",
+        "16-Bump Blue/Yellow fine",
+        "16-Bump Saturation",
+        "16-Bump Saturation fine"
+      ]
+    },
+    {
+      "name": "Flex",
+      "channels": [
+        "Scenario Select"
+      ]
+    }
+  ]
+}
