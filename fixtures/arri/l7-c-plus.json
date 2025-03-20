@@ -1,34 +1,31 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Skypanel S120C",
-  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "name": "L7-C Plus",
+  "categories": ["Dimmer", "Color Changer"],
   "meta": {
-    "authors": ["Jean-François Losson", "Dyami Caliri"],
-    "createDate": "2020-10-02",
-    "lastModifyDate": "2022-08-10"
+    "authors": ["Dyami Caliri"],
+    "createDate": "2025-01-30",
+    "lastModifyDate": "2025-01-30"
   },
   "links": {
     "manual": [
-      "https://www.arri.com/resource/blob/31208/e3a435411261f80aee556508014ce2dd/arri-skypanel-user-manual-en-nov2018-l03301-data.pdf",
-      "https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf"
+      "https://www.arri.com/resource/blob/382216/744a1820fe8b6c2b64092c759f38d6ea/arri-l-series-plus-operating-manual-en-data.pdf",
+      "https://www.arri.com/resource/blob/381308/ddc7ea24b1c45e4a9195cbf3a08326b0/arri-l-series-plus-dmx-protocol-data.pdf"
     ],
     "productPage": [
-      "https://www.arri.com/en/lighting/led/skypanel/s120-c"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=Qq9xhKwpZqc"
+      "https://www.arri.com/en/lighting/led-spotlights/l-series-plus"
     ]
   },
   "physical": {
-    "dimensions": [1332, 347, 133],
-    "weight": 13.7,
-    "power": 400,
+    "dimensions": [300, 308, 456],
+    "weight": 8.7,
+    "power": 220,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [110, 110]
+      "degreesMinMax": [14, 50]
     }
   },
   "availableChannels": {
@@ -91,32 +88,32 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 4587],
+          "dmxRange": [0, 5000],
           "type": "Generic",
           "comment": "Neutral"
         },
         {
-          "dmxRange": [4588, 9830],
+          "dmxRange": [5001, 10000],
           "type": "Generic",
           "comment": "Full minus green"
         },
         {
-          "dmxRange": [9831, 30146],
+          "dmxRange": [10001, 29999],
           "type": "Generic",
           "comment": "-99%…-1%"
         },
         {
-          "dmxRange": [30147, 39976],
+          "dmxRange": [30000, 40000],
           "type": "Generic",
           "comment": "Neutral"
         },
         {
-          "dmxRange": [39977, 60292],
+          "dmxRange": [40001, 59999],
           "type": "Generic",
           "comment": "1%…99%"
         },
         {
-          "dmxRange": [60293, 65535],
+          "dmxRange": [60000, 65535],
           "type": "Generic",
           "comment": "Full plus green"
         }
@@ -211,18 +208,13 @@
           "comment": "Fan At Full Speed"
         },
         {
-          "dmxRange": [250, 250],
-          "type": "NoFunction",
-          "helpWanted": "Is this capability really here? Or is it just a typo in the manual?"
-        },
-        {
-          "dmxRange": [251, 255],
+          "dmxRange": [250, 255],
           "type": "Maintenance",
           "comment": "Fan off"
         }
       ]
     },
-    "Presets": {
+    "Preset": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -283,25 +275,29 @@
           "dmxRange": [132, 143],
           "type": "ColorPreset",
           "colorTemperature": "2900K",
-          "comment": "Preset 01"
+          "comment": "Preset 01",
+          "colors": ["#ffb165"]
         },
         {
           "dmxRange": [144, 155],
           "type": "ColorPreset",
           "colorTemperature": "3200K",
-          "comment": "Preset 02"
+          "comment": "Preset 02",
+          "colors": ["#ffbb78"]
         },
         {
           "dmxRange": [156, 167],
           "type": "ColorPreset",
           "colorTemperature": "5600K",
-          "comment": "Preset 03"
+          "comment": "Preset 03",
+          "colors": ["#ffe8d5"]
         },
         {
           "dmxRange": [168, 179],
           "type": "ColorPreset",
           "colorTemperature": "6500K",
-          "comment": "Preset 04"
+          "comment": "Preset 04",
+          "colors": ["#fff9fd"]
         },
         {
           "dmxRange": [180, 191],
@@ -317,25 +313,29 @@
           "dmxRange": [204, 215],
           "type": "ColorPreset",
           "comment": "Preset 07 - Rosco 3408",
-          "colorTemperature": "5600K"
+          "colorTemperature": "5600K",
+          "colors": ["#fcc286"]
         },
         {
           "dmxRange": [216, 227],
           "type": "ColorPreset",
           "comment": "Preset 08 - Lee 187",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#f5e4d7"]
         },
         {
           "dmxRange": [228, 239],
           "type": "ColorPreset",
           "comment": "Preset 09 - Rosco 3152",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#f5802c"]
         },
         {
           "dmxRange": [240, 255],
           "type": "ColorPreset",
           "comment": "Preset 10 - Lee 162",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#fcded8"]
         }
       ]
     },
@@ -4689,7 +4689,7 @@
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4702,7 +4702,7 @@
         "Color Temperature",
         "Green-Magenta Point 8bit",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4718,7 +4718,7 @@
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4733,7 +4733,7 @@
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4746,7 +4746,7 @@
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4772,7 +4772,7 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4788,7 +4788,7 @@
         "Green-Magenta Point 16bit",
         "Green-Magenta Point 16bit fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4810,7 +4810,7 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4830,7 +4830,7 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4846,7 +4846,7 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4870,7 +4870,7 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4885,7 +4885,7 @@
         "Color Temperature fine",
         "Green-Magenta Point 8bit",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4905,7 +4905,7 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4925,7 +4925,7 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4941,7 +4941,7 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4964,7 +4964,7 @@
         "Gel 2",
         "Gel Transition Type",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
@@ -4989,7 +4989,7 @@
         "Gel 2",
         "Gel Transition Type",
         "Fan Control",
-        "Presets",
+        "Preset",
         "Strobe",
         "Reserved for future use"
       ]
