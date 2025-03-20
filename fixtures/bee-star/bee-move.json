@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bee Move",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Kaha"],
+    "createDate": "2023-05-31",
+    "lastModifyDate": "2023-05-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/search?q=fixture+beemove+spot+40&oq=FIXTURE+beemove+spot&aqs=chrome.1.69i57j33i160.9772j1j7&sourceid=chrome&ie=UTF-8"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan Fin": {
+      "fineChannelAliases": ["Pan Fin fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "TILT Fin": {
+      "fineChannelAliases": ["TILT Fin fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12 canaux",
+      "shortName": "Ch12",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Macros",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Dimmer2",
+        "Dimmer3"
+      ]
+    }
+  ]
+}
