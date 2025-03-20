@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Pad 7 7x10W 5in1 RGBWA",
+  "shortName": "LED Pad 7",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Frank B."],
+    "createDate": "2025-03-20",
+    "lastModifyDate": "2025-03-20"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/369851_v4_r1_en_online.pdf?_gl=1*99b8gx*_gcl_au*MTQ5MDg0MzAyLjE3NDI0Njg1OTQ.*FPAU*NDIwNjM2NjA0LjE3NDI0Njg1NjI.*_ga*MTM5NTQ4MzIzOC4xNzQyNDY4NTYx*_ga_QNTG1E3BFT*MTc0MjQ2ODU2MS4xLjEuMTc0MjQ2ODY0MS4wLjAuMTkyMzk2NDc5Nw..*_fplc*VVZ4bDNCWVp0NE11bktFdCUyQmNyZ2R6SzFoWGwyV1JpWkZBZ3J2TDlMZDRQaThOUUtPWE9uOGxVTVpvQ2FWdUZYc0xNSVpObTFhJTJGS0E3RWZrUDhEJTJCOSUyQnhsOHVxNTZjMEl5S2hjZkwzZkdKazUyelZwMEl2cVc0bFhBT25sYUElM0QlM0Q."
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec.html"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i6268p8_yd59vq8a.mp4"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rot": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    }
+  ]
+}
