@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "M-Fog 1000",
+  "shortName": "M-1000",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Brioche"],
+    "createDate": "2023-12-12",
+    "lastModifyDate": "2023-12-12"
+  },
+  "comment": "Consommation de liquides : 35 ml/min\nTemps de chauffe : environ 2 min\nSortie continue maximale : environ 7 s\nTemps de rechargement : environ 6 s\nCapacité du réservoir de liquide : 2 l\nPuissance du brouillard : environ 240 m³ / min",
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_m_fog_1000_dmx_fog_machine.htm"
+    ],
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_en_online.pdf",
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_fr_online.pdf"
+    ],
+    "video": [
+      "https://www.thomann.de/intl/thomanntv_video_stairville_m_fog_1000_4309.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [415, 234, 227],
+    "weight": 5,
+    "power": 1000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Volume": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "FogOutput",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Interval": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "10s",
+          "timeEnd": "2450s"
+        }
+      ]
+    },
+    "Duration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "1s",
+          "timeEnd": "245s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Volume",
+        "Interval",
+        "Duration"
+      ]
+    }
+  ]
+}
