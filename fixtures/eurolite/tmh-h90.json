@@ -1,0 +1,574 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH-H90",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Fan", "Moving Head", "Strobe", "Other"],
+  "meta": {
+    "authors": ["romainP"],
+    "createDate": "2023-05-30",
+    "lastModifyDate": "2023-05-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/517665_51786078_anleitung_139101_1.300_eurolite_led_tmh_h90_hybrid_moving_head_spot_wash_cob_ws_de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/eurolite_led_tmh_h90_hybrid_moving_head.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ITLy9Ei10oE"
+    ]
+  },
+  "physical": {
+    "dimensions": [25, 36, 22],
+    "weight": 6.4,
+    "power": 135,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "LED Wash",
+      "degreesMinMax": [20, 38]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "dimmer spot"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "White + red"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "RED"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Red + green"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Green + blue"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Blue + yellow"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Yellow + orange"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Orange + light blue"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Light blue + magenta"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "magenta"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Magenta + white"
+        },
+        {
+          "dmxRange": [80, 167],
+          "type": "ColorPreset",
+          "comment": "Forwards"
+        },
+        {
+          "dmxRange": [168, 255],
+          "type": "ColorPreset",
+          "comment": "Backwards"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Gobo 1 shake"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Gobo 2 shake"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Gobo 3 shake"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Gobo 4 shake"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Gobo 5 shake"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Gobo 6 shake"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Gobo 7 shake"
+        },
+        {
+          "dmxRange": [150, 202],
+          "type": "ColorPreset",
+          "comment": "back"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "ColorPreset",
+          "comment": "for"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Rotating gobo 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Gobo 1 shake"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Gobo 2 shake"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Gobo 3 shake"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Gobo 4 shake"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Gobo 5 shake"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Gobo 6 shake"
+        },
+        {
+          "dmxRange": [130, 192],
+          "type": "ColorPreset",
+          "comment": "back"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "for"
+        }
+      ]
+    },
+    "Gobo Stencil Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "Gobo indexing"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "ColorPreset",
+          "comment": "for"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "ColorPreset",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "back"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Prism",
+          "comment": "3 facet"
+        },
+        {
+          "dmxRange": [137, 255],
+          "type": "PrismRotation",
+          "speed": "fast CW"
+        }
+      ]
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "ColorPreset",
+          "comment": "prog 1"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "ColorPreset",
+          "comment": "prog 2"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "ColorPreset",
+          "comment": "prog 3"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "ColorPreset",
+          "comment": "prog 4"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "ColorPreset",
+          "comment": "prog 5"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "dimmer wash"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "ColorPreset",
+          "comment": "color program 1"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "ColorPreset",
+          "comment": "color program 2"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "ColorPreset",
+          "comment": "color program 3"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "ColorPreset",
+          "comment": "color program 4"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "color program 5"
+        }
+      ]
+    },
+    "Program Duration 2": {
+      "name": "Program Duration",
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Generic",
+          "comment": "Reset others"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Generic",
+          "comment": "Reset PAN/TILT"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Reset All"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "25 channel",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Stencil Rotation",
+        "Focus",
+        "Prism",
+        "Program Duration",
+        "Dimmer 2",
+        "Strobe 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Program Speed",
+        "Program Duration 2",
+        "Reserved"
+      ]
+    }
+  ]
+}
