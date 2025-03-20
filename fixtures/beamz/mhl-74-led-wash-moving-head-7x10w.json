@@ -1,0 +1,266 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MHL 74 LED Wash Moving Head 7x10w",
+  "shortName": "MHL 74 LED",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["J2M"],
+    "createDate": "2025-03-20",
+    "lastModifyDate": "2025-03-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/02/150.518_150.519-MHL-74_manual_V2.4.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/mhl74-led-wash-moving-head-7x10w-white/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8KmiZeWtU7M"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 240],
+    "weight": 3,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "7 channels": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Colour": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Colour 2": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Colour 3": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Colour 4": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
+        }
+      ]
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
+        }
+      ]
+    },
+    "Auto Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Adjust mixed colour"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Sound Active": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "off",
+          "soundSensitivityEnd": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "high",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Colour",
+        "Colour 2",
+        "Colour 3",
+        "Colour 4"
+      ]
+    },
+    {
+      "name": "12 channels",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer",
+        "Colour",
+        "Colour 2",
+        "Colour 3",
+        "Colour 4",
+        "Auto Color",
+        "Strobe",
+        "Sound Active"
+      ]
+    }
+  ]
+}
