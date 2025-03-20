@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Octagon Theater CW/WW 36x1W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Joe B Sonik"],
+    "createDate": "2022-08-04",
+    "lastModifyDate": "2022-08-04"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/289076_c_289076_412732_422930_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fi/stairville_octagon_theater_cw_ww_36x1w.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/fi/thomanntv_video_stairville_octagon_theater_cw_ww_36x1w_3009.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [301, 215, 248],
+    "weight": 2.3,
+    "power": 51,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36x1W CW/WW Leds"
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    }
+  },
+  "availableChannels": {
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic",
+          "comment": "31 fixed colour mixes"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Strobe",
+        "Color Macros",
+        "Dimmer"
+      ]
+    }
+  ]
+}
