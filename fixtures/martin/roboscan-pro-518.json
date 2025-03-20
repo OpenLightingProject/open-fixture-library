@@ -1,0 +1,367 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RoboScan Pro 518",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["Florian"],
+    "createDate": "2023-12-09",
+    "lastModifyDate": "2023-12-09"
+  },
+  "comment": "As with all Martin-devices you will need a cable with pin 2+3 flipped",
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/bedienungsanleitung-abbc300e-3904-4a0d-825f-445a10192d00"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 325, 533],
+    "weight": 14,
+    "power": 335,
+    "DMXconnector": "3-pin (swapped +/-)",
+    "bulb": {
+      "type": "Philips MSD 250/2"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "comment": "Fan speed"
+        },
+        {
+          "dmxRange": [11, 138],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [139, 202],
+          "type": "NoFunction",
+          "comment": "Triggers the standalone modes (extremely annoying since you need to reboot the fixture after)"
+        },
+        {
+          "dmxRange": [203, 235],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "Restarts the fixture"
+        },
+        {
+          "dmxRange": [236, 252],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Intensity",
+          "brightness": "off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [15, 239],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "brightness": "off"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "white",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "white to pink",
+          "colors": ["#fcb3ee"]
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "pink",
+          "colors": ["#ff00cc"]
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "pink to magenta",
+          "colors": ["#ab0089"]
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "magenta",
+          "colors": ["#73005c"]
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "magenta to red",
+          "colors": ["#800020"]
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "red to fire red",
+          "colors": ["#ff1e00"]
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "comment": "fire red",
+          "colors": ["#db230b"]
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "comment": "fire red to dark orange",
+          "colors": ["#b34704"]
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "comment": "dark orange",
+          "colors": ["#f56702"]
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "comment": "dark orange to orange",
+          "colors": ["#ff6a0f"]
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "ColorPreset",
+          "comment": "orange",
+          "colors": ["#ff6a00"]
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "orange to yellow",
+          "colors": ["#ffa600"]
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "yellow",
+          "colors": ["#ffea00"]
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "yellow to light green",
+          "colors": ["#d4ff00"]
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "ColorPreset",
+          "comment": "light green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "ColorPreset",
+          "comment": "light green to dark green",
+          "colors": ["#02d139"]
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "ColorPreset",
+          "comment": "dark green",
+          "colors": ["#018f27"]
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "ColorPreset",
+          "comment": "dark green to turquoise",
+          "colors": ["#018f62"]
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "ColorPreset",
+          "comment": "turquoise",
+          "colors": ["#00ffae"]
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "ColorPreset",
+          "comment": "turquoise to cyan",
+          "colors": ["#00fff2"]
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "ColorPreset",
+          "comment": "cyan",
+          "colors": ["#00f2ff"]
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "ColorPreset",
+          "comment": "cyan to light blue",
+          "colors": ["#09d9e8"]
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "ColorPreset",
+          "comment": "light blue",
+          "colors": ["#7af2ff"]
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "ColorPreset",
+          "comment": "light blue to dark violet",
+          "colors": ["#6f00ff"]
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ColorPreset",
+          "comment": "dark violet",
+          "colors": ["#630dd4"]
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "ColorPreset",
+          "comment": "dark violet to dark blue",
+          "colors": ["#3b0dd4"]
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "ColorPreset",
+          "comment": "dark blue",
+          "colors": ["#0004ff"]
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "dark blue to uv",
+          "colors": ["#0004ff"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [128, 139],
+          "type": "Generic",
+          "comment": "Multi color"
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "TBD Gobo"
+        }
+      ]
+    },
+    "Effect Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "no effect"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5500K",
+          "colorTemperatureEnd": "3400K"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "FrostEffect",
+          "effectName": "Frost"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Prism"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Modus 3: 16-Bit Trackingsteuerung (Standard)",
+      "shortName": "3",
+      "channels": [
+        "Strobe",
+        "Dimmer",
+        "Color Presets",
+        "Gobo Wheel",
+        "Effect Wheel",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine"
+      ]
+    }
+  ]
+}
