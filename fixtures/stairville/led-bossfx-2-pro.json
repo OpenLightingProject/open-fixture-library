@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BossFX-2 Pro",
+  "shortName": "BossFX-2",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Gilles"],
+    "createDate": "2025-03-21",
+    "lastModifyDate": "2025-03-21"
+  },
+  "comment": "The all-rounder multi-effect bar comes with sharp derby beams and bright flood panels.",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_466569_v5_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.co.uk/stairville_led_bossfx_2_pro_bundle.htm?__cTr=65fb4896-7dfb-4aa2-8983-9543c9e19534&shp=eyJjb3VudHJ5IjoiZ2IiLCJjdXJyZW5jeSI6NCwibGFuZ3VhZ2UiOjJ9&reload=1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=nIAWPQ9-CpU"
+    ]
+  },
+  "physical": {
+    "dimensions": [1190, 275, 85],
+    "weight": 8.8,
+    "power": 130,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Channel-1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel-3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel-4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel DMX",
+      "shortName": "4ch",
+      "channels": [
+        "Channel-1",
+        "Channel2",
+        "Channel-3",
+        "Channel-4"
+      ]
+    }
+  ]
+}
