@@ -1,0 +1,347 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Jade Dragon 200W Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Glenn Meader"],
+    "createDate": "2025-03-23",
+    "lastModifyDate": "2025-03-23"
+  },
+  "comment": "Model: KM-MH14101",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0768/8775/2982/files/200W.pdf?v=1719968791"
+    ],
+    "productPage": [
+      "https://yuerlights.com/collections/moving-head-light/products/yuer-new-led-moving-head-light-200w-beam-spot-18-rotating-prisms-rainbow-effect-dj-dmx-stage-light-effect-light-disco-dj-bar?variant=46625979891990"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gvYC1FJCVKo"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 350, 290],
+    "weight": 6,
+    "power": 280,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [2, 2]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "20Hz"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 71],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 12
+        },
+        {
+          "dmxRange": [72, 143],
+          "type": "WheelShake",
+          "comment": "Pattern dither"
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Color effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "7 color effects"
+        }
+      ]
+    },
+    "Auto mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Effect",
+          "effectName": "Self-propelled 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "Self-propelled 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Effect",
+          "effectName": "Self-propelled 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Effect",
+          "effectName": "Self-propelled 4"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Effect",
+          "effectName": "Voice control 1"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "Voice control 2"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Voice control 3"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Voice control 4"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Pan fine tuning"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Coarse Pan Tilt",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Color effects",
+        "Auto mode",
+        "Reset"
+      ]
+    },
+    {
+      "name": "Fine Pan Tilt",
+      "channels": [
+        "Pan 3",
+        "Pan 2",
+        "Tilt 2",
+        "Tilt 3",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Color effects",
+        "Auto mode",
+        "Reset"
+      ]
+    }
+  ]
+}
