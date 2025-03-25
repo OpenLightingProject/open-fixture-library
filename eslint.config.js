@@ -70,13 +70,13 @@ const enabledRuleParameters = {
   'no-return-await': [],
   'no-shadow': [{
     builtinGlobals: false,
-    allow: [`_`], // allow placeholder paramters that aren't used anyway
+    allow: [`_`], // allow placeholder parameters that aren't used anyway
   }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: `none` }],
-  // 'no-useless-assignment': [], // TODO: enable when migrated to ESLint v9
+  'no-useless-assignment': [],
   'no-var': [],
   'object-curly-spacing': [`always`],
   'object-shorthand': [`always`, { avoidQuotes: true }],
@@ -193,12 +193,12 @@ const enabledRuleParameters = {
     style: { lang: `scss` },
     template: { allowNoLang: true },
   }],
+  'vue/block-order': [{
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
+  }],
   'vue/component-options-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
-  }],
-  'vue/component-tags-order': [{
-    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
@@ -443,9 +443,6 @@ export default [
       'unicorn/prefer-module': `off`,
       'unicorn/prefer-top-level-await': `off`,
     },
-  },
-  {
-    files: [`**/*.vue`],
   },
   {
     files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
