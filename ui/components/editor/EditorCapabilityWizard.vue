@@ -135,7 +135,7 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-} from "../../assets/scripts/editor-utils.js";
+} from "../../assets/scripts/editor-utilities.js";
 
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';

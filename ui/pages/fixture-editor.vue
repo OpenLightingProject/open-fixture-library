@@ -135,7 +135,7 @@ import {
   getEmptyFixture,
   getEmptyFormState,
   getEmptyMode,
-} from '../assets/scripts/editor-utils.js';
+} from '../assets/scripts/editor-utilities.js';
 
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
