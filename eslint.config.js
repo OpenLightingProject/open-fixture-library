@@ -385,7 +385,7 @@ export default [
     },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: 2022,
+      ecmaVersion: `latest`,
       sourceType: `module`,
     },
     rules: {
