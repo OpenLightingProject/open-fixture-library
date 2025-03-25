@@ -374,7 +374,7 @@ export default [
   eslintPluginNuxtConfigRecommended,
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
-  eslintPluginUnicorn.configs[`flat/recommended`],
+  eslintPluginUnicorn.configs.recommended,
   ...eslintPluginVue.configs[`flat/vue2-recommended`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
   ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
@@ -385,7 +385,7 @@ export default [
     },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: 2022,
+      ecmaVersion: `latest`,
       sourceType: `module`,
     },
     rules: {
