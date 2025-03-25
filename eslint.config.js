@@ -193,12 +193,12 @@ const enabledRuleParameters = {
     style: { lang: `scss` },
     template: { allowNoLang: true },
   }],
+  'vue/block-order': [{
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
+  }],
   'vue/component-options-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
-  }],
-  'vue/component-tags-order': [{
-    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
@@ -443,9 +443,6 @@ export default [
       'unicorn/prefer-module': `off`,
       'unicorn/prefer-top-level-await': `off`,
     },
-  },
-  {
-    files: [`**/*.vue`],
   },
   {
     files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
