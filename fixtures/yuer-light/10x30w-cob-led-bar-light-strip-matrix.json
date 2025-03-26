@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "10X30W COB LED Bar Light Strip Matrix",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["ANONYMOUS"],
+    "createDate": "2025-03-19",
+    "lastModifyDate": "2025-03-19"
+  },
+  "links": {
+    "productPage": [
+      "https://yuerlights.com/products/yuer™-10x30w-cob-led-bar-light-strip-matrix-dmx-warm-cold-rgbw-optional-dj-disco-stage-light-wash-wall-light-for-club-party-show?_pos=9&_sid=031449634&_ss=r&variant=49542664618262"
+    ]
+  },
+  "wheels": {
+    "Color Presets": {
+      "slots": [
+        null,
+        null,
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Warm White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Cold White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Functional choice": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 62],
+          "type": "ColorPreset",
+          "comment": "COLOR SELECTION"
+        },
+        {
+          "dmxRange": [63, 124],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [125, 186],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [187, 249],
+          "type": "Effect",
+          "effectName": "COLOR PULSE EFFECT",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "durationStart": "short",
+          "durationEnd": "long",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 31
+      }
+    },
+    "Functionnal speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "stop"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ALWAYS LIT",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Strobe",
+        "Functional choice",
+        "Color Presets",
+        "Functionnal speed",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
