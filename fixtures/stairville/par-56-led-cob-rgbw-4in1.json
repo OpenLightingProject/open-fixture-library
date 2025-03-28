@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 56 LED COB RGBW 4in1",
+  "categories": ["Color Changer", "Effect", "Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["Simon PROUVEZE"],
+    "createDate": "2025-03-28",
+    "lastModifyDate": "2025-03-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/stairville/led-par-56-cob/mode-d-emploi?p=38"
+    ],
+    "productPage": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ],
+    "video": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ]
+  },
+  "physical": {
+    "dimensions": [205, 350, 140],
+    "weight": 2.06,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED COB 4in1 30W"
+    },
+    "lens": {
+      "name": "COB 4in1 60°"
+    }
+  },
+  "availableChannels": {
+    "RED DIMMER 1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMER 1": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMER 1": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE DIMMER 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "MOTIF COLOR DEFINI": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "STROBE": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8CH",
+      "shortName": "8CH",
+      "channels": [
+        "RED DIMMER 1",
+        "GREEN DIMMER 1",
+        "BLUE DIMMER 1",
+        "WHITE DIMMER 1",
+        "MOTIF COLOR DEFINI",
+        "STROBE"
+      ]
+    }
+  ]
+}
