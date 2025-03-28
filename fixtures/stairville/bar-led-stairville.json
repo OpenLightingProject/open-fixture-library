@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BAR-LED-STAIRVILLE",
+  "shortName": "DAVID",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["STUDIO5"],
+    "createDate": "2025-03-28",
+    "lastModifyDate": "2025-03-28"
+  },
+  "comment": "DAVID",
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "MODE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ROUGE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "VERT": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLEU": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CHANEL": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BAR-LED",
+      "channels": [
+        "MODE",
+        "ROUGE",
+        "VERT",
+        "BLEU",
+        "CHANEL"
+      ]
+    }
+  ]
+}
