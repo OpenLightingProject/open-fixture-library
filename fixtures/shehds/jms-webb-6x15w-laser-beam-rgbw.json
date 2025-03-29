@@ -1,0 +1,169 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "JMS WEBB 6x15W Laser+Beam RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Voltoxin"],
+    "createDate": "2025-03-29",
+    "lastModifyDate": "2025-03-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-03-29",
+      "comment": "created by Q Light Controller Plus (version 4.14.1-2)"
+    }
+  },
+  "physical": {
+    "dimensions": [255, 300, 200],
+    "weight": 3.2,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Z Axis Motor": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "small",
+        "angleEnd": "big",
+        "comment": "Prism rotation (Slow to fast)"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Green Laser": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Green Laser (0 - 100%)"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Macro"
+        },
+        {
+          "dmxRange": [51, 150],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Reset - 3s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "P/T Speed",
+        "Z Axis Motor",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Green Laser",
+        "Macro",
+        "Reset"
+      ]
+    }
+  ]
+}
