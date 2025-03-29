@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixelbar Switch",
+  "shortName": "Pixelbar",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["RG"],
+    "createDate": "2025-03-29",
+    "lastModifyDate": "2025-03-29"
+  },
+  "comment": "8ch Mode",
+  "links": {
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/PURElight-PixelBar-Switch-224-x-SMD-RGB/art-LIG0016835-000"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intern": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Intern"
+      }
+    },
+    "Pattern Effect": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Intern",
+        "Pattern Effect",
+        "Color Wheel",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
