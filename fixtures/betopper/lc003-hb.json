@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LC003-HB",
+  "shortName": "LC003-HB",
+  "categories": ["Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["LPJ LifeChurch"],
+    "createDate": "2025-03-29",
+    "lastModifyDate": "2025-03-29"
+  },
+  "links": {
+    "productPage": [
+      "https://betopperdj.com/products/betopper-120w-warm-cold-white-par-light-lc003-h"
+    ]
+  },
+  "availableChannels": {
+    "WW Warm whites": {
+      "fineChannelAliases": ["WW Warm whites fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "D001",
+      "shortName": "2 Channel",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "A001",
+      "shortName": "4 Channel",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Strobe"
+      ]
+    }
+  ]
+}
