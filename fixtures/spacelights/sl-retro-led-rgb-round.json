@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SL RETRO LED RGB ROUND",
+  "categories": ["Pixel Bar", "Blinder", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Damianos"],
+    "createDate": "2025-03-29",
+    "lastModifyDate": "2025-03-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.spacelights.gr/manual/catalog/MANUAL/SL%20RETRO%20LED%20RGB.pdf"
+    ],
+    "productPage": [
+      "https://www.spacelights.gr/led-retro-lights-round-rgb"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HQdDCQ0BIvg"
+    ]
+  },
+  "rdm": {
+    "modelId": 2.212002
+  },
+  "availableChannels": {
+    "Djdamianos": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SL RETRO LED RGB ROUND",
+      "channels": [
+        "Djdamianos"
+      ]
+    }
+  ]
+}
