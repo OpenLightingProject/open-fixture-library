@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini 295",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["AUDIOJAM", "Jovanie ram"],
+    "createDate": "2025-03-31",
+    "lastModifyDate": "2025-03-31",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-03-31",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    },
+    "Gobo wheel": {
+      "slots": []
+    },
+    "Color wheel fine": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Color wheel": {
+      "fineChannelAliases": ["Color wheel fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Iris Fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset ShutterIrisFine."
+      }
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "No function 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Prism rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "No function4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function4 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "RGB mixer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Color wheel",
+        "Strobe",
+        "Master dimmer",
+        "Gobo wheel",
+        "Zoom",
+        "No function",
+        "Iris Fine",
+        "Color macro",
+        "Focus",
+        "Pan",
+        "No function 2",
+        "Tilt",
+        "Tilt fine",
+        "Prism rotation",
+        "No function4",
+        "No function4 1",
+        "RGB mixer",
+        "Color wheel fine"
+      ]
+    }
+  ]
+}
