@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spectral M3000 ZQ4 MKII",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Emilight"],
+    "createDate": "2025-03-31",
+    "lastModifyDate": "2025-03-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.showtec-lights.com/fr/mwdownloads/download/link/id/17427854"
+    ],
+    "productPage": [
+      "https://www.showtec-lights.com/fr/mwdownloads/download/link/id/17427854"
+    ],
+    "video": [
+      "https://www.showtec-lights.com/fr/mwdownloads/download/link/id/17427854"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 - canaux",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "No function"
+      ]
+    }
+  ]
+}
