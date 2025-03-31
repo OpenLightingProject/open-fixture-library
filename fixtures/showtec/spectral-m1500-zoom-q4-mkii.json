@@ -1,0 +1,378 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spectral M1500 Zoom Q4 MKII",
+  "shortName": "Showtec Spectral M1500",
+  "categories": ["Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Manu Larue"],
+    "createDate": "2021-11-29",
+    "lastModifyDate": "2021-11-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17399478/"
+    ],
+    "productPage": [
+      "https://www.highlite.com/en/43547-spectral-m1500-zoom-q4-mkii.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [255, 225, 360],
+    "weight": 6.9,
+    "power": 125,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "7 x 4-in-1  12W RGBW LEDs",
+      "lumens": 1900
+    },
+    "lens": {
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red 100% / Green up / Blue 0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Red Down / Green 100% / Blue 100%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Red 0% / Green 100% / Blue Up"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Red 0% / Green Down / Blue 100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Red Up / Green 0% / Blue 100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Red 100% / Green 0% / Blue Down"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red 100% / Green Up / Blue Up"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "Red Down / Green Down / Blue 100%"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "Red 100% / Green 100% / Blue 100% / White 100%"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White 1 : 3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White 2 : 3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White 3 : 4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White 4 : 4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White 5 : 5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White 6 : 5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White 7 : 6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White 8 : 7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White 9 : 8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White 10 : 8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White 11 : 10000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Built-in programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Auto 9"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Auto 10"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Custom 1"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Custom 2"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Custom 3"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Custom 4"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Custom 5"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Custom 6"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Custom 7"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Custom 8"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Effect",
+          "effectName": "Custom 9"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Custom 10"
+        }
+      ]
+    },
+    "Auto speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Preset dimmer speed from the device's menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Effect",
+          "effectName": "Linear dimmer"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Effect",
+          "effectName": "Non-linear dimmer 1 (fastest)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Non-linear dimmer 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "Non-linear dimmer 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Non-linear dimmer 4 (slowest)"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Effect",
+          "effectName": "Zoom reset"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12 CH TOUR",
+      "shortName": "TOUR",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Built-in programs",
+        "Auto speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Zoom reset"
+      ]
+    }
+  ]
+}
