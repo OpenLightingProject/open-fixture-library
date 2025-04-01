@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Helix Gobo Flower 100w",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Will Gurrey"],
+    "createDate": "2025-03-20",
+    "lastModifyDate": "2025-03-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolight.co.uk/product_manual/Helix%20100W%20Gobo%20Flower_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.gear4music.com/PA-DJ-and-Lighting/Equinox-Helix-100W-Gobo-Flower/35VY?origin=product-ads&gad_source=1&gclid=Cj0KCQjw-e6-BhDmARIsAOxxlxVIWGZMd0yx7ZDH02uAOzLC9R_bJj2LojR_7xALppRepvNCcclEvIMaAllXEALw_wcB"
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "physical": {
+    "weight": 4,
+    "power": 117,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Colour": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Mirror Rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Speed Motor": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "NA",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Colour",
+        "Gobo Wheel",
+        "Mirror Rotation",
+        "Auto Programs",
+        "Speed Motor"
+      ]
+    }
+  ]
+}
