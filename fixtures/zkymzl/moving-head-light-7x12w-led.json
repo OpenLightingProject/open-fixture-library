@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Head Light 7x12W LED",
+  "shortName": "7x12W Moving Head",
+  "categories": ["Color Changer", "Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["LPJ LIfe Church"],
+    "createDate": "2025-04-02",
+    "lastModifyDate": "2025-04-02"
+  },
+  "comment": "(4 in 1) Color Lighting Effect 9/14 CH by DMX Control",
+  "links": {
+    "manual": [
+      "https://m.media-amazon.com/images/I/817xvVgs88L.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 225, 270],
+    "weight": 4.3,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "Dimmer 0% ~ 100%"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe from slow to fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction",
+          "comment": "Switch (IDK)"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 9 Channel",
+      "shortName": "DMX 512 mdoe for 9 channel feature",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
