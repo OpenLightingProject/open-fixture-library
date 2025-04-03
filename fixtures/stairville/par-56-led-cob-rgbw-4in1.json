@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 56 LED COB RGBW 4in1",
+  "shortName": "PAR 56 LED COB",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Simon PROUVEZE"],
+    "createDate": "2025-04-03",
+    "lastModifyDate": "2025-04-03"
+  },
+  "comment": "trying to make strobe workin",
+  "links": {
+    "manual": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ],
+    "productPage": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ],
+    "video": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ]
+  },
+  "physical": {
+    "weight": 2.06,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Predef Color": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Move Predef color RATE": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "STROBE": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "DIMMING": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Predef Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Move Predef color RATE",
+        "STROBE",
+        "DIMMING"
+      ]
+    }
+  ]
+}
