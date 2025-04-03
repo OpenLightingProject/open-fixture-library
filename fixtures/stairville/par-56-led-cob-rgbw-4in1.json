@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 56 LED COB RGBW 4in1",
+  "shortName": "PAR LED COB",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Simon PROUVEZE"],
+    "createDate": "2025-04-03",
+    "lastModifyDate": "2025-04-03"
+  },
+  "comment": "Documentation is false for dmx channel so I've tried many fixture to find the good one",
+  "links": {
+    "manual": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ],
+    "productPage": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ],
+    "video": [
+      "https://www.skylarkmusicstore.com/pl/efekty-led/stairville-led-par-56-cob-rgbw-30w/"
+    ]
+  },
+  "availableChannels": {
+    "Predef Color": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Move Color Rate": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Predef Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Move Color Rate",
+        "Shutter / Strobe",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
