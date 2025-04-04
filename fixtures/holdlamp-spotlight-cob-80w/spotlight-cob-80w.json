@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spotlight COB 80W",
+  "shortName": "COB 80W",
+  "categories": ["Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["LPJ Church"],
+    "createDate": "2025-04-01",
+    "lastModifyDate": "2025-04-01"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.ca/HOLDLAMP-Par-Lights-Professional-Spotlights/dp/B0CM95H466/ref=sr_1_1?dib=eyJ2IjoiMSJ9.yINxDFyKuS1OoYOliCcQUSc0U95NxMldeU-u1BZyKfMpyMs9LEx7DOhmb-OTFPiBc3ZaL8SdtrVenEQJq8eEcYHUyp7qGRvKx2p0lYdZS1SKzVT2SgADFn73vsPMvzzqXWCAvtySc5yOKR-VBbfc2g3MIW2FzbwFmKP24fyN_3Yp5ICGNucjn2LHkpyuyn1Qbd3ZhNqTxZ6JeJ0wlAxwUANWcWJaaip_2Hgh5i5vzvpVBiV6PtBptpjNI10qdG8y8yLSGE8ZmUbktz4OTkgif183dXBY5wjkK9ppRSyjhuojIVgJnfH2OArDrIQBOoNWhWObU56m6hHix2JFV1ESA-GH0BRZPp29srrbkVPeAgVVZyD7b7Oi29sJ7cwbHXMAek86rOWr11qdZNRu1yC96RGpnjG9y69qF3m64rWjpVmA-WGgsubmOHT3dBA7CYLO.tSD9oK2eDleyuhwuWMR-iqlU8GattjwP-bHr_P9f8u0&dib_tag=se&qid=1743547784&sr=8-1&srs=36999646011&th=1"
+    ]
+  },
+  "physical": {
+    "dimensions": [1900, 1900, 2601],
+    "weight": 2.9,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Reserved": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX512 A",
+      "shortName": "DMX512",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Shutter / Strobe",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
