@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ferc",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Argo"],
+    "createDate": "2025-04-12",
+    "lastModifyDate": "2025-04-12"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
