@@ -1,23 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Forza 500C",
+  "name": "FC-500C",
   "categories": ["Color Changer", "Other"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2025-03-13",
-    "lastModifyDate": "2025-03-13"
+    "createDate": "2025-04-19",
+    "lastModifyDate": "2025-05-19"
   },
   "links": {
     "manual": [
-      "https://cdn-aliyun.nanlite.com/release/1691133334604-407425-1124121241512490-MixPanel+60%EF%BC%8FMixPanel+150Manual%EF%BC%88NANLITE%EF%BC%89B+V6+20230304+W.pdf"
+      "https://cdn-aliyun.nanlite.com/release/1720780654717-398609-1124121241519342-Nanlite_FC-500C_DMXCharts_EN_V1.1_20240709%281%29.pdf"
     ],
     "productPage": [
       "https://nanliteus.com/nanlite-fc-500b-rgbw-color-led-spotlight/"
     ]
   },
   "physical": {
-    "dimensions": [373, 247, 149],
-    "weight": 3.9,
+    "dimensions": [149, 58, 373],
+    "weight": 1.13,
     "power": 500,
     "DMXconnector": "5-pin"
   },
@@ -1401,7 +1401,8 @@
         "Saturation",
         "Fan",
         "Strobe",
-        "Reserved1"
+        "Reserved1",
+        "Reserved2"
       ]
     },
     {
