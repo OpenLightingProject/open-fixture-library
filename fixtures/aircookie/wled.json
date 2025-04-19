@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WLED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["mxklb"],
+    "createDate": "2023-12-27",
+    "lastModifyDate": "2023-12-27"
+  },
+  "comment": "LED Controller",
+  "links": {
+    "manual": [
+      "https://kno.wled.ge/interfaces/e1.31-dmx"
+    ],
+    "productPage": [
+      "https://github.com/Aircoookie/WLED"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Single RGB",
+      "shortName": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Single DRGB",
+      "shortName": "DRGB",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
