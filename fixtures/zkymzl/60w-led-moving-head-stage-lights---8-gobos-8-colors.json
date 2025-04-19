@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "60W LED Moving Head Stage Lights - 8 Gobos, 8 Colors",
+  "shortName": "60w Mini Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2025-04-19",
+    "lastModifyDate": "2025-04-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/ZKYMZL-Moving-Light-Color-Lighting/dp/B07YCKYJ9B?ref_=ast_sto_dp&th=1"
+    ],
+    "video": [
+      "https://www.amazon.com/vdp/e91899e5b0fb421fb6d0fe098949d841?ref=dp_vse_lbvc_3"
+    ]
+  },
+  "physical": {
+    "dimensions": [invalid, invalid, invalid],
+    "weight": 2.67619,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": 3000
+    },
+    "lens": {
+      "name": "N/A",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "wheels": {
+    "Colour Gobo": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "Colours"
+        }
+      ]
+    },
+    "Pattern Gobo": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "Patterns"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Colour Gobo": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Pattern Gobo": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "durationStart": "2s",
+        "durationEnd": "0.1s"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "N/A": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Active",
+        "speed": "fast",
+        "duration": "instant",
+        "parameter": "high",
+        "soundControlled": true,
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "low"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11 Channel",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Colour Gobo",
+        "Pattern Gobo",
+        "Strobe",
+        "Dimmer",
+        "N/A",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
