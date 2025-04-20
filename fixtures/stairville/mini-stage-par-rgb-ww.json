@@ -70,12 +70,18 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "NoFunction / Strobe effect": "Strobe effect"
+          }
         },
         {
           "dmxRange": [16, 255],
           "type": "Effect",
-          "effectName": "One of 41 preprogrammed automatic shows (macros), channels 6 and 7 without function"
+          "effectName": "One of 41 preprogrammed automatic shows (macros), channels 6 and 7 without function",
+          "switchChannels": {
+            "NoFunction / Strobe effect": "NoFunction"
+          }
         }
       ]
     },
@@ -93,7 +99,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Strobe effect, increasing speed, if channel 5 = 0...15"
+          "comment": "Strobe effect, increasing speed"
         }
       ]
     },
@@ -199,6 +205,12 @@
           "effectName": "Random speed"
         }
       ]
+    },
+    "NoFunction": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
     }
   },
   "modes": [
@@ -228,7 +240,7 @@
         "Blue",
         "White",
         "Fixed color pattern",
-        "Strobe effect",
+        "NoFunction / Strobe effect",
         "Mode selection",
         "Dimmer"
       ]
