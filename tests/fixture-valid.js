@@ -14,7 +14,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
+import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
 
@@ -558,6 +558,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
+          StrobeSpeed: checkStrobeSpeedCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           WheelSlot: checkWheelCapability,
@@ -608,6 +609,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             if (capability.randomTiming) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
             }
+          }
+        }
+
+        /**
+         * Type-specific checks for StrobeSpeed capabilities.
+         */
+        function checkStrobeSpeedCapability() {
+          const otherCapabilityHasShutterStrobe = channel.capabilities.some(otherCapability => otherCapability.type === `ShutterStrobe`);
+          const hasOtherStrobeChannel = fixture.coarseChannels.some(otherChannel => otherChannel !== channel && otherChannel.type === `Strobe`);
+          if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
+            result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "Strobe"?`);
           }
         }
 

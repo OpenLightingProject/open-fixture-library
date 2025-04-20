@@ -48,8 +48,8 @@
 
 <script>
 import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, entitiesSchema } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
+import { entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';

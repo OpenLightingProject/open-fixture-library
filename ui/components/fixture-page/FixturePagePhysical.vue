@@ -14,6 +14,7 @@
 
       <LabeledValue
         v-if="physical.weight !== null"
+        key="weight"
         name="weight"
         label="Weight">
         {{ physical.weight }}kg
@@ -21,6 +22,7 @@
 
       <LabeledValue
         v-if="physical.power !== null"
+        key="power"
         name="power"
         label="Power">
         {{ physical.power }}W
@@ -28,6 +30,7 @@
 
       <LabeledValue
         v-if="physical.DMXconnector !== null"
+        key="dmx-connector"
         name="DMXconnector"
         label="DMX connector">
         {{ physical.DMXconnector }}
@@ -51,6 +54,7 @@
 
       <LabeledValue
         v-if="physical.bulbType !== null"
+        key="bulb-type"
         name="bulb-type"
         label="Bulb type">
         {{ physical.bulbType }}
@@ -58,6 +62,7 @@
 
       <LabeledValue
         v-if="physical.bulbColorTemperature !== null"
+        key="bulb-color-temperature"
         name="bulb-colorTemperature"
         label="Color temperature">
         {{ physical.bulbColorTemperature }}K
@@ -65,6 +70,7 @@
 
       <LabeledValue
         v-if="physical.bulbLumens !== null"
+        key="bulb-lumens"
         name="bulb-lumens"
         label="Lumens">
         {{ physical.bulbLumens }}lm
@@ -76,6 +82,7 @@
 
       <LabeledValue
         v-if="physical.lensName !== null"
+        key="lens-name"
         name="lens-name"
         label="Name">
         {{ physical.lensName }}
@@ -83,6 +90,7 @@
 
       <LabeledValue
         v-if="physical.lensDegreesMin !== null"
+        key="lens-degrees"
         name="lens-degreesMinMax"
         label="Beam angle">
         {{ physical.lensDegreesMin === physical.lensDegreesMax
@@ -97,6 +105,7 @@
 
       <LabeledValue
         v-if="physical.matrixPixelsDimensions !== null"
+        key="pixel-dimensions"
         name="dimensions"
         label="Pixel dimensions">
         {{ physical.matrixPixelsDimensions[0] }} &times;
@@ -107,6 +116,7 @@
 
       <LabeledValue
         v-if="physical.matrixPixelsSpacing !== null"
+        key="pixel-spacing"
         name="dimensions"
         label="Pixel spacing">
         {{ physical.matrixPixelsSpacing[0] }} &times;
