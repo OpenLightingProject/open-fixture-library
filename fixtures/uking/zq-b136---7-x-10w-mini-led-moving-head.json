@@ -14,6 +14,9 @@
     ],
     "productPage": [
       "https://www.uking-online.com/product/uking-105w-rgbw-7leds-stage-lights-moving-head-dmx-dj-disco-shows-party-lighting/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-iU0FTuRMAM"
     ]
   },
   "physical": {
@@ -29,14 +32,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angle": "540deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": "180deg"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -49,16 +54,20 @@
     "Dimmer": {
       "capabilities": [
         {
-          "dmxRange": [0, 134],
-          "type": "Intensity",
-          "comment": "Master Dimmer"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity"
         },
         {
           "dmxRange": [135, 239],
-          "type": "StrobeSpeed",
-          "speedStart": "0Hz",
-          "speedEnd": "40Hz",
-          "comment": "Estimated"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [240, 255],
@@ -109,9 +118,21 @@
       }
     },
     "Reset": {
-      "capability": {
-        "type": "Maintenance"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
@@ -132,6 +153,21 @@
         "Color Presets",
         "Program Speed",
         "Auto",
+        "Reset"
+      ]
+    },
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
         "Reset"
       ]
     }
