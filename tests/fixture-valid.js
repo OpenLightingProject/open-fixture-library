@@ -3,7 +3,6 @@ import { inspect } from 'util';
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
@@ -15,6 +14,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
+import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
 
@@ -540,10 +540,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCapability(capability, errorPrefix) {
         const switchingChannelAliases = Object.keys(capability.switchChannels);
-        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
-        }
-        else {
+        if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
@@ -553,11 +550,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             }
           }
         }
+        else {
+          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
+        }
 
         checkStartEndEntities();
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
+          StrobeSpeed: checkStrobeSpeedCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           WheelSlot: checkWheelCapability,
@@ -608,6 +609,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             if (capability.randomTiming) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
             }
+          }
+        }
+
+        /**
+         * Type-specific checks for StrobeSpeed capabilities.
+         */
+        function checkStrobeSpeedCapability() {
+          const otherCapabilityHasShutterStrobe = channel.capabilities.some(otherCapability => otherCapability.type === `ShutterStrobe`);
+          const hasOtherStrobeChannel = fixture.coarseChannels.some(otherChannel => otherChannel !== channel && otherChannel.type === `Strobe`);
+          if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
+            result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "Strobe"?`);
           }
         }
 

@@ -3,20 +3,22 @@
     id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
-    :shown="context !== undefined"
+    :shown="modelValue !== undefined"
     :title="title"
     @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== undefined" action="#" @submit.prevent="onSubmit()">
+    <form v-if="state === `ready` && modelValue !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
+        key="location"
         :value="location"
         label="Location" />
 
       <LabeledValue
-        v-if="context.helpWanted !== null"
+        v-if="modelValue.helpWanted !== null"
+        key="help-wanted"
         label="Problem description">
-        <span v-html="context.helpWanted" />
+        <span v-html="modelValue.helpWanted" />
       </LabeledValue>
 
       <LabeledInput name="message" label="Message">
@@ -82,11 +84,15 @@ export default {
     LabeledValue,
   },
   model: {
-    prop: `context`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
     type: stringProp().required,
-    context: objectProp().optional,
+    modelValue: objectProp().optional,
+  },
+  emits: {
+    'update:model-value': value => true,
   },
   data: () => {
     return {
@@ -119,7 +125,7 @@ export default {
     },
     location() {
       if (this.type === `capability`) {
-        const capability = this.context;
+        const capability = this.modelValue;
         const channel = capability._channel;
         return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
@@ -128,11 +134,11 @@ export default {
     },
     fixture() {
       if (this.type === `fixture`) {
-        return this.context;
+        return this.modelValue;
       }
 
       if (this.type === `capability`) {
-        return this.context._channel.fixture;
+        return this.modelValue._channel.fixture;
       }
 
       return null;
@@ -141,13 +147,13 @@ export default {
       const sendObject = {
         type: this.type,
         location: this.location,
-        helpWanted: this.context.helpWanted,
+        helpWanted: this.modelValue.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername !== `` ? this.githubUsername : null,
+        githubUsername: this.githubUsername === `` ? null : this.githubUsername,
       };
 
       if (this.type === `plugin`) {
-        sendObject.context = this.context.key;
+        sendObject.context = this.modelValue.key;
       }
       else {
         const manufacturerKey = this.fixture.manufacturer.key;
@@ -162,11 +168,11 @@ export default {
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
     },
     mailtoUrl() {
-      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.context}'`;
+      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.modelValue}'`;
 
       const mailBodyData = {
         'Problem location': this.location,
-        'Problem description': this.context.helpWanted,
+        'Problem description': this.modelValue.helpWanted,
         'Message': this.message,
       };
 
@@ -177,7 +183,7 @@ export default {
         return `${key}:${separator}${value}`;
       }).join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
   mounted() {
@@ -217,7 +223,7 @@ export default {
       this.state = `ready`;
       this.issueUrl = null;
       this.error = null;
-      this.$emit(`input`, undefined);
+      this.$emit(`update:model-value`, undefined);
     },
   },
 };

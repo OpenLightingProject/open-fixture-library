@@ -45,7 +45,7 @@
   margin: 0 0 1em;
   text-align: center;
 
-  @media (min-width: 650px) {
+  @media (width >= 650px) {
     margin: 0;
   }
 
@@ -92,12 +92,12 @@ select {
   font-weight: 700;
   line-height: 1.4;
   color: theme-color(button-secondary-text);
+  appearance: none;
   cursor: pointer;
   background: theme-color(button-secondary-background);
   border-color: theme-color(button-secondary-border);
   border-radius: 2px;
   transition: 0.1s background-color;
-  appearance: none;
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
@@ -123,8 +123,8 @@ select {
 
     // down arrow
     &::before {
-      display: block;
       float: right;
+      display: block;
       width: 0;
       height: 0;
       margin: 0.8em 0 0 1ex;
@@ -159,8 +159,8 @@ select {
 
     & a:hover,
     & a:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
   }
 
@@ -247,7 +247,7 @@ export default {
   },
   methods: {
     downloadDataAsFile(blob, filename = ``) {
-      if (window.navigator.msSaveBlob !== undefined) {
+      if (window.navigator.msSaveBlob) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
         window.navigator.msSaveBlob(blob, filename);
@@ -295,7 +295,7 @@ export default {
         const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
-          filename = matches[1].replace(/["']/g, ``);
+          filename = matches[1].replaceAll(/["']/g, ``);
         }
       }
 

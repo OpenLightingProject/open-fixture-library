@@ -42,7 +42,7 @@
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -88,7 +88,7 @@
 <script>
 import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -107,6 +107,10 @@ export default {
     capabilityIndex: numberProp().required,
     resolution: numberProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
   },
   data() {
     return {
@@ -130,10 +134,10 @@ export default {
       );
     },
     start() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
     },
     end() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
     },
     min() {
       let min = this.dmxMin;

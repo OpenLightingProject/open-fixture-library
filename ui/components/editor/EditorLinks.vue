@@ -1,11 +1,11 @@
 <template>
   <div class="links">
     <EditorLink
-      v-for="link of links"
+      v-for="link of modelValue"
       :key="link.uuid"
       ref="links"
       :link="link"
-      :can-remove="links.length > 1"
+      :can-remove="modelValue.length > 1"
       :formstate="formstate"
       @set-type="updateLinkProperty(link, `type`, $event)"
       @set-url="updateLinkProperty(link, `url`, $event)"
@@ -20,7 +20,7 @@
 
 <script>
 import { arrayProp, objectProp } from 'vue-ts-types';
-import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
+import { getEmptyLink } from '../../assets/scripts/editor-utilities.js';
 
 import EditorLink from './EditorLink.vue';
 
@@ -30,16 +30,20 @@ export default {
   },
   inheritAttrs: false,
   model: {
-    prop: `links`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    links: arrayProp().required,
+    modelValue: arrayProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    'update:model-value': value => true,
   },
   methods: {
     async addLink() {
-      const newLinks = [...this.links, getEmptyLink()];
-      this.$emit(`input`, newLinks);
+      const newLinks = [...this.modelValue, getEmptyLink()];
+      this.$emit(`update:model-value`, newLinks);
 
       await this.$nextTick();
       this.$refs.links[newLinks.length - 1].focus();
@@ -50,16 +54,15 @@ export default {
         [key]: value,
       };
 
-      this.$emit(`input`, this.links.map(
-        link => (link !== updateLink ? link : updatedLink),
+      this.$emit(`update:model-value`, this.modelValue.map(
+        link => (link === updateLink ? updatedLink : link),
       ));
     },
     removeLink(removeLink) {
-      this.$emit(`input`, this.links.filter(
+      this.$emit(`update:model-value`, this.modelValue.filter(
         link => link !== removeLink,
       ));
     },
   },
 };
 </script>
-

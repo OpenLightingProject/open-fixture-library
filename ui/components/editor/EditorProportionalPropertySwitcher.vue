@@ -183,9 +183,9 @@
 <script>
 import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
 import {
-  schemaDefinitions,
   capabilityTypes,
   entitiesSchema,
+  schemaDefinitions,
   unitsSchema,
 } from '../../../lib/schema-properties.js';
 

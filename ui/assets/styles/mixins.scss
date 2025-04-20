@@ -10,7 +10,6 @@ $animation-number: 0 !default;
   animation-name: $name;
 
   @at-root {
-    // stylelint-disable-next-line keyframes-name-pattern -- It is in kebab-case
     @keyframes #{$name} {
       @content;
     }

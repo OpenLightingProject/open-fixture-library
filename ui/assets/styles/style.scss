@@ -205,9 +205,9 @@ textarea[readonly] {
     margin: -2px 1ex 0 0;
     font-weight: 700;
     line-height: 1em;
+    vertical-align: middle;
     color: white;
     text-align: center;
-    vertical-align: middle;
     content: "!";
     background: red;
     border-radius: 9999px;
@@ -271,8 +271,8 @@ a.button {
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
-      background-color: theme-color(button-primary-background-hover);
       outline: 0;
+      background-color: theme-color(button-primary-background-hover);
     }
   }
 
@@ -283,8 +283,8 @@ a.button {
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
-      background-color: theme-color(button-secondary-background-hover);
       outline: 0;
+      background-color: theme-color(button-secondary-background-hover);
     }
   }
 }
@@ -327,8 +327,8 @@ a.button {
   padding: 0 0 0 #{$icon-size + 2 * $padding};
   overflow: hidden;
   font-size: 1em;
-  color: theme-color(icon);
   vertical-align: middle;
+  color: theme-color(icon);
   cursor: pointer;
   border: 1px solid;
   border-radius: 3px;
@@ -357,8 +357,8 @@ a.button {
     ));
 
     &:focus {
-      border-color: $blue-300;
       outline: none;
+      border-color: $blue-300;
     }
 
     &:active {
@@ -374,8 +374,8 @@ a.button {
 
     &:focus {
       color: theme-color(icon);
-      border-color: $red-700;
       outline: none;
+      border-color: $red-700;
     }
 
     &:hover {
@@ -486,7 +486,7 @@ a.button {
   }
 
   .grid-4 > & {
-    @media (min-width: 440px) {
+    @media (width >= 440px) {
       display: inline-block;
       width: calc((100% - #{$card-spacing}) / 2);
       vertical-align: top;
@@ -503,7 +503,7 @@ a.button {
       }
     }
 
-    @media (min-width: 650px) {
+    @media (width >= 650px) {
       width: calc((100% - 2 * #{$card-spacing}) / 3);
 
       &:nth-child(3n+1) {
@@ -516,7 +516,7 @@ a.button {
       }
     }
 
-    @media (min-width: 920px) {
+    @media (width >= 920px) {
       width: calc((100% - 3 * #{$card-spacing}) / 4);
 
       &:nth-child(4n+1) {
@@ -608,8 +608,8 @@ a.card,
 
   &:hover,
   &:focus {
-    background-color: theme-color(hover-background);
     outline: none;
+    background-color: theme-color(hover-background);
     fill: theme-color(text-primary);
 
     &.dark {
@@ -667,14 +667,14 @@ a.card,
 
     &:nth-child(odd) {
       float: left;
-      margin-right: 0.5rem;
       clear: left;
+      margin-right: 0.5rem;
     }
 
     &:nth-child(even) {
       float: right;
-      margin-left: 0.5rem;
       clear: right;
+      margin-left: 0.5rem;
     }
   }
 }

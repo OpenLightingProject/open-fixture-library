@@ -3,9 +3,9 @@
   "name": "Mega TRIPAR Profile",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Glenn Meder"],
+    "authors": ["Glenn Meder", "Ryan Goodwin", "Ken Harris"],
     "createDate": "2019-07-13",
-    "lastModifyDate": "2019-07-13"
+    "lastModifyDate": "2025-03-25"
   },
   "links": {
     "manual": [
@@ -36,10 +36,13 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 7],
           "type": "ColorPreset",
-          "comment": "Bastard Amber",
-          "helpWanted": "Does this capability start at 0 or 1? This might differ between Ch.01/Ch.02 and Ch.04/Ch.05/Ch.06 modes."
+          "comment": "Bastard Amber"
         },
         {
           "dmxRange": [8, 15],
@@ -447,7 +450,7 @@
     },
     {
       "name": "5-channel",
-      "shortName": "CH.05",
+      "shortName": "Ch.05",
       "channels": [
         "Red",
         "Green",

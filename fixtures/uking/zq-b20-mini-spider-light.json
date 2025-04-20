@@ -1,0 +1,312 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ-B20 Mini Spider Light",
+  "shortName": "ZQ-B20-MiniSpider",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Ryan Goodwin"],
+    "createDate": "2023-04-24",
+    "lastModifyDate": "2023-07-12"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4KL1MdtnQ34"
+    ],
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B20.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 150, 130],
+    "weight": 1.99,
+    "power": 80,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [3, 3]
+    }
+  },
+  "availableChannels": {
+    "Tilt 1": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Tilt 2": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [137, 146],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [147, 156],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [157, 166],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [167, 176],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [177, 186],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [187, 196],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [197, 206],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [207, 216],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [217, 226],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [227, 236],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [237, 246],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Tilt 1",
+        "Tilt 2",
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Tilt 1",
+        "Tilt 2",
+        "Dimmer",
+        "Strobe",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    }
+  ]
+}

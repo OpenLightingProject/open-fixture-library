@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ES2021",
+    "strict": true
+  },
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
