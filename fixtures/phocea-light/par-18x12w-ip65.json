@@ -1,14 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "PAR 18x12w IP65",
-  "shortName": "PAR 18x12w",
-  "categories": ["Color Changer", "Dimmer"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["Dario"],
     "createDate": "2025-04-20",
     "lastModifyDate": "2025-04-20"
   },
-  "comment": "5ch",
   "links": {
     "manual": [
       "https://www.phocealight.fr/wp-content/uploads/2024/08/Manuel-dutilisation-PAR-18x12W-IP-65-Phocea-Light.pdf"
@@ -37,8 +35,8 @@
     "Red": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "comment": "RED"
+        "type": "ColorIntensity",
+        "color": "Red"
       }
     },
     "Green": {
