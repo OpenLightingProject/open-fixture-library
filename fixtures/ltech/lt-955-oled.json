@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LT-955-OLED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-04-23",
+    "lastModifyDate": "2025-04-23"
+  },
+  "links": {
+    "manual": [
+      "http://ltechonline.com/html/en/Control/Decoder/DMX-PWM-CV-type/LT-995.html"
+    ],
+    "productPage": [
+      "http://ltechonline.com/html/en/Control/Decoder/DMX-PWM-CV-type/LT-995.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [169, 39, 80],
+    "weight": 0.5,
+    "power": 720,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Yellow"
+      ]
+    }
+  ]
+}
