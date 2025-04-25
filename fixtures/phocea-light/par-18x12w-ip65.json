@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 18x12w IP65",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Dario"],
+    "createDate": "2025-04-21",
+    "lastModifyDate": "2025-04-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.phocealight.fr/wp-content/uploads/2024/08/Manuel-dutilisation-PAR-18x12W-IP-65-Phocea-Light.pdf"
+    ],
+    "productPage": [
+      "https://www.phocealight.fr/produit/par-18x12w-ip65-2/"
+    ],
+    "other": [
+      "https://www.phocealight.fr/wp-content/uploads/2023/09/PAR-18x12W-RGBWA-IP65-Phocea-Light.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 310, 130],
+    "weight": 3.9,
+    "power": 216,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "helpWanted": "9ch mode needs implementing",
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Yellow"
+      ]
+    }
+  ]
+}
