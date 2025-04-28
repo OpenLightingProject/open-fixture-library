@@ -51,7 +51,6 @@
     },
     "Effect Mode": {
       "defaultValue": 0,
-      "comment": "All effects are LED stripe effects, expect: # are LED matrix only; + is matrix & stripe; * are audio reactive; ~ don't use palette, just colors",
       "capabilities": [
         { "dmxRange": [0, 0], "type": "Effect", "effectName": "Solid~", "comment": "Solid primary color on all LEDs" },
         { "dmxRange": [1, 1], "type": "Effect", "effectName": "Blink", "comment": "Blinks between primary and secondary color. Parameter = Speed, Duty cycle; Colors = Fx, Bg" },
