@@ -8,7 +8,7 @@
     "createDate": "2025-04-19",
     "lastModifyDate": "2025-04-19"
   },
-  "comment": "LED Pixel Stripe or Matrix Firmware",
+  "comment": "LED Stripe and Matrix Controller Firmware. All effects are LED stripe effects, expect: # are LED matrix only; + is matrix & stripe; * are audio reactive; ~ don't use palette, just colors",
   "links": {
     "manual": [
       "https://kno.wled.ge/interfaces/e1.31-dmx"
@@ -239,7 +239,7 @@
         { "dmxRange": [184, 184], "type": "Effect", "effectName": "Wavesins", "comment": "Beat waves and phase shifting. Looks OK in 2D'ish as well. Parameter = Speed, Brightness variation, Starting color, Range of colors, Color variation; Colors = Fx" },
         { "dmxRange": [185, 185], "type": "Effect", "effectName": "Rocktaves**", "comment": "Colours the same for each note between octaves, with sine wave going back and forth.; Colors = Fx, Bg" },
         { "dmxRange": [186, 186], "type": "Effect", "effectName": "+ Akemi**", "comment": "The WLED mascot rocking to your tunes. Parameter = Color speed, Dance; Colors = Head palette, Arms & Legs, Eyes & Mouth" },
-        { "dmxRange": [187, 255], "type": "Effect", "effectName": "+ XXX Final", "comment": "Undefined final WLED effect slots, may have not effect at all .. tbd" }
+        { "dmxRange": [187, 255], "type": "Effect", "effectName": "+ XXX Final", "comment": "Undefined final WLED effect slots, should have no effects .. tbd" }
       ]
     },
     "Effect Speed": {
@@ -261,7 +261,7 @@
         "type": "EffectParameter",
         "parameterStart": "low",
         "parameterEnd": "high",
-        "comment": "The effect option channel is divided into 128 macro parts to control the various states that a segment can be in. Using 2D effect options on a 1D strip has no effect."
+        "comment": "Controls mirror & reverse segment options = 4 macro parts for 1D. The effect option channel is divided into 128 macro parts to control the various states a 2D segment can be in. Using 2D effect options on a 1D strip has no effect."
       }
     },
     "Effect Palette": {
