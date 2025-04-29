@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01424 Par Light 14x6W RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Voltoxin"],
+    "createDate": "2025-03-29",
+    "lastModifyDate": "2025-03-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-03-29",
+      "comment": "created by Q Light Controller Plus (version 4.14.1-2)"
+    }
+  },
+  "physical": {
+    "dimensions": [220, 208, 96],
+    "weight": 1.12,
+    "power": 85,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [100, 100]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Funtion Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Effect",
+          "effectName": "DMX Channel Control"
+        },
+        {
+          "dmxRange": [4, 127],
+          "type": "Effect",
+          "effectName": "8 Fixed Color"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Effect",
+          "effectName": "Color Jump"
+        },
+        {
+          "dmxRange": [170, 210],
+          "type": "Effect",
+          "effectName": "Color Gradient"
+        },
+        {
+          "dmxRange": [211, 229],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed function, from slow to fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Funtion Selection",
+        "Speed function"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
