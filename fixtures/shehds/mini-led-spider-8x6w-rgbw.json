@@ -1,0 +1,206 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini LED Spider 8x6W RGBW",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Tomi"],
+    "createDate": "2024-12-15",
+    "lastModifyDate": "2024-12-15"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAX/UPAX592/1912/file/39d4b40fb5.pdf"
+    ],
+    "productPage": [
+      "https://shehds.com/products/free-shipping-rgbw-mini-led-spider-beam-light-led-8x6w-bar-beam-moving-head-beam-led-spider-light-rgbw-good-for-dj-disco-party?variant=43006479794229"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ZbrWrZi5Jok&list=TLGGArCG-7NGjCMxNTEyMjAyNA"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 250, 115],
+    "weight": 1.95,
+    "power": 48,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [3, 3]
+    }
+  },
+  "availableChannels": {
+    "Y1 Motor running": {
+      "defaultValue": 127,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angle": "145deg"
+      }
+    },
+    "Y2 Motor running": {
+      "defaultValue": 127,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angle": "145deg"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Mode select": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 234],
+          "type": "Generic",
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "Sound active mode"
+        }
+      ]
+    },
+    "Auto mode speed": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Red 1 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2 dimer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2 dimmer": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Y1 Motor running",
+        "Y2 Motor running",
+        "Master dimmer",
+        "Strobe",
+        "Mode select",
+        "Auto mode speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15ch",
+      "channels": [
+        "Y1 Motor running",
+        "Y2 Motor running",
+        "Master dimmer",
+        "Strobe",
+        "Red 1 dimmer",
+        "Green 1 dimmer",
+        "Blue 1 dimmer",
+        "White 1 dimmer",
+        "Red 2 dimmer",
+        "Green 2 dimmer",
+        "Blue 2 dimer",
+        "White 2 dimmer",
+        "Mode select",
+        "Auto mode speed",
+        "Reset"
+      ]
+    }
+  ]
+}
