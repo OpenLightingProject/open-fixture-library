@@ -1,0 +1,338 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega Pixel Led",
+  "shortName": "MPXL",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Kaiden Fitzsimmons", "Ryan Goodwin"],
+    "createDate": "2023-08-22",
+    "lastModifyDate": "2023-08-22"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/7265/mega_pixel_led.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/mega-pixel-led"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=0IyIghD3fNs"
+    ]
+  },
+  "physical": {
+    "dimensions": [965, 64, 153],
+    "weight": 2.9,
+    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "All": "all",
+      "1/2": { "x": ["<=4"] },
+      "2/2": { "x": [">=5"] },
+      "1/4": ["1", "2"],
+      "2/4": ["3", "4"],
+      "3/4": ["5", "6"],
+      "4/4": ["7", "8"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Macros/Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "Effect",
+          "effectName": "Auto Fade",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Color Fade Speed"
+          }
+        },
+        {
+          "dmxRange": [29, 56],
+          "type": "Effect",
+          "effectName": "Show 1",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [57, 85],
+          "type": "Effect",
+          "effectName": "Show 2",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [86, 113],
+          "type": "Effect",
+          "effectName": "Show 3",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [114, 141],
+          "type": "Effect",
+          "effectName": "Show 4",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [142, 170],
+          "type": "Effect",
+          "effectName": "Show 5",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 198],
+          "type": "Effect",
+          "effectName": "Show 6",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [199, 226],
+          "type": "Effect",
+          "effectName": "Show 7",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [227, 241],
+          "type": "Effect",
+          "effectName": "Show 8",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectName": "Show 9",
+          "switchChannels": {
+            "Color Fade Speed / Program Speed": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Color Fade Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "RGB Mix"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 242],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["All"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Macros/Programs",
+        "Color Fade Speed / Program Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "10 channel",
+      "shortName": "10ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Macros/Programs",
+        "Color Fade Speed / Program Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "16 channel",
+      "shortName": "16ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Macros/Programs",
+        "Color Fade Speed / Program Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "24 channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "28 channel",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Macros/Programs",
+        "Color Fade Speed / Program Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
