@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lp-db820ct",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anonimus"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "manual": [
+      "http://www.falconeyes.com.hk/manage/Downloads/20150708055802_LP-DB820_eng.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Intensité": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Température de couleur": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "7000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Intensité",
+        "Température de couleur"
+      ]
+    }
+  ]
+}
