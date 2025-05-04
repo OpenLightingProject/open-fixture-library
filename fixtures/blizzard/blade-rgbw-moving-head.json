@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BLADE RGBW MOVING HEAD",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Lars"],
+    "createDate": "2023-02-03",
+    "lastModifyDate": "2023-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.blizzardpro.com/products/blade-rgbw"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/blade-rgbw"
+    ],
+    "video": [
+      "https://www.blizzardpro.com/products/blade-rgbw"
+    ]
+  },
+  "availableChannels": {
+    "Pan Fin": {
+      "fineChannelAliases": ["Pan Fin fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "0deg"
+      }
+    },
+    "Tilt Fin": {
+      "fineChannelAliases": ["Tilt Fin fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "1deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Custom Color": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan Fin",
+        "Tilt Fin",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Custom Color"
+      ]
+    }
+  ]
+}
