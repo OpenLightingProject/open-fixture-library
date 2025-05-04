@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Star Curtain Conbox Controller",
+  "shortName": "Star Curtain",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Dave Malcolm"],
+    "createDate": "2021-11-21",
+    "lastModifyDate": "2021-11-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.showled.com/sites/default/files/2018-08/showled_conbox_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.showled.com/product/showled-chameleon"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2KdnX5OTBu8&ab_channel=RoseBrand"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pattern Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Effect",
+          "effectName": "Chase Pattern 1"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Chase Pattern 2"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Chase Pattern 3"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Chase Pattern 4"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Chase Pattern 5"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Chase Pattern 6"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Chase Pattern 7"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Strobe"
+        }
+      ]
+    },
+    "Pattern Behaviour": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Soft Chase",
+          "comment": "Gradual fade"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Hard Chase",
+          "comment": "Lights blink on and off"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Minimum Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When set to a value higher than zero, LEDs will not dim completely"
+      }
+    },
+    "Maximum Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Maximum intensity of LEDs during chase"
+      }
+    },
+    "Number of Colours": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Effect",
+          "effectName": "1 Colour"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "2 Colours"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "3 Colours"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "4 Colours"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "4 Colours rotating"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "3 Colours rotating"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "2 Colours rotating"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Chameleon colour change"
+        }
+      ]
+    },
+    "Colour": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "Blue to White"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "White to Yellow"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Yellow to Green"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Green to Cyan"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Cyan to Blue"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Blue to Magenta"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Magenta to Red"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Red to Yellow"
+        }
+      ]
+    },
+    "Colour 2": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Colour 3": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Colour 4": {
+      "name": "Colour",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Pattern Type",
+        "Pattern Behaviour",
+        "Chase Speed",
+        "Minimum Intensity",
+        "Maximum Intensity",
+        "Number of Colours",
+        "Colour",
+        "Colour 2",
+        "Colour 3",
+        "Colour 4"
+      ]
+    }
+  ]
+}
