@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Blinder 2 Blaze",
+  "shortName": "Blinder 2 Blaze",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["ashmotif200"],
+    "createDate": "2023-06-13",
+    "lastModifyDate": "2023-06-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/fr/mwdownloads/download/link/id/17428810"
+    ],
+    "productPage": [
+      "https://www.highlite.com/fr/30782-stage-blinder-2-blaze.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 262, 220],
+    "weight": 7.3,
+    "power": 205,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tungsten": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Tungsten Pod 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Tungsten Pod 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Red Pod 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Pod 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Pod 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green Pod 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Pod 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue Pod 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Tungsten",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Tungsten Pod 1",
+        "Tungsten Pod 2",
+        "Red Pod 1",
+        "Red Pod 2",
+        "Green Pod 1",
+        "Green Pod 2",
+        "Blue Pod 1",
+        "Blue Pod 2"
+      ]
+    }
+  ]
+}
