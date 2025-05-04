@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WELL FIT",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2018/01/WELL_Fit_UM_Rev7.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=udYpuquvPCU"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channel",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    }
+  ]
+}
