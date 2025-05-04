@@ -1,0 +1,1182 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "L2600",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Schwubbi"],
+    "createDate": "2024-08-25",
+    "lastModifyDate": "2024-08-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-08-25",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [152, 65, 161],
+    "weight": 1.29,
+    "power": 15,
+    "DMXconnector": "3-pin"
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Laser On/Off": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Movement Auto / Sound Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Preset Effect Auto Mode"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Preset 3D Pattern Mode"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Preset Light Beam & 3D Pattern Mixed Mode"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Preset Effects Sound Mode"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Preset 3D Pattern Sound Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Preset Light Beam & 3D Pattern Sound Mode"
+        }
+      ]
+    },
+    "Patterns Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 238],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "3D Pattern Effect"
+        },
+        {
+          "dmxRange": [239, 255],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Light Beam Patterns"
+        }
+      ]
+    },
+    "3D Pattern Selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Each Value is for one Pattern. (1.Group Number over the max, then the Program is Default with the max Group. 2. When CH2 is under Preset Mixed Mode, this Channel is invalid.)"
+      }
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "comment": "Full Color"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "Speed Adjustment": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "comment": "No Movement",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Out of Bounds and Pattern size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Out of Bounds Crossing"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Out of Bounds Reentry"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Out of Bounds Blanking"
+        },
+        {
+          "dmxRange": [150, 249],
+          "type": "Generic",
+          "comment": "Pattern zoom out, out fo Bounds blanking"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Generic",
+          "comment": "Saving"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Group Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 223],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Group 1"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Group 0"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Each Value for on Pattern; If over the Pattern numbers, then Program displaying the max Number"
+      }
+    },
+    "Pattern Zoom in/out": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Static Pattern Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Dynamic Zoom out."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Dynamic Zoom in."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Dynamic Zoom in/out."
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Generic",
+          "comment": "Dynamic Zoom Rotation."
+        }
+      ]
+    },
+    "Pattern Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Static Rotation"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Prism",
+          "comment": "Dynamic Rotation 2 Circles clockwise and counter clockwise."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Prism",
+          "comment": "Dynamic Rotation 1 Circle clockwise and counter clockwise."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Prism",
+          "comment": "Dynamic Rotation Clockwise."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Prism",
+          "comment": "Dynamic Rotation counter Clockwise."
+        }
+      ]
+    },
+    "X Moving": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static X Moving"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving Wave Effect."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving Wave Effect."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving."
+        }
+      ]
+    },
+    "Y Moving": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static X Moving"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving Wave Effect."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving Wave Effect."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving."
+        }
+      ]
+    },
+    "X Zoom In/Out": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving Distortion"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving Distortion"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Zoom In/Out"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Rotation Zoom In/Out,"
+        }
+      ]
+    },
+    "Y Zoom In/Out": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving Distortion"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving Distortion"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Zoom In/Out"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Rotation Zoom In/Out,"
+        }
+      ]
+    },
+    "Fixed Color Setting": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Original Color"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorPreset",
+          "comment": "Color change with each N Dot"
+        }
+      ]
+    },
+    "Pattern Color Change": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Original Color"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern RGB"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern YCP"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern RGBYCPW"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "7 Color RGBYCPW"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Sine Chasing Color change"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Cosine Change Color change"
+        }
+      ]
+    },
+    "Dots": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Original Dots"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Pattern no Dots Effect, sweep Line blanking"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Pattern no Dots Effect, sweep Line no blanking"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Saving"
+        }
+      ]
+    },
+    "Drawing and other Functions (working with Channel 15)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "On CH15 Value 0-127, Pattern Moving drawing all on to keep the Time. On CH15 Value 0-127, walking drawing Line Quantity"
+      }
+    },
+    "Drawing (CH15 and CH15 togethe)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Sine manual drawing"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Cosine manual drawing"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing A Effects"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing B Effects"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing C Effects"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing D Effects"
+        }
+      ]
+    },
+    "Twist Pattern Change": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "The more Value, the less Twinsting. (Notes: When Zoom in, Rotation, Moving, Rolling Twisting Effects, CH16 can Controll the Effect)(For use with CH6)"
+      }
+    },
+    "Grating Selection (Notes: in some Sections, moreValue then less Gobo Angle)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Graterung Group. The bigger Digit, the smaller Pattern"
+      }
+    },
+    "Laser On/Off 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Out of Bounds and Pattern size 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Out of Bounds Crossing"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Out of Bounds Reentry"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Out of Bounds Blanking"
+        },
+        {
+          "dmxRange": [150, 249],
+          "type": "Generic",
+          "comment": "Pattern zoom out, out fo Bounds blanking"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Generic",
+          "comment": "Saving"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "No Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pattern Selection 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Each Value for on Pattern; If over the Pattern numbers, then Program displaying the max Number"
+      }
+    },
+    "Pattern Zoom in/out 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Static Pattern Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Dynamic Zoom out."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Dynamic Zoom in."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Dynamic Zoom in/out."
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Generic",
+          "comment": "Dynamic Zoom Rotation."
+        }
+      ]
+    },
+    "Pattern Rotation 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Static Rotation"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Prism",
+          "comment": "Dynamic Rotation 2 Circles clockwise and counter clockwise."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Prism",
+          "comment": "Dynamic Rotation 1 Circle clockwise and counter clockwise."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Prism",
+          "comment": "Dynamic Rotation Clockwise."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Prism",
+          "comment": "Dynamic Rotation counter Clockwise."
+        }
+      ]
+    },
+    "X Moving 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static X Moving"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving Wave Effect."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving Wave Effect."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving."
+        }
+      ]
+    },
+    "Y Moving 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static X Moving"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving Wave Effect."
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving Wave Effect."
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving."
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving."
+        }
+      ]
+    },
+    "X Zoom In/Out 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic up Moving Distortion"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic down Moving Distortion"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Zoom In/Out"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Rotation Zoom In/Out,"
+        }
+      ]
+    },
+    "Y Zoom In/Out 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Static Size"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic right Moving Distortion"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic left Moving Distortion"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Zoom In/Out"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Dynamic Rotation Zoom In/Out,"
+        }
+      ]
+    },
+    "Fixed Color Setting 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Original Color"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorPreset",
+          "comment": "Color change with each N Dot"
+        }
+      ]
+    },
+    "Pattern Color Change 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Original Color"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern RGB"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern YCP"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Whole Pattern RGBYCPW"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "7 Color RGBYCPW"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Sine Chasing Color change"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Cosine Change Color change"
+        }
+      ]
+    },
+    "Dots 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Original Dots"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Pattern no Dots Effect, sweep Line blanking"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Pattern no Dots Effect, sweep Line no blanking"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Saving"
+        }
+      ]
+    },
+    "Drawing and other Functions (working with Channel 15) 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "On CH15 Value 0-127, Pattern Moving drawing all on to keep the Time. On CH15 Value 0-127, walking drawing Line Quantity"
+      }
+    },
+    "Drawing (CH15 and CH15 togethe) 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Sine manual drawing"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Cosine manual drawing"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing A Effects"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing B Effects"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing C Effects"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Dynamic Drawing D Effects"
+        }
+      ]
+    },
+    "Twist Pattern Change 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "The more Value, the less Twinsting. (Notes: When Zoom in, Rotation, Moving, Rolling Twisting Effects, CH16 can Controll the Effect)(For use with CH6)"
+      }
+    },
+    "Grating Selection (Notes: in some Sections, moreValue then less Gobo Angle) 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Graterung Group. The bigger Digit, the smaller Pattern"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Laser On/Off",
+        "Movement Auto / Sound Control",
+        "Patterns Selection",
+        "3D Pattern Selection",
+        "Color Selection",
+        "Speed Adjustment"
+      ]
+    },
+    {
+      "name": "34-channel",
+      "shortName": "34ch",
+      "channels": [
+        "Laser On/Off",
+        "Out of Bounds and Pattern size",
+        "Group Selection",
+        "Pattern Selection",
+        "Pattern Zoom in/out",
+        "Pattern Rotation",
+        "X Moving",
+        "Y Moving",
+        "X Zoom In/Out",
+        "Y Zoom In/Out",
+        "Fixed Color Setting",
+        "Pattern Color Change",
+        "Dots",
+        "Drawing and other Functions (working with Channel 15)",
+        "Drawing (CH15 and CH15 togethe)",
+        "Twist Pattern Change",
+        "Grating Selection (Notes: in some Sections, moreValue then less Gobo Angle)",
+        "Laser On/Off 2",
+        "Out of Bounds and Pattern size 2",
+        "No Function",
+        "Pattern Selection 2",
+        "Pattern Zoom in/out 2",
+        "Pattern Rotation 2",
+        "X Moving 2",
+        "Y Moving 2",
+        "X Zoom In/Out 2",
+        "Y Zoom In/Out 2",
+        "Fixed Color Setting 2",
+        "Pattern Color Change 2",
+        "Dots 2",
+        "Drawing and other Functions (working with Channel 15) 2",
+        "Drawing (CH15 and CH15 togethe) 2",
+        "Twist Pattern Change 2",
+        "Grating Selection (Notes: in some Sections, moreValue then less Gobo Angle) 2"
+      ]
+    }
+  ]
+}
