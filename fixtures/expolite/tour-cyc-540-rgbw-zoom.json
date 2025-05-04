@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tour-Cyc 540 RGBW Zoom",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Lilly"],
+    "createDate": "2024-12-10",
+    "lastModifyDate": "2024-12-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.focon-showtechnic.com/myfactory/CustomUpload/374O357O340O370O356O369O350O325O366O354O366O365O/10000004154.pdf"
+    ],
+    "productPage": [
+      "https://www.focon-showtechnic.com/web.aspx?PageID=27&WebPortalCmd=13&WPParams=53BCD9AEB1DDD9E9C2D3B59EB787BDE5C6C9D7B3E3BBB89EA08393A3"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=06_qk5H1ZNM"
+    ]
+  },
+  "physical": {
+    "dimensions": [509, 323, 226],
+    "weight": 15,
+    "power": 500,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [7, 58]
+    }
+  },
+  "availableChannels": {
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "shortName": "5ch",
+      "channels": [
+        "Zoom",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
