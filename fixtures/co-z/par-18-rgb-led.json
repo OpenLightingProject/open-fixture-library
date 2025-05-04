@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 18 RGB LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["rennist"],
+    "createDate": "2023-03-11",
+    "lastModifyDate": "2023-03-11"
+  },
+  "links": {
+    "productPage": [
+      "https://cozpalace.com/en-ca/products/led-stage-lights-wtd-18x8-dx"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Brightness": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Mode": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Value": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Brightness",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Mode",
+        "Value"
+      ]
+    }
+  ]
+}
