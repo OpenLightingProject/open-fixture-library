@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vizi Beam Rxone",
+  "shortName": "Rxone",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["test"],
+    "createDate": "2024-01-31",
+    "lastModifyDate": "2024-01-31"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/8904/ADJ%20Vizi%20Beam%20RXone%20-%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/vizi-beam-rxone"
+    ],
+    "video": [
+      "https://www.adj.com/vizi-beam-rxone"
+    ]
+  },
+  "physical": {
+    "dimensions": [279, 225, 387],
+    "weight": 9.2,
+    "power": 199,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Osram® Sirius HRI 100W 1R discharge",
+      "colorTemperature": 9000
+    },
+    "lens": {
+      "degreesMinMax": [3, 21]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 15
+      }
+    },
+    "Gobo Wheel": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 16
+      }
+    },
+    "Shutter / Strobe": {
+      "highlightValue": 10,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "60Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Frost": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Pan/Tilt Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Pan/Tilt preset",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan/Tilt Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long"
+      }
+    },
+    "Gobo Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Special Functions": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17ch",
+      "shortName": "17ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Pan/Tilt Macro",
+        "Pan/Tilt Macro Speed",
+        "Color Time",
+        "Gobo Time",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    }
+  ]
+}
