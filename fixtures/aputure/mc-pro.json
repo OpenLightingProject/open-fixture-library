@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MC Pro",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bayerisches Staatsschauspiel"],
+    "createDate": "2023-09-26",
+    "lastModifyDate": "2023-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2023/04/MC-Pro-Product-Manual-V1.1.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/mc-pro/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=MD64O9kA4qU"
+    ]
+  },
+  "physical": {
+    "dimensions": [10.8, 7, 2.5],
+    "weight": 0.247,
+    "power": 7,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green/Magenta",
+        "Strobe"
+      ]
+    }
+  ]
+}
