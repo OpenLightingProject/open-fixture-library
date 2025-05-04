@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W COB WW/CW",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anony"],
+    "createDate": "2024-11-10",
+    "lastModifyDate": "2024-11-10"
+  },
+  "comment": "100W WW COB & 100W CW COB",
+  "links": {
+    "productPage": [
+      "https://www.amazon.de/dp/B07P5MGJJ9?ref=ppx_yo2ov_dt_b_fed_asin_title"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "weight": 4.5,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED WW / CW"
+    }
+  },
+  "availableChannels": {
+    "Total Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "WW": {
+      "capability": {
+        "type": "Generic",
+        "comment": "WW"
+      }
+    },
+    "CW": {
+      "capability": {
+        "type": "Generic",
+        "comment": "CW"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Voice change": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Total Dimmer",
+        "WW",
+        "CW",
+        "Strobe",
+        "Voice change",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
