@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fuze610Z Wash 6x 10W LED Moving Head Zoom",
+  "shortName": "Fuze610Z",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["kman"],
+    "createDate": "2022-07-21",
+    "lastModifyDate": "2022-07-21"
+  },
+  "links": {
+    "manual": [
+      "https://surplustronics.co.nz/product/150.386/info-1317.pdf?1567640291"
+    ],
+    "productPage": [
+      "https://surplustronics.co.nz/product/150.386/info-1317.pdf?1567640291"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iGdDd6jmQJg"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Macro speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 5": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 5 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fuze610Z Wash 6x 10W LED Moving Head Zoom",
+      "shortName": "Fuze610Z",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Pan",
+        "Tilt",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Macro speed",
+        "Program"
+      ]
+    },
+    {
+      "name": "Fuze610Z Wash 6x 10W LED Moving Head Zoom Extended",
+      "shortName": "Fuze610Z Extended",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Macro speed",
+        "Program"
+      ]
+    }
+  ]
+}
