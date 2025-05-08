@@ -1,23 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Mega Bar RGBA",
-  "shortName": "ADJMBRGBA",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": ["Pixel Bar"],
   "meta": {
-    "authors": ["Anonymous"],
-    "createDate": "2018-12-10",
-    "lastModifyDate": "2018-12-10"
-  },
-  "links": {
-    "manual": [
-      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/6989/ADJ%20Mega%20Bar%20RGBA%20-%20User%20Manual%202023-04-11.pdf"
-    ],
-    "productPage": [
-      "https://www.adj.com/mega-bar-rgba"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=WXp4BXd6yC8"
-    ]
+    "authors": ["Anonymous", "sen10"],
+    "createDate": "2025-05-08",
+    "lastModifyDate": "2025-05-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-05-08",
+      "comment": "created by OFL – https://open-fixture-library.org/american-dj/mega-bar-rgba (version 1.3.1)"
+    }
   },
   "physical": {
     "dimensions": [1060, 145, 73],
@@ -31,24 +24,19 @@
       "degreesMinMax": [30, 30]
     },
     "matrixPixels": {
-      "dimensions": [125, 50, 10],
       "spacing": [0, 0, 0]
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1],
-    "pixelGroups": {
-      "Master": "all",
-      "1/2": ["1", "2", "3", "4"],
-      "2/2": ["5", "6", "7", "8"],
-      "1/4": ["1", "2"],
-      "2/4": ["3", "4"],
-      "3/4": ["5", "6"],
-      "4/4": ["7", "8"]
-    }
+    "pixelCount": [
+      8,
+      1,
+      1
+    ]
   },
   "availableChannels": {
     "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -58,17 +46,20 @@
           "dmxRange": [8, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "stop",
-          "speedEnd": "fast"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe stop…fast"
         }
       ]
     },
     "Intensity": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Color Macros": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 20],
@@ -359,6 +350,7 @@
       ]
     },
     "Flow Color Macro": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 20],
@@ -655,8 +647,8 @@
           "dmxRange": [0, 15],
           "type": "NoFunction",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -664,8 +656,8 @@
           "type": "Effect",
           "effectName": "Program 1",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -673,8 +665,8 @@
           "type": "Effect",
           "effectName": "Program 2",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -682,8 +674,8 @@
           "type": "Effect",
           "effectName": "Program 3",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -691,8 +683,8 @@
           "type": "Effect",
           "effectName": "Program 4",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -700,8 +692,8 @@
           "type": "Effect",
           "effectName": "Program 5",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -709,8 +701,8 @@
           "type": "Effect",
           "effectName": "Program 6",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -718,8 +710,8 @@
           "type": "Effect",
           "effectName": "Program 7",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -727,8 +719,8 @@
           "type": "Effect",
           "effectName": "Program 8",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -736,8 +728,8 @@
           "type": "Effect",
           "effectName": "Program 9",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -745,8 +737,8 @@
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -754,8 +746,8 @@
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -763,8 +755,8 @@
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -772,8 +764,8 @@
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -781,8 +773,8 @@
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -790,8 +782,8 @@
           "type": "Effect",
           "effectName": "Program 15",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -799,8 +791,8 @@
           "type": "Effect",
           "effectName": "Program 16",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -808,8 +800,8 @@
           "type": "Effect",
           "effectName": "Program 17",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -817,8 +809,8 @@
           "type": "Effect",
           "effectName": "Program 18",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -826,8 +818,8 @@
           "type": "Effect",
           "effectName": "Program 19",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -835,8 +827,8 @@
           "type": "Effect",
           "effectName": "Program 20",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -844,8 +836,8 @@
           "type": "Effect",
           "effectName": "Program 21",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Flow Color Macro"
+            "Amber Master / Flow Color Macro": "Flow Color Macro",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -853,8 +845,8 @@
           "type": "Effect",
           "effectName": "Program 22",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Flow Color Macro"
+            "Amber Master / Flow Color Macro": "Flow Color Macro",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -862,8 +854,8 @@
           "type": "Effect",
           "effectName": "Auto run",
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Program Speed",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -872,57 +864,454 @@
           "effectName": "Sound active",
           "soundControlled": true,
           "switchChannels": {
-            "Program Speed / Sound Sensitivity": "Sound Sensitivity",
-            "Amber Master / Flow Color Macro": "Amber Master"
+            "Amber Master / Flow Color Macro": "Amber Master",
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         }
       ]
     },
     "Program Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "comment": "Effect speed slow…fast"
       }
     },
     "Sound Sensitivity": {
+      "defaultValue": 0,
       "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
+        "type": "Effect",
+        "effectName": "Sound sensitivity low…high",
+        "soundControlled": true
       }
-    }
-  },
-  "templateChannels": {
-    "Red $pixelKey": {
+    },
+    "Red 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Blue $pixelKey": {
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 1/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 1/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Green $pixelKey": {
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 1/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 1/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Amber $pixelKey": {
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 1/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 1/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Amber 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 1/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 2/2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 1/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 2/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 3/4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 4/4": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     }
   },
+  "templateChannels": {},
   "modes": [
     {
       "name": "RGBA",
-      "shortName": "4ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -932,7 +1321,6 @@
     },
     {
       "name": "RGBA + Strobe/Dimmer",
-      "shortName": "6ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -944,7 +1332,6 @@
     },
     {
       "name": "Color macro",
-      "shortName": "7ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -957,7 +1344,6 @@
     },
     {
       "name": "Program",
-      "shortName": "9ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -972,57 +1358,77 @@
     },
     {
       "name": "Halves",
-      "shortName": "10ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey"
-          ]
-        },
+        "Red 1/2",
+        "Green 1/2",
+        "Blue 1/2",
+        "Amber 1/2",
+        "Red 2/2",
+        "Green 2/2",
+        "Blue 2/2",
+        "Amber 2/2",
         "Strobe",
         "Intensity"
       ]
     },
     {
       "name": "Fourths",
-      "shortName": "18ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey"
-          ]
-        },
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Amber 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Amber 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Amber 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Amber 4/4",
         "Strobe",
         "Intensity"
       ]
     },
     {
       "name": "Eighths",
-      "shortName": "34ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey"
-          ]
-        },
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Amber 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Amber 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Amber 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Amber 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Amber 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Amber 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Amber 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "Amber 8",
         "Strobe",
         "Intensity"
       ]
