@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBW4x10W LED PROJECTOR",
+  "shortName": "PAR 410 QUAD",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Nicolas Godefroy"],
+    "createDate": "2025-05-16",
+    "lastModifyDate": "2025-05-16"
+  },
+  "links": {
+    "manual": [
+      "https://algam-akeneo-prod.s3.eu-west-3.amazonaws.com/public/products/9/9/2/0/992098c2b5c1c3b34bf2a501ed5bc346e91ce2c4_PAR_410_QUAD___USERMANUAL___2024_03___WEB.pdf"
+    ],
+    "productPage": [
+      "https://algam-lighting.com/fr/par/1304-par-410-quad-3700166371989.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=bpTmDBsn9jI&ab_channel=AlgamLighting"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 120, 110],
+    "weight": 1.1,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 22]
+    }
+  },
+  "availableChannels": {
+    "Red Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [20, 35],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [36, 51],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [52, 67],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [68, 83],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [84, 99],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Generic",
+          "comment": "Color Change Jump Effect"
+        },
+        {
+          "dmxRange": [170, 210],
+          "type": "Generic",
+          "comment": "Color Change Fade Effect"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Generic",
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "White Dimmer"
+      ]
+    },
+    {
+      "name": "8Channels",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimmer",
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "White Dimmer",
+        "Strobe",
+        "Color Mode",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
