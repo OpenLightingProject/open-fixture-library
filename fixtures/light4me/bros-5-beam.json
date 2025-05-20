@@ -267,6 +267,125 @@
         "speedEnd": "fast",
         "comment": "CH7 effect speed – slow-fast"
       }
+    },
+    "Background Light source": {
+      "highlightValue": 15,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 1"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 2"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 3"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 4"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 5"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 6"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 7"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 8"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 9"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 10"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 11"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 12"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 13"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 14"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 15"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 16"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 17"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 18"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 19"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 20"
+        },
+        {
+          "dmxRange": [236, 246],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 21"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – effect 22"
+        }
+      ]
     }
   },
   "modes": [
@@ -281,7 +400,8 @@
         "Movement motor effect",
         "Effect Speed",
         "Light source",
-        "Main Light Source Effect Speed"
+        "Main Light Source Effect Speed",
+        "Background Light source"
       ]
     }
   ]
