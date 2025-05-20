@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BROS 5 BEAM",
+  "shortName": "b5b",
+  "categories": ["Moving Head", "Pixel Bar", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Rainer Jung"],
+    "createDate": "2025-05-20",
+    "lastModifyDate": "2025-05-20"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=vaPDjDKiyf4"
+    ]
+  },
+  "physical": {
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "120Hz",
+          "comment": "slow-fast"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Movement motor effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "All head - movement motor effect 1"
+        },
+        {
+          "dmxRange": [23, 247],
+          "type": "NoFunction",
+          "comment": "Will update it via a texteditor once the fixture is initialized"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound mode - movement motor effect",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "slow-fast"
+      }
+    },
+    "Light source": {
+      "highlightValue": 15,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ColorPreset",
+          "comment": "All heads – main light source – red color (R)",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "ColorPreset",
+          "comment": "All heads – main light source – green color (G)",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "ColorPreset",
+          "comment": "All heads – main light source – blue color (B)",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "NoFunction",
+          "comment": "Will add more presets later with texteditor"
+        }
+      ]
+    },
+    "Main Light Source Effect Speed": {
+      "highlightValue": 127,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "CH7 effect speed – slow-fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Master",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "Movement motor effect",
+        "Effect Speed",
+        "Light source",
+        "Main Light Source Effect Speed"
+      ]
+    }
+  ]
+}
