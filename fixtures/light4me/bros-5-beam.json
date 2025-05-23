@@ -28,18 +28,68 @@
     }
   },
   "matrix": {
-    "pixelCount": [5, 1, 1],
+    "pixelCount": [
+      5,
+      1,
+      1
+    ],
     "pixelGroups": {
       "Master": "all"
     }
   },
   "templateChannels": {
+    "Head $pixelKey - Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Head $pixelKey - Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Head $pixelKey - Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
     "Head $pixelKey - Master dimmer": {
       "defaultValue": "0%",
       "highlightValue": "100%",
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Head $pixelKey - Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [
+            0,
+            10
+          ],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [
+            11,
+            255
+          ],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "availableChannels": {
@@ -976,6 +1026,24 @@
         "All Heads - Background - Color Effect",
         "All Heads - Background - Color / All Heads - Background - Effect speed",
         "All Heads - Reset"
+      ]
+    },
+    {
+      "name": "60-channel",
+      "shortName": "60ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Head $pixelKey - Pan",
+            "Head $pixelKey - Tilt",
+            "Head $pixelKey - Pan/Tilt speed",
+            "Head $pixelKey - Master dimmer",
+            "Head $pixelKey - Strobe"
+          ]
+        }
       ]
     }
   ]
