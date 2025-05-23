@@ -2,9 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "BROS 5 BEAM",
   "shortName": "b5b",
-  "categories": ["Moving Head", "Pixel Bar", "Strobe", "Color Changer"],
+  "categories": [
+    "Moving Head",
+    "Pixel Bar",
+    "Strobe",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Rainer Jung"],
+    "authors": [
+      "Rainer Jung"
+    ],
     "createDate": "2025-05-20",
     "lastModifyDate": "2025-05-20"
   },
@@ -21,7 +28,7 @@
     }
   },
   "availableChannels": {
-    "Master": {
+    "Master dimmer": {
       "defaultValue": "0%",
       "highlightValue": "100%",
       "capability": {
@@ -29,22 +36,29 @@
       }
     },
     "Strobe": {
-      "defaultValue": "0%",
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 10],
+          "dmxRange": [
+            0,
+            10
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "1Hz",
-          "speedEnd": "120Hz",
-          "comment": "slow-fast"
+          "dmxRange": [
+            11,
+            255
+          ],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Pan": {
+      "defaultValue": 0,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -52,30 +66,156 @@
       }
     },
     "Tilt": {
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "200deg"
       }
     },
-    "Movement motor effect": {
+    "All Heads Movement": {
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [
+            0,
+            7
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [8, 22],
+          "dmxRange": [
+            8,
+            22
+          ],
           "type": "Effect",
-          "effectName": "All head - movement motor effect 1"
+          "effectName": "All heads - movement motor effect 1"
         },
         {
-          "dmxRange": [23, 247],
-          "type": "NoFunction",
-          "comment": "Will update it via a texteditor once the fixture is initialized"
+          "dmxRange": [
+            23,
+            37
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 2"
         },
         {
-          "dmxRange": [248, 255],
+          "dmxRange": [
+            38,
+            52
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 3"
+        },
+        {
+          "dmxRange": [
+            53,
+            67
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 4"
+        },
+        {
+          "dmxRange": [
+            68,
+            82
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 5"
+        },
+        {
+          "dmxRange": [
+            83,
+            97
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 6"
+        },
+        {
+          "dmxRange": [
+            98,
+            112
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 7"
+        },
+        {
+          "dmxRange": [
+            113,
+            127
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 8"
+        },
+        {
+          "dmxRange": [
+            128,
+            142
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 9"
+        },
+        {
+          "dmxRange": [
+            143,
+            157
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 10"
+        },
+        {
+          "dmxRange": [
+            158,
+            172
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 11"
+        },
+        {
+          "dmxRange": [
+            173,
+            187
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 12"
+        },
+        {
+          "dmxRange": [
+            188,
+            202
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 13"
+        },
+        {
+          "dmxRange": [
+            203,
+            217
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 14"
+        },
+        {
+          "dmxRange": [
+            218,
+            232
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 15"
+        },
+        {
+          "dmxRange": [
+            233,
+            247
+          ],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 16"
+        },
+        {
+          "dmxRange": [
+            248,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound mode - movement motor effect",
           "soundControlled": true
@@ -90,298 +230,512 @@
         "comment": "slow-fast"
       }
     },
-    "Light source": {
+    "All Heads - Main - Color": {
       "highlightValue": 15,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 1],
+          "dmxRange": [
+            1,
+            1
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – red color (R)",
-          "colors": ["#ff0000"]
+          "comment": "All heads - main - red color (R)",
+          "colors": [
+            "#ff0000"
+          ]
         },
         {
-          "dmxRange": [2, 2],
+          "dmxRange": [
+            2,
+            2
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – green color (G)",
-          "colors": ["#00ff00"]
+          "comment": "All heads - main - green color (G)",
+          "colors": [
+            "#00ff00"
+          ]
         },
         {
-          "dmxRange": [3, 3],
+          "dmxRange": [
+            3,
+            3
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – blue color (B)",
-          "colors": ["#0000ff"]
+          "comment": "All heads - main - blue color (B)",
+          "colors": [
+            "#0000ff"
+          ]
         },
         {
-          "dmxRange": [4, 4],
+          "dmxRange": [
+            4,
+            4
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – white color (W)",
-          "colors": ["#ffffff"]
+          "comment": "All heads - main - white color (W)",
+          "colors": [
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [5, 5],
+          "dmxRange": [
+            5,
+            5
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – R+G colors",
-          "colors": ["#ff0000", "#00ff00"]
+          "comment": "All heads - main - R+G colors",
+          "colors": [
+            "#ff0000",
+            "#00ff00"
+          ]
         },
         {
-          "dmxRange": [6, 6],
+          "dmxRange": [
+            6,
+            6
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – R+B colors",
-          "colors": ["#ff0000", "#0000ff"]
+          "comment": "All heads - main - R+B colors",
+          "colors": [
+            "#ff0000",
+            "#0000ff"
+          ]
         },
         {
-          "dmxRange": [7, 7],
+          "dmxRange": [
+            7,
+            7
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – R+W colors",
-          "colors": ["#ff0000", "#ffffff"]
+          "comment": "All heads - main - R+W colors",
+          "colors": [
+            "#ff0000",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [8, 8],
+          "dmxRange": [
+            8,
+            8
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – G+B colors",
-          "colors": ["#00ff00", "#0000ff"]
+          "comment": "All heads - main - G+B colors",
+          "colors": [
+            "#00ff00",
+            "#0000ff"
+          ]
         },
         {
-          "dmxRange": [9, 9],
+          "dmxRange": [
+            9,
+            9
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – G+W colors",
-          "colors": ["#00ff00", "#ffffff"]
+          "comment": "All heads - main - G+W colors",
+          "colors": [
+            "#00ff00",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [10, 10],
+          "dmxRange": [
+            10,
+            10
+          ],
           "type": "ColorPreset",
-          "comment": "All heads – main light source – B+W colors",
-          "colors": ["#0000ff", "#ffffff"]
+          "comment": "All heads - main - B+W colors",
+          "colors": [
+            "#0000ff",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [11, 11],
+          "dmxRange": [
+            11,
+            11
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – R+G+B colors",
-          "colors": ["#ff0000", "#00ff00", "#0000ff"]
+          "colors": [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff"
+          ]
         },
         {
-          "dmxRange": [12, 12],
+          "dmxRange": [
+            12,
+            12
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – R+G+W colors",
-          "colors": ["#ff0000", "#00ff00", "#ffffff"]
+          "colors": [
+            "#ff0000",
+            "#00ff00",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [13, 13],
+          "dmxRange": [
+            13,
+            13
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – R+B+W colors",
-          "colors": ["#ff0000", "#0000ff", "#ffffff"]
+          "colors": [
+            "#ff0000",
+            "#0000ff",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [14, 14],
+          "dmxRange": [
+            14,
+            14
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – G+B+W colors",
-          "colors": ["#00ff00", "#0000ff", "#ffffff"]
+          "colors": [
+            "#00ff00",
+            "#0000ff",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [15, 15],
+          "dmxRange": [
+            15,
+            15
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – R+G+B+W colors",
-          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"]
+          "colors": [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff",
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [16, 33],
+          "dmxRange": [
+            16,
+            33
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 1"
         },
         {
-          "dmxRange": [34, 50],
+          "dmxRange": [
+            34,
+            50
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 2"
         },
         {
-          "dmxRange": [51, 67],
+          "dmxRange": [
+            51,
+            67
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 3"
         },
         {
-          "dmxRange": [68, 84],
+          "dmxRange": [
+            68,
+            84
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 4"
         },
         {
-          "dmxRange": [85, 101],
+          "dmxRange": [
+            85,
+            101
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 5"
         },
         {
-          "dmxRange": [102, 118],
+          "dmxRange": [
+            102,
+            118
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 6"
         },
         {
-          "dmxRange": [119, 135],
+          "dmxRange": [
+            119,
+            135
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 7"
         },
         {
-          "dmxRange": [136, 152],
+          "dmxRange": [
+            136,
+            152
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 8"
         },
         {
-          "dmxRange": [153, 169],
+          "dmxRange": [
+            153,
+            169
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 9"
         },
         {
-          "dmxRange": [170, 186],
+          "dmxRange": [
+            170,
+            186
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 10"
         },
         {
-          "dmxRange": [187, 203],
+          "dmxRange": [
+            187,
+            203
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 12"
         },
         {
-          "dmxRange": [204, 220],
+          "dmxRange": [
+            204,
+            220
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 12"
         },
         {
-          "dmxRange": [221, 237],
+          "dmxRange": [
+            221,
+            237
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 13"
         },
         {
-          "dmxRange": [238, 255],
+          "dmxRange": [
+            238,
+            255
+          ],
           "type": "ColorPreset",
           "comment": "All heads – main light source – effect 14"
         }
       ]
     },
-    "Main Light Source Effect Speed": {
-      "highlightValue": 127,
+    "All Heads - Pan/Tilt speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "EffectSpeed",
+        "type": "PanTiltSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "CH7 effect speed – slow-fast"
+        "speedEnd": "fast"
       }
     },
-    "Background Light source": {
-      "highlightValue": 15,
+    "All Heads - Main - Color speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "CH7 effect speed – slow-fast",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "All Heads - Background - Color": {
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 15],
+          "dmxRange": [
+            0,
+            15
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [16, 26],
+          "dmxRange": [
+            16,
+            26
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 1"
         },
         {
-          "dmxRange": [27, 37],
+          "dmxRange": [
+            27,
+            37
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 2"
         },
         {
-          "dmxRange": [38, 48],
+          "dmxRange": [
+            38,
+            48
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 3"
         },
         {
-          "dmxRange": [49, 59],
+          "dmxRange": [
+            49,
+            59
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 4"
         },
         {
-          "dmxRange": [60, 70],
+          "dmxRange": [
+            60,
+            70
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 5"
         },
         {
-          "dmxRange": [71, 81],
+          "dmxRange": [
+            71,
+            81
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 6"
         },
         {
-          "dmxRange": [82, 92],
+          "dmxRange": [
+            82,
+            92
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 7"
         },
         {
-          "dmxRange": [93, 103],
+          "dmxRange": [
+            93,
+            103
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 8"
         },
         {
-          "dmxRange": [104, 114],
+          "dmxRange": [
+            104,
+            114
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 9"
         },
         {
-          "dmxRange": [115, 125],
+          "dmxRange": [
+            115,
+            125
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 10"
         },
         {
-          "dmxRange": [126, 136],
+          "dmxRange": [
+            126,
+            136
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 11"
         },
         {
-          "dmxRange": [137, 147],
+          "dmxRange": [
+            137,
+            147
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 12"
         },
         {
-          "dmxRange": [148, 158],
+          "dmxRange": [
+            148,
+            158
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 13"
         },
         {
-          "dmxRange": [159, 169],
+          "dmxRange": [
+            159,
+            169
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 14"
         },
         {
-          "dmxRange": [170, 180],
+          "dmxRange": [
+            170,
+            180
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 15"
         },
         {
-          "dmxRange": [181, 191],
+          "dmxRange": [
+            181,
+            191
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 16"
         },
         {
-          "dmxRange": [192, 202],
+          "dmxRange": [
+            192,
+            202
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 17"
         },
         {
-          "dmxRange": [203, 213],
+          "dmxRange": [
+            203,
+            213
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 18"
         },
         {
-          "dmxRange": [214, 224],
+          "dmxRange": [
+            214,
+            224
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 19"
         },
         {
-          "dmxRange": [225, 235],
+          "dmxRange": [
+            225,
+            235
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 20"
         },
         {
-          "dmxRange": [236, 246],
+          "dmxRange": [
+            236,
+            246
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 21"
         },
         {
-          "dmxRange": [247, 255],
+          "dmxRange": [
+            247,
+            255
+          ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – effect 22"
         }
@@ -390,18 +744,18 @@
   },
   "modes": [
     {
-      "name": "11 Channel",
+      "name": "11-channel",
       "shortName": "11ch",
       "channels": [
-        "Master",
+        "Master dimmer",
         "Strobe",
         "Pan",
         "Tilt",
-        "Movement motor effect",
-        "Effect Speed",
-        "Light source",
-        "Main Light Source Effect Speed",
-        "Background Light source"
+        "All Heads Movement",
+        "All Heads - Pan/Tilt speed",
+        "All Heads - Main - Color",
+        "All Heads - Main - Color speed",
+        "All Heads - Background - Color"
       ]
     }
   ]
