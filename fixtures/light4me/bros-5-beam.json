@@ -1,0 +1,656 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "bros 5 beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Rainer Jung", "r"],
+    "createDate": "2025-05-23",
+    "lastModifyDate": "2025-05-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-05-23",
+      "comment": "created by Q Light Controller Plus (version 4.14.1)"
+    }
+  },
+  "physical": {
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "All Heads - Background - Color": {
+      "slots": [
+        {
+          "type": "Unknown",
+          "name": "No function"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 9"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 10"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 11"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 12"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 13"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 14"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 15"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 16"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 17"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 18"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 19"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 20"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 21"
+        },
+        {
+          "type": "Gobo",
+          "name": "All Heads - Background - Effect 22"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "All Heads Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 2"
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 3"
+        },
+        {
+          "dmxRange": [53, 67],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 9"
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 10"
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 11"
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 12"
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 13"
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 14"
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 15"
+        },
+        {
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "All heads - movement motor effect 16"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound mode - movement motor effect",
+          "soundControlled": true
+        }
+      ]
+    },
+    "All Heads - Main - Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ColorPreset",
+          "comment": "All heads - main - red color (R)",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "ColorPreset",
+          "comment": "All heads - main - green color (G)",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "ColorPreset",
+          "comment": "All heads - main - blue color (B)",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ColorPreset",
+          "comment": "All heads - main - white color (W)",
+          "colors": ["#ffffff", "#00ff00"]
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ColorPreset",
+          "comment": "All heads - main - R+G colors",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorPreset",
+          "comment": "All heads - main - R+B colors",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "ColorPreset",
+          "comment": "All heads - main - R+W colors",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "ColorPreset",
+          "comment": "All heads - main - G+B colors",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "ColorPreset",
+          "comment": "All heads - main - G+W colors",
+          "colors": ["#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "All heads - main - B+W colors",
+          "colors": ["#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - R+G+B colors"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - R+G+W colors"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - R+B+W colors"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - G+B+W colors"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - R+G+B+W colors"
+        },
+        {
+          "dmxRange": [16, 33],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 1"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 2"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 3"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 4"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 5"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 6"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 7"
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 8"
+        },
+        {
+          "dmxRange": [153, 169],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 9"
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 10"
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 11"
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 12"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 13"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "All heads - main - effect 14"
+        }
+      ]
+    },
+    "All Heads - Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "All Heads - Main - Color speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "color effect speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "All Heads - Background - Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "All Heads - Background - Effect 1"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "All Heads - Background - Effect 2"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "All Heads - Background - Effect 3"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "All Heads - Background - Effect 4"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "All Heads - Background - Effect 5"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "All Heads - Background - Effect 6"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "All Heads - Background - Effect 7"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "All Heads - Background - Effect 8"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "All Heads - Background - Effect 9"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "All Heads - Background - Effect 10"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "All Heads - Background - Effect 11"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "All Heads - Background - Effect 12"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "All Heads - Background - Effect 13"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "All Heads - Background - Effect 14"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "All Heads - Background - Effect 15"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "All Heads - Background - Effect 16"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "All Heads - Background - Effect 17"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "All Heads - Background - Effect 18"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "All Heads - Background - Effect 19"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "All Heads - Background - Effect 20"
+        },
+        {
+          "dmxRange": [236, 246],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "All Heads - Background - Effect 21"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "All Heads - Background - Effect 22"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "All Heads Movement",
+        "All Heads - Pan/Tilt speed",
+        "All Heads - Main - Color",
+        "All Heads - Main - Color speed",
+        "All Heads - Background - Color"
+      ]
+    }
+  ]
+}
