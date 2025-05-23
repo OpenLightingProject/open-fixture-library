@@ -27,6 +27,21 @@
       "type": "LED"
     }
   },
+  "matrix": {
+    "pixelCount": [5, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Head $pixelKey - Master dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
     "All Heads - Master dimmer": {
       "defaultValue": "0%",
@@ -221,14 +236,6 @@
           "soundControlled": true
         }
       ]
-    },
-    "Effect Speed": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "slow-fast"
-      }
     },
     "All Heads - Main - Color": {
       "highlightValue": 15,
@@ -563,7 +570,7 @@
           ],
           "type": "NoFunction",
           "switchChannels": {
-            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color / All Heads"
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Effect speed"
           }
         },
         {
@@ -879,7 +886,7 @@
         },
         {
           "dmxRange": [
-            142,
+            175,
             207
           ],
           "type": "ColorPreset",
@@ -892,7 +899,7 @@
         {
           "dmxRange": [
             208,
-            207
+            255
           ],
           "type": "ColorPreset",
           "comment": "All heads – background light source – R+G+B colors",
@@ -925,6 +932,32 @@
           "speedEnd": "fast"
         }
       ]
+    },
+    "All Heads - Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [
+            0,
+            199
+          ],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [
+            200,
+            209
+          ],
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [
+            210,
+            255
+          ],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
@@ -941,7 +974,8 @@
         "All Heads - Main - Color",
         "All Heads - Main - Color speed",
         "All Heads - Background - Color Effect",
-        "All Heads - Background - Color / All Heads - Background - Effect speed"
+        "All Heads - Background - Color / All Heads - Background - Effect speed",
+        "All Heads - Reset"
       ]
     }
   ]
