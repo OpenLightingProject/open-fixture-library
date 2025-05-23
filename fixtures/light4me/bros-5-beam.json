@@ -28,14 +28,14 @@
     }
   },
   "availableChannels": {
-    "Master dimmer": {
+    "All Heads - Master dimmer": {
       "defaultValue": "0%",
       "highlightValue": "100%",
       "capability": {
         "type": "Intensity"
       }
     },
-    "Strobe": {
+    "All Heads - Strobe": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -57,7 +57,7 @@
         }
       ]
     },
-    "Pan": {
+    "All Heads - Pan": {
       "defaultValue": 0,
       "capability": {
         "type": "Pan",
@@ -65,7 +65,7 @@
         "angleEnd": "540deg"
       }
     },
-    "Tilt": {
+    "All Heads - Tilt": {
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
@@ -73,7 +73,7 @@
         "angleEnd": "200deg"
       }
     },
-    "All Heads Movement": {
+    "All Heads - Movement": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -553,7 +553,7 @@
         "speedEnd": "fast"
       }
     },
-    "All Heads - Background - Color": {
+    "All Heads - Background - Color Effect": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -561,7 +561,10 @@
             0,
             15
           ],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color / All Heads"
+          }
         },
         {
           "dmxRange": [
@@ -569,7 +572,10 @@
             26
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 1"
+          "comment": "All heads – background light source – effect 1",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -577,7 +583,10 @@
             37
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 2"
+          "comment": "All heads – background light source – effect 2",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -585,7 +594,10 @@
             48
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 3"
+          "comment": "All heads – background light source – effect 3",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -593,7 +605,10 @@
             59
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 4"
+          "comment": "All heads – background light source – effect 4",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -601,7 +616,10 @@
             70
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 5"
+          "comment": "All heads – background light source – effect 5",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -609,7 +627,10 @@
             81
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 6"
+          "comment": "All heads – background light source – effect 6",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -617,7 +638,10 @@
             92
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 7"
+          "comment": "All heads – background light source – effect 7",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -625,7 +649,10 @@
             103
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 8"
+          "comment": "All heads – background light source – effect 8",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -633,7 +660,10 @@
             114
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 9"
+          "comment": "All heads – background light source – effect 9",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -641,7 +671,10 @@
             125
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 10"
+          "comment": "All heads – background light source – effect 10",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -649,7 +682,10 @@
             136
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 11"
+          "comment": "All heads – background light source – effect 11",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -657,7 +693,10 @@
             147
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 12"
+          "comment": "All heads – background light source – effect 12",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -665,7 +704,10 @@
             158
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 13"
+          "comment": "All heads – background light source – effect 13",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -673,7 +715,10 @@
             169
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 14"
+          "comment": "All heads – background light source – effect 14",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -681,7 +726,10 @@
             180
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 15"
+          "comment": "All heads – background light source – effect 15",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -689,7 +737,10 @@
             191
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 16"
+          "comment": "All heads – background light source – effect 16",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -697,7 +748,10 @@
             202
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 17"
+          "comment": "All heads – background light source – effect 17",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -705,7 +759,10 @@
             213
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 18"
+          "comment": "All heads – background light source – effect 18",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -713,7 +770,10 @@
             224
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 19"
+          "comment": "All heads – background light source – effect 19",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -721,7 +781,10 @@
             235
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 20"
+          "comment": "All heads – background light source – effect 20",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -729,7 +792,10 @@
             246
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 21"
+          "comment": "All heads – background light source – effect 21",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
         },
         {
           "dmxRange": [
@@ -737,7 +803,126 @@
             255
           ],
           "type": "ColorPreset",
-          "comment": "All heads – background light source – effect 22"
+          "comment": "All heads – background light source – effect 22",
+          "switchChannels": {
+            "All Heads - Background - Color / All Heads - Background - Effect speed": "All Heads - Background - Color"
+          }
+        }
+      ]
+    },
+    "All Heads - Background - Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [
+            0,
+            10
+          ],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [
+            11,
+            42
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – red color (R)",
+          "colors": [
+            "#ff0000"
+          ]
+        },
+        {
+          "dmxRange": [
+            43,
+            75
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – green color (G)",
+          "colors": [
+            "#00ff00"
+          ]
+        },
+        {
+          "dmxRange": [
+            76,
+            108
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – blue color (B)",
+          "colors": [
+            "#0000ff"
+          ]
+        },
+        {
+          "dmxRange": [
+            109,
+            141
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – R+G colors",
+          "colors": [
+            "#ff0000",
+            "#00ff00"
+          ]
+        },
+        {
+          "dmxRange": [
+            142,
+            174
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – R+B colors",
+          "colors": [
+            "#ff0000",
+            "#0000ff"
+          ]
+        },
+        {
+          "dmxRange": [
+            142,
+            207
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – G+B colors",
+          "colors": [
+            "#00ff00",
+            "#0000ff"
+          ]
+        },
+        {
+          "dmxRange": [
+            208,
+            207
+          ],
+          "type": "ColorPreset",
+          "comment": "All heads – background light source – R+G+B colors",
+          "colors": [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff"
+          ]
+        }
+      ]
+    },
+    "All Heads - Background - Effect speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [
+            0,
+            10
+          ],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [
+            11,
+            255
+          ],
+          "type": "Speed",
+          "comment": "CH9 effect speed – slow-fast",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }
@@ -747,15 +932,16 @@
       "name": "11-channel",
       "shortName": "11ch",
       "channels": [
-        "Master dimmer",
-        "Strobe",
-        "Pan",
-        "Tilt",
-        "All Heads Movement",
+        "All Heads - Master dimmer",
+        "All Heads - Strobe",
+        "All Heads - Pan",
+        "All Heads - Tilt",
+        "All Heads - Movement",
         "All Heads - Pan/Tilt speed",
         "All Heads - Main - Color",
         "All Heads - Main - Color speed",
-        "All Heads - Background - Color"
+        "All Heads - Background - Color Effect",
+        "All Heads - Background - Color / All Heads - Background - Effect speed"
       ]
     }
   ]
