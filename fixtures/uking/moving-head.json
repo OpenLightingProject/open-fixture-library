@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "moving head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["fred"],
+    "createDate": "2025-05-23",
+    "lastModifyDate": "2025-05-23"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/b243-50w-moving-head-light-with-led-belt-black/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [300, 200, 230],
+    "weight": 2.5,
+    "power": 100,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "1%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "g1",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan"
+      ]
+    }
+  ]
+}
