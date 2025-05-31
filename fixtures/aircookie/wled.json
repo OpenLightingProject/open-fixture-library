@@ -413,6 +413,16 @@
       ]
     },
     {
+      "name": "Single RGBW",
+      "shortName": "rgbw",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
       "name": "Single DRGB",
       "shortName": "drgb",
       "channels": [
@@ -420,6 +430,17 @@
         "Red",
         "Green",
         "Blue"
+      ]
+    },
+    {
+      "name": "Single DRGBW",
+      "shortName": "drgbw",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
       ]
     },
     {
