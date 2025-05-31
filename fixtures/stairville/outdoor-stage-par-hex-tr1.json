@@ -1,0 +1,468 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor Stage PAR Hex TR1",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Schoenheyd"],
+    "createDate": "2025-05-31",
+    "lastModifyDate": "2025-05-31",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-05-31",
+      "comment": "created by Q Light Controller Plus (version 4.14.1-2)"
+    }
+  },
+  "physical": {
+    "dimensions": [246, 300, 200],
+    "weight": 3.5,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect (0 % to 100 %), increasing speed, invalid for user programmes 01…05",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Colour selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (015), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (050), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (125), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (170), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (210), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "ColorPreset",
+          "comment": "Red (200), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "ColorPreset",
+          "comment": "Red (160), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "ColorPreset",
+          "comment": "Red (110), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "ColorPreset",
+          "comment": "Red (070), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (000), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (010), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (025), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (040), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (070), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (120), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (255), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (100), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "ColorPreset",
+          "comment": "Red (020), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "ColorPreset",
+          "comment": "Red (050), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "ColorPreset",
+          "comment": "Red (080), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "ColorPreset",
+          "comment": "Red (130), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "ColorPreset",
+          "comment": "Red (180), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "ColorPreset",
+          "comment": "Red (225), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "ColorPreset",
+          "comment": "Red (225), green (000), blue (255), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (220), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (070), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (020), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (007), white (000), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (000), blue (000), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "ColorPreset",
+          "comment": "Red (255), green (000), blue (000), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "ColorPreset",
+          "comment": "Red (125), green (000), blue (000), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "ColorPreset",
+          "comment": "Red (125), green (000), blue (000), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (120), blue (000), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (000), blue (255), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (000), blue (100), white (255), amber (000), UV (000)"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "ColorPreset",
+          "comment": "Red (000), green (000), blue (050), white (255), amber (000), UV (000)"
+        }
+      ]
+    },
+    "Programme selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "Effect",
+          "effectName": "Programme 02"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "Effect",
+          "effectName": "Programme 03"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "Effect",
+          "effectName": "Programme 04"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "Effect",
+          "effectName": "Programme 05"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "Effect",
+          "effectName": "Programme 06"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "Effect",
+          "effectName": "Programme 07"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "Effect",
+          "effectName": "Programme 08"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "Effect",
+          "effectName": "Programme 09"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "Effect",
+          "effectName": "Programme 10"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "Effect",
+          "effectName": "Programme 11"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "Effect",
+          "effectName": "Programme 12"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "Effect",
+          "effectName": "Programme 13"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "Effect",
+          "effectName": "Programme 14"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "Effect",
+          "effectName": "Programme 15"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "Effect",
+          "effectName": "Programme 16"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "Effect",
+          "effectName": "Programme 17"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "Effect",
+          "effectName": "User programme 01"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "Effect",
+          "effectName": "User programme 02"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "Effect",
+          "effectName": "User programme 03"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "Effect",
+          "effectName": "User programme 04"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "User programme 05"
+        }
+      ]
+    },
+    "Programme running speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Programme running speed (Programme 02…Programme 17), Increasing speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe effect"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Colour selection",
+        "Programme selection",
+        "Programme running speed",
+        "Strobe effect"
+      ]
+    }
+  ]
+}
