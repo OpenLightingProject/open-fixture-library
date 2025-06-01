@@ -198,7 +198,7 @@
         { "dmxRange": [143, 143], "type": "Effect", "effectName": "Noisefire~*", "comment": "A perlin noise based volume reactive fire routine. Parameter = Speed, Intensity" },
         { "dmxRange": [144, 144], "type": "Effect", "effectName": "Puddlepeak*", "comment": "Blast coloured puddles randomly up and down the strand with the 'beat'. Parameter = Fade rate, Puddle size, Select bin, Volume (min); Colors = Fx, Bg" },
         { "dmxRange": [145, 145], "type": "Effect", "effectName": "Noisemove**", "comment": "Using perlin noise as movement for different frequency bins. Parameter = Speed of perlin movement, Fade rate; Colors = Fx, Bg" },
-        { "dmxRange": [146, 146], "type": "Effect", "effectName": "+ Noise2D. Parameter = Speed, Scale" },
+        { "dmxRange": [146, 146], "type": "Effect", "effectName": "+ Noise2D", "comment": "Parameter = Speed, Scale" },
         { "dmxRange": [147, 147], "type": "Effect", "effectName": "Perlin Move", "comment": "Using Perlin Noise for movement. Parameter = Speed, # of pixels, Fade rate; Colors = Fx, Bg" },
         { "dmxRange": [148, 148], "type": "Effect", "effectName": "Ripple Peak*", "comment": "Peak detection triggers ripples. Parameter = Fade rate, Max # of ripples, Select bin, Volume (min); Colors = Fx, Bg" },
         { "dmxRange": [149, 149], "type": "Effect", "effectName": "+ Firenoise", "comment": "Using Perlin Noise for fire. Parameter = X scale, Y scale" },
