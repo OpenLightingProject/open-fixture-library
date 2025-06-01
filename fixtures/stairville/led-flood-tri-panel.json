@@ -1,0 +1,471 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flood TRI Panel",
+  "shortName": "Flood Panel",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-06-22",
+    "lastModifyDate": "2025-06-01",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-06-01",
+      "comment": "GDTF v1.2 fixture type ID: 0D87E28C-59F4-4A6D-813E-21BCECF47F57"
+    }
+  },
+  "comment": "LED Flood TRI Panel 7x3W RGB",
+  "wheels": {
+    "Color Preset": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Preset 1",
+          "colors": ["#e40301"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 2",
+          "colors": ["#e43501"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 3",
+          "colors": ["#e48a00"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 4",
+          "colors": ["#e4e404"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 5",
+          "colors": ["#b5e403"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 6",
+          "colors": ["#5fe401"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 7",
+          "colors": ["#2ce400"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 8",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 9",
+          "colors": ["#00e434"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 10",
+          "colors": ["#00e48a"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 11",
+          "colors": ["#05e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 12",
+          "colors": ["#008ae4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 13",
+          "colors": ["#0034e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 14",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 15",
+          "colors": ["#3401e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 16",
+          "colors": ["#8a02e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 17",
+          "colors": ["#e404e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 18",
+          "colors": ["#c60334"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 19",
+          "colors": ["#8a355f"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 20",
+          "colors": ["#34a4c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 21",
+          "colors": ["#34c65f"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 22",
+          "colors": ["#8ac601"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 23",
+          "colors": ["#8a01c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 24",
+          "colors": ["#02a4c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 25",
+          "colors": ["#00c634"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 26",
+          "colors": ["#c65f35"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 27",
+          "colors": ["#c6b55f"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 28",
+          "colors": ["#e4b58a"]
+        },
+        {
+          "type": "Color",
+          "name": "Preset 29",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "R": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "capability": {
+        "type": "Speed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Strobe Frequency": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (StrobeFrequency)",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz"
+        }
+      ]
+    },
+    "Color Ctrl": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "2_Head_ColorAdd_R": "R 2",
+            "2_Head_ColorAdd_G": "G 2",
+            "2_Head_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {}
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "Ctrl2": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel DMX mode",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "4-channel DMX mode",
+      "channels": [
+        "Dim",
+        "R 2",
+        "G 2",
+        "B 2"
+      ]
+    },
+    {
+      "name": "8-channel DMX mode",
+      "channels": [
+        "Dim",
+        "2_Head_ColorAdd_R",
+        "2_Head_ColorAdd_G",
+        "2_Head_ColorAdd_B",
+        "Strobe Frequency",
+        "Color Ctrl",
+        "Ctrl1",
+        "Ctrl2"
+      ]
+    }
+  ]
+}
