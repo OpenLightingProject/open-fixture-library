@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SB2000LED Smoke & Bubble Machine RGB",
+  "shortName": "SB2000LED",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["Allert"],
+    "createDate": "2025-06-06",
+    "lastModifyDate": "2025-06-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/04/160.524_160.527-Smoke-Bubble-machine_manual_V1.6.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/sb2000led-smoke-bubble-machine-rgb-leds/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=89EK2Dg-ZV8"
+    ]
+  },
+  "physical": {
+    "weight": 11.9,
+    "power": 2000,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Smoke": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Bubbles": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Smoke",
+        "Bubbles",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Auto Mode"
+      ]
+    }
+  ]
+}
