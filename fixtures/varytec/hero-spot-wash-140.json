@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Spot Wash 140",
+  "shortName": "Hero Spot Wash 140",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Thomas"],
+    "createDate": "2025-06-08",
+    "lastModifyDate": "2025-06-08"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=JHutwYiPmbs"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channel",
+      "channels": [
+        "Pan",
+        "Pan fine"
+      ]
+    }
+  ]
+}
