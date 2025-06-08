@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Intimidator trio",
+  "shortName": "Int30",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Jason Ritter"],
+    "createDate": "2023-01-09",
+    "lastModifyDate": "2023-01-09"
+  },
+  "comment": "Chauvet itrio",
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/products/intimidator-trio/"
+    ]
+  },
+  "physical": {
+    "dimensions": [10.9, 10.9, 15.2],
+    "weight": 20,
+    "power": 242,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3500,
+      "lumens": 750
+    },
+    "lens": {
+      "name": "lens",
+      "degreesMinMax": [0, 270]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Built in Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Built in Speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control Function": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Movement Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rotating": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Built in Control",
+        "Built in Speed",
+        "Dimmer",
+        "Shutter",
+        "Zoom",
+        "Control Function",
+        "Movement Macros",
+        "Rotating"
+      ]
+    }
+  ]
+}
