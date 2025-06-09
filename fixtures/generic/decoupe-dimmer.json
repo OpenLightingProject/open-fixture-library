@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DECOUPE DIMMER",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["mad"],
+    "createDate": "2025-06-09",
+    "lastModifyDate": "2025-06-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.example.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [0, 0, 0],
+    "weight": 0,
+    "power": 0
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EX",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
