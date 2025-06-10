@@ -1,0 +1,295 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "120X 4IN1 RGBW MOVINGHEADLIGHT",
+  "shortName": "wash sheds",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["JULIEN"],
+    "createDate": "2025-06-10",
+    "lastModifyDate": "2025-06-10"
+  },
+  "links": {
+    "productPage": [
+      "https://shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "PAN 2": {
+      "fineChannelAliases": ["PAN 2 fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 251],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1600Hz"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "COOL WHITE": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "WARM WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "2600K - 6500K": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "CTO",
+          "colorTemperatureEnd": "CTO"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "3000K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "COLOR EFFECT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "FUNCTION": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "AUXILIARY LIGHT DIM": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "EFFECT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Effect",
+          "effectName": "1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "2"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "3"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "4"
+        }
+      ]
+    },
+    "Effect Speed 2": {
+      "name": "Effect Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "pan",
+      "channels": [
+        "Pan",
+        "PAN 2",
+        "Tilt",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "COOL WHITE",
+        "WARM WHITE",
+        "2600K - 6500K",
+        "CTO",
+        "Color Macros",
+        "COLOR EFFECT",
+        "Effect Speed",
+        "FUNCTION",
+        "AUXILIARY LIGHT DIM",
+        "Red",
+        "Green",
+        "Blue",
+        "EFFECT",
+        "Effect Speed 2"
+      ]
+    }
+  ]
+}
