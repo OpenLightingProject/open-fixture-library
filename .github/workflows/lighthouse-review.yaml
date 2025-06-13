@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@12.1.0
+        uses: treosh/lighthouse-ci-action@12.6.1
         with:
           urls: |
             http://localhost:3000/
