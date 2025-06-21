@@ -1,0 +1,820 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Beam",
+  "shortName": "Moving Beam",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Revisory"],
+    "createDate": "2021-03-22",
+    "lastModifyDate": "2025-05-23",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-06-21",
+      "comment": "GDTF v1.2 fixture type ID: AEB77B41-D095-4728-979E-1221208DA80D"
+    }
+  },
+  "wheels": {
+    "GoboWheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 7",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 8",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 9",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 10",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 11",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "GoboWheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 7",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 8",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 9",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 10",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 11",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "P Rotate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "0_Yoke_Pan": "P",
+            "0_Yoke_Pan fine": "P fine"
+          }
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "switchChannels": {}
+        }
+      ]
+    },
+    "T Rotate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "switchChannels": {
+            "0_Head_Tilt": "T",
+            "0_Head_Tilt fine": "T fine"
+          }
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "switchChannels": {}
+        }
+      ]
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "G1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 1,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 2,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 3,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 4,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [43, 52],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 5,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [53, 63],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 6,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [64, 74],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 7,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [75, 84],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 8,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [85, 95],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 9,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [96, 106],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 10,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [107, 116],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 11,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [117, 127],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumber": 12,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <>"
+          }
+        },
+        {
+          "dmxRange": [128, 138],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.083333,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [139, 148],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 2.083333,
+          "slotNumberEnd": 2.166667,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [149, 159],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 3.166667,
+          "slotNumberEnd": 3.25,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [160, 170],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 4.25,
+          "slotNumberEnd": 4.333333,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 5.333333,
+          "slotNumberEnd": 5.416667,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 6.416667,
+          "slotNumberEnd": 6.5,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 7.5,
+          "slotNumberEnd": 7.583333,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [203, 212],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 8.583333,
+          "slotNumberEnd": 8.666667,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [213, 223],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 9.666667,
+          "slotNumberEnd": 9.75,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [224, 234],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 10.75,
+          "slotNumberEnd": 10.833333,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [235, 244],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 11.833333,
+          "slotNumberEnd": 11.916667,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 1",
+          "slotNumberStart": 12.916667,
+          "slotNumberEnd": 13,
+          "switchChannels": {
+            "0_Base_Gobo1Pos": "G1 <> 2"
+          }
+        }
+      ]
+    },
+    "G1 <>": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "GoboWheel 1",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "G1 <> 2": {
+      "name": "G1 <>",
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "GoboWheel 1",
+        "speedStart": "0rpm",
+        "speedEnd": "0.16666666666666669rpm"
+      }
+    },
+    "G2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.083333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 2.083333,
+          "slotNumberEnd": 2.166667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 3.166667,
+          "slotNumberEnd": 3.25,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 4.25,
+          "slotNumberEnd": 4.333333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [43, 52],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 5.333333,
+          "slotNumberEnd": 5.416667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [53, 63],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 6.416667,
+          "slotNumberEnd": 6.5,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [64, 74],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 7.5,
+          "slotNumberEnd": 7.583333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [75, 84],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 8.583333,
+          "slotNumberEnd": 8.666667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [85, 95],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 9.666667,
+          "slotNumberEnd": 9.75,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [96, 106],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 10.75,
+          "slotNumberEnd": 10.833333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [107, 116],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 11.833333,
+          "slotNumberEnd": 11.916667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [117, 127],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 12.916667,
+          "slotNumberEnd": 13,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <>"
+          }
+        },
+        {
+          "dmxRange": [128, 138],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.083333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [139, 148],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 2.083333,
+          "slotNumberEnd": 2.166667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [149, 159],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 3.166667,
+          "slotNumberEnd": 3.25,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [160, 170],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 4.25,
+          "slotNumberEnd": 4.333333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 5.333333,
+          "slotNumberEnd": 5.416667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 6.416667,
+          "slotNumberEnd": 6.5,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 7.5,
+          "slotNumberEnd": 7.583333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [203, 212],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 8.583333,
+          "slotNumberEnd": 8.666667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [213, 223],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 9.666667,
+          "slotNumberEnd": 9.75,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [224, 234],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 10.75,
+          "slotNumberEnd": 10.833333,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [235, 244],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 11.833333,
+          "slotNumberEnd": 11.916667,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "WheelSlot",
+          "wheel": "GoboWheel 2",
+          "slotNumberStart": 12.916667,
+          "slotNumberEnd": 13,
+          "switchChannels": {
+            "0_Beam_Gobo2Pos": "G2 <> 2"
+          }
+        }
+      ]
+    },
+    "G2 <>": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "GoboWheel 2",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "G2 <> 2": {
+      "name": "G2 <>",
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "GoboWheel 2",
+        "speedStart": "0rpm",
+        "speedEnd": "0.16666666666666669rpm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Dim",
+        "0_Yoke_Pan",
+        "0_Yoke_Pan fine",
+        "0_Head_Tilt",
+        "0_Head_Tilt fine",
+        "P Rotate",
+        "T Rotate",
+        "R",
+        "G",
+        "B",
+        "Zoom",
+        "G1",
+        "0_Base_Gobo1Pos",
+        "G2",
+        "0_Beam_Gobo2Pos"
+      ]
+    }
+  ]
+}
