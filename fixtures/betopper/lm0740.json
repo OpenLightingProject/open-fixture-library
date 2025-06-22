@@ -1,0 +1,481 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LM0740",
+  "shortName": "7x40BeeEye",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2025-05-03",
+    "lastModifyDate": "2025-05-03"
+  },
+  "comment": "Small MH with nice rotary-lens with zoom and good light-output",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/Betopper_7x40W_4-in-1_RGBW_Wash_Zoom_Moving_Head_Lights_manual.pdf?v=1729131903"
+    ],
+    "productPage": [
+      "https://betopperdj.com/de/products/betopper-7-40w-4-in-1-rgbw-moving-head-lights"
+    ],
+    "video": [
+      "https://betopperdj.com/de/products/betopper-7-40w-4-in-1-rgbw-moving-head-lights"
+    ]
+  },
+  "physical": {
+    "dimensions": [273, 340, 172],
+    "weight": 6.1,
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7x40W LED RGBW",
+      "colorTemperature": 7000,
+      "lumens": 2000
+    },
+    "lens": {
+      "name": "BeeEye 7",
+      "degreesMinMax": [4.5, 45]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Slow to Fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Slow Strobe"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 27],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8500K",
+          "colorTemperatureEnd": "8500K"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7500K",
+          "colorTemperatureEnd": "7500K"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6800K",
+          "colorTemperatureEnd": "6800K"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6200K",
+          "colorTemperatureEnd": "6200K"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "5000K"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4500K",
+          "colorTemperatureEnd": "4500K"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3600K",
+          "colorTemperatureEnd": "3600K"
+        },
+        {
+          "dmxRange": [224, 251],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "2800K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Clockwise"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Rotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Counterclockwise"
+        }
+      ]
+    },
+    "FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "Effect",
+          "effectName": "Wave"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "Effect",
+          "effectName": "Dream"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "Effect",
+          "effectName": "Color Chase"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "Effect",
+          "effectName": "Red Wave"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "Effect",
+          "effectName": "Green Wave"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "Effect",
+          "effectName": "Blue Wave"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "Effect",
+          "effectName": "Yellow Wave"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "Effect",
+          "effectName": "Magenta Wave"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "Effect",
+          "effectName": "Cyan Wave"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "White Wave"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Generic",
+          "comment": "Motors Reset (Value Stops 5 Seconds)"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Build in Auto Run"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "CHROMA": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "255%",
+        "comment": "CHROMA"
+      }
+    },
+    "SATURATION": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Saturation"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Slow to Fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Slow Strobe"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "STANDARD 18",
+      "shortName": "ch18",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT",
+        "Color Macros",
+        "Zoom",
+        "Prism Rotation",
+        "FX",
+        "Effect Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "CHROMA-SAT 12",
+      "shortName": "ch12",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "CHROMA",
+        "SATURATION",
+        "Zoom",
+        "Prism Rotation",
+        "Reset"
+      ]
+    }
+  ]
+}
