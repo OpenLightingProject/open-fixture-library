@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega Track Runner",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bob"],
+    "createDate": "2025-05-20",
+    "lastModifyDate": "2025-05-20"
+  },
+  "links": {
+    "productPage": [
+      "https://wahlberg.dk/products/mega-track-runner"
+    ]
+  },
+  "availableChannels": {
+    "Position": {
+      "fineChannelAliases": ["Position fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "Position"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Enable": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Enable"
+      }
+    },
+    "TopLimit": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "BottomLimit": {
+      "capability": {
+        "type": "Generic",
+        "comment": "BottomLimit"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Position",
+        "Position fine",
+        "Speed",
+        "Enable",
+        "TopLimit",
+        "BottomLimit"
+      ]
+    }
+  ]
+}
