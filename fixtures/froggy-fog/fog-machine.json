@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fog machine",
+  "categories": ["Smoke", "Hazer"],
+  "meta": {
+    "authors": ["The Chaz"],
+    "createDate": "2023-10-07",
+    "lastModifyDate": "2023-10-07"
+  },
+  "links": {
+    "productPage": [
+      "https://www.froggysfog.com/machines/ground-fog-machines/froggys-fog-titan-ice-ground-fog-machine.html"
+    ]
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan output": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Fog Output",
+        "Fan output"
+      ]
+    }
+  ]
+}
