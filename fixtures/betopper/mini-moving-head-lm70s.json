@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MINI MOVING HEAD LM70S",
+  "shortName": "BETOPPERMINI",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["MARK ALLEMANG"],
+    "createDate": "2024-01-13",
+    "lastModifyDate": "2024-01-13"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/BETOPPER_Moving_Head_Stage_Led_Light_LM70_LM70S_Standard_User_Manual.pdf?v=1630045250"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-7x8w-rgbw-moving-head-wash-lights-lm70s"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=h09KgTLMyGg"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "X AXIS": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Y AXIS": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "1360deg"
+      }
+    },
+    "Master control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 135],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [136, 240],
+          "type": "StrobeSpeed",
+          "speedStart": "2Hz",
+          "speedEnd": "100Hz",
+          "comment": "estimate"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "manual says power on off"
+        }
+      ]
+    },
+    "Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Motor Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Generic",
+          "comment": "manual says reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "NINE CHANNEL",
+      "channels": [
+        "X AXIS",
+        "Y AXIS",
+        "Master control",
+        "Red Intensity",
+        "Green Intensity",
+        "Blue Intensity",
+        "White Intensity",
+        "Motor Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "FOURTEEN CHANNEL",
+      "channels": [
+        "X AXIS"
+      ]
+    }
+  ]
+}
