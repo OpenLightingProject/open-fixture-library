@@ -1,0 +1,1158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "amaran-pt2c",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["toofai"],
+    "createDate": "2023-11-29",
+    "lastModifyDate": "2023-11-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2023/02/amaran-PT-Product-Manual-V1.2-0207.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/wp-content/uploads/2023/02/amaran-PT-DMX-Profile-Specification-V1.0.pdf?_gl=1*znqmz8*_gcl_au*MTczNTU4NTUwOS4xNzAwNTE1NjI2"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hMRHD8Jfgi4"
+    ]
+  },
+  "physical": {
+    "weight": 0.705,
+    "power": 16,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "default",
+        "comment": "crossfade to color"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Reserved for Future Use": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved for Future Use 2": {
+      "name": "Reserved for Future Use",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "7%"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Crossfade to Color": {
+      "capability": {
+        "type": "Generic",
+        "comment": "White … RGBW/HSI color"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Intensity Light Engine 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 2": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 2": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Light Engine 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Light Engine 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity Light Engine 3": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 3": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 3": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Light Engine 4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 4": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 4": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Light Engine 5": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 5": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 5": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 5": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Light Engine 6": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 6": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 6": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 6": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine  6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Light Engine 7": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 7": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 7": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "18%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 7": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity Light Engine 8": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature Light Engine 8": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point Light Engine 8": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "- 99% - - 1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB Light Engine 8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red Light Engine 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Light Engine 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Light Engine 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue Light Engine 2": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1° - 360°"
+      }
+    },
+    "Saturation Light Engine 2": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 3": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1° - 360°"
+      }
+    },
+    "Saturation Light Engine 3": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 4": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1° - 360°"
+      }
+    },
+    "Saturation Light Engine 4": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 5": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Saturation Light Engine 5": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 6": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Saturation Light Engine 6": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 7": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1° - 360°"
+      }
+    },
+    "Saturation Light Engine 7": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Hue Light Engine 8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "Saturation Light Engine 8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode1 : CCT & RGB",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Mode2 :CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Mode3 : CCT & HSI",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "Crossfade to Color",
+        "Hue",
+        "Saturation",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Mode4 :RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Mode5 :HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Mode6 :System FX - List of Effects",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Mode7 :Light Engine CCT & RGB 2 Pixels",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity Light Engine 2",
+        "Color Temperature Light Engine 2",
+        "Green/Magenta Point Light Engine 2",
+        "CCT ↔ RGB Light Engine 2",
+        "Red Light Engine 2",
+        "Green Light Engine 2",
+        "Blue Light Engine 2"
+      ]
+    },
+    {
+      "name": "Mode8 :Light Engine CCT & RGB 4 Pixels",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity Light Engine 2",
+        "Color Temperature Light Engine 2",
+        "Green/Magenta Point Light Engine 2",
+        "CCT ↔ RGB Light Engine 2",
+        "Red Light Engine 2",
+        "Green Light Engine 2",
+        "Blue Light Engine 2",
+        "Intensity Light Engine 3",
+        "Color Temperature Light Engine 3",
+        "Green/Magenta Point Light Engine 3",
+        "CCT ↔ RGB Light Engine 3",
+        "Red Light Engine 3",
+        "Green Light Engine 3",
+        "Blue Light Engine 3",
+        "Intensity Light Engine 4",
+        "Color Temperature Light Engine 4",
+        "Green/Magenta Point Light Engine 4",
+        "CCT ↔ RGB Light Engine 4",
+        "Red Light Engine 4",
+        "Green Light Engine 4",
+        "Blue Light Engine 4"
+      ]
+    },
+    {
+      "name": "Mode9 :Light Engine CCT & RGB 8 Pixels",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green/Magenta Point",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity Light Engine 2",
+        "Color Temperature Light Engine 2",
+        "Green/Magenta Point Light Engine 2",
+        "CCT ↔ RGB Light Engine 2",
+        "Red Light Engine 2",
+        "Green Light Engine 2",
+        "Blue Light Engine 2",
+        "Intensity Light Engine 3",
+        "Color Temperature Light Engine 3",
+        "Green/Magenta Point Light Engine 3",
+        "CCT ↔ RGB Light Engine 3",
+        "Red Light Engine 3",
+        "Green Light Engine 3",
+        "Blue Light Engine 3",
+        "Intensity Light Engine 4",
+        "Color Temperature Light Engine 4",
+        "Green/Magenta Point Light Engine 4",
+        "CCT ↔ RGB Light Engine 4",
+        "Red Light Engine 4",
+        "Green Light Engine 4",
+        "Blue Light Engine 4",
+        "Intensity Light Engine 5",
+        "Color Temperature Light Engine 5",
+        "Green/Magenta Point Light Engine 5",
+        "CCT ↔ RGB Light Engine 5",
+        "Red Light Engine 5",
+        "Green Light Engine 5",
+        "Blue Light Engine 5",
+        "Intensity Light Engine 6",
+        "Color Temperature Light Engine 6",
+        "Green/Magenta Point Light Engine 6",
+        "CCT ↔ RGB Light Engine 6",
+        "Red Light Engine  6",
+        "Green Light Engine 6",
+        "Blue Light Engine 6",
+        "Intensity Light Engine 7",
+        "Color Temperature Light Engine 7",
+        "Green/Magenta Point Light Engine 7",
+        "CCT ↔ RGB Light Engine 7",
+        "Red Light Engine 7",
+        "Green Light Engine 7",
+        "Blue Light Engine 7",
+        "Intensity Light Engine 8",
+        "Color Temperature Light Engine 8",
+        "Green/Magenta Point Light Engine 8",
+        "CCT ↔ RGB Light Engine 8",
+        "Red Light Engine 8",
+        "Green Light Engine 8",
+        "Blue Light Engine 8"
+      ]
+    },
+    {
+      "name": "Mode10 :Light Engine HSI 2 Pixels",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Intensity Light Engine 2",
+        "Hue Light Engine 2",
+        "Saturation Light Engine 2"
+      ]
+    },
+    {
+      "name": "Mode11 :Light Engine HSI 4 Pixels",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Intensity Light Engine 2",
+        "Hue Light Engine 2",
+        "Saturation Light Engine 2",
+        "Intensity Light Engine 3",
+        "Hue Light Engine 3",
+        "Saturation Light Engine 3",
+        "Intensity Light Engine 4",
+        "Hue Light Engine 4",
+        "Saturation Light Engine 4"
+      ]
+    },
+    {
+      "name": "Mode12 :Light Engine HSI 8 Pixels",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Intensity Light Engine 2",
+        "Hue Light Engine 2",
+        "Saturation Light Engine 2",
+        "Intensity Light Engine 3",
+        "Hue Light Engine 3",
+        "Saturation Light Engine 3",
+        "Intensity Light Engine 4",
+        "Hue Light Engine 4",
+        "Saturation Light Engine 4",
+        "Intensity Light Engine 5",
+        "Hue Light Engine 5",
+        "Saturation Light Engine 5",
+        "Intensity Light Engine 6",
+        "Hue Light Engine 6",
+        "Saturation Light Engine 6",
+        "Intensity Light Engine 7",
+        "Hue Light Engine 7",
+        "Saturation Light Engine 7",
+        "Intensity Light Engine 8",
+        "Hue Light Engine 8",
+        "Saturation Light Engine 8"
+      ]
+    }
+  ]
+}
