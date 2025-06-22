@@ -1,0 +1,328 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "G-SPOT 150 BSW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Avolites", "alexander"],
+    "createDate": "2024-04-09",
+    "lastModifyDate": "2024-04-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-04-09",
+      "comment": "created by Q Light Controller Plus (version 5.0.0 Beta 3)"
+    }
+  },
+  "physical": {
+    "weight": 0.03,
+    "power": 6,
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Animation wheel": {
+      "slots": [
+        {
+          "type": "Unknown",
+          "name": "Raw DMX"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "542deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "266deg"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Red Fine", "Blue Fine", "Deep Green Fine", "Yellow Fine", "Magenta Fine", "Cyan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe %",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Rnd Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Colour": {
+      "fineChannelAliases": ["Scroll CW Fine", "Scroll CCW Fine", "Purple Fine", "CTO Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [22, 43],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [44, 65],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [66, 87],
+          "type": "ColorPreset",
+          "comment": "Deep Green"
+        },
+        {
+          "dmxRange": [88, 109],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [110, 131],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [132, 153],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [154, 175],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [176, 197],
+          "type": "ColorPreset",
+          "comment": "CTO"
+        },
+        {
+          "dmxRange": [198, 226],
+          "type": "ColorPreset",
+          "comment": "Scroll CW"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "ColorPreset",
+          "comment": "Scroll CCW"
+        }
+      ]
+    },
+    "Gobo ": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "comment": "Gobo 1 Shake"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "comment": "Gobo 2 Shake"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 3 Shake"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 4 Shake"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 Shake"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 6 Shake"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Spin"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Raw DMX"
+      }
+    },
+    "Gobo 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Raw DMX"
+      }
+    },
+    "Animation wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Raw DMX"
+      }
+    },
+    "Animationt Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Raw DMX"
+      }
+    },
+    "Gobo Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Raw DMX"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "P/T Speed",
+        "Dimmer",
+        "Shutter",
+        "Colour",
+        "Focus",
+        "Gobo ",
+        "Gobo Rot",
+        "Gobo 2",
+        "Animation wheel",
+        "Animationt Rot",
+        "Control"
+      ]
+    },
+    {
+      "name": "New",
+      "channels": []
+    },
+    {
+      "name": "New",
+      "channels": []
+    }
+  ]
+}
