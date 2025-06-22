@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pro 270 RGB 6/1",
+  "shortName": "Prolight pro 270",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["JPS"],
+    "createDate": "2021-08-11",
+    "lastModifyDate": "2021-08-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjfpY2K_qjyAhXeQUEAHROACWsQFnoECAQQAQ&url=https%3A%2F%2Faudiovias.com%2Fdescarga%2F516%2Fprolight-manuales%2F10591%2Fpro-light-par-pro-270-6-in-1-manual-de-usuario.pdf&usg=AOvVaw1iyL66yrV_XXTmS_Q22ihW"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pro 270 RGB 6/1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
