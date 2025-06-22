@@ -1,0 +1,332 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 25 Led Spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["David", "Dave"],
+    "createDate": "2023-04-10",
+    "lastModifyDate": "2023-04-10",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-04-10",
+      "comment": "created by Q Light Controller Plus (version 4.10.4)"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Low to fast",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#80ff00"]
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#66ccff"]
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [88, 175],
+          "type": "ColorPreset",
+          "comment": "Colour selection 6+"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "ColorPreset",
+          "comment": "Colour wheel rotation"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Gobo selection"
+        },
+        {
+          "dmxRange": [125, 249],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "comment": "Gobo shaking"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo wheel rotation"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer dark to bright"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Scene and programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Whi"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Scene 2 (empty)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Scene 3 (empty)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Scene 4 (empty)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Scene 5 (empty)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "Scene 6 (empty)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "Scene 7 (empty)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "Scene 8 (empty)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "Scene 9 (empty)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Maintenance",
+          "comment": "Program 8 (empty)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Maintenance",
+          "comment": "Program 9 (empty)"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Program speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Speed",
+        "Color",
+        "Gobo",
+        "Dimmer",
+        "Strobe",
+        "Scene and programs",
+        "Program speed"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Speed",
+        "Color",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Speed",
+        "Color",
+        "Gobo",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
