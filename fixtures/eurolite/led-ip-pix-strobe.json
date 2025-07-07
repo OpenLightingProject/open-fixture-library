@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED IP Pix Strobe",
+  "shortName": "Pixbar",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["xyz"],
+    "createDate": "2025-07-07",
+    "lastModifyDate": "2025-07-07"
+  },
+  "links": {
+    "manual": [
+      "https://secure.chamsys.co.uk/fixturefinder/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Grün": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warmweiß": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Kaltes Weiß": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Verschluss / Blitz": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "LED IP PIX Strobe",
+      "shortName": "Pix strobe",
+      "channels": [
+        "Red",
+        "Grün",
+        "Blau",
+        "Warmweiß",
+        "Kaltes Weiß",
+        "Verschluss / Blitz"
+      ]
+    }
+  ]
+}
