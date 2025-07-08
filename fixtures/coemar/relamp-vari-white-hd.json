@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Relamp Vari white HD",
+  "shortName": "Relamp",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Nat Sale"],
+    "createDate": "2025-07-08",
+    "lastModifyDate": "2025-07-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.coemar.com/wp-content/uploads/2019/04/ReLite-HD-User-Manual-vrs.-3.5-1.pdf"
+    ],
+    "productPage": [
+      "https://www.coemar.com/products/relite-hd/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "17%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [11, 244],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2Ch",
+      "shortName": "2ch",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
