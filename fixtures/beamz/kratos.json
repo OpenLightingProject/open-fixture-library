@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KRATOS",
+  "shortName": "Kratos",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Ronald"],
+    "createDate": "2025-07-08",
+    "lastModifyDate": "2025-07-08"
+  },
+  "links": {
+    "productPage": [
+      "https://www.beamzlighting.com/product/kratos-led-tube-rgbw-in-outdoor-use/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 0
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Katos",
+      "shortName": "2ch dim CCT",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
