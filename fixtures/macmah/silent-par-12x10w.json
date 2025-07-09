@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SILENT PAR 12x10W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MAC MAH SILENTPAR 12X10"],
+    "createDate": "2025-07-09",
+    "lastModifyDate": "2025-07-09"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/78/78578_silentpar12x10w6in12021.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE 2": {
+      "name": "MODE",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "STROBE",
+        "MODE",
+        "MODE 2"
+      ]
+    },
+    {
+      "name": "6CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
