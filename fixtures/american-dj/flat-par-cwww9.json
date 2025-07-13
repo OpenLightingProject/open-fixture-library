@@ -1,0 +1,261 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FLAT PAR CWWW9",
+  "shortName": "CWWW9",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["James Eison"],
+    "createDate": "2025-07-13",
+    "lastModifyDate": "2025-07-13"
+  },
+  "comment": "The American DJ® Flat Par CWWW9 is a DMX intelligent, high powered LED par fixture. This fixture can be used in a stand alone mode or connected in a Master/Slave configuration. This wash has six operating modes: Sound Active mode, Auto mode, CW & WW dimmer modes, Fade mode, White Preset Mode (Color Temperature mode) and DMX control mode.",
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/flat_par_cwww9.pdf?v=9055889206316397341"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/flat-par-cwww9"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=VMaoid7q6nM&list=TLGGZLJKloqGP6UxMzA3MjAyNQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [229, 272, 102],
+    "weight": 2.5,
+    "power": 28.5,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "Long Life LEDs",
+      "colorTemperature": 7400,
+      "lumens": 2700
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Cold White": {
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Warm White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "White Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [1, 13],
+          "type": "ColorPreset",
+          "comment": "3400K",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [14, 27],
+          "type": "ColorPreset",
+          "comment": "3800K",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [28, 41],
+          "type": "ColorPreset",
+          "comment": "4000K",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [42, 55],
+          "type": "ColorPreset",
+          "comment": "4300K",
+          "colorTemperature": "4300K"
+        },
+        {
+          "dmxRange": [56, 69],
+          "type": "ColorPreset",
+          "comment": "4600K",
+          "colorTemperature": "4600K"
+        },
+        {
+          "dmxRange": [70, 83],
+          "type": "ColorPreset",
+          "comment": "4800K",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [84, 97],
+          "type": "ColorPreset",
+          "comment": "5000K",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [98, 111],
+          "type": "ColorPreset",
+          "comment": "5100K",
+          "colorTemperature": "5100K"
+        },
+        {
+          "dmxRange": [112, 125],
+          "type": "ColorPreset",
+          "comment": "5400K",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [126, 139],
+          "type": "ColorPreset",
+          "comment": "5600K",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [140, 153],
+          "type": "ColorPreset",
+          "comment": "5800K",
+          "colorTemperature": "5800K"
+        },
+        {
+          "dmxRange": [154, 167],
+          "type": "ColorPreset",
+          "comment": "6000K",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [168, 181],
+          "type": "ColorPreset",
+          "comment": "6200K",
+          "colorTemperature": "6200K"
+        },
+        {
+          "dmxRange": [182, 195],
+          "type": "ColorPreset",
+          "comment": "6400K",
+          "colorTemperature": "6400K"
+        },
+        {
+          "dmxRange": [196, 209],
+          "type": "ColorPreset",
+          "comment": "6600K",
+          "colorTemperature": "6600K"
+        },
+        {
+          "dmxRange": [210, 223],
+          "type": "ColorPreset",
+          "comment": "6800K",
+          "colorTemperature": "6800K"
+        },
+        {
+          "dmxRange": [224, 236],
+          "type": "ColorPreset",
+          "comment": "7000K",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [237, 248],
+          "type": "ColorPreset",
+          "comment": "7200K",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "ColorPreset",
+          "comment": "7400K",
+          "colorTemperature": "7400K"
+        }
+      ]
+    },
+    "Strobing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "StrobeSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "White Presets"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "White Presets",
+        "Strobing"
+      ]
+    },
+    {
+      "name": "5 Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "White Presets",
+        "Strobing",
+        "Master Dimmer"
+      ]
+    }
+  ]
+}
