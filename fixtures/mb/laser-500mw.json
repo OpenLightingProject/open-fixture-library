@@ -1,0 +1,255 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Laser 500Mw",
+  "shortName": "Laser 500",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["laser 500 mw"],
+    "createDate": "2020-07-08",
+    "lastModifyDate": "2025-07-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-07-15",
+      "comment": "GDTF v1.2 fixture type ID: B24E0301-5352-4DDF-BEF3-2B2AB2235CEC"
+    }
+  },
+  "comment": "Small Laser 500Mw ali",
+  "availableChannels": {
+    "mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (mode )",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Closed light mode"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (mode )",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Manual mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (mode )",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (mode )",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1,
+        "comment": "Empty Channel Set"
+      }
+    },
+    "Pos MSpeed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "rotation angle selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "positive rotation"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "anti rotation"
+        }
+      ]
+    },
+    "P Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "horizontal flip position slection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "speed selection"
+        }
+      ]
+    },
+    "T Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "vertical flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "speed selection"
+        }
+      ]
+    },
+    "P": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "pan position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "movement speed"
+        }
+      ]
+    },
+    "T": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "tilt position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "tilt speed"
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "large to small"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "small to large speed"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "large to small speed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "size zoom speed"
+        }
+      ]
+    },
+    "Color Ctrl": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "monochrome color selection"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "color mixing"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "monochrome mixing"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "auto"
+        }
+      ]
+    },
+    "Lamp Ctrl": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "The pattern has dots and lines"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "pattern with dots wireless stips "
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "mode",
+        "Ctrl1",
+        "Pos MSpeed",
+        "P Rotate",
+        "T Rotate",
+        "P",
+        "T",
+        "Zoom",
+        "Color Ctrl",
+        "Lamp Ctrl"
+      ]
+    }
+  ]
+}
