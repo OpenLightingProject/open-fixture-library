@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Beam 280 Moving Heads",
+  "shortName": "Mini 280W",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["LP"],
+    "createDate": "2025-07-17",
+    "lastModifyDate": "2025-07-17"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/shorts/HM2qfONx6wk"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 300, 500],
+    "weight": 10,
+    "power": 280,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "20 Channels",
+      "shortName": "20CH",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
