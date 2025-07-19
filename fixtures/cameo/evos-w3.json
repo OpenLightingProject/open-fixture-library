@@ -1,0 +1,575 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EVOS W3",
+  "shortName": "W3",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tim Ehrenfried"],
+    "createDate": "2025-07-19",
+    "lastModifyDate": "2025-07-19"
+  },
+  "links": {
+    "manual": [
+      "https://portal.adamhall.com/api/v1/customer-dlc/article/download/238266ef-6e4f-4fae-a05d-88c71dde293a"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/de/loesungen/rental/bewegtes-licht/wash-moving-heads/20664/evos-w3#detail-downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mjty6hC5ps4"
+    ],
+    "other": [
+      "https://portal.adamhall.com/api/v1/customer-dlc/article/download/c91357d3-9fae-437c-8f33-ccfcb545a2a3"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 251, 350],
+    "weight": 7.8,
+    "power": 325,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "RGBW 7 x 40W",
+      "lumens": 4100
+    },
+    "lens": {
+      "degreesMinMax": [4, 55]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-117.5deg",
+        "angleEnd": "117.5deg"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "4deg",
+        "angleEnd": "55deg"
+      }
+    },
+    "Effect Pattern": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Effect",
+          "effectName": "Effect 15 Random Single Dots Jump"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Effect",
+          "effectName": "Effect 16 Random Single Dots Fade"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "NoFunction",
+          "comment": "All LEDs on"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Effect Pattern Stop"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "forward"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "backward"
+        }
+      ]
+    },
+    "Pan/Tilt Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [6, 40],
+          "type": "Effect",
+          "effectName": "Pan small -> large"
+        },
+        {
+          "dmxRange": [41, 75],
+          "type": "Effect",
+          "effectName": "Tilt small -> large"
+        },
+        {
+          "dmxRange": [76, 110],
+          "type": "Effect",
+          "effectName": "Pan / Tilt small -> large"
+        },
+        {
+          "dmxRange": [111, 145],
+          "type": "Effect",
+          "effectName": "Pan / Tilt (invers) small -> large"
+        },
+        {
+          "dmxRange": [146, 180],
+          "type": "Effect",
+          "effectName": "Circle small -> large"
+        },
+        {
+          "dmxRange": [181, 215],
+          "type": "Effect",
+          "effectName": "Circle (invers) small -> large"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Effect",
+          "effectName": "Random small -> large"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Head movement speed"
+      }
+    },
+    "Device settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Blackout while moving on (hold 3s)"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Blackout while moving off (hold 3s)"
+        },
+        {
+          "dmxRange": [10, 41],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert Pan on (hold 3s)"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert Pan off (hold 3s)"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert Tilt on (hold 3s)"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert Pan on (hold 3s)"
+        },
+        {
+          "dmxRange": [50, 73],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response LED (hold 3s)"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response Halogen (hold 3s)"
+        },
+        {
+          "dmxRange": [78, 97],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent Fan (hold 3s)"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Auto Fan (hold 3s)"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Normal Fan (hold 3s)"
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 800Hz (hold 3s)"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 1200Hz (hold 3s)"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 2000Hz (hold 3s)"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 3600Hz (hold 3s)"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 12kHz (hold 3s)"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED PWM frequency 12kHz (hold 3s)"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display on (hold 3s)"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display off (hold 3s)"
+        },
+        {
+          "dmxRange": [144, 163],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve linear (hold 3s)"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve exponential (hold 3s)"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve logarithmic (hold 3s)"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve s-curve (hold 3s)"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED arrangement normal (hold 3s)"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED arrangement 180° (hold 3s)"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [180, 181],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED arrangement mirrored (hold 3s)"
+        },
+        {
+          "dmxRange": [182, 201],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [202, 203],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Raw (color calibration off) (hold 3s)"
+        },
+        {
+          "dmxRange": [204, 205],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Calibrated (color calibration on) (hold 3s)"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "User color calibration on (hold 3s)"
+        },
+        {
+          "dmxRange": [208, 221],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset Pan / Tilt (hold 3s)"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset Zoom (hold 3s)"
+        },
+        {
+          "dmxRange": [230, 235],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [236, 237],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset All Functions (hold 3s)"
+        },
+        {
+          "dmxRange": [238, 245],
+          "type": "NoFunction",
+          "comment": "Spare"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction",
+          "comment": "no function"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-CH RGBW",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Effect Pattern",
+        "Effect Speed",
+        "Pan/Tilt Macro",
+        "Pan/Tilt Speed",
+        "Device settings"
+      ]
+    }
+  ]
+}
