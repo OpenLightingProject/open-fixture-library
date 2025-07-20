@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Jade Dragon 200W Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Glenn Meader"],
+    "createDate": "2025-04-22",
+    "lastModifyDate": "2025-04-22"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0768/8775/2982/files/200W.pdf?v=1719968791"
+    ],
+    "productPage": [
+      "https://yuerlights.com/collections/moving-head-light/products/yuer-new-led-moving-head-light-200w-beam-spot-18-rotating-prisms-rainbow-effect-dj-dmx-stage-light-effect-light-disco-dj-bar?variant=46625979891990"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gvYC1FJCVKo"
+    ]
+  },
+  "physical": {
+    "weight": 4.5,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [2, 2]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Cyan"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Medium spot"
+        },
+        {
+          "type": "Gobo",
+          "name": "Small spot"
+        },
+        {
+          "type": "Gobo",
+          "name": "S shape"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "dots in a square"
+        },
+        {
+          "type": "Gobo",
+          "name": "Broken circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Circle of dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "8 dot line"
+        },
+        {
+          "type": "Gobo",
+          "name": "11 dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Star"
+        },
+        {
+          "type": "Gobo",
+          "name": "4 dots"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No strobing"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction",
+          "comment": "No strobing"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [160, 207],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [72, 143],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Rainbow effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        }
+      ]
+    },
+    "Automatic": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Effect",
+          "effectName": "Auto 4 slow"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Effect",
+          "effectName": "Sound activated 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "Sound activated 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Sound activated 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound activated 4",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Reset - hold 5 seconds"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "pan fine channel"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "Tilt fine channel"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-ch",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Rainbow effect",
+        "Automatic",
+        "Reset"
+      ]
+    },
+    {
+      "name": "13-ch fine",
+      "shortName": "13ch",
+      "channels": [
+        "Pan 2",
+        "Pan 3",
+        "Tilt 2",
+        "Tilt 3",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Rainbow effect",
+        "Automatic",
+        "Reset"
+      ]
+    }
+  ]
+}
