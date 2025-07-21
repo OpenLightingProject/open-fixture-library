@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "scanner",
+  "shortName": "sca",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Hwneik"],
+    "createDate": "2025-07-21",
+    "lastModifyDate": "2025-07-21"
+  },
+  "links": {
+    "manual": [
+      "http://www.aftonbladet.se"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "www.aftonbladet.se"
+  },
+  "physical": {
+    "power": 250,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "1%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "scanner",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
