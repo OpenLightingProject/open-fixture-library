@@ -1,0 +1,269 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02255",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jesse", "Jesse S."],
+    "createDate": "2025-07-23",
+    "lastModifyDate": "2025-07-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-07-23",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "weight": 5.35,
+    "power": 150,
+    "DMXconnector": "3-pin"
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Horizontal Operation": {
+      "fineChannelAliases": ["Pan Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Vertical Operation": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Horizontal and Vertical Speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimming": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Strobe"
+      }
+    },
+    "Color": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "ColorPreset",
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "ColorPreset",
+          "comment": "Color Changing from Fast to Slow"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "ColorPreset",
+          "comment": "Color Inversion from Slow to Fast"
+        }
+      ]
+    },
+    "Pattern": {
+      "defaultValue": 9,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Fixed Pattern"
+        },
+        {
+          "dmxRange": [80, 159],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Pattern Dithering Function"
+        },
+        {
+          "dmxRange": [160, 202],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pattern Reversal from"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pattern Rotates Forward from"
+        }
+      ]
+    },
+    "Prism Motor Running": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Prism",
+          "comment": "Shut"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "The Prism Rotates Clockwise from Slow to Fast"
+        }
+      ]
+    },
+    "7 Color Effect": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Shut"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Open"
+        }
+      ]
+    },
+    "Propel Mode": {
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Intensity",
+          "comment": "Other Channel Functions"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Intensity",
+          "comment": "Self Mode 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Intensity",
+          "comment": "Self Mode 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Intensity",
+          "comment": "Self Mode 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Intensity",
+          "comment": "Self Mode 4"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Intensity",
+          "comment": "Sound Activated 1"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Intensity",
+          "comment": "Sound Activated 2"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Intensity",
+          "comment": "Sound Activated 3"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "comment": "Sound Activated 4"
+        }
+      ]
+    },
+    "Axis Running // Reset": {
+      "defaultValue": 13,
+      "capabilities": [
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "X-Axis Running"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "Y-Axis Running"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Reset (5 Second)"
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "11-channel ",
+      "shortName": "11ch ",
+      "channels": [
+        "Horizontal Operation",
+        "Vertical Operation",
+        "Horizontal and Vertical Speed",
+        "Dimming",
+        "Master dimmer",
+        "Color",
+        "Pattern",
+        "Prism Motor Running",
+        "7 Color Effect",
+        "Propel Mode",
+        "Axis Running // Reset"
+      ]
+    },
+    {
+      "name": "13-channel ",
+      "shortName": "13ch ",
+      "channels": [
+        "Horizontal Operation",
+        "Pan Fine",
+        "Vertical Operation",
+        "Tilt Fine",
+        "Horizontal and Vertical Speed",
+        "Dimming",
+        "Master dimmer",
+        "Color",
+        "Pattern",
+        "Prism Motor Running",
+        "7 Color Effect",
+        "Propel Mode",
+        "Axis Running // Reset"
+      ]
+    }
+  ]
+}
