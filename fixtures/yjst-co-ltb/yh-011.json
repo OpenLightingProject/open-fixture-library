@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "YH-011",
+  "categories": ["Color Changer", "Effect"],
+  "meta": {
+    "authors": ["d"],
+    "createDate": "2025-07-28",
+    "lastModifyDate": "2025-07-28"
+  },
+  "links": {
+    "other": [
+      "http://fadfgsgas.com",
+      "http://fadfgsgas.com",
+      "http://fadfgsgas.com"
+    ]
+  },
+  "availableChannels": {
+    "R": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "W": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Total": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Total Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Function Choice": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "1-6ch control"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic",
+          "comment": "Different Colors output"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "colols jump change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Colors Gradate"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "colors pulse change"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Sound-Active"
+        }
+      ]
+    },
+    "Function / Speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "color",
+      "shortName": "color",
+      "channels": [
+        "Total",
+        "R",
+        "G",
+        "B",
+        "W",
+        "Total Strobe",
+        "Function Choice",
+        "Function / Speed"
+      ]
+    }
+  ]
+}
