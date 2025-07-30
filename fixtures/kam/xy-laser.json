@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XY LASER",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["choukky"],
+    "createDate": "2025-07-30",
+    "lastModifyDate": "2025-07-30"
+  },
+  "links": {
+    "manual": [
+      "https://d1aeri3ty3izns.cloudfront.net/media/15/159883/download_159883.pdf"
+    ],
+    "productPage": [
+      "https://d1aeri3ty3izns.cloudfront.net/media/15/159883/download_159883.pdf"
+    ],
+    "other": [
+      "https://www.manualslib.com/manual/2559927/Kam-Xy-Laser.html?page=7#manual"
+    ]
+  },
+  "physical": {
+    "dimensions": [214.4, 100.3, 211.68],
+    "weight": 0.8,
+    "power": 20,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "colorTemperature": 40
+    },
+    "lens": {
+      "degreesMinMax": [0, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "red",
+        "colorTemperature": "default"
+      }
+    },
+    "Green dimmer": {
+      "defaultValue": 250,
+      "highlightValue": 200,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "100deg"
+      }
+    },
+    "Blue dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Spikes"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "180bpm"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 250,
+      "capability": {
+        "type": "ColorPreset",
+        "colorTemperature": "CTB"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "shortName": "CH1",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Red dimmer",
+      "shortName": "CH1 CH2",
+      "channels": [
+        "Red dimmer"
+      ]
+    },
+    {
+      "name": "Green dimmer",
+      "shortName": "CH2 CH3",
+      "channels": [
+        "Green dimmer",
+        "Shutter"
+      ]
+    },
+    {
+      "name": "Blue dimmer",
+      "shortName": "CH3 CH4",
+      "channels": [
+        "Blue dimmer",
+        "Shutter",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Strobe",
+      "shortName": "CH5",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "color",
+      "shortName": "ch6",
+      "channels": [
+        "Magenta"
+      ]
+    }
+  ]
+}
