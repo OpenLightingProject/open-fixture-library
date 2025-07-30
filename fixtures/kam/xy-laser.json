@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XY LASER",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["choukky"],
+    "createDate": "2025-07-30",
+    "lastModifyDate": "2025-07-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/kam/xy-laser-rbp/mode-d-emploi?p=10"
+    ],
+    "productPage": [
+      "https://www.terralec.co.uk/Portals/54/product/images/prd61cf39da-4dce-4666-ba4c-1bd3a6881ed8.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=vXBOpy6d3BU"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "20-10-2014"
+  },
+  "physical": {
+    "dimensions": [214.4, 100.3, 211.68],
+    "weight": 0.8,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "x  x mm",
+      "colorTemperature": 1040
+    },
+    "lens": {
+      "degreesMinMax": [0, 25]
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorPreset",
+        "colorTemperature": "default"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorPreset",
+        "colorTemperature": "default"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Red dimmer",
+      "shortName": "CH1 CH2",
+      "rdmPersonalityIndex": "invalid",
+      "channels": [
+        "Rouge"
+      ]
+    },
+    {
+      "name": "Green dimmer",
+      "shortName": "CH2 CH3",
+      "rdmPersonalityIndex": "invalid",
+      "channels": [
+        "Vert"
+      ]
+    },
+    {
+      "name": "Blue dimmer",
+      "shortName": "CH3 CH4",
+      "rdmPersonalityIndex": "invalid",
+      "channels": [
+        "Bleu"
+      ]
+    },
+    {
+      "name": "Strobe",
+      "shortName": "CH5",
+      "rdmPersonalityIndex": "invalid",
+      "channels": [
+        "Strobe 2"
+      ]
+    }
+  ]
+}
