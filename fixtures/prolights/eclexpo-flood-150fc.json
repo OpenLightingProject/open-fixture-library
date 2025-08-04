@@ -1,0 +1,1909 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclExpo Flood 150FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Manu"],
+    "createDate": "2025-08-04",
+    "lastModifyDate": "2025-08-04"
+  },
+  "comment": "Asymmetric RGBW LED floodlight",
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=50652&ID_USER="
+    ],
+    "productPage": [
+      "https://www.prolights.it/product/ECLEXPOFL150FC"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=US2P_4o6JPc"
+    ]
+  },
+  "rdm": {
+    "modelId": 53545
+  },
+  "physical": {
+    "dimensions": [283, 273, 176],
+    "weight": 3.2,
+    "power": 175,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "ColorPreset",
+          "comment": "Dirty White"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "ColorPreset",
+          "comment": "Alice Blue"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "ColorPreset",
+          "comment": "Congo Blue"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "ColorPreset",
+          "comment": "Dark Steel Blue"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "ColorPreset",
+          "comment": "Deep Lavender"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "ColorPreset",
+          "comment": "Lilac Ting"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "ColorPreset",
+          "comment": "Daylight Blue"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "ColorPreset",
+          "comment": "Flame Red"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "ColorPreset",
+          "comment": "Bastard amber"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "ColorPreset",
+          "comment": "Deep Orange"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "ColorPreset",
+          "comment": "Pale Gold"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "ColorPreset",
+          "comment": "Apricot"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "ColorPreset",
+          "comment": "Bright Blue"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "ColorPreset",
+          "comment": "Primary Green"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "ColorPreset",
+          "comment": "Special Lavender"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "ColorPreset",
+          "comment": "Pale Lavender"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "ColorPreset",
+          "comment": "Medium Blue"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "ColorPreset",
+          "comment": "Bright Pink"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "ColorPreset",
+          "comment": "Dark Green"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "ColorPreset",
+          "comment": "Lee Green"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "ColorPreset",
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "ColorPreset",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "ColorPreset",
+          "comment": "Steel blue"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "ColorPreset",
+          "comment": "Medium Blue-Green"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "ColorPreset",
+          "comment": "Dark Pink"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "ColorPreset",
+          "comment": "Middle Rose"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "ColorPreset",
+          "comment": "Light Salmon"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "ColorPreset",
+          "comment": "English Rose"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "ColorPreset",
+          "comment": "Light Rose"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "ColorPreset",
+          "comment": "Deep Amber"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "ColorPreset",
+          "comment": "Straw"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "ColorPreset",
+          "comment": "Light amber"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "ColorPreset",
+          "comment": "Dark Yellow Green"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "ColorPreset",
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "ColorPreset",
+          "comment": "Sky Blue"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "ColorPreset",
+          "comment": "Light Lavender"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "ColorPreset",
+          "comment": "Pink Carnation"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "ColorPreset",
+          "comment": "Medium Pink"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "ColorPreset",
+          "comment": "Light Pink"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "ColorPreset",
+          "comment": "Sunset Red"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "ColorPreset",
+          "comment": "Dark Amber"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "comment": "Gold Amber"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "ColorPreset",
+          "comment": "Medium Amber"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "ColorPreset",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "ColorPreset",
+          "comment": "Straw Tint"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "ColorPreset",
+          "comment": "Medium Yellow"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "ColorPreset",
+          "comment": "Lee Minus Green"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "ColorPreset",
+          "comment": "Pale Gold"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "ColorPreset",
+          "comment": "Deep Straw"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "ColorPreset",
+          "comment": "Rose Purple"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "ColorPreset",
+          "comment": "Deep Purple"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "comment": "Soft Green"
+        },
+        {
+          "dmxRange": [136, 209],
+          "type": "NoFunction",
+          "comment": "Reserved for future use"
+        },
+        {
+          "dmxRange": [210, 211],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [212, 213],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [214, 215],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [218, 219],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [220, 221],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "ColorTemperature",
+          "colorTemperature": "4400K"
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "ColorTemperature",
+          "colorTemperature": "4600K"
+        },
+        {
+          "dmxRange": [232, 233],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [236, 237],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K"
+        },
+        {
+          "dmxRange": [238, 239],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "ColorTemperature",
+          "colorTemperature": "9000K"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Full ON"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [2, 62],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [65, 125],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [128, 188],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [191, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic",
+          "comment": "Display ON"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic",
+          "comment": "Display 10s"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic",
+          "comment": "Display 20s"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic",
+          "comment": "Display 30s"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic",
+          "comment": "Flip display ON"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic",
+          "comment": "Flip display OFF"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic",
+          "comment": "Key lock ON"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic",
+          "comment": "Key lock OFF"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic",
+          "comment": "Dimmer curve linear"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic",
+          "comment": "Dimmer curve s-curve"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic",
+          "comment": "Dimmer curve square law"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic",
+          "comment": "Dimmer curve inverse square law"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic",
+          "comment": "Dimmer speed auto"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic",
+          "comment": "Dimmer speed fast"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic",
+          "comment": "Dimmer speed medium"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic",
+          "comment": "Dimmer speed slow"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic",
+          "comment": "Spektra calibration ON"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic",
+          "comment": "Spektra calibration Pure Colors"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic",
+          "comment": "Spektra calibration OFF"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic",
+          "comment": "LED mode high quality"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic",
+          "comment": "LED mode high brightness"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic",
+          "comment": "LED frequency 600Hz"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic",
+          "comment": "LED frequency 1200Hz"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic",
+          "comment": "LED frequency 2000Hz"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Generic",
+          "comment": "LED frequency 4000Hz"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Generic",
+          "comment": "LED frequency 6000Hz"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Generic",
+          "comment": "LED frequency 25KHz"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Generic",
+          "comment": "LED frequency 36KHz"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Generic",
+          "comment": "LED frequency 40KHz"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Generic",
+          "comment": "DMX fault hold"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Generic",
+          "comment": "DMX fault blackout"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Generic",
+          "comment": "DMX fault stand alone"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Generic",
+          "comment": "DMX fault emergency"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Generic",
+          "comment": "FAN mode auto"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Generic",
+          "comment": "FAN mode high"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Generic",
+          "comment": "FAN mode silent"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Generic",
+          "comment": "FAN mode OFF"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Generic",
+          "comment": "Tungsten emulation ON"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Generic",
+          "comment": "Tungsten emulation OFF"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Generic",
+          "comment": "Output control constant"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Generic",
+          "comment": "Output control dynamic"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Generic",
+          "comment": "Stand alone master DMX"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Generic",
+          "comment": "Stand alone master no DMX"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Generic",
+          "comment": "Stand alone slave"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Generic",
+          "comment": "Stand alone effects"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Generic",
+          "comment": "Stand alone fixed colors"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Generic",
+          "comment": "Stand alone CCT"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Generic",
+          "comment": "Stand alone white presets"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Generic",
+          "comment": "Stand alone color macros"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Generic",
+          "comment": "Stand alone manual colors"
+        },
+        {
+          "dmxRange": [102, 249],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "Generic",
+          "comment": "Reset all channel controlled"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "2900K"
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2900K",
+          "colorTemperatureEnd": "3000K"
+        },
+        {
+          "dmxRange": [7, 10],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3000K",
+          "colorTemperatureEnd": "3100K"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3100K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [14, 17],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3300K"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3300K",
+          "colorTemperatureEnd": "3400K"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3400K",
+          "colorTemperatureEnd": "3500K"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3500K",
+          "colorTemperatureEnd": "3600K"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3600K",
+          "colorTemperatureEnd": "3700K"
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3700K",
+          "colorTemperatureEnd": "3800K"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3800K",
+          "colorTemperatureEnd": "3900K"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3900K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [43, 45],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "4100K"
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4100K",
+          "colorTemperatureEnd": "4200K"
+        },
+        {
+          "dmxRange": [50, 52],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4200K",
+          "colorTemperatureEnd": "4300K"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4300K",
+          "colorTemperatureEnd": "4400K"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4400K",
+          "colorTemperatureEnd": "4500K"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4500K",
+          "colorTemperatureEnd": "4600K"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4600K",
+          "colorTemperatureEnd": "4700K"
+        },
+        {
+          "dmxRange": [67, 70],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4700K",
+          "colorTemperatureEnd": "4800K"
+        },
+        {
+          "dmxRange": [71, 73],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4800K",
+          "colorTemperatureEnd": "4900K"
+        },
+        {
+          "dmxRange": [74, 77],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4900K",
+          "colorTemperatureEnd": "5000K"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "5100K"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5100K",
+          "colorTemperatureEnd": "5200K"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5200K",
+          "colorTemperatureEnd": "5300K"
+        },
+        {
+          "dmxRange": [89, 91],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5300K",
+          "colorTemperatureEnd": "5400K"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5400K",
+          "colorTemperatureEnd": "5500K"
+        },
+        {
+          "dmxRange": [96, 98],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5500K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5700K"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5700K",
+          "colorTemperatureEnd": "5800K"
+        },
+        {
+          "dmxRange": [106, 109],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5800K",
+          "colorTemperatureEnd": "5900K"
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5900K",
+          "colorTemperatureEnd": "6000K"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "6100K"
+        },
+        {
+          "dmxRange": [117, 119],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6100K",
+          "colorTemperatureEnd": "6200K"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6200K",
+          "colorTemperatureEnd": "6300K"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6300K",
+          "colorTemperatureEnd": "6400K"
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6400K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [131, 134],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6600K"
+        },
+        {
+          "dmxRange": [135, 137],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6600K",
+          "colorTemperatureEnd": "6700K"
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6700K",
+          "colorTemperatureEnd": "6800K"
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6800K",
+          "colorTemperatureEnd": "6900K"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6900K",
+          "colorTemperatureEnd": "7000K"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "7100K"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7100K",
+          "colorTemperatureEnd": "7200K"
+        },
+        {
+          "dmxRange": [156, 158],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "7300K"
+        },
+        {
+          "dmxRange": [159, 162],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7300K",
+          "colorTemperatureEnd": "7400K"
+        },
+        {
+          "dmxRange": [163, 165],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7400K",
+          "colorTemperatureEnd": "7500K"
+        },
+        {
+          "dmxRange": [166, 169],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7500K",
+          "colorTemperatureEnd": "7600K"
+        },
+        {
+          "dmxRange": [170, 173],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7600K",
+          "colorTemperatureEnd": "7700K"
+        },
+        {
+          "dmxRange": [174, 176],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7700K",
+          "colorTemperatureEnd": "7800K"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7800K",
+          "colorTemperatureEnd": "7900K"
+        },
+        {
+          "dmxRange": [181, 183],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7900K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8100K"
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8100K",
+          "colorTemperatureEnd": "8200K"
+        },
+        {
+          "dmxRange": [191, 194],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8200K",
+          "colorTemperatureEnd": "8300K"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8300K",
+          "colorTemperatureEnd": "8400K"
+        },
+        {
+          "dmxRange": [198, 201],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8400K",
+          "colorTemperatureEnd": "8500K"
+        },
+        {
+          "dmxRange": [202, 204],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8500K",
+          "colorTemperatureEnd": "8600K"
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8600K",
+          "colorTemperatureEnd": "8700K"
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8700K",
+          "colorTemperatureEnd": "8800K"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8800K",
+          "colorTemperatureEnd": "8900K"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8900K",
+          "colorTemperatureEnd": "9000K"
+        },
+        {
+          "dmxRange": [220, 222],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9000K",
+          "colorTemperatureEnd": "9100K"
+        },
+        {
+          "dmxRange": [223, 226],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9100K",
+          "colorTemperatureEnd": "9200K"
+        },
+        {
+          "dmxRange": [227, 229],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9200K",
+          "colorTemperatureEnd": "9300K"
+        },
+        {
+          "dmxRange": [230, 233],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9300K",
+          "colorTemperatureEnd": "9400K"
+        },
+        {
+          "dmxRange": [234, 236],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9400K",
+          "colorTemperatureEnd": "9500K"
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9500K",
+          "colorTemperatureEnd": "9600K"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9600K",
+          "colorTemperatureEnd": "9700K"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9700K",
+          "colorTemperatureEnd": "9800K"
+        },
+        {
+          "dmxRange": [248, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9800K",
+          "colorTemperatureEnd": "9900K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9900K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Tint": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamAngle",
+          "angleStart": "-25%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "BeamAngle",
+          "angleStart": "0%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BeamAngle",
+          "angleStart": "0%",
+          "angleEnd": "25%"
+        }
+      ]
+    },
+    "Crossfade": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Linear crossfade"
+      }
+    },
+    "CTO on colors": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "CTO On colors"
+      }
+    },
+    "CCT 2": {
+      "name": "CCT",
+      "fineChannelAliases": ["CCT 2 fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 909],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "2900K"
+        },
+        {
+          "dmxRange": [910, 1819],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2900K",
+          "colorTemperatureEnd": "3000K"
+        },
+        {
+          "dmxRange": [1820, 2730],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3000K",
+          "colorTemperatureEnd": "3100K"
+        },
+        {
+          "dmxRange": [2731, 3640],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3100K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [3641, 4550],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3300K"
+        },
+        {
+          "dmxRange": [4551, 5460],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3300K",
+          "colorTemperatureEnd": "3400K"
+        },
+        {
+          "dmxRange": [5461, 6370],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3400K",
+          "colorTemperatureEnd": "3500K"
+        },
+        {
+          "dmxRange": [6371, 7281],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3500K",
+          "colorTemperatureEnd": "3600K"
+        },
+        {
+          "dmxRange": [7282, 8191],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3600K",
+          "colorTemperatureEnd": "3700K"
+        },
+        {
+          "dmxRange": [8192, 9101],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3700K",
+          "colorTemperatureEnd": "3800K"
+        },
+        {
+          "dmxRange": [9102, 10011],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3800K",
+          "colorTemperatureEnd": "3900K"
+        },
+        {
+          "dmxRange": [10012, 10922],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3900K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [10923, 11832],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "4100K"
+        },
+        {
+          "dmxRange": [11833, 12742],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4100K",
+          "colorTemperatureEnd": "4200K"
+        },
+        {
+          "dmxRange": [12743, 13652],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4200K",
+          "colorTemperatureEnd": "4300K"
+        },
+        {
+          "dmxRange": [13653, 14562],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4300K",
+          "colorTemperatureEnd": "4400K"
+        },
+        {
+          "dmxRange": [14563, 15473],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4400K",
+          "colorTemperatureEnd": "4500K"
+        },
+        {
+          "dmxRange": [15474, 16383],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4500K",
+          "colorTemperatureEnd": "4600K"
+        },
+        {
+          "dmxRange": [16384, 17293],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4600K",
+          "colorTemperatureEnd": "4700K"
+        },
+        {
+          "dmxRange": [17294, 18203],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4700K",
+          "colorTemperatureEnd": "4800K"
+        },
+        {
+          "dmxRange": [18204, 19113],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4800K",
+          "colorTemperatureEnd": "4900K"
+        },
+        {
+          "dmxRange": [19114, 20024],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4900K",
+          "colorTemperatureEnd": "5000K"
+        },
+        {
+          "dmxRange": [20025, 20934],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "5100K"
+        },
+        {
+          "dmxRange": [20935, 21844],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5100K",
+          "colorTemperatureEnd": "5200K"
+        },
+        {
+          "dmxRange": [21845, 22754],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5200K",
+          "colorTemperatureEnd": "5300K"
+        },
+        {
+          "dmxRange": [22755, 23664],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5300K",
+          "colorTemperatureEnd": "5400K"
+        },
+        {
+          "dmxRange": [23665, 24575],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5400K",
+          "colorTemperatureEnd": "5500K"
+        },
+        {
+          "dmxRange": [24576, 25485],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5500K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [25486, 26395],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5700K"
+        },
+        {
+          "dmxRange": [26396, 27305],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5700K",
+          "colorTemperatureEnd": "5800K"
+        },
+        {
+          "dmxRange": [27306, 28215],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5800K",
+          "colorTemperatureEnd": "5900K"
+        },
+        {
+          "dmxRange": [28216, 29126],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5900K",
+          "colorTemperatureEnd": "6000K"
+        },
+        {
+          "dmxRange": [29127, 30036],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "6100K"
+        },
+        {
+          "dmxRange": [30037, 30946],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6100K",
+          "colorTemperatureEnd": "6200K"
+        },
+        {
+          "dmxRange": [30947, 31856],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6200K",
+          "colorTemperatureEnd": "6300K"
+        },
+        {
+          "dmxRange": [31857, 32767],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6300K",
+          "colorTemperatureEnd": "6400K"
+        },
+        {
+          "dmxRange": [32768, 33677],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6400K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [33678, 34587],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6600K"
+        },
+        {
+          "dmxRange": [34588, 35497],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6600K",
+          "colorTemperatureEnd": "6700K"
+        },
+        {
+          "dmxRange": [35498, 36407],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6700K",
+          "colorTemperatureEnd": "6800K"
+        },
+        {
+          "dmxRange": [36408, 37318],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6800K",
+          "colorTemperatureEnd": "6900K"
+        },
+        {
+          "dmxRange": [37319, 38228],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6900K",
+          "colorTemperatureEnd": "7000K"
+        },
+        {
+          "dmxRange": [38229, 39138],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "7100K"
+        },
+        {
+          "dmxRange": [39139, 40048],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7100K",
+          "colorTemperatureEnd": "7200K"
+        },
+        {
+          "dmxRange": [40049, 40958],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "7300K"
+        },
+        {
+          "dmxRange": [40959, 41869],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7300K",
+          "colorTemperatureEnd": "7400K"
+        },
+        {
+          "dmxRange": [41870, 42779],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7400K",
+          "colorTemperatureEnd": "7500K"
+        },
+        {
+          "dmxRange": [42780, 43689],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7500K",
+          "colorTemperatureEnd": "7600K"
+        },
+        {
+          "dmxRange": [43690, 44599],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7600K",
+          "colorTemperatureEnd": "7700K"
+        },
+        {
+          "dmxRange": [44600, 45509],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7700K",
+          "colorTemperatureEnd": "7800K"
+        },
+        {
+          "dmxRange": [45510, 46420],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7800K",
+          "colorTemperatureEnd": "7900K"
+        },
+        {
+          "dmxRange": [46421, 47330],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7900K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [47331, 48240],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8100K"
+        },
+        {
+          "dmxRange": [48241, 49150],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8100K",
+          "colorTemperatureEnd": "8200K"
+        },
+        {
+          "dmxRange": [49151, 50060],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8200K",
+          "colorTemperatureEnd": "8300K"
+        },
+        {
+          "dmxRange": [50061, 50971],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8300K",
+          "colorTemperatureEnd": "8400K"
+        },
+        {
+          "dmxRange": [50972, 51881],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8400K",
+          "colorTemperatureEnd": "8500K"
+        },
+        {
+          "dmxRange": [51882, 52791],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8500K",
+          "colorTemperatureEnd": "8600K"
+        },
+        {
+          "dmxRange": [52792, 53701],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8600K",
+          "colorTemperatureEnd": "8700K"
+        },
+        {
+          "dmxRange": [53702, 54612],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8700K",
+          "colorTemperatureEnd": "8800K"
+        },
+        {
+          "dmxRange": [54613, 55522],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8800K",
+          "colorTemperatureEnd": "8900K"
+        },
+        {
+          "dmxRange": [55523, 56432],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8900K",
+          "colorTemperatureEnd": "9000K"
+        },
+        {
+          "dmxRange": [56433, 57342],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9000K",
+          "colorTemperatureEnd": "9100K"
+        },
+        {
+          "dmxRange": [57343, 58252],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9100K",
+          "colorTemperatureEnd": "9200K"
+        },
+        {
+          "dmxRange": [58253, 59163],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9200K",
+          "colorTemperatureEnd": "9300K"
+        },
+        {
+          "dmxRange": [59164, 60073],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9300K",
+          "colorTemperatureEnd": "9400K"
+        },
+        {
+          "dmxRange": [60074, 60983],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9400K",
+          "colorTemperatureEnd": "9500K"
+        },
+        {
+          "dmxRange": [60984, 61893],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9500K",
+          "colorTemperatureEnd": "9600K"
+        },
+        {
+          "dmxRange": [61894, 62803],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9600K",
+          "colorTemperatureEnd": "9700K"
+        },
+        {
+          "dmxRange": [62804, 63714],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9700K",
+          "colorTemperatureEnd": "9800K"
+        },
+        {
+          "dmxRange": [63715, 64624],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9800K",
+          "colorTemperatureEnd": "9900K"
+        },
+        {
+          "dmxRange": [64625, 65535],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9900K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Uno",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Duo",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine"
+      ]
+    },
+    {
+      "name": "Basic",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Basic 16bits",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine"
+      ]
+    },
+    {
+      "name": "Standard",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color macro",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "Extended",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "CCT",
+        "Tint",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color macro",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "Advanced",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Tint",
+        "Crossfade",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Color macro",
+        "CTO on colors",
+        "Strobe",
+        "Control"
+      ]
+    }
+  ]
+}
