@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Retro Lights Long Strip 5",
+  "shortName": "Retro Lights Long Strip 5",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["GR LIGHT"],
+    "createDate": "2025-08-05",
+    "lastModifyDate": "2025-08-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.aliexpress.com/item/1005009188538241.html?gps-id=pcStoreJustForYou&scm=1007.23125.137358.0&scm_id=1007.23125.137358.0&scm-url=1007.23125.137358.0&pvid=4fd41c62-904d-4e8d-a2ca-4c189ec792c1&_t=gps-id:pcStoreJustForYou,scm-url:1007.23125.137358.0,pvid:4fd41c62-904d-4e8d-a2ca-4c189ec792c1,tpp_buckets:668%232846%238108%231977&pdp_ext_f=%7B%22order%22%3A%222%22%2C%22eval%22%3A%221%22%2C%22sceneId%22%3A%2213125%22%7D&pdp_npi=6%40dis%21EUR%21221.44%21181.59%21%21%211794.47%211471.50%21%40211b6c1717543992024126758e77be%2112000048241547666%21rec%21GR%21%21ABX%211%210%21&spm=a2g0o.store_pc_home.smartJustForYou_2004158595635.1005009188538241"
+    ]
+  },
+  "physical": {
+    "power": 300,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16Ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
