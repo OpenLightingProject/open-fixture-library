@@ -1,0 +1,495 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Outdoor Spot 15W RGBW QuickDMX with stake",
+  "shortName": "LED Outdoor Spot 15W RGBW QuickDMX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Sebastian"],
+    "createDate": "2025-05-07",
+    "lastModifyDate": "2025-05-07"
+  },
+  "comment": "Weather-proof LED spotlight (IP65) with 15 W LED, incl. IR remote control, frost filter & ground stake.\nIntegrated QuickDMX transceiver for wireless DMX512 control.",
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/50498638-Manual-135046-1.000-eurolite-led-outdoor-spot-15w-rgbw-quickdmx-with-stake-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn50498638-eurolite-led-outdoor-spot-15w-rgbw-quickdmx-with-stake.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Ro7ogCrZH04&si=etTfxHMzeDmO0Io6"
+    ]
+  },
+  "physical": {
+    "dimensions": [110, 143, 184],
+    "weight": 1.52,
+    "power": 16,
+    "DMXconnector": "quickDMX (wireless DMX512)",
+    "bulb": {
+      "type": "1 x LED 15 W 4in1 QCL RGBW (homogenous color mix)"
+    },
+    "lens": {
+      "degreesMinMax": [9, 24]
+    }
+  },
+  "wheels": {
+    "Strobe and sound control": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe and sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Red, Green and Blue color mixing": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "ColorWheel"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Fading in/out": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Fade in",
+          "comment": "speed and effect depending on the control channels 1 - 5"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Fade out",
+          "comment": "speed and effect depending on the control channels 1 - 5"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Fade out and fade in",
+          "comment": "speed and effect depending on the control channels 1 - 5"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program \"Fading\""
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Program \"Fade out - fade in\""
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program \"Switching\""
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed Fading in/out and programs channel 7": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Speed Fading in/out and programs channel 7 and internal programs channel 11": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed (step response)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Control Board setting dimmer speed"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Generic",
+          "comment": "OFF: Response characteristics of LEDs"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Generic",
+          "comment": "Dim1: Response characteristics of halogen lamps, fast"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Generic",
+          "comment": "Dim2: Response characteristics of halogen lamps, less fast"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Generic",
+          "comment": "Dim3: Response characteristics of halogen lamps, middle"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Dim4: Response characteristics of halogen lamps, slow"
+        }
+      ]
+    },
+    "Jump/fade internal programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "EffectParameter",
+          "parameter": "instant",
+          "comment": "Jump -Switching colors"
+        },
+        {
+          "dmxRange": [125, 249],
+          "type": "EffectParameter",
+          "parameter": "slow",
+          "comment": "Fade - Fading colors"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Internal programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "Black - Blackout (no internal program)"
+        },
+        {
+          "dmxRange": [4, 10],
+          "type": "Effect",
+          "effectName": "Pty 1 - Red Green Blue"
+        },
+        {
+          "dmxRange": [11, 17],
+          "type": "Effect",
+          "effectName": "Pty 2 - Cyan Magenta Yellow"
+        },
+        {
+          "dmxRange": [18, 24],
+          "type": "Effect",
+          "effectName": "Pty 3 - Red Green Blue Cyan Magenta Yellow"
+        },
+        {
+          "dmxRange": [25, 31],
+          "type": "Effect",
+          "effectName": "Pty 4 - Red Green Blue White"
+        },
+        {
+          "dmxRange": [32, 38],
+          "type": "Effect",
+          "effectName": "Rbw - Rainbow Red, Yellow, Green, Cyan, Blue, Magenta"
+        },
+        {
+          "dmxRange": [39, 45],
+          "type": "Effect",
+          "effectName": "RD - Red Dark"
+        },
+        {
+          "dmxRange": [46, 52],
+          "type": "Effect",
+          "effectName": "RG - Red Green"
+        },
+        {
+          "dmxRange": [53, 59],
+          "type": "Effect",
+          "effectName": "RB - Red Blue"
+        },
+        {
+          "dmxRange": [60, 66],
+          "type": "Effect",
+          "effectName": "RY - Red Yellow"
+        },
+        {
+          "dmxRange": [67, 73],
+          "type": "Effect",
+          "effectName": "RC - Red Cyan"
+        },
+        {
+          "dmxRange": [74, 80],
+          "type": "Effect",
+          "effectName": "RM - Red Magenta"
+        },
+        {
+          "dmxRange": [81, 87],
+          "type": "Effect",
+          "effectName": "RW - Red White"
+        },
+        {
+          "dmxRange": [88, 94],
+          "type": "Effect",
+          "effectName": "GD - Green Dark"
+        },
+        {
+          "dmxRange": [95, 101],
+          "type": "Effect",
+          "effectName": "GB - Green Blue"
+        },
+        {
+          "dmxRange": [102, 108],
+          "type": "Effect",
+          "effectName": "GY - Green Yellow"
+        },
+        {
+          "dmxRange": [109, 115],
+          "type": "Effect",
+          "effectName": "GC - Green Cyan"
+        },
+        {
+          "dmxRange": [116, 122],
+          "type": "Effect",
+          "effectName": "GM - Green Magenta"
+        },
+        {
+          "dmxRange": [123, 129],
+          "type": "Effect",
+          "effectName": "GW - Green White"
+        },
+        {
+          "dmxRange": [130, 136],
+          "type": "Effect",
+          "effectName": "BD - Blue Dark"
+        },
+        {
+          "dmxRange": [137, 143],
+          "type": "Effect",
+          "effectName": "BY - Blue Yellow"
+        },
+        {
+          "dmxRange": [144, 150],
+          "type": "Effect",
+          "effectName": "BC - Blue Cyan"
+        },
+        {
+          "dmxRange": [151, 157],
+          "type": "Effect",
+          "effectName": "BM - Blue Magenta"
+        },
+        {
+          "dmxRange": [158, 164],
+          "type": "Effect",
+          "effectName": "BW - Blue White"
+        },
+        {
+          "dmxRange": [165, 171],
+          "type": "Effect",
+          "effectName": "WD - White Dark"
+        },
+        {
+          "dmxRange": [172, 178],
+          "type": "Effect",
+          "effectName": "WY - White Yellow"
+        },
+        {
+          "dmxRange": [179, 185],
+          "type": "Effect",
+          "effectName": "WC - White Cyan"
+        },
+        {
+          "dmxRange": [186, 192],
+          "type": "Effect",
+          "effectName": "WM - White Magenta"
+        },
+        {
+          "dmxRange": [193, 199],
+          "type": "Effect",
+          "effectName": "YD - Yellow Dark"
+        },
+        {
+          "dmxRange": [200, 206],
+          "type": "Effect",
+          "effectName": "YC - Yellow Cyan"
+        },
+        {
+          "dmxRange": [207, 213],
+          "type": "Effect",
+          "effectName": "YM - Yellow Magenta"
+        },
+        {
+          "dmxRange": [214, 220],
+          "type": "Effect",
+          "effectName": "YW - Yellow White"
+        },
+        {
+          "dmxRange": [221, 227],
+          "type": "Effect",
+          "effectName": "CD - Cyan Dark"
+        },
+        {
+          "dmxRange": [228, 234],
+          "type": "Effect",
+          "effectName": "CM - Cyan Magenta"
+        },
+        {
+          "dmxRange": [235, 241],
+          "type": "Effect",
+          "effectName": "CW - Cyan White"
+        },
+        {
+          "dmxRange": [242, 248],
+          "type": "Effect",
+          "effectName": "MD - Magenta Dark"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "Effect",
+          "effectName": "MW - Magenta White"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red, Green and Blue color mixing",
+        "White",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe and sound control"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Fading in/out",
+        "Speed Fading in/out and programs channel 7"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Fading in/out",
+        "Speed Fading in/out and programs channel 7 and internal programs channel 11",
+        "Dimmer Speed (step response)",
+        "Jump/fade internal programs",
+        "Internal programs"
+      ]
+    }
+  ]
+}
