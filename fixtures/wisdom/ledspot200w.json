@@ -1,0 +1,191 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ledspot200W",
+  "shortName": "ledspot200w",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["anon test"],
+    "createDate": "2025-08-06",
+    "lastModifyDate": "2025-08-06"
+  },
+  "links": {
+    "productPage": [
+      "https://www.ledleditalia.it/p/testa-mobile-motorizzata-spot-beam-led-cob-200w-in-flight-case-baule-da-2-pezzi-wisdom/"
+    ]
+  },
+  "physical": {
+    "dimensions": [48, 36, 38],
+    "weight": 15,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 9700,
+      "lumens": 3200
+    },
+    "lens": {
+      "name": "BeamSpot",
+      "degreesMinMax": [7, 25]
+    }
+  },
+  "wheels": {
+    "Ruota Gobo": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Rotazione della ruota Gobo": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobo": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "10Hz",
+        "speedEnd": "50Hz"
+      }
+    },
+    "Rosso": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Blu": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Bianco freddo": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Messa a fuoco": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Ruota Gobo": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Rotazione della ruota Gobo": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 6,
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "shortName": "Ledspot200W",
+      "channels": [
+        "Dimmer",
+        "Strobo",
+        "Rosso",
+        "Verde",
+        "Blu",
+        "Bianco freddo",
+        "Messa a fuoco",
+        "Pan",
+        "Tilt",
+        "Ruota Gobo",
+        "Rotazione della ruota Gobo",
+        "Zoom",
+        "Prism"
+      ]
+    }
+  ]
+}
