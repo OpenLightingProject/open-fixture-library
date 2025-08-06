@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 1200",
+  "categories": [
+    "Dimmer"
+  ],
+  "meta": {
+    "authors": [
+      "Showrunner"
+    ],
+    "createDate": "2022-12-06",
+    "lastModifyDate": "2022-12-06"
+  },
+  "helpWanted": "fill out the rest of the modes",
+  "links": {
+    "other": [
+      "https://www.nanlux.com/en/h-col-152.html",
+      "https://download.s21i.faiusr.com/22292231/0/0/ABUIABA9GAAglK3ejgYo5KqnkwE.pdf?f=Evoke+1200+DMX+REFERENCE+GUIDE.pdf&v=1641518740",
+      "https://urbancine.com/pdfs/product-resources/Nanlux-Evoke1200-DMX-Reference-Guide.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Fan Control": {
+      "name": "Fan Control",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Fan On"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Fan Off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Daylight 8bit",
+      "shortName": "Daylight",
+      "channels": [
+        "Dimmer",
+        "Fan Control"
+      ]
+    }
+  ]
+}
