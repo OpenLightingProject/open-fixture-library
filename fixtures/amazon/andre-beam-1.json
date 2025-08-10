@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Andre Beam 1",
+  "shortName": "Andre Beam 1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Andrea Leoncini"],
+    "createDate": "2025-08-10",
+    "lastModifyDate": "2025-08-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.amazon.it/dp/B0FC698KMP?ref=ppx_yo2ov_dt_b_fed_asin_title"
+    ],
+    "productPage": [
+      "https://www.amazon.it/dp/B0FC698KMP?ref=ppx_yo2ov_dt_b_fed_asin_title"
+    ],
+    "video": [
+      "https://www.amazon.it/dp/B0FC698KMP?ref=ppx_yo2ov_dt_b_fed_asin_title"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Light Purple"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Pattern": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "NoFunction",
+          "comment": "Fixed pattern"
+        },
+        {
+          "dmxRange": [80, 159],
+          "type": "NoFunction",
+          "comment": "Pattern dithering function"
+        },
+        {
+          "dmxRange": [160, 202],
+          "type": "NoFunction",
+          "comment": "Pattern reversal from fast to slow"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "NoFunction",
+          "comment": "Pattern rotates forward from slot to fast"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Intensity",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "comment": "Clockwise from slow to fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Andre Beam 1",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Pattern",
+        "Prism",
+        "Color Macros",
+        "Program",
+        "Reset"
+      ]
+    }
+  ]
+}
