@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HF-900 Hazer Fogger",
+  "shortName": "hf-900",
+  "categories": ["Smoke", "Hazer"],
+  "meta": {
+    "authors": ["mxklb"],
+    "createDate": "2025-08-10",
+    "lastModifyDate": "2025-08-10"
+  },
+  "links": {
+    "manual": [
+      "https://im.static-thomann.de/pics/atg/atgdata/document/manual/417157_c_417157_v5_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_hf_900_haze_fogger.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i6650p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 461, 253],
+    "weight": 10,
+    "power": 800,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog Intensity": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "comment": "Fog Volume 0-100 %, if 3 = 0…127"
+      }
+    },
+    "Fog Output": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong",
+        "comment": "Fan Speed 0-100 %, if Channel 3 = 0…127"
+      }
+    },
+    "Fog": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "FogType",
+          "fogType": "Haze",
+          "comment": "Hazer-Betrieb"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "FogType",
+          "fogType": "Fog",
+          "comment": "Nebel-Betrieb"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Fog Intensity",
+        "Fog Output",
+        "Fog"
+      ]
+    }
+  ]
+}
