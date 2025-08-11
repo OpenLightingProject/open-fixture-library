@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash 7x12W RGBW Moving Head Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Adrian Cascante"],
+    "createDate": "2025-08-11",
+    "lastModifyDate": "2025-08-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-08-11",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [170, 237, 170],
+    "weight": 2.65,
+    "power": 84,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "X-axis, move": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y-axis, move": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Strobe,Slow to Fast": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green color control, channel value of 0 for the closed light, 1-255 for the green light adjustment": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AUTO Mode / Sound Control Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [8, 140],
+          "type": "Intensity",
+          "comment": "AUTO Mode"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "Intensity",
+          "comment": "Sound Control Mode"
+        }
+      ]
+    },
+    "XY-axis, move speed adjustable": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Rest": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Green fine"
+      }
+    },
+    "X-axis,Fine-tuning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "Y-axis,Fine-tuning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "Color selection, combination, jump": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Color selection"
+        },
+        {
+          "dmxRange": [8, 231],
+          "type": "ColorPreset",
+          "comment": "Color combination"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "Color jump"
+        }
+      ]
+    },
+    "Color jump (CH8 232-255) Mode Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Total dimmer, linear dimming-Dark to Bright": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "X-axis, move",
+        "Y-axis, move",
+        "Strobe,Slow to Fast",
+        "Red light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "Green color control, channel value of 0 for the closed light, 1-255 for the green light adjustment",
+        "Blue light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "White light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "AUTO Mode / Sound Control Mode",
+        "XY-axis, move speed adjustable",
+        "Rest"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "X-axis, move",
+        "X-axis,Fine-tuning",
+        "Y-axis, move",
+        "Y-axis,Fine-tuning",
+        "XY-axis, move speed adjustable",
+        "Total dimmer, linear dimming-Dark to Bright",
+        "Strobe,Slow to Fast",
+        "Color selection, combination, jump",
+        "Color jump (CH8 232-255) Mode Speed",
+        "Red light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "Green color control, channel value of 0 for the closed light, 1-255 for the green light adjustment",
+        "Blue light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "White light color control, channel value of 0 for the closed\nlight, 1~255 for the red light adjustment",
+        "AUTO Mode / Sound Control Mode",
+        "Rest"
+      ]
+    }
+  ]
+}
