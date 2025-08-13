@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fgrtgrt",
+  "shortName": "dfgrtgtr",
+  "categories": ["Color Changer", "Dimmer", "Blinder"],
+  "meta": {
+    "authors": ["tryhrt-yht-"],
+    "createDate": "2025-08-13",
+    "lastModifyDate": "2025-08-13"
+  },
+  "links": {
+    "video": [
+      "https://f'rfe'fe.fr"
+    ]
+  },
+  "physical": {
+    "dimensions": [12, 122, 112]
+  },
+  "availableChannels": {
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Blue"
+      ]
+    }
+  ]
+}
