@@ -27,9 +27,12 @@ export async function importFixtures(buffer, filename, authorName) {
     throw new Error(`Nothing to import.`);
   }
 
-  const sslFixture = xml.DLMFILE.SSLLIBRARY;
-  const sslProperties = sslFixture.SSLPROPERTIES;
+  const sslFixture = Array.isArray(xml.DLMFILE.SSLLIBRARY) ? xml.DLMFILE.SSLLIBRARY[0] : xml.DLMFILE.SSLLIBRARY;
+  const sslProperties = Array.isArray(sslFixture.SSLPROPERTIES) ? sslFixture.SSLPROPERTIES[0] : sslFixture.SSLPROPERTIES;
   fixture.name = sslProperties.$.SSLRDMFIXTURENAME;
+  
+  // Generate shortName from fixture name
+  fixture.shortName = generateShortName(fixture.name);
 
   const manufacturerKey = slugify(sslProperties.$.SSLRDMMANUFACTURERNAME);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
@@ -44,9 +47,9 @@ export async function importFixtures(buffer, filename, authorName) {
     warnings.push(`Please check if manufacturer is correct and add manufacturer URL.`);
   }
 
-  fixture.categories = {};
+  fixture.categories = getOflCategories(sslFixture);
 
-  const authors = sslProperties.$.SSLCREATOR;
+  const authors = sslProperties.$.SSLCREATOR ? sslProperties.$.SSLCREATOR.split(/,\s*/) : [];
   if (!authors.includes(authorName)) {
     authors.push(authorName);
   }
@@ -64,11 +67,11 @@ export async function importFixtures(buffer, filename, authorName) {
 
   fixture.physical = addOflFixturePhysical(sslFixture); // WIP
 
-  fixture.matrix = getOflMatrix(sslFixture); // WIP
+  fixture.matrix = getOflMatrix(sslFixture);
 
   const sslChannels = getUniqueSslChannels(sslFixture);
 
-  fixture.wheels = await getOflWheels(sslChannels); // WIP
+  fixture.wheels = getOflWheels(sslChannels);
 
   fixture.availableChannels = getOflChannels(sslChannels, sslProperties);
 
@@ -92,11 +95,13 @@ export async function importFixtures(buffer, filename, authorName) {
  */
 function getOflModes(sslFixture) {
   const modes = [];
-  for (const sslMode of sslFixture.SSLMODES.SSLMODE) {
+  const sslModesContainer = Array.isArray(sslFixture.SSLMODES) ? sslFixture.SSLMODES[0] : sslFixture.SSLMODES;
+  const sslModes = Array.isArray(sslModesContainer.SSLMODE) ? sslModesContainer.SSLMODE : [sslModesContainer.SSLMODE];
+  for (const sslMode of sslModes) {
     const mode = {
       name: `${sslMode.$.SSLNBCHANNEL}-channel`,
       shortName: `${sslMode.$.SSLNBCHANNEL}-ch`,
-      channels: sslMode.SSLCHANNEL.map(sslChannel => sslChannel.$.SSLCHANNELNAME),
+      channels: (Array.isArray(sslMode.SSLCHANNEL) ? sslMode.SSLCHANNEL : [sslMode.SSLCHANNEL]).map(sslChannel => sslChannel.$.SSLCHANNELNAME),
     };
     modes.push(mode);
   }
@@ -113,20 +118,24 @@ function getOflModes(sslFixture) {
 function getOflChannels(sslChannels, sslProperties) {
   const availableChannels = {};
   for (const [sslChannelName, sslChannel] of Object.entries(sslChannels)) {
-    const fineChannel = /fine/i.test(sslChannelName);
+    const fineChannel = /fine/i.test(sslChannelName) || sslChannelName.startsWith(`µ`);
     if (fineChannel) {
       continue;
     }
     const channel = {};
-    const hasFineChannel = `${sslChannelName} fine` in sslChannel;
-    channel.fineChannelAliases = hasFineChannel ? [`${sslChannelName} fine`] : undefined;
+    const hasFineChannel = `${sslChannelName} fine` in sslChannels || `µ${sslChannelName}` in sslChannels;
+    if (hasFineChannel) {
+      const fineChannelName = `${sslChannelName} fine` in sslChannels ? `${sslChannelName} fine` : `µ${sslChannelName}`;
+      channel.fineChannelAliases = [fineChannelName];
+    }
 
     const foundChannelType = Object.keys(channelTypeFunctions).find(
       channelType => channelTypeFunctions[channelType].isChannelType(sslChannelName),
     );
 
-    channelTypeFunctions[foundChannelType].addChannelCapabilities(sslChannel, sslProperties, channel);
+    channelTypeFunctions[foundChannelType].addChannelCapabilities(sslChannel, sslProperties, channel, sslChannelName);
 
+    availableChannels[sslChannelName] = channel;
   }
 
   return availableChannels;
@@ -138,12 +147,53 @@ function getOflChannels(sslChannels, sslProperties) {
  * @returns {object} The OFL fixture physical.
  */
 function addOflFixturePhysical(sslFixture) {
-  return {
-    power: sslFixture.SSLPROPERTIES.$.SSLLAMPPOWER,
-    bulb: {
-      colorTemperature: sslFixture.SSLPROPERTIES.$.SSLLAMPTEMP,
-    },
-  };
+  const sslProperties = Array.isArray(sslFixture.SSLPROPERTIES) ? sslFixture.SSLPROPERTIES[0] : sslFixture.SSLPROPERTIES;
+
+  const physical = {};
+
+  // Dimensions (convert cm to mm and reorder to [width, height, depth])
+  if (sslProperties.$.SSLSIZEX && sslProperties.$.SSLSIZEY && sslProperties.$.SSLSIZEZ &&
+      sslProperties.$.SSLSIZEX !== `0` && sslProperties.$.SSLSIZEY !== `0` && sslProperties.$.SSLSIZEZ !== `0`) {
+    physical.dimensions = [
+      Number.parseInt(sslProperties.$.SSLSIZEX, 10) * 10, // width
+      Number.parseInt(sslProperties.$.SSLSIZEY, 10) * 10, // height  
+      Number.parseInt(sslProperties.$.SSLSIZEZ, 10) * 10, // depth
+    ];
+  }
+
+  // Weight (SSL seems to not have this, would be 0)
+  // Power
+  if (sslProperties.$.SSLLAMPPOWER && sslProperties.$.SSLLAMPPOWER !== `0`) {
+    physical.power = Number.parseInt(sslProperties.$.SSLLAMPPOWER, 10);
+  }
+
+  // Bulb information
+  const bulb = {};
+  if (sslProperties.$.SSLLAMPTEMP && sslProperties.$.SSLLAMPTEMP !== `0`) {
+    bulb.colorTemperature = Number.parseInt(sslProperties.$.SSLLAMPTEMP, 10);
+  }
+  if (sslProperties.$.SSLLAMPTYPE) {
+    const lampType = sslProperties.$.SSLLAMPTYPE;
+    const lampPower = sslProperties.$.SSLLAMPPOWER;
+    if (lampType === `LED` && lampPower) {
+      bulb.type = `${lampPower}W ${lampType}`;
+    } else {
+      bulb.type = lampType;
+    }
+  }
+  if (Object.keys(bulb).length > 0) {
+    physical.bulb = bulb;
+  }
+
+  // Lens information
+  if (sslProperties.$.SSLBEAMOPENING && sslProperties.$.SSLBEAMOPENING !== `0`) {
+    const beamAngle = Number.parseInt(sslProperties.$.SSLBEAMOPENING, 10);
+    physical.lens = {
+      degreesMinMax: [beamAngle, beamAngle],
+    };
+  }
+
+  return Object.keys(physical).length > 0 ? physical : undefined;
 }
 
 /**
@@ -159,7 +209,8 @@ function getOflMatrix(sslFixture) {
  * @returns {object} The list of unique channels of the fixture.
  */
 function getUniqueSslChannels(sslFixture) {
-  const sslModes = Array.isArray(sslFixture.SSLMODES.SSLMODE) ? sslFixture.SSLMODES.SSLMODE : [sslFixture.SSLMODES.SSLMODE];
+  const sslModesContainer = Array.isArray(sslFixture.SSLMODES) ? sslFixture.SSLMODES[0] : sslFixture.SSLMODES;
+  const sslModes = Array.isArray(sslModesContainer.SSLMODE) ? sslModesContainer.SSLMODE : [sslModesContainer.SSLMODE];
   const channels = {};
   const channelNames = new Set();
 
@@ -186,66 +237,165 @@ function decimalToHexColor(decimal) {
   const unsigned = decimal >>> 0;
   // eslint-disable-next-line no-bitwise
   const color = unsigned & 0xFF_FF_FF;
-  const hexColor = color.toString(16).padStart(6, `0`).toUpperCase();
+  
+  // SSL colors appear to be in BGR format, so we need to swap bytes
+  // eslint-disable-next-line no-bitwise
+  const red = (color >>> 16) & 0xFF;
+  // eslint-disable-next-line no-bitwise
+  const green = (color >>> 8) & 0xFF;
+  // eslint-disable-next-line no-bitwise
+  const blue = color & 0xFF;
+  
+  // Reorder to RGB
+  // eslint-disable-next-line no-bitwise
+  const rgbColor = (blue << 16) | (green << 8) | red;
+  
+  const hexColor = rgbColor.toString(16).padStart(6, `0`).toUpperCase();
   return `#${hexColor}`;
 }
 
 const slotTypeFunctions = {
   Open: {
-    isSlotType: (sslPreset, channelGroup) => (channelGroup === `Color` && sslPreset.$.SSLPRESETNAME === `white`) || sslPreset.$.SSLPRESETNAME === `Open`,
-    addSlotProperties: (sslPreset, slot) => {},
-  },
-  Gobo: {
-    isSlotType: (sslPreset, channelGroup) => (channelGroup === `Gobo`),
-    addSlotProperties: (sslPreset, slot) => {},
-  },
-  Color: {
-    isSlotType: (sslPreset, channelGroup) => (channelGroup === `Color`),
+    isSlotType: (sslPreset, channelGroup) => {
+      const presetName = sslPreset.$.SSLPRESETNAME?.toLowerCase() || ``;
+      return presetName.includes(`open`) || presetName.includes(`white`);
+    },
     addSlotProperties: (sslPreset, slot) => {
-      slot.name = sslPreset.$.SSLPRESETNAME;
-      slot.colors = [decimalToHexColor(sslPreset.$.SSLPRESETCOLOR)];
+      // Open slot doesn't need additional properties
     },
   },
-  // tbd
+  Color: {
+    isSlotType: (sslPreset, channelGroup) => {
+      return /color.*wheel/i.test(channelGroup) && sslPreset.$.SSLPRESETCOLOR;
+    },
+    addSlotProperties: (sslPreset, slot) => {
+      slot.name = sslPreset.$.SSLPRESETNAME || `Color`;
+      if (sslPreset.$.SSLPRESETCOLOR) {
+        slot.colors = [decimalToHexColor(sslPreset.$.SSLPRESETCOLOR)];
+      }
+    },
+  },
+  Gobo: {
+    isSlotType: (sslPreset, channelGroup) => {
+      return /gobo.*wheel/i.test(channelGroup) || /static.*gobo/i.test(channelGroup);
+    },
+    addSlotProperties: (sslPreset, slot) => {
+      slot.name = sslPreset.$.SSLPRESETNAME || `Gobo`;
+      // Could add gobo image reference here if available in SSL
+    },
+  },
   Prism: {
-    isSlotType: (sslPreset, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === `PrismEffectOn` : channelGroup === `Prism`),
-    addSlotProperties: (sslPreset, slot) => {},
+    isSlotType: (sslPreset, channelGroup) => {
+      return /prism/i.test(channelGroup);
+    },
+    addSlotProperties: (sslPreset, slot) => {
+      slot.name = sslPreset.$.SSLPRESETNAME || `Prism`;
+      // Try to extract facet count from name
+      const facetMatch = slot.name.match(/(\d+)/);
+      if (facetMatch) {
+        slot.facets = Number.parseInt(facetMatch[1], 10);
+      }
+    },
   },
 
   // default (has to be the last element!)
   Unknown: {
     isSlotType: (sslPreset, channelGroup) => true,
     addSlotProperties: (sslPreset, slot) => {
-      slot.name = sslPreset.$.SSLPRESETNAME;
+      slot.name = sslPreset.$.SSLPRESETNAME || `Unknown`;
     },
   },
 };
 
 const channelTypeFunctions = {
   Pan: {
-    isChannelType: sslChannelName => sslChannelName === /pan/i.test(sslChannelName),
-    addChannelCapabilities: (sslChannel, sslProperties, channel) => {
+    isChannelType: sslChannelName => /pan/i.test(sslChannelName) && !/fine/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
       channel.defaultValue = `50%`;
-      channel.capability = { type: /continuous/i.test(sslChannel.$.SSLCHANNELNAME) ? `PanContinuous` : `Pan`, angleStart: `0deg`, angleEnd: `${sslProperties.$.SSLAMPLIPAN}deg` };
+      channel.capability = {
+        type: /continuous/i.test(sslChannel.$.SSLCHANNELNAME) ? `PanContinuous` : `Pan`,
+        angleStart: `0deg`,
+        angleEnd: `${sslProperties.$.SSLAMPLIPAN}deg`,
+      };
     },
   },
   Tilt: {
-    isChannelType: sslChannelName => sslChannelName === /tilt$\b/i.test(sslChannelName),
-    addChannelCapabilities: (sslChannel, sslProperties, channel) => {
-      channel.capability = { type: `Tilt`, angleStart: `0deg`, angleEnd: `${sslProperties.$.SSLAMPLITILT}deg` };
+    isChannelType: sslChannelName => /tilt/i.test(sslChannelName) && !/fine/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      channel.defaultValue = `50%`;
+      channel.capability = {
+        type: /continuous/i.test(sslChannel.$.SSLCHANNELNAME) ? `TiltContinuous` : `Tilt`,
+        angleStart: `0deg`,
+        angleEnd: `${sslProperties.$.SSLAMPLITILT}deg`,
+      };
     },
   },
   Dimmer: {
-    isChannelType: sslChannelName => sslChannelName === /dimmer$\b/i.test(sslChannelName),
-    addChannelCapabilities: (sslChannel, sslProperties, channel) => {
+    isChannelType: sslChannelName => /dimmer/i.test(sslChannelName) && !/fine/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
       channel.capability = { type: `Intensity` };
+    },
+  },
+  Shutter: {
+    isChannelType: sslChannelName => /shutter/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      if (sslChannel.SSLPRESETS && sslChannel.SSLPRESETS.SSLPRESET) {
+        channel.capabilities = getCapabilitiesFromPresets(sslChannel.SSLPRESETS.SSLPRESET);
+      }
+      else {
+        channel.capability = { type: `ShutterStrobe` };
+      }
+    },
+  },
+  ColorWheel: {
+    isChannelType: sslChannelName => /color.*wheel/i.test(sslChannelName) || (/color/i.test(sslChannelName) && /wheel/i.test(sslChannelName)),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      if (sslChannel.SSLPRESETS && sslChannel.SSLPRESETS.SSLPRESET) {
+        channel.capabilities = getCapabilitiesFromPresets(sslChannel.SSLPRESETS.SSLPRESET);
+      }
+      else {
+        channel.capability = { type: `WheelSlot`, wheel: sslChannelName };
+      }
+    },
+  },
+  GoboWheel: {
+    isChannelType: sslChannelName => /gobo.*wheel/i.test(sslChannelName) || (/gobo/i.test(sslChannelName) && /wheel/i.test(sslChannelName)),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      if (sslChannel.SSLPRESETS && sslChannel.SSLPRESETS.SSLPRESET) {
+        channel.capabilities = getCapabilitiesFromPresets(sslChannel.SSLPRESETS.SSLPRESET);
+      }
+      else {
+        channel.capability = { type: `WheelSlot`, wheel: sslChannelName };
+      }
+    },
+  },
+  Rotation: {
+    isChannelType: sslChannelName => /rotation/i.test(sslChannelName) || /rot/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      if (sslChannel.SSLPRESETS && sslChannel.SSLPRESETS.SSLPRESET) {
+        channel.capabilities = getCapabilitiesFromPresets(sslChannel.SSLPRESETS.SSLPRESET);
+      }
+      else {
+        channel.capability = { type: `WheelRotation` };
+      }
+    },
+  },
+  ColorMixing: {
+    isChannelType: sslChannelName => /^(red|green|blue|white|amber|uv|cyan|magenta|yellow|cto)$/i.test(sslChannelName),
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      channel.capability = { type: `ColorIntensity`, color: sslChannelName.toLowerCase() };
     },
   },
   // default (has to be the last element!)
   Unknown: {
     isChannelType: sslChannelName => true,
-    addChannelCapabilities: (sslChannel, sslProperties, channel) => {
-      channel.capability = { type: `Unknown` };
+    addChannelCapabilities: (sslChannel, sslProperties, channel, sslChannelName) => {
+      if (sslChannel.SSLPRESETS && sslChannel.SSLPRESETS.SSLPRESET) {
+        channel.capabilities = getCapabilitiesFromPresets(sslChannel.SSLPRESETS.SSLPRESET);
+      }
+      else {
+        channel.capability = { type: `Generic` };
+      }
     },
   },
 };
@@ -257,7 +407,22 @@ const channelTypeFunctions = {
 function getSlots(sslChannel) {
   const slots = [];
   const channelGroup = sslChannel.$.SSLCHANNELNAME;
-  for (const sslPreset of (sslChannel.SSLPRESETS.SSLPRESET || [])) {
+  
+  // Check if channel has presets
+  if (!sslChannel.SSLPRESETS) {
+    return slots;
+  }
+  
+  // Handle the array structure of SSLPRESETS
+  const presetsContainer = Array.isArray(sslChannel.SSLPRESETS) ? sslChannel.SSLPRESETS[0] : sslChannel.SSLPRESETS;
+  
+  if (!presetsContainer || !presetsContainer.SSLPRESET) {
+    return slots;
+  }
+  
+  const presets = Array.isArray(presetsContainer.SSLPRESET) ? presetsContainer.SSLPRESET : [presetsContainer.SSLPRESET];
+  
+  for (const sslPreset of presets) {
     const presetName = sslPreset.$.SSLPRESETNAME || ``;
 
     if (/\bc?cw\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|right|left|rotoff|rotat|spin/i.test(presetName)) {
@@ -294,18 +459,266 @@ function getOflWheels(sslChannels) {
   const wheels = {};
 
   for (const [sslChannelName, sslChannel] of Object.entries(sslChannels)) {
-    const isWheelChannel = /gobo$\b|color$\b|wheel\b/i.test(sslChannelName);
-    const isRotationChannel = /rotation/i.test(sslChannelName);
+    // Detect wheel channels more comprehensively
+    const isColorWheel = /color.*wheel/i.test(sslChannelName);
+    const isGoboWheel = (/gobo.*wheel/i.test(sslChannelName) || /static.*gobo/i.test(sslChannelName)) && !/shake/i.test(sslChannelName);
+    const isPrismWheel = /^prism$/i.test(sslChannelName);
     const isShakeChannel = /shake/i.test(sslChannelName);
+    const isControlChannel = /rotation$/i.test(sslChannelName); // Channels that control rotation, not wheels themselves
 
-    if (isWheelChannel && !isRotationChannel && !isShakeChannel) {
-      wheels[sslChannelName] = {
+    if ((isColorWheel || isGoboWheel || isPrismWheel) && !isShakeChannel && !isControlChannel) {
+      // Map SSL wheel names to standard OFL names
+      let wheelName = sslChannelName;
+      if (sslChannelName === `Rotation Gobo Wheel`) {
+        wheelName = `Gobo Wheel 1`;
+      } else if (sslChannelName === `Static Gobo Wheel`) {
+        wheelName = `Gobo Wheel 2`;
+      } else if (sslChannelName === `Prism`) {
+        wheelName = `Prism Wheel`;
+      }
+      
+      wheels[wheelName] = {
         slots: getSlots(sslChannel),
       };
     }
   }
 
   return Object.keys(wheels).length > 0 ? wheels : undefined;
+}
+
+/**
+ * @param {object} sslFixture The SSL fixture object.
+ * @returns {string[]} An array of OFL categories.
+ */
+function getOflCategories(sslFixture) {
+  const categories = [];
+
+  const sslProperties = Array.isArray(sslFixture.SSLPROPERTIES) ? sslFixture.SSLPROPERTIES[0] : sslFixture.SSLPROPERTIES;
+
+  // Basic categorization based on fixture properties
+  if (sslProperties.$.SSLAMPLIPAN && sslProperties.$.SSLAMPLIPAN !== `0`) {
+    categories.push(`Moving Head`);
+  }
+  else {
+    categories.push(`Static`);
+  }
+
+  // Check for specific channel types to refine categories
+  const sslModesContainer = Array.isArray(sslFixture.SSLMODES) ? sslFixture.SSLMODES[0] : sslFixture.SSLMODES;
+  const sslModes = Array.isArray(sslModesContainer.SSLMODE) ? sslModesContainer.SSLMODE : [sslModesContainer.SSLMODE];
+  const allChannels = new Set();
+
+  for (const sslMode of sslModes) {
+    const sslChannels = Array.isArray(sslMode.SSLCHANNEL) ? sslMode.SSLCHANNEL : [sslMode.SSLCHANNEL];
+    for (const sslChannel of sslChannels) {
+      allChannels.add(sslChannel.$.SSLCHANNELNAME.toLowerCase());
+    }
+  }
+
+  if ([...allChannels].some(name => /gobo/i.test(name))) {
+    categories.push(`Gobo`);
+  }
+
+  if ([...allChannels].some(name => /color/i.test(name))) {
+    categories.push(`Color Changer`);
+  }
+
+  return categories.length > 0 ? categories : [`Other`];
+}
+
+/**
+ * Converts SSL presets to OFL capabilities.
+ * @param {object[]} sslPresets Array of SSL preset objects.
+ * @returns {object[]} Array of OFL capability objects.
+ */
+function getCapabilitiesFromPresets(sslPresets) {
+  const presets = Array.isArray(sslPresets) ? sslPresets : [sslPresets];
+  const capabilities = [];
+
+  for (const preset of presets) {
+    const capability = {
+      dmxRange: [Number.parseInt(preset.$.SSLPRESETDMXSTART, 10), Number.parseInt(preset.$.SSLPRESETDMXEND, 10)],
+    };
+
+    const presetName = preset.$.SSLPRESETNAME?.toLowerCase() || ``;
+    const presetType = Number.parseInt(preset.$.SSLPRESETTYPE, 10);
+
+    addPresetCapabilityProperties(capability, preset, presetName, presetType, capabilities.length);
+
+    capabilities.push(capability);
+  }
+
+  return capabilities;
+}
+
+/**
+ * Adds capability properties based on SSL preset type and name.
+ * @param {object} capability The capability object to modify.
+ * @param {object} preset The SSL preset object.
+ * @param {string} presetName The lowercase preset name.
+ * @param {number} presetType The preset type number.
+ * @param {number} slotIndex The current slot index for numbering.
+ */
+function addPresetCapabilityProperties(capability, preset, presetName, presetType, slotIndex) {
+  // Handle special cases first
+  if (presetName.includes(`open`) && presetType !== 19) {
+    capability.type = `ShutterStrobe`;
+    capability.shutterEffect = `Open`;
+    return;
+  }
+  if (presetName.includes(`closed`) && presetType !== 20) {
+    capability.type = `ShutterStrobe`;
+    capability.shutterEffect = `Closed`;
+    return;
+  }
+  if (presetName.includes(`strobe`) && presetType !== 21) {
+    capability.type = `ShutterStrobe`;
+    capability.shutterEffect = `Strobe`;
+    return;
+  }
+  if (presetName.includes(`rotation`) && presetType !== 11) {
+    addContinuousRotationCapabilityProperties(capability, presetName);
+    return;
+  }
+
+  // Handle by preset type
+  switch (presetType) {
+    case 1:
+    case 2: {
+      addColorCapabilityProperties(capability, preset, slotIndex);
+      break;
+    }
+    case 4: {
+      capability.type = `Intensity`;
+      break;
+    }
+    case 7: {
+      addGoboCapabilityProperties(capability, preset, slotIndex);
+      break;
+    }
+    case 9: {
+      addRotationIndexCapabilityProperties(capability, preset);
+      break;
+    }
+    case 11: {
+      addContinuousRotationCapabilityProperties(capability, presetName);
+      break;
+    }
+    case 19: {
+      capability.type = `ShutterStrobe`;
+      capability.shutterEffect = `Open`;
+      break;
+    }
+    case 20: {
+      capability.type = `ShutterStrobe`;
+      capability.shutterEffect = `Closed`;
+      break;
+    }
+    case 21: {
+      capability.type = `ShutterStrobe`;
+      capability.shutterEffect = `Strobe`;
+      if (preset.$.SSLPRESETPARAMMIN && preset.$.SSLPRESETPARAMMAX) {
+        capability.speed = `${preset.$.SSLPRESETPARAMMIN}Hz slow to ${preset.$.SSLPRESETPARAMMAX}Hz fast`;
+      }
+      break;
+    }
+    default: {
+      addGenericCapabilityProperties(capability, preset);
+      break;
+    }
+  }
+}
+
+/**
+ * Adds color capability properties.
+ * @param {object} capability The capability object.
+ * @param {object} preset The SSL preset object.
+ * @param {number} slotIndex The slot index.
+ */
+function addColorCapabilityProperties(capability, preset, slotIndex) {
+  capability.type = `WheelSlot`;
+  capability.slotNumber = slotIndex + 1;
+  if (preset.$.SSLPRESETCOLOR) {
+    capability.colors = [decimalToHexColor(preset.$.SSLPRESETCOLOR)];
+  }
+  if (preset.$.SSLPRESETNAME) {
+    capability.name = preset.$.SSLPRESETNAME;
+  }
+}
+
+/**
+ * Adds gobo capability properties.
+ * @param {object} capability The capability object.
+ * @param {object} preset The SSL preset object.
+ * @param {number} slotIndex The slot index.
+ */
+function addGoboCapabilityProperties(capability, preset, slotIndex) {
+  capability.type = `WheelSlot`;
+  capability.slotNumber = slotIndex + 1;
+  if (preset.$.SSLPRESETNAME) {
+    capability.name = preset.$.SSLPRESETNAME;
+  }
+}
+
+/**
+ * Adds rotation index capability properties.
+ * @param {object} capability The capability object.
+ * @param {object} preset The SSL preset object.
+ */
+function addRotationIndexCapabilityProperties(capability, preset) {
+  capability.type = `WheelRotation`;
+  capability.wheel = `Gobo`;
+  if (preset.$.SSLPRESETPARAMMIN && preset.$.SSLPRESETPARAMMAX) {
+    capability.angle = `${preset.$.SSLPRESETPARAMMIN}deg to ${preset.$.SSLPRESETPARAMMAX}deg`;
+  }
+}
+
+/**
+ * Adds continuous rotation capability properties.
+ * @param {object} capability The capability object.
+ * @param {string} presetName The preset name.
+ */
+function addContinuousRotationCapabilityProperties(capability, presetName) {
+  capability.type = `WheelRotation`;
+  capability.wheel = `Gobo`;
+  if (presetName.includes(`left`) || presetName.includes(`anti`)) {
+    capability.speed = `slow CCW to fast CCW`;
+  }
+  else if (presetName.includes(`right`)) {
+    capability.speed = `slow CW to fast CW`;
+  }
+}
+
+/**
+ * Adds generic capability properties.
+ * @param {object} capability The capability object.
+ * @param {object} preset The SSL preset object.
+ */
+function addGenericCapabilityProperties(capability, preset) {
+  capability.type = `Generic`;
+  if (preset.$.SSLPRESETNAME) {
+    capability.comment = preset.$.SSLPRESETNAME;
+  }
+}
+
+/**
+ * Generates a short name from the fixture name.
+ * @param {string} fixtureName The full fixture name.
+ * @returns {string} A short name for the fixture.
+ */
+function generateShortName(fixtureName) {
+  // Extract key parts and numbers from the fixture name
+  return fixtureName
+    .replace(/[^\w\d\s]/g, ``) // Remove special chars
+    .split(/\s+/) // Split on whitespace
+    .map(word => {
+      // Keep numbers and first few letters of words
+      if (/^\d+$/.test(word)) return word;
+      if (word.length <= 3) return word.toUpperCase();
+      return word.substring(0, 3).toUpperCase();
+    })
+    .join(``)
+    .substring(0, 8); // Limit length
 }
 
 /**
