@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LD75R",
+  "shortName": "ld75r",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Test"],
+    "createDate": "2025-08-15",
+    "lastModifyDate": "2025-08-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230829/1693297779505470.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=VZ3heYQKd2c"
+    ]
+  },
+  "physical": {
+    "dimensions": [441, 410, 107.5],
+    "weight": 3.5,
+    "power": 75,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "lumens": 9320
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "CCT"
+        },
+        {
+          "dmxRange": [52, 103],
+          "type": "Maintenance",
+          "hold": "short",
+          "comment": "HSI"
+        },
+        {
+          "dmxRange": [104, 155],
+          "type": "Maintenance",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [156, 207],
+          "type": "Maintenance",
+          "comment": "FX"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "Maintenance",
+          "comment": "GEL"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Intensity",
+        "Mode"
+      ]
+    },
+    {
+      "name": "CCT",
+      "channels": [
+        "Mode"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Mode"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Mode"
+      ]
+    },
+    {
+      "name": "FX",
+      "channels": [
+        "Mode"
+      ]
+    },
+    {
+      "name": "GEL",
+      "channels": [
+        "Mode"
+      ]
+    }
+  ]
+}
