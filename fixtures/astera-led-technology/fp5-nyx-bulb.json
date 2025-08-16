@@ -1,0 +1,6525 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FP5 NYX Bulb",
+  "shortName": "NYX Bulb",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["GTDF Share"],
+    "createDate": "2024-01-03",
+    "lastModifyDate": "2024-04-30",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-08-16",
+      "comment": "GDTF v1.2 fixture type ID: 0145C91E-F7BC-413C-BFEB-00F82BFFE1D0"
+    }
+  },
+  "comment": "The first color-tunable LED bulb for professional film, stage and event productions. Not bigger than a normal LED bulb, it contains a CRMX receiver as well as RF and Bluetooth modules for the AsteraApp. It can be powered via lamp socket or with a standard power bank and thanks to its Titan LED engine it displays precise colors and white tones with ultra-high CRI and TLCI. Available in white and black.",
+  "wheels": {
+    "Virtual ColorWheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "No effect",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Rose Pink",
+          "colors": ["#d360cc"]
+        },
+        {
+          "type": "Color",
+          "name": "Lavender Tint",
+          "colors": ["#d1c6df"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Bastard Amber",
+          "colors": ["#e6b0ab"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Yellow",
+          "colors": ["#dcd6b9"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Salmon",
+          "colors": ["#e66e5e"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Amber Gold",
+          "colors": ["#e4bf9c"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Yellow",
+          "colors": ["#e0dc00"]
+        },
+        {
+          "type": "Color",
+          "name": "Straw Tint",
+          "colors": ["#e7c08b"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Straw",
+          "colors": ["#fba700"]
+        },
+        {
+          "type": "Color",
+          "name": "Surprise Peach",
+          "colors": ["#9b654d"]
+        },
+        {
+          "type": "Color",
+          "name": "Fire",
+          "colors": ["#e50009"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Amber",
+          "colors": ["#f99119"]
+        },
+        {
+          "type": "Color",
+          "name": "Gold Amber",
+          "colors": ["#e46300"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Amber",
+          "colors": ["#ee1a00"]
+        },
+        {
+          "type": "Color",
+          "name": "Scarlet",
+          "colors": ["#d1214d"]
+        },
+        {
+          "type": "Color",
+          "name": "Sunset Red",
+          "colors": ["#db5431"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright Red",
+          "colors": ["#b40000"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Red",
+          "colors": ["#81000f"]
+        },
+        {
+          "type": "Color",
+          "name": "Plasa Red",
+          "colors": ["#910000"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Pink",
+          "colors": ["#e0a9cb"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Pink",
+          "colors": ["#e086b9"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Magenta",
+          "colors": ["#970042"]
+        },
+        {
+          "type": "Color",
+          "name": "Rose Purple",
+          "colors": ["#6655ac"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Purple",
+          "colors": ["#760089"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Lavender",
+          "colors": ["#9583ce"]
+        },
+        {
+          "type": "Color",
+          "name": "Paler Lavender",
+          "colors": ["#b6b8db"]
+        },
+        {
+          "type": "Color",
+          "name": "Lavender",
+          "colors": ["#6c1cbe"]
+        },
+        {
+          "type": "Color",
+          "name": "Mist Blue",
+          "colors": ["#a4bdde"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Blue",
+          "colors": ["#8eb4dd"]
+        },
+        {
+          "type": "Color",
+          "name": "Sky Blue",
+          "colors": ["#0060cd"]
+        },
+        {
+          "type": "Color",
+          "name": "Tokyo Blue",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Evening Blue",
+          "colors": ["#0057d0"]
+        },
+        {
+          "type": "Color",
+          "name": "Just Blue",
+          "colors": ["#002cbd"]
+        },
+        {
+          "type": "Color",
+          "name": "Deeper Blue",
+          "colors": ["#00198d"]
+        },
+        {
+          "type": "Color",
+          "name": "Lime Green",
+          "colors": ["#9ed64d"]
+        },
+        {
+          "type": "Color",
+          "name": "Moss Green",
+          "colors": ["#009f44"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Yellow Green",
+          "colors": ["#00ff57"]
+        },
+        {
+          "type": "Color",
+          "name": "Spring Yellow",
+          "colors": ["#d6dc2d"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#e6ce87"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Amber",
+          "colors": ["#f1c45b"]
+        },
+        {
+          "type": "Color",
+          "name": "Straw",
+          "colors": ["#d7d1b9"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Amber",
+          "colors": ["#f7af00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ef7f00"]
+        },
+        {
+          "type": "Color",
+          "name": "Primary Red",
+          "colors": ["#b70000"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Rose",
+          "colors": ["#f980a9"]
+        },
+        {
+          "type": "Color",
+          "name": "English Rose",
+          "colors": ["#eda18e"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Salmon",
+          "colors": ["#f892b1"]
+        },
+        {
+          "type": "Color",
+          "name": "Middle Rose",
+          "colors": ["#e984c9"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Pink",
+          "colors": ["#ec47b6"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#c3005a"]
+        },
+        {
+          "type": "Color",
+          "name": "Peacock Blue",
+          "colors": ["#00b397"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Blue-Green",
+          "colors": ["#008192"]
+        },
+        {
+          "type": "Color",
+          "name": "Steel Blue",
+          "colors": ["#55bce1"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#003987"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Blue",
+          "colors": ["#004eb6"]
+        },
+        {
+          "type": "Color",
+          "name": "Golden Amber",
+          "colors": ["#e57852"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Golden Amber",
+          "colors": ["#e30000"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Lavender",
+          "colors": ["#af95cb"]
+        },
+        {
+          "type": "Color",
+          "name": "Special Lavender",
+          "colors": ["#8472db"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Green",
+          "colors": ["#afdc8f"]
+        },
+        {
+          "type": "Color",
+          "name": "Primary Green",
+          "colors": ["#007100"]
+        },
+        {
+          "type": "Color",
+          "name": "Summer Blue",
+          "colors": ["#00a8dc"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright Blue",
+          "colors": ["#007ad1"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Violet",
+          "colors": ["#6d63da"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Navy Blue",
+          "colors": ["#0072aa"]
+        },
+        {
+          "type": "Color",
+          "name": "No Colour Blue",
+          "colors": ["#0099d3"]
+        },
+        {
+          "type": "Color",
+          "name": "Apricot",
+          "colors": ["#eb9b6f"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright Rose",
+          "colors": ["#bd006b"]
+        },
+        {
+          "type": "Color",
+          "name": "Gold Tint",
+          "colors": ["#efb4bb"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Gold",
+          "colors": ["#f2b6b4"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Salmon",
+          "colors": ["#f2a9c0"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Rose",
+          "colors": ["#eebbc5"]
+        },
+        {
+          "type": "Color",
+          "name": "Chocolate",
+          "colors": ["#9a7c69"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#f95891"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Orange",
+          "colors": ["#df6300"]
+        },
+        {
+          "type": "Color",
+          "name": "No Colour Straw",
+          "colors": ["#e1d8d1"]
+        },
+        {
+          "type": "Color",
+          "name": "Slate Blue",
+          "colors": ["#0082dd"]
+        },
+        {
+          "type": "Color",
+          "name": "Bastard Amber",
+          "colors": ["#edc3c4"]
+        },
+        {
+          "type": "Color",
+          "name": "Flame Red",
+          "colors": ["#e2001f"]
+        },
+        {
+          "type": "Color",
+          "name": "Daylight Blue",
+          "colors": ["#0077d8"]
+        },
+        {
+          "type": "Color",
+          "name": "Lilac Tint",
+          "colors": ["#beb1d6"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Lavender",
+          "colors": ["#996ebb"]
+        },
+        {
+          "type": "Color",
+          "name": "Lagoon Blue",
+          "colors": ["#0092c8"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Steel Blue",
+          "colors": ["#4c8bd7"]
+        },
+        {
+          "type": "Color",
+          "name": "Loving Amber",
+          "colors": ["#eb9198"]
+        },
+        {
+          "type": "Color",
+          "name": "Chrome Orange",
+          "colors": ["#f09e00"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Lavender",
+          "colors": ["#6000c5"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo Blue",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Red",
+          "colors": ["#b60000"]
+        },
+        {
+          "type": "Color",
+          "name": "Moonlight Blue",
+          "colors": ["#007ecf"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Peach",
+          "colors": ["#c3b2b3"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Silver Rose",
+          "colors": ["#cab0c0"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Rouge",
+          "colors": ["#cab0b1"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Highlight",
+          "colors": ["#d0bbbc"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Silver Moss",
+          "colors": ["#cac6b8"]
+        },
+        {
+          "type": "Color",
+          "name": "Cosmetic Aqua Blue",
+          "colors": ["#b8c0c8"]
+        },
+        {
+          "type": "Color",
+          "name": "Flesh Pink",
+          "colors": ["#f253ac"]
+        },
+        {
+          "type": "Color",
+          "name": "Surprise Pink",
+          "colors": ["#806ac6"]
+        },
+        {
+          "type": "Color",
+          "name": "Zenith Blue",
+          "colors": ["#0000aa"]
+        },
+        {
+          "type": "Color",
+          "name": "True Blue",
+          "colors": ["#008ad5"]
+        },
+        {
+          "type": "Color",
+          "name": "Alice Blue",
+          "colors": ["#004fbf"]
+        },
+        {
+          "type": "Color",
+          "name": "Palace Blue",
+          "colors": ["#1b0776"]
+        },
+        {
+          "type": "Color",
+          "name": "Regal Blue",
+          "colors": ["#2e18bb"]
+        },
+        {
+          "type": "Color",
+          "name": "Double CT Blue",
+          "colors": ["#2067c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Blue",
+          "colors": ["#7090d3"]
+        },
+        {
+          "type": "Color",
+          "name": "1/2 CT Blue",
+          "colors": ["#99b2db"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 CT Blue",
+          "colors": ["#bac3de"]
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Orange",
+          "colors": ["#e7a36d"]
+        },
+        {
+          "type": "Color",
+          "name": "1/2 CT Orange",
+          "colors": ["#e5bda0"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 CT Orange",
+          "colors": ["#e6c8bf"]
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Orange + *3ND",
+          "colors": ["#b9815b"]
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Orange + *6ND",
+          "colors": ["#885f3e"]
+        },
+        {
+          "type": "Color",
+          "name": "0*3 Neutral Density",
+          "colors": ["#c4c4c4"]
+        },
+        {
+          "type": "Color",
+          "name": "0*6 Neutral Density",
+          "colors": ["#9b9b9b"]
+        },
+        {
+          "type": "Color",
+          "name": "0*9 Neutral Density",
+          "colors": ["#565656"]
+        },
+        {
+          "type": "Color",
+          "name": "LCT Yellow",
+          "colors": ["#e1d9bc"]
+        },
+        {
+          "type": "Color",
+          "name": "White Flame Green",
+          "colors": ["#c4d4bd"]
+        },
+        {
+          "type": "Color",
+          "name": "White Diffusion",
+          "colors": ["#949494"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue Diffusion",
+          "colors": ["#989299"]
+        },
+        {
+          "type": "Color",
+          "name": "1/8 CT Blue",
+          "colors": ["#cfcfe2"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Fluorescent Green",
+          "colors": ["#009b99"]
+        },
+        {
+          "type": "Color",
+          "name": "White Frost",
+          "colors": ["#999999"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue Frost",
+          "colors": ["#a39ca4"]
+        },
+        {
+          "type": "Color",
+          "name": "1/8 CT Orange",
+          "colors": ["#e2d1cf"]
+        },
+        {
+          "type": "Color",
+          "name": "Daylight Blue Frost",
+          "colors": ["#6876b3"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE ND Frost",
+          "colors": ["#837e7f"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE UV",
+          "colors": ["#e1d9e0"]
+        },
+        {
+          "type": "Color",
+          "name": "Brushed Silk",
+          "colors": ["#b8b8b8"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 Tough Spun",
+          "colors": ["#b8b8b8"]
+        },
+        {
+          "type": "Color",
+          "name": "Super Correction LCT",
+          "colors": ["#b29a80"]
+        },
+        {
+          "type": "Color",
+          "name": "Super White Flame Green",
+          "colors": ["#c08b64"]
+        },
+        {
+          "type": "Color",
+          "name": "HMI (To Tungsten)",
+          "colors": ["#eca57d"]
+        },
+        {
+          "type": "Color",
+          "name": "CID (To Tungsten)",
+          "colors": ["#cc876d"]
+        },
+        {
+          "type": "Color",
+          "name": "CSI (To Tungsten)",
+          "colors": ["#a97e7d"]
+        },
+        {
+          "type": "Color",
+          "name": "Polariser",
+          "colors": ["#aaaaaa"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Fluorescent 5700 K",
+          "colors": ["#458da0"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Fluorescent 4300 K",
+          "colors": ["#60a298"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Fluorescent 3600 K",
+          "colors": ["#7baf97"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Plus Green",
+          "colors": ["#b7d1a5"]
+        },
+        {
+          "type": "Color",
+          "name": "1/2 Plus Green",
+          "colors": ["#cad5c0"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 Plus Green",
+          "colors": ["#d2d5cf"]
+        },
+        {
+          "type": "Color",
+          "name": "LEE Minus Green",
+          "colors": ["#d8a5ce"]
+        },
+        {
+          "type": "Color",
+          "name": "1/2 Minus Green",
+          "colors": ["#dcbdd8"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 Minus Green",
+          "colors": ["#decde0"]
+        },
+        {
+          "type": "Color",
+          "name": "1/2 White Diffusion",
+          "colors": ["#b8b8b8"]
+        },
+        {
+          "type": "Color",
+          "name": "1/4 White Diffusion",
+          "colors": ["#cfcfcf"]
+        },
+        {
+          "type": "Color",
+          "name": "1/8 White Diffusion",
+          "colors": ["#dadada"]
+        },
+        {
+          "type": "Color",
+          "name": "Hampshire Frost",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "New Hampshire Frost",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Hollywood Frost",
+          "colors": ["#d3d3d3"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed "
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open "
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open "
+        }
+      ]
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "CTC": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1
+        }
+      ]
+    },
+    "C1": {
+      "highlightValue": 254,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.01
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 4.02
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 5.03
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 6.03
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 7.04
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 8.04,
+          "slotNumberEnd": 8.05
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 9.05
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 10.06
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 11.07
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 12.07
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 13.08
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 14.08
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 15.09
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 16.09
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 17.1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 18.1
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 19.11
+        },
+        {
+          "dmxRange": [29, 34],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 20.11,
+          "slotNumberEnd": 20.13
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 21.14
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 22.14,
+          "slotNumberEnd": 22.18
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 23.18
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 24.19
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 25.19,
+          "slotNumberEnd": 25.2
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 26.2
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 27.21,
+          "slotNumberEnd": 27.22
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 28.23,
+          "slotNumberEnd": 28.24
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 29.24
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 30.25,
+          "slotNumberEnd": 30.26
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 31.27
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 32.28,
+          "slotNumberEnd": 32.29
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 33.29,
+          "slotNumberEnd": 33.31
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 34.31,
+          "slotNumberEnd": 34.33
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 35.33,
+          "slotNumberEnd": 35.34
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 36.35
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 37.35
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 38.35,
+          "slotNumberEnd": 38.39
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 39.39
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 40.4
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 41.4
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 42.4
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 43.41
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 44.41
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 45.42
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 46.42
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 47.42
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 48.43
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 49.43
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 50.44
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 51.44,
+          "slotNumberEnd": 51.45
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 52.45
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 53.45
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 54.46
+        },
+        {
+          "dmxRange": [118, 131],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 55.46,
+          "slotNumberEnd": 55.51
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 56.52
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 57.53
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 58.53
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 59.53
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 60.54
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 61.54
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 62.55
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 63.55
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 64.55
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 65.56
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 66.56
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 67.56,
+          "slotNumberEnd": 67.57
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 68.58
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 69.58,
+          "slotNumberEnd": 69.59
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 70.59
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 71.6
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 72.6
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 73.6,
+          "slotNumberEnd": 73.61
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 74.61
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 75.62
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 76.62
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 77.62,
+          "slotNumberEnd": 77.63
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 78.63
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 79.64
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 80.64
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 81.65,
+          "slotNumberEnd": 81.66
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 82.66
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 83.67
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 84.67,
+          "slotNumberEnd": 84.68
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 85.68,
+          "slotNumberEnd": 85.69
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 86.69,
+          "slotNumberEnd": 86.7
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 87.7
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 88.71
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 89.71
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 90.71
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 91.72
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 92.72,
+          "slotNumberEnd": 92.73
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 93.73
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 94.73
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 95.74
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 96.74,
+          "slotNumberEnd": 96.75
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 97.75
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 98.75,
+          "slotNumberEnd": 98.76
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 99.76
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 100.76
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 101.77
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 102.77
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 103.78
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 104.78
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 105.78
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 106.79
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 107.79
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 108.8
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 109.8
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 110.8
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 111.81
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 112.81,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 113.82,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 114.82,
+          "comment": "30% Neutral Density"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 115.82,
+          "comment": "60% Neutral Density"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 116.83,
+          "comment": "90% Neutral Density"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 117.83
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 118.84
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 119.85
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 120.85
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 121.85
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 122.86
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 123.86
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 124.87
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 125.87
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 126.88
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 127.88
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 128.89
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 129.89
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 130.9
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 131.9,
+          "slotNumberEnd": 131.91,
+          "comment": "Super Correction"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 132.91,
+          "slotNumberEnd": 132.92
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 133.93
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 134.93
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 135.93
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 136.94
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 137.95
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 138.95
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 139.95
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 140.96
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 141.96
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 142.96
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 143.97
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 144.97
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 145.98
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 146.98
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 147.98
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 148.99
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 149.99
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 151
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 152
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "25Hz",
+          "randomTiming": true,
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "12.3Hz",
+          "randomTiming": true,
+          "comment": "Random Medium"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0.4Hz",
+          "randomTiming": true,
+          "comment": "Random Slow"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "2/5 Hz"
+        },
+        {
+          "dmxRange": [8, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "25 Hz"
+        }
+      ]
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Color Macro1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "One Color Static"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Two Color Static"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Three Color Static"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Four Color Static"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "One Color Fade"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Two Color Fade"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Three Color Fade"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Four Color Fade"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Simple Running"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Double Running"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Two Col Running"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Flag Running"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "ColorPreset",
+          "comment": "Double Flag Running"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Spiral 4 Color"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "comment": "Spiral 2 Color"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Rainbow"
+        },
+        {
+          "dmxRange": [126, 133],
+          "type": "ColorPreset",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [134, 141],
+          "type": "ColorPreset",
+          "comment": "Rotor"
+        },
+        {
+          "dmxRange": [142, 149],
+          "type": "ColorPreset",
+          "comment": "Rotor Split 2"
+        },
+        {
+          "dmxRange": [150, -1],
+          "type": "ColorPreset",
+          "comment": "Rotor Split 4"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Macro1 Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Fast"
+        }
+      ]
+    },
+    "Crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (Crossfade)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "No Fade"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown (Crossfade)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (Crossfade)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Smooth Fade"
+        }
+      ]
+    },
+    "Direction": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (Direction)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Forward with Loop"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (Direction)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Forward one time and stop"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Unknown (Direction)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reverse one time and stop"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Unknown (Direction)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reverse with Loop"
+        }
+      ]
+    },
+    "Size": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (Size)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "1 Group"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (Size)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "2 Groups"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Unknown (Size)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "3 Groups"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Unknown (Size)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "4 Groups"
+        }
+      ]
+    },
+    "Offset": {
+      "capability": {
+        "type": "Unknown (Offset)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Restart Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (Restart Program)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Unknown (Restart Program)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Restart Color Macro"
+        }
+      ]
+    },
+    "C1 2": {
+      "name": "C1",
+      "highlightValue": 254,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 2.01
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 3.01
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 4.02
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 5.03
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 6.03
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 7.04
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 8.04,
+          "slotNumberEnd": 8.05
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 9.05
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 10.06
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 11.07
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 12.07
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 13.08
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 14.08
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 15.09
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 16.09
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 17.1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 18.1
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 19.11
+        },
+        {
+          "dmxRange": [29, 34],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 20.11,
+          "slotNumberEnd": 20.13
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 21.14
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 22.14,
+          "slotNumberEnd": 22.18
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 23.18
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 24.19
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 25.19,
+          "slotNumberEnd": 25.2
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 26.2
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 27.21,
+          "slotNumberEnd": 27.22
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 28.23,
+          "slotNumberEnd": 28.24
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 29.24
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 30.25,
+          "slotNumberEnd": 30.26
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 31.27
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 32.28,
+          "slotNumberEnd": 32.29
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 33.29,
+          "slotNumberEnd": 33.31
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 34.31,
+          "slotNumberEnd": 34.33
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 35.33,
+          "slotNumberEnd": 35.34
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 36.35
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 37.35
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 38.35,
+          "slotNumberEnd": 38.39
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 39.39
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 40.4
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 41.4
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 42.4
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 43.41
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 44.41
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 45.42
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 46.42
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 47.42
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 48.43
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 49.43
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 50.44
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 51.44,
+          "slotNumberEnd": 51.45
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 52.45
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 53.45
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 54.46
+        },
+        {
+          "dmxRange": [118, 131],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 55.46,
+          "slotNumberEnd": 55.51
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 56.52
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 57.53
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 58.53
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 59.53
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 60.54
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 61.54
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 62.55
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 63.55
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 64.55
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 65.56
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 66.56
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 67.56,
+          "slotNumberEnd": 67.57
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 68.58
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 69.58,
+          "slotNumberEnd": 69.59
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 70.59
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 71.6
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 72.6
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 73.6,
+          "slotNumberEnd": 73.61
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 74.61
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 75.62
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 76.62
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 77.62,
+          "slotNumberEnd": 77.63
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 78.63
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 79.64
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 80.64
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 81.65,
+          "slotNumberEnd": 81.66
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 82.66
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 83.67
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 84.67,
+          "slotNumberEnd": 84.68
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 85.68,
+          "slotNumberEnd": 85.69
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 86.69,
+          "slotNumberEnd": 86.7
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 87.7
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 88.71
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 89.71
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 90.71
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 91.72
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 92.72,
+          "slotNumberEnd": 92.73
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 93.73
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 94.73
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 95.74
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 96.74,
+          "slotNumberEnd": 96.75
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 97.75
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 98.75,
+          "slotNumberEnd": 98.76
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 99.76
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 100.76
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 101.77
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 102.77
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 103.78
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 104.78
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 105.78
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 106.79
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 107.79
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 108.8
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 109.8
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 110.8
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 111.81
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 112.81,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 113.82,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 114.82,
+          "comment": "30% Neutral Density"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 115.82,
+          "comment": "60% Neutral Density"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 116.83,
+          "comment": "90% Neutral Density"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 117.83
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 118.84
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 119.85
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 120.85
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 121.85
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 122.86
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 123.86
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 124.87
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 125.87
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 126.88
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 127.88
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 128.89
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 129.89
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 130.9
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 131.9,
+          "slotNumberEnd": 131.91,
+          "comment": "Super Correction"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 132.91,
+          "slotNumberEnd": 132.92
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 133.93
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 134.93
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 135.93
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 136.94
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 137.95
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 138.95
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 139.95
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 140.96
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 141.96
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 142.96
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 143.97
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 144.97
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 145.98
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 146.98
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 147.98
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 148.99
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 149.99
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 151
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 152
+        }
+      ]
+    },
+    "C2": {
+      "highlightValue": 254,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 2.01
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 3.01
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 4.02
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 5.03
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 6.03
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 7.04
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 8.04,
+          "slotNumberEnd": 8.05
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 9.05
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 10.06
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 11.07
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 12.07
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 13.08
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 14.08
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 15.09
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 16.09
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 17.1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 18.1
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 19.11
+        },
+        {
+          "dmxRange": [29, 34],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 20.11,
+          "slotNumberEnd": 20.13
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 21.14
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 22.14,
+          "slotNumberEnd": 22.18
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 23.18
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 24.19
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 25.19,
+          "slotNumberEnd": 25.2
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 26.2
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 27.21,
+          "slotNumberEnd": 27.22
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 28.23,
+          "slotNumberEnd": 28.24
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 29.24
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 30.25,
+          "slotNumberEnd": 30.26
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 31.27
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 32.28,
+          "slotNumberEnd": 32.29
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 33.29,
+          "slotNumberEnd": 33.31
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 34.31,
+          "slotNumberEnd": 34.33
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 35.33,
+          "slotNumberEnd": 35.34
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 36.35
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 37.35
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 38.35,
+          "slotNumberEnd": 38.39
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 39.39
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 40.4
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 41.4
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 42.4
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 43.41
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 44.41
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 45.42
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 46.42
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 47.42
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 48.43
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 49.43
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 50.44
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 51.44,
+          "slotNumberEnd": 51.45
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 52.45
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 53.45
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 54.46
+        },
+        {
+          "dmxRange": [118, 131],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 55.46,
+          "slotNumberEnd": 55.51
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 56.52
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 57.53
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 58.53
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 59.53
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 60.54
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 61.54
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 62.55
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 63.55
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 64.55
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 65.56
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 66.56
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 67.56,
+          "slotNumberEnd": 67.57
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 68.58
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 69.58,
+          "slotNumberEnd": 69.59
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 70.59
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 71.6
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 72.6
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 73.6,
+          "slotNumberEnd": 73.61
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 74.61
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 75.62
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 76.62
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 77.62,
+          "slotNumberEnd": 77.63
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 78.63
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 79.64
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 80.64
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 81.65,
+          "slotNumberEnd": 81.66
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 82.66
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 83.67
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 84.67,
+          "slotNumberEnd": 84.68
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 85.68,
+          "slotNumberEnd": 85.69
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 86.69,
+          "slotNumberEnd": 86.7
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 87.7
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 88.71
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 89.71
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 90.71
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 91.72
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 92.72,
+          "slotNumberEnd": 92.73
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 93.73
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 94.73
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 95.74
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 96.74,
+          "slotNumberEnd": 96.75
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 97.75
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 98.75,
+          "slotNumberEnd": 98.76
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 99.76
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 100.76
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 101.77
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 102.77
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 103.78
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 104.78
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 105.78
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 106.79
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 107.79
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 108.8
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 109.8
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 110.8
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 111.81
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 112.81,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 113.82,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 114.82,
+          "comment": "30% Neutral Density"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 115.82,
+          "comment": "60% Neutral Density"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 116.83,
+          "comment": "90% Neutral Density"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 117.83
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 118.84
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 119.85
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 120.85
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 121.85
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 122.86
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 123.86
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 124.87
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 125.87
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 126.88
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 127.88
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 128.89
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 129.89
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 130.9
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 131.9,
+          "slotNumberEnd": 131.91,
+          "comment": "Super Correction"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 132.91,
+          "slotNumberEnd": 132.92
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 133.93
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 134.93
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 135.93
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 136.94
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 137.95
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 138.95
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 139.95
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 140.96
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 141.96
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 142.96
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 143.97
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 144.97
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 145.98
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 146.98
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 147.98
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 148.99
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 149.99
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 151
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 152
+        }
+      ]
+    },
+    "C3": {
+      "highlightValue": 254,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 2.01
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 3.01
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 4.02
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 5.03
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 6.03
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 7.04
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 8.04,
+          "slotNumberEnd": 8.05
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 9.05
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 10.06
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 11.07
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 12.07
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 13.08
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 14.08
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 15.09
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 16.09
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 17.1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 18.1
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 19.11
+        },
+        {
+          "dmxRange": [29, 34],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 20.11,
+          "slotNumberEnd": 20.13
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 21.14
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 22.14,
+          "slotNumberEnd": 22.18
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 23.18
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 24.19
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 25.19,
+          "slotNumberEnd": 25.2
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 26.2
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 27.21,
+          "slotNumberEnd": 27.22
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 28.23,
+          "slotNumberEnd": 28.24
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 29.24
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 30.25,
+          "slotNumberEnd": 30.26
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 31.27
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 32.28,
+          "slotNumberEnd": 32.29
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 33.29,
+          "slotNumberEnd": 33.31
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 34.31,
+          "slotNumberEnd": 34.33
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 35.33,
+          "slotNumberEnd": 35.34
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 36.35
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 37.35
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 38.35,
+          "slotNumberEnd": 38.39
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 39.39
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 40.4
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 41.4
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 42.4
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 43.41
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 44.41
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 45.42
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 46.42
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 47.42
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 48.43
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 49.43
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 50.44
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 51.44,
+          "slotNumberEnd": 51.45
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 52.45
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 53.45
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 54.46
+        },
+        {
+          "dmxRange": [118, 131],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 55.46,
+          "slotNumberEnd": 55.51
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 56.52
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 57.53
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 58.53
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 59.53
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 60.54
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 61.54
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 62.55
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 63.55
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 64.55
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 65.56
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 66.56
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 67.56,
+          "slotNumberEnd": 67.57
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 68.58
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 69.58,
+          "slotNumberEnd": 69.59
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 70.59
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 71.6
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 72.6
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 73.6,
+          "slotNumberEnd": 73.61
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 74.61
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 75.62
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 76.62
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 77.62,
+          "slotNumberEnd": 77.63
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 78.63
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 79.64
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 80.64
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 81.65,
+          "slotNumberEnd": 81.66
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 82.66
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 83.67
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 84.67,
+          "slotNumberEnd": 84.68
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 85.68,
+          "slotNumberEnd": 85.69
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 86.69,
+          "slotNumberEnd": 86.7
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 87.7
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 88.71
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 89.71
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 90.71
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 91.72
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 92.72,
+          "slotNumberEnd": 92.73
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 93.73
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 94.73
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 95.74
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 96.74,
+          "slotNumberEnd": 96.75
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 97.75
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 98.75,
+          "slotNumberEnd": 98.76
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 99.76
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 100.76
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 101.77
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 102.77
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 103.78
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 104.78
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 105.78
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 106.79
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 107.79
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 108.8
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 109.8
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 110.8
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 111.81
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 112.81,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 113.82,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 114.82,
+          "comment": "30% Neutral Density"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 115.82,
+          "comment": "60% Neutral Density"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 116.83,
+          "comment": "90% Neutral Density"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 117.83
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 118.84
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 119.85
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 120.85
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 121.85
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 122.86
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 123.86
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 124.87
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 125.87
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 126.88
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 127.88
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 128.89
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 129.89
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 130.9
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 131.9,
+          "slotNumberEnd": 131.91,
+          "comment": "Super Correction"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 132.91,
+          "slotNumberEnd": 132.92
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 133.93
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 134.93
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 135.93
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 136.94
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 137.95
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 138.95
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 139.95
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 140.96
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 141.96
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 142.96
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 143.97
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 144.97
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 145.98
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 146.98
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 147.98
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 148.99
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 149.99
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 151
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 152
+        }
+      ]
+    },
+    "C4": {
+      "highlightValue": 254,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 2.01
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 3.01
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 4.02
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 5.03
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 6.03
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 7.04
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 8.04,
+          "slotNumberEnd": 8.05
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 9.05
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 10.06
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 11.07
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 12.07
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 13.08
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 14.08
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 15.09
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 16.09
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 17.1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 18.1
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 19.11
+        },
+        {
+          "dmxRange": [29, 34],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 20.11,
+          "slotNumberEnd": 20.13
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 21.14
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 22.14,
+          "slotNumberEnd": 22.18
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 23.18
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 24.19
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 25.19,
+          "slotNumberEnd": 25.2
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 26.2
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 27.21,
+          "slotNumberEnd": 27.22
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 28.23,
+          "slotNumberEnd": 28.24
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 29.24
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 30.25,
+          "slotNumberEnd": 30.26
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 31.27
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 32.28,
+          "slotNumberEnd": 32.29
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 33.29,
+          "slotNumberEnd": 33.31
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 34.31,
+          "slotNumberEnd": 34.33
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 35.33,
+          "slotNumberEnd": 35.34
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 36.35
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 37.35
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 38.35,
+          "slotNumberEnd": 38.39
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 39.39
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 40.4
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 41.4
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 42.4
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 43.41
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 44.41
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 45.42
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 46.42
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 47.42
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 48.43
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 49.43
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 50.44
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 51.44,
+          "slotNumberEnd": 51.45
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 52.45
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 53.45
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 54.46
+        },
+        {
+          "dmxRange": [118, 131],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 55.46,
+          "slotNumberEnd": 55.51
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 56.52
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 57.53
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 58.53
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 59.53
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 60.54
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 61.54
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 62.55
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 63.55
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 64.55
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 65.56
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 66.56
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 67.56,
+          "slotNumberEnd": 67.57
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 68.58
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 69.58,
+          "slotNumberEnd": 69.59
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 70.59
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 71.6
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 72.6
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 73.6,
+          "slotNumberEnd": 73.61
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 74.61
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 75.62
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 76.62
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 77.62,
+          "slotNumberEnd": 77.63
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 78.63
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 79.64
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 80.64
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 81.65,
+          "slotNumberEnd": 81.66
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 82.66
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 83.67
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 84.67,
+          "slotNumberEnd": 84.68
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 85.68,
+          "slotNumberEnd": 85.69
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 86.69,
+          "slotNumberEnd": 86.7
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 87.7
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 88.71
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 89.71
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 90.71
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 91.72
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 92.72,
+          "slotNumberEnd": 92.73
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 93.73
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 94.73
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 95.74
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 96.74,
+          "slotNumberEnd": 96.75
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 97.75
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 98.75,
+          "slotNumberEnd": 98.76
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 99.76
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 100.76
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 101.77
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 102.77
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 103.78
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 104.78
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 105.78
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 106.79
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 107.79
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 108.8
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 109.8
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 110.8
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 111.81
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 112.81,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 113.82,
+          "comment": "Full CT Orange +"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 114.82,
+          "comment": "30% Neutral Density"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 115.82,
+          "comment": "60% Neutral Density"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 116.83,
+          "comment": "90% Neutral Density"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 117.83
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 118.84
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 119.85
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 120.85
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 121.85
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 122.86
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 123.86
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 124.87
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 125.87
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 126.88
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 127.88
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 128.89
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 129.89
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 130.9
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 131.9,
+          "slotNumberEnd": 131.91,
+          "comment": "Super Correction"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumberStart": 132.91,
+          "slotNumberEnd": 132.92
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 133.93
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 134.93
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 135.93
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 136.94
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 137.95
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 138.95
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 139.95
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 140.96
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 141.96
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 142.96
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 143.97
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 144.97
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 145.98
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 146.98
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 147.98
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 148.99
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 149.99
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 151
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlot",
+          "wheel": "Virtual ColorWheel",
+          "slotNumber": 152
+        }
+      ]
+    },
+    "CTC 2": {
+      "name": "CTC",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "Green / Magenta": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "No shift"
+        },
+        {
+          "dmxRange": [129, 254],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (Green / Magenta)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Green"
+        }
+      ]
+    },
+    "Color Mix Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full CCT"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full RGB"
+        }
+      ]
+    },
+    "H": {
+      "fineChannelAliases": ["H fine"],
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (HSB_Hue)",
+        "physicalStart": "0deg",
+        "physicalEnd": "1deg"
+      }
+    },
+    "S": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (HSB_Saturation)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 5 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "X": {
+      "fineChannelAliases": ["X fine"],
+      "highlightValue": 27232,
+      "capability": {
+        "type": "Unknown (CIE_X)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Y": {
+      "fineChannelAliases": ["Y fine"],
+      "highlightValue": 28462,
+      "capability": {
+        "type": "Unknown (CIE_Y)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open "
+        }
+      ]
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 7 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open "
+        }
+      ]
+    },
+    "Color Mix Mode 2": {
+      "name": "Color Mix Mode",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full CCT"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full X Y"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1: RGB",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "2: RGBW ",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White"
+      ]
+    },
+    {
+      "name": "3: RGBAW",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "White"
+      ]
+    },
+    {
+      "name": "4: DIM RGB",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "5: DIM RGBW",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B",
+        "White"
+      ]
+    },
+    {
+      "name": "6: DIM RGBAW",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "White"
+      ]
+    },
+    {
+      "name": "7: RGB CCT DIM IND",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "CTC",
+        "Dim 3",
+        "C1"
+      ]
+    },
+    {
+      "name": "8: RGBS",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "9: RGBWS",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "10: RGBAWS",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "White",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "11: DIM RGBS",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "12: DIM RGBWS ",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B",
+        "White",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "13: DIM RGBAWS",
+      "channels": [
+        "Dim 3",
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "White",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "14: RGB CCT DIM IND S",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "CTC",
+        "Dim 3",
+        "C1",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "15: Effect Mode Fix",
+      "channels": [
+        "Dim 3",
+        "Sh1",
+        "Color Macro1",
+        "Color Macro1 Rate",
+        "Crossfade",
+        "Direction",
+        "Size",
+        "Offset",
+        "Restart Program",
+        "C1 2",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "name": "16: Effect Mode RGB",
+      "channels": [
+        "Dim 3",
+        "Sh1",
+        "Color Macro1",
+        "Color Macro1 Rate",
+        "Crossfade",
+        "Direction",
+        "Size",
+        "Offset",
+        "Restart Program",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "89: D CCT GM CRO RGB",
+      "channels": [
+        "Dim 3",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "90: D CCT GM HUE SAT",
+      "channels": [
+        "Dim 3",
+        "CTC 2",
+        "Green / Magenta",
+        "H",
+        "S"
+      ]
+    },
+    {
+      "name": "91: D16 CCT GM C RGB",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode",
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "92: D16 CCT GM H SAT",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "H",
+        "H fine",
+        "S"
+      ]
+    },
+    {
+      "name": "93: D16 X Y",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine"
+      ]
+    },
+    {
+      "name": "94: D CCT GM CRO RGB S",
+      "channels": [
+        "Dim 3",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode",
+        "R",
+        "G",
+        "B",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "95: D CCT GM HUE SAT S",
+      "channels": [
+        "Dim 6",
+        "CTC 2",
+        "Green / Magenta",
+        "H",
+        "S",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "96: D16 CCT GM H SAT S",
+      "channels": [
+        "Dim 7",
+        "Dim 7 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "H",
+        "H fine",
+        "S",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "97: D16 X Y S",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "137: D16 CCT GM C RGB S",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode",
+        "R",
+        "G",
+        "B",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "168: D CCT GM C CRO XY",
+      "channels": [
+        "Dim 3",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode 2",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine"
+      ]
+    },
+    {
+      "name": "169: D16 CCT GM C CRO XY ",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode 2",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine"
+      ]
+    },
+    {
+      "name": "170: D CCT GM C CRO XY S",
+      "channels": [
+        "Dim 3",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode 2",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "171: D16 CCT GM C CRO XY S",
+      "channels": [
+        "Dim 5",
+        "Dim 5 fine",
+        "CTC 2",
+        "Green / Magenta",
+        "Color Mix Mode 2",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Sh1"
+      ]
+    }
+  ]
+}
