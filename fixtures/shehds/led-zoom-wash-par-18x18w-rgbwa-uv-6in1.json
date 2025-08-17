@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": " LED Zoom-Wash Par 18x18W RGBWA UV 6in1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Franco Piccolo"],
+    "createDate": "2025-04-25",
+    "lastModifyDate": "2025-04-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-04-25",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [308, 308, 350],
+    "weight": 3.5,
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1100
+    },
+    "lens": {
+      "degreesMinMax": [8, 60]
+    }
+  },
+  "availableChannels": {
+    "Master Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Flash/Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed from"
+      }
+    },
+    "Built-in Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "color Mixing"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color mode 1"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color mode 2"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Color mode 3"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound activated",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed of execution of built-in programs",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Red Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Green Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Blue Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "White Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Amber Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Ultraviolet Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "comment": "Linear dimming from dark to bright"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset No function."
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "physical": {
+        "dimensions": [216, 292, 304],
+        "weight": 3.4,
+        "power": 335,
+        "lens": {
+          "degreesMinMax": [45, 45]
+        }
+      },
+      "channels": [
+        "Master Dimming",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Amber Dimming",
+        "Ultraviolet Dimming",
+        "Flash/Strobe",
+        "Built-in Programs",
+        "Zoom",
+        "Program Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
