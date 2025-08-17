@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AT10",
+  "shortName": "AT10",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Rene115"],
+    "createDate": "2023-10-04",
+    "lastModifyDate": "2023-10-04"
+  },
+  "comment": "LED Par RGBA",
+  "links": {
+    "manual": [
+      "https://www.veranstaltungstechnikmueller.de/pdf/Litecraft_Outled_AT10_Bedienungsanleitung.pdf"
+    ],
+    "productPage": [
+      "https://lmp.de/"
+    ]
+  },
+  "physical": {
+    "dimensions": [29, 22, 31],
+    "weight": 6,
+    "power": 138,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Presets"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Ch. Color Makro",
+      "shortName": "1 Ch.",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "2 Ch. Makro + Dim.",
+      "shortName": "2 Ch.",
+      "channels": [
+        "Color Macros",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "3 Ch.",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "RGBA",
+      "shortName": "4 Ch.",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "8 Ch. Full",
+      "shortName": "8 Ch.",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Effect Duration",
+        "Dimmer"
+      ]
+    }
+  ]
+}
