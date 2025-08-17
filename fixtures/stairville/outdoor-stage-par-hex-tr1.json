@@ -1,0 +1,500 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor Stage Par Hex TR1",
+  "categories": ["Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["Topaz Production"],
+    "createDate": "2023-03-29",
+    "lastModifyDate": "2023-03-29"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_outdoor_stage_par_hex_tr1.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [246, 300, 200],
+    "weight": 3.5,
+    "power": 50,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#ff0f00", "#ff3200", "#ff7d00", "#ffaa00", "#ffd200", "#ffff00", "#c8ff00", "#a0ff00", "#6eff00", "#46ff00", "#00ff00", "#00ff0a", "#00ff19", "#00ff28", "#00ff46", "#00ff78", "#00ffff", "#0064ff", "#0000ff", "#1400ff", "#3200ff", "#5000ff", "#8200ff", "#e100ff", "#ff00ff", "#ff00dc", "#ff0046", "#ff0014", "#ff0007", "#ffffff", "#ff9696", "#ffc8c8", "#96ff96", "#c8ffc8", "#9696ff", "#9696ff", "#e6e6ff"]
+        }
+      ]
+    },
+    "Program Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "Effect",
+          "effectName": "Programme 02"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "Effect",
+          "effectName": "Programme 03"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "Effect",
+          "effectName": "Programme 04"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "Effect",
+          "effectName": "Programme 05"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "Effect",
+          "effectName": "Programme 06"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "Effect",
+          "effectName": "Programme 07"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "Effect",
+          "effectName": "Programme 08"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "Effect",
+          "effectName": "Programme 09"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "Effect",
+          "effectName": "Programme 10"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "Effect",
+          "effectName": "Programme 11"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "Effect",
+          "effectName": "Programme 12"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "Effect",
+          "effectName": "Programme 13"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "Effect",
+          "effectName": "Programme 14"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "Effect",
+          "effectName": "Programme 15"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "Effect",
+          "effectName": "Programme 16"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "Effect",
+          "effectName": "Programme 17"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "Effect",
+          "effectName": "User programme 01"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "Effect",
+          "effectName": "User programme 02"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "Effect",
+          "effectName": "User programme 03"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "Effect",
+          "effectName": "User programme 04"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "User programme 05"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Prog 02 to 17 speed control"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11-Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Program Selection",
+        "Program Speed",
+        "Strobe"
+      ]
+    }
+  ]
+}
