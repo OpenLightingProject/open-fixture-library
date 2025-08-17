@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ariane 1430FC",
+  "shortName": "Ariane",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["PierreM"],
+    "createDate": "2023-01-31",
+    "lastModifyDate": "2023-01-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/ariane-1430fc"
+    ],
+    "productPage": [
+      "https://www.star-way.com/ariane-1430fc"
+    ],
+    "video": [
+      "https://www.star-way.com/ariane-1430fc"
+    ]
+  },
+  "physical": {
+    "dimensions": [1100, 180, 230],
+    "weight": 6.7,
+    "power": 450,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 60]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "constant": true,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 245],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channels",
+      "shortName": "8Ch",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Effect Speed",
+        "Effect Duration",
+        "Program Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
