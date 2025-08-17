@@ -1,0 +1,984 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJ LASER 10W RGB",
+  "shortName": "LASER 10W",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["knight laser pub 1"],
+    "createDate": "2023-12-20",
+    "lastModifyDate": "2025-07-12",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-07-15",
+      "comment": "GDTF v1.2 fixture type ID: BB5A7445-8472-402E-A528-D889008F3AAD"
+    }
+  },
+  "wheels": {
+    "Gobo wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Wheel Slot 1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [12, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Source": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (Source)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (Source)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Factory gobo"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Source)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "SD card gobo"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Source)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Memory inside gobo"
+        }
+      ]
+    },
+    "Frame": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Unknown (Frame)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Frames"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Unknown (Frame)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Frame Loop"
+        }
+      ]
+    },
+    "File": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 5"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 6"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 7"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 8"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 9"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 11"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 12"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 13"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 14"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 15"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 16"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 17"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 18"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 19"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 20"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 21"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 22"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 23"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 24"
+        },
+        {
+          "dmxRange": [240, -1],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "File 25"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (File)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 1"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 3"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 4"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 5"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 6"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 7"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 8"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 9"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 11"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 12"
+        },
+        {
+          "dmxRange": [240, -1],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Show 13"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Show)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Manual default speed"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Manual speed"
+        },
+        {
+          "dmxRange": [128, 132],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Audio control"
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Audio control speed"
+        }
+      ]
+    },
+    " In color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (In color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Color drawing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Color drawing)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Out color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Out color)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "P": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "Pan Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        }
+      ]
+    },
+    "T": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "Tilt Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (ZoomMode)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (ZoomMode)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (ZoomMode)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (ZoomMode)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (Rotate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Rotate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Rotate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        }
+      ]
+    },
+    "Scale X": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (Scale X)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Scale X)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Scale X)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        }
+      ]
+    },
+    "Scale Y": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (Scale Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Scale Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Scale Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        }
+      ]
+    },
+    "Wave X": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Wave X)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (Wave X)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Wave X)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Wave X)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        }
+      ]
+    },
+    "Wave Y": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Wave Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (Wave Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Wave Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Wave Y)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        }
+      ]
+    },
+    "Wave Amplitude": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (Wave Amplitude)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "1 cycle"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (Wave Amplitude)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "1 cycles"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Wave Amplitude)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "3 cycles"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Wave Amplitude)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "4 cycles"
+        }
+      ]
+    },
+    "Width": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Width)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Width)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Width)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Width)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        }
+      ]
+    },
+    "Array": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Array)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Array)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Array)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Array)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Array)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Border": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Unknown (Border)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Smooth "
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Unknown (Border)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Real time"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Unknown (Border)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Smooth 2"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Unknown (Border)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Real time 2"
+        }
+      ]
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 26ch",
+      "channels": [
+        "Dim",
+        "Source",
+        "Frame",
+        "File",
+        "Show",
+        "Control",
+        " In color",
+        "Color drawing",
+        "Out color",
+        "P",
+        "Pan Mode",
+        "T",
+        "Tilt Mode",
+        "Zoom",
+        "Rotate",
+        "Scale X",
+        "Scale Y",
+        "Wave X",
+        "Wave Y",
+        "Wave Amplitude",
+        "Width",
+        "Sh1",
+        "Array",
+        "Border",
+        "R",
+        "G",
+        "B"
+      ]
+    }
+  ]
+}
