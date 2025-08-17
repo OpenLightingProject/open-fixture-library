@@ -1,0 +1,194 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lumen x",
+  "shortName": "lumen x",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["MICHAL 9510PL"],
+    "createDate": "2025-01-09",
+    "lastModifyDate": "2025-01-09"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=MMjq5oKC4Tw&feature=shared"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "RED DIMMER": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMER": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMER": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE LED1": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "WHITE LED2": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "WHITE LED 3": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "WHITE LED 4": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "ColorPreset",
+          "comment": "NO FUNKTION"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "RED STATIC"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "GREEN STATIC"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "BLUE STATIC"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "WHITE STATIC"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "RED GREEN STATIC"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "RED BLUE STATIC"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "GREEN BLUE STATIC"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "RED GREEN BLUE STATIC"
+        },
+        {
+          "dmxRange": [61, 90],
+          "type": "ColorPreset",
+          "comment": "MACRO1"
+        },
+        {
+          "dmxRange": [91, 120],
+          "type": "ColorPreset",
+          "comment": "MACRO2"
+        },
+        {
+          "dmxRange": [121, 150],
+          "type": "ColorPreset",
+          "comment": "MACRO3"
+        },
+        {
+          "dmxRange": [151, 180],
+          "type": "ColorPreset",
+          "comment": "MACRO4"
+        },
+        {
+          "dmxRange": [181, 255],
+          "type": "ColorPreset",
+          "comment": "MACRO5"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "RED DIMMER",
+        "GREEN DIMMER",
+        "BLUE DIMMER",
+        "WHITE LED1",
+        "WHITE LED2",
+        "WHITE LED 3",
+        "WHITE LED 4",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
