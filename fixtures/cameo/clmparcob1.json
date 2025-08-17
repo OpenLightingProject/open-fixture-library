@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLMPARCOB1",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Trerkstar1989"],
+    "createDate": "2024-07-11",
+    "lastModifyDate": "2024-07-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/103929/Cameo-Clmparcob1.html"
+    ],
+    "productPage": [
+      "https://www.adamhall.com/shop/cn-en/archiv/2209/multi-par-cob-1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=LXl5PgLqKaE"
+    ]
+  },
+  "physical": {
+    "dimensions": [1005, 285, 80],
+    "weight": 8.8,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "30W RGB COB Colour"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Rot"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Colour setting \\ Music Control \\ Strobe": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Colour setting Channel 1-3"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Power Out 1": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Power Out 1 Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Power Out 1 On"
+        }
+      ]
+    },
+    "Power Out 2": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Power Out 2 Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Power Out 2 On"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Colour setting \\ Music Control \\ Strobe",
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    }
+  ]
+}
