@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lichterkette",
+  "shortName": "lichterkette",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-08-17",
+    "lastModifyDate": "2025-08-17"
+  },
+  "links": {
+    "other": [
+      "https://flake-systems.de"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
