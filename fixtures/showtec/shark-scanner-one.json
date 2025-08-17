@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Shark Scanner One",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Joho"],
+    "createDate": "2023-04-12",
+    "lastModifyDate": "2023-04-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/en/45025-shark-scan-one.html"
+    ],
+    "productPage": [
+      "https://www.highlite.com/en/45025-shark-scan-one.html"
+    ],
+    "video": [
+      "https://www.highlite.com/en/45025-shark-scan-one.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [253, 158, 379],
+    "weight": 5.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led",
+      "colorTemperature": 10000,
+      "lumens": 2245
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "160deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "50deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "fineChannelAliases": ["Pan/Tilt Speed fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "fineChannelAliases": ["Pan/Tilt Speed 2 fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distance": "near"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Autoplay 1"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic",
+          "comment": "Autoplay 2"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Autoplay 3"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "Generic",
+          "comment": "Autoplay 4"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Autoplay 5"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "Autoplay6"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "Autoplay 7"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "Generic",
+          "comment": "Autoplay 8"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "Generic",
+          "comment": "Autoplay 9"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "Autoplay 10"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "autoplay 11"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "Autoplay 12"
+        },
+        {
+          "dmxRange": [181, 255],
+          "type": "Generic",
+          "comment": "Play to sound"
+        }
+      ]
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "XY macro"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "X/Y auto run 1"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "X/Y auto run 2"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "X/Y auto run 3"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "X/Y auto run 4"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "X/Y auto run 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "X/Y auto run 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "X/Y auto run 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "X/Y autorun 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Generic",
+          "comment": "X/Y to sound control from low to high"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "reset (10S)"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed 2",
+        "Dimmer",
+        "Strobe",
+        "Focus",
+        "Color Macros",
+        "Color Macros 2"
+      ]
+    }
+  ]
+}
