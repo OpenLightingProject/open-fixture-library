@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBWALUV",
+  "shortName": "RGBWALUV",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Hunter Lee"],
+    "createDate": "2025-08-19",
+    "lastModifyDate": "2025-08-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.elationlighting.com/cdn/shop/files/ELATION_SEVEN_BATTEN_42_DMX_TRAITS.pdf?v=2944173783563922197"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "RED-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "UV-1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "42ch Cellsx6",
+      "shortName": "42ch Cellsx6",
+      "channels": [
+        "RED-1",
+        "Green-1",
+        "Blue-1",
+        "White-1",
+        "Amber-1",
+        "Lime-1",
+        "UV-1"
+      ]
+    }
+  ]
+}
