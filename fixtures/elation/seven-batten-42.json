@@ -1,0 +1,7296 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Seven Batten 42",
+  "shortName": "SEVBAT42",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Hunter Lee"],
+    "createDate": "2024-02-20",
+    "lastModifyDate": "2024-02-20",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-08-19",
+      "comment": "GDTF v1.2 fixture type ID: 06EC7CEE-75C8-48AF-AC44-73CE22BC28A5"
+    }
+  },
+  "comment": "The SEVEN BATTEN 42™ is a seven color 3.5 foot (1m) long batten wash luminaire with (36) 25W 7-in-1 RGBAW + Lime + UV (395nm) LEDs. Features include individual hue, saturation, and intensity control, special RGB SEVEN 3 channel mode (RGB + dynamic white, amber, lime, and UV), 6 pixel mapping zones with pixel flip mode, smooth color mixing, 12 internal programs with speed and fade control, 64 unique 7-color macros, selectable dimming curve modes, adjustable LED refresh rate and gamma brightness for flicker free operation for TV and FILM, DMX Art-Net, Kling-Net, and RDM (Remote Device Management) protocol support, 3/5pin DMX, RJ45 ethernet, and Locking Power Cable in/out connections, dual 220° manual tilt adjustable mounting brackets, OLED menu display with a 4-button control panel, a multi-voltage universal auto switching power supply (100-240v), a rugged powder coated die-cast aluminum exterior, and an integrated gel / frost filter slot.",
+  "rdm": {
+    "modelId": 38
+  },
+  "wheels": {
+    "RGBL Color Macro": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 1",
+          "colors": ["#6165d1"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 2",
+          "colors": ["#c1ede1"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 3",
+          "colors": ["#cceae6"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 4",
+          "colors": ["#f6dedf"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 5",
+          "colors": ["#f6dedf"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 6",
+          "colors": ["#f1e1db"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 7",
+          "colors": ["#876b68"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 8",
+          "colors": ["#9c6259"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 9",
+          "colors": ["#9a6266"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 10",
+          "colors": ["#ba4c55"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 11",
+          "colors": ["#96627c"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 12",
+          "colors": ["#9d5b8d"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 13",
+          "colors": ["#8f6484"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 14",
+          "colors": ["#8c6395"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 15",
+          "colors": ["#be90e9"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 16",
+          "colors": ["#b770c8"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 17",
+          "colors": ["#b880fb"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 18",
+          "colors": ["#654689"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 19",
+          "colors": ["#4d479d"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 20",
+          "colors": ["#3643b2"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 21",
+          "colors": ["#3d4cc9"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 22",
+          "colors": ["#4151d7"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 23",
+          "colors": ["#4758ea"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 24",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 25",
+          "colors": ["#806e6b"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 26",
+          "colors": ["#a45c62"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 27",
+          "colors": ["#906670"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 28",
+          "colors": ["#8d6777"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 29",
+          "colors": ["#d8e6f0"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 30",
+          "colors": ["#5d4aaa"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 31",
+          "colors": ["#d9e7e5"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 32",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 33",
+          "colors": ["#8d6868"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 34",
+          "colors": ["#9e615f"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 35",
+          "colors": ["#b1545e"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 36",
+          "colors": ["#a95967"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 37",
+          "colors": ["#b55500"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 38",
+          "colors": ["#ce3700"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 39",
+          "colors": ["#fa00aa"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 40",
+          "colors": ["#a346c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 41",
+          "colors": ["#e800f6"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 42",
+          "colors": ["#c095fd"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 43",
+          "colors": ["#555ebe"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 44",
+          "colors": ["#504a83"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 45",
+          "colors": ["#9628e3"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 46",
+          "colors": ["#0083ed"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 47",
+          "colors": ["#005b8e"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 48",
+          "colors": ["#00b1f4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 49",
+          "colors": ["#00bfdf"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 50",
+          "colors": ["#00b5eb"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 51",
+          "colors": ["#004e93"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 52",
+          "colors": ["#004a8c"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 53",
+          "colors": ["#004684"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 54",
+          "colors": ["#004480"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 55",
+          "colors": ["#0080f1"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 56",
+          "colors": ["#0076e0"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 57",
+          "colors": ["#c8bddb"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 58",
+          "colors": ["#79e1cd"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 59",
+          "colors": ["#294f88"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 60",
+          "colors": ["#004395"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 61",
+          "colors": ["#94c1d9"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 62",
+          "colors": ["#cbbef6"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 63",
+          "colors": ["#1600aa"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 64",
+          "colors": ["#dde4d9"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "R": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red"
+        }
+      ]
+    },
+    "G": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green"
+        }
+      ]
+    },
+    "B": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue"
+        }
+      ]
+    },
+    "White": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White"
+        }
+      ]
+    },
+    "Amber": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber"
+        }
+      ]
+    },
+    "Blue-Green": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime"
+        }
+      ]
+    },
+    "UV": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV"
+        }
+      ]
+    },
+    "R 2": {
+      "name": "R",
+      "fineChannelAliases": ["R 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red"
+        }
+      ]
+    },
+    "G 2": {
+      "name": "G",
+      "fineChannelAliases": ["G 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green"
+        }
+      ]
+    },
+    "B 2": {
+      "name": "B",
+      "fineChannelAliases": ["B 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue"
+        }
+      ]
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White"
+        }
+      ]
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 2 fine"],
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber"
+        }
+      ]
+    },
+    "Blue-Green 2": {
+      "name": "Blue-Green",
+      "fineChannelAliases": ["Blue-Green 2 fine"],
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75%  Lime"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime"
+        }
+      ]
+    },
+    "UV 2": {
+      "name": "UV",
+      "fineChannelAliases": ["UV 2 fine"],
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV"
+        },
+        {
+          "dmxRange": [1, 16447],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [16448, 16448],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV"
+        },
+        {
+          "dmxRange": [16449, 32895],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [32896, 32896],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV"
+        },
+        {
+          "dmxRange": [32897, 49086],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [49087, 49087],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV"
+        },
+        {
+          "dmxRange": [49088, 65534],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV"
+        }
+      ]
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "0%"
+        },
+        {
+          "dmxRange": [1, 6553],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [6554, 6554],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "10%"
+        },
+        {
+          "dmxRange": [6555, 13106],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [13107, 13107],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "20%"
+        },
+        {
+          "dmxRange": [13108, 16383],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [16384, 16384],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [16385, 19660],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [19661, 19661],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "30%"
+        },
+        {
+          "dmxRange": [19662, 26213],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [26214, 26214],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "40%"
+        },
+        {
+          "dmxRange": [26215, 32767],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [32769, 39320],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [39321, 39321],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "60%"
+        },
+        {
+          "dmxRange": [39322, 45874],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [45875, 45875],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "70%"
+        },
+        {
+          "dmxRange": [45876, 49150],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [49151, 49151],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [49152, 52427],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [52428, 52428],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "80%"
+        },
+        {
+          "dmxRange": [52429, 58981],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [58982, 58982],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "90%"
+        },
+        {
+          "dmxRange": [58983, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "100%"
+        }
+      ]
+    },
+    "Sh1": {
+      "highlightValue": 50,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter Closed (1)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter Open (1)"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe slow"
+        },
+        {
+          "dmxRange": [67, 77],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe mid"
+        },
+        {
+          "dmxRange": [81, 92],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Shutter Open (2)"
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Pulse slow"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [141, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Pulse mid"
+        },
+        {
+          "dmxRange": [144, 156],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Pulse fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Shutter Open (3)"
+        },
+        {
+          "dmxRange": [192, 194],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Str Rnd slow"
+        },
+        {
+          "dmxRange": [195, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [205, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Str Rnd mid"
+        },
+        {
+          "dmxRange": [208, 220],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [221, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Str Rnd fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Shutter Open (4)"
+        }
+      ]
+    },
+    "Dim Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Stage 2"
+        },
+        {
+          "dmxRange": [121, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "DEFAULT TO UNIT SETTING"
+        }
+      ]
+    },
+    "FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "No Function",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "PROGRAM 01",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "PROGRAM 02",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "PROGRAM 03",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "PROGRAM 04",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "PROGRAM 05",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "PROGRAM 06",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "PROGRAM 07",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "PROGRAM 08",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "PROGRAM 09",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "PROGRAM 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Effect",
+          "effectName": "PROGRAM 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "PROGRAM 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz",
+        "comment": "Program Macro SPEED SLOW to FAST"
+      }
+    },
+    "FX1 Fade": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": 0,
+        "durationEnd": 1,
+        "comment": "Program Macro FADE SLOW to FAST"
+      }
+    },
+    "C1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 33
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 34
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 35
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 36
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 37
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 38
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 39
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 40
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 41
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 42
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 43
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 44
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 45
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 46
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 47
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 48
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 49
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 50
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 51
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 52
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 53
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 54
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 55
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 56
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 57
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 58
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 59
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 60
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 61
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 62
+        },
+        {
+          "dmxRange": [241, 244],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 63
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 64
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 65
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "WheelSlot",
+          "wheel": "RGBL Color Macro",
+          "slotNumber": 66
+        }
+      ]
+    },
+    "Amber 3": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber"
+        }
+      ]
+    },
+    "Blue-Green 3": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime"
+        }
+      ]
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 1 "
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 1"
+        }
+      ]
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 1"
+        }
+      ]
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 1"
+        }
+      ]
+    },
+    "White 3": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 1"
+        }
+      ]
+    },
+    "Amber 4": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 1"
+        }
+      ]
+    },
+    "Blue-Green 4": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 1"
+        }
+      ]
+    },
+    "UV 3": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 1"
+        }
+      ]
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 2"
+        }
+      ]
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 2"
+        }
+      ]
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 2"
+        }
+      ]
+    },
+    "White 4": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 2"
+        }
+      ]
+    },
+    "Amber 5": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 2"
+        }
+      ]
+    },
+    "Blue-Green 5": {
+      "name": "Blue-Green",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 2"
+        }
+      ]
+    },
+    "UV 4": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 2"
+        }
+      ]
+    },
+    "R 5": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red  3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 3"
+        }
+      ]
+    },
+    "G 5": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 3"
+        }
+      ]
+    },
+    "B 5": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 3"
+        }
+      ]
+    },
+    "White 5": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 3"
+        }
+      ]
+    },
+    "Amber 6": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 3"
+        }
+      ]
+    },
+    "Blue-Green 6": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 3"
+        }
+      ]
+    },
+    "UV 5": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 3"
+        }
+      ]
+    },
+    "R 6": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 4"
+        }
+      ]
+    },
+    "G 6": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 4"
+        }
+      ]
+    },
+    "B 6": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 4"
+        }
+      ]
+    },
+    "White 6": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 4"
+        }
+      ]
+    },
+    "Amber 7": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 4"
+        }
+      ]
+    },
+    "Blue-Green 7": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 4"
+        }
+      ]
+    },
+    "UV 6": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 4"
+        }
+      ]
+    },
+    "R 7": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red  5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 5"
+        }
+      ]
+    },
+    "G 7": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 5"
+        }
+      ]
+    },
+    "B 7": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 5"
+        }
+      ]
+    },
+    "White 7": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 5"
+        }
+      ]
+    },
+    "Amber 8": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 5"
+        }
+      ]
+    },
+    "Blue-Green 8": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 5"
+        }
+      ]
+    },
+    "UV 7": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 5"
+        }
+      ]
+    },
+    "R 8": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red  6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 6"
+        }
+      ]
+    },
+    "G 8": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 6"
+        }
+      ]
+    },
+    "B 8": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Blue 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Blue 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Blue 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Blue 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Blue 6"
+        }
+      ]
+    },
+    "White 8": {
+      "name": "White",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "0% White 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "25%  White 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "50% White 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "75%  White 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "100%  White 6"
+        }
+      ]
+    },
+    "Amber 9": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "0% Amber 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "25% Amber 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "50% Amber 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "75% Amber 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "100% Amber 6"
+        }
+      ]
+    },
+    "Blue-Green 9": {
+      "name": "Blue-Green",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "0% Lime 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "25% Lime 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "50% Lime 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "75% Lime 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue-Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "100% Lime 6"
+        }
+      ]
+    },
+    "UV 8": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "50% UV 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 6"
+        }
+      ]
+    },
+    "R 9": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 1"
+        }
+      ]
+    },
+    "R 10": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 3"
+        }
+      ]
+    },
+    "UV 9": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "0% UV 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "25%  UV 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": " 50% UV 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "75%  UV 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "100%  UV 5"
+        }
+      ]
+    },
+    "R 11": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": " 25% Red 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 6"
+        }
+      ]
+    },
+    "R 12": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 5"
+        }
+      ]
+    },
+    "G 9": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "0% Green 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "25% Green 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "50% Green 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "75% Green 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "100% Green 5 "
+        }
+      ]
+    },
+    "R 13": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "0% Red 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "25% Red 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "50% Red 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "75% Red 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "100% Red 6"
+        }
+      ]
+    },
+    "H": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue"
+        }
+      ]
+    },
+    "S": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation"
+        }
+      ]
+    },
+    "B 9": {
+      "name": "B",
+      "fineChannelAliases": ["B 9 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0%"
+        },
+        {
+          "dmxRange": [1, 6553],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [6554, 6554],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10%"
+        },
+        {
+          "dmxRange": [6555, 13106],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [13107, 13107],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20%"
+        },
+        {
+          "dmxRange": [13108, 16383],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [16384, 16384],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [16385, 19660],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [19661, 19661],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30%"
+        },
+        {
+          "dmxRange": [19662, 26213],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [26214, 26214],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40%"
+        },
+        {
+          "dmxRange": [26215, 32767],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [32769, 39320],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [39321, 39321],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60%"
+        },
+        {
+          "dmxRange": [39322, 45874],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [45875, 45875],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70%"
+        },
+        {
+          "dmxRange": [45876, 49150],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [49151, 49151],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [49152, 52427],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [52428, 52428],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80%"
+        },
+        {
+          "dmxRange": [52429, 58981],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [58982, 58982],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90%"
+        },
+        {
+          "dmxRange": [58983, 65534],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100%"
+        }
+      ]
+    },
+    "H 2": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 1"
+        }
+      ]
+    },
+    "S 2": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 1"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation 1"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 1"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 1"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 1"
+        }
+      ]
+    },
+    "B 10": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 1"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 1"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 1"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 1"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 1"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 1"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 1"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 1"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 1"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 1"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 1"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 1"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 1"
+        }
+      ]
+    },
+    "H 3": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 2"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 2"
+        }
+      ]
+    },
+    "S 3": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 2"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 2"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 2"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 2"
+        }
+      ]
+    },
+    "B 11": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 2"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 2"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 2"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 2"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 2"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 2"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 2"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 2"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 2"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 2"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 2"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 2"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 2"
+        }
+      ]
+    },
+    "H 4": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 3"
+        }
+      ]
+    },
+    "S 4": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 3"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation 3"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 3"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 3"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 3"
+        }
+      ]
+    },
+    "B 12": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 3"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 3"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 3"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 3"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 3"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 3"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 3"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 3"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 3"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 3"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 3"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 3"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 3"
+        }
+      ]
+    },
+    "H 5": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 4"
+        }
+      ]
+    },
+    "S 5": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 4"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation 4"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 4"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 4"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 4"
+        }
+      ]
+    },
+    "B 13": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 4"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 4"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 4"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 4"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 4"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 4"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 4"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 4"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 4"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 4"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 4"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 4"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 4"
+        }
+      ]
+    },
+    "H 6": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 5"
+        }
+      ]
+    },
+    "S 6": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 5"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation 5"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 5"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 5"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 5"
+        }
+      ]
+    },
+    "B 14": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 5"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 5"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 5"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 5"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 5"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 5"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 5"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 5"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 5"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 5"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 5"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 5"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 5"
+        }
+      ]
+    },
+    "H 7": {
+      "name": "H",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "0% Hue 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "25% Hue 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "50% Hue 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "75% Hue 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Hue)",
+          "physicalStart": "0deg",
+          "physicalEnd": "1deg",
+          "comment": "100% Hue 6"
+        }
+      ]
+    },
+    "S 7": {
+      "name": "S",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Saturation 6"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Saturation 6"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Saturation 6"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Saturation 6"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Saturation)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Saturation 6"
+        }
+      ]
+    },
+    "B 15": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "0% Brightness 6"
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "10% Brightness 6"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "20% Brightness 6"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "25% Brightness 6"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "30% Brightness 6"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "40% Brightness 6"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "50% Brightness 6"
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "60% Brightness 6"
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "70% Brightness 6"
+        },
+        {
+          "dmxRange": [180, 190],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "75% Brightness 6"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "80% Brightness 6"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "90% Brightness 6"
+        },
+        {
+          "dmxRange": [231, 254],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (HSB_Brightness)",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "100% Brightness 6"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB 3CH",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "RGBSeven 3CH",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "8Bit 7CH",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Amber",
+        "Blue-Green",
+        "UV"
+      ]
+    },
+    {
+      "name": "16Bit 14CH",
+      "channels": [
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Amber 2",
+        "Amber 2 fine",
+        "Blue-Green 2",
+        "Blue-Green 2 fine",
+        "UV 2",
+        "UV 2 fine"
+      ]
+    },
+    {
+      "name": "16bit + Dim 16CH",
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Amber 2",
+        "Amber 2 fine",
+        "Blue-Green 2",
+        "Blue-Green 2 fine",
+        "UV 2",
+        "UV 2 fine"
+      ]
+    },
+    {
+      "name": "Ext 15CH",
+      "channels": [
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Dim Mode",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Fade",
+        "C1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "Amber 3",
+        "Blue-Green 3",
+        "UV"
+      ]
+    },
+    {
+      "name": "Cells 42CH",
+      "channels": [
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 3",
+        "Amber 4",
+        "Blue-Green 4",
+        "UV 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "Amber 5",
+        "Blue-Green 5",
+        "UV 4",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 5",
+        "Amber 6",
+        "Blue-Green 6",
+        "UV 5",
+        "R 6",
+        "G 6",
+        "B 6",
+        "White 6",
+        "Amber 7",
+        "Blue-Green 7",
+        "UV 6",
+        "R 7",
+        "G 7",
+        "B 7",
+        "White 7",
+        "Amber 8",
+        "Blue-Green 8",
+        "UV 7",
+        "R 8",
+        "G 8",
+        "B 8",
+        "White 8",
+        "Amber 9",
+        "Blue-Green 9",
+        "UV 8"
+      ]
+    },
+    {
+      "name": "Cells Dim 44CH",
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "R 9",
+        "G 3",
+        "B 3",
+        "White 3",
+        "Amber 4",
+        "Blue-Green 4",
+        "UV 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "Amber 5",
+        "Blue-Green 5",
+        "UV 4",
+        "R 10",
+        "G 5",
+        "B 5",
+        "White 5",
+        "Amber 6",
+        "Blue-Green 6",
+        "UV 5",
+        "R 6",
+        "G 6",
+        "B 6",
+        "White 6",
+        "Amber 7",
+        "Blue-Green 7",
+        "UV 6",
+        "R 7",
+        "G 7",
+        "B 7",
+        "White 7",
+        "Amber 8",
+        "Blue-Green 8",
+        "UV 9",
+        "R 11",
+        "G 8",
+        "B 8",
+        "White 8",
+        "Amber 9",
+        "Blue-Green 9",
+        "UV 8"
+      ]
+    },
+    {
+      "name": "Ext Cells 50CH",
+      "channels": [
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Dim Mode",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Fade",
+        "C1",
+        "R 9",
+        "G 3",
+        "B 3",
+        "White 3",
+        "Amber 4",
+        "Blue-Green 4",
+        "UV 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "Amber 5",
+        "Blue-Green 5",
+        "UV 4",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 5",
+        "Amber 6",
+        "Blue-Green 6",
+        "UV 5",
+        "R 6",
+        "G 6",
+        "B 6",
+        "White 6",
+        "Amber 7",
+        "Blue-Green 7",
+        "UV 6",
+        "R 12",
+        "G 9",
+        "B 7",
+        "White 7",
+        "Amber 8",
+        "Blue-Green 8",
+        "UV 7",
+        "R 13",
+        "G 8",
+        "B 8",
+        "White 8",
+        "Amber 9",
+        "Blue-Green 9",
+        "UV 8"
+      ]
+    },
+    {
+      "name": "HSI 4CH",
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "H",
+        "S"
+      ]
+    },
+    {
+      "name": "HSI Mast 10CH",
+      "channels": [
+        "Sh1",
+        "B 9",
+        "B 9 fine",
+        "Dim Mode",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Fade",
+        "C1",
+        "H",
+        "S"
+      ]
+    },
+    {
+      "name": "HSI Cell  26CH",
+      "channels": [
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Dim Mode",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Fade",
+        "C1",
+        "H 2",
+        "S 2",
+        "B 10",
+        "H 3",
+        "S 3",
+        "B 11",
+        "H 4",
+        "S 4",
+        "B 12",
+        "H 5",
+        "S 5",
+        "B 13",
+        "H 6",
+        "S 6",
+        "B 14",
+        "H 7",
+        "S 7",
+        "B 15"
+      ]
+    }
+  ]
+}
