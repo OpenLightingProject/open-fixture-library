@@ -1,19 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vector Pixel BAR 18x 15W RGBWA",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": ["Pixel Bar"],
   "meta": {
-    "authors": ["Stephan Klein", "Flo Edelmann"],
-    "createDate": "2020-03-29",
-    "lastModifyDate": "2020-03-29"
-  },
-  "links": {
-    "manual": [
-      "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0016266-000.pdf"
-    ],
-    "productPage": [
-      "https://www.musicstore.com/en_US/USD/lightmaXX-Vector-Pixel-BAR-18x-15W-RGBWA/art-LIG0016266-000"
-    ]
+    "authors": ["Stephan Klein", "Flo Edelmann", "Tobias Haack"],
+    "createDate": "2025-08-23",
+    "lastModifyDate": "2025-08-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-08-23",
+      "comment": "created by OFL – https://open-fixture-library.org/lightmaxx/vector-pixel-bar-18x-15w-rgbwa (version 1.3.1)"
+    }
   },
   "physical": {
     "dimensions": [1130, 150, 210],
@@ -28,23 +25,27 @@
     }
   },
   "matrix": {
-    "pixelCount": [18, 1, 1],
-    "pixelGroups": {
-      "Master": "all"
-    }
+    "pixelCount": [
+      18,
+      1,
+      1
+    ]
   },
   "availableChannels": {
     "Dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
+      "defaultValue": 0,
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
       }
     },
     "Function": {
@@ -54,7 +55,7 @@
           "dmxRange": [0, 17],
           "type": "NoFunction",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
@@ -62,7 +63,7 @@
           "type": "Effect",
           "effectName": "Color Change",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Running Effects"
+            "Unused / Running Effects / Color Running Effect Direction": "Running Effects"
           }
         },
         {
@@ -70,7 +71,7 @@
           "type": "Effect",
           "effectName": "Colorful running jump change",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Color Running Effect Direction"
+            "Unused / Running Effects / Color Running Effect Direction": "Color Running Effect Direction"
           }
         },
         {
@@ -78,41 +79,40 @@
           "type": "Effect",
           "effectName": "Colorful running gradual change",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Color Running Effect Direction"
+            "Unused / Running Effects / Color Running Effect Direction": "Color Running Effect Direction"
           }
         },
         {
           "dmxRange": [33, 37],
           "type": "Effect",
           "effectName": "Color",
-          "helpWanted": "What does this capability do?",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
           "dmxRange": [38, 42],
           "type": "Effect",
-          "effectPreset": "ColorJump",
+          "effectName": "Color jump",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
           "dmxRange": [43, 47],
           "type": "Effect",
-          "effectPreset": "ColorFade",
+          "effectName": "Color fade",
+          "comment": "Color fade",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
           "dmxRange": [48, 251],
           "type": "Effect",
           "effectName": "Running effects 1…50",
-          "helpWanted": "Which running effect is active at which DMX values?",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
@@ -121,12 +121,13 @@
           "effectName": "Sound to light",
           "soundControlled": true,
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Unused / Running Effects / Color Running Effect Direction": "Unused"
           }
         }
       ]
     },
     "Running Effects": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -380,12 +381,12 @@
         {
           "dmxRange": [246, 255],
           "type": "Effect",
-          "effectName": "Running effect 50",
-          "helpWanted": "According to the manual, this capability starts at 251. If it does, how are the DMX ranges of the other capabilities?"
+          "effectName": "Running effect 50"
         }
       ]
     },
     "Color Running Effect Direction": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -400,55 +401,795 @@
       ]
     },
     "Unused": {
+      "defaultValue": 0,
       "capability": {
         "type": "NoFunction"
       }
     },
     "Function Speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "EffectSpeed",
+        "type": "Speed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "comment": "Effect speed slow…fast"
       }
-    }
-  },
-  "templateChannels": {
-    "RGBWA Dimmer $pixelKey": {
+    },
+    "RGBWA Dimmer 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
-    "Red $pixelKey": {
+    "RGBWA Dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green $pixelKey": {
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue $pixelKey": {
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White $pixelKey": {
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber $pixelKey": {
+    "White 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber Master": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     }
   },
+  "templateChannels": {},
   "modes": [
     {
       "name": "10-channel",
@@ -457,7 +1198,7 @@
         "Dimmer",
         "Strobe",
         "Function",
-        "Running Effects / Color Running Effect Direction",
+        "Unused / Running Effects / Color Running Effect Direction",
         "Function Speed",
         "Red Master",
         "Green Master",
@@ -473,39 +1214,127 @@
         "Dimmer",
         "Strobe",
         "Function",
-        "Running Effects / Color Running Effect Direction",
+        "Unused / Running Effects / Color Running Effect Direction",
         "Function Speed",
         "Red Master",
         "Green Master",
         "Blue Master",
         "White Master",
         "Amber Master",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "RGBWA Dimmer $pixelKey"
-          ]
-        }
+        "RGBWA Dimmer 1",
+        "RGBWA Dimmer 2",
+        "RGBWA Dimmer 3",
+        "RGBWA Dimmer 4",
+        "RGBWA Dimmer 5",
+        "RGBWA Dimmer 6",
+        "RGBWA Dimmer 7",
+        "RGBWA Dimmer 8",
+        "RGBWA Dimmer 9",
+        "RGBWA Dimmer 10",
+        "RGBWA Dimmer 11",
+        "RGBWA Dimmer 12",
+        "RGBWA Dimmer 13",
+        "RGBWA Dimmer 14",
+        "RGBWA Dimmer 15",
+        "RGBWA Dimmer 16",
+        "RGBWA Dimmer 17",
+        "RGBWA Dimmer 18"
       ]
     },
     {
       "name": "90-channel",
       "shortName": "90ch",
       "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey",
-            "Amber $pixelKey"
-          ]
-        }
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Amber 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Amber 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Amber 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Amber 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 5",
+        "Amber 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "White 6",
+        "Amber 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "White 7",
+        "Amber 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "White 8",
+        "Amber 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "White 9",
+        "Amber 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "White 10",
+        "Amber 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "White 11",
+        "Amber 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "White 12",
+        "Amber 12",
+        "Red 13",
+        "Green 13",
+        "Blue 13",
+        "White 13",
+        "Amber 13",
+        "Red 14",
+        "Green 14",
+        "Blue 14",
+        "White 14",
+        "Amber 14",
+        "Red 15",
+        "Green 15",
+        "Blue 15",
+        "White 15",
+        "Amber 15",
+        "Red 16",
+        "Green 16",
+        "Blue 16",
+        "White 16",
+        "Amber 16",
+        "Red 17",
+        "Green 17",
+        "Blue 17",
+        "White 17",
+        "Amber 17",
+        "Red 18",
+        "Green 18",
+        "Blue 18",
+        "White 18",
+        "Amber 18"
       ]
     },
     {
@@ -515,25 +1344,103 @@
         "Dimmer",
         "Strobe",
         "Function",
-        "Running Effects / Color Running Effect Direction",
+        "Unused / Running Effects / Color Running Effect Direction",
         "Function Speed",
         "Red Master",
         "Green Master",
         "Blue Master",
         "White Master",
         "Amber Master",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey",
-            "Amber $pixelKey"
-          ]
-        }
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Amber 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Amber 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Amber 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Amber 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 5",
+        "Amber 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "White 6",
+        "Amber 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "White 7",
+        "Amber 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "White 8",
+        "Amber 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "White 9",
+        "Amber 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "White 10",
+        "Amber 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "White 11",
+        "Amber 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "White 12",
+        "Amber 12",
+        "Red 13",
+        "Green 13",
+        "Blue 13",
+        "White 13",
+        "Amber 13",
+        "Red 14",
+        "Green 14",
+        "Blue 14",
+        "White 14",
+        "Amber 14",
+        "Red 15",
+        "Green 15",
+        "Blue 15",
+        "White 15",
+        "Amber 15",
+        "Red 16",
+        "Green 16",
+        "Blue 16",
+        "White 16",
+        "Amber 16",
+        "Red 17",
+        "Green 17",
+        "Blue 17",
+        "White 17",
+        "Amber 17",
+        "Red 18",
+        "Green 18",
+        "Blue 18",
+        "White 18",
+        "Amber 18"
       ]
     }
   ]
