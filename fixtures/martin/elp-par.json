@@ -1,0 +1,919 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ELP PAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Solal1985"],
+    "createDate": "2024-03-18",
+    "lastModifyDate": "2024-03-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/elp-par-user-guide-0cdfc385-56e4-4d59-b094-c7b138be0b68"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/elp-par"
+    ]
+  },
+  "physical": {
+    "dimensions": [287, 401, 312],
+    "weight": 7.8,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "7 x 40 W RGBW Osram LEDs",
+      "colorTemperature": 6500,
+      "lumens": 3500
+    },
+    "lens": {
+      "degreesMinMax": [4.2, 38.7]
+    }
+  },
+  "wheels": {
+    "Color Wheel effect (color presets)": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Moroccan Pink (LEE 790)"
+        },
+        {
+          "type": "Color",
+          "name": "Pink (LEE 157)"
+        },
+        {
+          "type": "Color",
+          "name": "Special Rose Pink (LEE 332)"
+        },
+        {
+          "type": "Color",
+          "name": "Follies Pink (LEE 328)"
+        },
+        {
+          "type": "Color",
+          "name": "Fuchsia Pink (LEE 345)"
+        },
+        {
+          "type": "Color",
+          "name": "Surprise Pink (LEE 194)"
+        },
+        {
+          "type": "Color",
+          "name": "Congo Blue (LEE 181)"
+        },
+        {
+          "type": "Color",
+          "name": "Tokyo Blue (LEE 071)"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Blue (LEE 120)"
+        },
+        {
+          "type": "Color",
+          "name": "Just Blue (LEE 079)"
+        },
+        {
+          "type": "Color",
+          "name": "Medium Blue (LEE 132)"
+        },
+        {
+          "type": "Color",
+          "name": "Double CT Blue (LEE 200)"
+        },
+        {
+          "type": "Color",
+          "name": "Slate Blue (LEE 161)"
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Blue (LEE 201)"
+        },
+        {
+          "type": "Color",
+          "name": "Half CT Blue (LEE 202)"
+        },
+        {
+          "type": "Color",
+          "name": "Steel Blue (LEE 117)"
+        },
+        {
+          "type": "Color",
+          "name": "Lighter Blue (LEE 353)"
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue (LEE 118)"
+        },
+        {
+          "type": "Color",
+          "name": "Medium Blue Green (LEE 116)"
+        },
+        {
+          "type": "Color",
+          "name": "Dark Green (LEE 124)"
+        },
+        {
+          "type": "Color",
+          "name": "Primary Green (LEE 139)"
+        },
+        {
+          "type": "Color",
+          "name": "Moss Green (LEE 089)"
+        },
+        {
+          "type": "Color",
+          "name": "Fern Green (LEE 122)"
+        },
+        {
+          "type": "Color",
+          "name": "Jas Green (LEE 738)"
+        },
+        {
+          "type": "Color",
+          "name": "Lime Green (LEE 088)"
+        },
+        {
+          "type": "Color",
+          "name": "Spring Yellow (LEE 100)"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Amber (LEE 104)"
+        },
+        {
+          "type": "Color",
+          "name": "Chrome Orange (LEE 179)"
+        },
+        {
+          "type": "Color",
+          "name": "Orange (LEE 105)"
+        },
+        {
+          "type": "Color",
+          "name": "Gold Amber (LEE 021)"
+        },
+        {
+          "type": "Color",
+          "name": "Millennium Gold (LEE 778)"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Golden Amber (LEE 135)"
+        },
+        {
+          "type": "Color",
+          "name": "Flame Red (LEE 164)"
+        },
+        {
+          "type": "Color",
+          "name": "Red Magenta (LEE 113)"
+        },
+        {
+          "type": "Color",
+          "name": "Medium Lavender (LEE 343)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure White (White LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Red (Red LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Yellow (Red+Green LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Green (Green LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Cyan (Green+Blue LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Blue (Blue LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Pure Magenta (Blue+Red LEDs only)"
+        },
+        {
+          "type": "Color",
+          "name": "Peacock Blue (LEE 115)"
+        },
+        {
+          "type": "Color",
+          "name": "Dark Lavender (LEE 180)"
+        },
+        {
+          "type": "Color",
+          "name": "Double CT Orange (LEE 287)"
+        },
+        {
+          "type": "Color",
+          "name": "Full CT Orange (LEE 204)"
+        },
+        {
+          "type": "Color",
+          "name": "Half CT Orange (LEE 205)"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Straw (LEE 015)"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Strobe and shutter effects": {
+      "defaultValue": 30,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CTC": {
+      "defaultValue": 118,
+      "capabilities": [
+        {
+          "dmxRange": [0, 34],
+          "type": "ColorTemperature",
+          "colorTemperature": "1800K"
+        },
+        {
+          "dmxRange": [35, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1801K",
+          "colorTemperatureEnd": "12850K"
+        }
+      ]
+    },
+    "Color Wheel effect (color presets)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Open (white)"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "ColorPreset",
+          "comment": "Moroccan Pink (LEE 790)"
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "ColorPreset",
+          "comment": "Pink (LEE 157)"
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "ColorPreset",
+          "comment": "Special Rose Pink (LEE 332)"
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "ColorPreset",
+          "comment": "Follies Pink (LEE 328)"
+        },
+        {
+          "dmxRange": [19, 20],
+          "type": "ColorPreset",
+          "comment": "Fuchsia Pink (LEE 345)"
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "ColorPreset",
+          "comment": "Surprise Pink (LEE 194)"
+        },
+        {
+          "dmxRange": [23, 24],
+          "type": "ColorPreset",
+          "comment": "Congo Blue (LEE 181)"
+        },
+        {
+          "dmxRange": [25, 26],
+          "type": "ColorPreset",
+          "comment": "Tokyo Blue (LEE 071)"
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "Deep Blue (LEE 120)"
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "ColorPreset",
+          "comment": "Just Blue (LEE 079)"
+        },
+        {
+          "dmxRange": [31, 32],
+          "type": "ColorPreset",
+          "comment": "Medium Blue (LEE 132)"
+        },
+        {
+          "dmxRange": [33, 34],
+          "type": "ColorPreset",
+          "comment": "Double CT Blue (LEE 200)"
+        },
+        {
+          "dmxRange": [35, 36],
+          "type": "ColorPreset",
+          "comment": "Slate Blue (LEE 161)"
+        },
+        {
+          "dmxRange": [37, 38],
+          "type": "ColorPreset",
+          "comment": "Full CT Blue (LEE 201)"
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "ColorPreset",
+          "comment": "Half CT Blue (LEE 202)"
+        },
+        {
+          "dmxRange": [41, 42],
+          "type": "ColorPreset",
+          "comment": "Steel Blue (LEE 117)"
+        },
+        {
+          "dmxRange": [43, 44],
+          "type": "ColorPreset",
+          "comment": "Lighter Blue (LEE 353)"
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "ColorPreset",
+          "comment": "Light Blue (LEE 118)"
+        },
+        {
+          "dmxRange": [47, 48],
+          "type": "ColorPreset",
+          "comment": "Medium Blue Green (LEE 116)"
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "ColorPreset",
+          "comment": "Dark Green (LEE 124)"
+        },
+        {
+          "dmxRange": [51, 52],
+          "type": "ColorPreset",
+          "comment": "Primary Green (LEE 139)"
+        },
+        {
+          "dmxRange": [53, 54],
+          "type": "ColorPreset",
+          "comment": "Moss Green (LEE 089)"
+        },
+        {
+          "dmxRange": [55, 56],
+          "type": "ColorPreset",
+          "comment": "Fern Green (LEE 122)"
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "ColorPreset",
+          "comment": "Jas Green (LEE 738)"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "ColorPreset",
+          "comment": "Lime Green (LEE 088)"
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow (LEE 100)"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "comment": "Deep Amber (LEE 104)"
+        },
+        {
+          "dmxRange": [65, 66],
+          "type": "ColorPreset",
+          "comment": "Chrome Orange (LEE 179)"
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "ColorPreset",
+          "comment": "Orange (LEE 105)"
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "ColorPreset",
+          "comment": "Gold Amber (LEE 021)"
+        },
+        {
+          "dmxRange": [71, 72],
+          "type": "ColorPreset",
+          "comment": "Millennium Gold (LEE 778)"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber (LEE 135)"
+        },
+        {
+          "dmxRange": [75, 76],
+          "type": "ColorPreset",
+          "comment": "Flame Red (LEE 164)"
+        },
+        {
+          "dmxRange": [77, 78],
+          "type": "ColorPreset",
+          "comment": "Red Magenta (LEE 113)"
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "ColorPreset",
+          "comment": "Medium Lavender (LEE 343)"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "ColorPreset",
+          "comment": "Pure White (White LEDs only)"
+        },
+        {
+          "dmxRange": [83, 84],
+          "type": "ColorPreset",
+          "comment": "Pure Red (Red LEDs only)"
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "ColorPreset",
+          "comment": "Pure Yellow (Red+Green LEDs only)"
+        },
+        {
+          "dmxRange": [87, 88],
+          "type": "ColorPreset",
+          "comment": "Pure Green (Green LEDs only)"
+        },
+        {
+          "dmxRange": [89, 90],
+          "type": "ColorPreset",
+          "comment": "Pure Cyan (Green+Blue LEDs only)"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "ColorPreset",
+          "comment": "Pure Blue (Blue LEDs only)"
+        },
+        {
+          "dmxRange": [93, 94],
+          "type": "ColorPreset",
+          "comment": "Pure Magenta (Blue+Red LEDs only)"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue (LEE 115)"
+        },
+        {
+          "dmxRange": [97, 98],
+          "type": "ColorPreset",
+          "comment": "Dark Lavender (LEE 180)"
+        },
+        {
+          "dmxRange": [99, 100],
+          "type": "ColorPreset",
+          "comment": "Double CT Orange (LEE 287)"
+        },
+        {
+          "dmxRange": [101, 102],
+          "type": "ColorPreset",
+          "comment": "Full CT Orange (LEE 204)"
+        },
+        {
+          "dmxRange": [103, 104],
+          "type": "ColorPreset",
+          "comment": "Half CT Orange (LEE 205)"
+        },
+        {
+          "dmxRange": [105, 106],
+          "type": "ColorPreset",
+          "comment": "Deep Straw (LEE 015)"
+        },
+        {
+          "dmxRange": [107, 190],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [191, 214],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [220, 243],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Random Colors, fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Random colors, medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random colors, slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Control/Settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "No function (disables calibration) – 5 s"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset fixture – 5 s"
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset beam – 5 s"
+        },
+        {
+          "dmxRange": [18, 22],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Linear dimming curve – 1 s"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Square law dimming curve – 1 s"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Inverse square law dimming curve –1 s"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "S-curve dimming curve – 1 s"
+        },
+        {
+          "dmxRange": [27, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Dimming speed = Fast – 1 s"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Dimming speed = Slow – 1 s"
+        },
+        {
+          "dmxRange": [33, 37],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Extended color mode – 1 s"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Calibrated color mode – 1 s"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Raw color mode –1 s"
+        },
+        {
+          "dmxRange": [41, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Display ON –1 s"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Display OFF –1 s"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Regulated fan speed, fixed intensity – 1 s"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Full fan speed, regulated intensity – 1 s"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Theater mode: reduced max. intensity, low fan speed – 1 s"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Hibernation mode = ON – 5 s"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Hibernation mode = OFF – 5 s"
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Tungsten emulation = ON – 1 s"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Tungsten emulation = OFF – 1 s"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Scene catch record – 5 s"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Scene catch playback = ON – 5 s"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Scene catch playback = OFF – 5 s"
+        },
+        {
+          "dmxRange": [77, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Enable calibration – 5 s"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store dimmer calibration – 5 s"
+        },
+        {
+          "dmxRange": [103, 113],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store zoom calibration – 5 s"
+        },
+        {
+          "dmxRange": [115, 198],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset ALL calibration settings to factory defaults – 5 s"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Strobe and shutter effects",
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "CTC",
+        "Color Wheel effect (color presets)",
+        "Zoom",
+        "Zoom fine",
+        "Control/Settings"
+      ]
+    },
+    {
+      "name": "Compact",
+      "channels": [
+        "Strobe and shutter effects",
+        "Dimmer",
+        "Dimmer fine",
+        "Red 3",
+        "Green 2",
+        "Blue 2",
+        "CTC",
+        "Zoom",
+        "Zoom fine"
+      ]
+    }
+  ]
+}
