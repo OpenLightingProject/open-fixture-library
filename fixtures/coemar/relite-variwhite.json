@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ReLite Variwhite",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Arthur"],
+    "createDate": "2025-08-26",
+    "lastModifyDate": "2025-08-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.coemar.com/products/retrofit-led-lamp/"
+    ],
+    "productPage": [
+      "https://www.coemar.com/products/retrofit-led-lamp/"
+    ],
+    "video": [
+      "https://www.coemar.com/products/retrofit-led-lamp/"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
