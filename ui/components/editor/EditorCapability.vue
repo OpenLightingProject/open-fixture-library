@@ -2,8 +2,8 @@
   <ConditionalDetails :open="capability.open" class="capability">
     <template #summary>
       DMX range
-      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
-      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <code :class="{ 'unset': start === null }">{{ start === null ? min : start }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end === null ? max : end }}</code>:
       <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
     </template>
 
