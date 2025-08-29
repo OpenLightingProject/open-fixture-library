@@ -68,13 +68,20 @@
     },
     "Strobe": {
       "defaultValue": 0,
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0%",
-        "speedEnd": "100%",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        { 
+          "dmxRange": [10, 255],  
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
     },
     "Auto Programs": {
       "defaultValue": 0,
