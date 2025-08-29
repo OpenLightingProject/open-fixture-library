@@ -74,8 +74,8 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
-        { 
-          "dmxRange": [10, 255],  
+        {
+          "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0%",
@@ -91,10 +91,10 @@
           "type": "NoFunction"
         },
         {
-        "dmxRange": [10, 255],
-        "type": "Effect",
-        "effectName": "Built-in automatic show programs",
-        "helpWanted": "What programs are available and at which DMX values?"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Built-in automatic show programs",
+          "helpWanted": "What programs are available and at which DMX values?"
         }
       ]
     }
