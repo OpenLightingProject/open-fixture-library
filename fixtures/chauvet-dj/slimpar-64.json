@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPAR 64",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Pierre Chaussalet"],
+    "createDate": "2025-08-29",
+    "lastModifyDate": "2025-08-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/SlimPAR_64_UM_Rev1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/slimpar-64/"
+    ]
+  },
+  "physical": {
+    "dimensions": [282, 246, 64],
+    "weight": 1.3,
+    "power": 32,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [14, 14]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
