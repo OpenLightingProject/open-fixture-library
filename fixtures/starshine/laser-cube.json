@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "laser cube",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["eg anonymus"],
+    "createDate": "2025-09-02",
+    "lastModifyDate": "2025-09-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.starshinelights.com/collections/laser-cube-series?srsltid=AfmBOorJLmvboRahYLMKE4-00MvnexonvhzqqkJN5jSGad9Mq1XVEVyN"
+    ],
+    "productPage": [
+      "https://www.starshinelights.com/collections/laser-cube-series?srsltid=AfmBOorJLmvboRahYLMKE4-00MvnexonvhzqqkJN5jSGad9Mq1XVEVyN"
+    ],
+    "video": [
+      "https://www.starshinelights.com/collections/laser-cube-series?srsltid=AfmBOorJLmvboRahYLMKE4-00MvnexonvhzqqkJN5jSGad9Mq1XVEVyN"
+    ]
+  },
+  "physical": {
+    "dimensions": [10, 10, 10],
+    "weight": 2,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Pattern": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Effect",
+          "effectName": "otros low"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Line"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "Effect",
+          "effectName": "otros"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "test",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Pattern"
+      ]
+    }
+  ]
+}
