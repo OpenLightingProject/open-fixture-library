@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Deco bar",
+  "shortName": "BAR RGBA",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["anon"],
+    "createDate": "2025-09-03",
+    "lastModifyDate": "2025-09-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.mediaexpert.pl/products/files/74/7475294/Instrukcja-obslugi-LIGHT4ME-Deco-Bar-LED-24-RGBA.pdf"
+    ],
+    "productPage": [
+      "https://www.musicexpress.pl/light4me-deco-bar-24-rgb-ir-listwa-belka-led-pilot.html?srsltid=AfmBOoqizH4o41ax8HSTwDDFFg2HBcxULtvoxOA33rMzAPtJM2-JPjtZ"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=h8ECHZnxotM"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4CH",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
