@@ -41,6 +41,12 @@
     }
   },
   "availableChannels": {
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
   },
   "templateChannels": {
     "White $pixelKey": {
