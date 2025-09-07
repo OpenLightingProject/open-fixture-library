@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led COB 200 W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Christophe", "Christophe Mourey"],
+    "createDate": "2025-09-07",
+    "lastModifyDate": "2025-09-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "weight": 6,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500,
+      "lumens": 5000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Cool White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 canaux",
+      "channels": [
+        "Cool White",
+        "Warm White",
+        "Zoom"
+      ]
+    }
+  ]
+}
