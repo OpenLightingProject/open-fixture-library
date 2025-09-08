@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SPOT80XAV",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["xav"],
+    "createDate": "2025-09-08",
+    "lastModifyDate": "2025-09-08"
+  },
+  "links": {
+    "productPage": [
+      "https://www.algam-webstore.fr/algam-lighting-mb80-lyre-beam-80w-584911.html"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "P/T speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "P/T speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Presets",
+        "Reserved 2",
+        "Gobo Wheel",
+        "Color Wheel Rotation",
+        "Focus",
+        "Prism",
+        "Pan fine",
+        "Tilt fine",
+        "Reserved 3"
+      ]
+    }
+  ]
+}
