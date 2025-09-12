@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "20W Moving Head Dj Light, LED Beam Moving Head Stage Lights, 8-Prism 8 GOBOs 8 Colors DMX 12CH Sound for Disco Party Stage Lighting",
+  "shortName": "120W Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["m gIBSON"],
+    "createDate": "2025-09-12",
+    "lastModifyDate": "2025-09-12"
+  },
+  "links": {
+    "manual": [
+      "https://community.etcconnect.com/cfs-file/__key/communityserver-discussions-components-files/51/LED_5F00_150W_5F00_Beam_5F00_Moving-Head-_2800_1_2900_.pdf"
+    ],
+    "productPage": [
+      "https://www.amazon.com/Prism-Moving-Lights-Bright-moving/dp/B09Y9HSPDP"
+    ],
+    "video": [
+      "https://www.amazon.com/Prism-Moving-Lights-Bright-moving/dp/B09Y9HSPDP"
+    ]
+  },
+  "physical": {
+    "dimensions": [269.748, 244.348, 159.766],
+    "weight": 4.8489024,
+    "power": 120,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PAN",
+      "channels": [
+        "Pan",
+        "Pan fine"
+      ]
+    }
+  ]
+}
