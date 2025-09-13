@@ -6,7 +6,7 @@ const environmentVariablesOfl = {
   'ALLOW_SEARCH_INDEXING': `allowed`,
   'GITHUB_USER_TOKEN': secrets.OFL_GITHUB_USER_TOKEN,
   'NODE_ENV': `production`,
-  'PORT': `5000`,
+  'NITRO_PORT': `5000`,
   'WEBSITE_URL': `https://open-fixture-library.org/`,
 };
 
