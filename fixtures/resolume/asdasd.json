@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "asdasd",
+  "shortName": "asdasd",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["asd"],
+    "createDate": "2025-09-14",
+    "lastModifyDate": "2025-09-14"
+  },
+  "comment": "dasd",
+  "links": {
+    "other": [
+      "https://www.youtube.com/watch?v=b1QxOhzr08Y"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [23, 323, 323],
+    "weight": 12,
+    "power": 123,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 21321,
+      "lumens": 1233
+    },
+    "lens": {
+      "name": "213",
+      "degreesMinMax": [15, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "deneme4",
+      "shortName": "4",
+      "channels": [
+        "Red"
+      ]
+    }
+  ]
+}
