@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MC Pro",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Bayerisches Staatsschauspiel"],
+    "createDate": "2023-09-26",
+    "lastModifyDate": "2023-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2023/04/MC-Pro-Product-Manual-V1.1.pdf",
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MC%20Pro/All%20Files/MC-Pro-DMX-Profile-Specification-V1.0.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/mc-pro/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=BwnGeklsSUw"
+    ]
+  },
+  "physical": {
+    "dimensions": [108, 70, 25],
+    "weight": 0.247,
+    "power": 7,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 2000,
+        "colorTemperatureEnd": 10000
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0–360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0–100%"
+      }
+    },
+    "HSI Base CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 2000,
+          "colorTemperatureEnd": 10000
+        }
+      ]
+    },
+    "CCT for Gel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600
+        }
+      ]
+    },
+    "CCT<->Color": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to color"
+      }
+    },
+    "Rosco / Lee": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Gel selection"
+      }
+    },
+    "Series": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Gel series selection"
+      }
+    },
+    "Category": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Gel category selection"
+      }
+    },
+    "Green/Magenta": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Generic",
+        "comment": "Green ↔ Magenta shift"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta",
+        "CCT<->Color",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta",
+        "CCT<->Color",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "HSI Base CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "GEL",
+      "channels": [
+        "Intensity",
+        "CCT for Gel",
+        "Rosco / Lee",
+        "Series",
+        "Category",
+        "Strobe"
+      ]
+    }
+  ]
+}
