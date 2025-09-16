@@ -1,0 +1,505 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "onAir Panel 1 IP",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["giacomo"],
+    "createDate": "2025-09-16",
+    "lastModifyDate": "2025-09-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2023/10/onAir_IP_Panel_1_UM_Rev4.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/onair-ip-panel-1/",
+      "https://www.chauvetprofessional.com/wp-content/uploads/pdf/en/onair-ip-panel-1.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [559, 554, 146],
+    "weight": 12.7,
+    "power": 180,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000,
+      "lumens": 10000
+    },
+    "lens": {
+      "degreesMinMax": [99, 99]
+    }
+  },
+  "availableChannels": {
+    "Red 1": {
+      "fineChannelAliases": ["Red 1 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "fineChannelAliases": ["Green 1 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "fineChannelAliases": ["Blue 1 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "fineChannelAliases": ["White 1 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "fineChannelAliases": ["Red 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "fineChannelAliases": ["Green 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "fineChannelAliases": ["Blue 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "fineChannelAliases": ["White 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 39],
+          "type": "Effect",
+          "effectName": "Color chase"
+        },
+        {
+          "dmxRange": [40, 68],
+          "type": "Effect",
+          "effectName": "Police car"
+        },
+        {
+          "dmxRange": [69, 96],
+          "type": "Effect",
+          "effectName": "Firetruck"
+        },
+        {
+          "dmxRange": [97, 125],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [126, 154],
+          "type": "Effect",
+          "effectName": "Clouds"
+        },
+        {
+          "dmxRange": [155, 182],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [183, 211],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [212, 240],
+          "type": "Effect",
+          "effectName": "Lighting"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effect macro speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Reset dimmer"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Red shift on"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Red shift off"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "S-curve dimmer"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Linear dimmer"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Square dimmer"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Inverse square dimmer"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Dimmer mode off"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Dimmer mode 1 (fast)"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Dimmer mode 2"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Dimmer mode 3 (slow)"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Fan mode auto"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Fan mode on"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Fan mode off"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Fan mode silent"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1 2": {
+      "name": "Red 1",
+      "fineChannelAliases": ["Red 1 2 fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16Ch",
+      "shortName": "16ch",
+      "channels": [
+        "Red 1",
+        "Red 1 fine",
+        "Green 1",
+        "Green 1 fine",
+        "Blue 1",
+        "Blue 1 fine",
+        "White 1",
+        "White 1 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine"
+      ]
+    },
+    {
+      "name": "15Ch2",
+      "shortName": "15ch2",
+      "channels": [
+        "Dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Strobe",
+        "Color Temperature",
+        "Hue",
+        "Effect macros",
+        "Effect macro speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "15Ch1",
+      "shortName": "15ch1",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Strobe",
+        "Color Temperature",
+        "Hue",
+        "Effect macros",
+        "Effect macro speed"
+      ]
+    },
+    {
+      "name": "11Ch",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Temperature",
+        "Hue",
+        "Effect macros",
+        "Effect macro speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "10Ch",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8Ch2",
+      "shortName": "8ch2",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "8Ch1",
+      "shortName": "8ch1",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2"
+      ]
+    },
+    {
+      "name": "6Ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5Ch",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature",
+        "Hue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4Ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "3Ch",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Hue"
+      ]
+    },
+    {
+      "name": "1Ch",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
