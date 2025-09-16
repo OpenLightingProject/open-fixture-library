@@ -1,0 +1,2264 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACME CM-400Z",
+  "shortName": "CM-400Z",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Niki"],
+    "createDate": "2025-09-16",
+    "lastModifyDate": "2025-09-16",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-09-16",
+      "comment": "GDTF v1.0 fixture type ID: 13379513-E490-4602-9681-3951844E6C80"
+    }
+  },
+  "comment": "CM-400Z: ACME CM-400Z 40W*7PCS",
+  "wheels": {
+    "Color 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#e45816"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#e48715"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#e4cf03"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#c5e406"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#ade400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#87e402"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#4ae400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#4ae400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#01e428"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#03e45b"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 12",
+          "colors": ["#00e4e0"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 13",
+          "colors": ["#03abe4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 14",
+          "colors": ["#009be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 15",
+          "colors": ["#0083e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 16",
+          "colors": ["#0075e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 17",
+          "colors": ["#0069e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 18",
+          "colors": ["#005ee4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 19",
+          "colors": ["#0058e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 20",
+          "colors": ["#0048e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 21",
+          "colors": ["#0043e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 22",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 23",
+          "colors": ["#8500e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 24",
+          "colors": ["#9d03e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 25",
+          "colors": ["#c500e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 26",
+          "colors": ["#dd05e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 27",
+          "colors": ["#dd05e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 28",
+          "colors": ["#e401e1"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 29",
+          "colors": ["#df0de4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 30",
+          "colors": ["#e400d4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 31",
+          "colors": ["#e400a4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 32",
+          "colors": ["#8b91e4"]
+        }
+      ]
+    },
+    "CTO": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "7900K",
+          "colors": ["#e4dcdb"]
+        },
+        {
+          "type": "Color",
+          "name": "7800k",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "7700k",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "7600k",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "7500K",
+          "colors": ["#e4d4be"]
+        },
+        {
+          "type": "Color",
+          "name": "7400K",
+          "colors": ["#e4d3bc"]
+        },
+        {
+          "type": "Color",
+          "name": "7300K",
+          "colors": ["#e4d3bc"]
+        },
+        {
+          "type": "Color",
+          "name": "7200K",
+          "colors": ["#e4d2bc"]
+        },
+        {
+          "type": "Color",
+          "name": "7100K",
+          "colors": ["#e4d1bb"]
+        },
+        {
+          "type": "Color",
+          "name": "7000K",
+          "colors": ["#e4d0ba"]
+        },
+        {
+          "type": "Color",
+          "name": "6900K",
+          "colors": ["#e4d9a7"]
+        },
+        {
+          "type": "Color",
+          "name": "6800K",
+          "colors": ["#e4d4a3"]
+        },
+        {
+          "type": "Color",
+          "name": "6700K",
+          "colors": ["#e4dda1"]
+        },
+        {
+          "type": "Color",
+          "name": "6600K",
+          "colors": ["#e4de9b"]
+        },
+        {
+          "type": "Color",
+          "name": "6500K",
+          "colors": ["#e4df8d"]
+        },
+        {
+          "type": "Color",
+          "name": "6400K",
+          "colors": ["#e4d187"]
+        },
+        {
+          "type": "Color",
+          "name": "6300K",
+          "colors": ["#e4d893"]
+        },
+        {
+          "type": "Color",
+          "name": "6200K",
+          "colors": ["#e4db8e"]
+        },
+        {
+          "type": "Color",
+          "name": "6100K",
+          "colors": ["#e4db8d"]
+        },
+        {
+          "type": "Color",
+          "name": "6000K",
+          "colors": ["#e4d98a"]
+        },
+        {
+          "type": "Color",
+          "name": "5900K",
+          "colors": ["#dde493"]
+        },
+        {
+          "type": "Color",
+          "name": "5800K",
+          "colors": ["#e4db8a"]
+        },
+        {
+          "type": "Color",
+          "name": "5700K",
+          "colors": ["#e4d68e"]
+        },
+        {
+          "type": "Color",
+          "name": "5600K",
+          "colors": ["#e4e292"]
+        },
+        {
+          "type": "Color",
+          "name": "5500K",
+          "colors": ["#e4d38d"]
+        },
+        {
+          "type": "Color",
+          "name": "5400K",
+          "colors": ["#e4db89"]
+        },
+        {
+          "type": "Color",
+          "name": "5300K",
+          "colors": ["#e0e48b"]
+        },
+        {
+          "type": "Color",
+          "name": "5200K",
+          "colors": ["#d6e493"]
+        },
+        {
+          "type": "Color",
+          "name": "5100K",
+          "colors": ["#dce482"]
+        },
+        {
+          "type": "Color",
+          "name": "5000K",
+          "colors": ["#dde47b"]
+        },
+        {
+          "type": "Color",
+          "name": "4900K",
+          "colors": ["#e0e47e"]
+        },
+        {
+          "type": "Color",
+          "name": "4800K",
+          "colors": ["#e0e483"]
+        },
+        {
+          "type": "Color",
+          "name": "4700K",
+          "colors": ["#dde480"]
+        },
+        {
+          "type": "Color",
+          "name": "4600K",
+          "colors": ["#d7e47b"]
+        },
+        {
+          "type": "Color",
+          "name": "4500K",
+          "colors": ["#e4e38e"]
+        },
+        {
+          "type": "Color",
+          "name": "4400K",
+          "colors": ["#e4e28d"]
+        },
+        {
+          "type": "Color",
+          "name": "4300K",
+          "colors": ["#e4e18d"]
+        },
+        {
+          "type": "Color",
+          "name": "4200K",
+          "colors": ["#e4e08c"]
+        },
+        {
+          "type": "Color",
+          "name": "4100K",
+          "colors": ["#e4df8a"]
+        },
+        {
+          "type": "Color",
+          "name": "4000K",
+          "colors": ["#e4df89"]
+        },
+        {
+          "type": "Color",
+          "name": "3900K",
+          "colors": ["#e4df87"]
+        },
+        {
+          "type": "Color",
+          "name": "3800K",
+          "colors": ["#dde486"]
+        },
+        {
+          "type": "Color",
+          "name": "3700K",
+          "colors": ["#dce485"]
+        },
+        {
+          "type": "Color",
+          "name": "3600K",
+          "colors": ["#dbe483"]
+        },
+        {
+          "type": "Color",
+          "name": "3500K",
+          "colors": ["#dae483"]
+        },
+        {
+          "type": "Color",
+          "name": "3400K",
+          "colors": ["#d9e483"]
+        },
+        {
+          "type": "Color",
+          "name": "3300K",
+          "colors": ["#d9e483"]
+        },
+        {
+          "type": "Color",
+          "name": "3200K",
+          "colors": ["#d7e481"]
+        },
+        {
+          "type": "Color",
+          "name": "3100K",
+          "colors": ["#e4e25a"]
+        },
+        {
+          "type": "Color",
+          "name": "3000K",
+          "colors": ["#e4e158"]
+        },
+        {
+          "type": "Color",
+          "name": "2900K",
+          "colors": ["#e4e156"]
+        },
+        {
+          "type": "Color",
+          "name": "2800K",
+          "colors": ["#e4e155"]
+        },
+        {
+          "type": "Color",
+          "name": "2700K",
+          "colors": ["#e4e055"]
+        },
+        {
+          "type": "Color",
+          "name": "2600K",
+          "colors": ["#e4df53"]
+        },
+        {
+          "type": "Color",
+          "name": "2500K",
+          "colors": ["#e4df53"]
+        }
+      ]
+    },
+    "Gobo 1": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "defaultValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "defaultValue": 32768,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "defaultValue": 0,
+      "highlightValue": 65280,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [256, 65279],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [65280, 65535],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "Closed"
+        }
+      ]
+    },
+    "Strobe1": {
+      "defaultValue": 10,
+      "highlightValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "R": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 5": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 6": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 6": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 6": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 6": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 7": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 7": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 7": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "NoFeature 1"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Dim Smooth"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Dim Fast"
+        },
+        {
+          "dmxRange": [100, 139],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "NoFeature 2"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "PT Reset "
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Unknown (Zoom Reset)",
+          "physical": 0,
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "NoFunction",
+          "comment": "NoFeature 3"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "All Reset"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "NoFunction",
+          "comment": "NoFeature4"
+        }
+      ]
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "8000K"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7900K"
+        },
+        {
+          "dmxRange": [10, 13],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7800K"
+        },
+        {
+          "dmxRange": [14, 18],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7700K"
+        },
+        {
+          "dmxRange": [19, 22],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7600K"
+        },
+        {
+          "dmxRange": [23, 27],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7500K"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7400K"
+        },
+        {
+          "dmxRange": [32, 36],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7300K"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7200K"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7100K"
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6900K"
+        },
+        {
+          "dmxRange": [55, 58],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6800K"
+        },
+        {
+          "dmxRange": [59, 63],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6700K"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6600K"
+        },
+        {
+          "dmxRange": [68, 72],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6400K"
+        },
+        {
+          "dmxRange": [77, 81],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6300K"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6200K"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6100K"
+        },
+        {
+          "dmxRange": [91, 94],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5900K"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5800K"
+        },
+        {
+          "dmxRange": [104, 108],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5700K"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [113, 117],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5500K"
+        },
+        {
+          "dmxRange": [118, 121],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5400K"
+        },
+        {
+          "dmxRange": [122, 126],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5300K"
+        },
+        {
+          "dmxRange": [127, 130],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5200K"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5100K"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4900K"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4800K"
+        },
+        {
+          "dmxRange": [149, 153],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4700K"
+        },
+        {
+          "dmxRange": [154, 157],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4600K"
+        },
+        {
+          "dmxRange": [158, 162],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [163, 166],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4400K"
+        },
+        {
+          "dmxRange": [167, 171],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4300K"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4200K"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4100K"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3900K"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3800K"
+        },
+        {
+          "dmxRange": [194, 198],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3700K"
+        },
+        {
+          "dmxRange": [199, 202],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3600K"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3400K"
+        },
+        {
+          "dmxRange": [212, 216],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3300K"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3100K"
+        },
+        {
+          "dmxRange": [226, 229],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "3000K"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "2900K"
+        },
+        {
+          "dmxRange": [235, 238],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "2800K"
+        },
+        {
+          "dmxRange": [239, 243],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "2600K"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "2500K"
+        }
+      ]
+    },
+    "C1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 33
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speed": "-20rpm",
+          "comment": "max CCW"
+        },
+        {
+          "dmxRange": [137, 165],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "-19.833333333333332rpm",
+          "speedEnd": "-0.16666666666666669rpm",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [166, 194],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0.16666666666666669rpm",
+          "speedEnd": "19.833333333333332rpm",
+          "comment": "CW"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speed": "20rpm",
+          "comment": "max  CW"
+        },
+        {
+          "dmxRange": [196, 205],
+          "type": "Effect",
+          "effectName": "R-G",
+          "speed": 80
+        },
+        {
+          "dmxRange": [206, 215],
+          "type": "Effect",
+          "effectName": "R-B",
+          "speed": 80
+        },
+        {
+          "dmxRange": [216, 225],
+          "type": "Effect",
+          "effectName": "R-W",
+          "speed": 80
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Effect",
+          "effectName": "G-B",
+          "speed": 60
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Effect",
+          "effectName": "G-W",
+          "speed": 60
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "B-W",
+          "speed": 60
+        }
+      ]
+    },
+    "G1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 17"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 18"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 19"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 20"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 21"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 22"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 23"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 24"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 25"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 26"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 27"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 28"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 29"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 30"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 31"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 32"
+        },
+        {
+          "dmxRange": [132, 136],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 33"
+        },
+        {
+          "dmxRange": [137, 139],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 34"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 35"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 36"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 37"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 38"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 39"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 40"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 41"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 42"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 43"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 44"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 45"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 46"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 47"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 48"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 49"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 50"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 51"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 52"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 53"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 54"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 55"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 56"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 57"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 58"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 59"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 60"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Rnd Gobo"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 61"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "wheel": "Gobo 1",
+          "slotNumber": 0,
+          "comment": "Gobo 62"
+        }
+      ]
+    },
+    "Rotate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Null 1"
+        },
+        {
+          "dmxRange": [1, 31],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "speed": "-60rpm",
+          "comment": "max CCW"
+        },
+        {
+          "dmxRange": [33, 91],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "speedStart": "-59.833333333333336rpm",
+          "speedEnd": "-0.16666666666666669rpm",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [92, 101],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "angle": "0deg",
+          "comment": "Null 2"
+        },
+        {
+          "dmxRange": [102, 160],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "speedStart": "0.16666666666666669rpm",
+          "speedEnd": "59.833333333333336rpm",
+          "comment": "CW"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "speed": "60rpm",
+          "comment": "max CW"
+        },
+        {
+          "dmxRange": [162, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo 1",
+          "angle": "0deg",
+          "comment": "Null 3"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1 37 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Zoom",
+        "Dim",
+        "Dim fine",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 5",
+        "R 6",
+        "G 6",
+        "B 6",
+        "White 6",
+        "R 7",
+        "G 7",
+        "B 7",
+        "White 7",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 2 17 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Zoom",
+        "Dim",
+        "Dim fine",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "CTO",
+        "C1",
+        "G1",
+        "Rotate",
+        "Function"
+      ]
+    }
+  ]
+}
