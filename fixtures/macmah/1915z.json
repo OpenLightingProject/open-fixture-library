@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1915z",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["STUDIO5"],
+    "createDate": "2025-09-17",
+    "lastModifyDate": "2025-09-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.sonovente.com/mac-mah-macwash1915z-p78695.html?utm_source=google&utm_campaign=G/SRC/FR/fr/DSA/OK/DSA_pagefeed&utm_medium=cpc&gad_source=1&gad_campaignid=20716825591&gbraid=0AAAAAD-GHlu8OlG0n2oYu2oMJI205eJ1O&gclid=Cj0KCQjwuKnGBhD5ARIsAD19Rsb6if6AoqibexL68XjUpCQxKGpl8Wv77S_3wsxgfyC8h6H4fiB0e8oaArqZEALw_wcB#from-src=20231220goo555"
+    ]
+  },
+  "availableChannels": {
+    "PAN": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "PEN2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "PAN2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "TILT": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "TILT2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ZOOM": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE SPEED": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "MODE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RESET": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "PAN",
+        "PAN2",
+        "TILT",
+        "TILT2",
+        "Pan/Tilt Speed",
+        "ZOOM",
+        "DIMMER",
+        "STROBE SPEED",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "MODE",
+        "MODE2",
+        "RESET"
+      ]
+    }
+  ]
+}
