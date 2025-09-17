@@ -32,8 +32,6 @@ rules:
     - true
     - severity: warning
 
-  property-no-deprecated: true
-
   # allow Vue pseudo elements
   selector-pseudo-element-no-unknown:
     - true
