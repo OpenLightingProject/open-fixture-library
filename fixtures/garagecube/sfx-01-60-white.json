@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SFX-01 LED Bar 1m Pure White",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Matthieu Beghin"],
+    "createDate": "2025-09-05",
+    "lastModifyDate": "2025-09-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.garagecube.com/download/manual-sfx01-50cm-2/"
+    ],
+    "productPage": [
+      "https://shop.garagecube.com/products/4-led-bars-1-meter"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=DJRWDfY1n2c"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 2.5, 1.5],
+    "weight": 0.4,
+    "power": 12,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "60×0.2W LED"
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      60,
+      1,
+      1
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "availableChannels": {
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "templateChannels": {
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "60-channels",
+      "shortName": "60ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "White $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
