@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SABRE",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["jerome gillette"],
+    "createDate": "2025-09-21",
+    "lastModifyDate": "2025-09-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.hccp.club/wp-content/uploads/2024/07/2024-attestation-medicale-de-sante-pour-les-mineurs.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "2deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "1000Hz"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism 2": {
+      "name": "Prism",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism Rotation 2": {
+      "name": "Prism Rotation",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SABRE",
+      "shortName": "SABRE",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation 2",
+        "Prism",
+        "Prism Rotation",
+        "Prism 2",
+        "Prism Rotation 2",
+        "Frost",
+        "Zoom",
+        "Focus",
+        "Reserved"
+      ]
+    }
+  ]
+}
