@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W LED PAR RGBUV",
+  "shortName": "Delibang RGBUV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Breit"],
+    "createDate": "2025-09-22",
+    "lastModifyDate": "2025-09-22"
+  },
+  "links": {
+    "other": [
+      "https://www.amazon.de/stores/DELIBANG/page/E3814E0D-9E63-4901-A100-22B91852C052?lp_asin=B09XV2DRGP&ref_=ast_bln"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 160, 260],
+    "weight": 1,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "100ms",
+        "durationEnd": "10ms"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "shortName": "dim",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Strobe",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
