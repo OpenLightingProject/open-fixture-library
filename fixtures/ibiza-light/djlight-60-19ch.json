@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJLIGHT 60 19ch",
+  "categories": ["Flower", "Stand", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["DJ-Porsch"],
+    "createDate": "2025-05-27",
+    "lastModifyDate": "2025-05-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/715285/Ibiza-Light-Djlight60.html"
+    ],
+    "productPage": [
+      "https://ibizashop.eu/de/jeux-de-lumiere/256-DJLIGHT60-5420047130709.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ofzD6GLo35U&embeds_referring_euri=https%3A%2F%2Fibizashop.eu%2F&source_ve_path=OTY3MTQ"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [10, 36],
+          "type": "Generic",
+          "comment": "Au01/Au03"
+        },
+        {
+          "dmxRange": [37, 108],
+          "type": "Generic",
+          "comment": "AP01/AP08"
+        },
+        {
+          "dmxRange": [109, 135],
+          "type": "Generic",
+          "comment": "AF01/AF03"
+        },
+        {
+          "dmxRange": [136, 162],
+          "type": "Generic",
+          "comment": "Sn01/Sn03"
+        },
+        {
+          "dmxRange": [163, 234],
+          "type": "Generic",
+          "comment": "SP01/SP03"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "SF01/SF03"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Moon Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "19ch",
+      "channels": [
+        "Program",
+        "Effect Speed",
+        "Strobe",
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Moon Master Dimmer",
+        "Red1",
+        "Green1",
+        "Blue1",
+        "White1",
+        "Yellow1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "White2",
+        "Yellow2"
+      ]
+    }
+  ]
+}
