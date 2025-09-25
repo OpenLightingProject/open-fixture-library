@@ -1,0 +1,251 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "phantom 180 wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["AJBSERVICES"],
+    "createDate": "2025-01-31",
+    "lastModifyDate": "2025-01-31"
+  },
+  "links": {
+    "productPage": [
+      "https://www.highlite.com/nl/4003-phantom-180-wash.html?selected=40031"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity 4": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity 5": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity 6": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity 7": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity 8": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity 9": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity 10": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity 11": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity 12": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity 13": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity 14": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity 15": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity 16": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "geen functie"
+      }
+    },
+    "Intensity 17": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "29 channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Intensity 2",
+        "Intensity 3",
+        "Intensity 4",
+        "Intensity 5",
+        "Intensity 6",
+        "Intensity 7",
+        "Intensity 8",
+        "Intensity 9",
+        "Intensity 10",
+        "Intensity 11",
+        "Intensity 12",
+        "Intensity 13",
+        "Intensity 14",
+        "Intensity 15",
+        "Intensity 16",
+        "Color Macros",
+        "Intensity 17",
+        "Program Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Zoom",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
