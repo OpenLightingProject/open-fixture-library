@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation reve e3",
+  "categories": ["Dimmer", "Scanner"],
+  "meta": {
+    "authors": ["P"],
+    "createDate": "2023-08-29",
+    "lastModifyDate": "2023-08-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ],
+    "video": [
+      "https://www.chauvetprofessional.com/products/ovation-reve-e-3/"
+    ]
+  },
+  "physical": {
+    "dimensions": [12, 121, 133]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Mint": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Mint"
+      ]
+    }
+  ]
+}
