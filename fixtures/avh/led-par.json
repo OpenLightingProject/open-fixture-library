@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Gareth Crowhurst"],
+    "createDate": "2023-07-23",
+    "lastModifyDate": "2023-07-23"
+  },
+  "links": {
+    "productPage": [
+      "http://www.topstriving.com/node/630",
+      "http://www.topstriving.com/node/630",
+      "http://www.topstriving.com/node/630"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 200, 100],
+    "weight": 5.5,
+    "power": 218,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Rbgwauvis",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
