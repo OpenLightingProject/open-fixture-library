@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fullkolor",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anony"],
+    "createDate": "2025-05-20",
+    "lastModifyDate": "2025-05-20"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/001-OLD-PRODUCTS/FULLKOLOR.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [0, 0, 0],
+    "weight": 4.8,
+    "power": 52,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "AR1+S",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
