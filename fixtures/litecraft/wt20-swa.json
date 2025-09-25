@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WT20.swa",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["diana"],
+    "createDate": "2025-01-22",
+    "lastModifyDate": "2025-01-22"
+  },
+  "links": {
+    "manual": [
+      "https://lmp.de/media/pdf/90/1e/12/00184802_outled_wt20-swa_manual_de_en_V1-2_web.pdf"
+    ],
+    "productPage": [
+      "https://www.huss-licht-ton.de/product_info.php/en/Litecraft-OutLED-WT20swa-LED-Outdoor-PAR/info/27349.html"
+    ],
+    "video": [
+      "https://www.mothergrid.de/video/inside-the-insane-deadmau5-cube-v3/"
+    ]
+  },
+  "physical": {
+    "dimensions": [28.5, 22.1, 31],
+    "weight": 6,
+    "power": 230,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "Extended",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Amber"
+      ]
+    }
+  ]
+}
