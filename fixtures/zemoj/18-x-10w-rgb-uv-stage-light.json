@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18 x 10W RGB+UV Stage Light",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Skyler Greene"],
+    "createDate": "2025-09-03",
+    "lastModifyDate": "2025-09-03",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-03",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [226, 226, 114],
+    "weight": 6.29,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4500
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Function Choice": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity",
+          "comment": "DMX 8 Channel Control"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Intensity",
+          "comment": "Different Colors Output"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Intensity",
+          "comment": "Color Jump Change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Intensity",
+          "comment": "Colors Gradate"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Intensity",
+          "comment": "Colors Pulse Change"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "comment": "Sound Active"
+        }
+      ]
+    },
+    "Function Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Strobe",
+        "Function Choice",
+        "Function Speed"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    }
+  ]
+}
