@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LPC1818",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["NOName"],
+    "createDate": "2025-09-26",
+    "lastModifyDate": "2025-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/406-18110-003_LPC1818_BETOPPER_6_0.pdf?v=1752802327"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-18x18w-rgbw-amber-uv-6-in-1-led-par-light"
+    ],
+    "video": [
+      "https://betopperdj.com/products/betopper-18x18w-rgbw-amber-uv-6-in-1-led-par-light"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "CTO"
+      ]
+    }
+  ]
+}
