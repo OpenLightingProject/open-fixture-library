@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Head LED Wash 7x18W RGBWA+UV",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Clément Chauveau"],
+    "createDate": "2025-09-30",
+    "lastModifyDate": "2025-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1__I0a7yxcfXi0UJoEZgTqGBoP3iNeBjf/view"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 237, 170],
+    "weight": 3.1,
+    "power": 126,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "X-axis, move": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y-axis, move": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Linear dimming / Strobe / Full light": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-134 / 135-239 / 240-255"
+      }
+    },
+    "Red color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Motors speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channels",
+      "shortName": "10ch",
+      "channels": [
+        "X-axis, move",
+        "Y-axis, move",
+        "Linear dimming / Strobe / Full light",
+        "Red color",
+        "Green color",
+        "Blue color",
+        "White color",
+        "Amber color",
+        "UV color",
+        "Motors speed"
+      ]
+    }
+  ]
+}
