@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "QuinLED",
+  "shortName": "QL",
+  "categories": ["Other", "Matrix"],
+  "meta": {
+    "authors": ["Dan Mistich"],
+    "createDate": "2025-09-30",
+    "lastModifyDate": "2025-09-30"
+  },
+  "links": {
+    "productPage": [
+      "https://quinled.info/quinled-dig-cob-rgbw-896-160/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "640 Ch RGBW",
+      "shortName": "640",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
