@@ -1,0 +1,2485 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "JTube X1",
+  "shortName": "JTube X1",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["DJ-Sven"],
+    "createDate": "2025-03-31",
+    "lastModifyDate": "2025-03-31",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-10-01",
+      "comment": "GDTF v1.2 fixture type ID: 3D5396EB-E3C2-41AC-B2BD-B41C4D535D35"
+    }
+  },
+  "comment": "Sagitter J Tube X1 - created by www.dj-sven.de\n3 CH Mode, 5 CH Mode, 48 CH Mode, 80 CH Mode tested with GrandMA3\n2 CH Mode, 12 CH Mode, 87 CH Mode - work in progress",
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "open"
+        }
+      ]
+    },
+    "H": {
+      "capability": {
+        "type": "Unknown (HSB_Hue)",
+        "physicalStart": "0deg",
+        "physicalEnd": "1deg"
+      }
+    },
+    "S": {
+      "capability": {
+        "type": "Unknown (HSB_Saturation)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "Unknown (HSB_Brightness)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 6": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 6": {
+      "name": "R",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 6": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 7": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 7": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 7": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 8": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 8": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 8": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 9": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 9": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 9": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 10": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 10": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 10": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 11": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 11": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 11": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 12": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 12": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 12": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 13": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 13": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 13": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 14": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 14": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 14": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 15": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 15": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 15": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 16": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 16": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 16": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 17": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 17": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 17": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 18": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 2": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 18": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 18": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 19": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 3": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 3": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 19": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 19": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 20": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 4": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 4": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 20": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 20": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 21": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 5": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 5": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 21": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 21": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 22": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 6": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 6": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 22": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 22": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 23": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 7": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 7": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 23": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 23": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 24": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 8": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 8": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 24": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 24": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 25": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 9": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 9": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 25": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 25": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 26": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 10": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 10": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 26": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 26": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 27": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 11": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 11": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 27": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 27": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 28": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 12": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 12": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 28": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 28": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 29": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 13": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 13": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 29": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 29": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 30": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 14": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 14": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 30": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 30": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 31": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 15": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 15": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 31": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 31": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 32": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 16": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 16": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    },
+    "R 32": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 32": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 33": {
+      "name": "B",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "max"
+        }
+      ]
+    },
+    "Amber 17": {
+      "name": "Amber",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "max"
+        }
+      ]
+    },
+    "Lime 17": {
+      "name": "Lime",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 CH Mode",
+      "channels": [
+        "H",
+        "S",
+        "B"
+      ]
+    },
+    {
+      "name": "5 CH Mode",
+      "channels": [
+        "R",
+        "G",
+        "B 2",
+        "Amber",
+        "Lime"
+      ]
+    },
+    {
+      "name": "48 CH Mode",
+      "channels": [
+        "R 2",
+        "G 2",
+        "B 3",
+        "R 3",
+        "G 3",
+        "B 4",
+        "R 4",
+        "G 4",
+        "B 5",
+        "R 5",
+        "G 5",
+        "B 6",
+        "R 6",
+        "G 6",
+        "B 7",
+        "R 7",
+        "G 7",
+        "B 8",
+        "R 8",
+        "G 8",
+        "B 9",
+        "R 9",
+        "G 9",
+        "B 10",
+        "R 10",
+        "G 10",
+        "B 11",
+        "R 11",
+        "G 11",
+        "B 12",
+        "R 12",
+        "G 12",
+        "B 13",
+        "R 13",
+        "G 13",
+        "B 14",
+        "R 14",
+        "G 14",
+        "B 15",
+        "R 15",
+        "G 15",
+        "B 16",
+        "R 16",
+        "G 16",
+        "B 17",
+        "R 17",
+        "G 17",
+        "B 18"
+      ]
+    },
+    {
+      "name": "80 CH Mode",
+      "channels": [
+        "R",
+        "G",
+        "B 2",
+        "Amber 2",
+        "Lime 2",
+        "R 18",
+        "G 18",
+        "B 19",
+        "Amber 3",
+        "Lime 3",
+        "R 19",
+        "G 19",
+        "B 20",
+        "Amber 4",
+        "Lime 4",
+        "R 20",
+        "G 20",
+        "B 21",
+        "Amber 5",
+        "Lime 5",
+        "R 21",
+        "G 21",
+        "B 22",
+        "Amber 6",
+        "Lime 6",
+        "R 22",
+        "G 22",
+        "B 23",
+        "Amber 7",
+        "Lime 7",
+        "R 23",
+        "G 23",
+        "B 24",
+        "Amber 8",
+        "Lime 8",
+        "R 24",
+        "G 24",
+        "B 25",
+        "Amber 9",
+        "Lime 9",
+        "R 25",
+        "G 25",
+        "B 26",
+        "Amber 10",
+        "Lime 10",
+        "R 26",
+        "G 26",
+        "B 27",
+        "Amber 11",
+        "Lime 11",
+        "R 27",
+        "G 27",
+        "B 28",
+        "Amber 12",
+        "Lime 12",
+        "R 28",
+        "G 28",
+        "B 29",
+        "Amber 13",
+        "Lime 13",
+        "R 29",
+        "G 29",
+        "B 30",
+        "Amber 14",
+        "Lime 14",
+        "R 30",
+        "G 30",
+        "B 31",
+        "Amber 15",
+        "Lime 15",
+        "R 31",
+        "G 31",
+        "B 32",
+        "Amber 16",
+        "Lime 16",
+        "R 32",
+        "G 32",
+        "B 33",
+        "Amber 17",
+        "Lime 17"
+      ]
+    }
+  ]
+}
