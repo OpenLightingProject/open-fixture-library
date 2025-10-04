@@ -1,0 +1,225 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ-B243",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Yestalgia", "Martyn"],
+    "createDate": "2025-10-04",
+    "lastModifyDate": "2025-10-04",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-10-04",
+      "comment": "created by Q Light Controller Plus (version 5.0.0 Beta 3)"
+    }
+  },
+  "physical": {
+    "dimensions": [81, 57, 113],
+    "weight": 2.92,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 5
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "ColorPreset",
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic Color Change"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Fixed Gobo"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "comment": "Shaking Gobo"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic Change Pattern"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Automatic Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "Other channels function"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Automatic Mode 3"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Automatic Mode 2"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Effect",
+          "effectName": "Automatic Mode 1"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Effect",
+          "effectName": "Automatic Mode 0"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Voice Control Mode 3"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Voice Control Mode2"
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Effect",
+          "effectName": "Voice Control Mode 1"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Voice Control Mode 0"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 234],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Maintenance"
+        }
+      ]
+    },
+    "Light Strips": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 109],
+          "type": "ColorPreset",
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "ColorPreset",
+          "comment": "Color Auto Operation"
+        }
+      ]
+    },
+    "Motor Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Color",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Motor Speed",
+        "Automatic Mode",
+        "Reset",
+        "Light Strips"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Motor Speed",
+        "Automatic Mode",
+        "Reset",
+        "Light Strips"
+      ]
+    }
+  ]
+}
