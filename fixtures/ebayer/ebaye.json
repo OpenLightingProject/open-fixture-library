@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ebaye",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["hjdjdjd"],
+    "createDate": "2025-10-06",
+    "lastModifyDate": "2025-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://mehr.de/hu"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "bvncvncvnv",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2",
+        "Dimmer 3"
+      ]
+    }
+  ]
+}
