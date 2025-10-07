@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Strip Blinder X",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["pitchbent"],
+    "createDate": "2025-10-07",
+    "lastModifyDate": "2025-10-07"
+  },
+  "comment": "10x 75W Halogen",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/319794_c_319794_de_online.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jWxoSHw4zek"
+    ]
+  },
+  "physical": {
+    "dimensions": [140, 78, 1000],
+    "weight": 5.4,
+    "power": 750,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Halogen"
+    }
+  },
+  "availableChannels": {
+    "IntensityAll": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "IntensityLeft": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "IntensityRight": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity6": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity7": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity8": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity9": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity10": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-Channel Dimm All",
+      "channels": [
+        "IntensityAll"
+      ]
+    },
+    {
+      "name": "2-Channel Dimm Left Right",
+      "channels": [
+        "IntensityLeft",
+        "IntensityRight"
+      ]
+    },
+    {
+      "name": "5-Channel Dimm 5 Groups",
+      "channels": [
+        "Intensity1",
+        "Intensity2",
+        "Intensity3",
+        "Intensity4",
+        "Intensity5"
+      ]
+    },
+    {
+      "name": "10-Channel Dimm Single",
+      "channels": [
+        "Intensity1",
+        "Intensity2",
+        "Intensity3",
+        "Intensity4",
+        "Intensity5",
+        "Intensity6",
+        "Intensity7",
+        "Intensity8",
+        "Intensity9",
+        "Intensity10"
+      ]
+    }
+  ]
+}
