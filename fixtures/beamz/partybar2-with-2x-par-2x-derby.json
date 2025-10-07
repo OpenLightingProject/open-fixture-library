@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PartyBar2 with 2x PAR + 2x Derby",
+  "shortName": "PartyBar2",
+  "categories": ["Stand", "Flower", "Color Changer"],
+  "meta": {
+    "authors": ["Neil Carmichael"],
+    "createDate": "2025-10-07",
+    "lastModifyDate": "2025-10-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/09/153.238-PartyBar2-V1.2.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/partybar2-with-2x-par-2x-derby/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2CC3gZxTP20"
+    ]
+  },
+  "physical": {
+    "dimensions": [92, 38, 18.5],
+    "weight": 7.2,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red - Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Blue - Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "Green - Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "White - Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "Motor - Derby 1": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Rotation"
+      }
+    },
+    "Red - LED PARs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Both PAR's"
+      }
+    },
+    "Green - LED PARs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Both PAR's"
+      }
+    },
+    "Blue - LED PARs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "Whte - LED PARs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "Red - Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green - Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "Blue - Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "White - Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "Motor - Derby 2": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Rotation"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "30Hz",
+        "comment": "Actual speed not clear or documented"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channels",
+      "shortName": "15ch",
+      "channels": [
+        "Red - Derby 1",
+        "Blue - Derby 1",
+        "Green - Derby 1",
+        "White - Derby 1",
+        "Motor - Derby 1",
+        "Red - LED PARs",
+        "Green - LED PARs",
+        "Blue - LED PARs",
+        "Whte - LED PARs",
+        "Red - Derby 2",
+        "Green - Derby 2",
+        "Blue - Derby 2",
+        "White - Derby 2",
+        "Motor - Derby 2",
+        "Strobe"
+      ]
+    }
+  ]
+}
