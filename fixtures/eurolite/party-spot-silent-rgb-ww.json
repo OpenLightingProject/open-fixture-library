@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARty Spot Silent RGB/WW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Robin"],
+    "createDate": "2025-10-09",
+    "lastModifyDate": "2025-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.bedienungsanleitu.ng/eurolite/led-party-spot-silent-rgbww/anleitung"
+    ]
+  },
+  "availableChannels": {
+    "8 Kanal": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Kanal Modus",
+      "channels": [
+        "8 Kanal"
+      ]
+    }
+  ]
+}
