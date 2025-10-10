@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DDS-405 DMX Dimmer & Switcher",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["pitchbent"],
+    "createDate": "2025-10-07",
+    "lastModifyDate": "2025-10-07"
+  },
+  "comment": "16A\n4.5A / Plug",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/174194_v5_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_dds405_dmx.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 180, 65],
+    "weight": 1.75,
+    "power": 3680,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "IntensityAllChannels": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-Channel Dimm All",
+      "channels": [
+        "IntensityAllChannels"
+      ]
+    },
+    {
+      "name": "4-Channel Dimm Single",
+      "channels": [
+        "Intensity1",
+        "Intensity2",
+        "Intensity3",
+        "Intensity4"
+      ]
+    }
+  ]
+}
