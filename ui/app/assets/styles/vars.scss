@@ -1,0 +1,180 @@
+@use "sass:color";
+
+$font-stack-text: "LatoLatin", "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+$font-stack-code: "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+
+// 2014 Material Design color palettes
+// from https://material.io/design/color/#tools-for-picking-colors
+
+// Material Design Red
+$red-200: #ef9a9a;
+$red-300: #e57373;
+$red-700: #d32f2f;
+
+// Material Design Blue
+$blue-100: #bbdefb;
+$blue-300: #64b5f6;
+$blue-500: #2196f3;
+$blue-600: #1e88e5;
+$blue-700: #1976d2;
+$blue-800: #1565c0;
+
+// Material Design Yellow
+$yellow-300: #fff176;
+$yellow-600: #fdd835;
+$yellow-700: #fbc02d;
+
+// Material Design Orange
+$orange-500: #ff9800;
+$orange-600: #fb8c00;
+$orange-700: #f57c00;
+$orange-800: #ef6c00;
+
+// Material Design Grey
+$grey-50: #fafafa;
+$grey-100: #f5f5f5;
+$grey-200: #eeeeee;
+$grey-300: #e0e0e0;
+
+// Material Design Light Green
+$light-green-500: #8bc34a;
+$light-green-600: #7cb342;
+$light-green-700: #689f38;
+$light-green-800: #558b2f;
+
+// stylelint-disable scss/dollar-variable-colon-space-after -- column alignment is more readable here
+$primary-text-dark:     rgba(0, 0, 0, 87%);
+$secondary-text-dark:   rgba(0, 0, 0, 54%);
+$disabled-text-dark:    rgba(0, 0, 0, 38%);
+$divider-dark:          rgba(0, 0, 0, 12%);
+$icon-dark:             rgba(0, 0, 0, 54%);
+$icon-dark-hover:       rgba(0, 0, 0, 38%);
+$icon-inactive-dark:    rgba(0, 0, 0, 27%);
+$primary-text-light:    rgba(255, 255, 255, 100%);
+$secondary-text-light:  rgba(255, 255, 255, 70%);
+$disabled-text-light:   rgba(255, 255, 255, 50%);
+$divider-light:         rgba(255, 255, 255, 12%);
+$icon-light:            rgba(255, 255, 255, 80%);
+$icon-light-hover:      rgba(255, 255, 255, 65%);
+$icon-inactive-light:   rgba(255, 255, 255, 50%);
+// stylelint-enable scss/dollar-variable-colon-space-after
+
+// from https://material.io/design/color/dark-theme.html#properties
+
+$dark-grey: #121212;
+$dark-grey-elevation-01dp: color.adjust($dark-grey, $lightness: 5%);
+$dark-grey-elevation-02dp: color.adjust($dark-grey, $lightness: 7%);
+$dark-grey-elevation-03dp: color.adjust($dark-grey, $lightness: 8%);
+$dark-grey-elevation-04dp: color.adjust($dark-grey, $lightness: 9%);
+$dark-grey-elevation-06dp: color.adjust($dark-grey, $lightness: 11%);
+$dark-grey-elevation-08dp: color.adjust($dark-grey, $lightness: 12%);
+$dark-grey-elevation-12dp: color.adjust($dark-grey, $lightness: 14%);
+$dark-grey-elevation-16dp: color.adjust($dark-grey, $lightness: 15%);
+$dark-grey-elevation-24dp: color.adjust($dark-grey, $lightness: 16%);
+
+// Width value for media queries
+$tablet: 800px;
+$phone-landscape: 600px;
+$phone: 440px;
+
+// Theme colors
+$themes: (
+  light: (
+    page-background: $grey-200,
+    header-background: $grey-50,
+    hover-background: $grey-300,
+    active-background: $grey-200,
+    card-background: #ffffff,
+    dialog-background: #ffffff,
+
+    text-primary: $primary-text-dark,
+    text-secondary: $secondary-text-dark,
+    text-disabled: $disabled-text-dark,
+
+    divider: $divider-dark,
+    icon: $icon-dark,
+    icon-hover: $icon-dark-hover,
+    icon-inactive: $icon-inactive-dark,
+
+    link: $blue-700,
+    link-hover: $blue-300,
+
+    form-field-background: #ffffff,
+    form-field-border: #cfd6e6,
+
+    button-primary-background: $blue-700,
+    button-primary-background-hover: $blue-300,
+    button-primary-border: $blue-700,
+    button-primary-text: $primary-text-light,
+    button-secondary-background: $grey-50,
+    button-secondary-background-hover: $grey-300,
+    button-secondary-border: $grey-300,
+    button-secondary-text: $secondary-text-dark,
+
+    light-green-background: $light-green-500,
+    light-green-background-hover: $light-green-600,
+    light-green-background-active: $light-green-700,
+
+    blue-highlight: $blue-100,
+    blue-background: $blue-500,
+    blue-background-hover: $blue-600,
+    blue-background-active: $blue-700,
+
+    yellow-background: $yellow-300,
+    yellow-background-hover: $yellow-600,
+
+    red-background: $red-200,
+
+    orange-background: $orange-500,
+    orange-background-hover: $orange-700,
+  ),
+  dark: (
+    page-background: $dark-grey,
+    header-background: $dark-grey-elevation-16dp,
+    active-background: $dark-grey-elevation-12dp,
+    hover-background: #555555,
+    card-background: $dark-grey-elevation-08dp,
+    dialog-background: $dark-grey-elevation-24dp,
+
+    text-primary: $primary-text-light,
+    text-secondary: $secondary-text-light,
+    text-disabled: $disabled-text-light,
+
+    divider: $divider-light,
+    icon: $icon-light,
+    icon-hover: $icon-light-hover,
+    icon-inactive: $icon-inactive-light,
+
+    link: $blue-300,
+    link-hover: $blue-700,
+
+    form-field-background: #000000,
+    form-field-border: #555555,
+
+    button-primary-background: $blue-700,
+    button-primary-background-hover: $blue-300,
+    button-primary-border: $blue-700,
+    button-primary-text: $primary-text-light,
+    button-secondary-background: $dark-grey-elevation-08dp,
+    button-secondary-background-hover: $dark-grey-elevation-02dp,
+    button-secondary-border: $dark-grey-elevation-02dp,
+    button-secondary-text: $secondary-text-light,
+
+    light-green-background: $light-green-700,
+    light-green-background-hover: $light-green-500,
+    light-green-background-active: $light-green-800,
+
+    blue-highlight: $blue-800,
+    blue-background: $blue-700,
+    blue-background-hover: $blue-500,
+    blue-background-active: $blue-800,
+
+    yellow-background: #aa8e00,
+    yellow-background-hover: #dbbb2a,
+
+    red-background: #990000,
+
+    orange-background: $orange-800,
+    orange-background-hover: $orange-500,
+  ),
+);
