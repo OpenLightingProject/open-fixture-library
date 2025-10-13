@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DECO BAR 24 RGB",
+  "shortName": "DECOBAR24",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Lacman"],
+    "createDate": "2025-10-13",
+    "lastModifyDate": "2025-10-13"
+  },
+  "comment": "LIGHT4ME DECO BAR 24 7CH",
+  "links": {
+    "manual": [
+      "https://light4me.pl/en/product/deco-bar-24-rgb/"
+    ],
+    "productPage": [
+      "https://light4me.pl/en/product/deco-bar-24-rgb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=DJHr_docMgI"
+    ]
+  },
+  "rdm": {
+    "modelId": 32767,
+    "softwareVersion": "0"
+  },
+  "physical": {
+    "dimensions": [105, 8, 8],
+    "weight": 2.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 300
+    }
+  },
+  "availableChannels": {
+    "Dimmer RGB": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer RED": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Program"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7CHANEL",
+      "channels": [
+        "Dimmer RGB",
+        "Dimmer RED",
+        "Dimmer GREEN",
+        "Dimmer BLUE",
+        "Strobe",
+        "Program",
+        "Program Speed"
+      ]
+    }
+  ]
+}
