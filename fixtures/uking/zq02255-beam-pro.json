@@ -1,0 +1,343 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02255 Beam Pro",
+  "shortName": "ZQ-02255",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Leon Joas"],
+    "createDate": "2025-10-13",
+    "lastModifyDate": "2025-10-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2025/07/ZQ02255-Moving-Beam-Stage-Light.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/150w-beam-moving-head-light-dmx512-moving-head-light-11-13ch-channel-suitable/?srsltid=AfmBOorInm4Ha4HbRrZML1OMzIUOrjqE94JDA6KM4PrzaHcH-grGQHCw"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 270, 380],
+    "weight": 5.35,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [2, 2]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "12Hz"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "ColorPreset",
+          "comment": "Color Transition"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "ColorPreset",
+          "comment": "Color Change"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [80, 159],
+          "type": "WheelShake",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [160, 202],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "backwards"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "forwards"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Prism",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "7 Color Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "7 Color Effect"
+        }
+      ]
+    },
+    "Auto / Self-Propelled Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction",
+          "comment": "\"Other Channel Functions\""
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Effect",
+          "effectName": "Self Mode 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "Self Mode 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Effect",
+          "effectName": "Self Mode 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Effect",
+          "effectName": "Self Mode 4"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Effect",
+          "effectName": "Sound Activated 1"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "Sound Activated 2"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Sound Activated 3"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound Activated 4"
+        }
+      ]
+    },
+    "Maintenance": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "X-axis running"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "Y-axis running"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "RESET"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "2.12deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "0.71deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism Rotation",
+        "7 Color Effect",
+        "Auto / Self-Propelled Mode",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "13 Channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism Rotation",
+        "7 Color Effect",
+        "Auto / Self-Propelled Mode",
+        "Maintenance"
+      ]
+    }
+  ]
+}
