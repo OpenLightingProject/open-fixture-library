@@ -1,6 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.4.0/schemas/fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hero Wash 640FX",
+  "shortName": "Hero Wash 640FX"
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["Max Kaussow"],
@@ -1027,7 +1028,4 @@
       ]
     }
   ],
-  "fixtureKey": "hero-wash-640fx",
-  "manufacturerKey": "varytec",
-  "oflURL": "https://open-fixture-library.org/varytec/hero-wash-640fx"
 }
