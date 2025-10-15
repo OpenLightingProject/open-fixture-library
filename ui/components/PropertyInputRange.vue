@@ -7,7 +7,7 @@
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
         :minimum="rangeMin"
-        :maximum="end !== `invalid` ? end : rangeMax"
+        :maximum="end === `invalid` ? rangeMax : end"
         :required="required || rangeIncomplete"
         :hint="startHint"
         lazy
@@ -20,7 +20,7 @@
         v-model="end"
         :name="`${name}-end`"
         :schema-property="schemaProperty.items"
-        :minimum="start !== `invalid` ? start : rangeMin"
+        :minimum="start === `invalid` ? rangeMin : start"
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
