@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3x3 rgbw",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["tester"],
+    "createDate": "2025-10-15",
+    "lastModifyDate": "2025-10-15"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=PmDdqiWsv5U"
+    ]
+  },
+  "rdm": {
+    "modelId": 12
+  },
+  "physical": {
+    "dimensions": [330, 340, 50],
+    "power": 135,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "rgbw",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
