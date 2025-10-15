@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Stage Lighting",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Arié van Egmond"],
+    "createDate": "2025-10-15",
+    "lastModifyDate": "2025-10-15"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/prod/c_115012.._fr_online.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Led effect": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Led effect speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "reset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Ch",
+      "shortName": "LEDSTAGEPAR",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Led effect",
+        "Led effect speed",
+        "Zoom",
+        "Reset"
+      ]
+    }
+  ]
+}
