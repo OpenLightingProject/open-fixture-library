@@ -14,12 +14,8 @@
       "https://kno.wled.ge/interfaces/e1.31-dmx",
       "https://kno.wled.ge/features/effects"
     ],
-    "productPage": [
-      "https://kno.wled.ge"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=J2tsm4LEXWs&si=4gwgfMUSoDQ5OsEF"
-    ]
+    "productPage": ["https://kno.wled.ge"],
+    "video": ["https://www.youtube.com/watch?v=J2tsm4LEXWs&si=4gwgfMUSoDQ5OsEF"]
   },
   "physical": {
     "bulb": {
@@ -1208,78 +1204,366 @@
     "Effect Palette": {
       "defaultValue": 0,
       "capabilities": [
-        { "dmxRange": [0, 0], "type": "Effect", "effectName": "Default" },
-        { "dmxRange": [1, 1], "type": "Effect", "effectName": "Random Cycle" },
-        { "dmxRange": [2, 2], "type": "Effect", "effectName": "Color 1" },
-        { "dmxRange": [3, 3], "type": "Effect", "effectName": "Colors 1+2" },
-        { "dmxRange": [4, 4], "type": "Effect", "effectName": "Color Gradient" },
-        { "dmxRange": [5, 5], "type": "Effect", "effectName": "Colors Only" },
-        { "dmxRange": [6, 6], "type": "Effect", "effectName": "Party" },
-        { "dmxRange": [7, 7], "type": "Effect", "effectName": "Cloud" },
-        { "dmxRange": [8, 8], "type": "Effect", "effectName": "Lava" },
-        { "dmxRange": [9, 9], "type": "Effect", "effectName": "Ocean" },
-        { "dmxRange": [10, 10], "type": "Effect", "effectName": "Forest" },
-        { "dmxRange": [11, 11], "type": "Effect", "effectName": "Rainbow" },
-        { "dmxRange": [12, 12], "type": "Effect", "effectName": "Rainbow Bands" },
-        { "dmxRange": [13, 13], "type": "Effect", "effectName": "Sunset" },
-        { "dmxRange": [14, 14], "type": "Effect", "effectName": "Rivendell" },
-        { "dmxRange": [15, 15], "type": "Effect", "effectName": "Breeze" },
-        { "dmxRange": [16, 16], "type": "Effect", "effectName": "Red & Blue" },
-        { "dmxRange": [17, 17], "type": "Effect", "effectName": "Yellowout" },
-        { "dmxRange": [18, 18], "type": "Effect", "effectName": "Analogous" },
-        { "dmxRange": [19, 19], "type": "Effect", "effectName": "Splash" },
-        { "dmxRange": [20, 20], "type": "Effect", "effectName": "Pastel" },
-        { "dmxRange": [21, 21], "type": "Effect", "effectName": "Sunset 2" },
-        { "dmxRange": [22, 22], "type": "Effect", "effectName": "Beach" },
-        { "dmxRange": [23, 23], "type": "Effect", "effectName": "Vintage" },
-        { "dmxRange": [24, 24], "type": "Effect", "effectName": "Departure" },
-        { "dmxRange": [25, 25], "type": "Effect", "effectName": "Landscape" },
-        { "dmxRange": [26, 26], "type": "Effect", "effectName": "Beech" },
-        { "dmxRange": [27, 27], "type": "Effect", "effectName": "Sherbet" },
-        { "dmxRange": [28, 28], "type": "Effect", "effectName": "Hult" },
-        { "dmxRange": [29, 29], "type": "Effect", "effectName": "Hult 64" },
-        { "dmxRange": [30, 30], "type": "Effect", "effectName": "Drywet" },
-        { "dmxRange": [31, 31], "type": "Effect", "effectName": "Jul" },
-        { "dmxRange": [32, 32], "type": "Effect", "effectName": "Grintage" },
-        { "dmxRange": [33, 33], "type": "Effect", "effectName": "Rewhi" },
-        { "dmxRange": [34, 34], "type": "Effect", "effectName": "Tertiary" },
-        { "dmxRange": [35, 35], "type": "Effect", "effectName": "Fire" },
-        { "dmxRange": [36, 36], "type": "Effect", "effectName": "Icefire" },
-        { "dmxRange": [37, 37], "type": "Effect", "effectName": "Cyane" },
-        { "dmxRange": [38, 38], "type": "Effect", "effectName": "Light Pink" },
-        { "dmxRange": [39, 39], "type": "Effect", "effectName": "Autumn" },
-        { "dmxRange": [40, 40], "type": "Effect", "effectName": "Magenta" },
-        { "dmxRange": [41, 41], "type": "Effect", "effectName": "Magred" },
-        { "dmxRange": [42, 42], "type": "Effect", "effectName": "Yelmag" },
-        { "dmxRange": [43, 43], "type": "Effect", "effectName": "Yelblu" },
-        { "dmxRange": [44, 44], "type": "Effect", "effectName": "Orange & Teal" },
-        { "dmxRange": [45, 45], "type": "Effect", "effectName": "Tiamat" },
-        { "dmxRange": [46, 46], "type": "Effect", "effectName": "April Night" },
-        { "dmxRange": [47, 47], "type": "Effect", "effectName": "Orangery" },
-        { "dmxRange": [48, 48], "type": "Effect", "effectName": "C9" },
-        { "dmxRange": [49, 49], "type": "Effect", "effectName": "Sakura" },
-        { "dmxRange": [50, 50], "type": "Effect", "effectName": "Aurora" },
-        { "dmxRange": [51, 51], "type": "Effect", "effectName": "Atlantica" },
-        { "dmxRange": [52, 52], "type": "Effect", "effectName": "C9 2" },
-        { "dmxRange": [53, 53], "type": "Effect", "effectName": "C9 New" },
-        { "dmxRange": [54, 54], "type": "Effect", "effectName": "Temperature" },
-        { "dmxRange": [55, 55], "type": "Effect", "effectName": "Aurora 2" },
-        { "dmxRange": [56, 56], "type": "Effect", "effectName": "Retro Clown" },
-        { "dmxRange": [57, 57], "type": "Effect", "effectName": "Candy" },
-        { "dmxRange": [58, 58], "type": "Effect", "effectName": "Toxy Reaf" },
-        { "dmxRange": [59, 59], "type": "Effect", "effectName": "Fairy Reaf" },
-        { "dmxRange": [60, 60], "type": "Effect", "effectName": "Semi Blue" },
-        { "dmxRange": [61, 61], "type": "Effect", "effectName": "Pink Candy" },
-        { "dmxRange": [62, 62], "type": "Effect", "effectName": "Red Reaf" },
-        { "dmxRange": [63, 63], "type": "Effect", "effectName": "Aqua Flash" },
-        { "dmxRange": [64, 64], "type": "Effect", "effectName": "Yelblu Hot" },
-        { "dmxRange": [65, 65], "type": "Effect", "effectName": "Lite Light" },
-        { "dmxRange": [66, 66], "type": "Effect", "effectName": "Red Flash" },
-        { "dmxRange": [67, 67], "type": "Effect", "effectName": "Blink Red" },
-        { "dmxRange": [68, 68], "type": "Effect", "effectName": "Red Shift" },
-        { "dmxRange": [69, 69], "type": "Effect", "effectName": "Red Tide" },
-        { "dmxRange": [70, 70], "type": "Effect", "effectName": "Candy2" },
-        { "dmxRange": [71, 255], "type": "Effect", "effectName": "Z Custom" }
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Default"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "Random Cycle"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Effect",
+          "effectName": "Color 1"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Effect",
+          "effectName": "Colors 1+2"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Effect",
+          "effectName": "Color Gradient"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Effect",
+          "effectName": "Colors Only"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Party"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Effect",
+          "effectName": "Cloud"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Lava"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Ocean"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Forest"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Rainbow Bands"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Sunset"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Rivendell"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Breeze"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Red & Blue"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Yellowout"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Analogous"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Splash"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Pastel"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Sunset 2"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Beach"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Vintage"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Departure"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Landscape"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Beech"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "Sherbet"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "Hult"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "Hult 64"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Drywet"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Jul"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Grintage"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "Rewhi"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Tertiary"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Icefire"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Cyane"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Light Pink"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "Autumn"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Magenta"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Magred"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "Yelmag"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "Yelblu"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Orange & Teal"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "Tiamat"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "April Night"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Orangery"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "C9"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "Sakura"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Aurora"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Atlantica"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "C9 2"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "C9 New"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Temperature"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Aurora 2"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Retro Clown"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Candy"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Toxy Reaf"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Fairy Reaf"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Semi Blue"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Pink Candy"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Red Reaf"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Aqua Flash"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Yelblu Hot"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Lite Light"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Red Flash"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Blink Red"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "Red Shift"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "Red Tide"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Candy2"
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "Effect",
+          "effectName": "Z Custom"
+        }
       ]
     },
     "Red 2nd": {
