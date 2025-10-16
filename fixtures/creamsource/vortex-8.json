@@ -1,0 +1,331 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vortex 8",
+  "shortName": "Vortex8",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["Creamsource - Dan"],
+    "createDate": "2025-10-16",
+    "lastModifyDate": "2025-10-16"
+  },
+  "comment": "2x1 Panel Light - 8 Pixels in Multizone mode",
+  "links": {
+    "manual": [
+      "https://knowledge.creamsource.com/vortex"
+    ],
+    "productPage": [
+      "https://creamsource.com/product/vortex8/"
+    ]
+  },
+  "rdm": {
+    "modelId": 300
+  },
+  "physical": {
+    "dimensions": [690, 380, 121],
+    "weight": 15.9,
+    "power": 650,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Master Dimmer"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2200K",
+        "colorTemperatureEnd": "15000K"
+      }
+    },
+    "Green Magenta": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Green Magenta"
+      }
+    },
+    "CCT-Colour Crossfade": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Generic",
+        "comment": "CCT-Colour Crossfade"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fan": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Generic",
+          "comment": "Quiet"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "High"
+        },
+        {
+          "dmxRange": [150, 249],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Pause"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "No Changes"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "DMX Smoothing Mode - Off"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "DMX Smoothing Mode - Smooth"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "DMX Smoothing Mode - Super Smooth"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "No Changes"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "Dimming Curve - Linear"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "Dimming Curve - Exponential"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "Dimming Curve - Logarithmic"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "Dimming Curve - S Curve"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "High Speed Mode - Off"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "High Speed Mode - On"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "Blackout on Startup - Off"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "Blackout on Startup - On"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to Uncalibrated (RAW)"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to Calibrated (Plasa / ProPhoto)"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Generic",
+          "comment": "CRMX Unlink"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "CRMX Disabled (ignored if received via CRMX)"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Generic",
+          "comment": "CRMX Enabled"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Generic",
+          "comment": "CRMX BLE Disabled"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "CRMX BLE Enabled"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "DMX Forwarding - Off"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Generic",
+          "comment": "DMX Forwarding - On"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Generic",
+          "comment": "Master Mode - Off"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Generic",
+          "comment": "Master Mode - On"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Generic",
+          "comment": "Refresh FrameSync (re-lock onto sync)"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Generic",
+          "comment": "Display always on - Off"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Generic",
+          "comment": "Display always on - On"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Generic",
+          "comment": "CRMX Transmitter Link"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to sRGB"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to Rec.709"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to P3-D65"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to P3-DCI"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to Rec.2020"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Generic",
+          "comment": "Set RGBW Colour Space to Display P3"
+        },
+        {
+          "dmxRange": [195, 244],
+          "type": "NoFunction",
+          "comment": "RESERVED"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Generic",
+          "comment": "Green Setting Change Indicator - Off"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Green Setting Change Indicator - On"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8bit CCT and RGBW",
+      "shortName": "8bit CCT and RGBW",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green Magenta",
+        "CCT-Colour Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan",
+        "Control"
+      ]
+    }
+  ]
+}
