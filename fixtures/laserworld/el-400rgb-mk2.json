@@ -118,10 +118,273 @@
       }
     },
     "Color": {
-      "capability": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Effect",
+          "effectName": "Color Macros",
+          "comment": "Multi Color",
+          "helpWanted": "Does this cycle all possible colours? Is this a colorFade or colorJump?"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [128, 137],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [138, 147],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [148, 157],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [158, 167],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [168, 177],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [178, 187],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [188, 197],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [254, 255],
         "type": "ColorPreset",
-        "helpWanted": "What color(s) can be selected at which DMX value?"
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "White"
       }
+      ]
     },
     "Color Segment": {
       "capability": {
