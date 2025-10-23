@@ -3,9 +3,9 @@
   "name": "EL-400RGB MK2",
   "categories": ["Laser"],
   "meta": {
-    "authors": ["Anon"],
+    "authors": ["Anon", "wagskydive", "Luke Nelson"],
     "createDate": "2024-10-10",
-    "lastModifyDate": "2024-10-10"
+    "lastModifyDate": "2025-10-23"
   },
   "links": {
     "manual": [
@@ -380,10 +380,10 @@
         },
         {
           "dmxRange": [254, 255],
-        "type": "ColorPreset",
+          "type": "ColorPreset",
           "colors": ["#ff0000", "#00ff00", "#0000ff"],
           "comment": "White"
-      }
+        }
       ]
     },
     "Color Segment": {
