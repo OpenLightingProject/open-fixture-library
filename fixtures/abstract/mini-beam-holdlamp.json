@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini beam holdlamp",
+  "shortName": "mini beam",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["anonimo"],
+    "createDate": "2025-10-28",
+    "lastModifyDate": "2025-10-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.holdlamp.com/"
+    ]
+  },
+  "wheels": {
+    "Ruota dei colori": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "disk"
+        },
+        {
+          "type": "Color",
+          "name": "disk"
+        }
+      ]
+    },
+    "Ruota Gobo": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "ruota"
+        },
+        {
+          "type": "Gobo",
+          "name": "ruota"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Padella": {
+      "fineChannelAliases": ["Padella fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Inclinare": {
+      "fineChannelAliases": ["Inclinare fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Ruota dei colori": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 2
+      }
+    },
+    "Ruota Gobo": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 2,
+        "comment": "ruota"
+      }
+    },
+    "Strobo": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Intensità": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Prenotato": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Nessuna funzione": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "mod. 11ch",
+      "channels": [
+        "Padella",
+        "Padella fine",
+        "Inclinare",
+        "Inclinare fine",
+        "Ruota dei colori",
+        "Ruota Gobo",
+        "Strobo",
+        "Intensità",
+        "Iris",
+        "Prenotato",
+        "Nessuna funzione"
+      ]
+    }
+  ]
+}
