@@ -21,7 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-
 const isBrowser = import.meta.client;
 
 const isTouchScreen = ref(false);

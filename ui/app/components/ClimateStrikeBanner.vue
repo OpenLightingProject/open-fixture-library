@@ -118,8 +118,6 @@
 </style>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-
 // Static-ish config (could be props if needed)
 const strikeDateString = ref('2023-09-15');
 const climateStrikeWebsite = ref('https://fridaysforfuture.org/september15/');
