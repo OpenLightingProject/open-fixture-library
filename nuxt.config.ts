@@ -2,8 +2,8 @@ export default defineNuxtConfig({
     telemetry:true,
     rootDir: './ui/',
     compatibilityDate: '2025-09-13',
-    modules:['@nuxt/fonts'],
-    css:['~/assets/styles/style.scss'],
+    modules:['@nuxt/fonts', '@vueuse/nuxt'],
+    // css:['~/assets/styles/style.scss'],
     runtimeConfig:{
         public:{
             websiteUrl:'',
