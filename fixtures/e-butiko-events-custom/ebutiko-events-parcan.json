@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ebutiko Events parcan",
+  "shortName": "E.E parcan",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Mazeed"],
+    "createDate": "2025-11-07",
+    "lastModifyDate": "2025-11-07"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1ZCxVI7UYp9FTyct1p8WoOXofIHN8SZcL/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://drive.google.com/file/d/1ZCxVI7UYp9FTyct1p8WoOXofIHN8SZcL/view?usp=sharing"
+    ],
+    "video": [
+      "https://drive.google.com/file/d/1ZCxVI7UYp9FTyct1p8WoOXofIHN8SZcL/view?usp=sharing"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "200Hz",
+        "comment": "strobe"
+      }
+    },
+    "Program Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "0%",
+        "durationEnd": "100%"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EEPAR",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Program Duration",
+        "Program Speed"
+      ]
+    }
+  ]
+}
