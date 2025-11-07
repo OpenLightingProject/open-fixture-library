@@ -1,0 +1,408 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MINI SPOT 30",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["orange"],
+    "createDate": "2025-11-07",
+    "lastModifyDate": "2025-11-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.soundhouse.co.jp/download/se/minispot30.pdf?srsltid=AfmBOoqUNaco-wn6Yd33NAvyte1Pr9N8e_DtRjYBiaKHIDedQosQKJBT"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 165, 145],
+    "weight": 2.85,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ1"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ2"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ3"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ4"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ5"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ6"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボ7"
+        },
+        {
+          "type": "Gobo",
+          "name": "ゴボホイールローテーション"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "0%"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "オープン白",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "赤",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "緑",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "青",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "黄色",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "ライトブルー",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "オレンジ",
+          "colors": ["#fd7e00"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "マゼンタ",
+          "colors": ["#ff0099"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "マゼンタ/オレンジ",
+          "colorsStart": ["#ff0099"],
+          "colorsEnd": ["#fd7e00"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "オレンジ/ライトブルー",
+          "colorsStart": ["#fd7e00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "ライトブルー/イエロー",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "イエロー/ブルー",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "ブルー/グリーン",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "グリーン/赤",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "レインボーエフェクト遅い→速い"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 24],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [25, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "シェイク"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Effect",
+          "effectName": "内蔵プログラム再生"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "サウンドアクティブ",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Duration 2": {
+      "name": "Program Duration",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "PanContinuous"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "TiltContinuous"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "PAN/TILT"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "0%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Presets",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Program Duration",
+        "Program Duration 2"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan 2",
+        "Tilt 2",
+        "Color Presets",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Program Duration",
+        "Program Duration 2"
+      ]
+    }
+  ]
+}
