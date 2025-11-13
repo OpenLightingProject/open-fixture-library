@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Series One L1.2 LED VW Studio Light",
+  "shortName": "LED L1.2 VW",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["Leslie Moynihan"],
+    "createDate": "2023-04-26",
+    "lastModifyDate": "2023-04-26"
+  },
+  "comment": "Variable White from 3200K to 5600K",
+  "links": {
+    "productPage": [
+      "https://brightlines.com/applications/seriesone/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [425.07, 317.17, 263.4],
+    "weight": 5.71,
+    "power": 115,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5000,
+      "lumens": 50
+    },
+    "lens": {
+      "name": "open, broad, medium, narrow",
+      "degreesMinMax": [30, 120]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "highlightValue": 2,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "3200-5600": {
+      "defaultValue": 2,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "5600K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LED L1.2 VW",
+      "shortName": "LED L1.2 VW",
+      "rdmPersonalityIndex": 2,
+      "physical": {
+        "power": 115,
+        "DMXconnector": "5-pin",
+        "bulb": {
+          "type": "LED",
+          "colorTemperature": 3200
+        }
+      },
+      "channels": [
+        "Intensity",
+        "3200-5600"
+      ]
+    }
+  ]
+}
