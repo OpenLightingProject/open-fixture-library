@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MC Pro",
+  "shortName": "MC Pro",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Arié van Egmond"],
+    "createDate": "2025-11-13",
+    "lastModifyDate": "2025-11-13"
+  },
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MC%20Pro/All%20Files/MC%20Pro%20DMX%20Profile%20Specification%20V2.0.pdf"
+    ],
+    "productPage": [
+      "https://aputure.com/products/mc-pro?srsltid=AfmBOopustbUJZI8iJX_DhwIdhBOxMKRiWW6WO6r-clvk-5QWhbTHbsL"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=BU5n5xEFo54"
+    ]
+  },
+  "physical": {
+    "dimensions": [108, 700, 25],
+    "weight": 0.247,
+    "power": 7,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "MINUS GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CCT-RGB": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "25Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB",
+      "shortName": "CCT & RGB",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "MINUS GREEN",
+        "CCT-RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
