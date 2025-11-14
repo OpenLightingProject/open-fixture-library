@@ -1,0 +1,760 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPAR Pro Pix",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ryan Carter"],
+    "createDate": "2022-11-21",
+    "lastModifyDate": "2022-11-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-11-21",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [290, 313, 110],
+    "weight": 4.5,
+    "power": 93,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 2775
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Pixel auto/sound programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 16],
+          "type": "Effect",
+          "effectName": "Pixel auto program 1"
+        },
+        {
+          "dmxRange": [17, 27],
+          "type": "Effect",
+          "effectName": "Pixel auto program 2"
+        },
+        {
+          "dmxRange": [28, 38],
+          "type": "Effect",
+          "effectName": "Pixel auto program 3"
+        },
+        {
+          "dmxRange": [39, 49],
+          "type": "Effect",
+          "effectName": "Pixel auto program 4"
+        },
+        {
+          "dmxRange": [50, 60],
+          "type": "Effect",
+          "effectName": "Pixel auto program 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Pixel auto program 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Pixel auto program 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Pixel auto program 8"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Pixel auto program 9"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Pixel auto program 10"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Pixel auto program scroll 1-10"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Pixel sound program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Pixel sound program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Pixel sound program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Pixel sound program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Pixel sound program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Pixel sound program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Pixel sound program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Pixel sound program 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Pixel sound program 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Pixel sound program 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Pixel sound program scroll 1-10",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Auto speed/sound sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Auto program speed (slow to fast) / Sound sensitivity (low to high)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Ring red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "efx ring red"
+      }
+    },
+    "Ring green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "efx ring green"
+      }
+    },
+    "Ring blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "efx ring blue"
+      }
+    },
+    "Ring strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "Ring auto/sound programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 16],
+          "type": "Effect",
+          "effectName": "Ring auto program 1"
+        },
+        {
+          "dmxRange": [17, 27],
+          "type": "Effect",
+          "effectName": "Ring auto program 2"
+        },
+        {
+          "dmxRange": [28, 38],
+          "type": "Effect",
+          "effectName": "Ring auto program 3"
+        },
+        {
+          "dmxRange": [39, 49],
+          "type": "Effect",
+          "effectName": "Ring auto program 4"
+        },
+        {
+          "dmxRange": [50, 60],
+          "type": "Effect",
+          "effectName": "Ring auto program 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Ring auto program 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Ring auto program 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Ring auto program 8"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Ring auto program 9"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Ring auto program 10"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Ring auto program scroll 1-10"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Ring sound program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Ring sound program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Ring sound program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Ring sound program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Ring sound program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Ring sound program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Ring sound program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Ring sound program 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Ring sound program 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Ring sound program 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Ring sound program scroll 1-10",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Ring speed/sound sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Auto program speed (slow to fast) / Sound sensitivity (low to high)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity",
+          "comment": "No function (LEDs snap)"
+        },
+        {
+          "dmxRange": [51, 152],
+          "type": "Intensity",
+          "comment": "Dimmer fade (slow)"
+        },
+        {
+          "dmxRange": [153, 255],
+          "type": "Intensity",
+          "comment": "Dimmer fade (fast)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Master",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Pixel auto/sound programs",
+        "Auto speed/sound sensitivity",
+        "Ring auto/sound programs",
+        "Ring speed/sound sensitivity"
+      ]
+    },
+    {
+      "name": "26-channel",
+      "shortName": "26ch",
+      "channels": [
+        "Master",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Pixel auto/sound programs",
+        "Auto speed/sound sensitivity",
+        "Ring red",
+        "Ring green",
+        "Ring blue",
+        "Ring strobe",
+        "Ring auto/sound programs",
+        "Ring speed/sound sensitivity",
+        "Dimmer curve"
+      ]
+    },
+    {
+      "name": "48-channel",
+      "shortName": "48ch",
+      "channels": [
+        "Master",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Ring red",
+        "Ring green",
+        "Ring blue",
+        "Ring strobe",
+        "Ring auto/sound programs",
+        "Ring speed/sound sensitivity",
+        "Dimmer curve"
+      ]
+    }
+  ]
+}
