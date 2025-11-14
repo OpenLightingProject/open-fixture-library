@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "QuadPAR 7",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["gtester", "Karmacop"],
+    "createDate": "2025-11-14",
+    "lastModifyDate": "2025-11-14",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-11-14",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "weight": 3,
+    "power": 120,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ColorRGB_R": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "ColorRGB_G": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "ColorRGB_B": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "ColorRGB_W": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "ColorMacro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 170],
+          "type": "ColorPreset",
+          "comment": "RGB Macro"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "All LEDs On"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorPreset",
+          "comment": "CT Warm -> CT Cool"
+        }
+      ]
+    },
+    "Iris": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open"
+      }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [204, 254],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Show 5"
+        }
+      ]
+    },
+    "Show Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Intensity",
+          "comment": "Set from Menu"
+        },
+        {
+          "dmxRange": [52, 152],
+          "type": "Intensity",
+          "comment": "Dimmer 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Intensity",
+          "comment": "Dimmer 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Intensity",
+          "comment": "Dimmer 3"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "ColorRGB_R",
+        "ColorRGB_G",
+        "ColorRGB_B",
+        "ColorRGB_W"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master Dimmer",
+        "ColorRGB_R",
+        "ColorRGB_G",
+        "ColorRGB_B",
+        "ColorRGB_W"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Dimmer",
+        "ColorRGB_R",
+        "ColorRGB_G",
+        "ColorRGB_B",
+        "ColorRGB_W",
+        "ColorMacro",
+        "Iris",
+        "Effects",
+        "Show Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
