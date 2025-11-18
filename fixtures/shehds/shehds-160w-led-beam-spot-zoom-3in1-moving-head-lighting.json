@@ -1,0 +1,213 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Shehds 160W LED Beam, Spot & Zoom 3in1 Moving Head Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Chrismo 05/08/2025", "Christophe Mourey"],
+    "createDate": "2025-09-07",
+    "lastModifyDate": "2025-09-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [270, 350, 210],
+    "weight": 8.5,
+    "power": 160,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 20]
+    }
+  },
+  "availableChannels": {
+    "Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "PAN": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "TILT": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo Roue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo Roue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlotRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg",
+        "helpWanted": "Are these the correct angles?"
+      }
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "Prism Rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Prism",
+        "comment": "Prism rotation"
+      }
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Frost simple"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [10, 120],
+          "type": "Effect",
+          "effectName": "Auto mode"
+        },
+        {
+          "dmxRange": [121, 150],
+          "type": "Effect",
+          "effectName": "Auto mode"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Reset after 5 seconds"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18 canaux",
+      "channels": [
+        "Dimming",
+        "Strobe",
+        "PAN",
+        "TILT",
+        "Pan/Tilt speed",
+        "Color",
+        "Gobo Roue 1",
+        "Gobo Roue 2",
+        "Gobo rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Zoom",
+        "Focus",
+        "Pan Fine",
+        "Tilt fine",
+        "Macro",
+        "Reset"
+      ]
+    }
+  ]
+}
