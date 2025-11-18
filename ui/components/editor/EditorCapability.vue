@@ -2,8 +2,8 @@
   <ConditionalDetails :open="capability.open" class="capability">
     <template #summary>
       DMX range
-      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
-      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <code :class="{ 'unset': start === null }">{{ start === null ? min : start }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end === null ? max : end }}</code>:
       <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
     </template>
 
@@ -42,7 +42,7 @@
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -88,7 +88,7 @@
 <script>
 import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -107,6 +107,10 @@ export default {
     capabilityIndex: numberProp().required,
     resolution: numberProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
   },
   data() {
     return {

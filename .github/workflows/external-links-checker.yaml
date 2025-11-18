@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.3
-      - name: Setup Node.js v16
-        uses: actions/setup-node@v3.8.1
+        uses: actions/checkout@v5.0.1
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v6.0.0
         with:
-          node-version: 16
+          node-version: 20
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -26,3 +26,7 @@ jobs:
           GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
           NODE_ENV: production
+      - name: Check Markdown Links in all files
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'

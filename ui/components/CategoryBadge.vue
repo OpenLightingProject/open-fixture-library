@@ -50,6 +50,11 @@ export default {
     selected: booleanProp().withDefault(false),
     selectable: booleanProp().withDefault(false),
   },
+  emits: {
+    click: () => true,
+    focus: () => true,
+    blur: event => true,
+  },
   render(createElement) {
     const classes = {
       'category-badge': true,
@@ -76,6 +81,12 @@ export default {
           click: $event => {
             this.$emit(`click`);
             $event.preventDefault();
+          },
+          focus: () => {
+            this.$emit(`focus`);
+          },
+          blur: $event => {
+            this.$emit(`blur`, $event);
           },
         },
       }, children);

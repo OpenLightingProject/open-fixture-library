@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DIM-4LC",
+  "comment": "4-Channel Dimmer Pack with local control - 3 A per channel",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/en/mwdownloads/download/link/id/17431130"
+    ],
+    "productPage": [
+      "https://www.highlite.com/en/products/entertainment-lighting/light-controllers/50443-dim-4lc.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 220, 82],
+    "weight": 3.5,
+    "power": 3000,
+    "DMXconnector": "3-pin"
+  },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": ["1", "2"],
+      "3/4": ["3", "4"]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Switch $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel Dimmer",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer Master"
+      ]
+    },
+    {
+      "name": "1-channel Switch",
+      "shortName": "1ch-switch",
+      "channels": [
+        "Switch Master"
+      ]
+    },
+    {
+      "name": "2-channel Dimmer",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer 1/2",
+        "Dimmer 3/4"
+      ]
+    },
+    {
+      "name": "2-channel Switch",
+      "shortName": "2ch-switch",
+      "channels": [
+        "Switch 1/2",
+        "Switch 3/4"
+      ]
+    },
+    {
+      "name": "4-channel Dimmer",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    },
+    {
+      "name": "4-channel Switch",
+      "shortName": "4ch-switch",
+      "channels": [
+        "Switch 1",
+        "Switch 2",
+        "Switch 3",
+        "Switch 4"
+      ]
+    }
+  ]
+}

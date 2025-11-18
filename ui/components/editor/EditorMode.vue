@@ -203,8 +203,8 @@
 import { numberProp, objectProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
-import { schemaDefinitions, modeProperties } from '../../../lib/schema-properties.js';
-import { constants } from '../../assets/scripts/editor-utils.js';
+import { modeProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
+import { constants } from '../../assets/scripts/editor-utilities.js';
 
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
@@ -219,14 +219,15 @@ export default {
     PropertyInputNumber,
     PropertyInputText,
   },
-  model: {
-    prop: `mode`,
-  },
   props: {
     mode: objectProp().required,
     index: numberProp().required,
     fixture: objectProp().required,
     formstate: objectProp().required,
+  },
+  emits: {
+    remove: () => true,
+    'open-channel-editor': payload => true,
   },
   data() {
     return {
