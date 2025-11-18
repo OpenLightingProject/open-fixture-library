@@ -26,7 +26,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 25]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -132,22 +132,71 @@
         }
       ]
     },
-    "No function": {
+    "Auto Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [204, 254],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Show 5"
+        }
+      ]
+    },
+    "Auto Program Show Speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
-    "No function 2": {
-      "name": "No function",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "No function 3": {
-      "name": "No function",
-      "capability": {
-        "type": "NoFunction"
-      }
+    "Built-in Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Intensity",
+          "comment": "Set from Menu"
+        },
+        {
+          "dmxRange": [52, 152],
+          "type": "Intensity",
+          "comment": "Dimmer 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Intensity",
+          "comment": "Dimmer 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Intensity",
+          "comment": "Dimmer 3"
+        }
+      ]
     }
   },
   "modes": [
@@ -183,9 +232,9 @@
         "White",
         "Color Presets",
         "Strobe",
-        "No function",
-        "No function 2",
-        "No function 3"
+        "Auto Program",
+        "Auto Program Show Speed",
+        "Built-in Dimmer"
       ]
     }
   ]
