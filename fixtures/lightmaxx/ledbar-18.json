@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDBAR 18",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["PH"],
+    "createDate": "2025-11-19",
+    "lastModifyDate": "2025-11-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/1011908/Lightmaxx-Purelight-Led-Bar-18.html?page=8#manual"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/PURElight-LED-BAR-18-18x-3W-RGB/art-LIG0017356-000"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Seg 1 rot": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 1 green": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 1 blue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 2 red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 2 green": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 2 blue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 3 red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 3 green": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Seg 3 blue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13ch",
+      "channels": [
+        "Seg 1 rot",
+        "Seg 1 green",
+        "Seg 1 blue",
+        "Seg 2 red",
+        "Seg 2 green",
+        "Seg 2 blue",
+        "Seg 3 red",
+        "Seg 3 green",
+        "Seg 3 blue",
+        "No function",
+        "Strobe",
+        "Dimmer",
+        "Program Speed"
+      ]
+    }
+  ]
+}
