@@ -1,0 +1,238 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-46",
+  "shortName": "TMH-46",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Liz"],
+    "createDate": "2025-11-20",
+    "lastModifyDate": "2025-11-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51785892-Anleitung-128780-1.1000-eurolite-led-tmh-46-moving-head-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/eurolite_led_tmh_46_moving_head_wash.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=UIvviRHL73Q"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 180, 140],
+    "weight": 1.5,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBAW-UV 6in1"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0.2Hz",
+          "speedEnd": "24Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "ColorPreset",
+          "comment": "Color change"
+        },
+        {
+          "dmxRange": [8, 39],
+          "type": "ColorPreset",
+          "comment": "program 1"
+        },
+        {
+          "dmxRange": [40, 72],
+          "type": "ColorPreset",
+          "comment": "program 2"
+        },
+        {
+          "dmxRange": [73, 105],
+          "type": "ColorPreset",
+          "comment": "program 3"
+        },
+        {
+          "dmxRange": [106, 138],
+          "type": "ColorPreset",
+          "comment": "program 4"
+        },
+        {
+          "dmxRange": [139, 140],
+          "type": "ColorPreset",
+          "comment": "program 5"
+        },
+        {
+          "dmxRange": [141, 167],
+          "type": "ColorPreset",
+          "comment": "audioreactive prog 1"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "ColorPreset",
+          "comment": "audioreactive prog 2"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "ColorPreset",
+          "comment": "audioreactive prog 3"
+        },
+        {
+          "dmxRange": [224, 251],
+          "type": "ColorPreset",
+          "comment": "audioreactive prog 4"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "audioreactive prog 5"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18-Channel",
+      "shortName": "18ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Sound Sensitivity",
+        "Program Speed",
+        "Color Presets",
+        "Effect Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
