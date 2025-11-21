@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01429 MOBILEPWR™ PAR LIGHT",
+  "shortName": "ZQ01429",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Axel"],
+    "createDate": "2025-11-19",
+    "lastModifyDate": "2025-11-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2025/07/ZQ01429-3LEDs-6-IN-1-Battery-Par-Light-With-Remote-Control.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/rechargeable-led-par-light-3-in-1-stage-lights-built-in-battery-with-remote-control-wifi-led-wash-light-par-light/"
+    ]
+  },
+  "physical": {
+    "weight": 1.8,
+    "power": 54,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Light off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "Effect",
+          "effectName": "Color Mixing"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Mutation",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "Effect",
+          "effectName": "console color changing stroboscopic",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe Speed",
+        "Effect",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
