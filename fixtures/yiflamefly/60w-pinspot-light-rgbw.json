@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "60W Pinspot Light RGBW",
+  "shortName": "ZQ01003",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Axel"],
+    "createDate": "2025-11-19",
+    "lastModifyDate": "2025-11-19"
+  },
+  "comment": "Only found on AliExpress",
+  "links": {
+    "other": [
+      "https://de.aliexpress.com/item/1005007569065214.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "weight": 1.3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 3400
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "SMD Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "SMD Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "SMD Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectName": "Color Changer"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Master Dimmer",
+        "Master Strobe",
+        "Function",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    }
+  ]
+}
