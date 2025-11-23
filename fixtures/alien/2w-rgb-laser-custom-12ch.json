@@ -1,0 +1,313 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2W RGB Laser (Custom 12ch)",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Ibo / ChatGPT", "Obi"],
+    "createDate": "2025-11-23",
+    "lastModifyDate": "2025-11-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-11-23",
+      "comment": "created by QLC+ (ChatGPT) (version 1.0)"
+    }
+  },
+  "availableChannels": {
+    "Master / Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Generic",
+          "comment": "Auto Show 1"
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "Generic",
+          "comment": "Auto Show 2"
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Generic",
+          "comment": "Auto Show 3"
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Generic",
+          "comment": "Auto Show 4"
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Generic",
+          "comment": "Sound Active"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Generic",
+          "comment": "DMX Manual"
+        }
+      ]
+    },
+    "Pattern Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Circle"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Square"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Triangle"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Line"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Tunnel"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "Multi-line"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectName": "Text/Abstract"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Effect",
+          "effectName": "Pattern Scroll"
+        }
+      ]
+    },
+    "Pattern Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "comment": "Still",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Animation speed"
+        }
+      ]
+    },
+    "X Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg",
+          "comment": "Left → Right"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg",
+          "comment": "Right → Left (invert)"
+        }
+      ]
+    },
+    "X Size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg",
+          "comment": "Minimum size"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg",
+          "comment": "X size small → large"
+        }
+      ]
+    },
+    "Y Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg",
+          "comment": "Down → Up"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg",
+          "comment": "Up → Down (invert)"
+        }
+      ]
+    },
+    "Y Size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg",
+          "comment": "Minimum size"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg",
+          "comment": "Y size small → large"
+        }
+      ]
+    },
+    "Rotation Direction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Rotate CW"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Rotate CCW"
+        }
+      ]
+    },
+    "Rotation Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Rotation"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red 1 → 100%"
+        }
+      ]
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green 1 → 100%"
+        }
+      ]
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue 1 → 100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "physical": {
+        "power": 100,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "Laser",
+          "colorTemperature": 6500
+        },
+        "lens": {
+          "name": "Standard",
+          "degreesMinMax": [, ]
+        }
+      },
+      "channels": [
+        "Master / Mode",
+        "Pattern Select",
+        "Pattern Speed",
+        "X Movement",
+        "X Size",
+        "Y Movement",
+        "Y Size",
+        "Rotation Direction",
+        "Rotation Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
