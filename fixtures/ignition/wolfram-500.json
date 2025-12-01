@@ -1,0 +1,1976 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wolfram 500",
+  "shortName": "wolfram",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jonas"],
+    "createDate": "2025-12-01",
+    "lastModifyDate": "2025-12-01"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/554507_c_554507_v2_r2_de_online.pdf?_gl=1*rl2lqu*_gcl_aw*R0NMLjE3NjI1MDY5NjQuQ2p3S0NBaUF6cmJJQmhBM0Vpd0FVQmFVZGNKYVNZNzBPYmotVzBSVWNOSVZvckdQcEs0RnF5WnNQSDFRR0VQWW51WWZLbmwxZ0hsMktob0Nnak1RQXZEX0J3RQ..*_gcl_au*MzYzOTMzNjExLjE3NTczMzI1MjI.*FPAU*MzYzOTMzNjExLjE3NTczMzI1MjI.*_ga*MjE0NTk4MDU4MC4xNzU3MzMyNTIy*_ga_QNTG1E3BFT*czE3NjQ1ODgzMjIkbzE2JGcxJHQxNzY0NTg4MzU0JGoyOCRsMCRoNjI5NzU4NDIw*_fplc*STJ6MnlUbG1GOGNJVEY1STY5Szk3YThMeXN6aUlIODZyZUdDRXZIZUpiQlQyOWNMWWRoWVVFYnRTZ29aY1AzNVJuMGxURWNuZU9HeVdVbCUyRmhSZUxZOVZ3c3BsNkhQOE9NaFppb0FSOUNUVklRc1ltbHVWSjRnSWFZY0NheVElM0QlM0Q.*_ga_CQB6MP7VD2*czE3NjQ1ODgzMjIkbzE2JGcxJHQxNzY0NTg4MzI3JGo1NSRsMCRoMA..",
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/554507_c_554507_v2_r2_en_online.pdf?_gl=1*1i6ctmh*_gcl_aw*R0NMLjE3NjI1MDY5NjQuQ2p3S0NBaUF6cmJJQmhBM0Vpd0FVQmFVZGNKYVNZNzBPYmotVzBSVWNOSVZvckdQcEs0RnF5WnNQSDFRR0VQWW51WWZLbmwxZ0hsMktob0Nnak1RQXZEX0J3RQ..*_gcl_au*MzYzOTMzNjExLjE3NTczMzI1MjI.*FPAU*MzYzOTMzNjExLjE3NTczMzI1MjI.*_ga*MjE0NTk4MDU4MC4xNzU3MzMyNTIy*_ga_QNTG1E3BFT*czE3NjQ1ODgzMjIkbzE2JGcxJHQxNzY0NTg4NDQ0JGo2MCRsMCRoNjI5NzU4NDIw*_fplc*STJ6MnlUbG1GOGNJVEY1STY5Szk3YThMeXN6aUlIODZyZUdDRXZIZUpiQlQyOWNMWWRoWVVFYnRTZ29aY1AzNVJuMGxURWNuZU9HeVdVbCUyRmhSZUxZOVZ3c3BsNkhQOE9NaFppb0FSOUNUVklRc1ltbHVWSjRnSWFZY0NheVElM0QlM0Q.*_ga_CQB6MP7VD2*czE3NjQ1ODgzMjIkbzE2JGcxJHQxNzY0NTg4NDQ0JGo2MCRsMCRoMA.."
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/ignition_wolfram_500.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i11288p10_yd59vqpa.mp4"
+    ]
+  },
+  "rdm": {
+    "modelId": 1343
+  },
+  "physical": {
+    "dimensions": [390, 497, 223],
+    "weight": 19.5,
+    "power": 480,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "12x40W RGBWW-LED",
+      "colorTemperature": 2800
+    },
+    "lens": {
+      "degreesMinMax": [4, 50]
+    }
+  },
+  "wheels": {
+    "Color Macros": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "defaultValue": 63,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorTemperature",
+          "colorTemperature": "7900K"
+        },
+        {
+          "dmxRange": [10, 13],
+          "type": "ColorTemperature",
+          "colorTemperature": "7800K"
+        },
+        {
+          "dmxRange": [14, 18],
+          "type": "ColorTemperature",
+          "colorTemperature": "7700K"
+        },
+        {
+          "dmxRange": [19, 22],
+          "type": "ColorTemperature",
+          "colorTemperature": "7600K"
+        },
+        {
+          "dmxRange": [23, 27],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorTemperature",
+          "colorTemperature": "7400K"
+        },
+        {
+          "dmxRange": [32, 36],
+          "type": "ColorTemperature",
+          "colorTemperature": "7300K"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorTemperature",
+          "colorTemperature": "7100K"
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorTemperature",
+          "colorTemperature": "6900K"
+        },
+        {
+          "dmxRange": [55, 58],
+          "type": "ColorTemperature",
+          "colorTemperature": "6800K"
+        },
+        {
+          "dmxRange": [59, 63],
+          "type": "ColorTemperature",
+          "colorTemperature": "6700K"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "ColorTemperature",
+          "colorTemperature": "6600K"
+        },
+        {
+          "dmxRange": [68, 72],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorTemperature",
+          "colorTemperature": "6400K"
+        },
+        {
+          "dmxRange": [77, 81],
+          "type": "ColorTemperature",
+          "colorTemperature": "6300K"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorTemperature",
+          "colorTemperature": "6200K"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorTemperature",
+          "colorTemperature": "6100K"
+        },
+        {
+          "dmxRange": [91, 94],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "ColorTemperature",
+          "colorTemperature": "5800K"
+        },
+        {
+          "dmxRange": [104, 108],
+          "type": "ColorTemperature",
+          "colorTemperature": "5700K"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [113, 117],
+          "type": "ColorTemperature",
+          "colorTemperature": "5500K"
+        },
+        {
+          "dmxRange": [118, 121],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [122, 126],
+          "type": "ColorTemperature",
+          "colorTemperature": "5300K"
+        },
+        {
+          "dmxRange": [127, 130],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorTemperature",
+          "colorTemperature": "5100K"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [149, 153],
+          "type": "ColorTemperature",
+          "colorTemperature": "4700K"
+        },
+        {
+          "dmxRange": [154, 157],
+          "type": "ColorTemperature",
+          "colorTemperature": "4600K"
+        },
+        {
+          "dmxRange": [158, 162],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [163, 166],
+          "type": "ColorTemperature",
+          "colorTemperature": "4400K"
+        },
+        {
+          "dmxRange": [167, 171],
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorTemperature",
+          "colorTemperature": "4100K"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorTemperature",
+          "colorTemperature": "3900K"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [194, 198],
+          "type": "ColorTemperature",
+          "colorTemperature": "3700K"
+        },
+        {
+          "dmxRange": [199, 202],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [212, 216],
+          "type": "ColorTemperature",
+          "colorTemperature": "3300K"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorTemperature",
+          "colorTemperature": "3100K"
+        },
+        {
+          "dmxRange": [226, 229],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorTemperature",
+          "colorTemperature": "2900K"
+        },
+        {
+          "dmxRange": [235, 238],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [239, 243],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorTemperature",
+          "colorTemperature": "2600K"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "2500K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Open",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "LEE 790 Moroccan Pink",
+          "colors": ["#ffae82"]
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "LEE 157 Pink",
+          "colors": ["#ff716e"]
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "LEE 332 Special Rose Pink",
+          "colors": ["#ff377b"]
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "LEE 328 Follies Pink",
+          "colors": ["#ff7ab8"]
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "LEE 345 Fuchsia Pink",
+          "colors": ["#f1aaff"]
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "LEE 194 Surprise Pink",
+          "colors": ["#e5c7ff"]
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "LEE 181 Congo Blue",
+          "colors": ["#1a44ff"]
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "LEE 071 Tokyo Blue",
+          "colors": ["#0040ff"]
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "LEE 120 Deep Blue",
+          "colors": ["#0062ff"]
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "LEE 079 Just Blue",
+          "colors": ["#007bff"]
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "LEE 132 Medium Blue",
+          "colors": ["#00a0ff"]
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "LEE 200 Double CT Blue",
+          "colors": ["#6fbcff"]
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "LEE 161 State Blue",
+          "colors": ["#67cdff"]
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "LEE 201 Full CT Blue",
+          "colors": ["#dbf5ff"]
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "LEE 202 Half CT Blue",
+          "colors": ["#fffce6"]
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "LEE 117 Steel Blue",
+          "colors": ["#c4ffe4"]
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "LEE 353 Lighter Blue",
+          "colors": ["#95fffb"]
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "LEE 118 Light Blue",
+          "colors": ["#00a0ff"]
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "LEE 116 Medium Blue Green",
+          "colors": ["#00ffe1"]
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "LEE 124 Dark Green",
+          "colors": ["#00ff66"]
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "LEE 139 Primary Green",
+          "colors": ["#4bff00"]
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "LEE 089 Moss Green",
+          "colors": ["#a7ff58"]
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "LEE 122 Fern Green",
+          "colors": ["#8fff60"]
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "LEE 738 JAS Green",
+          "colors": ["#ceff2a"]
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "LEE 088 Lime Green",
+          "colors": ["#fffe4c"]
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "LEE 100 Spring Yellow",
+          "colors": ["#ffd930"]
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "LEE 104 Deep Amber",
+          "colors": ["#ffa704"]
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "LEE 179 Chrome Orange",
+          "colors": ["#ff9e00"]
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "LEE 105 Orange",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "LEE 021 Gold Amber",
+          "colors": ["#ff7600"]
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "LEE 778 Millennium Gold",
+          "colors": ["#ff6c00"]
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ColorPreset",
+          "comment": "LEE 135 Deep Gold Amber",
+          "colors": ["#ff4200"]
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "ColorPreset",
+          "comment": "LEE 164 Flame Red",
+          "colors": ["#ff3622"]
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "ColorPreset",
+          "comment": "Open",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [180, 201],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Rotation im Uhrzeigersinn absteigend"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [208, 229],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Rotation entgegen dem Uhrzeigersinn aufsteigend"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorPreset",
+          "comment": "Open",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast",
+          "comment": "Zufallsfarbe schnell wechselnd"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop",
+          "comment": "Zufallsfarbe"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow",
+          "comment": "Zufallsfarbe langsam wechselnd"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Open",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Effect-LEDs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 27],
+          "type": "Effect",
+          "effectName": "Effekt 01"
+        },
+        {
+          "dmxRange": [28, 47],
+          "type": "Effect",
+          "effectName": "Effekt 02"
+        },
+        {
+          "dmxRange": [48, 67],
+          "type": "Effect",
+          "effectName": "Effekt 03"
+        },
+        {
+          "dmxRange": [68, 87],
+          "type": "Effect",
+          "effectName": "Effekt 04"
+        },
+        {
+          "dmxRange": [88, 107],
+          "type": "Effect",
+          "effectName": "Effekt 05"
+        },
+        {
+          "dmxRange": [108, 127],
+          "type": "Effect",
+          "effectName": "Effekt 06"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "Effect",
+          "effectName": "Effekt 07"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "Effect",
+          "effectName": "Effekt 08"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "Effect",
+          "effectName": "Effekt 09"
+        },
+        {
+          "dmxRange": [188, 207],
+          "type": "Effect",
+          "effectName": "Effekt 10"
+        },
+        {
+          "dmxRange": [208, 227],
+          "type": "Effect",
+          "effectName": "Effekt 11"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "Effect",
+          "effectName": "Effekt 12"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Without Blend"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "With Blend"
+        }
+      ]
+    },
+    "Star Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 30],
+          "type": "Effect",
+          "effectName": "Effect 01"
+        },
+        {
+          "dmxRange": [31, 53],
+          "type": "Effect",
+          "effectName": "Effect 02"
+        },
+        {
+          "dmxRange": [54, 76],
+          "type": "Effect",
+          "effectName": "Effect 03"
+        },
+        {
+          "dmxRange": [77, 99],
+          "type": "Effect",
+          "effectName": "Effect 04"
+        },
+        {
+          "dmxRange": [100, 122],
+          "type": "Effect",
+          "effectName": "Effect 05"
+        },
+        {
+          "dmxRange": [123, 145],
+          "type": "Effect",
+          "effectName": "Effect 06"
+        },
+        {
+          "dmxRange": [146, 168],
+          "type": "Effect",
+          "effectName": "Effect 07"
+        },
+        {
+          "dmxRange": [169, 191],
+          "type": "Effect",
+          "effectName": "Effect 08"
+        },
+        {
+          "dmxRange": [192, 214],
+          "type": "Effect",
+          "effectName": "Effect 09"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        }
+      ]
+    },
+    "Star Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Without Blend"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "With Blend"
+        }
+      ]
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 2 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan 5": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 5 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Red inner": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green inner": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue inner": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White inner": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red outer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green outer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue outer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White outer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 1": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 2-4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 5-13": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 14-22": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 23-31": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 4 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom 3": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 3 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan 6": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 6 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 4": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 4 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Dimmer 5": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 5 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom 4": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 4 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Warm White 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 3": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 5": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 6": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 7": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 8": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 9": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 10": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 11": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 12": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 13": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 14": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 15": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 16": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 17": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 18": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 19": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 20": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 21": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 22": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 23": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 24": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 25": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 26": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 27": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 28": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 29": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 30": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer Star 31": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15-Kanal Modus",
+      "rdmPersonalityIndex": 16448,
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Shutter / Strobe",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Zoom",
+        "Zoom fine",
+        "Reset"
+      ]
+    },
+    {
+      "name": "21-Kanal Modus",
+      "rdmPersonalityIndex": 12352,
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Color Temperature",
+        "Color Macros",
+        "Effect-LEDs",
+        "Effect Speed",
+        "Star Effect",
+        "Star Effect Speed",
+        "Shutter / Strobe",
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Zoom 2",
+        "Zoom 2 fine",
+        "Reset"
+      ]
+    },
+    {
+      "name": "28-Kanal Modus",
+      "rdmPersonalityIndex": 8256,
+      "channels": [
+        "Pan 5",
+        "Pan 5 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Pan/Tilt Speed",
+        "Red inner",
+        "Green inner",
+        "Blue inner",
+        "Warm White inner",
+        "Red outer",
+        "Green outer",
+        "Blue outer",
+        "Warm White outer",
+        "Dimmer Star 1",
+        "Dimmer Star 2-4",
+        "Dimmer Star 5-13",
+        "Dimmer Star 14-22",
+        "Dimmer Star 23-31",
+        "Effect-LEDs",
+        "Effect Speed",
+        "Star Effect",
+        "Star Effect Speed",
+        "Shutter / Strobe",
+        "Dimmer 4",
+        "Dimmer 4 fine",
+        "Zoom 3",
+        "Zoom 3 fine",
+        "Reset"
+      ]
+    },
+    {
+      "name": "90-Kanal Modus",
+      "rdmPersonalityIndex": 4160,
+      "channels": [
+        "Pan 6",
+        "Pan 6 fine",
+        "Tilt 4",
+        "Tilt 4 fine",
+        "Pan/Tilt Speed",
+        "Shutter / Strobe",
+        "Dimmer 5",
+        "Dimmer 5 fine",
+        "Zoom 4",
+        "Zoom 4 fine",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Warm White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Warm White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Warm White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Warm White 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Warm White 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Warm White 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Warm White 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "Warm White 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "Warm White 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "Warm White 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "Warm White 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "Warm White 12",
+        "Dimmer Star 1",
+        "Dimmer Star 2",
+        "Dimmer Star 3",
+        "Dimmer Star 4",
+        "Dimmer Star 5",
+        "Dimmer Star 6",
+        "Dimmer Star 7",
+        "Dimmer Star 8",
+        "Dimmer Star 9",
+        "Dimmer Star 10",
+        "Dimmer Star 11",
+        "Dimmer Star 12",
+        "Dimmer Star 13",
+        "Dimmer Star 14",
+        "Dimmer Star 15",
+        "Dimmer Star 16",
+        "Dimmer Star 17",
+        "Dimmer Star 18",
+        "Dimmer Star 19",
+        "Dimmer Star 20",
+        "Dimmer Star 21",
+        "Dimmer Star 22",
+        "Dimmer Star 23",
+        "Dimmer Star 24",
+        "Dimmer Star 25",
+        "Dimmer Star 26",
+        "Dimmer Star 27",
+        "Dimmer Star 28",
+        "Dimmer Star 29",
+        "Dimmer Star 30",
+        "Dimmer Star 31",
+        "Reset"
+      ]
+    }
+  ]
+}
