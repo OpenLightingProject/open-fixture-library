@@ -1,0 +1,434 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7x40W Beam Wash Halo Effect LED Moving Head",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Flower", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["Adri2575"],
+    "createDate": "2025-12-02",
+    "lastModifyDate": "2025-12-02"
+  },
+  "links": {
+    "productPage": [
+      "https://fr.aliexpress.com/item/1005009737077678.html?spm=a2g0o.productlist.main.4.12938wsX8wsXUx&algo_pvid=0072875a-b3dc-415c-9e9c-eedba2b6d765&algo_exp_id=0072875a-b3dc-415c-9e9c-eedba2b6d765-3&pdp_ext_f=%7B%22order%22%3A%225%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%21607.91%21206.69%21%21%214874.98%211657.50%21%4021038df617646868965647407e8133%2112000049996275092%21sea%21FR%216269589059%21X%211%210%21n_tag%3A-29911%3Bd%3Ad7dfad94%3Bm03_new_user%3A-29895&curPageLogUid=txw4wA46pfIi&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005009737077678%7C_p_origin_prod%3A"
+    ]
+  },
+  "physical": {
+    "dimensions": [360, 270, 210],
+    "weight": 6,
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [8, 60]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "PrismRotation",
+          "angleStart": "0deg",
+          "angleEnd": "60deg"
+        },
+        {
+          "dmxRange": [128, 188],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Reverse rotation, from fast to slow"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "PrismRotation",
+          "speed": "stop",
+          "comment": "Stop rotate"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Total Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Linear dimming  from dark to bright"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Lights off"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Synchronous strobe from slow to fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Lights ON"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Bisection strobe speed from slow to fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Lights ON"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "Slow random strobe"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Medium random strobe"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "High speed random strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Lights ON"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "2000K",
+          "comment": "Color temperature 800K-2000K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Static Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 134],
+          "type": "Effect",
+          "effectName": "Static effects 1-7",
+          "comment": "clor by CH10-13, 15 number of effects"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "Effect",
+          "effectName": "Static effects 8-16",
+          "comment": "Color fixing 5 number of effects"
+        }
+      ]
+    },
+    "Dynamic effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 124],
+          "type": "Effect",
+          "effectName": "Dynamic effect 1-23",
+          "comment": "5 number of effects (CH10-13 color)"
+        },
+        {
+          "dmxRange": [125, 255],
+          "type": "Effect",
+          "effectName": "Dynamic effect 24-40",
+          "comment": "Color fixing 5 number of effects"
+        }
+      ]
+    },
+    "LED Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Freeze"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Speed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Freeze"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Background color Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Background color Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Background color Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Background color White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Effect motor reset"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan Tilt motor reset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "All motors reset"
+        }
+      ]
+    },
+    "LED Halo Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED Halo Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "LED Halo Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Halo Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Halo Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED Halo Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Intensity",
+          "comment": "Dimming Mode"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Effect",
+          "effectName": "LED Halo Effect",
+          "comment": "4 number of effects"
+        }
+      ]
+    },
+    "LED Halo Effect speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "30",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Prism Rotation",
+        "Total Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macros",
+        "Static Effect",
+        "Dynamic effect",
+        "LED Effect Speed",
+        "Background color Red",
+        "Background color Green",
+        "Background color Blue",
+        "Background color White",
+        "Reset",
+        "LED Halo Dimming",
+        "LED Halo Strobe",
+        "LED Halo Red",
+        "LED Halo Green",
+        "LED Halo Blue",
+        "LED Halo Effect",
+        "LED Halo Effect speed"
+      ]
+    }
+  ]
+}
