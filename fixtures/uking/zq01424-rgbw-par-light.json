@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01424 RGBW Par Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Schmeed"],
+    "createDate": "2025-12-07",
+    "lastModifyDate": "2025-12-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-12-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [2000, 2000, 1100],
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5000,
+      "lumens": 5000
+    }
+  },
+  "availableChannels": {
+    "Brightness": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Effect",
+          "effectName": "DMX Channel Control"
+        },
+        {
+          "dmxRange": [4, 127],
+          "type": "Effect",
+          "effectName": "Fixed Color"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Effect",
+          "effectName": "Jump"
+        },
+        {
+          "dmxRange": [170, 210],
+          "type": "Effect",
+          "effectName": "Gradient"
+        },
+        {
+          "dmxRange": [211, 229],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Brightness",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Brightness",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Function",
+        "Speed"
+      ]
+    }
+  ]
+}
