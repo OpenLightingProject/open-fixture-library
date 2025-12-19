@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-W36",
+  "shortName": "TMH-W36",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Antti Maasalmi"],
+    "createDate": "2025-12-19",
+    "lastModifyDate": "2025-12-19"
+  },
+  "comment": "Moving Head Zoom Wash",
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/products/Eurolite-Led-Tmh-W36-11095120.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FgVN-SWgsuE"
+    ]
+  },
+  "physical": {
+    "dimensions": [155, 255, 145],
+    "weight": 2.5,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "Strobe OFF"
+        },
+        {
+          "dmxRange": [4, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 176],
+          "type": "Effect",
+          "effectName": "Random strobe effect",
+          "comment": "Random pattern, same all range"
+        },
+        {
+          "dmxRange": [177, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Auto mode, color and move": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Effect",
+          "effectName": "Auto Color and move mode",
+          "comment": "Speed in CHN 14"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Effect",
+          "effectName": "Auto Color and move / sound",
+          "soundControlled": true,
+          "comment": "Sound Control, sensitivity with CHN 14"
+        }
+      ]
+    },
+    "Auto mode speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed and sensitivity for Auto, CHN 13"
+      }
+    },
+    "Motion macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "PanContinuous",
+          "speed": "slow CW",
+          "comment": "Speed in CHN 5"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "TiltContinuous",
+          "speed": "slow CW",
+          "comment": "Speed in CHN 5"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "PanContinuous",
+          "speed": "slow CW",
+          "comment": "PAN and TILT cont. Speed in CHN 5"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "RESET"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15-Channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Auto mode, color and move",
+        "Auto mode speed",
+        "Motion macro"
+      ]
+    }
+  ]
+}
