@@ -1,0 +1,399 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lm7040",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["redfl", "Anonym"],
+    "createDate": "2025-12-22",
+    "lastModifyDate": "2025-12-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-12-22",
+      "comment": "created by Q Light Controller Plus (version 5.0.1)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan Rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan Fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Tilt Rotation": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt Fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed of the Pan And tilt movementes",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Regular Strobe"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Slow Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Middle Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Fast Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Non"
+        },
+        {
+          "dmxRange": [1, 27],
+          "type": "ColorPreset",
+          "comment": "8500"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "ColorPreset",
+          "comment": "7500"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "ColorPreset",
+          "comment": "6800"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "ColorPreset",
+          "comment": "6200"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "ColorPreset",
+          "comment": "5600"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "ColorPreset",
+          "comment": "5000"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "ColorPreset",
+          "comment": "4500"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "ColorPreset",
+          "comment": "3600"
+        },
+        {
+          "dmxRange": [224, 251],
+          "type": "ColorPreset",
+          "comment": "3200"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "2800"
+        }
+      ]
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Predefined Colors"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom from Wide to Narrow"
+      }
+    },
+    "Zoom Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Manuel"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Prism",
+          "comment": "Clockwise Fast to Slow"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Prism",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Prism",
+          "comment": "Counterclockwise Slow to Fast"
+        }
+      ]
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Close"
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Wave FX"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Dream FX"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Color Chase FX"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Red Wave FX"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Green Wave FX"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Blue Wave FX"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Yellow Wave FX"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Magenta Wave FX"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Cyan Wave FX"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "White Wave FX"
+        }
+      ]
+    },
+    "FX Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Effect Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "System": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 239],
+          "type": "Maintenance",
+          "comment": "Close"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Maintenance",
+          "comment": "Motor Reset 5s"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Maintenance",
+          "comment": "Sound Control"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Auto Run"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Pan Rotation",
+        "Pan Fine",
+        "Tilt Rotation",
+        "Tilt Fine",
+        "P/T Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CCT",
+        "Color Macro",
+        "Zoom",
+        "Zoom Rotation",
+        "Effect",
+        "FX Speed",
+        "System"
+      ]
+    }
+  ]
+}
