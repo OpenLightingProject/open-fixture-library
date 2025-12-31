@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ULTRA HP RGBWAP 18X18 WATT LED PAR 64",
+  "shortName": "urgb",
+  "categories": ["Dimmer", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2022-01-26",
+    "lastModifyDate": "2022-01-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.versa-light.co.za/en/versa-light-products/led-par"
+    ],
+    "productPage": [
+      "https://www.versa-light.co.za/en/versa-light-products/led-par"
+    ],
+    "video": [
+      "https://www.versa-light.co.za/en/versa-light-products/led-par"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    },
+    "Macro speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "re"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ULTRA HP RGBWAP 18X18 WATT LED PAR 64",
+      "shortName": "urgb",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Macro",
+        "Macro speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
