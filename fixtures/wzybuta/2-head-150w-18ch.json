@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2 head 150w 18ch",
+  "categories": ["Color Changer", "Laser", "Moving Head", "Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["io"],
+    "createDate": "2024-12-20",
+    "lastModifyDate": "2024-12-20"
+  },
+  "links": {
+    "other": [
+      "https://www.amazon.it/WZYBUTA-Discoteca-Stroboscopi-Illuminazione-Palco-2PCS/dp/B0CYLNDDNB/ref=sr_1_16?crid=3UFX449U8CJJD&dib=eyJ2IjoiMSJ9.HHayGdc-Z_Z0HdjgDQ4PnChG3FltKgDBxRgv7zXsNBfaUlsI0G-UmRfbVitVysdqyMnMt2nQoo7IygR04fRpSxyqZ7wG7JjgeNZaKNk86SxM9vDQfu0vVBnP-XCSYMzBDdQgRNAdZNF99MJUUjwJ7bjodHTW9nChxS2GPH385TfLKMr1yJvMao-mpqAIH7nsu5qVBEww7fCj0-1kB94rPP-Vg0hhpfK0BOGVPGfdem5UaWHAy3JpIeGcPdGzFeB7zj5yDtyr1IN_BISSQ2pVGudS4GgdYPiJjIjeT0ksCZsvOssNpws3J_HIokR9_XGKjt4QOc5IrVoQy75MDg-Y2fJDmav5fEukUeQjfzzVdxuYOig5VemSJEAptLRjkifazmAxKebqJxvBi9nI7u3WL2O4KFF9hiZfNw6JTf-LUelBTtoBRJUYmPLONKapllzK.dPr5NouTvn9nyJSYsOGRPEOwSbkFY-VPY70tJso3lFA&dib_tag=se&keywords=wzybuta&qid=1734697893&sprefix=wz%2Caps%2C320&sr=8-16&ufe=app_do%3Aamzn1.fos.9d4f9b77-768c-4a4e-94ad-33674c20ab35"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "810deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "TiltContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "TiltContinuous",
+          "speed": "fast CW"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "TiltContinuous",
+          "speed": "fast CCW"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamAngle",
+          "angle": "90deg"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
+        }
+      ]
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamAngle",
+          "angle": "90deg"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Lime 2": {
+      "name": "Lime",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Indigo 2": {
+      "name": "Indigo",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Reserved",
+        "Reserved 2",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Lime",
+        "Lime 2",
+        "Indigo",
+        "Indigo 2",
+        "Strobe 2"
+      ]
+    }
+  ]
+}
