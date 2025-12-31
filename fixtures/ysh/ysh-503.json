@@ -1,0 +1,191 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "YSH-503",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["sybra", "Sybrand Wiersma"],
+    "createDate": "2025-01-27",
+    "lastModifyDate": "2025-01-27",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-01-27",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [245, 152, 141],
+    "weight": 1.19,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 3000
+    }
+  },
+  "availableChannels": {
+    "Special channel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 70],
+          "type": "Effect",
+          "effectName": "AUTO"
+        },
+        {
+          "dmxRange": [71, 110],
+          "type": "Effect",
+          "effectName": "LED Gradual change"
+        },
+        {
+          "dmxRange": [111, 150],
+          "type": "Effect",
+          "effectName": "Flash AUTO"
+        },
+        {
+          "dmxRange": [151, 190],
+          "type": "Effect",
+          "effectName": "DJ Sound",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "Effect",
+          "effectName": "LED DJ Sound",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red laser 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red laser 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green laser": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue laser": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Moter speed laser": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "UV lamp": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "LED Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Flash (strobe)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "OFF",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "ON",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [5, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [30, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Flash speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "channels": [
+        "Special channel",
+        "Red laser 1",
+        "Red laser 2",
+        "Green laser",
+        "Blue laser",
+        "Moter speed laser",
+        "UV lamp",
+        "LED Red",
+        "LED Green",
+        "LED Blue",
+        "Flash (strobe)"
+      ]
+    }
+  ]
+}
