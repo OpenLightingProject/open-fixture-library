@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WKL-BEAM02",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Zu Kim"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://downloads.monoprice.com/files/manuals/612210_Manual_140327.pdf"
+    ],
+    "productPage": [
+      "http://www.wecanlight.com/en/Photo_Show.asp?InfoId=73&ClassId=2"
+    ]
+  },
+  "availableChannels": {
+    "Mode Selector": {
+      "defaultValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Mode selector"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Mode Selector",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Reserved"
+      ]
+    }
+  ]
+}
