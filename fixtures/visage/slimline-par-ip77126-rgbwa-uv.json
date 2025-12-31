@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Slimline PAR IP77126 RGBWA+UV",
+  "shortName": "Slimline PAR",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Zac Gabriel"],
+    "createDate": "2024-04-23",
+    "lastModifyDate": "2024-04-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.batmink.co.uk/images/BROCHURES/VIS0495.4_LEDIP65SlimlinePARRGBAWUV_7x12W.pdf"
+    ],
+    "productPage": [
+      "https://www.batmink.co.uk/batmink-brands/visage-lighting/pars-slim-pars/slimline-par-ip784-rgbw-593-detail"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 240, 280],
+    "weight": 52,
+    "power": 100,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Ultraviolet": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function Choice": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "CH1-CH8 Control"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorPreset",
+          "comment": "Different Colour Output"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ColorPreset",
+          "comment": "Colour Jump Change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "Colours Gradate"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "ColorPreset",
+          "comment": "Colour Pulse Change"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Function/Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Ultraviolet"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Ultraviolet",
+        "Strobe Speed",
+        "Function Choice",
+        "Function/Speed"
+      ]
+    }
+  ]
+}
