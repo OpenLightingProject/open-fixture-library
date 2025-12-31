@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBPITA",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["yoel"],
+    "createDate": "2025-08-27",
+    "lastModifyDate": "2025-08-27"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RAL",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White"
+      ]
+    }
+  ]
+}
