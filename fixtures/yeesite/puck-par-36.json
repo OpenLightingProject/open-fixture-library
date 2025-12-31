@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Puck Par 36",
+  "shortName": "Par 36",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Other"],
+  "meta": {
+    "authors": ["Emprezor LLC"],
+    "createDate": "2024-06-09",
+    "lastModifyDate": "2024-06-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1784036/Yeesite-36leds.html?page=11#manual"
+    ],
+    "productPage": [
+      "https://www.amazon.com/Controlled-Activated-Uplights-Christmas-Lighting-2/dp/B07D778PLC"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8znaxe1cVes"
+    ]
+  },
+  "physical": {
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Wheel",
+        "Strobe Speed",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
