@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Disco Ball - 1ch",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["NATION"],
+    "createDate": "2026-01-03",
+    "lastModifyDate": "2026-01-03"
+  },
+  "comment": "Disco Ball - 1ch",
+  "links": {
+    "manual": [
+      "https://github.com/AcChosen/VR-Stage-Lighting/wiki/Appendix:-Fixture-Definitions"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Disco Ball - 1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
