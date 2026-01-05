@@ -7,7 +7,6 @@
     "createDate": "2026-01-03",
     "lastModifyDate": "2026-01-03"
   },
-  "comment": "1channel",
   "links": {
     "manual": [
       "https://github.com/AcChosen/VR-Stage-Lighting/wiki/Appendix:-Fixture-Definitions"
@@ -27,7 +26,8 @@
   },
   "modes": [
     {
-      "name": "Flasher",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Dimmer"
       ]
