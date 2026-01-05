@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Disco Ball - 1ch",
-  "categories": ["Other"],
+  "name": "Disco Ball",
+  "categories": ["Effect"],
   "meta": {
     "authors": ["NATION"],
     "createDate": "2026-01-03",
@@ -22,7 +22,8 @@
   },
   "modes": [
     {
-      "name": "Disco Ball - 1ch",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Dimmer"
       ]
