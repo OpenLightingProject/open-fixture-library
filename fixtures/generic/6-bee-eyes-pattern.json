@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "6 Bee Eyes + Pattern",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["ycfd"],
+    "createDate": "2026-01-06",
+    "lastModifyDate": "2026-01-06"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/"
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "physical": {
+    "dimensions": [400, 400, 400],
+    "weight": 4,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer mitte": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Led Strip": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros 3": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normaler Modus",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Dimmer mitte",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effect Speed",
+        "Color Macros",
+        "Led Strip",
+        "Color Macros 2",
+        "Color Macros 3"
+      ]
+    }
+  ]
+}
