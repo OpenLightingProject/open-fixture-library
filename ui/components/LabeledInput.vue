@@ -45,7 +45,9 @@
         <div v-else-if="fieldErrors.step">Please enter a multiple of {{ fieldState.$attrs.step }}.</div>
         <div v-else-if="fieldErrors.email">Please enter an email address.</div>
         <div v-else-if="fieldErrors.url">Please enter a URL.</div>
-        <div v-else-if="fieldErrors.pattern">Has to match pattern.</div> <!-- TODO: include title -->
+        <div v-else-if="fieldErrors.pattern">
+          Has to match pattern<span v-if="fieldState.$attrs.title">: {{ fieldState.$attrs.title }}</span>.
+        </div>
       </div>
 
       <div v-if="hint" class="hint">{{ hint }}</div>
