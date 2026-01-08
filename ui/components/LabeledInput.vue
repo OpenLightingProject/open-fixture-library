@@ -78,16 +78,28 @@ export default {
     LabeledValue,
   },
   props: {
+    /** The internal name of the input field, used for state tracking. */
     name: stringProp().optional, // TODO: make this required
+    /** The visible label text for the input. */
     label: stringProp().optional,
+    /** Helper text displayed below the input. */
     hint: stringProp().optional,
+    /** The validation state object from the parent form. */
     formstate: objectProp().optional, // TODO: make this required
+    /** Object containing custom validation functions. */
     customValidators: objectProp().optional,
-    // avoid a label tag for multiple inputs, because it's not
-    // supported by Safari
+    /** 
+     * Whether this component wraps multiple inputs.
+     * If true, renders a `div` instead of a `label` to avoid browser issues (e.g., Safari). 
+     */
     multipleInputs: booleanProp().withDefault(false),
   },
   computed: {
+    /**
+     * Retrieves the specific state object for this field from the global formstate.
+     * Handles nested fields and prevents access errors if formstate is not yet initialized.
+     * @returns {Object|null} The field's state object or null if not found.
+     */
     fieldState() {
       if (!this.formstate) {
         return null;
