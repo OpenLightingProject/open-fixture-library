@@ -88,9 +88,9 @@ export default {
     formstate: objectProp().optional, // TODO: make this required
     /** Object containing custom validation functions. */
     customValidators: objectProp().optional,
-    /** 
+    /**
      * Whether this component wraps multiple inputs.
-     * If true, renders a `div` instead of a `label` to avoid browser issues (e.g., Safari). 
+     * If true, renders a `div` instead of a `label` to avoid browser issues (e.g., Safari).
      */
     multipleInputs: booleanProp().withDefault(false),
   },
@@ -98,7 +98,7 @@ export default {
     /**
      * Retrieves the specific state object for this field from the global formstate.
      * Handles nested fields and prevents access errors if formstate is not yet initialized.
-     * @returns {Object|null} The field's state object or null if not found.
+     * @returns {object|null} The field's state object or null if not found.
      */
     fieldState() {
       if (!this.formstate) {
