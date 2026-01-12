@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mega par profile plus",
+  "shortName": "adj mega par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["allan"],
+    "createDate": "2026-01-12",
+    "lastModifyDate": "2026-01-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.fullcompass.com/common/files/23670-ADJMegaParProfilePlusManual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/mega-par-profile-plus"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Master Dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel - RGBuvM",
+      "shortName": "5-rgbuv",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "4-RGBuv",
+      "shortName": "4-RGBuv",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    }
+  ]
+}
