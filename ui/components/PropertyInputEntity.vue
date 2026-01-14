@@ -8,8 +8,8 @@
         class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         required
-        :minimum="minNumber !== undefined ? minNumber : `invalid`"
-        :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
+        :minimum="minNumber === undefined ? `invalid` : minNumber"
+        :maximum="maxNumber === undefined ? `invalid` : maxNumber"
         :name="name ? `${name}-number` : null"
         @focus="onFocus()"
         @blur="onBlur($event)" />
