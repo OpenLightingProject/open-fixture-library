@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64 COB 100W RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Mindful"],
+    "createDate": "2026-01-15",
+    "lastModifyDate": "2026-01-15"
+  },
+  "links": {
+    "manual": [
+      "http://ls-systems.be/matos/lumiere/spot/LIGHTMAXX%20-%20PAR64%20COB%20RGB%20100W.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 195, 390],
+    "weight": 2.6,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED Array Cluster"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Special": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Generic",
+          "comment": "Sound Control (7 Colors)"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "fast",
+          "comment": "Strobe (increasing)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 Channel DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Special"
+      ]
+    }
+  ]
+}
