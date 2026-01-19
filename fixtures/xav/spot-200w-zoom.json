@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SPOT 200W ZOOM",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["lemaire"],
+    "createDate": "2026-01-19",
+    "lastModifyDate": "2026-01-19"
+  },
+  "links": {
+    "other": [
+      "https://fxsonorisation.com"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18 CH",
+      "shortName": "18 CH",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
