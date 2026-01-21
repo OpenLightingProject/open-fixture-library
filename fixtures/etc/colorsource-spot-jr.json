@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorSource Spot JR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-02-24",
+    "lastModifyDate": "2025-02-24"
+  },
+  "links": {
+    "manual": [
+      "https://media.musson.com/mti/docs/c/o/colorsource_spot_jr_v2.0_installguide_revb.pdf"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Entertainment-Fixtures/ColorSource-Spot-jr/Documentation.aspx"
+    ],
+    "video": [
+      "https://www.google.com/search?sca_esv=8afe513a2b09f157&rlz=1C1ONGR_frFR974FR974&sxsrf=AHTn8zqjOMPJDnNigdMva4hU6PEtPUaSOQ:1740407611585&q=etc+colorspot+jr+manuel&udm=7&fbs=ABzOT_BnMAgCWdhr5zilP5f1cnRv3DOrdPIW78kdPaRo9mfTLxhujsZyMomzTzz3yEsFAPP2CcGBCBIbryC-8-_PX1nsnIkajqMzL-hrWvI2ffKG4cE0eljL9czHnZUVvEWWr8NrzXjkVW_a2IhW6KDjuhrCSHe-Oe8gd-so8GFXyWU5I4b8roMT6IMRmmmWZK1LnG4Y0qBf&sa=X&ved=2ahUKEwj2rc_Lw9yLAxUQg_0HHVeOMTsQtKgLegQIDRAB&biw=1920&bih=953&dpr=1#"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 50]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "33Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6Ch (Direct)",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
