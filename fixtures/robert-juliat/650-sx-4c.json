@@ -1,0 +1,691 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "650 SX 4C",
+  "shortName": "SX 4C",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2025-06-08",
+    "lastModifyDate": "2025-06-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/Product_Specifications/Fiches_EN/Standard/DSEN404_653SX_4C.pdf"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.com/profilespots/SULLY_650SX-4C"
+    ]
+  },
+  "rdm": {
+    "modelId": 2478,
+    "softwareVersion": "ANSI E1.20 – 2010"
+  },
+  "physical": {
+    "dimensions": [330, 294, 564],
+    "weight": 12.8,
+    "power": 195,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED - 4 colours",
+      "colorTemperature": 6500,
+      "lumens": 7730
+    },
+    "lens": {
+      "name": "Profile",
+      "degreesMinMax": [28, 54]
+    }
+  },
+  "wheels": {
+    "Gel Type - Wheel 1-13": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeDuration",
+          "durationStart": "0.1ms",
+          "durationEnd": "20ms"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0.1Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Response Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "timeStart": "120ms",
+          "timeEnd": "120ms"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Time",
+          "timeStart": "short",
+          "timeEnd": "long",
+          "comment": "Tungsten 500 W to 5000 W"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Time",
+          "timeStart": "0s",
+          "timeEnd": "4s",
+          "comment": "Linear 0s to 4s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Time",
+          "timeStart": "0s",
+          "timeEnd": "4s",
+          "comment": "Linear 0s to 4s / Flash by-pass"
+        }
+      ]
+    },
+    "Control Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Generic",
+          "comment": "RDM disabled"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "RDM enabled"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Fixture Reset"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Dimmer Curve Linear"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Dimmer Curve Square"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Dimmer Curve Tungsten"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "Colour Space Native"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Colour Space sRGB / Rec. 709"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "Colour Space Rec. 2020"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "Colour Space ProPhoto RGB"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "Cooling mode: Silent"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "Cooling mode: Normal"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "Cooling mode: Full"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Source Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Tungsten 3200 K High Quality - DimShift"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Tungsten 3000 K High Quality - DimShift"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Tungsten 3200 K High Quality"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Tungsten 3000 K High Quality"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Daylight D65 High Quality"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "Generic CCT - High Quality"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "Generic CCT - High Brightness"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "Generic CCT - High Quality - DimShift"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "Generic CCT - High Brightness - DimShift"
+        },
+        {
+          "dmxRange": [141, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Generic",
+          "comment": "Colour Mix - High Quality"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Generic",
+          "comment": "Colour Mix - High Brightness"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gel Type - Wheel 1-13": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Only when Source type = \"Calibrated whites\" & \"Generic CCT\""
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Basics"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Numeric: 002 --> 111"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Numeric: 113 --> 181"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Numeric: 182 --> 328"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Numeric: 332 --> 710"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Numeric: 711 --> 799"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Chroma: 048 --> 719"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Chroma: 711 --> 504"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Chroma: 730--> 007"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Chroma: 765 --> 789"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Chroma: 787 --> 344"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Cosmetic & Corrections"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Dalis selection"
+        },
+        {
+          "dmxRange": [65, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gel References": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Only when Source type = \"Calibrated whites\" & \"Generic CCT\""
+      }
+    },
+    "Gel Transmission": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Only when Source type = \"Calibrated whites\" & \"Generic CCT\""
+      }
+    },
+    "Gel Fade Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "time": "0s"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "25.5s",
+          "comment": "Only when Source type = \"Calibrated whites\" & \"Generic CCT\""
+        }
+      ]
+    },
+    "Gel Fade Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Direct XY + Limit Brightness"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Direct XY"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Open Frame + Limit Brightness"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Open Frame"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Through Black"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "Generic",
+          "comment": "Reserved / Off (0 s)"
+        }
+      ]
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1700K",
+        "colorTemperatureEnd": "10000K",
+        "comment": "Only when Source type = \"Generic CCT\""
+      }
+    },
+    "DeltaUV": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Only when Source type = \"Generic CCT\""
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "Only when Source type = \"Generic CCT\""
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "Only when Source type = \"Generic CCT\""
+        }
+      ]
+    },
+    "Colour CIE x": {
+      "fineChannelAliases": ["Colour CIE x fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "x=0 TO x=0.85  - Only when Source type = \"Colour Mix\""
+      }
+    },
+    "Colour CIE y": {
+      "fineChannelAliases": ["Colour CIE y fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "y=0 TO y=0.85 - Only when Source type = \"Colour Mix\""
+      }
+    },
+    "Colour: Hue": {
+      "fineChannelAliases": ["Colour: Hue fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colour: Saturation": {
+      "fineChannelAliases": ["Colour: Saturation fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colour: Red": {
+      "fineChannelAliases": ["Colour: Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Colour: Green": {
+      "fineChannelAliases": ["Colour: Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Colour: Blue": {
+      "fineChannelAliases": ["Colour: Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Colour: Lime": {
+      "fineChannelAliases": ["Colour: Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Modus 1 - Dimmer 8B",
+      "shortName": "M 1",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Modus 2 - Profile 16B",
+      "shortName": "M 2",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response Time",
+        "Control Mode"
+      ]
+    },
+    {
+      "name": "Modus 3 - Full XY",
+      "shortName": "M3 XY",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response Time",
+        "Control Mode",
+        "Source Type",
+        "Gel Type - Wheel 1-13",
+        "Gel References",
+        "Gel Saturation",
+        "Gel Transmission",
+        "Gel Fade Time",
+        "Gel Fade Mode",
+        "CCT",
+        "CCT fine",
+        "DeltaUV",
+        "Colour CIE x",
+        "Colour CIE x fine",
+        "Colour CIE y",
+        "Colour CIE y fine"
+      ]
+    },
+    {
+      "name": "Full - HS",
+      "shortName": "M3 HS",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response Time",
+        "Control Mode",
+        "Source Type",
+        "Gel Type - Wheel 1-13",
+        "Gel References",
+        "Gel Saturation",
+        "Gel Transmission",
+        "Gel Fade Time",
+        "Gel Fade Mode",
+        "CCT",
+        "CCT fine",
+        "DeltaUV",
+        "Colour: Hue",
+        "Colour: Hue fine",
+        "Colour: Saturation",
+        "Colour: Saturation fine"
+      ]
+    },
+    {
+      "name": "Full RGB",
+      "shortName": "M5 - RGB",
+      "rdmPersonalityIndex": 5,
+      "channels": [
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response Time",
+        "Control Mode",
+        "Source Type",
+        "Gel Type - Wheel 1-13",
+        "Gel References",
+        "Gel Saturation",
+        "Gel Transmission",
+        "Gel Fade Time",
+        "Gel Fade Mode",
+        "CCT",
+        "CCT fine",
+        "DeltaUV",
+        "Colour: Red",
+        "Colour: Red fine",
+        "Colour: Green",
+        "Colour: Green fine",
+        "Colour: Blue",
+        "Colour: Blue fine"
+      ]
+    },
+    {
+      "name": "Full RAW",
+      "shortName": "M6 - RAW",
+      "rdmPersonalityIndex": 6,
+      "channels": [
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response Time",
+        "Control Mode",
+        "Source Type",
+        "Gel Type - Wheel 1-13",
+        "Gel References",
+        "Gel Saturation",
+        "Gel Transmission",
+        "Gel Fade Time",
+        "Gel Fade Mode",
+        "CCT",
+        "CCT fine",
+        "DeltaUV",
+        "Colour: Red",
+        "Colour: Red fine",
+        "Colour: Green",
+        "Colour: Green fine",
+        "Colour: Blue",
+        "Colour: Blue fine",
+        "Colour: Lime",
+        "Colour: Lime fine"
+      ]
+    }
+  ]
+}
