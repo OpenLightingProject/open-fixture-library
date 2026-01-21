@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Birdy Wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["van egmond"],
+    "createDate": "2023-11-30",
+    "lastModifyDate": "2023-11-30"
+  },
+  "links": {
+    "manual": [
+      "https://market.site-expelec.fr/references-abandonnees/276-birdy-xwash-3510360705356.html#"
+    ],
+    "productPage": [
+      "https://market.site-expelec.fr/references-abandonnees/276-birdy-xwash-3510360705356.html"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "highlightValue": "100%",
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "PT SPEED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "PT Macro": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "PT Macro speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Ctrl": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "fineChannelAliases": ["Color Macros fine"],
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "extended",
+      "shortName": "16 Channel",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "PT SPEED",
+        "PT Macro",
+        "PT Macro speed",
+        "Ctrl",
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Macros fine"
+      ]
+    }
+  ]
+}
