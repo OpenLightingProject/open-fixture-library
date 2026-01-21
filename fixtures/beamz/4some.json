@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "4Some",
+  "categories": ["Effect", "Stand", "Other"],
+  "meta": {
+    "authors": ["Brent Milner"],
+    "createDate": "2025-02-20",
+    "lastModifyDate": "2025-02-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.manuals.co.uk/beamz/4-some-153-741/manual"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Colour": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Auto Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto Sound": {
+      "defaultValue": 4,
+      "constant": true,
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Colour",
+        "Strobe",
+        "Auto Program",
+        "Auto Sound"
+      ]
+    }
+  ]
+}
