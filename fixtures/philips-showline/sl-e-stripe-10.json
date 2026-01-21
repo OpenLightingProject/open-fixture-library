@@ -1,0 +1,678 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SL e-Stripe 10 ",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MoritzMHHD"],
+    "createDate": "2024-03-17",
+    "lastModifyDate": "2024-03-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-03-17",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Red_1 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_1 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityRedFine."
+      }
+    },
+    "Green_1 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_1 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_1 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_1 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityBlueFine."
+      }
+    },
+    "Red_2 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_2 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityRedFine."
+      }
+    },
+    "Green_2 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_2 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_2 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_2 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityBlueFine."
+      }
+    },
+    "Red_3 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_3 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_3 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_3 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_3 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_3 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityBlueFine."
+      }
+    },
+    "Red_4 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_4 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_4 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_4 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_4 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_4 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityBlueFine."
+      }
+    },
+    "Red_5 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_5 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_5 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_5 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_5 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_5 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red_6 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_6 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_6 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_6 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_6 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_6 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red_7 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_7 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_7 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_7 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_7 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_7 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red_8 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_8 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_8 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_8 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_8 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_8 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red_9 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_9 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_9 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_9 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_9 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_9 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red_10 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red_10 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_10 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green_10- Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue_10 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue_10 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_1 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_2 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_3 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_4 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_5 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_6 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_7 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_8 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_9 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_10 - High Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White_1 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_2 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_3 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_4 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_5 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_6 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_7 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_8 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_9 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "White_10 - Low Byte": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "16 Bit - 10 Pixel",
+      "channels": [
+        "Red_1 - High Byte",
+        "Red_1 - Low Byte",
+        "Green_1 - High Byte",
+        "Green_1 - Low Byte",
+        "Blue_1 - High Byte",
+        "Blue_1 - Low Byte",
+        "White_1 - High Byte",
+        "White_1 - Low Byte",
+        "Red_2 - High Byte",
+        "Red_2 - Low Byte",
+        "Green_2 - High Byte",
+        "Green_2 - Low Byte",
+        "Blue_2 - High Byte",
+        "Blue_2 - Low Byte",
+        "White_2 - High Byte",
+        "White_2 - Low Byte",
+        "Red_3 - High Byte",
+        "Red_3 - Low Byte",
+        "Green_3 - High Byte",
+        "Green_3 - Low Byte",
+        "Blue_3 - High Byte",
+        "Blue_3 - Low Byte",
+        "White_3 - High Byte",
+        "White_3 - Low Byte",
+        "Red_4 - High Byte",
+        "Red_4 - Low Byte",
+        "Green_4 - High Byte",
+        "Green_4 - Low Byte",
+        "Blue_4 - High Byte",
+        "Blue_4 - Low Byte",
+        "White_4 - High Byte",
+        "White_4 - Low Byte",
+        "Red_5 - High Byte",
+        "Red_5 - Low Byte",
+        "Green_5 - High Byte",
+        "Green_5 - Low Byte",
+        "Blue_5 - High Byte",
+        "Blue_5 - Low Byte",
+        "White_5 - High Byte",
+        "White_5 - Low Byte",
+        "Red_6 - High Byte",
+        "Red_6 - Low Byte",
+        "Green_6 - High Byte",
+        "Green_6 - Low Byte",
+        "Blue_6 - High Byte",
+        "Blue_6 - Low Byte",
+        "White_6 - High Byte",
+        "White_6 - Low Byte",
+        "Red_7 - High Byte",
+        "Red_7 - Low Byte",
+        "Green_7 - High Byte",
+        "Green_7 - Low Byte",
+        "Blue_7 - High Byte",
+        "Blue_7 - Low Byte",
+        "White_7 - High Byte",
+        "White_7 - Low Byte",
+        "Red_8 - High Byte",
+        "Red_8 - Low Byte",
+        "Green_8 - High Byte",
+        "Green_8 - Low Byte",
+        "Blue_8 - High Byte",
+        "Blue_8 - Low Byte",
+        "White_8 - High Byte",
+        "White_8 - Low Byte",
+        "Red_9 - High Byte",
+        "Red_9 - Low Byte",
+        "Green_9 - High Byte",
+        "Green_9 - Low Byte",
+        "Blue_9 - High Byte",
+        "Blue_9 - Low Byte",
+        "White_9 - High Byte",
+        "White_9 - Low Byte",
+        "Red_10 - High Byte",
+        "Red_10 - Low Byte",
+        "Green_10 - High Byte",
+        "Green_10- Low Byte",
+        "Blue_10 - High Byte",
+        "Blue_10 - Low Byte",
+        "White_10 - High Byte",
+        "White_10 - Low Byte"
+      ]
+    }
+  ]
+}
