@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Powerstrobe 1500 DMX",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Emil Vöhringer"],
+    "createDate": "2025-02-05",
+    "lastModifyDate": "2025-02-05"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/168875_c_168875_de_online.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "60bpm",
+          "speedEnd": "720bpm"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2CH",
+      "shortName": "2ch",
+      "channels": [
+        "Strobe Speed",
+        "Intensity"
+      ]
+    }
+  ]
+}
