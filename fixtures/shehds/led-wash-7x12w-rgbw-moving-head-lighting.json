@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash 7x12W RGBW Moving Head Lighting",
+  "categories": ["Color Changer", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["BernaSolivellas"],
+    "createDate": "2022-07-13",
+    "lastModifyDate": "2022-07-13"
+  },
+  "links": {
+    "manual": [
+      "https://ueeshop.ly200-cdn.com/u_file/UPAG/UPAG904/1912/file/c9393b6d6e.pdf"
+    ]
+  },
+  "physical": {
+    "power": 84
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 140],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 140],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameter": "off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto",
+        "Pan/Tilt Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
