@@ -1,0 +1,216 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARC-150ZOOM",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Ewa Monacor PL"],
+    "createDate": "2021-08-03",
+    "lastModifyDate": "2021-08-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.img-stageline.com/products/light/spotlights/cob-spotlights/parc-150zoom/"
+    ],
+    "productPage": [
+      "https://www.img-stageline.com/products/light/spotlights/cob-spotlights/parc-150zoom/"
+    ],
+    "video": [
+      "https://www.img-stageline.com/products/light/spotlights/cob-spotlights/parc-150zoom/"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 370, 300],
+    "weight": 4.9,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1 x COB RGB LED",
+      "lumens": 12700
+    },
+    "lens": {
+      "degreesMinMax": [40, 90]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "constant": true,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Change": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "ColorPreset",
+          "comment": "color change"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 220],
+          "type": "Effect",
+          "effectName": "Auto program 1-10"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sound Control"
+        }
+      ]
+    },
+    "Speed for Built-In Program": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "dark",
+          "comment": "Dimmer 1"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "dark",
+          "comment": "Dimmer 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "dark",
+          "comment": "Dimmer 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "dark",
+          "comment": "Dimmer 4"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "ID Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 210],
+          "type": "EffectParameter",
+          "parameterStart": 1,
+          "parameterEnd": 19
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "EffectParameter",
+          "parameterStart": 20,
+          "parameterEnd": 66
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12 channels DMX",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Change",
+        "Strobe",
+        "Auto program",
+        "Speed for Built-In Program",
+        "Dimmer control",
+        "Zoom",
+        "Zoom Speed",
+        "ID Selection"
+      ]
+    }
+  ]
+}
