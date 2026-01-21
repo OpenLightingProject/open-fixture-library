@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ADJ ENCORE FR PRO COLOR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["CMartel"],
+    "createDate": "2025-10-20",
+    "lastModifyDate": "2025-10-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/1496"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/encore-fr-pro-color"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Color Temperature Preset": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Color Temperature RED to GREEN": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "default",
+        "comment": "red to green"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUp",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine", "Dimmer fine^2"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer Mode": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Led refresh rate": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "STD",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime",
+        "Color Temperature",
+        "Color Temperature Preset",
+        "Color Wheel",
+        "Color Temperature RED to GREEN",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Dimmer Mode",
+        "Led refresh rate"
+      ]
+    }
+  ]
+}
