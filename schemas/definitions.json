@@ -152,6 +152,13 @@
         { "enum": ["fast", "slow", "stop", "slow reverse", "fast reverse"] }
       ]
     },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "A percentage value from 0 to 100."
+    },
+    
     "rotationSpeed": {
       "oneOf": [
         { "$ref": "#/units/hertz" },
