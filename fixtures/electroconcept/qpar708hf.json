@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "QPAR708HF",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["electroconcept"],
+    "createDate": "2022-04-14",
+    "lastModifyDate": "2022-04-14"
+  },
+  "links": {
+    "manual": [
+      "https://owncloud.electroconcept.fr/index.php/s/9tBkfOTcbFztXll#"
+    ],
+    "productPage": [
+      "https://www.boutique-electroconcept.com"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rkvg_J8Unns"
+    ]
+  },
+  "physical": {
+    "dimensions": [245, 150, 245],
+    "weight": 1.3,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7x8 W RGBW LEDS"
+    },
+    "lens": {
+      "name": "Lens 25°",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "100bpm",
+          "duration": "instant",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
