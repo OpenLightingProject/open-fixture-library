@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VERSAPAR RGBW ZOOM",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Leo"],
+    "createDate": "2025-10-01",
+    "lastModifyDate": "2025-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://shop.esl-france.com/index.php?controller=attachment&id_attachment=7938564"
+    ],
+    "productPage": [
+      "https://shop.esl-france.com/pars/22613-par-led-versapar-full-rgbw-a-zoom-prolights-tribe.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GrZExJW-Flk"
+    ]
+  },
+  "physical": {
+    "dimensions": [262, 357, 260],
+    "weight": "invalid",
+    "power": "invalid",
+    "DMXconnector": "3 pin and 5 pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": "invalid"
+    },
+    "lens": {
+      "name": "Zoom linéaire motorisé : 10 à 60 °",
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Auto Mode": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Dimmer speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "10CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Auto Mode",
+        "Dimmer speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
