@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-THEATRE 200TW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Florian"],
+    "createDate": "2023-07-16",
+    "lastModifyDate": "2023-07-16"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/de/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1612258345.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/de/bt-theatre-200tw"
+    ]
+  },
+  "physical": {
+    "dimensions": [223, 392, 350],
+    "weight": 7.2,
+    "power": 105,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [12, 56]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [6, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [33, 46],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [48, 102],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [104, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K"
+        },
+        {
+          "dmxRange": [129, 227],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [229, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 125],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [126, 135],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Strobe"
+      ]
+    }
+  ]
+}
