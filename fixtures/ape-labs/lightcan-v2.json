@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LIGHTCAN V2",
+  "shortName": "Lightcan",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Paul M."],
+    "createDate": "2022-11-26",
+    "lastModifyDate": "2022-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://apelabs.com/wp-content/uploads/2021/09/Ape_Labs_User_Manual_A6_DEUS_Print.pdf"
+    ],
+    "productPage": [
+      "https://apelabs.com/produkt/apelight-can-v2-single-unit/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HC7pxfC4Fyc"
+    ]
+  },
+  "physical": {
+    "dimensions": [60, 137, 60],
+    "weight": 0.4,
+    "power": 15,
+    "DMXconnector": "3.5mm stereo jack",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound to Light": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Ch. (RGB)",
+      "shortName": "3",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Ch. (RGBW)",
+      "shortName": "4",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "7 Ch. (RGBW + Control)",
+      "shortName": "7",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Sound to Light"
+      ]
+    }
+  ]
+}
