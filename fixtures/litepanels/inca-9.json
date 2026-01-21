@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Inca 9",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Yuichi Kato"],
+    "createDate": "2022-06-23",
+    "lastModifyDate": "2022-06-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.litepanels.com/en/products/product/?catalog=1027&product=1591"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "channels": [
+        "Dimmer",
+        "Focus"
+      ]
+    }
+  ]
+}
