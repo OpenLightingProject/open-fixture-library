@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bi-Color COB Surface Mount Lamp",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Ferrin", "Donald"],
+    "createDate": "2025-07-26",
+    "lastModifyDate": "2025-07-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-07-26",
+      "comment": "created by Q Light Controller Plus (version 4.14.0)"
+    }
+  },
+  "physical": {
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000
+    }
+  },
+  "availableChannels": {
+    "Warm White Dimming": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cool White Dimming": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Effect",
+        "effectName": "0-100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Warm White Dimming",
+        "Cool White Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Warm White Dimming",
+        "Cool White Dimming"
+      ]
+    }
+  ]
+}
