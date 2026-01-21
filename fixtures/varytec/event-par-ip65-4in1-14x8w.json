@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Event Par IP65 4in1 14x8W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David Huss"],
+    "createDate": "2024-01-17",
+    "lastModifyDate": "2024-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_452127_435626_r4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec_event_par_ip65_4in1_14x8w.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [293, 298, 155],
+    "weight": 4.8,
+    "power": 112,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Intensity Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "StrobeDuration",
+          "durationStart": "1000ms",
+          "durationEnd": "1ms",
+          "comment": "absolute duration numbers are a guess, there is no documentation on this"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "15Hz",
+          "comment": "absolute frequency is a guess, there is no documentation on this"
+        }
+      ]
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color Change without fade (Speed)"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color Change with fade (Speed)"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effects 2": {
+      "name": "Effects",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 32],
+          "type": "Effect",
+          "effectName": "Colour change with 7 colours"
+        },
+        {
+          "dmxRange": [33, 50],
+          "type": "Effect",
+          "effectName": "Colour change red orange"
+        },
+        {
+          "dmxRange": [51, 68],
+          "type": "Effect",
+          "effectName": "Colour change with 15 colours"
+        },
+        {
+          "dmxRange": [69, 86],
+          "type": "Effect",
+          "effectName": "Colour change with blackout, 4 colours"
+        },
+        {
+          "dmxRange": [87, 100],
+          "type": "Effect",
+          "effectName": "Colour change with 15 colours"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Colour change with cross-fade, increasing speed"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4chn",
+      "channels": [
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity White"
+      ]
+    },
+    {
+      "name": "7chn",
+      "channels": [
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity White",
+        "Master Intensity",
+        "Shutter / Strobe",
+        "Effects"
+      ]
+    },
+    {
+      "name": "9chn",
+      "channels": [
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity White",
+        "Master Intensity",
+        "Shutter / Strobe",
+        "Effects 2",
+        "Effect Speed",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
