@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led 6 16 bits",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["me"],
+    "createDate": "2022-05-02",
+    "lastModifyDate": "2022-05-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.planjd.com"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 4 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 5": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 5 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 6": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 6 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ereimul16",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Dimmer 4",
+        "Dimmer 4 fine",
+        "Dimmer 5",
+        "Dimmer 5 fine",
+        "Dimmer 6",
+        "Dimmer 6 fine"
+      ]
+    }
+  ]
+}
