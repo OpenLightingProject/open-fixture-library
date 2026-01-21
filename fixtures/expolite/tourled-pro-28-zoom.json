@@ -1,0 +1,593 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TourLED Pro 28 Zoom",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Wolfgang", "Wolfgang Borchert Theater"],
+    "createDate": "2023-01-11",
+    "lastModifyDate": "2023-01-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-01-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [226, 190, 283],
+    "weight": 6.6,
+    "power": 336,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Master dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red2": {
+      "fineChannelAliases": ["Red2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "fineChannelAliases": ["Green2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "fineChannelAliases": ["Blue2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White2": {
+      "fineChannelAliases": ["White2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN UP/BLUE0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "RED DOWN/GREEN 100%/BLUE0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "RED 0%/GREEN 100%/BLUE UP"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "RED 0%/GREEN DOWN/BLUE 100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "RED UP/GREEN 0%/BLUE100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN 0%/BLU EDOWN"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN UP/BLUE UP"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "RED DOWN/GREEN DOWN/BLUE 100%"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN 100%P/BLUE100%/WHITE 100%"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "WHITE1£3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "WHITE2£3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "WHITE3£4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "WHITE4£4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "WHITE5£5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "WHITE6£5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "WHITE7£6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "WHITE8£7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "WHITE9£8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "WHITE10£8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "WHITE11£10000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Funcion",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "AUTO 1"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "AUTO 2"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "AUTO 3"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "AUTO 4"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "AUTO 5"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "AUTO 6"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "AUTO 7"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "AUTO 8"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "AUTO 9"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "AUTO 10"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "PR.01"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "PR.02"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "PR.03"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "PR.04"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "PR.05"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "PR.06"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "PR.07"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "PR.08"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Effect",
+          "effectName": "PR.09"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "PR.10"
+        }
+      ]
+    },
+    "Auto speed adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "When using Auto channel, AUTO1-AUTO10, this functon activated",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "comment": "PRESET DIMMER SPEED FROM DISPLAY MENU",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Speed",
+          "comment": "LINEAR DIMMER",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Speed",
+          "comment": "NON LINEAR DIMMER 1 fastest",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Speed",
+          "comment": "NON LINEAR DIMMER 2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Speed",
+          "comment": "NON LINEAR DIMMER 3",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Speed",
+          "comment": "NON LINEAR DIMMER 4 slowest",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance",
+          "comment": "ZOOM RESET"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Value": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "TOUR",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color macro",
+        "Strobe",
+        "Auto",
+        "Auto speed adjustment",
+        "Dimmer speed",
+        "Zoom",
+        "Zoom Reset"
+      ]
+    },
+    {
+      "name": "TR16",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color macro",
+        "Strobe",
+        "Auto",
+        "Auto speed adjustment",
+        "Dimmer speed",
+        "Zoom",
+        "Zoom Reset"
+      ]
+    },
+    {
+      "name": "ARC.1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "AR1.D",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "ARC.2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "AR2.D",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "AR2.S",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "AR2.Z",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Zoom Reset"
+      ]
+    },
+    {
+      "name": "FULL",
+      "channels": [
+        "Dimmer",
+        "Master dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Red2",
+        "Red2 fine",
+        "Green2",
+        "Green2 fine",
+        "Blue2",
+        "Blue2 fine",
+        "White2",
+        "White2 fine",
+        "Color macro",
+        "Strobe",
+        "Auto",
+        "Auto speed adjustment",
+        "Dimmer speed",
+        "Zoom",
+        "Zoom Reset"
+      ]
+    }
+  ]
+}
