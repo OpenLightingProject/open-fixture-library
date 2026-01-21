@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SSDL-3201",
+  "shortName": "SSDL-3201",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2025-12-02",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-12-02",
+      "comment": "GDTF v1.2 fixture type ID: 41C14A3F-699F-4EE3-8738-6A113334AF62"
+    }
+  },
+  "comment": "SSDL-3201RGB 36X3: Set menu option Mode to M-DM for Dmx control\nSet menu option 16BT to On for 16 bit movement",
+  "availableChannels": {
+    "Color FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Effect",
+          "effectName": "RBG",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "Auto Prog 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Auto Prog 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "Auto Prog 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "Auto Prog 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Auto Prog 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Auto Prog 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Auto Prog 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Auto Prog 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Sound Act",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "No Func"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Strobe F -> S"
+        }
+      ]
+    },
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Pos MSpeed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 DMX 16-bit",
+      "channels": [
+        "Color FX1",
+        "R",
+        "G",
+        "B",
+        "Sh1",
+        "Dim",
+        "P",
+        "T",
+        "Pos MSpeed",
+        "P fine",
+        "T fine"
+      ]
+    }
+  ]
+}
