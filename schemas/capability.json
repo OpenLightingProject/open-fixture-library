@@ -1237,7 +1237,7 @@
           "const": "Hue"
         },
         "angle": {
-          "$ref": "definitions.json#/entities/angle"
+          "$ref": "definitions.json#/entities/swingAngle"
         }
       },
       "required": ["type", "angle"],
