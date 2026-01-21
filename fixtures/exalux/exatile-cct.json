@@ -1,0 +1,230 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exatile CCT",
+  "shortName": "CCT",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["Skouza97"],
+    "createDate": "2024-07-17",
+    "lastModifyDate": "2024-07-17"
+  },
+  "links": {
+    "manual": [
+      "https://exalux.eu/wp-content/uploads/2023/05/EXALUX-EXATILE-CCT_DATASHEET_EN_WEB_INDA.pdf"
+    ],
+    "productPage": [
+      "https://exalux.eu/categorie-produit/exalux-led-lights/exalux-led-lights-led-panels/exalux-led-lights-led-panel-exatile/"
+    ],
+    "other": [
+      "https://exalux.eu/wp-content/uploads/2022/09/EXALUX-EXATILE-CCT-DMX-MODES_V1.0.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [598, 598, 122],
+    "weight": 5.75,
+    "power": 60,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "1%"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Intensity",
+          "brightnessStart": "1.1%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "Intensity",
+          "brightnessStart": "4.2%",
+          "brightnessEnd": "9%"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Intensity",
+          "brightnessStart": "9.5%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3100K",
+        "colorTemperatureEnd": "5700K",
+        "comment": "Pas constante"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "Time",
+          "timeStart": "0ms",
+          "timeEnd": "5000ms",
+          "comment": "Pas de 25 ms"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Time",
+          "time": "5000ms"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "StrobeSpeed",
+          "speed": "0Hz"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "StrobeSpeed",
+          "speed": "1Hz"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "StrobeSpeed",
+          "speed": "2Hz"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "StrobeSpeed",
+          "speed": "3Hz"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "StrobeSpeed",
+          "speed": "4Hz"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "StrobeSpeed",
+          "speed": "5Hz"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "StrobeSpeed",
+          "speed": "6Hz"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "StrobeSpeed",
+          "speed": "7Hz"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "StrobeSpeed",
+          "speed": "8Hz"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "StrobeSpeed",
+          "speed": "9Hz"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "StrobeSpeed",
+          "speed": "10Hz"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "StrobeSpeed",
+          "speed": "11Hz"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "StrobeSpeed",
+          "speed": "12Hz"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "StrobeSpeed",
+          "speed": "13Hz"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "StrobeSpeed",
+          "speed": "14Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "StrobeSpeed",
+          "speed": "15Hz"
+        }
+      ]
+    },
+    "Intensity-CoarseTuning": {
+      "fineChannelAliases": ["Intensity-CoarseTuning fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature-CCT coarse": {
+      "fineChannelAliases": ["Color Temperature-CCT coarse fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3100K",
+        "colorTemperatureEnd": "5700K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity+CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "Intensity+CCT+Fade",
+      "shortName": "CCT+Fade",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Shutter"
+      ]
+    },
+    {
+      "name": "Intensity+CCT+Fade+Strobe(8bits mod)",
+      "shortName": "CCT+Fade+Strobe",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Shutter",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Intensity+CCT+Fade+Strobe(16 bits mod)",
+      "shortName": "CCT+Fade+Strobe(2)",
+      "channels": [
+        "Intensity-CoarseTuning",
+        "Intensity-CoarseTuning fine",
+        "Color Temperature-CCT coarse",
+        "Color Temperature-CCT coarse fine",
+        "Shutter",
+        "Strobe"
+      ]
+    }
+  ]
+}
