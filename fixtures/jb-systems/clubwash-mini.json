@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Clubwash Mini",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["R.Buimer"],
+    "createDate": "2023-10-22",
+    "lastModifyDate": "2023-10-22"
+  },
+  "links": {
+    "manual": [
+      "https://jb-systems.eu/nl/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1575461289.pdf"
+    ],
+    "productPage": [
+      "https://jb-systems.eu/nl/clubwash-mini"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HswlSJuZ2tE"
+    ]
+  },
+  "physical": {
+    "dimensions": [139, 183, 143],
+    "weight": 1.61,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 789
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Pan/Tilt": {
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Presets",
+        "Pan/Tilt",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
