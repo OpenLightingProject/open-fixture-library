@@ -1,0 +1,443 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dj Lase RGB Pro Advanced 1000",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Willax", "Andrei"],
+    "createDate": "2024-01-30",
+    "lastModifyDate": "2024-01-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-01-30",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [291, 210, 200],
+    "weight": 3.6,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [1, 36]
+    }
+  },
+  "availableChannels": {
+    "1 Operating mode selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Laser Off"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Maintenance",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Maintenance",
+          "comment": "Sound Mode"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Maintenance",
+          "comment": "Text Mode"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Maintenance",
+          "comment": "Selecting first pattern"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Maintenance",
+          "comment": "Selecting second pattern"
+        }
+      ]
+    },
+    "2 Auto mode, channel 1 = 10 … 79 - Sound mode, channel 1 = 80 … 150 - Pattern mode, channel 1 = 151 … 255": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Effect",
+          "effectName": "AUTO1, MUSIC1, Pattern group1"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Effect",
+          "effectName": "AUTO2, MUSIC2, Pattern group2"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Effect",
+          "effectName": "AUTO3, MUSIC3, Pattern group3"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Effect",
+          "effectName": "AUTO4, MUSIC4, Pattern group4"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Effect",
+          "effectName": "AUTO5, MUSIC5, Pattern group5"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Effect",
+          "effectName": "AUTO6, MUSIC6, Pattern group6"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "Effect",
+          "effectName": "AUTO7, MUSIC7, Pattern group7"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "AUTO8, MUSIC8, Pattern group8"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "AUTO9, MUSIC9, Pattern group9"
+        }
+      ]
+    },
+    "3 Pattern selection, channel 1 = 151 … 255, channel 2 = 0 … 255": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Patterns 1 to 16 of the respectively selected group of channel 2 (16 patterns x 8\ngroups = 128 patterns)"
+      }
+    },
+    "4 Colour selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "automatic"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Red + green = yellow"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Red + blue = purple"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Green + blue = cyan"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Red + green + blue = white"
+        },
+        {
+          "dmxRange": [64, 111],
+          "type": "ColorPreset",
+          "comment": "Single colour conversion"
+        },
+        {
+          "dmxRange": [112, 159],
+          "type": "ColorPreset",
+          "comment": "Multi-coloured motion above and below, increasing speed"
+        },
+        {
+          "dmxRange": [160, 207],
+          "type": "ColorPreset",
+          "comment": "Multi-coloured motion left to right, increasing speed"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "ColorPreset",
+          "comment": "Strobe effect, increasing speed"
+        }
+      ]
+    },
+    "5 Drawing of pattern (clipping)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Original pattern, no Clipping effect"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Build-up of patterns 0 % to 99 %"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Clipping effect speed from",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "6 Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "100% to 5% zoom effect of patterns"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Generic",
+          "comment": "Zoom out"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Generic",
+          "comment": "Zoom in"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "Zoom in/out loop"
+        }
+      ]
+    },
+    "7 Zoom speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Zoom effect speed from"
+      }
+    },
+    "8 Y axis rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Fixed adjusted position of Y-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Y-axis rotation clockwise"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Y-axis rotation counter-clockwise"
+        }
+      ]
+    },
+    "9 Rotation speed of Y-axis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Rotation speed of Y-axis from"
+      }
+    },
+    "10 X axis rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Fixed adjusted position of X-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "X-axis rotation clockwise"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "X-axis rotation counter-clockwise"
+        }
+      ]
+    },
+    "11 Rotation speed of X-axis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Rotation speed of X-axis from"
+      }
+    },
+    "12 Z axis rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Fixed adjusted position of Z-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Z-axis rotation clockwise"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Z-axis rotation counter-clockwise"
+        }
+      ]
+    },
+    "13 Rotation speed of Z-axis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Rotation speed of Z-axis from"
+      }
+    },
+    "14 X axis moving": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Fixed adjusted position of X-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Round around X-axis clockwise"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Round around X-axis counter-clockwise"
+        }
+      ]
+    },
+    "15 Motion speed on X-axis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Motion speed on X-axis from"
+      }
+    },
+    "16 Y axis moving": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Fixed adjusted position of Y-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Rotation around Y-axis clockwise"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Rotation around Y-axis counter-clockwise"
+        }
+      ]
+    },
+    "17 Motion speed on Y-axis": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Motion speed on Y-axis from"
+      }
+    },
+    "18 Wave effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Increasing wave size"
+      }
+    },
+    "19 Wave effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Increasing wave frequency"
+      }
+    },
+    "20 Wave effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Wave position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Wave motion speed from",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "20-channel",
+      "shortName": "20ch",
+      "channels": [
+        "1 Operating mode selection",
+        "2 Auto mode, channel 1 = 10 … 79 - Sound mode, channel 1 = 80 … 150 - Pattern mode, channel 1 = 151 … 255",
+        "3 Pattern selection, channel 1 = 151 … 255, channel 2 = 0 … 255",
+        "4 Colour selection",
+        "5 Drawing of pattern (clipping)",
+        "6 Zoom",
+        "7 Zoom speed",
+        "8 Y axis rotation",
+        "9 Rotation speed of Y-axis",
+        "10 X axis rotation",
+        "11 Rotation speed of X-axis",
+        "12 Z axis rotation",
+        "13 Rotation speed of Z-axis",
+        "14 X axis moving",
+        "15 Motion speed on X-axis",
+        "16 Y axis moving",
+        "17 Motion speed on Y-axis",
+        "18 Wave effect",
+        "19 Wave effect",
+        "20 Wave effect"
+      ]
+    }
+  ]
+}
