@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vizi Beam RXONE",
+  "shortName": "RX1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tomy Vertigo"],
+    "createDate": "2024-11-02",
+    "lastModifyDate": "2024-11-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/868"
+    ],
+    "productPage": [
+      "https://www.adj.eu/vizi-beam-rxone"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Z1JrWhm17LI"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 387, 279],
+    "weight": 9.2,
+    "power": 199,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "100W Osram Sirius HRI Long Life Discharge",
+      "colorTemperature": 9000,
+      "lumens": 62500
+    },
+    "lens": {
+      "degreesMinMax": [3, 21]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensity": "high"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Pan/Tilt Macros": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
+      }
+    },
+    "Gobo Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Special Functions": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17CH",
+      "shortName": "RX1/17CH",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Pan/Tilt Macros",
+        "Pan/Tilt Macro Speed",
+        "Color Time",
+        "Gobo Time",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    }
+  ]
+}
