@@ -1,0 +1,267 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WL-MI0810 Mini LED Spot",
+  "categories": ["Strobe", "Moving Head", "Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Davide Aristipini"],
+    "createDate": "2025-08-18",
+    "lastModifyDate": "2025-08-18"
+  },
+  "links": {
+    "productPage": [
+      "https://www.lixada.com/p-l0814eu.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [235, 155, 145],
+    "weight": 2.37,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW",
+      "colorTemperature": 6500,
+      "lumens": 3000
+    },
+    "lens": {
+      "name": "Standard fixed lens",
+      "degreesMinMax": [13, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "2deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "2deg"
+      }
+    },
+    "Pan/Tilt Continuous Rotation": {
+      "capability": {
+        "type": "TiltContinuous"
+      }
+    },
+    "Rotation Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1000Hz"
+      }
+    },
+    "Red (Front)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Front)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Front)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Front)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Back)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Back)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Back)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Back)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Movement Macros": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Vari preset"
+      }
+    },
+    "Speed Auto Movement": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Color Random"
+      }
+    },
+    "Speed Color Macros": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Motor Auto Run": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Voice Sensitivity": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "21CH Extended",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Continuous Rotation",
+        "Rotation Speed",
+        "Dimmer",
+        "Strobe",
+        "Red (Front)",
+        "Green (Front)",
+        "Blue (Front)",
+        "White (Front)",
+        "Red (Back)",
+        "Green (Back)",
+        "Blue (Back)",
+        "White (Back)",
+        "Auto Movement Macros",
+        "Speed Auto Movement",
+        "Color Macros",
+        "Speed Color Macros",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Continuous Rotation",
+        "Rotation Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Motor Auto Run",
+        "Voice Sensitivity",
+        "Color Macros",
+        "Speed Color Macros",
+        "Reset"
+      ]
+    }
+  ]
+}
