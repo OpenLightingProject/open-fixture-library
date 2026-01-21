@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1Eyes 200W LED COB Cool Warm White Lighting",
+  "shortName": "LED COB 200W 1Eye",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["ALVARO DIAZ URTASUN"],
+    "createDate": "2022-10-14",
+    "lastModifyDate": "2022-10-14"
+  },
+  "links": {
+    "manual": [
+      "https://es.shehds.com/u_file/1908/file/60110b786a.pdf"
+    ],
+    "productPage": [
+      "https://es.shehds.com/products/theater-audience-lights-gorgeous-effect-aluminum-alloy-led-par-cob-200w-cool-white-warm-white-with-barn-doors-lighting-free-shiping"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=CSGps3Ja5QM"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Jump mode"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Gradient mode"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Maintenance",
+          "comment": "Self-propelled mode"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Voice control mode"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "A",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Cold White",
+        "Warm White",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "d",
+      "shortName": "2ch",
+      "channels": [
+        "Cold White",
+        "Warm White"
+      ]
+    }
+  ]
+}
