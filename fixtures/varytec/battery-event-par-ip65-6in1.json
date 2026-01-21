@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Battery Event Par IP65 6in1",
+  "categories": ["Color Changer", "Strobe", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["emmel"],
+    "createDate": "2025-02-13",
+    "lastModifyDate": "2025-02-13"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_435604_v4_en_online.pdf?_gl=1*cx8j0p*_gcl_au*MTM3OTYzMzM1NC4xNzM5NDQxNDUy*FPAU*MzY5NTgzNzY1LjE3Mzk0MzM3MTA.*_ga*MTIwMzExMzg5NS4xNzM5NDQxNDQ5*_ga_QNTG1E3BFT*MTczOTQ0MTQ1MC4xLjEuMTczOTQ0MjY0NC4wLjAuNzkxNjI1NjU1*_fplc*YmZLdDhqUDlodndIOEJGRjZiUDByR25pYkZRaENTRGQ1d3pCcjA3UG9qZTV0dHdHaXh2T3JRdDA4MG1NRFd3MUs4YW5IdWtzeWNGcEczTktuNHZHQ21vV2piQjJFRmdiekRRc0NWdHBzSE95SnlLVzNyMWxrZjJlWDREYzJRJTNEJTNE"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec_battery_event_par_ip65_6in1.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wF8JuvctwAw"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 282, 150],
+    "weight": 5.5,
+    "power": 70,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Selecting an automatic show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Effect",
+          "effectName": "Colour change"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled show",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "On",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Selecting an automatic show"
+      ]
+    },
+    {
+      "name": "11-Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Selecting an automatic show",
+        "Effect Speed",
+        "Sound control"
+      ]
+    }
+  ]
+}
