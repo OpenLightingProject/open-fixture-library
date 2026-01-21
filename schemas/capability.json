@@ -1230,6 +1230,32 @@
       },
       "required": ["type"],
       "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "Hue"
+        },
+        "angle": {
+          "$ref": "definitions.json#/entities/angle"
+        }
+      },
+      "required": ["type", "angle"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "Saturation"
+        },
+        "saturation": {
+          "$ref": "definitions.json#/entities/percentage"
+        }
+      },
+      "required": ["type", "saturation"],
+      "additionalProperties": false
     }
+
+
   ]
 }
