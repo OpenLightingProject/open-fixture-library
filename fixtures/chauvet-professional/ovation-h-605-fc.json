@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "OVATION H 605 FC",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["anonyme"],
+    "createDate": "2026-01-21",
+    "lastModifyDate": "2026-01-21"
+  },
+  "comment": "Not complete",
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_H-605FC_UM_Rev8.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-h-605fc/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=upzf28UfRKk"
+    ]
+  },
+  "physical": {
+    "dimensions": [333, 240, 339],
+    "weight": 8.9,
+    "power": 145,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "60 LEDs (12 red, 12 green, 12 blue, 12 amber, 12 lime) 2 to 3 W"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "HUE": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "SATURATION": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "VALUE": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Chanel",
+      "channels": [
+        "Dimmer",
+        "Color Wheel",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "HUE",
+        "SATURATION",
+        "VALUE"
+      ]
+    }
+  ]
+}
