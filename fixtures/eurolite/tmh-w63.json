@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH-W63",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jannis"],
+    "createDate": "2024-12-04",
+    "lastModifyDate": "2024-12-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/3276100/Eurolite-Led-Tmh-W63.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/eurolite_tmh_w63_moving_head_zoom_wash.htm?msclkid=f89005c80db9118b5b3f6298ade83e6b&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20DE&utm_term=4576579731227728&utm_content=LI%20-%20Licht"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "power": 63,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 18]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [96, 176],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [177, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Internal Programm": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Generic",
+          "comment": "Automatic- Color + Pan/Tilt"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic",
+          "comment": "Sound-Control"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Speed: fast to slow, Sensitivity: low to high"
+      }
+    },
+    "Movement Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "Macro-Pan"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "Macro-Tilt"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "Macro Pan+Tilt"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Internal Programm",
+        "Program Speed",
+        "Movement Macros"
+      ]
+    }
+  ]
+}
