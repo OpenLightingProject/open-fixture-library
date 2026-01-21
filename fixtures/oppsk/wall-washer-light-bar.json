@@ -1,0 +1,436 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wall Washer Light Bar",
+  "shortName": "RGBW Light Bar",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Dan Sparks"],
+    "createDate": "2025-01-25",
+    "lastModifyDate": "2025-01-25"
+  },
+  "comment": "5 DMX Modes  4Ch, 6Ch, 9Ch, 48ch, 52ch",
+  "links": {
+    "manual": [
+      "https://oppsk.com/products/1m-led-stage-wash-light-bar"
+    ],
+    "productPage": [
+      "https://oppsk.com/products/1m-led-stage-wash-light-bar"
+    ],
+    "video": [
+      "https://www.amazon.com/dp/B0C3L6BGYR/?coliid=I3E4MM4E1TZVHU&colid=FUZRZ9A90WJK&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"
+    ]
+  },
+  "rdm": {
+    "modelId": 0,
+    "softwareVersion": "UNKNOWN"
+  },
+  "physical": {
+    "dimensions": [1000, 55, 105],
+    "weight": 2.2,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4500,
+      "lumens": 288
+    },
+    "lens": {
+      "name": "WITH DIFUSSION OR WITHOUT",
+      "degreesMinMax": [6, 180]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speed": "10Hz",
+          "comment": "Slow > Fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Generic",
+          "comment": "Pattern Effect 1  (Ch2-5 controls color)"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Generic",
+          "comment": "Pattern Effect 2 (Ch2-5 controls color)"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Generic",
+          "comment": "Pattern"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Generic",
+          "comment": "Pattern Effect 56 (built in Effect Colors)"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Generic",
+          "comment": "AutoEffect (Cyclic Running Pattern Effect 1-56)"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound 1 (random effects )"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound 2 (sound meter effect)"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "RGBW program speed (Slow>Fast)"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "Generic",
+        "comment": "RGBW PATTERN EFFECT background color"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4 Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "9 Channel",
+      "shortName": "9 Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed",
+        "Color Macros 2"
+      ]
+    }
+  ]
+}
