@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Atomic LED STrobe",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["domi"],
+    "createDate": "2025-10-12",
+    "lastModifyDate": "2025-10-12"
+  },
+  "links": {
+    "productPage": [
+      "https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&productId=1005009096082737&_immersiveMode=true&withMainCard=true&src=google&aff_platform=true&isdl=y&src=google&albch=shopping&acnt=272-267-0231&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=de1005009096082737&ds_e_product_merchant_id=5071765276&ds_e_product_country=DE&ds_e_product_language=de&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=20542208798&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=19235627476&gbraid=0AAAAAoukdWPZp_VmNENrHj5vXvr2Q1GZL&gclid=Cj0KCQjwo63HBhCKARIsAHOHV_VOOMhpvFov4PHqXCSQ6vEBJUs8j44N2G29jpZHcQ3FM8Umd21s4IUaArtDEALw_wcB",
+      "https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&productId=1005009096082737&_immersiveMode=true&withMainCard=true&src=google&aff_platform=true&isdl=y&src=google&albch=shopping&acnt=272-267-0231&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=de1005009096082737&ds_e_product_merchant_id=5071765276&ds_e_product_country=DE&ds_e_product_language=de&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=20542208798&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=19235627476&gbraid=0AAAAAoukdWPZp_VmNENrHj5vXvr2Q1GZL&gclid=Cj0KCQjwo63HBhCKARIsAHOHV_VOOMhpvFov4PHqXCSQ6vEBJUs8j44N2G29jpZHcQ3FM8Umd21s4IUaArtDEALw_wcB"
+    ],
+    "video": [
+      "https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&productId=1005009096082737&_immersiveMode=true&withMainCard=true&src=google&aff_platform=true&isdl=y&src=google&albch=shopping&acnt=272-267-0231&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=de1005009096082737&ds_e_product_merchant_id=5071765276&ds_e_product_country=DE&ds_e_product_language=de&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=20542208798&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=19235627476&gbraid=0AAAAAoukdWPZp_VmNENrHj5vXvr2Q1GZL&gclid=Cj0KCQjwo63HBhCKARIsAHOHV_VOOMhpvFov4PHqXCSQ6vEBJUs8j44N2G29jpZHcQ3FM8Umd21s4IUaArtDEALw_wcB"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blitzgeschwindigkeit": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Rot": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6Kanal",
+      "channels": [
+        "Dimmer",
+        "Blitzgeschwindigkeit",
+        "Rot",
+        "Grün",
+        "Blau",
+        "Weiß"
+      ]
+    }
+  ]
+}
