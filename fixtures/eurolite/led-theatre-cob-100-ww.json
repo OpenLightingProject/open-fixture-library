@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theatre COB 100 WW",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Benjamin Blaikner/ Theater der Mitte"],
+    "createDate": "2024-07-18",
+    "lastModifyDate": "2024-07-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.at/de/mpn41602010-eurolite-led-theatre-cob-100-ww.html"
+    ],
+    "productPage": [
+      "https://www.steinigke.at/de/mpn41602010-eurolite-led-theatre-cob-100-ww.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 320, 310],
+    "weight": 2.75,
+    "power": 85,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3100
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "Generic",
+          "comment": "Auto program 1, static"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "Generic",
+          "comment": "Auto program 2, with increasing speed"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Generic",
+          "comment": "Auto program 3, with increasing speed"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "Generic",
+          "comment": "Auto program 4, with increasing speed"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "Generic",
+          "comment": "Auto program 5, with increasing speed"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Generic",
+          "comment": "Sound program 1, with increasing speed"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Generic",
+          "comment": "Sound program 2, with increasing speed"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Generic",
+          "comment": "Sound program 3, with increasing speed"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Sound program 4, with increasing speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Warm White"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Warm White",
+        "Auto Mode"
+      ]
+    }
+  ]
+}
