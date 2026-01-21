@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "36 LED PAR Light",
+  "shortName": "36LED Par Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Arthur"],
+    "createDate": "2019-02-18",
+    "lastModifyDate": "2019-02-18"
+  },
+  "helpWanted": "Please provide a manual if possible. Why are there two color macro channels? Is the 5-channel mode correct?",
+  "links": {
+    "other": [
+      "https://amazon.com/Litake-Lights-Activated-Uplights-Uplighting/dp/B08131SXJ2"
+    ]
+  },
+  "physical": {
+    "weight": 6.6,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": { "type": "36x1W RGB LEDs" },
+    "lens": { "degreesMinMax": [15, 45] }
+  },
+  "availableChannels": {
+    "Intensity": { "defaultValue": 0, "capability": { "type": "Intensity" } },
+    "Red": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Red" }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Green" }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Blue" }
+    },
+    "Strobe": {
+      "capabilities": [
+        { "dmxRange": [0, 7], "type": "NoFunction" },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": ["Intensity", "Red", "Green", "Blue", "Strobe"]
+    }
+  ]
+}
