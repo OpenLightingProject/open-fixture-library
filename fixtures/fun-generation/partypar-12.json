@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PartyPar 12",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["pera"],
+    "createDate": "2025-02-22",
+    "lastModifyDate": "2025-02-22"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/591166_v2_en_online.pdf?_gl=1*1u0tjy9*FPAU*ODgzMjg0NTM0LjE3NDAyNTY0MDI.*_ga*MjA2ODc1MTg1Ny4xNzQwMjU2NDAx*_ga_QNTG1E3BFT*MTc0MDI1NjQwMC4xLjAuMTc0MDI1NjQwMC4wLjAuNDUyNTY0Njk2*_fplc*bzNIMXQ3VjNVUDVZOWpvdXYzeTRFeXdxZzZDTmVMJTJCSmVtcVY3ajFkbjRleHJ6Ymhzb2JIJTJCZGc0YnhmRU0ydndjYzlZR1VIMWx2M1NLcWY0bFlGbFI5WUxXbnRJdHRHMzdzJTJGR29ST1dubk14MnZmQ2hDOHpzTjZ4bmd3c0lBJTNEJTNE"
+    ],
+    "productPage": [
+      "https://www.thomann.de/it/fun_generation_partypar_12_dmx.htm"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [155, 90, 190],
+    "weight": 0.5,
+    "power": 5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe/sound": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Generic",
+          "comment": "sound control"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe/sound"
+      ]
+    }
+  ]
+}
