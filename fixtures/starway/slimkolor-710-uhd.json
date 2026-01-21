@@ -1,0 +1,342 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimKolor 710 UHD",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Wargreen"],
+    "createDate": "2025-10-04",
+    "lastModifyDate": "2025-10-04"
+  },
+  "links": {
+    "manual": [
+      "https://tech.starway.eu/225410_SLIMKOLOR710UHD/225410_SLIMKOLOR710UHD_FR.pdf"
+    ],
+    "other": [
+      "https://www.fixture.id/fixture/Starway_Slimkolor%20710%20UHD.d4"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 247, 125],
+    "weight": 3.2,
+    "power": 100,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2 Channels",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5 Channels",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6 Channels",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7 Channels",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8 Channels",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "9 Channels",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
