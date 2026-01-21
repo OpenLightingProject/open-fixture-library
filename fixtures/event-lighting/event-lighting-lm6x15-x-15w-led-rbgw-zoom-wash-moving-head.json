@@ -1,0 +1,391 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Event-Lighting-LM6x15-X-15W-LED RBGW-Zoom-Wash-Moving-Head",
+  "shortName": "Event-Lighting-LM6x15",
+  "categories": ["Moving Head", "Strobe", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Galindo"],
+    "createDate": "2023-08-29",
+    "lastModifyDate": "2023-08-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.dropbox.com/s/odqhce1lyhy69dt/LM6X15.pdf?dl=0"
+    ],
+    "productPage": [
+      "https://event-lighting.com.au/products/lm6x15"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=sDtOQjgODNY"
+    ]
+  },
+  "physical": {
+    "dimensions": [243, 282, 154],
+    "weight": 4,
+    "power": 99,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    },
+    "lens": {
+      "degreesMinMax": [6, 60]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "0.6Hz",
+          "speedEnd": "22Hz",
+          "comment": "slow-fast speed unknown"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "randomTiming": true,
+          "comment": "random"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "6deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "6deg"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Intensity",
+          "comment": "blackout while pan tilt"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction",
+          "comment": "tbd"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Red/Blue"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "Red/White"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "comment": "Green/Blue"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "comment": "Green/White"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "comment": "Blue/White"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "comment": "Red/Green/Blue/white"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Jump Effect"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Fade"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Pulse"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [88, 96],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "15ch",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Effect Speed",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "basic",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Pan",
+        "Tilt",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Effect Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
