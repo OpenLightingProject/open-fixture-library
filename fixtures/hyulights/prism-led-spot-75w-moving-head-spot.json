@@ -1,0 +1,469 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "prism led spot 75w moving head spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["julmaster"],
+    "createDate": "2023-11-24",
+    "lastModifyDate": "2023-11-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.recordcase.de/media/pdf/b3/50/6f/Eurolite-LED-TMH-17-User-Manual-DE-EN.pdf"
+    ],
+    "productPage": [
+      "https://de.aliexpress.com/item/1005003158545783.html?isdl=y&aff_fsk=_omkkMP1&src=Connexity2023DEchannel&aff_platform=aff_feeds&aff_short_key=_omkkMP1&pdp_npi=2%40dis%21EUR%2190.61%2183.36%21%21%21%21%21%40%2112000028023849619%21afff&dp=17008636705030051458616001188008005&cn=326575&cv=610e70ea965cd4a9cc876e884e601a53"
+    ],
+    "video": [
+      "https://video-cdn.aliexpress-media.com/9f8e1de30350cb41/SUhF4WnukKkp8w6me7p/oMOhkkP4wgm9UFd2tLD_307444178316_mp4_265_hd.mp4?auth_key=1702293927-0-0-7a6dff48a019ea32c740c5e5426affd2&w=1280&h=720&e=hd_265&t=211b88ee16945179267417678e055f&b=ae_sg&p=ae_sg_ae_sg_vpc_scene&tr=mp4-265-hd&t_u=211b88ec17008659393821729e957d&user=3822284376&from=chrome"
+    ]
+  },
+  "physical": {
+    "weight": 2.9,
+    "power": 85,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 0
+    }
+  },
+  "wheels": {
+    "Gobo Wheel Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "170deg",
+        "angleEnd": "350deg"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "lightblue purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "lightblue purple"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Purple darkblue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "darkblue lightgreen"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "lightgreen yellow"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "yellow orange"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "orange red"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [64, 119],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 9,
+          "slotNumberEnd": 15,
+          "angleStart": "0deg",
+          "angleEnd": "315deg"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo Wheel rotation"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Sound Sensitivity 2": {
+      "name": "Sound Sensitivity",
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Maintenance",
+          "comment": "Intern Programm"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Maintenance",
+          "comment": "Music Sensitivity"
+        }
+      ]
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "reset pan"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "reset tilt"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Maintenance",
+          "comment": "pan tilt reset"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "automatic",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel Rotation",
+        "Gobo Wheel Rotation",
+        "Strobe Speed",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Sound Sensitivity 2",
+        "Program Duration"
+      ]
+    }
+  ]
+}
