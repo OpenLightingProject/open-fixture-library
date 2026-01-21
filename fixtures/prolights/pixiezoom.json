@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixiezoom",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["IA"],
+    "createDate": "2022-10-11",
+    "lastModifyDate": "2022-10-11"
+  },
+  "links": {
+    "manual": [
+      "https://prolights.it/support"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [31, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 85],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "ColorPreset",
+          "comment": "White Preset"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorPreset",
+          "comment": "Color Macro"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PixieZoom",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom",
+        "Color Function",
+        "No function",
+        "Color Macros",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
