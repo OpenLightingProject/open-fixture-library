@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "blinder x2",
+  "shortName": "blinder",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["anonimo"],
+    "createDate": "2025-06-12",
+    "lastModifyDate": "2025-06-12"
+  },
+  "links": {
+    "manual": [
+      "https://steelpro.mx/products/blinder-2w-steelpro-2x100w-led-blanco-frio-calido?_pos=1&_psq=blinder&_ss=e&_v=1.0"
+    ]
+  },
+  "rdm": {
+    "modelId": 4,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "dimensions": [2, 2, 1],
+    "weight": 1,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led",
+      "colorTemperature": 5000,
+      "lumens": 3000
+    },
+    "lens": {
+      "degreesMinMax": [20, 80]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "W1 DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "W2 DIMMER": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Y1 DIMMER": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Y2 DIMMER": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "123 funcion": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "X2",
+      "channels": [
+        "Intensity",
+        "W1 DIMMER",
+        "W2 DIMMER",
+        "Y1 DIMMER",
+        "Y2 DIMMER",
+        "Strobe",
+        "123 funcion",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
