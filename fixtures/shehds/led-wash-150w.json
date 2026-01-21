@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED WASH 150W",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Karel Soukup"],
+    "createDate": "2023-01-09",
+    "lastModifyDate": "2023-01-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.aliexpress.com/item/32779094576.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [365, 310, 210],
+    "weight": 6.7,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "240deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "540deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Change": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan/Tilt Duration 2": {
+      "name": "Pan/Tilt Duration",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16kanal",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Pan/Tilt Speed",
+        "Color Change",
+        "Color speed",
+        "Program",
+        "Program Speed",
+        "Pan/Tilt Duration",
+        "Pan/Tilt Duration 2",
+        "No function"
+      ]
+    }
+  ]
+}
