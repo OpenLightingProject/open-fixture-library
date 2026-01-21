@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "19x15W LED RGBW Moving Head with Zoom & Wash Stage Lighting",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Nazdu"],
+    "createDate": "2025-12-22",
+    "lastModifyDate": "2025-12-22"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/15OvGXkvYhICnkI4pVQejhOPnzvjP2Is8/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Rest"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channels",
+      "shortName": "16ch",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Color Presets",
+        "Program Speed",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
