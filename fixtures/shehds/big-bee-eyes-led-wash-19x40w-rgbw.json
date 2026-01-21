@@ -1,0 +1,1998 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Big Bee Eyes LED Wash 19x40W RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["István Király", "bline54"],
+    "createDate": "2025-01-15",
+    "lastModifyDate": "2025-01-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-01-15",
+      "comment": "created by Q Light Controller Plus (version 4.13.1 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [434, 298, 530],
+    "weight": 22,
+    "power": 640,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 45]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Barrel Roll": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 155],
+          "type": "Generic",
+          "comment": "Barrel Roll 0-60°"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Generic",
+          "comment": "Clockwise Barrel Roll"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Anti-clockwise Barrel Roll"
+        }
+      ]
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [4, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "1Hz to 25Hz"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Random Strobe"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "warm",
+        "helpWanted": "Can you provide exact color temperature values in Kelvin?"
+      }
+    },
+    "Macro Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "One effect per 10 values"
+      }
+    },
+    "Static Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "None"
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "Effect",
+          "effectName": "Single Color Effect 1"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "Effect",
+          "effectName": "Single Color Effect 2"
+        },
+        {
+          "dmxRange": [16, 18],
+          "type": "Effect",
+          "effectName": "Single Color Effect 3"
+        },
+        {
+          "dmxRange": [19, 21],
+          "type": "Effect",
+          "effectName": "Single Color Effect 4"
+        },
+        {
+          "dmxRange": [22, 24],
+          "type": "Effect",
+          "effectName": "Single Color Effect 5"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "Effect",
+          "effectName": "Single Color Effect 6"
+        },
+        {
+          "dmxRange": [28, 30],
+          "type": "Effect",
+          "effectName": "Single Color Effect 7"
+        },
+        {
+          "dmxRange": [31, 33],
+          "type": "Effect",
+          "effectName": "Single Color Effect 8"
+        },
+        {
+          "dmxRange": [34, 36],
+          "type": "Effect",
+          "effectName": "Single Color Effect 9"
+        },
+        {
+          "dmxRange": [37, 39],
+          "type": "Effect",
+          "effectName": "Single Color Effect 10"
+        },
+        {
+          "dmxRange": [40, 42],
+          "type": "Effect",
+          "effectName": "Single Color Effect 11"
+        },
+        {
+          "dmxRange": [43, 45],
+          "type": "Effect",
+          "effectName": "Single Color Effect 12"
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "Effect",
+          "effectName": "Single Color Effect 13"
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "Effect",
+          "effectName": "Single Color Effect 14"
+        },
+        {
+          "dmxRange": [52, 54],
+          "type": "Effect",
+          "effectName": "Single Color Effect 15"
+        },
+        {
+          "dmxRange": [55, 57],
+          "type": "Effect",
+          "effectName": "Single Color Effect 16"
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "Effect",
+          "effectName": "Single Color Effect 17"
+        },
+        {
+          "dmxRange": [61, 63],
+          "type": "Effect",
+          "effectName": "Single Color Effect 18"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "Effect",
+          "effectName": "Single Color Effect 19"
+        },
+        {
+          "dmxRange": [67, 69],
+          "type": "Effect",
+          "effectName": "Single Color Effect 20"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "Effect",
+          "effectName": "Single Color Effect 21"
+        },
+        {
+          "dmxRange": [73, 75],
+          "type": "Effect",
+          "effectName": "Single Color Effect 22"
+        },
+        {
+          "dmxRange": [76, 78],
+          "type": "Effect",
+          "effectName": "Single Color Effect 23"
+        },
+        {
+          "dmxRange": [79, 81],
+          "type": "Effect",
+          "effectName": "Single Color Effect 24"
+        },
+        {
+          "dmxRange": [82, 84],
+          "type": "Effect",
+          "effectName": "Single Color Effect 25"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "Effect",
+          "effectName": "Single Color Effect 26"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Effect",
+          "effectName": "Single Color Effect 27"
+        },
+        {
+          "dmxRange": [91, 93],
+          "type": "Effect",
+          "effectName": "Single Color Effect 28"
+        },
+        {
+          "dmxRange": [94, 96],
+          "type": "Effect",
+          "effectName": "Single Color Effect 29"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Effect",
+          "effectName": "Single Color Effect 30"
+        },
+        {
+          "dmxRange": [100, 102],
+          "type": "Effect",
+          "effectName": "Single Color Effect 31"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "Effect",
+          "effectName": "Single Color Effect 32"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "Effect",
+          "effectName": "Single Color Effect 33"
+        },
+        {
+          "dmxRange": [109, 111],
+          "type": "Effect",
+          "effectName": "Single Color Effect 34"
+        },
+        {
+          "dmxRange": [112, 114],
+          "type": "Effect",
+          "effectName": "Single Color Effect 35"
+        },
+        {
+          "dmxRange": [115, 117],
+          "type": "Effect",
+          "effectName": "Single Color Effect 36"
+        },
+        {
+          "dmxRange": [118, 120],
+          "type": "Effect",
+          "effectName": "Single Color Effect 37"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "Effect",
+          "effectName": "Single Color Effect 38"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "Effect",
+          "effectName": "Single Color Effect 39"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "Effect",
+          "effectName": "Single Color Effect 40"
+        },
+        {
+          "dmxRange": [130, 132],
+          "type": "Effect",
+          "effectName": "Single Color Effect 41"
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "Effect",
+          "effectName": "Single Color Effect 42"
+        },
+        {
+          "dmxRange": [136, 138],
+          "type": "Effect",
+          "effectName": "Single Color Effect 43"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "Effect",
+          "effectName": "Single Color Effect 44"
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "Effect",
+          "effectName": "Single Color Effect 45"
+        },
+        {
+          "dmxRange": [145, 147],
+          "type": "Effect",
+          "effectName": "Single Color Effect 46"
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "Effect",
+          "effectName": "Single Color Effect 47"
+        },
+        {
+          "dmxRange": [151, 153],
+          "type": "Effect",
+          "effectName": "Single Color Effect 48"
+        },
+        {
+          "dmxRange": [154, 156],
+          "type": "Effect",
+          "effectName": "Single Color Effect 49"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "Effect",
+          "effectName": "Single Color Effect 50"
+        },
+        {
+          "dmxRange": [160, 162],
+          "type": "Effect",
+          "effectName": "Single Color Effect 51"
+        },
+        {
+          "dmxRange": [163, 165],
+          "type": "Effect",
+          "effectName": "Single Color Effect 52"
+        },
+        {
+          "dmxRange": [166, 168],
+          "type": "Effect",
+          "effectName": "Single Color Effect 53"
+        },
+        {
+          "dmxRange": [169, 171],
+          "type": "Effect",
+          "effectName": "Single Color Effect 54"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "Effect",
+          "effectName": "Single Color Effect 55"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "Effect",
+          "effectName": "Single Color Effect 56"
+        },
+        {
+          "dmxRange": [178, 180],
+          "type": "Effect",
+          "effectName": "Single Color Effect 57"
+        },
+        {
+          "dmxRange": [181, 183],
+          "type": "Effect",
+          "effectName": "Single Color Effect 58"
+        },
+        {
+          "dmxRange": [184, 186],
+          "type": "Effect",
+          "effectName": "Single Color Effect 59"
+        },
+        {
+          "dmxRange": [187, 189],
+          "type": "Effect",
+          "effectName": "Single Color Effect 60"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "Effect",
+          "effectName": "Single Color Effect 61"
+        },
+        {
+          "dmxRange": [193, 195],
+          "type": "Effect",
+          "effectName": "Single Color Effect 62"
+        },
+        {
+          "dmxRange": [196, 198],
+          "type": "Effect",
+          "effectName": "Single Color Effect 63"
+        },
+        {
+          "dmxRange": [199, 201],
+          "type": "Effect",
+          "effectName": "Single Color Effect 64"
+        },
+        {
+          "dmxRange": [202, 204],
+          "type": "Effect",
+          "effectName": "Single Color Effect 65"
+        },
+        {
+          "dmxRange": [205, 207],
+          "type": "Effect",
+          "effectName": "Single Color Effect 66"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "Effect",
+          "effectName": "Single Color Effect 67"
+        },
+        {
+          "dmxRange": [211, 213],
+          "type": "Effect",
+          "effectName": "Mixing Effect 1"
+        },
+        {
+          "dmxRange": [214, 216],
+          "type": "Effect",
+          "effectName": "Mixing Effect 2"
+        },
+        {
+          "dmxRange": [217, 219],
+          "type": "Effect",
+          "effectName": "Mixing Effect 3"
+        },
+        {
+          "dmxRange": [220, 222],
+          "type": "Effect",
+          "effectName": "Mixing Effect 4"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Effect",
+          "effectName": "Mixing Effect 5"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "Effect",
+          "effectName": "Mixing Effect 6"
+        },
+        {
+          "dmxRange": [229, 231],
+          "type": "Effect",
+          "effectName": "Mixing Effect 7"
+        },
+        {
+          "dmxRange": [232, 234],
+          "type": "Effect",
+          "effectName": "Mixing Effect 8"
+        },
+        {
+          "dmxRange": [235, 237],
+          "type": "Effect",
+          "effectName": "Mixing Effect 9"
+        },
+        {
+          "dmxRange": [238, 240],
+          "type": "Effect",
+          "effectName": "Mixing Effect 10"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "Effect",
+          "effectName": "Mixing Effect 11"
+        },
+        {
+          "dmxRange": [244, 246],
+          "type": "Effect",
+          "effectName": "Mixing Effect 12"
+        },
+        {
+          "dmxRange": [247, 249],
+          "type": "Effect",
+          "effectName": "Mixing Effect 13"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "Effect",
+          "effectName": "Mixing Effect 14"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Effect",
+          "effectName": "Mixing Effect 15"
+        }
+      ]
+    },
+    "Dynamic Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "None"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 1"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 2"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 3"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 4"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 5"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 6"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 7"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 8"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 9"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 10"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 11"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 12"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 13"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 14"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 15"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 16"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 17"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 18"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 19"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 20"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 21"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 22"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 23"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 24"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 25"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 26"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 27"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 28"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 29"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Single Color Dynamic Effect 30"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 1"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 2"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 3"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 4"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 5"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 6"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 7"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 8"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 9"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 10"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 11"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 12"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 13"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Mixing Color Dynamic Effect 14"
+        }
+      ]
+    },
+    "Dynamic effect speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Clockwise"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Anti clockwise"
+        }
+      ]
+    },
+    "Effect-R": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Red - CH16/CH17 Effect color"
+      }
+    },
+    "Effect-G": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Green - CH16/CH17 Effect color"
+      }
+    },
+    "Effect-B": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Blue - CH16/CH17 Effect color"
+      }
+    },
+    "Effect-W": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "White - CH16/CH17 Effect color"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "System reset after 5s"
+        }
+      ]
+    },
+    "Dimmer fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityDimmerFine."
+      }
+    },
+    "Dim Mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Effect Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect fade change"
+      }
+    },
+    "Effect Dim 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect-Dim 1"
+      }
+    },
+    "Effect Dim 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect-Dim 2"
+      }
+    },
+    "Effect Mix": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect color mixing"
+      }
+    },
+    "Effect Move": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "For CH22 effect movement"
+      }
+    },
+    "Effect Strobe 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect Strobe 1"
+      }
+    },
+    "Effect Strobe 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect Strobe 2"
+      }
+    },
+    "Effect Select": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect Select for CH22"
+      }
+    },
+    "R Dim": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Red"
+      }
+    },
+    "G Dim": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Green"
+      }
+    },
+    "B Dim": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Blue"
+      }
+    },
+    "W Dim": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "White"
+      }
+    },
+    "R1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "21-channel",
+      "shortName": "21ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Macro Color",
+        "Strobe",
+        "Master dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dim Mode",
+        "Reset",
+        "Zoom",
+        "Barrel Roll"
+      ]
+    },
+    {
+      "name": "23-channel",
+      "shortName": "23ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Strobe",
+        "Macro Color",
+        "Static Effect",
+        "Dynamic Effect",
+        "Dynamic effect speed",
+        "Effect-R",
+        "Effect-G",
+        "Effect-B",
+        "Effect-W",
+        "Zoom",
+        "Barrel Roll",
+        "Reset"
+      ]
+    },
+    {
+      "name": "35-channel",
+      "shortName": "35ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Macro Color",
+        "Strobe",
+        "Master dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dim Mode",
+        "Reset",
+        "Zoom",
+        "Barrel Roll",
+        "Dynamic Effect",
+        "Dynamic effect speed",
+        "Effect Fade",
+        "Effect-R",
+        "Effect-G",
+        "Effect-B",
+        "Effect-W",
+        "Effect Dim 1",
+        "Effect Dim 2",
+        "Effect Mix",
+        "Effect Move",
+        "Effect Strobe 1",
+        "Effect Strobe 2",
+        "Effect Select"
+      ]
+    },
+    {
+      "name": "78-channel",
+      "shortName": "78ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Macro Color",
+        "Strobe",
+        "Master dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dim Mode",
+        "Reset",
+        "Zoom",
+        "Barrel Roll",
+        "R1",
+        "G1",
+        "B1",
+        "R2",
+        "G2",
+        "B2",
+        "R3",
+        "G3",
+        "B3",
+        "R4",
+        "G4",
+        "B4",
+        "R5",
+        "G5",
+        "B5",
+        "R6",
+        "G6",
+        "B6",
+        "R7",
+        "G7",
+        "B7",
+        "R8",
+        "G8",
+        "B8",
+        "R9",
+        "G9",
+        "B9",
+        "R10",
+        "G10",
+        "B10",
+        "R11",
+        "G11",
+        "B11",
+        "R12",
+        "G12",
+        "B12",
+        "R13",
+        "G13",
+        "B13",
+        "R14",
+        "G14",
+        "B14",
+        "R15",
+        "G15",
+        "B15",
+        "R16",
+        "G16",
+        "B16",
+        "R17",
+        "G17",
+        "B17",
+        "R18",
+        "G18",
+        "B18",
+        "R19",
+        "G19",
+        "B19"
+      ]
+    },
+    {
+      "name": "92-channel",
+      "shortName": "92ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Macro Color",
+        "Strobe",
+        "Master dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dim Mode",
+        "Reset",
+        "Zoom",
+        "Barrel Roll",
+        "Dynamic Effect",
+        "Dynamic effect speed",
+        "Effect Fade",
+        "Effect-R",
+        "Effect-G",
+        "Effect-B",
+        "Effect-W",
+        "Effect Dim 1",
+        "Effect Dim 2",
+        "Effect Mix",
+        "Effect Move",
+        "Effect Strobe 1",
+        "Effect Strobe 2",
+        "Effect Select",
+        "R1",
+        "G1",
+        "B1",
+        "R2",
+        "G2",
+        "B2",
+        "R3",
+        "G3",
+        "B3",
+        "R4",
+        "G4",
+        "B4",
+        "R5",
+        "G5",
+        "B5",
+        "R6",
+        "G6",
+        "B6",
+        "R7",
+        "G7",
+        "B7",
+        "R8",
+        "G8",
+        "B8",
+        "R9",
+        "G9",
+        "B9",
+        "R10",
+        "G10",
+        "B10",
+        "R11",
+        "G11",
+        "B11",
+        "R12",
+        "G12",
+        "B12",
+        "R13",
+        "G13",
+        "B13",
+        "R14",
+        "G14",
+        "B14",
+        "R15",
+        "G15",
+        "B15",
+        "R16",
+        "G16",
+        "B16",
+        "R17",
+        "G17",
+        "B17",
+        "R18",
+        "G18",
+        "B18",
+        "R19",
+        "G19",
+        "B19"
+      ]
+    },
+    {
+      "name": "97-channel",
+      "shortName": "97ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Macro Color",
+        "Strobe",
+        "Master dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dim Mode",
+        "Reset",
+        "Zoom",
+        "Barrel Roll",
+        "R1",
+        "G1",
+        "B1",
+        "W1",
+        "R2",
+        "G2",
+        "B2",
+        "W2",
+        "R3",
+        "G3",
+        "B3",
+        "W3",
+        "R4",
+        "G4",
+        "B4",
+        "W4",
+        "R5",
+        "G5",
+        "B5",
+        "W5",
+        "R6",
+        "G6",
+        "B6",
+        "W6",
+        "R7",
+        "G7",
+        "B7",
+        "W7",
+        "R8",
+        "G8",
+        "B8",
+        "W8",
+        "R9",
+        "G9",
+        "B9",
+        "W9",
+        "R10",
+        "G10",
+        "B10",
+        "W10",
+        "R11",
+        "G11",
+        "B11",
+        "W11",
+        "R12",
+        "G12",
+        "B12",
+        "W12",
+        "R13",
+        "G13",
+        "B13",
+        "W13",
+        "R14",
+        "G14",
+        "B14",
+        "W14",
+        "R15",
+        "G15",
+        "B15",
+        "W15",
+        "R16",
+        "G16",
+        "B16",
+        "W16",
+        "R17",
+        "G17",
+        "B17",
+        "W17",
+        "R18",
+        "G18",
+        "B18",
+        "W18",
+        "R19",
+        "G19",
+        "B19",
+        "W19"
+      ]
+    },
+    {
+      "name": "99-channel",
+      "shortName": "99ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Zoom",
+        "Barrel Roll",
+        "Master dimmer",
+        "Strobe",
+        "R Dim",
+        "G Dim",
+        "B Dim",
+        "W Dim",
+        "CTO",
+        "Macro Color",
+        "Static Effect",
+        "Dynamic Effect",
+        "Dynamic effect speed",
+        "Effect-R",
+        "Effect-G",
+        "Effect-B",
+        "Effect-W",
+        "Reset",
+        "R1",
+        "G1",
+        "B1",
+        "W1",
+        "R2",
+        "G2",
+        "B2",
+        "W2",
+        "R3",
+        "G3",
+        "B3",
+        "W3",
+        "R4",
+        "G4",
+        "B4",
+        "W4",
+        "R5",
+        "G5",
+        "B5",
+        "W5",
+        "R6",
+        "G6",
+        "B6",
+        "W6",
+        "R7",
+        "G7",
+        "B7",
+        "W7",
+        "R8",
+        "G8",
+        "B8",
+        "W8",
+        "R9",
+        "G9",
+        "B9",
+        "W9",
+        "R10",
+        "G10",
+        "B10",
+        "W10",
+        "R11",
+        "G11",
+        "B11",
+        "W11",
+        "R12",
+        "G12",
+        "B12",
+        "W12",
+        "R13",
+        "G13",
+        "B13",
+        "W13",
+        "R14",
+        "G14",
+        "B14",
+        "W14",
+        "R15",
+        "G15",
+        "B15",
+        "W15",
+        "R16",
+        "G16",
+        "B16",
+        "W16",
+        "R17",
+        "G17",
+        "B17",
+        "W17",
+        "R18",
+        "G18",
+        "B18",
+        "W18",
+        "R19",
+        "G19",
+        "B19",
+        "W19"
+      ]
+    }
+  ]
+}
