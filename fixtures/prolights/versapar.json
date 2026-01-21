@@ -1,0 +1,200 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VersaPar",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Antonin"],
+    "createDate": "2023-10-20",
+    "lastModifyDate": "2023-10-20"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=40617&ID_USER="
+    ],
+    "productPage": [
+      "https://prolights.it/en/product/VERSAPAR"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Y-Yj5B3Wxfs"
+    ]
+  },
+  "physical": {
+    "dimensions": [262, 350, 261],
+    "weight": 5.5,
+    "power": 120,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "led",
+      "lumens": 1500
+    },
+    "lens": {
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1000Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Shutter / Autospeed": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1000Hz",
+          "durationStart": "long",
+          "durationEnd": "short"
+        }
+      ]
+    },
+    "DIMMER SPEED": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Present speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Mode Off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Mode 1 fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Mode 2 Middle"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Mode 3 slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5 CH",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7 CH",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "10 CH",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Shutter / Autospeed",
+        "DIMMER SPEED",
+        "Zoom"
+      ]
+    }
+  ]
+}
