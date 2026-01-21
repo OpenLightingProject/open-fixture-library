@@ -1,0 +1,371 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 7C-12 Silent Slim Spot",
+  "shortName": "LED 7C-12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Boris"],
+    "createDate": "2023-10-06",
+    "lastModifyDate": "2023-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915321-Anleitung-117611-1.000-eurolite-led-7c-12-silent-slim-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51915321-eurolite-led-7c-12-silent-slim-spot.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [330, 310, 150],
+    "weight": 4.1,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Cold white",
+          "colors": ["#f4fdff"],
+          "colorTemperature": "cold"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Warm white",
+          "colors": ["#efebd8"],
+          "colorTemperature": "warm"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Dark orange",
+          "colors": ["#ff8c00"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Green yellow",
+          "colors": ["#9acd32"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Salmon",
+          "colors": ["#fa8072"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#40e0d0"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#e4d96f"]
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Light blue",
+          "colors": ["#add8e6"]
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Dark blue",
+          "colors": ["#00008b"]
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        }
+      ]
+    },
+    "Internal programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "Color fade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color fade, with increasing speed"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Color switch",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color switch, with increasing speed"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "Sound controlled color fade",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled color switch",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        }
+      ]
+    },
+    "Cold white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Internal programs",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9 channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "12 channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Internal programs",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
