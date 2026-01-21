@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Profile Spotlight RGBW 8 channels",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["chrismo 14/08/2025", "Christophe Mourey"],
+    "createDate": "2025-09-07",
+    "lastModifyDate": "2025-09-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [300, 250, 590],
+    "weight": 7,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "PC"
+    }
+  },
+  "availableChannels": {
+    "Dimming Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimming Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimming Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimming White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Function selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity",
+          "comment": "DMX Dimming"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Intensity",
+          "comment": "Common color output (8 types)"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Intensity",
+          "comment": "Jump"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Intensity",
+          "comment": "Gradient"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Intensity",
+          "comment": "Pulse changes"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "comment": "Voice control"
+        }
+      ]
+    },
+    "Functional speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Function speed, from"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimming",
+        "Dimming Red",
+        "Dimming Green",
+        "Dimming Blue",
+        "Dimming White",
+        "Strobe",
+        "Function selection",
+        "Functional speed"
+      ]
+    }
+  ]
+}
