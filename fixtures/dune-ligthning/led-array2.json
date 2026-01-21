@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led array2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Bentoto"],
+    "createDate": "2022-04-29",
+    "lastModifyDate": "2022-04-29"
+  },
+  "links": {
+    "manual": [
+      "http://www.dune-sono.com/media/pdf/charg_2021_LED-Array-2%20user%20manual_ES_FR.pdf"
+    ],
+    "productPage": [
+      "http://www.dune-sono.com"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 136],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [137, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Led Arrray2",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
