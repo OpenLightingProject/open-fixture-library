@@ -1,0 +1,228 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini 740",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["M"],
+    "createDate": "2024-12-09",
+    "lastModifyDate": "2024-12-09"
+  },
+  "links": {
+    "manual": [
+      "https://upluslighting.com/wp-content/uploads/2024/01/MINI-740-Version%E2%91%A2.pdf"
+    ],
+    "productPage": [
+      "https://upluslighting.com/ru/?s=740"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=K6jVgaVLH8Q&source_ve_path=Mjg2NjY"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 273, 170],
+    "weight": 5.75,
+    "power": 350
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "CTO"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "comment": "Random Slow Strobe"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Middle Speed Strobe"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg",
+        "comment": "Pan fine"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Function"
+      }
+    },
+    "Reset": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "17",
+      "shortName": "17ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "Color Presets",
+        "No function",
+        "Reset"
+      ]
+    }
+  ]
+}
