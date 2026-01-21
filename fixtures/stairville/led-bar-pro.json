@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led bar pro",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["JLL"],
+    "createDate": "2022-11-02",
+    "lastModifyDate": "2022-11-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomannmusic.com/stairville_led_bars.html"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.com/stairville_led_bars.html"
+    ],
+    "video": [
+      "https://www.thomannmusic.com/stairville_led_bars.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program choice": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [1, 9],
+          "type": "NoFunction",
+          "comment": "program 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "NoFunction",
+          "comment": "program 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "NoFunction",
+          "comment": "program 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "NoFunction",
+          "comment": "program 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "NoFunction",
+          "comment": "program 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "NoFunction",
+          "comment": "program 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "NoFunction",
+          "comment": "program 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "NoFunction",
+          "comment": "program 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "NoFunction",
+          "comment": "program 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "NoFunction",
+          "comment": "program 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "NoFunction",
+          "comment": "program 23"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "NoFunction",
+          "comment": "program 24"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction",
+          "comment": "program 25"
+        }
+      ]
+    },
+    "Parameters for programs": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Program choice",
+        "Parameters for programs",
+        "Strobe"
+      ]
+    }
+  ]
+}
