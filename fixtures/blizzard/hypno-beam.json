@@ -1,0 +1,330 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hypno Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["DJ MYR"],
+    "createDate": "2022-03-21",
+    "lastModifyDate": "2022-03-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.fullcompass.com/common/files/32178-HypnoBeamUserManual.pdf"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/hypno-beam"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=AdIYE4ccF0U"
+    ]
+  },
+  "physical": {
+    "dimensions": [265, 168, 301],
+    "weight": 5,
+    "power": 106,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 77372
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Red (Beam)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Green (Beam)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Beam)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Beam)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe (Beam)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer (Beam)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red (Ring 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Ring 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Ring 1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red (Ring 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Ring 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Ring 2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe (Ring)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "CH 10/21, 000-070 Only, Slow <-> fast"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer (Ring)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros (Ring)": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Will Specify"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Color Macros (Beam)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 45],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [46, 65],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [66, 85],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [86, 105],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [106, 125],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [126, 145],
+          "type": "ColorPreset",
+          "comment": "Red and Green"
+        },
+        {
+          "dmxRange": [146, 165],
+          "type": "ColorPreset",
+          "comment": "Red and Blue"
+        },
+        {
+          "dmxRange": [166, 185],
+          "type": "ColorPreset",
+          "comment": "Green and Blue"
+        },
+        {
+          "dmxRange": [186, 205],
+          "type": "ColorPreset",
+          "comment": "R and G and B and W"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "ColorPreset",
+          "comment": "RGB Fade"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "23ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Red (Beam)",
+        "Green (Beam)",
+        "Blue (Beam)",
+        "White (Beam)",
+        "Shutter / Strobe (Beam)",
+        "Dimmer (Beam)",
+        "Red (Ring 1)",
+        "Green (Ring 1)",
+        "Blue (Ring 1)",
+        "Red (Ring 2)",
+        "Green (Ring 2)",
+        "Blue (Ring 2)",
+        "Shutter / Strobe (Ring)",
+        "Dimmer (Ring)",
+        "Color Macros (Ring)",
+        "Color Macros (Beam)",
+        "Effect Speed",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "14ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Red (Beam)",
+        "Green (Beam)",
+        "Blue (Beam)",
+        "White (Beam)",
+        "Shutter / Strobe (Beam)",
+        "Dimmer (Beam)",
+        "Shutter / Strobe (Ring)",
+        "Dimmer (Ring)",
+        "Color Macros (Ring)",
+        "Effect Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
