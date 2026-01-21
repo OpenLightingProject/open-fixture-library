@@ -1,0 +1,477 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BW10-RGB",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Marc  Desforges"],
+    "createDate": "2022-11-11",
+    "lastModifyDate": "2022-11-11"
+  },
+  "links": {
+    "productPage": [
+      "http://www.bigdipper-laser.com/en/pageItem_1998510_94625.html?catch=396914"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 206.8, 146.3],
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Mode selection": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Machine shut the light"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Generic",
+          "comment": "FRG Mode"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "IlD Mode"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Voice control"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Generic",
+          "comment": "Automatic"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Manual. mode"
+        }
+      ]
+    },
+    "Figure / Folder selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe / Play files": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [11, 199],
+          "type": "Generic",
+          "comment": "Automatic Strobe"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Acoustic Stroboscopic"
+        }
+      ]
+    },
+    "X axis direction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Generic",
+          "comment": "Manual position adjustment"
+        },
+        {
+          "dmxRange": [126, 185],
+          "type": "Generic",
+          "comment": "Automatic Left and Right circular motion"
+        },
+        {
+          "dmxRange": [186, 225],
+          "type": "Generic",
+          "comment": "Automatic skip Right and Left circular movement"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "Generic",
+          "comment": "Automatic irregular jump"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Voice control jumps erratically"
+        }
+      ]
+    },
+    "Y axis direction": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Generic",
+          "comment": "Manual positon adjustement"
+        },
+        {
+          "dmxRange": [126, 185],
+          "type": "Generic",
+          "comment": "Automatic Up and Down circulation"
+        },
+        {
+          "dmxRange": [186, 225],
+          "type": "Generic",
+          "comment": "Automatic Jumping Up and Down cycle moving"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "Generic",
+          "comment": "Automatic Irregular jump"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Voice Conrtol jumps erratically"
+        }
+      ]
+    },
+    "Zooming": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No Scaling"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Generic",
+          "comment": "Manual resize"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Magnify"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Zoom Out"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Loop Playback"
+        }
+      ]
+    },
+    "Rotation around X axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No rotation"
+        },
+        {
+          "dmxRange": [11, 110],
+          "type": "Generic",
+          "comment": "Manual Setting"
+        },
+        {
+          "dmxRange": [111, 255],
+          "type": "Generic",
+          "comment": "Autorotation"
+        }
+      ]
+    },
+    "Rotation around Y axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No Rotation"
+        },
+        {
+          "dmxRange": [11, 110],
+          "type": "Generic",
+          "comment": "Maual Setting"
+        },
+        {
+          "dmxRange": [111, 255],
+          "type": "Generic",
+          "comment": "Autorotation"
+        }
+      ]
+    },
+    "Centtral Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "No Rotation"
+        },
+        {
+          "dmxRange": [1, 180],
+          "type": "Generic",
+          "comment": "Manual Setting"
+        },
+        {
+          "dmxRange": [181, 217],
+          "type": "Generic",
+          "comment": "Automatic Clockwise"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "Generic",
+          "comment": "Automatic Counter-Clockwise"
+        }
+      ]
+    },
+    "Gradually Draw": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Constant"
+        },
+        {
+          "dmxRange": [11, 74],
+          "type": "Generic",
+          "comment": "Manually adjust the fade"
+        },
+        {
+          "dmxRange": [75, 104],
+          "type": "Generic",
+          "comment": "Automatic fade (add)"
+        },
+        {
+          "dmxRange": [105, 144],
+          "type": "Generic",
+          "comment": "Automatic dipping (minus)"
+        },
+        {
+          "dmxRange": [145, 184],
+          "type": "Generic",
+          "comment": "Automatic cycle fade"
+        },
+        {
+          "dmxRange": [185, 224],
+          "type": "Generic",
+          "comment": "Asymptotic (increasing)"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "Asymptotic (subtraction)"
+        }
+      ]
+    },
+    "X Axial Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "No Waves"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Generic",
+          "comment": "Small amplitude wave"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Medium amplitude wave"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Large amplitude wave"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Maximum amplitude wave"
+        }
+      ]
+    },
+    "Y Axial Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "No Waves"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Generic",
+          "comment": "Small amplitude wave"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Medium amplitude wave"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Large amplitude wave"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Maximum amplitude wave"
+        }
+      ]
+    },
+    "Dispay Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Normal Display"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Highlight Display"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Segmented Display"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Dot Display"
+        }
+      ]
+    },
+    "RGB Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "Generic",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "Generic",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "Generic",
+          "comment": "Green Grass"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "Generic",
+          "comment": "White, Red, Green, Blue"
+        },
+        {
+          "dmxRange": [136, 151],
+          "type": "Generic",
+          "comment": "Blue, Yellow, Purple, Cyan, 4 colors subsection"
+        },
+        {
+          "dmxRange": [152, 169],
+          "type": "Generic",
+          "comment": "White, Red, Green, Blue, Yellow, Cyan, Purple, 7 colors subsection"
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "Generic",
+          "comment": "White, Red, Green, Blue, 4 colors flowing"
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "Generic",
+          "comment": "Blue Yellow, Purple, Blue flow"
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "Generic",
+          "comment": "White, Red, Green, Yellow, Purple, Blue flow"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "Generic",
+          "comment": "Display by breakpoint section"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Generic",
+          "comment": "Voice control color change"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Professional",
+      "channels": [
+        "Mode selection",
+        "Figure / Folder selection",
+        "Strobe / Play files",
+        "X axis direction",
+        "Y axis direction",
+        "Zooming",
+        "Rotation around X axis",
+        "Rotation around Y axis",
+        "Centtral Rotation",
+        "Gradually Draw",
+        "X Axial Wave",
+        "Y Axial Wave",
+        "Dispay Mode",
+        "RGB Color",
+        "Dimmer"
+      ]
+    }
+  ]
+}
