@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FlatPar4",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Afonso Meireles"],
+    "createDate": "2025-08-12",
+    "lastModifyDate": "2025-08-12"
+  },
+  "links": {
+    "manual": [
+      "https://static.emdmusic.com/images/products/00//manuals/manual_23932_en.pdf?id=1502182044"
+    ],
+    "productPage": [
+      "https://static.emdmusic.com/images/products/00//manuals/manual_23932_en.pdf?id=1502182044"
+    ],
+    "video": [
+      "https://static.emdmusic.com/images/products/00//manuals/manual_23932_en.pdf?id=1502182044"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Head 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Head 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Head 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Head 1 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Head 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Head 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Head 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Head 2 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Head 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Head 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Head 3 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Head 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Head 4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Head 4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Head 4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Head 4 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Head 1 Red",
+        "Head 1 Green",
+        "Head 1 Blue",
+        "Head 1 White",
+        "Head 2 Red",
+        "Head 2 Green",
+        "Head 2 Blue",
+        "Head 2 White",
+        "Head 3 Red",
+        "Head 3 Green",
+        "Head 3 Blue",
+        "Head 3 White",
+        "Head 4 Red",
+        "Head 4 Green",
+        "Head 4 Blue",
+        "Head 4 White"
+      ]
+    }
+  ]
+}
