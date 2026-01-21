@@ -1,0 +1,923 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "X-DOT WASH IP",
+  "shortName": "X-DOT",
+  "categories": ["Moving Head", "Effect", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["DjGreen"],
+    "createDate": "2024-02-13",
+    "lastModifyDate": "2024-02-13"
+  },
+  "links": {
+    "manual": [
+      "https://brighterlights.pl/wp-content/uploads/2023/03/X-DOT_UserManual.pdf"
+    ],
+    "productPage": [
+      "https://brighterlights.pl/brighterlights/Produkty/brighter-x-dot-wash-ip/"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 463, 309.5],
+    "weight": 12.35,
+    "power": 700,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 9200
+    },
+    "lens": {
+      "degreesMinMax": [3.5, 45]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "205deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Lens Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 62],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 360,
+          "comment": "From left to right position (0-360°)"
+        },
+        {
+          "dmxRange": [63, 127],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 360,
+          "comment": "From right to left position (0-360°)"
+        },
+        {
+          "dmxRange": [128, 192],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "comment": "From left to right position (Infinite-Rotation) From slow to fast"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "comment": "From right to left position (Infinite-Rotation) From slow to fast"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 215],
+          "type": "Maintenance",
+          "parameter": 210,
+          "hold": "5s",
+          "comment": "Zoom/lens-rotation motors reset"
+        },
+        {
+          "dmxRange": [216, 230],
+          "type": "Maintenance",
+          "parameter": 225,
+          "hold": "5s",
+          "comment": "P/T motors reset"
+        },
+        {
+          "dmxRange": [231, 245],
+          "type": "Maintenance",
+          "parameter": 240,
+          "hold": "5s",
+          "comment": "Overall reset"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Main Dimmer": {
+      "fineChannelAliases": ["Main Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Main Strobe": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 55],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast Brightness from high to low"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast Brightness from low to high"
+        }
+      ]
+    },
+    "Aura Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 55],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast Brightness from high to low"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From slow to fast Brightness from low to high"
+        }
+      ]
+    },
+    "Main Red": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "60w LED Red"
+      }
+    },
+    "Main Green": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "60w LED Green"
+      }
+    },
+    "Main Blue": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "60w LED Blue"
+      }
+    },
+    "Main Lime": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "comment": "60w LED Lime"
+      }
+    },
+    "Aura Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Aura Master Dimmer"
+      }
+    },
+    "Aura Red": {
+      "defaultValue": 0,
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Aura LED Red"
+      }
+    },
+    "Aura Green": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Aura LED Green"
+      }
+    },
+    "Aura Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Aura LED Blue"
+      }
+    },
+    "60W LEDs Built-in programs": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [111, 125],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [126, 140],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [141, 155],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [156, 170],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [171, 185],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [186, 200],
+          "type": "Generic",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [201, 215],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [216, 230],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [231, 245],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Auto-running built-in programs"
+        }
+      ]
+    },
+    "60W Program Speed": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Aura LEDs built-in program": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [111, 125],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [126, 140],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [141, 155],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [156, 170],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [171, 185],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [186, 200],
+          "type": "Generic",
+          "comment": "Program13"
+        },
+        {
+          "dmxRange": [201, 215],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [216, 230],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [231, 245],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Auto-running built-in programs"
+        }
+      ]
+    },
+    "Aura LEDs program speed": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 45],
+          "type": "NoFunction",
+          "comment": "Macro Off"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "comment": "Medium Yellow",
+          "colors": ["#9c7e00"]
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "comment": "Straw Tint",
+          "colors": ["#987309"]
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach",
+          "colors": ["#c67209"]
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "comment": "Fire",
+          "colors": ["#ff3800"]
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "ColorPreset",
+          "comment": "Medium Amber",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorPreset",
+          "comment": "Gold Amber",
+          "colors": ["#ff6400"]
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "ColorPreset",
+          "comment": "Dark Amber",
+          "colors": ["#ff4100"]
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "ColorPreset",
+          "comment": "Sunrise Red",
+          "colors": ["#ff5302"]
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "ColorPreset",
+          "comment": "Light Pink",
+          "colors": ["#ff7000"]
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "ColorPreset",
+          "comment": "Medium Pink",
+          "colors": ["#ff5700"]
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "Pink Carnation",
+          "colors": ["#ff6b00"]
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "Light Lavender",
+          "colors": ["#f37527"]
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#00ff87"]
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "ColorPreset",
+          "comment": "Just Blue",
+          "colors": ["#00c282"]
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorPreset",
+          "comment": "Dark yellow green",
+          "colors": ["#29db00"]
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow",
+          "colors": ["#f5ca00"]
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "ColorPreset",
+          "comment": "Light Amber",
+          "colors": ["#eda300"]
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "ColorPreset",
+          "comment": "Straw Tint",
+          "colors": ["#e6a000"]
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "ColorPreset",
+          "comment": "Deep Amber",
+          "colors": ["#ffa600"]
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff7a00"]
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorPreset",
+          "comment": "Light Rose",
+          "colors": ["#ff8d1f"]
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorPreset",
+          "comment": "Middle Rose",
+          "colors": ["#d9821c"]
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorPreset",
+          "comment": "Dark Pink",
+          "colors": ["#ff6d21"]
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff6d21"]
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue",
+          "colors": ["#33ff33"]
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "ColorPreset",
+          "comment": "Steel Blue",
+          "colors": ["#ceff38"]
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#4aff52"]
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorPreset",
+          "comment": "Dark Blue",
+          "colors": ["#00baff"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "Leaf Green",
+          "colors": ["#ceff00"]
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "Dark Green",
+          "colors": ["#54ff0d"]
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#e32938"]
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber",
+          "colors": ["#ff3a00"]
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "Pale Lavender",
+          "colors": ["#ffc53d"]
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "Primary Green",
+          "colors": ["#4dff00"]
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "Bright Blue",
+          "colors": ["#00ff57"]
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "Apricot",
+          "colors": ["#ff8f0d"]
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "Pale Gold",
+          "colors": ["#fdab1a"]
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "Deep Orange",
+          "colors": ["#de5400"]
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Flame Red",
+          "colors": ["#ff2e02"]
+        }
+      ]
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "highlightValue": 75,
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "NoFunction",
+          "comment": "Off light"
+        },
+        {
+          "dmxRange": [18, 34],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [35, 51],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        },
+        {
+          "dmxRange": [52, 68],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [69, 85],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [86, 102],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [103, 119],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [120, 136],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [137, 153],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [154, 170],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [171, 187],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [188, 204],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [205, 221],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [222, 238],
+          "type": "ColorTemperature",
+          "colorTemperature": "2500K"
+        },
+        {
+          "dmxRange": [239, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "2000K"
+        }
+      ]
+    },
+    "Color Tint Adjust": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Color Tint Adjust"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "28CH",
+      "shortName": "28ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Zoom fine",
+        "Lens Rotation",
+        "Reset",
+        "Main Dimmer",
+        "Main Dimmer fine",
+        "Main Strobe",
+        "Aura Strobe",
+        "Main Red",
+        "Main Green",
+        "Main Blue",
+        "Main Lime",
+        "Aura Dimmer",
+        "Aura Red",
+        "Aura Green",
+        "Aura Blue",
+        "60W LEDs Built-in programs",
+        "60W Program Speed",
+        "Aura LEDs built-in program",
+        "Aura LEDs program speed",
+        "Color Macros",
+        "CTC",
+        "Color Tint Adjust"
+      ]
+    }
+  ]
+}
