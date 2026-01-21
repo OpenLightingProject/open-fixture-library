@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixyline 150",
+  "shortName": "Pixyline",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["anonyme"],
+    "createDate": "2025-01-17",
+    "lastModifyDate": "2025-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.oxolight.com/_files/ugd/7e664f_1a897c831990486388df1be17e77cab9.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/pixyline-150"
+    ]
+  },
+  "physical": {
+    "dimensions": [980, 163, 170],
+    "weight": 6.5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3500,
+      "lumens": 1713
+    },
+    "lens": {
+      "degreesMinMax": [20, 50]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ROUGE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "ROUGE"
+      }
+    },
+    "VERT": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "VERT"
+      }
+    },
+    "BLEU": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "BLANC"
+      }
+    },
+    "BLANC": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Intensity",
+        "ROUGE",
+        "VERT",
+        "BLEU",
+        "BLANC"
+      ]
+    }
+  ]
+}
