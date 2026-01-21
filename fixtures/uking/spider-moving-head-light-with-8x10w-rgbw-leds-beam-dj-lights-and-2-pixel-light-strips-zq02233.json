@@ -1,0 +1,326 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spider Moving Head Light with 8x10W RGBW LEDs Beam DJ Lights and 2 Pixel Light Strips ZQ02233",
+  "shortName": "ZQ02233",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Schief"],
+    "createDate": "2023-09-27",
+    "lastModifyDate": "2023-09-27"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/U%60King-Activated-DMX-512-Control-Lighting/dp/B0B1MDSGW6?th=1"
+    ]
+  },
+  "physical": {
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Motor1 Route": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Motor2 Route": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "Effect",
+          "effectName": "1"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "Effect",
+          "effectName": "2"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "Effect",
+          "effectName": "3"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "Effect",
+          "effectName": "4"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "Effect",
+          "effectName": "5"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "Effect",
+          "effectName": "6"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "Effect",
+          "effectName": "7"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "Effect",
+          "effectName": "8"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "Effect",
+          "effectName": "9"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "Effect",
+          "effectName": "10"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "Effect",
+          "effectName": "11"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "Effect",
+          "effectName": "12"
+        },
+        {
+          "dmxRange": [128, 137],
+          "type": "Effect",
+          "effectName": "13"
+        },
+        {
+          "dmxRange": [138, 147],
+          "type": "Effect",
+          "effectName": "14"
+        },
+        {
+          "dmxRange": [148, 157],
+          "type": "Effect",
+          "effectName": "15"
+        },
+        {
+          "dmxRange": [158, 167],
+          "type": "Effect",
+          "effectName": "16"
+        },
+        {
+          "dmxRange": [168, 177],
+          "type": "Effect",
+          "effectName": "17"
+        },
+        {
+          "dmxRange": [178, 187],
+          "type": "Effect",
+          "effectName": "18"
+        },
+        {
+          "dmxRange": [188, 197],
+          "type": "Effect",
+          "effectName": "19"
+        },
+        {
+          "dmxRange": [198, 207],
+          "type": "Effect",
+          "effectName": "20"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Effect",
+          "effectName": "21"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "Effect",
+          "effectName": "22"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Effect",
+          "effectName": "23"
+        },
+        {
+          "dmxRange": [238, 246],
+          "type": "Effect",
+          "effectName": "24",
+          "comment": "Self-Propelled multi-effects"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "Sound",
+          "soundControlled": true,
+          "soundSensitivity": "low"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Green Light Band": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue Light Band": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Maintenance",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "LED1 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED2 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED3 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED4 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED4  Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED5 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED6 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED7 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED8 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Light Band 1 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Light Band 2 Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9CH",
+      "shortName": "9ch",
+      "channels": [
+        "Motor1 Route",
+        "Motor2 Route",
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "Green Light Band",
+        "Blue Light Band",
+        "Reset"
+      ]
+    },
+    {
+      "name": "17CH",
+      "shortName": "17ch",
+      "channels": [
+        "Motor1 Route",
+        "Motor2 Route",
+        "Dimmer",
+        "Strobe",
+        "LED1 Dimming",
+        "LED2 Dimming",
+        "LED3 Dimming",
+        "LED4 Dimming",
+        "LED5 Dimming",
+        "LED6 Dimming",
+        "LED7 Dimming",
+        "LED8 Dimming",
+        "Light Band 1 Dimming",
+        "Light Band 2 Dimming",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
