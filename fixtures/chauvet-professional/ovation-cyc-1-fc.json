@@ -1,0 +1,447 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation CYC 1 FC",
+  "shortName": "CYC 1 FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Da Graca Neves"],
+    "createDate": "2024-01-18",
+    "lastModifyDate": "2024-01-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2019/11/Ovation_CYC-1FC_UM_Rev4.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-cyc-1-fc/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=PmY8e4GMgJ8"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "comment": "Md Yellow"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "comment": "Lt Yellow"
+        },
+        {
+          "dmxRange": [22, 28],
+          "type": "ColorPreset",
+          "comment": "Amb Yellow"
+        },
+        {
+          "dmxRange": [29, 35],
+          "type": "ColorPreset",
+          "comment": "VLt Amber"
+        },
+        {
+          "dmxRange": [36, 43],
+          "type": "ColorPreset",
+          "comment": "Lt Amber"
+        },
+        {
+          "dmxRange": [44, 51],
+          "type": "ColorPreset",
+          "comment": "Md Amber"
+        },
+        {
+          "dmxRange": [52, 59],
+          "type": "ColorPreset",
+          "comment": "Dk Amber"
+        },
+        {
+          "dmxRange": [60, 67],
+          "type": "ColorPreset",
+          "comment": "Lt Red"
+        },
+        {
+          "dmxRange": [68, 75],
+          "type": "ColorPreset",
+          "comment": "Md Red"
+        },
+        {
+          "dmxRange": [76, 83],
+          "type": "ColorPreset",
+          "comment": "NC Pink"
+        },
+        {
+          "dmxRange": [84, 91],
+          "type": "ColorPreset",
+          "comment": "Md Pink"
+        },
+        {
+          "dmxRange": [92, 99],
+          "type": "ColorPreset",
+          "comment": "Dk Pink"
+        },
+        {
+          "dmxRange": [100, 107],
+          "type": "ColorPreset",
+          "comment": "Md Red Amber"
+        },
+        {
+          "dmxRange": [108, 115],
+          "type": "ColorPreset",
+          "comment": "Dk Red Amber"
+        },
+        {
+          "dmxRange": [116, 121],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [122, 130],
+          "type": "ColorPreset",
+          "comment": "Dk Magenta"
+        },
+        {
+          "dmxRange": [131, 138],
+          "type": "ColorPreset",
+          "comment": "Lt Lavender"
+        },
+        {
+          "dmxRange": [139, 146],
+          "type": "ColorPreset",
+          "comment": "Lt Blue"
+        },
+        {
+          "dmxRange": [147, 154],
+          "type": "ColorPreset",
+          "comment": "VLt Blue"
+        },
+        {
+          "dmxRange": [155, 162],
+          "type": "ColorPreset",
+          "comment": "Lt Blue 2"
+        },
+        {
+          "dmxRange": [163, 170],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [171, 178],
+          "type": "ColorPreset",
+          "comment": "Md Blue"
+        },
+        {
+          "dmxRange": [179, 186],
+          "type": "ColorPreset",
+          "comment": "Dk Blue"
+        },
+        {
+          "dmxRange": [187, 194],
+          "type": "ColorPreset",
+          "comment": "Indigo"
+        },
+        {
+          "dmxRange": [195, 202],
+          "type": "ColorPreset",
+          "comment": "VDk Blue"
+        },
+        {
+          "dmxRange": [203, 210],
+          "type": "ColorPreset",
+          "comment": "VDk Blue 2"
+        },
+        {
+          "dmxRange": [211, 218],
+          "type": "ColorPreset",
+          "comment": "Yel Green"
+        },
+        {
+          "dmxRange": [219, 226],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [227, 234],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [235, 242],
+          "type": "ColorPreset",
+          "comment": "Aqua"
+        },
+        {
+          "dmxRange": [243, 250],
+          "type": "ColorPreset",
+          "comment": "Blue green"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Black 2"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorTemperature",
+          "colorTemperature": "0K"
+        },
+        {
+          "dmxRange": [6, 25],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [76, 100],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [101, 125],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [126, 150],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [151, 175],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [201, 225],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [226, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "0K",
+          "comment": "Black 2"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer reset"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Red Shift On"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Red Shift Off"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "S-Curve Dimmer"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Linear Dimmer"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Index Dimmer Curve"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Speed Mode Off"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Speed 1 ( Fastest )"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Speed 2"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Speed 3( Slowest )"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade Speed Off"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade Speed 1 ( fastest )"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade Speed 2"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade Speed 3"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade Speed 4 ( Slowest )"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reserved for future use"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Color Presets",
+        "Color Temperature",
+        "Reserved"
+      ]
+    }
+  ]
+}
