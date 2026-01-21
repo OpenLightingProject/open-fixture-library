@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LF 2405",
+  "shortName": "11CH",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["remi"],
+    "createDate": "2025-10-04",
+    "lastModifyDate": "2025-10-04"
+  },
+  "links": {
+    "manual": [
+      "https://betopperdj.com/fr/products/betopper-lf2405-384x0-3w-rgb-256x5w-golden-white-led-strobe-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [214, 404, 131.5],
+    "power": 250,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Rouge": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Select Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Auto": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 255
+      }
+    },
+    "Vitesse automatique": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "WHITE"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11CH",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "White 1",
+        "White 2",
+        "Select Color",
+        "Auto",
+        "Vitesse automatique",
+        "White"
+      ]
+    }
+  ]
+}
