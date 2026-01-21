@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Minipar46QUAD",
+  "shortName": "M46QUAD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Inios"],
+    "createDate": "2025-12-20",
+    "lastModifyDate": "2025-12-20"
+  },
+  "links": {
+    "manual": [
+      "https://algam-akeneo-prod.s3.eu-west-3.amazonaws.com/public/products/b/3/d/7/b3d76f35647219b56dbb85d8e7ce38b54cdaaa33_MINIPAR_46_QUAD___USERMANUAL___2024_03___WEB.pdf"
+    ],
+    "productPage": [
+      "https://www.algam-webstore.fr/algam-lighting-minipar-46-quad-mini-par-led-4-x-6w-rgbw-598646.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [130, 130, 130],
+    "weight": 0.5,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "DMX Channel Control"
+        },
+        {
+          "dmxRange": [4, 19],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 35],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [36, 51],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [52, 67],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [68, 83],
+          "type": "Generic",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [84, 99],
+          "type": "Generic",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "Red + Green + Blue + White"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Color hopping mode 1"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "Color hopping mode 2"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Color hopping mode 3"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Generic",
+          "comment": "Color hopping mode with transition"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "Generic",
+          "comment": "Musical Mode"
+        }
+      ]
+    },
+    "Mode transition speed": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Mode transition speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4CH",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8CH",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe",
+        "Mode",
+        "Mode transition speed"
+      ]
+    }
+  ]
+}
