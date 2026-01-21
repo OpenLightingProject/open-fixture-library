@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Desire Studio HD 40",
+  "shortName": "D40",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pierre Pino"],
+    "createDate": "2021-09-30",
+    "lastModifyDate": "2021-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484228"
+    ]
+  },
+  "physical": {
+    "dimensions": [215.4, 272.3, 263.7],
+    "weight": 6.4,
+    "power": 104,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2700,
+      "lumens": 3.194
+    },
+    "lens": {
+      "degreesMinMax": [11, 22]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green/Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3000 K": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "6000 K": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTB",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "Dummy": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "N/A"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIRECT",
+      "channels": [
+        "Red",
+        "Amber",
+        "Green/Cyan",
+        "Blue",
+        "3000 K",
+        "6000 K",
+        "Dummy",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
