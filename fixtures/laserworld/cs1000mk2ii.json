@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CS1000Mk2ii",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["cri.00"],
+    "createDate": "2021-10-16",
+    "lastModifyDate": "2021-10-16"
+  },
+  "links": {
+    "other": [
+      "http://images.getinthemix.com/resources/1462783952_0321.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Mode Selection": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pattern Selection": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Circular Movement": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "WheelSlotRotation",
+        "speed": "100rpm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CS.FXR",
+      "channels": [
+        "Mode Selection",
+        "Pattern Selection",
+        "Circular Movement"
+      ]
+    }
+  ]
+}
