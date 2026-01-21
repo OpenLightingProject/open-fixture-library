@@ -1,0 +1,200 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GEM4x1 FC",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["mkobzar", "Mikhail Kobzar"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [1785, 506, 190],
+    "weight": 18.5,
+    "power": 700,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 63000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [110, 110]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "fineChannelAliases": ["Dim fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Kelvin 2700-5600": {
+      "fineChannelAliases": ["Kelvin fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "W dimmer": {
+      "fineChannelAliases": ["W dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R dimmer": {
+      "fineChannelAliases": ["R dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G dimmer": {
+      "fineChannelAliases": ["G dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B dimmer": {
+      "fineChannelAliases": ["B dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Rate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effects"
+      }
+    },
+    "HUE": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 6-channel - 8bit",
+      "shortName": "CCT 6ch - 8bit",
+      "channels": [
+        "Master dimmer",
+        "Kelvin 2700-5600",
+        "G dimmer",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    },
+    {
+      "name": "HSI 6-channel - 8bit",
+      "shortName": "HSI 6ch - 8bit",
+      "channels": [
+        "Master dimmer",
+        "HUE",
+        "Saturation",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    },
+    {
+      "name": "RGBW 9-channel - 8bit",
+      "shortName": "RGBW 9ch - 8bit",
+      "channels": [
+        "Master dimmer",
+        "Kelvin 2700-5600",
+        "W dimmer",
+        "R dimmer",
+        "G dimmer",
+        "B dimmer",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    },
+    {
+      "name": "CCT 8-channel - 16bit",
+      "shortName": "CCT 8ch - 16bit",
+      "channels": [
+        "Master dimmer",
+        "Dim fine",
+        "Kelvin 2700-5600",
+        "Kelvin fine",
+        "G dimmer",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    },
+    {
+      "name": "HSI 8-channel - 16bit",
+      "shortName": "HSI 8ch - 16bit",
+      "channels": [
+        "Master dimmer",
+        "Dim fine",
+        "HUE",
+        "Hue fine",
+        "Saturation",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    },
+    {
+      "name": "RGBW 15-channel - 16bit",
+      "shortName": "RGBW 15ch - 16bit",
+      "channels": [
+        "Master dimmer",
+        "Dim fine",
+        "Kelvin 2700-5600",
+        "Kelvin fine",
+        "W dimmer",
+        "W dimmer fine",
+        "R dimmer",
+        "R dimmer fine",
+        "G dimmer",
+        "G dimmer fine",
+        "B dimmer",
+        "B dimmer fine",
+        "Duration",
+        "Rate",
+        "Effects"
+      ]
+    }
+  ]
+}
