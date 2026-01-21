@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vega BAT-1 6x 10W RGBWA-UV + Battery",
+  "shortName": "Vega BAT-1",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["prtr"],
+    "createDate": "2023-01-19",
+    "lastModifyDate": "2023-01-19"
+  },
+  "comment": "Battery Powerd LED Spot with 6 LED's",
+  "links": {
+    "manual": [
+      "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/ms-ch/CHF/ViewProductAttachment-ResolveManualURL?File=DE_LIG0016452-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/de_CH/CHF/lightmaXX-Vega-BAT-1-6x-10W-RGBWA-UV-Battery/art-LIG0016452-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Th-FB_z6dj0"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 180, 140],
+    "weight": 1.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 64],
+          "type": "NoFunction",
+          "comment": "Manual Color Channel 3-8"
+        },
+        {
+          "dmxRange": [65, 80],
+          "type": "ColorPreset",
+          "comment": "Change Color with Channel 10"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "ColorPreset",
+          "comment": "Color Jump"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "ColorPreset",
+          "comment": "Color Fade"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Generic",
+          "comment": "Music Mode"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "If #9 64-81: select color, If #9 81-220, Speed of Change"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch RBG",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch RGBW",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch RGBWA+UV",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10ch All",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Program Speed"
+      ]
+    }
+  ]
+}
