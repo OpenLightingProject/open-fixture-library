@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DL-LED107S LED-PAR",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Nic"],
+    "createDate": "2023-05-13",
+    "lastModifyDate": "2023-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/products/Renkforce-Dl-Led107S-220115.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 180, 90],
+    "power": 13,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Kanal",
+      "channels": [
+        "Dimmer",
+        "Program Speed",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "3 Kanal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
