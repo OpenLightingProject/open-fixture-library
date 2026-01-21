@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Profiles Led White",
+  "shortName": "Lites Profile",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Emma"],
+    "createDate": "2022-02-07",
+    "lastModifyDate": "2022-02-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.litessrl.com/wp-content/uploads/2016/12/Brochure-profile-white-en.pdf"
+    ],
+    "productPage": [
+      "https://www.litessrl.com/lites-profile-white/"
+    ]
+  },
+  "physical": {
+    "dimensions": [359, 216, 522],
+    "weight": 7.5,
+    "power": 170,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
