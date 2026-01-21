@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VIP-R+",
+  "shortName": "VIP-R+",
+  "categories": ["Stand", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Herve Pequignet"],
+    "createDate": "2024-02-08",
+    "lastModifyDate": "2024-02-08"
+  },
+  "links": {
+    "manual": [
+      "https://ezevent.net"
+    ],
+    "productPage": [
+      "https://ezevent.net/vip-r-plus/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1284
+  },
+  "physical": {
+    "weight": 10,
+    "power": 55,
+    "bulb": {
+      "type": "LED",
+      "lumens": 2600
+    },
+    "lens": {
+      "name": "20-55",
+      "degreesMinMax": [0, 0]
+    }
+  },
+  "availableChannels": {
+    "DIMMER CCT": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2600K",
+        "colorTemperatureEnd": "6500K",
+        "comment": "CCT"
+      }
+    },
+    "DIMMER RGB": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "STROBOSCOPE": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "VIP-R+",
+      "shortName": "VIP-R+",
+      "channels": [
+        "DIMMER CCT",
+        "CCT",
+        "DIMMER RGB",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "STROBOSCOPE"
+      ]
+    }
+  ]
+}
