@@ -1,0 +1,333 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LiteParPro 7QX",
+  "categories": ["Dimmer", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Natsuha"],
+    "createDate": "2022-08-01",
+    "lastModifyDate": "2022-08-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.soundhouse.co.jp/download/ek/liteparpro-7qx-ip_mj.PDF"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2J_30MmhRCQ"
+    ]
+  },
+  "physical": {
+    "weight": 5.5,
+    "power": 60,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "機能なし"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R 100% G 0%-100% B 0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R 100%-0% G 100% B 0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "color1"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "color2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "color3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "color4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "color5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "color6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "color7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "color8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "color9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "color10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "color11"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 39],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "ColorTemperature",
+          "colorTemperature": "9000K"
+        },
+        {
+          "dmxRange": [220, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto  Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "1"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "2"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "3"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "4"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "5"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "ディスプレイから設定した値"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Speed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Speed",
+          "speed": "slow reverse"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Speed",
+          "speed": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Dimmer select",
+        "Color Temperature",
+        "Auto  Program",
+        "Auto Program Speed",
+        "Dimmer speed"
+      ]
+    }
+  ]
+}
