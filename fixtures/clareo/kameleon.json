@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KAMELEON",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["ALEX"],
+    "createDate": "2023-10-28",
+    "lastModifyDate": "2023-10-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.clareolighting.com/dalles-led-600x600/14487-panel-kameleon-clareo-600x600-40w-opale-tech-sans-driver.html#",
+      "https://www.clareolighting.com/drivers-courant-constant/1069-driver-clareo-dmx-512-2x250-1500ma-50w-2-channels-5511400086808.html#"
+    ]
+  },
+  "physical": {
+    "dimensions": [60, 60, 1],
+    "power": 50,
+    "bulb": {
+      "type": "BICOLOR LED",
+      "colorTemperature": 3000,
+      "lumens": 4000
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "warm",
+        "comment": "3000K"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "cold",
+        "comment": "6000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BICOLOR",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    }
+  ]
+}
