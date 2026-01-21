@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FL400",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-02-05",
+    "lastModifyDate": "2024-02-05"
+  },
+  "links": {
+    "manual": [
+      "http://www.cineroid.com/img/item/ML_FL_Manaul_ENG%5B4%5D.pdf"
+    ],
+    "productPage": [
+      "http://www.cineroid.com/item.asp?ItemID=2&rootID=228&mID=240"
+    ]
+  },
+  "physical": {
+    "dimensions": [24, 24, 3],
+    "weight": 0.65,
+    "power": 60,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT Control": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "CCT Control",
+        "Intensity"
+      ]
+    }
+  ]
+}
