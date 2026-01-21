@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FOS Active winch",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.fos-lighting.eu/uploads/products_0_2_1_635.pdf"
+    ],
+    "productPage": [
+      "https://www.fos-lighting.eu/fos-active-winch-p-635.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [317, 344, 167],
+    "weight": 9.24,
+    "power": 100,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Motor Position": {
+      "fineChannelAliases": ["Motor Position fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Motor speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Motor Position",
+        "Motor Position fine",
+        "Motor speed",
+        "Reset"
+      ]
+    }
+  ]
+}
