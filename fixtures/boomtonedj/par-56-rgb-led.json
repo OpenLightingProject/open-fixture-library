@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR-56-RGB-LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ludovic", "ZGen"],
+    "createDate": "2025-04-21",
+    "lastModifyDate": "2025-04-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-10-13",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "links": {
+    "productPage": [
+      "https://www.boomtonedj.com/boomtonedj-par-56-rgb-led-black-p40642.html"
+    ],
+    "manual": [
+      "https://static.boomtonedj.com/pdf/manual/40/40642_par-56-rgb-led-manual.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Yo59m61HiFk"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "power": 12,
+    "weight": 1.7,
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Sound active mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound active mode 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Is this slow to fast or fast to slow?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Blue",
+        "Green",
+        "Mode",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": ["Red", "Blue", "Green"]
+    }
+  ]
+}
