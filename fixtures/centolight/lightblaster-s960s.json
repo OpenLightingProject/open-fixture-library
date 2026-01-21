@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lightblaster S960S",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Ian G"],
+    "createDate": "2025-01-05",
+    "lastModifyDate": "2025-01-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.bing.com/ck/a?!&&p=4a66ac5ddfcdbace51d55e0282988f1d8151a172258db4d67d78eab08343f66bJmltdHM9MTczNjAzNTIwMA&ptn=3&ver=2&hsh=4&fclid=26604083-c9ce-6749-1c11-518ecdce6922&psq=centolight+Lightblaster+s960s&u=a1aHR0cHM6Ly93d3cuY2VudG9saWdodC5jb20vZW4vcHJvZHVjdHMvbGVkLXN0cm9iZS1lZmZlY3RzLWM0NzYvbGlnaHRibGFzdGVyLXM5NjAtcDM0NzQ3&ntb=1"
+    ]
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "RED",
+        "Green",
+        "BLUE",
+        "White"
+      ]
+    }
+  ]
+}
