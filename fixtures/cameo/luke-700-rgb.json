@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LUKE 700 RGB",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["logela"],
+    "createDate": "2024-08-17",
+    "lastModifyDate": "2024-08-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/es/soluciones/dj-y-musicos/laser/laser-espectaculos/2172/luke-700-rgb#detail-downloads"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 channel",
+      "channels": [
+        "Dimmer",
+        "Color Presets",
+        "Gobo Wheel",
+        "Prism Rotation",
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Zoom",
+        "Iris",
+        "Program Speed"
+      ]
+    }
+  ]
+}
