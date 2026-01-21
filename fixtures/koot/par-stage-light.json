@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par Stage Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Back_ache"],
+    "createDate": "2022-12-17",
+    "lastModifyDate": "2022-12-17"
+  },
+  "links": {
+    "other": [
+      "https://www.amazon.co.uk/s?k=KOOT"
+    ]
+  },
+  "physical": {
+    "dimensions": [13.4, 13.4, 13.1],
+    "weight": 0.52,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Macro function": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Macro function",
+        "Color Presets",
+        "Speed",
+        "Master Dimmer",
+        "Red",
+        "Blue",
+        "Green"
+      ]
+    }
+  ]
+}
