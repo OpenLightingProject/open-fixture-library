@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CS-500RGB KeyTEX",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Marcel Nehlis", "M.Nehlis"],
+    "createDate": "2025-08-29",
+    "lastModifyDate": "2025-08-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-08-29",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "power": 3,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [50, 149],
+          "type": "Maintenance",
+          "comment": "Automatic Mode"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Maintenance",
+          "comment": "Sound Mode"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Maintenance",
+          "comment": "Text Mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "static DMX Mode (patterns)"
+        }
+      ]
+    },
+    "Text Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Zoom in/out"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Static Text"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Wave"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Text Drawing"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "Zoom Out"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "x-axis movement"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "y-axis movement"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "y-axis rotation"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "x-axis rotation"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Effect",
+          "effectName": "z-axis rotation"
+        }
+      ]
+    },
+    "2 & 3 - Pattern selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Patterns selection"
+      }
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 209],
+          "type": "Generic",
+          "comment": "Colors selection"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "Patterns flashes with speed selection"
+        }
+      ]
+    },
+    "Drawing": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Patterns drawing with speed selection"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom with spped selection"
+      }
+    },
+    "y-axis rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "y-axis ratation with manual spped selection"
+      }
+    },
+    "x-axis rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "x-axis rotation with manual speed selection"
+      }
+    },
+    "z-axis rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "z-axis rotation with manual speed selection"
+      }
+    },
+    "x-axis movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "x-axis movement with manual speed selection"
+      }
+    },
+    "y-axis movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "y-axis movement with manual speed selection"
+      }
+    },
+    "stretch effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Controls",
+      "channels": [
+        "Modes",
+        "Text Mode",
+        "2 & 3 - Pattern selection",
+        "Color Selection",
+        "Drawing",
+        "Zoom",
+        "y-axis rotation",
+        "x-axis rotation",
+        "z-axis rotation",
+        "x-axis movement",
+        "y-axis movement",
+        "stretch effect"
+      ]
+    }
+  ]
+}
