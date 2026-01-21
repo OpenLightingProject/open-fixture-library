@@ -1,0 +1,220 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F-265WW",
+  "shortName": "Ovation F-265WW",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["Stefan Grund"],
+    "createDate": "2023-08-30",
+    "lastModifyDate": "2023-08-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_F-265WW_UM_Rev7.pdf",
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_F-265WW_DMX_Chart_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-f-265ww/"
+    ]
+  },
+  "physical": {
+    "dimensions": [384, 320, 450],
+    "weight": 7.9,
+    "power": 231,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3142,
+      "lumens": 12802
+    },
+    "lens": {
+      "degreesMinMax": [16, 68]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        }
+      ]
+    },
+    "Motor reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Zoom",
+          "angle": "closed",
+          "comment": "Motor reset"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Dimmer reset"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Dimmer: S-Curve"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Dimmer: linear"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Dimmer: square"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Dimmer: inverted square"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Dimmer: speed mode off"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Dimmer: speed mode 1"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Dimmer: speed mode 2"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Dimmer: speed mode 3"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Fan on"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Fan off"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Fan silent"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch 16bit Full",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Zoom",
+        "Strobe",
+        "Motor reset",
+        "Control"
+      ]
+    },
+    {
+      "name": "2ch 8bit Dim+Zoom",
+      "channels": [
+        "Dimmer",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "2ch 16bit Dim",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "1ch 8bit Dim",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
