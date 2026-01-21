@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IP PAR 1818 V2 Outdoor",
+  "categories": ["Stand", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Nicolas Süß"],
+    "createDate": "2022-07-22",
+    "lastModifyDate": "2022-07-22"
+  },
+  "links": {
+    "productPage": [
+      "https://www.involight.com/de/"
+    ]
+  },
+  "physical": {
+    "dimensions": [297, 157, 290],
+    "weight": 7,
+    "power": 200,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1000Hz",
+        "speedEnd": "10000Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Kanal",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5 Kanal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6 Kanal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7 Kanal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
