@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flood TRI Panel 7x3W RGB",
+  "categories": ["Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["screw"],
+    "createDate": "2022-05-31",
+    "lastModifyDate": "2022-05-31"
+  },
+  "comment": "it's not",
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_253406_v5_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_led_flood_tri_panel_7x3w_rgb.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/de/thomanntv_video_stairville_led_flood_tri_panel_7x3w_rgb_4649.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 170, 62],
+    "weight": 2.6,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
