@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sunbari Combi",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Cas Wouters"],
+    "createDate": "2022-10-10",
+    "lastModifyDate": "2022-10-10"
+  },
+  "comment": "An rgb LED bar with white LEDS mixed in. Creates a wash / blind effect.",
+  "links": {
+    "manual": [
+      "https://jb-systems.eu/nl/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1572290807.pdf"
+    ],
+    "productPage": [
+      "https://jb-systems.eu/nl/sunbar-combi"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=qrFzrUxj08o"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [1000, 140, 85],
+    "weight": 3.8,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 83],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [84, 163],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [164, 243],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Dimmer LED 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 6": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 7": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe",
+        "Dimmer LED 1",
+        "Dimmer LED 2",
+        "Dimmer LED 3",
+        "Dimmer LED 4",
+        "Dimmer LED 5",
+        "Dimmer LED 6",
+        "Dimmer LED 7"
+      ]
+    }
+  ]
+}
