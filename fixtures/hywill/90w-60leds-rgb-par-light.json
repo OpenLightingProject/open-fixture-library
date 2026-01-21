@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "90W 60LEDs RGB PAR LIGHT",
+  "categories": ["Color Changer", "Effect", "Dimmer"],
+  "meta": {
+    "authors": ["Boaz Michaely"],
+    "createDate": "2025-10-26",
+    "lastModifyDate": "2025-10-26"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/HYWILL-LED-Par-Lights-Entertainment/dp/B0CSDGGKDN"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 230, 60],
+    "weight": 1.2,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "comment": "Manual (using CH1-5"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "Effect",
+          "effectName": "Color Selection with CH7"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Jump Mode (speed by CH7)"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Fade Mode (speed by CH7)",
+          "parameterStart": "small",
+          "parameterEnd": "big"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Auto Mode (speed by CH7)",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Effect",
+          "effectName": "Sound Control Jump Mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "Effect",
+          "effectName": "Sound Control Strobe Mode",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "parameterStart": "small",
+          "parameterEnd": "big"
+        }
+      ]
+    },
+    "Color / Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Acts on CH6"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3CH",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7CH",
+      "shortName": "7ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Mode",
+        "Color / Speed"
+      ]
+    }
+  ]
+}
