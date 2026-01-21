@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RUSH MH 6",
+  "shortName": "mh 6",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Gotreck"],
+    "createDate": "2025-01-17",
+    "lastModifyDate": "2025-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/rush-mh-6-wash-manuel-d-utilisation"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/rush-mh-6-wash#downloads"
+    ],
+    "other": [
+      "https://www.martin.com/en/products/rush-mh-6-wash#downloads"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "shortName": "1",
+      "channels": [
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "No function"
+      ]
+    }
+  ]
+}
