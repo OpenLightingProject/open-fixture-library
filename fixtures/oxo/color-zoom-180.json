@@ -1,0 +1,433 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "color zoom 180",
+  "shortName": "colorzoom180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["lolo toto"],
+    "createDate": "2023-01-10",
+    "lastModifyDate": "2023-01-10"
+  },
+  "links": {
+    "manual": [
+      "https://docs.wixstatic.com/ugd/7e664f_746fd04c6b8f44d1bb9139dfc89a5a90.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/colorzoom-180-1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Tb2ZhCC5ZIg"
+    ]
+  },
+  "physical": {
+    "dimensions": [333, 253, 245],
+    "weight": 8.5,
+    "power": 220,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000,
+      "lumens": 6900
+    },
+    "lens": {
+      "degreesMinMax": [10, 53]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [21, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [91, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [161, 220],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "narrow"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Macro de couleur 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "comment": "White 2700K"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "comment": "White 3200K"
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "ColorPreset",
+          "comment": "White 3500K"
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "ColorPreset",
+          "comment": "White 4000K"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorPreset",
+          "comment": "White 4500K"
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "ColorPreset",
+          "comment": "White 5000K"
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "ColorPreset",
+          "comment": "White 5600K"
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "ColorPreset",
+          "comment": "White 6000K"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorPreset",
+          "comment": "White 6500K"
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "ColorPreset",
+          "comment": "White 7000K"
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "ColorPreset",
+          "comment": "White 7500K"
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "ColorPreset",
+          "comment": "White 8000K"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorPreset",
+          "comment": "Mauve 126"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "ColorPreset",
+          "comment": "Ultimate Violet 707"
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "ColorPreset",
+          "comment": "Dark Lavender 180"
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "ColorPreset",
+          "comment": "Cold Lavender 703"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "comment": "Light Lavender 052"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "comment": "Midnight Maya 508"
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "ColorPreset",
+          "comment": "Tokyo Blue 71"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorPreset",
+          "comment": "Zenith Blue 195"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorPreset",
+          "comment": "Elysian Blue 714"
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "ColorPreset",
+          "comment": "Just Blue 079"
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "ColorPreset",
+          "comment": "Sky Blue 68"
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "ColorPreset",
+          "comment": "Medium Blue 132"
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "ColorPreset",
+          "comment": "Glacier Blue 352"
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "ColorPreset",
+          "comment": "Steel Blue 117"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorPreset",
+          "comment": "Lagon Blue 172"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue 115"
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "ColorPreset",
+          "comment": "Jade 323"
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "ColorPreset",
+          "comment": "Dark Yellow Green 090"
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "ColorPreset",
+          "comment": "Lee Green 121"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "ColorPreset",
+          "comment": "Fern Green 122"
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "ColorPreset",
+          "comment": "Moss Green 089"
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "ColorPreset",
+          "comment": "Sally Green 505"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ColorPreset",
+          "comment": "Ice and a Slice 513"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorPreset",
+          "comment": "Light Amber 102"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach 017"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "ColorPreset",
+          "comment": "Dark Salmon 008"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "ColorPreset",
+          "comment": "Madge 507"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "ColorPreset",
+          "comment": "Light Red 182"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "ColorPreset",
+          "comment": "Scarlet 024"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "ColorPreset",
+          "comment": "Pink 157"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "ColorPreset",
+          "comment": "Rose Pink 002"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorPreset",
+          "comment": "Magical Magenta 795"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorPreset",
+          "comment": "Bright Pink 128"
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "ColorPreset",
+          "comment": "Magenta 113"
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "ColorPreset",
+          "comment": "Lavander Tint 003"
+        },
+        {
+          "dmxRange": [193, 200],
+          "type": "Effect",
+          "effectName": "macro 1 to 12"
+        },
+        {
+          "dmxRange": [201, 209],
+          "type": "Effect",
+          "effectName": "macro 13 to 47"
+        },
+        {
+          "dmxRange": [210, 218],
+          "type": "Effect",
+          "effectName": "macro 13 to 18"
+        },
+        {
+          "dmxRange": [219, 227],
+          "type": "Effect",
+          "effectName": "macro 19 to 29"
+        },
+        {
+          "dmxRange": [228, 236],
+          "type": "Effect",
+          "effectName": "Fade macro 30 to 34"
+        },
+        {
+          "dmxRange": [237, 245],
+          "type": "Effect",
+          "effectName": "macro 35 to 41"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Fade macro 42 to 47"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 cannaux",
+      "shortName": "CZ180 9c",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Macro de couleur 1",
+        "Effect Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
