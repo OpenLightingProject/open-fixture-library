@@ -1,0 +1,223 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WLED",
+  "shortName": "wled",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["mxklb"],
+    "createDate": "2025-04-19",
+    "lastModifyDate": "2025-04-19"
+  },
+  "comment": "LED Pixel Stripe or Matrix Firmware",
+  "links": {
+    "manual": [
+      "https://kno.wled.ge/interfaces/e1.31-dmx"
+    ],
+    "productPage": [
+      "https://kno.wled.ge"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=J2tsm4LEXWs&si=4gwgfMUSoDQ5OsEF"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Mode": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "all"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Intensity": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Effect Option": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "The effect option channel is divided into 128 macro parts to control the various states that a segment can be in. Using 2D effect options on a 1D strip has no effect."
+      }
+    },
+    "Red 2nd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2nd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2nd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Palette": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "Color Palette"
+      }
+    },
+    "Red 3rd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3rd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3rd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2nd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 3rd": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Preset": {
+      "capability": {
+        "type": "Generic",
+        "comment": "User defined preset ID"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Single RGB",
+      "shortName": "rgb",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Single DRGB",
+      "shortName": "drgb",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Effect",
+      "shortName": "effect",
+      "channels": [
+        "Dimmer",
+        "Effect Mode",
+        "Effect Speed",
+        "Effect Intensity",
+        "Effect Palette",
+        "Effect Option",
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2nd",
+        "Green 2nd",
+        "Blue 2nd",
+        "Red 3rd",
+        "Green 3rd",
+        "Blue 3rd"
+      ]
+    },
+    {
+      "name": "Effect White",
+      "shortName": "effwht",
+      "channels": [
+        "Dimmer",
+        "Effect Mode",
+        "Effect Speed",
+        "Effect Intensity",
+        "Effect Palette",
+        "Effect Option",
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2nd",
+        "Green 2nd",
+        "Blue 2nd",
+        "Red 3rd",
+        "Green 3rd",
+        "Blue 3rd",
+        "White",
+        "White 2nd",
+        "White 3rd"
+      ]
+    },
+    {
+      "name": "Preset",
+      "shortName": "preset",
+      "channels": [
+        "Dimmer",
+        "Preset"
+      ]
+    }
+  ]
+}
