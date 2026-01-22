@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BOOMTONE 24x3W",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["EDDY"],
+    "createDate": "2024-01-25",
+    "lastModifyDate": "2024-01-25"
+  },
+  "links": {
+    "manual": [
+      "https://static.boomtonedj.com/pdf/manual/61/61222_colorpix24x3wmanualenfr.pdf"
+    ],
+    "productPage": [
+      "https://www.boomtonedj.com/boomtonedj-colorpix-24x3w-rgb-p61222.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 65, 65],
+    "weight": 3,
+    "power": 30,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "CH1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH2": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "CH3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH6": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CH7": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 247],
+          "type": "Generic",
+          "comment": "PROGRAM AUTO"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "MODE SOUND"
+        }
+      ]
+    },
+    "CH8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "SPEED PROG"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 CHANNEL",
+      "channels": [
+        "CH1",
+        "CH2",
+        "CH3",
+        "CH4",
+        "CH5",
+        "CH6",
+        "CH7",
+        "CH8"
+      ]
+    }
+  ]
+}
