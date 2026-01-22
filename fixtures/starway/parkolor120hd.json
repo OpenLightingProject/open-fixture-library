@@ -1,0 +1,244 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARKOLOR120HD",
+  "shortName": "120HD",
+  "categories": ["Blinder", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Riri"],
+    "createDate": "2022-04-27",
+    "lastModifyDate": "2022-04-27"
+  },
+  "links": {
+    "productPage": [
+      "https://www.star-way.com/parkolcor-120hd-3"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 400, 240],
+    "weight": 7.2,
+    "power": 145,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "1 Led COB RGBW 120W",
+      "colorTemperature": 10000
+    },
+    "lens": {
+      "degreesMinMax": [7, 39]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 3,
+      "highlightValue": 3,
+      "constant": true,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Time": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Time",
+        "timeStart": "long",
+        "timeEnd": "instant"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "ZOOM RESET"
+        },
+        {
+          "dmxRange": [21, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Canaux",
+      "shortName": "HD120",
+      "channels": [
+        "Intensity 3",
+        "Shutter / Strobe",
+        "Red 3",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "10 Canaux",
+      "shortName": "HD120 10",
+      "channels": [
+        "Intensity",
+        "Shutter / Strobe",
+        "Zoom",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Time",
+        "Control"
+      ]
+    },
+    {
+      "name": "15 Canaux",
+      "shortName": "HD120 15",
+      "channels": [
+        "Intensity 2",
+        "Intensity 2 fine",
+        "Shutter / Strobe",
+        "Zoom",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Color Macros",
+        "Color Time",
+        "Control"
+      ]
+    }
+  ]
+}
