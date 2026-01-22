@@ -1,0 +1,454 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "T1",
+  "shortName": "T1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2022-02-08",
+    "lastModifyDate": "2022-02-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.robe.cz/res/downloads/user_manuals/User_manual_Robin_T1_Profile.pdf"
+    ],
+    "productPage": [
+      "https://www.robe.cz/t1-profile#downloads"
+    ],
+    "video": [
+      "https://www.robe.cz/t1-profile#downloads"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 726, 258],
+    "weight": 24.3,
+    "power": 750,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "MSL™ 550 W Multi-Spectral LED engine",
+      "colorTemperature": 3000,
+      "lumens": 10000
+    },
+    "lens": {
+      "name": "High - efficiency zoom optical system, ratio 7:1",
+      "degreesMinMax": [7, 49]
+    }
+  },
+  "wheels": {
+    "Rotating gobo wheel": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "265deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Power Special Functions": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "LED frequency selection": {
+      "fineChannelAliases": ["LED frequency selection fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Colour functions": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "default"
+      }
+    },
+    "CRI selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Virtual colour wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Cyan/Red": {
+      "fineChannelAliases": ["Cyan/Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Magenta/Green": {
+      "fineChannelAliases": ["Magenta/Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Yellow/Blue": {
+      "fineChannelAliases": ["Yellow/Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Colour temperature correction (CTC)": {
+      "defaultValue": 110,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "8000K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "Green correction": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Colour mix control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Speed of rot. Gobo selection": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Rot. Gobo carousel/ Framing shutters/Zoom/Focus/Iris/Frost/Prism time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "0.1s",
+        "timeEnd": "25s"
+      }
+    },
+    "Effect wheel positioning": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectParameter",
+        "parameter": 5
+      }
+    },
+    "Effect wheel rotation": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Effect wheel animations": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelShake"
+      }
+    },
+    "Rotating gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rot. gobo indexing and rotation": {
+      "fineChannelAliases": ["Rot. gobo indexing and rotation fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Generic",
+        "comment": "Index"
+      }
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism rotation": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "stop"
+      }
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Framing shutters module rotation": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angleStart": "0deg",
+        "angleEnd": "120deg"
+      }
+    },
+    "Framing shutter 1- movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing shutter 1- swivelling": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 1,
+        "angleStart": "0deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "Framing shutter 2- movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing shutter 2- swivelling": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 2,
+        "angleStart": "0deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "Framing shutter 3 movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing shutter 3- swivelling": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 3,
+        "angleStart": "0deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "Framing shutter 4 movement": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing shutter 4- swivelling": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 4,
+        "angleStart": "30deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Shutter/ strobe": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer intensity": {
+      "fineChannelAliases": ["Dimmer intensity fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-CMY/RGB",
+      "shortName": "1-CMY/RGB",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power Special Functions",
+        "LED frequency selection",
+        "LED frequency selection fine",
+        "Colour functions",
+        "CRI selection",
+        "Virtual colour wheel",
+        "Cyan/Red",
+        "Cyan/Red fine",
+        "Magenta/Green",
+        "Magenta/Green fine",
+        "Yellow/Blue",
+        "Yellow/Blue fine",
+        "Colour temperature correction (CTC)",
+        "Green correction",
+        "Colour mix control",
+        "Speed of rot. Gobo selection",
+        "Rot. Gobo carousel/ Framing shutters/Zoom/Focus/Iris/Frost/Prism time",
+        "Effect wheel positioning",
+        "Effect wheel rotation",
+        "Effect wheel animations",
+        "Rotating gobo wheel",
+        "Rot. gobo indexing and rotation",
+        "Rot. gobo indexing and rotation fine",
+        "Prism",
+        "Prism rotation",
+        "Frost",
+        "Iris",
+        "Iris fine",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Framing shutters module rotation",
+        "Framing shutter 1- movement",
+        "Framing shutter 1- swivelling",
+        "Framing shutter 2- movement",
+        "Framing shutter 2- swivelling",
+        "Framing shutter 3 movement",
+        "Framing shutter 3- swivelling",
+        "Framing shutter 4 movement",
+        "Framing shutter 4- swivelling",
+        "Shutter/ strobe",
+        "Dimmer intensity",
+        "Dimmer intensity fine"
+      ]
+    }
+  ]
+}
