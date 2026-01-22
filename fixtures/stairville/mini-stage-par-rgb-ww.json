@@ -1,0 +1,249 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Stage Par RGB WW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Luke Nelson"],
+    "createDate": "2025-04-21",
+    "lastModifyDate": "2025-04-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-12-28",
+      "comment": "created by Q Light Controller Plus (version 4.12.4a)"
+    }
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/gb/stairville_mini_stage_par_7x4w_rgb_ww.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i6194p10_yd59vqpa.mp4",
+      "https://www.youtube.com/watch?v=wm-QSmre8Iw"
+    ],
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/406532_c_406531_406532_r4_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [195, 140, 230],
+    "weight": 1.9,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fixed color pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "switchChannels": {
+            "NoFunction / Strobe effect": "Strobe effect"
+          }
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "One of 41 preprogrammed automatic shows (macros), channels 6 and 7 without function",
+          "switchChannels": {
+            "NoFunction / Strobe effect": "NoFunction"
+          }
+        }
+      ]
+    },
+    "Strobe effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe effect, increasing speed"
+        }
+      ]
+    },
+    "Mode selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Effect",
+          "effectName": "Constant color, the hue is set by channels 1 to 4"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Fade-out effect, speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Fade-in effect, speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Fade-in-out effect, speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto-mix effect, speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Chase (4 colors), speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Chase (12 colors), speed controlled by channel 6, channels 1 to 5 without function"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode Selection - 6 Channels": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Constant color, the hue is set by channels 2 to 5"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Automatic color change with 7 colors, channels 2 to 5 without function"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Automatic color change with 12 colors, channels 2 to 5 without function"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Automatic color change with 4 colors, channels 2 to 5 without function"
+        }
+      ]
+    },
+    "Effects speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectName": "Random speed"
+        }
+      ]
+    },
+    "NoFunction": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": ["Red", "Green", "Blue", "White"]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Mode Selection - 6 Channels",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effects speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fixed color pattern",
+        "NoFunction / Strobe effect",
+        "Mode selection",
+        "Dimmer"
+      ]
+    }
+  ]
+}
