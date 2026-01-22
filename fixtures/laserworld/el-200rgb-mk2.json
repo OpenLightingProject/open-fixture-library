@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-200RGB MK2",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["santaimpersonator"],
+    "createDate": "2023-12-20",
+    "lastModifyDate": "2023-12-20",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-12-20",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [395, 85, 175],
+    "weight": 4,
+    "power": 60,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Sound",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Automatic"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "DMX - Static Pattern"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "DMX - Dynamic Patterns"
+        }
+      ]
+    },
+    "Pattern": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Pattern Selection"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [40, 79],
+          "type": "ColorPreset",
+          "comment": "Green/Blue"
+        },
+        {
+          "dmxRange": [80, 119],
+          "type": "ColorPreset",
+          "comment": "Red/Blue"
+        },
+        {
+          "dmxRange": [120, 159],
+          "type": "ColorPreset",
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Green"
+        }
+      ]
+    },
+    "Position - X": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "20deg",
+          "comment": "Middle"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "20deg",
+          "comment": "Left (11) to Right (255)"
+        }
+      ]
+    },
+    "Position - Y": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "20deg",
+          "comment": "Middle"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "20deg",
+          "comment": "Bottom (11) to Top (255)"
+        }
+      ]
+    },
+    "Scanning Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Fast (0) to Slow (255)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dynamic Patterns - Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Fast (0) to Slow (255)"
+      }
+    },
+    "Static Pattern - Size": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Large (0) to Small (255)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Mode",
+        "Pattern",
+        "Color",
+        "Position - X",
+        "Position - Y",
+        "Scanning Speed",
+        "Dynamic Patterns - Speed",
+        "Static Pattern - Size"
+      ]
+    }
+  ]
+}
