@@ -1,27 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED TMH-17",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Lech"],
-    "createDate": "2019-08-22",
-    "lastModifyDate": "2019-08-22",
+    "authors": ["Lech", "TOP"],
+    "createDate": "2026-01-22",
+    "lastModifyDate": "2026-01-22",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2019-08-22",
-      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+      "date": "2026-01-22",
+      "comment": "created by OFL – https://open-fixture-library.org/eurolite/led-tmh-13 (version 1.3.1)"
     }
-  },
-  "links": {
-    "manual": [
-      "https://www.steinigke.de/download/51786065-Manual-111842-1.100-eurolite-led-tmh-17-moving-head-spot-en_de.pdf"
-    ],
-    "productPage": [
-      "https://www.steinigke.de/en/mpn51786065-eurolite-led-tmh-17-moving-head-spot.html"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=vWXsAjraBTw"
-    ]
   },
   "physical": {
     "dimensions": [170, 240, 145],
@@ -75,35 +64,74 @@
           "type": "Color",
           "name": "Magenta",
           "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Orange / Magenta",
+          "colors": ["#ffaa00", "#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Light blue / Orange",
+          "colors": ["#aaeeff", "#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Yellow / Light blue",
+          "colors": ["#ffff00", "#aaeeff"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Blue / Yellow",
+          "colors": ["#0000ff", "#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Green / Blue",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Red / Green",
+          "colors": ["#ff0000", "#00ff00"]
         }
       ]
     },
     "Gobo Wheel": {
-      "direction": "CCW",
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 1"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 2"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 3"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 4"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 5"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 6"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Open"
         }
       ]
     }
@@ -135,78 +163,93 @@
         {
           "dmxRange": [0, 9],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "Open"
         },
         {
           "dmxRange": [10, 19],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "comment": "Red"
         },
         {
           "dmxRange": [20, 29],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 3,
+          "comment": "Green"
         },
         {
           "dmxRange": [30, 39],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 4,
+          "comment": "Blue"
         },
         {
           "dmxRange": [40, 49],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 5,
+          "comment": "Yellow"
         },
         {
           "dmxRange": [50, 59],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 6,
+          "comment": "Light blue"
         },
         {
           "dmxRange": [60, 69],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 7,
+          "comment": "Orange"
         },
         {
           "dmxRange": [70, 79],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 8,
+          "comment": "Magenta"
         },
         {
           "dmxRange": [80, 89],
           "type": "WheelSlot",
-          "slotNumber": 7.5
+          "slotNumber": 9,
+          "comment": "Split Orange / Magenta"
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelSlot",
-          "slotNumber": 6.5
+          "slotNumber": 10,
+          "comment": "Split Light blue / Orange"
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelSlot",
-          "slotNumber": 5.5
+          "slotNumber": 11,
+          "comment": "Split Yellow / Light blue"
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelSlot",
-          "slotNumber": 4.5
+          "slotNumber": 12,
+          "comment": "Split Blue / Yellow"
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelSlot",
-          "slotNumber": 3.5
+          "slotNumber": 13,
+          "comment": "Split Green / Blue"
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelSlot",
-          "slotNumber": 2.5
+          "slotNumber": 14,
+          "comment": "Split Red / Green"
         },
         {
           "dmxRange": [140, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "comment": "Color wheel rotation CW slow…fast"
         }
       ]
     },
@@ -216,102 +259,119 @@
         {
           "dmxRange": [0, 7],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "Open"
         },
         {
           "dmxRange": [8, 15],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "comment": "Gobo 1"
         },
         {
           "dmxRange": [16, 24],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 3,
+          "comment": "Gobo 2"
         },
         {
           "dmxRange": [25, 31],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 4,
+          "comment": "Gobo 3"
         },
         {
           "dmxRange": [32, 39],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 5,
+          "comment": "Gobo 4"
         },
         {
           "dmxRange": [40, 47],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 6,
+          "comment": "Gobo 5"
         },
         {
           "dmxRange": [48, 55],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 7,
+          "comment": "Gobo 6"
         },
         {
           "dmxRange": [56, 63],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 8,
+          "comment": "Gobo 7"
         },
         {
           "dmxRange": [64, 71],
           "type": "WheelShake",
-          "slotNumber": 8,
+          "slotNumber": 9,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 7 shake slow…fast"
         },
         {
           "dmxRange": [72, 79],
           "type": "WheelShake",
-          "slotNumber": 7,
+          "slotNumber": 10,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 6 shake slow…fast"
         },
         {
           "dmxRange": [80, 87],
           "type": "WheelShake",
-          "slotNumber": 6,
+          "slotNumber": 11,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 5 shake slow…fast"
         },
         {
           "dmxRange": [88, 95],
           "type": "WheelShake",
-          "slotNumber": 5,
+          "slotNumber": 12,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 4 shake slow…fast"
         },
         {
           "dmxRange": [96, 103],
           "type": "WheelShake",
-          "slotNumber": 4,
+          "slotNumber": 13,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 3 shake slow…fast"
         },
         {
           "dmxRange": [104, 111],
           "type": "WheelShake",
-          "slotNumber": 3,
+          "slotNumber": 14,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 2 shake slow…fast"
         },
         {
           "dmxRange": [112, 119],
           "type": "WheelShake",
-          "slotNumber": 2,
+          "slotNumber": 15,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 1 shake slow…fast"
         },
         {
           "dmxRange": [120, 127],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 16,
+          "comment": "Open"
         },
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "comment": "Gobo Wheel rotation CW slow…fast"
         }
       ]
     },
@@ -327,7 +387,8 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Strobe slow…fast"
         },
         {
           "dmxRange": [250, 255],
