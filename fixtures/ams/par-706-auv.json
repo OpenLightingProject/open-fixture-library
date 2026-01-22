@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 706 AUV",
+  "shortName": "PAR 706 AUV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SOUNDCHECK"],
+    "createDate": "2024-11-11",
+    "lastModifyDate": "2024-11-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/PAR_706_AUV_v1_0.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 1,
+    "power": 84,
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Color Presets": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "NO STROBE"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "2Hz",
+          "speedEnd": "60Hz"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "UV",
+        "Amber",
+        "Shutter / Strobe",
+        "Color Presets",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
