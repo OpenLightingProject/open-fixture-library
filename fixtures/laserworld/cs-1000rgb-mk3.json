@@ -1,0 +1,277 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CS-1000RGB Mk3",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Frederik Twiehaus"],
+    "createDate": "2023-03-05",
+    "lastModifyDate": "2023-03-05",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-03-05",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [330, 170, 310],
+    "weight": 7,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGB Laser"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Operation mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Maintenance",
+          "comment": "Sound-to-Light mode"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Maintenance",
+          "comment": "Stand-alone mode"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Maintenance",
+          "comment": "DMX mode"
+        }
+      ]
+    },
+    "Pattern select": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1,
+        "comment": "Pattern selection"
+      }
+    },
+    "Rotation (Z-axis)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Rotation angle selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "CCW Rotation (counter-clockwise speed)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "CW Rotation (clockwise speed)"
+        }
+      ]
+    },
+    "Y Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Rotation Y position steps"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Rotation Y automatic"
+        }
+      ]
+    },
+    "X Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Rotation X position steps"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Rotation X automatic"
+        }
+      ]
+    },
+    "Offset X-axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Offset X position steps"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Movement X automatic"
+        }
+      ]
+    },
+    "Offset Y-axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Offset Y position steps"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Movement Y automatic"
+        }
+      ]
+    },
+    "Size X": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Size X from big to small"
+      }
+    },
+    "Drawing effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Drawing speed"
+      }
+    },
+    "Scan speed / Points": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Scan speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Point speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Color change": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorPreset",
+          "comment": "Original color"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#c531ff"]
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#f6ec00"]
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorPreset",
+          "comment": "Automatic color change effect",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "ColorPreset",
+          "comment": "Multi color step through"
+        }
+      ]
+    },
+    "Size Y": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Size Y from big to small"
+      }
+    },
+    "Color speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Speed adjustment for automatic\rcolor change effect and multi color\rstep through"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Operation mode",
+        "Pattern select",
+        "Rotation (Z-axis)",
+        "X Rotation",
+        "Y Rotation",
+        "Offset X-axis",
+        "Offset Y-axis",
+        "Size X",
+        "Size Y",
+        "Drawing effect",
+        "Scan speed / Points",
+        "Color change",
+        "Color speed"
+      ]
+    }
+  ]
+}
