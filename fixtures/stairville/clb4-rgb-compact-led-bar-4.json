@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB4 RGB Compact Led Bar 4",
+  "shortName": "CLB4RGB",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Makz"],
+    "createDate": "2024-06-05",
+    "lastModifyDate": "2024-06-05"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_298052_v6_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.com/stairville_clb4_rgb_compact_led_bar_4.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [682, 270, 60],
+    "weight": 5.4,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spots 1 & 2"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spots 1 & 2"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spots 1 & 2"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spots 3 & 4"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spots 3 & 4"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spots 3 & 4"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speed": "1Hz"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 1"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 1"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 1"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 2"
+      }
+    },
+    "Green 5": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 2"
+      }
+    },
+    "Blue 5": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 2"
+      }
+    },
+    "Red 6": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 3"
+      }
+    },
+    "Green 6": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 3"
+      }
+    },
+    "Blue 6": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 3"
+      }
+    },
+    "Red 7": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Spot 4"
+      }
+    },
+    "Green 7": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Spot 4"
+      }
+    },
+    "Blue 7": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Spot 4"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "8 Channels",
+      "shortName": "8ch",
+      "channels": [
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "14 Channels",
+      "shortName": "14ch",
+      "channels": [
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
