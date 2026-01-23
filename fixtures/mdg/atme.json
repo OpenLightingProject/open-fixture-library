@@ -30,12 +30,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 128],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Unit OFF"
         },
         {
           "dmxRange": [129, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Unit ON"
         }
       ]
