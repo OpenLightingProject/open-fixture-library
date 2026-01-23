@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PipeDimmer",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["CrewArt"],
+    "createDate": "2024-10-23",
+    "lastModifyDate": "2024-10-23"
+  },
+  "links": {
+    "manual": [
+      "https://static1.squarespace.com/static/60cdcfbce889114bd384468f/t/6579d10162771a6b7f558d50/1702482184431/PIPE+USER+MANUAL+PW_42+V1.pdf"
+    ],
+    "productPage": [
+      "https://www.pipelighting.com/"
+    ],
+    "video": [
+      "https://www.pipelighting.com/videos"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": "invalid"
+    }
+  },
+  "availableChannels": {
+    "CTC": {
+      "defaultValue": "0%",
+      "highlightValue": "127%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2450K",
+        "colorTemperatureEnd": "6600K"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PipeDimmer",
+      "channels": [
+        "CTC",
+        "Dimmer"
+      ]
+    }
+  ]
+}
