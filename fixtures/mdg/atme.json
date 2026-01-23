@@ -40,7 +40,7 @@
         }
       ]
     },
-    "Haze": {
+    "Haze output": {
       "capability": {
         "type": "FogOutput",
         "fogOutputStart": "weak",
@@ -71,7 +71,7 @@
       "shortName": "3ch",
       "channels": [
         "Unit control",
-        "Haze",
+        "Haze output",
         "Haze control"
       ]
     }
