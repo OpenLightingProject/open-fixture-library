@@ -1,0 +1,595 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Base Station BQ",
+  "shortName": "Base",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2021-05-04",
+    "lastModifyDate": "2024-09-28",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2024-09-28",
+      "comment": "GDTF v1.2 fixture type ID: F4D4E803-EC67-4472-B95C-4603AAC3EF04"
+    }
+  },
+  "comment": "CrowdLED Base Station: Base station for controlling CrowdLED wristbands",
+  "availableChannels": {
+    "Operations": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Sleep"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Enable button"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wake"
+        },
+        {
+          "dmxRange": [20, 59],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Retransmit off"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "1 Second"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "5 Seconds"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "15 Seconds"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "30 Seconds"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Unknown (Retransmit)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Unknown (Heartbeat)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Heartbeat off"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Unknown (Heartbeat)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Heartbeat on"
+        },
+        {
+          "dmxRange": [100, 184],
+          "type": "Unknown (Heartbeat)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Unknown (RGB Factor)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "RGB 40%"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Unknown (RGB Factor)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "RGB 60%"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Unknown (RGB Factor)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "RGB 80%"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Unknown (RGB Factor)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "RGB 100%"
+        },
+        {
+          "dmxRange": [205, 214],
+          "type": "Unknown (RGB Factor)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Unknown (RF Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "RF off"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Unknown (RF Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Kill"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Resend"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Debug"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Live"
+        }
+      ]
+    },
+    "TX Burst": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "TX Burst 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "TX Burst 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "TX Burst 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "TX Burst 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "TX Burst 5"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Unknown (TX Burst)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Shapes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "None"
+        },
+        {
+          "dmxRange": [7, 12],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "All"
+        },
+        {
+          "dmxRange": [13, 18],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 2 >"
+        },
+        {
+          "dmxRange": [19, 24],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 3 >"
+        },
+        {
+          "dmxRange": [25, 30],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [31, 36],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 5 >"
+        },
+        {
+          "dmxRange": [37, 42],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 10 >"
+        },
+        {
+          "dmxRange": [43, 48],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 20 >"
+        },
+        {
+          "dmxRange": [49, 54],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [55, 60],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 4 >"
+        },
+        {
+          "dmxRange": [61, 66],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 5 >"
+        },
+        {
+          "dmxRange": [67, 72],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 10 >"
+        },
+        {
+          "dmxRange": [73, 78],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 20 >"
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wings 10 >"
+        },
+        {
+          "dmxRange": [85, 90],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wings 20 >"
+        },
+        {
+          "dmxRange": [91, 96],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Circles >"
+        },
+        {
+          "dmxRange": [97, 102],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "None"
+        },
+        {
+          "dmxRange": [103, 108],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 2 <"
+        },
+        {
+          "dmxRange": [109, 114],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 3 <"
+        },
+        {
+          "dmxRange": [115, 120],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [121, 126],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 5 <"
+        },
+        {
+          "dmxRange": [127, 132],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 10 <"
+        },
+        {
+          "dmxRange": [133, 138],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Interleave 20 <"
+        },
+        {
+          "dmxRange": [139, 144],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [145, 150],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 4 <"
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 5 <"
+        },
+        {
+          "dmxRange": [157, 162],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 10 <"
+        },
+        {
+          "dmxRange": [163, 168],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Block 20 <"
+        },
+        {
+          "dmxRange": [169, 174],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wings 10 <"
+        },
+        {
+          "dmxRange": [175, 180],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wings 20 <"
+        },
+        {
+          "dmxRange": [181, 186],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Circles <"
+        },
+        {
+          "dmxRange": [187, 232],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [233, 238],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "WB All"
+        },
+        {
+          "dmxRange": [239, 244],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "LY All"
+        },
+        {
+          "dmxRange": [245, 250],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Ball All"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Unknown (Shapes)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Operations 2": {
+      "name": "Operations",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Sleep"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Enable button"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Wake"
+        },
+        {
+          "dmxRange": [20, 224],
+          "type": "Unknown (Power)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Kill"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Resend"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Debug"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Unknown (Signal)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Live"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Advanced",
+      "channels": [
+        "Operations",
+        "TX Burst",
+        "Shapes"
+      ]
+    },
+    {
+      "name": "Basic",
+      "channels": [
+        "Operations 2"
+      ]
+    }
+  ]
+}
