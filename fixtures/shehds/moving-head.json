@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2026-01-26",
+    "lastModifyDate": "2026-01-26"
+  },
+  "links": {
+    "manual": [
+      "https://dummy.org"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 141],
+          "type": "Rotation",
+          "comment": "Rotating 360°"
+        },
+        {
+          "dmxRange": [142, 199],
+          "type": "Rotation",
+          "speed": "fast CW"
+        },
+        {
+          "dmxRange": [200, 250],
+          "type": "Rotation",
+          "speed": "fast CCW"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 154],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [155, 204],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "100Hz",
+          "speedEnd": "200Hz",
+          "comment": "Thunder effect"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Prism Rotation",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "No function"
+      ]
+    }
+  ]
+}
