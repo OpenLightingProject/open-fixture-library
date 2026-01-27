@@ -427,7 +427,7 @@
           "type": "Effect",
           "effectName": "RGBW color chasing",
           "switchChannels": {
-            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
@@ -435,7 +435,7 @@
           "type": "Effect",
           "effectName": "Color Presets",
           "switchChannels": {
-            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
@@ -443,7 +443,7 @@
           "type": "Effect",
           "effectName": "Color Macros",
           "switchChannels": {
-            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
@@ -451,7 +451,7 @@
           "type": "Effect",
           "effectName": "Music Controlled",
           "switchChannels": {
-            "Mode Speed / Sound Sensitivity": "Sound Sensitivity"
+            "Effect Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         }
       ]
@@ -743,7 +743,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Mode Speed / Sound Sensitivity",
+        "Effect Speed / Sound Sensitivity",
         "Red Master",
         "Green Master",
         "Blue Master",
@@ -760,7 +760,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Mode Speed / Sound Sensitivity",
+        "Effect Speed / Sound Sensitivity",
         {
           "insert": "matrixChannels",
           "repeatFor": [
@@ -789,7 +789,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Mode Speed / Sound Sensitivity",
+        "Effect Speed / Sound Sensitivity",
         {
           "insert": "matrixChannels",
           "repeatFor": [
