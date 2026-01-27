@@ -403,11 +403,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
