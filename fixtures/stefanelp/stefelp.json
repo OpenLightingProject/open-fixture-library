@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "stefelp",
+  "shortName": "ELP",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["stefcolor"],
+    "createDate": "2026-01-27",
+    "lastModifyDate": "2026-01-27"
+  },
+  "links": {
+    "video": [
+      "https://www.martin.com/en/products/elp-par#downloads"
+    ]
+  },
+  "availableChannels": {
+    "Obturateur / Stroboscope": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Variateur": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Variateur 2": {
+      "name": "Variateur",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "stefanbelp",
+      "channels": [
+        "Obturateur / Stroboscope",
+        "Variateur",
+        "Variateur 2",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "CTC",
+        "Zoom",
+        "Zoom 2"
+      ]
+    }
+  ]
+}
