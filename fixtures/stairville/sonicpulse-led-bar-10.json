@@ -30,9 +30,17 @@
     }
   },
   "matrix": {
-    "pixelCount": [5, 1, 1],
+    "pixelCount": [24, 1, 1],
     "pixelGroups": {
-      "Master": "all"
+      "Master": "all",
+      "Segment 1": ["1", "2", "3"],
+      "Segment 2": ["4", "5", "6"],
+      "Segment 3": ["7", "8", "9"],
+      "Segment 4": ["10", "11", "12"],
+      "Segment 5": ["13", "14", "15"],
+      "Segment 6": ["16", "17", "18"],
+      "Segment 7": ["19", "20", "21"],
+      "Segment 8": ["22", "23", "24"]
     }
   },
   "templateChannels": {
