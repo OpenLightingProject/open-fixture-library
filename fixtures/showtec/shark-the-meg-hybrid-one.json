@@ -631,24 +631,26 @@
     "Gobo Wheel Rotation": {
       "capabilities": [
         {
-          "dmxRange": [0, 63],
-          "type": "Generic",
-          "comment": "Indexing (fixed position)"
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [64, 127],
-          "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "dmxRange": [4, 127],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 2",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "dmxRange": [128, 191],
-          "type": "WheelRotation",
+          "dmxRange": [128, 131],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 2",
           "speed": "stop"
         },
         {
-          "dmxRange": [192, 255],
-          "type": "WheelRotation",
+          "dmxRange": [132, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 2",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
