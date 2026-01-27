@@ -684,23 +684,6 @@
   },
   "modes": [
     {
-      "name": "2-channel",
-      "shortName": "2ch",
-      "channels": [
-        "Auto Mode",
-        "Auto Mode Speed / Sound Sensitivity"
-      ]
-    },
-    {
-      "name": "3-channel",
-      "shortName": "3ch",
-      "channels": [
-        "Effect Selection",
-        "Sound Mode Selection",
-        "Sound Sensitivity"
-      ]
-    },
-    {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
@@ -711,37 +694,81 @@
       ]
     },
     {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Auto Mode",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Auto Mode Speed / Sound Sensitivity"
+      ]
+    },
+    {
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "White Master",
-        "Dimmer",
-        "Shutter / Strobe"
+        "White Master"
       ]
     },
     {
-      "name": "7-channel",
-      "shortName": "7ch",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
         "Mode Selection",
         "Color Presets",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Sound Sensitivity",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "White Master",
-        "Dimmer"
+        "White Master"
       ]
     },
     {
-      "name": "20-channel",
-      "shortName": "20ch",
+      "name": "23-channel",
+      "shortName": "23ch",
       "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Mode Selection",
+        "Color Presets",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Sound Sensitivity",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
+          "repeatFor": ["Segment 1", "Segment 2", "Segment 3", "Segment 4", "Segment 5", "Segment 6", "Segment 7", "Segment 8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "39-channel",
+      "shortName": "39ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Mode Selection",
+        "Color Presets",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Sound Sensitivity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Segment 1", "Segment 2", "Segment 3", "Segment 4", "Segment 5", "Segment 6", "Segment 7", "Segment 8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
