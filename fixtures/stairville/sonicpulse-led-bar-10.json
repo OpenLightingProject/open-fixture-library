@@ -87,17 +87,16 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
+          "type": "Generic",
+          "comment": "Sound controlled (low to high sensitivity)",
           "switchChannels": {
             "Effect Parameter": "Sound Sensitivity"
           }
         },
         {
           "dmxRange": [128, 255],
-          "type": "Effect",
-          "effectName": "Automatic Mode",
+          "type": "Generic",
+          "comment": "Automatic Mode",
           "switchChannels": {
             "Effect Parameter": "Auto Mode Speed"
           }
@@ -424,32 +423,32 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Effect",
-          "effectName": "RGBW color chasing",
+          "type": "Generic",
+          "comment": "RGBW color chasing",
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
           "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Color Presets",
+          "type": "Generic",
+          "comment": "Color Presets",
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "Color Macros",
+          "type": "Generic",
+          "comment": "Color Macros",
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
           }
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "Music Controlled",
+          "type": "Generic",
+          "comment": "Music Controlled",
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Sound Sensitivity"
           }
