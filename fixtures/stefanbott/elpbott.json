@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ELPbott",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["stefcolor"],
+    "createDate": "2026-01-27",
+    "lastModifyDate": "2026-01-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/products/elp-par#downloads"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/elp-par#downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=QspPA_hyqvk&t=1sstefelp"
+    ]
+  },
+  "availableChannels": {
+    "Obturateur / Stroboscope": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Intensité": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensité 2": {
+      "name": "Intensité",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "stefanelp",
+      "channels": [
+        "Obturateur / Stroboscope",
+        "Intensité",
+        "Intensité 2",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "CTC",
+        "Zoom",
+        "Zoom 2"
+      ]
+    }
+  ]
+}
