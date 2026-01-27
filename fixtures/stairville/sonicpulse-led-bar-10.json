@@ -35,48 +35,57 @@
       "Master": "all"
     }
   },
-  "availableChannels": {
-    "Red": {
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
-    },
+    }
+  },
+  "availableChannels": {
     "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
     "Auto Mode": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 127],
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high"
+          "soundSensitivityEnd": "high",
+          "switchChannels": {
+            "Auto Mode Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "dmxRange": [128, 255],
           "type": "Effect",
-          "effectName": "Automatic Mode"
+          "effectName": "Automatic Mode",
+          "switchChannels": {
+            "Auto Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
         }
       ]
     },
@@ -216,136 +225,167 @@
         {
           "dmxRange": [6, 15],
           "type": "Effect",
-          "effectName": "Sound-Mode 1"
+          "effectName": "Sound-Mode 1",
+          "soundControlled": true
         },
         {
           "dmxRange": [16, 25],
           "type": "Effect",
-          "effectName": "Sound-Mode 2"
+          "effectName": "Sound-Mode 2",
+          "soundControlled": true
         },
         {
           "dmxRange": [26, 35],
           "type": "Effect",
-          "effectName": "Sound-Mode 3"
+          "effectName": "Sound-Mode 3",
+          "soundControlled": true
         },
         {
           "dmxRange": [36, 45],
           "type": "Effect",
-          "effectName": "Sound-Mode 4"
+          "effectName": "Sound-Mode 4",
+          "soundControlled": true
         },
         {
           "dmxRange": [46, 55],
           "type": "Effect",
-          "effectName": "Sound-Mode 5"
+          "effectName": "Sound-Mode 5",
+          "soundControlled": true
         },
         {
           "dmxRange": [56, 65],
           "type": "Effect",
-          "effectName": "Sound-Mode 6"
+          "effectName": "Sound-Mode 6",
+          "soundControlled": true
         },
         {
           "dmxRange": [66, 75],
           "type": "Effect",
-          "effectName": "Sound-Mode 7"
+          "effectName": "Sound-Mode 7",
+          "soundControlled": true
         },
         {
           "dmxRange": [76, 85],
           "type": "Effect",
-          "effectName": "Sound-Mode 8"
+          "effectName": "Sound-Mode 8",
+          "soundControlled": true
         },
         {
           "dmxRange": [86, 95],
           "type": "Effect",
-          "effectName": "Sound-Mode 9"
+          "effectName": "Sound-Mode 9",
+          "soundControlled": true
         },
         {
           "dmxRange": [96, 105],
           "type": "Effect",
-          "effectName": "Sound-Mode 10"
+          "effectName": "Sound-Mode 10",
+          "soundControlled": true
         },
         {
           "dmxRange": [106, 115],
           "type": "Effect",
-          "effectName": "Sound-Mode 11"
+          "effectName": "Sound-Mode 11",
+          "soundControlled": true
         },
         {
           "dmxRange": [116, 125],
           "type": "Effect",
-          "effectName": "Sound-Mode 12"
+          "effectName": "Sound-Mode 12",
+          "soundControlled": true
         },
         {
           "dmxRange": [126, 135],
           "type": "Effect",
-          "effectName": "Sound-Mode 13"
+          "effectName": "Sound-Mode 13",
+          "soundControlled": true
         },
         {
           "dmxRange": [136, 145],
           "type": "Effect",
-          "effectName": "Sound-Mode 14"
+          "effectName": "Sound-Mode 14",
+          "soundControlled": true
         },
         {
           "dmxRange": [146, 155],
           "type": "Effect",
-          "effectName": "Sound-Mode 15"
+          "effectName": "Sound-Mode 15",
+          "soundControlled": true
         },
         {
           "dmxRange": [156, 165],
           "type": "Effect",
-          "effectName": "Sound-Mode 16"
+          "effectName": "Sound-Mode 16",
+          "soundControlled": true
         },
         {
           "dmxRange": [166, 175],
           "type": "Effect",
-          "effectName": "Sound-Mode 17"
+          "effectName": "Sound-Mode 17",
+          "soundControlled": true
         },
         {
           "dmxRange": [176, 185],
           "type": "Effect",
-          "effectName": "Sound-Mode 18"
+          "effectName": "Sound-Mode 18",
+          "soundControlled": true
         },
         {
           "dmxRange": [186, 195],
           "type": "Effect",
-          "effectName": "Sound-Mode 19"
+          "effectName": "Sound-Mode 19",
+          "soundControlled": true
         },
         {
           "dmxRange": [196, 205],
           "type": "Effect",
-          "effectName": "Sound-Mode 20"
+          "effectName": "Sound-Mode 20",
+          "soundControlled": true
         },
         {
           "dmxRange": [206, 215],
           "type": "Effect",
-          "effectName": "Sound-Mode 21"
+          "effectName": "Sound-Mode 21",
+          "soundControlled": true
         },
         {
           "dmxRange": [216, 225],
           "type": "Effect",
-          "effectName": "Sound-Mode 22"
+          "effectName": "Sound-Mode 22",
+          "soundControlled": true
         },
         {
           "dmxRange": [226, 235],
           "type": "Effect",
-          "effectName": "Sound-Mode 23"
+          "effectName": "Sound-Mode 23",
+          "soundControlled": true
         },
         {
           "dmxRange": [236, 245],
           "type": "Effect",
-          "effectName": "Sound-Mode 24"
+          "effectName": "Sound-Mode 24",
+          "soundControlled": true
         },
         {
           "dmxRange": [246, 255],
           "type": "Effect",
-          "effectName": "Sound-Mode 25"
+          "effectName": "Sound-Mode 25",
+          "soundControlled": true
         }
       ]
     },
-    "Auto Mode Intensity": {
+    "Auto Mode Speed": {
       "capability": {
-        "type": "EffectParameter",
-        "parameterStart": "low",
-        "parameterEnd": "high",
-        "comment": "Based on channel 2 value: either microphone sensitivity or speed of automatic modes"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     },
     "Shutter / Strobe": {
@@ -631,39 +671,13 @@
       ]
     }
   },
-  "templateChannels": {
-    "Red Segment $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Segment $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Segment $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White Segment $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    }
-  },
   "modes": [
     {
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
         "Auto Mode",
-        "Auto Mode Intensity"
+        "Auto Mode Speed / Sound Sensitivity"
       ]
     },
     {
@@ -672,27 +686,27 @@
       "channels": [
         "Effect Selection",
         "Sound Mode Selection",
-        "Auto Mode Intensity"
+        "Sound Sensitivity"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
       ]
     },
     {
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Dimmer",
         "Shutter / Strobe"
       ]
@@ -703,10 +717,10 @@
       "channels": [
         "Mode Selection",
         "Color Presets",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Dimmer"
       ]
     },
@@ -719,10 +733,10 @@
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
-            "Red Segment $pixelKey",
-            "Green Segment $pixelKey",
-            "Blue Segment $pixelKey",
-            "White Segment $pixelKey"
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
           ]
         }
       ]
