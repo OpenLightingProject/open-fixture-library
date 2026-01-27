@@ -532,77 +532,99 @@
     "Gobo Wheel 1": {
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [0, 9],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open"
+          "slotNumber": 1
         },
         {
-          "dmxRange": [8, 15],
+          "dmxRange": [10, 19],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 2
         },
         {
-          "dmxRange": [16, 23],
+          "dmxRange": [20, 29],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 3
         },
         {
-          "dmxRange": [24, 31],
+          "dmxRange": [30, 39],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 4
         },
         {
-          "dmxRange": [32, 39],
+          "dmxRange": [40, 49],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 5
         },
         {
-          "dmxRange": [40, 47],
+          "dmxRange": [50, 59],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 6
         },
         {
-          "dmxRange": [48, 55],
+          "dmxRange": [60, 69],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 7
         },
         {
-          "dmxRange": [56, 63],
+          "dmxRange": [70, 79],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Exact gobo depends on the physical wheel"
+          "slotNumber": 8
         },
         {
-          "dmxRange": [64, 95],
+          "dmxRange": [80, 99],
           "type": "WheelShake",
-          "slotNumber": 1,
+          "slotNumber": 2,
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
         {
-          "dmxRange": [96, 127],
+          "dmxRange": [100, 119],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Gobo Flow"
-        },
-        {
-          "dmxRange": [128, 159],
-          "type": "WheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Gobo Flow"
-        },
-        {
-          "dmxRange": [160, 255],
-          "type": "NoFunction"
+          "speedEnd": "fast CW"
         }
       ]
     },
