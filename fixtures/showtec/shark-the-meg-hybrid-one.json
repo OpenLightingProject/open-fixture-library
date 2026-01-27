@@ -65,6 +65,14 @@
         {
           "type": "Color",
           "name": "Color 7"
+        },
+        {
+          "type": "Color",
+          "name": "Color 8"
+        },
+        {
+          "type": "Color",
+          "name": "Color 9"
         }
       ]
     },
@@ -399,70 +407,125 @@
     "Color Wheel (Half-Color Mode)": {
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [0, 4],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open / White"
+          "slotNumber": 1
         },
         {
-          "dmxRange": [8, 15],
+          "dmxRange": [5, 9],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
         },
         {
-          "dmxRange": [16, 23],
+          "dmxRange": [10, 14],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumber": 2
         },
         {
-          "dmxRange": [24, 31],
+          "dmxRange": [15, 19],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
-          "dmxRange": [32, 39],
+          "dmxRange": [20, 24],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumber": 3
         },
         {
-          "dmxRange": [40, 47],
+          "dmxRange": [25, 29],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
-          "dmxRange": [48, 55],
+          "dmxRange": [30, 34],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumber": 4
         },
         {
-          "dmxRange": [56, 63],
+          "dmxRange": [35, 39],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Exact color depends on the physical wheel"
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
-          "dmxRange": [64, 127],
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "WheelSlot",
+          "slotNumberStart": 9,
+          "slotNumberEnd": 10
+        },
+        {
+          "dmxRange": [90, 127],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [128, 189],
           "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "dmxRange": [128, 191],
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "WheelRotation",
-          "speedStart": "stop",
-          "speedEnd": "stop"
         }
       ]
     },
