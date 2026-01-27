@@ -838,13 +838,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Generic",
+          "type": "NoFunction",
           "comment": "Prism Off"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Generic",
-          "comment": "Prism On"
+          "type": "Prism",
+          "comment": "Prism On (3-facet)"
         },
         {
           "dmxRange": [128, 191],
