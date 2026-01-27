@@ -420,26 +420,39 @@
       ]
     },
     "Mode Selection": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 63],
           "type": "Effect",
-          "effectName": "RGBW color chasing"
+          "effectName": "RGBW color chasing",
+          "switchChannels": {
+            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
         },
         {
           "dmxRange": [64, 127],
           "type": "Effect",
-          "effectName": "Color Presets"
+          "effectName": "Color Presets",
+          "switchChannels": {
+            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
         },
         {
           "dmxRange": [128, 191],
           "type": "Effect",
-          "effectName": "Color Macros"
+          "effectName": "Color Macros",
+          "switchChannels": {
+            "Mode Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
         },
         {
           "dmxRange": [192, 255],
           "type": "Effect",
-          "effectName": "Music Controlled"
+          "effectName": "Music Controlled",
+          "switchChannels": {
+            "Mode Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -730,7 +743,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Sound Sensitivity",
+        "Mode Speed / Sound Sensitivity",
         "Red Master",
         "Green Master",
         "Blue Master",
@@ -747,7 +760,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Sound Sensitivity",
+        "Mode Speed / Sound Sensitivity",
         {
           "insert": "matrixChannels",
           "repeatFor": [
@@ -776,7 +789,7 @@
         "Color Presets",
         "Effect Selection",
         "Sound Mode Selection",
-        "Sound Sensitivity",
+        "Mode Speed / Sound Sensitivity",
         {
           "insert": "matrixChannels",
           "repeatFor": [
