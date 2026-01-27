@@ -142,6 +142,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -149,6 +150,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -393,25 +395,6 @@
           "soundControlled": true
         }
       ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "constant": true,
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "210deg"
-      }
     },
     "Color Wheel (Half-Color Mode)": {
       "capabilities": [
@@ -747,10 +730,10 @@
       "name": "16-Channel",
       "shortName": "16ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Shutter / Strobe",
@@ -769,10 +752,10 @@
       "name": "18-Channel",
       "shortName": "18ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Shutter / Strobe",
