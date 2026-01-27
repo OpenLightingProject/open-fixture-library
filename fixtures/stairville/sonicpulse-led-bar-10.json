@@ -36,14 +36,18 @@
     "pixelCount": [24, 1, 1],
     "pixelGroups": {
       "Master": "all",
-      "Segment 1": ["1", "2", "3"],
-      "Segment 2": ["4", "5", "6"],
-      "Segment 3": ["7", "8", "9"],
-      "Segment 4": ["10", "11", "12"],
-      "Segment 5": ["13", "14", "15"],
-      "Segment 6": ["16", "17", "18"],
-      "Segment 7": ["19", "20", "21"],
-      "Segment 8": ["22", "23", "24"]
+      "Segment 1/8": ["1", "2", "3"],
+      "Segment 2/8": ["4", "5", "6"],
+      "Segment 3/8": ["7", "8", "9"],
+      "Segment 4/8": ["10", "11", "12"],
+      "Segment 5/8": ["13", "14", "15"],
+      "Segment 6/8": ["16", "17", "18"],
+      "Segment 7/8": ["19", "20", "21"],
+      "Segment 8/8": ["22", "23", "24"],
+      "Segment 1/4": ["1", "2", "3", "4", "5", "6"],
+      "Segment 2/4": ["7", "8", "9", "10", "11", "12"],
+      "Segment 3/4": ["13", "14", "15", "16", "17", "18"],
+      "Segment 4/4": ["19", "20", "21", "22", "23", "24"]
     }
   },
   "templateChannels": {
@@ -747,19 +751,17 @@
         {
           "insert": "matrixChannels",
           "repeatFor": [
-            "Segment 1",
-            "Segment 2",
-            "Segment 3",
-            "Segment 4",
-            "Segment 5",
-            "Segment 6",
-            "Segment 7",
-            "Segment 8"
+            "Segment 1/4",
+            "Segment 2/4",
+            "Segment 3/4",
+            "Segment 4/4"
           ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
-            "Green $pixelKey"
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
           ]
         }
       ]
@@ -778,14 +780,14 @@
         {
           "insert": "matrixChannels",
           "repeatFor": [
-            "Segment 1",
-            "Segment 2",
-            "Segment 3",
-            "Segment 4",
-            "Segment 5",
-            "Segment 6",
-            "Segment 7",
-            "Segment 8"
+            "Segment 1/8",
+            "Segment 2/8",
+            "Segment 3/8",
+            "Segment 4/8",
+            "Segment 5/8",
+            "Segment 6/8",
+            "Segment 7/8",
+            "Segment 8/8"
           ],
           "channelOrder": "perPixel",
           "templateChannels": [
