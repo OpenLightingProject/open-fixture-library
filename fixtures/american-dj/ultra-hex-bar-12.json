@@ -28,16 +28,18 @@
     },
     "lens": {
       "degreesMinMax": [40, 40]
-    },
-    "matrixPixels": {
-      "dimensions": [60, 60, 0],
-      "spacing": [60, 0, 0]
     }
   },
   "matrix": {
-    "pixelCount": [6, 1, 1],
+    "pixelCount": [12, 1, 1],
     "pixelGroups": {
-      "Master": "all"
+      "Master": "all",
+      "1/6": ["1", "2"],
+      "2/6": ["3", "4"],
+      "3/6": ["5", "6"],
+      "4/6": ["7", "8"],
+      "5/6": ["9", "10"],
+      "6/6": ["11", "12"]
     }
   },
   "availableChannels": {
@@ -749,7 +751,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
+          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
