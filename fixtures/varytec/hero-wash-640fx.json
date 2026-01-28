@@ -30,6 +30,8 @@
   },
   "availableChannels": {
     "Pan": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -37,6 +39,8 @@
       }
     },
     "Tilt": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -529,24 +533,6 @@
         }
       ]
     },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "720deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -643,34 +629,6 @@
           "type": "NoFunction"
         }
       ]
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "1deg"
-      }
-    },
-    "Pan 4": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 4 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "720deg"
-      }
-    },
-    "Tilt 3": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"],
-      "constant": true,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
     },
     "Color Macros 2": {
       "name": "Color Macros",
@@ -1002,10 +960,10 @@
     {
       "name": "25ch",
       "channels": [
-        "Pan 4",
-        "Pan 4 fine",
-        "Tilt 3",
-        "Tilt 3 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Strobe",
