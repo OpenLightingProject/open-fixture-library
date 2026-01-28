@@ -8,7 +8,7 @@
     "createDate": "2025-12-01",
     "lastModifyDate": "2025-12-01"
   },
-  "comment": "It is not possible to define the pixels from your site, therefore: \"Error: Category 'Pixel Bar' invalid since no horizontally aligned matrix is defined.\"",
+
   "links": {
     "manual": [
       "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/8759/ADJ%20Ultra%20Hex%20Bar%2012%20-%20User%20Manual.pdf"
@@ -28,40 +28,50 @@
     },
     "lens": {
       "degreesMinMax": [40, 40]
+    },
+    "matrixPixels": {
+      "dimensions": [60, 60, 0],
+      "spacing": [60, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [6, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
     }
   },
   "availableChannels": {
-    "Red": {
+    "Red Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "White Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber": {
+    "Amber Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "UV": {
+    "UV Master": {
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
@@ -671,218 +681,40 @@
           "effectName": "Default dimmer setting"
         }
       ]
-    },
-    "Red, Pixel 1 & 2": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green, Pixel 1 & 2": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue, Pixel 1 & 2": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White, Pixel 1 & 2": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber, Pixel 1 & 2": {
+    "Amber $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "UV, Pixel 1 & 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV, Pixel 3 & 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV, Pixel 5 & 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV, Pixel 7 & 8": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV, Pixel 9 & 10": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red, Pixel 11 & 12": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green, Pixel 11 & 12": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue, Pixel 11 & 12": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White, Pixel 11 & 12": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber, Pixel 11 & 12": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV, Pixel 11 & 12": {
+    "UV $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
@@ -894,24 +726,24 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
       ]
     },
     {
       "name": "7-channel",
       "shortName": "7ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
         "Dimmer"
       ]
     },
@@ -919,12 +751,12 @@
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
         "Strobe",
         "Dimmer"
       ]
@@ -933,12 +765,12 @@
       "name": "12-channel",
       "shortName": "12ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
         "Color Macros",
         "Strobe",
         "Dimmer",
@@ -951,42 +783,19 @@
       "name": "36-channel",
       "shortName": "36ch",
       "channels": [
-        "Red, Pixel 1 & 2",
-        "Green, Pixel 1 & 2",
-        "Blue, Pixel 1 & 2",
-        "White, Pixel 1 & 2",
-        "Amber, Pixel 1 & 2",
-        "UV, Pixel 1 & 2",
-        "Red, Pixel 3 & 4",
-        "Green, Pixel 3 & 4",
-        "Blue, Pixel 3 & 4",
-        "White, Pixel 3 & 4",
-        "Amber, Pixel 3 & 4",
-        "UV, Pixel 3 & 4",
-        "Red, Pixel 5 & 6",
-        "Green, Pixel 5 & 6",
-        "Blue, Pixel 5 & 6",
-        "White, Pixel 5 & 6",
-        "Amber, Pixel 5 & 6",
-        "UV, Pixel 5 & 6",
-        "Red, Pixel 7 & 8",
-        "Green, Pixel 7 & 8",
-        "Blue, Pixel 7 & 8",
-        "White, Pixel 7 & 8",
-        "Amber, Pixel 7 & 8",
-        "UV, Pixel 7 & 8",
-        "Red, Pixel 9 & 10",
-        "Green, Pixel 9 & 10",
-        "Blue, Pixel 9 & 10",
-        "White, Pixel 9 & 10",
-        "Amber, Pixel 9 & 10",
-        "UV, Pixel 9 & 10",
-        "Red, Pixel 11 & 12",
-        "Green, Pixel 11 & 12",
-        "Blue, Pixel 11 & 12",
-        "White, Pixel 11 & 12",
-        "Amber, Pixel 11 & 12",
-        "UV, Pixel 11 & 12"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
       ]
     }
   ]
