@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "SonicPulse LED Bar 10",
-  "shortName": "ledbar10",
+  "name": "SonicPulse LED Bar 05",
+  "shortName": "ledbar05",
   "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": ["Leon Dietrich", "Flo Edelmann"],
-    "createDate": "2026-01-27",
+    "authors": ["Flo Edelmann"],
+    "createDate": "2026-01-28",
     "lastModifyDate": "2026-01-28"
   },
   "links": {
@@ -13,16 +13,16 @@
       "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/580867_c_580867_580868_v2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/de/stairville_sonicpulse_led_bar_10.htm"
+      "https://www.thomann.de/de/stairville_sonicpulse_led_bar_05.htm"
     ],
     "video": [
       "https://video1.thomann.de/vidiot/02591c1c/video_i11891p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
-    "dimensions": [1075, 165, 65],
-    "weight": 2.8,
-    "power": 31,
+    "dimensions": [572, 165, 65],
+    "weight": 1.4,
+    "power": 29,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED",
@@ -33,17 +33,13 @@
     }
   },
   "matrix": {
-    "pixelCount": [24, 1, 1],
+    "pixelCount": [12, 1, 1],
     "pixelGroups": {
       "Master": "all",
       "Segment 1": ["1", "2", "3"],
       "Segment 2": ["4", "5", "6"],
       "Segment 3": ["7", "8", "9"],
-      "Segment 4": ["10", "11", "12"],
-      "Segment 5": ["13", "14", "15"],
-      "Segment 6": ["16", "17", "18"],
-      "Segment 7": ["19", "20", "21"],
-      "Segment 8": ["22", "23", "24"]
+      "Segment 4": ["10", "11", "12"]
     }
   },
   "templateChannels": {
@@ -746,8 +742,8 @@
       ]
     },
     {
-      "name": "39-channel",
-      "shortName": "39ch",
+      "name": "23-channel",
+      "shortName": "23ch",
       "channels": [
         "Dimmer",
         "Shutter / Strobe",
@@ -762,11 +758,7 @@
             "Segment 1",
             "Segment 2",
             "Segment 3",
-            "Segment 4",
-            "Segment 5",
-            "Segment 6",
-            "Segment 7",
-            "Segment 8"
+            "Segment 4"
           ],
           "channelOrder": "perPixel",
           "templateChannels": [
