@@ -67,12 +67,12 @@
         {
           "dmxRange": [6, 10],
           "type": "ShutterStrobe",
-          "strobeEffect": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
-          "strobeEffect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
