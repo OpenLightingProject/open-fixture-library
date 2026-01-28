@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH 100W LED",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Urgent_2404"],
+    "createDate": "2024-08-15",
+    "lastModifyDate": "2024-08-15"
+  },
+  "links": {
+    "other": [
+      "https://www.youtube.com/watch?v=tFzh7sExOKw"
+    ]
+  },
+  "physical": {
+    "weight": 4,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Manual"
+        },
+        {
+          "type": "Gobo",
+          "name": "Automatic"
+        }
+      ]
+    },
+    "Prism": {
+      "slots": [
+        {
+          "type": "Prism",
+          "name": "Prism Off"
+        },
+        {
+          "type": "Prism",
+          "name": "Prism On"
+        },
+        {
+          "type": "Prism",
+          "name": "Prism Rotate"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "570deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "100Hz"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "automatic"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Automatic Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 159],
+          "type": "Effect",
+          "effectName": "Automode"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Soundmode"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Maintenance",
+          "comment": "Nothing"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Hold 5 Sek to Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11 CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Focus",
+        "Automatic Mode",
+        "Reset"
+      ]
+    }
+  ]
+}
