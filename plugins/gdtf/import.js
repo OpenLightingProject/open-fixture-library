@@ -3,9 +3,9 @@ import xml2js from 'xml2js';
 
 import importJson from '../../lib/import-json.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import { scaleDmxValue, scaleDmxRangeIndividually } from '../../lib/scale-dmx-values.js';
+import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-values.js';
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
-import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers.js';
+import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
 export const version = `0.2.0`;
 
@@ -298,7 +298,7 @@ export async function importFixtures(buffer, filename, authorName) {
       // if channel was already split, skip splitting it again, else
       // split channel such that followerChannelFunction is the only child
       if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-        const channelCopy = JSON.parse(JSON.stringify(followerChannel));
+        const channelCopy = structuredClone(followerChannel);
         channelCopy.$.Name += `_OflSplit`;
         relation.followerGdtfChannel = channelCopy;
 
@@ -670,11 +670,11 @@ export async function importFixtures(buffer, filename, authorName) {
         }
 
         // save the inherited result for later access
-        gdtfAttributes[attributeName] = Object.assign(
-          {},
-          getCapabilityTypeData(capabilityTypeData.inheritFrom),
-          capabilityTypeData,
-        );
+        gdtfAttributes[attributeName] = {
+
+          ...getCapabilityTypeData(capabilityTypeData.inheritFrom),
+          ...capabilityTypeData,
+        };
         delete gdtfAttributes[attributeName].inheritFrom;
 
         return gdtfAttributes[attributeName];

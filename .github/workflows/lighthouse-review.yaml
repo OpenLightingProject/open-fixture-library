@@ -15,11 +15,11 @@ jobs:
       ALLOW_SEARCH_INDEXING: allowed
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.2
+        uses: actions/checkout@v6.0.2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Node.js v20
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v6.2.0
         with:
           node-version: 20
           cache: 'npm'
@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@11.4.0
+        uses: treosh/lighthouse-ci-action@12.6.1
         with:
           urls: |
             http://localhost:3000/
