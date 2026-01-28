@@ -47,20 +47,23 @@
   },
   "modes": [
     {
-      "name": "1-Channel Dimm All",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Intensity All"
       ]
     },
     {
-      "name": "2-Channel Dimm Left Right",
+      "name": "2-channel Left Right",
+      "shortName": "2ch",
       "channels": [
         "Intensity Left",
         "Intensity Right"
       ]
     },
     {
-      "name": "5-Channel Dimm 5 Groups",
+      "name": "5-channel 5-Group",
+      "shortName": "5ch",
       "channels": [
         "Intensity Group 1",
         "Intensity Group 2",
@@ -70,7 +73,8 @@
       ]
     },
     {
-      "name": "10-Channel Dimm Single",
+      "name": "10-channel Single",
+      "shortName": "10ch",
       "channels": [
         {
           "insert": "matrixChannels",
