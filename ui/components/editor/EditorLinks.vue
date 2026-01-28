@@ -20,7 +20,7 @@
 
 <script>
 import { arrayProp, objectProp } from 'vue-ts-types';
-import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
+import { getEmptyLink } from '../../assets/scripts/editor-utilities.js';
 
 import EditorLink from './EditorLink.vue';
 
@@ -66,4 +66,3 @@ export default {
   },
 };
 </script>
-

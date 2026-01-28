@@ -123,9 +123,9 @@ header {
     margin: 0;
     font-size: 1em;
     line-height: 4.5em;
+    vertical-align: middle;
     color: inherit;
     text-decoration: none;
-    vertical-align: middle;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -133,8 +133,8 @@ header {
 
     &:active,
     &:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
 
     @include mobile-hover-emulation((
@@ -220,8 +220,8 @@ header {
 
     form,
     form div {
-      flex-basis: 0;
       flex-grow: 1;
+      flex-basis: 0;
     }
   }
 }

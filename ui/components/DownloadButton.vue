@@ -123,8 +123,8 @@ select {
 
     // down arrow
     &::before {
-      display: block;
       float: right;
+      display: block;
       width: 0;
       height: 0;
       margin: 0.8em 0 0 1ex;
@@ -159,8 +159,8 @@ select {
 
     & a:hover,
     & a:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
   }
 
