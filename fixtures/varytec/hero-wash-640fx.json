@@ -633,8 +633,9 @@
         },
         {
           "dmxRange": [190, 210],
-          "type": "Generic",
-          "comment": "Reset if transmitted for at least 10 seconds"
+          "type": "Maintenance",
+          "hold": "10s",
+          "comment": "Reset"
         },
         {
           "dmxRange": [211, 255],
