@@ -1,22 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "80w Mini Gobo Moving Head",
+  "name": "80W Mini Gobo Moving Head",
   "shortName": "Mini Gobo MH",
-  "categories": ["Color Changer", "Dimmer", "Effect", "Moving Head", "Strobe"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["xMGFamerPlex"],
-    "createDate": "2025-02-05",
-    "lastModifyDate": "2025-02-05"
+    "createDate": "2026-01-28",
+    "lastModifyDate": "2026-01-28"
   },
   "links": {
     "manual": [
       "https://m.media-amazon.com/images/I/91yl8pOcIML.pdf"
-    ],
-    "productPage": [
-      "https://www.tomshine.com/p-l1697eu.html"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=e8dZjDtsZp4"
     ]
   },
   "physical": {
@@ -32,9 +26,7 @@
     "Color Wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -70,47 +62,6 @@
           "type": "Color",
           "name": "Pink",
           "colors": ["#ff00aa"]
-        },
-        {
-          "type": "Color",
-          "name": "Red / White"
-        },
-        {
-          "type": "Color",
-          "name": "Green / Red"
-        },
-        {
-          "type": "Color",
-          "name": "Blue /  Green"
-        },
-        {
-          "type": "Color",
-          "name": "Yellow / Blue"
-        },
-        {
-          "type": "Color",
-          "name": "Orange / Yellow"
-        },
-        {
-          "type": "Color",
-          "name": "Cyan / Orange"
-        },
-        {
-          "type": "Color",
-          "name": "Pink / Cyan"
-        },
-        {
-          "type": "Color",
-          "name": "White / Pink"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "type": "Color"
         }
       ]
     },
@@ -146,56 +97,6 @@
         {
           "type": "Gobo",
           "name": "Gobo 7"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "type": "Gobo"
         }
       ]
     }
@@ -229,12 +130,22 @@
         "type": "Intensity"
       }
     },
-    "Strobe Speed": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "stop",
-        "speedEnd": "fast"
-      }
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "helpWanted": "At which DMX values is strobe disabled?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Color Wheel": {
       "capabilities": [
@@ -280,51 +191,43 @@
         },
         {
           "dmxRange": [64, 71],
-          "type": "ColorPreset",
-          "comment": "Red / White",
-          "colors": ["#ff0000", "#ffffff"]
+          "type": "WheelSlot",
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [72, 79],
-          "type": "ColorPreset",
-          "comment": "Green / Red",
-          "colors": ["#00ff00", "#ff0000"]
+          "type": "WheelSlot",
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [80, 87],
-          "type": "ColorPreset",
-          "comment": "Blue / Green",
-          "colors": ["#0000ff", "#00ff00"]
+          "type": "WheelSlot",
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [88, 95],
-          "type": "ColorPreset",
-          "comment": "Yellow / Blue",
-          "colors": ["#fff000", "#0000ff"]
+          "type": "WheelSlot",
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [96, 103],
-          "type": "ColorPreset",
-          "comment": "Orange / Yellow",
-          "colors": ["#ff8000", "#fff000"]
+          "type": "WheelSlot",
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [104, 111],
-          "type": "ColorPreset",
-          "comment": "Cyan / Orange",
-          "colors": ["#00fff0", "#ff8000"]
+          "type": "WheelSlot",
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [112, 119],
-          "type": "ColorPreset",
-          "comment": "Pink / Cyan",
-          "colors": ["#ff00aa", "#00fff0"]
+          "type": "WheelSlot",
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [120, 127],
-          "type": "ColorPreset",
-          "comment": "White / Pink",
-          "colors": ["#ffffff", "#ff00aa"]
+          "type": "WheelSlot",
+          "slotNumber": 8.5
         },
         {
           "dmxRange": [128, 191],
@@ -452,20 +355,19 @@
         }
       ]
     },
-    "Demo Presets with sound sensitivity": {
+    "Effect": {
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "ColorPreset",
-          "comment": "White",
-          "colors": ["#ffffff"]
+          "type": "NoFunction"
         },
         {
           "dmxRange": [128, 255],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Random moving with colors and gobos",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
-          "comment": "Starts random moving with Colors and Gobos"
+          "soundSensitivityEnd": "high"
         }
       ]
     },
@@ -478,7 +380,7 @@
         {
           "dmxRange": [255, 255],
           "type": "Maintenance",
-          "comment": "Starts self-calibration. If DMX channel is not reset, self-calibration starts again."
+          "comment": "Self-calibration"
         }
       ]
     }
@@ -486,6 +388,7 @@
   "modes": [
     {
       "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -493,10 +396,10 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
-        "Strobe Speed",
+        "Strobe",
         "Color Wheel",
         "Gobo Wheel",
-        "Demo Presets with sound sensitivity",
+        "Effect",
         "Self Calibration"
       ]
     }
