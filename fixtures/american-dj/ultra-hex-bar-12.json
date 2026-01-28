@@ -720,32 +720,32 @@
         {
           "dmxRange": [0, 20],
           "type": "Maintenance",
-          "effectName": "Standard"
+          "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
           "type": "Maintenance",
-          "effectName": "Stage"
+          "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
           "type": "Maintenance",
-          "effectName": "TV"
+          "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
           "type": "Maintenance",
-          "effectName": "Architectural"
+          "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
           "type": "Maintenance",
-          "effectName": "Theatre"
+          "comment": "Theatre"
         },
         {
           "dmxRange": [101, 255],
           "type": "Maintenance",
-          "effectName": "Default dimmer setting"
+          "comment": "Default dimmer setting"
         }
       ]
     }
