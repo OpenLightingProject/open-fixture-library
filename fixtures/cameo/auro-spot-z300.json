@@ -407,7 +407,8 @@
           "dmxRange": [193, 223],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "helpWanted": "Is it really slow…fast here and fast…slow for DMX values 225…255?"
         },
         {
           "dmxRange": [224, 224],
@@ -443,7 +444,8 @@
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "helpWanted": "Is it really slow…fast here and fast…slow for DMX values 193…255?"
         },
         {
           "dmxRange": [192, 192],
@@ -456,8 +458,8 @@
           "dmxRange": [193, 255],
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     },
@@ -549,7 +551,8 @@
           "dmxRange": [193, 223],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "helpWanted": "Is it really slow…fast here and fast…slow for DMX values 225…255?"
         },
         {
           "dmxRange": [224, 224],
@@ -560,8 +563,8 @@
         {
           "dmxRange": [225, 255],
           "type": "WheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     },
@@ -614,7 +617,8 @@
           "dmxRange": [128, 191],
           "type": "PrismRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "helpWanted": "Is it really slow…fast here and fast…slow for DMX values 193…255?"
         },
         {
           "dmxRange": [192, 192],
@@ -624,8 +628,8 @@
         {
           "dmxRange": [193, 255],
           "type": "PrismRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     },
