@@ -620,7 +620,11 @@
         "Strobe",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
+          "repeatFor": [
+            "Segment 1",
+            "Segment 2",
+            "Segment 3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
