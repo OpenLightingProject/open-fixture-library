@@ -28,6 +28,35 @@
       "type": "LED"
     }
   },
+  "matrix": {
+    "pixelCount": [3, 1, 1]
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "availableChannels": {
     "Pan": {
       "name": "Pan",
@@ -540,78 +569,6 @@
         "speedEnd": "slow"
       }
     },
-    "RedSegment1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "GreenSegment1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "BlueSegment1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "RedSegment2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "GreenSegment2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "BlueSegment2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "WhiteSegment1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "WhiteSegment2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "RedSegment3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "GreenSegment3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "BlueSegment3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "WhiteSegment3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Reset": {
       "capabilities": [
         {
@@ -967,18 +924,21 @@
         "Pan/Tilt Speed",
         "Dimmer",
         "Strobe",
-        "RedSegment1",
-        "GreenSegment1",
-        "BlueSegment1",
-        "WhiteSegment1",
-        "RedSegment2",
-        "GreenSegment2",
-        "BlueSegment2",
-        "WhiteSegment2",
-        "RedSegment3",
-        "GreenSegment3",
-        "BlueSegment3",
-        "WhiteSegment3",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Segment 1",
+            "Segment 2",
+            "Segment 3"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Zoom",
         "LensRotation",
         "Color Macros 2",
