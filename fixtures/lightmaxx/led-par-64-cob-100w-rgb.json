@@ -51,30 +51,6 @@
         "type": "Intensity"
       }
     },
-    "Special": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [1, 5],
-          "type": "Generic",
-          "comment": "Sound Control (7 Colors)"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "Generic",
-          "comment": "ON"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "stop",
-          "speedEnd": "fast",
-          "comment": "Strobe (increasing)"
-        }
-      ]
     "Sound / Strobe": {
       "capabilities": [
         {
