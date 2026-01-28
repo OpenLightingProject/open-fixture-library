@@ -1,0 +1,745 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SonicPulse LED Bar 05",
+  "shortName": "ledbar05",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2026-01-28",
+    "lastModifyDate": "2026-01-28"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/580867_c_580867_580868_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_sonicpulse_led_bar_05.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i11891p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [572, 165, 65],
+    "weight": 1.4,
+    "power": 29,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [9, 9]
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "Segment 1/4": ["1", "2", "3"],
+      "Segment 2/4": ["4", "5", "6"],
+      "Segment 3/4": ["7", "8", "9"],
+      "Segment 4/4": ["10", "11", "12"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Auto Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Sound Mode",
+          "switchChannels": {
+            "Effect Parameter": "Sound Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Automatic Mode",
+          "switchChannels": {
+            "Effect Parameter": "Auto Mode Speed"
+          }
+        }
+      ]
+    },
+    "Effect Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 25],
+          "type": "Effect",
+          "effectName": "Color Change Effect 1"
+        },
+        {
+          "dmxRange": [26, 35],
+          "type": "Effect",
+          "effectName": "Color Change Effect 2"
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "Effect",
+          "effectName": "Color Change Effect 3"
+        },
+        {
+          "dmxRange": [46, 55],
+          "type": "Effect",
+          "effectName": "Color Change Effect 4"
+        },
+        {
+          "dmxRange": [56, 65],
+          "type": "Effect",
+          "effectName": "Color Change Effect 5"
+        },
+        {
+          "dmxRange": [66, 75],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 1"
+        },
+        {
+          "dmxRange": [76, 85],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 2"
+        },
+        {
+          "dmxRange": [86, 95],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 3"
+        },
+        {
+          "dmxRange": [96, 105],
+          "type": "Effect",
+          "effectName": "Color Change Effect 6"
+        },
+        {
+          "dmxRange": [106, 115],
+          "type": "Effect",
+          "effectName": "Color Change Effect 7"
+        },
+        {
+          "dmxRange": [116, 125],
+          "type": "Effect",
+          "effectName": "Color Change Effect 8"
+        },
+        {
+          "dmxRange": [126, 135],
+          "type": "Effect",
+          "effectName": "Color Change Effect 9"
+        },
+        {
+          "dmxRange": [136, 145],
+          "type": "Effect",
+          "effectName": "Color Change Effect 10"
+        },
+        {
+          "dmxRange": [146, 155],
+          "type": "Effect",
+          "effectName": "Color Change Effect 11"
+        },
+        {
+          "dmxRange": [156, 165],
+          "type": "Effect",
+          "effectName": "Color Change Effect 12"
+        },
+        {
+          "dmxRange": [166, 175],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 4"
+        },
+        {
+          "dmxRange": [176, 185],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 5"
+        },
+        {
+          "dmxRange": [186, 195],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 6"
+        },
+        {
+          "dmxRange": [196, 205],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 7"
+        },
+        {
+          "dmxRange": [206, 215],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 8"
+        },
+        {
+          "dmxRange": [216, 225],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 9"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 10"
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Effect",
+          "effectName": "Color Transition Effect 11"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Sound Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 15],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [16, 25],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [26, 35],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "Effect",
+          "effectName": "Sound Mode 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [46, 55],
+          "type": "Effect",
+          "effectName": "Sound Mode 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [56, 65],
+          "type": "Effect",
+          "effectName": "Sound Mode 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [66, 75],
+          "type": "Effect",
+          "effectName": "Sound Mode 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [76, 85],
+          "type": "Effect",
+          "effectName": "Sound Mode 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [86, 95],
+          "type": "Effect",
+          "effectName": "Sound Mode 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [96, 105],
+          "type": "Effect",
+          "effectName": "Sound Mode 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [106, 115],
+          "type": "Effect",
+          "effectName": "Sound Mode 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [116, 125],
+          "type": "Effect",
+          "effectName": "Sound Mode 12",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [126, 135],
+          "type": "Effect",
+          "effectName": "Sound Mode 13",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [136, 145],
+          "type": "Effect",
+          "effectName": "Sound Mode 14",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [146, 155],
+          "type": "Effect",
+          "effectName": "Sound Mode 15",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [156, 165],
+          "type": "Effect",
+          "effectName": "Sound Mode 16",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [166, 175],
+          "type": "Effect",
+          "effectName": "Sound Mode 17",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [176, 185],
+          "type": "Effect",
+          "effectName": "Sound Mode 18",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [186, 195],
+          "type": "Effect",
+          "effectName": "Sound Mode 19",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [196, 205],
+          "type": "Effect",
+          "effectName": "Sound Mode 20",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [206, 215],
+          "type": "Effect",
+          "effectName": "Sound Mode 21",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 225],
+          "type": "Effect",
+          "effectName": "Sound Mode 22",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Effect",
+          "effectName": "Sound Mode 23",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Effect",
+          "effectName": "Sound Mode 24",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 25",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Auto Mode Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "RGBW color chasing",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Color Presets",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Color Macros",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Auto Mode Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Music Controlled",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 21],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "comment": "Orange Red",
+          "colors": ["#ff0e00"]
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "comment": "Red Orange",
+          "colors": ["#ff3200"]
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff7d00"]
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "comment": "Shining Gold",
+          "colors": ["#ffd200"]
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "ColorPreset",
+          "comment": "Green Yellow",
+          "colors": ["#c8ff00"]
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "ColorPreset",
+          "comment": "Lime",
+          "colors": ["#a0ff00"]
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "ColorPreset",
+          "comment": "Chartreuse",
+          "colors": ["#6eff00"]
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "ColorPreset",
+          "comment": "Laser Green",
+          "colors": ["#46ff00"]
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "ColorPreset",
+          "comment": "Lawn Green",
+          "colors": ["#00ff0a"]
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "ColorPreset",
+          "comment": "Bright Forest Green",
+          "colors": ["#00ff19"]
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "ColorPreset",
+          "comment": "Spring Green",
+          "colors": ["#00ff28"]
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "ColorPreset",
+          "comment": "Emerald",
+          "colors": ["#00ff46"]
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#00ff78"]
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "ColorPreset",
+          "comment": "Azure",
+          "colors": ["#0064ff"]
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "ColorPreset",
+          "comment": "Water Ocean Blue",
+          "colors": ["#1400ff"]
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "ColorPreset",
+          "comment": "Kingfisher Feathers Blue",
+          "colors": ["#3200ff"]
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "ColorPreset",
+          "comment": "Crystaline Purple",
+          "colors": ["#5000ff"]
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#8200ff"]
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "ColorPreset",
+          "comment": "Electric Purple Violet",
+          "colors": ["#b400ff"]
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "ColorPreset",
+          "comment": "Dragon Fruit Purple",
+          "colors": ["#e100ff"]
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "ColorPreset",
+          "comment": "Pink Magenta",
+          "colors": ["#ff00dc"]
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "ColorPreset",
+          "comment": "Rose",
+          "colors": ["#ff0046"]
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "ColorPreset",
+          "comment": "Morning Sun Red",
+          "colors": ["#ff0014"]
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "ColorPreset",
+          "comment": "Absolutely Red",
+          "colors": ["#ff0007"]
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "ColorPreset",
+          "comment": "Light Pink",
+          "colors": ["#ff9090"]
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "ColorPreset",
+          "comment": "Lighter Pink",
+          "colors": ["#ffc0c0"]
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#90ff90"]
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "ColorPreset",
+          "comment": "Lighter Green",
+          "colors": ["#c0ffc0"]
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#9090ff"]
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "ColorPreset",
+          "comment": "Lighter Blue",
+          "colors": ["#c0c0ff"]
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Cool White",
+          "colors": ["#eeeeff"]
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Auto Mode",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Effect Parameter"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Mode Selection",
+        "Color Presets",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Effect Speed / Sound Sensitivity",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    }
+  ]
+}
