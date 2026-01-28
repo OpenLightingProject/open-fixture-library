@@ -52,40 +52,41 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "LEDs off"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [11, 80],
-          "type": "Effect",
-          "effectName": "linear increasing brightness",
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [81, 140],
-          "type": "Effect",
-          "effectName": "linear decreasing brightness",
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [141, 200],
-          "type": "Effect",
-          "effectName": "Impulse",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [201, 250],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
           "speedStart": "0.5Hz",
           "speedEnd": "20Hz"
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
-          "comment": "LEDs activated"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
