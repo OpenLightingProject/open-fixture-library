@@ -75,6 +75,32 @@
           "comment": "Strobe (increasing)"
         }
       ]
+    "Sound / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "helpWanted": "Is the light on or off in this DMX range?"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Control (7 Colors)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "strobeEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "strobeEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -93,7 +119,7 @@
         "Green",
         "Blue",
         "Dimmer",
-        "Special"
+        "Sound / Strobe"
       ]
     }
   ]
