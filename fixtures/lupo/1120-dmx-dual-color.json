@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1120 DMX Dual Color",
+  "shortName": "Lupoled 1120",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Erik Winquist"],
+    "createDate": "2024-08-28",
+    "lastModifyDate": "2024-08-28"
+  },
+  "comment": "Discontinued. No longer mentioned on manufacturer's website.",
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1935665/Lupo-Lupoled-1120.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 260, 50],
+    "weight": 1.3,
+    "power": 38,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "5600K",
+        "colorTemperatureEnd": "3200K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
