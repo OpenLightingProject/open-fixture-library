@@ -486,8 +486,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Effect",
-          "effectName": "Off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 24],
@@ -592,7 +591,8 @@
         {
           "dmxRange": [234, 255],
           "type": "Effect",
-          "effectName": "Sound Active Programs"
+          "effectName": "Sound Active Programs",
+          "soundControlled": true
         }
       ]
     },
@@ -607,32 +607,32 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "Theatre"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Effect",
+          "type": "Maintenance",
           "effectName": "Default dimmer setting"
         }
       ]
