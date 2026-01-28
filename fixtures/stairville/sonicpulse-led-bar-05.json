@@ -36,10 +36,10 @@
     "pixelCount": [12, 1, 1],
     "pixelGroups": {
       "Master": "all",
-      "Segment 1/4": ["1", "2", "3"],
-      "Segment 2/4": ["4", "5", "6"],
-      "Segment 3/4": ["7", "8", "9"],
-      "Segment 4/4": ["10", "11", "12"]
+      "Segment 1": ["1", "2", "3"],
+      "Segment 2": ["4", "5", "6"],
+      "Segment 3": ["7", "8", "9"],
+      "Segment 4": ["10", "11", "12"]
     }
   },
   "templateChannels": {
@@ -739,6 +739,35 @@
         "Green Master",
         "Blue Master",
         "White Master"
+      ]
+    },
+    {
+      "name": "23-channel",
+      "shortName": "23ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Mode Selection",
+        "Color Presets",
+        "Effect Selection",
+        "Sound Mode Selection",
+        "Effect Speed / Sound Sensitivity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Segment 1",
+            "Segment 2",
+            "Segment 3",
+            "Segment 4"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
