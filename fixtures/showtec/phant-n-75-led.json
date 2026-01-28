@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "phantón 75 led",
+  "shortName": "14 channel phantón 75 led",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["logela"],
+    "createDate": "2024-08-26",
+    "lastModifyDate": "2024-08-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.showtec-lights.com/en/"
+    ],
+    "productPage": [
+      "https://www.showtec-lights.com/en/"
+    ],
+    "video": [
+      "https://www.showtec-lights.com/en/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        null,
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 20
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PHANTOM 14 channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation 2",
+        "Dimmer 2",
+        "Program Speed",
+        "Prism",
+        "Focus"
+      ]
+    }
+  ]
+}
