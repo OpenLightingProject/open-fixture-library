@@ -521,124 +521,198 @@
       ]
     },
     "Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [1, 24],
           "type": "Effect",
-          "effectName": "Program 1"
+          "effectName": "Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [25, 35],
           "type": "Effect",
-          "effectName": "Program 2"
+          "effectName": "Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [36, 46],
           "type": "Effect",
-          "effectName": "Program 3"
+          "effectName": "Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [47, 57],
           "type": "Effect",
-          "effectName": "Program 4"
+          "effectName": "Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [58, 68],
           "type": "Effect",
-          "effectName": "Program 5"
+          "effectName": "Program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [69, 79],
           "type": "Effect",
-          "effectName": "Program 6"
+          "effectName": "Program 6",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [80, 90],
           "type": "Effect",
-          "effectName": "Program 7"
+          "effectName": "Program 7",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [91, 101],
           "type": "Effect",
-          "effectName": "Program 8"
+          "effectName": "Program 8",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [102, 112],
           "type": "Effect",
-          "effectName": "Program 9"
+          "effectName": "Program 9",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [113, 123],
           "type": "Effect",
-          "effectName": "Program 10"
+          "effectName": "Program 10",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [124, 134],
           "type": "Effect",
-          "effectName": "Program 11"
+          "effectName": "Program 11",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [135, 145],
           "type": "Effect",
-          "effectName": "Program 12"
+          "effectName": "Program 12",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [146, 156],
           "type": "Effect",
-          "effectName": "Program 13"
+          "effectName": "Program 13",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [157, 167],
           "type": "Effect",
-          "effectName": "Program 14"
+          "effectName": "Program 14",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [168, 178],
           "type": "Effect",
-          "effectName": "Program 15"
+          "effectName": "Program 15",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [179, 189],
           "type": "Effect",
-          "effectName": "Program 16"
+          "effectName": "Program 16",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [190, 200],
           "type": "Effect",
-          "effectName": "Program 17"
+          "effectName": "Program 17",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [201, 211],
           "type": "Effect",
-          "effectName": "Program 18"
+          "effectName": "Program 18",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [212, 222],
           "type": "Effect",
-          "effectName": "Program 19"
+          "effectName": "Program 19",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [223, 233],
           "type": "Effect",
-          "effectName": "Program 20"
+          "effectName": "Program 20",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [234, 255],
           "type": "Effect",
           "effectName": "Sound Active Programs",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
-    "Program Speed / Sound Sensitivity": {
+    "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": "slow",
-        "comment": "Program Speed, slow to fast-OR  Sound Sensitivity, least to most sensitive"
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     },
     "Dimmer Mode": {
