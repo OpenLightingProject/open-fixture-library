@@ -3,9 +3,9 @@
   "name": "Inno Spot Pro",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Ken Harris"],
+    "authors": ["Ken Harris", "Chemin Rouge Evènements"],
     "createDate": "2022-03-19",
-    "lastModifyDate": "2022-03-19"
+    "lastModifyDate": "2026-01-28"
   },
   "links": {
     "manual": [
@@ -177,10 +177,58 @@
           "slotNumber": 9
         },
         {
-          "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Color Mixing",
-          "helpWanted": "How does this effect look?"
+          "dmxRange": [64, 70],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
+        },
+        {
+          "dmxRange": [71, 77],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
+        },
+        {
+          "dmxRange": [78, 84],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [85, 91],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [92, 99],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [106, 112],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [113, 119],
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumberStart": 9,
+          "slotNumberEnd": 1
         },
         {
           "dmxRange": [128, 189],
