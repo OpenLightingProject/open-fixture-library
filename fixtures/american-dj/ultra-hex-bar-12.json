@@ -52,55 +52,47 @@
         {
           "dmxRange": [0, 31],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Off"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LED On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobing, slow to fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LED On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe Pulse, slow to fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LED On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true,
-          "comment": "Random Strobing"
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
-          "type": "Intensity",
-          "brightness": "bright",
-          "comment": "LED On"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
