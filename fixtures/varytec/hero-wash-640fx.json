@@ -29,7 +29,19 @@
     }
   },
   "matrix": {
-    "pixelCount": [3, 1, 1]
+    "pixelNames": [
+      [
+        [null,  "1",  "2", null],
+        [ "6", null, null,  "3"],
+        [null,  "5",  "4", null]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Segment 1": ["1", "4"],
+      "Segment 2": ["2", "5"],
+      "Segment 3": ["3", "6"]
+    }
   },
   "templateChannels": {
     "Red $pixelKey": {
