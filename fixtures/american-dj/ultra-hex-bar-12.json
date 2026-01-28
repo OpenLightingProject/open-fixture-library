@@ -41,6 +41,44 @@
       "6/6": ["11", "12"]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
@@ -636,44 +674,6 @@
           "effectName": "Default dimmer setting"
         }
       ]
-    }
-  },
-  "templateChannels": {
-    "Red $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
     }
   },
   "modes": [
