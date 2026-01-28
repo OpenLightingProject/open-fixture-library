@@ -81,7 +81,7 @@
         }
       ]
     },
-    "Gobo Wheel": {
+    "Rotating Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -112,7 +112,7 @@
         }
       ]
     },
-    "Gobo Wheel 2": {
+    "Static Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -302,7 +302,8 @@
           "dmxRange": [193, 223],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "helpWanted": "Is it really slow…fast here and fast…slow for DMX values 225…255?"
         },
         {
           "dmxRange": [224, 224],
@@ -318,7 +319,7 @@
         }
       ]
     },
-    "Gobo Wheel": {
+    "Rotating Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -422,45 +423,45 @@
         }
       ]
     },
-    "Gobo Wheel Rotation": {
+    "Rotating Gobo": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "angle": "0deg"
         },
         {
           "dmxRange": [6, 127],
-          "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [128, 191],
-          "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 192],
-          "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "stop",
           "speedEnd": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
       ]
     },
-    "Gobo Wheel 2": {
+    "Static Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -651,117 +652,140 @@
         {
           "dmxRange": [6, 15],
           "type": "Maintenance",
-          "comment": "Blackout while moving on (hold 3s)"
+          "comment": "Blackout while moving on",
+          "hold": "3s"
         },
         {
           "dmxRange": [16, 25],
           "type": "Maintenance",
-          "comment": "Blackout while moving off (hold 5s)"
+          "comment": "Blackout while moving off",
+          "hold": "5s"
         },
         {
           "dmxRange": [26, 35],
           "type": "Maintenance",
-          "comment": "Invert Pan on (hold 3s)"
+          "comment": "Invert Pan on",
+          "hold": "3s"
         },
         {
           "dmxRange": [36, 45],
           "type": "Maintenance",
-          "comment": "Invert Pan off (hold 5s)"
+          "comment": "Invert Pan off",
+          "hold": "5s"
         },
         {
           "dmxRange": [46, 55],
           "type": "Maintenance",
-          "comment": "Invert Tilt on (hold 3s)"
+          "comment": "Invert Tilt on",
+          "hold": "3s"
         },
         {
           "dmxRange": [56, 65],
           "type": "Maintenance",
-          "comment": "Invert Tilt off (hold 5s)"
+          "comment": "Invert Tilt off",
+          "hold": "5s"
         },
         {
           "dmxRange": [66, 75],
           "type": "Maintenance",
-          "comment": "Display backlight on (hold 3s)"
+          "comment": "Display backlight on",
+          "hold": "3s"
         },
         {
           "dmxRange": [76, 85],
           "type": "Maintenance",
-          "comment": "Display backlight off (hold 5s)"
+          "comment": "Display backlight off",
+          "hold": "5s"
         },
         {
           "dmxRange": [86, 95],
           "type": "Maintenance",
-          "comment": "Dimmer Curve linear (hold 5s)"
+          "comment": "Dimmer Curve linear",
+          "hold": "5s"
         },
         {
           "dmxRange": [96, 105],
           "type": "Maintenance",
-          "comment": "Dimmer Curve exponential (hold 5s)"
+          "comment": "Dimmer Curve exponential",
+          "hold": "5s"
         },
         {
           "dmxRange": [106, 115],
           "type": "Maintenance",
-          "comment": "Dimmer Curve logarithmic (hold 5s)"
+          "comment": "Dimmer Curve logarithmic",
+          "hold": "5s"
         },
         {
           "dmxRange": [116, 125],
           "type": "Maintenance",
-          "comment": "Dimmer Curve S-Curve (hold 5s)"
+          "comment": "Dimmer Curve S-Curve",
+          "hold": "5s"
         },
         {
           "dmxRange": [126, 135],
           "type": "Maintenance",
-          "comment": "PWM frequency 800Hz (hold 5s)"
+          "comment": "PWM frequency 800Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [136, 145],
           "type": "Maintenance",
-          "comment": "PWM frequency 1200Hz (hold 5s)"
+          "comment": "PWM frequency 1200Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [146, 155],
           "type": "Maintenance",
-          "comment": "PWM frequency 2000Hz (hold 5s)"
+          "comment": "PWM frequency 2000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [156, 165],
           "type": "Maintenance",
-          "comment": "PWM frequency 3600Hz (hold 5s)"
+          "comment": "PWM frequency 3600Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [166, 175],
           "type": "Maintenance",
-          "comment": "PWM frequency 12kHz (hold 5s)"
+          "comment": "PWM frequency 12kHz",
+          "hold": "5s"
         },
         {
           "dmxRange": [176, 185],
           "type": "Maintenance",
-          "comment": "PWM frequency 25kHz (hold 5s)"
+          "comment": "PWM frequency 25kHz",
+          "hold": "5s"
         },
         {
           "dmxRange": [186, 195],
           "type": "Maintenance",
-          "comment": "Fan auto (hold 3s)"
+          "comment": "Fan auto",
+          "hold": "3s"
         },
         {
           "dmxRange": [196, 205],
           "type": "Maintenance",
-          "comment": "Fan silent (hold 3s)"
+          "comment": "Fan silent",
+          "hold": "3s"
         },
         {
           "dmxRange": [206, 215],
           "type": "Maintenance",
-          "comment": "Reset Pan / Tilt (hold 5s)"
+          "comment": "Reset Pan / Tilt",
+          "hold": "5s"
         },
         {
           "dmxRange": [216, 225],
           "type": "Maintenance",
-          "comment": "Reset head only (hold 5s)"
+          "comment": "Reset head only",
+          "hold": "5s"
         },
         {
           "dmxRange": [226, 235],
           "type": "Maintenance",
-          "comment": "Reset all functions (hold 5s)"
+          "comment": "Reset all functions",
+          "hold": "5s"
         },
         {
           "dmxRange": [236, 255],
@@ -883,9 +907,9 @@
         "Dimmer fine",
         "Strobe",
         "Color Wheel",
-        "Gobo Wheel",
-        "Gobo Wheel Rotation",
-        "Gobo Wheel 2",
+        "Rotating Gobo Wheel",
+        "Rotating Gobo",
+        "Static Gobo Wheel",
         "Zoom",
         "Focus",
         "Prism",
@@ -906,9 +930,9 @@
         "Dimmer fine",
         "Strobe",
         "Color Wheel",
-        "Gobo Wheel",
-        "Gobo Wheel Rotation",
-        "Gobo Wheel 2",
+        "Rotating Gobo Wheel",
+        "Rotating Gobo",
+        "Static Gobo Wheel",
         "Zoom",
         "Focus",
         "Prism",
