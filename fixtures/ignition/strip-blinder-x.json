@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Strip Blinder X",
-  "categories": ["Blinder"],
+  "categories": ["Blinder", "Pixel Bar"],
   "meta": {
     "authors": ["pitchbent"],
     "createDate": "2025-10-07",
@@ -25,68 +25,21 @@
       "type": "Halogen"
     }
   },
-  "availableChannels": {
-    "IntensityAll": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "IntensityLeft": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "IntensityRight": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity1": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity2": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity3": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity4": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity5": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity6": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity7": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity8": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity9": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Intensity10": {
+  "matrix": {
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "All": "all",
+      "Left": ["1", "2", "3", "4", "5"],
+      "Right": ["6", "7", "8", "9", "10"],
+      "Group 1": ["1", "2"],
+      "Group 2": ["3", "4"],
+      "Group 3": ["5", "6"],
+      "Group 4": ["7", "8"],
+      "Group 5": ["9", "10"]
+    }
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
       "capability": {
         "type": "Intensity"
       }
@@ -96,39 +49,37 @@
     {
       "name": "1-Channel Dimm All",
       "channels": [
-        "IntensityAll"
+        "Intensity All"
       ]
     },
     {
       "name": "2-Channel Dimm Left Right",
       "channels": [
-        "IntensityLeft",
-        "IntensityRight"
+        "Intensity Left",
+        "Intensity Right"
       ]
     },
     {
       "name": "5-Channel Dimm 5 Groups",
       "channels": [
-        "Intensity1",
-        "Intensity2",
-        "Intensity3",
-        "Intensity4",
-        "Intensity5"
+        "Intensity Group 1",
+        "Intensity Group 2",
+        "Intensity Group 3",
+        "Intensity Group 4",
+        "Intensity Group 5"
       ]
     },
     {
       "name": "10-Channel Dimm Single",
       "channels": [
-        "Intensity1",
-        "Intensity2",
-        "Intensity3",
-        "Intensity4",
-        "Intensity5",
-        "Intensity6",
-        "Intensity7",
-        "Intensity8",
-        "Intensity9",
-        "Intensity10"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey"
+          ]
+        }
       ]
     }
   ]
