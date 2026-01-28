@@ -23,20 +23,14 @@ export async function exportFixtures(fixtures, options) {
   const files = fixtures.map(fixture => {
     usedManufacturers.add(fixture.manufacturer.key);
 
-
-    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`;
-
-    jsonData.fixtureKey = fixture.key;
-    jsonData.manufacturerKey = fixture.manufacturer.key;
-    jsonData.oflURL = fixture.url;
-
-    return {
-      name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: fixtureJsonStringify(jsonData),
-      mimetype: `application/dragonframe-fixture`,
-      fixtures: [fixture],
-    };
+    try {
+      return getFixtureFile(fixture);
+    }
+    catch (error) {
+      throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+        cause: error,
+      });
+    }
   });
 
   const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
@@ -57,4 +51,40 @@ export async function exportFixtures(fixtures, options) {
   });
 
   return files;
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @returns {object} The generated fixture JSON file.
+ */
+function getFixtureFile(fixture) {
+  const jsonData = structuredClone(fixture.jsonObject);
+  jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`;
+
+  jsonData.fixtureKey = fixture.key;
+  jsonData.manufacturerKey = fixture.manufacturer.key;
+  jsonData.oflURL = fixture.url;
+
+  downgradePhysical(jsonData.physical);
+
+  for (const mode of jsonData.modes) {
+    downgradePhysical(mode.physical);
+  }
+
+  return {
+    name: `${fixture.manufacturer.key}/${fixture.key}.json`,
+    content: fixtureJsonStringify(jsonData),
+    mimetype: `application/dragonframe-fixture`,
+    fixtures: [fixture],
+  };
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
 }

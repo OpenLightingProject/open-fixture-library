@@ -4,9 +4,9 @@
   "shortName": "MartinAxiomHybrid",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["novasfronteiras.co"],
+    "authors": ["novasfronteiras.co", "Ryan Goodwin"],
     "createDate": "2017-08-07",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -21,6 +21,9 @@
     "dimensions": [414, 630, 399],
     "weight": 24.8,
     "power": 600,
+    "powerConnectors": {
+      "powerCON TRUE1": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "440 W short-arc discharge",

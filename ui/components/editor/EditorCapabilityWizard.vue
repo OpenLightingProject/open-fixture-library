@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wizard">
 
-    <span>Generate multiple capabilities with same range width. Occurences of '#' in text fields will be replaced by an increasing number.</span>
+    <span>Generate multiple capabilities with same range width. Occurrences of '#' in text fields will be replaced by an increasing number.</span>
 
     <section>
       <label>
@@ -44,7 +44,7 @@
     </section>
 
     <EditorCapabilityTypeData
-      v-model="wizard.templateCapability"
+      :capability="wizard.templateCapability"
       :channel="channel" />
 
     <table class="capabilities-table">
@@ -135,8 +135,7 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-  clone,
-} from "../../assets/scripts/editor-utils.js";
+} from "../../assets/scripts/editor-utilities.js";
 
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
@@ -163,6 +162,9 @@ export default {
     channel: objectProp().required,
     resolution: numberProp().required,
     wizard: objectProp().required,
+  },
+  emits: {
+    close: insertIndex => true,
   },
   computed: {
     capabilities() {
@@ -213,7 +215,7 @@ export default {
           this.wizard.start + ((index + 1) * this.wizard.width) - 1,
         ];
         capability.type = this.wizard.templateCapability.type;
-        capability.typeData = clone(this.wizard.templateCapability.typeData);
+        capability.typeData = structuredClone(this.wizard.templateCapability.typeData);
         replaceHashWithIndex(capability.typeData, index);
 
         capabilities.push(capability);
@@ -378,6 +380,6 @@ export default {
  * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {
-  return Object.assign({}, capability, { source });
+  return { ...capability, source };
 }
 </script>

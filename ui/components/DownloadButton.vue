@@ -45,7 +45,7 @@
   margin: 0 0 1em;
   text-align: center;
 
-  @media (min-width: 650px) {
+  @media (width >= 650px) {
     margin: 0;
   }
 
@@ -92,12 +92,12 @@ select {
   font-weight: 700;
   line-height: 1.4;
   color: theme-color(button-secondary-text);
+  appearance: none;
   cursor: pointer;
   background: theme-color(button-secondary-background);
   border-color: theme-color(button-secondary-border);
   border-radius: 2px;
   transition: 0.1s background-color;
-  appearance: none;
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
@@ -123,8 +123,8 @@ select {
 
     // down arrow
     &::before {
-      display: block;
       float: right;
+      display: block;
       width: 0;
       height: 0;
       margin: 0.8em 0 0 1ex;
@@ -159,8 +159,8 @@ select {
 
     & a:hover,
     & a:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
   }
 

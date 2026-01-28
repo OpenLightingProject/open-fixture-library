@@ -51,16 +51,19 @@
       <template v-if="channel.pixelKey !== null && !(channel instanceof SwitchingChannel)">
         <LabeledValue
           v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)"
+          key="pixel-group"
           :value="`${channel.pixelKey}`"
           name="channel-pixel-group"
           label="Pixel group" />
 
         <template v-else>
           <LabeledValue
+            key="pixel"
             :value="`${channel.pixelKey}`"
             name="channel-pixel-key"
             label="Pixel" />
           <LabeledValue
+            key="pixel-position"
             name="channel-pixel-position"
             label="Pixel position">
             ({{ fixture.matrix.pixelKeyPositions[channel.pixelKey][0] }},
@@ -74,6 +77,7 @@
       <template v-if="(channel instanceof CoarseChannel)">
         <LabeledValue
           v-if="resolutionInMode > CoarseChannel.RESOLUTION_8BIT"
+          key="fine-channels"
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
@@ -83,36 +87,42 @@
 
         <LabeledValue
           v-if="channel.hasDefaultValue"
+          key="default-value"
           :value="`${channel.getDefaultValueWithResolution(resolutionInMode)}`"
           name="channel-defaultValue"
           label="Default DMX value" />
 
         <LabeledValue
           v-if="channel.hasHighlightValue"
+          key="highlight-value"
           :value="`${channel.getHighlightValueWithResolution(resolutionInMode)}`"
           name="channel-highlightValue"
           label="Highlight DMX value" />
 
         <LabeledValue
           v-if="channel.isInverted"
+          key="is-inverted"
           name="channel-isInverted"
           label="Is inverted?"
           value="Yes" />
 
         <LabeledValue
           v-if="channel.isConstant"
+          key="is-constant"
           name="channel-isConstant"
           label="Is constant?"
           value="Yes" />
 
         <LabeledValue
           v-if="channel.canCrossfade"
+          key="can-crossfade"
           name="channel-canCrossfade"
           label="Can crossfade?"
           value="Yes" />
 
         <LabeledValue
           v-if="channel.precedence !== `LTP`"
+          key="precedence"
           :value="channel.precedence"
           name="channel-precedence"
           label="Precedence" />
@@ -165,6 +175,9 @@ export default {
     channel: instanceOfProp(AbstractChannel).required,
     mode: instanceOfProp(Mode).required,
     appendToHeading: stringProp().optional,
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     return {

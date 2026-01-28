@@ -21,7 +21,6 @@ app.use(express.json({ limit: `50mb` }));
 
 const corsWhitelist = [
   /[./]open-fixture-library\.org(?::\d+|)$/,
-  /[./]open-fixture-library-pr-\d+\.herokuapp\.com$/,
   /\/localhost(?::\d+|)$/,
 ];
 
