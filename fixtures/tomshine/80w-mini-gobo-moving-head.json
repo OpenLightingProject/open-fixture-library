@@ -475,69 +475,59 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Control light is off, the light is off"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Control the light strobe speed, from fast to slow"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [132, 139],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Control light quickly closed, slowly open"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [182, 189],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "The control light turns on quickly, turns off slowly"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [232, 239],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true,
-          "comment": "Control light random stroboscopic"
+          "randomTiming": true
         },
         {
           "dmxRange": [248, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         }
       ]
     }
