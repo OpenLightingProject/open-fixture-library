@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ROCKWEDGE",
+  "categories": ["Other", "Blinder", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Jerm"],
+    "createDate": "2026-01-29",
+    "lastModifyDate": "2026-01-29"
+  },
+  "comment": "Par light. Wireless. Battery powered.",
+  "links": {
+    "manual": [
+      "https://support.rockvilleaudio.com/hc/en-us/articles/45148841107995-ROCKWEDGE-LED-Owner-s-Manual"
+    ],
+    "productPage": [
+      "https://rockvilleaudio.com/products/rockwedge-led?srsltid=AfmBOorvBNKpG7AqipVMnWJiU_AoxOysfLViiyeKyrOcGjOYqTu5Uajb"
+    ],
+    "video": [
+      "https://rockvilleaudio.com/products/rockwedge-led?srsltid=AfmBOorvBNKpG7AqipVMnWJiU_AoxOysfLViiyeKyrOcGjOYqTu5Uajb"
+    ]
+  },
+  "physical": {
+    "dimensions": [4.45, 4.45, 7.2],
+    "weight": 4.4,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Purple": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Strobe"
+      }
+    },
+    "Effects": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color and Speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX (6 Channel)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Purple"
+      ]
+    },
+    {
+      "name": "DMX (10 Channel)",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Purple",
+        "Strobe",
+        "Effects",
+        "Color and Speed"
+      ]
+    }
+  ]
+}
