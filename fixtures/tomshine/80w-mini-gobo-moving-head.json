@@ -396,7 +396,7 @@
         {
           "dmxRange": [70, 79],
           "type": "Maintenance",
-          "comment": "The light is shut off when the X/Y axis is rotated"
+          "comment": "Blackout during Pan/Tilt moving"
         },
         {
           "dmxRange": [80, 89],
@@ -405,7 +405,7 @@
         {
           "dmxRange": [90, 99],
           "type": "Maintenance",
-          "comment": "Lights turn off then the color wheel is turned"
+          "comment": "Blackout during Color Wheel movement"
         },
         {
           "dmxRange": [100, 109],
@@ -414,7 +414,7 @@
         {
           "dmxRange": [110, 119],
           "type": "Maintenance",
-          "comment": "The light shut off when the gobo is turned"
+          "comment": "Blackout during Gobo Wheel movement"
         },
         {
           "dmxRange": [120, 199],
