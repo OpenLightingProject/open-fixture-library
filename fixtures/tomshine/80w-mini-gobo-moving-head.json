@@ -436,37 +436,37 @@
         }
       ]
     },
-    "Effects": {
+    "Dimmer Curve": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Effect",
-          "effectName": "Standard lighting effects"
+          "type": "Maintenance",
+          "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Effect",
-          "effectName": "Stage lighting effects"
+          "type": "Maintenance",
+          "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Effect",
-          "effectName": "TV lighting effects"
+          "type": "Maintenance",
+          "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Effect",
-          "effectName": "Architectural lighting effects"
+          "type": "Maintenance",
+          "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Effect",
-          "effectName": "Theater lighting effects"
+          "type": "Maintenance",
+          "comment": "Theater"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Effect",
-          "effectName": "Default standard lamp effect"
+          "type": "Maintenance",
+          "comment": "Default"
         }
       ]
     },
@@ -572,7 +572,7 @@
         "Dimmer",
         "Pan/Tilt Speed",
         "Function",
-        "Effects"
+        "Dimmer Curve"
       ]
     },
     {
@@ -589,7 +589,7 @@
         "Dimmer",
         "Pan/Tilt Speed",
         "Function",
-        "Effects"
+        "Dimmer Curve"
       ]
     }
   ]
