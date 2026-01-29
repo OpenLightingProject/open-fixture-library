@@ -374,7 +374,7 @@
         }
       ]
     },
-    "Self Calibration": {
+    "Reset": {
       "capabilities": [
         {
           "dmxRange": [0, 254],
@@ -383,7 +383,7 @@
         {
           "dmxRange": [255, 255],
           "type": "Maintenance",
-          "comment": "Self-calibration"
+          "comment": "Reset"
         }
       ]
     }
@@ -403,7 +403,7 @@
         "Color Wheel",
         "Gobo Wheel",
         "Sound Mode",
-        "Self Calibration"
+        "Reset"
       ]
     }
   ]
