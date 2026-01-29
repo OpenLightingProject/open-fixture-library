@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hero Wash 640FX",
   "shortName": "Hero Wash 640FX",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Max Kaussow", "Leon Dietrich", "Flo Edelmann"],
     "createDate": "2023-10-07",
-    "lastModifyDate": "2023-10-07"
+    "lastModifyDate": "2026-01-29"
   },
   "links": {
     "manual": [
@@ -71,7 +71,6 @@
   },
   "availableChannels": {
     "Pan": {
-      "name": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
@@ -80,7 +79,6 @@
       }
     },
     "Tilt": {
-      "name": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
@@ -199,42 +197,42 @@
         {
           "dmxRange": [33, 58],
           "type": "Effect",
-          "effectName": "Auto Programm 2"
+          "effectName": "Auto Program 2"
         },
         {
           "dmxRange": [59, 84],
           "type": "Effect",
-          "effectName": "Auto Programm 3"
+          "effectName": "Auto Program 3"
         },
         {
           "dmxRange": [85, 110],
           "type": "Effect",
-          "effectName": "Automatic Programm 4"
+          "effectName": "Automatic Program 4"
         },
         {
           "dmxRange": [111, 136],
           "type": "Effect",
-          "effectName": "Automatic Programm 5"
+          "effectName": "Automatic Program 5"
         },
         {
           "dmxRange": [137, 162],
           "type": "Effect",
-          "effectName": "Automatic Programm 6"
+          "effectName": "Automatic Program 6"
         },
         {
           "dmxRange": [163, 188],
           "type": "Effect",
-          "effectName": "Automatic Programm 7"
+          "effectName": "Automatic Program 7"
         },
         {
           "dmxRange": [189, 214],
           "type": "Effect",
-          "effectName": "Automatic Programm 8"
+          "effectName": "Automatic Program 8"
         },
         {
           "dmxRange": [215, 240],
           "type": "Effect",
-          "effectName": "Automatic Programm 9"
+          "effectName": "Automatic Program 9"
         },
         {
           "dmxRange": [241, 255],
@@ -590,7 +588,7 @@
         "Blue Master",
         "White Master",
         "Zoom",
-        "Lense Rotation",
+        "Lens Rotation",
         "Color Macros",
         "Automatic Zoom",
         "Pan/Tilt Automatics"
