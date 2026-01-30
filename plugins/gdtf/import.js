@@ -476,10 +476,7 @@ export async function importFixtures(buffer, filename, authorName) {
       channel.highlightValue = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannel.$.Highlight);
     }
 
-    let capabilities = getCapabilities();
-
-    // Simplify Intensity/ColorIntensity channels with identical brightness ranges
-    capabilities = simplifyIntensityCapabilities(capabilities);
+    const capabilities = getCapabilities();
 
     if (capabilities.length === 1) {
       channel.capability = capabilities[0];
@@ -587,7 +584,11 @@ export async function importFixtures(buffer, filename, authorName) {
         });
       });
 
-      return gdtfCapabilities.map((gdtfCapability, index) => {
+      // Simplify Intensity/ColorIntensity capabilities at the GDTF level
+      // before mapping to OFL capabilities
+      const simplifiedGdtfCapabilities = simplifyGdtfIntensityCapabilities(gdtfCapabilities);
+
+      return simplifiedGdtfCapabilities.map((gdtfCapability, index) => {
         const capability = {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)],
         };
@@ -637,15 +638,15 @@ export async function importFixtures(buffer, filename, authorName) {
        * @returns {[number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
-        const dmxFrom = gdtfCapabilities[index]._dmxFrom;
+        const dmxFrom = simplifiedGdtfCapabilities[index]._dmxFrom;
 
-        if (index === gdtfCapabilities.length - 1) {
+        if (index === simplifiedGdtfCapabilities.length - 1) {
           // last capability
           const resolution = dmxFrom[1];
           return [Math.pow(256, resolution) - 1, resolution];
         }
 
-        const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+        const [nextDmxFromValue, resolution] = simplifiedGdtfCapabilities[index + 1]._dmxFrom;
         return [nextDmxFromValue - 1, resolution];
       }
 
@@ -746,102 +747,73 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return gdtfUnits[physicalEntity];
       }
-    }
 
-    /**
-     * Simplifies Intensity/ColorIntensity capabilities that all have the same
-     * brightness range (0% to 100%). If all capabilities meet the criteria,
-     * they are merged into a single capability without brightness properties.
-     * Comments are intentionally not preserved during simplification.
-     * @param {object[]} capabilitiesParameter Array of OFL capability objects.
-     * @returns {object[]} Simplified array of capabilities.
-     */
-    function simplifyIntensityCapabilities(capabilitiesParameter) {
-      // Check if this is a candidate for simplification:
-      // 1. Multiple contiguous capabilities exist
-      // 2. All capabilities have the same type (all Intensity or all ColorIntensity)
-      // 3. All capabilities have brightnessStart: "0%" and brightnessEnd: "100%"
-      //    (or don't have brightness properties at all)
-      // 4. For ColorIntensity, all must have the same color
+      /**
+       * Simplifies GDTF ChannelSet arrays where all sets represent Intensity/ColorIntensity
+       * with identical physical brightness ranges (0 to 1). If all ChannelSets meet the criteria,
+       * they are merged into a single ChannelSet spanning the full DMX range.
+       * Comments are intentionally not preserved during simplification.
+       * @param {object[]} gdtfCapabilitiesParameter Array of GDTF ChannelSet objects.
+       * @returns {object[]} Simplified array of GDTF ChannelSets.
+       */
+      function simplifyGdtfIntensityCapabilities(gdtfCapabilitiesParameter) {
+        // Check if this is a candidate for simplification:
+        // 1. Multiple capabilities exist
+        // 2. All capabilities have the same GDTF attribute (Dimmer or ColorAdd_*)
+        // 3. All capabilities have PhysicalFrom: 0 and PhysicalTo: 1
+        
+        if (gdtfCapabilitiesParameter.length <= 1) {
+          return gdtfCapabilitiesParameter;
+        }
 
-      if (capabilitiesParameter.length <= 1) {
-        return capabilitiesParameter;
-      }
+        const firstAttribute = gdtfCapabilitiesParameter[0]._channelFunction._attribute.$.Name;
 
-      const firstType = capabilitiesParameter[0].type;
-
-      // Check if all capabilities have the same type (all Intensity or all ColorIntensity)
-      const allSameType = capabilitiesParameter.every(
-        capability => capability.type === firstType,
-      );
-
-      if (!allSameType || (firstType !== `Intensity` && firstType !== `ColorIntensity`)) {
-        return capabilitiesParameter;
-      }
-
-      // For ColorIntensity, check if all have the same color
-      if (firstType === `ColorIntensity`) {
-        const firstColor = capabilitiesParameter[0].color;
-        const allSameColor = capabilitiesParameter.every(
-          capability => capability.color === firstColor,
+        // Check if all capabilities have the same GDTF attribute
+        const allSameAttribute = gdtfCapabilitiesParameter.every(
+          gdtfCapability => gdtfCapability._channelFunction._attribute.$.Name === firstAttribute,
         );
 
-        if (!allSameColor) {
-          return capabilitiesParameter;
-        }
-      }
-
-      // Check if capabilities have contiguous DMX ranges
-      for (let index = 0; index < capabilitiesParameter.length - 1; index++) {
-        const currentEnd = capabilitiesParameter[index].dmxRange[1];
-        const nextStart = capabilitiesParameter[index + 1].dmxRange[0];
-
-        // DMX ranges should be contiguous (next starts where current ends + 1)
-        if (nextStart !== currentEnd + 1) {
-          return capabilitiesParameter;
-        }
-      }
-
-      // Check if all capabilities have the same brightness range (0% to 100%)
-      // or no brightness properties at all
-      const allHaveSameBrightness = capabilitiesParameter.every(capability => {
-        const hasBrightnessProperties = `brightnessStart` in capability || `brightnessEnd` in capability || `brightness` in capability;
-
-        if (!hasBrightnessProperties) {
-          // No brightness properties is OK
-          return true;
+        if (!allSameAttribute) {
+          return gdtfCapabilitiesParameter;
         }
 
-        // Handle single brightness property case
-        if (`brightness` in capability && !(`brightnessStart` in capability)) {
-          // Single brightness property indicates a fixed value, not a range
-          // These should not be simplified
-          return false;
+        // Check if the attribute is Dimmer (Intensity) or ColorAdd_* (ColorIntensity)
+        const isDimmer = firstAttribute === `Dimmer`;
+        const isColorAdd = firstAttribute.startsWith(`ColorAdd_`);
+
+        if (!isDimmer && !isColorAdd) {
+          return gdtfCapabilitiesParameter;
         }
 
-        // If brightness range properties exist, they must be 0% to 100%
-        return capability.brightnessStart === `0%` && capability.brightnessEnd === `100%`;
-      });
+        // Check if all capabilities have PhysicalFrom: 0 and PhysicalTo: 1
+        const allHaveSameBrightness = gdtfCapabilitiesParameter.every(gdtfCapability => {
+          return gdtfCapability._physicalFrom === 0 && gdtfCapability._physicalTo === 1;
+        });
 
-      if (!allHaveSameBrightness) {
-        return capabilitiesParameter;
+        if (!allHaveSameBrightness) {
+          return gdtfCapabilitiesParameter;
+        }
+
+        // All checks passed - simplify to a single GDTF ChannelSet
+        // Create a merged ChannelSet that spans the entire range
+        const firstCapability = gdtfCapabilitiesParameter[0];
+        const simplifiedGdtfCapability = {
+          $: {
+            DMXFrom: firstCapability.$.DMXFrom,
+            PhysicalFrom: 0,
+            PhysicalTo: 1,
+            Name: ``, // Remove comment
+          },
+          _logicalChannel: firstCapability._logicalChannel,
+          _channelFunction: firstCapability._channelFunction,
+          _fixture: firstCapability._fixture,
+          _dmxFrom: firstCapability._dmxFrom,
+          _physicalFrom: 0,
+          _physicalTo: 1,
+        };
+
+        return [simplifiedGdtfCapability];
       }
-
-      // All checks passed - simplify to a single capability
-      const simplifiedCapability = {
-        dmxRange: [capabilitiesParameter[0].dmxRange[0], capabilitiesParameter.at(-1).dmxRange[1]],
-        type: firstType,
-      };
-
-      // Preserve color property for ColorIntensity
-      if (firstType === `ColorIntensity`) {
-        simplifiedCapability.color = capabilitiesParameter[0].color;
-      }
-
-      // brightnessStart/End are intentionally omitted as 0% to 100%
-      // is the default and can be left implicit
-
-      return [simplifiedCapability];
     }
 
     /**
