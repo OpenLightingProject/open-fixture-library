@@ -1033,6 +1033,24 @@ export const capabilityPresets = {
     isApplicable: capability => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number > capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === `big` && capability.parameter[1].keyword === `small`),
     importCapability: capabilityData => importHelpers.getBeamAngleCap(capabilityData, false),
   },
+
+
+  // maintenance / reset capabilities
+
+  ResetPanTilt: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan\s*\/?\/?\s*tilt/i.test(capability.comment),
+    importCapability: () => ({
+      type: `Maintenance`,
+      comment: `Reset Pan/Tilt`,
+    }),
+  },
+  ResetAll: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*all/i.test(capability.comment),
+    importCapability: () => ({
+      type: `Maintenance`,
+      comment: `Reset all`,
+    }),
+  },
 };
 
 /**
