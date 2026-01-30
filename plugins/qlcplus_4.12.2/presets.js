@@ -1047,79 +1047,79 @@ export const capabilityPresets = {
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPan: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment) && !/\btilt\b/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment) && !/\bpan\b/i.test(capability.comment),
-    importCapability: importHelpers.getMaintenanceCap,
-  },
-  ResetMotors: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*motors?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetGobo: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*gobos?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bgobos?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetColor: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*colou?rs?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcolou?rs?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCMY: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*cmy/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcmy\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCTO: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*cto/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcto\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetEffects: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*effects?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\beffects?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPrism: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*prisms?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bprisms?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetBlades: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*blades?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bblades?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetIris: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*iris/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\biris\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetFrost: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*frost/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bfrost\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetZoom: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*zoom/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bzoom\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetMotors: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bmotors?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetAll: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   LampOn: {
-    isApplicable: capability => capability.type === `Maintenance` && /lamp\s*on/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   LampOff: {
-    isApplicable: capability => capability.type === `Maintenance` && /lamp\s*off/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOn: {
-    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*on/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOff: {
-    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*off/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeAutomatic: {
-    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*auto(?:matic)?/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bauto(?matic)?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
 };
