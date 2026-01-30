@@ -1043,15 +1043,15 @@ export const capabilityPresets = {
   // maintenance / reset capabilities
 
   ResetPanTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /(pan[\s\/]*(?:and|&|\+|\/)?[\s\/]*tilt.*reset|reset.*pan[\s\/]*(?:and|&|\+|\/)?[\s\/]*tilt)/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPan: {
-    isApplicable: capability => capability.type === `Maintenance` && !/(pan[\s\/]*(?:and|&|\+|\/)?[\s\/]*tilt|tilt[\s\/]*(?:and|&|\+|\/)?[\s\/]*pan)/i.test(capability.comment) && /(\bpan.*reset|reset.*\bpan\b)/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment) && !/\btilt\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && !/(pan[\s\/]*(?:and|&|\+|\/)?[\s\/]*tilt|tilt[\s\/]*(?:and|&|\+|\/)?[\s\/]*pan)/i.test(capability.comment) && /(\btilt.*reset|reset.*\btilt\b)/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment) && !/\bpan\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetMotors: {
