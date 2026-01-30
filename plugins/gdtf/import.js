@@ -476,7 +476,10 @@ export async function importFixtures(buffer, filename, authorName) {
       channel.highlightValue = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannel.$.Highlight);
     }
 
-    const capabilities = getCapabilities();
+    let capabilities = getCapabilities();
+
+    // Simplify Intensity/ColorIntensity channels with identical brightness ranges
+    capabilities = simplifyIntensityCapabilities(capabilities);
 
     if (capabilities.length === 1) {
       channel.capability = capabilities[0];
@@ -743,6 +746,69 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return gdtfUnits[physicalEntity];
       }
+    }
+
+    /**
+     * Simplifies Intensity/ColorIntensity capabilities that all have the same
+     * brightness range (0% to 100%). If all capabilities meet this criteria,
+     * they are merged into a single capability without brightness properties.
+     * @param {object[]} capabilitiesParameter Array of OFL capability objects.
+     * @returns {object[]} Simplified array of capabilities.
+     */
+    function simplifyIntensityCapabilities(capabilitiesParameter) {
+      // Check if this is a candidate for simplification:
+      // 1. Multiple capabilities exist
+      // 2. All capabilities are either Intensity or ColorIntensity
+      // 3. All capabilities have brightnessStart: "0%" and brightnessEnd: "100%"
+      //    (or don't have brightness properties at all)
+
+      if (capabilitiesParameter.length <= 1) {
+        return capabilitiesParameter;
+      }
+
+      // Check if all capabilities are Intensity or ColorIntensity types
+      const isIntensityType = capabilitiesParameter.every(
+        capability => capability.type === `Intensity` || capability.type === `ColorIntensity`,
+      );
+
+      if (!isIntensityType) {
+        return capabilitiesParameter;
+      }
+
+      // Check if all capabilities have the same brightness range (0% to 100%)
+      // or no brightness properties at all
+      const allHaveSameBrightness = capabilitiesParameter.every(capability => {
+        const hasBrightnessProperties = `brightnessStart` in capability || `brightnessEnd` in capability || `brightness` in capability;
+
+        if (!hasBrightnessProperties) {
+          // No brightness properties is OK
+          return true;
+        }
+
+        // If brightness properties exist, they must be 0% to 100%
+        return capability.brightnessStart === `0%` && capability.brightnessEnd === `100%`;
+      });
+
+      if (!allHaveSameBrightness) {
+        return capabilitiesParameter;
+      }
+
+      // All checks passed - simplify to a single capability
+      // Use the first capability as the base and merge comments if present
+      const simplifiedCapability = {
+        dmxRange: [capabilitiesParameter[0].dmxRange[0], capabilitiesParameter.at(-1).dmxRange[1]],
+        type: capabilitiesParameter[0].type,
+      };
+
+      // Preserve color property if it exists (for ColorIntensity)
+      if (`color` in capabilitiesParameter[0]) {
+        simplifiedCapability.color = capabilitiesParameter[0].color;
+      }
+
+      // Remove brightnessStart/End as they would be 0% to 100%
+      // which is the default and can be omitted
+
+      return [simplifiedCapability];
     }
 
     /**
