@@ -593,7 +593,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
             // Check if start and end values are equal when using start/end properties
             if (`${property}Start` in capability.jsonObject && startEntity.equals(endEntity)) {
-              result.warnings.push(`${errorPrefix} uses ${property}Start and ${property}End with equal values (${startEntity}). Consider using the single property '${property}: "${startEntity}"' instead.`);
+              result.errors.push(`${errorPrefix} uses ${property}Start and ${property}End with equal values (${startEntity}). Consider using the single property '${property}: "${startEntity}"' instead.`);
             }
           }
         }
