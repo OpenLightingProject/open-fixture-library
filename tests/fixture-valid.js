@@ -461,7 +461,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           dmxRangesInvalid = !checkDmxRange(index);
         }
 
-        checkCapability(capability, `Capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+        // Use JSON dmxRange rather than rawDmxRange, because that one might throw unhelpful errors
+        const rangeString = `${capability.jsonObject.dmxRange[0]}…${capability.jsonObject.dmxRange[1]}`;
+
+        checkCapability(capability, `Capability '${capability.name}' (${rangeString}) in channel '${channel.key}'`);
       }
 
       /**
@@ -471,12 +474,28 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkDmxRange(capabilityNumber) {
         const capability = channel.capabilities[capabilityNumber];
+        const [rawDmxStart, rawDmxEnd] = capability.jsonObject.dmxRange;
+        const errorLocationString = `capability '${capability.name}' (${rawDmxStart}…${rawDmxEnd}) in channel '${channel.key}'`;
 
-        return checkFirstCapabilityRangeStart()
+        return checkDmxRangeWithinBounds()
+          && checkFirstCapabilityRangeStart()
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
 
+
+        /**
+         * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
+         * @returns {boolean} True if the DMX range is within bounds, false otherwise.
+         */
+        function checkDmxRangeWithinBounds() {
+          if (rawDmxStart > maxDmxValue || rawDmxEnd > maxDmxValue) {
+            result.errors.push(`dmxRange is out of bounds (maximum ${maxDmxValue} for ${channel.dmxValueResolution * 8}bit resolution) in ${errorLocationString}.`);
+            return false;
+          }
+
+          return true;
+        }
 
         /**
          * Checks that the first capability's DMX range starts with 0.
@@ -484,7 +503,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkFirstCapabilityRangeStart() {
           if (capabilityNumber === 0 && capability.rawDmxRange.start !== 0) {
-            result.errors.push(`The first dmxRange has to start at 0 in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
+            result.errors.push(`The first dmxRange has to start at 0 in ${errorLocationString}.`);
             return false;
           }
 
@@ -496,7 +515,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkRangeValid() {
           if (capability.rawDmxRange.start > capability.rawDmxRange.end) {
-            result.errors.push(`dmxRange invalid in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
+            result.errors.push(`dmxRange invalid in ${errorLocationString}.`);
             return false;
           }
 
@@ -525,7 +544,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkLastCapabilityRangeEnd() {
           if (capabilityNumber === channel.capabilities.length - 1 && channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
-            result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+            result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in ${errorLocationString}.`);
             return false;
           }
 
