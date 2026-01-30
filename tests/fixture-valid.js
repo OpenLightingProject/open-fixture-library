@@ -237,9 +237,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     if (physical.dimensions !== null && physical.DMXconnector !== null) {
       const hasSmallDimensions = physical.dimensions.every(dimension => dimension < 30);
+      const dimensionsString = physical.dimensions.join(`×`);
 
       if (hasSmallDimensions) {
-        result.errors.push(`physical.dimensions${modeDescription} are too small (${physical.dimensions.join(`×`)}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you accidentally enter the dimensions in centimeters instead of millimeters?`);
+        result.errors.push(`physical.dimensions${modeDescription} are too small (${dimensionsString}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you accidentally enter the dimensions in centimeters instead of millimeters?`);
       }
     }
 
