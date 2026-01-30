@@ -10,7 +10,7 @@ import {
 
 const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
-export const version = `1.1.1`;
+export const version = `1.1.2`;
 
 /**
  * @param {Buffer} buffer The imported file.
