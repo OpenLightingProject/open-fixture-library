@@ -25,6 +25,48 @@
     }
   },
   "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#add8e6"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        }
+      ]
+    },
     "Static gobo": {
       "slots": [
         {
@@ -64,11 +106,6 @@
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00104.svg",
           "name": "Gobo 7"
-        },
-        {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00104.svg",
-          "name": "Gobo 7 shake with increasing speed"
         }
       ]
     },
@@ -80,32 +117,32 @@
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/Others/gobo00046.svg",
-          "name": "Gobo 1 shake with increasing speed"
+          "name": "Gobo 1"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00097.svg",
-          "name": "Gobo 2 shake with increasing speed"
+          "name": "Gobo 2"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/SGM/gobo00362.svg",
-          "name": "Gobo 3 shake with increasing speed"
+          "name": "Gobo 3"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/SGM/gobo00123.svg",
-          "name": "Gobo 4 shake with increasing speed"
+          "name": "Gobo 4"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/Others/gobo00030.svg",
-          "name": "Gobo 5 shake with increasing speed"
+          "name": "Gobo 5"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/Chauvet/gobo00037.svg",
-          "name": "Gobo 6 shake with increasing speed"
+          "name": "Gobo 6"
         }
       ]
     }
@@ -142,115 +179,103 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
-          "comment": "Open/White",
-          "colors": ["#ffffff"]
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [5, 9],
-          "type": "ColorPreset",
-          "comment": "White + Red",
-          "colors": ["#ffffff", "#ff0000"]
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
         },
         {
           "dmxRange": [10, 14],
-          "type": "ColorPreset",
-          "comment": "Red",
-          "colors": ["#ff0000"]
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [15, 19],
-          "type": "ColorPreset",
-          "comment": "Red + Green",
-          "colors": ["#ff0000", "#00ff00"]
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
           "dmxRange": [20, 24],
-          "type": "ColorPreset",
-          "comment": "Green",
-          "colors": ["#00ff00"]
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [25, 29],
-          "type": "ColorPreset",
-          "comment": "Green + Blue",
-          "colors": ["#00ff00", "#0000ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
           "dmxRange": [30, 34],
-          "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [35, 39],
-          "type": "ColorPreset",
-          "comment": "Blue + Yellow",
-          "colors": ["#0000ff", "#ffff00"]
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
           "dmxRange": [40, 44],
-          "type": "ColorPreset",
-          "comment": "Yellow",
-          "colors": ["#ffff00"]
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [45, 49],
-          "type": "ColorPreset",
-          "comment": "Yellow + Orange",
-          "colors": ["#ffff00", "#ffa500"]
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
         },
         {
           "dmxRange": [50, 54],
-          "type": "ColorPreset",
-          "comment": "Orange",
-          "colors": ["#ffa500"]
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [55, 59],
-          "type": "ColorPreset",
-          "comment": "Orange + Light Blue",
-          "colors": ["#ffa500", "#add8e6"]
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
         },
         {
           "dmxRange": [60, 64],
-          "type": "ColorPreset",
-          "comment": "Light Blue",
-          "colors": ["#add8e6"]
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [65, 69],
-          "type": "ColorPreset",
-          "comment": "Light Blue + Magenta",
-          "colors": ["#add8e6", "#ff00ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
         },
         {
           "dmxRange": [70, 74],
-          "type": "ColorPreset",
-          "comment": "Magenta",
-          "colors": ["#ff00ff"]
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [75, 79],
-          "type": "ColorPreset",
-          "comment": "Magenta + White",
-          "colors": ["#ff00ff", "#ffffff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 1
         },
         {
           "dmxRange": [80, 167],
-          "type": "WheelSlotRotation",
-          "wheel": "",
+          "type": "WheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Rainbow Forwards"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [168, 255],
-          "type": "WheelSlotRotation",
-          "wheel": "",
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Rainbow Backwards"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -260,106 +285,89 @@
         {
           "dmxRange": [0, 9],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open"
+          "slotNumber": 1
         },
         {
           "dmxRange": [10, 19],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Gobo 1"
+          "slotNumber": 2
         },
         {
           "dmxRange": [20, 29],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Gobo 2"
+          "slotNumber": 3
         },
         {
           "dmxRange": [30, 39],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Gobo 3"
+          "slotNumber": 4
         },
         {
           "dmxRange": [40, 49],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Gobo 4"
+          "slotNumber": 5
         },
         {
           "dmxRange": [50, 59],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Gobo 5"
+          "slotNumber": 6
         },
         {
           "dmxRange": [60, 69],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Gobo 6"
+          "slotNumber": 7
         },
         {
           "dmxRange": [70, 79],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Gobo 7"
+          "slotNumber": 8
         },
         {
           "dmxRange": [80, 89],
           "type": "WheelShake",
-          "slotNumber": 9,
-          "comment": "Gobo 1 shake with increasing speed"
+          "slotNumber": 2
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelShake",
-          "slotNumber": 10,
-          "comment": "Gobo 2 shake with increasing speed"
+          "slotNumber": 3
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelShake",
-          "slotNumber": 11,
-          "comment": "Gobo 3 shake with increasing speed"
+          "slotNumber": 4
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelShake",
-          "slotNumber": 12,
-          "comment": "Gobo 4 shake with increasing speed"
+          "slotNumber": 5
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelShake",
-          "slotNumber": 13,
-          "comment": "Gobo 5 shake with increasing speed"
+          "slotNumber": 6
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelShake",
-          "slotNumber": 14,
-          "comment": "Gobo 6 shake with increasing speed"
+          "slotNumber": 7
         },
         {
           "dmxRange": [140, 149],
-          "type": "WheelSlot",
-          "slotNumber": 15,
-          "comment": "Gobo 7 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 8
         },
         {
           "dmxRange": [150, 202],
-          "type": "WheelSlotRotation",
+          "type": "WheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Cont. gobo-wheel forwards rotation with decreasing speed"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [203, 255],
-          "type": "WheelSlotRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Cont. gobo-wheel backwards rotation with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -369,94 +377,79 @@
         {
           "dmxRange": [0, 9],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open"
+          "slotNumber": 1
         },
         {
           "dmxRange": [10, 19],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Rotating gobo 1"
+          "slotNumber": 2
         },
         {
           "dmxRange": [20, 29],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Rotating gobo 2"
+          "slotNumber": 3
         },
         {
           "dmxRange": [30, 39],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Rotating gobo 3"
+          "slotNumber": 4
         },
         {
           "dmxRange": [40, 49],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Rotating gobo 4"
+          "slotNumber": 5
         },
         {
           "dmxRange": [50, 59],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Rotating gobo 5"
+          "slotNumber": 6
         },
         {
           "dmxRange": [60, 69],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Rotating gobo 6"
+          "slotNumber": 7
         },
         {
           "dmxRange": [70, 79],
-          "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Gobo 1 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 2
         },
         {
           "dmxRange": [80, 89],
-          "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "Gobo 2 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 3
         },
         {
           "dmxRange": [90, 99],
-          "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "Gobo 3 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 4
         },
         {
           "dmxRange": [100, 109],
-          "type": "WheelSlot",
-          "slotNumber": 11,
-          "comment": "Gobo 4 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 5
         },
         {
           "dmxRange": [110, 119],
-          "type": "WheelSlot",
-          "slotNumber": 12,
-          "comment": "Gobo 5 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 6
         },
         {
           "dmxRange": [120, 129],
-          "type": "WheelSlot",
-          "slotNumber": 13,
-          "comment": "Gobo 6 shake with increasing speed"
+          "type": "WheelShake",
+          "slotNumber": 7
         },
         {
           "dmxRange": [130, 192],
-          "type": "WheelSlotRotation",
+          "type": "WheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Cont. gobo-wheel forwards rotation with decreasing speed"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [193, 255],
-          "type": "WheelSlotRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Cont. gobo-wheel backwards rotation with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -466,32 +459,28 @@
         {
           "dmxRange": [0, 127],
           "type": "WheelSlotRotation",
-          "wheel": "",
-          "speed": "stop",
-          "comment": "No rotation"
+          "wheel": "Rotating gobo",
+          "speed": "stop"
         },
         {
           "dmxRange": [128, 190],
           "type": "WheelSlotRotation",
-          "wheel": "",
+          "wheel": "Rotating gobo",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Gobo rotation forwards with decreasing speed"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
           "type": "WheelSlotRotation",
-          "wheel": "",
-          "speed": "stop",
-          "comment": "Stop"
+          "wheel": "Rotating gobo",
+          "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
           "type": "WheelSlotRotation",
-          "wheel": "",
+          "wheel": "Rotating gobo",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Gobo rotation backwards with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -508,20 +497,17 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "NoFunction",
-          "comment": "Open"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [128, 136],
-          "type": "Prism",
-          "comment": "3-facet Prism (no rotation)"
+          "type": "Prism"
         },
         {
           "dmxRange": [137, 255],
           "type": "PrismRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Prism rotation with increasing speed"
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -530,8 +516,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Effect",
-          "effectName": "Neutral"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 55],
@@ -565,8 +550,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "Maintenance",
-          "comment": "Neutral"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [26, 76],
@@ -575,15 +559,13 @@
         },
         {
           "dmxRange": [77, 127],
-          "type": "Generic",
-          "comment": "Reset Pan/Tilt",
-          "helpWanted": "Unknown QLC+ capability preset ResetPanTilt, Res1=\"undefined\", Res2=\"undefined\"."
+          "type": "Maintenance",
+          "comment": "Reset Pan/Tilt"
         },
         {
           "dmxRange": [128, 255],
-          "type": "Generic",
-          "comment": "Reset all",
-          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+          "type": "Maintenance",
+          "comment": "Reset all"
         }
       ]
     },
@@ -599,16 +581,14 @@
         {
           "dmxRange": [0, 10],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Neutral"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe-effect with increasing speed"
+          "speedEnd": "fast"
         }
       ]
     }
