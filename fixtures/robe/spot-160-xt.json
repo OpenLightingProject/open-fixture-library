@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ringo333"],
     "createDate": "2019-04-24",
-    "lastModifyDate": "2019-04-24"
+    "lastModifyDate": "2026-01-30"
   },
   "links": {
     "manual": [
@@ -157,14 +157,12 @@
         },
         {
           "dmxRange": [250, 252],
-          "type": "PanTiltSpeed",
-          "speed": "fast",
+          "type": "Maintenance",
           "comment": "Blackout on color/gobo change"
         },
         {
           "dmxRange": [253, 255],
-          "type": "PanTiltSpeed",
-          "speed": "fast",
+          "type": "Maintenance",
           "comment": "Blackout on pan/tilt/color/gobo change"
         }
       ]
