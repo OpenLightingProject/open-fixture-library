@@ -590,6 +590,11 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             if (property === `speed` && startEntity.number * endEntity.number < 0) {
               result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
             }
+
+            // Check if start and end values are equal when using start/end properties
+            if (`${property}Start` in capability.jsonObject && startEntity.equals(endEntity)) {
+              result.warnings.push(`${errorPrefix} uses ${property}Start and ${property}End with equal values (${startEntity}). Consider using the single property '${property}: "${startEntity}"' instead.`);
+            }
           }
         }
 
