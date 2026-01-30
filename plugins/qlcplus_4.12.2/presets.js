@@ -1039,16 +1039,16 @@ export const capabilityPresets = {
 
   ResetPanTilt: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan\s*\/?\/?\s*tilt/i.test(capability.comment),
-    importCapability: () => ({
+    importCapability: capabilityData => ({
       type: `Maintenance`,
-      comment: `Reset Pan/Tilt`,
+      comment: capabilityData.capabilityName,
     }),
   },
   ResetAll: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*all/i.test(capability.comment),
-    importCapability: () => ({
+    importCapability: capabilityData => ({
       type: `Maintenance`,
-      comment: `Reset all`,
+      comment: capabilityData.capabilityName,
     }),
   },
 };
