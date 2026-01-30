@@ -1119,7 +1119,7 @@ export const capabilityPresets = {
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeAutomatic: {
-    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bauto(?matic)?\b/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
 };
