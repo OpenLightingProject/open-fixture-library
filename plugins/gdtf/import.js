@@ -750,29 +750,56 @@ export async function importFixtures(buffer, filename, authorName) {
 
     /**
      * Simplifies Intensity/ColorIntensity capabilities that all have the same
-     * brightness range (0% to 100%). If all capabilities meet this criteria,
+     * brightness range (0% to 100%). If all capabilities meet the criteria,
      * they are merged into a single capability without brightness properties.
+     * Comments are intentionally not preserved during simplification.
      * @param {object[]} capabilitiesParameter Array of OFL capability objects.
      * @returns {object[]} Simplified array of capabilities.
      */
     function simplifyIntensityCapabilities(capabilitiesParameter) {
       // Check if this is a candidate for simplification:
-      // 1. Multiple capabilities exist
-      // 2. All capabilities are either Intensity or ColorIntensity
+      // 1. Multiple contiguous capabilities exist
+      // 2. All capabilities have the same type (all Intensity or all ColorIntensity)
       // 3. All capabilities have brightnessStart: "0%" and brightnessEnd: "100%"
       //    (or don't have brightness properties at all)
+      // 4. For ColorIntensity, all must have the same color
 
       if (capabilitiesParameter.length <= 1) {
         return capabilitiesParameter;
       }
 
-      // Check if all capabilities are Intensity or ColorIntensity types
-      const isIntensityType = capabilitiesParameter.every(
-        capability => capability.type === `Intensity` || capability.type === `ColorIntensity`,
+      const firstType = capabilitiesParameter[0].type;
+
+      // Check if all capabilities have the same type (all Intensity or all ColorIntensity)
+      const allSameType = capabilitiesParameter.every(
+        capability => capability.type === firstType,
       );
 
-      if (!isIntensityType) {
+      if (!allSameType || (firstType !== `Intensity` && firstType !== `ColorIntensity`)) {
         return capabilitiesParameter;
+      }
+
+      // For ColorIntensity, check if all have the same color
+      if (firstType === `ColorIntensity`) {
+        const firstColor = capabilitiesParameter[0].color;
+        const allSameColor = capabilitiesParameter.every(
+          capability => capability.color === firstColor,
+        );
+
+        if (!allSameColor) {
+          return capabilitiesParameter;
+        }
+      }
+
+      // Check if capabilities have contiguous DMX ranges
+      for (let index = 0; index < capabilitiesParameter.length - 1; index++) {
+        const currentEnd = capabilitiesParameter[index].dmxRange[1];
+        const nextStart = capabilitiesParameter[index + 1].dmxRange[0];
+
+        // DMX ranges should be contiguous (next starts where current ends + 1)
+        if (nextStart !== currentEnd + 1) {
+          return capabilitiesParameter;
+        }
       }
 
       // Check if all capabilities have the same brightness range (0% to 100%)
@@ -785,7 +812,14 @@ export async function importFixtures(buffer, filename, authorName) {
           return true;
         }
 
-        // If brightness properties exist, they must be 0% to 100%
+        // Handle single brightness property case
+        if (`brightness` in capability && !(`brightnessStart` in capability)) {
+          // Single brightness property indicates a fixed value, not a range
+          // These should not be simplified
+          return false;
+        }
+
+        // If brightness range properties exist, they must be 0% to 100%
         return capability.brightnessStart === `0%` && capability.brightnessEnd === `100%`;
       });
 
@@ -794,19 +828,18 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       // All checks passed - simplify to a single capability
-      // Use the first capability as the base and merge comments if present
       const simplifiedCapability = {
         dmxRange: [capabilitiesParameter[0].dmxRange[0], capabilitiesParameter.at(-1).dmxRange[1]],
-        type: capabilitiesParameter[0].type,
+        type: firstType,
       };
 
-      // Preserve color property if it exists (for ColorIntensity)
-      if (`color` in capabilitiesParameter[0]) {
+      // Preserve color property for ColorIntensity
+      if (firstType === `ColorIntensity`) {
         simplifiedCapability.color = capabilitiesParameter[0].color;
       }
 
-      // Remove brightnessStart/End as they would be 0% to 100%
-      // which is the default and can be omitted
+      // brightnessStart/End are intentionally omitted as 0% to 100%
+      // is the default and can be left implicit
 
       return [simplifiedCapability];
     }
