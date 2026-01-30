@@ -220,7 +220,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     // Check for duplicates
     for (const [url, types] of urlToTypes.entries()) {
       if (types.length > 1) {
-        const linkTypesList = types.join(`, `);
+        const linkTypesList = types.length === 2
+          ? types.join(` and `)
+          : [types.slice(0, -1).join(`, `), types.at(-1)].join(` and `);
         result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
       }
     }
