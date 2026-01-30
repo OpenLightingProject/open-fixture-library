@@ -575,13 +575,15 @@
         },
         {
           "dmxRange": [77, 127],
-          "type": "Maintenance",
-          "comment": "Reset Pan/Tilt"
+          "type": "Generic",
+          "comment": "Reset Pan/Tilt",
+          "helpWanted": "Unknown QLC+ capability preset ResetPanTilt, Res1=\"undefined\", Res2=\"undefined\"."
         },
         {
           "dmxRange": [128, 255],
-          "type": "Maintenance",
-          "comment": "Reset all"
+          "type": "Generic",
+          "comment": "Reset all",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
         }
       ]
     },
