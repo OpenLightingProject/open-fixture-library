@@ -497,7 +497,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           return true;
         }
 
-
         /**
          * Checks that the first capability's DMX range starts with 0.
          * @returns {boolean} True if this is not the first capability or it starts with 0, false otherwise.
