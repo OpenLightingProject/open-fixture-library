@@ -109,7 +109,7 @@
         }
       ]
     },
-    "Rotating gobo": {
+    "Rotating Gobo": {
       "slots": [
         {
           "type": "Open"
@@ -371,7 +371,7 @@
         }
       ]
     },
-    "Rotating gobo": {
+    "Rotating Gobo": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -459,26 +459,26 @@
         {
           "dmxRange": [0, 127],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating gobo",
+          "wheel": "Rotating Gobo",
           "speed": "stop"
         },
         {
           "dmxRange": [128, 190],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating gobo",
+          "wheel": "Rotating Gobo",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating gobo",
+          "wheel": "Rotating Gobo",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating gobo",
+          "wheel": "Rotating Gobo",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -608,7 +608,7 @@
         "Shutter, Strobe",
         "Color Wheel",
         "Static gobo",
-        "Rotating gobo",
+        "Rotating Gobo",
         "Gobo rotation",
         "Focus",
         "Prism",
