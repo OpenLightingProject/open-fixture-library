@@ -236,7 +236,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     if (physical.dimensions !== null && physical.DMXconnector !== null) {
-      const hasSmallDimensions = physical.dimensions.every(dimension => dimension < 30);
+      const hasSmallDimensions = physical.dimensions.some(dimension => dimension < 30);
       const dimensionsString = physical.dimensions.join(`×`);
 
       if (hasSmallDimensions) {
