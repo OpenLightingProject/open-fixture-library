@@ -584,7 +584,11 @@ export async function importFixtures(buffer, filename, authorName) {
         });
       });
 
-      return gdtfCapabilities.map((gdtfCapability, index) => {
+      // Simplify Intensity/ColorIntensity capabilities at the GDTF level
+      // before mapping to OFL capabilities
+      const simplifiedGdtfCapabilities = simplifyGdtfIntensityCapabilities(gdtfCapabilities);
+
+      return simplifiedGdtfCapabilities.map((gdtfCapability, index) => {
         const capability = {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)],
         };
@@ -634,15 +638,15 @@ export async function importFixtures(buffer, filename, authorName) {
        * @returns {[number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
-        const dmxFrom = gdtfCapabilities[index]._dmxFrom;
+        const dmxFrom = simplifiedGdtfCapabilities[index]._dmxFrom;
 
-        if (index === gdtfCapabilities.length - 1) {
+        if (index === simplifiedGdtfCapabilities.length - 1) {
           // last capability
           const resolution = dmxFrom[1];
           return [Math.pow(256, resolution) - 1, resolution];
         }
 
-        const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+        const [nextDmxFromValue, resolution] = simplifiedGdtfCapabilities[index + 1]._dmxFrom;
         return [nextDmxFromValue - 1, resolution];
       }
 
@@ -742,6 +746,73 @@ export async function importFixtures(buffer, filename, authorName) {
         }
 
         return gdtfUnits[physicalEntity];
+      }
+
+      /**
+       * Simplifies GDTF ChannelSet arrays where all sets represent Intensity/ColorIntensity
+       * with identical physical brightness ranges (0 to 1). If all ChannelSets meet the criteria,
+       * they are merged into a single ChannelSet spanning the full DMX range.
+       * Comments are intentionally not preserved during simplification.
+       * @param {object[]} gdtfCapabilitiesParameter Array of GDTF ChannelSet objects.
+       * @returns {object[]} Simplified array of GDTF ChannelSets.
+       */
+      function simplifyGdtfIntensityCapabilities(gdtfCapabilitiesParameter) {
+        // Check if this is a candidate for simplification:
+        // 1. Multiple capabilities exist
+        // 2. All capabilities have the same GDTF attribute (Dimmer or ColorAdd_*)
+        // 3. All capabilities have PhysicalFrom: 0 and PhysicalTo: 1
+        
+        if (gdtfCapabilitiesParameter.length <= 1) {
+          return gdtfCapabilitiesParameter;
+        }
+
+        const firstAttribute = gdtfCapabilitiesParameter[0]._channelFunction._attribute.$.Name;
+
+        // Check if all capabilities have the same GDTF attribute
+        const allSameAttribute = gdtfCapabilitiesParameter.every(
+          gdtfCapability => gdtfCapability._channelFunction._attribute.$.Name === firstAttribute,
+        );
+
+        if (!allSameAttribute) {
+          return gdtfCapabilitiesParameter;
+        }
+
+        // Check if the attribute is Dimmer (Intensity) or ColorAdd_* (ColorIntensity)
+        const isDimmer = firstAttribute === `Dimmer`;
+        const isColorAdd = firstAttribute.startsWith(`ColorAdd_`);
+
+        if (!isDimmer && !isColorAdd) {
+          return gdtfCapabilitiesParameter;
+        }
+
+        // Check if all capabilities have PhysicalFrom: 0 and PhysicalTo: 1
+        const allHaveSameBrightness = gdtfCapabilitiesParameter.every(gdtfCapability => {
+          return gdtfCapability._physicalFrom === 0 && gdtfCapability._physicalTo === 1;
+        });
+
+        if (!allHaveSameBrightness) {
+          return gdtfCapabilitiesParameter;
+        }
+
+        // All checks passed - simplify to a single GDTF ChannelSet
+        // Create a merged ChannelSet that spans the entire range
+        const firstCapability = gdtfCapabilitiesParameter[0];
+        const simplifiedGdtfCapability = {
+          $: {
+            DMXFrom: firstCapability.$.DMXFrom,
+            PhysicalFrom: 0,
+            PhysicalTo: 1,
+            Name: ``, // Remove comment
+          },
+          _logicalChannel: firstCapability._logicalChannel,
+          _channelFunction: firstCapability._channelFunction,
+          _fixture: firstCapability._fixture,
+          _dmxFrom: firstCapability._dmxFrom,
+          _physicalFrom: 0,
+          _physicalTo: 1,
+        };
+
+        return [simplifiedGdtfCapability];
       }
     }
 
