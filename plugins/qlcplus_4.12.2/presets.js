@@ -1043,7 +1043,12 @@ export const capabilityPresets = {
   // maintenance / reset capabilities
 
   ResetPanTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
+    isApplicable: capability =>
+      capability.type === `Maintenance` &&
+      /\breset\b/i.test(capability.comment) && (
+        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment)) ||
+        /\bposition\b|\bscan\b/i.test(capability.comment)
+      ),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPan: {
@@ -1052,6 +1057,10 @@ export const capabilityPresets = {
   },
   ResetTilt: {
     isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetEffects: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\beffects?\b|\bbeam\b|\bothers?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetGobo: {
@@ -1068,10 +1077,6 @@ export const capabilityPresets = {
   },
   ResetCTO: {
     isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcto\b/i.test(capability.comment),
-    importCapability: importHelpers.getMaintenanceCap,
-  },
-  ResetEffects: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\beffects?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPrism: {
@@ -1091,11 +1096,15 @@ export const capabilityPresets = {
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetZoom: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bzoom\b/i.test(capability.comment),
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bzoom\b|\bfocus\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetMotors: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bmotors?\b/i.test(capability.comment),
+    isApplicable: capability =>
+      capability.type === `Maintenance` &&
+      /\breset\b/i.test(capability.comment) &&
+      /\bmotors?\b/i.test(capability.comment) &&
+      !/\ball\b|\btotal\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetAll: {
