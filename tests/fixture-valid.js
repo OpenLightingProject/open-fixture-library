@@ -235,6 +235,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
 
+    // Check for suspiciously small dimensions with DMX connectors
+    // DMX connector barrel is ~20mm, so dimensions < 30mm with DMX connector are likely incorrect (cm instead of mm)
+    if (physical.dimensions !== null && physical.DMXconnector !== null) {
+      const hasDmxConnector = physical.DMXconnector.includes(`3-pin`) || physical.DMXconnector.includes(`5-pin`);
+      const hasSmallDimensions = physical.dimensions.every(dimension => dimension < 30);
+      
+      if (hasDmxConnector && hasSmallDimensions) {
+        result.errors.push(`physical.dimensions${modeDescription} are too small (${physical.dimensions.join(`, `)}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you mean to enter the dimensions in centimeters instead of millimeters?`);
+      }
+    }
+
     if (physical.hasMatrixPixels && fixture.matrix === null) {
       result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
     }
