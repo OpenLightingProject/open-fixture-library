@@ -588,7 +588,11 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             }
 
             if (property === `speed` && startEntity.number * endEntity.number < 0) {
-              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Split it into several capabilities instead.`);
+            }
+
+            if (`${property}Start` in capability.jsonObject && startEntity.equals(endEntity)) {
+              result.errors.push(`${errorPrefix} uses ${property}Start and ${property}End with equal values. Use the single property '${property}: "${startEntity}"' instead.`);
             }
           }
         }
