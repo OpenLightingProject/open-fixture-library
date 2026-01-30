@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sPOT THUNDER",
+  "shortName": "16 CH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["kon"],
+    "createDate": "2025-08-30",
+    "lastModifyDate": "2025-08-30"
+  },
+  "comment": "China",
+  "links": {
+    "manual": [
+      "http://aliexpress.com"
+    ],
+    "productPage": [
+      "https://aliexpress.com"
+    ],
+    "video": [
+      "https://youtube.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "0"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "ReservedDD": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "ReservedE": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Strobe",
+        "Focus",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Effect Speed",
+        "Reserved",
+        "ReservedDD",
+        "Prism",
+        "ReservedE",
+        "Color Macros"
+      ]
+    }
+  ]
+}
