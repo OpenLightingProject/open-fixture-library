@@ -1051,6 +1051,132 @@ export const capabilityPresets = {
       comment: capabilityData.capabilityName,
     }),
   },
+  ResetPan: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan(?!\s*\/?\s*tilt)/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetTilt: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*tilt(?!\s*\/?\s*pan)/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetMotors: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*motors?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetGobo: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*gobos?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetColor: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*colou?rs?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetCMY: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*cmy/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetCTO: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*cto/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetEffects: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*effects?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetPrism: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*prisms?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetBlades: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*blades?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetIris: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*iris/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetFrost: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*frost/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  ResetZoom: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*zoom/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  LampOn: {
+    isApplicable: capability => capability.type === `Maintenance` && /lamp\s*on/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  LampOff: {
+    isApplicable: capability => capability.type === `Maintenance` && /lamp\s*off/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  SilentModeOn: {
+    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*on/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  SilentModeOff: {
+    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*off/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
+  SilentModeAutomatic: {
+    isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*auto(?:matic)?/i.test(capability.comment),
+    importCapability: capabilityData => ({
+      type: `Maintenance`,
+      comment: capabilityData.capabilityName,
+    }),
+  },
 };
 
 /**
