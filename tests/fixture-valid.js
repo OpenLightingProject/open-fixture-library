@@ -235,6 +235,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
 
+    if (physical.dimensions !== null && physical.DMXconnector !== null) {
+      const hasSmallDimensions = physical.dimensions.some(dimension => dimension < 30);
+      const dimensionsString = physical.dimensions.join(`×`);
+
+      if (hasSmallDimensions) {
+        result.errors.push(`physical.dimensions${modeDescription} are too small (${dimensionsString}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you accidentally enter the dimensions in centimeters instead of millimeters?`);
+      }
+    }
+
     if (physical.hasMatrixPixels && fixture.matrix === null) {
       result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
     }
