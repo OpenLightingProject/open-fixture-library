@@ -461,14 +461,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           dmxRangesInvalid = !checkDmxRange(index);
         }
 
-        // Use rawDmxRange if available, otherwise use the JSON dmxRange values
-        let rangeString;
-        try {
-          rangeString = String(capability.rawDmxRange);
-        }
-        catch {
-          rangeString = `[${capability.jsonObject.dmxRange[0]}, ${capability.jsonObject.dmxRange[1]}]`;
-        }
+        // Use JSON dmxRange rather than rawDmxRange, because that latter might throw unhelpful errors
+        const rangeString = `${capability.jsonObject.dmxRange[0]}…${capability.jsonObject.dmxRange[1]}`;
 
         checkCapability(capability, `Capability '${capability.name}' (${rangeString}) in channel '${channel.key}'`);
       }
