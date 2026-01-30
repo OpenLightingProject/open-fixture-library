@@ -205,7 +205,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       return;
     }
 
-    const allUrls = [];
     const urlToTypes = new Map();
 
     // Collect all URLs and track which link types they belong to
@@ -215,14 +214,14 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           urlToTypes.set(url, []);
         }
         urlToTypes.get(url).push(linkType);
-        allUrls.push(url);
       }
     }
 
     // Check for duplicates
     for (const [url, types] of urlToTypes.entries()) {
       if (types.length > 1) {
-        result.errors.push(`URL '${url}' is used in multiple link types: ${types.join(`, `)}.`);
+        const linkTypesList = types.join(`, `);
+        result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
       }
     }
   }
