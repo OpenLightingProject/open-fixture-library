@@ -94,6 +94,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     checkFixtureIdentifierUniqueness();
     checkMeta(fixture.meta);
+    checkLinks();
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
     await checkWheels(fixture.wheels);
@@ -192,6 +193,36 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       if (!(isImportPlugin || isOutdatedImportPlugin)) {
         result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
+      }
+    }
+  }
+
+  /**
+   * Check that URLs in the fixture's links are unique.
+   */
+  function checkLinks() {
+    if (fixture.links === null) {
+      return;
+    }
+
+    const allUrls = [];
+    const urlToTypes = new Map();
+
+    // Collect all URLs and track which link types they belong to
+    for (const [linkType, urls] of Object.entries(fixture.links)) {
+      for (const url of urls) {
+        if (!urlToTypes.has(url)) {
+          urlToTypes.set(url, []);
+        }
+        urlToTypes.get(url).push(linkType);
+        allUrls.push(url);
+      }
+    }
+
+    // Check for duplicates
+    for (const [url, types] of urlToTypes.entries()) {
+      if (types.length > 1) {
+        result.errors.push(`URL '${url}' is used in multiple link types: ${types.join(`, `)}.`);
       }
     }
   }
