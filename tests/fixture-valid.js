@@ -461,7 +461,16 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           dmxRangesInvalid = !checkDmxRange(index);
         }
 
-        checkCapability(capability, `Capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+        // Use rawDmxRange if available, otherwise use the JSON dmxRange values
+        let rangeString;
+        try {
+          rangeString = String(capability.rawDmxRange);
+        }
+        catch {
+          rangeString = `[${capability.jsonObject.dmxRange[0]}, ${capability.jsonObject.dmxRange[1]}]`;
+        }
+
+        checkCapability(capability, `Capability '${capability.name}' (${rangeString}) in channel '${channel.key}'`);
       }
 
       /**
@@ -472,10 +481,33 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       function checkDmxRange(capabilityNumber) {
         const capability = channel.capabilities[capabilityNumber];
 
-        return checkFirstCapabilityRangeStart()
+        return checkDmxRangeWithinBounds()
+          && checkFirstCapabilityRangeStart()
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
+
+
+        /**
+         * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
+         * @returns {boolean} True if the DMX range is within bounds, false otherwise.
+         */
+        function checkDmxRangeWithinBounds() {
+          const rawDmxStart = capability.jsonObject.dmxRange[0];
+          const rawDmxEnd = capability.jsonObject.dmxRange[1];
+
+          if (rawDmxStart > maxDmxValue) {
+            result.errors.push(`dmxRange start ${rawDmxStart} is out of bounds (maximum ${maxDmxValue} for ${channel.dmxValueResolution * 8}bit resolution) in capability '${capability.name}' ([${rawDmxStart}, ${rawDmxEnd}]) in channel '${channel.key}'.`);
+            return false;
+          }
+
+          if (rawDmxEnd > maxDmxValue) {
+            result.errors.push(`dmxRange end ${rawDmxEnd} is out of bounds (maximum ${maxDmxValue} for ${channel.dmxValueResolution * 8}bit resolution) in capability '${capability.name}' ([${rawDmxStart}, ${rawDmxEnd}]) in channel '${channel.key}'.`);
+            return false;
+          }
+
+          return true;
+        }
 
 
         /**
