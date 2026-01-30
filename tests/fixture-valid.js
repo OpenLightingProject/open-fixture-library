@@ -205,24 +205,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       return;
     }
 
-    const urlToTypes = new Map();
-
-    // Collect all URLs and track which link types they belong to
+    const linkTypesPerUrl = {};
     for (const [linkType, urls] of Object.entries(fixture.links)) {
       for (const url of urls) {
-        if (!urlToTypes.has(url)) {
-          urlToTypes.set(url, []);
-        }
-        urlToTypes.get(url).push(linkType);
+        linkTypesPerUrl[url] ??= [];
+        linkTypesPerUrl[url].push(linkType);
       }
     }
 
-    // Check for duplicates
-    for (const [url, types] of urlToTypes.entries()) {
-      if (types.length > 1) {
-        const linkTypesList = types.length === 2
-          ? types.join(` and `)
-          : [types.slice(0, -1).join(`, `), types.at(-1)].join(` and `);
+    for (const [url, linkTypes] of Object.entries(linkTypesPerUrl)) {
+      if (linkTypes.length > 1) {
+        const linkTypesList = linkTypes.join(`, `);
         result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
       }
     }
