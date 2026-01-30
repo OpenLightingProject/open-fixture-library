@@ -3,14 +3,25 @@
   "name": "TMH-S90 Moving-Head Spot",
   "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Nils Hitschke", "Chriss"],
+    "authors": ["Nils Hitschke", "Chriss", "Flo Edelmann"],
     "createDate": "2026-01-26",
-    "lastModifyDate": "2026-01-26",
+    "lastModifyDate": "2026-01-30",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2026-01-26",
       "comment": "created by Q Light Controller Plus (version 4.14.2 GIT)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786075-Manual-139142-1.2000-eurolite-led-tmh-s90-moving-head-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51786075-eurolite-led-tmh-s90-moving-head-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=kH7p_tioNQg"
+    ]
   },
   "physical": {
     "dimensions": [250, 350, 205],
