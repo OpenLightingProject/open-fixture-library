@@ -220,6 +220,11 @@ export const importHelpers = {
 
     return capabilityName;
   },
+
+  getMaintenanceCap: capabilityData => ({
+    type: `Maintenance`,
+    comment: capabilityData.capabilityName,
+  }),
 };
 
 const createWheelRotationCapability = () => ({
@@ -1038,144 +1043,84 @@ export const capabilityPresets = {
   // maintenance / reset capabilities
 
   ResetPanTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan\s*\/?\/?\s*tilt/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
-  },
-  ResetAll: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*all/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan(?:.*)tilt/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPan: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan(?!\s*\/?\s*tilt)/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*pan/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /reset\s*tilt(?!\s*\/?\s*pan)/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    isApplicable: capability => capability.type === `Maintenance` && /reset\s*tilt/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetMotors: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*motors?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetGobo: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*gobos?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetColor: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*colou?rs?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCMY: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*cmy/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCTO: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*cto/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetEffects: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*effects?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPrism: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*prisms?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetBlades: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*blades?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetIris: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*iris/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetFrost: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*frost/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   ResetZoom: {
     isApplicable: capability => capability.type === `Maintenance` && /reset\s*zoom/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetAll: {
+    isApplicable: capability => capability.type === `Maintenance` && /reset/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   LampOn: {
     isApplicable: capability => capability.type === `Maintenance` && /lamp\s*on/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   LampOff: {
     isApplicable: capability => capability.type === `Maintenance` && /lamp\s*off/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOn: {
     isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*on/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOff: {
     isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*off/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeAutomatic: {
     isApplicable: capability => capability.type === `Maintenance` && /silent\s*mode\s*auto(?:matic)?/i.test(capability.comment),
-    importCapability: capabilityData => ({
-      type: `Maintenance`,
-      comment: capabilityData.capabilityName,
-    }),
+    importCapability: importHelpers.getMaintenanceCap,
   },
 };
 
