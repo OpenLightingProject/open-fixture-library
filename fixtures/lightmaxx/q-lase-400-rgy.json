@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q Lase 400 RGY",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Daniel"],
+    "createDate": "2024-07-13",
+    "lastModifyDate": "2024-07-13"
+  },
+  "links": {
+    "manual": [
+      "http://ls-systems.be/matos/lumiere/effet/LIGHTMAXX%20-%20Q-LASE%20600%20RGB.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 41],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [42, 83],
+          "type": "Generic",
+          "comment": "DMX mode, CH2 - CH12"
+        },
+        {
+          "dmxRange": [84, 125],
+          "type": "Generic",
+          "comment": "Cartoon Graphic Auto"
+        },
+        {
+          "dmxRange": [126, 167],
+          "type": "Generic",
+          "comment": "Beam Graphic Auto"
+        },
+        {
+          "dmxRange": [168, 209],
+          "type": "Generic",
+          "comment": "Sound Cartoon Graphic Auto"
+        },
+        {
+          "dmxRange": [210, 251],
+          "type": "Generic",
+          "comment": "Sound Beam Graphic Auto"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "DMX mode, CH2 - CH12"
+        }
+      ]
+    },
+    "Pattern Select": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Select Built in Patters",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Rotation"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PrismRotation",
+          "speed": "slow CCW",
+          "comment": "Auto Counter Rotation"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "PrismRotation",
+          "speed": "slow CW",
+          "comment": "Auto Clockwise Rotation"
+        }
+      ]
+    },
+    "X Axis Rolling": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Rolling"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Rolling"
+        }
+      ]
+    },
+    "Y-Achsen-Rollen": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Rolling"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Rolling"
+        }
+      ]
+    },
+    "X Axis Moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Moving"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Moving"
+        }
+      ]
+    },
+    "Bewegung der Y Achse": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Moving"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto Moving"
+        }
+      ]
+    },
+    "Pattern Size / Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "pattern Size",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Auto Zooming (-)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Auto Zooming (+)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Manual Zooming"
+        }
+      ]
+    },
+    "Drawing": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Drawing",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Scanning Speed / Display Dot": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Scanning Speed"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Display Dot"
+        }
+      ]
+    },
+    "Color Setting": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorPreset",
+          "comment": "Normal Color"
+        },
+        {
+          "dmxRange": [25, 199],
+          "type": "ColorPreset",
+          "comment": "Choose every single Color"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorPreset",
+          "comment": "Every Single color Changing one by one"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "ColorPreset",
+          "comment": "All Color Changin in one Pattern"
+        }
+      ]
+    },
+    "Color Change Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12CH",
+      "channels": [
+        "Control",
+        "Pattern Select",
+        "Prism Rotation",
+        "X Axis Rolling",
+        "Y-Achsen-Rollen",
+        "X Axis Moving",
+        "Bewegung der Y Achse",
+        "Pattern Size / Zoom",
+        "Drawing",
+        "Scanning Speed / Display Dot",
+        "Color Setting",
+        "Color Change Speed"
+      ]
+    }
+  ]
+}
