@@ -16,7 +16,7 @@
       "https://www.youtube.com/watch?v=Oi_wBNiZeQk"
     ]
   },
-  "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
+  "helpWanted": "Does the 3ch mode really exist? It is never mentioned in the manual.",
   "physical": {
     "dimensions": [44.5, 52.5, 52],
     "power": 3.8,
@@ -56,7 +56,7 @@
         {
           "dmxRange": [32, 255],
           "type": "ColorPreset",
-          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+          "helpWanted": "At which DMX value can which color be selected?"
         }
       ]
     },
@@ -89,7 +89,7 @@
         {
           "dmxRange": [1, 31],
           "type": "NoFunction",
-          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
+          "helpWanted": "What does this capability do? Is channel 5 really set to 'Effect Speed', and which speed is controlled then?",
           "switchChannels": {
             "Strobe / Effect Speed": "Effect Speed"
           }

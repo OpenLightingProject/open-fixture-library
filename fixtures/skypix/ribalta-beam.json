@@ -12,7 +12,7 @@
       "https://www.youtube.com/watch?v=5DTkpKhS_kE"
     ]
   },
-  "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
+  "helpWanted": "The 38-channel mode, channel data and a link to the manual are missing. Is this fixture the same as the ETEC LED Roto Bar?",
   "physical": {
     "bulb": {
       "type": "8x 10W RGBW LEDs"
@@ -57,7 +57,7 @@
     "Auto": {
       "capability": {
         "type": "Generic",
-        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "What does this channel do?"
       }
     },
     "Sound Sensitivity": {
@@ -65,7 +65,7 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high",
-        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "Is it low…high or high…low?"
       }
     }
   },

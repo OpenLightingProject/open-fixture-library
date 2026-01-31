@@ -252,7 +252,7 @@
           "type": "WheelShake",
           "slotNumberStart": 2,
           "slotNumberEnd": 8,
-          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+          "helpWanted": "At which DMX values can which Gobos be selected?"
         },
         {
           "dmxRange": [128, 255],
@@ -279,7 +279,7 @@
     "Horizontal Vertical Run": {
       "capability": {
         "type": "Generic",
-        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "What is this channel for?"
       }
     },
     "Auto Mode": {

@@ -359,7 +359,7 @@
           "dmxRange": [75, 79],
           "type": "Effect",
           "effectName": "All",
-          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
+          "helpWanted": "What does this do?",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
             "Intensity green / NoFunctionG": "NoFunctionG",
@@ -717,7 +717,7 @@
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "Slow to Fast or Fast to Slow?"
       }
     },
     "Microphone Sensitivity": {
@@ -725,7 +725,7 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high",
-        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "Low to High or High to Low?"
       }
     },
     "NoFunction": {
