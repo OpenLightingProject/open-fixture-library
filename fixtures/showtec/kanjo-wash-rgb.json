@@ -2,15 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Kanjo Wash RGB",
   "shortName": "KanjoWash",
-  "categories": [
-    "Moving Head",
-    "Color Changer"
-  ],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": [
-      "Flo Edelmann",
-      "Felix Edelmann"
-    ],
+    "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-20",
     "lastModifyDate": "2018-09-04"
   },
@@ -23,11 +17,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      169,
-      270,
-      156
-    ],
+    "dimensions": [169, 270, 156],
     "weight": 2.52,
     "power": 43,
     "DMXconnector": "3-pin",
@@ -35,17 +25,12 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [
-        25,
-        25
-      ]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": [
-        "Pan fine"
-      ],
+      "fineChannelAliases": ["Pan fine"],
       "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
@@ -55,9 +40,7 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": [
-        "Tilt fine"
-      ],
+      "fineChannelAliases": ["Tilt fine"],
       "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
@@ -108,202 +91,115 @@
     "Color Presets": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            1,
-            13
-          ],
+          "dmxRange": [1, 13],
           "type": "ColorPreset",
-          "colors": [
-            "#00ffff"
-          ],
+          "colors": ["#00ffff"],
           "comment": "Cyan"
         },
         {
-          "dmxRange": [
-            14,
-            26
-          ],
+          "dmxRange": [14, 26],
           "type": "ColorPreset",
-          "colors": [
-            "#aa00ff"
-          ],
+          "colors": ["#aa00ff"],
           "comment": "Purple"
         },
         {
-          "dmxRange": [
-            27,
-            39
-          ],
+          "dmxRange": [27, 39],
           "type": "ColorPreset",
-          "colors": [
-            "#ff00ea"
-          ],
+          "colors": ["#ff00ea"],
           "comment": "Purple / Red"
         },
         {
-          "dmxRange": [
-            40,
-            52
-          ],
+          "dmxRange": [40, 52],
           "type": "ColorPreset",
-          "colors": [
-            "#ffaa00"
-          ],
+          "colors": ["#ffaa00"],
           "comment": "Orange"
         },
         {
-          "dmxRange": [
-            53,
-            65
-          ],
+          "dmxRange": [53, 65],
           "type": "ColorPreset",
-          "colors": [
-            "#ffffff"
-          ],
+          "colors": ["#ffffff"],
           "comment": "White"
         },
         {
-          "dmxRange": [
-            66,
-            78
-          ],
+          "dmxRange": [66, 78],
           "type": "ColorPreset",
-          "colors": [
-            "#ffaaff"
-          ],
+          "colors": ["#ffaaff"],
           "comment": "Bright Pink"
         },
         {
-          "dmxRange": [
-            79,
-            91
-          ],
+          "dmxRange": [79, 91],
           "type": "ColorPreset",
-          "colors": [
-            "#55ff7f"
-          ],
+          "colors": ["#55ff7f"],
           "comment": "Bright green"
         },
         {
-          "dmxRange": [
-            92,
-            104
-          ],
+          "dmxRange": [92, 104],
           "type": "ColorPreset",
-          "colors": [
-            "#00aaff"
-          ],
+          "colors": ["#00aaff"],
           "comment": "Bright blue"
         },
         {
-          "dmxRange": [
-            105,
-            117
-          ],
+          "dmxRange": [105, 117],
           "type": "ColorPreset",
-          "colors": [
-            "#ffff00"
-          ],
+          "colors": ["#ffff00"],
           "comment": "Yellow"
         },
         {
-          "dmxRange": [
-            118,
-            130
-          ],
+          "dmxRange": [118, 130],
           "type": "ColorPreset",
-          "colors": [
-            "#fff9e0"
-          ],
+          "colors": ["#fff9e0"],
           "comment": "Warm White",
           "colorTemperature": "warm"
         },
         {
-          "dmxRange": [
-            131,
-            143
-          ],
+          "dmxRange": [131, 143],
           "type": "ColorPreset",
-          "colors": [
-            "#ff0000"
-          ],
+          "colors": ["#ff0000"],
           "comment": "Red"
         },
         {
-          "dmxRange": [
-            144,
-            156
-          ],
+          "dmxRange": [144, 156],
           "type": "ColorPreset",
-          "colors": [
-            "#00ff00"
-          ],
+          "colors": ["#00ff00"],
           "comment": "Green"
         },
         {
-          "dmxRange": [
-            157,
-            169
-          ],
+          "dmxRange": [157, 169],
           "type": "ColorPreset",
-          "colors": [
-            "#0000ff"
-          ],
+          "colors": ["#0000ff"],
           "comment": "Blue"
         },
         {
-          "dmxRange": [
-            170,
-            182
-          ],
+          "dmxRange": [170, 182],
           "type": "ColorPreset",
-          "colors": [
-            "#ffbf00"
-          ],
+          "colors": ["#ffbf00"],
           "comment": "Amber"
         },
         {
-          "dmxRange": [
-            183,
-            195
-          ],
+          "dmxRange": [183, 195],
           "type": "ColorPreset",
-          "colors": [
-            "#ffffff"
-          ],
+          "colors": ["#ffffff"],
           "comment": "White"
         },
         {
-          "dmxRange": [
-            196,
-            223
-          ],
+          "dmxRange": [196, 223],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "comment": "7 colors"
         },
         {
-          "dmxRange": [
-            224,
-            237
-          ],
+          "dmxRange": [224, 237],
           "type": "Effect",
           "effectName": "Color Change",
-          "helpWanted": "How does Color Change differ from Jump or Fade (Gradient)?",
+          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
           "comment": "7 colors"
         },
         {
-          "dmxRange": [
-            238,
-            255
-          ],
+          "dmxRange": [238, 255],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "comment": "7 colors"
@@ -320,41 +216,26 @@
     "Programs": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            2
-          ],
+          "dmxRange": [0, 2],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            3,
-            101
-          ],
+          "dmxRange": [3, 101],
           "type": "Effect",
           "effectName": "Program 1 (fast)"
         },
         {
-          "dmxRange": [
-            102,
-            152
-          ],
+          "dmxRange": [102, 152],
           "type": "Effect",
           "effectName": "Program 2 (gradient and jump)"
         },
         {
-          "dmxRange": [
-            153,
-            203
-          ],
+          "dmxRange": [153, 203],
           "type": "Effect",
           "effectName": "Program 3 (slow)"
         },
         {
-          "dmxRange": [
-            204,
-            255
-          ],
+          "dmxRange": [204, 255],
           "type": "Effect",
           "effectName": "Program 4 (sound-controlled)",
           "soundControlled": true
@@ -364,17 +245,11 @@
     "Factory reset": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            254
-          ],
+          "dmxRange": [0, 254],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            255,
-            255
-          ],
+          "dmxRange": [255, 255],
           "type": "Maintenance",
           "comment": "Reset to factory settings"
         }

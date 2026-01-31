@@ -1,13 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Flat Par 54x3W",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "J2M"
-    ],
+    "authors": ["J2M"],
     "createDate": "2022-10-21",
     "lastModifyDate": "2022-10-21",
     "importPlugin": {
@@ -28,11 +24,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      260,
-      280,
-      130
-    ],
+    "dimensions": [260, 280, 130],
     "weight": 0.4,
     "power": 162,
     "DMXconnector": "3-pin",
@@ -79,41 +71,26 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            50
-          ],
+          "dmxRange": [0, 50],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            51,
-            100
-          ],
+          "dmxRange": [51, 100],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [
-            101,
-            150
-          ],
+          "dmxRange": [101, 150],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [
-            151,
-            200
-          ],
+          "dmxRange": [151, 200],
           "type": "Effect",
           "effectName": "Program pulse"
         },
         {
-          "dmxRange": [
-            201,
-            255
-          ],
+          "dmxRange": [201, 255],
           "type": "Effect",
           "effectName": "Open sound control function",
           "soundControlled": true

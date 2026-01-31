@@ -1,16 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Ribalta Beam",
-  "categories": [
-    "Pixel Bar",
-    "Color Changer"
-  ],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": [
-      "txukinho",
-      "pedro hugo",
-      "Felix Edelmann"
-    ],
+    "authors": ["txukinho", "pedro hugo", "Felix Edelmann"],
     "createDate": "2018-10-16",
     "lastModifyDate": "2018-10-16"
   },
@@ -19,18 +12,14 @@
       "https://www.youtube.com/watch?v=5DTkpKhS_kE"
     ]
   },
-  "helpWanted": "The 38-channel mode, channel data and a link to the manual are missing. Is this fixture the same as the ETEC LED Roto Bar?",
+  "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
   "physical": {
     "bulb": {
       "type": "8x 10W RGBW LEDs"
     }
   },
   "matrix": {
-    "pixelCount": [
-      8,
-      1,
-      1
-    ],
+    "pixelCount": [8, 1, 1],
     "pixelGroups": {
       "Master": "all"
     }
@@ -68,7 +57,7 @@
     "Auto": {
       "capability": {
         "type": "Generic",
-        "helpWanted": "What does this channel do?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Sound Sensitivity": {
@@ -76,7 +65,7 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high",
-        "helpWanted": "Is it low…high or high…low?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     }
   },

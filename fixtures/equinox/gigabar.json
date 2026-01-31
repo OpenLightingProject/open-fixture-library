@@ -1,15 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Gigabar",
-  "categories": [
-    "Stand",
-    "Color Changer"
-  ],
+  "categories": ["Stand", "Color Changer"],
   "meta": {
-    "authors": [
-      "Justin Hornsby",
-      "Felix Edelmann"
-    ],
+    "authors": ["Justin Hornsby", "Felix Edelmann"],
     "createDate": "2017-11-16",
     "lastModifyDate": "2018-08-24"
   },
@@ -22,11 +16,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      1000,
-      320,
-      82
-    ],
+    "dimensions": [1000, 320, 82],
     "weight": 13,
     "power": 135,
     "DMXconnector": "3-pin",
@@ -34,27 +24,14 @@
       "type": "4x30W tri-color COB LEDs"
     },
     "lens": {
-      "degreesMinMax": [
-        20,
-        20
-      ]
+      "degreesMinMax": [20, 20]
     }
   },
   "matrix": {
-    "pixelCount": [
-      4,
-      1,
-      1
-    ],
+    "pixelCount": [4, 1, 1],
     "pixelGroups": {
-      "1&2": [
-        "1",
-        "2"
-      ],
-      "3&4": [
-        "3",
-        "4"
-      ],
+      "1&2": ["1", "2"],
+      "3&4": ["3", "4"],
       "Master": "all"
     }
   },
@@ -63,118 +40,77 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            15
-          ],
+          "dmxRange": [0, 15],
           "type": "NoFunction",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            16,
-            23
-          ],
+          "dmxRange": [16, 23],
           "type": "ColorPreset",
-          "colors": [
-            "#ff0000"
-          ],
+          "colors": ["#ff0000"],
           "comment": "Red",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            24,
-            31
-          ],
+          "dmxRange": [24, 31],
           "type": "ColorPreset",
-          "colors": [
-            "#00ff00"
-          ],
+          "colors": ["#00ff00"],
           "comment": "Green",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            32,
-            39
-          ],
+          "dmxRange": [32, 39],
           "type": "ColorPreset",
-          "colors": [
-            "#0000ff"
-          ],
+          "colors": ["#0000ff"],
           "comment": "Blue",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            40,
-            47
-          ],
+          "dmxRange": [40, 47],
           "type": "ColorPreset",
-          "colors": [
-            "#ffff00"
-          ],
+          "colors": ["#ffff00"],
           "comment": "RedGreen",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            48,
-            55
-          ],
+          "dmxRange": [48, 55],
           "type": "ColorPreset",
-          "colors": [
-            "#00ffff"
-          ],
+          "colors": ["#00ffff"],
           "comment": "GreenBlue",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            56,
-            63
-          ],
+          "dmxRange": [56, 63],
           "type": "ColorPreset",
-          "colors": [
-            "#ff00ff"
-          ],
+          "colors": ["#ff00ff"],
           "comment": "RedBlue",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            64,
-            71
-          ],
+          "dmxRange": [64, 71],
           "type": "ColorPreset",
-          "colors": [
-            "#ffffff"
-          ],
+          "colors": ["#ffffff"],
           "comment": "RedGreenBlue",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
         },
         {
-          "dmxRange": [
-            72,
-            79
-          ],
+          "dmxRange": [72, 79],
           "type": "ColorPreset",
           "comment": "Color 1",
           "helpWanted": "What colors are Color 1 until Color 8?",
@@ -183,10 +119,7 @@
           }
         },
         {
-          "dmxRange": [
-            80,
-            87
-          ],
+          "dmxRange": [80, 87],
           "type": "ColorPreset",
           "comment": "Color 2",
           "switchChannels": {
@@ -194,10 +127,7 @@
           }
         },
         {
-          "dmxRange": [
-            88,
-            95
-          ],
+          "dmxRange": [88, 95],
           "type": "ColorPreset",
           "comment": "Color 3",
           "switchChannels": {
@@ -205,10 +135,7 @@
           }
         },
         {
-          "dmxRange": [
-            96,
-            103
-          ],
+          "dmxRange": [96, 103],
           "type": "ColorPreset",
           "comment": "Color 4",
           "switchChannels": {
@@ -216,10 +143,7 @@
           }
         },
         {
-          "dmxRange": [
-            104,
-            111
-          ],
+          "dmxRange": [104, 111],
           "type": "ColorPreset",
           "comment": "Color 5",
           "switchChannels": {
@@ -227,10 +151,7 @@
           }
         },
         {
-          "dmxRange": [
-            112,
-            119
-          ],
+          "dmxRange": [112, 119],
           "type": "ColorPreset",
           "comment": "Color 6",
           "switchChannels": {
@@ -238,10 +159,7 @@
           }
         },
         {
-          "dmxRange": [
-            120,
-            127
-          ],
+          "dmxRange": [120, 127],
           "type": "ColorPreset",
           "comment": "Color 7",
           "switchChannels": {
@@ -249,10 +167,7 @@
           }
         },
         {
-          "dmxRange": [
-            128,
-            135
-          ],
+          "dmxRange": [128, 135],
           "type": "ColorPreset",
           "comment": "Color 8",
           "switchChannels": {
@@ -260,10 +175,7 @@
           }
         },
         {
-          "dmxRange": [
-            136,
-            143
-          ],
+          "dmxRange": [136, 143],
           "type": "Effect",
           "effectName": "Dream",
           "switchChannels": {
@@ -271,10 +183,7 @@
           }
         },
         {
-          "dmxRange": [
-            144,
-            151
-          ],
+          "dmxRange": [144, 151],
           "type": "Effect",
           "effectName": "Meteor",
           "switchChannels": {
@@ -282,10 +191,7 @@
           }
         },
         {
-          "dmxRange": [
-            152,
-            159
-          ],
+          "dmxRange": [152, 159],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
@@ -293,10 +199,7 @@
           }
         },
         {
-          "dmxRange": [
-            160,
-            167
-          ],
+          "dmxRange": [160, 167],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
@@ -304,10 +207,7 @@
           }
         },
         {
-          "dmxRange": [
-            168,
-            175
-          ],
+          "dmxRange": [168, 175],
           "type": "Effect",
           "effectName": "Flow 1",
           "switchChannels": {
@@ -315,10 +215,7 @@
           }
         },
         {
-          "dmxRange": [
-            176,
-            183
-          ],
+          "dmxRange": [176, 183],
           "type": "Effect",
           "effectName": "Flow 2",
           "switchChannels": {
@@ -326,10 +223,7 @@
           }
         },
         {
-          "dmxRange": [
-            184,
-            191
-          ],
+          "dmxRange": [184, 191],
           "type": "Effect",
           "effectName": "Flow 3",
           "switchChannels": {
@@ -337,10 +231,7 @@
           }
         },
         {
-          "dmxRange": [
-            192,
-            199
-          ],
+          "dmxRange": [192, 199],
           "type": "Effect",
           "effectName": "Flow 4",
           "switchChannels": {
@@ -348,10 +239,7 @@
           }
         },
         {
-          "dmxRange": [
-            200,
-            207
-          ],
+          "dmxRange": [200, 207],
           "type": "Effect",
           "effectName": "Flow 5",
           "switchChannels": {
@@ -359,10 +247,7 @@
           }
         },
         {
-          "dmxRange": [
-            208,
-            215
-          ],
+          "dmxRange": [208, 215],
           "type": "Effect",
           "effectName": "Flow 6",
           "switchChannels": {
@@ -370,10 +255,7 @@
           }
         },
         {
-          "dmxRange": [
-            216,
-            223
-          ],
+          "dmxRange": [216, 223],
           "type": "Effect",
           "effectName": "Flow 7",
           "switchChannels": {
@@ -381,10 +263,7 @@
           }
         },
         {
-          "dmxRange": [
-            224,
-            231
-          ],
+          "dmxRange": [224, 231],
           "type": "Effect",
           "effectName": "Flow 8",
           "switchChannels": {
@@ -392,10 +271,7 @@
           }
         },
         {
-          "dmxRange": [
-            232,
-            239
-          ],
+          "dmxRange": [232, 239],
           "type": "Effect",
           "effectName": "Flow 9",
           "switchChannels": {
@@ -403,10 +279,7 @@
           }
         },
         {
-          "dmxRange": [
-            240,
-            255
-          ],
+          "dmxRange": [240, 255],
           "type": "Effect",
           "effectName": "Sound Active",
           "soundControlled": true,
@@ -447,33 +320,21 @@
     "Sound Sensitivity / Strobe": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            1,
-            5
-          ],
+          "dmxRange": [1, 5],
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
         },
         {
-          "dmxRange": [
-            6,
-            10
-          ],
+          "dmxRange": [6, 10],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            11,
-            255
-          ],
+          "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
@@ -484,18 +345,12 @@
     "PowerOutput 1": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            127
-          ],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "OFF"
         },
         {
-          "dmxRange": [
-            128,
-            255
-          ],
+          "dmxRange": [128, 255],
           "type": "Maintenance",
           "comment": "ON"
         }
@@ -504,18 +359,12 @@
     "PowerOutput 2": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            127
-          ],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "OFF"
         },
         {
-          "dmxRange": [
-            128,
-            255
-          ],
+          "dmxRange": [128, 255],
           "type": "Maintenance",
           "comment": "ON"
         }
@@ -544,80 +393,45 @@
     "Colors $pixelKey": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            36
-          ],
+          "dmxRange": [0, 36],
           "type": "ColorPreset",
-          "colors": [
-            "#ff0000"
-          ],
+          "colors": ["#ff0000"],
           "comment": "R"
         },
         {
-          "dmxRange": [
-            37,
-            73
-          ],
+          "dmxRange": [37, 73],
           "type": "ColorPreset",
-          "colors": [
-            "#00ff00"
-          ],
+          "colors": ["#00ff00"],
           "comment": "G"
         },
         {
-          "dmxRange": [
-            74,
-            110
-          ],
+          "dmxRange": [74, 110],
           "type": "ColorPreset",
-          "colors": [
-            "#0000ff"
-          ],
+          "colors": ["#0000ff"],
           "comment": "B"
         },
         {
-          "dmxRange": [
-            111,
-            147
-          ],
+          "dmxRange": [111, 147],
           "type": "ColorPreset",
-          "colors": [
-            "#ffff00"
-          ],
+          "colors": ["#ffff00"],
           "comment": "RG"
         },
         {
-          "dmxRange": [
-            148,
-            184
-          ],
+          "dmxRange": [148, 184],
           "type": "ColorPreset",
-          "colors": [
-            "#ff00ff"
-          ],
+          "colors": ["#ff00ff"],
           "comment": "RB"
         },
         {
-          "dmxRange": [
-            185,
-            221
-          ],
+          "dmxRange": [185, 221],
           "type": "ColorPreset",
-          "colors": [
-            "#00ffff"
-          ],
+          "colors": ["#00ffff"],
           "comment": "GB"
         },
         {
-          "dmxRange": [
-            222,
-            255
-          ],
+          "dmxRange": [222, 255],
           "type": "ColorPreset",
-          "colors": [
-            "#ffffff"
-          ],
+          "colors": ["#ffffff"],
           "comment": "RGB"
         }
       ]
@@ -660,10 +474,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": [
-            "1&2",
-            "3&4"
-          ],
+          "repeatFor": ["1&2", "3&4"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

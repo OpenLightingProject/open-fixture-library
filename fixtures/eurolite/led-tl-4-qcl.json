@@ -1,13 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED TL-4 QCL",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Clemens Mair"
-    ],
+    "authors": ["Clemens Mair"],
     "createDate": "2021-10-29",
     "lastModifyDate": "2021-10-29"
   },
@@ -23,11 +19,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      145,
-      130,
-      155
-    ],
+    "dimensions": [145, 130, 155],
     "weight": 1.3,
     "power": 15,
     "DMXconnector": "3-pin",
@@ -35,10 +27,7 @@
       "type": "4× 8W 4in1 QCL RGB+UV LED"
     },
     "lens": {
-      "degreesMinMax": [
-        13,
-        30
-      ]
+      "degreesMinMax": [13, 30]
     }
   },
   "availableChannels": {
@@ -83,246 +72,141 @@
     "Color Presets": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            10,
-            19
-          ],
+          "dmxRange": [10, 19],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
-          "dmxRange": [
-            20,
-            29
-          ],
+          "dmxRange": [20, 29],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": [
-            "#00ff00"
-          ]
+          "colors": ["#00ff00"]
         },
         {
-          "dmxRange": [
-            30,
-            39
-          ],
+          "dmxRange": [30, 39],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": [
-            "#0000ff"
-          ]
+          "colors": ["#0000ff"]
         },
         {
-          "dmxRange": [
-            40,
-            49
-          ],
+          "dmxRange": [40, 49],
           "type": "ColorPreset",
           "comment": "UV",
-          "colors": [
-            "#8800ff"
-          ]
+          "colors": ["#8800ff"]
         },
         {
-          "dmxRange": [
-            50,
-            59
-          ],
+          "dmxRange": [50, 59],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
-          "dmxRange": [
-            60,
-            69
-          ],
+          "dmxRange": [60, 69],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": [
-            "#ff00ff"
-          ]
+          "colors": ["#ff00ff"]
         },
         {
-          "dmxRange": [
-            70,
-            79
-          ],
+          "dmxRange": [70, 79],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": [
-            "#00ffff"
-          ]
+          "colors": ["#00ffff"]
         },
         {
-          "dmxRange": [
-            80,
-            89
-          ],
+          "dmxRange": [80, 89],
           "type": "ColorPreset",
           "comment": "Dark orange",
-          "colors": [
-            "#c04d00"
-          ]
+          "colors": ["#c04d00"]
         },
         {
-          "dmxRange": [
-            90,
-            99
-          ],
+          "dmxRange": [90, 99],
           "type": "ColorPreset",
           "comment": "Green yellow",
-          "colors": [
-            "#88ff00"
-          ]
+          "colors": ["#88ff00"]
         },
         {
-          "dmxRange": [
-            100,
-            109
-          ],
+          "dmxRange": [100, 109],
           "type": "ColorPreset",
           "comment": "Salmon",
-          "colors": [
-            "#ff8888"
-          ]
+          "colors": ["#ff8888"]
         },
         {
-          "dmxRange": [
-            110,
-            119
-          ],
+          "dmxRange": [110, 119],
           "type": "ColorPreset",
           "comment": "Turquoise",
-          "colors": [
-            "#1d9cce"
-          ]
+          "colors": ["#1d9cce"]
         },
         {
-          "dmxRange": [
-            120,
-            129
-          ],
+          "dmxRange": [120, 129],
           "type": "ColorPreset",
           "comment": "Light green",
-          "colors": [
-            "#88ff88"
-          ]
+          "colors": ["#88ff88"]
         },
         {
-          "dmxRange": [
-            130,
-            139
-          ],
+          "dmxRange": [130, 139],
           "type": "ColorPreset",
           "comment": "Orange",
-          "colors": [
-            "#ff8800"
-          ]
+          "colors": ["#ff8800"]
         },
         {
-          "dmxRange": [
-            140,
-            149
-          ],
+          "dmxRange": [140, 149],
           "type": "ColorPreset",
           "comment": "Lavender",
-          "colors": [
-            "#cc61cc"
-          ]
+          "colors": ["#cc61cc"]
         },
         {
-          "dmxRange": [
-            150,
-            159
-          ],
+          "dmxRange": [150, 159],
           "type": "ColorPreset",
           "comment": "Light blue",
-          "colors": [
-            "#52aeff"
-          ]
+          "colors": ["#52aeff"]
         },
         {
-          "dmxRange": [
-            160,
-            169
-          ],
+          "dmxRange": [160, 169],
           "type": "ColorPreset",
           "comment": "Dark blue",
-          "colors": [
-            "#000088"
-          ]
+          "colors": ["#000088"]
         },
         {
-          "dmxRange": [
-            170,
-            179
-          ],
+          "dmxRange": [170, 179],
           "type": "ColorPreset",
           "comment": "Pink",
-          "colors": [
-            "#ff88ff"
-          ]
+          "colors": ["#ff88ff"]
         },
         {
-          "dmxRange": [
-            180,
-            255
-          ],
+          "dmxRange": [180, 255],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         }
       ]
     },
     "Auto Mode / Sound Control": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            10,
-            69
-          ],
+          "dmxRange": [10, 69],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            70,
-            129
-          ],
+          "dmxRange": [70, 129],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            130,
-            189
-          ],
+          "dmxRange": [130, 189],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "soundControlled": true,
@@ -330,10 +214,7 @@
           "soundSensitivityEnd": "high"
         },
         {
-          "dmxRange": [
-            190,
-            255
-          ],
+          "dmxRange": [190, 255],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "soundControlled": true,

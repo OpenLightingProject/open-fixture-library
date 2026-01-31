@@ -1,15 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vector Pixel BAR 18x 15W RGBWA",
-  "categories": [
-    "Pixel Bar",
-    "Color Changer"
-  ],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": [
-      "Stephan Klein",
-      "Flo Edelmann"
-    ],
+    "authors": ["Stephan Klein", "Flo Edelmann"],
     "createDate": "2020-03-29",
     "lastModifyDate": "2020-03-29"
   },
@@ -22,11 +16,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      1130,
-      150,
-      210
-    ],
+    "dimensions": [1130, 150, 210],
     "weight": 8,
     "power": 180,
     "DMXconnector": "3-pin",
@@ -34,18 +24,11 @@
       "type": "18× 15W RGBWA LEDs"
     },
     "lens": {
-      "degreesMinMax": [
-        45,
-        45
-      ]
+      "degreesMinMax": [45, 45]
     }
   },
   "matrix": {
-    "pixelCount": [
-      18,
-      1,
-      1
-    ],
+    "pixelCount": [18, 1, 1],
     "pixelGroups": {
       "Master": "all"
     }
@@ -69,20 +52,14 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            17
-          ],
+          "dmxRange": [0, 17],
           "type": "NoFunction",
           "switchChannels": {
             "Running Effects / Color Running Effect Direction": "Unused"
           }
         },
         {
-          "dmxRange": [
-            18,
-            22
-          ],
+          "dmxRange": [18, 22],
           "type": "Effect",
           "effectName": "Color Change",
           "switchChannels": {
@@ -90,10 +67,7 @@
           }
         },
         {
-          "dmxRange": [
-            23,
-            27
-          ],
+          "dmxRange": [23, 27],
           "type": "Effect",
           "effectName": "Colorful running jump change",
           "switchChannels": {
@@ -101,10 +75,7 @@
           }
         },
         {
-          "dmxRange": [
-            28,
-            32
-          ],
+          "dmxRange": [28, 32],
           "type": "Effect",
           "effectName": "Colorful running gradual change",
           "switchChannels": {
@@ -112,10 +83,7 @@
           }
         },
         {
-          "dmxRange": [
-            33,
-            37
-          ],
+          "dmxRange": [33, 37],
           "type": "Effect",
           "effectName": "Color",
           "helpWanted": "What does this capability do?",
@@ -124,10 +92,7 @@
           }
         },
         {
-          "dmxRange": [
-            38,
-            42
-          ],
+          "dmxRange": [38, 42],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
@@ -135,10 +100,7 @@
           }
         },
         {
-          "dmxRange": [
-            43,
-            47
-          ],
+          "dmxRange": [43, 47],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
@@ -146,10 +108,7 @@
           }
         },
         {
-          "dmxRange": [
-            48,
-            251
-          ],
+          "dmxRange": [48, 251],
           "type": "Effect",
           "effectName": "Running effects 1…50",
           "helpWanted": "Which running effect is active at which DMX values?",
@@ -158,10 +117,7 @@
           }
         },
         {
-          "dmxRange": [
-            252,
-            255
-          ],
+          "dmxRange": [252, 255],
           "type": "Effect",
           "effectName": "Sound to light",
           "soundControlled": true,
@@ -174,409 +130,256 @@
     "Running Effects": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            1,
-            5
-          ],
+          "dmxRange": [1, 5],
           "type": "Effect",
           "effectName": "Running effect 1"
         },
         {
-          "dmxRange": [
-            6,
-            10
-          ],
+          "dmxRange": [6, 10],
           "type": "Effect",
           "effectName": "Running effect 2"
         },
         {
-          "dmxRange": [
-            11,
-            15
-          ],
+          "dmxRange": [11, 15],
           "type": "Effect",
           "effectName": "Running effect 3"
         },
         {
-          "dmxRange": [
-            16,
-            20
-          ],
+          "dmxRange": [16, 20],
           "type": "Effect",
           "effectName": "Running effect 4"
         },
         {
-          "dmxRange": [
-            21,
-            25
-          ],
+          "dmxRange": [21, 25],
           "type": "Effect",
           "effectName": "Running effect 5"
         },
         {
-          "dmxRange": [
-            26,
-            30
-          ],
+          "dmxRange": [26, 30],
           "type": "Effect",
           "effectName": "Running effect 6"
         },
         {
-          "dmxRange": [
-            31,
-            35
-          ],
+          "dmxRange": [31, 35],
           "type": "Effect",
           "effectName": "Running effect 7"
         },
         {
-          "dmxRange": [
-            36,
-            40
-          ],
+          "dmxRange": [36, 40],
           "type": "Effect",
           "effectName": "Running effect 8"
         },
         {
-          "dmxRange": [
-            41,
-            45
-          ],
+          "dmxRange": [41, 45],
           "type": "Effect",
           "effectName": "Running effect 9"
         },
         {
-          "dmxRange": [
-            46,
-            50
-          ],
+          "dmxRange": [46, 50],
           "type": "Effect",
           "effectName": "Running effect 10"
         },
         {
-          "dmxRange": [
-            51,
-            55
-          ],
+          "dmxRange": [51, 55],
           "type": "Effect",
           "effectName": "Running effect 11"
         },
         {
-          "dmxRange": [
-            56,
-            60
-          ],
+          "dmxRange": [56, 60],
           "type": "Effect",
           "effectName": "Running effect 12"
         },
         {
-          "dmxRange": [
-            61,
-            65
-          ],
+          "dmxRange": [61, 65],
           "type": "Effect",
           "effectName": "Running effect 13"
         },
         {
-          "dmxRange": [
-            66,
-            70
-          ],
+          "dmxRange": [66, 70],
           "type": "Effect",
           "effectName": "Running effect 14"
         },
         {
-          "dmxRange": [
-            71,
-            75
-          ],
+          "dmxRange": [71, 75],
           "type": "Effect",
           "effectName": "Running effect 15"
         },
         {
-          "dmxRange": [
-            76,
-            80
-          ],
+          "dmxRange": [76, 80],
           "type": "Effect",
           "effectName": "Running effect 16"
         },
         {
-          "dmxRange": [
-            81,
-            85
-          ],
+          "dmxRange": [81, 85],
           "type": "Effect",
           "effectName": "Running effect 17"
         },
         {
-          "dmxRange": [
-            86,
-            90
-          ],
+          "dmxRange": [86, 90],
           "type": "Effect",
           "effectName": "Running effect 18"
         },
         {
-          "dmxRange": [
-            91,
-            95
-          ],
+          "dmxRange": [91, 95],
           "type": "Effect",
           "effectName": "Running effect 19"
         },
         {
-          "dmxRange": [
-            96,
-            100
-          ],
+          "dmxRange": [96, 100],
           "type": "Effect",
           "effectName": "Running effect 20"
         },
         {
-          "dmxRange": [
-            101,
-            105
-          ],
+          "dmxRange": [101, 105],
           "type": "Effect",
           "effectName": "Running effect 21"
         },
         {
-          "dmxRange": [
-            106,
-            110
-          ],
+          "dmxRange": [106, 110],
           "type": "Effect",
           "effectName": "Running effect 22"
         },
         {
-          "dmxRange": [
-            111,
-            115
-          ],
+          "dmxRange": [111, 115],
           "type": "Effect",
           "effectName": "Running effect 23"
         },
         {
-          "dmxRange": [
-            116,
-            120
-          ],
+          "dmxRange": [116, 120],
           "type": "Effect",
           "effectName": "Running effect 24"
         },
         {
-          "dmxRange": [
-            121,
-            125
-          ],
+          "dmxRange": [121, 125],
           "type": "Effect",
           "effectName": "Running effect 25"
         },
         {
-          "dmxRange": [
-            126,
-            130
-          ],
+          "dmxRange": [126, 130],
           "type": "Effect",
           "effectName": "Running effect 26"
         },
         {
-          "dmxRange": [
-            131,
-            135
-          ],
+          "dmxRange": [131, 135],
           "type": "Effect",
           "effectName": "Running effect 27"
         },
         {
-          "dmxRange": [
-            136,
-            140
-          ],
+          "dmxRange": [136, 140],
           "type": "Effect",
           "effectName": "Running effect 28"
         },
         {
-          "dmxRange": [
-            141,
-            145
-          ],
+          "dmxRange": [141, 145],
           "type": "Effect",
           "effectName": "Running effect 29"
         },
         {
-          "dmxRange": [
-            146,
-            150
-          ],
+          "dmxRange": [146, 150],
           "type": "Effect",
           "effectName": "Running effect 30"
         },
         {
-          "dmxRange": [
-            151,
-            155
-          ],
+          "dmxRange": [151, 155],
           "type": "Effect",
           "effectName": "Running effect 31"
         },
         {
-          "dmxRange": [
-            156,
-            160
-          ],
+          "dmxRange": [156, 160],
           "type": "Effect",
           "effectName": "Running effect 32"
         },
         {
-          "dmxRange": [
-            161,
-            165
-          ],
+          "dmxRange": [161, 165],
           "type": "Effect",
           "effectName": "Running effect 33"
         },
         {
-          "dmxRange": [
-            166,
-            170
-          ],
+          "dmxRange": [166, 170],
           "type": "Effect",
           "effectName": "Running effect 34"
         },
         {
-          "dmxRange": [
-            171,
-            175
-          ],
+          "dmxRange": [171, 175],
           "type": "Effect",
           "effectName": "Running effect 35"
         },
         {
-          "dmxRange": [
-            176,
-            180
-          ],
+          "dmxRange": [176, 180],
           "type": "Effect",
           "effectName": "Running effect 36"
         },
         {
-          "dmxRange": [
-            181,
-            185
-          ],
+          "dmxRange": [181, 185],
           "type": "Effect",
           "effectName": "Running effect 37"
         },
         {
-          "dmxRange": [
-            186,
-            190
-          ],
+          "dmxRange": [186, 190],
           "type": "Effect",
           "effectName": "Running effect 38"
         },
         {
-          "dmxRange": [
-            191,
-            195
-          ],
+          "dmxRange": [191, 195],
           "type": "Effect",
           "effectName": "Running effect 39"
         },
         {
-          "dmxRange": [
-            196,
-            200
-          ],
+          "dmxRange": [196, 200],
           "type": "Effect",
           "effectName": "Running effect 40"
         },
         {
-          "dmxRange": [
-            201,
-            205
-          ],
+          "dmxRange": [201, 205],
           "type": "Effect",
           "effectName": "Running effect 41"
         },
         {
-          "dmxRange": [
-            206,
-            210
-          ],
+          "dmxRange": [206, 210],
           "type": "Effect",
           "effectName": "Running effect 42"
         },
         {
-          "dmxRange": [
-            211,
-            215
-          ],
+          "dmxRange": [211, 215],
           "type": "Effect",
           "effectName": "Running effect 43"
         },
         {
-          "dmxRange": [
-            216,
-            220
-          ],
+          "dmxRange": [216, 220],
           "type": "Effect",
           "effectName": "Running effect 44"
         },
         {
-          "dmxRange": [
-            221,
-            225
-          ],
+          "dmxRange": [221, 225],
           "type": "Effect",
           "effectName": "Running effect 45"
         },
         {
-          "dmxRange": [
-            226,
-            230
-          ],
+          "dmxRange": [226, 230],
           "type": "Effect",
           "effectName": "Running effect 46"
         },
         {
-          "dmxRange": [
-            231,
-            235
-          ],
+          "dmxRange": [231, 235],
           "type": "Effect",
           "effectName": "Running effect 47"
         },
         {
-          "dmxRange": [
-            236,
-            240
-          ],
+          "dmxRange": [236, 240],
           "type": "Effect",
           "effectName": "Running effect 48"
         },
         {
-          "dmxRange": [
-            241,
-            245
-          ],
+          "dmxRange": [241, 245],
           "type": "Effect",
           "effectName": "Running effect 49"
         },
         {
-          "dmxRange": [
-            246,
-            255
-          ],
+          "dmxRange": [246, 255],
           "type": "Effect",
           "effectName": "Running effect 50",
           "helpWanted": "According to the manual, this capability starts at 251. If it does, how are the DMX ranges of the other capabilities?"
@@ -586,18 +389,12 @@
     "Color Running Effect Direction": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            127
-          ],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "left running"
         },
         {
-          "dmxRange": [
-            128,
-            255
-          ],
+          "dmxRange": [128, 255],
           "type": "Maintenance",
           "comment": "right running"
         }

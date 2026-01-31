@@ -2,15 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Light Bar RGB V3",
   "shortName": "LEDLightBar",
-  "categories": [
-    "Pixel Bar",
-    "Color Changer"
-  ],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": [
-      "Flo Edelmann",
-      "Felix Edelmann"
-    ],
+    "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-20",
     "lastModifyDate": "2018-08-24"
   },
@@ -21,11 +15,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      1070,
-      65,
-      88
-    ],
+    "dimensions": [1070, 65, 88],
     "weight": 1.68,
     "power": 70,
     "DMXconnector": "3-pin",
@@ -34,44 +24,22 @@
     },
     "lens": {
       "name": "Other",
-      "degreesMinMax": [
-        40,
-        40
-      ]
+      "degreesMinMax": [40, 40]
     },
     "matrixPixels": {
-      "dimensions": [
-        250,
-        60,
-        0
-      ],
-      "spacing": [
-        0,
-        0,
-        0
-      ]
+      "dimensions": [250, 60, 0],
+      "spacing": [0, 0, 0]
     }
   },
   "matrix": {
     "pixelKeys": [
       [
-        [
-          "1/4",
-          "2/4",
-          "3/4",
-          "4/4"
-        ]
+        ["1/4", "2/4", "3/4", "4/4"]
       ]
     ],
     "pixelGroups": {
-      "1/2": [
-        "1/4",
-        "2/4"
-      ],
-      "2/2": [
-        "3/4",
-        "4/4"
-      ]
+      "1/2": ["1/4", "2/4"],
+      "2/2": ["3/4", "4/4"]
     }
   },
   "availableChannels": {
@@ -112,17 +80,11 @@
       "name": "Strobe",
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            10,
-            255
-          ],
+          "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
@@ -134,118 +96,77 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            10,
-            19
-          ],
+          "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "colors": [
-            "#ff0000"
-          ],
+          "colors": ["#ff0000"],
           "comment": "Red",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            20,
-            29
-          ],
+          "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "colors": [
-            "#ffff00"
-          ],
+          "colors": ["#ffff00"],
           "comment": "Yellow",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            30,
-            39
-          ],
+          "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "colors": [
-            "#00ff00"
-          ],
+          "colors": ["#00ff00"],
           "comment": "Green",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            40,
-            49
-          ],
+          "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "colors": [
-            "#00ffff"
-          ],
+          "colors": ["#00ffff"],
           "comment": "Cyan",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            50,
-            59
-          ],
+          "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "colors": [
-            "#0000ff"
-          ],
+          "colors": ["#0000ff"],
           "comment": "Blue",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            60,
-            69
-          ],
+          "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "colors": [
-            "#ff00ff"
-          ],
+          "colors": ["#ff00ff"],
           "comment": "Purple",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            70,
-            79
-          ],
+          "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "colors": [
-            "#ffffff"
-          ],
+          "colors": ["#ffffff"],
           "comment": "White",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "dmxRange": [
-            80,
-            89
-          ],
+          "dmxRange": [80, 89],
           "type": "Effect",
           "effectName": "Program 1",
           "switchChannels": {
@@ -253,10 +174,7 @@
           }
         },
         {
-          "dmxRange": [
-            90,
-            99
-          ],
+          "dmxRange": [90, 99],
           "type": "Effect",
           "effectName": "Program 2",
           "switchChannels": {
@@ -264,10 +182,7 @@
           }
         },
         {
-          "dmxRange": [
-            100,
-            109
-          ],
+          "dmxRange": [100, 109],
           "type": "Effect",
           "effectName": "Program 3",
           "switchChannels": {
@@ -275,10 +190,7 @@
           }
         },
         {
-          "dmxRange": [
-            110,
-            119
-          ],
+          "dmxRange": [110, 119],
           "type": "Effect",
           "effectName": "Program 4",
           "switchChannels": {
@@ -286,10 +198,7 @@
           }
         },
         {
-          "dmxRange": [
-            120,
-            129
-          ],
+          "dmxRange": [120, 129],
           "type": "Effect",
           "effectName": "Program 5",
           "switchChannels": {
@@ -297,10 +206,7 @@
           }
         },
         {
-          "dmxRange": [
-            130,
-            139
-          ],
+          "dmxRange": [130, 139],
           "type": "Effect",
           "effectName": "Program 6",
           "switchChannels": {
@@ -308,10 +214,7 @@
           }
         },
         {
-          "dmxRange": [
-            140,
-            149
-          ],
+          "dmxRange": [140, 149],
           "type": "Effect",
           "effectName": "Program 7",
           "switchChannels": {
@@ -319,10 +222,7 @@
           }
         },
         {
-          "dmxRange": [
-            150,
-            159
-          ],
+          "dmxRange": [150, 159],
           "type": "Effect",
           "effectName": "Program 8",
           "switchChannels": {
@@ -330,10 +230,7 @@
           }
         },
         {
-          "dmxRange": [
-            160,
-            169
-          ],
+          "dmxRange": [160, 169],
           "type": "Effect",
           "effectName": "Program 9",
           "switchChannels": {
@@ -341,10 +238,7 @@
           }
         },
         {
-          "dmxRange": [
-            170,
-            179
-          ],
+          "dmxRange": [170, 179],
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
@@ -352,10 +246,7 @@
           }
         },
         {
-          "dmxRange": [
-            180,
-            189
-          ],
+          "dmxRange": [180, 189],
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
@@ -363,10 +254,7 @@
           }
         },
         {
-          "dmxRange": [
-            190,
-            199
-          ],
+          "dmxRange": [190, 199],
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
@@ -374,10 +262,7 @@
           }
         },
         {
-          "dmxRange": [
-            200,
-            209
-          ],
+          "dmxRange": [200, 209],
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
@@ -385,10 +270,7 @@
           }
         },
         {
-          "dmxRange": [
-            210,
-            219
-          ],
+          "dmxRange": [210, 219],
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
@@ -396,10 +278,7 @@
           }
         },
         {
-          "dmxRange": [
-            220,
-            229
-          ],
+          "dmxRange": [220, 229],
           "type": "Effect",
           "effectName": "Program 15",
           "switchChannels": {
@@ -407,10 +286,7 @@
           }
         },
         {
-          "dmxRange": [
-            230,
-            239
-          ],
+          "dmxRange": [230, 239],
           "type": "Effect",
           "effectName": "Program 16",
           "switchChannels": {
@@ -418,10 +294,7 @@
           }
         },
         {
-          "dmxRange": [
-            240,
-            255
-          ],
+          "dmxRange": [240, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true,
@@ -448,26 +321,17 @@
     "Operation Mode": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "Effect",
           "effectName": "RGB Mode"
         },
         {
-          "dmxRange": [
-            10,
-            249
-          ],
+          "dmxRange": [10, 249],
           "type": "Effect",
           "effectName": "Auto Program"
         },
         {
-          "dmxRange": [
-            250,
-            255
-          ],
+          "dmxRange": [250, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true
@@ -521,10 +385,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": [
-            "1/2",
-            "2/2"
-          ],
+          "repeatFor": ["1/2", "2/2"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

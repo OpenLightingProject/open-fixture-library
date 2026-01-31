@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Flat PAR Can Tri 5x 3W IR",
   "shortName": "CLPFLAT1TRI5X3WIR",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Felix Edelmann"
-    ],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-03-06",
     "lastModifyDate": "2019-03-06"
   },
@@ -23,11 +19,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      180,
-      175,
-      115
-    ],
+    "dimensions": [180, 175, 115],
     "weight": 1.2,
     "power": 20,
     "DMXconnector": "3-pin",
@@ -35,10 +27,7 @@
       "type": "5x 3W RGB LEDs"
     },
     "lens": {
-      "degreesMinMax": [
-        30,
-        30
-      ]
+      "degreesMinMax": [30, 30]
     }
   },
   "availableChannels": {
@@ -50,81 +39,46 @@
     "Color Macro": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            36
-          ],
+          "dmxRange": [0, 36],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
-          "dmxRange": [
-            37,
-            73
-          ],
+          "dmxRange": [37, 73],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": [
-            "#00ff00"
-          ]
+          "colors": ["#00ff00"]
         },
         {
-          "dmxRange": [
-            74,
-            110
-          ],
+          "dmxRange": [74, 110],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": [
-            "#0000ff"
-          ]
+          "colors": ["#0000ff"]
         },
         {
-          "dmxRange": [
-            111,
-            147
-          ],
+          "dmxRange": [111, 147],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
-          "dmxRange": [
-            148,
-            184
-          ],
+          "dmxRange": [148, 184],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": [
-            "#ff00ff"
-          ]
+          "colors": ["#ff00ff"]
         },
         {
-          "dmxRange": [
-            185,
-            221
-          ],
+          "dmxRange": [185, 221],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": [
-            "#00ffff"
-          ]
+          "colors": ["#00ffff"]
         },
         {
-          "dmxRange": [
-            222,
-            255
-          ],
+          "dmxRange": [222, 255],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         }
       ]
     },
@@ -141,115 +95,68 @@
       "name": "Color Macro",
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            4
-          ],
+          "dmxRange": [0, 4],
           "type": "NoFunction",
           "comment": "Blackout"
         },
         {
-          "dmxRange": [
-            5,
-            15
-          ],
+          "dmxRange": [5, 15],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
-          "dmxRange": [
-            16,
-            26
-          ],
+          "dmxRange": [16, 26],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": [
-            "#00ff00"
-          ]
+          "colors": ["#00ff00"]
         },
         {
-          "dmxRange": [
-            27,
-            37
-          ],
+          "dmxRange": [27, 37],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": [
-            "#0000ff"
-          ]
+          "colors": ["#0000ff"]
         },
         {
-          "dmxRange": [
-            38,
-            48
-          ],
+          "dmxRange": [38, 48],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
-          "dmxRange": [
-            49,
-            59
-          ],
+          "dmxRange": [49, 59],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": [
-            "#ff00ff"
-          ]
+          "colors": ["#ff00ff"]
         },
         {
-          "dmxRange": [
-            60,
-            70
-          ],
+          "dmxRange": [60, 70],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": [
-            "#00ffff"
-          ]
+          "colors": ["#00ffff"]
         },
         {
-          "dmxRange": [
-            71,
-            80
-          ],
+          "dmxRange": [71, 80],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         },
         {
-          "dmxRange": [
-            81,
-            150
-          ],
+          "dmxRange": [81, 150],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            151,
-            220
-          ],
+          "dmxRange": [151, 220],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            221,
-            255
-          ],
+          "dmxRange": [221, 255],
           "type": "Effect",
           "effectName": "Sound Control",
           "soundControlled": true,

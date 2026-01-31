@@ -1,14 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "GM107",
-  "categories": [
-    "Moving Head",
-    "Color Changer"
-  ],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": [
-      "Edgar Aichinger"
-    ],
+    "authors": ["Edgar Aichinger"],
     "createDate": "2018-09-13",
     "lastModifyDate": "2018-09-13",
     "importPlugin": {
@@ -32,11 +27,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      180,
-      243,
-      180
-    ],
+    "dimensions": [180, 243, 180],
     "weight": 2.65,
     "power": 70,
     "DMXconnector": "3-pin",
@@ -45,17 +36,12 @@
       "colorTemperature": 4500
     },
     "lens": {
-      "degreesMinMax": [
-        25,
-        25
-      ]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": [
-        "Pan fine"
-      ],
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -63,9 +49,7 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": [
-        "Tilt fine"
-      ],
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -115,36 +99,24 @@
     "Program": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction",
           "comment": "Manual control"
         },
         {
-          "dmxRange": [
-            1,
-            84
-          ],
+          "dmxRange": [1, 84],
           "type": "Effect",
           "effectName": "Auto mode",
           "speed": "slow"
         },
         {
-          "dmxRange": [
-            85,
-            169
-          ],
+          "dmxRange": [85, 169],
           "type": "Effect",
           "effectName": "Auto mode",
           "speed": "fast"
         },
         {
-          "dmxRange": [
-            170,
-            255
-          ],
+          "dmxRange": [170, 255],
           "type": "Effect",
           "effectName": "Sound to light",
           "soundControlled": true
@@ -154,17 +126,11 @@
     "Reset": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            254
-          ],
+          "dmxRange": [0, 254],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            255,
-            255
-          ],
+          "dmxRange": [255, 255],
           "type": "Maintenance",
           "comment": "Reset"
         }
@@ -173,18 +139,12 @@
     "Color mode": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            0
-          ],
+          "dmxRange": [0, 0],
           "type": "NoFunction",
           "comment": "Color intensity channels active"
         },
         {
-          "dmxRange": [
-            1,
-            255
-          ],
+          "dmxRange": [1, 255],
           "type": "ColorPreset",
           "comment": "Rainbow Effect",
           "helpWanted": "Which colors can be selected at which DMX values?"

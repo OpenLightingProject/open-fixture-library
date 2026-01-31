@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "IP Spot Bat",
   "shortName": "GhostIPSBat",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "zampano"
-    ],
+    "authors": ["zampano"],
     "createDate": "2018-05-30",
     "lastModifyDate": "2018-08-09"
   },
@@ -19,11 +15,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      240,
-      165,
-      210
-    ],
+    "dimensions": [240, 165, 210],
     "weight": 3,
     "power": 72,
     "DMXconnector": "3-pin",
@@ -31,10 +23,7 @@
       "type": "6x12W RGWAUV LEDs"
     },
     "lens": {
-      "degreesMinMax": [
-        40,
-        40
-      ]
+      "degreesMinMax": [40, 40]
     }
   },
   "availableChannels": {
@@ -105,49 +94,31 @@
     "Programs": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            50
-          ],
+          "dmxRange": [0, 50],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            51,
-            100
-          ],
+          "dmxRange": [51, 100],
           "type": "Effect",
           "effectName": "8 predefined colors"
         },
         {
-          "dmxRange": [
-            101,
-            150
-          ],
+          "dmxRange": [101, 150],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [
-            151,
-            200
-          ],
+          "dmxRange": [151, 200],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [
-            201,
-            250
-          ],
+          "dmxRange": [201, 250],
           "type": "Effect",
           "effectName": "ColorPulse"
         },
         {
-          "dmxRange": [
-            251,
-            255
-          ],
+          "dmxRange": [251, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true

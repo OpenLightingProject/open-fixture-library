@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SlimPAR T12 BT",
   "shortName": "ChauvetSlimPART12BT",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Flo Edelmann"
-    ],
+    "authors": ["Flo Edelmann"],
     "createDate": "2018-03-27",
     "lastModifyDate": "2018-08-10"
   },
@@ -24,11 +20,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      214,
-      77,
-      264
-    ],
+    "dimensions": [214, 77, 264],
     "weight": 1.2,
     "power": 42,
     "DMXconnector": "3-pin",
@@ -37,10 +29,7 @@
       "lumens": 1000
     },
     "lens": {
-      "degreesMinMax": [
-        14,
-        27
-      ]
+      "degreesMinMax": [14, 27]
     }
   },
   "availableChannels": {
@@ -74,49 +63,31 @@
     "Auto Program": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            5
-          ],
+          "dmxRange": [0, 5],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            6,
-            55
-          ],
+          "dmxRange": [6, 55],
           "type": "Effect",
           "effectName": "Program 1"
         },
         {
-          "dmxRange": [
-            56,
-            106
-          ],
+          "dmxRange": [56, 106],
           "type": "Effect",
           "effectName": "Program 2"
         },
         {
-          "dmxRange": [
-            107,
-            157
-          ],
+          "dmxRange": [107, 157],
           "type": "Effect",
           "effectName": "Program 3"
         },
         {
-          "dmxRange": [
-            158,
-            208
-          ],
+          "dmxRange": [158, 208],
           "type": "Effect",
           "effectName": "Program 4"
         },
         {
-          "dmxRange": [
-            209,
-            255
-          ],
+          "dmxRange": [209, 255],
           "type": "Effect",
           "effectName": "Program 5"
         }
@@ -125,19 +96,13 @@
     "Auto Program Speed": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            250
-          ],
+          "dmxRange": [0, 250],
           "type": "EffectSpeed",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            251,
-            255
-          ],
+          "dmxRange": [251, 255],
           "type": "Effect",
           "effectName": "Sound active mode",
           "soundControlled": true

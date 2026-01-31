@@ -2,14 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Archi Painter 24/8 Q4",
   "shortName": "6ch",
-  "categories": [
-    "Blinder",
-    "Color Changer"
-  ],
+  "categories": ["Blinder", "Color Changer"],
   "meta": {
-    "authors": [
-      "1st truc"
-    ],
+    "authors": ["1st truc"],
     "createDate": "2019-05-17",
     "lastModifyDate": "2019-05-17"
   },
@@ -23,11 +18,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      430,
-      425,
-      265
-    ],
+    "dimensions": [430, 425, 265],
     "weight": 16,
     "power": 140,
     "DMXconnector": "3-pin",
@@ -35,10 +26,7 @@
       "type": "24× 8W RGBW LEDs"
     },
     "lens": {
-      "degreesMinMax": [
-        45,
-        45
-      ]
+      "degreesMinMax": [45, 45]
     }
   },
   "availableChannels": {
@@ -84,310 +72,181 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            4
-          ],
+          "dmxRange": [0, 4],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            5,
-            9
-          ],
+          "dmxRange": [5, 9],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
-          "dmxRange": [
-            10,
-            14
-          ],
+          "dmxRange": [10, 14],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
-          "dmxRange": [
-            15,
-            19
-          ],
+          "dmxRange": [15, 19],
           "type": "ColorPreset",
           "comment": "Fawn",
-          "colors": [
-            "#e5aa70"
-          ]
+          "colors": ["#e5aa70"]
         },
         {
-          "dmxRange": [
-            20,
-            24
-          ],
+          "dmxRange": [20, 24],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": [
-            "#00ff00"
-          ]
+          "colors": ["#00ff00"]
         },
         {
-          "dmxRange": [
-            25,
-            29
-          ],
+          "dmxRange": [25, 29],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": [
-            "#00ffff"
-          ]
+          "colors": ["#00ffff"]
         },
         {
-          "dmxRange": [
-            30,
-            34
-          ],
+          "dmxRange": [30, 34],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": [
-            "#0000ff"
-          ]
+          "colors": ["#0000ff"]
         },
         {
-          "dmxRange": [
-            35,
-            39
-          ],
+          "dmxRange": [35, 39],
           "type": "ColorPreset",
           "comment": "Purple",
-          "colors": [
-            "#aa00ff"
-          ]
+          "colors": ["#aa00ff"]
         },
         {
-          "dmxRange": [
-            40,
-            44
-          ],
+          "dmxRange": [40, 44],
           "type": "ColorPreset",
           "comment": "Rosiness",
-          "colors": [
-            "#ffbbdd"
-          ]
+          "colors": ["#ffbbdd"]
         },
         {
-          "dmxRange": [
-            45,
-            49
-          ],
+          "dmxRange": [45, 49],
           "type": "ColorPreset",
           "comment": "Amber",
-          "colors": [
-            "#ffaa00"
-          ]
+          "colors": ["#ffaa00"]
         },
         {
-          "dmxRange": [
-            50,
-            54
-          ],
+          "dmxRange": [50, 54],
           "type": "ColorPreset",
           "comment": "Pink",
-          "colors": [
-            "#ff00cc"
-          ]
+          "colors": ["#ff00cc"]
         },
         {
-          "dmxRange": [
-            55,
-            59
-          ],
+          "dmxRange": [55, 59],
           "type": "ColorPreset",
           "comment": "Tin Green",
-          "colors": [
-            "#88bb88"
-          ]
+          "colors": ["#88bb88"]
         },
         {
-          "dmxRange": [
-            60,
-            64
-          ],
+          "dmxRange": [60, 64],
           "type": "ColorPreset",
           "comment": "Baby blue",
-          "colors": [
-            "#66ccff"
-          ]
+          "colors": ["#66ccff"]
         },
         {
-          "dmxRange": [
-            65,
-            69
-          ],
+          "dmxRange": [65, 69],
           "type": "ColorPreset",
           "comment": "White 1",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         },
         {
-          "dmxRange": [
-            70,
-            74
-          ],
+          "dmxRange": [70, 74],
           "type": "ColorPreset",
           "comment": "White 2",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         },
         {
-          "dmxRange": [
-            75,
-            79
-          ],
+          "dmxRange": [75, 79],
           "type": "ColorPreset",
           "comment": "White 3",
-          "colors": [
-            "#ffffff"
-          ]
+          "colors": ["#ffffff"]
         },
         {
-          "dmxRange": [
-            80,
-            89
-          ],
+          "dmxRange": [80, 89],
           "type": "Effect",
           "effectName": "Program 2"
         },
         {
-          "dmxRange": [
-            90,
-            99
-          ],
+          "dmxRange": [90, 99],
           "type": "Effect",
           "effectName": "Program 3"
         },
         {
-          "dmxRange": [
-            100,
-            109
-          ],
+          "dmxRange": [100, 109],
           "type": "Effect",
           "effectName": "Program 4"
         },
         {
-          "dmxRange": [
-            110,
-            119
-          ],
+          "dmxRange": [110, 119],
           "type": "Effect",
           "effectName": "Program 5"
         },
         {
-          "dmxRange": [
-            120,
-            129
-          ],
+          "dmxRange": [120, 129],
           "type": "Effect",
           "effectName": "Program 6"
         },
         {
-          "dmxRange": [
-            130,
-            139
-          ],
+          "dmxRange": [130, 139],
           "type": "Effect",
           "effectName": "Program 7"
         },
         {
-          "dmxRange": [
-            140,
-            149
-          ],
+          "dmxRange": [140, 149],
           "type": "Effect",
           "effectName": "Program 8"
         },
         {
-          "dmxRange": [
-            150,
-            159
-          ],
+          "dmxRange": [150, 159],
           "type": "Effect",
           "effectName": "Program 9"
         },
         {
-          "dmxRange": [
-            160,
-            169
-          ],
+          "dmxRange": [160, 169],
           "type": "Effect",
           "effectName": "Program 10"
         },
         {
-          "dmxRange": [
-            170,
-            179
-          ],
+          "dmxRange": [170, 179],
           "type": "Effect",
           "effectName": "Program 11"
         },
         {
-          "dmxRange": [
-            180,
-            189
-          ],
+          "dmxRange": [180, 189],
           "type": "Effect",
           "effectName": "Program 12"
         },
         {
-          "dmxRange": [
-            190,
-            199
-          ],
+          "dmxRange": [190, 199],
           "type": "Effect",
           "effectName": "Program 13"
         },
         {
-          "dmxRange": [
-            200,
-            209
-          ],
+          "dmxRange": [200, 209],
           "type": "Effect",
           "effectName": "Program 14"
         },
         {
-          "dmxRange": [
-            210,
-            219
-          ],
+          "dmxRange": [210, 219],
           "type": "Effect",
           "effectName": "Program 15"
         },
         {
-          "dmxRange": [
-            220,
-            229
-          ],
+          "dmxRange": [220, 229],
           "type": "Effect",
           "effectName": "Program 16"
         },
         {
-          "dmxRange": [
-            230,
-            239
-          ],
+          "dmxRange": [230, 239],
           "type": "Effect",
           "effectName": "Program 17"
         },
         {
-          "dmxRange": [
-            240,
-            255
-          ],
+          "dmxRange": [240, 255],
           "type": "Effect",
           "effectName": "Program 18"
         }

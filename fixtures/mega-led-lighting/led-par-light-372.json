@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED PAR Light-372",
   "shortName": "MJ-3001-72",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Felix Edelmann"
-    ],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-02-06",
     "lastModifyDate": "2019-02-06"
   },
@@ -19,11 +15,7 @@
   },
   "helpWanted": "Is the 4ch mode correct?",
   "physical": {
-    "dimensions": [
-      310,
-      250,
-      325
-    ],
+    "dimensions": [310, 250, 325],
     "weight": 3.5,
     "power": 216,
     "DMXconnector": "3-pin",
@@ -31,10 +23,7 @@
       "type": "72x3W LEDs (18x red/green/blue/white each)"
     },
     "lens": {
-      "degreesMinMax": [
-        25,
-        25
-      ]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -57,41 +46,26 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            49
-          ],
+          "dmxRange": [0, 49],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            50,
-            99
-          ],
+          "dmxRange": [50, 99],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [
-            100,
-            149
-          ],
+          "dmxRange": [100, 149],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [
-            150,
-            199
-          ],
+          "dmxRange": [150, 199],
           "type": "Effect",
           "effectName": "Color pulse"
         },
         {
-          "dmxRange": [
-            200,
-            255
-          ],
+          "dmxRange": [200, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true

@@ -2,33 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SlimPAR Q12 BT",
   "shortName": "ChauvetSlimPARQ12BT",
-  "categories": [
-    "Color Changer"
-  ],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": [
-      "Flo Edelmann"
-    ],
+    "authors": ["Flo Edelmann"],
     "createDate": "2018-03-28",
     "lastModifyDate": "2018-08-10"
   },
   "links": {
-    "manual": [
-      "https://www.chauvetdj.com/wp-content/uploads/2018/03/SlimPAR_Q12_BT_UM_Rev2_WO.pdf"
-    ],
-    "productPage": [
-      "https://www.chauvetdj.com/products/slimpar-q12-bt/"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=CGcSKuTsEzA"
-    ]
+    "manual": ["https://www.chauvetdj.com/wp-content/uploads/2018/03/SlimPAR_Q12_BT_UM_Rev2_WO.pdf"],
+    "productPage": ["https://www.chauvetdj.com/products/slimpar-q12-bt/"],
+    "video": ["https://www.youtube.com/watch?v=CGcSKuTsEzA"]
   },
   "physical": {
-    "dimensions": [
-      275,
-      74,
-      279
-    ],
+    "dimensions": [275, 74, 279],
     "weight": 1.5,
     "power": 48,
     "DMXconnector": "3-pin",
@@ -37,10 +23,7 @@
       "lumens": 895
     },
     "lens": {
-      "degreesMinMax": [
-        18,
-        35
-      ]
+      "degreesMinMax": [18, 35]
     }
   },
   "availableChannels": {
@@ -80,49 +63,31 @@
     "Auto Program": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            5
-          ],
+          "dmxRange": [0, 5],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            6,
-            55
-          ],
+          "dmxRange": [6, 55],
           "type": "Effect",
           "effectName": "Program 1"
         },
         {
-          "dmxRange": [
-            56,
-            106
-          ],
+          "dmxRange": [56, 106],
           "type": "Effect",
           "effectName": "Program 2"
         },
         {
-          "dmxRange": [
-            107,
-            157
-          ],
+          "dmxRange": [107, 157],
           "type": "Effect",
           "effectName": "Program 3"
         },
         {
-          "dmxRange": [
-            158,
-            208
-          ],
+          "dmxRange": [158, 208],
           "type": "Effect",
           "effectName": "Program 4"
         },
         {
-          "dmxRange": [
-            209,
-            255
-          ],
+          "dmxRange": [209, 255],
           "type": "Effect",
           "effectName": "Program 5"
         }
@@ -131,19 +96,13 @@
     "Auto Program Speed": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            250
-          ],
+          "dmxRange": [0, 250],
           "type": "EffectSpeed",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [
-            251,
-            255
-          ],
+          "dmxRange": [251, 255],
           "type": "Effect",
           "effectName": "Sound Active Mode",
           "soundControlled": true

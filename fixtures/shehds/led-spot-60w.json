@@ -1,14 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Spot 60W",
-  "categories": [
-    "Moving Head",
-    "Color Changer"
-  ],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": [
-      "yids"
-    ],
+    "authors": ["yids"],
     "createDate": "2022-11-14",
     "lastModifyDate": "2023-04-20",
     "importPlugin": {
@@ -29,11 +24,7 @@
     ]
   },
   "physical": {
-    "dimensions": [
-      198,
-      272,
-      144
-    ],
+    "dimensions": [198, 272, 144],
     "weight": 3.2,
     "power": 60,
     "bulb": {
@@ -50,51 +41,37 @@
         {
           "type": "Color",
           "name": "Red",
-          "colors": [
-            "#ff0000"
-          ]
+          "colors": ["#ff0000"]
         },
         {
           "type": "Color",
           "name": "Orange",
-          "colors": [
-            "#ed7d31"
-          ]
+          "colors": ["#ed7d31"]
         },
         {
           "type": "Color",
           "name": "Lemon Yellow",
-          "colors": [
-            "#ffff00"
-          ]
+          "colors": ["#ffff00"]
         },
         {
           "type": "Color",
           "name": "Green",
-          "colors": [
-            "#00b050"
-          ]
+          "colors": ["#00b050"]
         },
         {
           "type": "Color",
           "name": "Blue",
-          "colors": [
-            "#2e75b6"
-          ]
+          "colors": ["#2e75b6"]
         },
         {
           "type": "Color",
           "name": "Pink",
-          "colors": [
-            "#e98cc9"
-          ]
+          "colors": ["#e98cc9"]
         },
         {
           "type": "Color",
           "name": "Sky Blue",
-          "colors": [
-            "#00b0f0"
-          ]
+          "colors": ["#00b0f0"]
         }
       ]
     },
@@ -136,9 +113,7 @@
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": [
-        "Pan fine"
-      ],
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -146,9 +121,7 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": [
-        "Tilt fine"
-      ],
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -158,275 +131,179 @@
     "Color wheel": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            9
-          ],
+          "dmxRange": [0, 9],
           "type": "WheelSlot",
           "slotNumber": 1
         },
         {
-          "dmxRange": [
-            10,
-            19
-          ],
+          "dmxRange": [10, 19],
           "type": "WheelSlot",
           "slotNumber": 2
         },
         {
-          "dmxRange": [
-            20,
-            29
-          ],
+          "dmxRange": [20, 29],
           "type": "WheelSlot",
           "slotNumber": 3
         },
         {
-          "dmxRange": [
-            30,
-            39
-          ],
+          "dmxRange": [30, 39],
           "type": "WheelSlot",
           "slotNumber": 4
         },
         {
-          "dmxRange": [
-            40,
-            49
-          ],
+          "dmxRange": [40, 49],
           "type": "WheelSlot",
           "slotNumber": 5
         },
         {
-          "dmxRange": [
-            50,
-            59
-          ],
+          "dmxRange": [50, 59],
           "type": "WheelSlot",
           "slotNumber": 6
         },
         {
-          "dmxRange": [
-            60,
-            69
-          ],
+          "dmxRange": [60, 69],
           "type": "WheelSlot",
           "slotNumber": 7
         },
         {
-          "dmxRange": [
-            70,
-            79
-          ],
+          "dmxRange": [70, 79],
           "type": "WheelSlot",
           "slotNumber": 8
         },
         {
-          "dmxRange": [
-            80,
-            89
-          ],
+          "dmxRange": [80, 89],
           "type": "WheelSlot",
           "slotNumber": 7.5
         },
         {
-          "dmxRange": [
-            90,
-            99
-          ],
+          "dmxRange": [90, 99],
           "type": "WheelSlot",
           "slotNumber": 6.5
         },
         {
-          "dmxRange": [
-            100,
-            109
-          ],
+          "dmxRange": [100, 109],
           "type": "WheelSlot",
           "slotNumber": 5.5
         },
         {
-          "dmxRange": [
-            110,
-            119
-          ],
+          "dmxRange": [110, 119],
           "type": "WheelSlot",
           "slotNumber": 4.5
         },
         {
-          "dmxRange": [
-            120,
-            129
-          ],
+          "dmxRange": [120, 129],
           "type": "WheelSlot",
           "slotNumber": 3.5
         },
         {
-          "dmxRange": [
-            130,
-            139
-          ],
+          "dmxRange": [130, 139],
           "type": "WheelSlot",
           "slotNumber": 2.5
         },
         {
-          "dmxRange": [
-            140,
-            255
-          ],
+          "dmxRange": [140, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
-          "helpWanted": "Is this the correct effect and speed?"
+          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
         }
       ]
     },
     "Gobo wheel": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            7
-          ],
+          "dmxRange": [0, 7],
           "type": "WheelSlot",
           "slotNumber": 1
         },
         {
-          "dmxRange": [
-            8,
-            15
-          ],
+          "dmxRange": [8, 15],
           "type": "WheelSlot",
           "slotNumber": 2
         },
         {
-          "dmxRange": [
-            16,
-            23
-          ],
+          "dmxRange": [16, 23],
           "type": "WheelSlot",
           "slotNumber": 3
         },
         {
-          "dmxRange": [
-            24,
-            31
-          ],
+          "dmxRange": [24, 31],
           "type": "WheelSlot",
           "slotNumber": 4
         },
         {
-          "dmxRange": [
-            32,
-            39
-          ],
+          "dmxRange": [32, 39],
           "type": "WheelSlot",
           "slotNumber": 5
         },
         {
-          "dmxRange": [
-            40,
-            47
-          ],
+          "dmxRange": [40, 47],
           "type": "WheelSlot",
           "slotNumber": 6
         },
         {
-          "dmxRange": [
-            48,
-            55
-          ],
+          "dmxRange": [48, 55],
           "type": "WheelSlot",
           "slotNumber": 7
         },
         {
-          "dmxRange": [
-            56,
-            63
-          ],
+          "dmxRange": [56, 63],
           "type": "WheelSlot",
           "slotNumber": 8
         },
         {
-          "dmxRange": [
-            64,
-            71
-          ],
+          "dmxRange": [64, 71],
           "type": "WheelSlot",
           "slotNumber": 1
         },
         {
-          "dmxRange": [
-            72,
-            79
-          ],
+          "dmxRange": [72, 79],
           "type": "WheelShake",
           "slotNumber": 2,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            80,
-            87
-          ],
+          "dmxRange": [80, 87],
           "type": "WheelShake",
           "slotNumber": 3,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            88,
-            95
-          ],
+          "dmxRange": [88, 95],
           "type": "WheelShake",
           "slotNumber": 4,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            96,
-            103
-          ],
+          "dmxRange": [96, 103],
           "type": "WheelShake",
           "slotNumber": 5,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            104,
-            111
-          ],
+          "dmxRange": [104, 111],
           "type": "WheelShake",
           "slotNumber": 6,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            112,
-            119
-          ],
+          "dmxRange": [112, 119],
           "type": "WheelShake",
           "slotNumber": 7,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            120,
-            127
-          ],
+          "dmxRange": [120, 127],
           "type": "WheelShake",
           "slotNumber": 8,
           "isShaking": "slot"
         },
         {
-          "dmxRange": [
-            128,
-            255
-          ],
+          "dmxRange": [128, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
-          "helpWanted": "Is this the correct effect and speed?"
+          "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
         }
       ]
     },
@@ -456,33 +333,21 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            48
-          ],
+          "dmxRange": [0, 48],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            49,
-            99
-          ],
+          "dmxRange": [49, 99],
           "type": "Effect",
           "effectName": "Auto Mode 1"
         },
         {
-          "dmxRange": [
-            100,
-            199
-          ],
+          "dmxRange": [100, 199],
           "type": "Effect",
           "effectName": "Auto Mode 2"
         },
         {
-          "dmxRange": [
-            200,
-            255
-          ],
+          "dmxRange": [200, 255],
           "type": "Effect",
           "soundControlled": true,
           "effectName": "Sound Mode"
@@ -492,17 +357,11 @@
     "Reset": {
       "capabilities": [
         {
-          "dmxRange": [
-            0,
-            249
-          ],
+          "dmxRange": [0, 249],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [
-            250,
-            255
-          ],
+          "dmxRange": [250, 255],
           "type": "Maintenance",
           "comment": "Reset"
         }
