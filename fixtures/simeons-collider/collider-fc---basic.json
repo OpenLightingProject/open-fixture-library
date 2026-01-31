@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Collider FC - Basic",
+  "shortName": "Collider FC",
+  "categories": ["Strobe", "Effect"],
+  "meta": {
+    "authors": ["Sim"],
+    "createDate": "2024-07-05",
+    "lastModifyDate": "2024-07-05"
+  },
+  "comment": "Full Colour",
+  "links": {
+    "manual": [
+      "https://www.showtech.com.au/webdata/LEDSTR100/downloads/LEDSTR100%20-%20Collider%20FC%20Manual.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Flash Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "shortName": "Basic",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
