@@ -502,7 +502,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       }
 
       // Check for single ShutterStrobe capability without Strobe category
-      const shutterStrobeCapabilities = channel.capabilities.filter(cap => cap.type === `ShutterStrobe`);
+      const shutterStrobeCapabilities = channel.capabilities.filter(capability => capability.type === `ShutterStrobe`);
       if (shutterStrobeCapabilities.length === 1 && !fixture.categories.includes(`Strobe`)) {
         result.warnings.push(`Channel '${channel.key}' has a single ShutterStrobe capability, but fixture does not have 'Strobe' category. It is not clear when strobe is disabled.`);
       }
