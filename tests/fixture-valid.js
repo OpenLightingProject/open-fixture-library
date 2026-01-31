@@ -94,6 +94,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     checkFixtureIdentifierUniqueness();
     checkMeta(fixture.meta);
+    checkLinks();
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
     await checkWheels(fixture.wheels);
@@ -197,6 +198,30 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   }
 
   /**
+   * Check that URLs in the fixture's links are unique.
+   */
+  function checkLinks() {
+    if (fixture.links === null) {
+      return;
+    }
+
+    const linkTypesPerUrl = {};
+    for (const [linkType, urls] of Object.entries(fixture.links)) {
+      for (const url of urls) {
+        linkTypesPerUrl[url] ??= [];
+        linkTypesPerUrl[url].push(linkType);
+      }
+    }
+
+    for (const [url, linkTypes] of Object.entries(linkTypesPerUrl)) {
+      if (linkTypes.length > 1) {
+        const linkTypesList = linkTypes.join(`, `);
+        result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
+      }
+    }
+  }
+
+  /**
    * Checks if the given Physical object is valid.
    * @param {Physical | null} physical A fixture's or a mode's physical data.
    * @param {string} [modeDescription=''] Optional information in error messages about current mode.
@@ -208,6 +233,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     if (physical.lensDegreesMin > physical.lensDegreesMax) {
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
+    }
+
+    if (physical.dimensions !== null && physical.DMXconnector !== null) {
+      const hasSmallDimensions = physical.dimensions.some(dimension => dimension < 30);
+      const dimensionsString = physical.dimensions.join(`×`);
+
+      if (hasSmallDimensions) {
+        result.errors.push(`physical.dimensions${modeDescription} are too small (${dimensionsString}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you accidentally enter the dimensions in centimeters instead of millimeters?`);
+      }
     }
 
     if (physical.hasMatrixPixels && fixture.matrix === null) {
@@ -461,7 +495,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           dmxRangesInvalid = !checkDmxRange(index);
         }
 
-        checkCapability(capability, `Capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+        // Use JSON dmxRange rather than rawDmxRange, because that one might throw unhelpful errors
+        const rangeString = `${capability.jsonObject.dmxRange[0]}…${capability.jsonObject.dmxRange[1]}`;
+
+        checkCapability(capability, `Capability '${capability.name}' (${rangeString}) in channel '${channel.key}'`);
       }
 
       /**
@@ -471,12 +508,28 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkDmxRange(capabilityNumber) {
         const capability = channel.capabilities[capabilityNumber];
+        const [rawDmxStart, rawDmxEnd] = capability.jsonObject.dmxRange;
+        const errorLocationString = `capability '${capability.name}' (${rawDmxStart}…${rawDmxEnd}) in channel '${channel.key}'`;
 
-        return checkFirstCapabilityRangeStart()
+        return checkDmxRangeWithinBounds()
+          && checkFirstCapabilityRangeStart()
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
 
+
+        /**
+         * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
+         * @returns {boolean} True if the DMX range is within bounds, false otherwise.
+         */
+        function checkDmxRangeWithinBounds() {
+          if (rawDmxStart > maxDmxValue || rawDmxEnd > maxDmxValue) {
+            result.errors.push(`dmxRange is out of bounds (maximum ${maxDmxValue} for ${channel.dmxValueResolution * 8}bit resolution) in ${errorLocationString}.`);
+            return false;
+          }
+
+          return true;
+        }
 
         /**
          * Checks that the first capability's DMX range starts with 0.
@@ -484,7 +537,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkFirstCapabilityRangeStart() {
           if (capabilityNumber === 0 && capability.rawDmxRange.start !== 0) {
-            result.errors.push(`The first dmxRange has to start at 0 in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
+            result.errors.push(`The first dmxRange has to start at 0 in ${errorLocationString}.`);
             return false;
           }
 
@@ -496,7 +549,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkRangeValid() {
           if (capability.rawDmxRange.start > capability.rawDmxRange.end) {
-            result.errors.push(`dmxRange invalid in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
+            result.errors.push(`dmxRange invalid in ${errorLocationString}.`);
             return false;
           }
 
@@ -525,7 +578,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkLastCapabilityRangeEnd() {
           if (capabilityNumber === channel.capabilities.length - 1 && channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
-            result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+            result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in ${errorLocationString}.`);
             return false;
           }
 
@@ -588,7 +641,11 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             }
 
             if (property === `speed` && startEntity.number * endEntity.number < 0) {
-              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Split it into several capabilities instead.`);
+            }
+
+            if (`${property}Start` in capability.jsonObject && startEntity.equals(endEntity)) {
+              result.errors.push(`${errorPrefix} uses ${property}Start and ${property}End with equal values. Use the single property '${property}: "${startEntity}"' instead.`);
             }
           }
         }
