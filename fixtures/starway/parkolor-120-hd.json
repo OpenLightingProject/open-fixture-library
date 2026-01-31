@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParKolor 120 HD",
+  "shortName": "ParKolor 120 HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pascal Denis"],
+    "createDate": "2026-01-31",
+    "lastModifyDate": "2026-01-31"
+  },
+  "links": {
+    "manual": [
+      "https://tech.starway.eu/225465_PARKOLOR120HD/225465_PARKOLOR120HD_FR.pdf"
+    ],
+    "productPage": [
+      "https://starway.eu/fr/produits/parkolor-120hd#support"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 240, 400],
+    "weight": 7.2,
+    "power": 145,
+    "bulb": {
+      "type": "LED COB",
+      "lumens": 2000
+    },
+    "lens": {
+      "degreesMinMax": [7, 40]
+    }
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "STROBE": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "WHITE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "ZOOM": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 canaux",
+      "shortName": "7 canaux",
+      "channels": [
+        "DIMMER",
+        "STROBE",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "ZOOM"
+      ]
+    }
+  ]
+}
