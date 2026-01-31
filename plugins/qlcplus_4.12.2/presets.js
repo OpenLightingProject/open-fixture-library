@@ -482,7 +482,7 @@ const channelPresets = {
       shutterEffect: `Strobe`,
       speedStart: `slow`,
       speedEnd: `fast`,
-      helpWanted: `At which DMX values is strobe disabled?`,
+      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
     }),
   },
   ShutterStrobeFastSlow: {
@@ -492,7 +492,7 @@ const channelPresets = {
       shutterEffect: `Strobe`,
       speedStart: `fast`,
       speedEnd: `slow`,
-      helpWanted: `At which DMX values is strobe disabled?`,
+      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
     }),
   },
   ShutterIrisMinToMax: {
