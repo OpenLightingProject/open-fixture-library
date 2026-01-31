@@ -2,9 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Color Force II 12",
   "shortName": "CHCF212RGBA",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": [
+    "Pixel Bar",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": [
+      "Felix Edelmann"
+    ],
     "createDate": "2018-02-13",
     "lastModifyDate": "2018-08-24"
   },
@@ -20,7 +25,11 @@
     ]
   },
   "physical": {
-    "dimensions": [335, 191, 165],
+    "dimensions": [
+      335,
+      191,
+      165
+    ],
     "weight": 5,
     "power": 160,
     "DMXconnector": "5-pin",
@@ -28,21 +37,53 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [22, 22]
+      "degreesMinMax": [
+        22,
+        22
+      ]
     },
     "matrixPixels": {
-      "dimensions": [72.7, 81.2, 0],
-      "spacing": [0, 0, 0]
+      "dimensions": [
+        72.7,
+        81.2,
+        0
+      ],
+      "spacing": [
+        0,
+        0,
+        0
+      ]
     }
   },
   "matrix": {
-    "pixelCount": [4, 1, 1],
+    "pixelCount": [
+      4,
+      1,
+      1
+    ],
     "pixelGroups": {
-      "1/2": ["1", "2"],
-      "2/2": ["3", "4"],
-      "Master": ["1", "2", "3", "4"],
-      "Odd": ["1", "3"],
-      "Even": ["2", "4"]
+      "1/2": [
+        "1",
+        "2"
+      ],
+      "2/2": [
+        "3",
+        "4"
+      ],
+      "Master": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "Odd": [
+        "1",
+        "3"
+      ],
+      "Even": [
+        "2",
+        "4"
+      ]
     }
   },
   "availableChannels": {
@@ -50,178 +91,306 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 8],
+          "dmxRange": [
+            1,
+            8
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff0000"],
+          "colors": [
+            "#ff0000"
+          ],
           "comment": "Look 1 (default Red)",
           "helpWanted": "Are the capability ranges correct?"
         },
         {
-          "dmxRange": [9, 16],
+          "dmxRange": [
+            9,
+            16
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff00ff"],
+          "colors": [
+            "#ff00ff"
+          ],
           "comment": "Look 2 (default Pink)"
         },
         {
-          "dmxRange": [17, 25],
+          "dmxRange": [
+            17,
+            25
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff8800"],
+          "colors": [
+            "#ff8800"
+          ],
           "comment": "Look 3 (default Orange)"
         },
         {
-          "dmxRange": [26, 33],
+          "dmxRange": [
+            26,
+            33
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffbb00"],
+          "colors": [
+            "#ffbb00"
+          ],
           "comment": "Look 4 (default Light Orange)"
         },
         {
-          "dmxRange": [34, 42],
+          "dmxRange": [
+            34,
+            42
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffff00"],
+          "colors": [
+            "#ffff00"
+          ],
           "comment": "Look 5 (default Yellow)"
         },
         {
-          "dmxRange": [43, 51],
+          "dmxRange": [
+            43,
+            51
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffff88"],
+          "colors": [
+            "#ffff88"
+          ],
           "comment": "Look 6 (default Light Yellow)"
         },
         {
-          "dmxRange": [52, 59],
+          "dmxRange": [
+            52,
+            59
+          ],
           "type": "ColorPreset",
-          "colors": ["#00ff00"],
+          "colors": [
+            "#00ff00"
+          ],
           "comment": "Look 7 (default Green)"
         },
         {
-          "dmxRange": [60, 67],
+          "dmxRange": [
+            60,
+            67
+          ],
           "type": "ColorPreset",
-          "colors": ["#aaffaa"],
+          "colors": [
+            "#aaffaa"
+          ],
           "comment": "Look 8 (default Light Green)"
         },
         {
-          "dmxRange": [68, 75],
+          "dmxRange": [
+            68,
+            75
+          ],
           "type": "ColorPreset",
-          "colors": ["#00ffff"],
+          "colors": [
+            "#00ffff"
+          ],
           "comment": "Look 9 (default Cyan)"
         },
         {
-          "dmxRange": [76, 84],
+          "dmxRange": [
+            76,
+            84
+          ],
           "type": "ColorPreset",
-          "colors": ["#aaffff"],
+          "colors": [
+            "#aaffff"
+          ],
           "comment": "Look 10 (default Light Cyan)"
         },
         {
-          "dmxRange": [85, 92],
+          "dmxRange": [
+            85,
+            92
+          ],
           "type": "ColorPreset",
-          "colors": ["#0000ff"],
+          "colors": [
+            "#0000ff"
+          ],
           "comment": "Look 11 (default Blue)"
         },
         {
-          "dmxRange": [93, 100],
+          "dmxRange": [
+            93,
+            100
+          ],
           "type": "ColorPreset",
-          "colors": ["#88aaff"],
+          "colors": [
+            "#88aaff"
+          ],
           "comment": "Look 12 (default Light Blue)"
         },
         {
-          "dmxRange": [101, 109],
+          "dmxRange": [
+            101,
+            109
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffaa5f"],
+          "colors": [
+            "#ffaa5f"
+          ],
           "comment": "Look 13 (default 2800K White)"
         },
         {
-          "dmxRange": [110, 117],
+          "dmxRange": [
+            110,
+            117
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffb87b"],
+          "colors": [
+            "#ffb87b"
+          ],
           "comment": "Look 14 (default 3200K White)"
         },
         {
-          "dmxRange": [118, 125],
+          "dmxRange": [
+            118,
+            125
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffcea6"],
+          "colors": [
+            "#ffcea6"
+          ],
           "comment": "Look 15 (default 4000K White)"
         },
         {
-          "dmxRange": [126, 133],
+          "dmxRange": [
+            126,
+            133
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffefe1"],
+          "colors": [
+            "#ffefe1"
+          ],
           "comment": "Look 16 (default 5600K White)"
         },
         {
-          "dmxRange": [134, 141],
+          "dmxRange": [
+            134,
+            141
+          ],
           "type": "ColorPreset",
           "comment": "Look 17 (default empty)"
         },
         {
-          "dmxRange": [142, 149],
+          "dmxRange": [
+            142,
+            149
+          ],
           "type": "ColorPreset",
           "comment": "Look 18 (default empty)"
         },
         {
-          "dmxRange": [150, 157],
+          "dmxRange": [
+            150,
+            157
+          ],
           "type": "ColorPreset",
           "comment": "Look 19 (default empty)"
         },
         {
-          "dmxRange": [158, 165],
+          "dmxRange": [
+            158,
+            165
+          ],
           "type": "ColorPreset",
           "comment": "Look 20 (default empty)"
         },
         {
-          "dmxRange": [166, 174],
+          "dmxRange": [
+            166,
+            174
+          ],
           "type": "ColorPreset",
           "comment": "Look 21 (default empty)"
         },
         {
-          "dmxRange": [175, 182],
+          "dmxRange": [
+            175,
+            182
+          ],
           "type": "ColorPreset",
           "comment": "Look 22 (default empty)"
         },
         {
-          "dmxRange": [183, 190],
+          "dmxRange": [
+            183,
+            190
+          ],
           "type": "ColorPreset",
           "comment": "Look 23 (default empty)"
         },
         {
-          "dmxRange": [191, 199],
+          "dmxRange": [
+            191,
+            199
+          ],
           "type": "ColorPreset",
           "comment": "Look 24 (default empty)"
         },
         {
-          "dmxRange": [200, 207],
+          "dmxRange": [
+            200,
+            207
+          ],
           "type": "ColorPreset",
           "comment": "Look 25 (default empty)"
         },
         {
-          "dmxRange": [208, 215],
+          "dmxRange": [
+            208,
+            215
+          ],
           "type": "ColorPreset",
           "comment": "Look 26 (default empty)"
         },
         {
-          "dmxRange": [216, 223],
+          "dmxRange": [
+            216,
+            223
+          ],
           "type": "ColorPreset",
           "comment": "Look 27 (default empty)"
         },
         {
-          "dmxRange": [224, 231],
+          "dmxRange": [
+            224,
+            231
+          ],
           "type": "ColorPreset",
           "comment": "Look 28 (default empty)"
         },
         {
-          "dmxRange": [232, 239],
+          "dmxRange": [
+            232,
+            239
+          ],
           "type": "ColorPreset",
           "comment": "Look 29 (default empty)"
         },
         {
-          "dmxRange": [240, 247],
+          "dmxRange": [
+            240,
+            247
+          ],
           "type": "ColorPreset",
           "comment": "Look 30 (default empty)"
         },
         {
-          "dmxRange": [248, 255],
+          "dmxRange": [
+            248,
+            255
+          ],
           "type": "ColorPreset",
           "comment": "Look 31 (default empty)"
         }
@@ -233,7 +402,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Strobe Duration": {
@@ -355,7 +524,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -371,7 +542,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -403,7 +577,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -419,7 +596,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -436,7 +615,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -470,7 +652,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -487,7 +672,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -503,7 +690,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -535,7 +725,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -553,7 +746,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -571,7 +766,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -607,7 +805,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -625,7 +826,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -644,7 +847,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -682,7 +888,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -701,7 +910,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -719,7 +930,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -755,7 +969,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -774,7 +991,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -793,7 +1012,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -831,7 +1053,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -850,7 +1075,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -870,7 +1097,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -910,7 +1140,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -930,7 +1163,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -949,7 +1184,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -987,7 +1225,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1009,7 +1250,9 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1031,7 +1274,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1075,7 +1321,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1094,7 +1343,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1118,7 +1369,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1166,7 +1420,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1189,7 +1446,9 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1211,7 +1470,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1255,7 +1517,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1276,7 +1541,9 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1297,7 +1564,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1339,7 +1609,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1357,7 +1630,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1380,7 +1655,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1426,7 +1704,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1448,7 +1729,9 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1469,7 +1752,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1511,7 +1797,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",

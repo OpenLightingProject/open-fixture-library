@@ -1,9 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vega BAT-1",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["lukah", "Hasky", "Ryan Goodwin"],
+    "authors": [
+      "lukah",
+      "Hasky",
+      "Ryan Goodwin"
+    ],
     "createDate": "2023-07-07",
     "lastModifyDate": "2023-07-07",
     "importPlugin": {
@@ -85,34 +91,49 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Program Mode": {
       "capabilities": [
         {
-          "dmxRange": [0, 64],
+          "dmxRange": [
+            0,
+            64
+          ],
           "type": "NoFunction",
           "comment": "Manual Color Adjustment"
         },
         {
-          "dmxRange": [65, 80],
+          "dmxRange": [
+            65,
+            80
+          ],
           "type": "ColorPreset",
           "comment": "Color Macros",
           "helpWanted": "Which color macros are available and at what DMX values?"
         },
         {
-          "dmxRange": [81, 150],
+          "dmxRange": [
+            81,
+            150
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [151, 220],
+          "dmxRange": [
+            151,
+            220
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [221, 255],
+          "dmxRange": [
+            221,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Active Mode",
           "soundControlled": true

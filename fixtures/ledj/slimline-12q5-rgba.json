@@ -2,9 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Slimline 12Q5 RGBA",
   "shortName": "LEDJ67B",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": [
+    "Pixel Bar",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": [
+      "Felix Edelmann"
+    ],
     "createDate": "2019-03-14",
     "lastModifyDate": "2019-03-14"
   },
@@ -21,7 +26,11 @@
     ]
   },
   "physical": {
-    "dimensions": [87, 1018, 63],
+    "dimensions": [
+      87,
+      1018,
+      63
+    ],
     "weight": 2.2,
     "power": 70,
     "DMXconnector": "3-pin",
@@ -29,11 +38,18 @@
       "type": "12x 5W RGBA LEDs"
     },
     "lens": {
-      "degreesMinMax": [25, 25]
+      "degreesMinMax": [
+        25,
+        25
+      ]
     }
   },
   "matrix": {
-    "pixelCount": [12, 1, 1],
+    "pixelCount": [
+      12,
+      1,
+      1
+    ],
     "pixelGroups": {
       "Master": "all"
     }
@@ -43,11 +59,17 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 240],
+          "dmxRange": [
+            0,
+            240
+          ],
           "type": "Intensity"
         },
         {
-          "dmxRange": [241, 255],
+          "dmxRange": [
+            241,
+            255
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "helpWanted": "Is the strobe speed controllable here (e.g. slow…fast)?"
@@ -67,29 +89,41 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macros": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 4],
+          "dmxRange": [
+            0,
+            4
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [5, 80],
+          "dmxRange": [
+            5,
+            80
+          ],
           "type": "ColorPreset",
           "comment": "Color macro",
           "helpWanted": "Which colors can be selected at which DMX values? Or is this a color change effect?"
         },
         {
-          "dmxRange": [81, 150],
+          "dmxRange": [
+            81,
+            150
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [151, 255],
+          "dmxRange": [
+            151,
+            255
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade"
         }

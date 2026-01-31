@@ -2,9 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Colours Archspot 54 RGB",
   "shortName": "Archspot54",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Michael Stiller"],
+    "authors": [
+      "Michael Stiller"
+    ],
     "createDate": "2019-01-05",
     "lastModifyDate": "2019-01-05"
   },
@@ -15,7 +19,11 @@
   },
   "helpWanted": "Which LEDs are controlled by the pixels 1, 2, 3 in the RGB 12-channel mode?",
   "physical": {
-    "dimensions": [260, 220, 230],
+    "dimensions": [
+      260,
+      220,
+      230
+    ],
     "weight": 4,
     "power": 58,
     "DMXconnector": "3-pin",
@@ -26,11 +34,19 @@
   "matrix": {
     "pixelKeys": [
       [
-        ["1", "2", "3"]
+        [
+          "1",
+          "2",
+          "3"
+        ]
       ]
     ],
     "pixelGroups": {
-      "Master": ["1", "2", "3"]
+      "Master": [
+        "1",
+        "2",
+        "3"
+      ]
     }
   },
   "availableChannels": {
@@ -57,7 +73,7 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Rainbow": {
@@ -76,41 +92,65 @@
     "CTO": {
       "capabilities": [
         {
-          "dmxRange": [0, 31],
+          "dmxRange": [
+            0,
+            31
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [32, 63],
+          "dmxRange": [
+            32,
+            63
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "2500K"
         },
         {
-          "dmxRange": [64, 95],
+          "dmxRange": [
+            64,
+            95
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "2900K"
         },
         {
-          "dmxRange": [96, 127],
+          "dmxRange": [
+            96,
+            127
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "3200K"
         },
         {
-          "dmxRange": [128, 159],
+          "dmxRange": [
+            128,
+            159
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "4500K"
         },
         {
-          "dmxRange": [160, 191],
+          "dmxRange": [
+            160,
+            191
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "5400K"
         },
         {
-          "dmxRange": [192, 223],
+          "dmxRange": [
+            192,
+            223
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "6500K"
         },
         {
-          "dmxRange": [224, 255],
+          "dmxRange": [
+            224,
+            255
+          ],
           "type": "ColorTemperature",
           "colorTemperature": "7000K"
         }

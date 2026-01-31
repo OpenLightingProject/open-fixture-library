@@ -1,9 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED SLS-5 BCL",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Christian Hollbjär", "darth62"],
+    "authors": [
+      "Christian Hollbjär",
+      "darth62"
+    ],
     "createDate": "2020-09-20",
     "lastModifyDate": "2020-09-20",
     "importPlugin": {
@@ -21,7 +26,11 @@
     ]
   },
   "physical": {
-    "dimensions": [230, 270, 110],
+    "dimensions": [
+      230,
+      270,
+      110
+    ],
     "weight": 3,
     "power": 24,
     "DMXconnector": "3-pin",
@@ -29,7 +38,10 @@
       "type": "5× 5W BCL LED (White+Amber)"
     },
     "lens": {
-      "degreesMinMax": [20, 20]
+      "degreesMinMax": [
+        20,
+        20
+      ]
     }
   },
   "availableChannels": {
@@ -57,21 +69,33 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 5],
+          "dmxRange": [
+            1,
+            5
+          ],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true
         },
         {
-          "dmxRange": [6, 10],
+          "dmxRange": [
+            6,
+            10
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 255],
+          "dmxRange": [
+            11,
+            255
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
@@ -83,32 +107,48 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 28],
+          "dmxRange": [
+            0,
+            28
+          ],
           "type": "NoFunction",
           "switchChannels": {
             "Strobe / Speed / Sensitivity": "Strobe"
           }
         },
         {
-          "dmxRange": [29, 57],
+          "dmxRange": [
+            29,
+            57
+          ],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": ["#ffffff"],
+          "colors": [
+            "#ffffff"
+          ],
           "switchChannels": {
             "Strobe / Speed / Sensitivity": "Strobe"
           }
         },
         {
-          "dmxRange": [58, 82],
+          "dmxRange": [
+            58,
+            82
+          ],
           "type": "ColorPreset",
           "comment": "Amber",
-          "colors": ["#ffbf00"],
+          "colors": [
+            "#ffbf00"
+          ],
           "switchChannels": {
             "Strobe / Speed / Sensitivity": "Strobe"
           }
         },
         {
-          "dmxRange": [83, 87],
+          "dmxRange": [
+            83,
+            87
+          ],
           "type": "Effect",
           "effectName": "Color Dreaming 1",
           "switchChannels": {
@@ -116,7 +156,10 @@
           }
         },
         {
-          "dmxRange": [88, 92],
+          "dmxRange": [
+            88,
+            92
+          ],
           "type": "Effect",
           "effectName": "Color Dreaming 2",
           "switchChannels": {
@@ -124,7 +167,10 @@
           }
         },
         {
-          "dmxRange": [93, 97],
+          "dmxRange": [
+            93,
+            97
+          ],
           "type": "Effect",
           "effectName": "Color Dreaming 3",
           "switchChannels": {
@@ -132,7 +178,10 @@
           }
         },
         {
-          "dmxRange": [98, 163],
+          "dmxRange": [
+            98,
+            163
+          ],
           "type": "NoFunction",
           "helpWanted": "Which mode is selected in this DMX range?",
           "switchChannels": {
@@ -140,7 +189,10 @@
           }
         },
         {
-          "dmxRange": [164, 168],
+          "dmxRange": [
+            164,
+            168
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
@@ -148,7 +200,10 @@
           }
         },
         {
-          "dmxRange": [169, 245],
+          "dmxRange": [
+            169,
+            245
+          ],
           "type": "NoFunction",
           "helpWanted": "Which mode is selected in this DMX range?",
           "switchChannels": {
@@ -156,7 +211,10 @@
           }
         },
         {
-          "dmxRange": [246, 255],
+          "dmxRange": [
+            246,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Active",
           "soundControlled": true,
@@ -171,7 +229,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Effect Speed": {
@@ -184,12 +243,18 @@
     "Sound Sensitivity": {
       "capabilities": [
         {
-          "dmxRange": [0, 31],
+          "dmxRange": [
+            0,
+            31
+          ],
           "type": "SoundSensitivity",
           "soundSensitivity": "off"
         },
         {
-          "dmxRange": [32, 255],
+          "dmxRange": [
+            32,
+            255
+          ],
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"

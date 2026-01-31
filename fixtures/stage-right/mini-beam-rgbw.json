@@ -1,9 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Mini Beam RGBW",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": [
+    "Moving Head",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Anonymous"],
+    "authors": [
+      "Anonymous"
+    ],
     "createDate": "2019-12-23",
     "lastModifyDate": "2019-12-23"
   },
@@ -17,7 +22,11 @@
     ]
   },
   "physical": {
-    "dimensions": [200, 127, 122],
+    "dimensions": [
+      200,
+      127,
+      122
+    ],
     "weight": 2,
     "power": 50,
     "DMXconnector": "3-pin",
@@ -30,7 +39,9 @@
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": ["Pan fine"],
+      "fineChannelAliases": [
+        "Pan fine"
+      ],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -38,7 +49,9 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
+      "fineChannelAliases": [
+        "Tilt fine"
+      ],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -65,7 +78,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "18Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {
@@ -100,23 +113,35 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 30],
+          "dmxRange": [
+            0,
+            30
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [31, 125],
+          "dmxRange": [
+            31,
+            125
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speed": "fast"
         },
         {
-          "dmxRange": [126, 249],
+          "dmxRange": [
+            126,
+            249
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speed": "slow"
         },
         {
-          "dmxRange": [250, 255],
+          "dmxRange": [
+            250,
+            255
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "soundControlled": true
@@ -127,11 +152,17 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 149],
+          "dmxRange": [
+            0,
+            149
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [150, 255],
+          "dmxRange": [
+            150,
+            255
+          ],
           "type": "Maintenance",
           "comment": "Reset"
         }

@@ -2,9 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SMOKEJET",
   "shortName": "SMOKEJET",
-  "categories": ["Smoke", "Color Changer", "Dimmer"],
+  "categories": [
+    "Smoke",
+    "Color Changer",
+    "Dimmer"
+  ],
   "meta": {
-    "authors": ["MAGIC FX B.V."],
+    "authors": [
+      "MAGIC FX B.V."
+    ],
     "createDate": "2018-09-06",
     "lastModifyDate": "2018-09-06"
   },
@@ -21,7 +27,11 @@
     ]
   },
   "physical": {
-    "dimensions": [193, 380, 345],
+    "dimensions": [
+      193,
+      380,
+      345
+    ],
     "weight": 12.6,
     "power": 1420,
     "DMXconnector": "5-pin"
@@ -30,11 +40,17 @@
     "Fog": {
       "capabilities": [
         {
-          "dmxRange": [0, 4],
+          "dmxRange": [
+            0,
+            4
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [5, 255],
+          "dmxRange": [
+            5,
+            255
+          ],
           "type": "Fog",
           "fogType": "Fog"
         }
@@ -67,81 +83,129 @@
     "Chase": {
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 15],
+          "dmxRange": [
+            1,
+            15
+          ],
           "type": "Effect",
           "effectName": "Chase 1"
         },
         {
-          "dmxRange": [16, 31],
+          "dmxRange": [
+            16,
+            31
+          ],
           "type": "Effect",
           "effectName": "Chase 2"
         },
         {
-          "dmxRange": [32, 47],
+          "dmxRange": [
+            32,
+            47
+          ],
           "type": "Effect",
           "effectName": "Chase 3"
         },
         {
-          "dmxRange": [48, 63],
+          "dmxRange": [
+            48,
+            63
+          ],
           "type": "Effect",
           "effectName": "Chase 4"
         },
         {
-          "dmxRange": [64, 79],
+          "dmxRange": [
+            64,
+            79
+          ],
           "type": "Effect",
           "effectName": "Chase 5"
         },
         {
-          "dmxRange": [80, 95],
+          "dmxRange": [
+            80,
+            95
+          ],
           "type": "Effect",
           "effectName": "Chase 6"
         },
         {
-          "dmxRange": [96, 111],
+          "dmxRange": [
+            96,
+            111
+          ],
           "type": "Effect",
           "effectName": "Chase 7"
         },
         {
-          "dmxRange": [112, 127],
+          "dmxRange": [
+            112,
+            127
+          ],
           "type": "Effect",
           "effectName": "Chase 8"
         },
         {
-          "dmxRange": [128, 143],
+          "dmxRange": [
+            128,
+            143
+          ],
           "type": "Effect",
           "effectName": "Chase 9"
         },
         {
-          "dmxRange": [144, 159],
+          "dmxRange": [
+            144,
+            159
+          ],
           "type": "Effect",
           "effectName": "Chase 10"
         },
         {
-          "dmxRange": [160, 175],
+          "dmxRange": [
+            160,
+            175
+          ],
           "type": "Effect",
           "effectName": "Chase 11"
         },
         {
-          "dmxRange": [176, 191],
+          "dmxRange": [
+            176,
+            191
+          ],
           "type": "Effect",
           "effectName": "Chase 12"
         },
         {
-          "dmxRange": [192, 207],
+          "dmxRange": [
+            192,
+            207
+          ],
           "type": "Effect",
           "effectName": "Chase 13"
         },
         {
-          "dmxRange": [208, 223],
+          "dmxRange": [
+            208,
+            223
+          ],
           "type": "Effect",
           "effectName": "Chase 14"
         },
         {
-          "dmxRange": [224, 255],
+          "dmxRange": [
+            224,
+            255
+          ],
           "type": "Effect",
           "effectName": "Chase 15"
         }
@@ -166,7 +230,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "1Hz",
         "speedEnd": "20Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     }
   },

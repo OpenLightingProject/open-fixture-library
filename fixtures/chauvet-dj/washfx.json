@@ -1,9 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "WashFX",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Justin Hornsby", "Felix Edelmann", "Ryan Goodwin"],
+    "authors": [
+      "Justin Hornsby",
+      "Felix Edelmann",
+      "Ryan Goodwin"
+    ],
     "createDate": "2017-11-21",
     "lastModifyDate": "2023-07-12"
   },
@@ -20,7 +26,11 @@
     ]
   },
   "physical": {
-    "dimensions": [215, 255, 180],
+    "dimensions": [
+      215,
+      255,
+      180
+    ],
     "weight": 2.2,
     "power": 75,
     "powerConnectors": {
@@ -32,14 +42,25 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [90, 90]
+      "degreesMinMax": [
+        90,
+        90
+      ]
     }
   },
   "matrix": {
     "pixelKeys": [
       [
-        ["4", "5", "6"],
-        ["3", "2", "1"]
+        [
+          "4",
+          "5",
+          "6"
+        ],
+        [
+          "3",
+          "2",
+          "1"
+        ]
       ]
     ]
   },
@@ -67,97 +88,152 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
-        "speedEnd": "20Hz"
+        "speedEnd": "20Hz",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Auto Program": {
       "capabilities": [
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [
+            0,
+            5
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [6, 20],
+          "dmxRange": [
+            6,
+            20
+          ],
           "type": "Effect",
           "effectName": "Pattern 1"
         },
         {
-          "dmxRange": [21, 35],
+          "dmxRange": [
+            21,
+            35
+          ],
           "type": "Effect",
           "effectName": "Pattern 2"
         },
         {
-          "dmxRange": [36, 50],
+          "dmxRange": [
+            36,
+            50
+          ],
           "type": "Effect",
           "effectName": "Pattern 3"
         },
         {
-          "dmxRange": [51, 65],
+          "dmxRange": [
+            51,
+            65
+          ],
           "type": "Effect",
           "effectName": "Pattern 4"
         },
         {
-          "dmxRange": [66, 80],
+          "dmxRange": [
+            66,
+            80
+          ],
           "type": "Effect",
           "effectName": "Pattern 5"
         },
         {
-          "dmxRange": [81, 95],
+          "dmxRange": [
+            81,
+            95
+          ],
           "type": "Effect",
           "effectName": "Pattern 6"
         },
         {
-          "dmxRange": [96, 110],
+          "dmxRange": [
+            96,
+            110
+          ],
           "type": "Effect",
           "effectName": "Pattern 7"
         },
         {
-          "dmxRange": [111, 125],
+          "dmxRange": [
+            111,
+            125
+          ],
           "type": "Effect",
           "effectName": "Pattern 8"
         },
         {
-          "dmxRange": [126, 140],
+          "dmxRange": [
+            126,
+            140
+          ],
           "type": "Effect",
           "effectName": "Pattern 9"
         },
         {
-          "dmxRange": [141, 155],
+          "dmxRange": [
+            141,
+            155
+          ],
           "type": "Effect",
           "effectName": "Pattern 10"
         },
         {
-          "dmxRange": [156, 170],
+          "dmxRange": [
+            156,
+            170
+          ],
           "type": "Effect",
           "effectName": "Pattern 11"
         },
         {
-          "dmxRange": [171, 185],
+          "dmxRange": [
+            171,
+            185
+          ],
           "type": "Effect",
           "effectName": "Pattern 12"
         },
         {
-          "dmxRange": [186, 200],
+          "dmxRange": [
+            186,
+            200
+          ],
           "type": "Effect",
           "effectName": "Pattern 13"
         },
         {
-          "dmxRange": [201, 215],
+          "dmxRange": [
+            201,
+            215
+          ],
           "type": "Effect",
           "effectName": "Pattern 14"
         },
         {
-          "dmxRange": [216, 230],
+          "dmxRange": [
+            216,
+            230
+          ],
           "type": "Effect",
           "effectName": "Pattern 15"
         },
         {
-          "dmxRange": [231, 245],
+          "dmxRange": [
+            231,
+            245
+          ],
           "type": "Effect",
           "effectName": "Pattern 16"
         },
         {
-          "dmxRange": [246, 255],
+          "dmxRange": [
+            246,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Active",
           "soundControlled": true
@@ -174,16 +250,25 @@
     "Auto or Sound Program": {
       "capabilities": [
         {
-          "dmxRange": [0, 10],
+          "dmxRange": [
+            0,
+            10
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 127],
+          "dmxRange": [
+            11,
+            127
+          ],
           "type": "Effect",
           "effectName": "Auto Program"
         },
         {
-          "dmxRange": [128, 255],
+          "dmxRange": [
+            128,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Program"
         }

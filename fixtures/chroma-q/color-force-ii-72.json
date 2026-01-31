@@ -2,9 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Color Force II 72",
   "shortName": "CHCF272RGBA",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": [
+    "Pixel Bar",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": [
+      "Felix Edelmann"
+    ],
     "createDate": "2018-02-13",
     "lastModifyDate": "2018-08-24"
   },
@@ -21,7 +26,11 @@
     ]
   },
   "physical": {
-    "dimensions": [1759, 191, 165],
+    "dimensions": [
+      1759,
+      191,
+      165
+    ],
     "weight": 24,
     "power": 800,
     "DMXconnector": "5-pin",
@@ -29,67 +38,277 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [22, 22]
+      "degreesMinMax": [
+        22,
+        22
+      ]
     },
     "matrixPixels": {
-      "dimensions": [72.7, 81.2, 0],
-      "spacing": [0, 0, 0]
+      "dimensions": [
+        72.7,
+        81.2,
+        0
+      ],
+      "spacing": [
+        0,
+        0,
+        0
+      ]
     }
   },
   "matrix": {
-    "pixelCount": [24, 1, 1],
+    "pixelCount": [
+      24,
+      1,
+      1
+    ],
     "pixelGroups": {
-      "1/12": ["1", "2"],
-      "2/12": ["3", "4"],
-      "3/12": ["5", "6"],
-      "4/12": ["7", "8"],
-      "5/12": ["9", "10"],
-      "6/12": ["11", "12"],
-      "7/12": ["13", "14"],
-      "8/12": ["15", "16"],
-      "9/12": ["17", "18"],
-      "10/12": ["19", "20"],
-      "11/12": ["21", "22"],
-      "12/12": ["23", "24"],
-      "1/8": ["1", "2", "3"],
-      "2/8": ["4", "5", "6"],
-      "3/8": ["7", "8", "9"],
-      "4/8": ["10", "11", "12"],
-      "5/8": ["13", "14", "15"],
-      "6/8": ["16", "17", "18"],
-      "7/8": ["19", "20", "21"],
-      "8/8": ["22", "23", "24"],
-      "1/6": { "x": ["<=4"] },
-      "2/6": { "x": [">=5", "<=8"] },
-      "3/6": { "x": [">=9", "<=12"] },
-      "4/6": { "x": [">=13", "<=16"] },
-      "5/6": { "x": [">=17", "<=20"] },
-      "6/6": { "x": [">=21"] },
-      "1/4": { "x": ["<=6"] },
-      "2/4": { "x": [">=7", "<=12"] },
-      "3/4": { "x": [">=13", "<=18"] },
-      "4/4": { "x": [">=19"] },
-      "1/3": { "x": ["<=8"] },
-      "2/3": { "x": [">=9", "<=16"] },
-      "3/3": { "x": [">=17"] },
-      "1/2": { "x": ["<=12"] },
-      "2/2": { "x": [">=13"] },
+      "1/12": [
+        "1",
+        "2"
+      ],
+      "2/12": [
+        "3",
+        "4"
+      ],
+      "3/12": [
+        "5",
+        "6"
+      ],
+      "4/12": [
+        "7",
+        "8"
+      ],
+      "5/12": [
+        "9",
+        "10"
+      ],
+      "6/12": [
+        "11",
+        "12"
+      ],
+      "7/12": [
+        "13",
+        "14"
+      ],
+      "8/12": [
+        "15",
+        "16"
+      ],
+      "9/12": [
+        "17",
+        "18"
+      ],
+      "10/12": [
+        "19",
+        "20"
+      ],
+      "11/12": [
+        "21",
+        "22"
+      ],
+      "12/12": [
+        "23",
+        "24"
+      ],
+      "1/8": [
+        "1",
+        "2",
+        "3"
+      ],
+      "2/8": [
+        "4",
+        "5",
+        "6"
+      ],
+      "3/8": [
+        "7",
+        "8",
+        "9"
+      ],
+      "4/8": [
+        "10",
+        "11",
+        "12"
+      ],
+      "5/8": [
+        "13",
+        "14",
+        "15"
+      ],
+      "6/8": [
+        "16",
+        "17",
+        "18"
+      ],
+      "7/8": [
+        "19",
+        "20",
+        "21"
+      ],
+      "8/8": [
+        "22",
+        "23",
+        "24"
+      ],
+      "1/6": {
+        "x": [
+          "<=4"
+        ]
+      },
+      "2/6": {
+        "x": [
+          ">=5",
+          "<=8"
+        ]
+      },
+      "3/6": {
+        "x": [
+          ">=9",
+          "<=12"
+        ]
+      },
+      "4/6": {
+        "x": [
+          ">=13",
+          "<=16"
+        ]
+      },
+      "5/6": {
+        "x": [
+          ">=17",
+          "<=20"
+        ]
+      },
+      "6/6": {
+        "x": [
+          ">=21"
+        ]
+      },
+      "1/4": {
+        "x": [
+          "<=6"
+        ]
+      },
+      "2/4": {
+        "x": [
+          ">=7",
+          "<=12"
+        ]
+      },
+      "3/4": {
+        "x": [
+          ">=13",
+          "<=18"
+        ]
+      },
+      "4/4": {
+        "x": [
+          ">=19"
+        ]
+      },
+      "1/3": {
+        "x": [
+          "<=8"
+        ]
+      },
+      "2/3": {
+        "x": [
+          ">=9",
+          "<=16"
+        ]
+      },
+      "3/3": {
+        "x": [
+          ">=17"
+        ]
+      },
+      "1/2": {
+        "x": [
+          "<=12"
+        ]
+      },
+      "2/2": {
+        "x": [
+          ">=13"
+        ]
+      },
       "Master": "all",
-      "Odd": { "x": ["odd"] },
-      "Even": { "x": ["even"] },
-      "Every third": { "x": ["3n+1"] },
-      "Every third +1": { "x": ["3n+2"] },
-      "Every third +2": { "x": ["3n"] },
-      "Every fourth": { "x": ["4n+1"] },
-      "Every fourth +1": { "x": ["4n+2"] },
-      "Every fourth +2": { "x": ["4n+3"] },
-      "Every fourth +3": { "x": ["4n"] },
-      "Every sixth": { "x": ["6n+1"] },
-      "Every sixth +1": { "x": ["6n+2"] },
-      "Every sixth +2": { "x": ["6n+3"] },
-      "Every sixth +3": { "x": ["6n+4"] },
-      "Every sixth +4": { "x": ["6n+5"] },
-      "Every sixth +5": { "x": ["6n"] }
+      "Odd": {
+        "x": [
+          "odd"
+        ]
+      },
+      "Even": {
+        "x": [
+          "even"
+        ]
+      },
+      "Every third": {
+        "x": [
+          "3n+1"
+        ]
+      },
+      "Every third +1": {
+        "x": [
+          "3n+2"
+        ]
+      },
+      "Every third +2": {
+        "x": [
+          "3n"
+        ]
+      },
+      "Every fourth": {
+        "x": [
+          "4n+1"
+        ]
+      },
+      "Every fourth +1": {
+        "x": [
+          "4n+2"
+        ]
+      },
+      "Every fourth +2": {
+        "x": [
+          "4n+3"
+        ]
+      },
+      "Every fourth +3": {
+        "x": [
+          "4n"
+        ]
+      },
+      "Every sixth": {
+        "x": [
+          "6n+1"
+        ]
+      },
+      "Every sixth +1": {
+        "x": [
+          "6n+2"
+        ]
+      },
+      "Every sixth +2": {
+        "x": [
+          "6n+3"
+        ]
+      },
+      "Every sixth +3": {
+        "x": [
+          "6n+4"
+        ]
+      },
+      "Every sixth +4": {
+        "x": [
+          "6n+5"
+        ]
+      },
+      "Every sixth +5": {
+        "x": [
+          "6n"
+        ]
+      }
     }
   },
   "availableChannels": {
@@ -97,178 +316,306 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 8],
+          "dmxRange": [
+            1,
+            8
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff0000"],
+          "colors": [
+            "#ff0000"
+          ],
           "comment": "Look 1 (default Red)",
           "helpWanted": "Are the capability ranges correct?"
         },
         {
-          "dmxRange": [9, 16],
+          "dmxRange": [
+            9,
+            16
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff00ff"],
+          "colors": [
+            "#ff00ff"
+          ],
           "comment": "Look 2 (default Pink)"
         },
         {
-          "dmxRange": [17, 25],
+          "dmxRange": [
+            17,
+            25
+          ],
           "type": "ColorPreset",
-          "colors": ["#ff8800"],
+          "colors": [
+            "#ff8800"
+          ],
           "comment": "Look 3 (default Orange)"
         },
         {
-          "dmxRange": [26, 33],
+          "dmxRange": [
+            26,
+            33
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffbb00"],
+          "colors": [
+            "#ffbb00"
+          ],
           "comment": "Look 4 (default Light Orange)"
         },
         {
-          "dmxRange": [34, 42],
+          "dmxRange": [
+            34,
+            42
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffff00"],
+          "colors": [
+            "#ffff00"
+          ],
           "comment": "Look 5 (default Yellow)"
         },
         {
-          "dmxRange": [43, 51],
+          "dmxRange": [
+            43,
+            51
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffff88"],
+          "colors": [
+            "#ffff88"
+          ],
           "comment": "Look 6 (default Light Yellow)"
         },
         {
-          "dmxRange": [52, 59],
+          "dmxRange": [
+            52,
+            59
+          ],
           "type": "ColorPreset",
-          "colors": ["#00ff00"],
+          "colors": [
+            "#00ff00"
+          ],
           "comment": "Look 7 (default Green)"
         },
         {
-          "dmxRange": [60, 67],
+          "dmxRange": [
+            60,
+            67
+          ],
           "type": "ColorPreset",
-          "colors": ["#aaffaa"],
+          "colors": [
+            "#aaffaa"
+          ],
           "comment": "Look 8 (default Light Green)"
         },
         {
-          "dmxRange": [68, 75],
+          "dmxRange": [
+            68,
+            75
+          ],
           "type": "ColorPreset",
-          "colors": ["#00ffff"],
+          "colors": [
+            "#00ffff"
+          ],
           "comment": "Look 9 (default Cyan)"
         },
         {
-          "dmxRange": [76, 84],
+          "dmxRange": [
+            76,
+            84
+          ],
           "type": "ColorPreset",
-          "colors": ["#aaffff"],
+          "colors": [
+            "#aaffff"
+          ],
           "comment": "Look 10 (default Light Cyan)"
         },
         {
-          "dmxRange": [85, 92],
+          "dmxRange": [
+            85,
+            92
+          ],
           "type": "ColorPreset",
-          "colors": ["#0000ff"],
+          "colors": [
+            "#0000ff"
+          ],
           "comment": "Look 11 (default Blue)"
         },
         {
-          "dmxRange": [93, 100],
+          "dmxRange": [
+            93,
+            100
+          ],
           "type": "ColorPreset",
-          "colors": ["#88aaff"],
+          "colors": [
+            "#88aaff"
+          ],
           "comment": "Look 12 (default Light Blue)"
         },
         {
-          "dmxRange": [101, 109],
+          "dmxRange": [
+            101,
+            109
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffaa5f"],
+          "colors": [
+            "#ffaa5f"
+          ],
           "comment": "Look 13 (default 2800K White)"
         },
         {
-          "dmxRange": [110, 117],
+          "dmxRange": [
+            110,
+            117
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffb87b"],
+          "colors": [
+            "#ffb87b"
+          ],
           "comment": "Look 14 (default 3200K White)"
         },
         {
-          "dmxRange": [118, 125],
+          "dmxRange": [
+            118,
+            125
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffcea6"],
+          "colors": [
+            "#ffcea6"
+          ],
           "comment": "Look 15 (default 4000K White)"
         },
         {
-          "dmxRange": [126, 133],
+          "dmxRange": [
+            126,
+            133
+          ],
           "type": "ColorPreset",
-          "colors": ["#ffefe1"],
+          "colors": [
+            "#ffefe1"
+          ],
           "comment": "Look 16 (default 5600K White)"
         },
         {
-          "dmxRange": [134, 141],
+          "dmxRange": [
+            134,
+            141
+          ],
           "type": "ColorPreset",
           "comment": "Look 17 (default empty)"
         },
         {
-          "dmxRange": [142, 149],
+          "dmxRange": [
+            142,
+            149
+          ],
           "type": "ColorPreset",
           "comment": "Look 18 (default empty)"
         },
         {
-          "dmxRange": [150, 157],
+          "dmxRange": [
+            150,
+            157
+          ],
           "type": "ColorPreset",
           "comment": "Look 19 (default empty)"
         },
         {
-          "dmxRange": [158, 165],
+          "dmxRange": [
+            158,
+            165
+          ],
           "type": "ColorPreset",
           "comment": "Look 20 (default empty)"
         },
         {
-          "dmxRange": [166, 174],
+          "dmxRange": [
+            166,
+            174
+          ],
           "type": "ColorPreset",
           "comment": "Look 21 (default empty)"
         },
         {
-          "dmxRange": [175, 182],
+          "dmxRange": [
+            175,
+            182
+          ],
           "type": "ColorPreset",
           "comment": "Look 22 (default empty)"
         },
         {
-          "dmxRange": [183, 190],
+          "dmxRange": [
+            183,
+            190
+          ],
           "type": "ColorPreset",
           "comment": "Look 23 (default empty)"
         },
         {
-          "dmxRange": [191, 199],
+          "dmxRange": [
+            191,
+            199
+          ],
           "type": "ColorPreset",
           "comment": "Look 24 (default empty)"
         },
         {
-          "dmxRange": [200, 207],
+          "dmxRange": [
+            200,
+            207
+          ],
           "type": "ColorPreset",
           "comment": "Look 25 (default empty)"
         },
         {
-          "dmxRange": [208, 215],
+          "dmxRange": [
+            208,
+            215
+          ],
           "type": "ColorPreset",
           "comment": "Look 26 (default empty)"
         },
         {
-          "dmxRange": [216, 223],
+          "dmxRange": [
+            216,
+            223
+          ],
           "type": "ColorPreset",
           "comment": "Look 27 (default empty)"
         },
         {
-          "dmxRange": [224, 231],
+          "dmxRange": [
+            224,
+            231
+          ],
           "type": "ColorPreset",
           "comment": "Look 28 (default empty)"
         },
         {
-          "dmxRange": [232, 239],
+          "dmxRange": [
+            232,
+            239
+          ],
           "type": "ColorPreset",
           "comment": "Look 29 (default empty)"
         },
         {
-          "dmxRange": [240, 247],
+          "dmxRange": [
+            240,
+            247
+          ],
           "type": "ColorPreset",
           "comment": "Look 30 (default empty)"
         },
         {
-          "dmxRange": [248, 255],
+          "dmxRange": [
+            248,
+            255
+          ],
           "type": "ColorPreset",
           "comment": "Look 31 (default empty)"
         }
@@ -280,7 +627,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Strobe Duration": {
@@ -402,7 +749,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -418,7 +767,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -434,7 +786,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -450,7 +806,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -466,7 +827,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -482,7 +850,16 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -498,7 +875,20 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -530,7 +920,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -546,7 +939,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -562,7 +959,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -578,7 +980,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -594,7 +1003,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -611,7 +1022,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -628,7 +1042,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -645,7 +1063,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -662,7 +1085,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -679,7 +1109,16 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -696,7 +1135,20 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -730,7 +1182,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -747,7 +1202,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -764,7 +1223,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -781,7 +1245,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -798,7 +1269,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -814,7 +1287,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -830,7 +1306,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -846,7 +1326,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -862,7 +1347,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -878,7 +1370,16 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -894,7 +1395,20 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -926,7 +1440,10 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -942,7 +1459,11 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -958,7 +1479,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -974,7 +1500,14 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -992,7 +1525,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1010,7 +1545,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1028,7 +1566,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1046,7 +1588,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1064,7 +1611,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1082,7 +1636,16 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1100,7 +1663,20 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1136,7 +1712,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1154,7 +1733,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1172,7 +1755,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1190,7 +1778,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1208,7 +1803,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1227,7 +1824,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1246,7 +1846,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1265,7 +1869,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1284,7 +1893,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1303,7 +1919,16 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1322,7 +1947,20 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1360,7 +1998,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1379,7 +2020,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1398,7 +2043,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1417,7 +2067,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1436,7 +2093,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1454,7 +2113,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1472,7 +2134,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1490,7 +2156,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1508,7 +2179,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1526,7 +2204,16 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1544,7 +2231,20 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1580,7 +2280,10 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1598,7 +2301,11 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1616,7 +2323,12 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1634,7 +2346,14 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -1653,7 +2372,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1672,7 +2393,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1691,7 +2415,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1710,7 +2438,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1729,7 +2462,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1748,7 +2488,16 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1767,7 +2516,20 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1805,7 +2567,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1824,7 +2589,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1843,7 +2612,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1862,7 +2636,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1881,7 +2662,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1901,7 +2684,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1921,7 +2707,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1941,7 +2731,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1961,7 +2756,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1981,7 +2783,16 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2001,7 +2812,20 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2041,7 +2865,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2061,7 +2888,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2081,7 +2912,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2101,7 +2937,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2121,7 +2964,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2140,7 +2985,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2159,7 +3007,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2178,7 +3030,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2197,7 +3054,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2216,7 +3080,16 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2235,7 +3108,20 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2273,7 +3159,10 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2292,7 +3181,11 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2311,7 +3204,12 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2330,7 +3228,14 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2352,7 +3257,9 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2374,7 +3281,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2396,7 +3306,11 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2418,7 +3332,12 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2440,7 +3359,14 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2462,7 +3388,16 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2484,7 +3419,20 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2528,7 +3476,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2550,7 +3501,11 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2572,7 +3527,12 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2594,7 +3554,14 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2613,7 +3580,9 @@
         "Strobe Density",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2637,7 +3606,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2661,7 +3633,11 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2685,7 +3661,12 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2709,7 +3690,14 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2733,7 +3721,16 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2757,7 +3754,20 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2805,7 +3815,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2829,7 +3842,11 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2853,7 +3870,12 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2877,7 +3899,14 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2900,7 +3929,9 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2922,7 +3953,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2944,7 +3978,11 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2966,7 +4004,12 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -2988,7 +4031,14 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3010,7 +4060,16 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3032,7 +4091,20 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3076,7 +4148,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3098,7 +4173,11 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3120,7 +4199,12 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3142,7 +4226,14 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3163,7 +4254,9 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3184,7 +4277,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3205,7 +4301,11 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3226,7 +4326,12 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3247,7 +4352,14 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3268,7 +4380,16 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3289,7 +4410,20 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3331,7 +4465,10 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3352,7 +4489,11 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3373,7 +4514,12 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3394,7 +4540,14 @@
         "Strobe Blue",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3412,7 +4565,9 @@
         "Strobe Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3435,7 +4590,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3458,7 +4616,11 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3481,7 +4643,12 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3504,7 +4671,14 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3527,7 +4701,16 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3550,7 +4733,20 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3596,7 +4792,10 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3619,7 +4818,11 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3642,7 +4845,12 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3665,7 +4873,14 @@
         "Strobe Amber",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -3687,7 +4902,9 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Master"],
+          "repeatFor": [
+            "Master"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3708,7 +4925,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/2", "2/2"],
+          "repeatFor": [
+            "1/2",
+            "2/2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3729,7 +4949,11 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/3", "2/3", "3/3"],
+          "repeatFor": [
+            "1/3",
+            "2/3",
+            "3/3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3750,7 +4974,12 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3771,7 +5000,14 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "repeatFor": [
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "6/6"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3792,7 +5028,16 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "repeatFor": [
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3813,7 +5058,20 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "12/12"],
+          "repeatFor": [
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "12/12"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3855,7 +5113,10 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Odd", "Even"],
+          "repeatFor": [
+            "Odd",
+            "Even"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3876,7 +5137,11 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every third", "Every third +1", "Every third +2"],
+          "repeatFor": [
+            "Every third",
+            "Every third +1",
+            "Every third +2"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3897,7 +5162,12 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "repeatFor": [
+            "Every fourth",
+            "Every fourth +1",
+            "Every fourth +2",
+            "Every fourth +3"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",
@@ -3918,7 +5188,14 @@
         "Strobe Intensity",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Every sixth", "Every sixth +1", "Every sixth +2", "Every sixth +3", "Every sixth +4", "Every sixth +5"],
+          "repeatFor": [
+            "Every sixth",
+            "Every sixth +1",
+            "Every sixth +2",
+            "Every sixth +3",
+            "Every sixth +4",
+            "Every sixth +5"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Hue $pixelKey",

@@ -1,9 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Boston 60",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": [
+    "Moving Head",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Saúl", "Flo Edelmann"],
+    "authors": [
+      "Saúl",
+      "Flo Edelmann"
+    ],
     "createDate": "2020-12-12",
     "lastModifyDate": "2020-12-12"
   },
@@ -13,7 +19,11 @@
     ]
   },
   "physical": {
-    "dimensions": [155, 235, 145],
+    "dimensions": [
+      155,
+      235,
+      145
+    ],
     "weight": 3.5,
     "power": 80,
     "DMXconnector": "3-pin",
@@ -81,7 +91,9 @@
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": ["Pan fine"],
+      "fineChannelAliases": [
+        "Pan fine"
+      ],
       "defaultValue": "0%",
       "constant": true,
       "capability": {
@@ -91,7 +103,9 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
+      "fineChannelAliases": [
+        "Tilt fine"
+      ],
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
@@ -103,14 +117,20 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 139],
+          "dmxRange": [
+            0,
+            139
+          ],
           "type": "WheelSlot",
           "slotNumberStart": 1,
           "slotNumberEnd": 8,
           "helpWanted": "Which colors can be selected at which DMX values?"
         },
         {
-          "dmxRange": [140, 255],
+          "dmxRange": [
+            140,
+            255
+          ],
           "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
@@ -121,19 +141,28 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 63],
+          "dmxRange": [
+            0,
+            63
+          ],
           "type": "WheelSlot",
           "slotNumber": 1
         },
         {
-          "dmxRange": [64, 127],
+          "dmxRange": [
+            64,
+            127
+          ],
           "type": "WheelSlot",
           "slotNumberStart": 2,
           "slotNumberEnd": 8,
           "helpWanted": "Which gobos can be selected at which DMX values?"
         },
         {
-          "dmxRange": [128, 255],
+          "dmxRange": [
+            128,
+            255
+          ],
           "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
@@ -146,7 +175,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "1Hz",
         "speedEnd": "20Hz",
-        "helpWanted": "At which DMX values is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Dimmer": {
@@ -164,49 +193,76 @@
     "Auto Programs": {
       "capabilities": [
         {
-          "dmxRange": [0, 59],
+          "dmxRange": [
+            0,
+            59
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [60, 84],
+          "dmxRange": [
+            60,
+            84
+          ],
           "type": "Effect",
           "effectName": "Auto Mode 3"
         },
         {
-          "dmxRange": [85, 109],
+          "dmxRange": [
+            85,
+            109
+          ],
           "type": "Effect",
           "effectName": "Auto Mode 2"
         },
         {
-          "dmxRange": [110, 134],
+          "dmxRange": [
+            110,
+            134
+          ],
           "type": "Effect",
           "effectName": "Auto Mode 1"
         },
         {
-          "dmxRange": [135, 159],
+          "dmxRange": [
+            135,
+            159
+          ],
           "type": "Effect",
           "effectName": "Auto Mode 0"
         },
         {
-          "dmxRange": [160, 184],
+          "dmxRange": [
+            160,
+            184
+          ],
           "type": "Effect",
           "effectName": "Sound Mode 3",
           "soundControlled": true
         },
         {
-          "dmxRange": [185, 209],
+          "dmxRange": [
+            185,
+            209
+          ],
           "type": "Effect",
           "effectName": "Sound Mode 2",
           "soundControlled": true
         },
         {
-          "dmxRange": [210, 234],
+          "dmxRange": [
+            210,
+            234
+          ],
           "type": "Effect",
           "effectName": "Sound Mode 1",
           "soundControlled": true
         },
         {
-          "dmxRange": [235, 255],
+          "dmxRange": [
+            235,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Mode 0",
           "soundControlled": true
@@ -216,11 +272,17 @@
     "Reset": {
       "capabilities": [
         {
-          "dmxRange": [0, 249],
+          "dmxRange": [
+            0,
+            249
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [250, 255],
+          "dmxRange": [
+            250,
+            255
+          ],
           "type": "Maintenance",
           "hold": "5s",
           "comment": "Reset"

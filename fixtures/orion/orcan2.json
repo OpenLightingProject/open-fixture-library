@@ -2,9 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "ORCAN2",
   "shortName": "OrionOrcan2",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": [
+      "Felix Edelmann"
+    ],
     "createDate": "2018-04-04",
     "lastModifyDate": "2018-07-21"
   },
@@ -14,7 +18,11 @@
     ]
   },
   "physical": {
-    "dimensions": [255, 365, 255],
+    "dimensions": [
+      255,
+      365,
+      255
+    ],
     "weight": 2.8,
     "DMXconnector": "3-pin",
     "bulb": {
@@ -32,33 +40,48 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX values is Strobe off, where is the speed control?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Effects": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 50],
+          "dmxRange": [
+            0,
+            50
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [51, 100],
+          "dmxRange": [
+            51,
+            100
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [101, 150],
+          "dmxRange": [
+            101,
+            150
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [151, 200],
+          "dmxRange": [
+            151,
+            200
+          ],
           "type": "Effect",
           "effectName": "Color pulse"
         },
         {
-          "dmxRange": [201, 255],
+          "dmxRange": [
+            201,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true

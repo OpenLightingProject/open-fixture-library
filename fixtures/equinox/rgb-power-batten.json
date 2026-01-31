@@ -2,9 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "RGB Power Batten",
   "shortName": "EQLED032",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": [
+    "Pixel Bar",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Phill"],
+    "authors": [
+      "Phill"
+    ],
     "createDate": "2019-04-07",
     "lastModifyDate": "2019-04-07"
   },
@@ -17,7 +22,11 @@
     ]
   },
   "physical": {
-    "dimensions": [1075, 85, 65],
+    "dimensions": [
+      1075,
+      85,
+      65
+    ],
     "weight": 1.8,
     "power": 30,
     "DMXconnector": "3-pin",
@@ -25,25 +34,57 @@
       "type": "240x 10mm LEDs (96x red, 72x green, 72x blue)"
     },
     "lens": {
-      "degreesMinMax": [30, 30]
+      "degreesMinMax": [
+        30,
+        30
+      ]
     },
     "matrixPixels": {
-      "dimensions": [125, 50, 10],
-      "spacing": [0, 0, 0]
+      "dimensions": [
+        125,
+        50,
+        10
+      ],
+      "spacing": [
+        0,
+        0,
+        0
+      ]
     }
   },
   "matrix": {
     "pixelKeys": [
       [
-        ["Segment 1", "Segment 2", "Segment 3", "Segment 4", "Segment 6", "Segment 5", "Segment 7", "Segment 8"]
+        [
+          "Segment 1",
+          "Segment 2",
+          "Segment 3",
+          "Segment 4",
+          "Segment 6",
+          "Segment 5",
+          "Segment 7",
+          "Segment 8"
+        ]
       ]
     ],
     "pixelGroups": {
       "Master": "all",
-      "Segments 1&2": ["Segment 1", "Segment 2"],
-      "Segments 3&4": ["Segment 3", "Segment 4"],
-      "Segments 5&6": ["Segment 5", "Segment 6"],
-      "Segments 7&8": ["Segment 7", "Segment 8"]
+      "Segments 1&2": [
+        "Segment 1",
+        "Segment 2"
+      ],
+      "Segments 3&4": [
+        "Segment 3",
+        "Segment 4"
+      ],
+      "Segments 5&6": [
+        "Segment 5",
+        "Segment 6"
+      ],
+      "Segments 7&8": [
+        "Segment 7",
+        "Segment 8"
+      ]
     }
   },
   "availableChannels": {
@@ -51,77 +92,118 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [
+            0,
+            7
+          ],
           "type": "NoFunction",
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [8, 15],
+          "dmxRange": [
+            8,
+            15
+          ],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": ["#ff0000"],
+          "colors": [
+            "#ff0000"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [16, 23],
+          "dmxRange": [
+            16,
+            23
+          ],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": ["#ffff00"],
+          "colors": [
+            "#ffff00"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [24, 31],
+          "dmxRange": [
+            24,
+            31
+          ],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": ["#00ff00"],
+          "colors": [
+            "#00ff00"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [32, 39],
+          "dmxRange": [
+            32,
+            39
+          ],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": ["#00ffff"],
+          "colors": [
+            "#00ffff"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [40, 47],
+          "dmxRange": [
+            40,
+            47
+          ],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": ["#0000ff"],
+          "colors": [
+            "#0000ff"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [48, 55],
+          "dmxRange": [
+            48,
+            55
+          ],
           "type": "ColorPreset",
           "comment": "Purple",
-          "colors": ["#ff00ff"],
+          "colors": [
+            "#ff00ff"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [56, 63],
+          "dmxRange": [
+            56,
+            63
+          ],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": ["#ffffff"],
+          "colors": [
+            "#ffffff"
+          ],
           "switchChannels": {
             "Effect Speed / Sound Sensitivity": "Effect Speed"
           }
         },
         {
-          "dmxRange": [64, 71],
+          "dmxRange": [
+            64,
+            71
+          ],
           "type": "Effect",
           "effectName": "Program 1",
           "switchChannels": {
@@ -129,7 +211,10 @@
           }
         },
         {
-          "dmxRange": [72, 79],
+          "dmxRange": [
+            72,
+            79
+          ],
           "type": "Effect",
           "effectName": "Program 2",
           "switchChannels": {
@@ -137,7 +222,10 @@
           }
         },
         {
-          "dmxRange": [80, 87],
+          "dmxRange": [
+            80,
+            87
+          ],
           "type": "Effect",
           "effectName": "Program 3",
           "switchChannels": {
@@ -145,7 +233,10 @@
           }
         },
         {
-          "dmxRange": [88, 95],
+          "dmxRange": [
+            88,
+            95
+          ],
           "type": "Effect",
           "effectName": "Program 4",
           "switchChannels": {
@@ -153,7 +244,10 @@
           }
         },
         {
-          "dmxRange": [96, 103],
+          "dmxRange": [
+            96,
+            103
+          ],
           "type": "Effect",
           "effectName": "Program 5",
           "switchChannels": {
@@ -161,7 +255,10 @@
           }
         },
         {
-          "dmxRange": [104, 111],
+          "dmxRange": [
+            104,
+            111
+          ],
           "type": "Effect",
           "effectName": "Program 6",
           "switchChannels": {
@@ -169,7 +266,10 @@
           }
         },
         {
-          "dmxRange": [112, 119],
+          "dmxRange": [
+            112,
+            119
+          ],
           "type": "Effect",
           "effectName": "Program 7",
           "switchChannels": {
@@ -177,7 +277,10 @@
           }
         },
         {
-          "dmxRange": [120, 127],
+          "dmxRange": [
+            120,
+            127
+          ],
           "type": "Effect",
           "effectName": "Program 8",
           "switchChannels": {
@@ -185,7 +288,10 @@
           }
         },
         {
-          "dmxRange": [128, 135],
+          "dmxRange": [
+            128,
+            135
+          ],
           "type": "Effect",
           "effectName": "Program 9",
           "switchChannels": {
@@ -193,7 +299,10 @@
           }
         },
         {
-          "dmxRange": [136, 143],
+          "dmxRange": [
+            136,
+            143
+          ],
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
@@ -201,7 +310,10 @@
           }
         },
         {
-          "dmxRange": [144, 151],
+          "dmxRange": [
+            144,
+            151
+          ],
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
@@ -209,7 +321,10 @@
           }
         },
         {
-          "dmxRange": [152, 159],
+          "dmxRange": [
+            152,
+            159
+          ],
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
@@ -217,7 +332,10 @@
           }
         },
         {
-          "dmxRange": [160, 167],
+          "dmxRange": [
+            160,
+            167
+          ],
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
@@ -225,7 +343,10 @@
           }
         },
         {
-          "dmxRange": [168, 175],
+          "dmxRange": [
+            168,
+            175
+          ],
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
@@ -233,7 +354,10 @@
           }
         },
         {
-          "dmxRange": [176, 183],
+          "dmxRange": [
+            176,
+            183
+          ],
           "type": "Effect",
           "effectName": "Program 15",
           "switchChannels": {
@@ -241,7 +365,10 @@
           }
         },
         {
-          "dmxRange": [184, 191],
+          "dmxRange": [
+            184,
+            191
+          ],
           "type": "Effect",
           "effectName": "Program 16",
           "switchChannels": {
@@ -249,7 +376,10 @@
           }
         },
         {
-          "dmxRange": [192, 199],
+          "dmxRange": [
+            192,
+            199
+          ],
           "type": "Effect",
           "effectName": "Program 17",
           "switchChannels": {
@@ -257,7 +387,10 @@
           }
         },
         {
-          "dmxRange": [200, 207],
+          "dmxRange": [
+            200,
+            207
+          ],
           "type": "Effect",
           "effectName": "Program 18",
           "switchChannels": {
@@ -265,7 +398,10 @@
           }
         },
         {
-          "dmxRange": [208, 215],
+          "dmxRange": [
+            208,
+            215
+          ],
           "type": "Effect",
           "effectName": "Program 19",
           "switchChannels": {
@@ -273,7 +409,10 @@
           }
         },
         {
-          "dmxRange": [216, 223],
+          "dmxRange": [
+            216,
+            223
+          ],
           "type": "Effect",
           "effectName": "Program 20",
           "switchChannels": {
@@ -281,7 +420,10 @@
           }
         },
         {
-          "dmxRange": [224, 231],
+          "dmxRange": [
+            224,
+            231
+          ],
           "type": "Effect",
           "effectName": "Program 21",
           "switchChannels": {
@@ -289,7 +431,10 @@
           }
         },
         {
-          "dmxRange": [232, 255],
+          "dmxRange": [
+            232,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound Effect",
           "soundControlled": true,
@@ -326,7 +471,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "50Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off? Is the frequency of 50Hz correct?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     }
   },
@@ -397,7 +542,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Segments 1&2", "Segments 3&4", "Segments 5&6", "Segments 7&8"],
+          "repeatFor": [
+            "Segments 1&2",
+            "Segments 3&4",
+            "Segments 5&6",
+            "Segments 7&8"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

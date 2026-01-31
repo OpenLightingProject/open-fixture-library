@@ -1,9 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "irLED64 18x12SIX",
-  "categories": ["Dimmer", "Color Changer"],
+  "categories": [
+    "Dimmer",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Edrig", "Ryan Goodwin"],
+    "authors": [
+      "Edrig",
+      "Ryan Goodwin"
+    ],
     "createDate": "2023-04-24",
     "lastModifyDate": "2023-04-24"
   },
@@ -16,7 +22,11 @@
     ]
   },
   "physical": {
-    "dimensions": [340, 270, 220],
+    "dimensions": [
+      340,
+      270,
+      220
+    ],
     "weight": 5.4,
     "power": 240,
     "DMXconnector": "3-pin",
@@ -24,7 +34,10 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [40, 40]
+      "degreesMinMax": [
+        40,
+        40
+      ]
     }
   },
   "availableChannels": {
@@ -67,18 +80,27 @@
     "Dimmer / Strobe": {
       "capabilities": [
         {
-          "dmxRange": [0, 189],
+          "dmxRange": [
+            0,
+            189
+          ],
           "type": "Intensity"
         },
         {
-          "dmxRange": [190, 250],
+          "dmxRange": [
+            190,
+            250
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [251, 255],
+          "dmxRange": [
+            251,
+            255
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "Open",
           "comment": "Full power"
@@ -91,95 +113,143 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled, i.e. when is the light constantly on or off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Program": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 5],
+          "dmxRange": [
+            0,
+            5
+          ],
           "type": "ColorPreset",
           "comment": "Off",
-          "colors": ["#000000"],
+          "colors": [
+            "#000000"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [6, 10],
+          "dmxRange": [
+            6,
+            10
+          ],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": ["#ff0000"],
+          "colors": [
+            "#ff0000"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [11, 15],
+          "dmxRange": [
+            11,
+            15
+          ],
           "type": "ColorPreset",
           "comment": "Orange",
-          "colors": ["#ff7f00"],
+          "colors": [
+            "#ff7f00"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [16, 20],
+          "dmxRange": [
+            16,
+            20
+          ],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": ["#ffff00"],
+          "colors": [
+            "#ffff00"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [21, 25],
+          "dmxRange": [
+            21,
+            25
+          ],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": ["#00ff00"],
+          "colors": [
+            "#00ff00"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [26, 30],
+          "dmxRange": [
+            26,
+            30
+          ],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": ["#00ffff"],
+          "colors": [
+            "#00ffff"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [31, 35],
+          "dmxRange": [
+            31,
+            35
+          ],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": ["#0000ff"],
+          "colors": [
+            "#0000ff"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [36, 40],
+          "dmxRange": [
+            36,
+            40
+          ],
           "type": "ColorPreset",
           "comment": "Pink",
-          "colors": ["#ff007f"],
+          "colors": [
+            "#ff007f"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [41, 45],
+          "dmxRange": [
+            41,
+            45
+          ],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": ["#ff00ff"],
+          "colors": [
+            "#ff00ff"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [46, 50],
+          "dmxRange": [
+            46,
+            50
+          ],
           "type": "ColorPreset",
           "comment": "Cold White",
           "switchChannels": {
@@ -187,7 +257,10 @@
           }
         },
         {
-          "dmxRange": [51, 55],
+          "dmxRange": [
+            51,
+            55
+          ],
           "type": "ColorPreset",
           "comment": "Warm White",
           "switchChannels": {
@@ -195,7 +268,10 @@
           }
         },
         {
-          "dmxRange": [56, 60],
+          "dmxRange": [
+            56,
+            60
+          ],
           "type": "ColorPreset",
           "comment": "Full White",
           "switchChannels": {
@@ -203,7 +279,10 @@
           }
         },
         {
-          "dmxRange": [61, 65],
+          "dmxRange": [
+            61,
+            65
+          ],
           "type": "ColorPreset",
           "comment": "Light Pink",
           "switchChannels": {
@@ -211,7 +290,10 @@
           }
         },
         {
-          "dmxRange": [66, 70],
+          "dmxRange": [
+            66,
+            70
+          ],
           "type": "ColorPreset",
           "comment": "Light Apricot",
           "switchChannels": {
@@ -219,7 +301,10 @@
           }
         },
         {
-          "dmxRange": [71, 75],
+          "dmxRange": [
+            71,
+            75
+          ],
           "type": "ColorPreset",
           "comment": "Light Ocre",
           "switchChannels": {
@@ -227,7 +312,10 @@
           }
         },
         {
-          "dmxRange": [76, 80],
+          "dmxRange": [
+            76,
+            80
+          ],
           "type": "ColorPreset",
           "comment": "Green Pearl",
           "switchChannels": {
@@ -235,7 +323,10 @@
           }
         },
         {
-          "dmxRange": [81, 85],
+          "dmxRange": [
+            81,
+            85
+          ],
           "type": "ColorPreset",
           "comment": "Grey Pearl",
           "switchChannels": {
@@ -243,7 +334,10 @@
           }
         },
         {
-          "dmxRange": [86, 90],
+          "dmxRange": [
+            86,
+            90
+          ],
           "type": "ColorPreset",
           "comment": "Green Vernoese",
           "switchChannels": {
@@ -251,7 +345,10 @@
           }
         },
         {
-          "dmxRange": [91, 95],
+          "dmxRange": [
+            91,
+            95
+          ],
           "type": "ColorPreset",
           "comment": "Blue Lagon",
           "switchChannels": {
@@ -259,7 +356,10 @@
           }
         },
         {
-          "dmxRange": [96, 100],
+          "dmxRange": [
+            96,
+            100
+          ],
           "type": "ColorPreset",
           "comment": "Sky Blue",
           "switchChannels": {
@@ -267,7 +367,10 @@
           }
         },
         {
-          "dmxRange": [101, 105],
+          "dmxRange": [
+            101,
+            105
+          ],
           "type": "ColorPreset",
           "comment": "Light Blue",
           "switchChannels": {
@@ -275,7 +378,10 @@
           }
         },
         {
-          "dmxRange": [106, 110],
+          "dmxRange": [
+            106,
+            110
+          ],
           "type": "ColorPreset",
           "comment": "Cerulean Blue",
           "switchChannels": {
@@ -283,7 +389,10 @@
           }
         },
         {
-          "dmxRange": [111, 115],
+          "dmxRange": [
+            111,
+            115
+          ],
           "type": "ColorPreset",
           "comment": "Fluo",
           "switchChannels": {
@@ -291,7 +400,10 @@
           }
         },
         {
-          "dmxRange": [116, 120],
+          "dmxRange": [
+            116,
+            120
+          ],
           "type": "ColorPreset",
           "comment": "Candy",
           "switchChannels": {
@@ -299,16 +411,24 @@
           }
         },
         {
-          "dmxRange": [121, 125],
+          "dmxRange": [
+            121,
+            125
+          ],
           "type": "ColorPreset",
           "comment": "Amber",
-          "colors": ["#ffbf00"],
+          "colors": [
+            "#ffbf00"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [126, 130],
+          "dmxRange": [
+            126,
+            130
+          ],
           "type": "ColorPreset",
           "comment": "Sunset",
           "switchChannels": {
@@ -316,16 +436,24 @@
           }
         },
         {
-          "dmxRange": [131, 135],
+          "dmxRange": [
+            131,
+            135
+          ],
           "type": "ColorPreset",
           "comment": "Ultra Violet",
-          "colors": ["#8800ff"],
+          "colors": [
+            "#8800ff"
+          ],
           "switchChannels": {
             "Dimmer / Macro Speed / Mic Sensitivity": "Dimmer"
           }
         },
         {
-          "dmxRange": [136, 140],
+          "dmxRange": [
+            136,
+            140
+          ],
           "type": "ColorPreset",
           "comment": "Ultra Green",
           "switchChannels": {
@@ -333,7 +461,10 @@
           }
         },
         {
-          "dmxRange": [141, 145],
+          "dmxRange": [
+            141,
+            145
+          ],
           "type": "ColorPreset",
           "comment": "Ultra Blue",
           "switchChannels": {
@@ -341,7 +472,10 @@
           }
         },
         {
-          "dmxRange": [146, 150],
+          "dmxRange": [
+            146,
+            150
+          ],
           "type": "ColorPreset",
           "comment": "Ultra Pink",
           "switchChannels": {
@@ -349,7 +483,10 @@
           }
         },
         {
-          "dmxRange": [151, 155],
+          "dmxRange": [
+            151,
+            155
+          ],
           "type": "ColorPreset",
           "comment": "Ultra Light",
           "switchChannels": {
@@ -357,7 +494,10 @@
           }
         },
         {
-          "dmxRange": [156, 160],
+          "dmxRange": [
+            156,
+            160
+          ],
           "type": "Effect",
           "effectName": "Macro 1",
           "switchChannels": {
@@ -365,7 +505,10 @@
           }
         },
         {
-          "dmxRange": [161, 165],
+          "dmxRange": [
+            161,
+            165
+          ],
           "type": "Effect",
           "effectName": "Macro 2",
           "switchChannels": {
@@ -373,7 +516,10 @@
           }
         },
         {
-          "dmxRange": [166, 170],
+          "dmxRange": [
+            166,
+            170
+          ],
           "type": "Effect",
           "effectName": "Macro 3",
           "switchChannels": {
@@ -381,7 +527,10 @@
           }
         },
         {
-          "dmxRange": [171, 175],
+          "dmxRange": [
+            171,
+            175
+          ],
           "type": "Effect",
           "effectName": "Macro 4",
           "switchChannels": {
@@ -389,7 +538,10 @@
           }
         },
         {
-          "dmxRange": [176, 180],
+          "dmxRange": [
+            176,
+            180
+          ],
           "type": "Effect",
           "effectName": "Macro 5",
           "switchChannels": {
@@ -397,7 +549,10 @@
           }
         },
         {
-          "dmxRange": [181, 185],
+          "dmxRange": [
+            181,
+            185
+          ],
           "type": "Effect",
           "effectName": "Macro 6",
           "switchChannels": {
@@ -405,7 +560,10 @@
           }
         },
         {
-          "dmxRange": [186, 190],
+          "dmxRange": [
+            186,
+            190
+          ],
           "type": "Effect",
           "effectName": "Macro 7",
           "switchChannels": {
@@ -413,7 +571,10 @@
           }
         },
         {
-          "dmxRange": [191, 195],
+          "dmxRange": [
+            191,
+            195
+          ],
           "type": "Effect",
           "effectName": "Macro 8",
           "switchChannels": {
@@ -421,7 +582,10 @@
           }
         },
         {
-          "dmxRange": [196, 200],
+          "dmxRange": [
+            196,
+            200
+          ],
           "type": "Effect",
           "effectName": "Macro 9",
           "switchChannels": {
@@ -429,7 +593,10 @@
           }
         },
         {
-          "dmxRange": [201, 205],
+          "dmxRange": [
+            201,
+            205
+          ],
           "type": "Effect",
           "effectName": "Macro 10",
           "switchChannels": {
@@ -437,7 +604,10 @@
           }
         },
         {
-          "dmxRange": [206, 210],
+          "dmxRange": [
+            206,
+            210
+          ],
           "type": "Effect",
           "effectName": "Macro 11",
           "switchChannels": {
@@ -445,7 +615,10 @@
           }
         },
         {
-          "dmxRange": [211, 215],
+          "dmxRange": [
+            211,
+            215
+          ],
           "type": "Effect",
           "effectName": "Macro 12",
           "switchChannels": {
@@ -453,7 +626,10 @@
           }
         },
         {
-          "dmxRange": [216, 220],
+          "dmxRange": [
+            216,
+            220
+          ],
           "type": "Effect",
           "effectName": "Macro 13",
           "switchChannels": {
@@ -461,7 +637,10 @@
           }
         },
         {
-          "dmxRange": [221, 225],
+          "dmxRange": [
+            221,
+            225
+          ],
           "type": "Effect",
           "effectName": "Macro 14",
           "switchChannels": {
@@ -469,7 +648,10 @@
           }
         },
         {
-          "dmxRange": [226, 233],
+          "dmxRange": [
+            226,
+            233
+          ],
           "type": "Effect",
           "effectName": "Music-sensitive Macro 1",
           "soundControlled": true,
@@ -478,7 +660,10 @@
           }
         },
         {
-          "dmxRange": [234, 241],
+          "dmxRange": [
+            234,
+            241
+          ],
           "type": "Effect",
           "effectName": "Music-sensitive Macro 7",
           "soundControlled": true,
@@ -487,7 +672,10 @@
           }
         },
         {
-          "dmxRange": [242, 249],
+          "dmxRange": [
+            242,
+            249
+          ],
           "type": "Effect",
           "effectName": "Music-sensitive Macro 11",
           "soundControlled": true,
@@ -496,7 +684,10 @@
           }
         },
         {
-          "dmxRange": [250, 255],
+          "dmxRange": [
+            250,
+            255
+          ],
           "type": "Effect",
           "effectName": "Music-sensitive Macro 14",
           "soundControlled": true,

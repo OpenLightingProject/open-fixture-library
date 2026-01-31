@@ -1,9 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "CLS Nano COB",
-  "categories": ["Stand", "Color Changer", "Dimmer", "Effect"],
+  "categories": [
+    "Stand",
+    "Color Changer",
+    "Dimmer",
+    "Effect"
+  ],
   "meta": {
-    "authors": ["prtr", "Luke Nelson"],
+    "authors": [
+      "prtr",
+      "Luke Nelson"
+    ],
     "createDate": "2023-10-15",
     "lastModifyDate": "2023-10-15"
   },
@@ -20,7 +28,11 @@
     ]
   },
   "physical": {
-    "dimensions": [720, 200, 110],
+    "dimensions": [
+      720,
+      200,
+      110
+    ],
     "weight": 5.7,
     "power": 130,
     "DMXconnector": "3-pin",
@@ -28,11 +40,18 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [25, 25]
+      "degreesMinMax": [
+        25,
+        25
+      ]
     }
   },
   "matrix": {
-    "pixelCount": [4, 1, 1],
+    "pixelCount": [
+      4,
+      1,
+      1
+    ],
     "pixelGroups": {
       "All": "all"
     }
@@ -69,51 +88,75 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobing disabled?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Presets": {
       "capabilities": [
         {
-          "dmxRange": [0, 9],
+          "dmxRange": [
+            0,
+            9
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [10, 99],
+          "dmxRange": [
+            10,
+            99
+          ],
           "type": "Intensity",
           "brightness": "100%",
           "comment": "Full ON"
         },
         {
-          "dmxRange": [100, 129],
+          "dmxRange": [
+            100,
+            129
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "comment": "erratic"
         },
         {
-          "dmxRange": [130, 159],
+          "dmxRange": [
+            130,
+            159
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [160, 189],
+          "dmxRange": [
+            160,
+            189
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [190, 219],
+          "dmxRange": [
+            190,
+            219
+          ],
           "type": "Effect",
           "soundControlled": true,
           "effectName": "Music Mode 1"
         },
         {
-          "dmxRange": [220, 249],
+          "dmxRange": [
+            220,
+            249
+          ],
           "type": "Effect",
           "soundControlled": true,
           "effectName": "Music Mode 2"
         },
         {
-          "dmxRange": [250, 255],
+          "dmxRange": [
+            250,
+            255
+          ],
           "type": "Effect",
           "soundControlled": true,
           "effectName": "Music Mode 3"

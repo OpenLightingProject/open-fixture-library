@@ -2,9 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "xBrick Quad 16x8W RGBW",
   "shortName": "xBrick RGBW",
-  "categories": ["Color Changer", "Strobe"],
+  "categories": [
+    "Color Changer",
+    "Strobe"
+  ],
   "meta": {
-    "authors": ["Maximilian B.", "Luke Nelson"],
+    "authors": [
+      "Maximilian B.",
+      "Luke Nelson"
+    ],
     "createDate": "2023-10-09",
     "lastModifyDate": "2023-10-09"
   },
@@ -22,7 +28,11 @@
     ]
   },
   "physical": {
-    "dimensions": [315, 88, 195],
+    "dimensions": [
+      315,
+      88,
+      195
+    ],
     "weight": 4.3,
     "power": 125,
     "DMXconnector": "3-pin",
@@ -30,22 +40,65 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [25, 25]
+      "degreesMinMax": [
+        25,
+        25
+      ]
     }
   },
   "matrix": {
     "pixelKeys": [
       [
-        ["1A", "1B", null, "2A", "2B", null, "3A", "3B", null, "4A", "4B"],
-        ["1C", "1D", null, "2C", "2D", null, "3C", "3D", null, "4C", "4D"]
+        [
+          "1A",
+          "1B",
+          null,
+          "2A",
+          "2B",
+          null,
+          "3A",
+          "3B",
+          null,
+          "4A",
+          "4B"
+        ],
+        [
+          "1C",
+          "1D",
+          null,
+          "2C",
+          "2D",
+          null,
+          "3C",
+          "3D",
+          null,
+          "4C",
+          "4D"
+        ]
       ]
     ],
     "pixelGroups": {
       "All": "all",
-      "1": { "name": ["^1[A-D]$"] },
-      "2": { "name": ["^2[A-D]$"] },
-      "3": { "name": ["^3[A-D]$"] },
-      "4": { "name": ["^4[A-D]$"] }
+      "1": {
+        "name": [
+          "^1[A-D]$"
+        ]
+      },
+      "2": {
+        "name": [
+          "^2[A-D]$"
+        ]
+      },
+      "3": {
+        "name": [
+          "^3[A-D]$"
+        ]
+      },
+      "4": {
+        "name": [
+          "^4[A-D]$"
+        ]
+      }
     }
   },
   "templateChannels": {
@@ -110,7 +163,7 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX values is strobe disabled?",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -119,7 +172,10 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 4],
+          "dmxRange": [
+            0,
+            4
+          ],
           "type": "NoFunction",
           "switchChannels": {
             "Intensity red / NoFunctionR": "Intensity red",
@@ -132,10 +188,17 @@
           }
         },
         {
-          "dmxRange": [5, 9],
+          "dmxRange": [
+            5,
+            9
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#00ffff"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#00ffff"
+          ],
           "comment": "Cyan",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -148,10 +211,17 @@
           }
         },
         {
-          "dmxRange": [10, 14],
+          "dmxRange": [
+            10,
+            14
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#800080"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#800080"
+          ],
           "comment": "Purple",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -164,10 +234,17 @@
           }
         },
         {
-          "dmxRange": [15, 19],
+          "dmxRange": [
+            15,
+            19
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ffc0cb"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ffc0cb"
+          ],
           "comment": "Pink",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -180,10 +257,17 @@
           }
         },
         {
-          "dmxRange": [20, 24],
+          "dmxRange": [
+            20,
+            24
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ffa500"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ffa500"
+          ],
           "comment": "Orange",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -196,10 +280,17 @@
           }
         },
         {
-          "dmxRange": [25, 29],
+          "dmxRange": [
+            25,
+            29
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#f4fdff"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#f4fdff"
+          ],
           "comment": "Cold White",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -212,10 +303,17 @@
           }
         },
         {
-          "dmxRange": [30, 34],
+          "dmxRange": [
+            30,
+            34
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ff4040"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ff4040"
+          ],
           "comment": "Bright Red",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -228,10 +326,17 @@
           }
         },
         {
-          "dmxRange": [35, 39],
+          "dmxRange": [
+            35,
+            39
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#57fd57"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#57fd57"
+          ],
           "comment": "Bright Green",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -244,10 +349,17 @@
           }
         },
         {
-          "dmxRange": [40, 44],
+          "dmxRange": [
+            40,
+            44
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#3232ff"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#3232ff"
+          ],
           "comment": "Bright Blue",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -260,10 +372,17 @@
           }
         },
         {
-          "dmxRange": [45, 49],
+          "dmxRange": [
+            45,
+            49
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ffff00"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ffff00"
+          ],
           "comment": "Yellow",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -276,10 +395,17 @@
           }
         },
         {
-          "dmxRange": [50, 54],
+          "dmxRange": [
+            50,
+            54
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#fdf4dc"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#fdf4dc"
+          ],
           "comment": "Warm White",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -292,10 +418,17 @@
           }
         },
         {
-          "dmxRange": [55, 59],
+          "dmxRange": [
+            55,
+            59
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ff0000"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ff0000"
+          ],
           "comment": "Red",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -308,10 +441,17 @@
           }
         },
         {
-          "dmxRange": [60, 64],
+          "dmxRange": [
+            60,
+            64
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#00ff00"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#00ff00"
+          ],
           "comment": "Green",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -324,10 +464,17 @@
           }
         },
         {
-          "dmxRange": [65, 69],
+          "dmxRange": [
+            65,
+            69
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#0000ff"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#0000ff"
+          ],
           "comment": "Blue",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -340,10 +487,17 @@
           }
         },
         {
-          "dmxRange": [70, 74],
+          "dmxRange": [
+            70,
+            74
+          ],
           "type": "ColorPreset",
-          "colorsStart": ["#000000"],
-          "colorsEnd": ["#ffbf00"],
+          "colorsStart": [
+            "#000000"
+          ],
+          "colorsEnd": [
+            "#ffbf00"
+          ],
           "comment": "Amber",
           "switchChannels": {
             "Intensity red / NoFunctionR": "NoFunctionR",
@@ -356,7 +510,10 @@
           }
         },
         {
-          "dmxRange": [75, 79],
+          "dmxRange": [
+            75,
+            79
+          ],
           "type": "Effect",
           "effectName": "All",
           "helpWanted": "What does this do?",
@@ -371,7 +528,10 @@
           }
         },
         {
-          "dmxRange": [80, 86],
+          "dmxRange": [
+            80,
+            86
+          ],
           "type": "Effect",
           "effectName": "Program 02",
           "switchChannels": {
@@ -385,7 +545,10 @@
           }
         },
         {
-          "dmxRange": [87, 93],
+          "dmxRange": [
+            87,
+            93
+          ],
           "type": "Effect",
           "effectName": "Program 03",
           "switchChannels": {
@@ -399,7 +562,10 @@
           }
         },
         {
-          "dmxRange": [94, 100],
+          "dmxRange": [
+            94,
+            100
+          ],
           "type": "Effect",
           "effectName": "Program 04",
           "switchChannels": {
@@ -413,7 +579,10 @@
           }
         },
         {
-          "dmxRange": [101, 107],
+          "dmxRange": [
+            101,
+            107
+          ],
           "type": "Effect",
           "effectName": "Program 05",
           "switchChannels": {
@@ -427,7 +596,10 @@
           }
         },
         {
-          "dmxRange": [108, 114],
+          "dmxRange": [
+            108,
+            114
+          ],
           "type": "Effect",
           "effectName": "Program 06",
           "switchChannels": {
@@ -441,7 +613,10 @@
           }
         },
         {
-          "dmxRange": [115, 121],
+          "dmxRange": [
+            115,
+            121
+          ],
           "type": "Effect",
           "effectName": "Program 07",
           "switchChannels": {
@@ -455,7 +630,10 @@
           }
         },
         {
-          "dmxRange": [122, 128],
+          "dmxRange": [
+            122,
+            128
+          ],
           "type": "Effect",
           "effectName": "Program 08",
           "switchChannels": {
@@ -469,7 +647,10 @@
           }
         },
         {
-          "dmxRange": [129, 135],
+          "dmxRange": [
+            129,
+            135
+          ],
           "type": "Effect",
           "effectName": "Program 09",
           "switchChannels": {
@@ -483,7 +664,10 @@
           }
         },
         {
-          "dmxRange": [136, 142],
+          "dmxRange": [
+            136,
+            142
+          ],
           "type": "Effect",
           "effectName": "Program 10",
           "switchChannels": {
@@ -497,7 +681,10 @@
           }
         },
         {
-          "dmxRange": [143, 149],
+          "dmxRange": [
+            143,
+            149
+          ],
           "type": "Effect",
           "effectName": "Program 11",
           "switchChannels": {
@@ -511,7 +698,10 @@
           }
         },
         {
-          "dmxRange": [150, 156],
+          "dmxRange": [
+            150,
+            156
+          ],
           "type": "Effect",
           "effectName": "Program 12",
           "switchChannels": {
@@ -525,7 +715,10 @@
           }
         },
         {
-          "dmxRange": [157, 163],
+          "dmxRange": [
+            157,
+            163
+          ],
           "type": "Effect",
           "effectName": "Program 13",
           "switchChannels": {
@@ -539,7 +732,10 @@
           }
         },
         {
-          "dmxRange": [164, 170],
+          "dmxRange": [
+            164,
+            170
+          ],
           "type": "Effect",
           "effectName": "Program 14",
           "switchChannels": {
@@ -553,7 +749,10 @@
           }
         },
         {
-          "dmxRange": [171, 177],
+          "dmxRange": [
+            171,
+            177
+          ],
           "type": "Effect",
           "effectName": "Program 15",
           "switchChannels": {
@@ -567,7 +766,10 @@
           }
         },
         {
-          "dmxRange": [178, 184],
+          "dmxRange": [
+            178,
+            184
+          ],
           "type": "Effect",
           "effectName": "Program 16",
           "switchChannels": {
@@ -581,7 +783,10 @@
           }
         },
         {
-          "dmxRange": [185, 191],
+          "dmxRange": [
+            185,
+            191
+          ],
           "type": "Effect",
           "effectName": "Program 17",
           "switchChannels": {
@@ -595,7 +800,10 @@
           }
         },
         {
-          "dmxRange": [192, 198],
+          "dmxRange": [
+            192,
+            198
+          ],
           "type": "Effect",
           "effectName": "Program 18",
           "switchChannels": {
@@ -609,7 +817,10 @@
           }
         },
         {
-          "dmxRange": [199, 205],
+          "dmxRange": [
+            199,
+            205
+          ],
           "type": "Effect",
           "effectName": "Program 19",
           "switchChannels": {
@@ -623,7 +834,10 @@
           }
         },
         {
-          "dmxRange": [206, 212],
+          "dmxRange": [
+            206,
+            212
+          ],
           "type": "Effect",
           "effectName": "Program 20",
           "switchChannels": {
@@ -637,7 +851,10 @@
           }
         },
         {
-          "dmxRange": [213, 219],
+          "dmxRange": [
+            213,
+            219
+          ],
           "type": "Effect",
           "effectName": "Program 21",
           "switchChannels": {
@@ -651,7 +868,10 @@
           }
         },
         {
-          "dmxRange": [220, 226],
+          "dmxRange": [
+            220,
+            226
+          ],
           "type": "Effect",
           "effectName": "Program 22",
           "switchChannels": {
@@ -665,7 +885,10 @@
           }
         },
         {
-          "dmxRange": [227, 233],
+          "dmxRange": [
+            227,
+            233
+          ],
           "type": "Effect",
           "effectName": "Program 23",
           "switchChannels": {
@@ -679,7 +902,10 @@
           }
         },
         {
-          "dmxRange": [234, 240],
+          "dmxRange": [
+            234,
+            240
+          ],
           "type": "Effect",
           "effectName": "Sound controlled (slow)",
           "comment": "Sound-controlled operation, slow transition Programs 02 to 23",
@@ -695,7 +921,10 @@
           }
         },
         {
-          "dmxRange": [241, 255],
+          "dmxRange": [
+            241,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound controlled (fast)",
           "comment": "Sound-controlled operation, fast transition Programs 02 to 23",
@@ -771,7 +1000,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["All"],
+          "repeatFor": [
+            "All"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -788,7 +1019,9 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["All"],
+          "repeatFor": [
+            "All"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -821,7 +1054,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1", "2", "3", "4"],
+          "repeatFor": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -838,7 +1076,12 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1", "2", "3", "4"],
+          "repeatFor": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

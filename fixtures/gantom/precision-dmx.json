@@ -1,9 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Precision DMX",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Brian McDade"],
+    "authors": [
+      "Brian McDade"
+    ],
     "createDate": "2020-03-28",
     "lastModifyDate": "2020-03-28"
   },
@@ -18,14 +22,21 @@
   },
   "helpWanted": "Does the 3ch mode really exist? It is never mentioned in the manual.",
   "physical": {
-    "dimensions": [44.5, 52.5, 52],
+    "dimensions": [
+      44.5,
+      52.5,
+      52
+    ],
     "power": 3.8,
     "DMXconnector": "3.5mm stereo jack",
     "bulb": {
       "type": "RGB LED"
     },
     "lens": {
-      "degreesMinMax": [21, 21]
+      "degreesMinMax": [
+        21,
+        21
+      ]
     }
   },
   "availableChannels": {
@@ -50,11 +61,17 @@
     "Color Macros": {
       "capabilities": [
         {
-          "dmxRange": [0, 31],
+          "dmxRange": [
+            0,
+            31
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [32, 255],
+          "dmxRange": [
+            32,
+            255
+          ],
           "type": "ColorPreset",
           "helpWanted": "At which DMX value can which color be selected?"
         }
@@ -66,7 +83,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is Strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Effect Speed": {
@@ -80,14 +97,20 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [
+            0,
+            0
+          ],
           "type": "NoFunction",
           "switchChannels": {
             "Strobe / Effect Speed": "Strobe"
           }
         },
         {
-          "dmxRange": [1, 31],
+          "dmxRange": [
+            1,
+            31
+          ],
           "type": "NoFunction",
           "helpWanted": "What does this capability do? Is channel 5 really set to 'Effect Speed', and which speed is controlled then?",
           "switchChannels": {
@@ -95,7 +118,10 @@
           }
         },
         {
-          "dmxRange": [32, 71],
+          "dmxRange": [
+            32,
+            71
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
           "switchChannels": {
@@ -103,7 +129,10 @@
           }
         },
         {
-          "dmxRange": [72, 111],
+          "dmxRange": [
+            72,
+            111
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "switchChannels": {
@@ -111,7 +140,10 @@
           }
         },
         {
-          "dmxRange": [112, 151],
+          "dmxRange": [
+            112,
+            151
+          ],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
           "switchChannels": {
@@ -119,7 +151,10 @@
           }
         },
         {
-          "dmxRange": [152, 191],
+          "dmxRange": [
+            152,
+            191
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
@@ -127,7 +162,10 @@
           }
         },
         {
-          "dmxRange": [192, 231],
+          "dmxRange": [
+            192,
+            231
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "comment": "red, green, blue",
@@ -136,7 +174,10 @@
           }
         },
         {
-          "dmxRange": [232, 250],
+          "dmxRange": [
+            232,
+            250
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "comment": "6-color",
@@ -145,7 +186,10 @@
           }
         },
         {
-          "dmxRange": [251, 255],
+          "dmxRange": [
+            251,
+            255
+          ],
           "type": "Effect",
           "effectName": "Candle Flicker",
           "switchChannels": {

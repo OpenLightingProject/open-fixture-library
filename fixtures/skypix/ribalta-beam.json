@@ -1,9 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Ribalta Beam",
-  "categories": ["Pixel Bar", "Color Changer"],
+  "categories": [
+    "Pixel Bar",
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["txukinho", "pedro hugo", "Felix Edelmann"],
+    "authors": [
+      "txukinho",
+      "pedro hugo",
+      "Felix Edelmann"
+    ],
     "createDate": "2018-10-16",
     "lastModifyDate": "2018-10-16"
   },
@@ -19,7 +26,11 @@
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1],
+    "pixelCount": [
+      8,
+      1,
+      1
+    ],
     "pixelGroups": {
       "Master": "all"
     }
@@ -51,7 +62,7 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "helpWanted": "At which DMX value is strobe enabled or the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Auto": {

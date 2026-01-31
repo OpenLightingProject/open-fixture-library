@@ -1,9 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED RGBW 54x3 Par64",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Moss"],
+    "authors": [
+      "Moss"
+    ],
     "createDate": "2019-12-23",
     "lastModifyDate": "2019-12-26",
     "importPlugin": {
@@ -19,7 +23,11 @@
   },
   "helpWanted": "Can you provide a link to a product page?",
   "physical": {
-    "dimensions": [230, 220, 255],
+    "dimensions": [
+      230,
+      220,
+      255
+    ],
     "weight": 4.5,
     "power": 170,
     "DMXconnector": "3-pin",
@@ -28,7 +36,10 @@
       "lumens": 500
     },
     "lens": {
-      "degreesMinMax": [25, 25]
+      "degreesMinMax": [
+        25,
+        25
+      ]
     }
   },
   "availableChannels": {
@@ -73,122 +84,209 @@
         "shutterEffect": "Strobe",
         "speedStart": "fast",
         "speedEnd": "slow",
-        "helpWanted": "At which DMX values is strobe disabled?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macros/Effects": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 4],
+          "dmxRange": [
+            0,
+            4
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [5, 10],
+          "dmxRange": [
+            5,
+            10
+          ],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": ["#ff0000"]
+          "colors": [
+            "#ff0000"
+          ]
         },
         {
-          "dmxRange": [11, 15],
+          "dmxRange": [
+            11,
+            15
+          ],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": ["#00ff00"]
+          "colors": [
+            "#00ff00"
+          ]
         },
         {
-          "dmxRange": [16, 20],
+          "dmxRange": [
+            16,
+            20
+          ],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": ["#0000ff"]
+          "colors": [
+            "#0000ff"
+          ]
         },
         {
-          "dmxRange": [21, 25],
+          "dmxRange": [
+            21,
+            25
+          ],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": ["#ffffff"]
+          "colors": [
+            "#ffffff"
+          ]
         },
         {
-          "dmxRange": [26, 30],
+          "dmxRange": [
+            26,
+            30
+          ],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": ["#ffff00"]
+          "colors": [
+            "#ffff00"
+          ]
         },
         {
-          "dmxRange": [31, 35],
+          "dmxRange": [
+            31,
+            35
+          ],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": ["#00ffff"]
+          "colors": [
+            "#00ffff"
+          ]
         },
         {
-          "dmxRange": [36, 40],
+          "dmxRange": [
+            36,
+            40
+          ],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": ["#ff00ff"]
+          "colors": [
+            "#ff00ff"
+          ]
         },
         {
-          "dmxRange": [41, 45],
+          "dmxRange": [
+            41,
+            45
+          ],
           "type": "ColorPreset",
           "comment": "Pink",
-          "colors": ["#ff69b4"]
+          "colors": [
+            "#ff69b4"
+          ]
         },
         {
-          "dmxRange": [46, 50],
+          "dmxRange": [
+            46,
+            50
+          ],
           "type": "ColorPreset",
           "comment": "Bright green",
-          "colors": ["#90ee90"]
+          "colors": [
+            "#90ee90"
+          ]
         },
         {
-          "dmxRange": [51, 55],
+          "dmxRange": [
+            51,
+            55
+          ],
           "type": "ColorPreset",
           "comment": "Lavender",
-          "colors": ["#e6e6fa"]
+          "colors": [
+            "#e6e6fa"
+          ]
         },
         {
-          "dmxRange": [56, 60],
+          "dmxRange": [
+            56,
+            60
+          ],
           "type": "ColorPreset",
           "comment": "Pale Pink",
-          "colors": ["#ffc0cb"]
+          "colors": [
+            "#ffc0cb"
+          ]
         },
         {
-          "dmxRange": [61, 65],
+          "dmxRange": [
+            61,
+            65
+          ],
           "type": "ColorPreset",
           "comment": "Bright yellow",
-          "colors": ["#ffffe0"]
+          "colors": [
+            "#ffffe0"
+          ]
         },
         {
-          "dmxRange": [66, 70],
+          "dmxRange": [
+            66,
+            70
+          ],
           "type": "ColorPreset",
           "comment": "Bright magenta",
-          "colors": ["#ff55ff"]
+          "colors": [
+            "#ff55ff"
+          ]
         },
         {
-          "dmxRange": [71, 75],
+          "dmxRange": [
+            71,
+            75
+          ],
           "type": "ColorPreset",
           "comment": "Pale cyan",
-          "colors": ["#e0ffff"]
+          "colors": [
+            "#e0ffff"
+          ]
         },
         {
-          "dmxRange": [76, 80],
+          "dmxRange": [
+            76,
+            80
+          ],
           "type": "ColorPreset",
           "comment": "Warm white",
-          "colors": ["#faebd7"]
+          "colors": [
+            "#faebd7"
+          ]
         },
         {
-          "dmxRange": [81, 150],
+          "dmxRange": [
+            81,
+            150
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [151, 220],
+          "dmxRange": [
+            151,
+            220
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [221, 255],
+          "dmxRange": [
+            221,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true,

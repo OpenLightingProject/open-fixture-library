@@ -2,9 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Par 18x18W",
   "shortName": "SheHds18x18",
-  "categories": ["Color Changer"],
+  "categories": [
+    "Color Changer"
+  ],
   "meta": {
-    "authors": ["Jay3"],
+    "authors": [
+      "Jay3"
+    ],
     "createDate": "2022-11-06",
     "lastModifyDate": "2022-11-06"
   },
@@ -20,7 +24,11 @@
     ]
   },
   "physical": {
-    "dimensions": [200, 265, 115],
+    "dimensions": [
+      200,
+      265,
+      115
+    ],
     "weight": 3.15,
     "power": 324,
     "DMXconnector": "3-pin",
@@ -76,32 +84,47 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "10Hz",
-        "helpWanted": "At which DMX values is the strobe effect disabled?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macros": {
       "capabilities": [
         {
-          "dmxRange": [0, 50],
+          "dmxRange": [
+            0,
+            50
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [51, 100],
+          "dmxRange": [
+            51,
+            100
+          ],
           "type": "Effect",
           "effectPreset": "ColorJump"
         },
         {
-          "dmxRange": [101, 150],
+          "dmxRange": [
+            101,
+            150
+          ],
           "type": "Effect",
           "effectPreset": "ColorFade"
         },
         {
-          "dmxRange": [151, 200],
+          "dmxRange": [
+            151,
+            200
+          ],
           "type": "Effect",
           "effectName": "Color Pulse"
         },
         {
-          "dmxRange": [201, 255],
+          "dmxRange": [
+            201,
+            255
+          ],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true
