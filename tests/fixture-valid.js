@@ -486,6 +486,16 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     function checkCapabilities() {
       let dmxRangesInvalid = false;
 
+      if (
+        channel.capabilities.length === 1 &&
+        channel.capabilities[0].type === `ShutterStrobe` &&
+        fixture.mainCategory !== `Strobe`
+      ) {
+        const message = `Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`;
+        const hasHelpWanted = Boolean(channel.capabilities[0].helpWanted?.startsWith(`At which DMX values is strobe disabled? When is the lamp constantly on/off?`));
+        result[hasHelpWanted ? `warnings` : `errors`].push(message);
+      }
+
       for (let index = 0; index < channel.capabilities.length; index++) {
         const capability = channel.capabilities[index];
 
