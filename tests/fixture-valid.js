@@ -501,6 +501,12 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         checkCapability(capability, `Capability '${capability.name}' (${rangeString}) in channel '${channel.key}'`);
       }
 
+      // Check for single ShutterStrobe capability without Strobe category
+      const shutterStrobeCapabilities = channel.capabilities.filter(cap => cap.type === `ShutterStrobe`);
+      if (shutterStrobeCapabilities.length === 1 && !fixture.categories.includes(`Strobe`)) {
+        result.warnings.push(`Channel '${channel.key}' has a single ShutterStrobe capability, but fixture does not have 'Strobe' category. It is not clear when strobe is disabled.`);
+      }
+
       /**
        * Check that a capability's range is valid.
        * @param {number} capabilityNumber The number of the capability in the channel, starting with 0.
