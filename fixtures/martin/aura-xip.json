@@ -1,0 +1,272 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AURA XiP",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Argo"],
+    "createDate": "2024-06-28",
+    "lastModifyDate": "2024-06-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/martin-mac-aura-xip-user-safety-and-installation-manual"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-aura-xip"
+    ]
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "fineChannelAliases": ["Shutter / Strobe fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "50Hz",
+          "speedEnd": "200Hz"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "duration": "instant"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0lm",
+        "brightnessEnd": "65535lm"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 13,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 15,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "65535deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 17,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "65535deg"
+      }
+    },
+    "CTC": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperature": "0K"
+        },
+        {
+          "dmxRange": [1, 18],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1000K",
+          "colorTemperatureEnd": "1049K"
+        },
+        {
+          "dmxRange": [19, 127],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1050K",
+          "colorTemperatureEnd": "6450K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6451K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [129, 254],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6550K",
+          "colorTemperatureEnd": "6550K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "12850K"
+        }
+      ]
+    },
+    "Magenta": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorIntensity",
+          "color": "UV"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [14, 105],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [106, 190],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [191, 214],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 2 fine"],
+      "defaultValue": 13,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 15,
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 17,
+      "capability": {
+        "type": "Tilt",
+        "angle": "0deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Compact",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "CTC",
+        "Magenta",
+        "Color Wheel",
+        "Zoom 2",
+        "Zoom 2 fine",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine"
+      ]
+    }
+  ]
+}
