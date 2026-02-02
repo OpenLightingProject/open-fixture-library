@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.4.0/schemas/fixture.json",
   "name": "LED Blinder 4",
-  "categories": ["Blinder"],
+  "categories": ["Matrix", "Strobe", "Blinder"],
   "meta": {
-    "authors": ["Leon Dietric"],
-    "createDate": "2023-10-07",
-    "lastModifyDate": "2023-10-07"
+    "authors": ["Leon Dietrich"],
+    "createDate": "2026-02-02",
+    "lastModifyDate": "2026-02-02"
   },
   "links": {
     "productPage": [
@@ -24,18 +24,29 @@
       "type": "LED"
     }
   },
+  "matrix": {
+    "pixelCount": [2, 2, 1]
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "Strobe Speed": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Generic",
-          "comment": "Strobe Off"
+          "type": "ShutterStrobe",
+          "shutterSpeed": "Open",
+          "comment": "No Strobe Effect"
         },
         {
           "dmxRange": [1, 255],
@@ -81,33 +92,6 @@
       "capability": {
         "type": "NoFunction"
       }
-    },
-    "Intensity": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Lamp top left"
-      }
-    },
-    "Intensity 2": {
-      "name": "Intensity",
-      "capability": {
-        "type": "Intensity",
-        "comment": "Lamp down left"
-      }
-    },
-    "Intensity 3": {
-      "name": "Intensity",
-      "capability": {
-        "type": "Intensity",
-        "comment": "Lamp top right"
-      }
-    },
-    "Intensity 4": {
-      "name": "Intensity",
-      "capability": {
-        "type": "Intensity",
-        "comment": "Lamp down right"
-      }
     }
   },
   "modes": [
@@ -118,14 +102,15 @@
         "Strobe Speed",
         "Effect",
         "No function",
-        "Intensity",
-        "Intensity 2",
-        "Intensity 3",
-        "Intensity 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer LED $pixelKey"
+          ]
+        }
       ]
     }
-  ],
-  "fixtureKey": "led-blinder-4",
-  "manufacturerKey": "lightmaxx",
-  "oflURL": "https://open-fixture-library.org/lightmaxx/led-blinder-4"
+  ]
 }
