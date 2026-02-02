@@ -541,8 +541,7 @@
         {
           "dmxRange": [216, 217],
           "type": "WheelRotation",
-          "speedStart": "stop",
-          "speedEnd": "stop"
+          "speed": "stop"
         },
         {
           "dmxRange": [218, 243],
@@ -616,8 +615,7 @@
           "dmxRange": [128, 128],
           "type": "WheelRotation",
           "wheel": "Effect Disk",
-          "speedStart": "stop",
-          "speedEnd": "stop",
+          "speed": "stop",
           "comment": "No rotation"
         },
         {

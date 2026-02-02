@@ -252,7 +252,7 @@ import {
   getSanitizedChannel,
   isCapabilityChanged,
   isChannelChanged,
-} from '../../assets/scripts/editor-utils.js';
+} from '../../assets/scripts/editor-utilities.js';
 
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
