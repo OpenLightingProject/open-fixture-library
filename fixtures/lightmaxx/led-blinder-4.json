@@ -25,7 +25,12 @@
     }
   },
   "matrix": {
-    "pixelCount": [2, 2, 1]
+    "pixelKeys": [
+      [
+        ["1", "3"],
+        ["2", "4"]
+      ]
+    ]
   },
   "templateChannels": {
     "Intensity $pixelKey": {
@@ -103,14 +108,10 @@
         "Strobe",
         "Effect",
         "No function",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Intensity $pixelKey"
-          ]
-        }
+        "Intensity 1",
+        "Intensity 2",
+        "Intensity 3",
+        "Intensity 4"
       ]
     }
   ]
