@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.4.0/schemas/fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Blinder 4",
   "categories": ["Matrix", "Strobe", "Blinder"],
   "meta": {
@@ -45,7 +45,7 @@
         {
           "dmxRange": [0, 0],
           "type": "ShutterStrobe",
-          "shutterSpeed": "Open",
+          "shutterEffect": "Open",
           "comment": "No Strobe Effect"
         },
         {
