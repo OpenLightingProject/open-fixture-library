@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation P-56 F",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["van egmond"],
+    "createDate": "2024-05-13",
+    "lastModifyDate": "2024-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_P-56FC_UM_Rev9.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-p-56fc/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?time_continue=10&v=yN8PjMBAPBo&embeds_referring_euri=https%3A%2F%2Fwww.chauvetprofessional.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.chauvetprofessional.com&source_ve_path=Mjg2NjY&feature=emb_logo"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Virtual color wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color temerature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Control": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Virtual color wheel",
+        "Color temerature",
+        "Control"
+      ]
+    }
+  ]
+}
