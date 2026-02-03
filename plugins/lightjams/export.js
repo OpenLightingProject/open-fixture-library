@@ -1,5 +1,5 @@
-import xmlbuilder from 'xmlbuilder';
 import { v4 as uuidv4 } from 'uuid';
+import xmlbuilder from 'xmlbuilder';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
@@ -29,7 +29,6 @@ export async function exportFixtures(fixtures, options) {
     );
 
     const xmlFixture = xml.root();
-    
     // Add fixture metadata
     xmlFixture.element(`Id`, uuidv4());
     xmlFixture.element(`Name`, fixture.name);
@@ -71,7 +70,7 @@ function addMode(xmlModes, mode, fixture) {
   const xmlMode = xmlModes.element(`mode`, {
     id: uuidv4(),
     name: mode.shortName || mode.name,
-    description: mode.name !== mode.shortName ? mode.name : ``,
+    description: mode.name === mode.shortName ? `` : mode.name,
   });
 
   const xmlCapabilities = xmlMode.element(`capabilities`);
@@ -93,7 +92,7 @@ function addMode(xmlModes, mode, fixture) {
  * Group channels by their capability type for Lightjams format
  * @param {Mode} mode The OFL mode object
  * @param {Fixture} fixture The OFL fixture object
- * @returns {Array<object>} Array of channel groups
+ * @returns {object[]} Array of channel groups
  */
 function groupChannelsByCapability(mode, fixture) {
   const groups = [];
@@ -110,7 +109,7 @@ function groupChannelsByCapability(mode, fixture) {
 
     // Get the main capability type
     const capability = channel.capabilities[0];
-    
+
     if (!capability) {
       // No capability, treat as Fixed
       groups.push({
@@ -124,10 +123,10 @@ function groupChannelsByCapability(mode, fixture) {
       continue;
     }
 
-    const capType = capability.type;
+    const capabilityType = capability.type;
 
     // Handle color mixing
-    if (capType === `ColorIntensity`) {
+    if (capabilityType === `ColorIntensity`) {
       const colorGroup = detectColorMixingGroup(mode, fixture, channelIndex);
       if (colorGroup) {
         groups.push(colorGroup);
@@ -137,10 +136,10 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Pan/Tilt with precision
-    if (capType === `Pan` || capType === `Tilt`) {
+    if (capabilityType === `Pan` || capabilityType === `Tilt`) {
       const precision = getPrecision(mode, channelIndex);
       groups.push({
-        type: capType,
+        type: capabilityType,
         precision,
         byteOrder: `msb`,
         max: capability.angleEnd?.number || 360,
@@ -152,12 +151,12 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Intensity (Dimmer)
-    if (capType === `Intensity`) {
+    if (capabilityType === `Intensity`) {
       const precision = getPrecision(mode, channelIndex);
       groups.push({
         type: `Dimmer`,
         precision,
-        name: channel.name !== `Dimmer` ? channel.name : undefined,
+        name: channel.name === `Dimmer` ? undefined : channel.name,
         channelCount: precision,
       });
       channelIndex += precision;
@@ -165,7 +164,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle ShutterStrobe
-    if (capType === `ShutterStrobe`) {
+    if (capabilityType === `ShutterStrobe`) {
       groups.push({
         type: `Shutter`,
         precision: 1,
@@ -176,7 +175,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle color wheel
-    if (capType === `ColorPreset` || capType === `WheelSlot`) {
+    if (capabilityType === `ColorPreset` || capabilityType === `WheelSlot`) {
       const wheelName = capability.wheel?.name || channel.name;
       if (wheelName?.toLowerCase().includes(`gobo`)) {
         groups.push({
@@ -184,11 +183,12 @@ function groupChannelsByCapability(mode, fixture) {
           precision: 1,
           channelCount: 1,
         });
-      } else {
+      }
+      else {
         groups.push({
           type: `Color`,
           precision: 1,
-          name: channel.name !== `Color` ? channel.name : undefined,
+          name: channel.name === `Color` ? undefined : channel.name,
           channelCount: 1,
         });
       }
@@ -197,7 +197,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle gobo rotation
-    if (capType === `WheelSlotRotation` || capType === `WheelRotation`) {
+    if (capabilityType === `WheelSlotRotation` || capabilityType === `WheelRotation`) {
       groups.push({
         type: `GoboRot`,
         precision: 1,
@@ -209,7 +209,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Zoom
-    if (capType === `Zoom`) {
+    if (capabilityType === `Zoom`) {
       groups.push({
         type: `Zoom`,
         precision: 1,
@@ -220,7 +220,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Focus
-    if (capType === `Focus`) {
+    if (capabilityType === `Focus`) {
       groups.push({
         type: `Focus`,
         precision: 1,
@@ -231,7 +231,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Prism
-    if (capType === `Prism`) {
+    if (capabilityType === `Prism`) {
       groups.push({
         type: `Prism`,
         precision: 1,
@@ -242,7 +242,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Iris
-    if (capType === `Iris`) {
+    if (capabilityType === `Iris`) {
       groups.push({
         type: `Iris`,
         precision: 1,
@@ -253,7 +253,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Frost
-    if (capType === `Frost`) {
+    if (capabilityType === `Frost`) {
       groups.push({
         type: `Frost`,
         precision: 1,
@@ -264,7 +264,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Handle Effect
-    if (capType === `Effect`) {
+    if (capabilityType === `Effect`) {
       groups.push({
         type: `Effect`,
         precision: 1,
@@ -332,10 +332,10 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
   // Check if we have a valid color mixing group
   if (colors.length >= 3) {
     const colorType = colors.join(``);
-    
+
     // Check if it's a known color mixing type
     const knownTypes = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
-    
+
     if (knownTypes.includes(colorType)) {
       return {
         type: colorType,
@@ -444,9 +444,9 @@ function addActions(xmlActions, channelCount) {
   });
 
   // Set all channels to 100% for locate (simplified)
-  for (let i = 0; i < Math.min(channelCount, 20); i++) {
+  for (let index = 0; index < Math.min(channelCount, 20); index++) {
     xmlLocateChannels.element(`channel`, {
-      offset: String(i),
+      offset: String(index),
       percent: `100`,
     });
   }

@@ -24,7 +24,6 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   const lightjamsFixture = xml.fixture;
-  
   // Extract manufacturer
   const manufacturerName = getString(lightjamsFixture.Manufacturer);
   const manufacturerKey = slugify(manufacturerName);
@@ -56,13 +55,12 @@ export async function importFixtures(buffer, filename, authorName) {
     importPlugin: {
       plugin: `lightjams`,
       date: timestamp,
-      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || '1.00'}, revision ${getString(lightjamsFixture.revision) || '1'}`,
+      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || `1.00`}, revision ${getString(lightjamsFixture.revision) || `1`}`,
     },
   };
 
   // Process modes
   const modes = lightjamsFixture.Modes?.[0]?.mode || [];
-  
   if (modes.length === 0) {
     throw new Error(`No modes found in fixture.`);
   }
@@ -81,13 +79,11 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     // Process capabilities to create channels
-    const capabilities = lightjamsMode.capabilities?.[0] || {};
-    const channelList = [];
+    const capabilities = lightjamsMode.capabilities?.[0] || {};const channelList = [];
     let channelOffset = 0;
 
     for (const capabilityType of Object.keys(capabilities)) {
       const capabilityElements = capabilities[capabilityType];
-      
       if (!Array.isArray(capabilityElements)) {
         continue;
       }
@@ -99,7 +95,7 @@ export async function importFixtures(buffer, filename, authorName) {
           channelOffset,
           fixture.availableChannels,
           processedChannelKeys,
-          out.warnings[fixtureKey]
+          out.warnings[fixtureKey],
         );
 
         channelList.push(...channels);
@@ -123,8 +119,8 @@ export async function importFixtures(buffer, filename, authorName) {
  * @param {number} startOffset Starting channel offset
  * @param {object} availableChannels The fixture's availableChannels object
  * @param {Set<string>} processedChannelKeys Set of already processed channel keys
- * @param {Array<string>} warnings Array to add warnings to
- * @returns {Array<string>} Array of channel keys added
+ * @param {object[]} warnings Array to add warnings to
+ * @returns {string[]} Array of channel keys added
  */
 function processCapability(capabilityType, element, startOffset, availableChannels, processedChannelKeys, warnings) {
   const precision = Number.parseInt(element.$.precision || `1`, 10);
@@ -133,10 +129,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   // Handle color mixing capabilities
   if ([`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`].includes(capabilityType)) {
     const colorOrder = getColorOrder(capabilityType);
-    
     for (const color of colorOrder) {
       const channelKey = color;
-      
       if (!processedChannelKeys.has(channelKey)) {
         availableChannels[channelKey] = {
           capability: {
@@ -150,7 +144,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
       for (let byte = 0; byte < precision; byte++) {
         if (byte === 0) {
           channels.push(channelKey);
-        } else {
+        }
+        else {
           channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
         }
       }
@@ -179,21 +174,26 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
     // Add channels based on precision and byte order
     if (byteOrder === `msb`) {
-      // MSB first
-      for (let byte = precision - 1; byte >= 0; byte--) {
+      // MSB first - coarse then fine
+      for (let byte = 0; byte < precision; byte++) {
         if (byte === 0) {
           channels.push(channelKey);
-        } else {
-          channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
+        }
+        else {
+          const fineSuffix = byte > 1 ? `^${byte}` : ``;
+          channels.push(`${channelKey} fine${fineSuffix}`);
         }
       }
-    } else {
+    }
+    else {
       // LSB first (default)
       for (let byte = 0; byte < precision; byte++) {
         if (byte === 0) {
           channels.push(channelKey);
-        } else {
-          channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
+        }
+        else {
+          const fineSuffix = byte > 1 ? `^${byte}` : ``;
+          channels.push(`${channelKey} fine${fineSuffix}`);
         }
       }
     }
@@ -217,7 +217,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     for (let byte = 0; byte < precision; byte++) {
       if (byte === 0) {
         channels.push(channelKey);
-      } else {
+      }
+      else {
         channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
       }
     }
@@ -260,7 +261,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     for (let byte = 0; byte < precision; byte++) {
       if (byte === 0) {
         channels.push(channelKey);
-      } else {
+      }
+      else {
         channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
       }
     }
@@ -438,12 +440,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Fixed`) {
     const value = Number.parseInt(element.$.value || `0`, 10);
     const name = element.$.name || `Fixed`;
-    
+
     // Generate a unique channel key for this fixed channel
-    const baseKey = name !== `Fixed` ? name : `Fixed ${startOffset}`;
+    const baseKey = name === `Fixed` ? `Fixed ${startOffset}` : name;
     let channelKey = baseKey;
     let counter = 1;
-    
+
     while (processedChannelKeys.has(channelKey)) {
       channelKey = `${baseKey} ${counter}`;
       counter++;
@@ -464,7 +466,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   // Unknown capability type - add as generic
   warnings.push(`Unknown capability type: ${capabilityType}`);
   const channelKey = `${capabilityType} ${startOffset}`;
-  
+
   if (!processedChannelKeys.has(channelKey)) {
     availableChannels[channelKey] = {
       capability: {
@@ -481,7 +483,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 /**
  * Get color order from capability type
  * @param {string} type The capability type
- * @returns {Array<string>} Array of color letters
+ * @returns {string[]} Array of color letters
  */
 function getColorOrder(type) {
   const colorMap = {
