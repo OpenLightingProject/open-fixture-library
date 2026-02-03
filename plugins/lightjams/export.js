@@ -327,7 +327,7 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
     channelIndex++;
   }
 
-  // Check if we have a valid color mixing group
+  // Check if we have a valid color mixing group (at least 3 colors)
   if (colors.length >= 3) {
     const colorType = colors.join(``);
 
@@ -345,6 +345,10 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
     // For unknown color combinations, treat each channel separately
     // by returning null, which will cause each color to be handled individually
     return null;
+  }
+
+  // Less than 3 colors - not a valid color mixing group
+  return null;
 }
 
 /**
