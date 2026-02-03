@@ -6,6 +6,13 @@ import xmlbuilder from 'xmlbuilder';
 
 export const version = `0.1.0`;
 
+// Supported color mixing types in Lightjams
+const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
+
+// Maximum number of channels to set in locate action (Lightjams limitation)
+const MAX_LOCATE_CHANNELS = 20;
+
+
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
@@ -332,9 +339,7 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
     const colorType = colors.join(``);
 
     // Check if it's a known color mixing type
-    const knownTypes = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
-
-    if (knownTypes.includes(colorType)) {
+    if (KNOWN_COLOR_MIXING_TYPES.includes(colorType)) {
       return {
         type: colorType,
         precision: 1,
@@ -442,8 +447,8 @@ function addActions(xmlActions, channelCount) {
     nbChannels: String(channelCount),
   });
 
-  // Set all channels to 100% for locate (simplified)
-  for (let index = 0; index < Math.min(channelCount, 20); index++) {
+  // Set channels to 100% for locate (limited to avoid XML bloat)
+  for (let index = 0; index < Math.min(channelCount, MAX_LOCATE_CHANNELS); index++) {
     xmlLocateChannels.element(`channel`, {
       offset: String(index),
       percent: `100`,

@@ -2,6 +2,10 @@ import xml2js from 'xml2js';
 
 export const version = `0.1.0`;
 
+// Supported color mixing types in Lightjams
+const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
+
+
 /**
  * @param {Buffer} buffer The imported file.
  * @param {string} filename The imported file's name.
@@ -128,7 +132,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   const channels = [];
 
   // Handle color mixing capabilities
-  if ([`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`].includes(capabilityType)) {
+  if (KNOWN_COLOR_MIXING_TYPES.includes(capabilityType)) {
     const colorOrder = getColorOrder(capabilityType);
     for (const color of colorOrder) {
       const channelKey = color;
@@ -157,7 +161,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   // Handle Pan/Tilt
   if (capabilityType === `Pan` || capabilityType === `Tilt`) {
     const channelKey = capabilityType;
-    const byteOrder = element.$.byteOrder || `lsb`;
     const max = Number.parseFloat(element.$.max) || 360;
     const defaultValue = Number.parseFloat(element.$.default) || (max / 2);
 
