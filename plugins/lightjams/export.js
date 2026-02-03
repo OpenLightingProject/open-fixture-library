@@ -12,7 +12,6 @@ const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, 
 // Maximum number of channels to set in locate action (Lightjams limitation)
 const MAX_LOCATE_CHANNELS = 20;
 
-
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:

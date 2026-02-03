@@ -5,7 +5,6 @@ export const version = `0.1.0`;
 // Supported color mixing types in Lightjams
 const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
 
-
 /**
  * @param {Buffer} buffer The imported file.
  * @param {string} filename The imported file's name.
