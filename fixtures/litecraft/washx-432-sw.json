@@ -31,12 +31,13 @@
           "dmxRange": [0, 204],
           "type": "ColorTemperature",
           "colorTemperatureStart": "3000K",
-          "colorTemperatureEnd": "6000K"
+          "colorTemperatureEnd": "6400K"
         },
         {
           "dmxRange": [205, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "ColorPreset",
+          "comment": "LEDs 100%",
+          "colors": ["#ffffff"]
         }
       ]
     },
@@ -48,13 +49,13 @@
     "Cold White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "CoolWhite"
       }
     },
     "Warm White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "WarmWhite"
       }
     }
   },
