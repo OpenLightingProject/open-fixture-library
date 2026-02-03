@@ -99,8 +99,7 @@ function groupChannelsByCapability(mode, fixture) {
   let channelIndex = 0;
 
   while (channelIndex < mode.channels.length) {
-    const channelKey = mode.channels[channelIndex];
-    const channel = fixture.getChannelByKey(channelKey);
+    const channel = mode.channels[channelIndex];
 
     if (!channel) {
       channelIndex++;
@@ -108,7 +107,7 @@ function groupChannelsByCapability(mode, fixture) {
     }
 
     // Get the main capability type
-    const capability = channel.capabilities[0];
+    const capability = channel.capabilities?.[0];
 
     if (!capability) {
       // No capability, treat as Fixed
@@ -302,10 +301,9 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
 
   // Try to detect consecutive color channels
   while (channelIndex < mode.channels.length && colors.length < 6) {
-    const channelKey = mode.channels[channelIndex];
-    const channel = fixture.getChannelByKey(channelKey);
+    const channel = mode.channels[channelIndex];
 
-    if (!channel || !channel.capabilities[0]) {
+    if (!channel || !channel.capabilities?.[0]) {
       break;
     }
 
@@ -383,8 +381,11 @@ function getColorLetter(colorName) {
 function getPrecision(mode, channelIndex) {
   // Check if next channel is a fine channel
   if (channelIndex + 1 < mode.channels.length) {
-    const currentKey = mode.channels[channelIndex];
-    const nextKey = mode.channels[channelIndex + 1];
+    const currentChannel = mode.channels[channelIndex];
+    const nextChannel = mode.channels[channelIndex + 1];
+    
+    const currentKey = currentChannel.key;
+    const nextKey = nextChannel.key;
 
     if (nextKey === `${currentKey} fine` || nextKey.startsWith(`${currentKey} fine`)) {
       return 2;
