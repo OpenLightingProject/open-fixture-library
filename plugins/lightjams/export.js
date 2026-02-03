@@ -383,11 +383,11 @@ function getPrecision(mode, channelIndex) {
   if (channelIndex + 1 < mode.channels.length) {
     const currentChannel = mode.channels[channelIndex];
     const nextChannel = mode.channels[channelIndex + 1];
-    
+
     const currentKey = currentChannel.key;
     const nextKey = nextChannel.key;
 
-    if (nextKey === `${currentKey} fine` || nextKey.startsWith(`${currentKey} fine`)) {
+    if (nextKey.startsWith(`${currentKey} fine`)) {
       return 2;
     }
   }

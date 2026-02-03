@@ -79,7 +79,8 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     // Process capabilities to create channels
-    const capabilities = lightjamsMode.capabilities?.[0] || {};const channelList = [];
+    const capabilities = lightjamsMode.capabilities?.[0] || {};
+    const channelList = [];
     let channelOffset = 0;
 
     for (const capabilityType of Object.keys(capabilities)) {
@@ -369,8 +370,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
       availableChannels[channelKey] = {
         capability: {
           type: `Iris`,
-          openPercent: `closed`,
-          closedPercent: `open`,
+          openPercentStart: `0%`,
+          openPercentEnd: `100%`,
         },
       };
       processedChannelKeys.add(channelKey);
@@ -388,7 +389,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
       availableChannels[channelKey] = {
         capability: {
           type: `Frost`,
-          frostIntensity: `off`,
+          frostIntensityStart: `0%`,
+          frostIntensityEnd: `100%`,
         },
       };
       processedChannelKeys.add(channelKey);
