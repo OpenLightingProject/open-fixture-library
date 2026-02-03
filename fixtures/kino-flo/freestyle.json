@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FreeStyle",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Showrunner"],
+    "createDate": "2022-11-17",
+    "lastModifyDate": "2022-11-17"
+  },
+  "comment": "This fixture is for all kino-flo freestyles (21, 31, 41) - they all use this fixture",
+  "links": {
+    "manual": [
+      "https://kinoflo.com/wp-content/uploads/2022/07/True-Match-Firmware-5.0-RDM-DMX-Personalities-May-2021-21.pdf",
+      "https://kinoflo.com/wp-content/uploads/2022/07/3100107-Rev-B-FreeStyle-41-31-21-LED-with-FX-Mode-08-31-2018-2-1.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "9900K"
+      }
+    },
+    "Green-Magenta Point": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [12, 22],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [23, 121],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [122, 133],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [134, 232],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [233, 243],
+          "type": "Generic",
+          "comment": "Full plus green"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "Generic",
+          "comment": "Neutral"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "P1: CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point"
+      ]
+    },
+    {
+      "name": "P3: CCT, RGB",
+      "shortName": "CCT, RGB",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}

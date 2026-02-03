@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Aputure LS 120d II",
+  "shortName": "Aputure LS 120d II",
+  "categories": [
+    "Dimmer"
+  ],
+  "meta": {
+    "authors": [
+      "Showrunner"
+    ],
+    "createDate": "2022-09-08",
+    "lastModifyDate": "2022-09-08"
+  },
+  "links": {
+    "other": [
+      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C120d-II_Product_Manual_EN.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Lighting 8-bit",
+      "shortName": "Default",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
