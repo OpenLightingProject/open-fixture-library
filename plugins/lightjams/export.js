@@ -342,15 +342,9 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
       };
     }
 
-    // Default to RGB-like naming
-    return {
-      type: `RGB${colors.slice(3).join(``)}`,
-      precision: 1,
-      channelCount: colors.length,
-    };
-  }
-
-  return null;
+    // For unknown color combinations, treat each channel separately
+    // by returning null, which will cause each color to be handled individually
+    return null;
 }
 
 /**

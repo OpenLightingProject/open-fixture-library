@@ -173,29 +173,15 @@ function processCapability(capabilityType, element, startOffset, availableChanne
       processedChannelKeys.add(channelKey);
     }
 
-    // Add channels based on precision and byte order
-    if (byteOrder === `msb`) {
-      // MSB first - coarse then fine
-      for (let byte = 0; byte < precision; byte++) {
-        if (byte === 0) {
-          channels.push(channelKey);
-        }
-        else {
-          const fineSuffix = byte > 1 ? `^${byte}` : ``;
-          channels.push(`${channelKey} fine${fineSuffix}`);
-        }
+    // Add channels - in OFL format, we always list coarse first, then fine
+    // The byte order information is preserved in the fixture model's handling
+    for (let byte = 0; byte < precision; byte++) {
+      if (byte === 0) {
+        channels.push(channelKey);
       }
-    }
-    else {
-      // LSB first (default)
-      for (let byte = 0; byte < precision; byte++) {
-        if (byte === 0) {
-          channels.push(channelKey);
-        }
-        else {
-          const fineSuffix = byte > 1 ? `^${byte}` : ``;
-          channels.push(`${channelKey} fine${fineSuffix}`);
-        }
+      else {
+        const fineSuffix = byte > 1 ? `^${byte}` : ``;
+        channels.push(`${channelKey} fine${fineSuffix}`);
       }
     }
     return channels;
