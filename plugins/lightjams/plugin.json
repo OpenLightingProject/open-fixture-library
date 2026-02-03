@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Lightjams",
+  "description": [
+    "<p><em>Lightjams</em> is a lighting control software for Windows that offers",
+    "a free trial version. It includes a built-in Fixture Editor for creating",
+    "and editing fixture definitions.</p>"
+  ],
+  "links": {
+    "Website": "http://www.lightjams.com",
+    "Fixture Editor": "http://www.lightjams.com/templateEditor.html"
+  },
+  "fixtureUsage": [
+    "<p>Copy the fixture XML files into the Lightjams fixtures directory.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": true,
+    "Windows": {
+      "main": "C:\\ProgramData\\Lightjams\\Fixtures"
+    }
+  }
+}
