@@ -18,7 +18,7 @@ const MAX_LOCATE_CHANNELS = 20;
  * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
- * @returns {Promise<object[], Error>} The generated files.
+ * @returns {Promise<object[]>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const outFiles = [];

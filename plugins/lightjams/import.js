@@ -9,7 +9,7 @@ const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, 
  * @param {Buffer} buffer The imported file.
  * @param {string} filename The imported file's name.
  * @param {string} authorName The importer's name.
- * @returns {Promise<object, Error>} A Promise resolving to an out object
+ * @returns {Promise<object>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
