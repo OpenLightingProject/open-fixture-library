@@ -1,6 +1,6 @@
 <template>
   <section
-    :id="mode.rdmPersonalityIndex !== null ? `rdm-personality-${mode.rdmPersonalityIndex}` : null"
+    :id="mode.rdmPersonalityIndex === null ? null : `rdm-personality-${mode.rdmPersonalityIndex}`"
     class="fixture-mode card">
 
     <h2>{{ mode.name }} mode <code v-if="mode.hasShortName">{{ mode.shortName }}</code></h2>

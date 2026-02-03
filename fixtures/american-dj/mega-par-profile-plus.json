@@ -1,0 +1,988 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega Par Profile Plus",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Glenn Meder", "NikolaPi"],
+    "createDate": "2026-01-28",
+    "lastModifyDate": "2026-01-28"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/8761/ADJ%20Mega%20Par%20Profile%20Plus%20User%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/mega-par-profile-plus"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=g0ON1EzrZzQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 220, 85],
+    "weight": 1.1,
+    "power": 16,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Program Selection Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "Dimming Mode",
+          "switchChannels": {
+            "Program Selection": "Color Macros",
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "Maintenance",
+          "comment": "Color Macro Mode",
+          "switchChannels": {
+            "Program Selection": "Color Macros",
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "Maintenance",
+          "comment": "Color Change Mode",
+          "switchChannels": {
+            "Program Selection": "Color Change Programs",
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "Maintenance",
+          "comment": "Color Fade Mode",
+          "switchChannels": {
+            "Program Selection": "Color Fade Programs",
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Maintenance",
+          "comment": "Sound Active Mode",
+          "switchChannels": {
+            "Program Selection": "Sound Active Programs",
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorPreset",
+          "colors": ["#50ffea", "#2b0050"],
+          "comment": "Color 1, 31% UV"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "colors": ["#50ffa4", "#2b0050"],
+          "comment": "Color 2, 31% UV"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "colors": ["#4dff70", "#29004d"],
+          "comment": "Color 3, 30% UV"
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "ColorPreset",
+          "colors": ["#75ff53", "#2c0053"],
+          "comment": "Color 4, 32% UV"
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "ColorPreset",
+          "colors": ["#a0ff4d", "#29004d"],
+          "comment": "Color 5, 30% UV"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorPreset",
+          "colors": ["#dfff53", "#2c0053"],
+          "comment": "Color 6, 33% UV"
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "ColorPreset",
+          "colors": ["#fff34d", "#29004d"],
+          "comment": "Color 7, 30% UV"
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "ColorPreset",
+          "colors": ["#ffc84a", "#27004a"],
+          "comment": "Color 8, 29% UV"
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "ColorPreset",
+          "colors": ["#ffa64d", "#29004d"],
+          "comment": "Color 9, 30% UV"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorPreset",
+          "colors": ["#ff7d4a", "#27004a"],
+          "comment": "Color 10, 29% UV"
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "ColorPreset",
+          "colors": ["#ff614d", "#27004a"],
+          "comment": "Color 11, 29% UV"
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "ColorPreset",
+          "colors": ["#ff474d", "#260047"],
+          "comment": "Color 12, 28% UV"
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "ColorPreset",
+          "colors": ["#ff5386", "#2c0053"],
+          "comment": "Color 13, 33% UV"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorPreset",
+          "colors": ["#ff5db6", "#32005d"],
+          "comment": "Color 14, 36% UV"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "ColorPreset",
+          "colors": ["#ff60ec", "#330060"],
+          "comment": "Color 15, 38% UV"
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "ColorPreset",
+          "colors": ["#ee5dff", "#32005d"],
+          "comment": "Color 16, 36% UV"
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "ColorPreset",
+          "colors": ["#c457ff", "#2e0057"],
+          "comment": "Color 17, 34% UV"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "colors": ["#965aff", "#30005a"],
+          "comment": "Color 18, 35% UV"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "colors": ["#644dff", "#29004d"],
+          "comment": "Color 19, 30% UV"
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "ColorPreset",
+          "colors": ["#4d64ff", "#29004d"],
+          "comment": "Color 20, 30% UV"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorPreset",
+          "colors": ["#4394ff", "#240043"],
+          "comment": "Color 21, 26% UV"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorPreset",
+          "colors": ["#4dc3ff", "#29004d"],
+          "comment": "Color 22, 30% UV"
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "ColorPreset",
+          "colors": ["#4deaff", "#29004d"],
+          "comment": "Color 23, 30% UV"
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "ColorPreset",
+          "colors": ["#9eff90", "#4d0090"],
+          "comment": "Color 24, 56% UV"
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "ColorPreset",
+          "colors": ["#fffb99", "#520099"],
+          "comment": "Color 25, 60% UV"
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "ColorPreset",
+          "colors": ["#ffaf93", "#4e0093"],
+          "comment": "Color 26, 58% UV"
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "ColorPreset",
+          "colors": ["#ff8aba", "#4a008a"],
+          "comment": "Color 27, 54% UV"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorPreset",
+          "colors": ["#ff93fb", "#4e0093"],
+          "comment": "Color 28, 58% UV"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorPreset",
+          "colors": ["#978aff", "#4a008a"],
+          "comment": "Color 29, 54% UV"
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "ColorPreset",
+          "colors": ["#978aff", "#4a008a"],
+          "comment": "Color 30, 54% UV"
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "ColorPreset",
+          "colors": ["#8aa9ff", "#4a008a"],
+          "comment": "Color 31, 54% UV"
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#8800ff"],
+          "comment": "White + 100% UV"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "ColorPreset",
+          "colors": ["#ffce8f"],
+          "comment": "Color 33"
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "ColorPreset",
+          "colors": ["#feb199"],
+          "comment": "Color 34"
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "ColorPreset",
+          "colors": ["#fec08a"],
+          "comment": "Color 35"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ColorPreset",
+          "colors": ["#fea562"],
+          "comment": "Color 36"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorPreset",
+          "colors": ["#fe7900"],
+          "comment": "Color 37"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "ColorPreset",
+          "colors": ["#b01100"],
+          "comment": "Color 38"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "ColorPreset",
+          "colors": ["#60000b"],
+          "comment": "Color 39"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "ColorPreset",
+          "colors": ["#ea8bab"],
+          "comment": "Color 40"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "ColorPreset",
+          "colors": ["#e00561"],
+          "comment": "Color 41"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "ColorPreset",
+          "colors": ["#af4dad"],
+          "comment": "Color 42"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "ColorPreset",
+          "colors": ["#7782c7"],
+          "comment": "Color 43"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "ColorPreset",
+          "colors": ["#93a4d4"],
+          "comment": "Color 44"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorPreset",
+          "colors": ["#5802a3"],
+          "comment": "Color 45"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorPreset",
+          "colors": ["#002656"],
+          "comment": "Color 46"
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "ColorPreset",
+          "colors": ["#008ed0"],
+          "comment": "Color 47"
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "ColorPreset",
+          "colors": ["#3494d1"],
+          "comment": "Color 48"
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "ColorPreset",
+          "colors": ["#0186c9"],
+          "comment": "Color 49"
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "ColorPreset",
+          "colors": ["#0091d4"],
+          "comment": "Color 50"
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "ColorPreset",
+          "colors": ["#005373"],
+          "comment": "Color 53"
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "ColorPreset",
+          "colors": ["#0061a6"],
+          "comment": "Color 54"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorPreset",
+          "colors": ["#0164a7"],
+          "comment": "Color 55"
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "ColorPreset",
+          "colors": ["#002856"],
+          "comment": "Color 56"
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "ColorPreset",
+          "colors": ["#d1dbb6"],
+          "comment": "Color 57"
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "ColorPreset",
+          "colors": ["#2aa555"],
+          "comment": "Color 58"
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "ColorPreset",
+          "colors": ["#002e23"],
+          "comment": "Color 59"
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "ColorPreset",
+          "colors": ["#086bde"],
+          "comment": "Color 60"
+        },
+        {
+          "dmxRange": [241, 244],
+          "type": "ColorPreset",
+          "colors": ["#6b9ce7"],
+          "comment": "Color 61"
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "ColorPreset",
+          "colors": ["#a5c6f7"],
+          "comment": "Color 62"
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset",
+          "colors": ["#8800ff"],
+          "comment": "UV"
+        }
+      ]
+    },
+    "Color Change Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 16"
+        }
+      ]
+    },
+    "Color Fade Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 16"
+        }
+      ]
+    },
+    "Sound Active Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 12",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 13",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 14",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 15",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 16",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Dimmer Curves": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theater"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Default to Unit Setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "UV",
+        "Strobe",
+        "Dimmer",
+        "Program Selection Mode",
+        "Program Selection",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Strobe",
+        "Dimmer",
+        "Program Selection Mode",
+        "Program Selection",
+        "Program Speed / Sound Sensitivity",
+        "Dimmer Curves"
+      ]
+    }
+  ]
+}

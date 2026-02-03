@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wizard">
 
-    <span>Generate multiple capabilities with same range width. Occurences of '#' in text fields will be replaced by an increasing number.</span>
+    <span>Generate multiple capabilities with same range width. Occurrences of '#' in text fields will be replaced by an increasing number.</span>
 
     <section>
       <label>
@@ -135,7 +135,7 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-} from "../../assets/scripts/editor-utils.js";
+} from "../../assets/scripts/editor-utilities.js";
 
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';

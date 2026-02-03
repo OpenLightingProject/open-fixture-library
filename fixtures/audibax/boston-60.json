@@ -123,8 +123,7 @@
         {
           "dmxRange": [0, 63],
           "type": "WheelSlot",
-          "slotNumberStart": 1,
-          "slotNumberEnd": 1
+          "slotNumber": 1
         },
         {
           "dmxRange": [64, 127],
@@ -147,7 +146,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "1Hz",
         "speedEnd": "20Hz",
-        "helpWanted": "At which DMX values is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Dimmer": {

@@ -425,17 +425,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           const isPan = channelName.match(/pan/i);
           const isTilt = channelName.match(/tilt/i);
 
-          let panOrTilt = null;
-          if (isPan && !isTilt) {
-            panOrTilt = `Pan`;
-          }
-          else if (isTilt && !isPan) {
-            panOrTilt = `Tilt`;
-          }
-          else {
+          if ((!isPan && !isTilt) || (isPan && isTilt)) {
             // fall back to default
             return capabilityTypePerChannelType.ChannelBeam();
           }
+
+          const panOrTilt = isPan ? `Pan` : `Tilt`;
 
           if (/continuous/i.test(channelName)) {
             return `${panOrTilt}Continuous`;
