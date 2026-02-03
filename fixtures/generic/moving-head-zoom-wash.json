@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Head Zoom Wash",
+  "shortName": "MH Zoom Wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-06-06",
+    "lastModifyDate": "2024-06-06"
+  },
+  "comment": "Generic Amazon / Ebay zoom/wash movinghead with 16/24/32ch mode",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1sfDOj69NweUmUmCh0igxin5Fqu1JN-br/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://www.ebay.de/itm/116016430366?var=416166422410"
+    ]
+  },
+  "physical": {
+    "weight": 6,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500
+    }
+  },
+  "availableChannels": {
+    "Horizontal 540° scan": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Vertical 270° scan": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Speed fast->slow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "stop"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Preset": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan finetune": {
+      "fineChannelAliases": ["Pan finetune fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Tilt finetune": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Nothing": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Horizontal 540° scan",
+        "Vertical 270° scan",
+        "Speed fast->slow",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe Speed",
+        "Focus",
+        "Preset",
+        "Effect Speed",
+        "Pan finetune",
+        "Tilt finetune",
+        "Nothing",
+        "Reset"
+      ]
+    }
+  ]
+}
