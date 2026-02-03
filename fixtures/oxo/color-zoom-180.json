@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color Zoom 180",
+  "shortName": "Color Zoom 180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Elsa"],
+    "createDate": "2026-02-03",
+    "lastModifyDate": "2026-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.oxolight.com"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Zoom"
+      ]
+    }
+  ]
+}
