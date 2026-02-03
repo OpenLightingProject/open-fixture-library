@@ -39,7 +39,7 @@ export async function importFixtures(buffer, filename, authorName) {
    */
   function addFixture(lightjamsFixture) {
     const manufacturerName = lightjamsFixture.$.Manufacturer || `Generic`;
-    const manufacturerKey = slugify(manufacturerName, { lower: true, strict: true });
+    const manufacturerKey = slugify(manufacturerName);
 
     if (!(manufacturerKey in out.manufacturers)) {
       out.manufacturers[manufacturerKey] = {
@@ -48,7 +48,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     const fixtureName = lightjamsFixture.$.Name;
-    let fixtureKey = `${manufacturerKey}/${slugify(fixtureName, { lower: true, strict: true })}`;
+    let fixtureKey = `${manufacturerKey}/${slugify(fixtureName)}`;
     
     if (fixtureKey in out.fixtures) {
       fixtureKey += `-${Math.random().toString(36).slice(2, 7)}`;
@@ -81,7 +81,7 @@ export async function importFixtures(buffer, filename, authorName) {
       : (lightjamsFixture.Channel ? [lightjamsFixture.Channel] : []);
 
     for (const lightjamsChannel of lightjamsChannels) {
-      const channelKey = slugify(lightjamsChannel.$.Name, { lower: true, strict: true });
+      const channelKey = slugify(lightjamsChannel.$.Name);
       channels[channelKey] = parseChannel(lightjamsChannel);
     }
 
@@ -252,5 +252,5 @@ export async function importFixtures(buffer, filename, authorName) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, `-`).replaceAll(/-+/g, `-`).replace(/^-|-$/g, ``);
 }
