@@ -68,9 +68,9 @@ export async function importFixtures(buffer, filename, authorName) {
     throw new Error(`No modes found in fixture.`);
   }
 
+  fixture.availableChannels = {};
   fixture.modes = [];
   const processedChannelKeys = new Set();
-  fixture.availableChannels = {};
 
   for (const lightjamsMode of modes) {
     const mode = {
