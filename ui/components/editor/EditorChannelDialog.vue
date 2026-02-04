@@ -14,43 +14,39 @@
       @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
-        <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select existing channel(s)">
+        <LabeledInput
+          :formstate="formstate"
+          name="existingChannelUuid"
+          label="Select existing channel(s)"
+          multiple-inputs>
           <input
             :value="selectedChannelUuids.join(',')"
             name="existingChannelUuid"
             type="hidden"
             required>
-          <div class="channel-list" role="listbox" :aria-multiselectable="true">
-            <div
-              v-for="item of channelListItems"
+          <ul class="channel-list" role="listbox" :aria-multiselectable="true">
+            <li
+              v-for="item of currentModeUnchosenChannels"
               :key="item.uuid"
-              class="channel-list-item"
-              :class="{
-                'is-fine-channel': item.isFineChannel,
-                'is-selected': isChannelSelected(item.uuid),
-                'is-disabled': item.isDisabled,
-              }"
               role="option"
-              :aria-selected="isChannelSelected(item.uuid) ? 'true' : 'false'"
-              :aria-disabled="item.isDisabled ? 'true' : 'false'">
-              <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- label is interactive -->
+              class="channel-list-item"
+              :aria-selected="item.isSelected ? 'true' : 'false'">
+              <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- double click is just a shortcut, all functionality is still accessible via keyboard -->
               <label
+                :for="item.inputId"
                 class="channel-list-label"
-                tabindex="0"
-                @dblclick="onChannelDoubleClick(item.uuid)"
-                @keydown.enter.prevent="toggleChannelSelection(item.uuid, $event)"
-                @keydown.space.prevent="toggleChannelSelection(item.uuid, $event)">
+                @dblclick="onChannelDoubleClick(item.uuid)">
                 <input
-                  :checked="isChannelSelected(item.uuid)"
-                  :disabled="item.isDisabled"
+                  :id="item.inputId"
+                  :checked="item.isSelected"
                   type="checkbox"
                   class="channel-checkbox"
-                  @change="toggleChannelSelection(item.uuid, $event)">
+                  @change="toggleChannelSelection(item.uuid)">
                 <span class="channel-name">{{ item.name }}</span>
                 <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
               </label>
-            </div>
-          </div>
+            </li>
+          </ul>
         </LabeledInput>
 
         <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
@@ -255,18 +251,16 @@
 
 .channel-list {
   max-height: 400px;
+  padding: 0;
+  margin: 0;
   overflow-y: auto;
+  list-style: none;
   background-color: theme-color(card-background);
   border: 1px solid theme-color(text-secondary);
   border-radius: 2px;
 }
 
-.channel-name {
-  flex: 1;
-}
-
 .channel-list-item {
-  padding: 0.5ex 1ex;
   border-bottom: 1px solid theme-color(divider);
   transition: background-color 0.15s;
 
@@ -274,26 +268,8 @@
     border-bottom: none;
   }
 
-  &:hover:not(.is-disabled) {
-    background-color: theme-color(hover-background);
-  }
-
-  &.is-selected {
+  &[aria-selected="true"] {
     background-color: theme-color(active-background);
-  }
-
-  &.is-fine-channel {
-    padding-left: 3ex;
-    font-size: 0.95em;
-
-    .channel-name {
-      font-style: italic;
-    }
-  }
-
-  &.is-disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
   }
 }
 
@@ -301,10 +277,11 @@
   display: flex;
   gap: 1ex;
   align-items: center;
+  padding: 0.5ex 2ex;
   cursor: pointer;
   user-select: none;
 
-  &:focus {
+  &:focus-visible {
     outline: 2px solid theme-color(link);
     outline-offset: -2px;
   }
@@ -312,11 +289,11 @@
 
 .channel-checkbox {
   flex-shrink: 0;
+  margin: 0;
   cursor: pointer;
 }
 
 .channel-uuid {
-  padding: 0 1ex;
   font-size: 0.85em;
   color: theme-color(text-secondary);
 }
@@ -394,92 +371,19 @@ export default {
       const modeIndex = this.fixture.modes.findIndex(mode => mode.uuid === uuid);
       return this.fixture.modes[modeIndex];
     },
-    currentModeUnchosenChannels() {
-      return Object.keys(this.fixture.availableChannels).filter(channelUuid => {
-        if (this.currentMode.channels.includes(channelUuid)) {
-          // already used
-          return false;
-        }
-
-        const channel = this.fixture.availableChannels[channelUuid];
-        if (`coarseChannelId` in channel) {
-          // should we include this fine channel?
-
-          if (!this.currentMode.channels.includes(channel.coarseChannelId)) {
-            // its coarse channel is not yet in the mode
-            return false;
-          }
-
-          const modeChannels = this.currentMode.channels.map(
-            uuid => this.fixture.availableChannels[uuid],
-          );
-
-          const otherFineChannels = modeChannels.filter(
-            otherChannel => `coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channel.coarseChannelId,
-          );
-
-          const maxFoundResolution = Math.max(
-            constants.RESOLUTION_8BIT,
-            ...otherFineChannels.map(otherFineChannel => otherFineChannel.resolution),
-          );
-
-          if (maxFoundResolution !== channel.resolution - 1) {
-            // the finest channel currently used is not its next coarser channel
-            return false;
-          }
-        }
-
-        return true;
-      });
+    currentModeUnchosenChannelUuids() {
+      return Object.keys(this.fixture.availableChannels).filter(
+        channelUuid => !this.currentMode.channels.includes(channelUuid),
+      );
     },
-    channelListItems() {
-      const items = [];
-
-      // Group channels: coarse channels with their fine channels as subitems
-      for (const channelUuid of this.currentModeUnchosenChannels) {
-        const channel = this.fixture.availableChannels[channelUuid];
-
-        // Skip if this is a fine channel (will be processed with its coarse channel)
-        if (`coarseChannelId` in channel) {
-          continue;
-        }
-
-        // Add coarse channel
-        const channelName = this.getChannelName(channelUuid);
-        items.push({
-          uuid: channelUuid,
-          name: channelName,
-          isFineChannel: false,
-          isDisabled: false,
-          showUuid: !this.isChannelNameUnique(channelUuid),
-        });
-
-        // Add fine channels for this coarse channel
-        const fineChannels = this.currentModeUnchosenChannels
-          .filter(uuid => {
-            const channel_ = this.fixture.availableChannels[uuid];
-            return `coarseChannelId` in channel_ && channel_.coarseChannelId === channelUuid;
-          })
-          .sort((a, b) => {
-            const resolutionA = this.fixture.availableChannels[a].resolution;
-            const resolutionB = this.fixture.availableChannels[b].resolution;
-            return resolutionA - resolutionB;
-          });
-
-        for (const fineUuid of fineChannels) {
-          const fineName = this.getChannelName(fineUuid);
-          items.push({
-            uuid: fineUuid,
-            name: fineName,
-            isFineChannel: true,
-            coarseChannelUuid: channelUuid,
-            isDisabled: false,
-            showUuid: false,
-          });
-        }
-      }
-
-      return items;
+    currentModeUnchosenChannels() {
+      return this.currentModeUnchosenChannelUuids.map(channelUuid => ({
+        inputId: `unchosen-channel-${channelUuid}`,
+        uuid: channelUuid,
+        name: this.getChannelName(channelUuid),
+        showUuid: !this.isChannelNameUnique(channelUuid),
+        isSelected: this.isChannelSelected(channelUuid),
+      }));
     },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
@@ -558,7 +462,11 @@ export default {
       return this.selectedChannelUuids.includes(channelUuid);
     },
 
-    toggleChannelSelection(channelUuid, event) {
+    modeHasChannel(channelUuid) {
+      return this.currentMode.channels.includes(channelUuid);
+    },
+
+    toggleChannelSelection(channelUuid) {
       if (this.isChannelSelected(channelUuid)) {
         this.deselectChannel(channelUuid);
       }
@@ -570,61 +478,80 @@ export default {
     },
 
     deselectChannel(channelUuid) {
-      const channel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in channel;
+      const deselectedChannel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in deselectedChannel;
 
       // Deselect the channel
       this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
 
-      // If this is a coarse channel, also deselect all its fine channels
-      if (!isFineChannel) {
+      if (isFineChannel) {
+        // Deselect all finer channels
         this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
-          const channel_ = this.fixture.availableChannels[uuid];
-          return !(`coarseChannelId` in channel_ && channel_.coarseChannelId === channelUuid);
+          const channel = this.fixture.availableChannels[uuid];
+          return (
+            !(`coarseChannelId` in channel) ||
+            channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
+            channel.resolution < deselectedChannel.resolution
+          );
         });
-      }
-    },
-
-    selectChannel(channelUuid) {
-      const channel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in channel;
-
-      // For fine channels, auto-select all coarser channels
-      if (!isFineChannel) {
-        // Only add if not already selected
-        if (!this.isChannelSelected(channelUuid)) {
-          this.selectedChannelUuids = [...this.selectedChannelUuids, channelUuid];
-        }
         return;
       }
 
-      const coarseChannelId = channel.coarseChannelId;
-      const channelsToSelect = [channelUuid];
+      // Deselect all fine channels belonging to this coarse channel
+      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+        const channel = this.fixture.availableChannels[uuid];
+        return !(`coarseChannelId` in channel) || channel.coarseChannelId !== channelUuid;
+      });
+    },
+
+    selectChannel(channelUuid) {
+      if (this.isChannelSelected(channelUuid)) {
+        return;
+      }
+
+      const selectedChannel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in selectedChannel;
+
+      if (!isFineChannel) {
+        this.selectedChannelUuids.push(channelUuid);
+        return;
+      }
+
+      // For fine channels, auto-select all coarser channels
+      const coarseChannelId = selectedChannel.coarseChannelId;
+      const channelsToSelect = [];
 
       // Add the coarse channel if not already selected
-      if (!this.isChannelSelected(coarseChannelId)) {
+      if (!this.isChannelSelected(coarseChannelId) && !this.modeHasChannel(coarseChannelId)) {
         channelsToSelect.push(coarseChannelId);
       }
 
       // Add all finer channels between coarse and selected fine channel
-      const currentResolution = channel.resolution;
-      for (const uuid of this.currentModeUnchosenChannels) {
-        const channel_ = this.fixture.availableChannels[uuid];
-        if (`coarseChannelId` in channel_ &&
-            channel_.coarseChannelId === coarseChannelId &&
-            channel_.resolution < currentResolution &&
-            !this.isChannelSelected(uuid)) {
+      const currentResolution = selectedChannel.resolution;
+      for (const uuid of this.currentModeUnchosenChannelUuids) {
+        const channel = this.fixture.availableChannels[uuid];
+        if (`coarseChannelId` in channel &&
+            channel.coarseChannelId === coarseChannelId &&
+            channel.resolution < currentResolution &&
+            !this.isChannelSelected(uuid) &&
+            !this.modeHasChannel(uuid)
+        ) {
           channelsToSelect.push(uuid);
         }
       }
 
-      this.selectedChannelUuids = [...this.selectedChannelUuids, ...channelsToSelect];
+      this.selectedChannelUuids.push(...channelsToSelect, channelUuid);
     },
 
     onChannelDoubleClick(channelUuid) {
       // Select the channel if not already selected
       if (!this.isChannelSelected(channelUuid)) {
         this.toggleChannelSelection(channelUuid);
+      }
+
+      if (this.selectedChannelUuids.some(uuid => uuid !== channelUuid)) {
+        // another channel is already selected, do not submit on double-click
+        return;
       }
 
       // Submit the form
@@ -854,7 +781,7 @@ export default {
     addExistingChannel() {
       // Add all selected channels to the mode
       for (const channelUuid of this.selectedChannelUuids) {
-        if (!this.currentMode.channels.includes(channelUuid)) {
+        if (!this.modeHasChannel(channelUuid)) {
           this.currentMode.channels.push(channelUuid);
         }
       }
