@@ -20,7 +20,7 @@
           label="Select existing channel(s)"
           multiple-inputs>
           <input
-            :value="selectedChannelUuids.join(',')"
+            v-model="selectedChannelUuidsString"
             name="existingChannelUuid"
             type="hidden"
             required>
@@ -379,6 +379,9 @@ export default {
         isSelected: this.isChannelSelected(channelUuid),
       }));
     },
+    selectedChannelUuidsString() {
+      return this.selectedChannelUuids.join(`,`);
+    },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
       if (this.currentMode.shortName) {
@@ -532,7 +535,7 @@ export default {
       this.selectedChannelUuids.push(channelUuid);
     },
 
-    onChannelDoubleClick(channelUuid) {
+    async onChannelDoubleClick(channelUuid) {
       // Select the channel if not already selected
       if (!this.isChannelSelected(channelUuid)) {
         this.toggleChannelSelection(channelUuid);
@@ -543,6 +546,8 @@ export default {
         return;
       }
 
+      // wait until validation state is updated
+      await this.$nextTick();
       this.onSubmit();
     },
 
