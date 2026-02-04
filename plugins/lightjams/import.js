@@ -441,10 +441,11 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     }
 
     availableChannels[channelKey] = {
-      capability: {
-        type: `NoFunction`,
-      },
       defaultValue: Math.round((value / 100) * 255),
+      constant: true,
+      capability: {
+        type: `Generic`,
+      },
     };
     processedChannelKeys.add(channelKey);
 
