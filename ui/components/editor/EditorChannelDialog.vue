@@ -16,7 +16,7 @@
       <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select existing channel(s)">
           <input
-            v-model="selectedChannelUuids"
+            :value="selectedChannelUuids.join(',')"
             name="existingChannelUuid"
             type="hidden"
             required>
