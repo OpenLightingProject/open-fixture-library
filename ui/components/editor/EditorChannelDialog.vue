@@ -279,12 +279,6 @@
   align-items: center;
   padding: 0.5ex 2ex;
   cursor: pointer;
-  user-select: none;
-
-  &:focus-visible {
-    outline: 2px solid theme-color(link);
-    outline-offset: -2px;
-  }
 }
 
 .channel-checkbox {
