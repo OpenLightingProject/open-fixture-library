@@ -20,7 +20,22 @@ export async function importFixtures(buffer, filename, authorName) {
     warnings: {},
   };
 
-  const xml = await xml2js.parseStringPromise(buffer.toString());
+  // Parse XML with preserveChildrenOrder to maintain element order
+  const parser = new xml2js.Parser({
+    preserveChildrenOrder: true,
+    explicitChildren: true,
+  });
+
+  const xml = await new Promise((resolve, reject) => {
+    parser.parseString(buffer.toString(), (error, result) => {
+      if (error) {
+        reject(error);
+      }
+      else {
+        resolve(result);
+      }
+    });
+  });
 
   if (!xml.fixture) {
     throw new Error(`Not a valid Lightjams fixture file.`);
@@ -80,23 +95,24 @@ export async function importFixtures(buffer, filename, authorName) {
       mode.shortName = lightjamsMode.$.description;
     }
 
-    // Process capabilities to create channels
-    const capabilities = lightjamsMode.capabilities?.[0] || {};
+    // Process capabilities in the order they appear in the XML
+    // Using the $$ array which preserves child element order
+    const capabilities = lightjamsMode.capabilities?.[0];
     const channelList = [];
+    const fineChannelAliases = {};
     let channelOffset = 0;
 
-    for (const capabilityType of Object.keys(capabilities)) {
-      const capabilityElements = capabilities[capabilityType];
-      if (!Array.isArray(capabilityElements)) {
-        continue;
-      }
+    if (capabilities?.$$) {
+      for (const capabilityElement of capabilities.$$) {
+        const capabilityType = capabilityElement['#name'];
+        const element = capabilityElement;
 
-      for (const capabilityElement of capabilityElements) {
         const channels = processCapability(
           capabilityType,
-          capabilityElement,
+          element,
           channelOffset,
           fixture.availableChannels,
+          fineChannelAliases,
           out.warnings[fixtureKey],
         );
 
@@ -106,6 +122,12 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     mode.channels = channelList;
+    
+    // Add fineChannelAliases if any were created
+    if (Object.keys(fineChannelAliases).length > 0) {
+      mode.fineChannelAliases = fineChannelAliases;
+    }
+    
     fixture.modes.push(mode);
   }
 
@@ -120,10 +142,11 @@ export async function importFixtures(buffer, filename, authorName) {
  * @param {object} element The capability XML element
  * @param {number} startOffset Starting channel offset
  * @param {object} availableChannels The fixture's availableChannels object
+ * @param {object} fineChannelAliases Object to store fine channel aliases
  * @param {object[]} warnings Array to add warnings to
  * @returns {string[]} Array of channel keys added
  */
-function processCapability(capabilityType, element, startOffset, availableChannels, warnings) {
+function processCapability(capabilityType, element, startOffset, availableChannels, fineChannelAliases, warnings) {
   const precision = Number.parseInt(element.$.precision || `1`, 10);
   const channels = [];
 
@@ -146,7 +169,15 @@ function processCapability(capabilityType, element, startOffset, availableChanne
           channels.push(channelKey);
         }
         else {
-          channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
+          const fineSuffix = byte > 1 ? `^${byte}` : ``;
+          const fineChannelKey = `${channelKey} fine${fineSuffix}`;
+          channels.push(fineChannelKey);
+          // Add fine channel alias
+          fineChannelAliases[fineChannelKey] = {
+            pixelKey: null,
+            fineness: byte,
+            channel: channelKey,
+          };
         }
       }
     }
@@ -161,12 +192,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
+        defaultValue: Math.round((defaultValue / max) * 255),
         capability: {
           type: capabilityType,
           angleStart: `0deg`,
           angleEnd: `${max}deg`,
         },
-        defaultValue: Math.round((defaultValue / max) * 255),
       };
     }
 
@@ -178,7 +209,14 @@ function processCapability(capabilityType, element, startOffset, availableChanne
       }
       else {
         const fineSuffix = byte > 1 ? `^${byte}` : ``;
-        channels.push(`${channelKey} fine${fineSuffix}`);
+        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
+        channels.push(fineChannelKey);
+        // Add fine channel alias
+        fineChannelAliases[fineChannelKey] = {
+          pixelKey: null,
+          fineness: byte,
+          channel: channelKey,
+        };
       }
     }
     return channels;
@@ -202,7 +240,15 @@ function processCapability(capabilityType, element, startOffset, availableChanne
         channels.push(channelKey);
       }
       else {
-        channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
+        const fineSuffix = byte > 1 ? `^${byte}` : ``;
+        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
+        channels.push(fineChannelKey);
+        // Add fine channel alias
+        fineChannelAliases[fineChannelKey] = {
+          pixelKey: null,
+          fineness: byte,
+          channel: channelKey,
+        };
       }
     }
     return channels;
@@ -245,7 +291,15 @@ function processCapability(capabilityType, element, startOffset, availableChanne
         channels.push(channelKey);
       }
       else {
-        channels.push(`${channelKey} fine${byte > 1 ? `^${byte}` : ``}`);
+        const fineSuffix = byte > 1 ? `^${byte}` : ``;
+        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
+        channels.push(fineChannelKey);
+        // Add fine channel alias
+        fineChannelAliases[fineChannelKey] = {
+          pixelKey: null,
+          fineness: byte,
+          channel: channelKey,
+        };
       }
     }
     return channels;
