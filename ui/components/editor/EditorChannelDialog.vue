@@ -524,11 +524,12 @@ export default {
       const currentResolution = selectedChannel.resolution;
       for (const uuid of this.currentModeUnchosenChannelUuids) {
         const channel = this.fixture.availableChannels[uuid];
-        if (`coarseChannelId` in channel &&
-            channel.coarseChannelId === coarseChannelId &&
-            channel.resolution < currentResolution &&
-            !this.isChannelSelected(uuid) &&
-            !this.modeHasChannel(uuid)
+        if (
+          `coarseChannelId` in channel &&
+          channel.coarseChannelId === coarseChannelId &&
+          channel.resolution < currentResolution &&
+          !this.isChannelSelected(uuid) &&
+          !this.modeHasChannel(uuid)
         ) {
           channelsToSelect.push(uuid);
         }
