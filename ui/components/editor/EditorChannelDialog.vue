@@ -412,10 +412,7 @@ export default {
     submitButtonTitle() {
       if (this.channel.editMode === `add-existing`) {
         const count = this.selectedChannelUuids.length;
-        if (count === 0) {
-          return `Add channel`;
-        }
-        return count === 1 ? `Add channel` : `Add ${count} channels`;
+        return count <= 1 ? `Add channel` : `Add ${count} channels`;
       }
 
       if (this.channel.editMode === `create`) {
