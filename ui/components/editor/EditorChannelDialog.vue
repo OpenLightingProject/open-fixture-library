@@ -511,13 +511,10 @@ export default {
         return;
       }
 
-      // For fine channels, auto-select all coarser channels
-      const coarseChannelId = selectedChannel.coarseChannelId;
-      const channelsToSelect = [];
-
       // Add the coarse channel if not already selected
+      const coarseChannelId = selectedChannel.coarseChannelId;
       if (!this.isChannelSelected(coarseChannelId) && !this.modeHasChannel(coarseChannelId)) {
-        channelsToSelect.push(coarseChannelId);
+        this.selectedChannelUuids.push(coarseChannelId);
       }
 
       // Add all finer channels between coarse and selected fine channel
@@ -531,11 +528,11 @@ export default {
           !this.isChannelSelected(uuid) &&
           !this.modeHasChannel(uuid)
         ) {
-          channelsToSelect.push(uuid);
+          this.selectedChannelUuids.push(uuid);
         }
       }
 
-      this.selectedChannelUuids.push(...channelsToSelect, channelUuid);
+      this.selectedChannelUuids.push(channelUuid);
     },
 
     onChannelDoubleClick(channelUuid) {
