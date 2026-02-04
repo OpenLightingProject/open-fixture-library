@@ -132,14 +132,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
   // Handle color mixing capabilities
   if (KNOWN_COLOR_MIXING_TYPES.includes(capabilityType)) {
-    const colorOrder = getColorOrder(capabilityType);
-    for (const color of colorOrder) {
-      const channelKey = color;
+    for (const color of capabilityType.split(``)) {
+      const channelKey = getColorName(color);
       if (!processedChannelKeys.has(channelKey)) {
         availableChannels[channelKey] = {
           capability: {
             type: `ColorIntensity`,
-            color: getColorName(color),
+            color: channelKey,
           },
         };
         processedChannelKeys.add(channelKey);
@@ -468,29 +467,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
   channels.push(channelKey);
   return channels;
-}
-
-/**
- * Get color order from capability type
- * @param {string} type The capability type
- * @returns {string[]} Array of color letters
- */
-function getColorOrder(type) {
-  const colorMap = {
-    RGB: [`R`, `G`, `B`],
-    RGBA: [`R`, `G`, `B`, `A`],
-    RGBW: [`R`, `G`, `B`, `W`],
-    RGBAW: [`R`, `G`, `B`, `A`, `W`],
-    CMY: [`C`, `M`, `Y`],
-    CYM: [`C`, `Y`, `M`],
-    GRBW: [`G`, `R`, `B`, `W`],
-    GRB: [`G`, `R`, `B`],
-    GBR: [`G`, `B`, `R`],
-    RBG: [`R`, `B`, `G`],
-    BRG: [`B`, `R`, `G`],
-    BGR: [`B`, `G`, `R`],
-  };
-  return colorMap[type] || [];
 }
 
 /**
