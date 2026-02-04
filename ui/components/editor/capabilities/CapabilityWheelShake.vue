@@ -6,7 +6,7 @@
       multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
-      hint="Use 1.5 to indicate a wheel position halfway between slots 1 and 2. Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel shaking for a WheelSlot capability in another channel."
+      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel shaking for a WheelSlot capability in another channel. Use 1.5 to indicate a wheel position halfway between slots 1 and 2."
       style="display: inline-block; margin-bottom: 12px;">
       <EditorProportionalPropertySwitcher
         :capability="capability"
