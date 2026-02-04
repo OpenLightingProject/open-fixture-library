@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { anyProp, booleanProp, objectProp, oneOfTypesProp, stringProp } from 'vue-ts-types';
+import { anyProp, booleanProp, numberProp, objectProp, oneOfTypesProp, stringProp } from 'vue-ts-types';
 
 export default {
   props: {
@@ -26,7 +26,7 @@ export default {
     maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
     value: anyProp().required,
     lazy: booleanProp().withDefault(false),
-    stepOverride: oneOfTypesProp([Number, String]).optional, // allows overriding the calculated step value
+    stepOverride: numberProp().optional,
   },
   emits: {
     input: value => true,
