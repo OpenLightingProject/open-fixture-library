@@ -26,16 +26,7 @@ export async function importFixtures(buffer, filename, authorName) {
     explicitChildren: true,
   });
 
-  const xml = await new Promise((resolve, reject) => {
-    parser.parseString(buffer.toString(), (error, result) => {
-      if (error) {
-        reject(error);
-      }
-      else {
-        resolve(result);
-      }
-    });
-  });
+  const xml = await parser.parseStringPromise(buffer.toString());
 
   if (!xml.fixture) {
     throw new Error(`Not a valid Lightjams fixture file.`);
