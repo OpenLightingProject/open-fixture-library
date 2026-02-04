@@ -30,14 +30,13 @@
                 'is-selected': isChannelSelected(item.uuid),
                 'is-disabled': item.isDisabled,
               }"
-              :role="item.isFineChannel ? 'option' : 'group'"
+              role="option"
               :aria-selected="isChannelSelected(item.uuid) ? 'true' : 'false'"
               :aria-disabled="item.isDisabled ? 'true' : 'false'">
               <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- label is interactive -->
               <label
                 class="channel-list-label"
                 tabindex="0"
-                @click="toggleChannelSelection(item.uuid, $event)"
                 @dblclick="onChannelDoubleClick(item.uuid)"
                 @keydown.enter.prevent="toggleChannelSelection(item.uuid, $event)"
                 @keydown.space.prevent="toggleChannelSelection(item.uuid, $event)">
@@ -46,7 +45,7 @@
                   :disabled="item.isDisabled"
                   type="checkbox"
                   class="channel-checkbox"
-                  @click.stop>
+                  @change="toggleChannelSelection(item.uuid, $event)">
                 <span class="channel-name">{{ item.name }}</span>
                 <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
               </label>
@@ -264,7 +263,6 @@
 
 .channel-list-item {
   padding: 0.5ex 1ex;
-  cursor: pointer;
   border-bottom: 1px solid theme-color(divider);
   transition: background-color 0.15s;
 
@@ -274,11 +272,6 @@
 
   &:hover:not(.is-disabled) {
     background-color: theme-color(hover-background);
-  }
-
-  &:focus {
-    outline: 2px solid theme-color(link);
-    outline-offset: -2px;
   }
 
   &.is-selected {
@@ -306,6 +299,11 @@
   gap: 1ex;
   cursor: pointer;
   user-select: none;
+
+  &:focus {
+    outline: 2px solid theme-color(link);
+    outline-offset: -2px;
+  }
 }
 
 .channel-checkbox {
@@ -593,7 +591,10 @@ export default {
 
       // For fine channels, auto-select all coarser channels
       if (!isFineChannel) {
-        this.selectedChannelUuids = [...this.selectedChannelUuids, channelUuid];
+        // Only add if not already selected
+        if (!this.isChannelSelected(channelUuid)) {
+          this.selectedChannelUuids = [...this.selectedChannelUuids, channelUuid];
+        }
         return;
       }
 
