@@ -14,20 +14,44 @@
       @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
-        <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
-          <select
-            v-model="channel.uuid"
+        <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select existing channel(s)">
+          <input
+            v-model="selectedChannelUuids"
             name="existingChannelUuid"
-            size="10"
-            style="width: 100%;"
+            type="hidden"
             required>
-            <option
-              v-for="channelUuid of currentModeUnchosenChannels"
-              :key="channelUuid"
-              :value="channelUuid">
-              {{ getChannelName(channelUuid) }}
-            </option>
-          </select>
+          <div class="channel-list" role="listbox" :aria-multiselectable="true">
+            <div
+              v-for="item of channelListItems"
+              :key="item.uuid"
+              class="channel-list-item"
+              :class="{
+                'is-fine-channel': item.isFineChannel,
+                'is-selected': isChannelSelected(item.uuid),
+                'is-disabled': item.isDisabled,
+              }"
+              :role="item.isFineChannel ? 'option' : 'group'"
+              :aria-selected="isChannelSelected(item.uuid) ? 'true' : 'false'"
+              :aria-disabled="item.isDisabled ? 'true' : 'false'">
+              <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- label is interactive -->
+              <label
+                class="channel-list-label"
+                tabindex="0"
+                @click="toggleChannelSelection(item.uuid, $event)"
+                @dblclick="onChannelDoubleClick(item.uuid)"
+                @keydown.enter.prevent="toggleChannelSelection(item.uuid, $event)"
+                @keydown.space.prevent="toggleChannelSelection(item.uuid, $event)">
+                <input
+                  :checked="isChannelSelected(item.uuid)"
+                  :disabled="item.isDisabled"
+                  type="checkbox"
+                  class="channel-checkbox"
+                  @click.stop>
+                <span class="channel-name">{{ item.name }}</span>
+                <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
+              </label>
+            </div>
+          </div>
         </LabeledInput>
 
         <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
@@ -230,6 +254,75 @@
   display: block;
 }
 
+.channel-list {
+  border: 1px solid theme-color(text-secondary);
+  border-radius: 2px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: theme-color(card-background);
+}
+
+.channel-list-item {
+  padding: 0.5ex 1ex;
+  cursor: pointer;
+  border-bottom: 1px solid theme-color(divider);
+  transition: background-color 0.15s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover:not(.is-disabled) {
+    background-color: theme-color(hover-background);
+  }
+
+  &:focus {
+    outline: 2px solid theme-color(primary);
+    outline-offset: -2px;
+  }
+
+  &.is-selected {
+    background-color: theme-color(active-background);
+  }
+
+  &.is-fine-channel {
+    padding-left: 3ex;
+    font-size: 0.95em;
+
+    .channel-name {
+      font-style: italic;
+    }
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.channel-list-label {
+  display: flex;
+  align-items: center;
+  gap: 1ex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.channel-checkbox {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.channel-name {
+  flex: 1;
+}
+
+.channel-uuid {
+  font-size: 0.85em;
+  color: theme-color(text-secondary);
+  padding: 0 1ex;
+}
+
 @media (min-width: $phone) {
   #channel-dialog ::v-deep .dialog {
     width: 80%;
@@ -291,6 +384,7 @@ export default {
       channelProperties,
       singleColors: capabilityTypes.ColorIntensity.properties.color.enum,
       constants,
+      selectedChannelUuids: [],
     };
   },
   computed: {
@@ -340,6 +434,55 @@ export default {
         return true;
       });
     },
+    channelListItems() {
+      const items = [];
+
+      // Group channels: coarse channels with their fine channels as subitems
+      for (const channelUuid of this.currentModeUnchosenChannels) {
+        const channel = this.fixture.availableChannels[channelUuid];
+
+        // Skip if this is a fine channel (will be processed with its coarse channel)
+        if (`coarseChannelId` in channel) {
+          continue;
+        }
+
+        // Add coarse channel
+        const channelName = this.getChannelName(channelUuid);
+        items.push({
+          uuid: channelUuid,
+          name: channelName,
+          isFineChannel: false,
+          isDisabled: false,
+          showUuid: !this.isChannelNameUnique(channelUuid),
+        });
+
+        // Add fine channels for this coarse channel
+        const fineChannels = this.currentModeUnchosenChannels
+          .filter(uuid => {
+            const channel_ = this.fixture.availableChannels[uuid];
+            return `coarseChannelId` in channel_ && channel_.coarseChannelId === channelUuid;
+          })
+          .sort((a, b) => {
+            const resolutionA = this.fixture.availableChannels[a].resolution;
+            const resolutionB = this.fixture.availableChannels[b].resolution;
+            return resolutionA - resolutionB;
+          });
+
+        for (const fineUuid of fineChannels) {
+          const fineName = this.getChannelName(fineUuid);
+          items.push({
+            uuid: fineUuid,
+            name: fineName,
+            isFineChannel: true,
+            coarseChannelUuid: channelUuid,
+            isDisabled: false,
+            showUuid: false,
+          });
+        }
+      }
+
+      return items;
+    },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
       if (this.currentMode.shortName) {
@@ -372,7 +515,11 @@ export default {
     },
     submitButtonTitle() {
       if (this.channel.editMode === `add-existing`) {
-        return `Add channel`;
+        const count = this.selectedChannelUuids.length;
+        if (count === 0) {
+          return `Add channel`;
+        }
+        return count === 1 ? `Add channel` : `Add ${count} channels`;
       }
 
       if (this.channel.editMode === `create`) {
@@ -404,6 +551,85 @@ export default {
       return fixtureEditor.getChannelName(channelUuid);
     },
 
+    isChannelNameUnique(channelUuid) {
+      const fixtureEditor = this.$parent;
+      return fixtureEditor.isChannelNameUnique(channelUuid);
+    },
+
+    isChannelSelected(channelUuid) {
+      return this.selectedChannelUuids.includes(channelUuid);
+    },
+
+    toggleChannelSelection(channelUuid, event) {
+      if (this.isChannelSelected(channelUuid)) {
+        this.deselectChannel(channelUuid);
+      }
+      else {
+        this.selectChannel(channelUuid);
+      }
+
+      this.channelChanged = true;
+    },
+
+    deselectChannel(channelUuid) {
+      const channel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in channel;
+
+      // Deselect the channel
+      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
+
+      // If this is a coarse channel, also deselect all its fine channels
+      if (!isFineChannel) {
+        this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+          const channel_ = this.fixture.availableChannels[uuid];
+          return !(`coarseChannelId` in channel_ && channel_.coarseChannelId === channelUuid);
+        });
+      }
+    },
+
+    selectChannel(channelUuid) {
+      const channel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in channel;
+
+      // For fine channels, auto-select all coarser channels
+      if (!isFineChannel) {
+        this.selectedChannelUuids = [...this.selectedChannelUuids, channelUuid];
+        return;
+      }
+
+      const coarseChannelId = channel.coarseChannelId;
+      const channelsToSelect = [channelUuid];
+
+      // Add the coarse channel if not already selected
+      if (!this.isChannelSelected(coarseChannelId)) {
+        channelsToSelect.push(coarseChannelId);
+      }
+
+      // Add all finer channels between coarse and selected fine channel
+      const currentResolution = channel.resolution;
+      for (const uuid of this.currentModeUnchosenChannels) {
+        const channel_ = this.fixture.availableChannels[uuid];
+        if (`coarseChannelId` in channel_ &&
+            channel_.coarseChannelId === coarseChannelId &&
+            channel_.resolution < currentResolution &&
+            !this.isChannelSelected(uuid)) {
+          channelsToSelect.push(uuid);
+        }
+      }
+
+      this.selectedChannelUuids = [...this.selectedChannelUuids, ...channelsToSelect];
+    },
+
+    onChannelDoubleClick(channelUuid) {
+      // Select the channel if not already selected
+      if (!this.isChannelSelected(channelUuid)) {
+        this.toggleChannelSelection(channelUuid);
+      }
+
+      // Submit the form
+      this.onSubmit();
+    },
+
     async onChannelDialogOpen() {
       if (this.restored) {
         this.restored = false;
@@ -415,6 +641,7 @@ export default {
       }
       else if (this.channel.editMode === `add-existing`) {
         this.channel.uuid = ``;
+        this.selectedChannelUuids = [];
       }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         this.copyPropertiesFromChannel(this.fixture.availableChannels[this.channel.uuid]);
@@ -624,7 +851,15 @@ export default {
     },
 
     addExistingChannel() {
-      this.currentMode.channels.push(this.channel.uuid);
+      // Add all selected channels to the mode
+      for (const channelUuid of this.selectedChannelUuids) {
+        if (!this.currentMode.channels.includes(channelUuid)) {
+          this.currentMode.channels.push(channelUuid);
+        }
+      }
+
+      // Reset selection
+      this.selectedChannelUuids = [];
     },
 
     /**
