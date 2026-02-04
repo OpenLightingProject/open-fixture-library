@@ -217,6 +217,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
         capability: {
           type: `ShutterStrobe`,
           shutterEffect: `Strobe`,
+          helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
         },
       };
     }
