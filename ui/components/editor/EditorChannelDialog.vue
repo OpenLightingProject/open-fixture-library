@@ -254,11 +254,15 @@
 }
 
 .channel-list {
-  border: 1px solid theme-color(text-secondary);
-  border-radius: 2px;
   max-height: 400px;
   overflow-y: auto;
   background-color: theme-color(card-background);
+  border: 1px solid theme-color(text-secondary);
+  border-radius: 2px;
+}
+
+.channel-name {
+  flex: 1;
 }
 
 .channel-list-item {
@@ -288,15 +292,15 @@
   }
 
   &.is-disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
 .channel-list-label {
   display: flex;
-  align-items: center;
   gap: 1ex;
+  align-items: center;
   cursor: pointer;
   user-select: none;
 
@@ -311,14 +315,10 @@
   cursor: pointer;
 }
 
-.channel-name {
-  flex: 1;
-}
-
 .channel-uuid {
+  padding: 0 1ex;
   font-size: 0.85em;
   color: theme-color(text-secondary);
-  padding: 0 1ex;
 }
 
 @media (min-width: $phone) {
