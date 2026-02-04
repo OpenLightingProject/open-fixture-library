@@ -548,7 +548,6 @@ export default {
         return;
       }
 
-      // Submit the form
       this.onSubmit();
     },
 
@@ -773,7 +772,6 @@ export default {
     },
 
     addExistingChannel() {
-      // Add all selected channels to the mode
       for (const channelUuid of this.selectedChannelUuids) {
         if (!this.modeHasChannel(channelUuid)) {
           this.currentMode.channels.push(channelUuid);
