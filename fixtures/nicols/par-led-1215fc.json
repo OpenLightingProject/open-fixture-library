@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par led 1215FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Raph"],
+    "createDate": "2024-05-28",
+    "lastModifyDate": "2024-05-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.fr/manual/63426/Nicols-Par-Led-1215-Fc.html#manual"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
