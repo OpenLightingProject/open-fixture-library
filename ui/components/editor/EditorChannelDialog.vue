@@ -17,36 +17,31 @@
         <LabeledInput
           :formstate="formstate"
           name="existingChannelUuid"
-          label="Select existing channel(s)"
           multiple-inputs>
           <input
             v-model="selectedChannelUuidsString"
             name="existingChannelUuid"
             type="hidden"
             required>
-          <ul class="channel-list" role="listbox" :aria-multiselectable="true">
-            <li
+          <fieldset class="channel-list">
+            <legend>Select existing channel(s)</legend>
+            <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- double click is just a shortcut, all functionality is still accessible via keyboard -->
+            <label
               v-for="item of currentModeUnchosenChannels"
               :key="item.uuid"
-              role="option"
+              :for="item.inputId"
               class="channel-list-item"
-              :aria-selected="item.isSelected ? 'true' : 'false'">
-              <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- double click is just a shortcut, all functionality is still accessible via keyboard -->
-              <label
-                :for="item.inputId"
-                class="channel-list-label"
-                @dblclick="onChannelDoubleClick(item.uuid)">
-                <input
-                  :id="item.inputId"
-                  :checked="item.isSelected"
-                  type="checkbox"
-                  class="channel-checkbox"
-                  @change="toggleChannelSelection(item.uuid)">
-                <span class="channel-name">{{ item.name }}</span>
-                <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
-              </label>
-            </li>
-          </ul>
+              @dblclick="onChannelDoubleClick(item.uuid)">
+              <input
+                :id="item.inputId"
+                :checked="item.isSelected"
+                type="checkbox"
+                class="channel-checkbox"
+                @change="toggleChannelSelection(item.uuid)">
+              <span class="channel-name">{{ item.name }}</span>
+              <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
+            </label>
+          </fieldset>
         </LabeledInput>
 
         <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
@@ -257,28 +252,39 @@
   list-style: none;
   background-color: theme-color(card-background);
   border: 1px solid theme-color(text-secondary);
-  border-radius: 2px;
+
+  legend {
+    display: block;
+    width: calc(100% + 2px);
+    padding: 0;
+    margin: 0 -1px;
+    color: theme-color(text-secondary);
+    border-bottom: 1px solid theme-color(text-secondary);
+  }
 }
 
 .channel-list-item {
-  border-bottom: 1px solid theme-color(divider);
-  transition: background-color 0.15s;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &[aria-selected="true"] {
-    background-color: theme-color(active-background);
-  }
-}
-
-.channel-list-label {
   display: flex;
   gap: 1ex;
   align-items: center;
   padding: 0.5ex 2ex;
   cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid theme-color(divider);
+  transition: background-color 0.15s;
+
+  &:where(:has(.channel-checkbox:checked)) {
+    background-color: theme-color(active-background);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover,
+  &:has(.channel-checkbox:focus-visible) {
+    background-color: theme-color(hover-background);
+  }
 }
 
 .channel-checkbox {
