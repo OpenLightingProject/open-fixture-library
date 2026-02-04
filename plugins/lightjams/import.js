@@ -128,6 +128,122 @@ export async function importFixtures(buffer, filename, authorName) {
 }
 
 /**
+ * Add channels with optional fine channels
+ * @param {string} channelKey The coarse channel key
+ * @param {number} precision Number of bytes (1 for 8-bit, 2 for 16-bit, etc.)
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @returns {string[]} Array of channel keys
+ */
+function addChannelsWithFineness(channelKey, precision, availableChannels) {
+  const channels = [];
+  
+  for (let byte = 0; byte < precision; byte++) {
+    if (byte === 0) {
+      channels.push(channelKey);
+    }
+    else {
+      const fineSuffix = byte > 1 ? `^${byte}` : ``;
+      const fineChannelKey = `${channelKey} fine${fineSuffix}`;
+      channels.push(fineChannelKey);
+      // Add fine channel alias to the coarse channel
+      if (!availableChannels[channelKey].fineChannelAliases) {
+        availableChannels[channelKey].fineChannelAliases = [];
+      }
+      availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
+    }
+  }
+  
+  return channels;
+}
+
+/**
+ * Process color mixing capabilities (RGB, RGBA, CMY, etc.)
+ */
+function processColorMixing(capabilityType, precision, availableChannels) {
+  const channels = [];
+  
+  for (const color of capabilityType.split(``)) {
+    const channelKey = getColorName(color);
+
+    if (!(channelKey in availableChannels)) {
+      availableChannels[channelKey] = {
+        fineChannelAliases: [],
+        capability: {
+          type: `ColorIntensity`,
+          color: channelKey,
+        },
+      };
+    }
+
+    channels.push(...addChannelsWithFineness(channelKey, precision, availableChannels));
+  }
+  
+  return channels;
+}
+
+/**
+ * Process Pan or Tilt capability
+ */
+function processPanTilt(capabilityType, element, precision, availableChannels) {
+  const channelKey = capabilityType;
+  const max = Number.parseFloat(element.$.max) || 360;
+  const defaultValue = Number.parseFloat(element.$.default) || (max / 2);
+
+  if (!(channelKey in availableChannels)) {
+    availableChannels[channelKey] = {
+      fineChannelAliases: [],
+      defaultValue: Math.round((defaultValue / max) * 255),
+      capability: {
+        type: capabilityType,
+        angleStart: `0deg`,
+        angleEnd: `${max}deg`,
+      },
+    };
+  }
+
+  return addChannelsWithFineness(channelKey, precision, availableChannels);
+}
+
+/**
+ * Process Dimmer capability
+ */
+function processDimmer(element, precision, availableChannels) {
+  const name = element.$.name || `Dimmer`;
+  const channelKey = name;
+
+  if (!(channelKey in availableChannels)) {
+    availableChannels[channelKey] = {
+      fineChannelAliases: [],
+      capability: {
+        type: `Intensity`,
+      },
+    };
+  }
+
+  return addChannelsWithFineness(channelKey, precision, availableChannels);
+}
+
+/**
+ * Process Color wheel capability
+ */
+function processColorWheel(element, precision, availableChannels) {
+  const name = element.$.name || `Color`;
+  const channelKey = name;
+
+  if (!(channelKey in availableChannels)) {
+    availableChannels[channelKey] = {
+      fineChannelAliases: [],
+      capability: {
+        type: `ColorPreset`,
+        comment: `Color wheel`,
+      },
+    };
+  }
+
+  return addChannelsWithFineness(channelKey, precision, availableChannels);
+}
+
+/**
  * Process a Lightjams capability element and create OFL channel(s)
  * @param {string} capabilityType The type of capability (RGB, Pan, Tilt, etc.)
  * @param {object} element The capability XML element
@@ -142,98 +258,33 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
   // Handle color mixing capabilities
   if (KNOWN_COLOR_MIXING_TYPES.includes(capabilityType)) {
-    for (const color of capabilityType.split(``)) {
-      const channelKey = getColorName(color);
-
-      if (!(channelKey in availableChannels)) {
-        availableChannels[channelKey] = {
-          fineChannelAliases: [],
-          capability: {
-            type: `ColorIntensity`,
-            color: channelKey,
-          },
-        };
-      }
-
-      for (let byte = 0; byte < precision; byte++) {
-        if (byte === 0) {
-          channels.push(channelKey);
-        }
-        else {
-          const fineSuffix = byte > 1 ? `^${byte}` : ``;
-          const fineChannelKey = `${channelKey} fine${fineSuffix}`;
-          channels.push(fineChannelKey);
-          // Add fine channel alias to the coarse channel
-          availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
-        }
-      }
-    }
-    return channels;
+    return processColorMixing(capabilityType, precision, availableChannels);
   }
 
   // Handle Pan/Tilt
   if (capabilityType === `Pan` || capabilityType === `Tilt`) {
-    const channelKey = capabilityType;
-    const max = Number.parseFloat(element.$.max) || 360;
-    const defaultValue = Number.parseFloat(element.$.default) || (max / 2);
-
-    if (!(channelKey in availableChannels)) {
-      availableChannels[channelKey] = {
-        fineChannelAliases: [],
-        defaultValue: Math.round((defaultValue / max) * 255),
-        capability: {
-          type: capabilityType,
-          angleStart: `0deg`,
-          angleEnd: `${max}deg`,
-        },
-      };
-    }
-
-    // Add channels - in OFL format, we always list coarse first, then fine
-    // The byte order information is preserved in the fixture model's handling
-    for (let byte = 0; byte < precision; byte++) {
-      if (byte === 0) {
-        channels.push(channelKey);
-      }
-      else {
-        const fineSuffix = byte > 1 ? `^${byte}` : ``;
-        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
-        channels.push(fineChannelKey);
-        // Add fine channel alias to the coarse channel
-        availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
-      }
-    }
-    return channels;
+    return processPanTilt(capabilityType, element, precision, availableChannels);
   }
 
   // Handle Dimmer
   if (capabilityType === `Dimmer`) {
-    const name = element.$.name || `Dimmer`;
-    const channelKey = name;
-
-    if (!(channelKey in availableChannels)) {
-      availableChannels[channelKey] = {
-        fineChannelAliases: [],
-        capability: {
-          type: `Intensity`,
-        },
-      };
-    }
-
-    for (let byte = 0; byte < precision; byte++) {
-      if (byte === 0) {
-        channels.push(channelKey);
-      }
-      else {
-        const fineSuffix = byte > 1 ? `^${byte}` : ``;
-        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
-        channels.push(fineChannelKey);
-        // Add fine channel alias to the coarse channel
-        availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
-      }
-    }
-    return channels;
+    return processDimmer(element, precision, availableChannels);
   }
+
+  // Handle Color wheel
+  if (capabilityType === `Color`) {
+    return processColorWheel(element, precision, availableChannels);
+  }
+
+  // Handle single-channel capabilities (no fine channels)
+  return processSingleChannel(capabilityType, element, availableChannels, warnings, startOffset);
+}
+
+/**
+ * Process single-channel capabilities (Shutter, Gobo, Effects, etc.)
+ */
+function processSingleChannel(capabilityType, element, availableChannels, warnings, startOffset) {
+  const channels = [];
 
   // Handle Shutter
   if (capabilityType === `Shutter`) {
@@ -250,36 +301,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     }
 
     channels.push(channelKey);
-    return channels;
-  }
-
-  // Handle Color wheel
-  if (capabilityType === `Color`) {
-    const name = element.$.name || `Color`;
-    const channelKey = name;
-
-    if (!(channelKey in availableChannels)) {
-      availableChannels[channelKey] = {
-        fineChannelAliases: [],
-        capability: {
-          type: `ColorPreset`,
-          comment: `Color wheel`,
-        },
-      };
-    }
-
-    for (let byte = 0; byte < precision; byte++) {
-      if (byte === 0) {
-        channels.push(channelKey);
-      }
-      else {
-        const fineSuffix = byte > 1 ? `^${byte}` : ``;
-        const fineChannelKey = `${channelKey} fine${fineSuffix}`;
-        channels.push(fineChannelKey);
-        // Add fine channel alias to the coarse channel
-        availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
-      }
-    }
     return channels;
   }
 
@@ -406,26 +427,8 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     return channels;
   }
 
-  // Handle Effect
-  if (capabilityType === `Effect`) {
-    const name = element.$.name || `Effect`;
-    const channelKey = name;
-
-    if (!(channelKey in availableChannels)) {
-      availableChannels[channelKey] = {
-        capability: {
-          type: `Effect`,
-          effectName: name,
-        },
-      };
-    }
-
-    channels.push(channelKey);
-    return channels;
-  }
-
-  // Handle EffectDimmable
-  if (capabilityType === `EffectDimmable`) {
+  // Handle Effect and EffectDimmable
+  if (capabilityType === `Effect` || capabilityType === `EffectDimmable`) {
     const name = element.$.name || `Effect`;
     const channelKey = name;
 
@@ -448,7 +451,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Fixed`;
 
     // Generate a unique channel key for this fixed channel
-    const baseKey = name === `Fixed` ? `Fixed ${startOffset}` : name;
+    const baseKey = name !== `Fixed` ? name : `Fixed ${startOffset}`;
     let channelKey = baseKey;
     let counter = 1;
 
