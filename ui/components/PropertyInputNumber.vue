@@ -26,6 +26,7 @@ export default {
     maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
     value: anyProp().required,
     lazy: booleanProp().withDefault(false),
+    stepOverride: oneOfTypesProp([Number, String]).optional, // allows overriding the calculated step value
   },
   emits: {
     input: value => true,
@@ -71,6 +72,9 @@ export default {
       return null;
     },
     step() {
+      if (this.stepOverride !== undefined) {
+        return this.stepOverride;
+      }
       return this.schemaProperty.type === `integer` ? 1 : `any`;
     },
 

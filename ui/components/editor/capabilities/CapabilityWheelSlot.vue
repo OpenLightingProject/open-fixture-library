@@ -5,7 +5,8 @@
       :formstate="formstate"
       multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
-      label="Slot number">
+      label="Slot number"
+      hint="Use 1.5 to indicate a wheel position halfway between slots 1 and 2">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
