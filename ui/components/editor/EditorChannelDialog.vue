@@ -277,7 +277,7 @@
   }
 
   &:focus {
-    outline: 2px solid theme-color(primary);
+    outline: 2px solid theme-color(link);
     outline-offset: -2px;
   }
 
