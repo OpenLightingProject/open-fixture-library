@@ -78,12 +78,29 @@ export async function importFixtures(buffer, filename, authorName) {
   fixture.modes = [];
 
   for (const lightjamsMode of modes) {
-    const mode = {
-      name: lightjamsMode.$.name || `Mode`,
-    };
-
-    if (lightjamsMode.$.description) {
-      mode.shortName = lightjamsMode.$.description;
+    const modeName = lightjamsMode.$.name || ``;
+    const modeDescription = lightjamsMode.$.description || ``;
+    
+    const mode = {};
+    
+    // Use description as name if available, otherwise use the name if it doesn't contain "Mode"
+    // If both contain "Mode" or are empty, generate a name based on channel count
+    if (modeDescription && !/\bmode\b/i.test(modeDescription)) {
+      mode.name = modeDescription;
+    }
+    else if (modeName && !/\bmode\b/i.test(modeName)) {
+      mode.name = modeName;
+      if (modeDescription) {
+        mode.shortName = modeDescription;
+      }
+    }
+    else {
+      // Will set name later based on channel count
+      mode.name = null;
+    }
+    
+    if (modeName && modeDescription && modeName !== modeDescription && !/\bmode\b/i.test(modeName)) {
+      mode.shortName = modeDescription;
     }
 
     // Process capabilities in the order they appear in the XML
@@ -111,6 +128,12 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     mode.channels = channelList;
+    
+    // Set mode name based on channel count if not already set
+    if (!mode.name) {
+      mode.name = `${channelList.length}-channel`;
+    }
+    
     fixture.modes.push(mode);
   }
 
