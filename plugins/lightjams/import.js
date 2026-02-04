@@ -58,7 +58,7 @@ export async function importFixtures(buffer, filename, authorName) {
     importPlugin: {
       plugin: `lightjams`,
       date: timestamp,
-      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || `1.00`}, revision ${getString(lightjamsFixture.revision) || `1`}`,
+      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || `1.00`}, revision ${getString(lightjamsFixture.revision) || `1`}, imported by Lightjams plugin version ${version}`,
     },
   };
 
