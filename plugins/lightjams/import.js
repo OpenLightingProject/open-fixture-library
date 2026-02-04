@@ -70,7 +70,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
   fixture.availableChannels = {};
   fixture.modes = [];
-  const processedChannelKeys = new Set();
 
   for (const lightjamsMode of modes) {
     const mode = {
@@ -98,7 +97,6 @@ export async function importFixtures(buffer, filename, authorName) {
           capabilityElement,
           channelOffset,
           fixture.availableChannels,
-          processedChannelKeys,
           out.warnings[fixtureKey],
         );
 
@@ -122,11 +120,10 @@ export async function importFixtures(buffer, filename, authorName) {
  * @param {object} element The capability XML element
  * @param {number} startOffset Starting channel offset
  * @param {object} availableChannels The fixture's availableChannels object
- * @param {Set<string>} processedChannelKeys Set of already processed channel keys
  * @param {object[]} warnings Array to add warnings to
  * @returns {string[]} Array of channel keys added
  */
-function processCapability(capabilityType, element, startOffset, availableChannels, processedChannelKeys, warnings) {
+function processCapability(capabilityType, element, startOffset, availableChannels, warnings) {
   const precision = Number.parseInt(element.$.precision || `1`, 10);
   const channels = [];
 
@@ -134,14 +131,14 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (KNOWN_COLOR_MIXING_TYPES.includes(capabilityType)) {
     for (const color of capabilityType.split(``)) {
       const channelKey = getColorName(color);
-      if (!processedChannelKeys.has(channelKey)) {
+
+      if (!(channelKey in availableChannels)) {
         availableChannels[channelKey] = {
           capability: {
             type: `ColorIntensity`,
             color: channelKey,
           },
         };
-        processedChannelKeys.add(channelKey);
       }
 
       for (let byte = 0; byte < precision; byte++) {
@@ -162,7 +159,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const max = Number.parseFloat(element.$.max) || 360;
     const defaultValue = Number.parseFloat(element.$.default) || (max / 2);
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: capabilityType,
@@ -171,7 +168,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
         },
         defaultValue: Math.round((defaultValue / max) * 255),
       };
-      processedChannelKeys.add(channelKey);
     }
 
     // Add channels - in OFL format, we always list coarse first, then fine
@@ -193,13 +189,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Dimmer`;
     const channelKey = name;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Intensity`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     for (let byte = 0; byte < precision; byte++) {
@@ -217,14 +212,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Shutter`) {
     const channelKey = `Shutter`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `ShutterStrobe`,
           shutterEffect: `Strobe`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -236,14 +230,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Color`;
     const channelKey = name;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `ColorPreset`,
           comment: `Color wheel`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     for (let byte = 0; byte < precision; byte++) {
@@ -261,14 +254,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Gobo`) {
     const channelKey = `Gobo`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `WheelSlot`,
           wheel: `Gobo`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -280,14 +272,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Gobo Rotation`;
     const channelKey = name;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `WheelSlotRotation`,
           wheel: `Gobo`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -298,7 +289,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Zoom`) {
     const channelKey = `Zoom`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Zoom`,
@@ -306,7 +297,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
           angleEnd: `wide`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -317,7 +307,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Focus`) {
     const channelKey = `Focus`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Focus`,
@@ -325,7 +315,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
           distanceEnd: `far`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -336,13 +325,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Prism`) {
     const channelKey = `Prism`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Prism`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -353,7 +341,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Iris`) {
     const channelKey = `Iris`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Iris`,
@@ -361,7 +349,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
           openPercentEnd: `100%`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -372,7 +359,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   if (capabilityType === `Frost`) {
     const channelKey = `Frost`;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Frost`,
@@ -380,7 +367,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
           frostIntensityEnd: `100%`,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -392,14 +378,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Effect`;
     const channelKey = name;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Effect`,
           effectName: name,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -411,14 +396,13 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     const name = element.$.name || `Effect`;
     const channelKey = name;
 
-    if (!processedChannelKeys.has(channelKey)) {
+    if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
           type: `Effect`,
           effectName: name,
         },
       };
-      processedChannelKeys.add(channelKey);
     }
 
     channels.push(channelKey);
@@ -435,7 +419,7 @@ function processCapability(capabilityType, element, startOffset, availableChanne
     let channelKey = baseKey;
     let counter = 1;
 
-    while (processedChannelKeys.has(channelKey)) {
+    while (channelKey in availableChannels) {
       channelKey = `${baseKey} ${counter}`;
       counter++;
     }
@@ -447,7 +431,6 @@ function processCapability(capabilityType, element, startOffset, availableChanne
         type: `Generic`,
       },
     };
-    processedChannelKeys.add(channelKey);
 
     channels.push(channelKey);
     return channels;
@@ -457,13 +440,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
   warnings.push(`Unknown capability type: ${capabilityType}`);
   const channelKey = `${capabilityType} ${startOffset}`;
 
-  if (!processedChannelKeys.has(channelKey)) {
+  if (!(channelKey in availableChannels)) {
     availableChannels[channelKey] = {
       capability: {
         type: `Generic`,
       },
     };
-    processedChannelKeys.add(channelKey);
   }
 
   channels.push(channelKey);
