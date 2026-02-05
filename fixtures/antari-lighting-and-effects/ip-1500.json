@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IP-1500",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["averageape"],
+    "createDate": "2026-01-25",
+    "lastModifyDate": "2026-01-25"
+  },
+  "comment": "Single DMX512 channel for operation, as defined below from manual.\nDMX VALUE FUNCTION\n0~5 off (no output)\n6~249 output volume control (5~95%)\n250~255 maximum output volume (100%)",
+  "links": {
+    "manual": [
+      "https://antari.es/wp-content/uploads/2020/02/IP-1500.pdf"
+    ],
+    "productPage": [
+      "https://antari.es/en/producto/antari-ip1500-outdoor-smoke-machine/"
+    ]
+  },
+  "physical": {
+    "dimensions": [222, 250, 465],
+    "weight": 13.5,
+    "power": 1500,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
