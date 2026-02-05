@@ -37,16 +37,7 @@
         },
         {
           "type": "Color",
-          "name": "White/Red"
-        },
-        {
-          "type": "Color",
           "name": "Red"
-        },
-        {
-          "type": "Color",
-          "name": "Red/Filter",
-          "colorTemperature": "3000K"
         },
         {
           "type": "Color",
@@ -59,15 +50,7 @@
         },
         {
           "type": "Color",
-          "name": "Green/Dark Blue"
-        },
-        {
-          "type": "Color",
           "name": "Dark Blue"
-        },
-        {
-          "type": "Color",
-          "name": "Dark Blue / Yellow"
         },
         {
           "type": "Color",
@@ -75,22 +58,11 @@
         },
         {
           "type": "Color",
-          "name": "Yellow / Light Blue"
-        },
-        {
-          "type": "Color",
           "name": "Light Blue"
         },
         {
           "type": "Color",
-          "name": "Light Blue / Magenta"
-        },
-        {
-          "type": "Color",
           "name": "Magenta"
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -356,7 +328,7 @@
           "soundControlled": true
         }
       ]
-    }
+    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -369,83 +341,82 @@
         {
           "dmxRange": [0, 4],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "White"
+          "slotNumber": 1
         },
         {
           "dmxRange": [5, 13],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [14, 22],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 2
         },
         {
           "dmxRange": [23, 31],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [32, 40],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 3
         },
         {
           "dmxRange": [41, 49],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [50, 58],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 4
         },
         {
           "dmxRange": [59, 67],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [68, 76],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 5
         },
         {
           "dmxRange": [77, 85],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [86, 94],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumber": 6
         },
         {
           "dmxRange": [95, 103],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [104, 112],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumber": 7
         },
         {
           "dmxRange": [113, 121],
           "type": "WheelSlot",
-          "slotNumber": 13
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [122, 130],
           "type": "WheelSlot",
-          "slotNumber": 14
+          "slotNumber": 8
         },
         {
           "dmxRange": [131, 139],
           "type": "WheelSlot",
-          "slotNumber": 15,
+          "slotNumber": 1,
           "comment": "White"
         },
         {
@@ -689,18 +660,19 @@
         }
       ]
     },
-    "Rotatable Gobo Wheel 2": {
-      "name": "Rotatable Gobo Wheel",
+    "Gobo Rotation": {
+      "name": "Wheel 2 Gobo Rotation",
+      "wheel": "Rotatable Gobo Wheel",
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [8, 47],
           "type": "Generic",
-          "comment": "Use Gobo Slot Index"
+          "comment": "Use Gobo Slot Index, TODO"
         },
         {
           "dmxRange": [48, 127],
@@ -831,7 +803,7 @@
         "Color Wheel",
         "Gobo Wheel",
         "Rotatable Gobo Wheel",
-        "Rotatable Gobo Wheel 2",
+        "Gobo Rotation",
         "Focus",
         "Zoom",
         "Prism",
