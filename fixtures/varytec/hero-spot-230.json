@@ -164,27 +164,26 @@
         {
           "dmxRange": [0, 10],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "all LEDs off"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [11, 80],
           "type": "ShutterStrobe",
-          "shutterEffect": "ramp up",
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [81, 140],
           "type": "ShutterStrobe",
-          "shutterEffect": "ramp down",
+          "shutterEffect": "RampDown",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [141, 200],
           "type": "ShutterStrobe",
-          "shutterEffect": "Impulse",
+          "shutterEffect": "Pulse",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
