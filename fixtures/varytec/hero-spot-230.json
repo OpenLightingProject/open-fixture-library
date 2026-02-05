@@ -347,8 +347,9 @@
         },
         {
           "dmxRange": [215, 255],
-          "type": "Generic",
-          "comment": "Music based Pan/Tilt automatic mode"
+          "type": "Effect",
+          "effectName": "Music based Pan/Tilt automatic mode",
+          "soundControlled": true
         }
       ]
     },
