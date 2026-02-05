@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PS40",
+  "categories": ["Other", "Barrel Scanner", "Blinder", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["MSZ-IT"],
+    "createDate": "2024-05-21",
+    "lastModifyDate": "2024-05-21"
+  },
+  "links": {
+    "other": [
+      "https://sonomateriel.com/amfile/file/download/file/997/product/576/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "15Hz"
+      }
+    },
+    "Mode": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Color Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Color Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Red (Ring)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Color Green (Ring)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Color Blue (Ring)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default - 11ch",
+      "shortName": "11chDEF",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Mode",
+        "Effect Speed",
+        "Color Red",
+        "Color Green",
+        "Color Blue",
+        "Color White",
+        "Color Red (Ring)",
+        "Color Green (Ring)",
+        "Color Blue (Ring)"
+      ]
+    }
+  ]
+}
