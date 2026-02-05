@@ -3,40 +3,10 @@
 
     <Component
       :is="formstate ? 'Validate' : 'span'"
-      v-if="!hasStartEnd"
+      v-if="hasStartEnd"
       :state="formstate"
       :tag="formstate ? 'span' : null">
 
-      <PropertyInputNumber
-        v-if="entity === `slotNumber`"
-        ref="steppedField"
-        v-model="slotNumberStepped"
-        :name="`capability${capability.uuid}-${propertyName}`"
-        :required="required"
-        :schema-property="slotNumberSchema" />
-
-      <PropertyInputEntity
-        v-else-if="entitySchema"
-        ref="steppedField"
-        v-model="propertyDataStepped"
-        :name="`capability${capability.uuid}-${propertyName}`"
-        :required="required"
-        :schema-property="entitySchema" />
-
-      <PropertyInputText
-        v-else
-        ref="steppedField"
-        v-model="propertyDataStepped"
-        :name="`capability${capability.uuid}-${propertyName}`"
-        :required="required"
-        :schema-property="schemaDefinitions.nonEmptyString"
-        :valid-color-hex-list="propertyName === `colorsHexString`" />
-
-      <span v-if="hint" class="hint">{{ hint }}</span>
-
-    </Component>
-
-    <template v-else>
       <Component
         :is="formstate ? 'Validate' : 'label'"
         :state="formstate"
@@ -49,7 +19,8 @@
           v-model="slotNumberStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
-          :schema-property="slotNumberSchema" />
+          :schema-property="slotNumberSchema"
+          :step-override="0.5" />
 
         <PropertyInputEntity
           v-else-if="entitySchema"
@@ -102,7 +73,8 @@
           v-model="slotNumberEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
-          :schema-property="slotNumberSchema" />
+          :schema-property="slotNumberSchema"
+          :step-override="0.5" />
 
         <PropertyInputEntity
           v-else-if="entitySchema"
@@ -130,6 +102,36 @@
         </span>
 
       </Component>
+    </Component>
+
+    <template v-else>
+      <PropertyInputNumber
+        v-if="entity === `slotNumber`"
+        ref="steppedField"
+        v-model="slotNumberStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
+        :schema-property="slotNumberSchema"
+        :step-override="0.5" />
+
+      <PropertyInputEntity
+        v-else-if="entitySchema"
+        ref="steppedField"
+        v-model="propertyDataStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
+        :schema-property="entitySchema" />
+
+      <PropertyInputText
+        v-else
+        ref="steppedField"
+        v-model="propertyDataStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
+        :schema-property="schemaDefinitions.nonEmptyString"
+        :valid-color-hex-list="propertyName === `colorsHexString`" />
+
+      <span v-if="hint" class="hint">{{ hint }}</span>
     </template>
 
     <section>
