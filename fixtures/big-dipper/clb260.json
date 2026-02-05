@@ -1,0 +1,191 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB260",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Adiu ! Lightintg"],
+    "createDate": "2026-01-12",
+    "lastModifyDate": "2026-01-12"
+  },
+  "links": {
+    "manual": [
+      "https://betopperdj.com/fr/products/betopper-9r-260w-beam-moving-head-light"
+    ],
+    "productPage": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/CLB260_User_manual.pdf?v=1704962753"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=P08ccv7drTY"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 199, 428],
+    "weight": 6.3,
+    "power": 320,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "OSRAM SIRIUS HRI 251W(CLB260-O)",
+      "colorTemperature": 7800
+    },
+    "lens": {
+      "name": "default",
+      "degreesMinMax": [2.8, 2.8]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 12
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 127],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation"
+        }
+      ]
+    },
+    "Frost": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "off"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "Frost",
+          "frostIntensityStart": "high",
+          "frostIntensityEnd": "high"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Maintenance",
+          "parameter": "instant",
+          "hold": "instant",
+          "comment": "reset"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Frost 2": {
+      "name": "Frost",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": "high",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "A!L APP": {
+      "capability": {
+        "type": "Maintenance",
+        "parameter": "short",
+        "hold": "short"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12 chanel",
+      "shortName": "12 chanel",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Frost 2",
+        "A!L APP"
+      ]
+    }
+  ]
+}
