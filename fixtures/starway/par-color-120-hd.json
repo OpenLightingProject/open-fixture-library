@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par Color 120 HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pascal Denis"],
+    "createDate": "2026-01-31",
+    "lastModifyDate": "2026-01-31"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/225465_PARKOLOR120HD/225465_PARKOLOR120HD-V1.04_FR.pdf"
+    ],
+    "productPage": [
+      "https://starway.eu/fr/produits/parkolor-120hd#support"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 240, 400],
+    "weight": 7.2,
+    "power": 145,
+    "bulb": {
+      "type": "led cob",
+      "lumens": 2000
+    },
+    "lens": {
+      "degreesMinMax": [7, 39]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "RED": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "WHITE": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "ZOOM": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 canaux",
+      "shortName": "ParKolor 7 canaux",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "ZOOM"
+      ]
+    }
+  ]
+}
