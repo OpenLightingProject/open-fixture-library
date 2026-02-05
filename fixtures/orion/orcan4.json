@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ORCAN4",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-17",
+    "lastModifyDate": "2026-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://orion-fxlights.com/images/products/ownersman/om_orcan4.pdf"
+    ],
+    "productPage": [
+      "https://orion-fxlights.com/par-cans/product/771364/orcan4"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 260, 105],
+    "weight": 2.5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimming - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimming - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimming - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimming - White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimming - Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimming - UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 99],
+          "type": "Effect",
+          "effectName": "Color step changing"
+        },
+        {
+          "dmxRange": [100, 150],
+          "type": "Effect",
+          "effectName": "Color fading"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Pulsing"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Audio chase",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed Control": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 6-Channel Control",
+      "shortName": "6ch",
+      "channels": [
+        "Dimming - Red",
+        "Dimming - Green",
+        "Dimming - Blue",
+        "Dimming - White",
+        "Dimming - Amber",
+        "Dimming - UV"
+      ]
+    },
+    {
+      "name": "DMX 10-Channel Control",
+      "shortName": "10ch",
+      "channels": [
+        "Master Dimming",
+        "Master Strobe",
+        "Effect Select",
+        "Speed Control",
+        "Dimming - Red",
+        "Dimming - Green",
+        "Dimming - Blue",
+        "Dimming - White",
+        "Dimming - Amber",
+        "Dimming - UV"
+      ]
+    }
+  ]
+}
