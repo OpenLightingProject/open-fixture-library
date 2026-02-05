@@ -4,7 +4,7 @@
   "shortName": "Hero Spot 230",
   "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Leon Dietrich"],
+    "authors": ["Leon Dietrich", "Flo Edelmann"],
     "createDate": "2023-10-07",
     "lastModifyDate": "2023-10-07"
   },
@@ -167,17 +167,19 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "290deg"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "720deg"
+        "angleEnd": "260deg"
       }
     },
     "Dimmer": {
@@ -189,40 +191,42 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
           "comment": "all LEDs off"
         },
         {
           "dmxRange": [11, 80],
-          "type": "Effect",
-          "effectName": "increasing brightness",
+          "type": "ShutterStrobe",
+          "shutterEffect": "ramp up",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [81, 140],
-          "type": "Effect",
-          "effectName": "decreasing brightness",
+          "type": "ShutterStrobe",
+          "shutterEffect": "ramp down",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [141, 200],
-          "type": "Effect",
-          "effectName": "Impulse Effect",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Impulse",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [201, 250],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0.5Hz",
           "speedEnd": "20Hz"
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
-          "comment": "LEDs fully enabled"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -352,25 +356,7 @@
           "soundControlled": true
         }
       ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "720deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
+    }
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -753,7 +739,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Prism",
+          "type": "NoFunction",
           "comment": "Open"
         },
         {
@@ -763,7 +749,7 @@
         },
         {
           "dmxRange": [100, 130],
-          "type": "Prism",
+          "type": "NoFunction",
           "comment": "Open"
         },
         {
@@ -807,7 +793,8 @@
         },
         {
           "dmxRange": [190, 210],
-          "type": "Generic",
+          "type": "Maintenance",
+          "hold": "10s",
           "comment": "Reset"
         },
         {
@@ -819,7 +806,7 @@
   },
   "modes": [
     {
-      "name": "6ch",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Pan",
@@ -831,13 +818,13 @@
       ]
     },
     {
-      "name": "18ch",
+      "name": "18-channel",
       "shortName": "18ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "StrobeEffects",
@@ -854,8 +841,5 @@
         "Reset"
       ]
     }
-  ],
-  "fixtureKey": "hero-spot-230",
-  "manufacturerKey": "varytec",
-  "oflURL": "https://open-fixture-library.org/varytec/hero-spot-230"
+  ]
 }
