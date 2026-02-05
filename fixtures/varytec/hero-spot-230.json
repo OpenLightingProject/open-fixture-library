@@ -276,8 +276,9 @@
         },
         {
           "dmxRange": [248, 255],
-          "type": "Generic",
-          "comment": "Enable Music Control"
+          "type": "Effect",
+          "effectName": "Music Control",
+          "soundControlled": true
         }
       ]
     },
