@@ -73,38 +73,31 @@
         },
         {
           "type": "Gobo",
-          "resource": "gobos/5-fold-swirl-inverted",
-          "name": "Gobo 1"
+          "resource": "gobos/5-fold-swirl-inverted"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/rays",
-          "name": "Gobo 2"
+          "resource": "gobos/rays"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/tiny-stars",
-          "name": "Gobo 3"
+          "resource": "gobos/tiny-stars"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/shards",
-          "name": "Gobo 4"
+          "resource": "gobos/shards"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/rose-petal-abstract",
-          "name": "Gobo 5"
+          "resource": "gobos/rose-petal-abstract"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/pointed-grid",
-          "name": "Gobo 6"
+          "resource": "gobos/pointed-grid"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/comets",
-          "name": "Gobo 7"
+          "resource": "gobos/comets"
         }
       ]
     },
@@ -115,38 +108,31 @@
         },
         {
           "type": "Gobo",
-          "resource": "gobos/quarter-mark",
-          "name": "Gobo 1"
+          "resource": "gobos/quarter-mark"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/edge-touching-circles",
-          "name": "Gobo 2"
+          "resource": "gobos/edge-touching-circles"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/4-line-arraged-dots",
-          "name": "Gobo 3"
+          "resource": "gobos/4-line-arraged-dots"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/triangle-outline",
-          "name": "Gobo 4"
+          "resource": "gobos/triangle-outline"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/1-vertical-bars",
-          "name": "Gobo 5"
+          "resource": "gobos/1-vertical-bars"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/32-circles",
-          "name": "Gobo 6"
+          "resource": "gobos/32-circles"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/circle-outline",
-          "name": "Gobo 7"
+          "resource": "gobos/circle-outline"
         }
       ]
     }
@@ -173,7 +159,7 @@
         "type": "Intensity"
       }
     },
-    "StrobeEffects": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -429,15 +415,13 @@
         {
           "dmxRange": [131, 139],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "White"
+          "slotNumber": 1
         },
         {
           "dmxRange": [140, 195],
           "type": "WheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Rainbow effect"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [196, 199],
@@ -448,8 +432,7 @@
           "dmxRange": [200, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Rainbow Effect"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -674,33 +657,36 @@
       ]
     },
     "Gobo Rotation": {
-      "name": "Wheel 2 Gobo Rotation",
-      "wheel": "Rotatable Gobo Wheel",
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "WheelSlotRotation",
+          "wheel": "Rotatable Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [8, 47],
           "type": "Generic",
+          "wheel": "Rotatable Gobo Wheel",
           "comment": "Use Gobo Slot Index, TODO"
         },
         {
           "dmxRange": [48, 127],
           "type": "WheelSlotRotation",
+          "wheel": "Rotatable Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [128, 137],
           "type": "WheelSlotRotation",
+          "wheel": "Rotatable Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [138, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Rotatable Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -797,7 +783,7 @@
         "Pan",
         "Tilt",
         "Dimmer",
-        "StrobeEffects",
+        "Shutter / Strobe",
         "Automatic Effects",
         "Pan/Tilt Automatics"
       ]
@@ -812,7 +798,7 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
-        "StrobeEffects",
+        "Shutter / Strobe",
         "Color Wheel",
         "Gobo Wheel",
         "Rotatable Gobo Wheel",
