@@ -1,0 +1,243 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Focusing Bee Eye",
+  "shortName": "Bee Eye with Halo",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Zack Tardiani"],
+    "createDate": "2026-02-07",
+    "lastModifyDate": "2026-02-07"
+  },
+  "comment": "ZQ02110",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ02110-19x15W-RGBW-LED-Focusing-Moving-Head-Stage-Light-with-Halo-Strip.pdf?v=4467332893466839611"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/uking-zq02110-moving-head-light"
+    ],
+    "video": [
+      "https://cdn.shopify.com/videos/c/o/v/02ba87af73a9456c808f4d6183c380eb.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 420, 265],
+    "weight": 12.55,
+    "power": 230,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "WASH",
+      "degreesMinMax": [6, 60]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Blade Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pixel Macro": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pixel FX Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Halo Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Halo"
+      }
+    },
+    "Effect Speed 2": {
+      "name": "Effect Speed",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 26ch",
+      "shortName": "26 Ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Blade Rotation",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macros",
+        "Pixel Macro",
+        "Pixel FX Macro",
+        "Effect Speed",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Strobe 2",
+        "Halo Macros",
+        "Effect Speed 2",
+        "Reset"
+      ]
+    }
+  ]
+}
