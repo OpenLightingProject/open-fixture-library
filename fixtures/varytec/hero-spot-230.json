@@ -666,9 +666,10 @@
         },
         {
           "dmxRange": [8, 47],
-          "type": "Generic",
+          "type": "WheelSlotRotation",
           "wheel": "Rotatable Gobo Wheel",
-          "comment": "Use Gobo Slot Index, TODO"
+          "angleStart": 0,
+          "angleEnd": 359
         },
         {
           "dmxRange": [48, 127],
