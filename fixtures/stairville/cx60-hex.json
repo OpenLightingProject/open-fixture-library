@@ -3,7 +3,7 @@
   "name": "CX60 Hex",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Leon Dietrich"],
+    "authors": ["Leon Dietrich", "Flo Edelmann"],
     "createDate": "2023-10-07",
     "lastModifyDate": "2023-10-07"
   },
@@ -76,21 +76,31 @@
         {
           "dmxRange": [64, 127],
           "type": "Effect",
+          "switchChannels": {
+            "Effect Speed": "Effect Speed - slow/fast"
+          },
           "effectName": "14 color automatic switching"
         },
         {
           "dmxRange": [128, 191],
           "type": "Effect",
+          "switchChannels": {
+            "Effect Speed": "Effect Speed - fast/slow"
+          },
           "effectName": "24 color automatic switching"
         },
         {
           "dmxRange": [192, 255],
           "type": "Effect",
+          "switchChannels": {
+            "Effect Speed": "Effect Speed - microphone"
+          },
           "effectName": "6 color automatic switching"
         }
       ]
     },
-    "Effect Speed": {
+    "Effect Speed - slow/fast": {
+      "name": "Effect Speed",
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -101,8 +111,40 @@
           "dmxRange": [11, 255],
           "type": "EffectSpeed",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Behaviour based on channel 1: 64..127 fast to slow; 128 .. 191 slow to fast; 192 .. 255 based on microphone"
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect Speed - fast/slow": {
+      "name": "Effect Speed",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No automatic changes"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Effect Speed - Microphone": {
+      "name": "Effect Speed",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No automatic changes"
+        },
+        {
+          "dmxRange": [11, 255],
+          "comment": "Effect Speed based on microphone",
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         }
       ]
     },
