@@ -71,23 +71,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Generic",
-          "comment": "Use color defined in color channels"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Generic",
-          "comment": "14 color automatic switching"
+          "type": "Effect",
+          "effectName": "14 color automatic switching"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Generic",
-          "comment": "24 color automatic switching"
+          "type": "Effect",
+          "effectName": "24 color automatic switching"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Generic",
-          "comment": "6 color automatic switching"
+          "type": "Effect",
+          "effectName": "6 color automatic switching"
         }
       ]
     },
