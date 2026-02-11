@@ -90,6 +90,120 @@
       "capability": {
         "type": "NoFunction"
       }
+    },
+    "Mode Effect": {
+      "defaultValue": 64,
+      "highlightValue": 64,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Effect Mode"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "CCT LOOP"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Generic",
+          "comment": "INT LOOP"
+        },
+        {
+          "dmxRange": [37, 54],
+          "type": "Generic",
+          "comment": "FLASH"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Generic",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [73, 90],
+          "type": "Generic",
+          "comment": "STORM"
+        },
+        {
+          "dmxRange": [91, 108],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [109, 126],
+          "type": "Generic",
+          "comment": "PAPARAZZI"
+        },
+        {
+          "dmxRange": [127, 144],
+          "type": "Generic",
+          "comment": "CANDLE/FIRE"
+        },
+        {
+          "dmxRange": [145, 162],
+          "type": "Generic",
+          "comment": "BAD BULB"
+        },
+        {
+          "dmxRange": [163, 180],
+          "type": "Generic",
+          "comment": "FIREWORK"
+        },
+        {
+          "dmxRange": [181, 198],
+          "type": "Generic",
+          "comment": "EXPLOSION"
+        },
+        {
+          "dmxRange": [199, 216],
+          "type": "Generic",
+          "comment": "WELDING"
+        },
+        {
+          "dmxRange": [217, 255],
+          "type": "Generic",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Param1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param4": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param6": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param7": {
+      "capability": {
+        "type": "Generic"
+      }
     }
   },
   "modes": [
@@ -109,6 +223,23 @@
         "Strobe",
         "Reserved1",
         "Reserved2"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - EFFECT",
+      "shortName": "Ultimate EFFECT",
+      "channels": [
+        "Dimmer",
+        "Mode Effect",
+        "Effect Mode",
+        "Param1",
+        "Param2",
+        "Param3",
+        "Param4",
+        "Param5",
+        "Param6",
+        "Param7",
+        "Fan Control"
       ]
     }
   ]
