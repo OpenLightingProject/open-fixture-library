@@ -173,10 +173,10 @@
         },
         {
           "dmxRange": [16, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Increasing Speed"
+          "speedEnd": "fast"
         }
       ]
     },
