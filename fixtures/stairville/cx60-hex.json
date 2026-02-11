@@ -68,9 +68,13 @@
       }
     },
     "Effect": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 63],
+          "switchChannels": {
+            "Effect Speed": "Effect Speed - slow/fast"
+          },
           "type": "NoFunction"
         },
         {
