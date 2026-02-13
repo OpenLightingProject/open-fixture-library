@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.4.0/schemas/fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hero Spot 230",
   "shortName": "Hero Spot 230",
   "categories": ["Moving Head"],
@@ -668,8 +668,8 @@
           "dmxRange": [8, 47],
           "type": "WheelSlotRotation",
           "wheel": "Rotatable Gobo Wheel",
-          "angleStart": 0,
-          "angleEnd": 359
+          "angleStart": "0deg",
+          "angleEnd": "359deg"
         },
         {
           "dmxRange": [48, 127],
