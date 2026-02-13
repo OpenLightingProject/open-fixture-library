@@ -72,34 +72,34 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
+          "type": "NoFunction",
           "switchChannels": {
             "Effect Speed": "Effect Speed - slow/fast"
-          },
-          "type": "NoFunction"
+          }
         },
         {
           "dmxRange": [64, 127],
           "type": "Effect",
+          "effectName": "14 color automatic switching",
           "switchChannels": {
             "Effect Speed": "Effect Speed - slow/fast"
-          },
-          "effectName": "14 color automatic switching"
+          }
         },
         {
           "dmxRange": [128, 191],
           "type": "Effect",
+          "effectName": "24 color automatic switching",
           "switchChannels": {
             "Effect Speed": "Effect Speed - fast/slow"
-          },
-          "effectName": "24 color automatic switching"
+          }
         },
         {
           "dmxRange": [192, 255],
           "type": "Effect",
+          "effectName": "6 color automatic switching",
           "switchChannels": {
-            "Effect Speed": "Effect Speed - Microphone"
-          },
-          "effectName": "6 color automatic switching"
+            "Effect Speed": "Effect Speed - Sound Sensitivity"
+          }
         }
       ]
     },
@@ -108,8 +108,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "No automatic changes"
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
           "dmxRange": [11, 255],
@@ -124,8 +124,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "No automatic changes"
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
           "dmxRange": [11, 255],
@@ -135,7 +135,7 @@
         }
       ]
     },
-    "Effect Speed - Microphone": {
+    "Effect Speed - Sound Sensitivity": {
       "name": "Effect Speed",
       "capabilities": [
         {
@@ -144,14 +144,13 @@
         },
         {
           "dmxRange": [11, 255],
-          "comment": "Effect Speed based on microphone",
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
         }
       ]
     },
-    "ColorPattern": {
+    "Color Pattern": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
@@ -171,8 +170,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Generic",
-          "comment": "No Strobe"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 255],
@@ -183,7 +182,7 @@
         }
       ]
     },
-    "FadeControl": {
+    "Fade Control": {
       "capabilities": [
         {
           "dmxRange": [0, 31],
@@ -235,7 +234,7 @@
   },
   "modes": [
     {
-      "name": "6-Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red",
@@ -247,7 +246,7 @@
       ]
     },
     {
-      "name": "8-Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Effect",
@@ -261,7 +260,7 @@
       ]
     },
     {
-      "name": "10-Channel",
+      "name": "10-channel",
       "shortName": "10ch",
       "channels": [
         "Red",
@@ -270,9 +269,9 @@
         "White",
         "Amber",
         "UV",
-        "ColorPattern",
+        "Color Pattern",
         "Strobe Speed",
-        "FadeControl",
+        "Fade Control",
         "Dimmer"
       ]
     }
