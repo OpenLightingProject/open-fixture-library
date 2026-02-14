@@ -19,7 +19,8 @@
           v-model="slotNumberStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
-          :schema-property="slotNumberSchema" />
+          :schema-property="slotNumberSchema"
+          :step-override="0.5" />
 
         <PropertyInputEntity
           v-else-if="entitySchema"
@@ -72,7 +73,8 @@
           v-model="slotNumberEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
-          :schema-property="slotNumberSchema" />
+          :schema-property="slotNumberSchema"
+          :step-override="0.5" />
 
         <PropertyInputEntity
           v-else-if="entitySchema"
@@ -109,7 +111,8 @@
         v-model="slotNumberStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="slotNumberSchema" />
+        :schema-property="slotNumberSchema"
+        :step-override="0.5" />
 
       <PropertyInputEntity
         v-else-if="entitySchema"
