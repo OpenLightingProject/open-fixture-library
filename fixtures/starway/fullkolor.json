@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fullkolor",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["annie"],
+    "createDate": "2026-02-19",
+    "lastModifyDate": "2026-02-19"
+  },
+  "links": {
+    "manual": [
+      "https://wwww.aesono.fr/manuel/Starway-Fullkolor.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "weight": 4.8,
+    "power": 52,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Autospeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer speed": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Id adress": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "tour",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe",
+        "Auto",
+        "Autospeed",
+        "Dimmer speed",
+        "Id adress"
+      ]
+    }
+  ]
+}
