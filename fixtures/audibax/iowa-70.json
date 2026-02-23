@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Iowa 70",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["a"],
+    "createDate": "2026-02-23",
+    "lastModifyDate": "2026-02-23"
+  },
+  "links": {
+    "productPage": [
+      "https://audibax.com/es/producto/iowa-70-black-2/"
+    ]
+  },
+  "availableChannels": {
+    "Cyan": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "a",
+      "channels": [
+        "Cyan"
+      ]
+    }
+  ]
+}
