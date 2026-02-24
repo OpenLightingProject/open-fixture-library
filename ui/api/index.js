@@ -15,6 +15,8 @@ import * as routeHandlers from './routes.js';
  */
 
 const app = express();
+// eslint-disable-next-line quotes -- app.disable() requires a plain string literal for the lint rule to detect it
+app.disable('x-powered-by');
 
 // support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
