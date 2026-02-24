@@ -328,6 +328,10 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `jsdoc/require-jsdoc`,
   `sonarjs/cognitive-complexity`,
+  `sonarjs/no-nested-functions`,
+  `sonarjs/regex-complexity`,
+  `sonarjs/slow-regex`,
+  `sonarjs/todo-tag`,
   `vue/no-mutating-props`,
 ]);
 
@@ -339,12 +343,8 @@ const disabledRules = [
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
-  `sonarjs/no-nested-functions`,
   `sonarjs/no-unsafe-unzip`,
   `sonarjs/pseudo-random`,
-  `sonarjs/regex-complexity`,
-  `sonarjs/slow-regex`,
-  `sonarjs/todo-tag`,
   `sonarjs/x-powered-by`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
