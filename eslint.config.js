@@ -280,6 +280,10 @@ const enabledRuleParameters = {
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],
+  'sonarjs/no-nested-functions': [],
+  'sonarjs/regex-complexity': [],
+  'sonarjs/slow-regex': [],
+  'sonarjs/todo-tag': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
@@ -345,7 +349,6 @@ const disabledRules = [
   `jsdoc/tag-lines`,
   `sonarjs/no-unsafe-unzip`,
   `sonarjs/pseudo-random`,
-  `sonarjs/x-powered-by`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
