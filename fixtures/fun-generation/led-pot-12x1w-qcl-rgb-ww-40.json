@@ -1,0 +1,369 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Pot 12x1W QCL RGB WW 40°",
+  "shortName": "FunGenLEDPotQCL40",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Minno", "Paul Rogalski"],
+    "createDate": "2024-09-30",
+    "lastModifyDate": "2024-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_409499_428047_512677_512675_v5_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/fun_generation_led_pot_12x1w_qcl_rgb_ww_428047.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i5958p8_yd59vq8a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [168, 172, 130],
+    "weight": 0.42,
+    "power": 17,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 1W QCL-LEDs (RGBWW)"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [1, 16],
+          "type": "Effect",
+          "effectName": "Program 01",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "Color Presets"
+          }
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "Effect",
+          "effectName": "Program 02",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "Effect",
+          "effectName": "Program 03",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "Effect",
+          "effectName": "Program 04",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "Effect",
+          "effectName": "Program 05",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "Effect",
+          "effectName": "Program 06",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "Effect",
+          "effectName": "Program 07",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "Effect",
+          "effectName": "Program 08",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "Effect",
+          "effectName": "Program 09",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [153, 169],
+          "type": "Effect",
+          "effectName": "Program 10",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "Effect",
+          "effectName": "Program 11",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "Effect",
+          "effectName": "Program 12",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "Effect",
+          "effectName": "Program 13",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "Effect",
+          "effectName": "Program 14",
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "No Function"
+          }
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "No Function / Color Presets / Sound Control": "Sound Control"
+          }
+        }
+      ]
+    },
+    "No Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ff9600"]
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffb400"]
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff008c"]
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "comment": "Light Red",
+          "colors": ["#ff8080"]
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#80ff80"]
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#8080ff"]
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colors": ["#ffc828"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Cold White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Sound Control": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound program selection",
+        "soundControlled": true
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program",
+        "No Function / Color Presets / Sound Control",
+        "Strobe"
+      ]
+    }
+  ]
+}

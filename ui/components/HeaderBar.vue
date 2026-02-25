@@ -1,14 +1,14 @@
 <template>
   <header>
-    <nav>
+    <!-- eslint-disable vuejs-accessibility/click-events-have-key-events vuejs-accessibility/no-static-element-interactions -->
+    <nav @click="focusContent($event)">
       <div class="left-nav">
         <NuxtLink
           class="home-logo"
           :class="{ 'hidden-by-search-field': searchFieldFocused }"
           to="/"
           exact
-          title="Home"
-          @click.native="focusContent()">
+          title="Home">
           Open Fixture Library
         </NuxtLink>
 
@@ -33,34 +33,30 @@
       <div class="right-nav">
         <NuxtLink
           to="/fixture-editor"
-          title="Fixture editor"
-          @click.native="focusContent()">
+          title="Fixture editor">
           Add fixture
         </NuxtLink>
 
         <NuxtLink
           to="/manufacturers"
-          title="Browse fixtures by manufacturer"
-          @click.native="focusContent()">
+          title="Browse fixtures by manufacturer">
           Manufacturers
         </NuxtLink>
 
         <NuxtLink
           to="/categories"
-          title="Browse fixtures by category"
-          @click.native="focusContent()">
+          title="Browse fixtures by category">
           Categories
         </NuxtLink>
 
         <NuxtLink
           to="/about"
-          title="About the project"
-          @click.native="focusContent()">
+          title="About the project">
           About
         </NuxtLink>
 
         <ClientOnly>
-          <ThemeSwitcher class="theme-switcher" @click.native="focusContent()" />
+          <ThemeSwitcher class="theme-switcher" />
         </ClientOnly>
       </div>
     </nav>
@@ -127,9 +123,9 @@ header {
     margin: 0;
     font-size: 1em;
     line-height: 4.5em;
+    vertical-align: middle;
     color: inherit;
     text-decoration: none;
-    vertical-align: middle;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -137,8 +133,8 @@ header {
 
     &:active,
     &:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
 
     @include mobile-hover-emulation((
@@ -224,8 +220,8 @@ header {
 
     form,
     form div {
-      flex-basis: 0;
       flex-grow: 1;
+      flex-basis: 0;
     }
   }
 }
@@ -237,6 +233,9 @@ import ThemeSwitcher from './ThemeSwitcher.vue';
 export default {
   components: {
     ThemeSwitcher,
+  },
+  emits: {
+    'focus-content': () => true,
   },
   data() {
     return {
@@ -251,8 +250,10 @@ export default {
     updateSearchQuery() {
       this.searchQuery = this.$router.history.current.query.q || ``;
     },
-    focusContent() {
-      this.$emit(`focus-content`);
+    focusContent(event) {
+      if (event.target?.closest(`a`)) {
+        this.$emit(`focus-content`);
+      }
     },
     search() {
       this.$router.push({

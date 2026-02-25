@@ -165,6 +165,18 @@ export const importHelpers = {
   },
 
   /**
+   * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+   * @returns {string} The normalized direction suffix.
+   */
+  getDirectionSuffix(direction) {
+    if (!direction) {
+      return ``;
+    }
+
+    return /counter|ccw/i.test(direction) ? ` CCW` : ` CW`;
+  },
+
+  /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
    * @param {string} capabilityName The capability name to extract information from.
@@ -175,9 +187,8 @@ export const importHelpers = {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
     if (speedRegex.test(capabilityName)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionString = direction ? (/counter|ccw/i.test(direction) ? ` CCW` : ` CW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = importHelpers.getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -191,8 +202,8 @@ export const importHelpers = {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;
@@ -209,6 +220,11 @@ export const importHelpers = {
 
     return capabilityName;
   },
+
+  getMaintenanceCap: capabilityData => ({
+    type: `Maintenance`,
+    comment: capabilityData.capabilityName,
+  }),
 };
 
 const createWheelRotationCapability = () => ({
@@ -282,10 +298,20 @@ const channelPresets = {
   },
   IntensityWhite: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `White`) || exportHelpers.isColorIntensity(capability, `Warm White`) || exportHelpers.isColorIntensity(capability, `Cold White`),
-    importCapability: ({ channelName }) => ({
-      type: `ColorIntensity`,
-      color: /\bcold\b/i.test(channelName) ? `Cold White` : (/\bwarm\b/i.test(channelName) ? `Warm White` : `White`),
-    }),
+    importCapability: ({ channelName }) => {
+      let color = `White`;
+      if (/\bwarm\b/i.test(channelName)) {
+        color = `Warm White`;
+      }
+      else if (/\bcold\b/i.test(channelName)) {
+        color = `Cold White`;
+      }
+
+      return {
+        type: `ColorIntensity`,
+        color,
+      };
+    },
   },
   IntensityUV: {
     isApplicable: capability => exportHelpers.isColorIntensity(capability, `UV`),
@@ -456,7 +482,7 @@ const channelPresets = {
       shutterEffect: `Strobe`,
       speedStart: `slow`,
       speedEnd: `fast`,
-      helpWanted: `At which DMX values is strobe disabled?`,
+      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
     }),
   },
   ShutterStrobeFastSlow: {
@@ -466,7 +492,7 @@ const channelPresets = {
       shutterEffect: `Strobe`,
       speedStart: `fast`,
       speedEnd: `slow`,
-      helpWanted: `At which DMX values is strobe disabled?`,
+      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
     }),
   },
   ShutterIrisMinToMax: {
@@ -944,6 +970,99 @@ export const capabilityPresets = {
       angleEnd: `360deg`,
       helpWanted: `Are these the correct angles?`,
     }),
+  },
+
+
+  // maintenance / reset capabilities
+
+  ResetPanTilt: {
+    isApplicable: capability =>
+      capability.type === `Maintenance` &&
+      /\breset\b/i.test(capability.comment) && (
+        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment)) ||
+        /\bposition\b|\bscan\b/i.test(capability.comment)
+      ),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetPan: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetTilt: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetEffects: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\beffects?\b|\bbeam\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetGobo: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bgobos?\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetColor: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcolou?rs?\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetCMY: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcmy\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetCTO: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcto\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetPrism: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bprisms?\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetBlades: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bblades?\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetIris: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\biris\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetFrost: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bfrost\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetZoom: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bzoom\b|\bfocus\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetMotors: {
+    isApplicable: capability =>
+      capability.type === `Maintenance` &&
+      /\breset\b/i.test(capability.comment) &&
+      /\bmotors?\b/i.test(capability.comment) &&
+      !/\ball\b|\btotal\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  ResetAll: {
+    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  LampOn: {
+    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  LampOff: {
+    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  SilentModeOn: {
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  SilentModeOff: {
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
+  },
+  SilentModeAutomatic: {
+    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
+    importCapability: importHelpers.getMaintenanceCap,
   },
 
 

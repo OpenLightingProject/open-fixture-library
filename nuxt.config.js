@@ -1,8 +1,14 @@
 import { fileURLToPath } from 'url';
+import sass from 'sass';
 
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
+
+const ignoredSassDeprecations = [`legacy-js-api`]; // can only be fixed with Nuxt.js v3
+const sassDeprecationIds = Object.values(sass.deprecations).flatMap(deprecation =>
+  (deprecation.status === `active` && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
+);
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
@@ -21,10 +27,6 @@ export default {
   plugins: [
     `~/plugins/global-components.js`,
     `~/plugins/vue-form.js`,
-    {
-      src: `~/plugins/vue-smooth-scroll.js`,
-      ssr: false,
-    },
   ],
   serverMiddleware: [
     {
@@ -64,6 +66,10 @@ export default {
       // automatically `@use` global SCSS definitions
       scss: {
         additionalData: `@use "~/assets/styles/global.scss" as *;`,
+        sassOptions: {
+          fatalDeprecations: sassDeprecationIds,
+          silenceDeprecations: ignoredSassDeprecations,
+        },
       },
     },
     extend(config, context) {
@@ -81,6 +87,16 @@ export default {
           removeSVGTagAttrs: false,
         },
       });
+
+      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      const javascriptRule = config.module.rules.find(rule => rule.type === `javascript/auto`);
+      const originalExclude = javascriptRule.exclude;
+      javascriptRule.exclude = {
+        and: [
+          originalExclude,
+          { not: [/node_modules[/\\]a11y-dialog/] },
+        ],
+      };
     },
   },
   render: {

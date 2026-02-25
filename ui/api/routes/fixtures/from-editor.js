@@ -1,13 +1,13 @@
 import importJson from '../../../../lib/import-json.js';
 import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
 import {
-  fixtureProperties,
-  physicalProperties,
-  linksProperties,
-  wheelSlotTypes,
-  channelProperties,
   capabilityTypes,
+  channelProperties,
+  fixtureProperties,
+  linksProperties,
   modeProperties,
+  physicalProperties,
+  wheelSlotTypes,
 } from '../../../../lib/schema-properties.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
 

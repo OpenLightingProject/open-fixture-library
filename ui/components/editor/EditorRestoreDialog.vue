@@ -2,7 +2,7 @@
   <A11yDialog
     id="restore-dialog"
     is-alert-dialog
-    :shown="restoredData !== undefined"
+    :shown="modelValue !== undefined"
     title="Auto-saved fixture data found">
 
     Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?
@@ -28,16 +28,15 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import {
-  getEmptyFixture,
-  getEmptyLink,
-  getEmptyPhysical,
-  getEmptyMode,
+  getEmptyCapability,
   getEmptyChannel,
   getEmptyFineChannel,
-  getEmptyCapability,
+  getEmptyFixture,
+  getEmptyLink,
+  getEmptyMode,
+  getEmptyPhysical,
   getSanitizedChannel,
-  clone,
-} from '../../assets/scripts/editor-utils.js';
+} from '../../assets/scripts/editor-utilities.js';
 
 import A11yDialog from '../A11yDialog.vue';
 
@@ -46,17 +45,22 @@ export default {
     A11yDialog,
   },
   model: {
-    prop: `restoredData`,
+    prop: `model-value`,
+    event: `update:model-value`,
   },
   props: {
-    restoredData: objectProp().optional,
+    modelValue: objectProp().optional,
+  },
+  emits: {
+    'update:model-value': value => true,
+    'restore-complete': () => true,
   },
   computed: {
     restoredDate() {
-      if (this.restoredData === undefined) {
+      if (this.modelValue === undefined) {
         return undefined;
       }
-      return (new Date(this.restoredData.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
+      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
     },
   },
   methods: {
@@ -64,21 +68,21 @@ export default {
       // put all items except the last one back
       localStorage.setItem(`autoSave`, JSON.stringify(JSON.parse(localStorage.getItem(`autoSave`)).slice(0, -1)));
 
-      this.$emit(`input`, undefined);
+      this.$emit(`update:model-value`, undefined);
       this.$emit(`restore-complete`);
     },
 
     async applyRestored() {
-      const restoredData = clone(this.restoredData);
+      const modelValue = structuredClone(this.modelValue);
 
       // closes dialog
-      this.$emit(`input`, undefined);
+      this.$emit(`update:model-value`, undefined);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
       await this.$nextTick();
 
-      this.$parent.fixture = getRestoredFixture(restoredData.fixture);
-      this.$parent.channel = getRestoredChannel(restoredData.channel, true);
+      this.$parent.fixture = getRestoredFixture(modelValue.fixture);
+      this.$parent.channel = getRestoredChannel(modelValue.channel, true);
 
       await this.$nextTick();
       this.$emit(`restore-complete`);

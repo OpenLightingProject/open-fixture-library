@@ -24,6 +24,7 @@
 
     <LabeledInput
       v-if="colorPreview !== null"
+      key="color-preview"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
@@ -36,6 +37,7 @@
 
     <LabeledInput
       v-if="colorPreviewStart !== null || colorPreviewEnd !== null"
+      key="color-preview-start-end"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
@@ -69,7 +71,7 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';

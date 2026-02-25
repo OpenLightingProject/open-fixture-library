@@ -41,7 +41,7 @@
           <EditorMode
             v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
-            v-model="fixture.modes[index]"
+            :mode="fixture.modes[index]"
             :index="index"
             :fixture="fixture"
             :formstate="formstate"
@@ -91,7 +91,7 @@
       </VueForm>
 
       <EditorChannelDialog
-        v-model="channel"
+        :channel="channel"
         :fixture="fixture"
         @reset-channel="resetChannel()"
         @channel-changed="autoSave(`channel`)"
@@ -131,11 +131,11 @@ import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
-  getEmptyFormState,
-  getEmptyFixture,
   getEmptyChannel,
+  getEmptyFixture,
+  getEmptyFormState,
   getEmptyMode,
-} from '../assets/scripts/editor-utils.js';
+} from '../assets/scripts/editor-utilities.js';
 
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
@@ -222,7 +222,7 @@ export default {
     },
 
     openChannelEditor(channelData) {
-      this.channel = Object.assign({}, this.channel, channelData);
+      this.channel = { ...this.channel, ...channelData };
     },
 
     resetChannel() {
@@ -271,7 +271,7 @@ export default {
         const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
         const channelPosition = channelMode.channels.indexOf(channelUuid);
-        if (channelPosition > -1) {
+        if (channelPosition !== -1) {
           // remove channel reference from mode
           channelMode.channels.splice(channelPosition, 1);
         }
@@ -342,7 +342,7 @@ export default {
         return;
       }
 
-      console.log(`restore`, JSON.parse(JSON.stringify(this.restoredData)));
+      console.log(`restore`, structuredClone(this.restoredData));
     },
 
     /**

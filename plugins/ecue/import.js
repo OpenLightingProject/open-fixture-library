@@ -177,6 +177,18 @@ function getCombinedEcueChannels(ecueFixture) {
 }
 
 /**
+ * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+ * @returns {string} The normalized direction suffix.
+ */
+function getDirectionSuffix(direction) {
+  if (!direction) {
+    return ``;
+  }
+
+  return /^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`;
+}
+
+/**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
  * @param {object} ecueChannel The e:cue channel object.
  * @param {object} fixture The OFL fixture object.
@@ -413,17 +425,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           const isPan = channelName.match(/pan/i);
           const isTilt = channelName.match(/tilt/i);
 
-          let panOrTilt = null;
-          if (isPan && !isTilt) {
-            panOrTilt = `Pan`;
-          }
-          else if (isTilt && !isPan) {
-            panOrTilt = `Tilt`;
-          }
-          else {
+          if ((!isPan && !isTilt) || (isPan && isTilt)) {
             // fall back to default
             return capabilityTypePerChannelType.ChannelBeam();
           }
+
+          const panOrTilt = isPan ? `Pan` : `Tilt`;
 
           if (/continuous/i.test(channelName)) {
             return `${panOrTilt}Continuous`;
@@ -488,9 +495,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
-        const directionString = direction ? (/^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`) : ``;
-
-        if (directionString !== ``) {
+        const directionSuffix = getDirectionSuffix(direction);
+        if (directionSuffix !== ``) {
           capability.type = `Rotation`;
         }
 
@@ -504,8 +510,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           end = `${endNumber}Hz`;
         }
 
-        capability.speedStart = start + directionString;
-        capability.speedEnd = end + directionString;
+        capability.speedStart = start + directionSuffix;
+        capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
         return ``;

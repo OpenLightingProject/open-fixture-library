@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line vuejs-accessibility/no-aria-hidden-on-focusable -- aria-hidden is dynamically toggled -->
   <div
     :id="id"
     class="dialog-container"
@@ -121,6 +122,10 @@ export default {
     shown: booleanProp().withDefault(true),
     title: stringProp().required,
     wide: booleanProp().withDefault(false),
+  },
+  emits: {
+    show: () => true,
+    hide: () => true,
   },
   data() {
     return {

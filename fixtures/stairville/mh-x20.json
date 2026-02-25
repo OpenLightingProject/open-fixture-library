@@ -1,0 +1,567 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH-X20",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Kristo", "Paul Rogalski"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-10-01",
+      "comment": "created by Q Light Controller Plus (version 4.12.3 GIT)"
+    }
+  },
+  "links": {
+    "manual": ["https://images.thomann.de/pics/atg/atgdata/document/manual/c_299888_en_online.pdf"]
+  },
+  "physical": {
+    "dimensions": [200, 290, 210],
+    "weight": 4.2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 9800
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff557f"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00aa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#55ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff5500"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00045.svg"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00046.png"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00048.svg"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00049.svg"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00050.png"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00052.svg"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00053.svg"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelRotation",
+          "wheel": "Color Wheel",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelRotation",
+          "wheel": "Color Wheel",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "wheel": "Gobo Wheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Special functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 27],
+          "type": "Maintenance",
+          "comment": "Blackout during Pan/Tilt movement"
+        },
+        {
+          "dmxRange": [28, 47],
+          "type": "Maintenance",
+          "comment": "Blackout during Gobo wheel movement"
+        },
+        {
+          "dmxRange": [48, 67],
+          "type": "Maintenance",
+          "comment": "Blackout during Pan/Tilt or Gobo wheel movement"
+        },
+        {
+          "dmxRange": [68, 87],
+          "type": "Maintenance",
+          "comment": "Blackout during Color wheel movement"
+        },
+        {
+          "dmxRange": [88, 107],
+          "type": "Maintenance",
+          "comment": "Blackout during Pan/Tilt or Color wheel movement"
+        },
+        {
+          "dmxRange": [108, 127],
+          "type": "Maintenance",
+          "comment": "Blackout during Gobo or Color wheel movement"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "Maintenance",
+          "comment": "Blackout during Pan/Tilt, Gobo or Color wheel movement"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "Maintenance",
+          "comment": "Reset Pan"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "Maintenance",
+          "comment": "Reset Tilt"
+        },
+        {
+          "dmxRange": [188, 207],
+          "type": "Maintenance",
+          "comment": "Reset Color wheel"
+        },
+        {
+          "dmxRange": [208, 227],
+          "type": "Maintenance",
+          "comment": "Reset Gobo wheel"
+        },
+        {
+          "dmxRange": [228, 247],
+          "type": "Maintenance",
+          "comment": "Reset all channels"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 23],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [24, 39],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [56, 71],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [88, 103],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [120, 135],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [136, 151],
+          "type": "Effect",
+          "effectName": "Sound control 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [152, 167],
+          "type": "Effect",
+          "effectName": "Sound control 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [168, 183],
+          "type": "Effect",
+          "effectName": "Sound control 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [184, 199],
+          "type": "Effect",
+          "effectName": "Sound control 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 215],
+          "type": "Effect",
+          "effectName": "Sound control 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 231],
+          "type": "Effect",
+          "effectName": "Sound control 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [232, 247],
+          "type": "Effect",
+          "effectName": "Sound control 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound control 8",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Gobo"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan Fine",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Color",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Gobo",
+        "Special functions",
+        "Programs"
+      ]
+    }
+  ]
+}

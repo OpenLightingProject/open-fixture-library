@@ -18,6 +18,7 @@ const excludedUrls = [
   `https://open-fixture-library.org`, // exclude canonical URLs
   `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
   `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+  `https://web.archive.org/`, // Wayback Machine links are designed to be available "forever" and we don't want to put unnecessary load on their servers.
 ];
 
 
@@ -269,13 +270,15 @@ async function updateGithubIssue(urlResults) {
 
     try {
       const lines = body.split(/\r?\n/); // support both \n and \r\n newline types
-      const firstContentLine = lines.findIndex(line => line.startsWith(`|`)) + 2;
-      lines.splice(0, firstContentLine); // delete first lines which only hold general data
       for (const line of lines) {
-        const [, url, lastResults] = line.match(/^\| (.*) <td nowrap>(.*)<\/td>$/);
+        if (!line.startsWith(`<tr><td nowrap>`)) {
+          continue;
+        }
+
+        const [, lastResults, url] = line.match(/<tr><td nowrap>(.*?)<\/td><td><a href="(.*?)"/);
 
         linkData[url] = lastResults.split(`&nbsp;`).map(item => {
-          if (item === `:heavy_check_mark:`) {
+          if (item === `✔️`) {
             return {
               failed: false,
               message: null,
@@ -283,7 +286,7 @@ async function updateGithubIssue(urlResults) {
             };
           }
 
-          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">:\w+:<\/a>/);
+          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">[^<]+<\/a>/);
 
           return {
             failed: true,
@@ -294,7 +297,9 @@ async function updateGithubIssue(urlResults) {
       }
     }
     catch (error) {
-      throw `Unable to retrieve link data from issue body: ${error}`;
+      throw new Error(`Unable to retrieve link data from issue body`, {
+        cause: error,
+      });
     }
 
     return linkData;
@@ -359,33 +364,40 @@ async function updateGithubIssue(urlResults) {
   }
 
   /**
+   * @param {LinkStatus} status The status to get the linked emoji for.
+   * @returns {string} An emoji, wrapped in a link to the failed job if applicable.
+   */
+  function getStatusEmojiLink(status) {
+    if (!status.failed) {
+      return `✔️`;
+    }
+
+    const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
+    const emoji = getFailedEmoji(status.message);
+    return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
+  }
+
+  /**
    * @param {LinkData} linkData The new link data from which to create the issue body.
    * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+    const rows = Object.entries(linkData).map(([url, statuses]) => {
+      const statusIcons = statuses.map(status => getStatusEmojiLink(status)).join(`&nbsp;`);
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
+    });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
       ``,
       `**Last updated:** ${new Date().toISOString()}`,
       ``,
-      `| URL <th nowrap>today … 6 days ago</th>`,
-      `|--------------------------------------|`,
-      ...Object.entries(linkData).map(([url, statuses]) => {
-        const statusIcons = statuses.map(status => {
-          if (!status.failed) {
-            return `:heavy_check_mark:`;
-          }
-
-          const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
-          const emoji = getFailedEmoji(status.message);
-          return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
-        }).join(`&nbsp;`);
-
-        return `| ${url} <td nowrap>${statusIcons}</td>`;
-      }),
+      `<table>`,
+      `<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>`,
+      ...rows,
+      `</table>`,
     ];
-
     return lines.join(`\n`);
   }
 
@@ -429,13 +441,13 @@ async function updateGithubIssue(urlResults) {
     const lines = [
       `${GITHUB_COMMENT_HEADING} (${new Date().toISOString()})`,
       ``,
-      `[:page_with_curl: Workflow run](${workflowRunUrl})`,
+      `[📃 Workflow run](${workflowRunUrl})`,
       ``,
     ];
 
     if (newFailingUrlResults.length > 0) {
       lines.push(
-        `### :x: New failing URLs`,
+        `### ❌ New failing URLs`,
         ...newFailingUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
         ``,
       );
@@ -443,7 +455,7 @@ async function updateGithubIssue(urlResults) {
 
     if (fixedUrlResults.length > 0) {
       lines.push(
-        `### :heavy_check_mark: Fixed URLs (no fails in the last seven days)`,
+        `### ✔️ Fixed URLs (no fails in the last seven days)`,
         ...fixedUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
         ``,
       );
@@ -451,7 +463,7 @@ async function updateGithubIssue(urlResults) {
 
     if (deletedUrls.length > 0) {
       lines.push(
-        `### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`,
+        `### ✔️ Fixed URLs (failing URLs not included anymore)`,
         ...deletedUrls.map(url => `- ${url}`),
         ``,
       );
@@ -472,21 +484,28 @@ async function updateGithubIssue(urlResults) {
  * @returns {string} The emoji to display for that error message.
  */
 function getFailedEmoji(message) {
-  const emojis = {
-    '301': `:fast_forward:`,
-    '301 moved permanently': `:fast_forward:`,
-
-    '403': `:no_entry:`,
-    '403 forbidden': `:no_entry:`,
-
-    '429': `:sos:`,
-    '429 too many requests': `:sos:`,
-
-    'certificate has expired': `:lock:`,
-    'unable to verify the first certificate': `:lock:`,
-
-    [`timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
-  };
-
-  return emojis[message.trim().toLowerCase()] || `:x:`;
+  switch (message.trim().toLowerCase()) {
+    case `301`:
+    case `301 moved permanently`: {
+      return `⏩`;
+    }
+    case `403`:
+    case `403 forbidden`: {
+      return `⛔`;
+    }
+    case `429`:
+    case `429 too many requests`: {
+      return `🆘`;
+    }
+    case `certificate has expired`:
+    case `unable to verify the first certificate`: {
+      return `🔒`;
+    }
+    case `timeout of ${TIMEOUT}ms exceeded.`: {
+      return `⌛`;
+    }
+    default: {
+      return `❌`;
+    }
+  }
 }
