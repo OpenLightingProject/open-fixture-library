@@ -214,9 +214,7 @@ function addFunctions(xml, mode) {
  * @returns {ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
  */
 function getChannelsPerPixel(mode) {
-  const channelsPerPixel = new Map();
-
-  channelsPerPixel.set(null, []);
+  const channelsPerPixel = new Map([[null, []]]);
 
   const matrix = mode.fixture.matrix;
   if (matrix !== null) {

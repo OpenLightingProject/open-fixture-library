@@ -224,8 +224,7 @@ async function getFixtureCreateResult(fixtures) {
         const urlObject = new URL(url);
 
         const videoId = urlObject.pathname.slice(1);
-        const queryParameters = [...urlObject.searchParams];
-        queryParameters.unshift([`v`, videoId]);
+        const queryParameters = [[`v`, videoId], ...urlObject.searchParams];
         const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
 
         urlObject.host = `www.youtube.com`;
