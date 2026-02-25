@@ -35,7 +35,7 @@
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
-    "test:http-status": "NODE_ENV=production vitest run tests/http-status.test.js",
+    "test:http-status": "vitest run tests/http-status.test.js",
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {
