@@ -2,8 +2,8 @@
   <ConditionalDetails :open="capability.open" class="capability">
     <template #summary>
       DMX range
-      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
-      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <code :class="{ 'unset': start === null }">{{ start === null ? min : start }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end === null ? max : end }}</code>:
       <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
     </template>
 
@@ -88,7 +88,7 @@
 <script>
 import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
