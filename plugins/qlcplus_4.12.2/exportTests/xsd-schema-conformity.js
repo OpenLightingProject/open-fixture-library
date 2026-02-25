@@ -40,9 +40,11 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
 
   try {
     validator.validate(xmlDocument);
-  } catch (error) {
+  }
+  catch (error) {
     throw error.details.map(detail => detail.message.trim());
-  } finally {
+  }
+  finally {
     validator.dispose();
     xsdDocument.dispose();
     xmlDocument.dispose();
