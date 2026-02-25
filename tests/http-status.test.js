@@ -12,7 +12,6 @@ describe(`http-status`, () => {
   const crawler = new SiteCrawler();
 
   beforeAll(async () => {
-    crawler = new SiteCrawler();
     await crawler.startServer();
 
     crawler.addEventListener(`passingPage`, ({ url }) => {
