@@ -1,5 +1,5 @@
 import https from 'https';
-import libxml from 'libxmljs';
+import { XmlDocument, XsdValidator } from 'libxml2-wasm';
 
 const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd`;
 
@@ -34,12 +34,17 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
     });
   });
 
-  const xsdDocument = libxml.parseXml(schemaData);
-  const xmlDocument = libxml.parseXml(exportFile.content);
+  const xsdDocument = XmlDocument.fromString(schemaData);
+  const validator = XsdValidator.fromDoc(xsdDocument);
+  const xmlDocument = XmlDocument.fromString(exportFile.content);
 
-  if (xmlDocument.validate(xsdDocument)) {
-    return;
+  try {
+    validator.validate(xmlDocument);
+  } catch (error) {
+    throw error.details.map(detail => detail.message.trim());
+  } finally {
+    validator.dispose();
+    xsdDocument.dispose();
+    xmlDocument.dispose();
   }
-
-  throw xmlDocument.validationErrors.map(error => error.message.trim());
 }
