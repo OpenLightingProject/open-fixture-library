@@ -3,13 +3,13 @@
   "name": "Mega Hex Par",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Christopher Haywood"],
+    "authors": ["Christopher Haywood", "Ken Harris"],
     "createDate": "2019-02-27",
-    "lastModifyDate": "2019-02-27"
+    "lastModifyDate": "2024-01-08"
   },
   "links": {
     "manual": [
-      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11285/ADJ%20Mega%20Hex%20Par%20-%20USER%20MANUAL%202022-12-15.pdf"
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11285/ADJ%20Mega%20Hex%20Par%20-%20USER%20MANUAL%2006-19-2023.pdf"
     ],
     "productPage": [
       "https://www.adj.com/mega-hex-par"
@@ -29,7 +29,7 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [0, 25]
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -114,9 +114,10 @@
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "Lightning",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],

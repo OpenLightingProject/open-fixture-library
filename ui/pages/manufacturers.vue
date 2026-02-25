@@ -7,9 +7,9 @@
       <a
         v-for="(letterData, letter) of letters"
         :key="letter"
-        v-smooth-scroll
         :href="`#${letterData.id}`"
-        class="jump-link">
+        class="jump-link"
+        @click="setScrollBehavior()">
         {{ letter }}
       </a>
     </div>
@@ -38,7 +38,12 @@
 }
 
 .jump-link {
-  margin: 0 0.5ex;
+  padding: 8px;
+  margin: 0 2px;
+}
+
+h2 {
+  scroll-margin-top: 80px;
 }
 </style>
 
@@ -94,6 +99,14 @@ export default {
       }
 
       return letters;
+    },
+  },
+  destroyed() {
+    document.documentElement.style.scrollBehavior = ``;
+  },
+  methods: {
+    setScrollBehavior() {
+      document.documentElement.style.scrollBehavior = `smooth`;
     },
   },
 };

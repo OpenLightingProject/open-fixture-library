@@ -90,27 +90,34 @@ export async function exportFixtures(fixtures, options) {
  * @param {Fixture} fixture The OFL fixture object.
  */
 function addFixture(xmlManufacturer, fixture) {
-  const fixtureCreationDate = dateToString(fixture.meta.createDate);
-  const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
+  try {
+    const fixtureCreationDate = dateToString(fixture.meta.createDate);
+    const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
-  for (const mode of fixture.modes) {
-    const physical = mode.physical || new Physical({});
+    for (const mode of fixture.modes) {
+      const physical = mode.physical || new Physical({});
 
-    const xmlFixture = xmlManufacturer.element(`Fixture`, {
-      '_CreationDate': fixtureCreationDate,
-      '_ModifiedDate': fixtureModifiedDate,
-      'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
-      'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
-      'Comment': getFixtureComment(fixture),
-      'AllocateDmxChannels': mode.channels.length,
-      'Weight': physical.weight || 0,
-      'Power': physical.power || 0,
-      'DimWidth': physical.width || 10,
-      'DimHeight': physical.height || 10,
-      'DimDepth': physical.depth || 10,
+      const xmlFixture = xmlManufacturer.element(`Fixture`, {
+        '_CreationDate': fixtureCreationDate,
+        '_ModifiedDate': fixtureModifiedDate,
+        'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
+        'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
+        'Comment': getFixtureComment(fixture),
+        'AllocateDmxChannels': mode.channels.length,
+        'Weight': physical.weight || 0,
+        'Power': physical.power || 0,
+        'DimWidth': physical.width || 10,
+        'DimHeight': physical.height || 10,
+        'DimDepth': physical.depth || 10,
+      });
+
+      handleMode(xmlFixture, mode);
+    }
+  }
+  catch (error) {
+    throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+      cause: error,
     });
-
-    handleMode(xmlFixture, mode);
   }
 }
 

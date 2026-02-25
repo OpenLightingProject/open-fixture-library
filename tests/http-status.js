@@ -24,11 +24,11 @@ try {
   const passingLinks = [];
   const failingLinks = [];
 
-  crawler.on(`passingPage`, url => {
+  crawler.addEventListener(`passingPage`, ({ url }) => {
     passingLinks.push(url);
     console.log(chalk.greenBright(`[PASS]`), url);
   });
-  crawler.on(`failingPage`, (url, error) => {
+  crawler.addEventListener(`failingPage`, ({ url, error }) => {
     failingLinks.push(`${url} (${chalk.redBright(error)})`);
     console.log(chalk.redBright(`[FAIL]`), `${url} (${chalk.redBright(error)})`);
   });

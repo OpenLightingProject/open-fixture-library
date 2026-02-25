@@ -2,7 +2,7 @@
 
 // crypto is expected to be installed globally
 
-const crypto = require(`crypto`);
+const { createHmac } = require(`crypto`);
 const http = require(`http`);
 const { execSync } = require(`child_process`);
 
@@ -69,7 +69,7 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = crypto.createHmac(`sha1`, deploymentConfig.webhookSecret);
+  const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
   hmac.update(body, `utf-8`);
 
   const xub = `X-Hub-Signature`;
@@ -110,7 +110,7 @@ function redeploy(webhookPayload) {
   try {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
-      env: Object.assign({}, process.env, deploymentConfig.env),
+      env: { ...process.env, ...deploymentConfig.env },
       encoding: `utf8`,
       stdio: `pipe`,
     });

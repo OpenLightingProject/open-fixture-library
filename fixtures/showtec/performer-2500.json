@@ -14,7 +14,9 @@
     "manual": [
       "https://www.highlite.com/en/mwdownloads/download/link/id/17429015/"
     ],
-    "video": ["https://vimeo.com/439925462"]
+    "video": [
+      "https://vimeo.com/439925462"
+    ]
   },
   "physical": {
     "dimensions": [450, 380, 470],
@@ -157,17 +159,27 @@
   },
   "modes": [
     {
-      "name": "8-channel",
-      "shortName": "STD.P",
+      "name": "1-channel",
+      "shortName": "UNO",
+      "channels": [
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "DOS",
       "channels": [
         "Master Dimmer",
-        "Master Dimmer fine",
+        "Master Dimmer fine"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "VW.D",
+      "channels": [
+        "Master Dimmer",
         "Warm White",
-        "Warm White fine",
-        "Natural White",
-        "Natural White fine",
-        "CCT",
-        "Strobe"
+        "Natural White"
       ]
     },
     {
@@ -183,27 +195,17 @@
       ]
     },
     {
-      "name": "3-channel",
-      "shortName": "VW.D",
+      "name": "8-channel",
+      "shortName": "STD.P",
       "channels": [
         "Master Dimmer",
+        "Master Dimmer fine",
         "Warm White",
-        "Natural White"
-      ]
-    },
-    {
-      "name": "2-channel",
-      "shortName": "DOS",
-      "channels": [
-        "Master Dimmer",
-        "Master Dimmer fine"
-      ]
-    },
-    {
-      "name": "1-channel",
-      "shortName": "UNO",
-      "channels": [
-        "Master Dimmer"
+        "Warm White fine",
+        "Natural White",
+        "Natural White fine",
+        "CCT",
+        "Strobe"
       ]
     }
   ]

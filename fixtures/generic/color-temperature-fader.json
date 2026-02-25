@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color Temperature Fader",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2024-05-13",
+    "lastModifyDate": "2024-05-13"
+  },
+  "comment": "Generic fader + color temperature",
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine"
+      ]
+    }
+  ]
+}

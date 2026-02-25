@@ -144,6 +144,9 @@ export default {
     mode: instanceOfProp(Mode).required,
     resolutionInMode: numberProp().required,
   },
+  emits: {
+    'help-wanted-clicked': payload => true,
+  },
   computed: {
     capabilities() {
       return this.channel.capabilities.map(capability => {

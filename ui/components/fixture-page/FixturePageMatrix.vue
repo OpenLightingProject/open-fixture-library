@@ -58,9 +58,9 @@
   margin-left: -1px;
   font-size: 90%;
   line-height: 1.4em;
+  vertical-align: top;
   text-align: center;
   white-space: normal;
-  vertical-align: top;
   border: 1px solid transparent;
   transition: background-color 0.2s;
 

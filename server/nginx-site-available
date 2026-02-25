@@ -133,10 +133,9 @@ server {
         # if request comes from one of these allowed domains:
         # - https://open-fixture-library.org
         # - https://*.open-fixture-library.org
-        # - https://open-fixture-library-pr-*.herokuapp.com
         # - localhost on any port, http and https
-        # (see https://regex101.com/r/B0osaG/1)
-        if ($http_origin ~* (^(?:https:\/\/(?:[a-z0-9_-]+\.)?open-fixture-library(?:\.org|-pr-\d+\.herokuapp\.com)|https?:\/\/localhost)(?::\d+)?$)) {
+        # (see https://regex101.com/r/uit4OY/1)
+        if ($http_origin ~* (^(?:https:\/\/(?:[a-z0-9_-]+\.)?open-fixture-library\.org|https?:\/\/localhost)(?::\d+)?$)) {
             set $cors 'allowed';
         }
 

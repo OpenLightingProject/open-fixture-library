@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Hannes Rüger"],
     "createDate": "2021-07-17",
-    "lastModifyDate": "2021-07-17"
+    "lastModifyDate": "2024-01-29"
   },
   "links": {
     "manual": [
@@ -70,7 +70,8 @@
         },
         {
           "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "30Hz"
         }

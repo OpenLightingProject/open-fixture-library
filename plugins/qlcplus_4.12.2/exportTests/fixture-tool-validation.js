@@ -82,7 +82,7 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
     throw error;
   });
 
-  const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
+  const lastLine = output.stdout.split(`\n`).findLast(line => line !== ``);
 
   if (lastLine !== `1 definitions processed. 0 errors detected`) {
     throw output.stdout;

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MD-2030",
+  "comment": "DMX Safety Rotary Motor",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/50301503-Manual-99179-1.100-eurolite-md-2030-dmx-safety-rotary-motor-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn50301503-eurolite-md-2030-dmx-safety-rotary-motor.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 149, 130],
+    "weight": 3,
+    "power": 13,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Rotation"
+      ]
+    }
+  ]
+}

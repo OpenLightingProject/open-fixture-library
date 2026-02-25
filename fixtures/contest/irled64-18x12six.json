@@ -3,7 +3,7 @@
   "name": "irLED64 18x12SIX",
   "categories": ["Dimmer", "Color Changer"],
   "meta": {
-    "authors": ["Edrig", "CGBassPlayer"],
+    "authors": ["Edrig", "Ryan Goodwin"],
     "createDate": "2023-04-24",
     "lastModifyDate": "2023-04-24"
   },
@@ -91,7 +91,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled, i.e. when is the light constantly on or off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Program": {
