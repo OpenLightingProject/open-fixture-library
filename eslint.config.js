@@ -8,6 +8,7 @@ import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import eslintPluginVitest from 'eslint-plugin-vitest';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
@@ -484,6 +485,14 @@ export default [
     files: [`.devcontainer/devcontainer.json`],
     rules: {
       'jsonc/no-comments': `off`,
+    },
+  },
+  {
+    ...eslintPluginVitest.configs.recommended,
+    files: [`tests/*.test.js`],
+    rules: {
+      ...eslintPluginVitest.configs.recommended.rules,
+      'vitest/expect-expect': [`error`, { assertFunctionNames: [`expect`, `testRandomCapabilityRangesDoNotOverlap`] }],
     },
   },
 ];

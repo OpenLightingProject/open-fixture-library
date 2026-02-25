@@ -8,8 +8,8 @@ import {
 
 describe(`scaleDmxValue`, () => {
   describe(`upscaling`, () => {
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
     it.each([
+      /* eslint-disable no-multi-spaces, array-bracket-spacing */
       // 8bit → 16bit
       [  0, 1, 2,       0], // [  0] → [  0,   0]
       [127, 1, 2, 32_639], // [127] → [127, 127]
@@ -28,15 +28,15 @@ describe(`scaleDmxValue`, () => {
       [65_279, 2, 3, 16_711_679], // [254, 255] → [254, 255, 255]
       [65_280, 2, 3, 16_711_680], // [255,   0] → [255,   0,   0]
       [65_535, 2, 3, 16_777_215], // [255, 255] → [255, 255, 255]
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+      /* eslint-enable no-multi-spaces, array-bracket-spacing */
     ])(`scaleDmxValue(%i, %i, %i) should be %i`, (dmxValue, currentResolution, desiredResolution, expected) => {
       expect(scaleDmxValue(dmxValue, currentResolution, desiredResolution)).toBe(expected);
     });
   });
 
   describe(`downscaling`, () => {
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
     it.each([
+      /* eslint-disable no-multi-spaces, array-bracket-spacing */
       // 16bit → 8bit
       [     0, 2, 1,   0], // [  0,   0] → [  0]
       [32_512, 2, 1, 127], // [127,   0] → [127]
@@ -65,7 +65,7 @@ describe(`scaleDmxValue`, () => {
       [16_711_680, 3, 2, 65_280], // [255,   0,   0] → [255,   0]
       [16_711_935, 3, 2, 65_280], // [255,   0, 255] → [255,   0]
       [16_777_215, 3, 2, 65_535], // [255, 255, 255] → [255, 255]
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+      /* eslint-enable no-multi-spaces, array-bracket-spacing */
     ])(`scaleDmxValue(%i, %i, %i) should be %i`, (dmxValue, currentResolution, desiredResolution, expected) => {
       expect(scaleDmxValue(dmxValue, currentResolution, desiredResolution)).toBe(expected);
     });
@@ -74,8 +74,8 @@ describe(`scaleDmxValue`, () => {
 
 describe(`scaleDmxRange`, () => {
   describe(`upscaling`, () => {
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
     it.each([
+      /* eslint-disable no-multi-spaces, array-bracket-spacing */
       // 8bit → 16bit
       [[  0,   0], 1, 2, [     0,    255]],
       [[  0, 254], 1, 2, [     0, 65_279]],
@@ -88,15 +88,15 @@ describe(`scaleDmxRange`, () => {
       [[  0, 255], 1, 3, [         0, 16_777_215]],
       [[127, 127], 1, 3, [ 8_323_072,  8_388_607]],
       [[255, 255], 1, 3, [16_711_680, 16_777_215]],
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+      /* eslint-enable no-multi-spaces, array-bracket-spacing */
     ])(`scaleDmxRange(%j, %i, %i) should be %j`, (dmxRange, currentResolution, desiredResolution, expected) => {
       expect(scaleDmxRange(dmxRange[0], dmxRange[1], currentResolution, desiredResolution)).toStrictEqual(expected);
     });
   });
 
   describe(`downscaling`, () => {
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
     it.each([
+      /* eslint-disable no-multi-spaces, array-bracket-spacing */
       // 16bit → 8bit
       [[     0,    255], 2, 1, [  0,   0]],
       [[     0,    100], 2, 1, [  0,   0]],
@@ -113,7 +113,7 @@ describe(`scaleDmxRange`, () => {
       // 24bit → 16bit
       [[  615_605, 1_683_118], 3, 2, [2405, 6574]],
       [[1_683_119, 2_244_792], 3, 2, [6575, 8768]],
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+      /* eslint-enable no-multi-spaces, array-bracket-spacing */
     ])(`scaleDmxRange(%j, %i, %i) should be %j`, (dmxRange, currentResolution, desiredResolution, expected) => {
       expect(scaleDmxRange(dmxRange[0], dmxRange[1], currentResolution, desiredResolution)).toStrictEqual(expected);
     });
