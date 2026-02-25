@@ -1,8 +1,14 @@
 import { fileURLToPath } from 'url';
+import sass from 'sass';
 
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
+
+const ignoredSassDeprecations = [`legacy-js-api`]; // can only be fixed with Nuxt.js v3
+const sassDeprecationIds = Object.values(sass.deprecations).flatMap(deprecation =>
+  (deprecation.status === `active` && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
+);
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
@@ -60,6 +66,10 @@ export default {
       // automatically `@use` global SCSS definitions
       scss: {
         additionalData: `@use "~/assets/styles/global.scss" as *;`,
+        sassOptions: {
+          fatalDeprecations: sassDeprecationIds,
+          silenceDeprecations: ignoredSassDeprecations,
+        },
       },
     },
     extend(config, context) {

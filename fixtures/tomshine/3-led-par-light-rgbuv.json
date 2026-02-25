@@ -1,0 +1,276 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3 LED Par Light RGBUV",
+  "shortName": "TomShine3LEDParRGBUV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-09",
+    "lastModifyDate": "2024-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://forums.pioneerdj.com/hc/user_images/rB7cJ4VXCxgGGiFUXQsAyg.jpeg"
+    ],
+    "productPage": [
+      "https://www.tomshine.com/p-l1582us.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [140, 140, 140],
+    "weight": 0.595,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3x 4W LED (RGBUV)"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "No Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Special Functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed": "No Function"
+          }
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Effect",
+          "effectName": "Static Color",
+          "switchChannels": {
+            "Speed": "No Function"
+          }
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "No Function"
+          }
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Speed": "Strobe Speed"
+          }
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#008000"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#800080"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ff0000", "#008000"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Red + UV",
+          "colors": ["#ff0000", "#800080"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#008000", "#0000ff"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green + UV",
+          "colors": ["#008000", "#800080"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Blue + UV",
+          "colors": ["#0000ff", "#800080"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Red + Green + UV",
+          "colors": ["#ff0000", "#008000", "#800080"]
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + UV",
+          "colors": ["#ff0000", "#0000ff", "#800080"]
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + UV",
+          "colors": ["#008000", "#0000ff", "#800080"]
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ff0000", "#008000", "#0000ff"]
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + UV",
+          "colors": ["#ff0000", "#008000", "#0000ff", "#800080"]
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Special Functions",
+        "Color Presets",
+        "Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    }
+  ]
+}

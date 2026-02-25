@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flasher",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["NATION"],
+    "createDate": "2026-01-03",
+    "lastModifyDate": "2026-01-03"
+  },
+  "links": {
+    "manual": [
+      "https://github.com/AcChosen/VR-Stage-Lighting/wiki/Appendix:-Fixture-Definitions"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}

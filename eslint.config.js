@@ -70,13 +70,13 @@ const enabledRuleParameters = {
   'no-return-await': [],
   'no-shadow': [{
     builtinGlobals: false,
-    allow: [`_`], // allow placeholder paramters that aren't used anyway
+    allow: [`_`], // allow placeholder parameters that aren't used anyway
   }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: `none` }],
-  // 'no-useless-assignment': [], // TODO: enable when migrated to ESLint v9
+  'no-useless-assignment': [],
   'no-var': [],
   'object-curly-spacing': [`always`],
   'object-shorthand': [`always`, { avoidQuotes: true }],
@@ -193,12 +193,12 @@ const enabledRuleParameters = {
     style: { lang: `scss` },
     template: { allowNoLang: true },
   }],
+  'vue/block-order': [{
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
+  }],
   'vue/component-options-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
-  }],
-  'vue/component-tags-order': [{
-    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
@@ -265,6 +265,8 @@ const enabledRuleParameters = {
   'vue/no-deprecated-vue-config-keycodes': [],
   'vue/no-expose-after-await': [],
   'vue/no-lifecycle-after-await': [],
+  'vue/no-negated-condition': [],
+  'vue/no-negated-v-if-condition': [],
   'vue/no-watch-after-await': [],
   'vue/prefer-import-from-vue': [],
   'vue/require-explicit-emits': [],
@@ -278,6 +280,10 @@ const enabledRuleParameters = {
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],
+  'sonarjs/no-nested-functions': [],
+  'sonarjs/regex-complexity': [],
+  'sonarjs/slow-regex': [],
+  'sonarjs/todo-tag': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
@@ -306,6 +312,7 @@ const vueCoreExtensionRules = [
   `no-extra-parens`,
   `no-irregular-whitespace`,
   `no-loss-of-precision`,
+  `no-negated-condition`,
   `no-restricted-syntax`,
   `no-sparse-arrays`,
   `no-useless-concat`,
@@ -325,6 +332,10 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `jsdoc/require-jsdoc`,
   `sonarjs/cognitive-complexity`,
+  `sonarjs/no-nested-functions`,
+  `sonarjs/regex-complexity`,
+  `sonarjs/slow-regex`,
+  `sonarjs/todo-tag`,
   `vue/no-mutating-props`,
 ]);
 
@@ -336,6 +347,8 @@ const disabledRules = [
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
+  `sonarjs/no-unsafe-unzip`,
+  `sonarjs/pseudo-random`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
@@ -374,14 +387,18 @@ export default [
   eslintPluginNuxtConfigRecommended,
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
-  eslintPluginUnicorn.configs[`flat/recommended`],
+  eslintPluginUnicorn.configs.recommended,
   ...eslintPluginVue.configs[`flat/vue2-recommended`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
   ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: `error`,
+      reportUnusedInlineConfigs: `error`,
+    },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: 2022,
+      ecmaVersion: `latest`,
       sourceType: `module`,
     },
     rules: {
@@ -441,9 +458,6 @@ export default [
     },
   },
   {
-    files: [`**/*.vue`],
-  },
-  {
     files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
     rules: {
       'vue/multi-word-component-names': `off`,
@@ -461,6 +475,12 @@ export default [
       'jsonc/array-bracket-spacing': `off`,
 
       'unicorn/prevent-abbreviations': `off`,
+    },
+  },
+  {
+    files: [`.devcontainer/devcontainer.json`],
+    rules: {
+      'jsonc/no-comments': `off`,
     },
   },
 ];
