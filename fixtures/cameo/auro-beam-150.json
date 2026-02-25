@@ -4,9 +4,9 @@
   "shortName": "CLABEAM150",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Ray Tone"],
+    "authors": ["Ray Tone", "Ryan Goodwin"],
     "createDate": "2020-03-28",
-    "lastModifyDate": "2020-03-28"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -24,7 +24,10 @@
     "dimensions": [375, 260, 180],
     "weight": 5.5,
     "power": 130,
-    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "LED",
       "lumens": 1700

@@ -15,7 +15,7 @@
 }
 
 // move download button to the right
-@media (min-width: 650px) {
+@media (width >= 650px) {
   .fixture-header {
     display: flex;
     flex-direction: row;

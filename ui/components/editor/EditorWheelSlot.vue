@@ -48,7 +48,7 @@
 <script>
 import { integerProp, objectProp } from 'vue-ts-types';
 import { wheelSlotTypes } from '../../../lib/schema-properties.js';
-import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
+import { getEmptyWheelSlot } from '../../assets/scripts/editor-utilities.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -76,9 +76,6 @@ export default {
     WheelSlotIris,
     WheelSlotOpen,
     WheelSlotPrism,
-  },
-  model: {
-    prop: `capability`,
   },
   props: {
     channel: objectProp().required,

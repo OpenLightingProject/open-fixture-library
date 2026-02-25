@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ken Harris", "Flo Edelmann"],
     "createDate": "2022-03-13",
-    "lastModifyDate": "2022-03-13"
+    "lastModifyDate": "2024-01-10"
   },
   "comment": "This is an unbranded fixture bought online, but the appearance and user manual match the UKing B117 closely.\n\nThe B117 webpage isn't even internally consistent, so I've done the best I could here.",
   "links": {
@@ -24,6 +24,9 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -63,7 +66,7 @@
           "dmxRange": [0, 50],
           "type": "NoFunction",
           "switchChannels": {
-            "Color Presets / Effect Speed": "Color Presets"
+            "Color Presets / Effect Speed": "No Function"
           }
         },
         {
@@ -166,6 +169,12 @@
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
+      }
+    },
+    "No Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
       }
     },
     "Strobe": {

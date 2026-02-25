@@ -3,9 +3,9 @@ import xml2js from 'xml2js';
 
 import importJson from '../../lib/import-json.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import { scaleDmxValue, scaleDmxRangeIndividually } from '../../lib/scale-dmx-values.js';
+import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-values.js';
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
-import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers.js';
+import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
 export const version = `0.2.0`;
 
@@ -115,7 +115,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     const revisions = gdtfFixture.Revisions[0].Revision;
     const earliestRevision = revisions[0];
-    const latestRevision = revisions[revisions.length - 1];
+    const latestRevision = revisions.at(-1);
 
     return [earliestRevision.$.Date, latestRevision.$.Date];
   }
@@ -298,7 +298,7 @@ export async function importFixtures(buffer, filename, authorName) {
       // if channel was already split, skip splitting it again, else
       // split channel such that followerChannelFunction is the only child
       if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-        const channelCopy = JSON.parse(JSON.stringify(followerChannel));
+        const channelCopy = structuredClone(followerChannel);
         channelCopy.$.Name += `_OflSplit`;
         relation.followerGdtfChannel = channelCopy;
 
@@ -670,11 +670,11 @@ export async function importFixtures(buffer, filename, authorName) {
         }
 
         // save the inherited result for later access
-        gdtfAttributes[attributeName] = Object.assign(
-          {},
-          getCapabilityTypeData(capabilityTypeData.inheritFrom),
-          capabilityTypeData,
-        );
+        gdtfAttributes[attributeName] = {
+
+          ...getCapabilityTypeData(capabilityTypeData.inheritFrom),
+          ...capabilityTypeData,
+        };
         delete gdtfAttributes[attributeName].inheritFrom;
 
         return gdtfAttributes[attributeName];
@@ -872,7 +872,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const dmxBreakWrappers = [];
 
       for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
-        if (dmxBreakWrappers.length === 0 || dmxBreakWrappers[dmxBreakWrappers.length - 1].dmxBreak !== gdtfChannel.$.DMXBreak) {
+        if (dmxBreakWrappers.length === 0 || dmxBreakWrappers.at(-1).dmxBreak !== gdtfChannel.$.DMXBreak) {
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
             geometry: gdtfChannel.$.Geometry,
@@ -951,9 +951,9 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelKey = gdtfChannel._oflChannelKey;
       const oflChannel = fixture.availableChannels[channelKey];
 
-      const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
+      const channels = dmxBreakWrappers.at(-1).channels;
 
-      const channelKeys = [channelKey, ...oflChannel.fineChannelAliases];
+      const channelKeys = [channelKey, ...(oflChannel.fineChannelAliases ?? [])];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)
@@ -1374,5 +1374,5 @@ function parseFloatWithFallback(value, fallback) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

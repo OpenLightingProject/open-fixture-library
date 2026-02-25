@@ -13,6 +13,7 @@
 
       <LabeledValue
         v-if="fixture.hasComment"
+        key="comment"
         :value="fixture.comment"
         name="comment"
         label="Comment" />
@@ -36,6 +37,7 @@
 
       <LabeledValue
         v-if="links.length > 0"
+        key="links"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
@@ -61,6 +63,7 @@
 
       <LabeledValue
         v-if="fixture.rdm !== null"
+        key="rdm"
         name="rdm">
         <template #label>
           <abbr title="Remote Device Management">RDM</abbr> data
@@ -222,6 +225,9 @@ export default {
   props: {
     fixture: instanceOfProp(Fixture).required,
     loadAllModes: booleanProp().withDefault(false),
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;

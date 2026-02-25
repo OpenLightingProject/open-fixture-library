@@ -56,7 +56,7 @@ As soon as an issue is assigned to somebody, it means that this person is respon
   Please create a new issue first if it's a bigger change.
 
 * **Create new import/export plugins**  
-  This is a bit more involved. See the [list of new plugins](https://github.com/OpenLightingProject/open-fixture-library/projects/5) for inspiration. Use existing plugins as reference and look at the [plugin documentation](plugins.md).
+  This is a bit more involved. See the [list of new plugins](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aissue+is%3Aopen+label%3Anew-plugin) for inspiration. Use existing plugins as reference and look at the [plugin documentation](plugins.md).
 
 * **Improve the [documentation](README.md)**  
   Especially after you have made other changes, there is likely something you've been missing in the documentation. Help others find it there!

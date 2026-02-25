@@ -240,19 +240,10 @@ export function colorsHexStringToArray(hexString) {
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const sanitizedChannel = clone(channel);
+  const sanitizedChannel = structuredClone(channel);
   delete sanitizedChannel.editMode;
   delete sanitizedChannel.modeId;
   delete sanitizedChannel.wizard;
 
   return sanitizedChannel;
-}
-
-
-/**
- * @param {any} object The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
- * @returns {any} A deep clone.
- */
-export function clone(object) {
-  return JSON.parse(JSON.stringify(object));
 }

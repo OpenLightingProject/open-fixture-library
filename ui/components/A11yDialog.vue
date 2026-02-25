@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line vuejs-accessibility/no-aria-hidden-on-focusable -- aria-hidden is dynamically toggled -->
   <div
     :id="id"
     class="dialog-container"
@@ -53,10 +54,7 @@ $container-fade-duration: 200ms;
 
 .dialog-container {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 1000;
   display: flex;
   background-color: rgba(0, 0, 0, 66%);
@@ -124,6 +122,10 @@ export default {
     shown: booleanProp().withDefault(true),
     title: stringProp().required,
     wide: booleanProp().withDefault(false),
+  },
+  emits: {
+    show: () => true,
+    hide: () => true,
   },
   data() {
     return {

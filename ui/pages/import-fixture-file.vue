@@ -45,12 +45,12 @@
             :formstate="formstate"
             name="file"
             label="Fixture definition file"
-            hint="Maximum file size is 5MB.">
+            hint="Maximum file size is 50MB.">
             <EditorFileUpload
               v-model="file"
               required
               name="file"
-              max-file-size="5MB" />
+              max-file-size="50MB" />
           </LabeledInput>
 
           <LabeledInput :formstate="formstate" name="githubComment" label="Comment">
@@ -107,7 +107,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
-import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
+import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';

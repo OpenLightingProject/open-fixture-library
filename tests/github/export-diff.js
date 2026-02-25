@@ -37,7 +37,7 @@ try {
     ``,
   ];
 
-  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
   for (const task of tasks) {
     const taskResultLines = await performTask(task);
@@ -153,7 +153,7 @@ async function getDiffTasks(changedComponents) {
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions[previousVersions.length - 1];
+        const lastVersion = previousVersions.at(-1);
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
           tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
@@ -277,16 +277,16 @@ function getChangeFlags(diffOutput) {
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {
-    return `:zzz:`;
+    return `💤`;
   }
 
   if (changeFlags.hasChanged || (changeFlags.hasAdded && changeFlags.hasRemoved)) {
-    return `:vs:`;
+    return `🆚`;
   }
 
   if (changeFlags.hasAdded) {
-    return `:new:`;
+    return `🆕`;
   }
 
-  return `:x:`;
+  return `❌`;
 }

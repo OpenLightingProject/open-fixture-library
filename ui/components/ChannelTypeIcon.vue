@@ -1,3 +1,7 @@
+<template>
+  <OflSvg v-bind="iconProperties" />
+</template>
+
 <script>
 import { instanceOfProp } from 'vue-ts-types';
 import AbstractChannel from '../../lib/model/AbstractChannel.js';
@@ -6,14 +10,13 @@ import NullChannel from '../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export default {
-  functional: true,
   props: {
     channel: instanceOfProp(AbstractChannel).required,
   },
-  render(createElement, context) {
-    return createElement(`OflSvg`, Object.assign({}, context.data, {
-      props: getIconProperties(context.props.channel),
-    }));
+  computed: {
+    iconProperties() {
+      return getIconProperties(this.channel);
+    },
   },
 };
 

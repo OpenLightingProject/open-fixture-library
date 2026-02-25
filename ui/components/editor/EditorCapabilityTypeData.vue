@@ -128,9 +128,6 @@ export default {
     CapabilityMaintenance,
     CapabilityGeneric,
   },
-  model: {
-    prop: `capability`,
-  },
   props: {
     capability: objectProp().required,
     channel: objectProp().required,

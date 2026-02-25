@@ -83,14 +83,11 @@ export default {
 
         const typePerShutterEffect = {
           Strobe: capability.randomTiming ? `random` : `linear`,
-          Pulse: `pulse`,
           RampUp: `ramp up`,
           RampDown: `ramp down`,
           RampUpDown: `ramp up/down`,
-          Lightning: `lightning`,
-          Spikes: `spikes`,
         };
-        return typePerShutterEffect[capability.shutterEffect];
+        return typePerShutterEffect[capability.shutterEffect] ?? capability.shutterEffect.toLowerCase();
       }
     },
   },
@@ -613,7 +610,7 @@ export default {
       // group adjacent capabilities by comment
       const capabilitiesGroupedByComment = [];
       for (const capability of capabilities) {
-        const lastGroup = capabilitiesGroupedByComment[capabilitiesGroupedByComment.length - 1];
+        const lastGroup = capabilitiesGroupedByComment.at(-1);
 
         if (lastGroup && lastGroup[0].type === capability.type && lastGroup[0].comment === capability.comment) {
           // push to last group
@@ -627,7 +624,7 @@ export default {
 
       for (const commentGroup of capabilitiesGroupedByComment) {
         const firstCapability = commentGroup[0];
-        const lastCapability = commentGroup[commentGroup.length - 1];
+        const lastCapability = commentGroup.at(-1);
 
         const xmlStep = xmlPrism.element(`step`, {
           type: firstCapability.type === `NoFunction` ? `open` : `prism`,

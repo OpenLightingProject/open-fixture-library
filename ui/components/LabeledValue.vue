@@ -1,16 +1,18 @@
-<template functional>
+<!-- eslint-disable vuejs-accessibility/no-static-element-interactions -- use more accessible way of highlighting -->
+
+<template>
   <section
-    :ref="data.ref"
-    :class="[data.class, data.staticClass, props.name]"
-    :style="[data.style, data.staticStyle]"
-    v-bind="data.attrs"
-    v-on="listeners">
+    :class="name"
+    @focusin="$emit('focusin', $event)"
+    @focusout="$emit('focusout', $event)"
+    @mouseover="$emit('mouseover', $event)"
+    @mouseout="$emit('mouseout', $event)">
     <div class="label">
-      <template v-if="props.label">{{ props.label }}</template>
+      <template v-if="label">{{ label }}</template>
       <slot name="label" />
     </div>
     <div class="value">
-      <template v-if="props.value">{{ props.value }}</template>
+      <template v-if="value">{{ value }}</template>
       <slot />
     </div>
   </section>
@@ -54,6 +56,12 @@ export default {
     name: stringProp().optional,
     label: stringProp().optional,
     value: stringProp().optional,
+  },
+  emits: {
+    focusin: event => true,
+    focusout: event => true,
+    mouseover: event => true,
+    mouseout: event => true,
   },
 };
 </script>
