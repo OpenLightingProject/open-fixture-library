@@ -3,9 +3,9 @@
   "name": "XR4 Spot",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["lightroom", "Felix Edelmann"],
+    "authors": ["lightroom", "Felix Edelmann", "Matteo Piccina"],
     "createDate": "2019-11-06",
-    "lastModifyDate": "2019-11-06",
+    "lastModifyDate": "2022-03-11",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2019-11-06",
@@ -769,13 +769,13 @@
         }
       ]
     },
-    "Zoom": {
+    "Focus": {
       "defaultValue": 0,
       "capability": {
-        "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide",
-        "helpWanted": "Or is this focus? If so, is it near…far or far…near?"
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "helpWanted": "Is the focus point near…far or far…near?"
       }
     },
     "Reset": {
@@ -809,7 +809,7 @@
         "Gobo Wheel",
         "Gobo / Prism Rotation Simple",
         "Prism",
-        "Zoom",
+        "Focus",
         "Reset"
       ]
     },
@@ -832,7 +832,7 @@
         "Gobo / Prism Rotation Angle fine",
         "Gobo Shake",
         "Prism",
-        "Zoom",
+        "Focus",
         "Reset"
       ]
     }

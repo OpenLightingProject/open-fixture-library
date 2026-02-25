@@ -129,7 +129,7 @@ export default {
   },
   data() {
     return {
-      helpWantedContext: null,
+      helpWantedContext: undefined,
       libraryNames: {
         main: `Main (system) library`,
         user: `User library`,

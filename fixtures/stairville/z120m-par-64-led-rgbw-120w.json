@@ -1,0 +1,396 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z120M Par 64 LED RGBW 120W",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["youri fernandez", "Flo Edelmann"],
+    "createDate": "2022-01-29",
+    "lastModifyDate": "2022-01-29"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/451128_c_451128_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=d6hIcfGas6o"
+    ]
+  },
+  "physical": {
+    "dimensions": [491, 275, 224],
+    "weight": 3.24,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1× 120W COB RGBW 4in1 LED"
+    },
+    "lens": {
+      "degreesMinMax": [9.5, 43]
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 17],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [18, 29],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ff7f00"]
+        },
+        {
+          "dmxRange": [30, 41],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow",
+          "colors": ["#ffd000"]
+        },
+        {
+          "dmxRange": [42, 53],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff7f"]
+        },
+        {
+          "dmxRange": [54, 65],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [66, 77],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [78, 89],
+          "type": "ColorPreset",
+          "comment": "Cobalt Blue",
+          "colors": ["#00a2ff"]
+        },
+        {
+          "dmxRange": [90, 101],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [102, 113],
+          "type": "ColorPreset",
+          "comment": "Lilac",
+          "colors": ["#9900ff"]
+        },
+        {
+          "dmxRange": [114, 125],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [126, 137],
+          "type": "ColorPreset",
+          "comment": "Crimson Red",
+          "colors": ["#da001d"]
+        },
+        {
+          "dmxRange": [138, 149],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff80ca"]
+        },
+        {
+          "dmxRange": [150, 161],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colors": ["#ffeebe"]
+        },
+        {
+          "dmxRange": [162, 173],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [174, 185],
+          "type": "ColorPreset",
+          "comment": "Cold White",
+          "colors": ["#d1fdff"]
+        },
+        {
+          "dmxRange": [186, 220],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 55],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [96, 115],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [116, 135],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [136, 155],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [156, 175],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "ColorTemperature",
+          "colorTemperature": "5500K"
+        },
+        {
+          "dmxRange": [196, 215],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [216, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 30],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [31, 90],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [106, 165],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [181, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "Effect",
+          "effectName": "Auto Show 1: Color change"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "Effect",
+          "effectName": "Auto Show 2: Strobe effect color"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "Effect",
+          "effectName": "Auto Show 3: Color fade"
+        }
+      ]
+    },
+    "Program Speed / Sound Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Color Macros",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Auto Programs",
+        "Program Speed / Sound Control"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED DMX Pixel Tube 16 RGB IP20",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["LordVonAdel"],
+    "createDate": "2022-10-25",
+    "lastModifyDate": "2022-10-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51928602-Manual-85739-1.100-eurolite-led-dmx-pixel-tube-16-rgb-ip20-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51928602-eurolite-led-dmx-pixel-tube-16-rgb-ip20.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7QjVn5cwiVg"
+    ]
+  },
+  "physical": {
+    "dimensions": [1005, 50, 75],
+    "weight": 1.35,
+    "power": 38,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "matrix": {
+    "pixelCount": [16, 1, 1]
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "48-channel",
+      "shortName": "48ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

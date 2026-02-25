@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ATMe",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Manu"],
+    "createDate": "2026-01-23",
+    "lastModifyDate": "2026-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://mdgfog.s3.ca-central-1.amazonaws.com/uploads/docs/ATMe%2C%20User%20Guide%2C%20Rev%20Ce.pdf"
+    ],
+    "productPage": [
+      "https://www.mdgfog.com/en/atme"
+    ],
+    "video": [
+      "https://vimeo.com/141104074"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 300, 685],
+    "weight": 16.8,
+    "power": 1400,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Unit control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "Maintenance",
+          "comment": "Unit OFF"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Maintenance",
+          "comment": "Unit ON"
+        }
+      ]
+    },
+    "Haze output": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Haze control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "Fog",
+          "fogType": "Haze",
+          "fogOutput": "off",
+          "comment": "Haze OFF"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Fog",
+          "fogType": "Haze",
+          "comment": "Haze ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Unit control",
+        "Haze output",
+        "Haze control"
+      ]
+    }
+  ]
+}

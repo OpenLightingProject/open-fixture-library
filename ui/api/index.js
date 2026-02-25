@@ -15,13 +15,14 @@ import * as routeHandlers from './routes.js';
  */
 
 const app = express();
+// eslint-disable-next-line quotes -- sonarjs/x-powered-by only recognizes plain string literals
+app.disable('x-powered-by');
 
 // support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
 
 const corsWhitelist = [
   /[./]open-fixture-library\.org(?::\d+|)$/,
-  /[./]open-fixture-library-pr-\d+\.herokuapp\.com$/,
   /\/localhost(?::\d+|)$/,
 ];
 
@@ -37,9 +38,6 @@ app.use(cors({
 }));
 
 
-// The Regex is actually not unsafe, just in a more concise form than the one
-// that security/detect-unsafe-regex would not complain about.
-// eslint-disable-next-line security/detect-unsafe-regex
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({

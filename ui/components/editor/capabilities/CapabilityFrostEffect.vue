@@ -10,12 +10,12 @@
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
         :schema-property="schemaDefinitions.nonEmptyString"
-        :required="true" />
+        required />
     </LabeledInput>
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <EditorProportionalPropertySwitcher
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -52,15 +53,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

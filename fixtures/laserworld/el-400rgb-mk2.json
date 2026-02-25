@@ -1,0 +1,415 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-400RGB MK2",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Anon", "wagskydive", "Luke Nelson"],
+    "createDate": "2024-10-10",
+    "lastModifyDate": "2025-10-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/download-file-1780-EL_400RGB_MK2_web.html"
+    ],
+    "productPage": [
+      "https://www.laserworld.com/en/laserworld-el/laserworld-el-400rgb"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GKitAO4Y21o"
+    ]
+  },
+  "physical": {
+    "dimensions": [255, 245, 100],
+    "weight": 3.1,
+    "power": 30,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Automatic mode"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Static pattern"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Dynamic pattern"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Pattern Selection"
+      }
+    },
+    "Horizontal Angle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "BeamPosition",
+          "horizontalAngleStart": "left",
+          "horizontalAngleEnd": "right",
+          "helpWanted": "Are the horizontal angle start and end values correct?"
+        }
+      ]
+    },
+    "Vertical Angle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "BeamPosition",
+          "verticalAngle": "center"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "BeamPosition",
+          "verticalAngleStart": "bottom",
+          "verticalAngleEnd": "top",
+          "helpWanted": "Are the vertical angle start and end values correct?"
+        }
+      ]
+    },
+    "Scanning Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "Are the scanning speed start and end values correct?"
+      }
+    },
+    "Dynamic Pattern Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "Are the dynamic pattern speed start and end values correct?"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide",
+        "helpWanted": "Are the zoom start and end values correct?"
+      }
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Effect",
+          "effectName": "Color Macros",
+          "comment": "Multi Color",
+          "helpWanted": "Does this cycle all possible colours? Is this a colorFade or colorJump?"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White",
+          "helpWanted": "Why are there repeated capabilities for the same colours?"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [128, 137],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [138, 147],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [148, 157],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [158, 167],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [168, 177],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [178, 187],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [188, 197],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        }
+      ]
+    },
+    "Color Segment": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Color Segment",
+        "helpWanted": "What does 'Color Segment' mean and is there a better fitting capability type?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Mode",
+        "Pattern Selection",
+        "Horizontal Angle",
+        "Vertical Angle",
+        "Scanning Speed",
+        "Dynamic Pattern Speed",
+        "Zoom",
+        "Color",
+        "Color Segment"
+      ]
+    }
+  ]
+}

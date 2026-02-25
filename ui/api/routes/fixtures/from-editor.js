@@ -1,13 +1,13 @@
 import importJson from '../../../../lib/import-json.js';
 import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
 import {
-  fixtureProperties,
-  physicalProperties,
-  linksProperties,
-  wheelSlotTypes,
-  channelProperties,
   capabilityTypes,
+  channelProperties,
+  fixtureProperties,
+  linksProperties,
   modeProperties,
+  physicalProperties,
+  wheelSlotTypes,
 } from '../../../../lib/schema-properties.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
 
@@ -224,7 +224,7 @@ async function getFixtureCreateResult(fixtures) {
         const urlObject = new URL(url);
 
         const videoId = urlObject.pathname.slice(1);
-        const queryParameters = Array.from(urlObject.searchParams);
+        const queryParameters = [...urlObject.searchParams];
         queryParameters.unshift([`v`, videoId]);
         const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
 
@@ -291,7 +291,7 @@ async function getFixtureCreateResult(fixtures) {
       });
 
       // remove trailing null slots
-      while (slots[slots.length - 1] === null) {
+      while (slots.at(-1) === null) {
         slots.pop();
       }
 
@@ -453,5 +453,5 @@ function getComboboxInput(property, from) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

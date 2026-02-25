@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2019-03-06",
-    "lastModifyDate": "2019-03-06"
+    "lastModifyDate": "2024-10-01"
   },
   "links": {
     "manual": [
@@ -14,8 +14,7 @@
       "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLAT1TRI3WIR/CLPFLAT1TRI3WIR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
     ],
     "productPage": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/par-lights/2273/flat-par-rgb-10-ir",
-      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/par-lights/2276/flat-par-rgb-10-ir-wh"
+      "https://blog.adamhall.com/en/2015/03/09/cameo-clpflat1rgb10ir-led-scheinwerfer-fur-kleine-events-testbericht-von-delamar-de/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=7otHVQmaCfw"
@@ -85,14 +84,21 @@
         }
       ]
     },
-    "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0%",
-        "speedEnd": "100%",
-        "helpWanted": "At which DMX values is strobe disabled? That should be a separate capability."
-      }
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Color Macro Advanced": {
       "name": "Color Macro",
@@ -201,7 +207,7 @@
       "shortName": "3ch1",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Shutter / Strobe",
         "Color Macro Advanced"
       ]
     },
@@ -219,7 +225,7 @@
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Shutter / Strobe",
         "Red",
         "Green",
         "Blue",

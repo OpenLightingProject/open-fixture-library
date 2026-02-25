@@ -24,7 +24,7 @@
       <p>Please refer to the <a href="https://fridaysforfuture.org/">Fridays for Future website</a>.</p>
 
       <div class="hashtags">
-        <a v-for="hashtag of hashtags" :key="hashtag" :href="`https://twitter.com/hashtag/${hashtag}`">#{{ hashtag }}</a>
+        <a v-for="hashtag of hashtags" :key="hashtag" :href="`https://mastodon.social/tags/${hashtag}`">#{{ hashtag }}</a>
       </div>
     </div>
 
@@ -64,10 +64,7 @@
 
 #climate-strike-overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 1000;
   overflow: auto;
   background: #1b7340;
@@ -126,9 +123,9 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2021-09-24`,
-      climateStrikeWebsite: `https://fridaysforfuture.org/September24/`,
-      hashtags: [`UprootTheSystem`, `fridaysforfuture`, `climatestrike`],
+      strikeDateString: `2023-09-15`,
+      climateStrikeWebsite: `https://fridaysforfuture.org/september15/`,
+      hashtags: [`climatejustice`, `FridaysForFuture`, `climatestrike`, `EndFossilFuels`, `ClimateForChange`],
     };
   },
   created() {

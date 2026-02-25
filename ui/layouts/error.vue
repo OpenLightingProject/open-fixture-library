@@ -21,12 +21,11 @@
 </style>
 
 <script>
+import { oneOfTypesProp } from 'vue-ts-types';
+
 export default {
   props: {
-    error: {
-      type: [Object, Error],
-      required: true,
-    },
+    error: oneOfTypesProp([Object, Error]).required,
   },
   head() {
     if (this.error.statusCode !== 404) {

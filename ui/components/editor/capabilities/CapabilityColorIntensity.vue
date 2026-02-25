@@ -22,13 +22,13 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-brightness`"
       label="Brightness">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="brightness" />
     </LabeledInput>
 
@@ -47,7 +47,8 @@
 </template>
 
 <script>
-import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
+import { objectProp } from 'vue-ts-types';
+import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
@@ -60,15 +61,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

@@ -8,9 +8,10 @@ import importJson from '../../../lib/import-json.js';
 
 const execFile = promisify(execFileAsync);
 
-const FIXTURE_TOOL_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/fixtures/scripts/fixtures-tool.py`;
+const GITHUB_BASE_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/`;
 const FIXTURE_TOOL_DIR_PREFIX = path.join(os.tmpdir(), `ofl-qlcplus5-fixture-tool-`);
 const FIXTURE_TOOL_PATH = `resources/fixtures/scripts/fixtures-tool.py`;
+const COLOR_FILTERS_PATH = `resources/colorfilters/namedrgb.qxcf`;
 const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
 
 /**
@@ -36,8 +37,16 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   const directory = await mkdtemp(FIXTURE_TOOL_DIR_PREFIX);
 
   // download fixtures-tool.py into fixtures/scripts directory
-  await mkdir(path.join(directory, `resources/fixtures/scripts`), { recursive: true });
-  await downloadFixtureTool(directory);
+  const fixtureToolPath = path.resolve(directory, FIXTURE_TOOL_PATH);
+  await mkdir(path.dirname(fixtureToolPath), { recursive: true });
+  const fixtureToolContent = await downloadFile(GITHUB_BASE_URL + FIXTURE_TOOL_PATH);
+  await writeFile(fixtureToolPath, fixtureToolContent, { mode: 0o755 });
+
+  // download namedrgb.qxcf into colorfilters directory
+  const colorFiltersPath = path.resolve(directory, COLOR_FILTERS_PATH);
+  await mkdir(path.dirname(colorFiltersPath), { recursive: true });
+  const namedRgbContent = await downloadFile(GITHUB_BASE_URL + COLOR_FILTERS_PATH);
+  await writeFile(colorFiltersPath, namedRgbContent);
 
   // write exported fixture.qxf into fixtures/manufacturer directory
   await mkdir(path.join(directory, `resources/fixtures/manufacturer`), { recursive: true });
@@ -45,10 +54,12 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 
   // store used gobos in the gobos/ directory
   const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
-  const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
-    Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
-  );
+  const qlcplusGobos = [
+    `gobos/Others/open.svg`,
+    `gobos/Others/rainbow.png`,
+    ...Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
+    ...allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
+  ];
 
   for (const gobo of qlcplusGobos) {
     const goboPath = path.join(directory, `resources`, gobo);
@@ -59,11 +70,19 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   }
 
   // call the fixture tool
-  const output = await execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
+  const output = await execFile(fixtureToolPath, [`--validate`, `.`], {
     cwd: path.join(directory, `resources/fixtures`),
+  }).catch(error => {
+    if (error.stdout) {
+      return {
+        stdout: error.stdout,
+        stderr: error.stderr,
+      };
+    }
+    throw error;
   });
 
-  const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
+  const lastLine = output.stdout.split(`\n`).findLast(line => line !== ``);
 
   if (lastLine !== `1 definitions processed. 0 errors detected`) {
     throw output.stdout;
@@ -72,28 +91,17 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 
 
 /**
- * Download the QLC+ fixture tool from GitHub, or use local version if already present.
- * @param {string} directory The absolute path of the temporary directory.
- * @returns {Promise} A Promise that resolves when the fixture tool is usable.
+ * @param {string} url The URL to download the file from.
+ * @returns {Promise<string>} A Promise that resolves to the downloaded file's content.
  */
-function downloadFixtureTool(directory) {
+function downloadFile(url) {
   return new Promise((resolve, reject) => {
-    https.get(FIXTURE_TOOL_URL, response => {
+    https.get(url, response => {
       let data = ``;
       response.on(`data`, chunk => {
         data += chunk;
       });
-      response.on(`end`, async () => {
-        try {
-          await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
-            mode: 0o755,
-          });
-          resolve();
-        }
-        catch (error) {
-          reject(error);
-        }
-      });
+      response.on(`end`, () => resolve(data));
     }).on(`error`, error => reject(error));
   });
 }

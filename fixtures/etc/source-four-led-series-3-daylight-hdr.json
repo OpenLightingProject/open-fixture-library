@@ -1,0 +1,358 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Source Four LED Series 3 Daylight HDR",
+  "shortName": "EtcSF3DaylightHDR",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Jeppe Cohrt", "Dyami Caliri"],
+    "createDate": "2022-05-07",
+    "lastModifyDate": "2022-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737510600",
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737506242"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/Source-Four-LED-Series-3/Features.aspx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=OjdVerorbMs"
+    ]
+  },
+  "rdm": {
+    "modelId": 1280
+  },
+  "physical": {
+    "dimensions": [216, 298, 700],
+    "weight": 8.9,
+    "power": 307,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "90 Lumileds LUXEON® C and CZ",
+      "lumens": 10889
+    },
+    "lens": {
+      "degreesMinMax": [5, 90]
+    }
+  },
+  "availableChannels": {
+    "Deep Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Mint": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 40],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "comment": "Dark Strobe"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "comment": "Bright Strobe"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "comment": "Flicker"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [241, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Incandescent"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Incandescent Red Shift"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Linear Red Shift"
+        },
+        {
+          "dmxRange": [40, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Fan": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [20, 249],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Fan auto"
+        }
+      ]
+    },
+    "Mix": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Full Studio"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Generic",
+          "comment": "Linear interpolation from Studio to RGB"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Full RGB"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [1, 165],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1900K",
+          "colorTemperatureEnd": "6000K"
+        },
+        {
+          "dmxRange": [166, 254],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6050K",
+          "colorTemperatureEnd": "10450K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    },
+    "Tint": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Tint",
+          "parameter": 0
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Maintenance",
+          "comment": "Tint",
+          "parameterStart": 10,
+          "parameterEnd": 0
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Maintenance",
+          "comment": "Tint",
+          "parameter": 0
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Maintenance",
+          "comment": "Tint",
+          "parameterStart": 0,
+          "parameterEnd": -10
+        }
+      ]
+    },
+    "Tuning": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Brightest"
+        },
+        {
+          "dmxRange": [50, 149],
+          "type": "Generic",
+          "comment": "Spectral"
+        },
+        {
+          "dmxRange": [150, 170],
+          "type": "Generic",
+          "comment": "Metamer"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Direct",
+      "channels": [
+        "Intensity",
+        "Deep Red",
+        "Red",
+        "Mint",
+        "Cyan",
+        "Blue",
+        "Indigo",
+        "Strobe",
+        "Dimmer Curve",
+        "Fan"
+      ]
+    },
+    {
+      "name": "Expanded",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Tint",
+        "Tuning",
+        "Mix",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Dimmer Curve",
+        "Fan"
+      ]
+    },
+    {
+      "name": "Studio",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Tint",
+        "Tuning",
+        "Strobe",
+        "Dimmer Curve",
+        "Fan"
+      ]
+    },
+    {
+      "name": "3 Ch RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Intensity",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}

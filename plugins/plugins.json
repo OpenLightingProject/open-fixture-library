@@ -9,6 +9,7 @@
     "color-chief",
     "colorsource",
     "d-light",
+    "dmxcontrol3",
     "dragonframe",
     "ecue",
     "millumin",
@@ -39,6 +40,13 @@
         "attributes-correctness"
       ]
     },
+    "dmxcontrol3": {
+      "name": "DMXControl 3 (DDF3)",
+      "exportPluginVersion": "0.1.2",
+      "exportTests": [
+        "channel-numbers"
+      ]
+    },
     "dragonframe": {
       "name": "Dragonframe",
       "exportPluginVersion": "1.0.0",
@@ -65,7 +73,7 @@
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportPluginVersion": "12.3.0",
+      "exportPluginVersion": "12.5.0",
       "exportTests": []
     },
     "op-z": {
@@ -95,8 +103,8 @@
     },
     "qlcplus_4.12.2": {
       "name": "QLC+ 4.12.2",
-      "importPluginVersion": "1.1.0",
-      "exportPluginVersion": "1.3.0",
+      "importPluginVersion": "1.1.2",
+      "exportPluginVersion": "1.3.2",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"

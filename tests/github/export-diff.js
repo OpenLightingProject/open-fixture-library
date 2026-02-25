@@ -37,14 +37,14 @@ try {
     ``,
   ];
 
-  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
   for (const task of tasks) {
     const taskResultLines = await performTask(task);
 
     // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
     // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
+    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
       lines.push(tooLongMessage);
       break;
     }
@@ -82,7 +82,7 @@ async function getDiffTasks(changedComponents) {
   const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Task[]} */
-  return getTasksForModel().concat(await getTasksForPlugins(), getTasksForFixtures())
+  return [...getTasksForModel(), ...(await getTasksForPlugins()), ...getTasksForFixtures()]
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
         task.manufacturerFixture === otherTask.manufacturerFixture &&
@@ -153,7 +153,7 @@ async function getDiffTasks(changedComponents) {
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions[previousVersions.length - 1];
+        const lastVersion = previousVersions.at(-1);
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
           tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
@@ -277,16 +277,16 @@ function getChangeFlags(diffOutput) {
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {
-    return `:zzz:`;
+    return `💤`;
   }
 
   if (changeFlags.hasChanged || (changeFlags.hasAdded && changeFlags.hasRemoved)) {
-    return `:vs:`;
+    return `🆚`;
   }
 
   if (changeFlags.hasAdded) {
-    return `:new:`;
+    return `🆕`;
   }
 
-  return `:x:`;
+  return `❌`;
 }

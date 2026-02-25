@@ -2,8 +2,8 @@
   <ConditionalDetails :open="capability.open" class="capability">
     <template #summary>
       DMX range
-      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
-      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <code :class="{ 'unset': start === null }">{{ start === null ? min : start }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end === null ? max : end }}</code>:
       <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
     </template>
 
@@ -11,11 +11,12 @@
 
       <LabeledInput
         :formstate="formstate"
-        :multiple-inputs="true"
+        multiple-inputs
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
         <PropertyInputRange
+          ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
@@ -30,18 +31,18 @@
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
         @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
-        v-model="capability"
+        :capability="capability"
         :channel="channel"
         :formstate="formstate"
         required />
@@ -77,25 +78,17 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
+.icon-button.close {
   position: absolute;
   top: 0;
   right: 0;
-  display: inline-block;
-  width: 1.4rem;
-  height: 1.4rem;
-  padding: 0.3rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
 }
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -110,22 +103,14 @@ export default {
     PropertyInputRange,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    capabilityIndex: {
-      type: Number,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    capabilityIndex: numberProp().required,
+    resolution: numberProp().required,
+    formstate: objectProp().required,
+  },
+  emits: {
+    'insert-capability-before': () => true,
+    'insert-capability-after': () => true,
   },
   data() {
     return {
@@ -149,10 +134,10 @@ export default {
       );
     },
     start() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
     },
     end() {
-      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
+      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
     },
     min() {
       let min = this.dmxMin;
@@ -311,6 +296,11 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
     },
   },
 };

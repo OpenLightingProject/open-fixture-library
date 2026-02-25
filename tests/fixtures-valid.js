@@ -59,6 +59,41 @@ const uniqueValues = {
 
 const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
 
+try {
+  const results = await runTests();
+
+  let totalFails = 0;
+  let totalWarnings = 0;
+
+  // each file
+  for (const result of results) {
+    const failed = result.errors.length > 0;
+    totalFails += failed ? 1 : 0;
+    totalWarnings += result.warnings.length;
+
+    printFileResult(result);
+  }
+
+  // newline
+  console.log();
+
+  // summary
+  if (totalWarnings > 0) {
+    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+  }
+
+  if (totalFails === 0) {
+    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
+    process.exit(0);
+  }
+
+  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  process.exit(1);
+}
+catch (error) {
+  console.error(chalk.red(`[Error]`), `Test errored:`, error);
+}
+
 /**
  * @returns {Promise<object[]>} A Promise that resolves to an array of result objects.
  */
@@ -179,38 +214,6 @@ async function checkManufacturers() {
   }
   return result;
 }
-
-
-// print results
-runTests().then(results => {
-  let totalFails = 0;
-  let totalWarnings = 0;
-
-  // each file
-  for (const result of results) {
-    const failed = result.errors.length > 0;
-    totalFails += failed ? 1 : 0;
-    totalWarnings += result.warnings.length;
-
-    printFileResult(result);
-  }
-
-  // newline
-  console.log();
-
-  // summary
-  if (totalWarnings > 0) {
-    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
-  }
-
-  if (totalFails === 0) {
-    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
-    process.exit(0);
-  }
-
-  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
-  process.exit(1);
-}).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
 
 
 /**

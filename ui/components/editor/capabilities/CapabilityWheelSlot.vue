@@ -3,13 +3,15 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
-      label="Slot number">
+      label="Slot number"
+      hint="Use 1.5 to indicate a wheel position halfway between slots 1 and 2."
+      style="display: inline-block; margin-bottom: 12px;">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="slotNumber" />
     </LabeledInput>
 
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -48,19 +51,9 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

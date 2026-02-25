@@ -3,10 +3,10 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
-      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
+      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel. Use 1.5 to indicate a wheel position halfway between slots 1 and 2."
       style="display: inline-block; margin-bottom: 12px;">
       <EditorProportionalPropertySwitcher
         :capability="capability"
@@ -16,7 +16,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template #label>
@@ -42,7 +42,7 @@
         :capability="capability"
         :formstate="formstate"
         :property-name="capability.typeData.speedOrAngle"
-        :required="true" />
+        required />
 
     </LabeledInput>
 
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -81,19 +82,9 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

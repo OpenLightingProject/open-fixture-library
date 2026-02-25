@@ -26,14 +26,23 @@ As soon as an issue is assigned to somebody, it means that this person is respon
   These are the steps that take the longest when reviewing a fixture:
 
   > 1. Checking whether at least 3 links are present. Otherwise, finding suitable links.
-  >     * link to a manual PDF containing all DMX modes
-  >     * link to a product page on the official manufacturer website
-  >     * link to a YouTube or Vimeo video that showcases or explains the fixture
+  >     - link to a manual PDF containing all DMX modes
+  >     - link to a product page on the official manufacturer website
+  >     - link to a YouTube or Vimeo video that showcases or explains the fixture
   > 2. Checking whether all DMX modes from the manual are included in the fixture definition.  
   > 3. Checking whether all DMX modes' channels from the manual are included in the fixture definition.  
   > 4. Checking whether all DMX channels' capabilities from the manual are included in the fixture definition.
 
   If you could go through some [PRs with the `new-fixture` label](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture) and comment on them with the results of those checks, that would help immensely. Thank you already :)
+
+  For the fixtures passing these tests, these are some common tasks that often need to be fixed:
+
+  - replace capability type `StrobeSpeed` with `ShutterStrobe` where that one fits better
+  - replace capability type `Generic` with `Maintenance` where that one fits better
+  - rename modes that have no name in the manual to the usual `5-channel`/`5ch` format
+  - link to an English manual / product page (if one exists) instead of one in another language
+
+  Pull requests with these fixes against the original fixture pull requests (see e.g. [#2023](https://github.com/OpenLightingProject/open-fixture-library/pull/2023)) are highly appreciated!
 
 * **Add links and colors to existing fixtures**  
   See [#578](https://github.com/OpenLightingProject/open-fixture-library/issues/578) and [#723](https://github.com/OpenLightingProject/open-fixture-library/issues/723). There are also some broken links (see [#999](https://github.com/OpenLightingProject/open-fixture-library/issues/999)), maybe you can find some alternative links to replace them.
@@ -47,7 +56,7 @@ As soon as an issue is assigned to somebody, it means that this person is respon
   Please create a new issue first if it's a bigger change.
 
 * **Create new import/export plugins**  
-  This is a bit more involved. See the [list of new plugins](https://github.com/OpenLightingProject/open-fixture-library/projects/5) for inspiration. Use existing plugins as reference and look at the [plugin documentation](plugins.md).
+  This is a bit more involved. See the [list of new plugins](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aissue+is%3Aopen+label%3Anew-plugin) for inspiration. Use existing plugins as reference and look at the [plugin documentation](plugins.md).
 
 * **Improve the [documentation](README.md)**  
   Especially after you have made other changes, there is likely something you've been missing in the documentation. Help others find it there!

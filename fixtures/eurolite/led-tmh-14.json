@@ -1,0 +1,307 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-14",
+  "shortName": "TMH-14",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Victor Hampel"],
+    "createDate": "2022-06-10",
+    "lastModifyDate": "2022-06-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/286274/Eurolite-Led-Tmh-14.html"
+    ],
+    "productPage": [
+      "https://www.musikhaus-korn.de/en/eurolite-led-tmh-14-moving-head-zoom-wash/pd/134357"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=h45pZVr19tg"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 200, 280],
+    "weight": 3.25,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3× 12W COB RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [4, 32]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "18Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colors, color change": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "light blue",
+          "colors": ["#61b8ff"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "purple",
+          "colors": ["#ac00ac"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "rose",
+          "colors": ["#ff0080"]
+        },
+        {
+          "dmxRange": [48, 71],
+          "type": "ColorPreset",
+          "comment": "red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "warm white (mixed from rgbw)",
+          "colors": ["#ffda95"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "lime",
+          "colors": ["#a6ff00"]
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "ColorPreset",
+          "comment": "green",
+          "colors": ["#00ec27"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "white (mixed rgbw)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [128, 160],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "fade in and fade out"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "crossfade"
+        }
+      ]
+    },
+    "Color change speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Internal programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 120],
+          "type": "Effect",
+          "effectName": "Internal program 1"
+        },
+        {
+          "dmxRange": [121, 244],
+          "type": "Effect",
+          "effectName": "Internal program 2"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Music control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Internal programs speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset all motors"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Strobe",
+        "Dimmer",
+        "Zoom",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Reset"
+      ]
+    },
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Strobe",
+        "Dimmer",
+        "Zoom",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colors, color change",
+        "Color change speed",
+        "Internal programs",
+        "Internal programs speed",
+        "Reset"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Radiance Hazer",
+  "shortName": "radiance-hazer",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-02-26",
+    "lastModifyDate": "2022-02-26"
+  },
+  "links": {
+    "manual": [
+      "https://gmbh.ultratecfx.com/docs/default-source/downloads-radiance-hazer/radiance-haze-manual-2020.pdf?sfvrsn=2"
+    ],
+    "productPage": [
+      "https://ultratecfx.com/atmospherics/products-catalog/radiance-hazer/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yOKOLkTNOuw"
+    ]
+  },
+  "physical": {
+    "dimensions": [279, 180, 419],
+    "weight": 13,
+    "power": 500,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "0%",
+        "fogOutputEnd": "100%"
+      }
+    },
+    "Fan": {
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Haze",
+        "Fan"
+      ]
+    }
+  ]
+}

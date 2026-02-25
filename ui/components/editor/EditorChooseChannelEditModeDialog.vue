@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import A11yDialog from '../A11yDialog.vue';
 
 export default {
@@ -32,14 +33,8 @@ export default {
     A11yDialog,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    fixture: objectProp().required,
   },
   methods: {
     onChooseChannelEditModeDialogOpen() {

@@ -8,6 +8,7 @@ const usedVariables = [
   `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
   `NODE_ENV`,
   `PORT`,
+  `HOST`,
   `WEBSITE_URL`,
   `GITHUB_PR_NUMBER`,
   `GITHUB_PR_HEAD_REF`,
@@ -23,12 +24,10 @@ console.log(`Process environment variables:`);
 printVariables();
 console.log();
 
-import(`../lib/load-env-file.js`).then(() => {
-  console.log(`Environment variables after reading .env:`);
-  printVariables();
-}).catch(error => {
-  throw error;
-});
+await import(`../lib/load-env-file.js`);
+
+console.log(`Environment variables after reading .env:`);
+printVariables();
 
 /**
  * Prints all used environment variables and their values / unset

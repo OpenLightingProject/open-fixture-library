@@ -8,10 +8,20 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+    groups:
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/js"
+    ignore:
+      - dependency-name: "eslint-plugin-jsdoc"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     labels:
       - "dependencies"

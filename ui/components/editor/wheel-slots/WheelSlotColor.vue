@@ -33,7 +33,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`wheel-slot${wheelSlot.uuid}-colorTemperature`"
       label="Color temperature">
       <PropertyInputEntity
@@ -47,8 +47,9 @@
 </template>
 
 <script>
-import { schemaDefinitions, entitiesSchema } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
+import { objectProp } from 'vue-ts-types';
+import { entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -61,15 +62,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    wheelSlot: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    wheelSlot: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

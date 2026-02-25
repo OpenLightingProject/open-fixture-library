@@ -9,8 +9,16 @@
     "lastModifyDate": "2018-08-09"
   },
   "links": {
-    "manual": ["https://www.bax-shop.nl/downloads/products/9000-0007-6647/ayra_tdc_triple_burst_manual.pdf"],
-    "video": ["https://www.youtube.com/watch?v=WKCW9-JtCfs"]
+    "manual": [
+      "https://www.bax-shop.nl/downloads/products/9000-0007-6647/ayra_tdc_triple_burst_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.bax-shop.co.uk/led-light-effect/ayra-tdc-triple-burst-led-lichteffect"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=WKCW9-JtCfs",
+      "https://www.youtube.com/watch?v=Xt2d_Y9eGzs"
+    ]
   },
   "physical": {
     "dimensions": [375, 260, 100],
@@ -280,18 +288,12 @@
     {
       "name": "1 channel",
       "shortName": "1ch",
-      "channels": [
-        "Show"
-      ]
+      "channels": ["Show"]
     },
     {
       "name": "3 channel",
       "shortName": "3ch",
-      "channels": [
-        "Color chase",
-        "Dimmer",
-        "Strobe"
-      ]
+      "channels": ["Color chase", "Dimmer", "Strobe"]
     },
     {
       "name": "9 channel",

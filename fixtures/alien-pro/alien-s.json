@@ -1,0 +1,435 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Alien S",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Yéred Zabdiel", "Flo Edelmann"],
+    "createDate": "2022-01-29",
+    "lastModifyDate": "2022-01-29"
+  },
+  "links": {
+    "manual": [
+      "http://alienpro.com.mx/wp-content/uploads/Manual-Bar-Alien-S.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iuyEvc5mtj4"
+    ]
+  },
+  "physical": {
+    "dimensions": [1070, 65, 88],
+    "weight": 2.6,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "240× 10mm LED (96 red, 72 green, 72 blue)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/4": ["1", "2"],
+      "2/4": ["3", "4"],
+      "3/4": ["5", "6"],
+      "4/4": ["7", "8"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Flash Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Effect",
+          "effectName": "Program 01",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Effect",
+          "effectName": "Program 02",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Effect",
+          "effectName": "Program 03",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Effect",
+          "effectName": "Program 04",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Effect",
+          "effectName": "Program 05",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Effect",
+          "effectName": "Program 06",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Effect",
+          "effectName": "Program 07",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Effect",
+          "effectName": "Program 08",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Program 09",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Program 10",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Program 11",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Program 12",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Program 13",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Program 14",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Program 15",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Program 16",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Program 17",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Program 18",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Program 19",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Program 20",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Program 21",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel d-P1",
+      "shortName": "d-P1",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-channel d-P2",
+      "shortName": "d-P2",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "14-channel d-P3",
+      "shortName": "d-P3",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Flash Speed",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "26-channel d-P4",
+      "shortName": "d-P4",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Flash Speed",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel d-P5",
+      "shortName": "d-P5",
+      "channels": [
+        "Macros",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "7-channel d-P6",
+      "shortName": "d-P6",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Macros",
+        "Program Speed / Sound Sensitivity",
+        "Flash Speed",
+        "Master Dimmer"
+      ]
+    }
+  ]
+}

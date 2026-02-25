@@ -14,20 +14,34 @@
       @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
-        <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
-          <select
-            v-model="channel.uuid"
+        <LabeledInput
+          :formstate="formstate"
+          name="existingChannelUuid"
+          multiple-inputs>
+          <input
+            v-model="selectedChannelUuidsString"
             name="existingChannelUuid"
-            size="10"
-            style="width: 100%;"
+            type="hidden"
             required>
-            <option
-              v-for="channelUuid of currentModeUnchosenChannels"
-              :key="channelUuid"
-              :value="channelUuid">
-              {{ getChannelName(channelUuid) }}
-            </option>
-          </select>
+          <fieldset class="channel-list">
+            <legend>Select existing channel(s)</legend>
+            <!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -- double click is just a shortcut, all functionality is still accessible via keyboard -->
+            <label
+              v-for="item of currentModeUnchosenChannels"
+              :key="item.uuid"
+              :for="item.inputId"
+              class="channel-list-item"
+              @dblclick="onChannelDoubleClick(item.uuid)">
+              <input
+                :id="item.inputId"
+                :checked="item.isSelected"
+                type="checkbox"
+                class="channel-checkbox"
+                @change="toggleChannelSelection(item.uuid)">
+              <span class="channel-name">{{ item.name }}</span>
+              <code v-if="item.showUuid" class="channel-uuid">{{ item.uuid }}</code>
+            </label>
+          </fieldset>
         </LabeledInput>
 
         <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
@@ -38,7 +52,7 @@
           <PropertyInputText
             v-model="channel.name"
             :schema-property="channelProperties.name"
-            :required="true"
+            required
             name="name"
             start-with-uppercase-or-number
             no-fine-channel-name
@@ -95,6 +109,7 @@
         </datalist>
 
         <LabeledInput :formstate="formstate" name="resolution" label="Channel resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
@@ -107,6 +122,7 @@
           :formstate="formstate"
           name="dmxValueResolution"
           label="DMX value resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select
             v-model="channel.dmxValueResolution"
             name="dmxValueResolution"
@@ -120,7 +136,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="defaultValue"
           label="Default DMX value">
           <PropertyInputEntity
@@ -133,20 +149,20 @@
         </LabeledInput>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
-          <a
-            href="#expand-all"
+          <button
+            type="button"
             class="icon-button expand-all"
-            title="Expand all capabilities"
+            title="Expand all channels"
             @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
-          </a>
-          <a
-            href="#collapse-all"
+          </button>
+          <button
+            type="button"
             class="icon-button collapse-all"
-            title="Collapse all capabilities"
+            title="Collapse all channels"
             @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
-          </a>
+          </button>
         </template></h3>
 
         <EditorCapabilityWizard
@@ -180,7 +196,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="highlightValue"
           label="Highlight DMX value">
           <PropertyInputEntity
@@ -228,6 +244,60 @@
   display: block;
 }
 
+.channel-list {
+  max-height: 400px;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  list-style: none;
+  background-color: theme-color(card-background);
+  border: 1px solid theme-color(text-secondary);
+
+  legend {
+    display: block;
+    width: calc(100% + 2px);
+    padding: 0;
+    margin: 0 -1px;
+    color: theme-color(text-secondary);
+    border-bottom: 1px solid theme-color(text-secondary);
+  }
+}
+
+.channel-list-item {
+  display: flex;
+  gap: 1ex;
+  align-items: center;
+  padding: 0.5ex 2ex;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid theme-color(divider);
+  transition: background-color 0.15s;
+
+  &:where(:has(.channel-checkbox:checked)) {
+    background-color: theme-color(active-background);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover,
+  &:has(.channel-checkbox:focus-visible) {
+    background-color: theme-color(hover-background);
+  }
+}
+
+.channel-checkbox {
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.channel-uuid {
+  font-size: 0.85em;
+  color: theme-color(text-secondary);
+}
+
 @media (min-width: $phone) {
   #channel-dialog ::v-deep .dialog {
     width: 80%;
@@ -240,17 +310,17 @@
 import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
+import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
-  getEmptyFormState,
   getEmptyCapability,
   getEmptyFineChannel,
+  getEmptyFormState,
   getSanitizedChannel,
-  isChannelChanged,
   isCapabilityChanged,
-  clone,
-} from '../../assets/scripts/editor-utils.js';
+  isChannelChanged,
+} from '../../assets/scripts/editor-utilities.js';
 
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -272,18 +342,14 @@ export default {
     PropertyInputSelect,
     PropertyInputText,
   },
-  model: {
-    prop: `channel`,
-  },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    fixture: objectProp().required,
+  },
+  emits: {
+    'channel-changed': () => true,
+    'remove-channel': channelId => true,
+    'reset-channel': () => true,
   },
   data() {
     return {
@@ -293,6 +359,7 @@ export default {
       channelProperties,
       singleColors: capabilityTypes.ColorIntensity.properties.color.enum,
       constants,
+      selectedChannelUuids: [],
     };
   },
   computed: {
@@ -304,43 +371,22 @@ export default {
       const modeIndex = this.fixture.modes.findIndex(mode => mode.uuid === uuid);
       return this.fixture.modes[modeIndex];
     },
+    currentModeUnchosenChannelUuids() {
+      return Object.keys(this.fixture.availableChannels).filter(
+        channelUuid => !this.currentMode.channels.includes(channelUuid),
+      );
+    },
     currentModeUnchosenChannels() {
-      return Object.keys(this.fixture.availableChannels).filter(channelUuid => {
-        if (this.currentMode.channels.includes(channelUuid)) {
-          // already used
-          return false;
-        }
-
-        const channel = this.fixture.availableChannels[channelUuid];
-        if (`coarseChannelId` in channel) {
-          // should we include this fine channel?
-
-          if (!this.currentMode.channels.includes(channel.coarseChannelId)) {
-            // its coarse channel is not yet in the mode
-            return false;
-          }
-
-          const modeChannels = this.currentMode.channels.map(
-            uuid => this.fixture.availableChannels[uuid],
-          );
-
-          const otherFineChannels = modeChannels.filter(
-            otherChannel => `coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channel.coarseChannelId,
-          );
-
-          const maxFoundResolution = Math.max(
-            constants.RESOLUTION_8BIT,
-            ...otherFineChannels.map(otherFineChannel => otherFineChannel.resolution),
-          );
-
-          if (maxFoundResolution !== channel.resolution - 1) {
-            // the finest channel currently used is not its next coarser channel
-            return false;
-          }
-        }
-
-        return true;
-      });
+      return this.currentModeUnchosenChannelUuids.map(channelUuid => ({
+        inputId: `unchosen-channel-${channelUuid}`,
+        uuid: channelUuid,
+        name: this.getChannelName(channelUuid),
+        showUuid: !this.isChannelNameUnique(channelUuid),
+        isSelected: this.isChannelSelected(channelUuid),
+      }));
+    },
+    selectedChannelUuidsString() {
+      return this.selectedChannelUuids.join(`,`);
     },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
@@ -374,7 +420,8 @@ export default {
     },
     submitButtonTitle() {
       if (this.channel.editMode === `add-existing`) {
-        return `Add channel`;
+        const count = this.selectedChannelUuids.length;
+        return count <= 1 ? `Add channel` : `Add ${count} channels`;
       }
 
       if (this.channel.editMode === `create`) {
@@ -406,6 +453,110 @@ export default {
       return fixtureEditor.getChannelName(channelUuid);
     },
 
+    isChannelNameUnique(channelUuid) {
+      const fixtureEditor = this.$parent;
+      return fixtureEditor.isChannelNameUnique(channelUuid);
+    },
+
+    isChannelSelected(channelUuid) {
+      return this.selectedChannelUuids.includes(channelUuid);
+    },
+
+    modeHasChannel(channelUuid) {
+      return this.currentMode.channels.includes(channelUuid);
+    },
+
+    toggleChannelSelection(channelUuid) {
+      if (this.isChannelSelected(channelUuid)) {
+        this.deselectChannel(channelUuid);
+      }
+      else {
+        this.selectChannel(channelUuid);
+      }
+
+      this.channelChanged = true;
+    },
+
+    deselectChannel(channelUuid) {
+      const deselectedChannel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in deselectedChannel;
+
+      // Deselect the channel
+      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
+
+      if (isFineChannel) {
+        // Deselect all finer channels
+        this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+          const channel = this.fixture.availableChannels[uuid];
+          return (
+            !(`coarseChannelId` in channel) ||
+            channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
+            channel.resolution < deselectedChannel.resolution
+          );
+        });
+        return;
+      }
+
+      // Deselect all fine channels belonging to this coarse channel
+      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+        const channel = this.fixture.availableChannels[uuid];
+        return !(`coarseChannelId` in channel) || channel.coarseChannelId !== channelUuid;
+      });
+    },
+
+    selectChannel(channelUuid) {
+      if (this.isChannelSelected(channelUuid)) {
+        return;
+      }
+
+      const selectedChannel = this.fixture.availableChannels[channelUuid];
+      const isFineChannel = `coarseChannelId` in selectedChannel;
+
+      if (!isFineChannel) {
+        this.selectedChannelUuids.push(channelUuid);
+        return;
+      }
+
+      // Add the coarse channel if not already selected
+      const coarseChannelId = selectedChannel.coarseChannelId;
+      if (!this.isChannelSelected(coarseChannelId) && !this.modeHasChannel(coarseChannelId)) {
+        this.selectedChannelUuids.push(coarseChannelId);
+      }
+
+      // Add all finer channels between coarse and selected fine channel
+      const currentResolution = selectedChannel.resolution;
+      for (const uuid of this.currentModeUnchosenChannelUuids) {
+        const channel = this.fixture.availableChannels[uuid];
+        if (
+          `coarseChannelId` in channel &&
+          channel.coarseChannelId === coarseChannelId &&
+          channel.resolution < currentResolution &&
+          !this.isChannelSelected(uuid) &&
+          !this.modeHasChannel(uuid)
+        ) {
+          this.selectedChannelUuids.push(uuid);
+        }
+      }
+
+      this.selectedChannelUuids.push(channelUuid);
+    },
+
+    async onChannelDoubleClick(channelUuid) {
+      // Select the channel if not already selected
+      if (!this.isChannelSelected(channelUuid)) {
+        this.toggleChannelSelection(channelUuid);
+      }
+
+      if (this.selectedChannelUuids.some(uuid => uuid !== channelUuid)) {
+        // another channel is already selected, do not submit on double-click
+        return;
+      }
+
+      // wait until validation state is updated
+      await this.$nextTick();
+      this.onSubmit();
+    },
+
     async onChannelDialogOpen() {
       if (this.restored) {
         this.restored = false;
@@ -417,6 +568,7 @@ export default {
       }
       else if (this.channel.editMode === `add-existing`) {
         this.channel.uuid = ``;
+        this.selectedChannelUuids = [];
       }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         this.copyPropertiesFromChannel(this.fixture.availableChannels[this.channel.uuid]);
@@ -429,7 +581,7 @@ export default {
 
     copyPropertiesFromChannel(channel) {
       for (const property of Object.keys(channel)) {
-        this.channel[property] = clone(channel[property]);
+        this.channel[property] = structuredClone(channel[property]);
       }
     },
 
@@ -450,12 +602,11 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged) {
+      if (this.areCapabilitiesChanged || channelName === ``) {
         return;
       }
 
       const capability = this.channel.capabilities[0];
-      const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase()),
@@ -463,7 +614,6 @@ export default {
       if (matchingColor) {
         capability.type = `ColorIntensity`;
         capability.typeData.color = matchingColor;
-        changeCapabilityType();
         return;
       }
 
@@ -479,7 +629,7 @@ export default {
         WheelShake: /\bshake\b/i,
         WheelSlotRotation: /gobo ?\d* (?:rotation|index)/i,
         WheelRotation: /wheels? ?\d* (?:rotation|index)/i,
-        WheelSlot: /wheel|dis[ck]|gobos? ?\d*$/i,
+        WheelSlot: /wheel|dis[ck]|(?:gobos? ?\d*$)/i,
         EffectSpeed: /^(?:effect|program|macro) speed$/i,
         EffectDuration: /^(?:effect|program|macro) (?:time|duration)$/i,
         SoundSensitivity: /^(?:sound|mic|microphone) sensitivity$/i,
@@ -499,7 +649,6 @@ export default {
 
       if (matchingType) {
         capability.type = matchingType;
-        changeCapabilityType();
       }
     },
 
@@ -528,6 +677,10 @@ export default {
     },
 
     onSubmit() {
+      if (this.channel.wizard.show) {
+        return;
+      }
+
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
@@ -625,7 +778,14 @@ export default {
     },
 
     addExistingChannel() {
-      this.currentMode.channels.push(this.channel.uuid);
+      for (const channelUuid of this.selectedChannelUuids) {
+        if (!this.modeHasChannel(channelUuid)) {
+          this.currentMode.channels.push(channelUuid);
+        }
+      }
+
+      // Reset selection
+      this.selectedChannelUuids = [];
     },
 
     /**
@@ -683,7 +843,7 @@ export default {
           topOffset: 100,
         },
         isScrollable: target => target === scrollContainer,
-      }, () => firstNewCapability.$refs.firstInput.focus());
+      }, () => firstNewCapability.focus());
     },
 
     openDetails() {

@@ -2,8 +2,8 @@
 import chalk from 'chalk';
 
 import {
-  scaleDmxValue,
   scaleDmxRange,
+  scaleDmxValue,
 } from '../lib/scale-dmx-values.js';
 
 
@@ -281,7 +281,7 @@ function testRandomChannelDownscaling(resolution) {
         ? Math.floor((Math.random() * (maximumRangeWidth - (2 * minimumRangeWidth))) + minimumRangeWidth)
         : remainingDmxValues;
 
-      const lastDmxValue = ranges.length > 0 ? ranges[ranges.length - 1][1] : -1;
+      const lastDmxValue = ranges.length > 0 ? ranges.at(-1)[1] : -1;
       ranges.push([lastDmxValue + 1, lastDmxValue + rangeWidth]);
       remainingDmxValues -= rangeWidth;
     }

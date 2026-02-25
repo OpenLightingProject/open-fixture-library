@@ -3,25 +3,25 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
       <PropertyInputEntity
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
         :schema-property="bladeSchema"
-        :required="true" />
+        required />
     </LabeledInput>
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-insertion`"
       label="Insertion">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="insertion" />
     </LabeledInput>
 
@@ -40,7 +40,8 @@
 </template>
 
 <script>
-import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
+import { objectProp } from 'vue-ts-types';
+import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -55,15 +56,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

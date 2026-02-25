@@ -45,12 +45,12 @@
             :formstate="formstate"
             name="file"
             label="Fixture definition file"
-            hint="Maximum file size is 5MB.">
+            hint="Maximum file size is 50MB.">
             <EditorFileUpload
               v-model="file"
-              :required="true"
+              required
               name="file"
-              max-file-size="5MB" />
+              max-file-size="50MB" />
           </LabeledInput>
 
           <LabeledInput :formstate="formstate" name="githubComment" label="Comment">
@@ -107,7 +107,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
-import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
+import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -132,7 +132,7 @@ export default {
     return {
       formstate: getEmptyFormState(),
       plugin: ``,
-      file: null,
+      file: undefined,
       githubComment: ``,
       author: ``,
       githubUsername: ``,
@@ -178,15 +178,21 @@ export default {
         return;
       }
 
-      const fileDataUrl = await getFileDataUrl(this.file);
-      const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
+      try {
+        const fileDataUrl = await getFileDataUrl(this.file);
+        const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
 
-      this.$refs.submitDialog.validate({
-        plugin: this.plugin,
-        fileName: this.file.name,
-        fileContentBase64,
-        author: this.author,
-      });
+        this.$refs.submitDialog.validate({
+          plugin: this.plugin,
+          fileName: this.file.name,
+          fileContentBase64,
+          author: this.author,
+        });
+      }
+      catch (fileReaderError) {
+        alert(`Could not read the file.`);
+        console.error(`Could not read the file.`, fileReaderError);
+      }
 
       /**
        * @param {File} file A File object from an HTML5 file input.
@@ -207,7 +213,7 @@ export default {
       }
     },
     async reset() {
-      this.file = null;
+      this.file = undefined;
       this.githubComment = ``;
 
       await this.$nextTick();

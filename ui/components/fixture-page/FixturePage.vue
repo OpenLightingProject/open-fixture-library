@@ -13,6 +13,7 @@
 
       <LabeledValue
         v-if="fixture.hasComment"
+        key="comment"
         :value="fixture.comment"
         name="comment"
         label="Comment" />
@@ -22,7 +23,8 @@
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
-            :start-at="video.startAt" />
+            :start-at="video.startAt"
+            server-url="https://embetty.open-fixture-library.org" />
           <a
             :href="video.url"
             target="_blank"
@@ -35,6 +37,7 @@
 
       <LabeledValue
         v-if="links.length > 0"
+        key="links"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
@@ -60,6 +63,7 @@
 
       <LabeledValue
         v-if="fixture.rdm !== null"
+        key="rdm"
         name="rdm">
         <template #label>
           <abbr title="Remote Device Management">RDM</abbr> data
@@ -188,6 +192,8 @@
 </style>
 
 <script>
+import { EmbettyVideo } from 'embetty-vue';
+import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
@@ -208,6 +214,7 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
+    EmbettyVideo,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,
@@ -216,15 +223,11 @@ export default {
     LabeledValue,
   },
   props: {
-    fixture: {
-      type: Fixture,
-      required: true,
-    },
-    loadAllModes: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    fixture: instanceOfProp(Fixture).required,
+    loadAllModes: booleanProp().withDefault(false),
+  },
+  emits: {
+    'help-wanted-clicked': payload => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;

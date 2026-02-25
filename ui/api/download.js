@@ -3,10 +3,10 @@ import express from 'express';
 import JSZip from 'jszip';
 
 import importJson from '../../lib/import-json.js';
-import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
 import Fixture from '../../lib/model/Fixture.js';
 import Manufacturer from '../../lib/model/Manufacturer.js';
-import { sendJson, sendAttachment } from '../../lib/server-response-helpers.js';
+import { embedResourcesIntoFixtureJson, fixtureFromRepository } from '../../lib/model.js';
+import { sendAttachment, sendJson } from '../../lib/server-response-helpers.js';
 /** @typedef {import('http').ServerResponse} ServerResponse */
 
 const pluginsPromise = importJson(`../../plugins/plugins.json`, import.meta.url);
@@ -62,6 +62,9 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
 
 const router = express.Router();
+
+// support JSON encoded bodies
+router.use(express.json({ limit: `50mb` }));
 
 router.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;

@@ -1,0 +1,243 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPAR T12 USB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous", "Ken Harris", "Flo Edelmann"],
+    "createDate": "2022-03-22",
+    "lastModifyDate": "2022-03-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/SlimPAR_T12_USB_UM_Rev1_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/slimpar-t12-usb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Qav_XTa3I68"
+    ]
+  },
+  "physical": {
+    "dimensions": [227, 84, 252],
+    "weight": 1.8,
+    "power": 39,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12× 3W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Pulse 0-100%",
+          "comment": "R/G/B channels must be active",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Pulse 100%-0%",
+          "comment": "R/G/B channels must be active",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Pulse 100%-0%-100%",
+          "comment": "R/G/B channels must be active",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "RGB",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "RGBCYMW",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Default Dimmer Speed Set From Menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "50%"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe / Speed / Sensitivity",
+        "Mode",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}

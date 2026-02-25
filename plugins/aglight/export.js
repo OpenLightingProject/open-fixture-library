@@ -30,20 +30,14 @@ export async function exportFixtures(fixtures, options) {
   const library = {
     version: displayedPluginVersion,
     fixtures: fixtures.map(fixture => {
-      const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-      jsonData.fixtureKey = fixture.key;
-      jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
-      jsonData.oflURL = fixture.url;
-
-      if (!jsonData.availableChannels) {
-        jsonData.availableChannels = {};
+      try {
+        return exportFixture(fixture, manufacturers);
       }
-
-      transformMatrixChannels(jsonData, fixture);
-      transformSingleCapabilityToArray(jsonData);
-      transformNonNumericValues(jsonData);
-
-      return jsonData;
+      catch (error) {
+        throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
+          cause: error,
+        });
+      }
     }),
   };
   return [{
@@ -52,6 +46,43 @@ export async function exportFixtures(fixtures, options) {
     mimetype: `application/aglight-fixture-library`,
     fixtures,
   }];
+}
+
+/**
+ * @param {Fixture} fixture The fixture to export.
+ * @param {object} manufacturers The manufacturers object.
+ * @returns {object} The generated fixture JSON.
+ */
+function exportFixture(fixture, manufacturers) {
+  const jsonData = structuredClone(fixture.jsonObject);
+  jsonData.fixtureKey = fixture.key;
+  jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
+  jsonData.oflURL = fixture.url;
+
+  if (!jsonData.availableChannels) {
+    jsonData.availableChannels = {};
+  }
+
+  downgradePhysical(jsonData.physical);
+  transformMatrixChannels(jsonData, fixture);
+  transformSingleCapabilityToArray(jsonData);
+  transformNonNumericValues(jsonData);
+
+  for (const mode of jsonData.modes) {
+    downgradePhysical(mode.physical);
+  }
+
+  return jsonData;
+}
+
+/**
+ * Removes `powerConnectors` from physical.
+ * @param {object|undefined} physicalJsonData The physical object to transform.
+ */
+function downgradePhysical(physicalJsonData) {
+  if (physicalJsonData) {
+    delete physicalJsonData.powerConnectors;
+  }
 }
 
 /**
@@ -71,12 +102,13 @@ function transformMatrixChannels(fixtureJson, fixture) {
 
   fixtureJson.availableChannels = Object.fromEntries(
     availableAndMatrixChannels.map(channel => {
-      let channelJsonObject = JSON.parse(JSON.stringify(channel.jsonObject));
+      let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
-        channelJsonObject = Object.assign({}, channelJsonObject, {
+        channelJsonObject = {
+          ...channelJsonObject,
           pixelKey: channel.pixelKey,
-        });
+        };
       }
 
       return [channel.key, channelJsonObject];

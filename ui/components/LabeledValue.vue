@@ -1,18 +1,18 @@
-<!-- eslint-disable vue/no-undef-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1669 -->
+<!-- eslint-disable vuejs-accessibility/no-static-element-interactions -- use more accessible way of highlighting -->
 
-<template functional>
+<template>
   <section
-    :ref="data.ref"
-    :class="[data.class, data.staticClass, props.name]"
-    :style="[data.style, data.staticStyle]"
-    v-bind="data.attrs"
-    v-on="listeners">
+    :class="name"
+    @focusin="$emit('focusin', $event)"
+    @focusout="$emit('focusout', $event)"
+    @mouseover="$emit('mouseover', $event)"
+    @mouseout="$emit('mouseout', $event)">
     <div class="label">
-      <template v-if="props.label">{{ props.label }}</template>
+      <template v-if="label">{{ label }}</template>
       <slot name="label" />
     </div>
     <div class="value">
-      <template v-if="props.value">{{ props.value }}</template>
+      <template v-if="value">{{ value }}</template>
       <slot />
     </div>
   </section>
@@ -49,25 +49,19 @@ section {
 </style>
 
 <script>
-/* eslint-disable vue/no-unused-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1312 */
+import { stringProp } from 'vue-ts-types';
 
 export default {
   props: {
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    value: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    name: stringProp().optional,
+    label: stringProp().optional,
+    value: stringProp().optional,
+  },
+  emits: {
+    focusin: event => true,
+    focusout: event => true,
+    mouseover: event => true,
+    mouseout: event => true,
   },
 };
 </script>
