@@ -113,7 +113,7 @@ export default {
       categoriesQuery: [],
       detailsInitiallyOpen: null,
       results: [],
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+      categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, `en`)),
       loading: false,
       isBrowser: false,
     };

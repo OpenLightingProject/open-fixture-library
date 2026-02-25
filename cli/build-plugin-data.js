@@ -39,7 +39,7 @@ for (const [key, data] of Object.entries(allPreviousVersions)) {
 
 // sort plugin data object by key
 plugins.data = Object.fromEntries(
-  Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
+  Object.keys(plugins.data).toSorted().map(key => [key, plugins.data[key]]),
 );
 
 const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
