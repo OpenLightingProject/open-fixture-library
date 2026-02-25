@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "start": "nuxt start",
+
     "build": "npm run build-without-nuxt && npm run build:nuxt",
     "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
     "build:nuxt": "nuxt build",
@@ -22,12 +23,15 @@
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
     "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
+
     "clean": "rm -rf .nuxt tmp",
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
+
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
     "lint:eslint-errors-only": "eslint --quiet .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
+
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
@@ -72,6 +76,7 @@
     "@eslint/js": "~9.39.3",
     "@eslint/markdown": "~7.5.1",
     "@stylistic/stylelint-config": "~4.0.0",
+    "@vitest/eslint-plugin": "^1.6.9",
     "broken-link-checker": "^0.7.8",
     "dir-compare": "^5.0.0",
     "disparity": "^3.2.0",
@@ -83,7 +88,6 @@
     "eslint-plugin-promise": "~7.2.1",
     "eslint-plugin-sonarjs": "~4.0.0",
     "eslint-plugin-unicorn": "~63.0.0",
-    "eslint-plugin-vitest": "^0.5.4",
     "eslint-plugin-vue": "~10.8.0",
     "eslint-plugin-vuejs-accessibility": "~2.5.0",
     "globals": "^17.3.0",

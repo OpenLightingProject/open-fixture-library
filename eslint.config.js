@@ -1,6 +1,7 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
+import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
@@ -8,7 +9,6 @@ import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import eslintPluginVitest from 'eslint-plugin-vitest';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
@@ -490,9 +490,5 @@ export default [
   {
     ...eslintPluginVitest.configs.recommended,
     files: [`tests/*.test.js`],
-    rules: {
-      ...eslintPluginVitest.configs.recommended.rules,
-      'vitest/expect-expect': [`error`, { assertFunctionNames: [`expect`, `testRandomCapabilityRangesDoNotOverlap`] }],
-    },
   },
 ];

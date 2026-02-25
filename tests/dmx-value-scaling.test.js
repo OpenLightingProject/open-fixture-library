@@ -122,33 +122,30 @@ describe(`scaleDmxRange`, () => {
 
 describe(`random capabilities`, () => {
   it(`scaled down from 16bit to 8bit do not overlap`, () => {
-    testRandomCapabilityRangesDoNotOverlap(2);
+    const resolution = 2;
+    const capabilityRanges = getRandomCapabilityRanges(resolution);
+    const scaledRanges = capabilityRanges.map(
+      ([start, end]) => scaleDmxRange(start, end, resolution, resolution - 1),
+    );
+
+    for (const [index, scaledRange] of scaledRanges.slice(1).entries()) {
+      expect(scaledRange[0]).toBeGreaterThan(scaledRanges[index][1]);
+    }
   });
 
   it(`scaled down from 24bit to 16bit do not overlap`, () => {
-    testRandomCapabilityRangesDoNotOverlap(3);
+    const resolution = 3;
+    const capabilityRanges = getRandomCapabilityRanges(resolution);
+    const scaledRanges = capabilityRanges.map(
+      ([start, end]) => scaleDmxRange(start, end, resolution, resolution - 1),
+    );
+
+    for (const [index, scaledRange] of scaledRanges.slice(1).entries()) {
+      expect(scaledRange[0]).toBeGreaterThan(scaledRanges[index][1]);
+    }
   });
 });
 
-
-/**
- * Creates random capability ranges in the given resolution, scales them down to the next-lower
- * resolution and asserts that the scaled ranges do not overlap.
- * Original ranges always span more than 1 DMX value in the lowest resolution.
- * @param {number} resolution The resolution of the original ranges. Must be 2 or higher.
- */
-function testRandomCapabilityRangesDoNotOverlap(resolution) {
-  const capabilityRanges = getRandomCapabilityRanges(resolution);
-  const scaledRanges = capabilityRanges.map(
-    ([start, end]) => scaleDmxRange(start, end, resolution, resolution - 1),
-  );
-
-  for (const [index, scaledRange] of scaledRanges.entries()) {
-    if (index > 0) {
-      expect(scaledRange[0]).toBeGreaterThan(scaledRanges[index - 1][1]);
-    }
-  }
-}
 
 /**
  * @param {number} resolution The resolution (1 for 8bit, 2 for 16bit, etc.).
