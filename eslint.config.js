@@ -223,6 +223,7 @@ const enabledRuleParameters = {
       `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
     ],
   }],
+  'vue/no-undef-directives': [],
   'vue/no-undef-properties': [],
   'vue/no-unused-emit-declarations': [],
   'vue/no-unused-properties': [{
