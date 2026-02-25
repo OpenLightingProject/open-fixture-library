@@ -1,0 +1,371 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Freedom Par Quad 4",
+  "shortName": "Freedom Par Quad 4",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Maarten Verhasselt "],
+    "createDate": "2023-06-27",
+    "lastModifyDate": "2026-02-25",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-02-25",
+      "comment": "GDTF v1.2 fixture type ID: 5701CBA3-6A8D-4E2D-A5FA-71055A2AD7AE"
+    }
+  },
+  "comment": "The Freedom™ Par Quad-4 is a wireless, battery-operated, quad-color LED Par. It can be used as an \nuplight on the floor or suspended overhead. It has a compact design so it works with TRUSST® and an \nadjustable kickstand for easy floor placement. The RGBA LEDs allow for infinite color mixing. The built-in \nwireless D-Fi™ transmitter and receiver allow wireless Master/Slave control of unlimited Freedom™ Par \nQuad-4s. The Freedom™ Par Quad-4 can also be controlled by a D-Fi™-compatible controller, the \nCHAUVET® FlareCON™ Air, or the included IRC-6 remote control",
+  "wheels": {
+    "Colour Macro": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "R:100% G:0-100% B:0",
+          "colors": ["#e47702"]
+        },
+        {
+          "type": "Color",
+          "name": "R:100%-0 G:100% B:0",
+          "colors": ["#77e401"]
+        },
+        {
+          "type": "Color",
+          "name": "R:0 G:100% B:0-100%",
+          "colors": ["#04e477"]
+        },
+        {
+          "type": "Color",
+          "name": "R:0 G:100%-0 B:100%",
+          "colors": ["#0077e4"]
+        },
+        {
+          "type": "Color",
+          "name": "R:0-100% G:0 B:100%",
+          "colors": ["#7701e4"]
+        },
+        {
+          "type": "Color",
+          "name": "R:100% G:0 B:0-100%",
+          "colors": ["#e40477"]
+        },
+        {
+          "type": "Color",
+          "name": "R:100% G:0-100% B:0-100%",
+          "colors": ["#e47777"]
+        },
+        {
+          "type": "Color",
+          "name": "R:100%-0 G:100%-0 B:100%",
+          "colors": ["#7777e4"]
+        },
+        {
+          "type": "Color",
+          "name": "RGBA: 100%",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Foreground & Background Colors": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#d81900"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#008300"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0d1f9e"]
+        },
+        {
+          "type": "Color",
+          "name": "Amber",
+          "colors": ["#ac5c00"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Green",
+          "colors": ["#8a6f00"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Blue",
+          "colors": ["#c62b93"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Amber",
+          "colors": ["#c04b00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green + Blue",
+          "colors": ["#7ff7f0"]
+        },
+        {
+          "type": "Color",
+          "name": "Green + Amber",
+          "colors": ["#bbf800"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Amber",
+          "colors": ["#cb3166"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Green + Blue",
+          "colors": ["#806d73"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Green + Amber",
+          "colors": ["#94683e"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + Blue + Amber",
+          "colors": ["#b637b4"]
+        },
+        {
+          "type": "Color",
+          "name": "Green + Blue + Amber",
+          "colors": ["#687288"]
+        },
+        {
+          "type": "Color",
+          "name": "Red + green + Blue + Amber",
+          "colors": ["#9a6172"]
+        },
+        {
+          "type": "Color",
+          "name": "Off",
+          "colors": ["#fffcf8"]
+        }
+      ]
+    },
+    "Color Macros": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Color Macro 1",
+          "colors": ["#db0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 2",
+          "colors": ["#d7f100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 3",
+          "colors": ["#008865"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 4",
+          "colors": ["#002f9f"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 5",
+          "colors": ["#a146cb"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 6",
+          "colors": ["#d31e5e"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 7",
+          "colors": ["#906480"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 8",
+          "colors": ["#5e64d8"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Macro 9",
+          "colors": ["#806d73"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#b85200"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#b55249"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#a15e65"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#9c5e7b"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#896973"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#8c6587"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#9b5c8d"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#7c6a90"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#7f6c79"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#796d86"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#6969b9"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color Macro1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "StrobeM Strobe": {
+      "capability": {
+        "type": "Unknown (StrobeModeStrobe)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Auto/sound programs": {
+      "capability": {
+        "type": "Unknown (Auto/sounds programs)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Ctrl1": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "Dim Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Manually"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Mode 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Mode 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Mode 3"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 ch",
+      "channels": [
+        "Dim",
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "Color Macro1",
+        "StrobeM Strobe",
+        "Auto/sound programs",
+        "Ctrl1",
+        "Dim Mode"
+      ]
+    }
+  ]
+}
