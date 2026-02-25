@@ -13,12 +13,14 @@ import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 
 const eslintPluginNuxtConfigRecommended = {
+  files: [`**/*.{js,vue}`],
   plugins: {
     nuxt: fixupPluginRules(eslintPluginNuxt),
   },
   rules: {
     ...eslintPluginNuxt.configs.base.rules,
     ...eslintPluginNuxt.configs.recommended.rules,
+    'nuxt/require-func-head': `error`,
   },
 };
 
@@ -150,9 +152,6 @@ const enabledRuleParameters = {
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
-
-  // eslint-plugin-nuxt
-  'nuxt/require-func-head': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
