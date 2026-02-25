@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import { styleText } from 'util';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import '../lib/load-env-file.js';
@@ -15,10 +15,11 @@ describe(`http-status`, () => {
     await crawler.startServer();
 
     crawler.addEventListener(`passingPage`, ({ url }) => {
-      console.log(chalk.greenBright(`[PASS]`), url);
+      console.log(styleText(`greenBright`, `[PASS]`), url);
     });
     crawler.addEventListener(`failingPage`, ({ url, error }) => {
-      console.log(chalk.redBright(`[FAIL]`), `${url} (${chalk.redBright(error)})`);
+      const coloredError = styleText(`redBright`, error);
+      console.log(styleText(`redBright`, `[FAIL]`), `${url} (${coloredError})`);
       failingLinks.push(`${url} (${error})`);
     });
   }, 30_000);

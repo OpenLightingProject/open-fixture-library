@@ -109,7 +109,7 @@ const enabledRuleParameters = {
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
-    ignore: [`^chalk$`, `^@octokit/rest$`],
+    ignore: [`^@octokit/rest$`],
   }],
   'import/order': [{
     groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],

@@ -8,7 +8,7 @@
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import chalk from 'chalk';
+import { styleText } from 'util';
 
 import importJson from '../lib/import-json.js';
 import { fixtureFromRepository } from '../lib/model.js';
@@ -93,20 +93,20 @@ fixtureFeatureResults.sort((a, b) => {
   return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
 });
 
-console.log(chalk.yellow(`Generated list of test fixtures:`));
+console.log(styleText(`yellow`, `Generated list of test fixtures:`));
 for (const fixture of fixtureFeatureResults) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
 try {
   await writeFile(jsonPath, `${JSON.stringify(fixtureFeatureResults, null, 2)}\n`, `utf8`);
-  console.log(chalk.green(`[Success]`), `Updated ${jsonPath}`);
+  console.log(styleText(`green`, `[Success]`), `Updated ${jsonPath}`);
 
   await writeFile(markdownPath, await getMarkdownCode(fixtureFeatureResults, allFixtureFeatures), `utf8`);
-  console.log(chalk.green(`[Success]`), `Updated ${markdownPath}`);
+  console.log(styleText(`green`, `[Success]`), `Updated ${markdownPath}`);
 }
 catch (error) {
-  console.error(chalk.red(`[Fail]`), `Could not write test fixtures file:`, error);
+  console.error(styleText(`red`, `[Fail]`), `Could not write test fixtures file:`, error);
 }
 
 
@@ -137,7 +137,7 @@ async function getFixtureFeatures() {
       // check uniqueness of id
       const featureIdExists = fixtureFeatures.some(feature => feature.id === fixtureFeature.id);
       if (featureIdExists) {
-        console.error(chalk.red(`[Error]`), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
+        console.error(styleText(`red`, `[Error]`), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 

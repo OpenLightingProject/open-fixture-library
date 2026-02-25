@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 import path from 'path';
 import { fileURLToPath } from 'url';
-import chalk from 'chalk';
+import { styleText } from 'util';
 import minimist from 'minimist';
 
 import importJson from '../lib/import-json.js';
 import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 
-const failLabel = chalk.red(`[FAIL]`);
-const passLabel = chalk.green(`[PASS]`);
+const failLabel = styleText(`red`, `[FAIL]`);
+const passLabel = styleText(`green`, `[PASS]`);
 
 try {
   const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
@@ -37,19 +37,19 @@ try {
   }
 
   if (!cliArguments.plugin) {
-    console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
+    console.error(styleText(`red`, `[Error]`), `Plugin has to be specified using --plugin`);
     console.log(helpMessage);
     process.exit(1);
   }
 
   if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-    console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins:`, plugins.exportPlugins.join(`, `));
+    console.error(styleText(`red`, `[Error]`), `Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins:`, plugins.exportPlugins.join(`, `));
     process.exit(1);
   }
 
   const pluginData = plugins.data[cliArguments.plugin];
   if (pluginData.exportTests.length === 0) {
-    console.log(chalk.green(`[PASS]`), `Plugin '${cliArguments.plugin}' has no export tests.`);
+    console.log(styleText(`green`, `[PASS]`), `Plugin '${cliArguments.plugin}' has no export tests.`);
     process.exit(0);
   }
 
@@ -86,11 +86,11 @@ try {
     }));
 
     console.log();
-    console.log(chalk.yellow(`Test ${testKey}`));
+    console.log(styleText(`yellow`, `Test ${testKey}`));
     console.log(outputPerFile.join(`\n`));
   }));
 }
 catch (error) {
-  console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
+  console.error(styleText(`red`, `[Error]`), `Exporting failed:`, error);
   process.exit(1);
 }

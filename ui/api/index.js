@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url';
-import chalk from 'chalk';
+import { styleText } from 'util';
 import cors from 'cors';
 import express from 'express';
 import { OpenAPIBackend } from 'openapi-backend';
@@ -59,7 +59,7 @@ const api = new OpenAPIBackend({
 
       const errorDescription = `API request for ${request.originalUrl} (${operation.operationId}) doesn't match schema:`;
 
-      console.error(chalk.bgRed(errorDescription));
+      console.error(styleText(`bgRed`, errorDescription));
       console.error(error);
 
       return {
@@ -105,7 +105,7 @@ const api = new OpenAPIBackend({
 
           const errorDescription = `API response for ${request.originalUrl} (${operation.operationId}, status code ${statusCode}) doesn't match schema:`;
 
-          console.error(chalk.bgRed(errorDescription));
+          console.error(styleText(`bgRed`, errorDescription));
           console.error(error);
         }
       }

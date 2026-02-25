@@ -4,8 +4,8 @@ import '../lib/load-env-file.js';
 
 import http from 'http';
 import https from 'https';
+import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
-import chalk from 'chalk';
 
 import SiteCrawler from '../lib/site-crawler.js';
 
@@ -28,12 +28,12 @@ let errored = false;
 try {
   const crawler = new SiteCrawler();
 
-  console.log(chalk.blue.bold(`Starting OFL server ...`));
+  console.log(styleText([`blue`, `bold`], `Starting OFL server ...`));
   try {
     await crawler.startServer();
   }
   catch (error) {
-    const header = chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
+    const header = styleText(`redBright`, `Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
     throw `${header} ${error.message}`;
   }
   console.log();
@@ -48,7 +48,7 @@ try {
   });
 
   const crawlStartTime = Date.now();
-  console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
+  console.log(styleText([`blue`, `bold`], `Start crawling the website for external links ...`));
   await crawler.crawl();
 
   const crawlTime = Date.now() - crawlStartTime;
@@ -57,18 +57,18 @@ try {
 
   const { stdout, stderr } = await crawler.stopServer();
   if (stdout) {
-    console.log(chalk.blueBright(`Server output (stdout):`));
+    console.log(styleText(`blueBright`, `Server output (stdout):`));
     console.log(stdout);
   }
   if (stderr) {
-    console.log(chalk.blueBright(`Server errors (stderr):`));
+    console.log(styleText(`blueBright`, `Server errors (stderr):`));
     console.log(stderr);
   }
 
   const urlResults = await fetchExternalUrls([...externalUrlSet]);
   console.log();
 
-  console.log(chalk.blue.bold(`Updating GitHub issue ...`));
+  console.log(styleText([`blue`, `bold`], `Updating GitHub issue ...`));
   await updateGithubIssue(urlResults);
 }
 catch (error) {
@@ -78,7 +78,7 @@ catch (error) {
 
 const testTime = Date.now() - testStartTime;
 console.log();
-console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
+console.log(styleText([`greenBright`, `bold`], `Test took ${testTime / 1000}s.`));
 process.exit(errored ? 1 : 0);
 
 
@@ -108,15 +108,17 @@ async function fetchExternalUrls(externalUrls) {
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
-  console.log(chalk.blue.bold(`Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
+  console.log(styleText([`blue`, `bold`], `Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
   const fetchStartTime = Date.now();
   for (const urlBlock of urlBlocks) {
     await Promise.all(urlBlock.map(async url => {
       const result = await testExternalLink(url);
       urlResults.push(result);
 
-      const messageColor = result.failed ? chalk.redBright : chalk.greenBright;
-      console.log(`[${urlResults.length}/${externalUrls.length}: ${messageColor(result.message)}] ${chalk.yellow(result.url)}`);
+      const messageColor = result.failed ? `redBright` : `greenBright`;
+      const coloredMessage = styleText(messageColor, result.message);
+      const coloredUrl = styleText(`yellow`, result.url);
+      console.log(`[${urlResults.length}/${externalUrls.length}: ${coloredMessage}] ${coloredUrl}`);
     }));
   }
 
@@ -129,7 +131,9 @@ async function fetchExternalUrls(externalUrls) {
   const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
   console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
-    console.log(`- ${chalk.yellow(url)} (${chalk.redBright(message)})`);
+    const coloredUrl = styleText(`yellow`, url);
+    const coloredMessage = styleText(`redBright`, message);
+    console.log(`- ${coloredUrl} (${coloredMessage})`);
   }
 
   return urlResults;

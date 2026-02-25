@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
+import { styleText } from 'util';
 
 const usedVariables = [
   `ALLOW_SEARCH_INDEXING`,
@@ -34,9 +34,14 @@ printVariables();
  */
 function printVariables() {
   for (const key of usedVariables) {
-    console.log(chalk.yellow(key) + (key in process.env
-      ? `=${chalk.green(process.env[key])}`
-      : chalk.red(` is unset`)
-    ));
+    const coloredKey = styleText(`yellow`, key);
+    if (key in process.env) {
+      const coloredValue = styleText(`green`, process.env[key]);
+      console.log(`${coloredKey}=${coloredValue}`);
+    }
+    else {
+      const unsetLabel = styleText(`red`, ` is unset`);
+      console.log(`${coloredKey}${unsetLabel}`);
+    }
   }
 }

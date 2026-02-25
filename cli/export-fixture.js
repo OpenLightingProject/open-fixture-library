@@ -2,8 +2,7 @@
 import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-import chalk from 'chalk';
+import { styleText } from 'util';
 import minimist from 'minimist';
 
 import importJson from '../lib/import-json.js';
@@ -56,13 +55,13 @@ try {
     }
     else {
       console.log();
-      console.log(chalk.yellow(`File name: '${file.name}'`));
+      console.log(styleText(`yellow`, `File name: '${file.name}'`));
       console.log(file.content);
     }
   }
 }
 catch (error) {
-  console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
+  console.error(styleText(`red`, `[Error]`), `Exporting failed:`, error);
   process.exit(1);
 }
 
@@ -88,19 +87,19 @@ async function checkCliArguments(cliArguments) {
   }
 
   if (!cliArguments.plugin) {
-    console.error(chalk.red(`[Error]`), `No plugin specified. See --help for usage.`);
+    console.error(styleText(`red`, `[Error]`), `No plugin specified. See --help for usage.`);
     process.exit(1);
   }
 
   if (cliArguments._.length === 0 && !cliArguments.a) {
-    console.error(chalk.red(`[Error]`), `No fixtures specified. See --help for usage.`);
+    console.error(styleText(`red`, `[Error]`), `No fixtures specified. See --help for usage.`);
     process.exit(1);
   }
 
   const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
   if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-    console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(`, `));
+    console.error(styleText(`red`, `[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(`, `));
     process.exit(1);
   }
 }
