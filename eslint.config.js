@@ -214,6 +214,7 @@ const enabledRuleParameters = {
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
+  'vue/no-duplicate-class-names': [],
   'vue/no-empty-component-block': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
