@@ -402,7 +402,7 @@ export default [
     },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: `latest`,
+      ecmaVersion: 2025,
       sourceType: `module`,
     },
     rules: {
