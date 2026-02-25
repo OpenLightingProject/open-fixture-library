@@ -6,8 +6,6 @@ import SiteCrawler from '../lib/site-crawler.js';
 
 describe(`http-status`, () => {
   /** @type {string[]} */
-  const passingLinks = [];
-  /** @type {string[]} */
   const failingLinks = [];
 
   /** @type {SiteCrawler} */
@@ -17,9 +15,6 @@ describe(`http-status`, () => {
     crawler = new SiteCrawler();
     await crawler.startServer();
 
-    crawler.addEventListener(`passingPage`, ({ url }) => {
-      passingLinks.push(url);
-    });
     crawler.addEventListener(`failingPage`, ({ url, error }) => {
       failingLinks.push(`${url} (${error})`);
     });
@@ -32,6 +27,7 @@ describe(`http-status`, () => {
   });
 
   it(`should have no failing internal links`, () => {
-    expect(failingLinks, `Failing links:\n${failingLinks.join(`\n`)}`).toStrictEqual([]);
+    const failingLinksText = failingLinks.join(`\n`);
+    expect(failingLinks, `Failing links:\n${failingLinksText}`).toStrictEqual([]);
   });
 });
