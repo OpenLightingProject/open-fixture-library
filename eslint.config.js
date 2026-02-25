@@ -287,6 +287,7 @@ const enabledRuleParameters = {
   'sonarjs/todo-tag': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
+  'vue/no-v-html': [],
 };
 
 const vueCoreExtensionRules = [
@@ -338,6 +339,7 @@ const warnRules = new Set([
   `sonarjs/slow-regex`,
   `sonarjs/todo-tag`,
   `vue/no-mutating-props`,
+  `vue/no-v-html`,
 ]);
 
 const disabledRules = [
@@ -389,7 +391,7 @@ export default [
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
-  ...eslintPluginVue.configs[`flat/vue2-recommended`],
+  ...eslintPluginVue.configs[`flat/vue2-recommended-error`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
   ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
   {
