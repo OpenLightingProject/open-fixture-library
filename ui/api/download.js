@@ -124,7 +124,7 @@ router.post(`/download-editor.:format`, async (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-router.get(`/:manufacturerKey/:fixtureKey.:format`, async (request, response, next) => {
+router.get(/^\/(?<manufacturerKey>[^/]+)\/(?<fixtureKey>[^/.]+)\.(?<format>[a-z0-9_.-]+)$/i, async (request, response, next) => {
   const { manufacturerKey, fixtureKey, format } = request.params;
 
   const register = await registerPromise;
