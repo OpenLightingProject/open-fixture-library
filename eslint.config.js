@@ -488,7 +488,7 @@ export default [
     },
   },
   {
-    ...eslintPluginVitest.configs.recommended,
     files: [`tests/*.test.js`],
+    ...eslintPluginVitest.configs.recommended,
   },
 ];
