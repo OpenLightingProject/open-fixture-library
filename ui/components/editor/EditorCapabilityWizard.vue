@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wizard">
 
-    <span>Generate multiple capabilities with same range width. Occurences of '#' in text fields will be replaced by an increasing number.</span>
+    <span>Generate multiple capabilities with same range width. Occurrences of '#' in text fields will be replaced by an increasing number.</span>
 
     <section>
       <label>
