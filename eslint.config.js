@@ -394,7 +394,7 @@ export default [
   eslintPluginUnicorn.configs.recommended,
   ...eslintPluginVue.configs[`flat/vue2-recommended-error`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
-  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
+  ...eslintPluginJsonc.configs[`recommended-with-json`], // has to be after `vue`
   {
     linterOptions: {
       reportUnusedDisableDirectives: `error`,
