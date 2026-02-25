@@ -14,7 +14,7 @@ body {
   margin: 0;
   font: 12pt/2 $font-stack-text;
   color: theme-color(text-primary);
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   background-color: theme-color(page-background);
   transition: background-color 0.3s, color 0.3s;
   text-rendering: optimizelegibility;

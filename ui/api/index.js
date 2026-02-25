@@ -15,6 +15,8 @@ import * as routeHandlers from './routes.js';
  */
 
 const app = express();
+// eslint-disable-next-line quotes -- sonarjs/x-powered-by only recognizes plain string literals
+app.disable('x-powered-by');
 
 // support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));

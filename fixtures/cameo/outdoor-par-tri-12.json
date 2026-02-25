@@ -9,8 +9,12 @@
     "lastModifyDate": "2018-08-09"
   },
   "links": {
-    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPSTTRI12IP/CLPSTTRI12IP_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"],
-    "video": ["https://www.youtube.com/watch?v=ln1KAzrTtl0"]
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPSTTRI12IP/CLPSTTRI12IP_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ln1KAzrTtl0"
+    ]
   },
   "physical": {
     "dimensions": [203, 203, 193],
@@ -88,7 +92,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0%",
-        "speedEnd": "100%"
+        "speedEnd": "100%",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macro Advanced": {
