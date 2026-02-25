@@ -1,10 +1,8 @@
 import { describe, expect, it } from 'vitest';
-
 import {
   scaleDmxRange,
   scaleDmxValue,
 } from '../lib/scale-dmx-values.js';
-
 
 describe(`scaleDmxValue`, () => {
   describe(`upscaling`, () => {
@@ -183,15 +181,27 @@ describe(`scaleDmxRange`, () => {
 describe(`random capabilities`, () => {
   it(`scaled down from 16bit to 8bit do not overlap`, () => {
     const scaledRanges = getScaledDownRanges(2);
-    for (const [index, scaledRange] of scaledRanges.slice(1).entries()) {
-      expect(scaledRange[0]).toBeGreaterThan(scaledRanges[index][1]);
+    for (const [index, scaledRange] of scaledRanges.entries()) {
+      if (index === 0) {
+        continue;
+      }
+
+      const rangeStart = scaledRange[0];
+      const previousRangeEnd = scaledRanges[index - 1][1];
+      expect(rangeStart).toBeGreaterThan(previousRangeEnd);
     }
   });
 
   it(`scaled down from 24bit to 16bit do not overlap`, () => {
     const scaledRanges = getScaledDownRanges(3);
-    for (const [index, scaledRange] of scaledRanges.slice(1).entries()) {
-      expect(scaledRange[0]).toBeGreaterThan(scaledRanges[index][1]);
+    for (const [index, scaledRange] of scaledRanges.entries()) {
+      if (index === 0) {
+        continue;
+      }
+
+      const rangeStart = scaledRange[0];
+      const previousRangeEnd = scaledRanges[index - 1][1];
+      expect(rangeStart).toBeGreaterThan(previousRangeEnd);
     }
   });
 });
