@@ -1,4 +1,4 @@
-import { fixtureSchema } from '../../lib/esm-shim.cjs';
+import fixtureSchema from '../../schemas/fixture.json' with { type: 'json' };
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 
