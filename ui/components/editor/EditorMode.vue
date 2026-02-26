@@ -361,7 +361,6 @@ function removeChannel(channelUuid: string) {
 
 onMounted(() => {
   const root = getCurrentInstance()?.appContext.app._context.provides;
-  // @ts-ignore - private property
   if (window.__oflRestoreComplete) {
     firstInput.value?.$el?.focus();
   }

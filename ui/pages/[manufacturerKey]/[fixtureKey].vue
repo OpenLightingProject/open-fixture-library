@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="fixture">
     <FixtureHeader>
       <template #title>
         <h1>
@@ -27,8 +27,8 @@
       <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" show-help />
     </FixtureHeader>
 
-    <section v-if="redirect" class="card yellow">
-      Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
+    <section v-if="redirectFromFixture" class="card yellow">
+      Redirected from <code>{{ redirectFromFixture.from }}</code>: {{ redirectReasonExplanations[redirectFromFixture.reason] }}
     </section>
 
     <FixturePage
@@ -87,19 +87,23 @@ const route = useRoute();
 const config = useRuntimeConfig();
 
 const manufacturerKey = route.params.manufacturerKey as string;
-const fixtureKey = route.params.fixtureKey as string;
+const fixtureKeyRaw = route.params.fixtureKey as string;
+const fixtureKey = fixtureKeyRaw.replace(/\.json$/, '');
 
 const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`]?.redirectTo;
 if (redirectTo) {
   navigateTo(`/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`, { redirectCode: 302 });
 }
 
-const [{ data: fixtureJson }, { data: manufacturerJson }, { data: plugins }, redirect] = await Promise.all([
-  useFetch(`/${manufacturerKey}/${fixtureKey}.json`),
+const [{ data: fixtureData }, { data: manufacturerJson }, { data: plugins }, redirect] = await Promise.all([
+  useFetch(`/api/v1/fixtures/${manufacturerKey}/${fixtureKey}`),
   useFetch(`/api/v1/manufacturers/${manufacturerKey}`),
   useFetch('/api/v1/plugins'),
   fetchRedirectObject(route.query.redirectFrom as string | undefined),
 ]);
+
+const fixtureJson = computed(() => fixtureData.value?.data);
+const redirectFromFixture = computed(() => fixtureData.value?.redirect);
 
 const fixture = computed(() => {
   if (!manufacturerJson.value || !fixtureJson.value) return null;
@@ -117,11 +121,16 @@ async function fetchRedirectObject(redirectFrom: string | undefined) {
     return undefined;
   }
 
-  const { data: redirectJson } = await useFetch(`/${redirectFrom}.json`);
+  const [redirectMan, redirectFix] = redirectFrom.split('/');
+  const { data: redirectData } = await useFetch(`/api/v1/fixtures/${redirectMan}/${redirectFix}`);
+
+  if (!redirectData.value?.redirect) {
+    return undefined;
+  }
 
   return {
     from: redirectFrom,
-    reason: redirectReasonExplanations[redirectJson.value?.reason ?? ''],
+    reason: redirectReasonExplanations[redirectData.value.redirect.reason] || '',
   };
 }
 

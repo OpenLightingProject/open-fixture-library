@@ -6,7 +6,12 @@ const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PO
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  srcDir: './ui/',
+  srcDir: 'ui',
+  serverDir: 'ui/server',
+dir: {
+    public: 'ui/public',
+    assets: 'ui/assets',
+  },
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/robots',
@@ -101,6 +106,13 @@ export default defineNuxtConfig({
   nitro:{
     experimental:{
       openAPI: true
-    }
+    },
+    publicAssets: [
+      {
+        dir: 'fixtures',
+        baseURL: '/fixtures',
+        maxAge: 60 * 60 * 24 * 30,
+      },
+    ],
   }
 });
