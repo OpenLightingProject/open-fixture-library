@@ -777,7 +777,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         function checkPanTiltCapability() {
           const usesPercentageAngle = capability.angle[0].unit === `%`;
           if (usesPercentageAngle && !capability.helpWanted) {
-            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please try to find the value in degrees.`);
           }
         }
 
