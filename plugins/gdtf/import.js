@@ -682,8 +682,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
       /**
        * @param {((...args: unknown[]) => unknown) | null} hook The hook function, or a falsy value.
-       * @param {any[]} parameters The arguments to pass to the hook.
-       * @returns {any} The return value of the hook, or null if no hook was called.
+       * @param {unknown[]} parameters The arguments to pass to the hook.
+       * @returns {unknown} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...parameters) {
         if (hook) {

@@ -1308,7 +1308,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
 
 /**
  * @param {string} description The error message.
- * @param {any} error An error object to append to the message.
+ * @param {unknown} error An error object to append to the message.
  * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {

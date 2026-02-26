@@ -464,7 +464,7 @@ function isEmptyObject(object) {
 }
 
 /**
- * @param {any} property The property key to check.
+ * @param {string} property The property key to check.
  * @param {object | null} object The object to check. If it's null, false is returned.
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */

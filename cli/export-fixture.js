@@ -67,7 +67,7 @@ catch (error) {
 
 
 /**
- * @param {Record<string, any>} cliArguments Command line interface arguments parsed by minimist.
+ * @param {Record<string, unknown>} cliArguments Command line interface arguments parsed by minimist.
  */
 async function checkCliArguments(cliArguments) {
   const helpMessage = [
