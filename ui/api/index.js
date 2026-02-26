@@ -15,7 +15,6 @@ import * as routeHandlers from './routes.js';
  */
 
 const app = express();
-
 app.disable('x-powered-by');
 
 // support JSON encoded bodies
