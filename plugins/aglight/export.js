@@ -1,6 +1,6 @@
 /* Based on the ofl export plugin */
 
-import namedColors from 'color-name-list/dist/colornames.esm.mjs';
+import { colornames as namedColors } from 'color-name-list';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
 import importJson from '../../lib/import-json.js';
