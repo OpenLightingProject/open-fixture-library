@@ -328,7 +328,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   async function checkWheels(wheels) {
     for (const wheel of wheels) {
-      if (!/\b(?:wheel|disk)\b/i.test(wheel.name)) {
+      if (!/\b(?:wheel|disk)\b/i.test(wheel.name) && !fixture.helpWanted) {
         result.warnings.push(`Name of wheel '${wheel.name}' does not contain the word 'wheel' or 'disk', which could lead to confusing capability names.`);
       }
 
@@ -385,7 +385,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       const templateChannelUsed = fixture.allChannelKeys.some(
         channelKey => possibleMatrixChannelKeys.includes(channelKey),
       );
-      if (!templateChannelUsed) {
+      if (!templateChannelUsed && !fixture.helpWanted) {
         result.warnings.push(`Template channel '${templateKey}' is never used.`);
       }
 
@@ -493,7 +493,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       ) {
         const message = `Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`;
         const hasHelpWanted = Boolean(channel.capabilities[0].helpWanted?.startsWith(`At which DMX values is strobe disabled? When is the lamp constantly on/off?`));
-        result[hasHelpWanted ? `warnings` : `errors`].push(message);
+        if (!hasHelpWanted) {
+          result.errors.push(message);
+        }
       }
 
       for (let index = 0; index < channel.capabilities.length; index++) {
@@ -720,7 +722,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
                 }
               }
 
-              if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
+              if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name && !capability.helpWanted) {
                 result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
               }
             }
@@ -743,7 +745,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               usedWheelSlots.add(`${capability.wheels[0].name} (slot ${index})`);
             }
 
-            if (max - min > 1) {
+            if (max - min > 1 && !capability.helpWanted) {
               result.warnings.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
             }
 
@@ -774,7 +776,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkPanTiltCapability() {
           const usesPercentageAngle = capability.angle[0].unit === `%`;
-          if (usesPercentageAngle) {
+          if (usesPercentageAngle && !capability.helpWanted) {
             result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
           }
         }
@@ -843,7 +845,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           }
 
           const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName) && !fixture.helpWanted) {
             result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
           }
         }
@@ -1021,7 +1023,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       channelKey => !usedChannelKeys.has(channelKey),
     ).join(`, `);
 
-    if (unused.length > 0) {
+    if (unused.length > 0 && !fixture.helpWanted) {
       result.warnings.push(`Unused channel(s): ${unused}`);
     }
   }
@@ -1034,7 +1036,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       wheel => !usedWheels.has(wheel.name),
     ).map(wheel => wheel.name).join(`, `);
 
-    if (unusedWheels.length > 0) {
+    if (unusedWheels.length > 0 && !fixture.helpWanted) {
       result.warnings.push(`Unused wheel(s): ${unusedWheels}`);
     }
   }
@@ -1058,7 +1060,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       slot => !usedWheelSlots.has(slot),
     ).join(`, `);
 
-    if (unusedWheelSlots.length > 0) {
+    if (unusedWheelSlots.length > 0 && !fixture.helpWanted) {
       result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots}`);
     }
   }
@@ -1142,7 +1144,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       );
 
       if (!isCategoryUsed) {
-        if (categoryProperties.isSuggested && exclusiveGroups.length === 0) {
+        if (categoryProperties.isSuggested && exclusiveGroups.length === 0 && !fixture.helpWanted) {
           result.warnings.push(`Category '${categoryName}' suggested since ${categoryProperties.suggestedPhrase}.`);
         }
       }

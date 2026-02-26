@@ -17,6 +17,7 @@
       "https://www.youtube.com/watch?v=AxdUJgscNHg"
     ]
   },
+  "helpWanted": "Please check if slot 21 of the Fixed Gobo Wheel is missing from the fixture, or if the fixture has only 20 gobo slots.",
   "physical": {
     "dimensions": [414, 630, 399],
     "weight": 24.8,
@@ -506,7 +507,8 @@
           "dmxRange": [145, 152],
           "type": "WheelSlot",
           "slotNumberStart": 17,
-          "slotNumberEnd": 1
+          "slotNumberEnd": 1,
+          "helpWanted": "Please provide exact DMX values for each slot position."
         },
         {
           "dmxRange": [153, 162],

@@ -196,13 +196,15 @@
           "dmxRange": [16, 124],
           "type": "WheelSlot",
           "slotNumberStart": 2,
-          "slotNumberEnd": 7
+          "slotNumberEnd": 7,
+          "helpWanted": "Please provide exact DMX values for each slot position."
         },
         {
           "dmxRange": [125, 234],
           "type": "WheelShake",
           "slotNumberStart": 2,
-          "slotNumberEnd": 7
+          "slotNumberEnd": 7,
+          "helpWanted": "Please provide exact DMX values for each slot position."
         },
         {
           "dmxRange": [235, 249],
