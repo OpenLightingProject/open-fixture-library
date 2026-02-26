@@ -10,7 +10,7 @@
       <a
         href="#"
         class="only-js"
-        @click.prevent="$emit(`help-wanted-clicked`, { type, context })">
+        @click.prevent="$emit('help-wanted-clicked', { type, context })">
         <OflSvg name="comment-alert" class="left" />
         <span>Send information</span>
       </a>
@@ -85,83 +85,66 @@
 }
 </style>
 
-<script>
-import { objectProp, oneOfProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  type: 'fixture' | 'capability' | 'plugin';
+  context: {
+    _channel?: {
+      name: string;
+    };
+    helpWanted?: string | null;
+    manufacturer?: { key: string };
+    key?: string;
+    helpWanted: string | null;
+    isCapabilityHelpWanted?: boolean;
+  };
+}
 
-export default {
-  props: {
-    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
-    context: objectProp().required,
-  },
-  emits: {
-    'help-wanted-clicked': payload => true,
-  },
-  computed: {
-    location() {
-      if (this.type === `capability`) {
-        const capability = this.context;
-        const channel = capability._channel;
-        return `Channel "${channel.name}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
-      }
+const props = defineProps<Props>();
 
-      return null;
-    },
+defineEmits<{
+  'help-wanted-clicked': [payload: { type: string; context: object }];
+}>();
 
-    fixture() {
-      if (this.type === `fixture`) {
-        return this.context;
-      }
+const location = computed(() => {
+  if (props.type === 'capability') {
+    const capability = props.context;
+    const channel = (capability as { _channel: { name: string } })._channel;
+    return `Channel "${channel.name}" → Capability "${capability.name}" (${(capability as { rawDmxRange: string }).rawDmxRange})`;
+  }
+  return null;
+});
 
-      if (this.type === `capability`) {
-        return this.context._channel.fixture;
-      }
+const fixture = computed(() => {
+  if (props.type === 'fixture') return props.context;
+  if (props.type === 'capability') return (props.context as { _channel: { fixture: object } })._channel.fixture;
+  return null;
+});
 
-      return null;
-    },
+const title = computed(() => {
+  if (props.type === 'fixture') return 'You can help to improve this fixture definition!';
+  if (props.type === 'plugin') return 'You can help to improve this plugin!';
+  return null;
+});
 
-    title() {
-      if (this.type === `fixture`) {
-        return `You can help to improve this fixture definition!`;
-      }
+const description = computed(() => {
+  if (props.type === 'fixture') {
+    const fix = fixture.value as { helpWanted: string | null; isCapabilityHelpWanted?: boolean };
+    if (fix.helpWanted === null) return 'Specific questions are included in the capabilities below.';
+    if (fix.isCapabilityHelpWanted) return `${fix.helpWanted} Further questions are included in the capabilities below.`;
+  }
+  return props.context.helpWanted;
+});
 
-      if (this.type === `plugin`) {
-        return `You can help to improve this plugin!`;
-      }
+const mailtoUrl = computed(() => {
+  const subject = fixture.value
+    ? `Feedback for fixture '${(fixture.value as { manufacturer: { key: string } }).manufacturer.key}/${(fixture.value as { key: string }).key}'`
+    : `Feedback for ${props.type} '${props.context.key}'`;
 
-      return null;
-    },
+  const bodyLines: string[] = [];
+  if (location.value) bodyLines.push(`Problem location: ${location.value}`);
+  if (props.context.helpWanted) bodyLines.push(`Problem description: ${props.context.helpWanted}`);
 
-    description() {
-      if (this.type === `fixture`) {
-        if (this.fixture.helpWanted === null) {
-          return `Specific questions are included in the capabilities below.`;
-        }
-
-        if (this.fixture.isCapabilityHelpWanted) {
-          return `${this.fixture.helpWanted} Further questions are included in the capabilities below.`;
-        }
-      }
-
-      return this.context.helpWanted;
-    },
-
-    mailtoUrl() {
-      const subject = this.fixture
-        ? `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`
-        : `Feedback for ${this.type} '${this.context.key}'`;
-
-      const bodyLines = [];
-      if (this.location) {
-        bodyLines.push(`Problem location: ${this.location}`);
-      }
-      if (this.context.helpWanted) {
-        bodyLines.push(`Problem description: ${this.context.helpWanted}`);
-      }
-
-      const body = bodyLines.join(`\n`);
-
-      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    },
-  },
-};
+  return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+});
 </script>

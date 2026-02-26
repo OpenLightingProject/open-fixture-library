@@ -2,40 +2,32 @@
   <OflSvg v-bind="iconProperties" />
 </template>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import AbstractChannel from '../../lib/model/AbstractChannel.js';
-import FineChannel from '../../lib/model/FineChannel.js';
-import NullChannel from '../../lib/model/NullChannel.js';
-import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
+<script setup lang="ts">
+import AbstractChannel from '~~/lib/model/AbstractChannel.js';
+import FineChannel from '~~/lib/model/FineChannel.js';
+import NullChannel from '~~/lib/model/NullChannel.js';
+import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
 
-export default {
-  props: {
-    channel: instanceOfProp(AbstractChannel).required,
-  },
-  computed: {
-    iconProperties() {
-      return getIconProperties(this.channel);
-    },
-  },
+interface Props {
+  channel: AbstractChannel;
+}
+
+const props = defineProps<Props>();
+
+const iconProperties = computed(() => getIconProperties(props.channel));
+
+const channelTypeIcons: Record<string, string> = {
+  'Multi-Color': 'color-changer',
+  'Fog': 'smoke',
+  'Intensity': 'dimmer',
 };
 
-const channelTypeIcons = {
-  'Multi-Color': `color-changer`,
-  'Fog': `smoke`,
-  'Intensity': `dimmer`,
-};
-
-/**
- * @param {AbstractChannel} channel The channel to get an icon for.
- * @returns {object} Object containing the props to pass to <OflSvg />
- */
-function getIconProperties(channel) {
+function getIconProperties(channel: AbstractChannel): { type: string; name: string; title: string; colors?: string[] } {
   if (channel instanceof NullChannel) {
     return {
-      type: `fixture`,
-      name: `NoFunction`,
-      title: `Channel type: NoFunction`,
+      type: 'fixture',
+      name: 'NoFunction',
+      title: 'Channel type: NoFunction',
     };
   }
 
@@ -45,22 +37,22 @@ function getIconProperties(channel) {
 
   if (channel instanceof SwitchingChannel) {
     return {
-      type: `fixture`,
-      name: `switching-channel`,
-      title: `Channel type: Switching Channel`,
+      type: 'fixture',
+      name: 'switching-channel',
+      title: 'Channel type: Switching Channel',
     };
   }
 
-  if (channel.type === `Single Color`) {
+  if (channel.type === 'Single Color') {
     return {
-      type: `color-circle`,
-      name: channel.color,
-      title: `Channel type: Single Color, ${channel.color}`,
+      type: 'color-circle',
+      name: (channel as { color: string }).color,
+      title: `Channel type: Single Color, ${(channel as { color: string }).color}`,
     };
   }
 
   return {
-    type: `fixture`,
+    type: 'fixture',
     name: channelTypeIcons[channel.type] || channel.type,
     title: `Channel type: ${channel.type}`,
   };

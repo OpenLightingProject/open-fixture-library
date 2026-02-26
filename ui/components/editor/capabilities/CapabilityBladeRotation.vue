@@ -39,43 +39,32 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputEntity from '../../PropertyInputEntity.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputEntity,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      bladeSchema: capabilityTypes.BladeInsertion.properties.blade,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        blade: ``,
-        angle: null,
-        angleStart: `0deg`,
-        angleEnd: `360deg`,
-        comment: ``,
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      blade?: string;
+      angle?: string | null;
+      angleStart?: string;
+      angleEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const bladeSchema = capabilityTypes.BladeInsertion.properties.blade;
+
+const defaultData = {
+  blade: '',
+  angle: null,
+  angleStart: '0deg',
+  angleEnd: '360deg',
+  comment: '',
 };
 </script>

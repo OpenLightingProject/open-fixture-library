@@ -10,49 +10,51 @@
 </template>
 
 <style lang="scss" scoped>
-::v-deep details:nth-last-of-type(1):not([open]) {
+:deep(details:nth-last-of-type(1):not([open])) {
   margin-bottom: 1rem;
 }
 </style>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import EditorWheelSlot from './EditorWheelSlot.vue';
+<script setup lang="ts">
+interface Props {
+  capability: {
+    typeData: {
+      slotNumber?: number;
+      slotNumberStart?: number;
+      slotNumberEnd?: number;
+    };
+  };
+  channel: {
+    wheel?: {
+      slots?: Array<{ type: string }>;
+    };
+  };
+  formstate?: object;
+}
 
-export default {
-  components: {
-    EditorWheelSlot,
-  },
-  props: {
-    capability: objectProp().required,
-    channel: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  computed: {
-    slotDetailNumbers() {
-      const slotNumbers = [
-        this.capability.typeData.slotNumber,
-        this.capability.typeData.slotNumberStart,
-        this.capability.typeData.slotNumberEnd,
-      ].filter(slotNumber => typeof slotNumber === `number`);
+const props = defineProps<Props>();
 
-      if (slotNumbers.length === 0) {
-        return [];
-      }
+const slotDetailNumbers = computed(() => {
+  const slotNumbers = [
+    props.capability.typeData.slotNumber,
+    props.capability.typeData.slotNumberStart,
+    props.capability.typeData.slotNumberEnd,
+  ].filter(slotNumber => typeof slotNumber === 'number');
 
-      const min = Math.floor(Math.min(...slotNumbers));
-      const max = Math.ceil(Math.max(...slotNumbers));
-      const length = max - min + 1;
+  if (slotNumbers.length === 0) {
+    return [];
+  }
 
-      // array of integers from min to max: [min, min+1, …, max-1, max]
-      const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
+  const min = Math.floor(Math.min(...slotNumbers));
+  const max = Math.ceil(Math.max(...slotNumbers));
+  const length = max - min + 1;
 
-      if (slotNumbers.at(-1) < slotNumbers[0]) {
-        slotNumbersInRange.reverse();
-      }
+  const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
 
-      return slotNumbersInRange;
-    },
-  },
-};
+  if ((slotNumbers as number[]).at(-1) as number < (slotNumbers as number[])[0]) {
+    slotNumbersInRange.reverse();
+  }
+
+  return slotNumbersInRange;
+});
 </script>

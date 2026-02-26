@@ -45,109 +45,94 @@
 }
 </style>
 
-<script>
-import { integerProp, objectProp } from 'vue-ts-types';
-import { wheelSlotTypes } from '../../../lib/schema-properties.js';
-import { getEmptyWheelSlot } from '../../assets/scripts/editor-utilities.js';
+<script setup lang="ts">
+import { wheelSlotTypes } from '~~/lib/schema-properties.js';
+import { getEmptyWheelSlot } from '@/assets/scripts/editor-utilities.js';
 
-import ConditionalDetails from '../ConditionalDetails.vue';
-import LabeledInput from '../LabeledInput.vue';
-
-import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
-import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
-import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';
-import WheelSlotColor from './wheel-slots/WheelSlotColor.vue';
-import WheelSlotFrost from './wheel-slots/WheelSlotFrost.vue';
-import WheelSlotGobo from './wheel-slots/WheelSlotGobo.vue';
-import WheelSlotIris from './wheel-slots/WheelSlotIris.vue';
-import WheelSlotOpen from './wheel-slots/WheelSlotOpen.vue';
-import WheelSlotPrism from './wheel-slots/WheelSlotPrism.vue';
-
-export default {
-  components: {
-    ConditionalDetails,
-    LabeledInput,
-    WheelSlotAnimationGoboEnd,
-    WheelSlotAnimationGoboStart,
-    WheelSlotClosed,
-    WheelSlotColor,
-    WheelSlotFrost,
-    WheelSlotGobo,
-    WheelSlotIris,
-    WheelSlotOpen,
-    WheelSlotPrism,
-  },
-  props: {
-    channel: objectProp().required,
-    slotNumber: integerProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      slotTypes: Object.keys(wheelSlotTypes),
-      open: false,
+interface Props {
+  channel: {
+    name: string;
+    wheel?: {
+      slots: Array<{
+        type: string;
+        typeData: Record<string, any>;
+      }>;
     };
+  };
+  slotNumber: number;
+  formstate?: object;
+}
+
+const props = defineProps<Props>();
+
+const typeData = ref<any>(null);
+const open = ref(false);
+
+const slotTypes = Object.keys(wheelSlotTypes);
+
+const slot = computed(() => {
+  return props.channel.wheel?.slots[props.slotNumber - 1];
+});
+
+const suggestedType = computed(() => {
+  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  if (previousSlot && previousSlot.type === 'AnimationGoboStart') {
+    return 'AnimationGoboEnd';
+  }
+
+  if (props.slotNumber === 1) {
+    return /\banimation\b/i.test(props.channel.name) ? 'AnimationGoboStart' : 'Open';
+  }
+
+  return slotTypes.find(type => props.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
+});
+
+const animationGoboEndAfterStart = computed(() => {
+  if (slot.value?.type !== 'AnimationGoboEnd') {
+    return true;
+  }
+
+  if (props.slotNumber === 1) {
+    return false;
+  }
+
+  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  return !previousSlot || previousSlot.type === 'AnimationGoboStart';
+});
+
+const animationGoboEndValid = computed(() => {
+  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  return !previousSlot || previousSlot.type !== 'AnimationGoboStart' || slot.value?.type === 'AnimationGoboEnd';
+});
+
+watch(
+  () => props.slotNumber,
+  async (newSlotNumber) => {
+    if (!props.channel.wheel?.slots[newSlotNumber - 1]) {
+      props.channel.wheel.slots[newSlotNumber - 1] = getEmptyWheelSlot();
+      open.value = true;
+
+      await nextTick();
+      if (slot.value) {
+        slot.value.type = suggestedType.value;
+      }
+    }
   },
-  computed: {
-    slot() {
-      return this.channel.wheel.slots[this.slotNumber - 1];
-    },
-    suggestedType() {
-      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      if (previousSlot && previousSlot.type === `AnimationGoboStart`) {
-        return `AnimationGoboEnd`;
-      }
+  { immediate: true }
+);
 
-      if (this.slotNumber === 1) {
-        return /\banimation\b/i.test(this.channel.name) ? `AnimationGoboStart` : `Open`;
-      }
+async function changeSlotType() {
+  await nextTick();
 
-      return this.slotTypes.find(type => this.channel.name.toLowerCase().includes(type.toLowerCase())) || ``;
-    },
-    animationGoboEndAfterStart() {
-      if (this.slot.type !== `AnimationGoboEnd`) {
-        return true;
+  if (typeData.value) {
+    const defaultData = typeData.value.defaultData;
+    for (const property of Object.keys(defaultData)) {
+      if (!(property in slot.value.typeData)) {
+        slot.value.typeData[property] = defaultData[property];
       }
+    }
+  }
+}
 
-      if (this.slotNumber === 1) {
-        return false;
-      }
-
-      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !previousSlot || previousSlot.type === `AnimationGoboStart`;
-    },
-    animationGoboEndValid() {
-      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !previousSlot || previousSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
-    },
-  },
-  created() {
-    this.$watch(`slotNumber`, async function(newSlotNumber) {
-      if (!this.channel.wheel.slots[newSlotNumber - 1]) {
-        this.$set(this.channel.wheel.slots, newSlotNumber - 1, getEmptyWheelSlot());
-        this.open = true;
-
-        await this.$nextTick();
-        this.slot.type = this.suggestedType;
-      }
-    }, {
-      immediate: true,
-    });
-  },
-  methods: {
-    /**
-     * Add all properties to capability.typeData that are required by the current wheel slot type and are not yet in there.
-     */
-    async changeSlotType() {
-      await this.$nextTick();
-
-      const defaultData = this.$refs.typeData.defaultData;
-      for (const property of Object.keys(defaultData)) {
-        if (!(property in this.slot.typeData)) {
-          this.$set(this.slot.typeData, property, defaultData[property]);
-        }
-      }
-    },
-  },
-};
+defineExpose({});
 </script>

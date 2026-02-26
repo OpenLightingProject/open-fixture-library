@@ -38,46 +38,32 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        effectName: ``,
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
-        comment: ``,
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      effectName?: string;
+      speed?: string;
+      speedStart?: string | null;
+      speedEnd?: string | null;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const hint = `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`;
+
+const defaultData = {
+  effectName: '',
+  speed: '',
+  speedStart: null,
+  speedEnd: null,
+  comment: '',
 };
 </script>

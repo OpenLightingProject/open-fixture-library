@@ -2,19 +2,21 @@
   <div
     id="ofl-root"
     :class="{
-      js: isBrowser,
-      'no-js': !isBrowser,
+      js: client,
+      'no-js': !client,
       touch: isTouchScreen,
       'no-touch': !isTouchScreen,
     }">
 
-    <a href="#content" class="accessibility">Skip to content</a>
+    <NuxtLoadingIndicator color="#1e88e5" />
+
+    <a href="#content" class="accessibility"> Skip to content</a>
 
     <HeaderBar @focus-content="focusContent()" />
 
-    <div id="content" ref="content" tabindex="-1">
+    <div id="content" ref="contentRef" tabindex="-1">
       <ClimateStrikeBanner />
-      <Nuxt />
+      <slot />
     </div>
 
   </div>
@@ -62,52 +64,60 @@
 }
 </style>
 
-
-<script>
-import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
-import HeaderBar from '../components/HeaderBar.vue';
-
-export default {
-  components: {
-    HeaderBar,
-    ClimateStrikeBanner,
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} – Open Fixture Library` : 'Open Fixture Library';
   },
-  data() {
-    return {
-      isBrowser: false,
-      isTouchScreen: false,
-      lastTouchTime: 0,
-    };
-  },
-  mounted() {
-    this.isBrowser = true;
+});
 
-    // adapted from https://stackoverflow.com/a/30303898/451391
-    document.addEventListener(`touchstart`, this.onTouchStart, true);
-    document.addEventListener(`mousemove`, this.onMouseMove, true);
-  },
-  beforeDestroy() {
-    document.removeEventListener(`touchstart`, this.onTouchStart, true);
-    document.removeEventListener(`mousemove`, this.onMouseMove, true);
-  },
-  methods: {
-    focusContent() {
-      this.$refs.content.focus();
-    },
+<script setup lang="ts">
+useSeoMeta({
+  twitterCard: 'summary',
+  ogSiteName: 'Open Fixture Library',
+  ogLocale: 'en_US',
+  ogType: 'website',
+  ogDescription: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+  ogImage: 'https://open-fixture-library.org/open-graph.png',
+  ogImageType: 'image/png',
+  ogImageWidth: 1280,
+  ogImageHeight: 640,
+});
 
-    onMouseMove() {
-      // filter emulated events coming from touch events
-      if (Date.now() - this.lastTouchTime < 500) {
-        return;
-      }
-
-      this.isTouchScreen = false;
-    },
-
-    onTouchStart() {
-      this.isTouchScreen = true;
-      this.lastTouchTime = Date.now();
-    },
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} – Open Fixture Library` : 'Open Fixture Library';
   },
-};
+});
+
+const client = import.meta.client;
+const isTouchScreen = ref(false);
+const lastTouchTime = ref(0);
+const contentRef = ref<HTMLElement | null>(null);
+
+function focusContent() {
+  contentRef.value?.focus();
+}
+
+function onMouseMove() {
+  if (Date.now() - lastTouchTime.value < 500) {
+    return;
+  }
+
+  isTouchScreen.value = false;
+}
+
+function onTouchStart() {
+  isTouchScreen.value = true;
+  lastTouchTime.value = Date.now();
+}
+
+onMounted(() => {
+  document.addEventListener('touchstart', onTouchStart, true);
+  document.addEventListener('mousemove', onMouseMove, true);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('touchstart', onTouchStart, true);
+  document.removeEventListener('mousemove', onMouseMove, true);
+});
 </script>

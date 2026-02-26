@@ -27,39 +27,28 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        distance: null,
-        distanceStart: `near`,
-        distanceEnd: `far`,
-        comment: ``,
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      distance?: string | null;
+      distanceStart?: string;
+      distanceEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const defaultData = {
+  distance: null,
+  distanceStart: 'near',
+  distanceEnd: 'far',
+  comment: '',
 };
 </script>

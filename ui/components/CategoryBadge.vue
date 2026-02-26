@@ -41,63 +41,49 @@
 }
 </style>
 
-<script>
-import { booleanProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  category: string;
+  selected?: boolean;
+  selectable?: boolean;
+}
 
-export default {
-  props: {
-    category: stringProp().required,
-    selected: booleanProp().withDefault(false),
-    selectable: booleanProp().withDefault(false),
-  },
-  emits: {
-    click: () => true,
-    focus: () => true,
-    blur: event => true,
-  },
-  render(createElement) {
-    const classes = {
-      'category-badge': true,
-      selected: this.selected,
-    };
-    const children = [
-      createElement(`OflSvg`, {
-        props: {
-          type: `fixture`,
-          name: this.category,
-        },
-      }),
-      this.category,
-    ];
+const props = withDefaults(defineProps<Props>(), {
+  selected: false,
+  selectable: false,
+});
 
-    if (this.selectable) {
-      // <NuxtLink> is not cancellable, so we render a default <a> instead
-      return createElement(`a`, {
-        class: classes,
-        attrs: {
-          href: `#${encodeURIComponent(this.category)}`,
-        },
-        on: {
-          click: $event => {
-            this.$emit(`click`);
-            $event.preventDefault();
-          },
-          focus: () => {
-            this.$emit(`focus`);
-          },
-          blur: $event => {
-            this.$emit(`blur`, $event);
-          },
-        },
-      }, children);
-    }
+const emit = defineEmits<{
+  click: [];
+  focus: [];
+  blur: [event: FocusEvent];
+}>();
 
-    return createElement(`NuxtLink`, {
-      class: classes,
-      props: {
-        to: `/categories/${encodeURIComponent(this.category)}`,
-      },
-    }, children);
-  },
+const handleClick = (event: MouseEvent) => {
+  if (props.selectable) {
+    emit('click');
+  }
+};
+
+const handleFocus = () => {
+  emit('focus');
+};
+
+const handleBlur = (event: FocusEvent) => {
+  emit('blur', event);
 };
 </script>
+
+<template>
+  <NuxtLink
+    :class="{ 'category-badge': true, selected: props.selected }"
+    :to="selectable ? undefined : `/categories/${encodeURIComponent(props.category)}`"
+    @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur">
+    <OflSvg
+      type="fixture"
+      :name="props.category" />
+    {{ props.category }}
+  </NuxtLink>
+</template>

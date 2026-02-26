@@ -196,7 +196,7 @@ svg {
   }
 }
 
-figcaption ::v-deep summary {
+figcaption :deep(summary) {
   position: sticky;
   top: 0;
   font-weight: 700;
@@ -227,81 +227,104 @@ figcaption table {
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Wheel from '../../../lib/model/Wheel.js';
-import ConditionalDetails from '../ConditionalDetails.vue';
-import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
+<script setup lang="ts">
+import Wheel from '~~/lib/model/Wheel.js';
 
-export default {
-  components: {
-    ConditionalDetails,
-  },
-  props: {
-    wheel: instanceOfProp(Wheel).required,
-  },
-  data() {
-    return {
-      highlightedSlot: null,
-      wheelRadius: 50,
-      wheelPadding: 3,
-    };
-  },
-  computed: {
-    wheelDirectionFactor() {
-      return this.wheel.direction === `CCW` ? -1 : 1;
-    },
-    slotRadius() {
-      const usableRadius = this.wheelRadius - this.wheelPadding;
+interface Props {
+  wheel: Wheel;
+}
 
-      const spacingFactor = 0.85;
-      const anglePerSlot = (2 * Math.PI / this.wheel.slots.length) * spacingFactor; // radians
+const props = defineProps<Props>();
 
-      const maximumRadius = (usableRadius / 2) - 5; // preserve some space in the middle
+const highlightedSlot = ref<number | null>(null);
+const wheelRadius = 50;
+const wheelPadding = 3;
 
-      // (I):       slotRotateRadius = slotRadius / sin(anglePerSlot / 2)
-      // (II):      slotRadius + slotRotateRadius = usableRadius
-      // (I in II): slotRadius + slotRadius / sin(anglePerSlot / 2) = usableRadius
-      //            slotRadius * (1 + 1 / sin(anglePerSlot / 2)) = usableRadius
-      //            slotRadius = usableRadius / (1 + 1 / sin(anglePerSlot / 2))
-      return Math.min(usableRadius / (1 + (1 / Math.sin(anglePerSlot / 2))), maximumRadius);
-    },
-    slotRotateRadius() {
-      return -this.wheelRadius + this.slotRadius + this.wheelPadding;
-    },
-    slotRotateAngle() {
-      return 360 / this.wheel.slots.length * this.wheelDirectionFactor;
-    },
-    slotCircumference() {
-      return 2 * Math.PI * Math.abs(this.slotRotateRadius);
-    },
-    slotSvgFragments() {
-      return this.wheel.slots.map(slot => {
-        if (slot.colors !== null) {
-          return getColorCircleSvgFragment(slot.colors, this.slotRadius);
-        }
+const wheelDirectionFactor = computed(() => {
+  return props.wheel.direction === `CCW` ? -1 : 1;
+});
 
-        return null;
-      });
-    },
-    animationGoboWidth() {
-      if (this.wheel.slots.length === 2) {
-        // wheel only contains AnimationGoboStart and AnimationGoboEnd
-        return this.slotCircumference;
-      }
+const slotRadius = computed(() => {
+  const usableRadius = wheelRadius - wheelPadding;
 
-      return (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
-    },
-    slotTitles() {
-      return this.wheel.slots.map((slot, index) => {
-        if (slot.type === `AnimationGoboStart`) {
-          const splitSlot = this.wheel.getSlot(index + 1.5);
-          return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
-        }
+  const spacingFactor = 0.85;
+  const anglePerSlot = (2 * Math.PI / props.wheel.slots.length) * spacingFactor;
 
-        return `Slot ${index + 1}: ${slot.name}`;
-      });
-    },
-  },
-};
+  const maximumRadius = (usableRadius / 2) - 5;
+
+  return Math.min(usableRadius / (1 + (1 / Math.sin(anglePerSlot / 2))), maximumRadius);
+});
+
+const slotRotateRadius = computed(() => {
+  return -wheelRadius + slotRadius.value + wheelPadding;
+});
+
+const slotRotateAngle = computed(() => {
+  return 360 / props.wheel.slots.length * wheelDirectionFactor.value;
+});
+
+const slotCircumference = computed(() => {
+  return 2 * Math.PI * Math.abs(slotRotateRadius.value);
+});
+
+const slotSvgFragments = computed(() => {
+  return props.wheel.slots.map(slot => {
+    if (slot.colors !== null) {
+      return getColorCircleSvgFragment(slot.colors, slotRadius.value);
+    }
+
+    return null;
+  });
+});
+
+const animationGoboWidth = computed(() => {
+  if (props.wheel.slots.length === 2) {
+    return slotCircumference.value;
+  }
+
+  return (2 * slotRadius.value) + (slotCircumference.value * Math.abs(slotRotateAngle.value) / 360);
+});
+
+const slotTitles = computed(() => {
+  return props.wheel.slots.map((slot, index) => {
+    if (slot.type === `AnimationGoboStart`) {
+      const splitSlot = props.wheel.getSlot(index + 1.5);
+      return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
+    }
+
+    return `Slot ${index + 1}: ${slot.name}`;
+  });
+});
+
+function getColorCircleSvgFragment(colors: string[], radius: number) {
+  const svgNs = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNs, 'svg');
+  const fragment = document.createDocumentFragment();
+  const circle = document.createElementNS(svgNs, 'circle');
+
+  circle.setAttribute('r', String(radius));
+  circle.setAttribute('fill', colors[0]);
+  svg.appendChild(circle);
+
+  if (colors.length >= 2) {
+    const circle2 = document.createElementNS(svgNs, 'circle');
+    circle2.setAttribute('r', String(radius / 2));
+    circle2.setAttribute('fill', colors[1]);
+    svg.appendChild(circle2);
+  }
+
+  if (colors.length >= 3) {
+    const rect = document.createElementNS(svgNs, 'rect');
+    const halfRadius = radius / 2;
+    rect.setAttribute('x', String(-halfRadius));
+    rect.setAttribute('y', String(-halfRadius));
+    rect.setAttribute('width', String(radius));
+    rect.setAttribute('height', String(radius));
+    rect.setAttribute('fill', colors[2]);
+    svg.appendChild(rect);
+  }
+
+  fragment.appendChild(svg);
+  return new XMLSerializer().serializeToString(svg);
+}
 </script>

@@ -1,5 +1,4 @@
-import importJson from '../../../../lib/import-json.js';
-import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
 import {
   capabilityTypes,
   channelProperties,
@@ -8,41 +7,71 @@ import {
   modeProperties,
   physicalProperties,
   wheelSlotTypes,
-} from '../../../../lib/schema-properties.js';
-import { checkFixture } from '../../../../tests/fixture-valid.js';
+} from '~~/lib/schema-properties.js';
+import manufacturers from '~~/fixtures/manufacturers.json' with { type: 'json' };
+import { checkFixture } from '~~/tests/fixture-valid.js';
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+defineRouteMeta({
+  openAPI: {
+    operationId: 'createFixtureFromEditor',
+    description: 'Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.',
+    tags: ['fixtures'],
+    requestBody: {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              description: 'Fixture object used in the Fixture Editor',
+            },
+          },
+        },
+      },
+    },
+    responses: {
+      '201': {
+        description: 'Fixture successfully imported',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+            },
+          },
+        },
+      },
+      '400': {
+        description: 'Bad request',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+              properties: {
+                error: { type: 'string' },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+});
 
-/**
- * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise<ApiResponse>} The handled response.
- */
-export async function createFixtureFromEditor({ request }) {
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event);
+
   try {
-    const fixtureCreateResult = await getFixtureCreateResult(request.requestBody);
-    return {
-      statusCode: 201,
-      body: fixtureCreateResult,
-    };
+    const fixtureCreateResult = await getFixtureCreateResult(body);
+    setResponseStatus(event, 201);
+    return fixtureCreateResult;
   }
   catch (error) {
-    return {
-      statusCode: 400,
-      body: {
-        error: error.message,
-      },
-    };
+    setResponseStatus(event, 400);
+    return { error: error.message };
   }
-}
+});
 
-
-/**
- * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
- * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
- */
 async function getFixtureCreateResult(fixtures) {
   const result = {
     manufacturers: {},
@@ -51,14 +80,7 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
-
-  // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
-
-  await Promise.all(fixtures.map(fixture => addFixture(fixture)));
-
-  return result;
 
   async function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
@@ -124,25 +146,22 @@ async function getFixtureCreateResult(fixtures) {
       }
     }
 
-
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
   }
 
-  /**
-   * If a new manufacturer was entered in the editor, it is also saved here.
-   * @param {object} fixture The editor fixture object.
-   * @returns {string} The manufacturer key.
-   */
+  await Promise.all(fixtures.map(fixture => addFixture(fixture)));
+
+  return result;
+
   function getManufacturerKey(fixture) {
     if (fixture.useExistingManufacturer) {
       result.manufacturers[fixture.manufacturerKey] = manufacturers[fixture.manufacturerKey];
       return fixture.manufacturerKey;
     }
 
-    // add new manufacturer
     const manufacturerKey = slugify(fixture.newManufacturerName);
 
     result.manufacturers[manufacturerKey] = {
@@ -164,11 +183,6 @@ async function getFixtureCreateResult(fixtures) {
     return manufacturerKey;
   }
 
-  /**
-   * @param {object} fixture The editor fixture object.
-   * @param {string} manufacturerKey The manufacturer key of the fixture.
-   * @returns {string} The fixture key.
-   */
   function getFixtureKey(fixture, manufacturerKey) {
     if (`key` in fixture && fixture.key !== `[new]`) {
       return fixture.key;
@@ -212,10 +226,6 @@ async function getFixtureCreateResult(fixtures) {
     return physical;
   }
 
-  /**
-   * @param {object} fixture The OFL fixture object to save the links to.
-   * @param {object[]} editorLinksArray The editor link object array.
-   */
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
@@ -251,11 +261,6 @@ async function getFixtureCreateResult(fixtures) {
     }
   }
 
-  /**
-   * Sanitize and save wheels from the editor's channel objects, if there are any.
-   * @param {object} fixture The OFL fixture object to save the wheels to.
-   * @param {object} editorFixture The editor fixture object to get the wheels from.
-   */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
       editorChannel => editorChannel.wheel && editorChannel.wheel.slots.some(
@@ -290,7 +295,6 @@ async function getFixtureCreateResult(fixtures) {
         return wheelSlot;
       });
 
-      // remove trailing null slots
       while (slots.at(-1) === null) {
         slots.pop();
       }
@@ -305,7 +309,6 @@ async function getFixtureCreateResult(fixtures) {
     const from = availableChannels[channelId];
 
     if (`coarseChannelId` in from) {
-      // we already handled this fine channel with its coarse channel
       return;
     }
 
@@ -339,7 +342,6 @@ async function getFixtureCreateResult(fixtures) {
     const channelKey = getChannelKey(channel, fixtureKey);
 
     if (`fineChannelAliases` in channel) {
-      // find all referencing fine channels
       for (const otherChannel of Object.values(availableChannels)) {
         if (`coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channelId) {
           const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
@@ -423,22 +425,10 @@ async function getFixtureCreateResult(fixtures) {
   }
 }
 
-
-// helper functions
-
-/**
- * @param {object | null} object The object to check.
- * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
- */
 function isEmptyObject(object) {
   return JSON.stringify(object) === `{}`;
 }
 
-/**
- * @param {any} property The property key to check.
- * @param {object | null} object The object to check. If it's null, false is returned.
- * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
- */
 function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
   return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
@@ -448,10 +438,6 @@ function getComboboxInput(property, from) {
   return (from[property] === `[add-value]` && from[`${property}New`] !== ``) ? from[`${property}New`] : from[property];
 }
 
-/**
- * @param {string} string The string to slugify.
- * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
- */
 function slugify(string) {
   return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
 }

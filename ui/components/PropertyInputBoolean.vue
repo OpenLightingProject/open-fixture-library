@@ -10,34 +10,35 @@
   </span>
 </template>
 
-<script>
-import { booleanProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  required?: boolean;
+  value: boolean;
+  name: string;
+  label: string;
+}
 
-export default {
-  props: {
-    required: booleanProp().withDefault(false),
-    value: booleanProp().withDefault(false),
-    name: stringProp().required,
-    label: stringProp().required,
+const props = withDefaults(defineProps<Props>(), {
+  required: false,
+  value: false,
+});
+
+const emit = defineEmits<{
+  input: [value: boolean | null];
+}>();
+
+const input = ref<HTMLInputElement | null>(null);
+
+const localValue = computed({
+  get: () => props.value,
+  set: (newValue: boolean) => {
+    emit('input', newValue ? true : null);
   },
-  emits: {
-    input: value => true,
+});
+
+defineExpose({
+  focus: () => {
+    input.value?.focus();
   },
-  computed: {
-    localValue: {
-      get() {
-        return this.value;
-      },
-      set(newValue) {
-        this.$emit(`input`, newValue ? true : null);
-      },
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$refs.input.focus();
-    },
-  },
-};
+});
 </script>

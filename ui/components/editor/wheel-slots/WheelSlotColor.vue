@@ -46,51 +46,41 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
+<script setup lang="ts">
+import { entitiesSchema, schemaDefinitions } from '~~/lib/schema-properties.js';
+import { colorsHexStringToArray } from '@/assets/scripts/editor-utilities.js';
+import { ref, watch } from 'vue';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputEntity from '../../PropertyInputEntity.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputEntity,
-    PropertyInputText,
-  },
-  props: {
-    wheelSlot: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      entitiesSchema,
-
-      /**
-       * Used in {@link EditorWheelSlot}
-       * @public
-       */
-      defaultData: {
-        name: ``,
-        colors: null,
-        colorsHexString: ``,
-        colorTemperature: ``,
-      },
-      colorPreview: null,
+interface Props {
+  wheelSlot: {
+    uuid: string;
+    typeData: {
+      name?: string;
+      colors?: string[] | null;
+      colorsHexString?: string;
+      colorTemperature?: string;
     };
-  },
-  watch: {
-    'wheelSlot.typeData.colorsHexString': {
-      handler(hexString) {
-        this.wheelSlot.typeData.colors = colorsHexStringToArray(hexString);
-        this.colorPreview = this.wheelSlot.typeData.colors;
-      },
-      immediate: true,
-    },
-  },
+  };
+  formstate?: object;
+}
+
+const props = defineProps<Props>();
+
+const defaultData = {
+  name: '',
+  colors: null,
+  colorsHexString: '',
+  colorTemperature: '',
 };
+
+const colorPreview = ref<string[] | null>(null);
+
+watch(
+  () => props.wheelSlot.typeData.colorsHexString,
+  (hexString) => {
+    props.wheelSlot.typeData.colors = colorsHexStringToArray(hexString);
+    colorPreview.value = props.wheelSlot.typeData.colors;
+  },
+  { immediate: true }
+);
 </script>

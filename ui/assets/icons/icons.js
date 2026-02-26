@@ -1,10 +1,13 @@
-// read all SVG files in this directory (and subdirectories) into icons object
-// see https://webpack.js.org/guides/dependency-management/#requirecontext
-// eslint-disable-next-line unicorn/prefer-module
-const resolve = require.context(`.`, true, /\.svg$/);
+const icons = import.meta.glob('./*.svg', { query: '?raw', import: 'default', eager: true });
+const fixtureIcons = import.meta.glob('./fixture/*.svg', { query: '?raw', import: 'default', eager: true });
+const capabilityIcons = import.meta.glob('./capability*.svg', { query: '?raw', import: 'default', eager: true });
 
-const getIconPath = key => key.match(/^\.\/(.+)\.svg$/)[1];
+const allIcons = {
+  ...icons,
+  ...fixtureIcons,
+  ...capabilityIcons,
+};
 
-export default Object.fromEntries(resolve.keys().map(
-  key => [getIconPath(key), resolve(key)],
-));
+export default Object.fromEntries(
+  Object.entries(allIcons).map(([key, value]) => [key.replace(/^\.\/(.+)\.svg$/, '$1'), value])
+);

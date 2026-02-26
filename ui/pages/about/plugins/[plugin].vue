@@ -18,12 +18,12 @@
     </ul>
 
     <HelpWantedMessage
-      v-if="`helpWanted` in pluginData"
+      v-if="'helpWanted' in pluginData"
       type="plugin"
       :context="pluginData"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
-    <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
+    <div v-if="'fixtureUsage' in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Install fixture definitions</h2>
 
       <p><NuxtLink to="/manufacturers">Browse to the fixture</NuxtLink> you want to download, then select <em>{{ pluginData.name }}</em> in the <em>Download as…</em> button.</p>
@@ -32,10 +32,10 @@
       <div v-html="pluginData.fixtureUsage" />
     </div>
 
-    <div v-if="`fileLocations` in pluginData" class="file-locations">
+    <div v-if="'fileLocations' in pluginData" class="file-locations">
       <h2>File locations</h2>
 
-      <p v-if="`subDirectoriesAllowed` in pluginData.fileLocations">
+      <p v-if="'subDirectoriesAllowed' in pluginData.fileLocations">
         Fixture files in subdirectories are {{ pluginData.fileLocations.subDirectoriesAllowed ? `recognized` : `not recognized` }}.
       </p>
 
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div v-if="`additionalInfo` in pluginData" class="additional-info">
+    <div v-if="'additionalInfo' in pluginData" class="additional-info">
       <h2>Additional information</h2>
 
       <!-- eslint-disable-next-line vue/no-v-html -->
@@ -72,22 +72,22 @@
 .fixture-usage,
 .file-locations,
 .additional-info {
-  & ::v-deep h2,
-  & ::v-deep h3 {
+  & :deep(h2),
+  & :deep(h3) {
     margin: 1.5rem 0 -0.5rem;
     line-height: 1.3;
   }
 
-  & ::v-deep p {
+  & :deep(p) {
     text-align: justify;
   }
 
-  & ::v-deep code {
+  & :deep(code) {
     padding: 3px 5px;
     background-color: theme-color(header-background);
   }
 
-  & ::v-deep table {
+  & :deep(table) {
     margin: 1rem 0;
     border-collapse: collapse;
     border: 1px solid theme-color(divider);
@@ -101,71 +101,39 @@
 }
 </style>
 
-<script>
-import HelpWantedDialog from '../../../components/HelpWantedDialog.vue';
-import HelpWantedMessage from '../../../components/HelpWantedMessage.vue';
+<script setup lang="ts">
+const route = useRoute();
 
-export default {
-  components: {
-    HelpWantedDialog,
-    HelpWantedMessage,
-  },
-  async asyncData({ params, $axios, redirect, error }) {
-    const pluginKey = params.plugin;
-    let pluginData;
-    try {
-      pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
+const pluginKey = route.params.plugin as string;
 
-    if (pluginKey in pluginData.previousVersions) {
-      const newPluginKey = pluginData.key;
-      return redirect(301, `/about/plugins/${newPluginKey}`);
-    }
+const { data: pluginData } = await useFetch(`/api/v1/plugins/${pluginKey}`);
 
-    return { pluginData };
-  },
-  data() {
-    return {
-      helpWantedContext: undefined,
-      libraryNames: {
-        main: `Main (system) library`,
-        user: `User library`,
-      },
-    };
-  },
-  head() {
-    const title = `${this.pluginData.name} Plugin`;
+if (pluginData.value && pluginKey in pluginData.value.previousVersions) {
+  const newPluginKey = pluginData.value.key;
+  navigateTo(`/about/plugins/${newPluginKey}`, { redirectCode: 301 });
+}
 
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
-  computed: {
-    exportPluginVersion() {
-      return this.pluginData.exportPluginVersion;
-    },
-    importPluginVersion() {
-      return this.pluginData.importPluginVersion;
-    },
-    fileLocationOSes() {
-      return `fileLocations` in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
-        os => os !== `subDirectoriesAllowed`,
-      ) : null;
-    },
-  },
-  methods: {
-    openHelpWantedDialog(event) {
-      this.helpWantedContext = event.context;
-    },
-  },
+const helpWantedContext = ref<unknown>(undefined);
+const libraryNames: Record<string, string> = {
+  main: 'Main (system) library',
+  user: 'User library',
 };
+
+const exportPluginVersion = computed(() => pluginData.value?.exportPluginVersion);
+const importPluginVersion = computed(() => pluginData.value?.importPluginVersion);
+
+const fileLocationOSes = computed(() => {
+  if (!pluginData.value || !('fileLocations' in pluginData.value)) return null;
+  return Object.keys(pluginData.value.fileLocations).filter(
+    (os): os is string => os !== 'subDirectoriesAllowed',
+  );
+});
+
+function openHelpWantedDialog(event: { context: unknown }) {
+  helpWantedContext.value = event.context;
+}
+
+useHead({
+  title: computed(() => pluginData.value ? `${pluginData.value.name} Plugin` : ''),
+});
 </script>

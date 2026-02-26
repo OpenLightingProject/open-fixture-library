@@ -7,44 +7,41 @@
     @change="onFileChanged()">
 </template>
 
-<script>
-import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  required?: boolean;
+  name: string;
+  modelValue?: File | undefined;
+}
 
-export default {
-  model: {
-    prop: `model-value`,
-    event: `update:model-value`,
-  },
-  props: {
-    required: booleanProp().withDefault(false),
-    name: stringProp().required,
-    modelValue: anyProp().optional,
-  },
-  emits: {
-    'update:model-value': value => true,
-  },
-  watch: {
-    modelValue(newFile) {
-      if (!newFile) {
-        this.$refs.fileInput.value = ``;
-      }
-    },
-  },
-  mounted() {
-    this.onFileChanged();
-  },
-  methods: {
-    onFileChanged() {
-      const file = this.$refs.fileInput.files[0];
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  'update:model-value': [value: File | undefined];
+}>();
 
-      if (!file) {
-        this.$emit(`update:model-value`, undefined);
-        return;
-      }
+const fileInput = ref<HTMLInputElement | null>(null);
 
-      this.$emit(`update:model-value`, file);
-    },
-  },
-};
+watch(
+  () => props.modelValue,
+  (newFile) => {
+    if (!newFile && fileInput.value) {
+      fileInput.value.value = '';
+    }
+  }
+);
+
+onMounted(() => {
+  onFileChanged();
+});
+
+function onFileChanged() {
+  const file = fileInput.value?.files?.[0];
+
+  if (!file) {
+    emit('update:model-value', undefined);
+    return;
+  }
+
+  emit('update:model-value', file);
+}
 </script>
-

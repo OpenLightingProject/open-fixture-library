@@ -73,9 +73,8 @@
   </section>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { fixtureProperties } from '../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { fixtureProperties } from '~~/lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
@@ -84,43 +83,30 @@ import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 import EditorCategoryChooser from './EditorCategoryChooser.vue';
 import EditorLinks from './EditorLinks.vue';
 
-export default {
-  components: {
-    EditorCategoryChooser,
-    EditorLinks,
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-    PropertyInputTextarea,
-  },
-  props: {
-    fixture: objectProp().required,
-    formstate: objectProp().required,
-    manufacturers: objectProp().required,
-  },
-  data() {
-    return {
-      fixtureProperties,
-    };
-  },
-  computed: {
-    manufacturerName() {
-      if (!this.fixture.useExistingManufacturer) {
-        return this.fixture.newManufacturerName;
-      }
+interface Props {
+  fixture: object;
+  formstate: object;
+  manufacturers: object;
+}
 
-      const manufacturerKey = this.fixture.manufacturerKey;
+const props = defineProps<Props>();
 
-      if (manufacturerKey === ``) {
-        return ``;
-      }
+const manufacturerName = computed(() => {
+  if (!props.fixture.useExistingManufacturer) {
+    return props.fixture.newManufacturerName;
+  }
 
-      return this.manufacturers[manufacturerKey].name;
-    },
-    fixtureNameIsWithoutManufacturer() {
-      const manufacturerName = this.manufacturerName.trim().toLowerCase();
-      return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    },
-  },
-};
+  const manufacturerKey = props.fixture.manufacturerKey;
+
+  if (manufacturerKey === ``) {
+    return ``;
+  }
+
+  return (props.manufacturers as any)[manufacturerKey]?.name ?? '';
+});
+
+const fixtureNameIsWithoutManufacturer = computed(() => {
+  const manufacturerNameValue = manufacturerName.value.trim().toLowerCase();
+  return manufacturerNameValue === `` || !props.fixture.name.trim().toLowerCase().startsWith(manufacturerNameValue);
+});
 </script>

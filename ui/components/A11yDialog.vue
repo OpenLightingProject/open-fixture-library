@@ -3,13 +3,13 @@
   <div
     :id="id"
     class="dialog-container"
-    :aria-hidden="shown ? `false` : `true`"
+    :aria-hidden="shown ? 'false' : 'true'"
     :aria-labelledby="`${id}-dialog-title`"
-    :role="isAlertDialog ? `alertdialog` : undefined"
+    :role="isAlertDialog ? 'alertdialog' : undefined"
     @click.self="overlayClick($event)">
 
     <div
-      ref="dialog"
+      ref="dialogEl"
       role="document"
       class="dialog card"
       :class="{ wide }">
@@ -110,68 +110,79 @@ $container-fade-duration: 200ms;
 }
 </style>
 
-<script>
-import { booleanProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  id: string;
+  isAlertDialog?: boolean;
+  shown?: boolean;
+  title: string;
+  wide?: boolean;
+}
 
-export default {
-  props: {
-    id: stringProp(
-      id => (typeof id === `string` && id.endsWith(`-dialog`) ? undefined : `id should end with "-dialog".`),
-    ).required,
-    isAlertDialog: booleanProp().withDefault(false),
-    shown: booleanProp().withDefault(true),
-    title: stringProp().required,
-    wide: booleanProp().withDefault(false),
-  },
-  emits: {
-    show: () => true,
-    hide: () => true,
-  },
-  data() {
-    return {
-      dialog: null,
-    };
-  },
-  watch: {
-    shown: `update`,
-  },
-  async mounted() {
-    const { default: A11yDialog } = await import(`a11y-dialog`);
+const props = withDefaults(defineProps<Props>(), {
+  isAlertDialog: false,
+  shown: true,
+  wide: false,
+});
 
-    this.dialog = new A11yDialog(this.$el);
+const emit = defineEmits<{
+  show: [];
+  hide: [];
+}>();
 
-    this.dialog.on(`show`, () => {
-      this.$refs.dialog.scrollTop = 0;
-      this.$emit(`show`);
-    });
+const dialogEl = ref<HTMLElement | null>(null);
+const dialog = ref<Awaited<ReturnType<typeof import('a11y-dialog')>> | null>(null);
 
-    this.dialog.on(`hide`, () => this.$emit(`hide`));
-
-    this.update();
-  },
-  beforeDestroy() {
-    this.dialog.destroy();
-  },
-  methods: {
-    update() {
-      if (this.shown) {
-        this.show();
-      }
-      else {
-        this.hide();
-      }
-    },
-    show() {
-      this.dialog?.show();
-    },
-    hide() {
-      this.dialog?.hide();
-    },
-    overlayClick() {
-      if (!this.isAlertDialog) {
-        this.hide();
-      }
-    },
-  },
+const update = () => {
+  if (props.shown) {
+    show();
+  }
+  else {
+    hide();
+  }
 };
+
+const show = () => {
+  dialog.value?.show();
+};
+
+const hide = () => {
+  dialog.value?.hide();
+};
+
+const overlayClick = () => {
+  if (!props.isAlertDialog) {
+    hide();
+  }
+};
+
+watch(() => props.shown, update);
+
+onMounted(async () => {
+  const { default: A11yDialog } = await import('a11y-dialog');
+
+  const el = document.getElementById(props.id);
+  if (!el) return;
+  
+  dialog.value = new A11yDialog(el);
+
+  dialog.value.on('show', () => {
+    const d = dialogEl.value;
+    if (d) d.scrollTop = 0;
+    emit('show');
+  });
+
+  dialog.value.on('hide', () => emit('hide'));
+
+  update();
+});
+
+onUnmounted(() => {
+  dialog.value?.destroy();
+});
+
+defineExpose({
+  show,
+  hide,
+});
 </script>

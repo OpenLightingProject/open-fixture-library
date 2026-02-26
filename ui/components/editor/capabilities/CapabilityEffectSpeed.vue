@@ -27,45 +27,30 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: `Doesn't activate an effect, only controls the speed of running effects.`,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        speed: null,
-        speedStart: `slow`,
-        speedEnd: `fast`,
-        comment: ``,
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      speed?: string | null;
+      speedStart?: string;
+      speedEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const hint = `Doesn't activate an effect, only controls the speed of running effects.`;
+
+const defaultData = {
+  speed: null,
+  speedStart: 'slow',
+  speedEnd: 'fast',
+  comment: '',
 };
 </script>

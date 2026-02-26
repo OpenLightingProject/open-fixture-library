@@ -65,7 +65,7 @@
     margin-bottom: 0.8rem;
   }
 
-  & ::v-deep summary {
+  & :deep(summary) {
     padding: 0.3rem 0.5rem;
   }
 }
@@ -85,223 +85,223 @@
 }
 </style>
 
-<script>
-import { numberProp, objectProp } from 'vue-ts-types';
-import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
+<script setup lang="ts">
+import { capabilityDmxRange } from '~~/lib/schema-properties.js';
+import { getEmptyCapability, isCapabilityChanged } from '@/assets/scripts/editor-utilities.js';
 
-import ConditionalDetails from '../ConditionalDetails.vue';
-import LabeledInput from '../LabeledInput.vue';
-import PropertyInputRange from '../PropertyInputRange.vue';
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
+interface Props {
+  channel: {
+    capabilities: Array<{
+      dmxRange: [number, number] | null;
+      type: string;
+      typeData: Record<string, any>;
+      open?: boolean;
+    }>;
+  };
+  capabilityIndex: number;
+  resolution: number;
+  formstate: object;
+}
 
-export default {
-  components: {
-    ConditionalDetails,
-    EditorCapabilityTypeData,
-    LabeledInput,
-    PropertyInputRange,
-  },
-  props: {
-    channel: objectProp().required,
-    capabilityIndex: numberProp().required,
-    resolution: numberProp().required,
-    formstate: objectProp().required,
-  },
-  emits: {
-    'insert-capability-before': () => true,
-    'insert-capability-after': () => true,
-  },
-  data() {
-    return {
-      dmxMin: 0,
-      capabilityDmxRange,
-    };
-  },
-  computed: {
-    capabilities() {
-      return this.channel.capabilities;
-    },
-    capability() {
-      return this.capabilities[this.capabilityIndex];
-    },
-    dmxMax() {
-      return Math.pow(256, this.resolution) - 1;
-    },
-    isChanged() {
-      return this.capabilities.some(
-        capability => isCapabilityChanged(capability),
-      );
-    },
-    start() {
-      return this.capability.dmxRange === null ? null : this.capability.dmxRange[0];
-    },
-    end() {
-      return this.capability.dmxRange === null ? null : this.capability.dmxRange[1];
-    },
-    min() {
-      let min = this.dmxMin;
-      let index = this.capabilityIndex - 1;
-      while (index >= 0) {
-        const capability = this.capabilities[index];
-        if (capability.dmxRange !== null) {
-          if (capability.dmxRange[1]) {
-            min = capability.dmxRange[1] + 1;
-            break;
-          }
-          if (capability.dmxRange[0] !== null) {
-            min = capability.dmxRange[0] + 1;
-            break;
-          }
-        }
-        index--;
+const props = defineProps<Props>();
+
+const firstInput = ref<any>(null);
+const capabilityTypeData = ref<any>(null);
+
+const capabilities = computed(() => props.channel.capabilities);
+
+const capability = computed(() => capabilities.value[props.capabilityIndex]);
+
+const dmxMax = computed(() => Math.pow(256, props.resolution) - 1);
+
+const isChanged = computed(() => {
+  return capabilities.value.some(
+    capability => isCapabilityChanged(capability),
+  );
+});
+
+const start = computed(() => {
+  return capability.value.dmxRange === null ? null : capability.value.dmxRange[0];
+});
+
+const end = computed(() => {
+  return capability.value.dmxRange === null ? null : capability.value.dmxRange[1];
+});
+
+const min = computed(() => {
+  let minVal = 0;
+  let index = props.capabilityIndex - 1;
+  while (index >= 0) {
+    const capability = capabilities.value[index];
+    if (capability.dmxRange !== null) {
+      if (capability.dmxRange[1]) {
+        minVal = capability.dmxRange[1] + 1;
+        break;
       }
-      return min;
-    },
-    max() {
-      let max = this.dmxMax;
-      let index = this.capabilityIndex + 1;
-      while (index < this.capabilities.length) {
-        const capability = this.capabilities[index];
-        if (capability.dmxRange !== null) {
-          if (capability.dmxRange[0] !== null) {
-            max = capability.dmxRange[0] - 1;
-            break;
-          }
-          if (capability.dmxRange[1] !== null) {
-            max = capability.dmxRange[1] - 1;
-            break;
-          }
-        }
-        index++;
+      if (capability.dmxRange[0] !== null) {
+        minVal = capability.dmxRange[0] + 1;
+        break;
       }
-      return max;
-    },
-  },
-  methods: {
-    onStartUpdated() {
-      if (this.start === null) {
-        const previousCapability = this.capabilities[this.capabilityIndex - 1];
-        if (previousCapability && !isCapabilityChanged(previousCapability)) {
-          this.removePreviousCapability();
-        }
-        return;
+    }
+    index--;
+  }
+  return minVal;
+});
+
+const max = computed(() => {
+  let maxVal = dmxMax.value;
+  let index = props.capabilityIndex + 1;
+  while (index < capabilities.value.length) {
+    const capability = capabilities.value[index];
+    if (capability.dmxRange !== null) {
+      if (capability.dmxRange[0] !== null) {
+        maxVal = capability.dmxRange[0] - 1;
+        break;
       }
-
-      const previousCapability = this.capabilities[this.capabilityIndex - 1];
-      if (previousCapability) {
-        if (isCapabilityChanged(previousCapability)) {
-          if (this.start > this.min) {
-            this.insertCapabilityBefore();
-          }
-          return;
-        }
-
-        if (this.start <= this.min) {
-          this.removePreviousCapability();
-        }
-        return;
+      if (capability.dmxRange[1] !== null) {
+        maxVal = capability.dmxRange[1] - 1;
+        break;
       }
+    }
+    index++;
+  }
+  return maxVal;
+});
 
-      if (this.start > this.dmxMin) {
-        this.insertCapabilityBefore();
+function onStartUpdated() {
+  if (start.value === null) {
+    const previousCapability = capabilities.value[props.capabilityIndex - 1];
+    if (previousCapability && !isCapabilityChanged(previousCapability)) {
+      removePreviousCapability();
+    }
+    return;
+  }
+
+  const previousCapability = capabilities.value[props.capabilityIndex - 1];
+  if (previousCapability) {
+    if (isCapabilityChanged(previousCapability)) {
+      if (start.value > min.value) {
+        insertCapabilityBefore();
       }
-    },
-    onEndUpdated() {
-      if (this.end === null) {
-        const nextCapability = this.capabilities[this.capabilityIndex + 1];
-        if (nextCapability && !isCapabilityChanged(nextCapability)) {
-          this.removeNextCapability();
-        }
-        return;
+      return;
+    }
+
+    if (start.value <= min.value) {
+      removePreviousCapability();
+    }
+    return;
+  }
+
+  if (start.value > 0) {
+    insertCapabilityBefore();
+  }
+}
+
+function onEndUpdated() {
+  if (end.value === null) {
+    const nextCapability = capabilities.value[props.capabilityIndex + 1];
+    if (nextCapability && !isCapabilityChanged(nextCapability)) {
+      removeNextCapability();
+    }
+    return;
+  }
+
+  const nextCapability = capabilities.value[props.capabilityIndex + 1];
+  if (nextCapability) {
+    if (isCapabilityChanged(nextCapability)) {
+      if (end.value < max.value) {
+        insertCapabilityAfter();
       }
+      return;
+    }
 
-      const nextCapability = this.capabilities[this.capabilityIndex + 1];
-      if (nextCapability) {
-        if (isCapabilityChanged(nextCapability)) {
-          if (this.end < this.max) {
-            this.insertCapabilityAfter();
-          }
-          return;
-        }
+    if (end.value >= max.value) {
+      removeNextCapability();
+    }
+    return;
+  }
 
-        if (this.end >= this.max) {
-          this.removeNextCapability();
-        }
-        return;
+  if (end.value < dmxMax.value) {
+    insertCapabilityAfter();
+  }
+}
+
+function clear() {
+  const emptyCapability = getEmptyCapability();
+  for (const property of Object.keys(emptyCapability)) {
+    capability.value[property as keyof typeof capability.value] = emptyCapability[property as keyof typeof emptyCapability];
+  }
+  collapseWithNeighbors();
+}
+
+function collapseWithNeighbors() {
+  const previousCapability = capabilities.value[props.capabilityIndex - 1];
+  const nextCapability = capabilities.value[props.capabilityIndex + 1];
+
+  if (previousCapability && !isCapabilityChanged(previousCapability)) {
+    if (nextCapability && !isCapabilityChanged(nextCapability)) {
+      removePreviousCapability();
+      removeCurrentCapability();
+      return;
+    }
+
+    removePreviousCapability();
+    return;
+  }
+
+  if (nextCapability && !isCapabilityChanged(nextCapability)) {
+    removeNextCapability();
+  }
+}
+
+async function insertCapabilityBefore() {
+  const dialog = null;
+  await nextTick();
+
+  const newCapability = null;
+  if (dialog) {
+    const capabilityEditor = dialog.querySelector('.capability-editor');
+    if (capabilityEditor) {
+      const newCap = capabilityEditor.children[props.capabilityIndex - 1];
+      if (newCap) {
+        dialog.scrollTop += newCap.clientHeight;
       }
+    }
+  }
+}
 
-      if (this.end < this.dmxMax) {
-        this.insertCapabilityAfter();
-      }
-    },
-    clear() {
-      const emptyCapability = getEmptyCapability();
-      for (const property of Object.keys(emptyCapability)) {
-        this.capability[property] = emptyCapability[property];
-      }
-      this.collapseWithNeighbors();
-    },
-    collapseWithNeighbors() {
-      const previousCapability = this.capabilities[this.capabilityIndex - 1];
-      const nextCapability = this.capabilities[this.capabilityIndex + 1];
+function insertCapabilityAfter() {
+}
 
-      if (previousCapability && !isCapabilityChanged(previousCapability)) {
-        if (nextCapability && !isCapabilityChanged(nextCapability)) {
-          this.removePreviousCapability();
-          this.removeCurrentCapability();
-          return;
-        }
+function removePreviousCapability() {
+  capabilities.value.splice(props.capabilityIndex - 1, 1);
+}
 
-        this.removePreviousCapability();
-        return;
-      }
+function removeCurrentCapability() {
+  capabilities.value.splice(props.capabilityIndex, 1);
+}
 
-      if (nextCapability && !isCapabilityChanged(nextCapability)) {
-        this.removeNextCapability();
-      }
-    },
-    async insertCapabilityBefore() {
-      this.$emit(`insert-capability-before`);
+function removeNextCapability() {
+  capabilities.value.splice(props.capabilityIndex + 1, 1);
+}
 
-      const dialog = this.$el.closest(`.dialog`);
-      await this.$nextTick();
+function cleanCapabilityData() {
+  if (capability.value.dmxRange === null) {
+    capability.value.dmxRange = [null, null];
+  }
+  if (capability.value.dmxRange[0] === null) {
+    capability.value.dmxRange[0] = min.value;
+  }
+  if (capability.value.dmxRange[1] === null) {
+    capability.value.dmxRange[1] = max.value;
+  }
 
-      const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
-      dialog.scrollTop += newCapability.clientHeight;
-    },
-    insertCapabilityAfter() {
-      this.$emit(`insert-capability-after`);
-    },
-    removePreviousCapability() {
-      this.$delete(this.capabilities, this.capabilityIndex - 1);
-    },
-    removeCurrentCapability() {
-      this.$delete(this.capabilities, this.capabilityIndex);
-    },
-    removeNextCapability() {
-      this.$delete(this.capabilities, this.capabilityIndex + 1);
-    },
+  capabilityTypeData.value?.cleanCapabilityData();
+}
 
-    /** @public */
-    cleanCapabilityData() {
-      if (this.capability.dmxRange === null) {
-        this.capability.dmxRange = [null, null];
-      }
-      if (this.capability.dmxRange[0] === null) {
-        this.capability.dmxRange[0] = this.min;
-      }
-      if (this.capability.dmxRange[1] === null) {
-        this.capability.dmxRange[1] = this.max;
-      }
+function focus() {
+  firstInput.value?.focus();
+}
 
-      this.$refs.capabilityTypeData.cleanCapabilityData();
-    },
-
-    /** @public */
-    focus() {
-      this.$refs.firstInput.focus();
-    },
-  },
-};
+defineExpose({ cleanCapabilityData, focus });
 </script>

@@ -37,9 +37,9 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) of ranges">
+              <template v-for="(range, index) of ranges" :key="range.toString()">
                 {{ index > 0 ? ` or ` : `` }}
-                <span :key="range.toString()" style="white-space: nowrap;">
+                <span style="white-space: nowrap;">
                   {{ range.toString() }}
                 </span>
               </template>
@@ -149,59 +149,41 @@
 }
 </style>
 
-<script>
-import { instanceOfProp, stringProp } from 'vue-ts-types';
-import AbstractChannel from '../../../lib/model/AbstractChannel.js';
-import CoarseChannel from '../../../lib/model/CoarseChannel.js';
-import FineChannel from '../../../lib/model/FineChannel.js';
-import Mode from '../../../lib/model/Mode.js';
-import NullChannel from '../../../lib/model/NullChannel.js';
-import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
+<script setup lang="ts">
+import AbstractChannel from '~~/lib/model/AbstractChannel.js';
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import FineChannel from '~~/lib/model/FineChannel.js';
+import Mode from '~~/lib/model/Mode.js';
+import NullChannel from '~~/lib/model/NullChannel.js';
+import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
 
-import ChannelTypeIcon from '../ChannelTypeIcon.vue';
-import ConditionalDetails from '../ConditionalDetails.vue';
-import LabeledValue from '../LabeledValue.vue';
-import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
+interface Props {
+  channel: AbstractChannel;
+  mode: Mode;
+  appendToHeading?: string | null;
+}
 
-export default {
-  name: `FixturePageChannel`,
-  components: {
-    ConditionalDetails,
-    ChannelTypeIcon,
-    FixturePageCapabilityTable,
-    LabeledValue,
-  },
-  props: {
-    channel: instanceOfProp(AbstractChannel).required,
-    mode: instanceOfProp(Mode).required,
-    appendToHeading: stringProp().optional,
-  },
-  emits: {
-    'help-wanted-clicked': payload => true,
-  },
-  data() {
-    return {
-      CoarseChannel,
-      FineChannel,
-      SwitchingChannel,
-      fixture: this.mode.fixture,
-    };
-  },
-  computed: {
-    channelKey() {
-      if (this.channel instanceof NullChannel) {
-        return `null`;
-      }
+const props = defineProps<Props>();
 
-      if (this.channel.key !== this.channel.name) {
-        return this.channel.key;
-      }
+defineEmits<{
+  'help-wanted-clicked': [event: unknown];
+}>();
 
-      return ``;
-    },
-    resolutionInMode() {
-      return this.channel.getResolutionInMode(this.mode);
-    },
-  },
-};
+const fixture = props.mode.fixture;
+
+const channelKey = computed(() => {
+  if (props.channel instanceof NullChannel) {
+    return `null`;
+  }
+
+  if (props.channel.key !== props.channel.name) {
+    return props.channel.key;
+  }
+
+  return ``;
+});
+
+const resolutionInMode = computed(() => {
+  return props.channel.getResolutionInMode(props.mode);
+});
 </script>

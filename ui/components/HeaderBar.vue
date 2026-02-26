@@ -55,9 +55,7 @@
           About
         </NuxtLink>
 
-        <ClientOnly>
-          <ThemeSwitcher class="theme-switcher" />
-        </ClientOnly>
+        <ThemeSwitcher class="theme-switcher" />
       </div>
     </nav>
   </header>
@@ -164,7 +162,7 @@ header {
       position: absolute;
       inset: 0;
       content: "";
-      background-image: url("~static/ofl-logo.svg");
+      background-image: url("/ofl-logo.svg");
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -227,44 +225,36 @@ header {
 }
 </style>
 
-<script>
-import ThemeSwitcher from './ThemeSwitcher.vue';
+<script setup lang="ts">
+const router = useRouter();
+const route = useRoute();
 
-export default {
-  components: {
-    ThemeSwitcher,
-  },
-  emits: {
-    'focus-content': () => true,
-  },
-  data() {
-    return {
-      searchQuery: this.$router.history.current.query.q || ``,
-      searchFieldFocused: false,
-    };
-  },
-  mounted() {
-    this.$router.afterEach(() => this.updateSearchQuery());
-  },
-  methods: {
-    updateSearchQuery() {
-      this.searchQuery = this.$router.history.current.query.q || ``;
+const emit = defineEmits<{
+  'focus-content': [];
+}>();
+
+const searchQuery = ref(route.query.q as string || '');
+const searchFieldFocused = ref(false);
+
+const updateSearchQuery = () => {
+  searchQuery.value = route.query.q as string || '';
+};
+
+router.afterEach(updateSearchQuery);
+
+const focusContent = (event: MouseEvent) => {
+  if ((event.target as Element)?.closest('a')) {
+    emit('focus-content');
+  }
+};
+
+const search = () => {
+  router.push({
+    path: '/search',
+    query: {
+      q: searchQuery.value,
     },
-    focusContent(event) {
-      if (event.target?.closest(`a`)) {
-        this.$emit(`focus-content`);
-      }
-    },
-    search() {
-      this.$router.push({
-        path: `/search`,
-        query: {
-          q: this.searchQuery,
-        },
-      });
-      this.focusContent();
-    },
-  },
+  });
+  focusContent(new MouseEvent('click'));
 };
 </script>
-

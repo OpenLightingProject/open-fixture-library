@@ -80,74 +80,64 @@
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Matrix from '../../../lib/model/Matrix.js';
-import Physical from '../../../lib/model/Physical.js';
+<script setup lang="ts">
+import Matrix from '~~/lib/model/Matrix.js';
+import Physical from '~~/lib/model/Physical.js';
 
-import LabeledValue from '../LabeledValue.vue';
+interface Props {
+  matrix: Matrix;
+  physical?: Physical | null;
+}
 
-export default {
-  components: {
-    LabeledValue,
-  },
-  props: {
-    matrix: instanceOfProp(Matrix).required,
-    physical: instanceOfProp(Physical).optional,
-  },
-  data() {
-    return {
-      highlightedPixelKeys: [],
-      baseHeight: 3.2, // in em
-    };
-  },
-  computed: {
-    pixelSizing() {
-      let sizing = `height: ${this.baseHeight}em; `;
+const props = defineProps<Props>();
 
-      if (this.physical?.hasMatrixPixels) {
-        const scale = this.baseHeight / this.physical.matrixPixelsDimensions[1];
-        sizing += `width: ${this.physical.matrixPixelsDimensions[0] * scale}em; `;
-        sizing += `margin-right: ${this.physical.matrixPixelsSpacing[0] * scale}em; `;
-        sizing += `margin-bottom: ${this.physical.matrixPixelsSpacing[1] * scale}em; `;
-      }
-      else {
-        sizing += `width: ${this.baseHeight}em; `;
-      }
+const highlightedPixelKeys = ref<string[]>([]);
+const baseHeight = 3.2;
 
-      return sizing;
-    },
+const pixelSizing = computed(() => {
+  let sizing = `height: ${baseHeight}em; `;
 
-    pixelGroups() {
-      return this.matrix.pixelGroupKeys.map(groupKey => {
-        const group = this.matrix.jsonObject.pixelGroups[groupKey];
-        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
+  if (props.physical?.hasMatrixPixels) {
+    const scale = baseHeight / props.physical.matrixPixelsDimensions[1];
+    sizing += `width: ${props.physical.matrixPixelsDimensions[0] * scale}em; `;
+    sizing += `margin-right: ${props.physical.matrixPixelsSpacing[0] * scale}em; `;
+    sizing += `margin-bottom: ${props.physical.matrixPixelsSpacing[1] * scale}em; `;
+  }
+  else {
+    sizing += `width: ${baseHeight}em; `;
+  }
 
-        if (group === `all`) {
-          return [groupKey, `All pixels`];
-        }
+  return sizing;
+});
 
-        const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
+const pixelGroups = computed(() => {
+  return props.matrix.pixelGroupKeys.map(groupKey => {
+    const group = props.matrix.jsonObject.pixelGroups[groupKey];
+    const resolvedPixelsKeys = props.matrix.pixelGroups[groupKey];
 
-        const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
-          axis => group[axis].some(constraint => /^\d+n/.test(constraint)),
-        ) || constraintAxes.length > 2 || `name` in group;
+    if (group === `all`) {
+      return [groupKey, `All pixels`];
+    }
 
-        if (shouldShowPixelKeyArray) {
-          return [groupKey, resolvedPixelsKeys.join(`, `)];
-        }
+    const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
 
-        const constraintText = constraintAxes.map(axis => {
-          const axisConstraints = group[axis].map(
-            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
-          ).join(`, `);
+    const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
+      axis => group[axis].some((constraint: string) => /^\d+n/.test(constraint)),
+    ) || constraintAxes.length > 2 || `name` in group;
 
-          return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
-        }).join(` and `);
+    if (shouldShowPixelKeyArray) {
+      return [groupKey, resolvedPixelsKeys.join(`, `)];
+    }
 
-        return [groupKey, `Pixels where ${constraintText}`];
-      });
-    },
-  },
-};
+    const constraintText = constraintAxes.map(axis => {
+      const axisConstraints = (group[axis] as string[]).map(
+        constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
+      ).join(`, `);
+
+      return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
+    }).join(` and `);
+
+    return [groupKey, `Pixels where ${constraintText}`];
+  });
+});
 </script>

@@ -27,39 +27,28 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        angle: null,
-        angleStart: `0deg`,
-        angleEnd: `360deg`,
-        comment: ``,
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      angle?: string | null;
+      angleStart?: string;
+      angleEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const defaultData = {
+  angle: null,
+  angleStart: '0deg',
+  angleEnd: '360deg',
+  comment: '',
 };
 </script>
