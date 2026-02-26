@@ -3,7 +3,7 @@
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import chalk from 'chalk';
+import { styleText } from 'util';
 import importJson from '../lib/import-json.js';
 
 const plugins = {
@@ -39,18 +39,18 @@ for (const [key, data] of Object.entries(allPreviousVersions)) {
 
 // sort plugin data object by key
 plugins.data = Object.fromEntries(
-  Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
+  Object.keys(plugins.data).toSorted().map(key => [key, plugins.data[key]]),
 );
 
 const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
 
 try {
   await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-  console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
+  console.log(styleText(`green`, `[Success]`), `Updated plugin data file`, filePath);
   process.exit(0);
 }
 catch (error) {
-  console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
+  console.error(styleText(`red`, `[Fail]`), `Could not write plugin data file.`, error);
   process.exit(1);
 }
 

@@ -2,8 +2,8 @@ import '../../lib/load-env-file.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
-import chalk from 'chalk';
 
 
 const requiredEnvironmentVariables = [
@@ -186,7 +186,7 @@ export async function fetchChangedComponents() {
  */
 export async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
-    console.warn(chalk.yellow(`Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    console.warn(styleText(`yellow`, `Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
     return undefined;
   }
 

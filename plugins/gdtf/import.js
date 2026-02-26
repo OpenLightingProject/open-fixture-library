@@ -648,7 +648,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       /**
        * @param {string} attributeName The GDTF attribute name.
-       * @returns {object} The capability type data from @file gdtf-attributes.js
+       * @returns {object} The capability type data from `gdtf-attributes.js`
        */
       function getCapabilityTypeData(attributeName) {
         let capabilityTypeData = gdtfAttributes[attributeName];
@@ -681,9 +681,9 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {Function | null} hook The hook function, or a falsy value.
-       * @param {any[]} parameters The arguments to pass to the hook.
-       * @returns {any} The return value of the hook, or null if no hook was called.
+       * @param {((...args: unknown[]) => unknown) | null} hook The hook function, or a falsy value.
+       * @param {unknown[]} parameters The arguments to pass to the hook.
+       * @returns {unknown} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...parameters) {
         if (hook) {
@@ -694,7 +694,7 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {object} capabilityTypeData The capability type data from @file gdtf-attributes.js
+       * @param {object} capabilityTypeData The capability type data from `gdtf-attributes.js`
        * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
        * @returns {string | null} The OFL property name, or null.
        */
@@ -712,7 +712,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       /**
        * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {Function} The function to turn a physical value into an entity string with the correct unit.
+       * @returns {(value: number, otherValue?: number) => string} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;

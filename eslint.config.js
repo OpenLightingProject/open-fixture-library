@@ -1,9 +1,10 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
+import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
-import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
@@ -13,12 +14,14 @@ import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 
 const eslintPluginNuxtConfigRecommended = {
+  files: [`**/*.{js,vue}`],
   plugins: {
     nuxt: fixupPluginRules(eslintPluginNuxt),
   },
   rules: {
     ...eslintPluginNuxt.configs.base.rules,
     ...eslintPluginNuxt.configs.recommended.rules,
+    'nuxt/require-func-head': `error`,
   },
 };
 
@@ -106,7 +109,7 @@ const enabledRuleParameters = {
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
-    ignore: [`^chalk$`, `^@octokit/rest$`],
+    ignore: [`^@octokit/rest$`],
   }],
   'import/order': [{
     groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
@@ -150,9 +153,6 @@ const enabledRuleParameters = {
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
-
-  // eslint-plugin-nuxt
-  'nuxt/require-func-head': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
@@ -214,6 +214,7 @@ const enabledRuleParameters = {
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
+  'vue/no-duplicate-class-names': [],
   'vue/no-empty-component-block': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
@@ -222,6 +223,7 @@ const enabledRuleParameters = {
       `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
     ],
   }],
+  'vue/no-undef-directives': [],
   'vue/no-undef-properties': [],
   'vue/no-unused-emit-declarations': [],
   'vue/no-unused-properties': [{
@@ -280,8 +282,13 @@ const enabledRuleParameters = {
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],
+  'sonarjs/no-nested-functions': [],
+  'sonarjs/regex-complexity': [],
+  'sonarjs/slow-regex': [],
+  'sonarjs/todo-tag': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
+  'vue/no-v-html': [],
 };
 
 const vueCoreExtensionRules = [
@@ -328,7 +335,12 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `jsdoc/require-jsdoc`,
   `sonarjs/cognitive-complexity`,
+  `sonarjs/no-nested-functions`,
+  `sonarjs/regex-complexity`,
+  `sonarjs/slow-regex`,
+  `sonarjs/todo-tag`,
   `vue/no-mutating-props`,
+  `vue/no-v-html`,
 ]);
 
 const disabledRules = [
@@ -339,6 +351,8 @@ const disabledRules = [
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
+  `sonarjs/no-unsafe-unzip`,
+  `sonarjs/pseudo-random`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
@@ -378,9 +392,9 @@ export default [
   eslintPluginPromise.configs[`flat/recommended`],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
-  ...eslintPluginVue.configs[`flat/vue2-recommended`],
+  ...eslintPluginVue.configs[`flat/vue2-recommended-error`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
-  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
+  ...eslintPluginJsoncConfigs[`recommended-with-json`], // has to be after `vue`
   {
     linterOptions: {
       reportUnusedDisableDirectives: `error`,
@@ -388,7 +402,7 @@ export default [
     },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: `latest`,
+      ecmaVersion: 2025,
       sourceType: `module`,
     },
     rules: {
@@ -472,5 +486,9 @@ export default [
     rules: {
       'jsonc/no-comments': `off`,
     },
+  },
+  {
+    files: [`tests/*.test.js`],
+    ...eslintPluginVitest.configs.recommended,
   },
 ];

@@ -22,7 +22,7 @@ import register from '../../../fixtures/register.json';
 export default {
   data() {
     return {
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
+      categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, `en`)).map(
         category => ({
           name: category,
           fixtureCount: register.categories[category].length,
