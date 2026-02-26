@@ -801,9 +801,9 @@ export default {
 
 /**
  * @typedef {object} DmxControlCapability
- * @property {Capability} capObject
- * @property {number} startValue
- * @property {number} endValue
+ * @property {Capability} capObject The OFL capability object.
+ * @property {number} startValue The capability's start value in the allowed unit.
+ * @property {number} endValue The capability's end value in the allowed unit.
  */
 
 /**
