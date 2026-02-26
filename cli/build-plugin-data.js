@@ -45,7 +45,7 @@ plugins.data = Object.fromEntries(
 const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
 
 try {
-  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
+  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf-8`);
   console.log(styleText(`green`, `[Success]`), `Updated plugin data file`, filePath);
   process.exit(0);
 }

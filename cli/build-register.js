@@ -28,7 +28,7 @@ const registerFilename = path.join(fixturesPath, (process.argv.length === 3 ? pr
 const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n`;
 
 try {
-  await writeFile(registerFilename, fileContents, `utf8`);
+  await writeFile(registerFilename, fileContents, `utf-8`);
   console.log(styleText(`green`, `[Success]`), `Updated register file`, registerFilename);
   process.exit(0);
 }

@@ -2238,7 +2238,7 @@ Information about a resource.
     * [.imageExtension](#Resource+imageExtension) ⇒ <code>string</code> \| <code>null</code>
     * [.imageMimeType](#Resource+imageMimeType) ⇒ <code>string</code> \| <code>null</code>
     * [.imageData](#Resource+imageData) ⇒ <code>string</code> \| <code>null</code>
-    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code>
     * [.imageDataUrl](#Resource+imageDataUrl) ⇒ <code>string</code> \| <code>null</code>
 
 <a name="new_Resource_new"></a>
@@ -2300,12 +2300,12 @@ Creates a new Resource instance.
 
 ### resource.imageData ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>string</code> \| <code>null</code> - The resource image data (base64 or utf8 encoded), or null if there is no image.  
+**Returns**: <code>string</code> \| <code>null</code> - The resource image data (base64 or utf-8 encoded), or null if there is no image.  
 <a name="Resource+imageEncoding"></a>
 
-### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
+**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
 <a name="Resource+imageDataUrl"></a>
 
 ### resource.imageDataUrl ⇒ <code>string</code> \| <code>null</code>

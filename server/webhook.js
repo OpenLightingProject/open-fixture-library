@@ -111,7 +111,7 @@ function redeploy(webhookPayload) {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
       env: { ...process.env, ...deploymentConfig.env },
-      encoding: `utf8`,
+      encoding: `utf-8`,
       stdio: `pipe`,
     });
     console.log(`Successfully deployed.`);
