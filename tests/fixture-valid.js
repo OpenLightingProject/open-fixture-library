@@ -1163,9 +1163,26 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
      */
     function isColorChanger() {
-      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
-        wheel => wheel.slots.some(slot => slot.type === `Color`),
+      return (
+        hasCapabilityOfType(`ColorPreset`) ||
+        hasMultipleColorIntensityCapabilities() ||
+        fixture.wheels.some(
+          wheel => wheel.slots.some(slot => slot.type === `Color`),
+        )
       );
+    }
+
+    /**
+     * @returns {boolean} Whether the fixture has multiple ColorIntensity capabilities (excluding UV, Cold White, and Warm White).
+     */
+    function hasMultipleColorIntensityCapabilities() {
+      return fixture.capabilities.filter(
+        capability =>
+          capability.type === `ColorIntensity` &&
+          capability.color !== `UV` &&
+          capability.color !== `Cold White` &&
+          capability.color !== `Warm White`,
+      ).length >= 2;
     }
 
     /**
