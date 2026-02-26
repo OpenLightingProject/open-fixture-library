@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
+import { styleText } from 'util';
 import minimist from 'minimist';
 
 import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
@@ -45,7 +45,7 @@ if (cliArguments.help) {
 }
 
 if (!cliArguments.plugin) {
-  console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
+  console.error(styleText(`red`, `[Error]`), `Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
@@ -56,7 +56,7 @@ if (!cliArguments.comparePlugin) {
 }
 
 if (cliArguments.fixtures.length === 0 && !cliArguments.testFix) {
-  console.log(chalk.yellow(`[Warning]`), `No fixtures specified. See --help for usage.`);
+  console.log(styleText(`yellow`, `[Warning]`), `No fixtures specified. See --help for usage.`);
 }
 
 diffPluginOutputs(cliArguments.plugin, cliArguments.comparePlugin, cliArguments.ref, cliArguments.testFix ? testFixtureKeys : cliArguments.fixtures);

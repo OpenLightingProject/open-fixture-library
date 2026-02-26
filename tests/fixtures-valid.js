@@ -2,7 +2,7 @@
 
 import { readdir } from 'fs/promises';
 import path from 'path';
-import chalk from 'chalk';
+import { styleText } from 'util';
 import minimist from 'minimist';
 
 import getAjvValidator from '../lib/ajv-validator.js';
@@ -79,19 +79,19 @@ try {
 
   // summary
   if (totalWarnings > 0) {
-    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+    console.log(styleText(`yellow`, `[INFO]`), `${totalWarnings} unresolved warning(s)`);
   }
 
   if (totalFails === 0) {
-    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
+    console.log(styleText(`green`, `[PASS]`), `All ${results.length} tested files were valid.`);
     process.exit(0);
   }
 
-  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  console.error(styleText(`red`, `[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
 }
 catch (error) {
-  console.error(chalk.red(`[Error]`), `Test errored:`, error);
+  console.error(styleText(`red`, `[Error]`), `Test errored:`, error);
 }
 
 /**
@@ -223,15 +223,15 @@ function printFileResult(result) {
   const failed = result.errors.length > 0;
 
   console.log(
-    failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
+    failed ? styleText(`red`, `[FAIL]`) : styleText(`green`, `[PASS]`),
     result.name,
   );
 
   for (const error of result.errors) {
-    console.log(`└`, chalk.red(`Error:`), error);
+    console.log(`└`, styleText(`red`, `Error:`), error);
   }
 
   for (const warning of result.warnings) {
-    console.log(`└`, chalk.yellow(`Warning:`), warning);
+    console.log(`└`, styleText(`yellow`, `Warning:`), warning);
   }
 }

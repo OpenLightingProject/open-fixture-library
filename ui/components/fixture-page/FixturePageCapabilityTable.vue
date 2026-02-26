@@ -169,7 +169,7 @@ export default {
           model: capability,
           dmxRangeStart: dmxRange.start,
           dmxRangeEnd: dmxRange.end,
-          switchChannels: switchChannels.sort((a, b) => a.index - b.index), // ascending indices
+          switchChannels: switchChannels.toSorted((a, b) => a.index - b.index), // ascending indices
         };
       });
     },

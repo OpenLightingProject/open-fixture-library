@@ -66,7 +66,7 @@ const router = express.Router();
 // support JSON encoded bodies
 router.use(express.json({ limit: `50mb` }));
 
-router.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
+router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, next) => {
   const { format } = request.params;
 
   const plugins = await pluginsPromise;
@@ -88,7 +88,7 @@ router.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) =>
   downloadFixtures(response, format, fixtures, format, `all fixtures`);
 });
 
-router.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => {
+router.post(/^\/download-editor\.(?<format>[a-z0-9_.-]+)$/, async (request, response) => {
   const { format } = request.params;
 
   const plugins = await pluginsPromise;
@@ -124,7 +124,7 @@ router.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-router.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
+router.get(/^\/(?<manufacturerKey>[^/]+)\/(?<fixtureKey>[^/.]+)\.(?<format>[a-z0-9_.-]+)$/, async (request, response, next) => {
   const { manufacturerKey, fixtureKey, format } = request.params;
 
   const register = await registerPromise;

@@ -56,7 +56,7 @@ try {
       // remove duplicates
       return task === firstEqualTask;
     })
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
       const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
       const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);

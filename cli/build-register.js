@@ -3,7 +3,7 @@
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import chalk from 'chalk';
+import { styleText } from 'util';
 
 import importJson from '../lib/import-json.js';
 import { Register } from '../lib/register.js';
@@ -29,11 +29,11 @@ const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n
 
 try {
   await writeFile(registerFilename, fileContents, `utf8`);
-  console.log(chalk.green(`[Success]`), `Updated register file`, registerFilename);
+  console.log(styleText(`green`, `[Success]`), `Updated register file`, registerFilename);
   process.exit(0);
 }
 catch (error) {
-  console.error(chalk.red(`[Fail]`), `Could not write register file.`, error);
+  console.error(styleText(`red`, `[Fail]`), `Could not write register file.`, error);
   process.exit(1);
 }
 

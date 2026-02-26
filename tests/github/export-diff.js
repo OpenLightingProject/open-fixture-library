@@ -93,7 +93,7 @@ async function getDiffTasks(changedComponents) {
       // remove duplicates
       return task === firstEqualTask;
     })
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
       const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
