@@ -124,7 +124,7 @@ export default [
 
 /**
  * @param {string} tagName The XML tag name of the new parent element.
- * @returns {Function} A function that returns a new XML element with the given elements as children.
+ * @returns {(...xmlElements: XMLElement[]) => XMLElement} A function that returns a new XML element with the given elements as children.
  */
 function mergeIntoNew(tagName) {
   return (...xmlElements) => {
@@ -150,7 +150,7 @@ function mergeIntoFirst(firstElement, ...xmlElements) {
 
 /**
  * @param {string} tagName The new XML tag name.
- * @returns {Function} A function that alters the given XML element's tag name to the specified new name.
+ * @returns {(xmlElement: XMLElement) => XMLElement} A function that alters the given XML element's tag name to the specified new name.
  */
 function rename(tagName) {
   return xmlElement => {

@@ -265,8 +265,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
   /**
    *
-   * @param {any} ecueRange The e:cue range object.
-   * @param {any} index The index of the capability / range.
+   * @param {object} ecueRange The e:cue range object.
+   * @param {number} index The index of the capability / range.
    * @returns {object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {

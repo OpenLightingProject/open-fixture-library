@@ -741,7 +741,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
    * Helper function to get data from the OFL fixture's physical data.
    * @param {string} section The section object property name.
    * @param {string} property The property name in the section,
-   * @returns {any} The property data, or undefined.
+   * @returns {unknown} The property data, or undefined.
    */
   function getOflFixturePhysicalProperty(section, property) {
     if (!(section in oflFixturePhysical)) {

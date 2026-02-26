@@ -4,7 +4,7 @@ import eslintMarkdown from '@eslint/markdown';
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
-import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
@@ -394,7 +394,7 @@ export default [
   eslintPluginUnicorn.configs.recommended,
   ...eslintPluginVue.configs[`flat/vue2-recommended-error`],
   ...eslintPluginVueA11y.configs[`flat/recommended`],
-  ...eslintPluginJsonc.configs[`recommended-with-json`], // has to be after `vue`
+  ...eslintPluginJsoncConfigs[`recommended-with-json`], // has to be after `vue`
   {
     linterOptions: {
       reportUnusedDisableDirectives: `error`,

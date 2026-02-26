@@ -60,6 +60,9 @@ async function getFixtureCreateResult(fixtures) {
 
   return result;
 
+  /**
+   * @param {object} fixture The editor fixture object.
+   */
   async function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
     const fixtureKey = getFixtureKey(fixture, manufacturerKey);
@@ -187,6 +190,10 @@ async function getFixtureCreateResult(fixtures) {
     return fixtureKey;
   }
 
+  /**
+   * @param {object} from The editor physical object.
+   * @returns {object} The OFL physical object.
+   */
   function getPhysical(from) {
     const physical = {};
 
@@ -300,6 +307,11 @@ async function getFixtureCreateResult(fixtures) {
     }
   }
 
+  /**
+   * @param {string} fixtureKey The key of the fixture to add the channel to.
+   * @param {object} availableChannels All available channels of the editor fixture.
+   * @param {string} channelId The UUID of the channel to add.
+   */
   function addAvailableChannel(fixtureKey, availableChannels, channelId) {
     const from = availableChannels[channelId];
 
@@ -356,6 +368,11 @@ async function getFixtureCreateResult(fixtures) {
     result.fixtures[fixtureKey].availableChannels[channelKey] = channel;
   }
 
+  /**
+   * @param {object} channel The OFL channel object.
+   * @param {string} fixtureKey The key of the fixture the channel belongs to.
+   * @returns {string} A unique channel key for the fixture.
+   */
   function getChannelKey(channel, fixtureKey) {
     let channelKey = channel.name;
     const availableChannelKeys = Object.keys(result.fixtures[fixtureKey].availableChannels);
@@ -371,11 +388,20 @@ async function getFixtureCreateResult(fixtures) {
     return channelKey;
   }
 
+  /**
+   * @param {string} channelKey The key of the coarse channel.
+   * @param {number} resolution The resolution of the fine channel.
+   * @returns {string} The fine channel alias.
+   */
   function getFineChannelAlias(channelKey, resolution) {
     const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``;
     return `${channelKey} fine${suffix}`;
   }
 
+  /**
+   * @param {object} channel The editor channel object.
+   * @returns {object[]} The OFL capability objects.
+   */
   function getCapabilities(channel) {
     return channel.capabilities.map(editorCapability => {
       const capability = {};
@@ -400,6 +426,10 @@ async function getFixtureCreateResult(fixtures) {
     });
   }
 
+  /**
+   * @param {string} fixtureKey The key of the fixture to add the mode to.
+   * @param {object} from The editor mode object.
+   */
   function addMode(fixtureKey, from) {
     const mode = {};
 
@@ -434,7 +464,7 @@ function isEmptyObject(object) {
 }
 
 /**
- * @param {any} property The property key to check.
+ * @param {string} property The property key to check.
  * @param {object | null} object The object to check. If it's null, false is returned.
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
@@ -443,6 +473,11 @@ function propertyExistsIn(property, object) {
   return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
 }
 
+/**
+ * @param {string} property The property key to get the value for.
+ * @param {object} from The editor object to get the value from.
+ * @returns {string} The value from the combobox input, preferring any newly added value.
+ */
 function getComboboxInput(property, from) {
   return (from[property] === `[add-value]` && from[`${property}New`] !== ``) ? from[`${property}New`] : from[property];
 }
