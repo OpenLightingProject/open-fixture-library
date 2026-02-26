@@ -22,7 +22,7 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
  * @property {string | undefined} id The fixture feature's ID
  * @property {string} name A short name of the fixture feature.
  * @property {string} description A longer description of the fixture feature.
- * @property {Function} hasFeature A function that returns whether a given fixture supports this feature.
+ * @property {(fixture: Fixture) => boolean | Promise<boolean>} hasFeature A function that returns whether a given fixture supports this feature.
  */
 
 /**

@@ -681,7 +681,7 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {Function | null} hook The hook function, or a falsy value.
+       * @param {((...args: unknown[]) => unknown) | null} hook The hook function, or a falsy value.
        * @param {any[]} parameters The arguments to pass to the hook.
        * @returns {any} The return value of the hook, or null if no hook was called.
        */
@@ -712,7 +712,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       /**
        * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {Function} The function to turn a physical value into an entity string with the correct unit.
+       * @returns {(value: number, otherValue?: number) => string} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
