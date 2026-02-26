@@ -742,8 +742,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               usedWheelSlots.add(`${capability.wheels[0].name} (slot ${index})`);
             }
 
-            if (max - min > 1) {
-              result.warnings.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
+            if (max - min > 1 && !capability.helpWanted?.endsWith(`can be selected at which DMX values?`)) {
+              result.errors.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
             }
 
             const minSlotNumber = 1;
