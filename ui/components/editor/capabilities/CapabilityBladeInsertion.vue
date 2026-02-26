@@ -69,11 +69,11 @@ export default {
        * @public
        */
       defaultData: {
-        blade: ``,
+        blade: '',
         insertion: null,
-        insertionStart: `out`,
-        insertionEnd: `in`,
-        comment: ``,
+        insertionStart: 'out',
+        insertionEnd: 'in',
+        comment: '',
       },
     };
   },

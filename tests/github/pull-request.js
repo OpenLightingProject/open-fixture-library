@@ -7,11 +7,11 @@ import { Octokit } from '@octokit/rest';
 
 
 const requiredEnvironmentVariables = [
-  `GITHUB_USER_TOKEN`,
-  `GITHUB_REPOSITORY`,
-  `GITHUB_PR_NUMBER`,
-  `GITHUB_PR_HEAD_REF`,
-  `GITHUB_PR_BASE_REF`,
+  'GITHUB_USER_TOKEN',
+  'GITHUB_REPOSITORY',
+  'GITHUB_PR_NUMBER',
+  'GITHUB_PR_HEAD_REF',
+  'GITHUB_PR_BASE_REF',
 ];
 
 /** @type {Octokit} */
@@ -40,8 +40,8 @@ export async function checkEnv() {
 export async function init() {
   await checkEnv();
 
-  repoOwner = process.env.GITHUB_REPOSITORY.split(`/`)[0];
-  repoName = process.env.GITHUB_REPOSITORY.split(`/`)[1];
+  repoOwner = process.env.GITHUB_REPOSITORY.split('/')[0];
+  repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
@@ -118,11 +118,11 @@ export async function fetchChangedComponents() {
    * @param {object} fileData The file object from GitHub.
    */
   function handleFileData(fileData) {
-    if (fileData.status === `renamed`) {
+    if (fileData.status === 'renamed') {
       // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
       // That's why we simply treat the old file name as removed and the new one as added.
-      handleFile(`added`, fileData.filename);
-      handleFile(`removed`, fileData.previous_filename);
+      handleFile('added', fileData.filename);
+      handleFile('removed', fileData.previous_filename);
     }
     else {
       handleFile(fileData.status, fileData.filename);
@@ -136,40 +136,40 @@ export async function fetchChangedComponents() {
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
-    const segments = filePath.split(`/`);
+    const segments = filePath.split('/');
 
-    if (segments[0] === `lib` && segments[1] === `model`) {
+    if (segments[0] === 'lib' && segments[1] === 'model') {
       changeSummary.model = true;
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `import.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'import.js') {
       changeSummary.imports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `export.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'export.js') {
       changeSummary.exports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `exportTests`) {
+    if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
       changeSummary.exportTests.push([
         segments[1], // plugin key
-        segments[3].split(`.`)[0], // test key
+        segments[3].split('.')[0], // test key
       ]);
       return;
     }
 
-    if (segments[0] === `schemas`) {
+    if (segments[0] === 'schemas') {
       changeSummary.schema = true;
       return;
     }
 
-    if (segments[0] === `fixtures` && segments.length === 3) {
+    if (segments[0] === 'fixtures' && segments.length === 3) {
       changeSummary.fixtures.push([
         segments[1], // man key
-        segments[2].split(`.`)[0], // fix key
+        segments[2].split('.')[0], // fix key
       ]);
     }
   }
@@ -186,21 +186,21 @@ export async function fetchChangedComponents() {
  */
 export async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
-    console.warn(styleText(`yellow`, `Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    console.warn(styleText('yellow', 'Warning:'), 'This PR is created from a forked repository, so there is no write permission for the repo.');
     return undefined;
   }
 
-  const oflRootPath = fileURLToPath(new URL(`../../`, import.meta.url));
+  const oflRootPath = fileURLToPath(new URL('../../', import.meta.url));
   const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
 
   const lines = [
     `<!-- GITHUB-TEST: ${relativeFilePath} -->`,
     `# ${test.name}`,
     `(Output of test script \`${relativeFilePath}\`.)`,
-    ``,
+    '',
     ...test.lines,
   ];
-  const message = lines.join(`\n`);
+  const message = lines.join('\n');
 
   const commentPromises = [];
   for (let index = 0; index < prData.comments / 100; index++) {
@@ -221,9 +221,9 @@ export async function updateComment(test) {
   let equalFound = false;
   const promises = comments.flatMap(comment => {
     // get rid of \r linebreaks
-    comment.body = comment.body.replaceAll(`\r`, ``);
+    comment.body = comment.body.replaceAll('\r', '');
 
-    if (lines[0] !== comment.body.split(`\n`)[0]) {
+    if (lines[0] !== comment.body.split('\n')[0]) {
       // the comment was not created by this test script
       return [];
     }

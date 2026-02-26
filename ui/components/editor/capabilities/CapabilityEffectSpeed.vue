@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate an effect, only controls the speed of running effects.`,
+      hint: 'Doesn\'t activate an effect, only controls the speed of running effects.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         speed: null,
-        speedStart: `slow`,
-        speedEnd: `fast`,
-        comment: ``,
+        speedStart: 'slow',
+        speedEnd: 'fast',
+        comment: '',
       },
     };
   },

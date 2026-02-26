@@ -33,7 +33,7 @@ export async function exportFixtures(fixtures, options) {
     }
   });
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson('../../fixtures/manufacturers.json', import.meta.url);
 
   // manufacturers.json file
   const usedManufacturerData = {
@@ -45,9 +45,9 @@ export async function exportFixtures(fixtures, options) {
     }
   }
   files.push({
-    name: `manufacturers.json`,
+    name: 'manufacturers.json',
     content: `${JSON.stringify(usedManufacturerData, null, 2)}\n`,
-    mimetype: `application/ofl-manufacturers`,
+    mimetype: 'application/ofl-manufacturers',
   });
 
   return files;
@@ -69,7 +69,7 @@ function getFixtureFile(fixture, displayedPluginVersion) {
   return {
     name: `${fixture.manufacturer.key}/${fixture.key}.json`,
     content: fixtureJsonStringify(jsonData),
-    mimetype: `application/ofl-fixture`,
+    mimetype: 'application/ofl-fixture',
     fixtures: [fixture],
   };
 }

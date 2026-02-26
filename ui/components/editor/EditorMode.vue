@@ -235,18 +235,18 @@ export default {
       modeProperties,
       dragOptions: {
         animation: 200,
-        handle: `.drag-handle`,
+        handle: '.drag-handle',
         emptyInsertThreshold: 20,
         group: {
-          name: `mode`,
-          pull: `clone`,
+          name: 'mode',
+          pull: 'clone',
           put: (to, from, dragElement, event) => {
             if (from === to) {
               return false;
             }
 
-            const channelUuid = dragElement.getAttribute(`data-channel-uuid`);
-            const modeUuid = to.el.closest(`.fixture-mode`).getAttribute(`data-mode-uuid`);
+            const channelUuid = dragElement.dataset.channelUuid;
+            const modeUuid = to.el.closest('.fixture-mode').dataset.modeUuid;
             const targetMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
             if (targetMode.channels.includes(channelUuid)) {
@@ -255,7 +255,7 @@ export default {
             }
 
             const channel = this.fixture.availableChannels[channelUuid];
-            if (!(`coarseChannelId` in channel)) {
+            if (!('coarseChannelId' in channel)) {
               // normal channels don't need any more validation
               return true;
             }
@@ -300,23 +300,23 @@ export default {
       return this.fixtureEditor.getChannelName(channelUuid);
     },
     editChannel(channelUuid) {
-      this.$emit(`open-channel-editor`, {
+      this.$emit('open-channel-editor', {
         modeId: this.mode.uuid,
-        editMode: `edit-?`,
+        editMode: 'edit-?',
         uuid: channelUuid,
       });
     },
     addChannel() {
-      this.$emit(`open-channel-editor`, {
+      this.$emit('open-channel-editor', {
         modeId: this.mode.uuid,
-        editMode: `add-existing`,
+        editMode: 'add-existing',
       });
     },
     isChannelNameUnique(channelUuid) {
       return this.fixtureEditor.isChannelNameUnique(channelUuid);
     },
     isFineChannel(channelUuid) {
-      return `coarseChannelId` in this.fixture.availableChannels[channelUuid];
+      return 'coarseChannelId' in this.fixture.availableChannels[channelUuid];
     },
     moveChannel(channelUuid, delta) {
       const channelIndex = this.mode.channels.indexOf(channelUuid);

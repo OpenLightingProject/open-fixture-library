@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         angle: null,
-        angleStart: `narrow`,
-        angleEnd: `wide`,
-        comment: ``,
+        angleStart: 'narrow',
+        angleEnd: 'wide',
+        comment: '',
       },
     };
   },

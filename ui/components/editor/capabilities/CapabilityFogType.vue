@@ -59,15 +59,15 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate fog, only selects the fog type (Fog or Haze).`,
+      hint: 'Doesn\'t activate fog, only selects the fog type (Fog or Haze).',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        fogType: ``,
-        comment: ``,
+        fogType: '',
+        comment: '',
       },
     };
   },

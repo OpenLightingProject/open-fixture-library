@@ -14,7 +14,7 @@ const plugins = {
 
 const allPreviousVersions = {};
 
-const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
+const pluginDirectoryUrl = new URL('../plugins/', import.meta.url);
 
 const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
 const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
@@ -42,15 +42,15 @@ plugins.data = Object.fromEntries(
   Object.keys(plugins.data).toSorted().map(key => [key, plugins.data[key]]),
 );
 
-const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
+const filePath = fileURLToPath(new URL('plugins.json', pluginDirectoryUrl));
 
 try {
-  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-  console.log(styleText(`green`, `[Success]`), `Updated plugin data file`, filePath);
+  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, 'utf8');
+  console.log(styleText('green', '[Success]'), 'Updated plugin data file', filePath);
   process.exit(0);
 }
 catch (error) {
-  console.error(styleText(`red`, `[Fail]`), `Could not write plugin data file.`, error);
+  console.error(styleText('red', '[Fail]'), 'Could not write plugin data file.', error);
   process.exit(1);
 }
 
@@ -91,7 +91,7 @@ async function readPluginImport(pluginKey) {
     plugins.data[pluginKey].importPluginVersion = importPlugin.version;
   }
   catch (error) {
-    if (error.code === `ERR_MODULE_NOT_FOUND`) {
+    if (error.code === 'ERR_MODULE_NOT_FOUND') {
       // ignore non-existing file
       return;
     }
@@ -113,7 +113,7 @@ async function readPluginExport(pluginKey) {
     plugins.data[pluginKey].exportTests = [];
   }
   catch (error) {
-    if (error.code === `ERR_MODULE_NOT_FOUND`) {
+    if (error.code === 'ERR_MODULE_NOT_FOUND') {
       // ignore non-existing file
       return;
     }
@@ -136,7 +136,7 @@ async function readPluginExportTests(pluginKey) {
     }
   }
   catch (error) {
-    if (error.code === `ENOENT`) {
+    if (error.code === 'ENOENT') {
       // ignore non-existing directory
       return;
     }

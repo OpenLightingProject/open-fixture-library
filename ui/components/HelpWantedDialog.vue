@@ -84,8 +84,8 @@ export default {
     LabeledValue,
   },
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     type: stringProp().required,
@@ -96,35 +96,35 @@ export default {
   },
   data: () => {
     return {
-      state: `ready`,
-      message: ``,
-      githubUsername: ``,
+      state: 'ready',
+      message: '',
+      githubUsername: '',
       issueUrl: null,
       error: null,
     };
   },
   computed: {
     title() {
-      if (this.state === `loading`) {
-        return `Sending your message…`;
+      if (this.state === 'loading') {
+        return 'Sending your message…';
       }
 
-      if (this.state === `success`) {
-        return `Message sent`;
+      if (this.state === 'success') {
+        return 'Message sent';
       }
 
-      if (this.state === `error`) {
-        return `Failed to send message`;
+      if (this.state === 'error') {
+        return 'Failed to send message';
       }
 
-      if (this.type === `plugin`) {
-        return `Improve plugin`;
+      if (this.type === 'plugin') {
+        return 'Improve plugin';
       }
 
-      return `Improve fixture`;
+      return 'Improve fixture';
     },
     location() {
-      if (this.type === `capability`) {
+      if (this.type === 'capability') {
         const capability = this.modelValue;
         const channel = capability._channel;
         return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
@@ -133,11 +133,11 @@ export default {
       return null;
     },
     fixture() {
-      if (this.type === `fixture`) {
+      if (this.type === 'fixture') {
         return this.modelValue;
       }
 
-      if (this.type === `capability`) {
+      if (this.type === 'capability') {
         return this.modelValue._channel.fixture;
       }
 
@@ -149,10 +149,10 @@ export default {
         location: this.location,
         helpWanted: this.modelValue.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername === `` ? null : this.githubUsername,
+        githubUsername: this.githubUsername === '' ? null : this.githubUsername,
       };
 
-      if (this.type === `plugin`) {
+      if (this.type === 'plugin') {
         sendObject.context = this.modelValue.key;
       }
       else {
@@ -179,51 +179,51 @@ export default {
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null,
       ).map(([key, value]) => {
-        const separator = value.includes(`\n`) ? `\n` : ` `;
+        const separator = value.includes('\n') ? '\n' : ' ';
         return `${key}:${separator}${value}`;
-      }).join(`\n`);
+      }).join('\n');
 
       return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
   },
   mounted() {
     if (localStorage) {
-      this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
     }
   },
   methods: {
     async onSubmit() {
-      this.state = `loading`;
-      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
+      this.state = 'loading';
+      localStorage.setItem('prefillGithubUsername', this.githubUsername);
 
       try {
-        const response = await this.$axios.post(`/api/v1/submit-feedback`, this.sendObject);
+        const response = await this.$axios.post('/api/v1/submit-feedback', this.sendObject);
 
         if (response.data.error) {
           throw new Error(response.data.error);
         }
 
         this.issueUrl = response.data.issueUrl;
-        this.state = `success`;
+        this.state = 'success';
       }
       catch (error) {
-        console.error(`There was a problem with the request.`, error);
+        console.error('There was a problem with the request.', error);
         this.error = error.message;
-        this.state = `error`;
+        this.state = 'error';
       }
     },
     hide() {
-      this.$refs.dialog.$emit(`hide`);
+      this.$refs.dialog.$emit('hide');
     },
     onHide() {
-      if (this.state === `success`) {
-        this.message = ``;
+      if (this.state === 'success') {
+        this.message = '';
       }
 
-      this.state = `ready`;
+      this.state = 'ready';
       this.issueUrl = null;
       this.error = null;
-      this.$emit(`update:model-value`, undefined);
+      this.$emit('update:model-value', undefined);
     },
   },
 };

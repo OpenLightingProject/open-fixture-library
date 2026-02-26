@@ -9,7 +9,7 @@ import importJson from '../../../../lib/import-json.js';
  * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getPlugins(context) {
-  const plugins = await importJson(`../../../../plugins/plugins.json`, import.meta.url);
+  const plugins = await importJson('../../../../plugins/plugins.json', import.meta.url);
 
   return {
     body: plugins,

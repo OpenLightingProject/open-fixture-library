@@ -73,14 +73,14 @@ export default {
        * @public
        */
       defaultData: {
-        speedOrAngle: `speed`,
-        speed: ``,
+        speedOrAngle: 'speed',
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        angle: ``,
+        angle: '',
         angleStart: null,
         angleEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },
@@ -91,7 +91,7 @@ export default {
      * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+      const resetProperty = this.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },

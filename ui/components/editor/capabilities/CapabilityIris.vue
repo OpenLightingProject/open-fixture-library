@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         openPercent: null,
-        openPercentStart: `open`,
-        openPercentEnd: `closed`,
-        comment: ``,
+        openPercentStart: 'open',
+        openPercentEnd: 'closed',
+        comment: '',
       },
     };
   },

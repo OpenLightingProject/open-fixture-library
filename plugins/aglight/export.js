@@ -9,10 +9,10 @@ import NullChannel from '../../lib/model/NullChannel.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
-const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
+const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
+const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectName', 'effectPreset', 'shutterEffect', 'wheel', 'isShaking', 'fogType', 'menuClick']);
 
-export const version = `1.0.0`;
+export const version = '1.0.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -25,7 +25,7 @@ export const version = `1.0.0`;
 export async function exportFixtures(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || version;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson('../../fixtures/manufacturers.json', import.meta.url);
 
   const library = {
     version: displayedPluginVersion,
@@ -41,9 +41,9 @@ export async function exportFixtures(fixtures, options) {
     }),
   };
   return [{
-    name: `aglight_fixture_library.json`,
+    name: 'aglight_fixture_library.json',
     content: fixtureJsonStringify(library),
-    mimetype: `application/aglight-fixture-library`,
+    mimetype: 'application/aglight-fixture-library',
     fixtures,
   }];
 }
@@ -142,10 +142,10 @@ function transformNonNumericValues(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
       for (const [key, value] of Object.entries(capability)) {
-        if (key === `color`) {
+        if (key === 'color') {
           processColor(capability);
         }
-        else if (typeof value === `string` && !excludeKeys.has(key)) {
+        else if (typeof value === 'string' && !excludeKeys.has(key)) {
           capability[key] = getEntityNumber(value);
         }
       }
@@ -180,7 +180,7 @@ function getEntityNumber(entityString) {
       return entityString;
     }
 
-    if (entity.unit === `s`) {
+    if (entity.unit === 's') {
       return entity.number * 1000;
     }
 

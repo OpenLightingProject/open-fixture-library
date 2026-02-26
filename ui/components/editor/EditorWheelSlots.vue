@@ -34,7 +34,7 @@ export default {
         this.capability.typeData.slotNumber,
         this.capability.typeData.slotNumberStart,
         this.capability.typeData.slotNumberEnd,
-      ].filter(slotNumber => typeof slotNumber === `number`);
+      ].filter(slotNumber => typeof slotNumber === 'number');
 
       if (slotNumbers.length === 0) {
         return [];

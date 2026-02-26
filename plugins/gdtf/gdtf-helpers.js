@@ -8,12 +8,12 @@ export function followXmlNodeReference(startNode, nodeReference) {
     return null;
   }
 
-  const nameParts = nodeReference.split(`.`);
+  const nameParts = nodeReference.split('.');
   let currentNode = startNode;
 
   for (const nameAttribute of nameParts) {
     const nodeWithNameAttribute = getChildNodes(currentNode).find(
-      node => `$` in node && node.$.Name === nameAttribute,
+      node => '$' in node && node.$.Name === nameAttribute,
     );
 
     if (nodeWithNameAttribute) {
@@ -33,7 +33,7 @@ export function followXmlNodeReference(startNode, nodeReference) {
    */
   function getChildNodes(node) {
     return Object.entries(node).flatMap(
-      ([tagName, nodes]) => (tagName === `$` ? [] : nodes),
+      ([tagName, nodes]) => (tagName === '$' ? [] : nodes),
     );
   }
 }

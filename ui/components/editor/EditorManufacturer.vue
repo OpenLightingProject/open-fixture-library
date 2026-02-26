@@ -92,7 +92,7 @@ export default {
   watch: {
     'fixture.useExistingManufacturer': async function(useExisting) {
       await this.$nextTick();
-      this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
+      this.$refs[useExisting ? 'existingManufacturerSelect' : 'newManufacturerNameInput'].focus();
     },
   },
   methods: {

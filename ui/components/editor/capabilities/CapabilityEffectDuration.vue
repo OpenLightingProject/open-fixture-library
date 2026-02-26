@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate an effect, only controls the duration of running effects.`,
+      hint: 'Doesn\'t activate an effect, only controls the duration of running effects.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         duration: null,
-        durationStart: `short`,
-        durationEnd: `long`,
-        comment: ``,
+        durationStart: 'short',
+        durationEnd: 'long',
+        comment: '',
       },
     };
   },

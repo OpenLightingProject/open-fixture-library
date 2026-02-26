@@ -2,27 +2,27 @@
 
 // crypto is expected to be installed globally
 
-const { createHmac } = require(`crypto`);
-const http = require(`http`);
-const { execSync } = require(`child_process`);
+const { execSync } = require('child_process');
+const { createHmac } = require('crypto');
+const http = require('http');
 
-const pm2config = require(`./ecosystem.config.js`);
-const secrets = require(`./ofl-secrets.json`);
+const pm2config = require('./ecosystem.config.js');
+const secrets = require('./ofl-secrets.json');
 
-const pm2AppConfig = pm2config.apps.find(app => app.name === `ofl`);
+const pm2AppConfig = pm2config.apps.find(app => app.name === 'ofl');
 
 const deploymentConfig = {
   env: pm2AppConfig.env,
-  action: ``,
+  action: '',
   webhookPort: 40_010,
-  webhookPath: `/`,
+  webhookPath: '/',
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
 
 startServer()
-  .then(() => console.log(`Exited`))
-  .catch(error => console.error(`Exited with error`, error));
+  .then(() => console.log('Exited'))
+  .catch(error => console.error('Exited with error', error));
 
 
 /**
@@ -35,22 +35,22 @@ function startServer() {
 
   return new Promise((resolve, reject) => {
     http.createServer((request, response) => {
-      response.writeHead(200, { 'Content-Type': `text/plain` });
-      response.write(`Received`);
+      response.writeHead(200, { 'Content-Type': 'text/plain' });
+      response.write('Received');
       response.end();
 
-      if (request.method !== `POST`) {
+      if (request.method !== 'POST') {
         return;
       }
 
-      let body = ``;
-      request.on(`data`, data => {
+      let body = '';
+      request.on('data', data => {
         body += data;
-      }).on(`end`, () => {
+      }).on('end', () => {
         processRequest(request.url, body, request.headers);
       });
 
-    }).on(`close`, resolve).on(`error`, reject).listen(port);
+    }).on('close', resolve).on('error', reject).listen(port);
   });
 }
 
@@ -69,12 +69,12 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
-  hmac.update(body, `utf-8`);
+  const hmac = createHmac('sha1', deploymentConfig.webhookSecret);
+  hmac.update(body, 'utf-8');
 
-  const xub = `X-Hub-Signature`;
+  const xub = 'X-Hub-Signature';
   const received = headers[xub] || headers[xub.toLowerCase()];
-  const digest = hmac.digest(`hex`);
+  const digest = hmac.digest('hex');
   const expected = `sha1=${digest}`;
 
   if (received !== expected) {
@@ -82,17 +82,17 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  console.info(`Secret test passed`);
+  console.info('Secret test passed');
 
-  const eventName = headers[`X-GitHub-Event`] || headers[`x-github-event`];
-  if (eventName !== `push`) {
+  const eventName = headers['X-GitHub-Event'] || headers['x-github-event'];
+  if (eventName !== 'push') {
     console.log(`Wrong event name: Expected 'push', received '${eventName}'`);
     return;
   }
 
   const json = JSON.parse(body);
 
-  if (json.ref !== `refs/heads/master`) {
+  if (json.ref !== 'refs/heads/master') {
     console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
     return;
   }
@@ -108,19 +108,19 @@ function processRequest(url, body, headers) {
  */
 function redeploy(webhookPayload) {
   try {
-    execSync(`./redeploy.sh`, {
-      cwd: `/home/flo`,
+    execSync('./redeploy.sh', {
+      cwd: '/home/flo',
       env: { ...process.env, ...deploymentConfig.env },
-      encoding: `utf8`,
-      stdio: `pipe`,
+      encoding: 'utf8',
+      stdio: 'pipe',
     });
-    console.log(`Successfully deployed.`);
+    console.log('Successfully deployed.');
   }
   catch (error) {
     console.log(`Redeploy process failed with exit code ${error.status}.`);
-    console.log(`Notify admin via email about failed deployment...`);
+    console.log('Notify admin via email about failed deployment...');
 
-    const subject = `OFL Deployment failed`;
+    const subject = 'OFL Deployment failed';
     let body = new Date().toISOString();
     body += `\n\nsubprocess status: ${error.status}, signal: ${error.signal}`;
     body += `\n\nsubprocess stdout:\n${error.stdout}`;

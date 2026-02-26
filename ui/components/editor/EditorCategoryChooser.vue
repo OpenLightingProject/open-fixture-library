@@ -50,7 +50,7 @@ export default {
         return this.value;
       },
       set(newSelectedCategories) {
-        this.$emit(`input`, newSelectedCategories);
+        this.$emit('input', newSelectedCategories);
       },
     },
     unselectedCategories() {
@@ -62,20 +62,20 @@ export default {
   methods: {
     select(selectedCategory) {
       const updatedCategoryList = [...this.value, selectedCategory];
-      this.$emit(`input`, updatedCategoryList);
+      this.$emit('input', updatedCategoryList);
       this.onBlur();
     },
     deselect(deselectedCategory) {
       const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
-      this.$emit(`input`, updatedCategoryList);
+      this.$emit('input', updatedCategoryList);
       this.onBlur();
     },
     onFocus() {
-      this.$emit(`focus`);
+      this.$emit('focus');
     },
     onBlur(event) {
       if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
-        this.$emit(`blur`);
+        this.$emit('blur');
       }
     },
   },

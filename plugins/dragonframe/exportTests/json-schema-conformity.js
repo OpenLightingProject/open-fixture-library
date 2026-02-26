@@ -5,17 +5,17 @@ import getAjvErrorMessages from '../../../lib/get-ajv-error-messages.js';
 
 import { supportedOflVersion as SUPPORTED_OFL_VERSION } from '../export.js';
 
-const REPO_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library`;
+const REPO_BASE_URL = 'https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library';
 const SCHEMA_BASE_URL = `${REPO_BASE_URL}/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
 const SCHEMA_FILES = [
-  `capability.json`,
-  `channel.json`,
-  `definitions.json`,
-  `fixture.json`,
-  `gobo.json`,
-  `matrix.json`,
-  `manufacturers.json`,
-  `wheel-slot.json`,
+  'capability.json',
+  'channel.json',
+  'definitions.json',
+  'fixture.json',
+  'gobo.json',
+  'matrix.json',
+  'manufacturers.json',
+  'wheel-slot.json',
 ];
 
 const schemas = await getSchemas();
@@ -42,14 +42,14 @@ export default async function testJsonSchemaConformity(exportFile, allExportFile
     verbose: true,
   });
   addFormats(ajv);
-  ajv.addFormat(`color-hex`, true);
+  ajv.addFormat('color-hex', true);
 
-  const schemaName = exportFile.name === `manufacturers.json` ? `manufacturers` : `fixture`;
+  const schemaName = exportFile.name === 'manufacturers.json' ? 'manufacturers' : 'fixture';
   const schemaValidate = ajv.getSchema(`${REPO_BASE_URL}/master/schemas/${schemaName}.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
-    throw getAjvErrorMessages(schemaValidate.errors, `fixture`);
+    throw getAjvErrorMessages(schemaValidate.errors, 'fixture');
   }
 }
 
@@ -61,9 +61,9 @@ async function getSchemas() {
     filename => downloadSchema(SCHEMA_BASE_URL + filename),
   ));
 
-  const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];
-  const definitionsSchema = schemasJson[SCHEMA_FILES.indexOf(`definitions.json`)];
-  const manufacturersSchema = schemasJson[SCHEMA_FILES.indexOf(`manufacturers.json`)];
+  const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf('fixture.json')];
+  const definitionsSchema = schemasJson[SCHEMA_FILES.indexOf('definitions.json')];
+  const manufacturersSchema = schemasJson[SCHEMA_FILES.indexOf('manufacturers.json')];
 
   // allow automatically added properties (but don't validate them)
   fixtureSchema.properties.fixtureKey = true;
@@ -71,7 +71,7 @@ async function getSchemas() {
   fixtureSchema.properties.oflURL = true;
 
   // allow resolved gobo resources
-  definitionsSchema.goboResourceString = { type: `object` };
+  definitionsSchema.goboResourceString = { type: 'object' };
 
   // allow changed schema property
   fixtureSchema.properties.$schema = { const: `${SCHEMA_BASE_URL}fixture.json` };
@@ -93,13 +93,13 @@ function downloadSchema(url) {
         reject(new Error(`Failed to load page, status code: ${response.statusCode}`));
       }
 
-      let body = ``;
-      response.on(`data`, chunk => {
+      let body = '';
+      response.on('data', chunk => {
         body += chunk;
       });
-      response.on(`end`, () => resolve(JSON.parse(body)));
+      response.on('end', () => resolve(JSON.parse(body)));
     });
 
-    request.on(`error`, error => reject(error));
+    request.on('error', error => reject(error));
   });
 }

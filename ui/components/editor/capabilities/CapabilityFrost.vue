@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         frostIntensity: null,
-        frostIntensityStart: `off`,
-        frostIntensityEnd: `high`,
-        comment: ``,
+        frostIntensityStart: 'off',
+        frostIntensityEnd: 'high',
+        comment: '',
       },
     };
   },

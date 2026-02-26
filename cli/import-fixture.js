@@ -11,12 +11,12 @@ import { checkFixture } from '../tests/fixture-valid.js';
 /** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 const cliArguments = minimist(process.argv.slice(2), {
-  string: [`p`, `a`],
-  boolean: `c`,
+  string: ['p', 'a'],
+  boolean: 'c',
   alias: {
-    a: `author-name`,
-    p: `plugin`,
-    c: `create-pull-request`,
+    a: 'author-name',
+    p: 'plugin',
+    c: 'create-pull-request',
   },
 });
 
@@ -28,7 +28,7 @@ try {
   const buffer = await readFile(filename);
 
   const plugin = await import(`../plugins/${cliArguments.plugin}/import.js`);
-  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, cliArguments[`author-name`]);
+  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, cliArguments['author-name']);
 
   /** @type {FixtureCreateResult} */
   const result = {
@@ -39,7 +39,7 @@ try {
   };
 
   for (const key of Object.keys(result.fixtures)) {
-    const [manufacturerKey, fixtureKey] = key.split(`/`);
+    const [manufacturerKey, fixtureKey] = key.split('/');
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
@@ -47,7 +47,7 @@ try {
     result.errors[key] = checkResult.errors;
   }
 
-  if (cliArguments[`create-pull-request`]) {
+  if (cliArguments['create-pull-request']) {
     try {
       const pullRequestUrl = await createPullRequest(result);
       console.log(`URL: ${pullRequestUrl}`);
@@ -72,10 +72,10 @@ catch (error) {
  * Checks the command line interface arguments parsed by minimist.
  */
 async function checkCliArguments() {
-  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+  const plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
-  if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !cliArguments[`author-name`]) {
-    const importPlugins = plugins.importPlugins.join(`, `);
+  if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !cliArguments['author-name']) {
+    const importPlugins = plugins.importPlugins.join(', ');
     console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${importPlugins}`);
     process.exit(1);
   }

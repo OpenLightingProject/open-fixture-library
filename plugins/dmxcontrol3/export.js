@@ -8,7 +8,7 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 
-export const version = `0.1.2`;
+export const version = '0.1.2';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -49,10 +49,10 @@ export async function exportFixtures(fixtures, options) {
  */
 function exportFixtureMode(fixture, mode, options) {
   const xml = xmlbuilder.begin()
-    .declaration(`1.0`, `utf-8`)
+    .declaration('1.0', 'utf-8')
     .element({
       device: {
-        '@type': `DMXDevice`,
+        '@type': 'DMXDevice',
         '@dmxaddresscount': mode.channelKeys.length,
         '@dmxcversion': 3,
         '@ddfversion': options.displayedPluginVersion ?? version,
@@ -64,12 +64,12 @@ function exportFixtureMode(fixture, mode, options) {
   addProcedures(xml, mode);
 
   return {
-    name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replaceAll(/\s+/g, `-`),
+    name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replaceAll(/\s+/g, '-'),
     content: xml.end({
       pretty: true,
-      indent: `  `,
+      indent: '  ',
     }),
-    mimetype: `application/xml`,
+    mimetype: 'application/xml',
     fixtures: [fixture],
     mode: mode.shortName,
   };
@@ -81,14 +81,14 @@ function exportFixtureMode(fixture, mode, options) {
  * @param {Mode} mode The definition's mode
  */
 function addInformation(xml, mode) {
-  const xmlInfo = xml.element(`information`);
-  xmlInfo.element(`model`).text(mode.fixture.name);
-  xmlInfo.element(`vendor`).text(mode.fixture.manufacturer.name);
-  xmlInfo.element(`author`).text(mode.fixture.meta.authors.join(`, `));
-  xmlInfo.element(`mode`).text(mode.name);
+  const xmlInfo = xml.element('information');
+  xmlInfo.element('model').text(mode.fixture.name);
+  xmlInfo.element('vendor').text(mode.fixture.manufacturer.name);
+  xmlInfo.element('author').text(mode.fixture.meta.authors.join(', '));
+  xmlInfo.element('mode').text(mode.name);
 
   if (mode.fixture.hasComment) {
-    xmlInfo.element(`comment`).text(mode.fixture.comment);
+    xmlInfo.element('comment').text(mode.fixture.comment);
   }
 }
 
@@ -124,7 +124,7 @@ function addFunctions(xml, mode) {
 
   for (const [pixelKey, xmlFunctions] of xmlFunctionsPerPixel) {
     if (xmlFunctions.length > 0) {
-      const xmlFunctionsContainer = xml.element(`functions`);
+      const xmlFunctionsContainer = xml.element('functions');
 
       if (pixelKey !== null) {
         xmlFunctionsContainer.comment(pixelKey);
@@ -218,7 +218,7 @@ function getChannelsPerPixel(mode) {
 
   const matrix = mode.fixture.matrix;
   if (matrix !== null) {
-    const pixelKeys = [...matrix.pixelGroupKeys, ...matrix.getPixelKeysByOrder(`X`, `Y`, `Z`)];
+    const pixelKeys = [...matrix.pixelGroupKeys, ...matrix.getPixelKeysByOrder('X', 'Y', 'Z')];
     for (const key of pixelKeys) {
       channelsPerPixel.set(key, []);
     }
@@ -254,7 +254,7 @@ function addProcedures(xml, mode) {
     }
 
     maintenanceCapabilities.push(...channel.capabilities.filter(
-      capability => capability.type === `Maintenance` && capability.isStep,
+      capability => capability.type === 'Maintenance' && capability.isStep,
     ));
   }
 
@@ -262,26 +262,26 @@ function addProcedures(xml, mode) {
     return;
   }
 
-  const xmlProcedures = xml.element(`procedures`);
+  const xmlProcedures = xml.element('procedures');
 
   for (const capability of maintenanceCapabilities) {
     const channelIndex = mode.getChannelIndex(capability._channel.key);
 
-    const xmlProcedure = xmlProcedures.element(`procedure`, {
+    const xmlProcedure = xmlProcedures.element('procedure', {
       name: capability.comment,
     });
 
-    xmlProcedure.element(`set`, {
+    xmlProcedure.element('set', {
       dmxchannel: channelIndex,
       value: capability.dmxRange.start,
     });
 
     if (capability.hold) {
-      xmlProcedure.element(`hold`, {
+      xmlProcedure.element('hold', {
         value: capability.hold.baseUnitEntity.number * 1000,
       });
 
-      xmlProcedure.element(`restore`, {
+      xmlProcedure.element('restore', {
         dmxchannel: channelIndex,
       });
     }
@@ -295,31 +295,31 @@ function addProcedures(xml, mode) {
  */
 function addMatrix(mode, xmlFunctionsPerPixel) {
   const matrix = mode.fixture.matrix;
-  const hasSuitableCategory = mode.fixture.categories.includes(`Matrix`) || mode.fixture.categories.includes(`Pixel Bar`);
+  const hasSuitableCategory = mode.fixture.categories.includes('Matrix') || mode.fixture.categories.includes('Pixel Bar');
 
   if (matrix === null || !hasSuitableCategory) {
     return;
   }
 
-  const pixelKeys = matrix.getPixelKeysByOrder(`X`, `Y`, `Z`);
+  const pixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z');
 
   const isMonochromeMatrix = pixelKeys.every(pixelKey => {
     const xmlFunctions = xmlFunctionsPerPixel.get(pixelKey);
-    return xmlFunctions.length === 1 && xmlFunctions[0].name === `dimmer`;
+    return xmlFunctions.length === 1 && xmlFunctions[0].name === 'dimmer';
   });
 
   const isRgbMatrix = pixelKeys.every(pixelKey => {
     const xmlFunctions = xmlFunctionsPerPixel.get(pixelKey);
-    return xmlFunctions.length === 1 && xmlFunctions[0].name === `rgb`;
+    return xmlFunctions.length === 1 && xmlFunctions[0].name === 'rgb';
   });
 
   if (!isMonochromeMatrix && !isRgbMatrix) {
     return;
   }
 
-  const xmlMatrix = xmlbuilder.create(`matrix`);
-  xmlMatrix.attribute(`rows`, matrix.pixelCountY);
-  xmlMatrix.attribute(`columns`, matrix.pixelCountX);
+  const xmlMatrix = xmlbuilder.create('matrix');
+  xmlMatrix.attribute('rows', matrix.pixelCountY);
+  xmlMatrix.attribute('columns', matrix.pixelCountX);
 
   for (const pixelKey of pixelKeys) {
     xmlMatrix.importDocument(xmlFunctionsPerPixel.get(pixelKey).shift());
@@ -335,23 +335,23 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
  * @param {CoarseChannel} channel The channel whose data is used.
  */
 function addChannelAttributes(xmlElement, mode, channel) {
-  xmlElement.attribute(`name`, channel.name);
+  xmlElement.attribute('name', channel.name);
 
   const index = mode.getChannelIndex(channel.key);
-  xmlElement.attribute(`dmxchannel`, index);
+  xmlElement.attribute('dmxchannel', index);
 
   const fineIndices = channel.fineChannels.map(
     fineChannel => mode.getChannelIndex(fineChannel.key),
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {
-    xmlElement.attribute(`finedmxchannel`, fineIndices[0]);
+    xmlElement.attribute('finedmxchannel', fineIndices[0]);
 
     if (fineIndices.length > 1 && fineIndices[1] !== -1) {
-      xmlElement.attribute(`ultradmxchannel`, fineIndices[1]);
+      xmlElement.attribute('ultradmxchannel', fineIndices[1]);
 
       if (fineIndices.length > 2 && fineIndices[2] !== -1) {
-        xmlElement.attribute(`ultrafinedmxchannel`, fineIndices[2]);
+        xmlElement.attribute('ultrafinedmxchannel', fineIndices[2]);
       }
     }
   }

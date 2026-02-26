@@ -59,7 +59,7 @@ export default {
   },
   data() {
     const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
-    const holdEntityName = holdPropertySchema.$ref.replace(`definitions.json#/entities/`, ``);
+    const holdEntityName = holdPropertySchema.$ref.replace('definitions.json#/entities/', '');
 
     return {
       schemaDefinitions,
@@ -70,11 +70,11 @@ export default {
        * @public
        */
       defaultData: {
-        parameter: ``,
+        parameter: '',
         parameterStart: null,
         parameterEnd: null,
-        hold: ``,
-        comment: ``,
+        hold: '',
+        comment: '',
       },
     };
   },

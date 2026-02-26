@@ -89,8 +89,8 @@ import FixtureHeader from '../../components/FixtureHeader.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
 const redirectReasonExplanations = {
-  FixtureRenamed: `The fixture was renamed.`,
-  SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
+  FixtureRenamed: 'The fixture was renamed.',
+  SameAsDifferentBrand: 'The fixture is the same but sold under different brands / names.',
 };
 
 export default {
@@ -120,7 +120,7 @@ export default {
       [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
         $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
-        $axios.$get(`/api/v1/plugins`),
+        $axios.$get('/api/v1/plugins'),
         fetchRedirectObject($axios, query.redirectFrom),
       ]);
     }
@@ -141,7 +141,7 @@ export default {
     return {
       isBrowser: false,
       helpWantedContext: undefined,
-      helpWantedType: ``,
+      helpWantedType: '',
     };
   },
   head() {
@@ -151,19 +151,19 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
       script: [
         {
-          hid: `productModelStructuredData`,
-          type: `application/ld+json`,
+          hid: 'productModelStructuredData',
+          type: 'application/ld+json',
           json: this.productModelStructuredData,
         },
         {
-          hid: `breadcrumbListStructuredData`,
-          type: `application/ld+json`,
+          hid: 'breadcrumbListStructuredData',
+          type: 'application/ld+json',
           json: this.breadcrumbListStructuredData,
         },
       ],
@@ -176,8 +176,8 @@ export default {
     },
     productModelStructuredData() {
       const data = {
-        '@context': `http://schema.org`,
-        '@type': `ProductModel`,
+        '@context': 'http://schema.org',
+        '@type': 'ProductModel',
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
@@ -199,19 +199,19 @@ export default {
     },
     breadcrumbListStructuredData() {
       return {
-        '@context': `http://schema.org`,
-        '@type': `BreadcrumbList`,
+        '@context': 'http://schema.org',
+        '@type': 'BreadcrumbList',
         'itemListElement': [
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 1,
             'item': {
               '@id': `${this.$config.websiteUrl}manufacturers`,
-              'name': `Manufacturers`,
+              'name': 'Manufacturers',
             },
           },
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 2,
             'item': {
               '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
@@ -219,7 +219,7 @@ export default {
             },
           },
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 3,
             'item': {
               '@id': this.fixture.url,
@@ -230,13 +230,13 @@ export default {
       };
     },
     githubRepoPath() {
-      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
+      const slug = process.env.GITHUB_REPOSITORY || 'OpenLightingProject/open-fixture-library';
       return `https://github.com/${slug}`;
     },
     branch() {
-      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || 'master';
       // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
-      return gitRef.split(`/`).pop();
+      return gitRef.split('/').pop();
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;

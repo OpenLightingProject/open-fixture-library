@@ -8,7 +8,7 @@ import NullChannel from '../../lib/model/NullChannel.js';
 import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-export const version = `0.3.0`;
+export const version = '0.3.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -36,14 +36,14 @@ export async function exportFixtures(fixtures, options) {
   const xml = xmlbuilder.create(
     {
       Document: {
-        '@Owner': `user`,
+        '@Owner': 'user',
         '@TypeVersion': 2,
         '@SaveTimeStamp': timestamp,
       },
     },
     {
-      version: `1.0`,
-      encoding: `UTF-8`,
+      version: '1.0',
+      encoding: 'UTF-8',
       standalone: true,
     },
   );
@@ -64,23 +64,23 @@ export async function exportFixtures(fixtures, options) {
       '_ModifiedDate': timestamp,
       'Name': manufacturers[manufacturer].data.name,
       'Comment': manufacturers[manufacturer].data.comment,
-      'Web': manufacturers[manufacturer].data.website || ``,
+      'Web': manufacturers[manufacturer].data.website || '',
     };
-    xmlTiles.element(`Manufacturer`, manufacturerAttributes);
+    xmlTiles.element('Manufacturer', manufacturerAttributes);
 
-    const xmlManufacturerFixtures = xmlFixtures.element(`Manufacturer`, manufacturerAttributes);
+    const xmlManufacturerFixtures = xmlFixtures.element('Manufacturer', manufacturerAttributes);
     for (const fixture of manufacturers[manufacturer].fixtures) {
       addFixture(xmlManufacturerFixtures, fixture);
     }
   }
 
   return [{
-    name: `UserLibrary.xml`,
+    name: 'UserLibrary.xml',
     content: xml.end({
       pretty: true,
-      indent: `    `,
+      indent: '    ',
     }),
-    mimetype: `application/xml`,
+    mimetype: 'application/xml',
     fixtures,
   }];
 }
@@ -97,11 +97,11 @@ function addFixture(xmlManufacturer, fixture) {
     for (const mode of fixture.modes) {
       const physical = mode.physical || new Physical({});
 
-      const xmlFixture = xmlManufacturer.element(`Fixture`, {
+      const xmlFixture = xmlManufacturer.element('Fixture', {
         '_CreationDate': fixtureCreationDate,
         '_ModifiedDate': fixtureModifiedDate,
-        'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
-        'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
+        'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
+        'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ''),
         'Comment': getFixtureComment(fixture),
         'AllocateDmxChannels': mode.channels.length,
         'Weight': physical.weight || 0,
@@ -159,8 +159,8 @@ function handleMode(xmlFixture, mode) {
     let resolution = CoarseChannel.RESOLUTION_8BIT;
 
     if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
-      dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
-      resolution = Math.min(CoarseChannel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, `defaultOnly`));
+      dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], 'defaultOnly') + 1;
+      resolution = Math.min(CoarseChannel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, 'defaultOnly'));
     }
 
     const defaultValue = channel.getDefaultValueWithResolution(resolution);
@@ -206,32 +206,32 @@ function getFixtureComment(fixture) {
  */
 function getChannelType(channel) {
   switch (channel.type) {
-    case `Multi-Color`:
-    case `Single Color`:
-    case `Color Temperature`: {
-      return `ChannelColor`;
+    case 'Multi-Color':
+    case 'Single Color':
+    case 'Color Temperature': {
+      return 'ChannelColor';
     }
-    case `Iris`:
-    case `Zoom`:
-    case `Shutter`:
-    case `Strobe`:
-    case `Gobo`:
-    case `Prism`:
-    case `Effect`:
-    case `Speed`:
-    case `Maintenance`:
-    case `NoFunction`: {
-      return `ChannelBeam`;
+    case 'Iris':
+    case 'Zoom':
+    case 'Shutter':
+    case 'Strobe':
+    case 'Gobo':
+    case 'Prism':
+    case 'Effect':
+    case 'Speed':
+    case 'Maintenance':
+    case 'NoFunction': {
+      return 'ChannelBeam';
     }
-    case `Pan`:
-    case `Tilt`:
-    case `Focus`: {
-      return `ChannelFocus`;
+    case 'Pan':
+    case 'Tilt':
+    case 'Focus': {
+      return 'ChannelFocus';
     }
-    case `Intensity`:
-    case `Fog`:
+    case 'Intensity':
+    case 'Fog':
     default: {
-      return `ChannelIntensity`;
+      return 'ChannelIntensity';
     }
   }
 }
@@ -244,12 +244,12 @@ function getChannelType(channel) {
 function addCapabilities(xmlChannel, channel, resolution) {
   for (const capability of channel.capabilities) {
     const dmxRange = capability.getDmxRangeWithResolution(resolution);
-    xmlChannel.element(`Range`, {
+    xmlChannel.element('Range', {
       'Name': capability.name,
       'Start': dmxRange.start,
       'End': dmxRange.end,
-      'AutoMenu': capability.menuClick === `hidden` ? 0 : 1,
-      'Centre': capability.menuClick === `center` ? 1 : 0,
+      'AutoMenu': capability.menuClick === 'hidden' ? 0 : 1,
+      'Centre': capability.menuClick === 'center' ? 1 : 0,
     });
   }
 }
@@ -259,5 +259,5 @@ function addCapabilities(xmlChannel, channel, resolution) {
  * @returns {string} The date in YYYY-MM-DD#HH:mm:ss format.
  */
 function dateToString(date) {
-  return date.toISOString().replace(/T/, `#`).replace(/\..+/, ``);
+  return date.toISOString().replace(/T/, '#').replace(/\..+/, '');
 }

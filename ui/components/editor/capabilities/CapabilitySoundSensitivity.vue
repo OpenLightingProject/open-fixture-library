@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.`,
+      hint: 'Doesn\'t activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         soundSensitivity: null,
-        soundSensitivityStart: `low`,
-        soundSensitivityEnd: `high`,
-        comment: ``,
+        soundSensitivityStart: 'low',
+        soundSensitivityEnd: 'high',
+        comment: '',
       },
     };
   },

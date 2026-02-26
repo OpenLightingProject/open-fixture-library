@@ -14,8 +14,8 @@ let manufacturers;
 export async function getSearchResults({ request }) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.requestBody;
 
-  register = await importJson(`../../../fixtures/register.json`, import.meta.url);
-  manufacturers = await importJson(`../../../fixtures/manufacturers.json`, import.meta.url);
+  register = await importJson('../../../fixtures/register.json', import.meta.url);
+  manufacturers = await importJson('../../../fixtures/manufacturers.json', import.meta.url);
 
   const results = Object.keys(register.filesystem).filter(
     key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
@@ -32,7 +32,7 @@ export async function getSearchResults({ request }) {
  * @returns {boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split(`/`)[0];
+  const manufacturer = fixtureKey.split('/')[0];
   const fixtureData = register.filesystem[fixtureKey];
 
   return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixtureData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
@@ -45,10 +45,10 @@ function queryMatch(searchQuery, fixtureKey) {
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split(`/`)[0];
+  const manufacturer = fixtureKey.split('/')[0];
 
   return manufacturersQuery.length === 0 ||
-    (manufacturersQuery.length === 1 && manufacturersQuery[0] === ``) ||
+    (manufacturersQuery.length === 1 && manufacturersQuery[0] === '') ||
     manufacturersQuery.includes(manufacturer);
 }
 
@@ -60,7 +60,7 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
  */
 function categoryMatch(categoriesQuery, fixtureKey) {
   return categoriesQuery.length === 0 ||
-    (categoriesQuery.length === 1 && categoriesQuery[0] === ``) ||
+    (categoriesQuery.length === 1 && categoriesQuery[0] === '') ||
     categoriesQuery.some(
       category => register.categories[category]?.includes(fixtureKey),
     );

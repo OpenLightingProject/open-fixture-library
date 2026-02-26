@@ -5,7 +5,7 @@ import FineChannel from '../../lib/model/FineChannel.js';
 import NullChannel from '../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-export const version = `0.1.0`;
+export const version = '0.1.0';
 
 const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
@@ -52,9 +52,9 @@ export async function exportFixtures(fixtures, options) {
 
 
   return [{
-    name: `dmx.json`,
+    name: 'dmx.json',
     content: JSON.stringify(exportJson, null, 2),
-    mimetype: `application/json`,
+    mimetype: 'application/json',
     fixtures,
   }];
 }
@@ -71,20 +71,20 @@ function getOpZChannelType(channel, fixtureKey) {
   }
 
   if (channel instanceof NullChannel || channel instanceof FineChannel) {
-    return `off`;
+    return 'off';
   }
 
   const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const opZChannelTypes = {
-    [`${defaultValue}`]: () => channel.isConstant || channel.type === `Shutter`,
-    'red': () => channel.color === `Red`,
-    'green': () => channel.color === `Green`,
-    'blue': () => channel.color === `Blue`,
-    'white': () => channel.color === `White`,
-    'color': () => channel.type === `Multi-Color`,
-    'intensity': () => channel.type === `Intensity`,
-    'fog': () => channel.type === `Fog`,
+    [`${defaultValue}`]: () => channel.isConstant || channel.type === 'Shutter',
+    'red': () => channel.color === 'Red',
+    'green': () => channel.color === 'Green',
+    'blue': () => channel.color === 'Blue',
+    'white': () => channel.color === 'White',
+    'color': () => channel.type === 'Multi-Color',
+    'intensity': () => channel.type === 'Intensity',
+    'fog': () => channel.type === 'Fog',
     // 'knob1': () => false,
     // 'knob2': () => false,
     // 'knob3': () => false,
@@ -94,7 +94,7 @@ function getOpZChannelType(channel, fixtureKey) {
     // 'knob7': () => false,
     // 'knob8': () => false,
     // 'on': () => false,
-    'off': () => channel.type === `Maintenance`,
+    'off': () => channel.type === 'Maintenance',
   };
 
   const channelType = Object.keys(opZChannelTypes).find(

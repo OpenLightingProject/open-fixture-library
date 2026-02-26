@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         angle: null,
-        angleStart: `deg`,
-        angleEnd: `deg`,
-        comment: ``,
+        angleStart: 'deg',
+        angleEnd: 'deg',
+        comment: '',
       },
     };
   },

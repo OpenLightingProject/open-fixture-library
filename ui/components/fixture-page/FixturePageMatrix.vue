@@ -123,27 +123,27 @@ export default {
         const group = this.matrix.jsonObject.pixelGroups[groupKey];
         const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
 
-        if (group === `all`) {
-          return [groupKey, `All pixels`];
+        if (group === 'all') {
+          return [groupKey, 'All pixels'];
         }
 
-        const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
+        const constraintAxes = ['x', 'y', 'z'].filter(axis => axis in group);
 
         const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
           axis => group[axis].some(constraint => /^\d+n/.test(constraint)),
-        ) || constraintAxes.length > 2 || `name` in group;
+        ) || constraintAxes.length > 2 || 'name' in group;
 
         if (shouldShowPixelKeyArray) {
-          return [groupKey, resolvedPixelsKeys.join(`, `)];
+          return [groupKey, resolvedPixelsKeys.join(', ')];
         }
 
         const constraintText = constraintAxes.map(axis => {
           const axisConstraints = group[axis].map(
-            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
-          ).join(`, `);
+            constraint => constraint.replace('>=', '≥ ').replace('<=', '≤ ').replace('=', ''),
+          ).join(', ');
 
           return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
-        }).join(` and `);
+        }).join(' and ');
 
         return [groupKey, `Pixels where ${constraintText}`];
       });

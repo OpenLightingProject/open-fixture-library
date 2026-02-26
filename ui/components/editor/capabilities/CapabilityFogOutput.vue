@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate fog, only controls the intensity of the fog output.`,
+      hint: 'Doesn\'t activate fog, only controls the intensity of the fog output.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         fogOutput: null,
-        fogOutputStart: `weak`,
-        fogOutputEnd: `strong`,
-        comment: ``,
+        fogOutputStart: 'weak',
+        fogOutputEnd: 'strong',
+        comment: '',
       },
     };
   },

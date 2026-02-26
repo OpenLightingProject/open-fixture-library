@@ -74,11 +74,11 @@ export default {
        * @public
        */
       defaultData: {
-        color: ``,
+        color: '',
         brightness: null,
-        brightnessStart: `off`,
-        brightnessEnd: `bright`,
-        comment: ``,
+        brightnessStart: 'off',
+        brightnessEnd: 'bright',
+        comment: '',
       },
     };
   },
