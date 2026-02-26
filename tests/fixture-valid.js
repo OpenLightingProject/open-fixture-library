@@ -720,7 +720,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               }
 
               if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
-                result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+                result.errors.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
               }
             }
             else if (capability.wheels.includes(null)) {
