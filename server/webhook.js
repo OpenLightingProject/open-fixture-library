@@ -56,7 +56,7 @@ function startServer() {
 
 /**
  * Handle a received request from the server and check if it is valid. If so,
- * call @see redeploy to update the corresponding app.
+ * call {@link redeploy} to update the corresponding app.
  *
  * @param {string} url The absolute path the request was received at.
  * @param {string} body The JSON string from GitHub.
