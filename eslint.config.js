@@ -186,6 +186,7 @@ const enabledRuleParameters = {
       cats: { categories: true },
     },
   }],
+  'unicorn/text-encoding-identifier-case': [{ withDash: true }],
 
   // eslint-plugin-vue
   'vue/block-lang': [{

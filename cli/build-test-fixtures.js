@@ -99,10 +99,10 @@ for (const fixture of fixtureFeatureResults) {
 }
 
 try {
-  await writeFile(jsonPath, `${JSON.stringify(fixtureFeatureResults, null, 2)}\n`, `utf8`);
+  await writeFile(jsonPath, `${JSON.stringify(fixtureFeatureResults, null, 2)}\n`, `utf-8`);
   console.log(styleText(`green`, `[Success]`), `Updated ${jsonPath}`);
 
-  await writeFile(markdownPath, await getMarkdownCode(fixtureFeatureResults, allFixtureFeatures), `utf8`);
+  await writeFile(markdownPath, await getMarkdownCode(fixtureFeatureResults, allFixtureFeatures), `utf-8`);
   console.log(styleText(`green`, `[Success]`), `Updated ${markdownPath}`);
 }
 catch (error) {

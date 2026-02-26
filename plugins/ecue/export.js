@@ -43,7 +43,7 @@ export async function exportFixtures(fixtures, options) {
     },
     {
       version: `1.0`,
-      encoding: `UTF-8`,
+      encoding: `utf-8`,
       standalone: true,
     },
   );

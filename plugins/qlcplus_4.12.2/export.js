@@ -68,7 +68,7 @@ export async function exportFixtures(fixtures, options) {
  */
 async function getFixtureFile(fixture, options, customGobos) {
   const xml = xmlbuilder.begin()
-    .declaration(`1.0`, `UTF-8`)
+    .declaration(`1.0`, `utf-8`)
     .element({
       FixtureDefinition: {
         '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
