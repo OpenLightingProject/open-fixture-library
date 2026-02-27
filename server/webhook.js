@@ -43,9 +43,9 @@ function startServer() {
         return;
       }
 
-      let body = ``;
+      let body = Buffer.alloc(0);
       request.on(`data`, data => {
-        body += data;
+        body = Buffer.concat([body, data]);
       }).on(`end`, () => {
         processRequest(request.url, body, request.headers);
       });
@@ -59,7 +59,7 @@ function startServer() {
  * call {@link redeploy} to update the corresponding app.
  *
  * @param {string} url The absolute path the request was received at.
- * @param {string} body The JSON string from GitHub.
+ * @param {Buffer} body The raw body from GitHub.
  * @param {Record<string, string>} headers Headers of the request.
  */
 function processRequest(url, body, headers) {
@@ -70,7 +70,7 @@ function processRequest(url, body, headers) {
   }
 
   const hmac = createHmac(`sha256`, deploymentConfig.webhookSecret);
-  hmac.update(body, `utf-8`);
+  hmac.update(body);
 
   const xub = `X-Hub-Signature-256`;
   const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || ``);
@@ -92,7 +92,7 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const json = JSON.parse(body);
+  const json = JSON.parse(body.toString(`utf-8`));
 
   if (json.ref !== `refs/heads/master`) {
     console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
