@@ -273,7 +273,7 @@ export default {
       const rawData = JSON.stringify(this.requestBody, null, 2);
 
       if (this.state === 'error') {
-        const backticks = '```'; // eslint-disable-line quotes
+        const backticks = '```';
         return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
       }
 
