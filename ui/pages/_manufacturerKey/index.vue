@@ -86,7 +86,7 @@ export default {
     },
     organizationStructuredData() {
       return {
-        '@context': `http://schema.org`,
+        '@context': `https://schema.org`,
         '@type': `Organization`,
         name: this.manufacturer.name,
         brand: this.manufacturer.name,
@@ -95,7 +95,7 @@ export default {
     },
     itemListStructuredData() {
       return {
-        '@context': `http://schema.org`,
+        '@context': `https://schema.org`,
         '@type': `ItemList`,
         itemListElement: this.fixtures.map((fixture, index) => ({
           '@type': `ListItem`,

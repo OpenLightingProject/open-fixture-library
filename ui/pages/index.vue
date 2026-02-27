@@ -125,7 +125,7 @@ export default {
           hid: `websiteStructuredData`,
           type: `application/ld+json`,
           json: {
-            '@context': `http://schema.org`,
+            '@context': `https://schema.org`,
             '@type': `WebSite`,
             name: `Open Fixture Library`,
             url: this.$config.websiteUrl,
@@ -140,7 +140,7 @@ export default {
           hid: `organizationStructuredData`,
           type: `application/ld+json`,
           json: {
-            '@context': `http://schema.org`,
+            '@context': `https://schema.org`,
             '@type': `Organization`,
             name: `Open Fixture Library`,
             description: `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,

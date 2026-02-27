@@ -176,7 +176,7 @@ export default {
     },
     productModelStructuredData() {
       const data = {
-        '@context': `http://schema.org`,
+        '@context': `https://schema.org`,
         '@type': `ProductModel`,
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
@@ -199,7 +199,7 @@ export default {
     },
     breadcrumbListStructuredData() {
       return {
-        '@context': `http://schema.org`,
+        '@context': `https://schema.org`,
         '@type': `BreadcrumbList`,
         'itemListElement': [
           {
