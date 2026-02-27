@@ -43,10 +43,16 @@ function startServer() {
         return;
       }
 
-      let body = Buffer.alloc(0);
+      const bodyChunks = [];
+      let totalSize = 0;
       request.on(`data`, data => {
-        body = Buffer.concat([body, data]);
+        bodyChunks.push(data);
+        totalSize += data.length;
+        if (totalSize > 1e6) { // 1MB limit
+          request.destroy(new Error(`Request body too large`));
+        }
       }).on(`end`, () => {
+        const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
 
