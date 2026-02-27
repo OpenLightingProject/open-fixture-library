@@ -73,7 +73,7 @@ function processRequest(url, body, headers) {
   hmac.update(body, `utf-8`);
 
   const xub = `X-Hub-Signature-256`;
-  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase() || ``]);
+  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || ``);
   const digest = hmac.digest(`hex`);
   const expected = Buffer.from(`sha256=${digest}`);
 
