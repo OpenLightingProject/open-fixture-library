@@ -14,7 +14,6 @@
   "scripts": {
     "dev": "nuxt dev",
     "start": "nuxt start",
-
     "build": "npm run build-without-nuxt && npm run build:nuxt",
     "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
     "build:nuxt": "nuxt build",
@@ -23,15 +22,12 @@
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
     "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
-
     "clean": "rm -rf .nuxt tmp",
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
-
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
     "lint:eslint-errors-only": "eslint --quiet .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
-
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
@@ -74,6 +70,7 @@
     "@eslint/compat": "^2.0.2",
     "@eslint/js": "~9.39.3",
     "@eslint/markdown": "~7.5.1",
+    "@stylistic/eslint-plugin": "^5.9.0",
     "@stylistic/stylelint-config": "~4.0.0",
     "@vitest/eslint-plugin": "^1.6.9",
     "broken-link-checker": "^0.7.8",
