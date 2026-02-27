@@ -3,7 +3,7 @@
 // crypto is expected to be installed globally
 
 const { execSync } = require(`child_process`);
-const { createHmac, timingSafeEqual } = require(`crypto`);
+const { createHmac } = require(`crypto`);
 const http = require(`http`);
 
 const pm2config = require(`./ecosystem.config.js`);
@@ -43,16 +43,10 @@ function startServer() {
         return;
       }
 
-      const bodyChunks = [];
-      let totalSize = 0;
+      let body = ``;
       request.on(`data`, data => {
-        bodyChunks.push(data);
-        totalSize += data.length;
-        if (totalSize > 1e6) { // 1MB limit
-          request.destroy(new Error(`Request body too large`));
-        }
+        body += data;
       }).on(`end`, () => {
-        const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
 
@@ -65,7 +59,7 @@ function startServer() {
  * call {@link redeploy} to update the corresponding app.
  *
  * @param {string} url The absolute path the request was received at.
- * @param {Buffer} body The raw body from GitHub.
+ * @param {string} body The JSON string from GitHub.
  * @param {Record<string, string>} headers Headers of the request.
  */
 function processRequest(url, body, headers) {
@@ -75,18 +69,16 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = createHmac(`sha256`, deploymentConfig.webhookSecret);
-  hmac.update(body);
+  const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
+  hmac.update(body, `utf-8`);
 
-  const xub = `X-Hub-Signature-256`;
-  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || ``);
+  const xub = `X-Hub-Signature`;
+  const received = headers[xub] || headers[xub.toLowerCase()];
   const digest = hmac.digest(`hex`);
-  const expected = Buffer.from(`sha256=${digest}`);
+  const expected = `sha1=${digest}`;
 
-  if (received.length !== expected.length || !timingSafeEqual(received, expected)) {
-    const expectedString = expected.toString(`utf-8`);
-    const receivedString = received.toString(`utf-8`);
-    console.error(`Wrong secret: Expected '${expectedString}', received '${receivedString}'`);
+  if (received !== expected) {
+    console.error(`Wrong secret: Expected '${expected}', received '${received}'`);
     return;
   }
 
@@ -98,7 +90,7 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const json = JSON.parse(body.toString(`utf-8`));
+  const json = JSON.parse(body);
 
   if (json.ref !== `refs/heads/master`) {
     console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
