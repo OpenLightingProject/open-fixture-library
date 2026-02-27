@@ -1,7 +1,7 @@
 import importJson from '../../../../lib/import-json.js';
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../../index.js' */
 
 /**
  * Returns information about a specific manufacturer.

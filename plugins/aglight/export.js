@@ -7,7 +7,7 @@ import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
 
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @import Fixture from '../../lib/model/Fixture.js' */
 
 const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
 const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectName', 'effectPreset', 'shutterEffect', 'wheel', 'isShaking', 'fogType', 'menuClick']);
