@@ -288,7 +288,7 @@ export default {
       }
 
       if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
-        return `Please do only enter whole number values.`;
+        return `Please only enter whole numbers.`;
       }
 
       return null;
