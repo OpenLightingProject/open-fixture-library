@@ -353,6 +353,7 @@ const disabledRules = [
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
   `sonarjs/no-unsafe-unzip`,
+  `sonarjs/os-command`,
   `sonarjs/pseudo-random`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
