@@ -352,6 +352,7 @@ const disabledRules = [
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
+  `sonarjs/no-os-command-from-path`,
   `sonarjs/no-unsafe-unzip`,
   `sonarjs/os-command`,
   `sonarjs/pseudo-random`,
