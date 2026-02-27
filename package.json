@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "start": "nuxt start",
+
     "build": "npm run build-without-nuxt && npm run build:nuxt",
     "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
     "build:nuxt": "nuxt build",
@@ -22,12 +23,15 @@
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
     "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
+
     "clean": "rm -rf .nuxt tmp",
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
+
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
     "lint:eslint-errors-only": "eslint --quiet .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
+
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
@@ -49,7 +53,6 @@
     "cors": "^2.8.6",
     "embetty-vue": "^2.0.1",
     "express": "^5.2.1",
-    "jsonc-eslint-parser": "^3.1.0",
     "jszip": "^3.10.1",
     "node-env-file": "^0.1.8",
     "nuxt": "~2.18.1",
