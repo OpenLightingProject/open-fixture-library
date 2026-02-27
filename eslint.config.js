@@ -88,7 +88,7 @@ const enabledRuleParameters = {
   'prefer-object-spread': [],
   'prefer-rest-params': [],
   'prefer-template': [],
-  'quotes': [`backtick`, { allowTemplateLiterals: true }],
+  'quotes': [`single`],
   'radix': [],
   'semi': [],
   'space-before-blocks': [],
