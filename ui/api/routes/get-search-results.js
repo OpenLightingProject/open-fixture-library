@@ -3,8 +3,8 @@ import importJson from '../../../lib/import-json.js';
 let register;
 let manufacturers;
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../index.js').ApiResponse} ApiResponse */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../index.js' */
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.

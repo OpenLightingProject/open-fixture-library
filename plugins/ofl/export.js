@@ -2,7 +2,7 @@ import { fixtureSchema } from '../../lib/esm-shim.cjs';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = fixtureSchema.version;
 

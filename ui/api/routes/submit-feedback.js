@@ -1,8 +1,8 @@
 import createIssue from '../../../lib/create-github-issue.js';
 import { fixtureFromRepository } from '../../../lib/model.js';
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../index.js').ApiResponse} ApiResponse */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../index.js' */
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.

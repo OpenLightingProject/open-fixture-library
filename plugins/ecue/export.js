@@ -2,8 +2,8 @@ import xmlbuilder from 'xmlbuilder';
 
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+/** @import Fixture from '../../lib/model/Fixture.js' */
+/** @import Mode from '../../lib/model/Mode.js' */
 import NullChannel from '../../lib/model/NullChannel.js';
 import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';

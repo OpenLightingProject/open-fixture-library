@@ -1,12 +1,12 @@
 import sanitize from 'sanitize-filename';
 import xmlbuilder from 'xmlbuilder';
 
-/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+/** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
 import Capability from '../../lib/model/Capability.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-/** @typedef {import('../../lib/model/FineChannel.js').default} FineChannel */
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+/** @import FineChannel from '../../lib/model/FineChannel.js' */
+/** @import Fixture from '../../lib/model/Fixture.js' */
+/** @import Mode from '../../lib/model/Mode.js' */
 import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 

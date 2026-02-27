@@ -147,6 +147,7 @@ const enabledRuleParameters = {
   'jsdoc/require-param-type': [],
   'jsdoc/require-returns': [],
   'jsdoc/require-returns-check': [],
+  'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
   'jsdoc/require-returns-description': [],
   'jsdoc/require-returns-type': [],
   'jsdoc/valid-types': [],

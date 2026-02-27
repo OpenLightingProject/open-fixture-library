@@ -11,9 +11,9 @@ import {
 } from '../../../../lib/schema-properties.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../../index.js' */
+/** @import { FixtureCreateResult } from '../../../../lib/types.js' */
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
