@@ -71,6 +71,7 @@ async function getFixtureFile(fixture, options, customGobos) {
     .declaration('1.0', 'utf-8')
     .element({
       FixtureDefinition: {
+        // eslint-disable-next-line sonarjs/no-clear-text-protocols -- HTTP required by QLC+, this is an identifier rather than a real URL anyway
         '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
         Creator: {
           Name: `OFL – ${fixture.url}`,
