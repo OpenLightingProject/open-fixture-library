@@ -10,15 +10,15 @@ import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
 
 
-const USER_AGENT = `Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0`;
-const GITHUB_COMMENT_HEADING = `## Broken links update`;
+const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
+const GITHUB_COMMENT_HEADING = '## Broken links update';
 const TIMEOUT = 30_000;
 
 const excludedUrls = [
-  `https://open-fixture-library.org`, // exclude canonical URLs
-  `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
-  `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
-  `https://web.archive.org/`, // Wayback Machine links are designed to be available "forever" and we don't want to put unnecessary load on their servers.
+  'https://open-fixture-library.org', // exclude canonical URLs
+  'http://rdm.openlighting.org/model/display', // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
+  'https://github.com/OpenLightingProject/open-fixture-library/', // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+  'https://web.archive.org/', // Wayback Machine links are designed to be available "forever" and we don't want to put unnecessary load on their servers.
 ];
 
 
@@ -28,19 +28,19 @@ let errored = false;
 try {
   const crawler = new SiteCrawler();
 
-  console.log(styleText([`blue`, `bold`], `Starting OFL server ...`));
+  console.log(styleText(['blue', 'bold'], 'Starting OFL server ...'));
   try {
     await crawler.startServer();
   }
   catch (error) {
-    const header = styleText(`redBright`, `Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
+    const header = styleText('redBright', 'Failed to start OFL server. Maybe you forgot running \'npm run build\' or there is already a running server?');
     throw `${header} ${error.message}`;
   }
   console.log();
 
   const externalUrlSet = new Set();
 
-  crawler.addEventListener(`externalLinkFound`, ({ url }) => {
+  crawler.addEventListener('externalLinkFound', ({ url }) => {
     if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
       externalUrlSet.add(url);
       process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
@@ -48,7 +48,7 @@ try {
   });
 
   const crawlStartTime = Date.now();
-  console.log(styleText([`blue`, `bold`], `Start crawling the website for external links ...`));
+  console.log(styleText(['blue', 'bold'], 'Start crawling the website for external links ...'));
   await crawler.crawl();
 
   const crawlTime = Date.now() - crawlStartTime;
@@ -57,18 +57,18 @@ try {
 
   const { stdout, stderr } = await crawler.stopServer();
   if (stdout) {
-    console.log(styleText(`blueBright`, `Server output (stdout):`));
+    console.log(styleText('blueBright', 'Server output (stdout):'));
     console.log(stdout);
   }
   if (stderr) {
-    console.log(styleText(`blueBright`, `Server errors (stderr):`));
+    console.log(styleText('blueBright', 'Server errors (stderr):'));
     console.log(stderr);
   }
 
   const urlResults = await fetchExternalUrls([...externalUrlSet]);
   console.log();
 
-  console.log(styleText([`blue`, `bold`], `Updating GitHub issue ...`));
+  console.log(styleText(['blue', 'bold'], 'Updating GitHub issue ...'));
   await updateGithubIssue(urlResults);
 }
 catch (error) {
@@ -78,7 +78,7 @@ catch (error) {
 
 const testTime = Date.now() - testStartTime;
 console.log();
-console.log(styleText([`greenBright`, `bold`], `Test took ${testTime / 1000}s.`));
+console.log(styleText(['greenBright', 'bold'], `Test took ${testTime / 1000}s.`));
 process.exit(errored ? 1 : 0);
 
 
@@ -108,16 +108,16 @@ async function fetchExternalUrls(externalUrls) {
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
-  console.log(styleText([`blue`, `bold`], `Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
+  console.log(styleText(['blue', 'bold'], `Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
   const fetchStartTime = Date.now();
   for (const urlBlock of urlBlocks) {
     await Promise.all(urlBlock.map(async url => {
       const result = await testExternalLink(url);
       urlResults.push(result);
 
-      const messageColor = result.failed ? `redBright` : `greenBright`;
+      const messageColor = result.failed ? 'redBright' : 'greenBright';
       const coloredMessage = styleText(messageColor, result.message);
-      const coloredUrl = styleText(`yellow`, result.url);
+      const coloredUrl = styleText('yellow', result.url);
       console.log(`[${urlResults.length}/${externalUrls.length}: ${coloredMessage}] ${coloredUrl}`);
     }));
   }
@@ -128,11 +128,11 @@ async function fetchExternalUrls(externalUrls) {
   const failingUrlResults = urlResults.filter(result => result.failed);
 
   const fetchTime = Date.now() - fetchStartTime;
-  const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
+  const colonOrPeriod = failingUrlResults.length > 0 ? ':' : '.';
   console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
-    const coloredUrl = styleText(`yellow`, url);
-    const coloredMessage = styleText(`redBright`, message);
+    const coloredUrl = styleText('yellow', url);
+    const coloredMessage = styleText('redBright', message);
     console.log(`- ${coloredUrl} (${coloredMessage})`);
   }
 
@@ -144,12 +144,12 @@ async function fetchExternalUrls(externalUrls) {
  * @returns {Promise<UrlResult>} Status of the checked url.
  */
 async function testExternalLink(url) {
-  const httpModule = url.startsWith(`https`) ? https : http;
+  const httpModule = url.startsWith('https') ? https : http;
 
-  const resultHEAD = await getResult(`HEAD`);
+  const resultHEAD = await getResult('HEAD');
 
   if (resultHEAD.failed) {
-    return getResult(`GET`);
+    return getResult('GET');
   }
   return resultHEAD;
 
@@ -175,7 +175,7 @@ async function testExternalLink(url) {
         });
       });
 
-      request.on(`timeout`, () => {
+      request.on('timeout', () => {
         resolve({
           url,
           message: `Timeout of ${requestOptions.timeout}ms exceeded.`,
@@ -184,7 +184,7 @@ async function testExternalLink(url) {
         request.abort();
       });
 
-      request.on(`error`, error => {
+      request.on('error', error => {
         resolve({
           url,
           message: error.message,
@@ -203,10 +203,10 @@ async function testExternalLink(url) {
  */
 async function updateGithubIssue(urlResults) {
   const requiredEnvironmentVariables = [
-    `GITHUB_USER_TOKEN`,
-    `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
-    `GITHUB_REPOSITORY`,
-    `GITHUB_RUN_ID`,
+    'GITHUB_USER_TOKEN',
+    'GITHUB_BROKEN_LINKS_ISSUE_NUMBER',
+    'GITHUB_REPOSITORY',
+    'GITHUB_RUN_ID',
   ];
 
   for (const environmentVariable of requiredEnvironmentVariables) {
@@ -222,7 +222,7 @@ async function updateGithubIssue(urlResults) {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split(`/`);
+  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split('/');
 
   let issue;
 
@@ -275,14 +275,14 @@ async function updateGithubIssue(urlResults) {
     try {
       const lines = body.split(/\r?\n/); // support both \n and \r\n newline types
       for (const line of lines) {
-        if (!line.startsWith(`<tr><td nowrap>`)) {
+        if (!line.startsWith('<tr><td nowrap>')) {
           continue;
         }
 
         const [, lastResults, url] = line.match(/<tr><td nowrap>(.*?)<\/td><td><a href="(.*?)"/);
 
-        linkData[url] = lastResults.split(`&nbsp;`).map(item => {
-          if (item === `✔️`) {
+        linkData[url] = lastResults.split('&nbsp;').map(item => {
+          if (item === '✔️') {
             return {
               failed: false,
               message: null,
@@ -301,7 +301,7 @@ async function updateGithubIssue(urlResults) {
       }
     }
     catch (error) {
-      throw new Error(`Unable to retrieve link data from issue body`, {
+      throw new Error('Unable to retrieve link data from issue body', {
         cause: error,
       });
     }
@@ -373,10 +373,10 @@ async function updateGithubIssue(urlResults) {
    */
   function getStatusEmojiLink(status) {
     if (!status.failed) {
-      return `✔️`;
+      return '✔️';
     }
 
-    const message = status.message.replaceAll(`\n`, ` `).replaceAll(`"`, `&quot;`);
+    const message = status.message.replaceAll('\n', ' ').replaceAll('"', '&quot;');
     const emoji = getFailedEmoji(status.message);
     return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
   }
@@ -386,23 +386,23 @@ async function updateGithubIssue(urlResults) {
    * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
-    const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+    const scriptName = import.meta.url.split('/').slice(-2).join('/');
     const rows = Object.entries(linkData).map(([url, statuses]) => {
-      const statusIcons = statuses.map(status => getStatusEmojiLink(status)).join(`&nbsp;`);
+      const statusIcons = statuses.map(status => getStatusEmojiLink(status)).join('&nbsp;');
       const link = `<a href="${url}" target="_blank">${url}</a>`;
       return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
     });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
-      ``,
+      '',
       `**Last updated:** ${new Date().toISOString()}`,
-      ``,
-      `<table>`,
-      `<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>`,
+      '',
+      '<table>',
+      '<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>',
       ...rows,
-      `</table>`,
+      '</table>',
     ];
-    return lines.join(`\n`);
+    return lines.join('\n');
   }
 
   /**
@@ -444,41 +444,41 @@ async function updateGithubIssue(urlResults) {
 
     const lines = [
       `${GITHUB_COMMENT_HEADING} (${new Date().toISOString()})`,
-      ``,
+      '',
       `[📃 Workflow run](${workflowRunUrl})`,
-      ``,
+      '',
     ];
 
     if (newFailingUrlResults.length > 0) {
       lines.push(
-        `### ❌ New failing URLs`,
+        '### ❌ New failing URLs',
         ...newFailingUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
-        ``,
+        '',
       );
     }
 
     if (fixedUrlResults.length > 0) {
       lines.push(
-        `### ✔️ Fixed URLs (no fails in the last seven days)`,
+        '### ✔️ Fixed URLs (no fails in the last seven days)',
         ...fixedUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
-        ``,
+        '',
       );
     }
 
     if (deletedUrls.length > 0) {
       lines.push(
-        `### ✔️ Fixed URLs (failing URLs not included anymore)`,
+        '### ✔️ Fixed URLs (failing URLs not included anymore)',
         ...deletedUrls.map(url => `- ${url}`),
-        ``,
+        '',
       );
     }
 
-    console.log(`Creating GitHub comment.`);
+    console.log('Creating GitHub comment.');
     await githubClient.rest.issues.createComment({
       owner: repoOwner,
       repo: repoName,
       'issue_number': process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER,
-      body: lines.join(`\n`),
+      body: lines.join('\n'),
     });
   }
 }
@@ -489,27 +489,27 @@ async function updateGithubIssue(urlResults) {
  */
 function getFailedEmoji(message) {
   switch (message.trim().toLowerCase()) {
-    case `301`:
-    case `301 moved permanently`: {
-      return `⏩`;
+    case '301':
+    case '301 moved permanently': {
+      return '⏩';
     }
-    case `403`:
-    case `403 forbidden`: {
-      return `⛔`;
+    case '403':
+    case '403 forbidden': {
+      return '⛔';
     }
-    case `429`:
-    case `429 too many requests`: {
-      return `🆘`;
+    case '429':
+    case '429 too many requests': {
+      return '🆘';
     }
-    case `certificate has expired`:
-    case `unable to verify the first certificate`: {
-      return `🔒`;
+    case 'certificate has expired':
+    case 'unable to verify the first certificate': {
+      return '🔒';
     }
     case `timeout of ${TIMEOUT}ms exceeded.`: {
-      return `⌛`;
+      return '⌛';
     }
     default: {
-      return `❌`;
+      return '❌';
     }
   }
 }

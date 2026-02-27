@@ -73,21 +73,21 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability. If the fixture doesn't have a physical color wheel, use Effect with ColorFade/ColorJump preset instead.`,
+      hint: 'Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability. If the fixture doesn\'t have a physical color wheel, use Effect with ColorFade/ColorJump preset instead.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        speedOrAngle: `speed`,
+        speedOrAngle: 'speed',
         speed: null,
-        speedStart: `slow CW`,
-        speedEnd: `fast CW`,
+        speedStart: 'slow CW',
+        speedEnd: 'fast CW',
         angle: null,
-        angleStart: `0deg`,
-        angleEnd: `360deg`,
-        comment: ``,
+        angleStart: '0deg',
+        angleEnd: '360deg',
+        comment: '',
       },
     };
   },
@@ -98,7 +98,7 @@ export default {
      * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+      const resetProperty = this.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },

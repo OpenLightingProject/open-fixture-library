@@ -54,10 +54,10 @@ export default {
        * @public
        */
       defaultData: {
-        speed: ``,
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

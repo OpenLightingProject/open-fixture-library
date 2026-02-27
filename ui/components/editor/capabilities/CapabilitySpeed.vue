@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Only use this if no other type is applicable. Note that some types like Effect, PanContinuous or Rotation also allow setting a speed value.`,
+      hint: 'Only use this if no other type is applicable. Note that some types like Effect, PanContinuous or Rotation also allow setting a speed value.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         speed: null,
-        speedStart: `slow`,
-        speedEnd: `fast`,
-        comment: ``,
+        speedStart: 'slow',
+        speedEnd: 'fast',
+        comment: '',
       },
     };
   },

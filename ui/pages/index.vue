@@ -101,7 +101,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -114,7 +114,7 @@ export default {
       recentContributors: [],
 
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
+        fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
       ).length,
     };
   },
@@ -122,28 +122,28 @@ export default {
     return {
       script: [
         {
-          hid: `websiteStructuredData`,
-          type: `application/ld+json`,
+          hid: 'websiteStructuredData',
+          type: 'application/ld+json',
           json: {
-            '@context': `https://schema.org`,
-            '@type': `WebSite`,
-            name: `Open Fixture Library`,
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Open Fixture Library',
             url: this.$config.websiteUrl,
             potentialAction: {
-              '@type': `SearchAction`,
+              '@type': 'SearchAction',
               target: `${this.$config.websiteUrl}search?q={search_term_string}`,
-              'query-input': `required name=search_term_string`,
+              'query-input': 'required name=search_term_string',
             },
           },
         },
         {
-          hid: `organizationStructuredData`,
-          type: `application/ld+json`,
+          hid: 'organizationStructuredData',
+          type: 'application/ld+json',
           json: {
-            '@context': `https://schema.org`,
-            '@type': `Organization`,
-            name: `Open Fixture Library`,
-            description: `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Open Fixture Library',
+            description: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
             url: this.$config.websiteUrl,
             logo: `${this.$config.websiteUrl}ofl-logo.svg`,
           },
@@ -158,7 +158,7 @@ export default {
         name: this.getFixtureName(fixtureKey),
         action: register.filesystem[fixtureKey].lastAction,
         date: new Date(register.filesystem[fixtureKey].lastActionDate),
-        color: register.colors[fixtureKey.split(`/`)[0]],
+        color: register.colors[fixtureKey.split('/')[0]],
       }),
     );
 
@@ -181,7 +181,7 @@ export default {
      * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manufacturerKey = fixtureKey.split(`/`)[0];
+      const manufacturerKey = fixtureKey.split('/')[0];
       const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 

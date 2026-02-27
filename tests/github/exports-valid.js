@@ -25,7 +25,7 @@ try {
   await pullRequest.init();
   const changedComponents = await pullRequest.fetchChangedComponents();
 
-  plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  plugins = await importJson('../../plugins/plugins.json', import.meta.url);
 
   exportTests = [];
   for (const exportPluginKey of plugins.exportPlugins) {
@@ -36,7 +36,7 @@ try {
     ));
   }
 
-  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  const testFixtures = await importJson('../test-fixtures.json', import.meta.url);
   testFixtureKeys = testFixtures.map(fixture => [fixture.man, fixture.key]);
 
   const tasks = [
@@ -80,27 +80,27 @@ try {
   if (tasks.length === 0) {
     await pullRequest.updateComment({
       fileUrl: new URL(import.meta.url),
-      name: `Export files validity`,
+      name: 'Export files validity',
       lines: [],
     });
     process.exit(0);
   }
 
   const lines = [
-    `Test the exported files of selected fixtures against the plugins' export tests.`,
-    `You can run a plugin's export tests by executing:`,
-    `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
-    ``,
+    'Test the exported files of selected fixtures against the plugins\' export tests.',
+    'You can run a plugin\'s export tests by executing:',
+    '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
+    '',
   ];
 
-  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = '⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!';
 
   for (const task of tasks) {
     const taskResultLines = await getTaskPromise(task);
 
     // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
     // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
+    if ([...lines, ...taskResultLines, tooLongMessage].join('\r\n').length > 260_000) {
       lines.push(tooLongMessage);
       break;
     }
@@ -110,12 +110,12 @@ try {
 
   await pullRequest.updateComment({
     fileUrl: new URL(import.meta.url),
-    name: `Export files validity`,
+    name: 'Export files validity',
     lines,
   });
 
   if (testErrored) {
-    throw new Error(`Unable to export some fixtures.`);
+    throw new Error('Unable to export some fixtures.');
   }
 }
 catch (error) {
@@ -223,14 +223,14 @@ async function getTaskPromise(task) {
   const plugin = await import(`../../plugins/${task.pluginKey}/export.js`);
   const { default: test } = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
 
-  let emoji = `✔️`;
+  let emoji = '✔️';
   const detailListItems = [];
 
   try {
     const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
-        baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
+        baseDirectory: fileURLToPath(new URL('../../', import.meta.url)),
         date: new Date(),
       },
     );
@@ -241,25 +241,25 @@ async function getTaskPromise(task) {
         return `✔️ ${file.name}`;
       }
       catch (error) {
-        emoji = `❌`;
-        const errors = [error].flat().join(`<br />\n`);
+        emoji = '❌';
+        const errors = [error].flat().join('<br />\n');
         return `<details><summary>❌ ${file.name}</summary>${errors}</details>`;
       }
     }));
     detailListItems.push(...resultListItems);
   }
   catch (error) {
-    emoji = `❗`;
+    emoji = '❗';
     detailListItems.push(`Unable to export fixture: ${error.message}`);
     testErrored = true;
   }
 
   return [
-    `<details>`,
+    '<details>',
     `  <summary>${emoji} <strong>${task.manufacturerKey} / ${task.fixtureKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
-    `  <ul>`,
+    '  <ul>',
     ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
-    `  </ul>`,
-    `</details>`,
+    '  </ul>',
+    '</details>',
   ];
 }

@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect 'Strobe'.`,
+      hint: 'Doesn\'t activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect \'Strobe\'.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         speed: null,
-        speedStart: `Hz`,
-        speedEnd: `Hz`,
-        comment: ``,
+        speedStart: 'Hz',
+        speedEnd: 'Hz',
+        comment: '',
       },
     };
   },

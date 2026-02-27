@@ -11,17 +11,17 @@ import importJson from '../../../../lib/import-json.js';
 export async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
-  if (!(manufacturerKey in manufacturers) || manufacturerKey === `$schema`) {
+  const manufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
+  if (!(manufacturerKey in manufacturers) || manufacturerKey === '$schema') {
     return {
       statusCode: 404,
       body: {
-        error: `Manufacturer not found`,
+        error: 'Manufacturer not found',
       },
     };
   }
 
-  const register = await importJson(`../../../../fixtures/register.json`, import.meta.url);
+  const register = await importJson('../../../../fixtures/register.json', import.meta.url);
   const manufacturer = {
     ...manufacturers[manufacturerKey],
     key: manufacturerKey,

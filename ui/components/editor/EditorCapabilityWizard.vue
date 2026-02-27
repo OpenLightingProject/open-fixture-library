@@ -135,7 +135,7 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-} from "../../assets/scripts/editor-utilities.js";
+} from '../../assets/scripts/editor-utilities.js';
 
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
@@ -145,10 +145,10 @@ import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
  * @param {number} index The index of the generated capability.
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
-  if (`effectName` in capabilityTypeData) {
+  if ('effectName' in capabilityTypeData) {
     capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
   }
-  if (`comment` in capabilityTypeData) {
+  if ('comment' in capabilityTypeData) {
     capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
   }
 }
@@ -259,11 +259,11 @@ export default {
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        capability => getCapabilityWithSource(capability, `inherited`),
+        capability => getCapabilityWithSource(capability, 'inherited'),
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        capability => getCapabilityWithSource(capability, `computed`),
+        capability => getCapabilityWithSource(capability, 'computed'),
       );
 
       // insert all computed capabilities at insertIndex
@@ -280,15 +280,15 @@ export default {
      */
     validationError() {
       if (this.wizard.start < 0) {
-        return `Capabilities must not start below DMX value 0.`;
+        return 'Capabilities must not start below DMX value 0.';
       }
 
       if (this.wizard.width <= 0) {
-        return `Capability width must be greater than zero.`;
+        return 'Capability width must be greater than zero.';
       }
 
       if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
-        return `Please only enter whole numbers.`;
+        return 'Please only enter whole numbers.';
       }
 
       return null;
@@ -318,7 +318,7 @@ export default {
         return capabilityEnd >= this.wizard.start && capabilityStart <= this.end;
       });
       if (collisionDetected) {
-        return `Generated capabilities must not overlap with existing ones.`;
+        return 'Generated capabilities must not overlap with existing ones.';
       }
 
       return null;
@@ -361,7 +361,7 @@ export default {
 
       // close other capabilities if they are not empty
       for (const capability of this.capabilities) {
-        if (capability.type !== ``) {
+        if (capability.type !== '') {
           capability.open = false;
         }
       }
@@ -369,7 +369,7 @@ export default {
       // insert all computed capabilities at insertIndex
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 
-      this.$emit(`close`, this.insertIndex);
+      this.$emit('close', this.insertIndex);
     },
   },
 };

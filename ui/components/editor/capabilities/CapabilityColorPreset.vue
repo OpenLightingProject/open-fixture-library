@@ -95,21 +95,21 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`,
+      hint: 'This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        comment: ``,
+        comment: '',
         colors: null,
         colorsStart: null,
         colorsEnd: null,
-        colorsHexString: ``,
+        colorsHexString: '',
         colorsHexStringStart: null,
         colorsHexStringEnd: null,
-        colorTemperature: ``,
+        colorTemperature: '',
         colorTemperatureStart: null,
         colorTemperatureEnd: null,
       },

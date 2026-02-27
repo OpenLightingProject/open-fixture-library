@@ -111,15 +111,15 @@ export default {
 
       const manufacturerKey = this.fixture.manufacturerKey;
 
-      if (manufacturerKey === ``) {
-        return ``;
+      if (manufacturerKey === '') {
+        return '';
       }
 
       return this.manufacturers[manufacturerKey].name;
     },
     fixtureNameIsWithoutManufacturer() {
       const manufacturerName = this.manufacturerName.trim().toLowerCase();
-      return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
+      return manufacturerName === '' || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
     },
   },
 };

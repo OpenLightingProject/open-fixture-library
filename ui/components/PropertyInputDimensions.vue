@@ -46,12 +46,12 @@ export default {
     PropertyInputNumber,
   },
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     modelValue: arrayProp().withDefault(null),
-    hints: arrayProp().withDefault(() => [`x`, `y`, `z`]),
+    hints: arrayProp().withDefault(() => ['x', 'y', 'z']),
     schemaProperty: objectProp().required,
     unit: stringProp().optional,
     required: booleanProp().withDefault(false),
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       validationData: {
-        'complete-dimensions': ``,
+        'complete-dimensions': '',
       },
     };
   },
@@ -77,7 +77,7 @@ export default {
         return this.modelValue ? this.modelValue[0] : null;
       },
       set(xInput) {
-        this.$emit(`update:model-value`, getDimensionsArray(xInput, this.y, this.z));
+        this.$emit('update:model-value', getDimensionsArray(xInput, this.y, this.z));
       },
     },
     y: {
@@ -85,7 +85,7 @@ export default {
         return this.modelValue ? this.modelValue[1] : null;
       },
       set(yInput) {
-        this.$emit(`update:model-value`, getDimensionsArray(this.x, yInput, this.z));
+        this.$emit('update:model-value', getDimensionsArray(this.x, yInput, this.z));
       },
     },
     z: {
@@ -93,7 +93,7 @@ export default {
         return this.modelValue ? this.modelValue[2] : null;
       },
       set(zInput) {
-        this.$emit(`update:model-value`, getDimensionsArray(this.x, this.y, zInput));
+        this.$emit('update:model-value', getDimensionsArray(this.x, this.y, zInput));
       },
     },
     dimensionsSpecified() {
@@ -101,15 +101,15 @@ export default {
     },
   },
   mounted() {
-    this.$emit(`vf:validate`, this.validationData);
+    this.$emit('vf:validate', this.validationData);
   },
   methods: {
     onFocus() {
-      this.$emit(`focus`);
+      this.$emit('focus');
     },
     onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest(`.dimensions`) !== event.relatedTarget.closest(`.dimensions`)) {
-        this.$emit(`blur`);
+      if (!(event.target && event.relatedTarget) || event.target.closest('.dimensions') !== event.relatedTarget.closest('.dimensions')) {
+        this.$emit('blur');
       }
     },
 

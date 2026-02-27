@@ -64,18 +64,18 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `This capability enables a non-static frost effect, e.g. pulse. Use the Frost type instead if a static frost intensity can be chosen.`,
+      hint: 'This capability enables a non-static frost effect, e.g. pulse. Use the Frost type instead if a static frost intensity can be chosen.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        effectName: ``,
-        speed: ``,
+        effectName: '',
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

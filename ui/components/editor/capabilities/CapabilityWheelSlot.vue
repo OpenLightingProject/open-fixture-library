@@ -64,10 +64,10 @@ export default {
        * @public
        */
       defaultData: {
-        slotNumber: ``,
+        slotNumber: '',
         slotNumberStart: null,
         slotNumberEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

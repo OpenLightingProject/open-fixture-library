@@ -41,7 +41,7 @@ export default {
        * @public
        */
       defaultData: {
-        frostIntensity: ``,
+        frostIntensity: '',
       },
     };
   },

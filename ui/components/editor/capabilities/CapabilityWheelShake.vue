@@ -85,16 +85,16 @@ export default {
        * @public
        */
       defaultData: {
-        slotNumber: ``,
+        slotNumber: '',
         slotNumberStart: null,
         slotNumberEnd: null,
-        shakeSpeed: ``,
+        shakeSpeed: '',
         shakeSpeedStart: null,
         shakeSpeedEnd: null,
-        shakeAngle: ``,
+        shakeAngle: '',
         shakeAngleStart: null,
         shakeAngleEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

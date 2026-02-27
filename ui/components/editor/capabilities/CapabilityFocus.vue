@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         distance: null,
-        distanceStart: `near`,
-        distanceEnd: `far`,
-        comment: ``,
+        distanceStart: 'near',
+        distanceEnd: 'far',
+        comment: '',
       },
     };
   },

@@ -1,7 +1,7 @@
 import https from 'https';
 import { XmlDocument, XsdValidator } from 'libxml2-wasm';
 
-const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd`;
+const SCHEMA_URL = 'https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd';
 
 /**
  * @typedef {object} ExportFile
@@ -18,17 +18,17 @@ const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testSchemaConformity(exportFile, allExportFiles) {
-  if (exportFile.name.startsWith(`gobos/`)) {
+  if (exportFile.name.startsWith('gobos/')) {
     return;
   }
 
   const schemaData = await new Promise((resolve, reject) => {
     https.get(SCHEMA_URL, response => {
-      let data = ``;
-      response.on(`data`, chunk => {
+      let data = '';
+      response.on('data', chunk => {
         data += chunk;
       });
-      response.on(`end`, () => {
+      response.on('end', () => {
         resolve(data);
       });
     });

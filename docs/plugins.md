@@ -24,18 +24,18 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 <!-- eslint-skip -->
 ```js
 {
-  name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
-  content: `file content`, // Required
-  mimetype: `text/plain`, // Required
+  name: 'filename.ext', // Required, may include forward slashes to generate a folder structure
+  content: 'file content', // Required
+  mimetype: 'text/plain', // Required
   fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information)
-  mode: `8ch` // Optional, mode's shortName if this file only describes a single mode
+  mode: '8ch' // Optional, mode's shortName if this file only describes a single mode
 }
 ```
 
 A very simple export plugin looks like this:
 
 ```js
-export const version = `0.1.0`; // semantic versioning of export plugin
+export const version = '0.1.0'; // semantic versioning of export plugin
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects, see our fixture model
@@ -56,7 +56,7 @@ export async function exportFixtures(fixtures, options) {
         // That's just an example! Usually, the (way larger) file contents are
         // computed using several (possibly asynchronous) helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
-        mimetype: `application/xml`,
+        mimetype: 'application/xml',
       });
     }
   }
@@ -92,7 +92,7 @@ If the file can not be parsed by the import plugin or contains errors, the retur
 Example:
 
 ```js
-export const version = `0.1.0`; // semantic versioning of import plugin
+export const version = '0.1.0'; // semantic versioning of import plugin
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -108,22 +108,22 @@ export async function importFixtures(buffer, fileName, authorName) {
   };
 
   // just an example
-  const manufacturerKey = `cameo`;
-  const fixtureKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
+  const manufacturerKey = 'cameo';
+  const fixtureKey = 'thunder-wash-600-rgb'; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
   out.warnings[`${manufacturerKey}/${fixtureKey}`] = [];
 
   const fileContent = buffer.toString();
-  const couldNotParse = fileContent.includes(`Error`);
+  const couldNotParse = fileContent.includes('Error');
   if (couldNotParse) {
     throw new Error(`Could not parse '${fileName}'.`);
   }
 
-  fixtureObject.name = `Thunder Wash 600 RGB`;
+  fixtureObject.name = 'Thunder Wash 600 RGB';
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manufacturerKey}/${fixtureKey}`].push(`Could not parse categories, please specify them manually.`);
+  out.warnings[`${manufacturerKey}/${fixtureKey}`].push('Could not parse categories, please specify them manually.');
 
   // That's the imported fixture
   out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
@@ -159,8 +159,8 @@ export default async function testValueCorrectness(exportFile) {
 
   // the lighting software crashes if the name is empty, so we must ensure that this won't happen
   // (just an example)
-  if (!(`Name` in xml.Fixture) || xml.Fixture.Name[0] === ``) {
-    errors.push(`Name missing`);
+  if (!('Name' in xml.Fixture) || xml.Fixture.Name[0] === '') {
+    errors.push('Name missing');
   }
 
   if (errors.length > 0) {

@@ -84,14 +84,14 @@ export default {
     if (manufacturerId === undefined) {
       return {
         notFound: null,
-        searchFor: `nothing`,
+        searchFor: 'nothing',
       };
     }
 
     if (!(String(manufacturerId) in register.rdm)) {
       return {
-        notFound: `manufacturer`,
-        searchFor: modelId === undefined ? `manufacturer` : `fixture`,
+        notFound: 'manufacturer',
+        searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
         manufacturerId,
         modelId,
       };
@@ -105,15 +105,15 @@ export default {
 
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
     }
 
     return {
-      notFound: `fixture`,
-      searchFor: `fixture`,
+      notFound: 'fixture',
+      searchFor: 'fixture',
       manufacturerId,
       manufacturerKey: rdmManufacturer.key,
       manufacturerName: manufacturers[rdmManufacturer.key].name,
@@ -121,13 +121,13 @@ export default {
     };
   },
   head() {
-    const title = `RDM Lookup`;
+    const title = 'RDM Lookup';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -135,8 +135,8 @@ export default {
   },
   computed: {
     prefilledFixtureEditorUrl() {
-      if (this.searchFor !== `fixture`) {
-        return `/fixture-editor`;
+      if (this.searchFor !== 'fixture') {
+        return '/fixture-editor';
       }
 
       const useExistingManufacturer = this.manufacturerKey !== undefined;
@@ -174,7 +174,7 @@ function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redir
     return;
   }
 
-  const locationHash = personalityIndex === undefined ? `` : `#rdm-personality-${personalityIndex}`;
+  const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
 
   redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
 }

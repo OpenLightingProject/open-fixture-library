@@ -52,7 +52,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -60,13 +60,13 @@ export default {
     return { manufacturers };
   },
   head() {
-    const title = `Manufacturers`;
+    const title = 'Manufacturers';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -80,12 +80,12 @@ export default {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
-          letter = `#`;
+          letter = '#';
         }
 
         if (!(letter in letters)) {
           letters[letter] = {
-            id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
+            id: letter === '#' ? 'letter-numeric' : `letter-${letter.toLowerCase()}`,
             manufacturers: [],
           };
         }
@@ -102,11 +102,11 @@ export default {
     },
   },
   destroyed() {
-    document.documentElement.style.scrollBehavior = ``;
+    document.documentElement.style.scrollBehavior = '';
   },
   methods: {
     setScrollBehavior() {
-      document.documentElement.style.scrollBehavior = `smooth`;
+      document.documentElement.style.scrollBehavior = 'smooth';
     },
   },
 };

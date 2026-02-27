@@ -9,8 +9,8 @@ import { embedResourcesIntoFixtureJson, fixtureFromRepository } from '../../lib/
 import { sendAttachment, sendJson } from '../../lib/server-response-helpers.js';
 /** @typedef {import('http').ServerResponse} ServerResponse */
 
-const pluginsPromise = importJson(`../../plugins/plugins.json`, import.meta.url);
-const registerPromise = importJson(`../../fixtures/register.json`, import.meta.url);
+const pluginsPromise = importJson('../../plugins/plugins.json', import.meta.url);
+const registerPromise = importJson('../../fixtures/register.json', import.meta.url);
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
@@ -26,7 +26,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
   try {
     const files = await plugin.exportFixtures(fixtures, {
-      baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
+      baseDirectory: fileURLToPath(new URL('../../', import.meta.url)),
       date: new Date(),
     });
 
@@ -43,13 +43,13 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
     }
 
     const zipBuffer = await archive.generateAsync({
-      type: `nodebuffer`,
-      compression: `DEFLATE`,
+      type: 'nodebuffer',
+      compression: 'DEFLATE',
     });
     response.statusCode = 200;
     sendAttachment(response, {
       name: `ofl_export_${zipName}.zip`,
-      mimetype: `application/zip`,
+      mimetype: 'application/zip',
       content: zipBuffer,
     });
   }
@@ -64,7 +64,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 const router = express.Router();
 
 // support JSON encoded bodies
-router.use(express.json({ limit: `50mb` }));
+router.use(express.json({ limit: '50mb' }));
 
 router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, next) => {
   const { format } = request.params;
@@ -78,14 +78,14 @@ router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, ne
   const register = await registerPromise;
   const fixtures = await Promise.all(
     Object.keys(register.filesystem).filter(
-      fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
+      fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
     ).map(fixture => {
-      const [manufacturer, key] = fixture.split(`/`);
+      const [manufacturer, key] = fixture.split('/');
       return fixtureFromRepository(manufacturer, key);
     }),
   );
 
-  downloadFixtures(response, format, fixtures, format, `all fixtures`);
+  downloadFixtures(response, format, fixtures, format, 'all fixtures');
 });
 
 router.post(/^\/download-editor\.(?<format>[a-z0-9_.-]+)$/, async (request, response) => {
@@ -102,7 +102,7 @@ router.post(/^\/download-editor\.(?<format>[a-z0-9_.-]+)$/, async (request, resp
 
   const outObject = request.body;
   const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
-    const [manufacturerKey, fixtureKey] = key.split(`/`);
+    const [manufacturerKey, fixtureKey] = key.split('/');
 
     const manufacturer = new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey]);
     await embedResourcesIntoFixtureJson(jsonObject);
@@ -133,7 +133,7 @@ router.get(/^\/(?<manufacturerKey>[^/]+)\/(?<fixtureKey>[^/.]+)\.(?<format>[a-z0
     return;
   }
 
-  if (format === `json`) {
+  if (format === 'json') {
     try {
       const json = await importJson(`../../fixtures/${manufacturerKey}/${fixtureKey}.json`, import.meta.url);
       await embedResourcesIntoFixtureJson(json);
