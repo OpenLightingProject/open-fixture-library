@@ -43,10 +43,16 @@ function startServer() {
         return;
       }
 
-      let body = ``;
+      const bodyChunks = [];
+      let totalSize = 0;
       request.on(`data`, data => {
-        body += data;
+        bodyChunks.push(data);
+        totalSize += data.length;
+        if (totalSize > 1e6) { // 1MB limit
+          request.destroy(new Error(`Request body too large`));
+        }
       }).on(`end`, () => {
+        const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
 
@@ -59,7 +65,7 @@ function startServer() {
  * call {@link redeploy} to update the corresponding app.
  *
  * @param {string} url The absolute path the request was received at.
- * @param {string} body The JSON string from GitHub.
+ * @param {Buffer} body The raw body from GitHub.
  * @param {Record<string, string>} headers Headers of the request.
  */
 function processRequest(url, body, headers) {
@@ -69,11 +75,11 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
-  hmac.update(body, `utf-8`);
+  const hmac = createHmac(`sha256`, deploymentConfig.webhookSecret);
+  hmac.update(body);
 
   const xub = `X-Hub-Signature-256`;
-  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()]);
+  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || ``);
   const digest = hmac.digest(`hex`);
   const expected = Buffer.from(`sha256=${digest}`);
 
@@ -92,7 +98,7 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const json = JSON.parse(body);
+  const json = JSON.parse(body.toString(`utf-8`));
 
   if (json.ref !== `refs/heads/master`) {
     console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
