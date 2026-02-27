@@ -2,9 +2,9 @@
 
 // crypto is expected to be installed globally
 
+const { execSync } = require(`child_process`);
 const { createHmac, timingSafeEqual } = require(`crypto`);
 const http = require(`http`);
-const { execSync } = require(`child_process`);
 
 const pm2config = require(`./ecosystem.config.js`);
 const secrets = require(`./ofl-secrets.json`);
