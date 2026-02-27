@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   srcDir: 'ui',
   dir: {
-    public: 'public',
-    assets: 'assets',
+    public: 'ui/public',
+    assets: 'ui/assets',
   },
   modules: [
     '@vueuse/nuxt',
@@ -67,7 +67,7 @@ export default defineNuxtConfig({
   security: {
     headers: {
       contentSecurityPolicy: {
-        'img-src': ["'self'", 'data:', 'https://*.ytimg.com'],
+        'img-src': ["'self'", 'data:', 'https://*.ytimg.com', 'https://embetty.open-fixture-library.org'],
         'frame-src': ["'self'", 'https://*.vimeo.com', '*.youtube-nocookie.com', 'https://www.facebook.com'],
       },
     },
