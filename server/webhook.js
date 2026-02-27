@@ -2,7 +2,7 @@
 
 // crypto is expected to be installed globally
 
-const { createHmac } = require(`crypto`);
+const { createHmac, timingSafeEqual } = require(`crypto`);
 const http = require(`http`);
 const { execSync } = require(`child_process`);
 
@@ -72,13 +72,15 @@ function processRequest(url, body, headers) {
   const hmac = createHmac(`sha1`, deploymentConfig.webhookSecret);
   hmac.update(body, `utf-8`);
 
-  const xub = `X-Hub-Signature`;
-  const received = headers[xub] || headers[xub.toLowerCase()];
+  const xub = `X-Hub-Signature-256`;
+  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()]);
   const digest = hmac.digest(`hex`);
-  const expected = `sha1=${digest}`;
+  const expected = Buffer.from(`sha256=${digest}`);
 
-  if (received !== expected) {
-    console.error(`Wrong secret: Expected '${expected}', received '${received}'`);
+  if (received.length !== expected.length || !timingSafeEqual(received, expected)) {
+    const expectedString = expected.toString(`utf-8`);
+    const receivedString = received.toString(`utf-8`);
+    console.error(`Wrong secret: Expected '${expectedString}', received '${receivedString}'`);
     return;
   }
 
