@@ -25,26 +25,26 @@ try {
   if (tasks.length === 0) {
     await pullRequest.updateComment({
       fileUrl: new URL(import.meta.url),
-      name: `Plugin export diff`,
+      name: 'Plugin export diff',
       lines: [],
     });
     process.exit(0);
   }
 
   const lines = [
-    `You can view your uncommitted changes in plugin exports manually by executing:`,
-    `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
-    ``,
+    'You can view your uncommitted changes in plugin exports manually by executing:',
+    '`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>`',
+    '',
   ];
 
-  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = '⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!';
 
   for (const task of tasks) {
     const taskResultLines = await performTask(task);
 
     // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
     // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
+    if ([...lines, ...taskResultLines, tooLongMessage].join('\r\n').length > 260_000) {
       lines.push(tooLongMessage);
       break;
     }
@@ -54,7 +54,7 @@ try {
 
   await pullRequest.updateComment({
     fileUrl: new URL(import.meta.url),
-    name: `Plugin export diff`,
+    name: 'Plugin export diff',
     lines,
   });
 }
@@ -70,13 +70,13 @@ catch (error) {
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
-  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  const testFixtures = await importJson('../test-fixtures.json', import.meta.url);
   const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
 
-  const plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  const plugins = await importJson('../../plugins/plugins.json', import.meta.url);
   const usablePlugins = plugins.exportPlugins.filter(
     // don't diff new plugins and the ofl plugin (which essentially exports the source files)
-    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
+    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== 'ofl',
   );
   const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
   const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
@@ -198,50 +198,50 @@ async function performTask(task) {
   const pluginDisplayName = task.currentPluginKey === task.comparePluginKey ? task.currentPluginKey : `${task.comparePluginKey}->${task.currentPluginKey}`;
 
   const lines = [
-    `<details>`,
+    '<details>',
     `<summary>${emoji} <strong>${task.manufacturerFixture}:</strong> ${pluginDisplayName}</summary>`,
   ];
 
   if (changeFlags.nothingChanged) {
-    lines.push(`Outputted files not changed.`);
+    lines.push('Outputted files not changed.');
   }
   else {
-    lines.push(`<blockquote>`);
+    lines.push('<blockquote>');
 
     if (changeFlags.hasRemoved) {
       lines.push(
-        `<strong>Removed files</strong>`,
-        `<ul>`,
+        '<strong>Removed files</strong>',
+        '<ul>',
         ...output.removedFiles.map(file => `<li>${file}</li>`),
-        `</ul>`,
+        '</ul>',
       );
     }
 
     if (changeFlags.hasAdded) {
       lines.push(
-        `<strong>Added files</strong>`,
-        `<ul>`,
+        '<strong>Added files</strong>',
+        '<ul>',
         ...output.addedFiles.map(file => `<li>${file}</li>`),
-        `</ul>`,
+        '</ul>',
       );
     }
 
     for (const file of Object.keys(output.changedFiles)) {
       lines.push(
-        `<details>`,
+        '<details>',
         `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
-        ``,
-        `\`\`\`diff`,
+        '',
+        '```diff',
         output.changedFiles[file],
-        `\`\`\``,
-        `</details>`,
+        '```',
+        '</details>',
       );
     }
 
-    lines.push(`</blockquote>`);
+    lines.push('</blockquote>');
   }
 
-  lines.push(`</details>`);
+  lines.push('</details>');
 
   return lines;
 }
@@ -277,16 +277,16 @@ function getChangeFlags(diffOutput) {
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {
-    return `💤`;
+    return '💤';
   }
 
   if (changeFlags.hasChanged || (changeFlags.hasAdded && changeFlags.hasRemoved)) {
-    return `🆚`;
+    return '🆚';
   }
 
   if (changeFlags.hasAdded) {
-    return `🆕`;
+    return '🆕';
   }
 
-  return `❌`;
+  return '❌';
 }

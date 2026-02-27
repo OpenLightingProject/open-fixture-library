@@ -4,7 +4,7 @@ import VueForm from 'vue-form';
 Vue.use(VueForm, {
   validators: {
     'step': function(value, stepValue) {
-      return stepValue === `any` || Number(value) % Number(stepValue) === 0;
+      return stepValue === 'any' || Number(value) % Number(stepValue) === 0;
     },
     'data-exclusive-minimum': function(value, exclusiveMinimum) {
       return Number(value) > Number(exclusiveMinimum);
@@ -56,7 +56,7 @@ Vue.use(VueForm, {
       const component = vnode.componentInstance;
 
       if (component.hasNumber) {
-        return component.selectedNumber !== `` && component.selectedNumber !== null;
+        return component.selectedNumber !== '' && component.selectedNumber !== null;
       }
 
       return true;
@@ -68,13 +68,13 @@ Vue.use(VueForm, {
       return /^\s*#[\da-f]{6}(?:\s*,\s*#[\da-f]{6})*\s*$/i.test(value);
     },
     'max-file-size': function(file, attributeValue) {
-      if (typeof file === `object`) {
+      if (typeof file === 'object') {
         let maxSize = Number.parseInt(attributeValue, 10);
 
-        if (attributeValue.includes(`M`)) {
+        if (attributeValue.includes('M')) {
           maxSize *= 1000 * 1000;
         }
-        else if (attributeValue.includes(`k`)) {
+        else if (attributeValue.includes('k')) {
           maxSize *= 1000;
         }
 

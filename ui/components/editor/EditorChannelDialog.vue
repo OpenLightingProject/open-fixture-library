@@ -386,7 +386,7 @@ export default {
       }));
     },
     selectedChannelUuidsString() {
-      return this.selectedChannelUuids.join(`,`);
+      return this.selectedChannelUuids.join(',');
     },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
@@ -399,19 +399,19 @@ export default {
       return modeName;
     },
     title() {
-      if (this.channel.editMode === `add-existing`) {
+      if (this.channel.editMode === 'add-existing') {
         return `Add channel to mode ${this.currentModeDisplayName}`;
       }
 
-      if (this.channel.editMode === `create`) {
-        return `Create new channel`;
+      if (this.channel.editMode === 'create') {
+        return 'Create new channel';
       }
 
-      if (this.channel.editMode === `edit-duplicate`) {
-        return `Edit channel duplicate`;
+      if (this.channel.editMode === 'edit-duplicate') {
+        return 'Edit channel duplicate';
       }
 
-      return `Edit channel`;
+      return 'Edit channel';
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
@@ -419,23 +419,23 @@ export default {
       );
     },
     submitButtonTitle() {
-      if (this.channel.editMode === `add-existing`) {
+      if (this.channel.editMode === 'add-existing') {
         const count = this.selectedChannelUuids.length;
-        return count <= 1 ? `Add channel` : `Add ${count} channels`;
+        return count <= 1 ? 'Add channel' : `Add ${count} channels`;
       }
 
-      if (this.channel.editMode === `create`) {
-        return `Create channel`;
+      if (this.channel.editMode === 'create') {
+        return 'Create channel';
       }
 
-      return `Save changes`;
+      return 'Save changes';
     },
   },
   watch: {
     channel: {
       handler() {
         if (isChannelChanged(this.channel)) {
-          this.$emit(`channel-changed`);
+          this.$emit('channel-changed');
           this.channelChanged = true;
         }
       },
@@ -444,7 +444,7 @@ export default {
   },
   methods: {
     setEditModeCreate() {
-      this.channel.editMode = `create`;
+      this.channel.editMode = 'create';
       this.channel.uuid = uuidv4();
     },
 
@@ -479,7 +479,7 @@ export default {
 
     deselectChannel(channelUuid) {
       const deselectedChannel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in deselectedChannel;
+      const isFineChannel = 'coarseChannelId' in deselectedChannel;
 
       // Deselect the channel
       this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
@@ -489,7 +489,7 @@ export default {
         this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
           const channel = this.fixture.availableChannels[uuid];
           return (
-            !(`coarseChannelId` in channel) ||
+            !('coarseChannelId' in channel) ||
             channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
             channel.resolution < deselectedChannel.resolution
           );
@@ -500,7 +500,7 @@ export default {
       // Deselect all fine channels belonging to this coarse channel
       this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
         const channel = this.fixture.availableChannels[uuid];
-        return !(`coarseChannelId` in channel) || channel.coarseChannelId !== channelUuid;
+        return !('coarseChannelId' in channel) || channel.coarseChannelId !== channelUuid;
       });
     },
 
@@ -510,7 +510,7 @@ export default {
       }
 
       const selectedChannel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in selectedChannel;
+      const isFineChannel = 'coarseChannelId' in selectedChannel;
 
       if (!isFineChannel) {
         this.selectedChannelUuids.push(channelUuid);
@@ -528,7 +528,7 @@ export default {
       for (const uuid of this.currentModeUnchosenChannelUuids) {
         const channel = this.fixture.availableChannels[uuid];
         if (
-          `coarseChannelId` in channel &&
+          'coarseChannelId' in channel &&
           channel.coarseChannelId === coarseChannelId &&
           channel.resolution < currentResolution &&
           !this.isChannelSelected(uuid) &&
@@ -563,14 +563,14 @@ export default {
         return;
       }
 
-      if (this.channel.editMode === `add-existing` && this.currentModeUnchosenChannels.length === 0) {
-        this.channel.editMode = `create`;
+      if (this.channel.editMode === 'add-existing' && this.currentModeUnchosenChannels.length === 0) {
+        this.channel.editMode = 'create';
       }
-      else if (this.channel.editMode === `add-existing`) {
-        this.channel.uuid = ``;
+      else if (this.channel.editMode === 'add-existing') {
+        this.channel.uuid = '';
         this.selectedChannelUuids = [];
       }
-      else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
+      else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
         this.copyPropertiesFromChannel(this.fixture.availableChannels[this.channel.uuid]);
       }
 
@@ -586,12 +586,12 @@ export default {
     },
 
     async onChannelDialogClose() {
-      if (this.channel.editMode === ``) {
+      if (this.channel.editMode === '') {
         // saving did already manage everything
         return;
       }
 
-      if (this.channelChanged && !window.confirm(`Do you want to lose the entered channel data?`)) {
+      if (this.channelChanged && !window.confirm('Do you want to lose the entered channel data?')) {
         await this.$nextTick();
         this.restored = true;
         this.$refs.channelDialog.show();
@@ -602,7 +602,7 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged || channelName === ``) {
+      if (this.areCapabilitiesChanged || channelName === '') {
         return;
       }
 
@@ -612,7 +612,7 @@ export default {
         color => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
-        capability.type = `ColorIntensity`;
+        capability.type = 'ColorIntensity';
         capability.typeData.color = matchingColor;
         return;
       }
@@ -682,10 +682,10 @@ export default {
       }
 
       if (this.formstate.$invalid) {
-        const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
+        const invalidFields = document.querySelectorAll('#channel-dialog .vf-field-invalid');
 
         for (let index = 0; index < invalidFields.length; index++) {
-          const enclosingDetails = invalidFields[index].closest(`details:not([open])`);
+          const enclosingDetails = invalidFields[index].closest('details:not([open])');
 
           if (enclosingDetails) {
             enclosingDetails.open = true;
@@ -695,7 +695,7 @@ export default {
           }
         }
 
-        const scrollContainer = invalidFields[0].closest(`.dialog`);
+        const scrollContainer = invalidFields[0].closest('.dialog');
         scrollIntoView(invalidFields[0], {
           time: 300,
           align: {
@@ -742,7 +742,7 @@ export default {
         for (const channelId of Object.keys(this.fixture.availableChannels)) {
           const channel = this.fixture.availableChannels[channelId];
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
-            this.$emit(`remove-channel`, channelId);
+            this.$emit('remove-channel', channelId);
           }
         }
       }
@@ -811,7 +811,7 @@ export default {
     },
 
     async resetChannelForm() {
-      this.$emit(`reset-channel`);
+      this.$emit('reset-channel');
 
       await this.$nextTick();
       this.formstate._reset(); // resets validation status
@@ -833,7 +833,7 @@ export default {
 
       await this.$nextTick();
       const firstNewCapability = this.$refs.capabilities[insertIndex];
-      const scrollContainer = firstNewCapability.$el.closest(`.dialog`);
+      const scrollContainer = firstNewCapability.$el.closest('.dialog');
 
       scrollIntoView(firstNewCapability.$el, {
         time: 0,
@@ -847,13 +847,13 @@ export default {
     },
 
     openDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = true;
       }
     },
 
     closeDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = false;
       }
     },

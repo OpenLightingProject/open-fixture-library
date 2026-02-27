@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      localValue: ``,
+      localValue: '',
     };
   },
   computed: {
@@ -38,22 +38,22 @@ export default {
      */
     validationData() {
       return {
-        pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
-        minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
-        maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
+        pattern: 'pattern' in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
+        minlength: 'minLength' in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
+        maxlength: 'maxLength' in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
       };
     },
   },
   watch: {
     value: {
       handler(newValue) {
-        this.localValue = newValue ? String(newValue) : ``;
+        this.localValue = newValue ? String(newValue) : '';
       },
       immediate: true,
     },
     validationData: {
       handler(newValidationData) {
-        this.$emit(`vf:validate`, newValidationData);
+        this.$emit('vf:validate', newValidationData);
       },
       deep: true,
       immediate: true,
@@ -65,11 +65,11 @@ export default {
       this.$el.focus();
     },
     update() {
-      this.$emit(`input`, this.localValue);
+      this.$emit('input', this.localValue);
     },
     async onBlur() {
       await this.$nextTick();
-      this.$emit(`blur`, this.localValue);
+      this.$emit('blur', this.localValue);
     },
   },
 };

@@ -123,9 +123,9 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2023-09-15`,
-      climateStrikeWebsite: `https://fridaysforfuture.org/september15/`,
-      hashtags: [`climatejustice`, `FridaysForFuture`, `climatestrike`, `EndFossilFuels`, `ClimateForChange`],
+      strikeDateString: '2023-09-15',
+      climateStrikeWebsite: 'https://fridaysforfuture.org/september15/',
+      hashtags: ['climatejustice', 'FridaysForFuture', 'climatestrike', 'EndFossilFuels', 'ClimateForChange'],
     };
   },
   created() {
@@ -144,9 +144,8 @@ export default {
   },
   mounted() {
     if (this.isClimateStrike) {
-      document.documentElement.style.overflow = `hidden`;
+      document.documentElement.style.overflow = 'hidden';
     }
   },
 };
 </script>
-

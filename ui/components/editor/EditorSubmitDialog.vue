@@ -213,17 +213,17 @@ import FixturePage from '../fixture-page/FixturePage.vue';
 import FixtureHeader from '../FixtureHeader.vue';
 
 const stateTitles = {
-  closed: `Closed`,
-  validating: `Validating your new fixture…`,
-  ready: `Submit your new fixture`,
-  preview: `Preview fixture`,
-  uploading: `Submitting your new fixture…`,
-  success: `Upload complete`,
-  error: `Upload failed`,
+  closed: 'Closed',
+  validating: 'Validating your new fixture…',
+  ready: 'Submit your new fixture',
+  preview: 'Preview fixture',
+  uploading: 'Submitting your new fixture…',
+  success: 'Upload complete',
+  error: 'Upload failed',
 };
 const stateTitlesPlural = {
-  ready: `Submit your new fixtures`,
-  uploading: `Submitting your new fixtures…`,
+  ready: 'Submit your new fixtures',
+  uploading: 'Submitting your new fixtures…',
 };
 
 export default {
@@ -244,7 +244,7 @@ export default {
   },
   data() {
     return {
-      state: `closed`,
+      state: 'closed',
       requestBody: null,
       error: null,
       pullRequestUrl: null,
@@ -272,8 +272,8 @@ export default {
     rawData() {
       const rawData = JSON.stringify(this.requestBody, null, 2);
 
-      if (this.state === `error`) {
-        const backticks = '```'; // eslint-disable-line quotes
+      if (this.state === 'error') {
+        const backticks = '```';
         return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
       }
 
@@ -307,7 +307,7 @@ export default {
         return null;
       }
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split(`/`);
+      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/');
 
       const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
 
@@ -351,9 +351,9 @@ export default {
     async validate(requestBody) {
       this.requestBody = requestBody;
 
-      console.log(`validate`, structuredClone(this.requestBody));
+      console.log('validate', structuredClone(this.requestBody));
 
-      this.state = `validating`;
+      this.state = 'validating';
       try {
         const response = await this.$axios.post(
           this.endpoint,
@@ -361,7 +361,7 @@ export default {
         );
 
         this.fixtureCreateResult = response.data;
-        this.state = `ready`;
+        this.state = 'ready';
       }
       catch (error) {
         let errorMessage = error.message;
@@ -369,15 +369,15 @@ export default {
           errorMessage = error.response.data.error;
         }
 
-        console.error(`There was a problem with the request:`, errorMessage);
+        console.error('There was a problem with the request:', errorMessage);
 
         this.error = errorMessage;
-        this.state = `error`;
+        this.state = 'error';
       }
     },
     async onPreview() {
       this.previewFixtureKey = Object.keys(this.fixtureCreateResult.fixtures)[0];
-      this.state = `preview`;
+      this.state = 'preview';
     },
     async onSubmit() {
       this.requestBody = {
@@ -386,18 +386,18 @@ export default {
         githubComment: this.githubComment ?? null,
       };
 
-      console.log(`submit`, structuredClone(this.requestBody));
+      console.log('submit', structuredClone(this.requestBody));
 
-      this.state = `uploading`;
+      this.state = 'uploading';
       try {
         const response = await this.$axios.post(
-          `/api/v1/fixtures/submit`,
+          '/api/v1/fixtures/submit',
           this.requestBody,
         );
 
         this.pullRequestUrl = response.data.pullRequestUrl;
-        this.state = `success`;
-        this.$emit(`success`);
+        this.state = 'success';
+        this.$emit('success');
       }
       catch (error) {
         let errorMessage = error.message;
@@ -405,18 +405,18 @@ export default {
           errorMessage = error.response.data.error;
         }
 
-        console.error(`There was a problem with the request:`, errorMessage);
+        console.error('There was a problem with the request:', errorMessage);
 
         this.error = errorMessage;
-        this.state = `error`;
+        this.state = 'error';
       }
     },
     onReset() {
-      this.state = `closed`;
-      this.$emit(`reset`);
+      this.state = 'closed';
+      this.$emit('reset');
     },
     onCancel() {
-      this.state = `closed`;
+      this.state = 'closed';
     },
   },
 };

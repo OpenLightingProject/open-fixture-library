@@ -4,9 +4,9 @@ import importJson from '../../lib/import-json.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 // needed for export test
-export const supportedOflVersion = `12.2.1`;
+export const supportedOflVersion = '12.2.1';
 
-export const version = `1.0.0`;
+export const version = '1.0.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -33,7 +33,7 @@ export async function exportFixtures(fixtures, options) {
     }
   });
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson('../../fixtures/manufacturers.json', import.meta.url);
 
   // manufacturers.json file
   const usedManufacturerData = {
@@ -45,9 +45,9 @@ export async function exportFixtures(fixtures, options) {
     }
   }
   files.push({
-    name: `manufacturers.json`,
+    name: 'manufacturers.json',
     content: `${JSON.stringify(usedManufacturerData, null, 2)}\n`,
-    mimetype: `application/dragonframe-manufacturers`,
+    mimetype: 'application/dragonframe-manufacturers',
   });
 
   return files;
@@ -74,7 +74,7 @@ function getFixtureFile(fixture) {
   return {
     name: `${fixture.manufacturer.key}/${fixture.key}.json`,
     content: fixtureJsonStringify(jsonData),
-    mimetype: `application/dragonframe-fixture`,
+    mimetype: 'application/dragonframe-fixture',
     fixtures: [fixture],
   };
 }

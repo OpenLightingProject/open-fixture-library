@@ -36,36 +36,36 @@ export default {
   },
   computed: {
     min() {
-      if (this.minimum !== undefined && this.minimum !== `invalid`) {
+      if (this.minimum !== undefined && this.minimum !== 'invalid') {
         return this.minimum;
       }
 
-      if (`minimum` in this.schemaProperty) {
+      if ('minimum' in this.schemaProperty) {
         return this.schemaProperty.minimum;
       }
 
       return this.exclusiveMinimum;
     },
     max() {
-      if (this.maximum !== undefined && this.maximum !== `invalid`) {
+      if (this.maximum !== undefined && this.maximum !== 'invalid') {
         return this.maximum;
       }
 
-      if (`maximum` in this.schemaProperty) {
+      if ('maximum' in this.schemaProperty) {
         return this.schemaProperty.maximum;
       }
 
       return this.exclusiveMaximum;
     },
     exclusiveMinimum() {
-      if (`exclusiveMinimum` in this.schemaProperty) {
+      if ('exclusiveMinimum' in this.schemaProperty) {
         return this.schemaProperty.exclusiveMinimum;
       }
 
       return null;
     },
     exclusiveMaximum() {
-      if (`exclusiveMaximum` in this.schemaProperty) {
+      if ('exclusiveMaximum' in this.schemaProperty) {
         return this.schemaProperty.exclusiveMaximum;
       }
 
@@ -75,7 +75,7 @@ export default {
       if (this.stepOverride !== undefined) {
         return this.stepOverride;
       }
-      return this.schemaProperty.type === `integer` ? 1 : `any`;
+      return this.schemaProperty.type === 'integer' ? 1 : 'any';
     },
 
     /**
@@ -89,14 +89,14 @@ export default {
         'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
         'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
         step: `${this.step}`,
-        type: `number`,
+        type: 'number',
       };
     },
   },
   watch: {
     validationData: {
       handler(newValidationData) {
-        this.$emit(`vf:validate`, newValidationData);
+        this.$emit('vf:validate', newValidationData);
       },
       deep: true,
       immediate: true,
@@ -110,12 +110,12 @@ export default {
     update() {
       const input = this.$el;
       if (input.validity && input.validity.badInput) {
-        this.$emit(`input`, `invalid`);
+        this.$emit('input', 'invalid');
         return;
       }
 
-      if (input.value === ``) {
-        this.$emit(`input`, null);
+      if (input.value === '') {
+        this.$emit('input', null);
         return;
       }
 
@@ -124,10 +124,10 @@ export default {
         value = Number.parseFloat(input.value);
       }
       catch {
-        value = `invalid`;
+        value = 'invalid';
       }
 
-      this.$emit(`input`, value);
+      this.$emit('input', value);
     },
   },
 };

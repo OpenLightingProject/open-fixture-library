@@ -73,11 +73,11 @@ export default {
        * @public
        */
       defaultData: {
-        fogType: ``,
-        fogOutput: ``,
+        fogType: '',
+        fogOutput: '',
         fogOutputStart: null,
         fogOutputEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

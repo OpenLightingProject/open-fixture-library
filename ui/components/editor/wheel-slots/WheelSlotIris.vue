@@ -41,7 +41,7 @@ export default {
        * @public
        */
       defaultData: {
-        openPercent: ``,
+        openPercent: '',
       },
     };
   },

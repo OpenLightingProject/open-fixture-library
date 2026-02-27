@@ -12,24 +12,24 @@ import { checkFixture, checkUniqueness } from './fixture-valid.js';
 
 
 const cliArguments = minimist(process.argv.slice(2), {
-  boolean: [`h`, `a`],
-  alias: { h: `help`, a: `all-fixtures` },
+  boolean: ['h', 'a'],
+  alias: { h: 'help', a: 'all-fixtures' },
 });
 
-const scriptName = import.meta.url.split(`/`).pop();
+const scriptName = import.meta.url.split('/').pop();
 
 const helpMessage = [
-  `Check validity of some/all fixtures`,
+  'Check validity of some/all fixtures',
   `Usage: node ${scriptName} -a | -h | fixtures [...]`,
-  `Options:`,
-  `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
-  `     has to resolve to the form 'manufacturer/fixture'`,
-  `     depending on your shell, you can use glob-patterns to match multiple fixtures`,
-  `  --all-fixtures, -a:`,
-  `     check all fixtures contained in the fixtures/ directory`,
-  `  --help, -h:`,
-  `     Show this help message.`,
-].join(`\n`);
+  'Options:',
+  '  fixtures: a list of fixtures contained in the fixtures/ directory.',
+  '     has to resolve to the form \'manufacturer/fixture\'',
+  '     depending on your shell, you can use glob-patterns to match multiple fixtures',
+  '  --all-fixtures, -a:',
+  '     check all fixtures contained in the fixtures/ directory',
+  '  --help, -h:',
+  '     Show this help message.',
+].join('\n');
 
 let fixturePaths = cliArguments._;
 
@@ -57,7 +57,7 @@ const uniqueValues = {
   fixShortNames: new Set(),
 };
 
-const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
+const fixtureDirectoryUrl = new URL('../fixtures/', import.meta.url);
 
 try {
   const results = await runTests();
@@ -79,19 +79,19 @@ try {
 
   // summary
   if (totalWarnings > 0) {
-    console.log(styleText(`yellow`, `[INFO]`), `${totalWarnings} unresolved warning(s)`);
+    console.log(styleText('yellow', '[INFO]'), `${totalWarnings} unresolved warning(s)`);
   }
 
   if (totalFails === 0) {
-    console.log(styleText(`green`, `[PASS]`), `All ${results.length} tested files were valid.`);
+    console.log(styleText('green', '[PASS]'), `All ${results.length} tested files were valid.`);
     process.exit(0);
   }
 
-  console.error(styleText(`red`, `[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  console.error(styleText('red', '[FAIL]'), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
 }
 catch (error) {
-  console.error(styleText(`red`, `[Error]`), `Test errored:`, error);
+  console.error(styleText('red', '[Error]'), 'Test errored:', error);
 }
 
 /**
@@ -108,8 +108,8 @@ async function runTests() {
       const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
 
       for (const file of await readdir(manufacturersDirectoryUrl)) {
-        if (path.extname(file) === `.json`) {
-          const fixtureKey = path.basename(file, `.json`);
+        if (path.extname(file) === '.json') {
+          const fixtureKey = path.basename(file, '.json');
           promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
         }
       }
@@ -120,16 +120,16 @@ async function runTests() {
     // sanitize given path
     fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
     for (const fixturePath of fixturePaths) {
-      if (path.extname(fixturePath) !== `.json`) {
+      if (path.extname(fixturePath) !== '.json') {
         // TODO: only produce this warning at a higher verbosity level
         promises.push({
           name: fixturePath,
           errors: [],
-          warnings: [`specified file is not a .json document`],
+          warnings: ['specified file is not a .json document'],
         });
         continue;
       }
-      const fixtureKey = path.basename(fixturePath, `.json`);
+      const fixtureKey = path.basename(fixturePath, '.json');
       const manufacturerKey = path.dirname(fixturePath).split(path.sep).pop();
       promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
     }
@@ -168,21 +168,21 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
  */
 async function checkManufacturers() {
   const result = {
-    name: `manufacturers.json`,
+    name: 'manufacturers.json',
     errors: [],
     warnings: [],
   };
 
   try {
     const manufacturers = await importJson(result.name, fixtureDirectoryUrl);
-    const validate = await getAjvValidator(`manufacturers`);
+    const validate = await getAjvValidator('manufacturers');
     const valid = validate(manufacturers);
     if (!valid) {
-      throw getAjvErrorMessages(validate.errors, `manufacturers`);
+      throw getAjvErrorMessages(validate.errors, 'manufacturers');
     }
 
     for (const [manufacturerKey, manufacturerProperties] of Object.entries(manufacturers)) {
-      if (manufacturerKey.startsWith(`$`)) {
+      if (manufacturerKey.startsWith('$')) {
         // JSON schema property
         continue;
       }
@@ -197,7 +197,7 @@ async function checkManufacturers() {
         uniquenessTestResults,
         `Manufacturer name '${manufacturerProperties.name}' is not unique (test is not case-sensitive).`,
       );
-      if (`rdmId` in manufacturerProperties) {
+      if ('rdmId' in manufacturerProperties) {
         checkUniqueness(
           uniqueValues.manRdmIds,
           `${manufacturerProperties.rdmId}`,
@@ -209,7 +209,7 @@ async function checkManufacturers() {
     }
   }
   catch (error) {
-    const isIterable = typeof error[Symbol.iterator] === `function`;
+    const isIterable = typeof error[Symbol.iterator] === 'function';
     result.errors.push(...(isIterable ? error : [error]));
   }
   return result;
@@ -223,15 +223,15 @@ function printFileResult(result) {
   const failed = result.errors.length > 0;
 
   console.log(
-    failed ? styleText(`red`, `[FAIL]`) : styleText(`green`, `[PASS]`),
+    failed ? styleText('red', '[FAIL]') : styleText('green', '[PASS]'),
     result.name,
   );
 
   for (const error of result.errors) {
-    console.log(`└`, styleText(`red`, `Error:`), error);
+    console.log('└', styleText('red', 'Error:'), error);
   }
 
   for (const warning of result.warnings) {
-    console.log(`└`, styleText(`yellow`, `Warning:`), warning);
+    console.log('└', styleText('yellow', 'Warning:'), warning);
   }
 }

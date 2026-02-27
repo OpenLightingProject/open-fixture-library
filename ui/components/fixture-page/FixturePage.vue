@@ -259,7 +259,7 @@ export default {
      * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
-      const videoUrls = this.fixture.getLinksOfType(`video`);
+      const videoUrls = this.fixture.getLinksOfType('video');
       const embettableVideoData = [];
 
       for (const url of videoUrls) {
@@ -283,7 +283,7 @@ export default {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 
-        if (linkType === `video`) {
+        if (linkType === 'video') {
           linksOfType = linksOfType.filter(
             url => !this.videos.some(video => video.url === url),
           );
@@ -294,7 +294,7 @@ export default {
           let name = this.linkTypeNames[linkType];
           const title = `${name} at ${url}`;
 
-          if (linkType === `other`) {
+          if (linkType === 'other') {
             name = url;
           }
           else if (linkDisplayNumber > 1) {
@@ -338,7 +338,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: url => `YouTube`,
+    displayType: url => 'YouTube',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -351,7 +351,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: url => `Vimeo`,
+    displayType: url => 'Vimeo',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -362,7 +362,7 @@ const supportedVideoFormats = {
      * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
      */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: url => `Facebook`,
+    displayType: url => 'Facebook',
     videoId: (url, match) => match[1],
     startAt: (url, match) => 0,
   },

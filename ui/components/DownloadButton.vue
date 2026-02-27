@@ -201,7 +201,7 @@ export default {
     // the manufacturer key and fixture key of a submitted fixture
     fixtureKey: stringProp().optional,
     // the button style: default, 'home' or 'select'
-    buttonStyle: oneOfProp([`default`, `home`, `select`]).withDefault(`default`),
+    buttonStyle: oneOfProp(['default', 'home', 'select']).withDefault('default'),
     // show the help box
     showHelp: booleanProp().withDefault(false),
   },
@@ -212,7 +212,7 @@ export default {
     };
   },
   async fetch() {
-    const plugins = await this.$axios.$get(`/api/v1/plugins`);
+    const plugins = await this.$axios.$get('/api/v1/plugins');
     this.exportPlugins = plugins.exportPlugins.map(
       pluginKey => ({
         key: pluginKey,
@@ -228,25 +228,25 @@ export default {
     },
     title() {
       if (this.isSingle) {
-        return `Download as…`;
+        return 'Download as…';
       }
 
       return `Download all ${this.fixtureCount} fixtures`;
     },
     baseLink() {
       if (this.editorFixtures) {
-        return `/download-editor`;
+        return '/download-editor';
       }
 
       if (this.isSingle) {
         return `/${this.fixtureKey}`;
       }
 
-      return `/download`;
+      return '/download';
     },
   },
   methods: {
-    downloadDataAsFile(blob, filename = ``) {
+    downloadDataAsFile(blob, filename = '') {
       if (window.navigator.msSaveBlob) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
@@ -256,7 +256,7 @@ export default {
         const URL = window.URL || window.webkitURL;
         const downloadUrl = URL.createObjectURL(blob);
 
-        const anchorElement = document.createElement(`a`);
+        const anchorElement = document.createElement('a');
 
         if (anchorElement.download === undefined) {
           // non-HTML5 workaround
@@ -282,20 +282,20 @@ export default {
       const response = await this.$axios.post(
         `${this.baseLink}.${pluginKey}`,
         this.editorFixtures,
-        { responseType: `blob` },
+        { responseType: 'blob' },
       );
 
       if (response.data.error) {
         throw new Error(response.data.error);
       }
 
-      let filename = ``;
-      const disposition = response.headers[`content-disposition`];
-      if (disposition && disposition.includes(`attachment`)) {
+      let filename = '';
+      const disposition = response.headers['content-disposition'];
+      if (disposition && disposition.includes('attachment')) {
         const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
-          filename = matches[1].replaceAll(/["']/g, ``);
+          filename = matches[1].replaceAll(/["']/g, '');
         }
       }
 
@@ -319,7 +319,7 @@ export default {
       }
     },
     onDownloadSelectBlur(event) {
-      if (event.target.value === ``) {
+      if (event.target.value === '') {
         // no plugin has been selected
         return;
       }
@@ -327,7 +327,7 @@ export default {
       const pluginKey = event.target.value;
 
       // reset the select value to make it feel more like a button
-      event.target.value = ``;
+      event.target.value = '';
       this.selectClicked = false;
 
       if (!this.editorFixtures) {

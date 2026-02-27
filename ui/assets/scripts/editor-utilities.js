@@ -19,27 +19,27 @@ export function getEmptyFormState() {
  */
 export function getEmptyFixture() {
   return {
-    key: `[new]`,
+    key: '[new]',
     useExistingManufacturer: true,
-    manufacturerKey: ``,
-    newManufacturerName: ``,
-    newManufacturerWebsite: ``,
-    newManufacturerComment: ``,
+    manufacturerKey: '',
+    newManufacturerName: '',
+    newManufacturerWebsite: '',
+    newManufacturerComment: '',
     newManufacturerRdmId: null,
-    name: ``,
-    shortName: ``,
+    name: '',
+    shortName: '',
     categories: [],
-    comment: ``,
+    comment: '',
     links: [
-      getEmptyLink(`manual`),
-      getEmptyLink(`productPage`),
-      getEmptyLink(`video`),
+      getEmptyLink('manual'),
+      getEmptyLink('productPage'),
+      getEmptyLink('video'),
     ],
     rdmModelId: null,
-    rdmSoftwareVersion: ``,
+    rdmSoftwareVersion: '',
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
-    metaAuthor: ``,
+    metaAuthor: '',
     availableChannels: {},
   };
 }
@@ -49,11 +49,11 @@ export function getEmptyFixture() {
  * @param {string} linkType The type of the new link.
  * @returns {object} An empty fixture link object.
  */
-export function getEmptyLink(linkType = `manual`) {
+export function getEmptyLink(linkType = 'manual') {
   return {
     uuid: uuidv4(),
     type: linkType,
-    url: ``,
+    url: '',
   };
 }
 
@@ -66,15 +66,15 @@ export function getEmptyPhysical() {
     dimensions: null,
     weight: null,
     power: null,
-    DMXconnector: ``,
-    DMXconnectorNew: ``,
+    DMXconnector: '',
+    DMXconnectorNew: '',
     bulb: {
-      type: ``,
+      type: '',
       colorTemperature: null,
       lumens: null,
     },
     lens: {
-      name: ``,
+      name: '',
       degreesMinMax: null,
     },
   };
@@ -87,8 +87,8 @@ export function getEmptyPhysical() {
 export function getEmptyMode() {
   return {
     uuid: uuidv4(),
-    name: ``,
-    shortName: ``,
+    name: '',
+    shortName: '',
     rdmPersonalityIndex: null,
     enablePhysicalOverride: false,
     physical: getEmptyPhysical(),
@@ -103,17 +103,17 @@ export function getEmptyMode() {
 export function getEmptyChannel() {
   return {
     uuid: uuidv4(),
-    editMode: ``,
-    modeId: ``,
-    name: ``,
+    editMode: '',
+    modeId: '',
+    name: '',
     resolution: constants.RESOLUTION_8BIT,
     dmxValueResolution: constants.RESOLUTION_8BIT,
-    defaultValue: ``,
-    highlightValue: ``,
+    defaultValue: '',
+    highlightValue: '',
     constant: null,
-    precedence: ``,
+    precedence: '',
     wheel: {
-      direction: ``,
+      direction: '',
       slots: [],
     },
     wizard: {
@@ -150,7 +150,7 @@ export function getEmptyCapability() {
     uuid: uuidv4(),
     open: true,
     dmxRange: null,
-    type: ``,
+    type: '',
     typeData: {},
   };
 }
@@ -162,7 +162,7 @@ export function getEmptyCapability() {
 export function getEmptyWheelSlot() {
   return {
     uuid: uuidv4(),
-    type: ``,
+    type: '',
     typeData: {},
   };
 }
@@ -174,25 +174,25 @@ export function getEmptyWheelSlot() {
  */
 export function isChannelChanged(channel) {
   return Object.keys(channel).some(property => {
-    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(property)) {
+    if (['uuid', 'editMode', 'modeId', 'wizard'].includes(property)) {
       return false;
     }
 
-    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(property)) {
+    if (['defaultValue', 'highlightValue', 'invert', 'constant', 'crossfade'].includes(property)) {
       return channel[property] !== null;
     }
 
-    if (property === `resolution` || property === `dmxValueResolution`) {
+    if (property === 'resolution' || property === 'dmxValueResolution') {
       return channel[property] !== constants.RESOLUTION_8BIT;
     }
 
-    if (property === `capabilities`) {
+    if (property === 'capabilities') {
       return channel.capabilities.some(
         capability => isCapabilityChanged(capability),
       );
     }
 
-    return channel[property] !== ``;
+    return channel[property] !== '';
   });
 }
 
@@ -206,11 +206,11 @@ export function isCapabilityChanged(capability) {
     return true;
   }
 
-  if (capability.type !== ``) {
+  if (capability.type !== '') {
     return true;
   }
 
-  return Object.values(capability.typeData).some(value => value !== `` && value !== null);
+  return Object.values(capability.typeData).some(value => value !== '' && value !== null);
 }
 
 
@@ -219,7 +219,7 @@ export function isCapabilityChanged(capability) {
  * @returns {string[] | null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
-  if (typeof hexString !== `string`) {
+  if (typeof hexString !== 'string') {
     return null;
   }
 

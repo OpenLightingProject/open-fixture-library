@@ -2,27 +2,27 @@
 
 // crypto is expected to be installed globally
 
-const { execSync } = require(`child_process`);
-const { createHmac, timingSafeEqual } = require(`crypto`);
-const http = require(`http`);
+const { execSync } = require('child_process');
+const { createHmac, timingSafeEqual } = require('crypto');
+const http = require('http');
 
-const pm2config = require(`./ecosystem.config.js`);
-const secrets = require(`./ofl-secrets.json`);
+const pm2config = require('./ecosystem.config.js');
+const secrets = require('./ofl-secrets.json');
 
-const pm2AppConfig = pm2config.apps.find(app => app.name === `ofl`);
+const pm2AppConfig = pm2config.apps.find(app => app.name === 'ofl');
 
 const deploymentConfig = {
   env: pm2AppConfig.env,
-  action: ``,
+  action: '',
   webhookPort: 40_010,
-  webhookPath: `/`,
+  webhookPath: '/',
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
 
 startServer()
-  .then(() => console.log(`Exited`))
-  .catch(error => console.error(`Exited with error`, error));
+  .then(() => console.log('Exited'))
+  .catch(error => console.error('Exited with error', error));
 
 
 /**
@@ -35,28 +35,28 @@ function startServer() {
 
   return new Promise((resolve, reject) => {
     http.createServer((request, response) => {
-      response.writeHead(200, { 'Content-Type': `text/plain` });
-      response.write(`Received`);
+      response.writeHead(200, { 'Content-Type': 'text/plain' });
+      response.write('Received');
       response.end();
 
-      if (request.method !== `POST`) {
+      if (request.method !== 'POST') {
         return;
       }
 
       const bodyChunks = [];
       let totalSize = 0;
-      request.on(`data`, data => {
+      request.on('data', data => {
         bodyChunks.push(data);
         totalSize += data.length;
         if (totalSize > 1e6) { // 1MB limit
-          request.destroy(new Error(`Request body too large`));
+          request.destroy(new Error('Request body too large'));
         }
-      }).on(`end`, () => {
+      }).on('end', () => {
         const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
 
-    }).on(`close`, resolve).on(`error`, reject).listen(port);
+    }).on('close', resolve).on('error', reject).listen(port);
   });
 }
 
@@ -75,32 +75,32 @@ function processRequest(url, body, headers) {
     return;
   }
 
-  const hmac = createHmac(`sha256`, deploymentConfig.webhookSecret);
+  const hmac = createHmac('sha256', deploymentConfig.webhookSecret);
   hmac.update(body);
 
-  const xub = `X-Hub-Signature-256`;
-  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || ``);
-  const digest = hmac.digest(`hex`);
+  const xub = 'X-Hub-Signature-256';
+  const received = Buffer.from(headers[xub] || headers[xub.toLowerCase()] || '');
+  const digest = hmac.digest('hex');
   const expected = Buffer.from(`sha256=${digest}`);
 
   if (received.length !== expected.length || !timingSafeEqual(received, expected)) {
-    const expectedString = expected.toString(`utf-8`);
-    const receivedString = received.toString(`utf-8`);
+    const expectedString = expected.toString('utf-8');
+    const receivedString = received.toString('utf-8');
     console.error(`Wrong secret: Expected '${expectedString}', received '${receivedString}'`);
     return;
   }
 
-  console.info(`Secret test passed`);
+  console.info('Secret test passed');
 
-  const eventName = headers[`X-GitHub-Event`] || headers[`x-github-event`];
-  if (eventName !== `push`) {
+  const eventName = headers['X-GitHub-Event'] || headers['x-github-event'];
+  if (eventName !== 'push') {
     console.log(`Wrong event name: Expected 'push', received '${eventName}'`);
     return;
   }
 
-  const json = JSON.parse(body.toString(`utf-8`));
+  const json = JSON.parse(body.toString('utf-8'));
 
-  if (json.ref !== `refs/heads/master`) {
+  if (json.ref !== 'refs/heads/master') {
     console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
     return;
   }
@@ -116,19 +116,19 @@ function processRequest(url, body, headers) {
  */
 function redeploy(webhookPayload) {
   try {
-    execSync(`./redeploy.sh`, {
-      cwd: `/home/flo`,
+    execSync('./redeploy.sh', {
+      cwd: '/home/flo',
       env: { ...process.env, ...deploymentConfig.env },
-      encoding: `utf-8`,
-      stdio: `pipe`,
+      encoding: 'utf-8',
+      stdio: 'pipe',
     });
-    console.log(`Successfully deployed.`);
+    console.log('Successfully deployed.');
   }
   catch (error) {
     console.log(`Redeploy process failed with exit code ${error.status}.`);
-    console.log(`Notify admin via email about failed deployment...`);
+    console.log('Notify admin via email about failed deployment...');
 
-    const subject = `OFL Deployment failed`;
+    const subject = 'OFL Deployment failed';
     let body = new Date().toISOString();
     body += `\n\nsubprocess status: ${error.status}, signal: ${error.signal}`;
     body += `\n\nsubprocess stdout:\n${error.stdout}`;

@@ -10,19 +10,19 @@ import { fixtureFromRepository } from '../lib/model.js';
 
 try {
   const cliArguments = minimist(process.argv.slice(2), {
-    string: [`p`, `o`],
-    boolean: [`h`, `a`],
-    alias: { p: `plugin`, h: `help`, a: `all-fixtures`, o: `output-dir` },
+    string: ['p', 'o'],
+    boolean: ['h', 'a'],
+    alias: { p: 'plugin', h: 'help', a: 'all-fixtures', o: 'output-dir' },
   });
 
   await checkCliArguments(cliArguments);
 
   let fixtures;
   if (cliArguments.a) {
-    const register = await importJson(`../fixtures/register.json`, import.meta.url);
+    const register = await importJson('../fixtures/register.json', import.meta.url);
     fixtures = Object.keys(register.filesystem).filter(
-      fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
-    ).map(fixtureKey => fixtureKey.split(`/`));
+      fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
+    ).map(fixtureKey => fixtureKey.split('/'));
   }
   else {
     fixtures = cliArguments._.map(relativePath => {
@@ -42,7 +42,7 @@ try {
       ([manufacturer, fixture]) => fixtureFromRepository(manufacturer, fixture),
     )),
     {
-      baseDirectory: fileURLToPath(new URL(`../`, import.meta.url)),
+      baseDirectory: fileURLToPath(new URL('../', import.meta.url)),
       date: new Date(),
     },
   );
@@ -55,13 +55,13 @@ try {
     }
     else {
       console.log();
-      console.log(styleText(`yellow`, `File name: '${file.name}'`));
+      console.log(styleText('yellow', `File name: '${file.name}'`));
       console.log(file.content);
     }
   }
 }
 catch (error) {
-  console.error(styleText(`red`, `[Error]`), `Exporting failed:`, error);
+  console.error(styleText('red', '[Error]'), 'Exporting failed:', error);
   process.exit(1);
 }
 
@@ -72,14 +72,14 @@ catch (error) {
 async function checkCliArguments(cliArguments) {
   const helpMessage = [
     `Usage: ${process.argv[1]} -p <plugin name> [ -a | <fixture> [<more fixtures>] ]`,
-    `Options:`,
-    `  --plugin,       -p: Which plugin should be used to export fixtures.`,
-    `                      E. g. ecue or qlcplus`,
-    `  --all-fixtures, -a: Use all fixtures from register`,
-    `  --output-dir,   -o: If set, save outputted files in this directory`,
-    `                      instead of printing the contents in the console`,
-    `  --help,         -h: Show this help message.`,
-  ].join(`\n`);
+    'Options:',
+    '  --plugin,       -p: Which plugin should be used to export fixtures.',
+    '                      E. g. ecue or qlcplus',
+    '  --all-fixtures, -a: Use all fixtures from register',
+    '  --output-dir,   -o: If set, save outputted files in this directory',
+    '                      instead of printing the contents in the console',
+    '  --help,         -h: Show this help message.',
+  ].join('\n');
 
   if (cliArguments.help) {
     console.log(helpMessage);
@@ -87,19 +87,19 @@ async function checkCliArguments(cliArguments) {
   }
 
   if (!cliArguments.plugin) {
-    console.error(styleText(`red`, `[Error]`), `No plugin specified. See --help for usage.`);
+    console.error(styleText('red', '[Error]'), 'No plugin specified. See --help for usage.');
     process.exit(1);
   }
 
   if (cliArguments._.length === 0 && !cliArguments.a) {
-    console.error(styleText(`red`, `[Error]`), `No fixtures specified. See --help for usage.`);
+    console.error(styleText('red', '[Error]'), 'No fixtures specified. See --help for usage.');
     process.exit(1);
   }
 
-  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+  const plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
   if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-    console.error(styleText(`red`, `[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(`, `));
+    console.error(styleText('red', '[Error]'), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(', '));
     process.exit(1);
   }
 }

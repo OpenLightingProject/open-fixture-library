@@ -19,7 +19,7 @@ try {
 
   await pullRequest.updateComment({
     fileUrl: new URL(import.meta.url),
-    name: `Schema has changed`,
+    name: 'Schema has changed',
     lines,
   });
 }

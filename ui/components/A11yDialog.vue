@@ -116,7 +116,7 @@ import { booleanProp, stringProp } from 'vue-ts-types';
 export default {
   props: {
     id: stringProp(
-      id => (typeof id === `string` && id.endsWith(`-dialog`) ? undefined : `id should end with "-dialog".`),
+      id => (typeof id === 'string' && id.endsWith('-dialog') ? undefined : 'id should end with "-dialog".'),
     ).required,
     isAlertDialog: booleanProp().withDefault(false),
     shown: booleanProp().withDefault(true),
@@ -133,19 +133,19 @@ export default {
     };
   },
   watch: {
-    shown: `update`,
+    shown: 'update',
   },
   async mounted() {
-    const { default: A11yDialog } = await import(`a11y-dialog`);
+    const { default: A11yDialog } = await import('a11y-dialog');
 
     this.dialog = new A11yDialog(this.$el);
 
-    this.dialog.on(`show`, () => {
+    this.dialog.on('show', () => {
       this.$refs.dialog.scrollTop = 0;
-      this.$emit(`show`);
+      this.$emit('show');
     });
 
-    this.dialog.on(`hide`, () => this.$emit(`hide`));
+    this.dialog.on('hide', () => this.$emit('hide'));
 
     this.update();
   },

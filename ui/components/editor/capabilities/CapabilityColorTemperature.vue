@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         colorTemperature: null,
-        colorTemperatureStart: ``,
-        colorTemperatureEnd: ``,
-        comment: ``,
+        colorTemperatureStart: '',
+        colorTemperatureEnd: '',
+        comment: '',
       },
     };
   },

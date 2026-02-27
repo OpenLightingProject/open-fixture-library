@@ -51,13 +51,13 @@ h2 {
 <script>
 export default {
   head() {
-    const title = `About`;
+    const title = 'About';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
