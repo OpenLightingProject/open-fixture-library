@@ -1,6 +1,7 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
+import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
@@ -63,7 +64,7 @@ const enabledRuleParameters = {
   'no-mixed-operators': [],
   'no-multi-spaces': [],
   'no-nested-ternary': [],
-  'no-new-object': [],
+  'no-object-constructor': [],
   'no-prototype-builtins': [],
   'no-restricted-imports': [{
     name: 'fs',
@@ -378,6 +379,39 @@ for (const ruleName of vueCoreExtensionRules) {
   }
 }
 
+// Maps deprecated ESLint core stylistic rule names to their @stylistic/eslint-plugin equivalents.
+const stylisticRuleRenames = {
+  'array-bracket-spacing': '@stylistic/array-bracket-spacing',
+  'arrow-parens': '@stylistic/arrow-parens',
+  'arrow-spacing': '@stylistic/arrow-spacing',
+  'block-spacing': '@stylistic/block-spacing',
+  'brace-style': '@stylistic/brace-style',
+  'comma-dangle': '@stylistic/comma-dangle',
+  'comma-spacing': '@stylistic/comma-spacing',
+  'comma-style': '@stylistic/comma-style',
+  'dot-location': '@stylistic/dot-location',
+  'eol-last': '@stylistic/eol-last',
+  'func-call-spacing': '@stylistic/function-call-spacing',
+  'indent': '@stylistic/indent',
+  'key-spacing': '@stylistic/key-spacing',
+  'keyword-spacing': '@stylistic/keyword-spacing',
+  'linebreak-style': '@stylistic/linebreak-style',
+  'new-parens': '@stylistic/new-parens',
+  'no-confusing-arrow': '@stylistic/no-confusing-arrow',
+  'no-mixed-operators': '@stylistic/no-mixed-operators',
+  'no-multi-spaces': '@stylistic/no-multi-spaces',
+  'no-trailing-spaces': '@stylistic/no-trailing-spaces',
+  'object-curly-spacing': '@stylistic/object-curly-spacing',
+  'quotes': '@stylistic/quotes',
+  'semi': '@stylistic/semi',
+  'space-before-blocks': '@stylistic/space-before-blocks',
+  'space-before-function-paren': '@stylistic/space-before-function-paren',
+  'space-in-parens': '@stylistic/space-in-parens',
+  'space-infix-ops': '@stylistic/space-infix-ops',
+  'spaced-comment': '@stylistic/spaced-comment',
+  'template-curly-spacing': '@stylistic/template-curly-spacing',
+};
+
 export default [
   {
     ignores: [
@@ -410,10 +444,13 @@ export default [
       ecmaVersion: 2025,
       sourceType: 'module',
     },
+    plugins: {
+      '@stylistic': eslintPluginStylistic,
+    },
     rules: {
       ...Object.fromEntries(
         Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
-          ruleName,
+          stylisticRuleRenames[ruleName] ?? ruleName,
           [warnRules.has(ruleName) ? 'warn' : 'error', ...parameters],
         ]),
       ),
@@ -476,7 +513,7 @@ export default [
     files: ['fixtures/**/*.json'],
     rules: {
       // allow alignment of pixel keys in matrix
-      'no-multi-spaces': ['error', {
+      '@stylistic/no-multi-spaces': ['error', {
         exceptions: {
           JSONArrayExpression: true,
         },
