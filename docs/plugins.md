@@ -159,7 +159,7 @@ export default async function testValueCorrectness(exportFile) {
 
   // the lighting software crashes if the name is empty, so we must ensure that this won't happen
   // (just an example)
-  if (!(Name in xml.Fixture) || xml.Fixture.Name[0] === ``) {
+  if (!(`Name` in xml.Fixture) || xml.Fixture.Name[0] === ``) {
     errors.push(`Name missing`);
   }
 
