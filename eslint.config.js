@@ -352,7 +352,9 @@ const disabledRules = [
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
   `jsdoc/tag-lines`,
+  `sonarjs/no-os-command-from-path`,
   `sonarjs/no-unsafe-unzip`,
+  `sonarjs/os-command`,
   `sonarjs/pseudo-random`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
@@ -360,6 +362,7 @@ const disabledRules = [
   `unicorn/no-process-exit`,
   `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
   `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
+  `unicorn/prefer-dom-node-dataset`, // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
   `unicorn/prefer-global-this`,
   `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,
