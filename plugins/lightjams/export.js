@@ -12,6 +12,18 @@ const KNOWN_COLOR_MIXING_TYPES = new Set(['RGB', 'RGBA', 'RGBW', 'RGBAW', 'CMY',
 // Maximum number of channels to set in locate action (Lightjams limitation)
 const MAX_LOCATE_CHANNELS = 20;
 
+// Color name to letter mapping
+const COLOR_MAP = {
+  Red: 'R',
+  Green: 'G',
+  Blue: 'B',
+  White: 'W',
+  Amber: 'A',
+  Cyan: 'C',
+  Magenta: 'M',
+  Yellow: 'Y',
+};
+
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
@@ -324,7 +336,7 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
     }
 
     // Map color names to letters
-    const colorLetter = getColorLetter(color);
+    const colorLetter = COLOR_MAP[color] || null;
     if (!colorLetter) {
       break;
     }
@@ -353,25 +365,6 @@ function detectColorMixingGroup(mode, fixture, startIndex) {
 
   // Less than 3 colors - not a valid color mixing group
   return null;
-}
-
-/**
- * Get color letter from color name
- * @param {string} colorName Color name
- * @returns {string | null} Color letter or null
- */
-function getColorLetter(colorName) {
-  const colorMap = {
-    Red: 'R',
-    Green: 'G',
-    Blue: 'B',
-    White: 'W',
-    Amber: 'A',
-    Cyan: 'C',
-    Magenta: 'M',
-    Yellow: 'Y',
-  };
-  return colorMap[colorName] || null;
 }
 
 /**
