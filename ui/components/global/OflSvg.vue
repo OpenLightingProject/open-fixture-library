@@ -48,19 +48,19 @@ export default {
       if (context.props.colors.length === 0 && context.props.name !== undefined) {
         // hex colors for ColorIntensity capabilities
         const colorLookup = {
-          Red: '#ff0000',
-          Green: '#00ff00',
-          Blue: '#0000ff',
-          Cyan: '#00ffff',
-          Magenta: '#ff00ff',
-          Yellow: '#ffff00',
-          Amber: '#ffbf00',
-          White: '#ffffff',
+          'Red': '#ff0000',
+          'Green': '#00ff00',
+          'Blue': '#0000ff',
+          'Cyan': '#00ffff',
+          'Magenta': '#ff00ff',
+          'Yellow': '#ffff00',
+          'Amber': '#ffbf00',
+          'White': '#ffffff',
           'Warm White': '#ffedde',
           'Cold White': '#edefff',
-          UV: '#8800ff',
-          Lime: '#bfff00',
-          Indigo: '#4b0082',
+          'UV': '#8800ff',
+          'Lime': '#bfff00',
+          'Indigo': '#4b0082',
         };
         colors = [colorLookup[context.props.name]];
       }

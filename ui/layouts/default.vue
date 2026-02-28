@@ -2,9 +2,9 @@
   <div
     id="ofl-root"
     :class="{
-      js: isBrowser,
+      'js': isBrowser,
       'no-js': !isBrowser,
-      touch: isTouchScreen,
+      'touch': isTouchScreen,
       'no-touch': !isTouchScreen,
     }">
 

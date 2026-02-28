@@ -53,7 +53,8 @@ function exportFixtureMode(fixture, mode, options) {
     .declaration('1.0')
     .element({
       Device: {
-        'OFL_Export': {
+        // eslint-disable-next-line camelcase -- required by D::Light
+        OFL_Export: {
           '@id': options.displayedPluginVersion || version,
           '#text': fixture.url,
         },
@@ -105,19 +106,19 @@ function addAttribute(xml, mode, attribute, channels) {
     const xmlChannel = xmlAttribute.element({
       ThisAttribute: {
         '@id': indexInAttribute,
-        HOME: {
+        'HOME': {
           '@id': getDefaultValue(getUsableChannel(channel)),
         },
-        addressIndex: {
+        'addressIndex': {
           '@id': mode.getChannelIndex(channel.key),
         },
-        parameterName: {
+        'parameterName': {
           '@id': getParameterName(channel, mode, attribute, indexInAttribute),
         },
-        minLevel: {
+        'minLevel': {
           '@id': 0,
         },
-        maxLevel: {
+        'maxLevel': {
           '@id': 255,
         },
       },
@@ -235,15 +236,15 @@ function getUsableChannel(channel) {
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {
-    'INTENSITY': [],
-    'COLOUR': [],
-    'FOCUS': [],
-    'BEAM': [],
-    'BLADE': [],
-    'EFFECT': [],
-    'CONTROL': [],
-    'EXTRA': [],
-    'FINE': [],
+    INTENSITY: [],
+    COLOUR: [],
+    FOCUS: [],
+    BEAM: [],
+    BLADE: [],
+    EFFECT: [],
+    CONTROL: [],
+    EXTRA: [],
+    FINE: [],
   };
 
   for (const channel of channels) {

@@ -60,11 +60,11 @@ export async function exportFixtures(fixtures, options) {
 
   for (const manufacturer of Object.keys(manufacturers)) {
     const manufacturerAttributes = {
-      '_CreationDate': timestamp,
-      '_ModifiedDate': timestamp,
-      'Name': manufacturers[manufacturer].data.name,
-      'Comment': manufacturers[manufacturer].data.comment,
-      'Web': manufacturers[manufacturer].data.website || '',
+      _CreationDate: timestamp,
+      _ModifiedDate: timestamp,
+      Name: manufacturers[manufacturer].data.name,
+      Comment: manufacturers[manufacturer].data.comment,
+      Web: manufacturers[manufacturer].data.website || '',
     };
     xmlTiles.element('Manufacturer', manufacturerAttributes);
 
@@ -98,17 +98,17 @@ function addFixture(xmlManufacturer, fixture) {
       const physical = mode.physical || new Physical({});
 
       const xmlFixture = xmlManufacturer.element('Fixture', {
-        '_CreationDate': fixtureCreationDate,
-        '_ModifiedDate': fixtureModifiedDate,
-        'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
-        'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ''),
-        'Comment': getFixtureComment(fixture),
-        'AllocateDmxChannels': mode.channels.length,
-        'Weight': physical.weight || 0,
-        'Power': physical.power || 0,
-        'DimWidth': physical.width || 10,
-        'DimHeight': physical.height || 10,
-        'DimDepth': physical.depth || 10,
+        _CreationDate: fixtureCreationDate,
+        _ModifiedDate: fixtureModifiedDate,
+        Name: fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
+        NameShort: fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ''),
+        Comment: getFixtureComment(fixture),
+        AllocateDmxChannels: mode.channels.length,
+        Weight: physical.weight || 0,
+        Power: physical.power || 0,
+        DimWidth: physical.width || 10,
+        DimHeight: physical.height || 10,
+        DimDepth: physical.depth || 10,
       });
 
       handleMode(xmlFixture, mode);
@@ -167,17 +167,17 @@ function handleMode(xmlFixture, mode) {
     const highlightValue = channel.getHighlightValueWithResolution(resolution);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
-      'Name': channelName,
-      'DefaultValue': defaultValue,
-      'Highlight': highlightValue,
-      'Deflection': 0,
-      'DmxByte0': dmxByte0,
-      'DmxByte1': dmxByte1,
-      'Constant': channel.isConstant ? 1 : 0,
-      'Crossfade': channel.canCrossfade ? 1 : 0,
-      'Invert': channel.isInverted ? 1 : 0,
-      'Precedence': channel.precedence,
-      'ClassicPos': viewPosCount,
+      Name: channelName,
+      DefaultValue: defaultValue,
+      Highlight: highlightValue,
+      Deflection: 0,
+      DmxByte0: dmxByte0,
+      DmxByte1: dmxByte1,
+      Constant: channel.isConstant ? 1 : 0,
+      Crossfade: channel.canCrossfade ? 1 : 0,
+      Invert: channel.isInverted ? 1 : 0,
+      Precedence: channel.precedence,
+      ClassicPos: viewPosCount,
     });
 
     if (fineChannelKey === null) {
@@ -245,11 +245,11 @@ function addCapabilities(xmlChannel, channel, resolution) {
   for (const capability of channel.capabilities) {
     const dmxRange = capability.getDmxRangeWithResolution(resolution);
     xmlChannel.element('Range', {
-      'Name': capability.name,
-      'Start': dmxRange.start,
-      'End': dmxRange.end,
-      'AutoMenu': capability.menuClick === 'hidden' ? 0 : 1,
-      'Centre': capability.menuClick === 'center' ? 1 : 0,
+      Name: capability.name,
+      Start: dmxRange.start,
+      End: dmxRange.end,
+      AutoMenu: capability.menuClick === 'hidden' ? 0 : 1,
+      Centre: capability.menuClick === 'center' ? 1 : 0,
     });
   }
 }

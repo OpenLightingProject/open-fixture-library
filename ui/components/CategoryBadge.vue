@@ -58,7 +58,7 @@ export default {
   render(createElement) {
     const classes = {
       'category-badge': true,
-      selected: this.selected,
+      'selected': this.selected,
     };
     const children = [
       createElement('OflSvg', {

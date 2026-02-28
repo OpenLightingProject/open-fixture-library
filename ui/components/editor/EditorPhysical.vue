@@ -153,7 +153,7 @@ export default {
     };
   },
   watch: {
-    localPhysical: {
+    'localPhysical': {
       handler() {
         this.$emit('update:model-value', structuredClone(this.localPhysical));
       },

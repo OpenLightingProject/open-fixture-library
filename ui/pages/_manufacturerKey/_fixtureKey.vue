@@ -181,7 +181,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${this.$config.websiteUrl}${this.manufacturerKey}`,
+          url: `${this.$config.websiteUrl}${this.manufacturerKey}`,
         },
       };
 

@@ -224,7 +224,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    remove: () => true,
+    'remove': () => true,
     'open-channel-editor': payload => true,
   },
   data() {

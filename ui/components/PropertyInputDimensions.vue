@@ -60,8 +60,8 @@ export default {
   },
   emits: {
     'update:model-value': dimensions => true,
-    focus: () => true,
-    blur: () => true,
+    'focus': () => true,
+    'blur': () => true,
     'vf:validate': validationData => true,
   },
   data() {

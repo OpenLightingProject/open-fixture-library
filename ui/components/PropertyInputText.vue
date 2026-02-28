@@ -22,8 +22,8 @@ export default {
     value: anyProp().required,
   },
   emits: {
-    input: value => true,
-    blur: value => true,
+    'input': value => true,
+    'blur': value => true,
     'vf:validate': validationData => true,
   },
   data() {

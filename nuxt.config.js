@@ -124,7 +124,7 @@ export default {
   head() {
     const theme = this.$cookies.get('__Host-theme') || this.$cookies.get('theme');
     const htmlAttributes = {
-      lang: 'en',
+      'lang': 'en',
       'data-theme': theme,
     };
 

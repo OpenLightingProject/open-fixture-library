@@ -76,13 +76,13 @@ function getOpZChannelType(channel, fixtureKey) {
 
   const opZChannelTypes = {
     [`${defaultValue}`]: () => channel.isConstant || channel.type === 'Shutter',
-    'red': () => channel.color === 'Red',
-    'green': () => channel.color === 'Green',
-    'blue': () => channel.color === 'Blue',
-    'white': () => channel.color === 'White',
-    'color': () => channel.type === 'Multi-Color',
-    'intensity': () => channel.type === 'Intensity',
-    'fog': () => channel.type === 'Fog',
+    red: () => channel.color === 'Red',
+    green: () => channel.color === 'Green',
+    blue: () => channel.color === 'Blue',
+    white: () => channel.color === 'White',
+    color: () => channel.type === 'Multi-Color',
+    intensity: () => channel.type === 'Intensity',
+    fog: () => channel.type === 'Fog',
     // 'knob1': () => false,
     // 'knob2': () => false,
     // 'knob3': () => false,
@@ -92,7 +92,7 @@ function getOpZChannelType(channel, fixtureKey) {
     // 'knob7': () => false,
     // 'knob8': () => false,
     // 'on': () => false,
-    'off': () => channel.type === 'Maintenance',
+    off: () => channel.type === 'Maintenance',
   };
 
   const channelType = Object.keys(opZChannelTypes).find(

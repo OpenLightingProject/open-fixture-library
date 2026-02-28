@@ -88,19 +88,19 @@ export default {
       return {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: this.manufacturer.name,
-        brand: this.manufacturer.name,
-        sameAs: 'website' in this.manufacturer ? this.manufacturer.website : undefined,
+        'name': this.manufacturer.name,
+        'brand': this.manufacturer.name,
+        'sameAs': 'website' in this.manufacturer ? this.manufacturer.website : undefined,
       };
     },
     itemListStructuredData() {
       return {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: this.fixtures.map((fixture, index) => ({
+        'itemListElement': this.fixtures.map((fixture, index) => ({
           '@type': 'ListItem',
-          position: index + 1,
-          url: `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+          'position': index + 1,
+          'url': `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
         })),
       };
     },

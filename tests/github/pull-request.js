@@ -49,7 +49,8 @@ export async function init() {
   const pr = await githubClient.rest.pulls.get({
     owner: repoOwner,
     repo: repoName,
-    'pull_number': process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
   });
 
   // save PR for later use
@@ -68,8 +69,10 @@ export async function fetchChangedComponents() {
     filePromises.push(githubClient.rest.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
-      'pull_number': process.env.GITHUB_PR_NUMBER,
-      'per_page': 100,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      pull_number: process.env.GITHUB_PR_NUMBER,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      per_page: 100,
       page: index + 1,
     }));
   }
@@ -207,8 +210,10 @@ export async function updateComment(test) {
       githubClient.rest.issues.listComments({
         owner: repoOwner,
         repo: repoName,
-        'issue_number': process.env.GITHUB_PR_NUMBER,
-        'per_page': 100,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        issue_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
         page: index + 1,
       }),
     );
@@ -238,7 +243,8 @@ export async function updateComment(test) {
     return githubClient.rest.issues.deleteComment({
       owner: repoOwner,
       repo: repoName,
-      'comment_id': comment.id,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      comment_id: comment.id,
     });
   });
 
@@ -247,7 +253,8 @@ export async function updateComment(test) {
     promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,
       repo: repoName,
-      'issue_number': process.env.GITHUB_PR_NUMBER,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      issue_number: process.env.GITHUB_PR_NUMBER,
       body: message,
     }));
   }
