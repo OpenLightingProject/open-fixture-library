@@ -1,6 +1,7 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
+import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
@@ -25,43 +26,43 @@ const eslintPluginNuxtConfigRecommended = {
   },
 };
 
+const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
+  semi: true,
+});
+stylisticEslintConfig.rules['@stylistic/arrow-parens'] = ['error', 'as-needed'];
+stylisticEslintConfig.rules['@stylistic/function-call-spacing'] = ['error'];
+stylisticEslintConfig.rules['@stylistic/linebreak-style'] = ['error', 'unix'];
+stylisticEslintConfig.rules['@stylistic/multiline-ternary'] = 'off';
+stylisticEslintConfig.rules['@stylistic/no-confusing-arrow'] = ['error', { allowParens: true }];
+stylisticEslintConfig.rules['@stylistic/no-extra-parens'] = 'off';
+stylisticEslintConfig.rules['@stylistic/no-multiple-empty-lines'] = 'off';
+stylisticEslintConfig.rules['@stylistic/operator-linebreak'] = 'off';
+stylisticEslintConfig.rules['@stylistic/padded-blocks'] = 'off';
+stylisticEslintConfig.rules['@stylistic/quote-props'] = 'off';
+stylisticEslintConfig.rules['@stylistic/space-before-function-paren'] = ['error', {
+  anonymous: 'never',
+  asyncArrow: 'always',
+  named: 'never',
+}];
+
 const enabledRuleParameters = {
   // Core ESLint rules
   'accessor-pairs': [],
-  'array-bracket-spacing': [],
-  'arrow-parens': ['as-needed'],
-  'arrow-spacing': [],
-  'block-spacing': [],
-  'brace-style': ['stroustrup'],
   'camelcase': [],
-  'comma-dangle': ['always-multiline'],
-  'comma-spacing': [],
-  'comma-style': [],
   'consistent-return': [],
   'curly': ['all'],
-  'dot-location': ['property'],
   'dot-notation': [],
-  'eol-last': ['always'],
   'eqeqeq': ['always', { null: 'ignore' }],
-  'func-call-spacing': [],
   'getter-return': [],
   'grouped-accessor-pairs': ['getBeforeSet'],
   'guard-for-in': [],
-  'indent': [2, { SwitchCase: 1 }],
-  'key-spacing': [],
-  'keyword-spacing': [],
-  'linebreak-style': ['unix'],
-  'new-parens': [],
   'no-array-constructor': [],
   'no-bitwise': [],
-  'no-confusing-arrow': [{ allowParens: true }],
   'no-constant-binary-expression': [],
   'no-else-return': [{ allowElseIf: false }],
   'no-irregular-whitespace': [],
   'no-lonely-if': [],
   'no-loop-func': [],
-  'no-mixed-operators': [],
-  'no-multi-spaces': [],
   'no-nested-ternary': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
@@ -76,31 +77,17 @@ const enabledRuleParameters = {
     allow: ['_'], // allow placeholder parameters that aren't used anyway
   }],
   'no-template-curly-in-string': [],
-  'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: 'none' }],
   'no-useless-assignment': [],
   'no-var': [],
-  'object-curly-spacing': ['always'],
   'object-shorthand': ['always', { avoidQuotes: true }],
   'prefer-arrow-callback': [],
   'prefer-const': [{ destructuring: 'all' }],
   'prefer-object-spread': [],
   'prefer-rest-params': [],
   'prefer-template': [],
-  'quotes': ['single'],
   'radix': [],
-  'semi': [],
-  'space-before-blocks': [],
-  'space-before-function-paren': [{
-    anonymous: 'never',
-    named: 'never',
-    asyncArrow: 'always',
-  }],
-  'space-in-parens': [],
-  'space-infix-ops': [],
-  'spaced-comment': ['always'],
-  'template-curly-spacing': [],
 
   // eslint-plugin-import
   'import/extensions': ['ignorePackages'],
@@ -293,46 +280,48 @@ const enabledRuleParameters = {
   'vue/no-v-html': [],
 };
 
-const vueCoreExtensionRules = [
-  'array-bracket-newline',
-  'array-bracket-spacing',
-  'array-element-newline',
-  'arrow-spacing',
-  'block-spacing',
-  'brace-style',
-  'camelcase',
-  'comma-dangle',
-  'comma-spacing',
-  'comma-style',
-  'dot-location',
-  'dot-notation',
-  'eqeqeq',
-  'func-call-spacing',
-  'key-spacing',
-  'keyword-spacing',
-  'max-len',
-  'multiline-ternary',
-  'no-constant-condition',
-  'no-empty-pattern',
-  'no-extra-parens',
-  'no-irregular-whitespace',
-  'no-loss-of-precision',
-  'no-negated-condition',
-  'no-restricted-syntax',
-  'no-sparse-arrays',
-  'no-useless-concat',
-  'object-curly-newline',
-  'object-curly-spacing',
-  'object-property-newline',
-  'object-shorthand',
-  'operator-linebreak',
-  'prefer-template',
-  'quote-props',
-  'space-in-parens',
-  'space-infix-ops',
-  'space-unary-ops',
-  'template-curly-spacing',
-];
+const vueExtensionRules = {
+  'vue/array-bracket-newline': '@stylistic/array-bracket-newline',
+  'vue/array-bracket-spacing': '@stylistic/array-bracket-spacing',
+  'vue/array-element-newline': '@stylistic/array-element-newline',
+  'vue/arrow-spacing': '@stylistic/arrow-spacing',
+  'vue/block-spacing': '@stylistic/block-spacing',
+  'vue/brace-style': '@stylistic/brace-style',
+  'vue/camelcase': 'camelcase',
+  'vue/comma-dangle': '@stylistic/comma-dangle',
+  'vue/comma-spacing': '@stylistic/comma-spacing',
+  'vue/comma-style': '@stylistic/comma-style',
+  'vue/dot-location': '@stylistic/dot-location',
+  'vue/dot-notation': 'dot-notation',
+  'vue/eqeqeq': 'eqeqeq',
+  'vue/func-call-spacing': '@stylistic/function-call-spacing',
+  'vue/key-spacing': '@stylistic/key-spacing',
+  'vue/keyword-spacing': '@stylistic/keyword-spacing',
+  'vue/max-len': '@stylistic/max-len',
+  'vue/multiline-ternary': '@stylistic/multiline-ternary',
+  'vue/no-console': 'no-console',
+  'vue/no-constant-condition': 'no-constant-condition',
+  'vue/no-empty-pattern': 'no-empty-pattern',
+  'vue/no-extra-parens': '@stylistic/no-extra-parens',
+  'vue/no-implicit-coercion': 'no-implicit-coercion',
+  'vue/no-irregular-whitespace': 'no-irregular-whitespace',
+  'vue/no-loss-of-precision': 'no-loss-of-precision',
+  'vue/no-negated-condition': 'no-negated-condition',
+  'vue/no-restricted-syntax': 'no-restricted-syntax',
+  'vue/no-sparse-arrays': 'no-sparse-arrays',
+  'vue/no-useless-concat': 'no-useless-concat',
+  'vue/object-curly-newline': '@stylistic/object-curly-newline',
+  'vue/object-curly-spacing': '@stylistic/object-curly-spacing',
+  'vue/object-property-newline': '@stylistic/object-property-newline',
+  'vue/object-shorthand': 'object-shorthand',
+  'vue/operator-linebreak': '@stylistic/operator-linebreak',
+  'vue/prefer-template': 'prefer-template',
+  'vue/quote-props': '@stylistic/quote-props',
+  'vue/space-in-parens': '@stylistic/space-in-parens',
+  'vue/space-infix-ops': '@stylistic/space-infix-ops',
+  'vue/space-unary-ops': '@stylistic/space-unary-ops',
+  'vue/template-curly-spacing': '@stylistic/template-curly-spacing',
+};
 
 const warnRules = new Set([
   'jsdoc/require-jsdoc',
@@ -372,9 +361,17 @@ const disabledRules = [
   'vuejs-accessibility/label-has-for',
 ];
 
-for (const ruleName of vueCoreExtensionRules) {
-  if (ruleName in enabledRuleParameters) {
-    enabledRuleParameters[`vue/${ruleName}`] = enabledRuleParameters[ruleName];
+const getRuleParameters = ruleOptions => (Array.isArray(ruleOptions) ? ruleOptions.slice(1) : []);
+
+for (const [vueRuleName, extendedRuleName] of Object.entries(vueExtensionRules)) {
+  if (enabledRuleParameters[extendedRuleName]) {
+    enabledRuleParameters[vueRuleName] = enabledRuleParameters[extendedRuleName];
+  }
+  else if (eslintJs.configs.recommended.rules[extendedRuleName] && eslintJs.configs.recommended.rules[extendedRuleName] !== 'off') {
+    enabledRuleParameters[vueRuleName] = getRuleParameters(eslintJs.configs.recommended.rules[extendedRuleName]);
+  }
+  else if (stylisticEslintConfig.rules[extendedRuleName] && stylisticEslintConfig.rules[extendedRuleName] !== 'off') {
+    enabledRuleParameters[vueRuleName] = getRuleParameters(stylisticEslintConfig.rules[extendedRuleName]);
   }
 }
 
@@ -391,6 +388,7 @@ export default [
     ],
   },
   eslintJs.configs.recommended,
+  stylisticEslintConfig,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJsdoc.configs['flat/recommended-typescript-flavor'],
   eslintPluginNuxtConfigRecommended,
@@ -476,7 +474,7 @@ export default [
     files: ['fixtures/**/*.json'],
     rules: {
       // allow alignment of pixel keys in matrix
-      'no-multi-spaces': ['error', {
+      '@stylistic/no-multi-spaces': ['error', {
         exceptions: {
           JSONArrayExpression: true,
         },
