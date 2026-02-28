@@ -45,6 +45,8 @@ const enabledRuleParameters = {
   'no-bitwise': [],
   'no-constant-binary-expression': [],
   'no-else-return': [{ allowElseIf: false }],
+  'no-empty': [],
+  'no-empty-function': [],
   'no-irregular-whitespace': [],
   'no-lonely-if': [],
   'no-loop-func': [],
