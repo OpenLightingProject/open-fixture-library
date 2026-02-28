@@ -959,11 +959,11 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, 'Offset')
         ? gdtfChannel.$.Offset.split(',')
         : [
-          gdtfChannel.$.Coarse,
-          gdtfChannel.$.Fine,
-          gdtfChannel.$.Ultra,
-          gdtfChannel.$.Uber,
-        ];
+            gdtfChannel.$.Coarse,
+            gdtfChannel.$.Fine,
+            gdtfChannel.$.Ultra,
+            gdtfChannel.$.Uber,
+          ];
 
       for (const [index, channelOffset] of channelOffsets.entries()) {
         const dmxChannelNumber = Number.parseInt(channelOffset, 10);
