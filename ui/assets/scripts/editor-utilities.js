@@ -173,7 +173,7 @@ export function getEmptyWheelSlot() {
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
-  return Object.keys(channel).some(property => {
+  return Object.keys(channel).some((property) => {
     if (['uuid', 'editMode', 'modeId', 'wizard'].includes(property)) {
       return false;
     }

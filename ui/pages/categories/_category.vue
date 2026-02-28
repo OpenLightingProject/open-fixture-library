@@ -62,7 +62,7 @@ export default {
       return this.categoryName.toLowerCase().replaceAll(/\W+/g, '-');
     },
     fixtures() {
-      return register.categories[this.categoryName].map(fullFixtureKey => {
+      return register.categories[this.categoryName].map((fullFixtureKey) => {
         const [manufacturerKey, fixtureKey] = fullFixtureKey.split('/');
         const manufacturerName = this.manufacturers[manufacturerKey].name;
         const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;

@@ -486,7 +486,7 @@ export default {
 
       if (isFineChannel) {
         // Deselect all finer channels
-        this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+        this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
           const channel = this.fixture.availableChannels[uuid];
           return (
             !('coarseChannelId' in channel) ||
@@ -498,7 +498,7 @@ export default {
       }
 
       // Deselect all fine channels belonging to this coarse channel
-      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+      this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
         const channel = this.fixture.availableChannels[uuid];
         return !('coarseChannelId' in channel) || channel.coarseChannelId !== channelUuid;
       });
@@ -761,7 +761,7 @@ export default {
 
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
-      this.currentMode.channels = this.currentMode.channels.map(key => {
+      this.currentMode.channels = this.currentMode.channels.map((key) => {
         if (key === oldChannelKey) {
           return newChannelKey;
         }

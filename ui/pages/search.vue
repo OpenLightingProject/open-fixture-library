@@ -160,7 +160,7 @@ export default {
   },
   computed: {
     fixtureResults() {
-      return this.results.map(key => {
+      return this.results.map((key) => {
         const manufacturer = key.split('/')[0];
 
         return {

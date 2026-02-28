@@ -23,7 +23,7 @@ export const exportHelpers = {
   isBeamAngle: capability => (capability.type === 'BeamAngle' || capability.type === 'Zoom') && capability.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(capability => ['WheelSlot', 'WheelRotation'].includes(capability.type)),
   isAllowedInWheels: capability => ['WheelSlot', 'WheelShake', 'WheelSlotRotation', 'WheelRotation', 'Effect', 'NoFunction'].includes(capability.type),
-  getGoboResource: async capability => {
+  getGoboResource: async (capability) => {
     if (capability.isSlotType('Open')) {
       return 'Others/open.svg';
     }
@@ -251,7 +251,7 @@ const createFocusFarToNearCapability = () => ({
 
 const channelPresets = {
   IntensityMasterDimmer: {
-    isApplicable: capability => {
+    isApplicable: (capability) => {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
@@ -913,7 +913,7 @@ export const capabilityPresets = {
   PrismEffectOn: {
     isApplicable: capability => capability.type === 'Prism' || (capability.type === 'WheelSlot' && capability.isSlotType('Prism')),
     exportRes1: capability => (capability.wheelSlot && capability.slotNumber[0].number === capability.slotNumber[1].number && capability.wheelSlot[0].facets),
-    importCapability: capabilityData => {
+    importCapability: (capabilityData) => {
       if (/wheel/i.test(capabilityData.channelName)) {
         return capabilityPresets.GoboMacro.importCapability(capabilityData);
       }

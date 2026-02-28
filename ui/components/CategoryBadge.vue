@@ -78,14 +78,14 @@ export default {
           href: `#${encodeURIComponent(this.category)}`,
         },
         on: {
-          click: $event => {
+          click: ($event) => {
             this.$emit('click');
             $event.preventDefault();
           },
           focus: () => {
             this.$emit('focus');
           },
-          blur: $event => {
+          blur: ($event) => {
             this.$emit('blur', $event);
           },
         },

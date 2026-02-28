@@ -25,7 +25,7 @@ try {
     ).map(fixtureKey => fixtureKey.split('/'));
   }
   else {
-    fixtures = cliArguments._.map(relativePath => {
+    fixtures = cliArguments._.map((relativePath) => {
       const absolutePath = path.join(process.cwd(), relativePath);
       return [
         path.basename(path.dirname(absolutePath)), // man key

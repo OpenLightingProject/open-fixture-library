@@ -30,7 +30,7 @@ export default {
     },
   },
   shutter: {
-    isCapSuitable: capability => {
+    isCapSuitable: (capability) => {
       const isShutterCapability = capability.type === 'ShutterStrobe' && ['Open', 'Closed'].includes(capability.shutterEffect);
       const channelHasOpen = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Open');
       const channelHasClosed = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Closed');
@@ -349,7 +349,7 @@ export default {
         const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter(key => filterDistinguishableKeys(key));
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter(key => filterDistinguishableKeys(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
-        const hasDifferentValues = distinguishableKeys1.some(key => {
+        const hasDifferentValues = distinguishableKeys1.some((key) => {
           const value1 = capability1.jsonObject[key];
           const value2 = capability2.jsonObject[key];
 
@@ -816,7 +816,7 @@ export default {
  * @returns {DmxControlCapability[]} Array of objects wrapping the original capabilities.
  */
 function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPercentValue, hundredPercentValue) {
-  const dmxControlCapabilities = capabilities.map(capability => {
+  const dmxControlCapabilities = capabilities.map((capability) => {
     const startEntity = capability[property][0].baseUnitEntity;
     const endEntity = capability[property][1].baseUnitEntity;
 

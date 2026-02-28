@@ -31,7 +31,7 @@ export default [
   },
   {
     functions: ['strobespeed'],
-    getXmlGroup: strobespeed => {
+    getXmlGroup: (strobespeed) => {
       strobespeed.name = 'strobe';
       for (const child of strobespeed.children) {
         child.attribute('type', 'linear');
@@ -153,7 +153,7 @@ function mergeIntoFirst(firstElement, ...xmlElements) {
  * @returns {(xmlElement: XMLElement) => XMLElement} A function that alters the given XML element's tag name to the specified new name.
  */
 function rename(tagName) {
-  return xmlElement => {
+  return (xmlElement) => {
     xmlElement.name = tagName;
     return xmlElement;
   };

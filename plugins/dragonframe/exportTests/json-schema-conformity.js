@@ -88,13 +88,13 @@ async function getSchemas() {
  */
 function downloadSchema(url) {
   return new Promise((resolve, reject) => {
-    const request = https.get(url, response => {
+    const request = https.get(url, (response) => {
       if (response.statusCode < 200 || response.statusCode > 299) {
         reject(new Error(`Failed to load page, status code: ${response.statusCode}`));
       }
 
       let body = '';
-      response.on('data', chunk => {
+      response.on('data', (chunk) => {
         body += chunk;
       });
       response.on('end', () => resolve(JSON.parse(body)));

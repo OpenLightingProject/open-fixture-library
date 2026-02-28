@@ -235,7 +235,7 @@ async function getTaskPromise(task) {
       },
     );
 
-    const resultListItems = await Promise.all(files.map(async file => {
+    const resultListItems = await Promise.all(files.map(async (file) => {
       try {
         await test(file, files);
         return `✔️ ${file.name}`;

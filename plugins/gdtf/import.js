@@ -216,7 +216,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     for (const gdtfWheel of gdtfWheels) {
       fixture.wheels[gdtfWheel.$.Name] = {
-        slots: (gdtfWheel.Slot || []).map(gdtfSlot => {
+        slots: (gdtfWheel.Slot || []).map((gdtfSlot) => {
           const name = gdtfSlot.$.Name;
 
           const slot = {
@@ -328,9 +328,9 @@ export async function importFixtures(buffer, filename, authorName) {
      */
     function getModeMasterRelations() {
       return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
-        return gdtfMode.DMXChannels[0].DMXChannel.flatMap(gdtfDmxChannel => {
-          return gdtfDmxChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
-            return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
+        return gdtfMode.DMXChannels[0].DMXChannel.flatMap((gdtfDmxChannel) => {
+          return gdtfDmxChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
+            return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
               if (!('ModeMaster' in gdtfChannelFunction.$)) {
                 return [];
               }
@@ -367,7 +367,7 @@ export async function importFixtures(buffer, filename, authorName) {
           return [];
         }
 
-        return gdtfMode.Relations[0].Relation.flatMap(gdtfRelation => {
+        return gdtfMode.Relations[0].Relation.flatMap((gdtfRelation) => {
           if (gdtfRelation.$.Type !== 'Mode') {
             return [];
           }
@@ -535,12 +535,12 @@ export async function importFixtures(buffer, filename, authorName) {
       let maxPhysicalValue = Number.NEGATIVE_INFINITY;
 
       // save all <ChannelSet> XML nodes in a flat list
-      const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
+      const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
         if (!gdtfLogicalChannel.ChannelFunction) {
           throw new Error(`LogicalChannel does not contain any ChannelFunction children in DMXChannel ${JSON.stringify(gdtfChannel, null, 2)}`);
         }
 
-        return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
+        return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
           if (!gdtfChannelFunction.ChannelSet) {
             // add an empty <ChannelSet />
             gdtfChannelFunction.ChannelSet = [{ $: {} }];
@@ -552,7 +552,7 @@ export async function importFixtures(buffer, filename, authorName) {
             gdtfChannelFunction.$.Attribute,
           ) || { $: { Name: 'NoFeature' } };
 
-          return gdtfChannelFunction.ChannelSet.map(gdtfChannelSet => {
+          return gdtfChannelFunction.ChannelSet.map((gdtfChannelSet) => {
             // save parent nodes for future use
             gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
             gdtfChannelSet._channelFunction = gdtfChannelFunction;
@@ -867,7 +867,7 @@ export async function importFixtures(buffer, filename, authorName) {
     // save all matrix pixels that are used in some mode
     const matrixPixels = new Set();
 
-    fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
+    fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map((gdtfMode) => {
       /** @type {DmxBreakWrapper[]} */
       const dmxBreakWrappers = [];
 
@@ -1033,7 +1033,7 @@ export async function importFixtures(buffer, filename, authorName) {
       for (const capability of triggerChannel.capabilities) {
         capability.switchChannels = Object.fromEntries(Object.entries(triggerChannelRelations).flatMap(
           ([switchingChannelKey, relations]) => relations
-            .filter(relation => {
+            .filter((relation) => {
               const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
               return capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo;
             })

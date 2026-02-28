@@ -112,7 +112,7 @@ async function fetchExternalUrls(externalUrls) {
   console.log(styleText(['blue', 'bold'], `Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
   const fetchStartTime = Date.now();
   for (const urlBlock of urlBlocks) {
-    await Promise.all(urlBlock.map(async url => {
+    await Promise.all(urlBlock.map(async (url) => {
       const result = await testExternalLink(url);
       urlResults.push(result);
 
@@ -168,7 +168,7 @@ async function testExternalLink(url) {
     };
 
     return new Promise((resolve, reject) => {
-      const request = httpModule.get(url, requestOptions, response => {
+      const request = httpModule.get(url, requestOptions, (response) => {
         resolve({
           url,
           message: `${response.statusCode} ${response.statusMessage}`,
@@ -185,7 +185,7 @@ async function testExternalLink(url) {
         request.abort();
       });
 
-      request.on('error', error => {
+      request.on('error', (error) => {
         resolve({
           url,
           message: error.message,
@@ -282,7 +282,7 @@ async function updateGithubIssue(urlResults) {
 
         const [, lastResults, url] = line.match(/<tr><td nowrap>(.*?)<\/td><td><a href="(.*?)"/);
 
-        linkData[url] = lastResults.split('&nbsp;').map(item => {
+        linkData[url] = lastResults.split('&nbsp;').map((item) => {
           if (item === '✔️') {
             return {
               failed: false,

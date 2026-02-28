@@ -163,7 +163,7 @@ export default {
     );
 
     this.recentContributors = Object.keys(register.contributors).slice(0, 5).map(
-      contributor => {
+      (contributor) => {
         const latestFixtureKey = getLatestFixtureKey(contributor);
 
         return {

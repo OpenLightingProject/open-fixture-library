@@ -61,7 +61,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
     const B = ( 0.0557 * X / 100) + (-0.2040 * Y / 100) + ( 1.0570 * Z / 100);
     return [R, G, B];
   });
-  const sRGB1_linear_to_sRGB1 = (RGB_linear => RGB_linear.map(c => {
+  const sRGB1_linear_to_sRGB1 = (RGB_linear => RGB_linear.map((c) => {
     if (c <= 0.003_130_8) {
       return 12.92 * c;
     }

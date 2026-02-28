@@ -162,7 +162,7 @@ function getCombinedEcueChannels(ecueFixture) {
   const channelTypes = ['ChannelIntensity', 'ChannelColor', 'ChannelBeam', 'ChannelFocus'];
   for (const channelType of channelTypes) {
     if (ecueFixture[channelType]) {
-      channels.push(...ecueFixture[channelType].map(channel => {
+      channels.push(...ecueFixture[channelType].map((channel) => {
         // save the channel type in the channel object
         channel._ecueChannelType = channelType;
         return channel;

@@ -72,7 +72,7 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   // call the fixture tool
   const output = await execFile(fixtureToolPath, ['--validate', '.'], {
     cwd: path.join(directory, 'resources/fixtures'),
-  }).catch(error => {
+  }).catch((error) => {
     if (error.stdout) {
       return {
         stdout: error.stdout,
@@ -96,9 +96,9 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
  */
 function downloadFile(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, response => {
+    https.get(url, (response) => {
       let data = '';
-      response.on('data', chunk => {
+      response.on('data', (chunk) => {
         data += chunk;
       });
       response.on('end', () => resolve(data));

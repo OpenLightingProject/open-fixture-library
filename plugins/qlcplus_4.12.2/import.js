@@ -233,7 +233,7 @@ const slotTypeFunctions = {
 async function getOflWheels(qlcPlusFixture) {
   const wheels = {};
 
-  const wheelChannels = qlcPlusFixture.Channel.filter(channel => {
+  const wheelChannels = qlcPlusFixture.Channel.filter((channel) => {
     const channelName = channel.$.Name;
 
     const hasGoboPresetCapability = (channel.Capability || []).some(
@@ -518,7 +518,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     .map(object => object.Physical[0]);
 
   const [panMax, tiltMax] = ['PanMax', 'TiltMax'].map(
-    property => Math.max(...physicals.map(physical => {
+    property => Math.max(...physicals.map((physical) => {
       if (physical.Focus && property in physical.Focus[0].$) {
         return Number.parseInt(physical.Focus[0].$[property], 10) || 0;
       }
@@ -866,7 +866,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
     if ('Group' in qlcPlusFineChannel) {
       const fineChannelGroupName = qlcPlusFineChannel.Group[0]._;
 
-      const coarseChannels = qlcPlusFixture.Channel.filter(coarseChannel => {
+      const coarseChannels = qlcPlusFixture.Channel.filter((coarseChannel) => {
         if (!('Group' in coarseChannel)) {
           return false;
         }

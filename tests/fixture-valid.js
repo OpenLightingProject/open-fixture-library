@@ -1149,7 +1149,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         result.errors.push(`Category '${categoryName}' invalid since ${categoryProperties.invalidPhrase}.`);
       }
       else if (exclusiveGroups.length > 0) {
-        result.errors.push(...exclusiveGroups.map(group => {
+        result.errors.push(...exclusiveGroups.map((group) => {
           const usedCategories = group
             .filter(category => fixture.categories.includes(category))
             .map(category => `'${category}'`)

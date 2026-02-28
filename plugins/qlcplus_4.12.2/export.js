@@ -30,7 +30,7 @@ export const version = '1.3.2';
 export async function exportFixtures(fixtures, options) {
   const customGobos = {};
 
-  const outFiles = await Promise.all(fixtures.map(async fixture => {
+  const outFiles = await Promise.all(fixtures.map(async (fixture) => {
     try {
       return await getFixtureFile(fixture, options, customGobos);
     }
@@ -90,7 +90,7 @@ async function getFixtureFile(fixture, options, customGobos) {
 
   const panMax = getPanTiltMax('Pan', fixture.coarseChannels);
   const tiltMax = getPanTiltMax('Tilt', fixture.coarseChannels);
-  const useGlobalPhysical = fixture.modes.every(mode => {
+  const useGlobalPhysical = fixture.modes.every((mode) => {
     if (mode.physicalOverride !== null) {
       return false;
     }

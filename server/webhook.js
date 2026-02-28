@@ -45,7 +45,7 @@ function startServer() {
 
       const bodyChunks = [];
       let totalSize = 0;
-      request.on('data', data => {
+      request.on('data', (data) => {
         bodyChunks.push(data);
         totalSize += data.length;
         if (totalSize > 1e6) { // 1MB limit

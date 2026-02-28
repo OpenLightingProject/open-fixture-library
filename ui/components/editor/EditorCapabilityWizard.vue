@@ -306,7 +306,7 @@ export default {
         return `Capabilities must not end above DMX value ${this.dmxMax}.`;
       }
 
-      const collisionDetected = this.capabilities.some(capability => {
+      const collisionDetected = this.capabilities.some((capability) => {
         if (capability.dmxRange === null) {
           return false;
         }

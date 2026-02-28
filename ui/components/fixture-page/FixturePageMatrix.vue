@@ -119,7 +119,7 @@ export default {
     },
 
     pixelGroups() {
-      return this.matrix.pixelGroupKeys.map(groupKey => {
+      return this.matrix.pixelGroupKeys.map((groupKey) => {
         const group = this.matrix.jsonObject.pixelGroups[groupKey];
         const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
 
@@ -137,7 +137,7 @@ export default {
           return [groupKey, resolvedPixelsKeys.join(', ')];
         }
 
-        const constraintText = constraintAxes.map(axis => {
+        const constraintText = constraintAxes.map((axis) => {
           const axisConstraints = group[axis].map(
             constraint => constraint.replace('>=', '≥ ').replace('<=', '≤ ').replace('=', ''),
           ).join(', ');

@@ -219,7 +219,7 @@ export async function updateComment(test) {
   const comments = commentBlocks.flatMap(block => block.data);
 
   let equalFound = false;
-  const promises = comments.flatMap(comment => {
+  const promises = comments.flatMap((comment) => {
     // get rid of \r linebreaks
     comment.body = comment.body.replaceAll('\r', '');
 

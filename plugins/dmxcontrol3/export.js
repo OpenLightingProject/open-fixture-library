@@ -303,12 +303,12 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
 
   const pixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z');
 
-  const isMonochromeMatrix = pixelKeys.every(pixelKey => {
+  const isMonochromeMatrix = pixelKeys.every((pixelKey) => {
     const xmlFunctions = xmlFunctionsPerPixel.get(pixelKey);
     return xmlFunctions.length === 1 && xmlFunctions[0].name === 'dimmer';
   });
 
-  const isRgbMatrix = pixelKeys.every(pixelKey => {
+  const isRgbMatrix = pixelKeys.every((pixelKey) => {
     const xmlFunctions = xmlFunctionsPerPixel.get(pixelKey);
     return xmlFunctions.length === 1 && xmlFunctions[0].name === 'rgb';
   });

@@ -226,7 +226,7 @@ async function getFixtureCreateResult(fixtures) {
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => {
+    const resolveShortenedYouTubeUrl = (url) => {
       if (url.startsWith('https://youtu.be/')) {
         const urlObject = new URL(url);
 
@@ -276,7 +276,7 @@ async function getFixtureCreateResult(fixtures) {
     fixture.wheels = {};
 
     for (const editorChannel of editorWheelChannels) {
-      const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
+      const slots = editorChannel.wheel.slots.map((editorWheelSlot) => {
         if (editorWheelSlot === null || editorWheelSlot.type === '') {
           return null;
         }
@@ -403,7 +403,7 @@ async function getFixtureCreateResult(fixtures) {
    * @returns {object[]} The OFL capability objects.
    */
   function getCapabilities(channel) {
-    return channel.capabilities.map(editorCapability => {
+    return channel.capabilities.map((editorCapability) => {
       const capability = {};
 
       const capabilitySchema = capabilityTypes[editorCapability.type];

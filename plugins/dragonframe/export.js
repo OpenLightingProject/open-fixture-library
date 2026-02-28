@@ -20,7 +20,7 @@ export async function exportFixtures(fixtures, options) {
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture
-  const files = fixtures.map(fixture => {
+  const files = fixtures.map((fixture) => {
     usedManufacturers.add(fixture.manufacturer.key);
 
     try {

@@ -53,7 +53,7 @@ async function importFixture(body) {
     Buffer.from(body.fileContentBase64, 'base64'),
     body.fileName,
     body.author,
-  ).catch(parseError => {
+  ).catch((parseError) => {
     parseError.message = `Parse error (${parseError.message})`;
     throw parseError;
   });
