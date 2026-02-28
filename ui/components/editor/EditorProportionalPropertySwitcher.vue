@@ -314,7 +314,9 @@ export default {
     swapButtonTabIndex() {
       return (this.propertyDataStart === this.propertyDataEnd ||
         this.propertyDataStart === '' ||
-        this.propertyDataEnd === '') ? '-1' : null;
+        this.propertyDataEnd === '')
+        ? '-1'
+        : null;
     },
   },
   methods: {

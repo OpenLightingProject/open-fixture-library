@@ -251,11 +251,13 @@ async function addCapability(xmlChannel, capability, customGobos) {
     },
   });
 
-  const preset = addCapabilityAliases(xmlCapability, capability) ? {
-    presetName: 'Alias',
-    res1: null,
-    res2: null,
-  } : await getCapabilityPreset(capability);
+  const preset = addCapabilityAliases(xmlCapability, capability)
+    ? {
+        presetName: 'Alias',
+        res1: null,
+        res2: null,
+      }
+    : await getCapabilityPreset(capability);
 
   if (preset === null) {
     await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
