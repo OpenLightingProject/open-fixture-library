@@ -3,8 +3,8 @@
 // eslint-disable-next-line unicorn/prefer-module
 const resolve = require.context('.', true, /\.svg$/);
 
-const getIconPath = key => key.match(/^\.\/(.+)\.svg$/)[1];
+const getIconPath = (key) => key.match(/^\.\/(.+)\.svg$/)[1];
 
 export default Object.fromEntries(resolve.keys().map(
-  key => [getIconPath(key), resolve(key)],
+  (key) => [getIconPath(key), resolve(key)],
 ));

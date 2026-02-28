@@ -97,7 +97,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
   }
 
   const availableAndMatrixChannels = fixture.coarseChannels.filter(
-    channel => !(channel instanceof NullChannel),
+    (channel) => !(channel instanceof NullChannel),
   );
 
   fixtureJson.availableChannels = Object.fromEntries(
@@ -157,7 +157,7 @@ function transformNonNumericValues(fixtureJson) {
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
  */
 function processColor(capability) {
-  const namedColor = namedColors.find(color => color.name === capability.color);
+  const namedColor = namedColors.find((color) => color.name === capability.color);
   if (namedColor && namedColor.hex) {
     capability.color = namedColor.hex;
   }

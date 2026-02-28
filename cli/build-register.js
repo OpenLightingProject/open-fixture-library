@@ -42,7 +42,7 @@ catch (error) {
  */
 async function addFixturesToRegister() {
   const directoryEntries = await readdir(fixturesPath, { withFileTypes: true });
-  const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+  const manufacturerKeys = directoryEntries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 
   for (const manufacturerKey of manufacturerKeys) {
     register.addManufacturer(manufacturerKey, manufacturers[manufacturerKey]);

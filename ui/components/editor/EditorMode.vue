@@ -225,7 +225,7 @@ export default {
   },
   emits: {
     'remove': () => true,
-    'open-channel-editor': payload => true,
+    'open-channel-editor': (payload) => true,
   },
   data() {
     return {
@@ -245,7 +245,7 @@ export default {
 
             const channelUuid = dragElement.getAttribute('data-channel-uuid');
             const modeUuid = to.el.closest('.fixture-mode').getAttribute('data-mode-uuid');
-            const targetMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+            const targetMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
 
             if (targetMode.channels.includes(channelUuid)) {
               // channel already in target mode

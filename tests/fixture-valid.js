@@ -83,7 +83,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
     const errorMessages = getAjvErrorMessages(schemaValidate.errors, 'fixture');
-    result.errors.push(...errorMessages.map(message => getErrorString('File does not match schema:', message)));
+    result.errors.push(...errorMessages.map((message) => getErrorString('File does not match schema:', message)));
     return result;
   }
 
@@ -233,7 +233,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     if (physical.dimensions !== null && physical.DMXconnector !== null) {
-      const hasSmallDimensions = physical.dimensions.some(dimension => dimension < 30);
+      const hasSmallDimensions = physical.dimensions.some((dimension) => dimension < 30);
       const dimensionsString = physical.dimensions.join('×');
 
       if (hasSmallDimensions) {
@@ -276,8 +276,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     const variesInAxisLength = matrix.pixelKeyStructure.some(
-      rows => rows.length !== matrix.pixelCountY || rows.some(
-        columns => columns.length !== matrix.pixelCountX,
+      (rows) => rows.length !== matrix.pixelCountY || rows.some(
+        (columns) => columns.length !== matrix.pixelCountX,
       ),
     );
     if (variesInAxisLength) {
@@ -380,7 +380,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       const possibleMatrixChannelKeys = templateChannel.possibleMatrixChannelKeys.get(templateKey);
 
       const templateChannelUsed = fixture.allChannelKeys.some(
-        channelKey => possibleMatrixChannelKeys.includes(channelKey),
+        (channelKey) => possibleMatrixChannelKeys.includes(channelKey),
       );
       if (!templateChannelUsed) {
         result.warnings.push(`Template channel '${templateKey}' is never used.`);
@@ -676,8 +676,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for StrobeSpeed capabilities.
          */
         function checkStrobeSpeedCapability() {
-          const otherCapabilityHasShutterStrobe = channel.capabilities.some(otherCapability => otherCapability.type === 'ShutterStrobe');
-          const hasOtherStrobeChannel = fixture.coarseChannels.some(otherChannel => otherChannel !== channel && otherChannel.type === 'Strobe');
+          const otherCapabilityHasShutterStrobe = channel.capabilities.some((otherCapability) => otherCapability.type === 'ShutterStrobe');
+          const hasOtherStrobeChannel = fixture.coarseChannels.some((otherChannel) => otherChannel !== channel && otherChannel.type === 'Strobe');
           if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
             result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "Strobe"?`);
           }
@@ -864,7 +864,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         checkMatrixInsertBlockRepeatFor();
 
         for (const templateKey of matrixInsertBlock.templateChannels) {
-          const templateChannelExists = fixture.templateChannels.some(channel => channel.allTemplateKeys.includes(templateKey));
+          const templateChannelExists = fixture.templateChannels.some((channel) => channel.allTemplateKeys.includes(templateKey));
           if (!templateChannelExists) {
             result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
           }
@@ -965,7 +965,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             for (const switchToChannelKey of channel.switchToChannelKeys) {
               const overlap = channel.triggerRanges[switchToChannelKey].some(
                 // `?? []` because otherChannel.switchToChannelKeys may not include switchToChannelKey
-                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
+                (range) => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
               );
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -975,7 +975,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           else {
             // fail if one of this channel's switchToChannels appears anywhere
             const firstDuplicate = channel.switchToChannels.find(
-              switchToChannel => otherChannel.usesChannelKey(switchToChannel.key, 'all'),
+              (switchToChannel) => otherChannel.usesChannelKey(switchToChannel.key, 'all'),
             );
             if (firstDuplicate !== undefined) {
               result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -995,7 +995,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         ), coarseChannel.key];
 
         const notInMode = coarserChannelKeys.filter(
-          coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1,
+          (coarseChannelKey) => mode.getChannelIndex(coarseChannelKey) === -1,
         );
 
         if (notInMode.length > 0) {
@@ -1010,7 +1010,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkUnusedChannels() {
     const unused = [...definedChannelKeys].filter(
-      channelKey => !usedChannelKeys.has(channelKey),
+      (channelKey) => !usedChannelKeys.has(channelKey),
     ).join(', ');
 
     if (unused.length > 0) {
@@ -1023,8 +1023,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkUnusedWheels() {
     const unusedWheels = fixture.wheels.filter(
-      wheel => !usedWheels.has(wheel.name),
-    ).map(wheel => wheel.name).join(', ');
+      (wheel) => !usedWheels.has(wheel.name),
+    ).map((wheel) => wheel.name).join(', ');
 
     if (unusedWheels.length > 0) {
       result.warnings.push(`Unused wheel(s): ${unusedWheels}`);
@@ -1047,7 +1047,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     const unusedWheelSlots = slotsOfUsedWheels.filter(
-      slot => !usedWheelSlots.has(slot),
+      (slot) => !usedWheelSlots.has(slot),
     ).join(', ');
 
     if (unusedWheelSlots.length > 0) {
@@ -1128,8 +1128,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       // don't suggest this category if another mutually exclusive category is used
       const exclusiveGroups = mutuallyExclusiveGroups.filter(
-        group => group.includes(categoryName) && group.some(
-          category => category !== categoryName && fixture.categories.includes(category),
+        (group) => group.includes(categoryName) && group.some(
+          (category) => category !== categoryName && fixture.categories.includes(category),
         ),
       );
 
@@ -1144,8 +1144,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       else if (exclusiveGroups.length > 0) {
         result.errors.push(...exclusiveGroups.map((group) => {
           const usedCategories = group
-            .filter(category => fixture.categories.includes(category))
-            .map(category => `'${category}'`)
+            .filter((category) => fixture.categories.includes(category))
+            .map((category) => `'${category}'`)
             .join(', ');
           return `Categories ${usedCategories} can't be used together.`;
         }));
@@ -1160,7 +1160,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         hasCapabilityOfType('ColorPreset')
         || hasMultipleColorIntensityCapabilities()
         || fixture.wheels.some(
-          wheel => wheel.slots.some(slot => slot.type === 'Color'),
+          (wheel) => wheel.slots.some((slot) => slot.type === 'Color'),
         )
       );
     }
@@ -1170,7 +1170,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      */
     function hasMultipleColorIntensityCapabilities() {
       return fixture.capabilities.filter(
-        capability =>
+        (capability) =>
           capability.type === 'ColorIntensity'
           && capability.color !== 'UV'
           && capability.color !== 'Cold White'
@@ -1195,7 +1195,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
-        capability => capability.type === type,
+        (capability) => capability.type === type,
       ).length >= minimum;
     }
 
@@ -1205,14 +1205,14 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      */
     function isFogType(fogType) {
       const fogCapabilities = fixture.capabilities.filter(
-        capability => capability.type.startsWith('Fog'),
+        (capability) => capability.type.startsWith('Fog'),
       );
 
       if (fogCapabilities.length === 0) {
         return false;
       }
 
-      return fogCapabilities.some(capability => capability.fogType === fogType) || fogCapabilities.every(capability => capability.fogType === null);
+      return fogCapabilities.some((capability) => capability.fogType === fogType) || fogCapabilities.every((capability) => capability.fogType === null);
     }
 
     /**

@@ -177,7 +177,7 @@ export default {
     appendToHeading: stringProp().optional,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     return {

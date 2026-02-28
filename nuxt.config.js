@@ -6,7 +6,7 @@ import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
 
 const ignoredSassDeprecations = ['legacy-js-api']; // can only be fixed with Nuxt.js v3
-const sassDeprecationIds = Object.values(sass.deprecations).flatMap(deprecation =>
+const sassDeprecationIds = Object.values(sass.deprecations).flatMap((deprecation) =>
   (deprecation.status === 'active' && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
 );
 
@@ -75,7 +75,7 @@ export default {
     extend(config, context) {
       // exclude /assets/icons from url-loader
       const iconsPath = fileURLToPath(new URL('ui/assets/icons/', import.meta.url));
-      const urlLoader = config.module.rules.find(rule => rule.test.toString().includes('|svg|'));
+      const urlLoader = config.module.rules.find((rule) => rule.test.toString().includes('|svg|'));
       urlLoader.exclude = iconsPath;
 
       // include /assets/icons for svg-inline-loader
@@ -89,7 +89,7 @@ export default {
       });
 
       // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
-      const javascriptRule = config.module.rules.find(rule => rule.type === 'javascript/auto');
+      const javascriptRule = config.module.rules.find((rule) => rule.type === 'javascript/auto');
       const originalExclude = javascriptRule.exclude;
       javascriptRule.exclude = {
         and: [
@@ -278,7 +278,7 @@ export default {
 
     return {
       UserAgent: '*',
-      Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
+      Disallow: plugins.exportPlugins.map((pluginKey) => `/*.${pluginKey}$`),
       Allow: '/',
       Sitemap: `${websiteUrl}sitemap.xml`,
     };
@@ -299,7 +299,7 @@ export default {
         { url: '/search', changefreq: 'yearly' },
       ];
 
-      const manufacturerUrlPromises = Object.keys(register.manufacturers).flatMap(manufacturerKey => [
+      const manufacturerUrlPromises = Object.keys(register.manufacturers).flatMap((manufacturerKey) => [
         Promise.resolve({ url: `/${manufacturerKey}`, changefreq: 'weekly' }),
 
         // fixture URLs
@@ -314,11 +314,11 @@ export default {
       ]);
 
       const categoryUrls = Object.keys(register.categories).map(
-        category => ({ url: `/categories/${category}`, changefreq: 'weekly' }),
+        (category) => ({ url: `/categories/${category}`, changefreq: 'weekly' }),
       );
 
-      const pluginUrls = Object.keys(plugins.data).filter(key => !plugins.data[key].outdated).map(
-        pluginKey => ({ url: `/about/plugins/${pluginKey}`, changefreq: 'monthly' }),
+      const pluginUrls = Object.keys(plugins.data).filter((key) => !plugins.data[key].outdated).map(
+        (pluginKey) => ({ url: `/about/plugins/${pluginKey}`, changefreq: 'monthly' }),
       );
 
       return [

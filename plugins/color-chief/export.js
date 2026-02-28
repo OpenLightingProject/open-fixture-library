@@ -37,7 +37,7 @@ const segmentsPerFile = 4;
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
-  return fixtures.flatMap(fixture => fixture.modes.flatMap((mode) => {
+  return fixtures.flatMap((fixture) => fixture.modes.flatMap((mode) => {
     try {
       return getFilesForMode(mode);
     }
@@ -63,7 +63,7 @@ function getFilesForMode(mode) {
 
     const magicNumber = [0x08, 0x00, 0x04, 0x08, 0x00, 0x04, 0x08, 0x00, 0x04];
     const versionCode = 0x01;
-    const channelIndices = Object.values(channels).map(channel => (channel === undefined ? 0x3D : mode.getChannelIndex(channel.key) + 1));
+    const channelIndices = Object.values(channels).map((channel) => (channel === undefined ? 0x3D : mode.getChannelIndex(channel.key) + 1));
     const padding = Array.from({ length: 154 }, () => 0x00);
 
     const byteArray = new Uint8Array([
@@ -103,36 +103,36 @@ function getFilesForMode(mode) {
  */
 function getModeChannels(mode) {
   const channelsByPixelKey = groupModeChannelsByPixelKey(mode);
-  const segments = channelsByPixelKey.map(channels => ({
-    red: channels.find(channel => isColorChannel(channel, 'Red')),
-    green: channels.find(channel => isColorChannel(channel, 'Green')),
-    blue: channels.find(channel => isColorChannel(channel, 'Blue')),
-    white: channels.find(channel => isColorChannel(channel, 'White') || isColorChannel(channel, 'Cold White') || isColorChannel(channel, 'Warm White')),
-    amber: channels.find(channel => isColorChannel(channel, 'Amber') || isColorChannel(channel, 'Warm White')),
-    uv: channels.find(channel => isColorChannel(channel, 'UV')),
-    dimmer: channels.find(channel => isChannelOfType(channel, 'Intensity')),
-    shutter: channels.find(channel => isChannelOfType(channel, 'Strobe') || isChannelOfType(channel, 'Shutter')),
+  const segments = channelsByPixelKey.map((channels) => ({
+    red: channels.find((channel) => isColorChannel(channel, 'Red')),
+    green: channels.find((channel) => isColorChannel(channel, 'Green')),
+    blue: channels.find((channel) => isColorChannel(channel, 'Blue')),
+    white: channels.find((channel) => isColorChannel(channel, 'White') || isColorChannel(channel, 'Cold White') || isColorChannel(channel, 'Warm White')),
+    amber: channels.find((channel) => isColorChannel(channel, 'Amber') || isColorChannel(channel, 'Warm White')),
+    uv: channels.find((channel) => isColorChannel(channel, 'UV')),
+    dimmer: channels.find((channel) => isChannelOfType(channel, 'Intensity')),
+    shutter: channels.find((channel) => isChannelOfType(channel, 'Strobe') || isChannelOfType(channel, 'Shutter')),
   }));
 
   mergeDisjunctSegments(segments);
 
   return {
     segments,
-    colorWheels: mode.channels.filter(channel => isChannelOfType(channel, 'Multi-Color')),
+    colorWheels: mode.channels.filter((channel) => isChannelOfType(channel, 'Multi-Color')),
     freePatchChannels: [
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Pan')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Tilt')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Effect')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Gobo')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Speed')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Prism')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'WheelSlotRotation')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Zoom')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Iris')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Color Temperature')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Maintenance')),
-      ...mode.channels.filter(channel => isChannelOfType(channel, 'Shutter') && segments.every(
-        segment => segment.shutter !== channel,
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Pan')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Tilt')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Effect')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Gobo')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Speed')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Prism')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'WheelSlotRotation')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Zoom')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Iris')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Color Temperature')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Maintenance')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Shutter') && segments.every(
+        (segment) => segment.shutter !== channel,
       )),
     ],
   };
@@ -166,10 +166,10 @@ function mergeDisjunctSegments(segments) {
     const currentSegment = segments[segmentIndex];
     const previousSegment = segments[segmentIndex - 1];
     const definedControlElements = Object.keys(currentSegment).filter(
-      controlElement => currentSegment[controlElement] !== undefined,
+      (controlElement) => currentSegment[controlElement] !== undefined,
     );
     const canBeMerged = definedControlElements.every(
-      controlElement => previousSegment[controlElement] === undefined,
+      (controlElement) => previousSegment[controlElement] === undefined,
     );
 
     if (canBeMerged) {

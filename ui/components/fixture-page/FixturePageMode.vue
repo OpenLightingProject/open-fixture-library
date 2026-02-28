@@ -78,7 +78,7 @@ export default {
     mode: instanceOfProp(Mode).required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     return {

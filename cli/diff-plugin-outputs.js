@@ -8,7 +8,7 @@ import importJson from '../lib/import-json.js';
 
 const plugins = await importJson('../plugins/plugins.json', import.meta.url);
 const testFixtures = await importJson('../tests/test-fixtures.json', import.meta.url);
-const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
+const testFixtureKeys = testFixtures.map((fixture) => `${fixture.man}/${fixture.key}`);
 
 const cliArguments = minimist(process.argv.slice(2), {
   string: ['p', 'c', 'r'],

@@ -164,7 +164,7 @@ export default {
     wizard: objectProp().required,
   },
   emits: {
-    close: insertIndex => true,
+    close: (insertIndex) => true,
   },
   computed: {
     capabilities() {
@@ -259,18 +259,18 @@ export default {
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        capability => getCapabilityWithSource(capability, 'inherited'),
+        (capability) => getCapabilityWithSource(capability, 'inherited'),
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        capability => getCapabilityWithSource(capability, 'computed'),
+        (capability) => getCapabilityWithSource(capability, 'computed'),
       );
 
       // insert all computed capabilities at insertIndex
       inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilites);
 
       return inheritedCapabilities.filter(
-        capability => capability.dmxRange !== null,
+        (capability) => capability.dmxRange !== null,
       );
     },
 

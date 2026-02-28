@@ -18,7 +18,7 @@ export default async function testChannelNumbers(exportFile) {
   const parseString = promisify(parser.parseString);
 
   const fixture = exportFile.fixtures[0];
-  const exportMode = fixture.modes.find(mode => mode.shortName === exportFile.mode);
+  const exportMode = fixture.modes.find((mode) => mode.shortName === exportFile.mode);
   const channelCount = exportMode.channels.length;
 
   /** @type {Record<number, Range[]>} */
@@ -29,7 +29,7 @@ export default async function testChannelNumbers(exportFile) {
   const xml = await parseString(exportFile.content);
   const xmlFunctions = xml.device.functions.filter(
     // filter out tags without content
-    xmlFunction => typeof xmlFunction === 'object',
+    (xmlFunction) => typeof xmlFunction === 'object',
   );
   for (const xmlFunction of xmlFunctions) {
     findChannels(xmlFunction, -1);
@@ -53,7 +53,7 @@ export default async function testChannelNumbers(exportFile) {
         'finedmxchannel',
         'ultradmxchannel',
         'ultrafinedmxchannel',
-      ].filter(attribute => attribute in xmlNode.$);
+      ].filter((attribute) => attribute in xmlNode.$);
       for (const attribute of indexAttributes) {
         const channelIndex = Number.parseInt(xmlNode.$[attribute], 10);
 

@@ -21,7 +21,7 @@ export default {
     modelValue: anyProp().optional,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   watch: {
     modelValue(newFile) {

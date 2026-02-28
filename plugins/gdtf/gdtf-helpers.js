@@ -13,7 +13,7 @@ export function followXmlNodeReference(startNode, nodeReference) {
 
   for (const nameAttribute of nameParts) {
     const nodeWithNameAttribute = getChildNodes(currentNode).find(
-      node => '$' in node && node.$.Name === nameAttribute,
+      (node) => '$' in node && node.$.Name === nameAttribute,
     );
 
     if (nodeWithNameAttribute) {
@@ -52,14 +52,14 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
     const Z = Y / y * (1 - x - y);
     return [X, Y, Z];
   };
-  const XYZ1_to_XYZ100 = XYZ1 => XYZ1.map(c => c * 100);
+  const XYZ1_to_XYZ100 = (XYZ1) => XYZ1.map((c) => c * 100);
   const XYZ100_to_sRGB1_linear = ([X, Y, Z]) => {
     const R = ( 3.2406 * X / 100) + (-1.5372 * Y / 100) + (-0.4986 * Z / 100);
     const G = (-0.9689 * X / 100) + ( 1.8758 * Y / 100) + ( 0.0415 * Z / 100);
     const B = ( 0.0557 * X / 100) + (-0.2040 * Y / 100) + ( 1.0570 * Z / 100);
     return [R, G, B];
   };
-  const sRGB1_linear_to_sRGB1 = RGB_linear => RGB_linear.map((c) => {
+  const sRGB1_linear_to_sRGB1 = (RGB_linear) => RGB_linear.map((c) => {
     if (c <= 0.003_130_8) {
       return 12.92 * c;
     }
@@ -68,11 +68,11 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
 
     return ((1 + a) * Math.pow(c, 1 / 2.4)) - a;
   });
-  const sRGB1_to_sRGB255 = RGB1 => RGB1.map(c => c * 255);
+  const sRGB1_to_sRGB255 = (RGB1) => RGB1.map((c) => c * 255);
 
   // parse starting values as array
   const [x, y, Y] = gdtfColorString.split(/\s*,\s*/).map(
-    colorComponent => Number.parseFloat(colorComponent),
+    (colorComponent) => Number.parseFloat(colorComponent),
   );
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
@@ -80,7 +80,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
 
   let r, g, b;
   if (Y > 1) {
-    [r, g, b] = RGB.map(c => (c > 0 ? c / 255 : 0));
+    [r, g, b] = RGB.map((c) => (c > 0 ? c / 255 : 0));
   }
   else {
     [r, g, b] = RGB;
@@ -95,7 +95,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   }
 
   // clip to integers in range 0…255
-  [r, g, b] = [r, g, b].map(c => Math.floor(Math.min(255, Math.max(0, c || 0))));
+  [r, g, b] = [r, g, b].map((c) => Math.floor(Math.min(255, Math.max(0, c || 0))));
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 

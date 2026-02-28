@@ -110,7 +110,7 @@ export default {
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        subFieldName => subFieldName.startsWith(this.name),
+        (subFieldName) => subFieldName.startsWith(this.name),
       );
 
       for (const subFieldName of subFieldNames) {

@@ -38,7 +38,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   methods: {
     async addLink() {
@@ -55,12 +55,12 @@ export default {
       };
 
       this.$emit('update:model-value', this.modelValue.map(
-        link => (link === updateLink ? updatedLink : link),
+        (link) => (link === updateLink ? updatedLink : link),
       ));
     },
     removeLink(removeLink) {
       this.$emit('update:model-value', this.modelValue.filter(
-        link => link !== removeLink,
+        (link) => link !== removeLink,
       ));
     },
   },

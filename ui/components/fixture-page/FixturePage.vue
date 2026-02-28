@@ -227,7 +227,7 @@ export default {
     loadAllModes: booleanProp().withDefault(false),
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
@@ -285,7 +285,7 @@ export default {
 
         if (linkType === 'video') {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url),
+            (url) => !this.videos.some((video) => video.url === url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -326,7 +326,7 @@ const supportedVideoFormats = {
 
   native: {
     regex: /\.(?:mp4|avi)$/,
-    displayType: url => getHostname(url),
+    displayType: (url) => getHostname(url),
     videoId: (url, match) => url,
     startAt: (url, match) => 0,
   },
@@ -337,7 +337,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: url => 'YouTube',
+    displayType: (url) => 'YouTube',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -350,7 +350,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: url => 'Vimeo',
+    displayType: (url) => 'Vimeo',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -361,7 +361,7 @@ const supportedVideoFormats = {
      * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
      */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: url => 'Facebook',
+    displayType: (url) => 'Facebook',
     videoId: (url, match) => match[1],
     startAt: (url, match) => 0,
   },

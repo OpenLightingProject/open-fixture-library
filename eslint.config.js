@@ -27,6 +27,7 @@ const eslintPluginNuxtConfigRecommended = {
 };
 
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
+  arrowParens: true,
   semi: true,
 });
 
@@ -354,7 +355,7 @@ const disabledRules = [
   'vuejs-accessibility/label-has-for',
 ];
 
-const getRuleParameters = ruleOptions => (Array.isArray(ruleOptions) ? ruleOptions.slice(1) : []);
+const getRuleParameters = (ruleOptions) => (Array.isArray(ruleOptions) ? ruleOptions.slice(1) : []);
 
 for (const [vueRuleName, extendedRuleName] of Object.entries(vueExtensionRules)) {
   if (enabledRuleParameters[extendedRuleName]) {
@@ -409,7 +410,7 @@ export default [
         ]),
       ),
       ...Object.fromEntries(
-        disabledRules.map(ruleName => [ruleName, 'off']),
+        disabledRules.map((ruleName) => [ruleName, 'off']),
       ),
     },
     settings: {

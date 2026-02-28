@@ -27,11 +27,11 @@ export async function getManufacturerByKey({ request }) {
     key: manufacturerKey,
     color: register.colors[manufacturerKey],
     fixtures: (register.manufacturers[manufacturerKey] || []).map(
-      fixtureKey => ({
+      (fixtureKey) => ({
         key: fixtureKey,
         name: register.filesystem[`${manufacturerKey}/${fixtureKey}`].name,
         categories: Object.keys(register.categories).filter(
-          category => register.categories[category].includes(`${manufacturerKey}/${fixtureKey}`),
+          (category) => register.categories[category].includes(`${manufacturerKey}/${fixtureKey}`),
         ),
       }),
     ),

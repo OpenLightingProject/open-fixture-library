@@ -202,7 +202,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     const gdtfWheels = (gdtfFixture.Wheels[0].Wheel || []).filter(
-      wheel => wheel.$.Name !== 'ColorMacro',
+      (wheel) => wheel.$.Name !== 'ColorMacro',
     );
 
     if (gdtfWheels.length === 0) {
@@ -429,14 +429,14 @@ export async function importFixtures(buffer, filename, authorName) {
     // convert availableChannels array to object and add it to fixture
     if (availableChannels.length > 0) {
       fixture.availableChannels = Object.fromEntries(
-        availableChannels.map(channelWrapper => [channelWrapper.key, channelWrapper.channel]),
+        availableChannels.map((channelWrapper) => [channelWrapper.key, channelWrapper.channel]),
       );
     }
 
     // convert templateChannels array to object and add it to fixture
     if (templateChannels.length > 0) {
       fixture.templateChannels = Object.fromEntries(
-        templateChannels.map(channelWrapper => [channelWrapper.key, channelWrapper.channel]),
+        templateChannels.map((channelWrapper) => [channelWrapper.key, channelWrapper.channel]),
       );
     }
   }
@@ -453,7 +453,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     const modeIndex = gdtfFixture.DMXModes[0].DMXMode.findIndex(
-      gdtfMode => gdtfMode.DMXChannels[0].DMXChannel.includes(gdtfChannel),
+      (gdtfMode) => gdtfMode.DMXChannels[0].DMXChannel.includes(gdtfChannel),
     );
 
     const channel = {
@@ -485,7 +485,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     // check if we already added the same channel in another mode
     const sameChannel = channelWrappers.find(
-      channelWrapper => JSON.stringify(channelWrapper.channel) === JSON.stringify(channel) && !channelWrapper.modeIndices.includes(modeIndex),
+      (channelWrapper) => JSON.stringify(channelWrapper.channel) === JSON.stringify(channel) && !channelWrapper.modeIndices.includes(modeIndex),
     );
     if (sameChannel) {
       gdtfChannel._oflChannelKey = sameChannel.key;
@@ -513,7 +513,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       try {
         return gdtfFixture.AttributeDefinitions[0].Attributes[0].Attribute.find(
-          attribute => attribute.$.Name === channelAttribute,
+          (attribute) => attribute.$.Name === channelAttribute,
         ).$.Pretty || channelAttribute;
       }
       catch {
@@ -730,7 +730,7 @@ export async function importFixtures(buffer, filename, authorName) {
         else if (!(physicalEntity in gdtfUnits)) {
           // ignore case of PhysicalUnit attribute
           physicalEntity = Object.keys(gdtfUnits).find(
-            entity => entity.toLowerCase() === physicalEntity.toLowerCase(),
+            (entity) => entity.toLowerCase() === physicalEntity.toLowerCase(),
           );
         }
 
@@ -770,7 +770,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
-      const keyExists = () => channelWrappers.some(channelWrapper => channelWrapper.key === key);
+      const keyExists = () => channelWrappers.some((channelWrapper) => channelWrapper.key === key);
       while (keyExists()) {
         duplicates++;
         key = `${name} ${duplicates}`;
@@ -900,7 +900,7 @@ export async function importFixtures(buffer, filename, authorName) {
           repeatFor: usedMatrixPixels,
           channelOrder: 'perPixel',
           templateChannels: channelWrapper.channels.map(
-            channelKey => `${channelKey} $pixelKey`,
+            (channelKey) => `${channelKey} $pixelKey`,
           ),
         });
       }
@@ -986,7 +986,7 @@ export async function importFixtures(buffer, filename, authorName) {
       function traverseGeometries(xmlNode) {
         // add all suitable GeometryReference child nodes
         geometryReferences.push(
-          ...(xmlNode.GeometryReference || []).filter(gdtfGeoRef => gdtfGeoRef.$.Geometry === geometryName),
+          ...(xmlNode.GeometryReference || []).filter((gdtfGeoRef) => gdtfGeoRef.$.Geometry === geometryName),
         );
 
         // traverse all other child nodes
@@ -1027,7 +1027,7 @@ export async function importFixtures(buffer, filename, authorName) {
               const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
               return capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo;
             })
-            .map(relation => [switchingChannelKey, relation.switchToChannelKey]),
+            .map((relation) => [switchingChannelKey, relation.switchToChannelKey]),
         ));
       }
     }
@@ -1044,7 +1044,7 @@ export async function importFixtures(buffer, filename, authorName) {
       for (const [switchingChannelKey, relations] of Object.entries(relationsPerMaster[triggerChannelKey])) {
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          otherKey => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
+          (otherKey) => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
         );
 
         if (addedSwitchingChannelKey) {

@@ -132,20 +132,20 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     Fixed: null,
   };
   const type = Object.keys(focusTypesCategories).find(
-    focusType => fixture.categories.includes(focusTypesCategories[focusType]),
+    (focusType) => fixture.categories.includes(focusTypesCategories[focusType]),
   ) || null;
 
   const [panMax, tiltMax] = ['Pan', 'Tilt'].map((panOrTilt) => {
-    const capabilities = fixture.coarseChannels.flatMap(channel => channel.capabilities || []);
+    const capabilities = fixture.coarseChannels.flatMap((channel) => channel.capabilities || []);
 
-    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 'infinite';
     }
 
-    const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === 'deg');
-    const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
-    const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
+    const panTiltCapabilities = capabilities.filter((capability) => capability.type === panOrTilt && capability.angle[0].unit === 'deg');
+    const minAngle = Math.min(...panTiltCapabilities.map((capability) => Math.min(capability.angle[0].number, capability.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
     if (panTiltMax > Number.NEGATIVE_INFINITY) {

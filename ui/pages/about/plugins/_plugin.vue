@@ -159,7 +159,7 @@ export default {
     fileLocationOSes() {
       return 'fileLocations' in this.pluginData
         ? Object.keys(this.pluginData.fileLocations).filter(
-            os => os !== 'subDirectoriesAllowed',
+            (os) => os !== 'subDirectoriesAllowed',
           )
         : null;
     },

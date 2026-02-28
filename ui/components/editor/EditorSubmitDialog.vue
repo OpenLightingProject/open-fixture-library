@@ -285,7 +285,7 @@ export default {
       }
 
       return Object.values(this.fixtureCreateResult.errors).some(
-        errors => errors.length === 0,
+        (errors) => errors.length === 0,
       );
     },
     hasValidationErrors() {

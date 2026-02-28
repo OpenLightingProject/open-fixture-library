@@ -29,7 +29,7 @@ app.use(cors({
   origin(origin, callback) {
     const corsAllowed = process.env.NODE_ENV !== 'production'
       || !origin // allow non XHR/fetch requests
-      || corsWhitelist.some(regex => regex.test(origin));
+      || corsWhitelist.some((regex) => regex.test(origin));
 
     callback(null, corsAllowed ? true : 'https://open-fixture-library.org');
   },

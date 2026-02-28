@@ -21,8 +21,8 @@ try {
   if (cliArguments.a) {
     const register = await importJson('../fixtures/register.json', import.meta.url);
     fixtures = Object.keys(register.filesystem).filter(
-      fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
-    ).map(fixtureKey => fixtureKey.split('/'));
+      (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
+    ).map((fixtureKey) => fixtureKey.split('/'));
   }
   else {
     fixtures = cliArguments._.map((relativePath) => {

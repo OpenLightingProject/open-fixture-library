@@ -25,7 +25,7 @@ export default {
     value: anyProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
   },
   computed: {
     localValue: {

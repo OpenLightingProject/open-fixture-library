@@ -348,7 +348,7 @@ export default {
   },
   emits: {
     'channel-changed': () => true,
-    'remove-channel': channelId => true,
+    'remove-channel': (channelId) => true,
     'reset-channel': () => true,
   },
   data() {
@@ -368,16 +368,16 @@ export default {
     },
     currentMode() {
       const uuid = this.channel.modeId;
-      const modeIndex = this.fixture.modes.findIndex(mode => mode.uuid === uuid);
+      const modeIndex = this.fixture.modes.findIndex((mode) => mode.uuid === uuid);
       return this.fixture.modes[modeIndex];
     },
     currentModeUnchosenChannelUuids() {
       return Object.keys(this.fixture.availableChannels).filter(
-        channelUuid => !this.currentMode.channels.includes(channelUuid),
+        (channelUuid) => !this.currentMode.channels.includes(channelUuid),
       );
     },
     currentModeUnchosenChannels() {
-      return this.currentModeUnchosenChannelUuids.map(channelUuid => ({
+      return this.currentModeUnchosenChannelUuids.map((channelUuid) => ({
         inputId: `unchosen-channel-${channelUuid}`,
         uuid: channelUuid,
         name: this.getChannelName(channelUuid),
@@ -415,7 +415,7 @@ export default {
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     },
     submitButtonTitle() {
@@ -482,7 +482,7 @@ export default {
       const isFineChannel = 'coarseChannelId' in deselectedChannel;
 
       // Deselect the channel
-      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
+      this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => uuid !== channelUuid);
 
       if (isFineChannel) {
         // Deselect all finer channels
@@ -547,7 +547,7 @@ export default {
         this.toggleChannelSelection(channelUuid);
       }
 
-      if (this.selectedChannelUuids.some(uuid => uuid !== channelUuid)) {
+      if (this.selectedChannelUuids.some((uuid) => uuid !== channelUuid)) {
         // another channel is already selected, do not submit on double-click
         return;
       }
@@ -609,7 +609,7 @@ export default {
       const capability = this.channel.capabilities[0];
 
       const matchingColor = this.singleColors.find(
-        color => channelName.toLowerCase().includes(color.toLowerCase()),
+        (color) => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
         capability.type = 'ColorIntensity';
@@ -644,7 +644,7 @@ export default {
       };
 
       const matchingType = Object.keys(capabilityTypeSuggestions).find(
-        type => capabilityTypeSuggestions[type].test(channelName),
+        (type) => capabilityTypeSuggestions[type].test(channelName),
       );
 
       if (matchingType) {
@@ -703,7 +703,7 @@ export default {
             left: 0,
             topOffset: 100,
           },
-          isScrollable: target => target === scrollContainer,
+          isScrollable: (target) => target === scrollContainer,
         }, () => invalidFields[0].focus());
 
         return;
@@ -842,7 +842,7 @@ export default {
           left: 0,
           topOffset: 100,
         },
-        isScrollable: target => target === scrollContainer,
+        isScrollable: (target) => target === scrollContainer,
       }, () => firstNewCapability.focus());
     },
 

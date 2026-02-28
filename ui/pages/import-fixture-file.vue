@@ -167,7 +167,7 @@ export default {
             left: 0,
             topOffset: 100,
           },
-          isScrollable: target => target === window,
+          isScrollable: (target) => target === window,
         }, () => field.focus());
 
         return;

@@ -54,8 +54,8 @@ try {
   }
 
   const fixtures = cliArguments._.length === 0
-    ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
-    : cliArguments._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
+    ? testFixtures.map((fixture) => fixtureFromRepository(fixture.man, fixture.key))
+    : cliArguments._.map((relativePath) => fixtureFromFile(path.join(process.cwd(), relativePath)));
 
   const exportPlugin = await import(`../plugins/${cliArguments.plugin}/export.js`);
 
@@ -80,7 +80,7 @@ try {
 
         return [
           `${failLabel} ${file.name}`,
-          ...errors.map(error => `- ${error}`),
+          ...errors.map((error) => `- ${error}`),
         ].join('\n');
       }
     }));

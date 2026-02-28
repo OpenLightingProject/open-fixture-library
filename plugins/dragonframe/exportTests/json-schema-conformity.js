@@ -58,7 +58,7 @@ export default async function testJsonSchemaConformity(exportFile, allExportFile
  */
 async function getSchemas() {
   const schemasJson = await Promise.all(SCHEMA_FILES.map(
-    filename => downloadSchema(SCHEMA_BASE_URL + filename),
+    (filename) => downloadSchema(SCHEMA_BASE_URL + filename),
   ));
 
   const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf('fixture.json')];
@@ -100,6 +100,6 @@ function downloadSchema(url) {
       response.on('end', () => resolve(JSON.parse(body)));
     });
 
-    request.on('error', error => reject(error));
+    request.on('error', (error) => reject(error));
   });
 }

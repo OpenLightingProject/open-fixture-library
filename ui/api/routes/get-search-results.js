@@ -18,7 +18,7 @@ export async function getSearchResults({ request }) {
   manufacturers = await importJson('../../../fixtures/manufacturers.json', import.meta.url);
 
   const results = Object.keys(register.filesystem).filter(
-    key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
+    (key) => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
   );
   return {
     body: results,
@@ -65,7 +65,7 @@ function categoryMatch(categoriesQuery, fixtureKey) {
     categoriesQuery.length === 0
     || (categoriesQuery.length === 1 && categoriesQuery[0] === '')
     || categoriesQuery.some(
-      category => register.categories[category]?.includes(fixtureKey),
+      (category) => register.categories[category]?.includes(fixtureKey),
     )
   );
 }

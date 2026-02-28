@@ -145,7 +145,7 @@ export default {
     resolutionInMode: numberProp().required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   computed: {
     capabilities() {

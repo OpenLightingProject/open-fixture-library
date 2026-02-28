@@ -39,7 +39,7 @@ export default {
     allCategories: arrayProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
     focus: () => true,
     blur: () => true,
   },
@@ -54,7 +54,7 @@ export default {
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        category => !this.value.includes(category),
+        (category) => !this.value.includes(category),
       );
     },
   },
@@ -65,7 +65,7 @@ export default {
       this.onBlur();
     },
     deselect(deselectedCategory) {
-      const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
+      const updatedCategoryList = this.value.filter((category) => category !== deselectedCategory);
       this.$emit('input', updatedCategoryList);
       this.onBlur();
     },

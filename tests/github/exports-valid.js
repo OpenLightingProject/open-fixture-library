@@ -32,12 +32,12 @@ try {
     const plugin = plugins.data[exportPluginKey];
 
     exportTests.push(...plugin.exportTests.map(
-      testKey => [exportPluginKey, testKey],
+      (testKey) => [exportPluginKey, testKey],
     ));
   }
 
   const testFixtures = await importJson('../test-fixtures.json', import.meta.url);
-  testFixtureKeys = testFixtures.map(fixture => [fixture.man, fixture.key]);
+  testFixtureKeys = testFixtures.map((fixture) => [fixture.man, fixture.key]);
 
   const tasks = [
     ...getTasksForModel(changedComponents),
@@ -46,7 +46,7 @@ try {
     ...getTasksForFixtures(changedComponents),
   ]
     .filter((task, index, array) => {
-      const firstEqualTask = array.find(otherTask =>
+      const firstEqualTask = array.find((otherTask) =>
         task.manufacturerKey === otherTask.manufacturerKey
         && task.fixtureKey === otherTask.fixtureKey
         && task.pluginKey === otherTask.pluginKey
@@ -171,7 +171,7 @@ function getTasksForPlugins(changedComponents) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
     for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
-      tasks.push(...pluginExportTests.map(testKey => ({
+      tasks.push(...pluginExportTests.map((testKey) => ({
         manufacturerKey,
         fixtureKey,
         pluginKey: changedPlugin,
@@ -258,7 +258,7 @@ async function getTaskPromise(task) {
     '<details>',
     `  <summary>${emoji} <strong>${task.manufacturerKey} / ${task.fixtureKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
     '  <ul>',
-    ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
+    ...detailListItems.map((listItem) => `    <li>${listItem}</li>`),
     '  </ul>',
     '</details>',
   ];

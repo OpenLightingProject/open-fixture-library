@@ -57,8 +57,8 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   const qlcplusGobos = [
     'gobos/Others/open.svg',
     'gobos/Others/rainbow.png',
-    ...Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    ...allExportFiles.filter(file => file.name.startsWith('gobos/')).map(file => file.name),
+    ...Object.keys(qlcplusGoboAliases).map((gobo) => `gobos/${gobo}`),
+    ...allExportFiles.filter((file) => file.name.startsWith('gobos/')).map((file) => file.name),
   ];
 
   for (const gobo of qlcplusGobos) {
@@ -82,7 +82,7 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
     throw error;
   });
 
-  const lastLine = output.stdout.split('\n').findLast(line => line !== '');
+  const lastLine = output.stdout.split('\n').findLast((line) => line !== '');
 
   if (lastLine !== '1 definitions processed. 0 errors detected') {
     throw output.stdout;
@@ -101,6 +101,6 @@ function downloadFile(url) {
         data += chunk;
       });
       response.on('end', () => resolve(data));
-    }).on('error', error => reject(error));
+    }).on('error', (error) => reject(error));
   });
 }

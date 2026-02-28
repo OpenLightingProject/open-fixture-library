@@ -180,7 +180,7 @@ export function isChannelChanged(channel) {
 
     if (property === 'capabilities') {
       return channel.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     }
 
@@ -201,7 +201,7 @@ export function isCapabilityChanged(capability) {
     return true;
   }
 
-  return Object.values(capability.typeData).some(value => value !== '' && value !== null);
+  return Object.values(capability.typeData).some((value) => value !== '' && value !== null);
 }
 
 /**
@@ -213,8 +213,8 @@ export function colorsHexStringToArray(hexString) {
     return null;
   }
 
-  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
-    hex => hex.match(/^#[\da-f]{6}$/),
+  const hexArray = hexString.split(/\s*,\s*/).map((hex) => hex.trim().toLowerCase()).filter(
+    (hex) => hex.match(/^#[\da-f]{6}$/),
   );
 
   if (hexArray.length === 0) {

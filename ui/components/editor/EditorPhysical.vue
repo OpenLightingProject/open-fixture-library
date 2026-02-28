@@ -141,7 +141,7 @@ export default {
     namePrefix: stringProp().required,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   data() {
     return {

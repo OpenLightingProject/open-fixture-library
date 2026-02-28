@@ -285,7 +285,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const capabilityTypeParsers = {
       ColorIntensity() {
         capability.color = ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'Warm White', 'Cold White', 'White', 'UV', 'Lime'].find(
-          color => channelName.toLowerCase().includes(color.toLowerCase()),
+          (color) => channelName.toLowerCase().includes(color.toLowerCase()),
         );
 
         capability.comment = capabilityName;
@@ -476,7 +476,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           };
 
           return Object.keys(capabilityTypeRegexps).find(
-            channelType =>
+            (channelType) =>
               capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType])
               || channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || 'Generic';

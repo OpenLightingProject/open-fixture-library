@@ -252,7 +252,7 @@ function getChannelsByAttribute(channels) {
   }
 
   const emptyAttributes = Object.keys(channelsByAttribute).filter(
-    attribute => channelsByAttribute[attribute].length === 0,
+    (attribute) => channelsByAttribute[attribute].length === 0,
   );
   for (const emptyAttribute of emptyAttributes) {
     delete channelsByAttribute[emptyAttribute];

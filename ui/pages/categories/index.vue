@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, 'en')).map(
-        category => ({
+        (category) => ({
           name: category,
           fixtureCount: register.categories[category].length,
         }),

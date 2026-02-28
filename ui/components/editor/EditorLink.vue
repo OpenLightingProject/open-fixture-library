@@ -73,8 +73,8 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'set-type': type => true,
-    'set-url': url => true,
+    'set-type': (type) => true,
+    'set-url': (url) => true,
     'remove': () => true,
   },
   data() {
