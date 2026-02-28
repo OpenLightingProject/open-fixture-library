@@ -75,6 +75,7 @@ const enabledRuleParameters = {
   'radix': [],
 
   // eslint-plugin-stylistic
+  '@stylistic/curly-newline': ['always'],
   '@stylistic/function-call-spacing': [],
   '@stylistic/linebreak-style': [],
   '@stylistic/no-confusing-arrow': [],
