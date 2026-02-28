@@ -69,7 +69,7 @@ const enabledRuleParameters = {
   'no-unused-vars': [{ args: 'none' }],
   'no-useless-assignment': [],
   'no-var': [],
-  'object-shorthand': ['always', { avoidQuotes: true }],
+  'object-shorthand': [],
   'prefer-arrow-callback': [],
   'prefer-const': [{ destructuring: 'all' }],
   'prefer-object-spread': [],
