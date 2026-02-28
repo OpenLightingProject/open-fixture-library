@@ -32,7 +32,6 @@ const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
 stylisticEslintConfig.rules['@stylistic/function-call-spacing'] = ['error'];
 stylisticEslintConfig.rules['@stylistic/linebreak-style'] = ['error', 'unix'];
 stylisticEslintConfig.rules['@stylistic/no-confusing-arrow'] = ['error', { allowParens: true }];
-stylisticEslintConfig.rules['@stylistic/no-extra-parens'] = 'off';
 stylisticEslintConfig.rules['@stylistic/no-multiple-empty-lines'] = 'off';
 stylisticEslintConfig.rules['@stylistic/operator-linebreak'] = 'off';
 stylisticEslintConfig.rules['@stylistic/padded-blocks'] = 'off';
