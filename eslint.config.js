@@ -67,6 +67,7 @@ const enabledRuleParameters = {
   'no-template-curly-in-string': [],
   'no-unsafe-optional-chaining': [{ disallowArithmeticOperators: true }],
   'no-unused-vars': [{ args: 'none' }],
+  'no-unused-expressions': [],
   'no-useless-assignment': [],
   'no-var': [],
   'object-shorthand': [],
@@ -82,6 +83,7 @@ const enabledRuleParameters = {
   '@stylistic/function-call-spacing': [],
   '@stylistic/linebreak-style': [],
   '@stylistic/no-confusing-arrow': [],
+  '@stylistic/quotes': ['single'],
 
   // eslint-plugin-import
   'import/extensions': ['ignorePackages'],
