@@ -37,7 +37,6 @@ catch (error) {
   process.exit(1);
 }
 
-
 /**
  * Loop through all manufacturer directories and fixture files and add them to the register.
  */

@@ -24,7 +24,6 @@ const result = childProcess.spawnSync('git diff --exit-code', {
 });
 console.log('\n');
 
-
 if (result.status !== 0) {
   console.error(styleText('red', '[FAIL]'), 'Built files (or other changes) are not committed. Please run `npm run build` and stage (git add) all changes.');
   process.exit(1);

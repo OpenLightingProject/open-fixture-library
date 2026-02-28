@@ -157,9 +157,11 @@ export default {
       return this.pluginData.importPluginVersion;
     },
     fileLocationOSes() {
-      return 'fileLocations' in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
-        os => os !== 'subDirectoriesAllowed',
-      ) : null;
+      return 'fileLocations' in this.pluginData
+        ? Object.keys(this.pluginData.fileLocations).filter(
+            os => os !== 'subDirectoriesAllowed',
+          )
+        : null;
     },
   },
   methods: {

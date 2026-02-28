@@ -79,7 +79,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     return result;
   }
 
-
   const schemaValidate = await getAjvValidator('fixture');
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
@@ -116,8 +115,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   }
 
   return result;
-
-
 
   /**
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
@@ -462,7 +459,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkChannelDmxValues();
     checkCapabilities();
 
-
     /**
      * Check that DMX values used in the channel are correct.
      */
@@ -487,10 +483,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       let dmxRangesInvalid = false;
 
       if (
-        channel.capabilities.length === 1 &&
-        channel.capabilities[0].type === 'ShutterStrobe' &&
-        fixture.mainCategory !== 'Strobe' &&
-        !channel.capabilities[0].helpWanted?.startsWith('At which DMX values is strobe disabled? When is the lamp constantly on/off?')
+        channel.capabilities.length === 1
+        && channel.capabilities[0].type === 'ShutterStrobe'
+        && fixture.mainCategory !== 'Strobe'
+        && !channel.capabilities[0].helpWanted?.startsWith('At which DMX values is strobe disabled? When is the lamp constantly on/off?')
       ) {
         result.errors.push(`Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`);
       }
@@ -525,7 +521,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
-
 
         /**
          * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
@@ -633,7 +628,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         if (Object.keys(capabilityTypeChecks).includes(capability.type)) {
           capabilityTypeChecks[capability.type]();
         }
-
 
         /**
          * Check all used start/end entities in the capability.
@@ -825,7 +819,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     for (let channelIndex = 0; channelIndex < mode.channelKeys.length; channelIndex++) {
       checkModeChannelKey(channelIndex);
     }
-
 
     /**
      * Check that mode names comply with the channel count.
@@ -1149,7 +1142,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         result.errors.push(`Category '${categoryName}' invalid since ${categoryProperties.invalidPhrase}.`);
       }
       else if (exclusiveGroups.length > 0) {
-        result.errors.push(...exclusiveGroups.map(group => {
+        result.errors.push(...exclusiveGroups.map((group) => {
           const usedCategories = group
             .filter(category => fixture.categories.includes(category))
             .map(category => `'${category}'`)
@@ -1164,9 +1157,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      */
     function isColorChanger() {
       return (
-        hasCapabilityOfType('ColorPreset') ||
-        hasMultipleColorIntensityCapabilities() ||
-        fixture.wheels.some(
+        hasCapabilityOfType('ColorPreset')
+        || hasMultipleColorIntensityCapabilities()
+        || fixture.wheels.some(
           wheel => wheel.slots.some(slot => slot.type === 'Color'),
         )
       );
@@ -1178,10 +1171,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     function hasMultipleColorIntensityCapabilities() {
       return fixture.capabilities.filter(
         capability =>
-          capability.type === 'ColorIntensity' &&
-          capability.color !== 'UV' &&
-          capability.color !== 'Cold White' &&
-          capability.color !== 'Warm White',
+          capability.type === 'ColorIntensity'
+          && capability.color !== 'UV'
+          && capability.color !== 'Cold White'
+          && capability.color !== 'Warm White',
       ).length >= 2;
     }
 
@@ -1320,7 +1313,6 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
   }
   set.add(value.toLowerCase());
 }
-
 
 /**
  * @param {string} description The error message.

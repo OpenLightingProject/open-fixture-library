@@ -254,7 +254,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.snap = !channel.canCrossfade;
 
     if (channelJson.type !== CHANNEL_TYPE_NO_FUNCTION) {
-      channelJson.ranges = channel.capabilities.map(capability => {
+      channelJson.ranges = channel.capabilities.map((capability) => {
         const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
         const capabilityJson = {
           begin: dmxRange.start,

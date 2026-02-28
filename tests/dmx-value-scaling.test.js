@@ -187,7 +187,6 @@ describe('random capabilities', () => {
   });
 });
 
-
 /**
  * @param {number} resolution The resolution of the original ranges. Must be 2 or higher.
  * @returns {[number, number][]} List of adjacent [start, end] ranges, scaled down to the next-lower resolution.

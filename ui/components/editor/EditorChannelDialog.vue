@@ -486,19 +486,19 @@ export default {
 
       if (isFineChannel) {
         // Deselect all finer channels
-        this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+        this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
           const channel = this.fixture.availableChannels[uuid];
           return (
-            !('coarseChannelId' in channel) ||
-            channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
-            channel.resolution < deselectedChannel.resolution
+            !('coarseChannelId' in channel)
+            || channel.coarseChannelId !== deselectedChannel.coarseChannelId
+            || channel.resolution < deselectedChannel.resolution
           );
         });
         return;
       }
 
       // Deselect all fine channels belonging to this coarse channel
-      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+      this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
         const channel = this.fixture.availableChannels[uuid];
         return !('coarseChannelId' in channel) || channel.coarseChannelId !== channelUuid;
       });
@@ -528,11 +528,11 @@ export default {
       for (const uuid of this.currentModeUnchosenChannelUuids) {
         const channel = this.fixture.availableChannels[uuid];
         if (
-          'coarseChannelId' in channel &&
-          channel.coarseChannelId === coarseChannelId &&
-          channel.resolution < currentResolution &&
-          !this.isChannelSelected(uuid) &&
-          !this.modeHasChannel(uuid)
+          'coarseChannelId' in channel
+          && channel.coarseChannelId === coarseChannelId
+          && channel.resolution < currentResolution
+          && !this.isChannelSelected(uuid)
+          && !this.modeHasChannel(uuid)
         ) {
           this.selectedChannelUuids.push(uuid);
         }
@@ -761,7 +761,7 @@ export default {
 
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
-      this.currentMode.channels = this.currentMode.channels.map(key => {
+      this.currentMode.channels = this.currentMode.channels.map((key) => {
         if (key === oldChannelKey) {
           return newChannelKey;
         }

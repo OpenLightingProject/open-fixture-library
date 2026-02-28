@@ -36,7 +36,6 @@ app.use(cors({
   optionsSuccessStatus: 200, // IE11 chokes on default 204
 }));
 
-
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({

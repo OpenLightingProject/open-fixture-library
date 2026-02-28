@@ -149,7 +149,7 @@ export default {
   },
   computed: {
     capabilities() {
-      return this.channel.capabilities.map(capability => {
+      return this.channel.capabilities.map((capability) => {
         const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
         const switchChannels = [];
 

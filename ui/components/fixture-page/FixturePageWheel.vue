@@ -276,7 +276,7 @@ export default {
       return 2 * Math.PI * Math.abs(this.slotRotateRadius);
     },
     slotSvgFragments() {
-      return this.wheel.slots.map(slot => {
+      return this.wheel.slots.map((slot) => {
         if (slot.colors !== null) {
           return getColorCircleSvgFragment(slot.colors, this.slotRadius);
         }

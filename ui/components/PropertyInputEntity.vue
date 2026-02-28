@@ -99,9 +99,9 @@ export default {
     wide: booleanProp().withDefault(false),
   },
   emits: {
-    input: value => true,
-    focus: () => true,
-    blur: () => true,
+    'input': value => true,
+    'focus': () => true,
+    'blur': () => true,
     'unit-selected': unitString => true,
     'vf:validate': validationData => true,
   },

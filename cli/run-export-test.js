@@ -67,10 +67,10 @@ try {
     },
   );
 
-  await Promise.all(pluginData.exportTests.map(async testKey => {
+  await Promise.all(pluginData.exportTests.map(async (testKey) => {
     const { default: exportTest } = await import(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
 
-    const outputPerFile = await Promise.all(files.map(async file => {
+    const outputPerFile = await Promise.all(files.map(async (file) => {
       try {
         await exportTest(file, files);
         return `${passLabel} ${file.name}`;

@@ -100,7 +100,6 @@ function physicalValuesFulfillCondition(value1, value2, predicate) {
   return predicate(value1) && (value2 === null || predicate(value2));
 }
 
-
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions
 const gdtfAttributes = {
   'AnimationWheel(n)': {
@@ -149,25 +148,25 @@ const gdtfAttributes = {
     // Selects slots whose rotation is continuous in animation wheel and controls the angular speed of the slot spin within the same channel function
     inheritFrom: 'Gobo(n)SelectSpin',
   },
-  AnimationWheelShortcutMode: {
+  'AnimationWheelShortcutMode': {
     // Defines whether the animation wheel takes the shortest distance between two positions.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  BeamEffectIndexRotateMode: {
+  'BeamEffectIndexRotateMode': {
     // Changes mode to control either index or rotation of the beam effects.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  BeamReset: {
+  'BeamReset': {
     // Resets the fixture's beam features.
     oflType: 'Maintenance',
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  BeamShaper: undefined, // Activates fixture's beam shaper.
-  BeamShaperMacro: undefined, // Predefined presets for fixture's beam shaper positions.
-  BeamShaperPos: undefined, // Indexing of fixture's beam shaper.
-  BeamShaperPosRotate: undefined, // Continuous rotation of fixture's beam shaper.
-  BlackoutMode: undefined, // Close the light output under certain conditions (movement correction, gobo movement, etc.).
+  'BeamShaper': undefined, // Activates fixture's beam shaper.
+  'BeamShaperMacro': undefined, // Predefined presets for fixture's beam shaper positions.
+  'BeamShaperPos': undefined, // Indexing of fixture's beam shaper.
+  'BeamShaperPosRotate': undefined, // Continuous rotation of fixture's beam shaper.
+  'BlackoutMode': undefined, // Close the light output under certain conditions (movement correction, gobo movement, etc.).
   'Blade(n)A': {
     // 1 of 2 shutters that shape the top/right/bottom/left of the beam.
     oflType: 'BladeInsertion',
@@ -191,7 +190,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: 'Angle',
   },
   'Blower(n)': undefined, // Fog or hazer‘s blower feature.
-  ChromaticMode: undefined, // Selects chromatic behavior of the device.
+  'ChromaticMode': undefined, // Selects chromatic behavior of the device.
   'CIE_Brightness': undefined, // Controls the fixture's CIE 1931 color attribute regarding the brightness (Y).
   'CIE_X': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity x.
   'CIE_Y': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity y.
@@ -401,15 +400,15 @@ const gdtfAttributes = {
       capability.color = 'Yellow';
     },
   },
-  ColorCalibrationMode: {
+  'ColorCalibrationMode': {
     // Sets calibration mode (for example on/off). (since GDTF v1.0)
     inheritFrom: 'Control(n)',
   },
-  ColorConsistency: {
+  'ColorConsistency': {
     // Controls consistent behavior of color. (since GDTF v1.0)
     inheritFrom: 'Control(n)',
   },
-  ColorControl: {
+  'ColorControl': {
     // Controls special color related functions. (since GDTF v1.0)
     oflType: 'Maintenance',
     oflProperty: 'parameter',
@@ -445,19 +444,19 @@ const gdtfAttributes = {
       }
     },
   },
-  ColorMixMode: {
+  'ColorMixMode': {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  ColorMixMSpeed: {
+  'ColorMixMSpeed': {
     // Movement speed of the fixture's ColorMix presets.
     inheritFrom: 'IntensityMSpeed',
   },
-  ColorMixReset: {
+  'ColorMixReset': {
     // Resets the fixture's color mixing system.
     inheritFrom: 'BeamReset',
   },
-  ColorModelMode: {
+  'ColorModelMode': {
     // Controls color model (CMY/RGB/HSV..). (since GDTF v1.0)
     inheritFrom: 'AnimationWheel(n)Mode',
   },
@@ -486,7 +485,7 @@ const gdtfAttributes = {
     // Controls the fixture's yellow attribute for indirect CMY color mixing. (since GDTF v1.0)
     inheritFrom: 'ColorAdd_Y',
   },
-  ColorSettingsReset: {
+  'ColorSettingsReset': {
     // Resets settings of color control channel. (since GDTF v1.0)
     inheritFrom: 'BeamReset',
   },
@@ -514,16 +513,16 @@ const gdtfAttributes = {
     // Controls the insertion of the fixture's yellow filter flag for direct subtractive color mixing. (since GDTF v1.0)
     inheritFrom: 'ColorAdd_Y',
   },
-  ColorUniformity: undefined, // Controls behavior of color uniformity. (since GDTF v1.0)
-  ColorWheelReset: {
+  'ColorUniformity': undefined, // Controls behavior of color uniformity. (since GDTF v1.0)
+  'ColorWheelReset': {
     // Resets the fixture's color wheel.
     inheritFrom: 'BeamReset',
   },
-  ColorWheelSelectMSpeed: {
+  'ColorWheelSelectMSpeed': {
     // Movement speed of the fixture's color wheel.
     inheritFrom: 'IntensityMSpeed',
   },
-  ColorWheelShortcutMode: {
+  'ColorWheelShortcutMode': {
     // Defines whether the color wheel takes the shortest distance between two colors.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
@@ -533,56 +532,56 @@ const gdtfAttributes = {
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  CRIMode: undefined, // Controls CRI settings of output. (since GDTF v1.0)
-  CTB: {
+  'CRIMode': undefined, // Controls CRI settings of output. (since GDTF v1.0)
+  'CTB': {
     // Controls the fixture's "Correct to blue" wheel or mixing system.
     inheritFrom: 'CTO',
   },
-  CTBReset: {
+  'CTBReset': {
     // Resets the fixture's CTB.
     inheritFrom: 'BeamReset',
   },
-  CTC: {
+  'CTC': {
     // Controls the fixture's "Correct to color" wheel or mixing system.
     inheritFrom: 'CTO',
   },
-  CTCReset: {
+  'CTCReset': {
     // Resets the fixture's CTC.
     inheritFrom: 'BeamReset',
   },
-  CTO: {
+  'CTO': {
     // Controls the fixture's "Correct to orange" wheel or mixing system.
     oflType: 'ColorTemperature',
     oflProperty: 'colorTemperature',
     defaultPhysicalEntity: 'Temperature', // ColorComponent is also common
   },
-  CTOReset: {
+  'CTOReset': {
     // Resets the fixture's CTO.
     inheritFrom: 'BeamReset',
   },
-  CustomColor: undefined, // Custom color related functions (save, recall..). (since GDTF v1.0)
-  CyanMode: {
+  'CustomColor': undefined, // Custom color related functions (save, recall..). (since GDTF v1.0)
+  'CyanMode': {
     // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  Dimmer: {
+  'Dimmer': {
     // Controls the intensity of a fixture.
     oflType: 'Intensity',
     oflProperty: 'brightness',
     defaultPhysicalEntity: 'LuminousIntensity',
   },
-  DimmerCurve: {
+  'DimmerCurve': {
     // Selects different dimmer curves of the fixture.
     oflType: 'Maintenance',
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  DimmerMode: {
+  'DimmerMode': {
     // Selects different modes of intensity.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  DisplayIntensity: undefined, // Adjusts intensity of display (since GDTF v1.0)
-  DMXInput: undefined, // Selects DMX Input (since GDTF v1.0)
+  'DisplayIntensity': undefined, // Adjusts intensity of display (since GDTF v1.0)
+  'DMXInput': undefined, // Selects DMX Input (since GDTF v1.0)
   'Effects(n)': {
     // Generically predefined macros and effects of a fixture.
     oflType: 'Effect',
@@ -632,7 +631,7 @@ const gdtfAttributes = {
       }
     },
   },
-  EffectsSync: undefined, // Sets offset between running effects and effects 2.
+  'EffectsSync': undefined, // Sets offset between running effects and effects 2.
   'Fan(n)': {
     // Fog or hazer's Fan feature.
     oflType: 'Rotation',
@@ -643,12 +642,12 @@ const gdtfAttributes = {
     },
   },
   'Fan(n)Mode': undefined, // Controls fan (n) mode.
-  Fans: undefined, // Fancontrols a fixture or device.
-  FixtureCalibrationReset: {
+  'Fans': undefined, // Fancontrols a fixture or device.
+  'FixtureCalibrationReset': {
     // Resets the fixture's calibration.
     inheritFrom: 'BeamReset',
   },
-  FixtureGlobalReset: {
+  'FixtureGlobalReset': {
     // Generally resets the entire fixture.
     inheritFrom: 'BeamReset',
   },
@@ -666,15 +665,15 @@ const gdtfAttributes = {
     // Autofocuses functionality using distance.
     inheritFrom: 'Focus(n)',
   },
-  FocusMode: {
+  'FocusMode': {
     // Changes modes of the fixture’s focus - manual or auto- focus.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  FocusMSpeed: {
+  'FocusMSpeed': {
     // Movement speed of the fixture's focus.
     inheritFrom: 'IntensityMSpeed',
   },
-  FocusReset: {
+  'FocusReset': {
     // Resets the fixture's focus.
     inheritFrom: 'BeamReset',
   },
@@ -686,12 +685,12 @@ const gdtfAttributes = {
       capability.fogType = 'Fog';
     },
   },
-  FollowSpotMode: undefined, // Selects follow spot control mode. (since GDTF v1.0)
-  FrameMSpeed: {
+  'FollowSpotMode': undefined, // Selects follow spot control mode. (since GDTF v1.0)
+  'FrameMSpeed': {
     // Movement speed of the fixture's shapers.
     inheritFrom: 'IntensityMSpeed',
   },
-  FrameReset: {
+  'FrameReset': {
     // Resets the fixture's shapers.
     inheritFrom: 'BeamReset',
   },
@@ -705,13 +704,13 @@ const gdtfAttributes = {
     // Movement speed of the fixture's frost (n). (since GDTF v1.0)
     inheritFrom: 'IrisMSpeed',
   },
-  Function: {
+  'Function': {
     // Generally controls features of the fixture.
     oflType: 'Maintenance',
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  GlobalMSpeed: {
+  'GlobalMSpeed': {
     // General speed of fixture's features.
     inheritFrom: 'IntensityMSpeed',
   },
@@ -822,7 +821,7 @@ const gdtfAttributes = {
     // Movement speed of the fixture's gobo wheel.
     inheritFrom: 'IntensityMSpeed',
   },
-  GoboWheelReset: {
+  'GoboWheelReset': {
     // Resets the fixture's gobo wheel.
     inheritFrom: 'BeamReset',
   },
@@ -838,31 +837,31 @@ const gdtfAttributes = {
   'HSB_Hue': undefined, // Controls the fixture's color attribute regarding the hue.
   'HSB_Quality': undefined, // Controls the fixture's color attribute regarding the quality.
   'HSB_Saturation': undefined, // Controls the fixture's color attribute regarding the saturation.
-  IntensityMSpeed: {
+  'IntensityMSpeed': {
     // Movement speed of the fixture's intensity.
     oflType: 'Speed',
     oflProperty: guessSpeedOrDuration,
     defaultPhysicalEntity: 'Speed',
   },
-  IntensityReset: {
+  'IntensityReset': {
     // Resets the fixture's intensity.
     inheritFrom: 'BeamReset',
   },
-  Iris: {
+  'Iris': {
     // Controls the diameter of the fixture's beam.
     oflType: 'Iris',
     oflProperty: 'openPercent',
     defaultPhysicalEntity: 'Angle',
   },
-  IrisMode: {
+  'IrisMode': {
     // Changes modes of the fixture’s iris - linear, strobe, pulse.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  IrisMSpeed: {
+  'IrisMSpeed': {
     // Movement speed of the fixture's iris.
     inheritFrom: 'IntensityMSpeed',
   },
-  IrisPulseClose: {
+  'IrisPulseClose': {
     // Sets speed of iris‘s closing pulse.
     oflType: 'IrisEffect',
     oflProperty: 'speed',
@@ -871,7 +870,7 @@ const gdtfAttributes = {
       capability.effectName = 'RampDown';
     },
   },
-  IrisPulseOpen: {
+  'IrisPulseOpen': {
     // Sets speed of iris‘s opening pulse.
     oflType: 'IrisEffect',
     oflProperty: 'speed',
@@ -880,11 +879,11 @@ const gdtfAttributes = {
       capability.effectName = 'RampUp';
     },
   },
-  IrisReset: {
+  'IrisReset': {
     // Resets the fixture's iris.
     inheritFrom: 'BeamReset',
   },
-  IrisStrobe: {
+  'IrisStrobe': {
     // Sets speed of the iris’s strobe feature.
     oflType: 'IrisEffect',
     oflProperty: 'speed',
@@ -893,78 +892,78 @@ const gdtfAttributes = {
       capability.effectName = 'Strobe';
     },
   },
-  IrisStrobeRandom: {
+  'IrisStrobeRandom': {
     // Sets speed of the iris's random movement. (since GDTF v1.0)
     inheritFrom: 'IrisStrobe',
     afterPhysicalPropertyHook(capability) {
       capability.randomTiming = true;
     },
   },
-  LampControl: {
+  'LampControl': {
     // Controls the fixture's lamp on/lamp off feature.
     oflType: 'Maintenance',
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  LampPowerMode: {
+  'LampPowerMode': {
     // Controls the energy consumption of the lamp.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  LEDFrequency: undefined, // Controls LED frequency. (since GDTF v1.0)
-  LEDZoneMode: undefined, // Changes zones of LEDs. (since GDTF v1.0)
-  MagentaMode: {
+  'LEDFrequency': undefined, // Controls LED frequency. (since GDTF v1.0)
+  'LEDZoneMode': undefined, // Changes zones of LEDs. (since GDTF v1.0)
+  'MagentaMode': {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  MediaContent: undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
-  MediaFolder: undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
-  NoFeature: {
+  'MediaContent': undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
+  'MediaFolder': undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
+  'NoFeature': {
     // Ranges without a functionality.
     oflType: 'NoFunction',
     oflProperty: null,
   },
-  Pan: {
+  'Pan': {
     // Controls the fixture's sideward movement (horizontal axis).
     oflType: 'Pan',
     oflProperty: 'angle',
     defaultPhysicalEntity: 'Angle',
   },
-  PanMode: {
+  'PanMode': {
     // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  PanReset: {
+  'PanReset': {
     // Resets the fixture's pan.
     inheritFrom: 'BeamReset',
   },
-  PanTiltMode: undefined, // Selects fixture's pan/tilt mode. Selects between a limited pan/tilt range or a continuous pan/tilt range. (since GDTF v1.0)
-  PixelMode: undefined, // Controls behavior of LED pixels. (since GDTF v1.0)
-  Playmode: undefined, // Selects the playmode of a device (e.g., a media server). (since GDTF v1.0)
-  PositionEffect: {
+  'PanTiltMode': undefined, // Selects fixture's pan/tilt mode. Selects between a limited pan/tilt range or a continuous pan/tilt range. (since GDTF v1.0)
+  'PixelMode': undefined, // Controls behavior of LED pixels. (since GDTF v1.0)
+  'Playmode': undefined, // Selects the playmode of a device (e.g., a media server). (since GDTF v1.0)
+  'PositionEffect': {
     // Selects the predefined position effects that are built into the fixture.
     inheritFrom: 'Effects(n)',
   },
-  PositionEffectFade: {
+  'PositionEffectFade': {
     // Snaps or smooth fades with timing in running predefined position effects.
     inheritFrom: 'Effects(n)Fade',
   },
-  PositionEffectRate: {
+  'PositionEffectRate': {
     // Controls the speed of the predefined position effects that are built into the fixture.
     inheritFrom: 'Effects(n)Rate',
   },
-  PositionModes: {
+  'PositionModes': {
     // Selects the fixture's position mode.
     // TODO: Is this a typo in the GDTF wiki / schema and it should be "PositionMode"?
     oflType: 'Maintenance',
     oflProperty: 'parameter',
     defaultPhysicalEntity: 'Percent',
   },
-  PositionMSpeed: {
+  'PositionMSpeed': {
     // Movement speed of the fixture's pan/tilt.
     inheritFrom: 'IntensityMSpeed',
     oflType: 'PanTiltSpeed',
   },
-  PositionReset: {
+  'PositionReset': {
     // Resets the fixture's pan/tilt.
     inheritFrom: 'BeamReset',
   },
@@ -1001,16 +1000,16 @@ const gdtfAttributes = {
     // Selects prisms whose rotation is continuous in prism wheel (n) and controls the angular speed of the prism’s spin within the same channel function. (since GDTF v0.88)
     inheritFrom: 'Prism(n)PosRotate',
   },
-  ReflectorAdjust: undefined, // Movement speed of the fixture's frost.
-  ShaperMacros: {
+  'ReflectorAdjust': undefined, // Movement speed of the fixture's frost.
+  'ShaperMacros': {
     // Predefined presets for shaper positions.
     inheritFrom: 'Effects(n)',
   },
-  ShaperMacrosSpeed: {
+  'ShaperMacrosSpeed': {
     // Speed of predefined effects on shapers,
     inheritFrom: 'Effects(n)Rate',
   },
-  ShaperRot: {
+  'ShaperRot': {
     // Rotates position of blade assembly.
     oflType: 'BladeSystemRotation',
     oflProperty: 'angle',
@@ -1124,42 +1123,42 @@ const gdtfAttributes = {
       capability.randomTiming = true;
     },
   },
-  ShutterReset: {
+  'ShutterReset': {
     // Resets the fixture's shutter.
     inheritFrom: 'BeamReset',
   },
-  StrobeDuration: {
+  'StrobeDuration': {
     // Controls the length of a strobe flash.
     oflType: 'StrobeDuration',
     oflProperty: 'duration',
     defaultPhysicalEntity: 'Time',
   },
-  StrobeMode: {
+  'StrobeMode': {
     // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  StrobeRate: {
+  'StrobeRate': {
     // Controls the time between strobe flashes.
     oflType: 'StrobeSpeed',
     oflProperty: 'speed',
     defaultPhysicalEntity: 'Frequency',
   },
-  Tilt: {
+  'Tilt': {
     // Controls the fixture's upward and the downward movement (vertical axis).
     oflType: 'Tilt',
     oflProperty: 'angle',
     defaultPhysicalEntity: 'Angle',
   },
-  TiltMode: {
+  'TiltMode': {
     // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  TiltReset: {
+  'TiltReset': {
     // Resets the fixture's tilt.
     inheritFrom: 'BeamReset',
   },
-  UVStability: undefined, // Settings for UV stability color behavior. (since GDTF v1.0)
-  Video: undefined, // Controls video features.
+  'UVStability': undefined, // Settings for UV stability color behavior. (since GDTF v1.0)
+  'Video': undefined, // Controls video features.
   'VideoCamera(n)': undefined, // Selects the video camera(n). (since GDTF v1.0)
   'VideoEffect(n)Parameter(m)': undefined, // Controls parameter (m) of VideoEffect(n)Type. (since GDTF v1.0)
   'VideoEffect(n)Type': undefined, // Selects dedicated effects which are used for media. (since GDTF v1.0)
@@ -1167,29 +1166,29 @@ const gdtfAttributes = {
   'VideoScale(n)_X': undefined, // Scales the media content or video object along the x-axis. (since GDTF v1.0)
   'VideoScale(n)_Y': undefined, // Scales the media content or video object along the y-axis. (since GDTF v1.0)
   'VideoScale(n)_Z': undefined, // Scales the media content or video object along the z-axis. (since GDTF v1.0)
-  WavelengthCorrection: undefined, // Settings for WaveLength corrections of colors. (since GDTF v1.0)
-  WhiteCount: undefined, // Controls if White LED is proportionally added to RGB. (since GDTF v1.0)
-  XYZ_X: undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
-  XYZ_Y: undefined, // Defines a fixture’s y-coordinate within an XYZ coordinate system.
-  XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
-  YellowMode: {
+  'WavelengthCorrection': undefined, // Settings for WaveLength corrections of colors. (since GDTF v1.0)
+  'WhiteCount': undefined, // Controls if White LED is proportionally added to RGB. (since GDTF v1.0)
+  'XYZ_X': undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
+  'XYZ_Y': undefined, // Defines a fixture’s y-coordinate within an XYZ coordinate system.
+  'XYZ_Z': undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
+  'YellowMode': {
     // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  Zoom: {
+  'Zoom': {
     // Controls the spread of the fixture's beam/spot. (since GDTF v1.0)
     oflType: 'Zoom',
     oflProperty: 'angle',
     defaultPhysicalEntity: 'Angle',
   },
-  ZoomMode: undefined, // Changes modes of the fixture´s zoom. (since GDTF v1.0)
-  ZoomModeBeam: undefined, // Selects beam mode of zoom. (since GDTF v1.0)
-  ZoomModeSpot: undefined, // Selects spot mode of zoom. (since GDTF v1.0)
-  ZoomMSpeed: {
+  'ZoomMode': undefined, // Changes modes of the fixture´s zoom. (since GDTF v1.0)
+  'ZoomModeBeam': undefined, // Selects beam mode of zoom. (since GDTF v1.0)
+  'ZoomModeSpot': undefined, // Selects spot mode of zoom. (since GDTF v1.0)
+  'ZoomMSpeed': {
     // Movement speed of the fixture's zoom. (since GDTF v1.0)
     inheritFrom: 'IrisMSpeed',
   },
-  ZoomReset: {
+  'ZoomReset': {
     // Resets the fixture's zoom.
     inheritFrom: 'BeamReset',
   },

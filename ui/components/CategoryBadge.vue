@@ -58,7 +58,7 @@ export default {
   render(createElement) {
     const classes = {
       'category-badge': true,
-      selected: this.selected,
+      'selected': this.selected,
     };
     const children = [
       createElement('OflSvg', {
@@ -78,14 +78,14 @@ export default {
           href: `#${encodeURIComponent(this.category)}`,
         },
         on: {
-          click: $event => {
+          click: ($event) => {
             this.$emit('click');
             $event.preventDefault();
           },
           focus: () => {
             this.$emit('focus');
           },
-          blur: $event => {
+          blur: ($event) => {
             this.$emit('blur', $event);
           },
         },

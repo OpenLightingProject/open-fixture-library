@@ -29,9 +29,9 @@ export default {
     stepOverride: numberProp().optional,
   },
   emits: {
-    input: value => true,
-    focus: () => true,
-    blur: () => true,
+    'input': value => true,
+    'focus': () => true,
+    'blur': () => true,
     'vf:validate': validationData => true,
   },
   computed: {
@@ -84,12 +84,12 @@ export default {
      */
     validationData() {
       return {
-        min: this.min === null ? null : `${this.min}`,
-        max: this.max === null ? null : `${this.max}`,
+        'min': this.min === null ? null : `${this.min}`,
+        'max': this.max === null ? null : `${this.max}`,
         'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
         'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
-        step: `${this.step}`,
-        type: 'number',
+        'step': `${this.step}`,
+        'type': 'number',
       };
     },
   },

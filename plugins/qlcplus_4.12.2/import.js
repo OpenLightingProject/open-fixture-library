@@ -160,7 +160,7 @@ function getOflMatrix(qlcPlusFixture) {
 const slotTypeFunctions = {
   Open: {
     isSlotType: (capability, channelGroup, capabilityPreset) => capability._ === 'Open' || capability.$.Res1 === 'Others/open.svg' || capability.$.Res === 'Others/open.svg',
-    addSlotProperties: (capability, slot) => {},
+    addSlotProperties: (capability, slot) => undefined,
   },
   Gobo: {
     isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === 'GoboMacro' : channelGroup === 'Gobo'),
@@ -233,7 +233,7 @@ const slotTypeFunctions = {
 async function getOflWheels(qlcPlusFixture) {
   const wheels = {};
 
-  const wheelChannels = qlcPlusFixture.Channel.filter(channel => {
+  const wheelChannels = qlcPlusFixture.Channel.filter((channel) => {
     const channelName = channel.$.Name;
 
     const hasGoboPresetCapability = (channel.Capability || []).some(
@@ -253,7 +253,6 @@ async function getOflWheels(qlcPlusFixture) {
   }
 
   return Object.keys(wheels).length > 0 ? wheels : undefined;
-
 
   /**
    * @param {object} qlcPlusChannel The QLC+ channel object.
@@ -290,7 +289,6 @@ async function getOflWheels(qlcPlusFixture) {
     return slots;
   }
 }
-
 
 const parserPerChannelType = {
   Nothing: () => ({
@@ -518,7 +516,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     .map(object => object.Physical[0]);
 
   const [panMax, tiltMax] = ['PanMax', 'TiltMax'].map(
-    property => Math.max(...physicals.map(physical => {
+    property => Math.max(...physicals.map((physical) => {
       if (physical.Focus && property in physical.Focus[0].$) {
         return Number.parseInt(physical.Focus[0].$[property], 10) || 0;
       }
@@ -548,7 +546,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   }
 
   fixture.availableChannels[channelName] = channel;
-
 
   /**
    * @param {object} qlcPlusCapability The QLC+ capability object.
@@ -599,7 +596,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
     return capability;
 
-
     /**
      * Deletes the capability's comment if it adds no valuable information.
      */
@@ -643,7 +639,6 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
   }
 
   return physical;
-
 
   /**
    * Handles the Dimensions section.
@@ -842,7 +837,6 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
     }
   }
 
-
   /**
    * @param {string} qlcPlusFineChannel The key of the fine channel.
    * @returns {string | null} The key of the corresponding coarse channel, or null if it could not be detected.
@@ -866,7 +860,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
     if ('Group' in qlcPlusFineChannel) {
       const fineChannelGroupName = qlcPlusFineChannel.Group[0]._;
 
-      const coarseChannels = qlcPlusFixture.Channel.filter(coarseChannel => {
+      const coarseChannels = qlcPlusFixture.Channel.filter((coarseChannel) => {
         if (!('Group' in coarseChannel)) {
           return false;
         }

@@ -144,7 +144,6 @@ export async function importFixtures(buffer, filename, authorName) {
     return undefined;
   }
 
-
   /**
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
@@ -167,7 +166,6 @@ export async function importFixtures(buffer, filename, authorName) {
       const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
       mode._oflRdmPersonalityIndex = index;
     }
-
 
     /**
      * @returns {object} Name and DMX personalities of the latest RDM software version (both may be undefined).
@@ -195,7 +193,6 @@ export async function importFixtures(buffer, filename, authorName) {
     }
   }
 
-
   /**
    * Adds wheels to the OFL fixture (if there are any).
    */
@@ -216,7 +213,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     for (const gdtfWheel of gdtfWheels) {
       fixture.wheels[gdtfWheel.$.Name] = {
-        slots: (gdtfWheel.Slot || []).map(gdtfSlot => {
+        slots: (gdtfWheel.Slot || []).map((gdtfSlot) => {
           const name = gdtfSlot.$.Name;
 
           const slot = {
@@ -252,7 +249,6 @@ export async function importFixtures(buffer, filename, authorName) {
       };
     }
   }
-
 
   /**
    * Autmatically generates `Name` attributes for GDTF's `<DMXChannel>`,
@@ -320,7 +316,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
     return relations;
 
-
     /**
      * Parses <ChannelFunction ModeMaster="…">'s relation data.
      * This way of specifying relations was added in GDTF v0.88.
@@ -328,9 +323,9 @@ export async function importFixtures(buffer, filename, authorName) {
      */
     function getModeMasterRelations() {
       return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
-        return gdtfMode.DMXChannels[0].DMXChannel.flatMap(gdtfDmxChannel => {
-          return gdtfDmxChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
-            return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
+        return gdtfMode.DMXChannels[0].DMXChannel.flatMap((gdtfDmxChannel) => {
+          return gdtfDmxChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
+            return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
               if (!('ModeMaster' in gdtfChannelFunction.$)) {
                 return [];
               }
@@ -367,7 +362,7 @@ export async function importFixtures(buffer, filename, authorName) {
           return [];
         }
 
-        return gdtfMode.Relations[0].Relation.flatMap(gdtfRelation => {
+        return gdtfMode.Relations[0].Relation.flatMap((gdtfRelation) => {
           if (gdtfRelation.$.Type !== 'Mode') {
             return [];
           }
@@ -510,7 +505,6 @@ export async function importFixtures(buffer, filename, authorName) {
       modeIndices: [modeIndex],
     });
 
-
     /**
      * @returns {string} The channel name.
      */
@@ -535,12 +529,12 @@ export async function importFixtures(buffer, filename, authorName) {
       let maxPhysicalValue = Number.NEGATIVE_INFINITY;
 
       // save all <ChannelSet> XML nodes in a flat list
-      const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
+      const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
         if (!gdtfLogicalChannel.ChannelFunction) {
           throw new Error(`LogicalChannel does not contain any ChannelFunction children in DMXChannel ${JSON.stringify(gdtfChannel, null, 2)}`);
         }
 
-        return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
+        return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
           if (!gdtfChannelFunction.ChannelSet) {
             // add an empty <ChannelSet />
             gdtfChannelFunction.ChannelSet = [{ $: {} }];
@@ -552,7 +546,7 @@ export async function importFixtures(buffer, filename, authorName) {
             gdtfChannelFunction.$.Attribute,
           ) || { $: { Name: 'NoFeature' } };
 
-          return gdtfChannelFunction.ChannelSet.map(gdtfChannelSet => {
+          return gdtfChannelFunction.ChannelSet.map((gdtfChannelSet) => {
             // save parent nodes for future use
             gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
             gdtfChannelSet._channelFunction = gdtfChannelFunction;
@@ -627,7 +621,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return capability;
       });
-
 
       /**
        * @param {number} index The index of the capability.
@@ -825,7 +818,6 @@ export async function importFixtures(buffer, filename, authorName) {
         channel.dmxValueResolution = `${maxDmxValueResolution * 8}bit`;
       }
 
-
       /**
        * @returns {number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
        */
@@ -867,7 +859,7 @@ export async function importFixtures(buffer, filename, authorName) {
     // save all matrix pixels that are used in some mode
     const matrixPixels = new Set();
 
-    fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
+    fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map((gdtfMode) => {
       /** @type {DmxBreakWrapper[]} */
       const dmxBreakWrappers = [];
 
@@ -940,7 +932,6 @@ export async function importFixtures(buffer, filename, authorName) {
       }
     }
 
-
     /**
      * Adds the OFL channel key (and fine channel keys) to dmxBreakWrappers'
      * last entry's channels array.
@@ -959,11 +950,11 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, 'Offset')
         ? gdtfChannel.$.Offset.split(',')
         : [
-          gdtfChannel.$.Coarse,
-          gdtfChannel.$.Fine,
-          gdtfChannel.$.Ultra,
-          gdtfChannel.$.Uber,
-        ];
+            gdtfChannel.$.Coarse,
+            gdtfChannel.$.Fine,
+            gdtfChannel.$.Ultra,
+            gdtfChannel.$.Uber,
+          ];
 
       for (const [index, channelOffset] of channelOffsets.entries()) {
         const dmxChannelNumber = Number.parseInt(channelOffset, 10);
@@ -985,7 +976,6 @@ export async function importFixtures(buffer, filename, authorName) {
       traverseGeometries(gdtfFixture.Geometries[0]);
 
       return geometryReferences;
-
 
       /**
        * Recursively go through the child nodes of a given XML node and add
@@ -1033,7 +1023,7 @@ export async function importFixtures(buffer, filename, authorName) {
       for (const capability of triggerChannel.capabilities) {
         capability.switchChannels = Object.fromEntries(Object.entries(triggerChannelRelations).flatMap(
           ([switchingChannelKey, relations]) => relations
-            .filter(relation => {
+            .filter((relation) => {
               const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
               return capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo;
             })
@@ -1043,7 +1033,6 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     replaceSwitchingChannelsInModes(fixture, modeChannelReplacements);
-
 
     /**
      * @param {string} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
@@ -1095,7 +1084,6 @@ export async function importFixtures(buffer, filename, authorName) {
     }
   }
 }
-
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -1211,7 +1199,6 @@ function transformRelations(fixture, switchingChannelRelations) {
   }
 
   return { relationsPerMaster, modeChannelReplacements };
-
 
   /**
    * Adds all implicit fine channel relations for a given relation.

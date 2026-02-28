@@ -30,7 +30,7 @@ export default {
     },
   },
   shutter: {
-    isCapSuitable: capability => {
+    isCapSuitable: (capability) => {
       const isShutterCapability = capability.type === 'ShutterStrobe' && ['Open', 'Closed'].includes(capability.shutterEffect);
       const channelHasOpen = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Open');
       const channelHasClosed = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Closed');
@@ -50,8 +50,8 @@ export default {
   },
   strobe: {
     isCapSuitable: capability =>
-      (capability.type === 'ShutterStrobe' && !['Open', 'Closed'].includes(capability.shutterEffect)) ||
-      (capability.type === 'NoFunction' && capability._channel.type === 'Strobe'),
+      (capability.type === 'ShutterStrobe' && !['Open', 'Closed'].includes(capability.shutterEffect))
+      || (capability.type === 'NoFunction' && capability._channel.type === 'Strobe'),
     create: (channel, capabilities) => {
       const xmlStrobe = xmlbuilder.create('strobe');
 
@@ -256,7 +256,6 @@ export default {
         });
       }
 
-
       const rotationCapabilities = getSingleUnitCapabilities(
         capabilities.filter(capability => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
       );
@@ -349,7 +348,7 @@ export default {
         const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter(key => filterDistinguishableKeys(key));
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter(key => filterDistinguishableKeys(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
-        const hasDifferentValues = distinguishableKeys1.some(key => {
+        const hasDifferentValues = distinguishableKeys1.some((key) => {
           const value1 = capability1.jsonObject[key];
           const value2 = capability2.jsonObject[key];
 
@@ -606,7 +605,6 @@ export default {
         xmlPrism.element('prismrotation');
       }
 
-
       // group adjacent capabilities by comment
       const capabilitiesGroupedByComment = [];
       for (const capability of capabilities) {
@@ -651,7 +649,6 @@ export default {
         }
       }
 
-
       return xmlPrism;
     },
   },
@@ -688,7 +685,6 @@ export default {
       const xmlFog = xmlbuilder.create('fog');
 
       if (capabilities.length > 1) {
-
         for (const capability of capabilities) {
           let xmlCapability;
 
@@ -717,7 +713,6 @@ export default {
       const xmlFan = xmlbuilder.create('fan');
 
       if (capabilities.length > 1) {
-
         for (const capability of capabilities) {
           let xmlCapability;
 
@@ -816,7 +811,7 @@ export default {
  * @returns {DmxControlCapability[]} Array of objects wrapping the original capabilities.
  */
 function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPercentValue, hundredPercentValue) {
-  const dmxControlCapabilities = capabilities.map(capability => {
+  const dmxControlCapabilities = capabilities.map((capability) => {
     const startEntity = capability[property][0].baseUnitEntity;
     const endEntity = capability[property][1].baseUnitEntity;
 
@@ -836,7 +831,7 @@ function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPerc
     // where x is the percentage value and f(x) or y is the value in the allowed unit
     const m = (hundredPercentValue - zeroPercentValue) / 100; // delta y / delta x
     const t = zeroPercentValue; // f(0) = m * 0 + t = t
-    const percentToUnit = (x => (m * x) + t);
+    const percentToUnit = x => (m * x) + t;
 
     for (const capability of capabilitiesWithWrongUnit) {
       capability.unit = allowedUnit;

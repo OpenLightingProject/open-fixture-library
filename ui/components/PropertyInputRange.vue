@@ -60,8 +60,8 @@ export default {
     'update:model-value': range => true,
     'start-updated': () => true,
     'end-updated': () => true,
-    focus: () => true,
-    blur: () => true,
+    'focus': () => true,
+    'blur': () => true,
     'vf:validate': validationData => true,
   },
   data() {

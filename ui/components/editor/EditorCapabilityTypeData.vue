@@ -141,7 +141,7 @@ export default {
     };
   },
   watch: {
-    'capability.type': async function() {
+    async 'capability.type'() {
       // Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
 
       await this.$nextTick();

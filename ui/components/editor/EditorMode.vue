@@ -45,7 +45,6 @@
         :schema-property="modeProperties.rdmPersonalityIndex" />
     </LabeledInput>
 
-
     <h3>Physical override</h3>
 
     <label>
@@ -63,7 +62,6 @@
         :formstate="formstate"
         :name-prefix="`mode-${index}`" />
     </section>
-
 
     <h3>DMX channels</h3>
 
@@ -226,7 +224,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    remove: () => true,
+    'remove': () => true,
     'open-channel-editor': payload => true,
   },
   data() {
@@ -271,7 +269,7 @@ export default {
             }
 
             // return whether next coarser channel can be found in target mode
-            return targetMode.channels.some(uuid => {
+            return targetMode.channels.some((uuid) => {
               const otherChannel = this.fixture.availableChannels[uuid];
               return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.resolution === channel.resolution - 1;
             });

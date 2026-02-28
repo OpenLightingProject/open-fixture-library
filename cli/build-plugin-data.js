@@ -54,7 +54,6 @@ catch (error) {
   process.exit(1);
 }
 
-
 /**
  * Reads information from the plugin's `plugin.json` file into `plugins` and `allPreviousVersions`.
  * @param {string} pluginKey The plugin key.

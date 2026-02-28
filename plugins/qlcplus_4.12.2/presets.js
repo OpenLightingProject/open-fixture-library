@@ -6,7 +6,6 @@ import importJson from '../../lib/import-json.js';
 
 const qlcplusGoboAliasesPromise = importJson('../../resources/gobos/aliases/qlcplus.json', import.meta.url);
 
-
 // ########## Helper functions ##########
 
 export const exportHelpers = {
@@ -23,7 +22,7 @@ export const exportHelpers = {
   isBeamAngle: capability => (capability.type === 'BeamAngle' || capability.type === 'Zoom') && capability.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(capability => ['WheelSlot', 'WheelRotation'].includes(capability.type)),
   isAllowedInWheels: capability => ['WheelSlot', 'WheelShake', 'WheelSlotRotation', 'WheelRotation', 'Effect', 'NoFunction'].includes(capability.type),
-  getGoboResource: async capability => {
+  getGoboResource: async (capability) => {
     if (capability.isSlotType('Open')) {
       return 'Others/open.svg';
     }
@@ -246,12 +245,11 @@ const createFocusFarToNearCapability = () => ({
   distanceEnd: 'near',
 });
 
-
 // ########## Channel presets ##########
 
 const channelPresets = {
   IntensityMasterDimmer: {
-    isApplicable: capability => {
+    isApplicable: (capability) => {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
@@ -597,8 +595,6 @@ export function getCapabilityFromChannelPreset(preset, channelName, panMax, tilt
   };
 }
 
-
-
 // ########## Fine channel presets ##########
 
 const fineChannelPresets = {
@@ -706,8 +702,6 @@ export function getFineChannelPreset(fineChannel) {
   ) || null;
 }
 
-
-
 // ########## Capability presets ##########
 
 export const capabilityPresets = {
@@ -728,7 +722,6 @@ export const capabilityPresets = {
       shutterEffect: 'Closed',
     }),
   },
-
 
   // strobe capabilities with specified frequency
 
@@ -777,7 +770,6 @@ export const capabilityPresets = {
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('RampDown', `${res1}Hz`, `${res2}Hz`),
   },
 
-
   // other strobe capabilities
 
   StrobeRandomSlowToFast: {
@@ -825,7 +817,6 @@ export const capabilityPresets = {
     importCapability: () => importHelpers.getShutterStrobeCap('RampDown', 'fast', 'slow'),
   },
 
-
   // color capabilities
 
   ColorMacro: {
@@ -867,7 +858,6 @@ export const capabilityPresets = {
     }),
   },
 
-
   // gobo capabilities
 
   // TODO: import/export a gobo image as res1
@@ -907,13 +897,12 @@ export const capabilityPresets = {
     }),
   },
 
-
   // prism capabilities
 
   PrismEffectOn: {
     isApplicable: capability => capability.type === 'Prism' || (capability.type === 'WheelSlot' && capability.isSlotType('Prism')),
     exportRes1: capability => (capability.wheelSlot && capability.slotNumber[0].number === capability.slotNumber[1].number && capability.wheelSlot[0].facets),
-    importCapability: capabilityData => {
+    importCapability: (capabilityData) => {
       if (/wheel/i.test(capabilityData.channelName)) {
         return capabilityPresets.GoboMacro.importCapability(capabilityData);
       }
@@ -930,7 +919,6 @@ export const capabilityPresets = {
       type: 'NoFunction',
     }),
   },
-
 
   // rotation capabilities
 
@@ -972,15 +960,15 @@ export const capabilityPresets = {
     }),
   },
 
-
   // maintenance / reset capabilities
 
   ResetPanTilt: {
     isApplicable: capability =>
-      capability.type === 'Maintenance' &&
-      /\breset\b/i.test(capability.comment) && (
-        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment)) ||
-        /\bposition\b|\bscan\b/i.test(capability.comment)
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && (
+        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment))
+        || /\bposition\b|\bscan\b/i.test(capability.comment)
       ),
     importCapability: importHelpers.getMaintenanceCap,
   },
@@ -1034,10 +1022,10 @@ export const capabilityPresets = {
   },
   ResetMotors: {
     isApplicable: capability =>
-      capability.type === 'Maintenance' &&
-      /\breset\b/i.test(capability.comment) &&
-      /\bmotors?\b/i.test(capability.comment) &&
-      !/\ball\b|\btotal\b/i.test(capability.comment),
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && /\bmotors?\b/i.test(capability.comment)
+      && !/\ball\b|\btotal\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetAll: {
@@ -1064,7 +1052,6 @@ export const capabilityPresets = {
     isApplicable: capability => capability.type === 'Maintenance' && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
-
 
   // generic / other capabilities
 

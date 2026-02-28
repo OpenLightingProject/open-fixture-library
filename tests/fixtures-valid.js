@@ -10,7 +10,6 @@ import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
 import { checkFixture, checkUniqueness } from './fixture-valid.js';
 
-
 const cliArguments = minimist(process.argv.slice(2), {
   boolean: ['h', 'a'],
   alias: { h: 'help', a: 'all-fixtures' },
@@ -214,7 +213,6 @@ async function checkManufacturers() {
   }
   return result;
 }
-
 
 /**
  * @param {object} result The result object for a single file.

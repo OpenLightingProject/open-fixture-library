@@ -29,7 +29,7 @@ export async function exportFixtures(fixtures, options) {
 
   const library = {
     version: displayedPluginVersion,
-    fixtures: fixtures.map(fixture => {
+    fixtures: fixtures.map((fixture) => {
       try {
         return exportFixture(fixture, manufacturers);
       }
@@ -101,7 +101,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
   );
 
   fixtureJson.availableChannels = Object.fromEntries(
-    availableAndMatrixChannels.map(channel => {
+    availableAndMatrixChannels.map((channel) => {
       let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
@@ -152,7 +152,6 @@ function transformNonNumericValues(fixtureJson) {
     }
   }
 }
-
 
 /**
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value

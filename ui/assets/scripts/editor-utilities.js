@@ -44,7 +44,6 @@ export function getEmptyFixture() {
   };
 }
 
-
 /**
  * @param {string} linkType The type of the new link.
  * @returns {object} An empty fixture link object.
@@ -56,7 +55,6 @@ export function getEmptyLink(linkType = 'manual') {
     url: '',
   };
 }
-
 
 /**
  * @returns {object} An empty fixture's or mode's physical object.
@@ -80,7 +78,6 @@ export function getEmptyPhysical() {
   };
 }
 
-
 /**
  * @returns {object} An empty mode object.
  */
@@ -95,7 +92,6 @@ export function getEmptyMode() {
     channels: [],
   };
 }
-
 
 /**
  * @returns {object} An empty channel object.
@@ -127,7 +123,6 @@ export function getEmptyChannel() {
   };
 }
 
-
 /**
  * @param {string} coarseChannelId The UUID of the coarse channel.
  * @param {number} resolution The resolution of the newly created fine channel.
@@ -140,7 +135,6 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
     resolution,
   };
 }
-
 
 /**
  * @returns {object} An empty capability object.
@@ -155,7 +149,6 @@ export function getEmptyCapability() {
   };
 }
 
-
 /**
  * @returns {object} An empty wheel slot object.
  */
@@ -167,13 +160,12 @@ export function getEmptyWheelSlot() {
   };
 }
 
-
 /**
  * @param {object} channel The channel object.
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
-  return Object.keys(channel).some(property => {
+  return Object.keys(channel).some((property) => {
     if (['uuid', 'editMode', 'modeId', 'wizard'].includes(property)) {
       return false;
     }
@@ -196,7 +188,6 @@ export function isChannelChanged(channel) {
   });
 }
 
-
 /**
  * @param {object} capability The capability object.
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
@@ -212,7 +203,6 @@ export function isCapabilityChanged(capability) {
 
   return Object.values(capability.typeData).some(value => value !== '' && value !== null);
 }
-
 
 /**
  * @param {string | null} hexString A string of comma-separated hex values, or null.
@@ -233,7 +223,6 @@ export function colorsHexStringToArray(hexString) {
 
   return hexArray;
 }
-
 
 /**
  * @param {object} channel The channel object that shall be sanitized.

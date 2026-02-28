@@ -36,7 +36,6 @@ export async function importFixtureFile({ request }) {
   }
 }
 
-
 /**
  * @param {RequestBody} body The JSON request body.
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
@@ -53,7 +52,7 @@ async function importFixture(body) {
     Buffer.from(body.fileContentBase64, 'base64'),
     body.fileName,
     body.author,
-  ).catch(parseError => {
+  ).catch((parseError) => {
     parseError.message = `Parse error (${parseError.message})`;
     throw parseError;
   });

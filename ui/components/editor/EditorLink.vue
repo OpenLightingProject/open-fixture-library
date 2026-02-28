@@ -75,7 +75,7 @@ export default {
   emits: {
     'set-type': type => true,
     'set-url': url => true,
-    remove: () => true,
+    'remove': () => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;

@@ -26,7 +26,6 @@ export function followXmlNodeReference(startNode, nodeReference) {
 
   return currentNode;
 
-
   /**
    * @param {object} node The XML object.
    * @returns {object[]} The XML objects of this node's child nodes.
@@ -38,7 +37,6 @@ export function followXmlNodeReference(startNode, nodeReference) {
   }
 }
 
-
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
  * See https://wolfcrow.com/blog/what-is-the-difference-between-cie-lab-cie-rgb-cie-xyy-and-cie-xyz/
@@ -46,22 +44,22 @@ export function followXmlNodeReference(startNode, nodeReference) {
  * @returns {string} The RGB hex code string in the form "#rrggbb".
  */
 export function getRgbColorFromGdtfColor(gdtfColorString) {
-  /* eslint-disable camelcase, space-in-parens, unicorn/no-zero-fractions */
+  /* eslint-disable camelcase, @stylistic/space-in-parens, unicorn/no-zero-fractions */
 
   // functions ported from https://github.com/njsmith/colorspacious
-  const xyY_to_XYZ = (([x, y, Y]) => {
+  const xyY_to_XYZ = ([x, y, Y]) => {
     const X = Y / y * x;
     const Z = Y / y * (1 - x - y);
     return [X, Y, Z];
-  });
-  const XYZ1_to_XYZ100 = (XYZ1 => XYZ1.map(c => c * 100));
-  const XYZ100_to_sRGB1_linear = (([X, Y, Z]) => {
+  };
+  const XYZ1_to_XYZ100 = XYZ1 => XYZ1.map(c => c * 100);
+  const XYZ100_to_sRGB1_linear = ([X, Y, Z]) => {
     const R = ( 3.2406 * X / 100) + (-1.5372 * Y / 100) + (-0.4986 * Z / 100);
     const G = (-0.9689 * X / 100) + ( 1.8758 * Y / 100) + ( 0.0415 * Z / 100);
     const B = ( 0.0557 * X / 100) + (-0.2040 * Y / 100) + ( 1.0570 * Z / 100);
     return [R, G, B];
-  });
-  const sRGB1_linear_to_sRGB1 = (RGB_linear => RGB_linear.map(c => {
+  };
+  const sRGB1_linear_to_sRGB1 = RGB_linear => RGB_linear.map((c) => {
     if (c <= 0.003_130_8) {
       return 12.92 * c;
     }
@@ -69,15 +67,13 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
     const a = 0.055;
 
     return ((1 + a) * Math.pow(c, 1 / 2.4)) - a;
-  }));
-  const sRGB1_to_sRGB255 = (RGB1 => RGB1.map(c => c * 255));
-
+  });
+  const sRGB1_to_sRGB255 = RGB1 => RGB1.map(c => c * 255);
 
   // parse starting values as array
   const [x, y, Y] = gdtfColorString.split(/\s*,\s*/).map(
     colorComponent => Number.parseFloat(colorComponent),
   );
-
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
   const RGB = sRGB1_to_sRGB255(sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ1_to_XYZ100(xyY_to_XYZ([x, y, Y])))));
@@ -103,8 +99,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 
-  /* eslint-enable camelcase, space-in-parens, unicorn/no-zero-fractions */
-
+  /* eslint-enable camelcase, @stylistic/space-in-parens, unicorn/no-zero-fractions */
 
   /**
    * @param {number} componentValue The red / green /blue component value in the range 0…255.

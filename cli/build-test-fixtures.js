@@ -74,7 +74,7 @@ fixtureFeatureResults.sort((a, b) => {
 });
 
 // filter out
-fixtureFeatureResults = fixtureFeatureResults.filter(fixture => {
+fixtureFeatureResults = fixtureFeatureResults.filter((fixture) => {
   for (const feature of fixture.features) {
     // this is the only remaining fixture with that feature -> keep it
     if (featuresUsed[feature] === 1) {
@@ -108,7 +108,6 @@ try {
 catch (error) {
   console.error(styleText('red', '[Fail]'), 'Could not write test fixtures file:', error);
 }
-
 
 /**
  * @returns {Promise<FixtureFeature[]>} A Promise that resolves to an array of all defined fixture features.

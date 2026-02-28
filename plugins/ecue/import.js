@@ -36,7 +36,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
   return out;
 
-
   /**
    * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
    * Calls {@link addFixture} for all contained fixtures.
@@ -61,7 +60,6 @@ export async function importFixtures(buffer, filename, authorName) {
       addFixture(fixture, manufacturerKey);
     }
   }
-
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
@@ -162,7 +160,7 @@ function getCombinedEcueChannels(ecueFixture) {
   const channelTypes = ['ChannelIntensity', 'ChannelColor', 'ChannelBeam', 'ChannelFocus'];
   for (const channelType of channelTypes) {
     if (ecueFixture[channelType]) {
-      channels.push(...ecueFixture[channelType].map(channel => {
+      channels.push(...ecueFixture[channelType].map((channel) => {
         // save the channel type in the channel object
         channel._ecueChannelType = channelType;
         return channel;
@@ -240,7 +238,6 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
   fixture.availableChannels[channelKey] = channel;
   fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
-
 
   /**
    * Adds DMX value related properties to channel.
@@ -377,7 +374,6 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     return capability;
 
-
     /**
      * @returns {number[]} The DMX range of this capability.
      */
@@ -480,8 +476,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           };
 
           return Object.keys(capabilityTypeRegexps).find(
-            channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
-              channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
+            channelType =>
+              capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType])
+              || channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || 'Generic';
         },
       };

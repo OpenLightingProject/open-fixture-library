@@ -200,8 +200,8 @@ export default {
 
       const previousCapability = this.capabilities[this.insertIndex - 1];
       if (
-        (!previousCapability && this.wizard.start > 0) ||
-        (previousCapability && previousCapability.dmxRange !== null && this.wizard.start > previousCapability.dmxRange[1] + 1)
+        (!previousCapability && this.wizard.start > 0)
+        || (previousCapability && previousCapability.dmxRange !== null && this.wizard.start > previousCapability.dmxRange[1] + 1)
       ) {
         // empty capability filling the gap before generated capabilities
         capabilities.push(getEmptyCapability());
@@ -306,7 +306,7 @@ export default {
         return `Capabilities must not end above DMX value ${this.dmxMax}.`;
       }
 
-      const collisionDetected = this.capabilities.some(capability => {
+      const collisionDetected = this.capabilities.some((capability) => {
         if (capability.dmxRange === null) {
           return false;
         }

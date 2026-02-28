@@ -30,7 +30,7 @@ export const version = '1.3.2';
 export async function exportFixtures(fixtures, options) {
   const customGobos = {};
 
-  const outFiles = await Promise.all(fixtures.map(async fixture => {
+  const outFiles = await Promise.all(fixtures.map(async (fixture) => {
     try {
       return await getFixtureFile(fixture, options, customGobos);
     }
@@ -73,14 +73,14 @@ async function getFixtureFile(fixture, options, customGobos) {
       FixtureDefinition: {
         // eslint-disable-next-line sonarjs/no-clear-text-protocols -- HTTP required by QLC+, this is an identifier rather than a real URL anyway
         '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
-        Creator: {
+        'Creator': {
           Name: `OFL – ${fixture.url}`,
           Version: options.displayedPluginVersion || version,
           Author: fixture.meta.authors.join(', '),
         },
-        Manufacturer: fixture.manufacturer.name,
-        Model: fixture.name,
-        Type: getFixtureType(fixture),
+        'Manufacturer': fixture.manufacturer.name,
+        'Model': fixture.name,
+        'Type': getFixtureType(fixture),
       },
     });
 
@@ -90,7 +90,7 @@ async function getFixtureFile(fixture, options, customGobos) {
 
   const panMax = getPanTiltMax('Pan', fixture.coarseChannels);
   const tiltMax = getPanTiltMax('Tilt', fixture.coarseChannels);
-  const useGlobalPhysical = fixture.modes.every(mode => {
+  const useGlobalPhysical = fixture.modes.every((mode) => {
     if (mode.physicalOverride !== null) {
       return false;
     }
@@ -251,11 +251,13 @@ async function addCapability(xmlChannel, capability, customGobos) {
     },
   });
 
-  const preset = addCapabilityAliases(xmlCapability, capability) ? {
-    presetName: 'Alias',
-    res1: null,
-    res2: null,
-  } : await getCapabilityPreset(capability);
+  const preset = addCapabilityAliases(xmlCapability, capability)
+    ? {
+        presetName: 'Alias',
+        res1: null,
+        res2: null,
+      }
+    : await getCapabilityPreset(capability);
 
   if (preset === null) {
     await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
@@ -563,7 +565,6 @@ function getFixtureType(fixture) {
   ).find(
     category => !ignoredCategories.has(category),
   ) || 'Other';
-
 
   /**
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.

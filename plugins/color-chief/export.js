@@ -37,7 +37,7 @@ const segmentsPerFile = 4;
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
-  return fixtures.flatMap(fixture => fixture.modes.flatMap(mode => {
+  return fixtures.flatMap(fixture => fixture.modes.flatMap((mode) => {
     try {
       return getFilesForMode(mode);
     }

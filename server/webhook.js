@@ -19,11 +19,9 @@ const deploymentConfig = {
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
-
 startServer()
   .then(() => console.log('Exited'))
   .catch(error => console.error('Exited with error', error));
-
 
 /**
  * @returns {Promise} Promise that resolves/rejects when the server process terminates.
@@ -45,7 +43,7 @@ function startServer() {
 
       const bodyChunks = [];
       let totalSize = 0;
-      request.on('data', data => {
+      request.on('data', (data) => {
         bodyChunks.push(data);
         totalSize += data.length;
         if (totalSize > 1e6) { // 1MB limit
@@ -55,7 +53,6 @@ function startServer() {
         const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
-
     }).on('close', resolve).on('error', reject).listen(port);
   });
 }

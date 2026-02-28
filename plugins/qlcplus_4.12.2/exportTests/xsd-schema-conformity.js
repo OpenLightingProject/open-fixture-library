@@ -23,9 +23,9 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
   }
 
   const schemaData = await new Promise((resolve, reject) => {
-    https.get(SCHEMA_URL, response => {
+    https.get(SCHEMA_URL, (response) => {
       let data = '';
-      response.on('data', chunk => {
+      response.on('data', (chunk) => {
         data += chunk;
       });
       response.on('end', () => {

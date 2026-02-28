@@ -138,7 +138,6 @@ export default {
     const bannerStartDate = new Date(strikeDate);
     bannerStartDate.setDate(strikeDate.getDate() - 14);
 
-
     this.isClimateStrike = strikeDate.getTime() === today.getTime();
     this.showClimateStrikeBanner = bannerStartDate.getTime() <= today.getTime() && today.getTime() < strikeDate.getTime();
   },

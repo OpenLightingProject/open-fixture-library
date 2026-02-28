@@ -124,11 +124,11 @@ export default {
   head() {
     const theme = this.$cookies.get('__Host-theme') || this.$cookies.get('theme');
     const htmlAttributes = {
-      lang: 'en',
+      'lang': 'en',
       'data-theme': theme,
     };
 
-    const titleTemplate = titleChunk => {
+    const titleTemplate = (titleChunk) => {
       // If undefined or blank then we don't need the hyphen
       return titleChunk ? `${titleChunk} – Open Fixture Library` : 'Open Fixture Library';
     };
@@ -303,7 +303,7 @@ export default {
         Promise.resolve({ url: `/${manufacturerKey}`, changefreq: 'weekly' }),
 
         // fixture URLs
-        ...register.manufacturers[manufacturerKey].map(async fixtureKey => {
+        ...register.manufacturers[manufacturerKey].map(async (fixtureKey) => {
           const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
           return {
             url: `/${manufacturerKey}/${fixtureKey}`,

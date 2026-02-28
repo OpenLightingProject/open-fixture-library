@@ -6,7 +6,6 @@ import diffPluginOutputs from '../../lib/diff-plugin-outputs.js';
 import importJson from '../../lib/import-json.js';
 import * as pullRequest from './pull-request.js';
 
-
 /**
  * @typedef {object} Task
  * @property {string} manufacturerFixture The combined manufacturer / fixture key.
@@ -63,8 +62,6 @@ catch (error) {
   process.exit(1);
 }
 
-
-
 /**
  * @param {object} changedComponents The PR's changed OFL components.
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
@@ -85,9 +82,9 @@ async function getDiffTasks(changedComponents) {
   return [...getTasksForModel(), ...(await getTasksForPlugins()), ...getTasksForFixtures()]
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
-        task.manufacturerFixture === otherTask.manufacturerFixture &&
-        task.currentPluginKey === otherTask.currentPluginKey &&
-        task.comparePluginKey === otherTask.comparePluginKey,
+        task.manufacturerFixture === otherTask.manufacturerFixture
+        && task.currentPluginKey === otherTask.currentPluginKey
+        && task.comparePluginKey === otherTask.comparePluginKey,
       );
 
       // remove duplicates
@@ -115,10 +112,11 @@ async function getDiffTasks(changedComponents) {
   function getTasksForModel() {
     const tasks = [];
 
-    if (changedComponents.added.model ||
-      changedComponents.modified.model ||
-      changedComponents.removed.model) {
-
+    if (
+      changedComponents.added.model
+      || changedComponents.modified.model
+      || changedComponents.removed.model
+    ) {
       for (const manufacturerFixture of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({
           manufacturerFixture,

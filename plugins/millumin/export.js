@@ -18,7 +18,7 @@ export const supportedOflVersion = '7.3.0';
  */
 export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
-  return fixtures.map(fixture => {
+  return fixtures.map((fixture) => {
     try {
       return getFixtureFile(fixture);
     }
@@ -93,7 +93,7 @@ function getDowngradedCategories(categories) {
   };
   const ignoredCategories = new Set(['Pixel Bar', 'Stand']);
 
-  const downgradedCategories = categories.flatMap(category => {
+  const downgradedCategories = categories.flatMap((category) => {
     if (ignoredCategories.has(category)) {
       return [];
     }
@@ -135,7 +135,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     focusType => fixture.categories.includes(focusTypesCategories[focusType]),
   ) || null;
 
-  const [panMax, tiltMax] = ['Pan', 'Tilt'].map(panOrTilt => {
+  const [panMax, tiltMax] = ['Pan', 'Tilt'].map((panOrTilt) => {
     const capabilities = fixture.coarseChannels.flatMap(channel => channel.capabilities || []);
 
     const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);

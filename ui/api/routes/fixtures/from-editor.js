@@ -38,7 +38,6 @@ export async function createFixtureFromEditor({ request }) {
   }
 }
 
-
 /**
  * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
  * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
@@ -126,7 +125,6 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
     }
-
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
@@ -226,7 +224,7 @@ async function getFixtureCreateResult(fixtures) {
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => {
+    const resolveShortenedYouTubeUrl = (url) => {
       if (url.startsWith('https://youtu.be/')) {
         const urlObject = new URL(url);
 
@@ -276,7 +274,7 @@ async function getFixtureCreateResult(fixtures) {
     fixture.wheels = {};
 
     for (const editorChannel of editorWheelChannels) {
-      const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
+      const slots = editorChannel.wheel.slots.map((editorWheelSlot) => {
         if (editorWheelSlot === null || editorWheelSlot.type === '') {
           return null;
         }
@@ -403,7 +401,7 @@ async function getFixtureCreateResult(fixtures) {
    * @returns {object[]} The OFL capability objects.
    */
   function getCapabilities(channel) {
-    return channel.capabilities.map(editorCapability => {
+    return channel.capabilities.map((editorCapability) => {
       const capability = {};
 
       const capabilitySchema = capabilityTypes[editorCapability.type];
@@ -451,7 +449,6 @@ async function getFixtureCreateResult(fixtures) {
     result.fixtures[fixtureKey].modes.push(mode);
   }
 }
-
 
 // helper functions
 

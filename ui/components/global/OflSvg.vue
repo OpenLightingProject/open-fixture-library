@@ -48,19 +48,19 @@ export default {
       if (context.props.colors.length === 0 && context.props.name !== undefined) {
         // hex colors for ColorIntensity capabilities
         const colorLookup = {
-          Red: '#ff0000',
-          Green: '#00ff00',
-          Blue: '#0000ff',
-          Cyan: '#00ffff',
-          Magenta: '#ff00ff',
-          Yellow: '#ffff00',
-          Amber: '#ffbf00',
-          White: '#ffffff',
+          'Red': '#ff0000',
+          'Green': '#00ff00',
+          'Blue': '#0000ff',
+          'Cyan': '#00ffff',
+          'Magenta': '#ff00ff',
+          'Yellow': '#ffff00',
+          'Amber': '#ffbf00',
+          'White': '#ffffff',
           'Warm White': '#ffedde',
           'Cold White': '#edefff',
-          UV: '#8800ff',
-          Lime: '#bfff00',
-          Indigo: '#4b0082',
+          'UV': '#8800ff',
+          'Lime': '#bfff00',
+          'Indigo': '#4b0082',
         };
         colors = [colorLookup[context.props.name]];
       }
@@ -83,7 +83,6 @@ export default {
     });
   },
 };
-
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
@@ -117,7 +116,6 @@ function getSvg(name, category = undefined, title) {
   return svg;
 }
 
-
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
  * @param {string[]} colors Array of color strings to display.
@@ -143,7 +141,6 @@ function getColorCircle(colors, title) {
 
   return string;
 }
-
 
 /**
  * @param {string[]} colors An array of hex colors to fill into the circle.
@@ -175,7 +172,6 @@ export function getColorCircleSvgFragment(colors, radius) {
 
   return svgString;
 }
-
 
 /**
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
