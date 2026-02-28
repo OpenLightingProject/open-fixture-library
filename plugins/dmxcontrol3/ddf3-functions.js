@@ -836,7 +836,7 @@ function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPerc
     // where x is the percentage value and f(x) or y is the value in the allowed unit
     const m = (hundredPercentValue - zeroPercentValue) / 100; // delta y / delta x
     const t = zeroPercentValue; // f(0) = m * 0 + t = t
-    const percentToUnit = (x => (m * x) + t);
+    const percentToUnit = x => (m * x) + t;
 
     for (const capability of capabilitiesWithWrongUnit) {
       capability.unit = allowedUnit;
