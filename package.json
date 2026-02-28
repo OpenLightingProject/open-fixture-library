@@ -28,8 +28,8 @@
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
 
     "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "lint:eslint": "eslint .",
-    "lint:eslint-errors-only": "eslint --quiet .",
+    "lint:eslint": "eslint --cache",
+    "lint:eslint-errors-only": "eslint --cache --quiet",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
 
     "test": "npm run lint && npm run test:fixtures-valid",
