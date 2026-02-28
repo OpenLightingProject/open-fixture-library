@@ -109,26 +109,26 @@ export default {
        * @public
        */
       defaultData: {
-        shutterEffect: ``,
+        shutterEffect: '',
         soundControlled: null,
         speed: null,
-        speedStart: ``,
-        speedEnd: ``,
-        duration: ``,
+        speedStart: '',
+        speedEnd: '',
+        duration: '',
         durationStart: null,
         durationEnd: null,
         randomTiming: null,
-        comment: ``,
+        comment: '',
       },
     };
   },
   computed: {
     isStrobeEffect() {
-      return ![``, `Open`, `Closed`].includes(this.capability.typeData.shutterEffect);
+      return !['', 'Open', 'Closed'].includes(this.capability.typeData.shutterEffect);
     },
     strobeEffectName() {
-      return this.capability.typeData.shutterEffect === `Strobe`
-        ? `Strobe`
+      return this.capability.typeData.shutterEffect === 'Strobe'
+        ? 'Strobe'
         : `${this.capability.typeData.shutterEffect} Strobe`;
     },
 
@@ -140,14 +140,14 @@ export default {
     resetProperties() {
       if (!this.isStrobeEffect) {
         return [
-          `soundControlled`,
-          `speed`,
-          `speedStart`,
-          `speedEnd`,
-          `duration`,
-          `durationStart`,
-          `durationEnd`,
-          `randomTiming`,
+          'soundControlled',
+          'speed',
+          'speedStart',
+          'speedEnd',
+          'duration',
+          'durationStart',
+          'durationEnd',
+          'randomTiming',
         ];
       }
 

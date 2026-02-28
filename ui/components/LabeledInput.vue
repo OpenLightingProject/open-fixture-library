@@ -110,7 +110,7 @@ export default {
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        subFieldName => subFieldName.startsWith(this.name),
+        (subFieldName) => subFieldName.startsWith(this.name),
       );
 
       for (const subFieldName of subFieldNames) {
@@ -126,16 +126,15 @@ export default {
       return {};
     },
     fieldErrors() {
-      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
+      if (!('$valid' in this.fieldState) || this.fieldState.$valid) {
         return {};
       }
 
       return this.fieldState.$error;
     },
     isSelectField() {
-      return this.name === `manufacturerKey` || this.name === `plugin` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
+      return this.name === 'manufacturerKey' || this.name === 'plugin' || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     },
   },
 };
 </script>
-

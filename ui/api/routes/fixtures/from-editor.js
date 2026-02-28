@@ -11,9 +11,9 @@ import {
 } from '../../../../lib/schema-properties.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
 
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../../index.js' */
+/** @import { FixtureCreateResult } from '../../../../lib/types.js' */
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
@@ -38,7 +38,6 @@ export async function createFixtureFromEditor({ request }) {
   }
 }
 
-
 /**
  * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
  * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
@@ -51,35 +50,38 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
 
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
 
-  await Promise.all(fixtures.map(fixture => addFixture(fixture)));
+  await Promise.all(fixtures.map((fixture) => addFixture(fixture)));
 
   return result;
 
+  /**
+   * @param {object} fixture The editor fixture object.
+   */
   async function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
     const fixtureKey = getFixtureKey(fixture, manufacturerKey);
     const key = `${manufacturerKey}/${fixtureKey}`;
 
     result.fixtures[key] = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
+      $schema: 'https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json',
     };
 
     for (const property of Object.keys(fixtureProperties)) {
       switch (property) {
-        case `physical`: {
+        case 'physical': {
           const physical = getPhysical(fixture.physical);
           if (!isEmptyObject(physical)) {
             result.fixtures[key].physical = physical;
           }
           break;
         }
-        case `meta`: {
-          const now = new Date().toISOString().replace(/T.*/, ``);
+        case 'meta': {
+          const now = new Date().toISOString().replace(/T.*/, '');
 
           result.fixtures[key].meta = {
             authors: [fixture.metaAuthor],
@@ -88,11 +90,11 @@ async function getFixtureCreateResult(fixtures) {
           };
           break;
         }
-        case `links`: {
+        case 'links': {
           addLinks(result.fixtures[key], fixture.links);
           break;
         }
-        case `availableChannels`: {
+        case 'availableChannels': {
           result.fixtures[key].availableChannels = {};
           for (const channelId of Object.keys(fixture.availableChannels)) {
             addAvailableChannel(key, fixture.availableChannels, channelId);
@@ -100,21 +102,21 @@ async function getFixtureCreateResult(fixtures) {
           break;
         }
         default: {
-          if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
+          if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
             result.fixtures[key].rdm = {
               modelId: fixture.rdmModelId,
             };
-            if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
+            if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
               result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
             }
           }
-          else if (property === `modes`) {
+          else if (property === 'modes') {
             result.fixtures[key].modes = [];
             for (const mode of fixture.modes) {
               addMode(key, mode);
             }
           }
-          else if (property === `wheels`) {
+          else if (property === 'wheels') {
             addWheels(result.fixtures[key], fixture);
           }
           else if (propertyExistsIn(property, fixture)) {
@@ -123,7 +125,6 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
     }
-
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
@@ -149,15 +150,15 @@ async function getFixtureCreateResult(fixtures) {
       name: fixture.newManufacturerName,
     };
 
-    if (propertyExistsIn(`newManufacturerComment`, fixture)) {
+    if (propertyExistsIn('newManufacturerComment', fixture)) {
       result.manufacturers[manufacturerKey].comment = fixture.newManufacturerComment;
     }
 
-    if (propertyExistsIn(`newManufacturerWebsite`, fixture)) {
+    if (propertyExistsIn('newManufacturerWebsite', fixture)) {
       result.manufacturers[manufacturerKey].website = fixture.newManufacturerWebsite;
     }
 
-    if (propertyExistsIn(`newManufacturerRdmId`, fixture)) {
+    if (propertyExistsIn('newManufacturerRdmId', fixture)) {
       result.manufacturers[manufacturerKey].rdmId = fixture.newManufacturerRdmId;
     }
 
@@ -170,28 +171,32 @@ async function getFixtureCreateResult(fixtures) {
    * @returns {string} The fixture key.
    */
   function getFixtureKey(fixture, manufacturerKey) {
-    if (`key` in fixture && fixture.key !== `[new]`) {
+    if ('key' in fixture && fixture.key !== '[new]') {
       return fixture.key;
     }
 
     let fixtureKey = slugify(fixture.name);
 
     const otherFixtureKeys = new Set(Object.keys(result.fixtures).filter(
-      key => key.startsWith(manufacturerKey),
-    ).map(key => key.slice(manufacturerKey.length + 1)));
+      (key) => key.startsWith(manufacturerKey),
+    ).map((key) => key.slice(manufacturerKey.length + 1)));
 
     while (otherFixtureKeys.has(fixtureKey)) {
-      fixtureKey += `-2`;
+      fixtureKey += '-2';
     }
 
     return fixtureKey;
   }
 
+  /**
+   * @param {object} from The editor physical object.
+   * @returns {object} The OFL physical object.
+   */
   function getPhysical(from) {
     const physical = {};
 
     for (const property of Object.keys(physicalProperties)) {
-      if (physicalProperties[property].type === `object`) {
+      if (physicalProperties[property].type === 'object') {
         physical[property] = {};
 
         for (const subProperty of Object.keys(physicalProperties[property].properties)) {
@@ -219,17 +224,16 @@ async function getFixtureCreateResult(fixtures) {
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => {
-      if (url.startsWith(`https://youtu.be/`)) {
+    const resolveShortenedYouTubeUrl = (url) => {
+      if (url.startsWith('https://youtu.be/')) {
         const urlObject = new URL(url);
 
         const videoId = urlObject.pathname.slice(1);
-        const queryParameters = [...urlObject.searchParams];
-        queryParameters.unshift([`v`, videoId]);
+        const queryParameters = [['v', videoId], ...urlObject.searchParams];
         const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
 
-        urlObject.host = `www.youtube.com`;
-        urlObject.pathname = `watch`;
+        urlObject.host = 'www.youtube.com';
+        urlObject.pathname = 'watch';
         urlObject.search = `?${queryParameterString}`;
 
         return urlObject.toString();
@@ -258,8 +262,8 @@ async function getFixtureCreateResult(fixtures) {
    */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
-      editorChannel => editorChannel.wheel && editorChannel.wheel.slots.some(
-        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``,
+      (editorChannel) => editorChannel.wheel && editorChannel.wheel.slots.some(
+        (editorWheelSlot) => editorWheelSlot !== null && editorWheelSlot.type !== '',
       ),
     );
 
@@ -270,8 +274,8 @@ async function getFixtureCreateResult(fixtures) {
     fixture.wheels = {};
 
     for (const editorChannel of editorWheelChannels) {
-      const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
-        if (editorWheelSlot === null || editorWheelSlot.type === ``) {
+      const slots = editorChannel.wheel.slots.map((editorWheelSlot) => {
+        if (editorWheelSlot === null || editorWheelSlot.type === '') {
           return null;
         }
 
@@ -301,10 +305,15 @@ async function getFixtureCreateResult(fixtures) {
     }
   }
 
+  /**
+   * @param {string} fixtureKey The key of the fixture to add the channel to.
+   * @param {object} availableChannels All available channels of the editor fixture.
+   * @param {string} channelId The UUID of the channel to add.
+   */
   function addAvailableChannel(fixtureKey, availableChannels, channelId) {
     const from = availableChannels[channelId];
 
-    if (`coarseChannelId` in from) {
+    if ('coarseChannelId' in from) {
       // we already handled this fine channel with its coarse channel
       return;
     }
@@ -312,7 +321,7 @@ async function getFixtureCreateResult(fixtures) {
     const channel = {};
 
     for (const property of Object.keys(channelProperties)) {
-      if (property === `capabilities`) {
+      if (property === 'capabilities') {
         const capabilities = getCapabilities(from);
 
         if (capabilities.length === 1) {
@@ -323,10 +332,10 @@ async function getFixtureCreateResult(fixtures) {
           channel.capabilities = capabilities;
         }
       }
-      else if (property === `fineChannelAliases` && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
+      else if (property === 'fineChannelAliases' && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
         channel.fineChannelAliases = [];
       }
-      else if (property === `dmxValueResolution`) {
+      else if (property === 'dmxValueResolution') {
         if (from.resolution !== from.dmxValueResolution && from.capabilities.length > 1) {
           channel.dmxValueResolution = `${from.dmxValueResolution * 8}bit`;
         }
@@ -338,10 +347,10 @@ async function getFixtureCreateResult(fixtures) {
 
     const channelKey = getChannelKey(channel, fixtureKey);
 
-    if (`fineChannelAliases` in channel) {
+    if ('fineChannelAliases' in channel) {
       // find all referencing fine channels
       for (const otherChannel of Object.values(availableChannels)) {
-        if (`coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channelId) {
+        if ('coarseChannelId' in otherChannel && otherChannel.coarseChannelId === channelId) {
           const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
           channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
           channelKeyMapping[otherChannel.uuid] = alias;
@@ -357,6 +366,11 @@ async function getFixtureCreateResult(fixtures) {
     result.fixtures[fixtureKey].availableChannels[channelKey] = channel;
   }
 
+  /**
+   * @param {object} channel The OFL channel object.
+   * @param {string} fixtureKey The key of the fixture the channel belongs to.
+   * @returns {string} A unique channel key for the fixture.
+   */
   function getChannelKey(channel, fixtureKey) {
     let channelKey = channel.name;
     const availableChannelKeys = Object.keys(result.fixtures[fixtureKey].availableChannels);
@@ -372,13 +386,22 @@ async function getFixtureCreateResult(fixtures) {
     return channelKey;
   }
 
+  /**
+   * @param {string} channelKey The key of the coarse channel.
+   * @param {number} resolution The resolution of the fine channel.
+   * @returns {string} The fine channel alias.
+   */
   function getFineChannelAlias(channelKey, resolution) {
-    const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``;
+    const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : '';
     return `${channelKey} fine${suffix}`;
   }
 
+  /**
+   * @param {object} channel The editor channel object.
+   * @returns {object[]} The OFL capability objects.
+   */
   function getCapabilities(channel) {
-    return channel.capabilities.map(editorCapability => {
+    return channel.capabilities.map((editorCapability) => {
       const capability = {};
 
       const capabilitySchema = capabilityTypes[editorCapability.type];
@@ -392,7 +415,7 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
 
-      if (capability.brightnessStart === `off` && capability.brightnessEnd === `bright`) {
+      if (capability.brightnessStart === 'off' && capability.brightnessEnd === 'bright') {
         delete capability.brightnessStart;
         delete capability.brightnessEnd;
       }
@@ -401,18 +424,22 @@ async function getFixtureCreateResult(fixtures) {
     });
   }
 
+  /**
+   * @param {string} fixtureKey The key of the fixture to add the mode to.
+   * @param {object} from The editor mode object.
+   */
   function addMode(fixtureKey, from) {
     const mode = {};
 
     for (const property of Object.keys(modeProperties)) {
-      if (property === `physical`) {
+      if (property === 'physical') {
         const physical = getPhysical(from.physical);
         if (!isEmptyObject(physical)) {
           mode.physical = physical;
         }
       }
-      else if (property === `channels`) {
-        mode.channels = from.channels.map(uuid => channelKeyMapping[uuid]);
+      else if (property === 'channels') {
+        mode.channels = from.channels.map((uuid) => channelKeyMapping[uuid]);
       }
       else if (propertyExistsIn(property, from)) {
         mode[property] = from[property];
@@ -423,7 +450,6 @@ async function getFixtureCreateResult(fixtures) {
   }
 }
 
-
 // helper functions
 
 /**
@@ -431,21 +457,26 @@ async function getFixtureCreateResult(fixtures) {
  * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
  */
 function isEmptyObject(object) {
-  return JSON.stringify(object) === `{}`;
+  return JSON.stringify(object) === '{}';
 }
 
 /**
- * @param {any} property The property key to check.
+ * @param {string} property The property key to check.
  * @param {object | null} object The object to check. If it's null, false is returned.
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
-  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
+  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
 }
 
+/**
+ * @param {string} property The property key to get the value for.
+ * @param {object} from The editor object to get the value from.
+ * @returns {string} The value from the combobox input, preferring any newly added value.
+ */
 function getComboboxInput(property, from) {
-  return (from[property] === `[add-value]` && from[`${property}New`] !== ``) ? from[`${property}New`] : from[property];
+  return (from[property] === '[add-value]' && from[`${property}New`] !== '') ? from[`${property}New`] : from[property];
 }
 
 /**
@@ -453,5 +484,5 @@ function getComboboxInput(property, from) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ' ').trim().replaceAll(/\s+/g, '-');
 }

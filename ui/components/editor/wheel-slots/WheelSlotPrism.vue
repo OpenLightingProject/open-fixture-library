@@ -54,8 +54,8 @@ export default {
        * @public
        */
       defaultData: {
-        name: ``,
-        facets: ``,
+        name: '',
+        facets: '',
       },
     };
   },

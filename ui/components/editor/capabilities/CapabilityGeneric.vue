@@ -38,7 +38,7 @@ export default {
        * @public
        */
       defaultData: {
-        comment: ``,
+        comment: '',
       },
     };
   },

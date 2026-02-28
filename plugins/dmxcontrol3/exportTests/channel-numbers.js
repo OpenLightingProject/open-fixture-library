@@ -18,7 +18,7 @@ export default async function testChannelNumbers(exportFile) {
   const parseString = promisify(parser.parseString);
 
   const fixture = exportFile.fixtures[0];
-  const exportMode = fixture.modes.find(mode => mode.shortName === exportFile.mode);
+  const exportMode = fixture.modes.find((mode) => mode.shortName === exportFile.mode);
   const channelCount = exportMode.channels.length;
 
   /** @type {Record<number, Range[]>} */
@@ -29,7 +29,7 @@ export default async function testChannelNumbers(exportFile) {
   const xml = await parseString(exportFile.content);
   const xmlFunctions = xml.device.functions.filter(
     // filter out tags without content
-    xmlFunction => typeof xmlFunction === `object`,
+    (xmlFunction) => typeof xmlFunction === 'object',
   );
   for (const xmlFunction of xmlFunctions) {
     findChannels(xmlFunction, -1);
@@ -49,11 +49,11 @@ export default async function testChannelNumbers(exportFile) {
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
       const indexAttributes = [
-        `dmxchannel`,
-        `finedmxchannel`,
-        `ultradmxchannel`,
-        `ultrafinedmxchannel`,
-      ].filter(attribute => attribute in xmlNode.$);
+        'dmxchannel',
+        'finedmxchannel',
+        'ultradmxchannel',
+        'ultrafinedmxchannel',
+      ].filter((attribute) => attribute in xmlNode.$);
       for (const attribute of indexAttributes) {
         const channelIndex = Number.parseInt(xmlNode.$[attribute], 10);
 
@@ -61,7 +61,7 @@ export default async function testChannelNumbers(exportFile) {
           usedChannelRanges[channelIndex] = [];
         }
 
-        if (attribute === `dmxchannel`) {
+        if (attribute === 'dmxchannel') {
           currentChannelIndex = channelIndex;
         }
 
@@ -70,14 +70,14 @@ export default async function testChannelNumbers(exportFile) {
         }
       }
 
-      if (`mindmx` in xmlNode.$) {
+      if ('mindmx' in xmlNode.$) {
         // xmlNode is a capability
         addCapability(xmlNode, currentChannelIndex);
       }
     }
 
     for (const tagname of Object.keys(xmlNode)) {
-      if (tagname !== `$`) {
+      if (tagname !== '$') {
         for (const child of xmlNode[tagname]) {
           findChannels(child, currentChannelIndex);
         }
@@ -112,7 +112,7 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    if (`minval` in xmlNode.$) {
+    if ('minval' in xmlNode.$) {
       const minval = Number.parseInt(xmlNode.$.minval, 10);
       const maxval = Number.parseInt(xmlNode.$.maxval, 10);
 
@@ -141,7 +141,7 @@ export default async function testChannelNumbers(exportFile) {
           const mergedRanges = Range.getMergedRanges(usedChannelRanges[index]);
 
           if (!areRangesComplete(mergedRanges)) {
-            const usedRanges = mergedRanges.join(`, `);
+            const usedRanges = mergedRanges.join(', ');
             errors.push(`Channel ${index + 1} "${channel.name}" is missing capabilities. Used ranges: ${usedRanges}`);
           }
         }
@@ -156,7 +156,7 @@ export default async function testChannelNumbers(exportFile) {
      * @returns {boolean} Whether the given channel is of type NoFunction. If it is a switching channel, the default channel is checked.
      */
     function isNoFunctionChannel(channel) {
-      if (channel.type === `NoFunction`) {
+      if (channel.type === 'NoFunction') {
         return true;
       }
 

@@ -148,23 +148,23 @@ export default {
        * @public
        */
       defaultData: {
-        effectNameOrPreset: `effectName`,
-        effectName: ``,
-        effectPreset: ``,
-        speed: ``,
+        effectNameOrPreset: 'effectName',
+        effectName: '',
+        effectPreset: '',
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        duration: ``,
+        duration: '',
         durationStart: null,
         durationEnd: null,
-        parameter: ``,
+        parameter: '',
         parameterStart: null,
         parameterEnd: null,
         soundControlled: null,
-        soundSensitivity: ``,
+        soundSensitivity: '',
         soundSensitivityStart: null,
         soundSensitivityEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },
@@ -175,10 +175,10 @@ export default {
      * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperties = [this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`];
+      const resetProperties = [this.capability.typeData.effectNameOrPreset === 'effectName' ? 'effectPreset' : 'effectName'];
 
       if (!this.capability.typeData.soundControlled) {
-        resetProperties.push(`soundSensitivity`, `soundSensitivityStart`, `soundSensitivityEnd`);
+        resetProperties.push('soundSensitivity', 'soundSensitivityStart', 'soundSensitivityEnd');
       }
 
       return resetProperties;

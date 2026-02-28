@@ -98,7 +98,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -107,13 +107,13 @@ export default {
   },
   data() {
     return {
-      searchFor: ``,
-      searchQuery: ``,
+      searchFor: '',
+      searchQuery: '',
       manufacturersQuery: [],
       categoriesQuery: [],
       detailsInitiallyOpen: null,
       results: [],
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+      categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, 'en')),
       loading: false,
       isBrowser: false,
     };
@@ -132,7 +132,7 @@ export default {
     }
 
     try {
-      this.results = await this.$axios.$post(`/api/v1/get-search-results`, {
+      this.results = await this.$axios.$post('/api/v1/get-search-results', {
         searchQuery: sanitizedQuery.search,
         manufacturersQuery: sanitizedQuery.manufacturers,
         categoriesQuery: sanitizedQuery.categories,
@@ -146,13 +146,13 @@ export default {
     }
   },
   head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+    const title = this.searchFor ? `Search "${this.searchFor}"` : 'Search';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -160,8 +160,8 @@ export default {
   },
   computed: {
     fixtureResults() {
-      return this.results.map(key => {
-        const manufacturer = key.split(`/`)[0];
+      return this.results.map((key) => {
+        const manufacturer = key.split('/')[0];
 
         return {
           key,
@@ -172,14 +172,14 @@ export default {
     },
   },
   watch: {
-    '$route.query': `$fetch`,
+    '$route.query': '$fetch',
   },
   mounted() {
     this.isBrowser = true;
   },
   methods: {
     onSubmit() {
-      if (this.searchQuery === ``) {
+      if (this.searchQuery === '') {
         return;
       }
 
@@ -200,15 +200,15 @@ export default {
  * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
-  const searchQuery = (query.q || ``).trim();
+  const searchQuery = (query.q || '').trim();
 
   let manufacturersQuery = query.manufacturers || [];
-  if (typeof manufacturersQuery === `string`) {
+  if (typeof manufacturersQuery === 'string') {
     manufacturersQuery = [manufacturersQuery];
   }
 
   let categoriesQuery = query.categories || [];
-  if (typeof categoriesQuery === `string`) {
+  if (typeof categoriesQuery === 'string') {
     categoriesQuery = [categoriesQuery];
   }
 

@@ -1,18 +1,18 @@
 /* Based on the ofl export plugin */
 
-import namedColors from 'color-name-list/dist/colornames.esm.mjs';
+import { colornames as namedColors } from 'color-name-list';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
 
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @import Fixture from '../../lib/model/Fixture.js' */
 
-const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
-const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
+const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
+const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectName', 'effectPreset', 'shutterEffect', 'wheel', 'isShaking', 'fogType', 'menuClick']);
 
-export const version = `1.0.0`;
+export const version = '1.0.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -25,11 +25,11 @@ export const version = `1.0.0`;
 export async function exportFixtures(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || version;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson('../../fixtures/manufacturers.json', import.meta.url);
 
   const library = {
     version: displayedPluginVersion,
-    fixtures: fixtures.map(fixture => {
+    fixtures: fixtures.map((fixture) => {
       try {
         return exportFixture(fixture, manufacturers);
       }
@@ -41,9 +41,9 @@ export async function exportFixtures(fixtures, options) {
     }),
   };
   return [{
-    name: `aglight_fixture_library.json`,
+    name: 'aglight_fixture_library.json',
     content: fixtureJsonStringify(library),
-    mimetype: `application/aglight-fixture-library`,
+    mimetype: 'application/aglight-fixture-library',
     fixtures,
   }];
 }
@@ -97,11 +97,11 @@ function transformMatrixChannels(fixtureJson, fixture) {
   }
 
   const availableAndMatrixChannels = fixture.coarseChannels.filter(
-    channel => !(channel instanceof NullChannel),
+    (channel) => !(channel instanceof NullChannel),
   );
 
   fixtureJson.availableChannels = Object.fromEntries(
-    availableAndMatrixChannels.map(channel => {
+    availableAndMatrixChannels.map((channel) => {
       let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
@@ -142,10 +142,10 @@ function transformNonNumericValues(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
       for (const [key, value] of Object.entries(capability)) {
-        if (key === `color`) {
+        if (key === 'color') {
           processColor(capability);
         }
-        else if (typeof value === `string` && !excludeKeys.has(key)) {
+        else if (typeof value === 'string' && !excludeKeys.has(key)) {
           capability[key] = getEntityNumber(value);
         }
       }
@@ -153,12 +153,11 @@ function transformNonNumericValues(fixtureJson) {
   }
 }
 
-
 /**
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
  */
 function processColor(capability) {
-  const namedColor = namedColors.find(color => color.name === capability.color);
+  const namedColor = namedColors.find((color) => color.name === capability.color);
   if (namedColor && namedColor.hex) {
     capability.color = namedColor.hex;
   }
@@ -180,7 +179,7 @@ function getEntityNumber(entityString) {
       return entityString;
     }
 
-    if (entity.unit === `s`) {
+    if (entity.unit === 's') {
       return entity.number * 1000;
     }
 

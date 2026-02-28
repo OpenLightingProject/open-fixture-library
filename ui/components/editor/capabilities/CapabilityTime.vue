@@ -55,9 +55,9 @@ export default {
        */
       defaultData: {
         time: null,
-        timeStart: ``,
-        timeEnd: ``,
-        comment: ``,
+        timeStart: '',
+        timeEnd: '',
+        comment: '',
       },
     };
   },

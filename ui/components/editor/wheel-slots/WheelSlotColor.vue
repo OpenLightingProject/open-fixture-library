@@ -75,10 +75,10 @@ export default {
        * @public
        */
       defaultData: {
-        name: ``,
+        name: '',
         colors: null,
-        colorsHexString: ``,
-        colorTemperature: ``,
+        colorsHexString: '',
+        colorTemperature: '',
       },
       colorPreview: null,
     };

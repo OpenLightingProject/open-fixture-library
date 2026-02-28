@@ -145,11 +145,11 @@ export default {
     resolutionInMode: numberProp().required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   computed: {
     capabilities() {
-      return this.channel.capabilities.map(capability => {
+      return this.channel.capabilities.map((capability) => {
         const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
         const switchChannels = [];
 
@@ -169,7 +169,7 @@ export default {
           model: capability,
           dmxRangeStart: dmxRange.start,
           dmxRangeEnd: dmxRange.end,
-          switchChannels: switchChannels.sort((a, b) => a.index - b.index), // ascending indices
+          switchChannels: switchChannels.toSorted((a, b) => a.index - b.index), // ascending indices
         };
       });
     },

@@ -4,28 +4,27 @@
 
 import importJson from '../../lib/import-json.js';
 
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
-
+const qlcplusGoboAliasesPromise = importJson('../../resources/gobos/aliases/qlcplus.json', import.meta.url);
 
 // ########## Helper functions ##########
 
 export const exportHelpers = {
-  isIncreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) < Math.abs(capability.speed[1].number),
-  isDecreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) > Math.abs(capability.speed[1].number),
-  isStopped: capability => capability.speed !== null && capability.speed[0].number === 0 && capability.speed[1].number === 0,
-  isIncreasingDuration: capability => capability.duration !== null && Math.abs(capability.duration[0].number) < Math.abs(capability.duration[1].number),
-  isDecreasingDuration: capability => capability.duration !== null && Math.abs(capability.duration[0].number) > Math.abs(capability.duration[1].number),
-  isColorIntensity: (capability, color) => capability.type === `ColorIntensity` && capability.color === color,
-  isShutterEffect: (capability, shutterEffect) => capability.type === `ShutterStrobe` && capability.shutterEffect === shutterEffect,
-  hasFrequency: capability => capability.speed !== null && (capability.speed[0].unit === `Hz` || capability.speed[0].unit === `bpm`),
-  isRotationSpeed: capability => (capability.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(capability.type)) && capability.speed !== null,
-  isRotationAngle: capability => (capability.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(capability.type)) && capability.angle !== null,
-  isBeamAngle: capability => (capability.type === `BeamAngle` || capability.type === `Zoom`) && capability.angle !== null,
-  isWheelChannel: channel => channel.capabilities.some(capability => [`WheelSlot`, `WheelRotation`].includes(capability.type)),
-  isAllowedInWheels: capability => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(capability.type),
-  getGoboResource: async capability => {
-    if (capability.isSlotType(`Open`)) {
-      return `Others/open.svg`;
+  isIncreasingSpeed: (capability) => capability.speed !== null && Math.abs(capability.speed[0].number) < Math.abs(capability.speed[1].number),
+  isDecreasingSpeed: (capability) => capability.speed !== null && Math.abs(capability.speed[0].number) > Math.abs(capability.speed[1].number),
+  isStopped: (capability) => capability.speed !== null && capability.speed[0].number === 0 && capability.speed[1].number === 0,
+  isIncreasingDuration: (capability) => capability.duration !== null && Math.abs(capability.duration[0].number) < Math.abs(capability.duration[1].number),
+  isDecreasingDuration: (capability) => capability.duration !== null && Math.abs(capability.duration[0].number) > Math.abs(capability.duration[1].number),
+  isColorIntensity: (capability, color) => capability.type === 'ColorIntensity' && capability.color === color,
+  isShutterEffect: (capability, shutterEffect) => capability.type === 'ShutterStrobe' && capability.shutterEffect === shutterEffect,
+  hasFrequency: (capability) => capability.speed !== null && (capability.speed[0].unit === 'Hz' || capability.speed[0].unit === 'bpm'),
+  isRotationSpeed: (capability) => (capability.type.endsWith('Rotation') || ['PanContinuous', 'TiltContinuous', 'Prism'].includes(capability.type)) && capability.speed !== null,
+  isRotationAngle: (capability) => (capability.type.endsWith('Rotation') || ['Pan', 'Tilt', 'Prism'].includes(capability.type)) && capability.angle !== null,
+  isBeamAngle: (capability) => (capability.type === 'BeamAngle' || capability.type === 'Zoom') && capability.angle !== null,
+  isWheelChannel: (channel) => channel.capabilities.some((capability) => ['WheelSlot', 'WheelRotation'].includes(capability.type)),
+  isAllowedInWheels: (capability) => ['WheelSlot', 'WheelShake', 'WheelSlotRotation', 'WheelRotation', 'Effect', 'NoFunction'].includes(capability.type),
+  getGoboResource: async (capability) => {
+    if (capability.isSlotType('Open')) {
+      return 'Others/open.svg';
     }
 
     if (capability.wheelSlot !== null && capability.wheelSlot[0] === capability.wheelSlot[1]) {
@@ -34,7 +33,7 @@ export const exportHelpers = {
       if (resource) {
         const qlcplusGoboAliases = await qlcplusGoboAliasesPromise;
         const qlcplusGoboAlias = Object.keys(qlcplusGoboAliases).find(
-          alias => qlcplusGoboAliases[alias] === resource.key,
+          (alias) => qlcplusGoboAliases[alias] === resource.key,
         );
 
         if (qlcplusGoboAlias) {
@@ -50,30 +49,30 @@ export const exportHelpers = {
 };
 
 export const importHelpers = {
-  getColorIntensityCap: color => ({
-    type: `ColorIntensity`,
+  getColorIntensityCap: (color) => ({
+    type: 'ColorIntensity',
     color,
   }),
 
   getPanTiltCap: (panOrTilt, maxValue = 0) => {
     const capability = {
       type: panOrTilt,
-      angleStart: `0deg`,
+      angleStart: '0deg',
       angleEnd: `${maxValue}deg`,
     };
 
     if (maxValue === 0) {
-      capability.angleStart = `0%`;
-      capability.angleEnd = `100%`;
-      capability.helpWanted = `Can you provide exact angles?`;
+      capability.angleStart = '0%';
+      capability.angleEnd = '100%';
+      capability.helpWanted = 'Can you provide exact angles?';
     }
 
     return capability;
   },
 
-  getShutterStrobeCap: (shutterEffect, speedStart = ``, speedEnd = ``, randomTiming = false) => {
+  getShutterStrobeCap: (shutterEffect, speedStart = '', speedEnd = '', randomTiming = false) => {
     const capability = {
-      type: `ShutterStrobe`,
+      type: 'ShutterStrobe',
       shutterEffect,
     };
 
@@ -93,28 +92,28 @@ export const importHelpers = {
   },
 
   getRotationCapType: ({ channelName, channelType }) => {
-    if ([`Pan`, `Tilt`].includes(channelType)) {
+    if (['Pan', 'Tilt'].includes(channelType)) {
       return `${channelType}Continuous`;
     }
 
-    if ([`Colour`, `Gobo`].includes(channelType) || /gobo/i.test(channelName)) {
-      return /wheel/i.test(channelName) ? `WheelRotation` : `WheelSlotRotation`;
+    if (['Colour', 'Gobo'].includes(channelType) || /gobo/i.test(channelName)) {
+      return /wheel/i.test(channelName) ? 'WheelRotation' : 'WheelSlotRotation';
     }
 
-    if (channelType === `Prism`) {
-      return `PrismRotation`;
+    if (channelType === 'Prism') {
+      return 'PrismRotation';
     }
 
-    return `Rotation`;
+    return 'Rotation';
   },
 
-  getRotationSpeedCap: (capabilityData, speedStart = ``, speedEnd = ``) => {
+  getRotationSpeedCap: (capabilityData, speedStart = '', speedEnd = '') => {
     const capability = {
       type: importHelpers.getRotationCapType(capabilityData),
     };
 
-    if (capability.type.startsWith(`Wheel`) && !capabilityData.channelNameInWheels) {
-      capability.wheel = ``;
+    if (capability.type.startsWith('Wheel') && !capabilityData.channelNameInWheels) {
+      capability.wheel = '';
     }
 
     if (speedEnd) {
@@ -129,36 +128,36 @@ export const importHelpers = {
   },
 
   getSpeedCapType: ({ channelName, channelType }) => {
-    if (channelType === `Shutter` || /strobe/i.test(channelName)) {
-      return `StrobeSpeed`;
+    if (channelType === 'Shutter' || /strobe/i.test(channelName)) {
+      return 'StrobeSpeed';
     }
 
     if (/pan\W*tilt/i.test(channelName)) {
-      return `PanTiltSpeed`;
+      return 'PanTiltSpeed';
     }
 
-    if (channelType === `Effect` || /program|effect/i.test(channelName)) {
-      return `EffectSpeed`;
+    if (channelType === 'Effect' || /program|effect/i.test(channelName)) {
+      return 'EffectSpeed';
     }
 
-    return `Speed`;
+    return 'Speed';
   },
 
   getBeamAngleCap({ channelName, channelType }, isAscending) {
-    if (channelType === `Shutter` || /iris/i.test(channelName)) {
-      const [openPercentStart, openPercentEnd] = isAscending ? [`closed`, `open`] : [`open`, `closed`];
+    if (channelType === 'Shutter' || /iris/i.test(channelName)) {
+      const [openPercentStart, openPercentEnd] = isAscending ? ['closed', 'open'] : ['open', 'closed'];
 
       return {
-        type: `Iris`,
+        type: 'Iris',
         openPercentStart,
         openPercentEnd,
       };
     }
 
-    const [angleStart, angleEnd] = isAscending ? [`small`, `big`] : [`big`, `small`];
+    const [angleStart, angleEnd] = isAscending ? ['small', 'big'] : ['big', 'small'];
 
     return {
-      type: /zoom/i.test(channelName) ? `Zoom` : `BeamAngle`,
+      type: /zoom/i.test(channelName) ? 'Zoom' : 'BeamAngle',
       angleStart,
       angleEnd,
     };
@@ -170,10 +169,10 @@ export const importHelpers = {
    */
   getDirectionSuffix(direction) {
     if (!direction) {
-      return ``;
+      return '';
     }
 
-    return /counter|ccw/i.test(direction) ? ` CCW` : ` CW`;
+    return /counter|ccw/i.test(direction) ? ' CCW' : ' CW';
   },
 
   /**
@@ -188,8 +187,8 @@ export const importHelpers = {
     if (speedRegex.test(capabilityName)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
         const directionSuffix = importHelpers.getDirectionSuffix(direction);
-        if (directionSuffix !== ``) {
-          capability.type = `Rotation`;
+        if (directionSuffix !== '') {
+          capability.type = 'Rotation';
         }
 
         start = start.toLowerCase();
@@ -206,52 +205,51 @@ export const importHelpers = {
         capability.speedEnd = end + directionSuffix;
 
         // delete the parsed part
-        return ``;
+        return '';
       });
     }
 
     const stopRegex = /\s*\b(?:stop(?:ped)?|no rotation|no rotate)\b\s*/gi;
     if (stopRegex.test(capabilityName)) {
       return capabilityName.replaceAll(stopRegex, () => {
-        capability.speed = `stop`;
-        return ``;
+        capability.speed = 'stop';
+        return '';
       });
     }
 
     return capabilityName;
   },
 
-  getMaintenanceCap: capabilityData => ({
-    type: `Maintenance`,
+  getMaintenanceCap: (capabilityData) => ({
+    type: 'Maintenance',
     comment: capabilityData.capabilityName,
   }),
 };
 
 const createWheelRotationCapability = () => ({
-  type: `WheelRotation`,
-  wheel: ``,
-  speedStart: `slow`,
-  speedEnd: `fast`,
+  type: 'WheelRotation',
+  wheel: '',
+  speedStart: 'slow',
+  speedEnd: 'fast',
 });
 
 const createFocusNearToFarCapability = () => ({
-  type: `Focus`,
-  distanceStart: `near`,
-  distanceEnd: `far`,
+  type: 'Focus',
+  distanceStart: 'near',
+  distanceEnd: 'far',
 });
 
 const createFocusFarToNearCapability = () => ({
-  type: `Focus`,
-  distanceStart: `far`,
-  distanceEnd: `near`,
+  type: 'Focus',
+  distanceStart: 'far',
+  distanceEnd: 'near',
 });
-
 
 // ########## Channel presets ##########
 
 const channelPresets = {
   IntensityMasterDimmer: {
-    isApplicable: capability => {
+    isApplicable: (capability) => {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
@@ -261,303 +259,303 @@ const channelPresets = {
 
       return channel.pixelKey === null || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys;
     },
-    importCapability: () => ({ type: `Intensity` }),
+    importCapability: () => ({ type: 'Intensity' }),
   },
   IntensityDimmer: {
-    isApplicable: capability => capability.type === `Intensity` && capability.brightness[0].number < capability.brightness[1].number,
-    importCapability: () => ({ type: `Intensity` }),
+    isApplicable: (capability) => capability.type === 'Intensity' && capability.brightness[0].number < capability.brightness[1].number,
+    importCapability: () => ({ type: 'Intensity' }),
   },
 
   IntensityRed: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Red`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Red`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Red'),
+    importCapability: () => importHelpers.getColorIntensityCap('Red'),
   },
   IntensityGreen: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Green`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Green`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Green'),
+    importCapability: () => importHelpers.getColorIntensityCap('Green'),
   },
   IntensityBlue: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Blue`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Blue`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Blue'),
+    importCapability: () => importHelpers.getColorIntensityCap('Blue'),
   },
   IntensityCyan: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Cyan`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Cyan`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Cyan'),
+    importCapability: () => importHelpers.getColorIntensityCap('Cyan'),
   },
   IntensityMagenta: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Magenta`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Magenta`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Magenta'),
+    importCapability: () => importHelpers.getColorIntensityCap('Magenta'),
   },
   IntensityYellow: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Yellow`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Yellow`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Yellow'),
+    importCapability: () => importHelpers.getColorIntensityCap('Yellow'),
   },
   IntensityAmber: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Amber`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Amber`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Amber'),
+    importCapability: () => importHelpers.getColorIntensityCap('Amber'),
   },
   IntensityWhite: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `White`) || exportHelpers.isColorIntensity(capability, `Warm White`) || exportHelpers.isColorIntensity(capability, `Cold White`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'White') || exportHelpers.isColorIntensity(capability, 'Warm White') || exportHelpers.isColorIntensity(capability, 'Cold White'),
     importCapability: ({ channelName }) => {
-      let color = `White`;
+      let color = 'White';
       if (/\bwarm\b/i.test(channelName)) {
-        color = `Warm White`;
+        color = 'Warm White';
       }
       else if (/\bcold\b/i.test(channelName)) {
-        color = `Cold White`;
+        color = 'Cold White';
       }
 
       return {
-        type: `ColorIntensity`,
+        type: 'ColorIntensity',
         color,
       };
     },
   },
   IntensityUV: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `UV`),
-    importCapability: () => importHelpers.getColorIntensityCap(`UV`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'UV'),
+    importCapability: () => importHelpers.getColorIntensityCap('UV'),
   },
   IntensityIndigo: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Indigo`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Indigo`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Indigo'),
+    importCapability: () => importHelpers.getColorIntensityCap('Indigo'),
   },
   IntensityLime: {
-    isApplicable: capability => exportHelpers.isColorIntensity(capability, `Lime`),
-    importCapability: () => importHelpers.getColorIntensityCap(`Lime`),
+    isApplicable: (capability) => exportHelpers.isColorIntensity(capability, 'Lime'),
+    importCapability: () => importHelpers.getColorIntensityCap('Lime'),
   },
 
   IntensityHue: {
-    isApplicable: capability => false,
-    importCapability: () => ({ type: `Generic` }),
+    isApplicable: (capability) => false,
+    importCapability: () => ({ type: 'Generic' }),
   },
   IntensitySaturation: {
-    isApplicable: capability => false,
-    importCapability: () => ({ type: `Generic` }),
+    isApplicable: (capability) => false,
+    importCapability: () => ({ type: 'Generic' }),
   },
   IntensityLightness: {
-    isApplicable: capability => false,
-    importCapability: () => ({ type: `Generic` }),
+    isApplicable: (capability) => false,
+    importCapability: () => ({ type: 'Generic' }),
   },
   IntensityValue: {
-    isApplicable: capability => false,
-    importCapability: () => ({ type: `Generic` }),
+    isApplicable: (capability) => false,
+    importCapability: () => ({ type: 'Generic' }),
   },
 
   PositionPan: {
-    isApplicable: capability => capability.type === `Pan`,
-    importCapability: ({ panMax }) => importHelpers.getPanTiltCap(`Pan`, panMax),
+    isApplicable: (capability) => capability.type === 'Pan',
+    importCapability: ({ panMax }) => importHelpers.getPanTiltCap('Pan', panMax),
   },
   PositionTilt: {
-    isApplicable: capability => capability.type === `Tilt`,
-    importCapability: ({ tiltMax }) => importHelpers.getPanTiltCap(`Tilt`, tiltMax),
+    isApplicable: (capability) => capability.type === 'Tilt',
+    importCapability: ({ tiltMax }) => importHelpers.getPanTiltCap('Tilt', tiltMax),
   },
   PositionXAxis: {
-    isApplicable: capability => capability.type === `BeamPosition` && capability.horizontalAngle && capability.horizontalAngle[0].number < capability.horizontalAngle[1].number,
+    isApplicable: (capability) => capability.type === 'BeamPosition' && capability.horizontalAngle && capability.horizontalAngle[0].number < capability.horizontalAngle[1].number,
     importCapability: () => ({
-      type: `BeamPosition`,
-      horizontalAngleStart: `left`,
-      horizontalAngleEnd: `right`,
-      helpWanted: `Is this the correct direction? Can you provide exact angles?`,
+      type: 'BeamPosition',
+      horizontalAngleStart: 'left',
+      horizontalAngleEnd: 'right',
+      helpWanted: 'Is this the correct direction? Can you provide exact angles?',
     }),
   },
   PositionYAxis: {
-    isApplicable: capability => capability.type === `BeamPosition` && capability.verticalAngle && capability.verticalAngle[0].number < capability.verticalAngle[1].number,
+    isApplicable: (capability) => capability.type === 'BeamPosition' && capability.verticalAngle && capability.verticalAngle[0].number < capability.verticalAngle[1].number,
     importCapability: () => ({
-      type: `BeamPosition`,
-      verticalAngleStart: `top`,
-      verticalAngleEnd: `bottom`,
-      helpWanted: `Is this the correct direction? Can you provide exact angles?`,
+      type: 'BeamPosition',
+      verticalAngleStart: 'top',
+      verticalAngleEnd: 'bottom',
+      helpWanted: 'Is this the correct direction? Can you provide exact angles?',
     }),
   },
   SpeedPanSlowFast: {
-    isApplicable: capability => capability.type === `PanContinuous` && exportHelpers.isIncreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'PanContinuous' && exportHelpers.isIncreasingSpeed(capability),
     importCapability: () => ({
-      type: `PanContinuous`,
-      speedStart: `slow`,
-      speedEnd: `fast`,
+      type: 'PanContinuous',
+      speedStart: 'slow',
+      speedEnd: 'fast',
     }),
   },
   SpeedPanFastSlow: {
-    isApplicable: capability => capability.type === `PanContinuous` && exportHelpers.isDecreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'PanContinuous' && exportHelpers.isDecreasingSpeed(capability),
     importCapability: () => ({
-      type: `PanContinuous`,
-      speedStart: `fast`,
-      speedEnd: `slow`,
+      type: 'PanContinuous',
+      speedStart: 'fast',
+      speedEnd: 'slow',
     }),
   },
   SpeedTiltSlowFast: {
-    isApplicable: capability => capability.type === `TiltContinuous` && exportHelpers.isIncreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'TiltContinuous' && exportHelpers.isIncreasingSpeed(capability),
     importCapability: () => ({
-      type: `TiltContinuous`,
-      speedStart: `slow`,
-      speedEnd: `fast`,
+      type: 'TiltContinuous',
+      speedStart: 'slow',
+      speedEnd: 'fast',
     }),
   },
   SpeedTiltFastSlow: {
-    isApplicable: capability => capability.type === `TiltContinuous` && exportHelpers.isDecreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'TiltContinuous' && exportHelpers.isDecreasingSpeed(capability),
     importCapability: () => ({
-      type: `TiltContinuous`,
-      speedStart: `fast`,
-      speedEnd: `slow`,
+      type: 'TiltContinuous',
+      speedStart: 'fast',
+      speedEnd: 'slow',
     }),
   },
   SpeedPanTiltSlowFast: {
-    isApplicable: capability => capability.type === `PanTiltSpeed` && (exportHelpers.isIncreasingSpeed(capability) || exportHelpers.isDecreasingDuration(capability)),
+    isApplicable: (capability) => capability.type === 'PanTiltSpeed' && (exportHelpers.isIncreasingSpeed(capability) || exportHelpers.isDecreasingDuration(capability)),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
-      speedStart: `slow`,
-      speedEnd: `fast`,
+      type: 'PanTiltSpeed',
+      speedStart: 'slow',
+      speedEnd: 'fast',
     }),
   },
   SpeedPanTiltFastSlow: {
-    isApplicable: capability => capability.type === `PanTiltSpeed` && (exportHelpers.isDecreasingSpeed(capability) || exportHelpers.isIncreasingDuration(capability)),
+    isApplicable: (capability) => capability.type === 'PanTiltSpeed' && (exportHelpers.isDecreasingSpeed(capability) || exportHelpers.isIncreasingDuration(capability)),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
-      speedStart: `fast`,
-      speedEnd: `slow`,
+      type: 'PanTiltSpeed',
+      speedStart: 'fast',
+      speedEnd: 'slow',
     }),
   },
 
   ColorMacro: {
-    isApplicable: capability => capability.type === `ColorPreset` || (capability.type === `WheelSlot` && capability.isSlotType(`Color`)),
+    isApplicable: (capability) => capability.type === 'ColorPreset' || (capability.type === 'WheelSlot' && capability.isSlotType('Color')),
     importCapability: () => ({
-      type: `ColorPreset`,
-      helpWanted: `Which color can be selected at which DMX values?`,
+      type: 'ColorPreset',
+      helpWanted: 'Which color can be selected at which DMX values?',
     }),
   },
   ColorWheel: {
-    isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Color`,
+    isApplicable: (capability) => capability.type === 'WheelRotation' && capability.wheels[0].type === 'Color',
     importCapability: createWheelRotationCapability,
   },
   ColorRGBMixer: {
-    isApplicable: capability => channelPresets.IntensityHue.isApplicable(capability),
-    importCapability: capabilityData => channelPresets.IntensityHue.importCapability(capabilityData),
+    isApplicable: (capability) => channelPresets.IntensityHue.isApplicable(capability),
+    importCapability: (capabilityData) => channelPresets.IntensityHue.importCapability(capabilityData),
   },
   ColorCTOMixer: {
-    isApplicable: capability => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1].number < 0,
+    isApplicable: (capability) => capability.type === 'ColorTemperature' && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1].number < 0,
     importCapability: () => ({
-      type: `ColorTemperature`,
-      colorTemperatureStart: `default`,
-      colorTemperatureEnd: `warm`,
-      helpWanted: `Can you provide exact color temperature values in Kelvin?`,
+      type: 'ColorTemperature',
+      colorTemperatureStart: 'default',
+      colorTemperatureEnd: 'warm',
+      helpWanted: 'Can you provide exact color temperature values in Kelvin?',
     }),
   },
   ColorCTBMixer: {
-    isApplicable: capability => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1].number > 0,
+    isApplicable: (capability) => capability.type === 'ColorTemperature' && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1].number > 0,
     importCapability: () => ({
-      type: `ColorTemperature`,
-      colorTemperatureStart: `default`,
-      colorTemperatureEnd: `cold`,
-      helpWanted: `Can you provide exact color temperature values in Kelvin?`,
+      type: 'ColorTemperature',
+      colorTemperatureStart: 'default',
+      colorTemperatureEnd: 'cold',
+      helpWanted: 'Can you provide exact color temperature values in Kelvin?',
     }),
   },
   ColorCTCMixer: {
-    isApplicable: capability => capability.type === `ColorTemperature`,
+    isApplicable: (capability) => capability.type === 'ColorTemperature',
     importCapability: () => ({
-      type: `ColorTemperature`,
-      colorTemperatureStart: `warm`,
-      colorTemperatureEnd: `cold`,
-      helpWanted: `Is this the correct direction? Can you provide exact color temperature values in Kelvin?`,
+      type: 'ColorTemperature',
+      colorTemperatureStart: 'warm',
+      colorTemperatureEnd: 'cold',
+      helpWanted: 'Is this the correct direction? Can you provide exact color temperature values in Kelvin?',
     }),
   },
 
   GoboWheel: {
-    isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Gobo`,
+    isApplicable: (capability) => capability.type === 'WheelRotation' && capability.wheels[0].type === 'Gobo',
     importCapability: createWheelRotationCapability,
   },
   GoboIndex: {
-    isApplicable: capability => capability.type === `WheelSlotRotation` && capability.wheels[0].type === `Gobo`,
+    isApplicable: (capability) => capability.type === 'WheelSlotRotation' && capability.wheels[0].type === 'Gobo',
     importCapability: () => ({
-      type: `WheelSlotRotation`,
-      angleStart: `0deg`,
-      angleEnd: `360deg`,
-      helpWanted: `Are these the correct angles?`,
+      type: 'WheelSlotRotation',
+      angleStart: '0deg',
+      angleEnd: '360deg',
+      helpWanted: 'Are these the correct angles?',
     }),
   },
 
   ShutterStrobeSlowFast: {
-    isApplicable: capability => capability.type === `ShutterStrobe` && exportHelpers.isIncreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'ShutterStrobe' && exportHelpers.isIncreasingSpeed(capability),
     importCapability: () => ({
-      type: `ShutterStrobe`,
-      shutterEffect: `Strobe`,
-      speedStart: `slow`,
-      speedEnd: `fast`,
-      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
+      type: 'ShutterStrobe',
+      shutterEffect: 'Strobe',
+      speedStart: 'slow',
+      speedEnd: 'fast',
+      helpWanted: 'At which DMX values is strobe disabled? When is the lamp constantly on/off?',
     }),
   },
   ShutterStrobeFastSlow: {
-    isApplicable: capability => capability.type === `ShutterStrobe` && exportHelpers.isDecreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'ShutterStrobe' && exportHelpers.isDecreasingSpeed(capability),
     importCapability: () => ({
-      type: `ShutterStrobe`,
-      shutterEffect: `Strobe`,
-      speedStart: `fast`,
-      speedEnd: `slow`,
-      helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
+      type: 'ShutterStrobe',
+      shutterEffect: 'Strobe',
+      speedStart: 'fast',
+      speedEnd: 'slow',
+      helpWanted: 'At which DMX values is strobe disabled? When is the lamp constantly on/off?',
     }),
   },
   ShutterIrisMinToMax: {
-    isApplicable: capability => capability.type === `Iris` && capability.openPercent[0].number < capability.openPercent[1].number,
+    isApplicable: (capability) => capability.type === 'Iris' && capability.openPercent[0].number < capability.openPercent[1].number,
     importCapability: () => ({
-      type: `Iris`,
-      openPercentStart: `closed`,
-      openPercentEnd: `open`,
+      type: 'Iris',
+      openPercentStart: 'closed',
+      openPercentEnd: 'open',
     }),
   },
   ShutterIrisMaxToMin: {
-    isApplicable: capability => capability.type === `Iris` && capability.openPercent[0].number > capability.openPercent[1].number,
+    isApplicable: (capability) => capability.type === 'Iris' && capability.openPercent[0].number > capability.openPercent[1].number,
     importCapability: () => ({
-      type: `Iris`,
-      openPercentStart: `open`,
-      openPercentEnd: `closed`,
+      type: 'Iris',
+      openPercentStart: 'open',
+      openPercentEnd: 'closed',
     }),
   },
 
   BeamFocusNearFar: {
-    isApplicable: capability => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
+    isApplicable: (capability) => capability.type === 'Focus' && capability.distance[0].number < capability.distance[1].number,
     importCapability: createFocusNearToFarCapability,
   },
   BeamFocusFarNear: {
-    isApplicable: capability => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
+    isApplicable: (capability) => capability.type === 'Focus' && capability.distance[0].number > capability.distance[1].number,
     importCapability: createFocusFarToNearCapability,
   },
   BeamZoomSmallBig: {
-    isApplicable: capability => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
+    isApplicable: (capability) => capability.type === 'Zoom' && capability.angle[0].number < capability.angle[1].number,
     importCapability: () => ({
-      type: `Zoom`,
-      angleStart: `narrow`,
-      angleEnd: `wide`,
+      type: 'Zoom',
+      angleStart: 'narrow',
+      angleEnd: 'wide',
     }),
   },
   BeamZoomBigSmall: {
-    isApplicable: capability => capability.type === `Zoom` && capability.angle[0].number > capability.angle[1].number,
+    isApplicable: (capability) => capability.type === 'Zoom' && capability.angle[0].number > capability.angle[1].number,
     importCapability: () => ({
-      type: `Zoom`,
-      angleStart: `wide`,
-      angleEnd: `narrow`,
+      type: 'Zoom',
+      angleStart: 'wide',
+      angleEnd: 'narrow',
     }),
   },
   PrismRotationSlowFast: {
-    isApplicable: capability => capability.type === `PrismRotation` && exportHelpers.isIncreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'PrismRotation' && exportHelpers.isIncreasingSpeed(capability),
     importCapability: () => ({
-      type: `PrismRotation`,
-      speedStart: `slow CW`,
-      speedEnd: `fast CW`,
-      helpWanted: `Does the prism rotate clockwise or counter-clockwise?`,
+      type: 'PrismRotation',
+      speedStart: 'slow CW',
+      speedEnd: 'fast CW',
+      helpWanted: 'Does the prism rotate clockwise or counter-clockwise?',
     }),
   },
   PrismRotationFastSlow: {
-    isApplicable: capability => capability.type === `PrismRotation` && exportHelpers.isDecreasingSpeed(capability),
+    isApplicable: (capability) => capability.type === 'PrismRotation' && exportHelpers.isDecreasingSpeed(capability),
     importCapability: () => ({
-      type: `PrismRotation`,
-      speedStart: `fast CW`,
-      speedEnd: `slow CW`,
-      helpWanted: `Does the prism rotate clockwise or counter-clockwise?`,
+      type: 'PrismRotation',
+      speedStart: 'fast CW',
+      speedEnd: 'slow CW',
+      helpWanted: 'Does the prism rotate clockwise or counter-clockwise?',
     }),
   },
 
   NoFunction: {
-    isApplicable: capability => capability.type === `NoFunction`,
-    importCapability: () => ({ type: `NoFunction` }),
+    isApplicable: (capability) => capability.type === 'NoFunction',
+    importCapability: () => ({ type: 'NoFunction' }),
   },
 };
 
@@ -571,7 +569,7 @@ export function getChannelPreset(channel) {
   }
 
   return Object.keys(channelPresets).find(
-    preset => channelPresets[preset].isApplicable(channel.capabilities[0]),
+    (preset) => channelPresets[preset].isApplicable(channel.capabilities[0]),
   ) || null;
 }
 
@@ -592,101 +590,99 @@ export function getCapabilityFromChannelPreset(preset, channelName, panMax, tilt
   }
 
   return {
-    type: `Generic`,
+    type: 'Generic',
     helpWanted: `Unknown QLC+ channel preset ${preset}.`,
   };
 }
-
-
 
 // ########## Fine channel presets ##########
 
 const fineChannelPresets = {
   IntensityMasterDimmerFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityMasterDimmer`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityMasterDimmer',
   },
   IntensityDimmerFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityDimmer`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityDimmer',
   },
 
   IntensityRedFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityRed`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityRed',
   },
   IntensityGreenFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityGreen`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityGreen',
   },
   IntensityBlueFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityBlue`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityBlue',
   },
   IntensityCyanFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityCyan`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityCyan',
   },
   IntensityMagentaFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityMagenta`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityMagenta',
   },
   IntensityYellowFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityYellow`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityYellow',
   },
   IntensityAmberFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityAmber`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityAmber',
   },
   IntensityWhiteFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityWhite`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityWhite',
   },
   IntensityUVFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityUV`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityUV',
   },
   IntensityIndigoFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityIndigo`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityIndigo',
   },
   IntensityLimeFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityLime`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityLime',
   },
 
   IntensityHueFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityHue`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityHue',
   },
   IntensitySaturationFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensitySaturation`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensitySaturation',
   },
   IntensityLightnessFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityLightness`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityLightness',
   },
   IntensityValueFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityValue`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'IntensityValue',
   },
 
   PositionPanFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `PositionPan`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'PositionPan',
   },
   PositionTiltFine: {
-    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `PositionTilt`,
+    isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === 'PositionTilt',
   },
 
   ColorWheelFine: {
     isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel(coarseChannel) && coarseChannel.capabilities.every(
-      capability => exportHelpers.isAllowedInWheels(capability) && (capability.wheels.length === 0 || capability.wheels[0].type === `Color`),
+      (capability) => exportHelpers.isAllowedInWheels(capability) && (capability.wheels.length === 0 || capability.wheels[0].type === 'Color'),
     ),
   },
   GoboWheelFine: {
     isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel(coarseChannel) && coarseChannel.capabilities.every(
-      capability => exportHelpers.isAllowedInWheels(capability) && (capability.wheels.length === 0 || capability.wheels[0].type === `Gobo`),
+      (capability) => exportHelpers.isAllowedInWheels(capability) && (capability.wheels.length === 0 || capability.wheels[0].type === 'Gobo'),
     ),
   },
   GoboIndexFine: {
     isApplicable: ({ coarseChannel }) => coarseChannel.capabilities.every(
-      capability => capability.type === `WheelSlotRotation` && capability.wheels[0].type === `Gobo`,
+      (capability) => capability.type === 'WheelSlotRotation' && capability.wheels[0].type === 'Gobo',
     ),
   },
 
   ShutterIrisFine: {
-    isApplicable: ({ coarseChannel }) => coarseChannel.type === `Iris`,
+    isApplicable: ({ coarseChannel }) => coarseChannel.type === 'Iris',
   },
   BeamFocusFine: {
-    isApplicable: ({ coarseChannel }) => coarseChannel.type === `Focus`,
+    isApplicable: ({ coarseChannel }) => coarseChannel.type === 'Focus',
   },
   BeamZoomFine: {
-    isApplicable: ({ coarseChannel }) => coarseChannel.type === `Zoom`,
+    isApplicable: ({ coarseChannel }) => coarseChannel.type === 'Zoom',
   },
 };
 
@@ -699,14 +695,12 @@ export function getFineChannelPreset(fineChannel) {
   const coarseChannelPreset = getChannelPreset(coarseChannel);
 
   return Object.keys(fineChannelPresets).find(
-    fineChannelPreset => fineChannelPresets[fineChannelPreset].isApplicable({
+    (fineChannelPreset) => fineChannelPresets[fineChannelPreset].isApplicable({
       coarseChannel,
       coarseChannelPreset,
     }),
   ) || null;
 }
-
-
 
 // ########## Capability presets ##########
 
@@ -715,132 +709,129 @@ export const capabilityPresets = {
   // shutter capabilities
 
   ShutterOpen: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Open`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Open'),
     importCapability: () => ({
-      type: `ShutterStrobe`,
-      shutterEffect: `Open`,
+      type: 'ShutterStrobe',
+      shutterEffect: 'Open',
     }),
   },
   ShutterClose: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Closed`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Closed'),
     importCapability: () => ({
-      type: `ShutterStrobe`,
-      shutterEffect: `Closed`,
+      type: 'ShutterStrobe',
+      shutterEffect: 'Closed',
     }),
   },
-
 
   // strobe capabilities with specified frequency
 
   StrobeFrequency: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && exportHelpers.hasFrequency(capability) && capability.isStep,
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap('Strobe', `${res1}Hz`),
   },
   StrobeFreqRange: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
-    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && exportHelpers.hasFrequency(capability),
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    exportRes2: (capability) => capability.speed[1].baseUnitEntity.number,
+    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('Strobe', `${res1}Hz`, `${res2}Hz`),
   },
   PulseFrequency: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Pulse') && exportHelpers.hasFrequency(capability) && capability.isStep,
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap('Pulse', `${res1}Hz`),
   },
   PulseFreqRange: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
-    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Pulse') && exportHelpers.hasFrequency(capability),
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    exportRes2: (capability) => capability.speed[1].baseUnitEntity.number,
+    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('Pulse', `${res1}Hz`, `${res2}Hz`),
   },
   RampUpFrequency: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampUp') && exportHelpers.hasFrequency(capability) && capability.isStep,
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap('RampUp', `${res1}Hz`),
   },
   RampUpFreqRange: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
-    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampUp') && exportHelpers.hasFrequency(capability),
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    exportRes2: (capability) => capability.speed[1].baseUnitEntity.number,
+    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('RampUp', `${res1}Hz`, `${res2}Hz`),
   },
   RampDownFrequency: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampDown') && exportHelpers.hasFrequency(capability) && capability.isStep,
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap('RampDown', `${res1}Hz`),
   },
   RampDownFreqRange: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
-    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
-    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampDown') && exportHelpers.hasFrequency(capability),
+    exportRes1: (capability) => capability.speed[0].baseUnitEntity.number,
+    exportRes2: (capability) => capability.speed[1].baseUnitEntity.number,
+    importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('RampDown', `${res1}Hz`, `${res2}Hz`),
   },
-
 
   // other strobe capabilities
 
   StrobeRandomSlowToFast: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && capability.randomTiming && exportHelpers.isIncreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `slow`, `fast`, true),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && capability.randomTiming && exportHelpers.isIncreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Strobe', 'slow', 'fast', true),
   },
   StrobeRandomFastToSlow: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && capability.randomTiming && exportHelpers.isDecreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `fast`, `slow`, true),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && capability.randomTiming && exportHelpers.isDecreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Strobe', 'fast', 'slow', true),
   },
   StrobeRandom: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && capability.randomTiming,
-    importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, null, null, true),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && capability.randomTiming,
+    importCapability: () => importHelpers.getShutterStrobeCap('Strobe', null, null, true),
   },
   StrobeSlowToFast: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.isIncreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `slow`, `fast`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && exportHelpers.isIncreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Strobe', 'slow', 'fast'),
   },
   StrobeFastToSlow: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.isDecreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `fast`, `slow`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Strobe') && exportHelpers.isDecreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Strobe', 'fast', 'slow'),
   },
   PulseSlowToFast: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.isIncreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Pulse`, `slow`, `fast`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Pulse') && exportHelpers.isIncreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Pulse', 'slow', 'fast'),
   },
   PulseFastToSlow: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.isDecreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`Pulse`, `fast`, `slow`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'Pulse') && exportHelpers.isDecreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('Pulse', 'fast', 'slow'),
   },
   RampUpSlowToFast: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.isIncreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`RampUp`, `slow`, `fast`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampUp') && exportHelpers.isIncreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('RampUp', 'slow', 'fast'),
   },
   RampUpFastToSlow: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.isDecreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`RampUp`, `fast`, `slow`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampUp') && exportHelpers.isDecreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('RampUp', 'fast', 'slow'),
   },
   RampDownSlowToFast: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.isIncreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`RampDown`, `slow`, `fast`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampDown') && exportHelpers.isIncreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('RampDown', 'slow', 'fast'),
   },
   RampDownFastToSlow: {
-    isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.isDecreasingSpeed(capability),
-    importCapability: () => importHelpers.getShutterStrobeCap(`RampDown`, `fast`, `slow`),
+    isApplicable: (capability) => exportHelpers.isShutterEffect(capability, 'RampDown') && exportHelpers.isDecreasingSpeed(capability),
+    importCapability: () => importHelpers.getShutterStrobeCap('RampDown', 'fast', 'slow'),
   },
-
 
   // color capabilities
 
   ColorMacro: {
-    isApplicable: capability => (capability.type === `ColorPreset` || capability.isSlotType(`Color`)) && capability.colors !== null && capability.colors.allColors.length === 1,
-    exportRes1: capability => capability.colors.allColors[0],
-    importCapability: capabilityData => capabilityPresets.ColorDoubleMacro.importCapability(capabilityData),
+    isApplicable: (capability) => (capability.type === 'ColorPreset' || capability.isSlotType('Color')) && capability.colors !== null && capability.colors.allColors.length === 1,
+    exportRes1: (capability) => capability.colors.allColors[0],
+    importCapability: (capabilityData) => capabilityPresets.ColorDoubleMacro.importCapability(capabilityData),
   },
   ColorDoubleMacro: {
-    isApplicable: capability => (capability.type === `ColorPreset` || capability.isSlotType(`Color`)) && capability.colors !== null && capability.colors.allColors.length === 2,
-    exportRes1: capability => capability.colors.allColors[0],
-    exportRes2: capability => capability.colors.allColors[1],
+    isApplicable: (capability) => (capability.type === 'ColorPreset' || capability.isSlotType('Color')) && capability.colors !== null && capability.colors.allColors.length === 2,
+    exportRes1: (capability) => capability.colors.allColors[0],
+    exportRes2: (capability) => capability.colors.allColors[1],
     importCapability: ({ channelName, res1, res2, index }) => {
       if (/wheel\b/i.test(channelName)) {
         return {
-          type: `WheelSlot`,
+          type: 'WheelSlot',
           slotNumber: index + 1,
         };
       }
@@ -851,42 +842,41 @@ export const capabilityPresets = {
       }
 
       return {
-        type: `ColorPreset`,
-        comment: ``,
+        type: 'ColorPreset',
+        comment: '',
         colors,
       };
     },
   },
   ColorWheelIndex: {
-    isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Color` && exportHelpers.isRotationAngle(capability),
+    isApplicable: (capability) => capability.type === 'WheelRotation' && capability.wheels[0].type === 'Color' && exportHelpers.isRotationAngle(capability),
     importCapability: () => ({
-      type: `WheelRotation`,
-      angleStart: `0deg`,
-      angleEnd: `360deg`,
-      helpWanted: `Are these the correct angles?`,
+      type: 'WheelRotation',
+      angleStart: '0deg',
+      angleEnd: '360deg',
+      helpWanted: 'Are these the correct angles?',
     }),
   },
-
 
   // gobo capabilities
 
   // TODO: import/export a gobo image as res1
   GoboShakeMacro: {
-    isApplicable: capability => capability.type === `WheelShake` && capability.isSlotType(/Gobo|Iris|Frost|Open/),
+    isApplicable: (capability) => capability.type === 'WheelShake' && capability.isSlotType(/Gobo|Iris|Frost|Open/),
     exportRes1: exportHelpers.getGoboResource,
     importCapability: ({ capabilityName, index }) => {
       const capability = {
-        type: `WheelShake`,
+        type: 'WheelShake',
         slotNumber: index + 1,
       };
 
       const comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-      if (`speed` in capability) {
+      if ('speed' in capability) {
         capability.shakeSpeed = capability.speed;
         delete capability.speed;
       }
-      else if (`speedStart` in capability) {
+      else if ('speedStart' in capability) {
         capability.shakeSpeedStart = capability.speedStart;
         capability.shakeSpeedEnd = capability.speedEnd;
         delete capability.speedStart;
@@ -899,237 +889,234 @@ export const capabilityPresets = {
     },
   },
   GoboMacro: {
-    isApplicable: capability => capability.type === `WheelSlot` && capability.isSlotType(/Gobo|Iris|Frost|Open/),
+    isApplicable: (capability) => capability.type === 'WheelSlot' && capability.isSlotType(/Gobo|Iris|Frost|Open/),
     exportRes1: exportHelpers.getGoboResource,
     importCapability: ({ index }) => ({
-      type: `WheelSlot`,
+      type: 'WheelSlot',
       slotNumber: index + 1,
     }),
   },
 
-
   // prism capabilities
 
   PrismEffectOn: {
-    isApplicable: capability => capability.type === `Prism` || (capability.type === `WheelSlot` && capability.isSlotType(`Prism`)),
-    exportRes1: capability => (capability.wheelSlot && capability.slotNumber[0].number === capability.slotNumber[1].number && capability.wheelSlot[0].facets),
-    importCapability: capabilityData => {
+    isApplicable: (capability) => capability.type === 'Prism' || (capability.type === 'WheelSlot' && capability.isSlotType('Prism')),
+    exportRes1: (capability) => (capability.wheelSlot && capability.slotNumber[0].number === capability.slotNumber[1].number && capability.wheelSlot[0].facets),
+    importCapability: (capabilityData) => {
       if (/wheel/i.test(capabilityData.channelName)) {
         return capabilityPresets.GoboMacro.importCapability(capabilityData);
       }
 
       return {
-        type: `Prism`,
-        comment: capabilityData.res1 ? `${capabilityData.res1}-facet` : ``,
+        type: 'Prism',
+        comment: capabilityData.res1 ? `${capabilityData.res1}-facet` : '',
       };
     },
   },
   PrismEffectOff: {
-    isApplicable: capability => capability.type === `NoFunction` && capability._channel.type === `Prism`,
+    isApplicable: (capability) => capability.type === 'NoFunction' && capability._channel.type === 'Prism',
     importCapability: () => ({
-      type: `NoFunction`,
+      type: 'NoFunction',
     }),
   },
-
 
   // rotation capabilities
 
   RotationClockwiseSlowToFast: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && exportHelpers.isIncreasingSpeed(capability) && capability.speed[0].number > 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `slow CW`, `fast CW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && exportHelpers.isIncreasingSpeed(capability) && capability.speed[0].number > 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'slow CW', 'fast CW'),
   },
   RotationClockwiseFastToSlow: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && exportHelpers.isDecreasingSpeed(capability) && capability.speed[1].number > 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `fast CW`, `slow CW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && exportHelpers.isDecreasingSpeed(capability) && capability.speed[1].number > 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'fast CW', 'slow CW'),
   },
   RotationClockwise: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && capability.speed[0].number === capability.speed[1].number && capability.speed[0].number > 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `fast CW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && capability.speed[0].number === capability.speed[1].number && capability.speed[0].number > 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'fast CW'),
   },
   RotationStop: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && exportHelpers.isStopped(capability),
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `stop`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && exportHelpers.isStopped(capability),
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'stop'),
   },
   RotationCounterClockwiseSlowToFast: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && exportHelpers.isIncreasingSpeed(capability) && capability.speed[0].number < 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `slow CCW`, `fast CCW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && exportHelpers.isIncreasingSpeed(capability) && capability.speed[0].number < 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'slow CCW', 'fast CCW'),
   },
   RotationCounterClockwiseFastToSlow: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && exportHelpers.isDecreasingSpeed(capability) && capability.speed[1].number < 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `fast CCW`, `slow CCW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && exportHelpers.isDecreasingSpeed(capability) && capability.speed[1].number < 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'fast CCW', 'slow CCW'),
   },
   RotationCounterClockwise: {
-    isApplicable: capability => exportHelpers.isRotationSpeed(capability) && capability.speed[0].number === capability.speed[1].number && capability.speed[0].number < 0,
-    importCapability: capabilityData => importHelpers.getRotationSpeedCap(capabilityData, `fast CCW`),
+    isApplicable: (capability) => exportHelpers.isRotationSpeed(capability) && capability.speed[0].number === capability.speed[1].number && capability.speed[0].number < 0,
+    importCapability: (capabilityData) => importHelpers.getRotationSpeedCap(capabilityData, 'fast CCW'),
   },
   RotationIndexed: {
-    isApplicable: capability => exportHelpers.isRotationAngle(capability),
-    importCapability: capabilityData => ({
+    isApplicable: (capability) => exportHelpers.isRotationAngle(capability),
+    importCapability: (capabilityData) => ({
       type: importHelpers.getRotationCapType(capabilityData),
-      angleStart: `0deg`,
-      angleEnd: `360deg`,
-      helpWanted: `Are these the correct angles?`,
+      angleStart: '0deg',
+      angleEnd: '360deg',
+      helpWanted: 'Are these the correct angles?',
     }),
   },
-
 
   // maintenance / reset capabilities
 
   ResetPanTilt: {
-    isApplicable: capability =>
-      capability.type === `Maintenance` &&
-      /\breset\b/i.test(capability.comment) && (
-        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment)) ||
-        /\bposition\b|\bscan\b/i.test(capability.comment)
+    isApplicable: (capability) =>
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && (
+        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment))
+        || /\bposition\b|\bscan\b/i.test(capability.comment)
       ),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPan: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bpan\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetTilt: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetEffects: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\beffects?\b|\bbeam\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\beffects?\b|\bbeam\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetGobo: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bgobos?\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bgobos?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetColor: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcolou?rs?\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bcolou?rs?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCMY: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcmy\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bcmy\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetCTO: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bcto\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bcto\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetPrism: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bprisms?\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bprisms?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetBlades: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bblades?\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bblades?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetIris: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\biris\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\biris\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetFrost: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bfrost\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bfrost\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetZoom: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment) && /\bzoom\b|\bfocus\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment) && /\bzoom\b|\bfocus\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetMotors: {
-    isApplicable: capability =>
-      capability.type === `Maintenance` &&
-      /\breset\b/i.test(capability.comment) &&
-      /\bmotors?\b/i.test(capability.comment) &&
-      !/\ball\b|\btotal\b/i.test(capability.comment),
+    isApplicable: (capability) =>
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && /\bmotors?\b/i.test(capability.comment)
+      && !/\ball\b|\btotal\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetAll: {
-    isApplicable: capability => capability.type === `Maintenance` && /\breset\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\breset\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   LampOn: {
-    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\blamp\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   LampOff: {
-    isApplicable: capability => capability.type === `Maintenance` && /\blamp\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\blamp\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOn: {
-    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\bsilent\b/i.test(capability.comment) && /\bon\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeOff: {
-    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\bsilent\b/i.test(capability.comment) && /\boff\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   SilentModeAutomatic: {
-    isApplicable: capability => capability.type === `Maintenance` && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
+    isApplicable: (capability) => capability.type === 'Maintenance' && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
-
 
   // generic / other capabilities
 
   GenericPicture: {
-    isApplicable: capability => capability.effectPreset === `ColorFade` && !exportHelpers.isStopped(capability),
-    exportRes1: capability => `Others/rainbow.png`,
+    isApplicable: (capability) => capability.effectPreset === 'ColorFade' && !exportHelpers.isStopped(capability),
+    exportRes1: (capability) => 'Others/rainbow.png',
     importCapability: ({ res1, channelName, capabilityName }) => {
-      if (res1 === `Others/rainbow.png`) {
+      if (res1 === 'Others/rainbow.png') {
         if (/wheel/i.test(channelName)) {
           const capability = {
-            type: `WheelRotation`,
+            type: 'WheelRotation',
           };
           capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-          if (!(`speed` in capability || `speedStart` in capability)) {
-            capability.speedStart = `slow CW`;
-            capability.speedEnd = `fast CW`;
-            capability.helpWanted = `Are the automatically added speed values correct?`;
+          if (!('speed' in capability || 'speedStart' in capability)) {
+            capability.speedStart = 'slow CW';
+            capability.speedEnd = 'fast CW';
+            capability.helpWanted = 'Are the automatically added speed values correct?';
           }
 
           return capability;
         }
         return {
-          type: `Effect`,
+          type: 'Effect',
           effectName: capabilityName,
         };
       }
 
       return {
-        type: `Generic`,
+        type: 'Generic',
         comment: res1,
       };
     },
   },
   SlowToFast: {
-    isApplicable: capability => exportHelpers.isIncreasingSpeed(capability),
-    importCapability: capabilityData => ({
+    isApplicable: (capability) => exportHelpers.isIncreasingSpeed(capability),
+    importCapability: (capabilityData) => ({
       type: importHelpers.getSpeedCapType(capabilityData),
-      speedStart: `slow`,
-      speedEnd: `fast`,
+      speedStart: 'slow',
+      speedEnd: 'fast',
     }),
   },
   FastToSlow: {
-    isApplicable: capability => exportHelpers.isDecreasingSpeed(capability),
-    importCapability: capabilityData => ({
+    isApplicable: (capability) => exportHelpers.isDecreasingSpeed(capability),
+    importCapability: (capabilityData) => ({
       type: importHelpers.getSpeedCapType(capabilityData),
-      speedStart: `fast`,
-      speedEnd: `slow`,
+      speedStart: 'fast',
+      speedEnd: 'slow',
     }),
   },
   NearToFar: {
-    isApplicable: capability => capability.distance !== null && capability.distance[0].number < capability.distance[1].number,
+    isApplicable: (capability) => capability.distance !== null && capability.distance[0].number < capability.distance[1].number,
     importCapability: createFocusNearToFarCapability,
   },
   FarToNear: {
-    isApplicable: capability => capability.distance !== null && capability.distance[0].number > capability.distance[1].number,
+    isApplicable: (capability) => capability.distance !== null && capability.distance[0].number > capability.distance[1].number,
     importCapability: createFocusFarToNearCapability,
   },
   SmallToBig: {
-    isApplicable: capability => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number < capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === `small` && capability.parameter[1].keyword === `big`),
-    importCapability: capabilityData => importHelpers.getBeamAngleCap(capabilityData, true),
+    isApplicable: (capability) => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number < capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === 'small' && capability.parameter[1].keyword === 'big'),
+    importCapability: (capabilityData) => importHelpers.getBeamAngleCap(capabilityData, true),
   },
   BigToSmall: {
-    isApplicable: capability => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number > capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === `big` && capability.parameter[1].keyword === `small`),
-    importCapability: capabilityData => importHelpers.getBeamAngleCap(capabilityData, false),
+    isApplicable: (capability) => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number > capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === 'big' && capability.parameter[1].keyword === 'small'),
+    importCapability: (capabilityData) => importHelpers.getBeamAngleCap(capabilityData, false),
   },
 };
 
@@ -1146,7 +1133,7 @@ export const capabilityPresets = {
  */
 export async function getCapabilityPreset(capability) {
   const foundPresetName = Object.keys(capabilityPresets).find(
-    presetName => capabilityPresets[presetName].isApplicable(capability),
+    (presetName) => capabilityPresets[presetName].isApplicable(capability),
   );
 
   if (!foundPresetName) {
@@ -1156,8 +1143,8 @@ export async function getCapabilityPreset(capability) {
   const preset = capabilityPresets[foundPresetName];
   return {
     presetName: foundPresetName,
-    res1: `exportRes1` in preset ? await preset.exportRes1(capability) : null,
-    res2: `exportRes2` in preset ? preset.exportRes2(capability) : null,
+    res1: 'exportRes1' in preset ? await preset.exportRes1(capability) : null,
+    res2: 'exportRes2' in preset ? preset.exportRes2(capability) : null,
   };
 }
 
@@ -1181,7 +1168,7 @@ export function getCapabilityFromCapabilityPreset(preset, capabilityData) {
   }
 
   return {
-    type: `Generic`,
+    type: 'Generic',
     comment: capabilityData.capabilityName,
     helpWanted: `Unknown QLC+ capability preset ${preset}, Res1="${capabilityData.res1}", Res2="${capabilityData.res2}".`,
   };

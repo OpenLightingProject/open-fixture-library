@@ -66,7 +66,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Only move the beam and not a visible physical part of the fixture. This is especially useful for lasers. Use Pan/Tilt for moving heads.`,
+      hint: 'Only move the beam and not a visible physical part of the fixture. This is especially useful for lasers. Use Pan/Tilt for moving heads.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -74,20 +74,20 @@ export default {
        */
       defaultData: {
         horizontalAngle: null,
-        horizontalAngleStart: ``,
-        horizontalAngleEnd: ``,
+        horizontalAngleStart: '',
+        horizontalAngleEnd: '',
         verticalAngle: null,
-        verticalAngleStart: ``,
-        verticalAngleEnd: ``,
-        comment: ``,
+        verticalAngleStart: '',
+        verticalAngleEnd: '',
+        comment: '',
       },
     };
   },
   methods: {
     isPropertyEmpty(property) {
       const typeData = this.capability.typeData;
-      const isSteppedEmpty = typeData[property] === null || typeData[property] === ``;
-      const isProportionalEmpty = typeData[`${property}Start`] === null || typeData[`${property}Start`] === ``;
+      const isSteppedEmpty = typeData[property] === null || typeData[property] === '';
+      const isProportionalEmpty = typeData[`${property}Start`] === null || typeData[`${property}Start`] === '';
 
       return isSteppedEmpty && isProportionalEmpty;
     },

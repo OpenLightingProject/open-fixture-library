@@ -55,7 +55,6 @@
       </Validate>
     </LabeledInput>
 
-
     <h4>Bulb</h4>
 
     <LabeledInput :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
@@ -79,7 +78,6 @@
         :name="`${namePrefix}-physical-bulb-lumens`"
         :schema-property="physicalBulbProperties.lumens" /> lm
     </LabeledInput>
-
 
     <h4>Lens</h4>
 
@@ -134,8 +132,8 @@ export default {
     PropertyInputText,
   },
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     modelValue: objectProp().required,
@@ -143,7 +141,7 @@ export default {
     namePrefix: stringProp().required,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   data() {
     return {
@@ -157,12 +155,12 @@ export default {
   watch: {
     localPhysical: {
       handler() {
-        this.$emit(`update:model-value`, structuredClone(this.localPhysical));
+        this.$emit('update:model-value', structuredClone(this.localPhysical));
       },
       deep: true,
     },
-    'modelValue.DMXconnector': async function(newValue) {
-      if (newValue === `[add-value]` && this.$root._oflRestoreComplete) {
+    async 'modelValue.DMXconnector'(newValue) {
+      if (newValue === '[add-value]' && this.$root._oflRestoreComplete) {
         await this.$nextTick();
         this.$refs.newDmxConnectorInput.focus();
       }

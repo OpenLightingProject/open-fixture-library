@@ -11,7 +11,7 @@ export default {
     const capability = context.props.capability;
     const wheelSlot = capability.wheelSlot;
 
-    if (capability.type !== `WheelShake` && wheelSlot !== null && wheelSlot[0] === wheelSlot[1]) {
+    if (capability.type !== 'WheelShake' && wheelSlot !== null && wheelSlot[0] === wheelSlot[1]) {
       const resource = wheelSlot[0].resource;
 
       if (resource && resource.hasImage) {
@@ -22,71 +22,71 @@ export default {
             src: resource.imageDataUrl,
             title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
           },
-          class: [context.data.class, `icon`, `gobo-icon`],
+          class: [context.data.class, 'icon', 'gobo-icon'],
         };
 
-        return createElement(`img`, data);
+        return createElement('img', data);
       }
     }
 
-    return createElement(`OflSvg`, {
+    return createElement('OflSvg', {
       ...context.data,
       props: getIconProperties(capability),
     });
   },
 };
 
-const isAnimationGoboSlot = slot => slot.type.startsWith(`AnimationGobo`);
-const isAnimationGobo = capability => isAnimationGoboSlot(capability.wheelSlot[0]) && isAnimationGoboSlot(capability.wheelSlot[1]);
+const isAnimationGoboSlot = (slot) => slot.type.startsWith('AnimationGobo');
+const isAnimationGobo = (capability) => isAnimationGoboSlot(capability.wheelSlot[0]) && isAnimationGoboSlot(capability.wheelSlot[1]);
 
 const specialIconFunctions = {
   ShutterStrobe(capability, iconProperties) {
-    if (capability.shutterEffect === `Closed` || capability.shutterEffect === `Open`) {
-      iconProperties.type = `color-circle`;
-      iconProperties.colors = [capability.shutterEffect === `Closed` ? `#000000` : `#ffffff`];
+    if (capability.shutterEffect === 'Closed' || capability.shutterEffect === 'Open') {
+      iconProperties.type = 'color-circle';
+      iconProperties.colors = [capability.shutterEffect === 'Closed' ? '#000000' : '#ffffff'];
       delete iconProperties.name;
     }
     else {
-      iconProperties.name = `Strobe`;
+      iconProperties.name = 'Strobe';
     }
   },
   Intensity(capability, iconProperties) {
-    iconProperties.name = `dimmer`;
+    iconProperties.name = 'dimmer';
   },
   ColorIntensity(capability, iconProperties) {
-    iconProperties.name = `dimmer`;
+    iconProperties.name = 'dimmer';
   },
   ColorPreset(capability, iconProperties) {
-    iconProperties.name = `color-changer`;
+    iconProperties.name = 'color-changer';
   },
   PanContinuous(capability, iconProperties) {
     if (capability.speed[0].number === 0 && capability.speed[1].number === 0) {
-      iconProperties.name = `speed-stop`;
+      iconProperties.name = 'speed-stop';
     }
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
-      iconProperties.name = `pan-continuous-cw`;
+      iconProperties.name = 'pan-continuous-cw';
     }
     else if (capability.speed[0].number < 0 || capability.speed[1].number < 0) {
-      iconProperties.name = `pan-continuous-ccw`;
+      iconProperties.name = 'pan-continuous-ccw';
     }
   },
   TiltContinuous(capability, iconProperties) {
     if (capability.speed[0].number === 0 && capability.speed[1].number === 0) {
-      iconProperties.name = `speed-stop`;
+      iconProperties.name = 'speed-stop';
     }
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
-      iconProperties.name = `tilt-continuous-cw`;
+      iconProperties.name = 'tilt-continuous-cw';
     }
     else if (capability.speed[0].number < 0 || capability.speed[1].number < 0) {
-      iconProperties.name = `tilt-continuous-ccw`;
+      iconProperties.name = 'tilt-continuous-ccw';
     }
   },
   WheelSlot(capability, iconProperties) {
     if (isAnimationGobo(capability)) {
-      iconProperties.name = `animation-gobo`;
+      iconProperties.name = 'animation-gobo';
     }
-    else if (capability.wheelSlot[0] === capability.wheelSlot[1] && capability.wheelSlot[0].type !== `Split`) {
-      iconProperties.name = capability.wheelSlot[0].type === `Color` ? `color-changer` : capability.wheelSlot[0].type;
+    else if (capability.wheelSlot[0] === capability.wheelSlot[1] && capability.wheelSlot[0].type !== 'Split') {
+      iconProperties.name = capability.wheelSlot[0].type === 'Color' ? 'color-changer' : capability.wheelSlot[0].type;
       iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
     }
     else {
@@ -95,13 +95,13 @@ const specialIconFunctions = {
   },
   WheelShake(capability, iconProperties) {
     if (capability.wheelSlot && isAnimationGobo(capability)) {
-      iconProperties.name = `animation-gobo`;
+      iconProperties.name = 'animation-gobo';
     }
     else if (capability.wheelSlot && capability.wheelSlot[0] !== capability.wheelSlot[1]) {
       iconProperties.name = undefined;
     }
     else {
-      iconProperties.name = capability.isShaking === `slot` ? `slot-shake` : `wheel-shake`;
+      iconProperties.name = capability.isShaking === 'slot' ? 'slot-shake' : 'wheel-shake';
 
       if (capability.wheelSlot) {
         iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
@@ -109,32 +109,32 @@ const specialIconFunctions = {
     }
   },
   IrisEffect(capability, iconProperties) {
-    iconProperties.name = `Iris`;
+    iconProperties.name = 'Iris';
   },
   FrostEffect(capability, iconProperties) {
-    iconProperties.name = `Frost`;
+    iconProperties.name = 'Frost';
   },
   Fog(capability, iconProperties) {
     specialIconFunctions.FogType(capability, iconProperties);
   },
   FogOutput(capability, iconProperties) {
-    iconProperties.name = `smoke`;
+    iconProperties.name = 'smoke';
   },
   FogType(capability, iconProperties) {
-    iconProperties.name = capability.fogType === `Haze` ? `hazer` : `smoke`;
+    iconProperties.name = capability.fogType === 'Haze' ? 'hazer' : 'smoke';
   },
   Speed(capability, iconProperties) {
     if (!capability.speed) {
-      iconProperties.name = `speed`;
+      iconProperties.name = 'speed';
     }
     else if (capability.speed[0].number === 0 && capability.speed[1].number === 0) {
-      iconProperties.name = `speed-stop`;
+      iconProperties.name = 'speed-stop';
     }
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
-      iconProperties.name = `speed-forward`;
+      iconProperties.name = 'speed-forward';
     }
     else {
-      iconProperties.name = `speed-reverse`;
+      iconProperties.name = 'speed-reverse';
     }
   },
   Rotation(capability, iconProperties) {
@@ -142,22 +142,22 @@ const specialIconFunctions = {
       specialIconFunctions.RotationSpeed(capability, iconProperties);
     }
     else {
-      iconProperties.name = `rotation-angle`;
+      iconProperties.name = 'rotation-angle';
     }
   },
   RotationSpeed(capability, iconProperties) {
     if (capability.speed[0].number === 0 && capability.speed[1].number === 0) {
-      iconProperties.name = `speed-stop`;
+      iconProperties.name = 'speed-stop';
     }
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
-      iconProperties.name = `rotation-cw`;
+      iconProperties.name = 'rotation-cw';
     }
     else {
-      iconProperties.name = `rotation-ccw`;
+      iconProperties.name = 'rotation-ccw';
     }
   },
   Generic(capability, iconProperties) {
-    iconProperties.name = `other`;
+    iconProperties.name = 'other';
   },
 };
 
@@ -168,21 +168,21 @@ const specialIconFunctions = {
 function getIconProperties(capability) {
   if (capability.colors !== null) {
     return {
-      type: `color-circle`,
+      type: 'color-circle',
       colors: capability.colors.allColors,
       title: `Capability type: ${capability.type}, ${getColorDescription(capability)}`,
     };
   }
 
   const iconProperties = {
-    type: `fixture`,
+    type: 'fixture',
     name: capability.type,
     title: `Capability type: ${capability.type}`,
   };
 
   if (capability.isSoundControlled) {
-    iconProperties.name = `sound-controlled`;
-    iconProperties.title += ` (sound-controlled)`;
+    iconProperties.name = 'sound-controlled';
+    iconProperties.title += ' (sound-controlled)';
   }
   else if (capability.type in specialIconFunctions) {
     specialIconFunctions[capability.type](capability, iconProperties);
@@ -190,7 +190,7 @@ function getIconProperties(capability) {
   else if (/(?:Speed|Duration|Time)$/.test(capability.type)) {
     specialIconFunctions.Speed(capability, iconProperties);
   }
-  else if (capability.type.endsWith(`Rotation`)) {
+  else if (capability.type.endsWith('Rotation')) {
     specialIconFunctions.Rotation(capability, iconProperties);
   }
 
@@ -207,13 +207,13 @@ function getColorDescription(capability) {
   }
 
   if (capability.colors.isStep) {
-    const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
-    const allColors = capability.colors.allColors.join(`, `);
+    const plural = capability.colors.allColors.length > 1 ? 'colors' : 'color';
+    const allColors = capability.colors.allColors.join(', ');
     return `${plural}: ${allColors}`;
   }
 
-  const startColors = capability.colors.startColors.join(`, `);
-  const endColors = capability.colors.endColors.join(`, `);
+  const startColors = capability.colors.startColors.join(', ');
+  const endColors = capability.colors.endColors.join(', ');
   return `transition from ${startColors} to ${endColors}`;
 }
 </script>

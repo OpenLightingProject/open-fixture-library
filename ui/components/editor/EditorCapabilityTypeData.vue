@@ -141,7 +141,7 @@ export default {
     };
   },
   watch: {
-    'capability.type': async function() {
+    async 'capability.type'() {
       // Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
 
       await this.$nextTick();
@@ -153,7 +153,7 @@ export default {
         }
       }
 
-      this.capabilityTypeHint = `hint` in this.$refs.capabilityTypeData
+      this.capabilityTypeHint = 'hint' in this.$refs.capabilityTypeData
         ? this.$refs.capabilityTypeData.hint
         : null;
     },
@@ -174,12 +174,12 @@ export default {
         }
       }
 
-      if (component && `resetProperties` in component) {
+      if (component && 'resetProperties' in component) {
         const resetProperties = component.resetProperties;
 
         for (const property of resetProperties) {
           const defaultPropertyData = defaultData[property];
-          this.capability.typeData[property] = typeof defaultPropertyData === `string` ? `` : defaultPropertyData;
+          this.capability.typeData[property] = typeof defaultPropertyData === 'string' ? '' : defaultPropertyData;
         }
       }
 

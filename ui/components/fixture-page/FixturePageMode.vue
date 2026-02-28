@@ -78,7 +78,7 @@ export default {
     mode: instanceOfProp(Mode).required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     return {
@@ -94,18 +94,18 @@ export default {
     // wait for all child components to render
     await this.$nextTick();
 
-    if (!this.$el.querySelector(`details`)) {
+    if (!this.$el.querySelector('details')) {
       this.hasDetails = false;
     }
   },
   methods: {
     openDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = true;
       }
     },
     closeDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = false;
       }
     },

@@ -1,6 +1,6 @@
-/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+/** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
+/** @import Fixture from '../../lib/model/Fixture.js' */
+/** @import Mode from '../../lib/model/Mode.js' */
 
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
@@ -24,7 +24,7 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
  * @property {AbstractChannel | undefined} shutter The segment's shutter/strobe channel.
  */
 
-export const version = `1.0.0`;
+export const version = '1.0.0';
 
 const segmentsPerFile = 4;
 
@@ -37,7 +37,7 @@ const segmentsPerFile = 4;
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
-  return fixtures.flatMap(fixture => fixture.modes.flatMap(mode => {
+  return fixtures.flatMap((fixture) => fixture.modes.flatMap((mode) => {
     try {
       return getFilesForMode(mode);
     }
@@ -63,7 +63,7 @@ function getFilesForMode(mode) {
 
     const magicNumber = [0x08, 0x00, 0x04, 0x08, 0x00, 0x04, 0x08, 0x00, 0x04];
     const versionCode = 0x01;
-    const channelIndices = Object.values(channels).map(channel => (channel === undefined ? 0x3D : mode.getChannelIndex(channel.key) + 1));
+    const channelIndices = Object.values(channels).map((channel) => (channel === undefined ? 0x3D : mode.getChannelIndex(channel.key) + 1));
     const padding = Array.from({ length: 154 }, () => 0x00);
 
     const byteArray = new Uint8Array([
@@ -74,22 +74,22 @@ function getFilesForMode(mode) {
     ]);
 
     const descriptionFileContent = Object.entries(channels).map(([controlElement, channel]) => {
-      const channelName = channel?.name ?? `–`;
+      const channelName = channel?.name ?? '–';
       return `${controlElement}: ${channelName}`;
-    }).join(`\n`);
+    }).join('\n');
 
     return [
       {
-        name: getFileName(mode, totalFiles, fileIndex, `lib`),
+        name: getFileName(mode, totalFiles, fileIndex, 'lib'),
         content: Buffer.from(byteArray),
-        mimetype: `binary/octet-stream`,
+        mimetype: 'binary/octet-stream',
         fixtures: [mode.fixture],
         modes: [mode],
       },
       {
-        name: getFileName(mode, totalFiles, fileIndex, `txt`),
+        name: getFileName(mode, totalFiles, fileIndex, 'txt'),
         content: descriptionFileContent,
-        mimetype: `text/plain`,
+        mimetype: 'text/plain',
         fixtures: [mode.fixture],
         modes: [mode],
       },
@@ -103,36 +103,36 @@ function getFilesForMode(mode) {
  */
 function getModeChannels(mode) {
   const channelsByPixelKey = groupModeChannelsByPixelKey(mode);
-  const segments = channelsByPixelKey.map(channels => ({
-    red: channels.find(channel => isColorChannel(channel, `Red`)),
-    green: channels.find(channel => isColorChannel(channel, `Green`)),
-    blue: channels.find(channel => isColorChannel(channel, `Blue`)),
-    white: channels.find(channel => isColorChannel(channel, `White`) || isColorChannel(channel, `Cold White`) || isColorChannel(channel, `Warm White`)),
-    amber: channels.find(channel => isColorChannel(channel, `Amber`) || isColorChannel(channel, `Warm White`)),
-    uv: channels.find(channel => isColorChannel(channel, `UV`)),
-    dimmer: channels.find(channel => isChannelOfType(channel, `Intensity`)),
-    shutter: channels.find(channel => isChannelOfType(channel, `Strobe`) || isChannelOfType(channel, `Shutter`)),
+  const segments = channelsByPixelKey.map((channels) => ({
+    red: channels.find((channel) => isColorChannel(channel, 'Red')),
+    green: channels.find((channel) => isColorChannel(channel, 'Green')),
+    blue: channels.find((channel) => isColorChannel(channel, 'Blue')),
+    white: channels.find((channel) => isColorChannel(channel, 'White') || isColorChannel(channel, 'Cold White') || isColorChannel(channel, 'Warm White')),
+    amber: channels.find((channel) => isColorChannel(channel, 'Amber') || isColorChannel(channel, 'Warm White')),
+    uv: channels.find((channel) => isColorChannel(channel, 'UV')),
+    dimmer: channels.find((channel) => isChannelOfType(channel, 'Intensity')),
+    shutter: channels.find((channel) => isChannelOfType(channel, 'Strobe') || isChannelOfType(channel, 'Shutter')),
   }));
 
   mergeDisjunctSegments(segments);
 
   return {
     segments,
-    colorWheels: mode.channels.filter(channel => isChannelOfType(channel, `Multi-Color`)),
+    colorWheels: mode.channels.filter((channel) => isChannelOfType(channel, 'Multi-Color')),
     freePatchChannels: [
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Pan`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Tilt`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Effect`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Gobo`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Speed`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Prism`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `WheelSlotRotation`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Zoom`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Iris`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Color Temperature`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Maintenance`)),
-      ...mode.channels.filter(channel => isChannelOfType(channel, `Shutter`) && segments.every(
-        segment => segment.shutter !== channel,
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Pan')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Tilt')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Effect')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Gobo')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Speed')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Prism')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'WheelSlotRotation')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Zoom')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Iris')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Color Temperature')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Maintenance')),
+      ...mode.channels.filter((channel) => isChannelOfType(channel, 'Shutter') && segments.every(
+        (segment) => segment.shutter !== channel,
       )),
     ],
   };
@@ -166,10 +166,10 @@ function mergeDisjunctSegments(segments) {
     const currentSegment = segments[segmentIndex];
     const previousSegment = segments[segmentIndex - 1];
     const definedControlElements = Object.keys(currentSegment).filter(
-      controlElement => currentSegment[controlElement] !== undefined,
+      (controlElement) => currentSegment[controlElement] !== undefined,
     );
     const canBeMerged = definedControlElements.every(
-      controlElement => previousSegment[controlElement] === undefined,
+      (controlElement) => previousSegment[controlElement] === undefined,
     );
 
     if (canBeMerged) {
@@ -218,7 +218,7 @@ function isChannelOfType(channel, type) {
  * @returns {string} The file name.
  */
 function getFileName(mode, totalFiles, fileIndex, extension) {
-  const fileNumberSuffix = totalFiles === 1 ? `` : `_${fileIndex + 1}_of_${totalFiles}`;
+  const fileNumberSuffix = totalFiles === 1 ? '' : `_${fileIndex + 1}_of_${totalFiles}`;
   return `${mode.fixture.manufacturer.key}_${mode.fixture.key}_${mode.shortName}${fileNumberSuffix}.${extension}`;
 }
 
@@ -243,12 +243,12 @@ function getChannelsForFile(modeChannels, fileIndex) {
     fileChannels[`Shutter ${segmentIndex + 1}`] = channels?.shutter;
   }
 
-  fileChannels[`Color Wheel`] = modeChannels.colorWheels[fileIndex];
+  fileChannels['Color Wheel'] = modeChannels.colorWheels[fileIndex];
 
   const freePatchChannelsPerFile = 3;
-  fileChannels[`FP 1`] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 0];
-  fileChannels[`FP 2`] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 1];
-  fileChannels[`FP 3`] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 2];
+  fileChannels['FP 1'] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 0];
+  fileChannels['FP 2'] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 1];
+  fileChannels['FP 3'] = modeChannels.freePatchChannels[(fileIndex * freePatchChannelsPerFile) + 2];
 
   return fileChannels;
 }

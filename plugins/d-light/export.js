@@ -1,15 +1,15 @@
 import sanitize from 'sanitize-filename';
 import xmlbuilder from 'xmlbuilder';
 
-/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-/** @typedef {import('../../lib/model/Capability.js').default} Capability */
+/** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
+/** @import Capability from '../../lib/model/Capability.js' */
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+/** @import Fixture from '../../lib/model/Fixture.js' */
+/** @import Mode from '../../lib/model/Mode.js' */
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-export const version = `0.2.0`;
+export const version = '0.2.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -50,10 +50,11 @@ export async function exportFixtures(fixtures, options) {
  */
 function exportFixtureMode(fixture, mode, options) {
   const xml = xmlbuilder.begin()
-    .declaration(`1.0`)
+    .declaration('1.0')
     .element({
       Device: {
-        'OFL_Export': {
+        // eslint-disable-next-line camelcase -- required by D::Light
+        OFL_Export: {
           '@id': options.displayedPluginVersion || version,
           '#text': fixture.url,
         },
@@ -62,10 +63,10 @@ function exportFixtureMode(fixture, mode, options) {
         },
         ManufacturerName: fixture.manufacturer.name,
         ModelName: `${fixture.name} (${mode.name})`,
-        creationDate: fixture.meta.createDate.toISOString().split(`T`)[0],
+        creationDate: fixture.meta.createDate.toISOString().split('T')[0],
       },
     })
-    .element(`Attributes`);
+    .element('Attributes');
 
   // channels are grouped by their channel type which is called AttributesDefinition in D::Light
   const channelsByAttribute = getChannelsByAttribute(mode.channels);
@@ -77,9 +78,9 @@ function exportFixtureMode(fixture, mode, options) {
     name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
     content: xml.end({
       pretty: true,
-      indent: `  `,
+      indent: '  ',
     }),
-    mimetype: `application/xml`,
+    mimetype: 'application/xml',
     fixtures: [fixture],
     mode: mode.shortName,
   };
@@ -105,19 +106,19 @@ function addAttribute(xml, mode, attribute, channels) {
     const xmlChannel = xmlAttribute.element({
       ThisAttribute: {
         '@id': indexInAttribute,
-        HOME: {
+        'HOME': {
           '@id': getDefaultValue(getUsableChannel(channel)),
         },
-        addressIndex: {
+        'addressIndex': {
           '@id': mode.getChannelIndex(channel.key),
         },
-        parameterName: {
+        'parameterName': {
           '@id': getParameterName(channel, mode, attribute, indexInAttribute),
         },
-        minLevel: {
+        'minLevel': {
           '@id': 0,
         },
-        maxLevel: {
+        'maxLevel': {
           '@id': 255,
         },
       },
@@ -141,20 +142,19 @@ function addAttribute(xml, mode, attribute, channels) {
   }
 }
 
-
 /**
  * Adds an XML element for the given capability to the XML capability container.
  * @param {Capability} capability A capability of a channels capability list.
  * @param {XMLElement} xmlCapabilities The XML element to add capabilities to.
  */
 function addCapability(capability, xmlCapabilities) {
-  let hold = `0`;
+  let hold = '0';
 
   if (capability.hold) {
-    if (capability.hold.unit === `ms`) {
+    if (capability.hold.unit === 'ms') {
       hold = capability.hold.number;
     }
-    else if (capability.hold.unit === `s`) {
+    else if (capability.hold.unit === 's') {
       hold = capability.hold.number * 1000;
     }
   }
@@ -166,7 +166,7 @@ function addCapability(capability, xmlCapabilities) {
       '@max': dmxRange.end,
       '@snap': capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
       '@timeHolder': hold,
-      '@dummy': `0`,
+      '@dummy': '0',
       '#text': capability.name,
     },
   });
@@ -189,21 +189,21 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
     return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
   }
 
-  if (attribute === `FOCUS`) {
+  if (attribute === 'FOCUS') {
     return channel.type.toUpperCase(); // PAN or TILT
   }
 
-  if (attribute === `INTENSITY` && indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
-    return `DIMMER`;
+  if (attribute === 'INTENSITY' && indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
+    return 'DIMMER';
   }
 
   // in all other attributes, custom text is allowed
   // but we need to use another name syntax
   return uniqueName
     .toUpperCase()
-    .replaceAll(` `, `_`)
-    .replaceAll(`/`, `|`)
-    .replaceAll(`COLOR`, `COLOUR`);
+    .replaceAll(' ', '_')
+    .replaceAll('/', '|')
+    .replaceAll('COLOR', 'COLOUR');
 }
 
 /**
@@ -236,15 +236,15 @@ function getUsableChannel(channel) {
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {
-    'INTENSITY': [],
-    'COLOUR': [],
-    'FOCUS': [],
-    'BEAM': [],
-    'BLADE': [],
-    'EFFECT': [],
-    'CONTROL': [],
-    'EXTRA': [],
-    'FINE': [],
+    INTENSITY: [],
+    COLOUR: [],
+    FOCUS: [],
+    BEAM: [],
+    BLADE: [],
+    EFFECT: [],
+    CONTROL: [],
+    EXTRA: [],
+    FINE: [],
   };
 
   for (const channel of channels) {
@@ -252,7 +252,7 @@ function getChannelsByAttribute(channels) {
   }
 
   const emptyAttributes = Object.keys(channelsByAttribute).filter(
-    attribute => channelsByAttribute[attribute].length === 0,
+    (attribute) => channelsByAttribute[attribute].length === 0,
   );
   for (const emptyAttribute of emptyAttributes) {
     delete channelsByAttribute[emptyAttribute];
@@ -267,19 +267,19 @@ function getChannelsByAttribute(channels) {
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
       if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
-        return `FINE`;
+        return 'FINE';
       }
-      return `EXTRA`;
+      return 'EXTRA';
     }
 
     const oflToDLightMap = {
-      INTENSITY: [`Intensity`],
-      COLOUR: [`Single Color`, `Multi-Color`, `Color Temperature`],
-      FOCUS: [`Pan`, `Tilt`],
-      BEAM: [`Iris`, `Focus`, `Zoom`],
-      EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
-      CONTROL: [`Maintenance`],
-      EXTRA: [`NoFunction`],
+      INTENSITY: ['Intensity'],
+      COLOUR: ['Single Color', 'Multi-Color', 'Color Temperature'],
+      FOCUS: ['Pan', 'Tilt'],
+      BEAM: ['Iris', 'Focus', 'Zoom'],
+      EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect', 'Fog'],
+      CONTROL: ['Maintenance'],
+      EXTRA: ['NoFunction'],
     };
 
     for (const attribute of Object.keys(oflToDLightMap)) {
@@ -287,6 +287,6 @@ function getChannelsByAttribute(channels) {
         return attribute;
       }
     }
-    return `EXTRA`; // default if new types are added to OFL
+    return 'EXTRA'; // default if new types are added to OFL
   }
 }

@@ -123,9 +123,9 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2023-09-15`,
-      climateStrikeWebsite: `https://fridaysforfuture.org/september15/`,
-      hashtags: [`climatejustice`, `FridaysForFuture`, `climatestrike`, `EndFossilFuels`, `ClimateForChange`],
+      strikeDateString: '2023-09-15',
+      climateStrikeWebsite: 'https://fridaysforfuture.org/september15/',
+      hashtags: ['climatejustice', 'FridaysForFuture', 'climatestrike', 'EndFossilFuels', 'ClimateForChange'],
     };
   },
   created() {
@@ -138,15 +138,13 @@ export default {
     const bannerStartDate = new Date(strikeDate);
     bannerStartDate.setDate(strikeDate.getDate() - 14);
 
-
     this.isClimateStrike = strikeDate.getTime() === today.getTime();
     this.showClimateStrikeBanner = bannerStartDate.getTime() <= today.getTime() && today.getTime() < strikeDate.getTime();
   },
   mounted() {
     if (this.isClimateStrike) {
-      document.documentElement.style.overflow = `hidden`;
+      document.documentElement.style.overflow = 'hidden';
     }
   },
 };
 </script>
-

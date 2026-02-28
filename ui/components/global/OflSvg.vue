@@ -42,25 +42,25 @@ export default {
     let svgMarkup;
     let hasTitle = Boolean(context.props.title);
 
-    if (context.props.type === `color-circle`) {
+    if (context.props.type === 'color-circle') {
       let colors = context.props.colors;
 
       if (context.props.colors.length === 0 && context.props.name !== undefined) {
         // hex colors for ColorIntensity capabilities
         const colorLookup = {
-          Red: `#ff0000`,
-          Green: `#00ff00`,
-          Blue: `#0000ff`,
-          Cyan: `#00ffff`,
-          Magenta: `#ff00ff`,
-          Yellow: `#ffff00`,
-          Amber: `#ffbf00`,
-          White: `#ffffff`,
-          'Warm White': `#ffedde`,
-          'Cold White': `#edefff`,
-          UV: `#8800ff`,
-          Lime: `#bfff00`,
-          Indigo: `#4b0082`,
+          'Red': '#ff0000',
+          'Green': '#00ff00',
+          'Blue': '#0000ff',
+          'Cyan': '#00ffff',
+          'Magenta': '#ff00ff',
+          'Yellow': '#ffff00',
+          'Amber': '#ffbf00',
+          'White': '#ffffff',
+          'Warm White': '#ffedde',
+          'Cold White': '#edefff',
+          'UV': '#8800ff',
+          'Lime': '#bfff00',
+          'Indigo': '#4b0082',
         };
         colors = [colorLookup[context.props.name]];
       }
@@ -73,17 +73,16 @@ export default {
       svgMarkup = getSvg(context.props.name, context.props.type, context.props.title);
     }
 
-    return createElement(`span`, {
+    return createElement('span', {
       ...context.data,
-      class: [`icon`, context.data.class],
-      attrs: hasTitle ? {} : { 'aria-hidden': `true` },
+      class: ['icon', context.data.class],
+      attrs: hasTitle ? {} : { 'aria-hidden': 'true' },
       domProps: {
         innerHTML: svgMarkup,
       },
     });
   },
 };
-
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
@@ -94,11 +93,11 @@ export default {
  */
 function getSvg(name, category = undefined, title) {
   if (name === undefined) {
-    return ``;
+    return '';
   }
 
-  const kebabName = name.replaceAll(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replaceAll(/\W+/g, `-`);
-  const svgBasename = (category ? `${category}/` : ``) + kebabName;
+  const kebabName = name.replaceAll(/([a-z])([A-Z])/g, '$1-$2').toLowerCase().replaceAll(/\W+/g, '-');
+  const svgBasename = (category ? `${category}/` : '') + kebabName;
   let svg;
 
   if (svgBasename in icons) {
@@ -108,7 +107,7 @@ function getSvg(name, category = undefined, title) {
     throw new Error(`Icon '${svgBasename}' not found`);
   }
 
-  svg = svg.replace(`<svg`, `<svg role="img"`);
+  svg = svg.replace('<svg', '<svg role="img"');
 
   if (title) {
     svg = svg.replace(/(<svg[^>]*)>/, `$1 aria-label="${title}"><title>${title}</title>`);
@@ -116,7 +115,6 @@ function getSvg(name, category = undefined, title) {
 
   return svg;
 }
-
 
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
@@ -126,7 +124,7 @@ function getSvg(name, category = undefined, title) {
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
-  let string = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle" role="img">`;
+  let string = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle" role="img">';
 
   if (title) {
     string += `<title>${title}</title>`;
@@ -139,11 +137,10 @@ function getColorCircle(colors, title) {
 
   string += getColorCircleSvgFragment(colors, radius);
 
-  string += `</svg>`;
+  string += '</svg>';
 
   return string;
 }
-
 
 /**
  * @param {string[]} colors An array of hex colors to fill into the circle.
@@ -155,7 +152,7 @@ export function getColorCircleSvgFragment(colors, radius) {
     return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
   }
 
-  let svgString = ``;
+  let svgString = '';
   const slicePercent = 1 / colors.length;
 
   const xAxisRotation = 0;
@@ -168,14 +165,13 @@ export function getColorCircleSvgFragment(colors, radius) {
 
     const pathMove = `M ${startX} ${startY}`;
     const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
-    const pathLine = `L 0 0`;
+    const pathLine = 'L 0 0';
 
     svgString += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
   }
 
   return svgString;
 }
-
 
 /**
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.

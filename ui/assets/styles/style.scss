@@ -16,8 +16,8 @@ body {
   color: theme-color(text-primary);
   overflow-wrap: break-word;
   background-color: theme-color(page-background);
-  transition: background-color 0.3s, color 0.3s;
   text-rendering: optimizelegibility;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 html {

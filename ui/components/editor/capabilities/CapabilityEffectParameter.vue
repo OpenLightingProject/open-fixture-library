@@ -53,7 +53,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate an effect, only controls a generic parameter of running effects.`,
+      hint: 'Doesn\'t activate an effect, only controls a generic parameter of running effects.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +61,9 @@ export default {
        */
       defaultData: {
         parameter: null,
-        parameterStart: `low`,
-        parameterEnd: `high`,
-        comment: ``,
+        parameterStart: 'low',
+        parameterEnd: 'high',
+        comment: '',
       },
     };
   },
