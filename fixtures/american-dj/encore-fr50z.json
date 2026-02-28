@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore FR50z",
+  "shortName": "FR50Z",
+  "categories": ["Dimmer", "Blinder", "Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-02-24",
+    "lastModifyDate": "2026-02-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/ADJ_ENCORE_FR50Z_-_USER_MANUAL.pdf?v=11028577546575448738"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/encore-fr50z?_pos=2&_psq=encore+fr50z&_ss=e&_v=1.0"
+    ]
+  },
+  "physical": {
+    "weight": 3.8,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "name": "6-INCH FRESNEL",
+      "degreesMinMax": [14, 30]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "of"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "on"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow to fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "ON"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Puls"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "ON"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Random"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "ON"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [121, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "7000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "american-dj FR50z",
+      "shortName": "FR50z",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer 2",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
