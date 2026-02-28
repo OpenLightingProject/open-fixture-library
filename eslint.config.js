@@ -67,6 +67,7 @@ const enabledRuleParameters = {
   'no-template-curly-in-string': [],
   'no-unsafe-optional-chaining': [{ disallowArithmeticOperators: true }],
   'no-unused-vars': [{ args: 'none' }],
+  'no-unused-expressions': [],
   'no-useless-assignment': [],
   'no-var': [],
   'object-shorthand': [],
