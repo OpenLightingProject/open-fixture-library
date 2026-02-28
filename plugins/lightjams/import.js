@@ -192,14 +192,15 @@ function addChannelsWithFineness(channelKey, precision, availableChannels) {
 
 /**
  * Process color mixing capabilities (RGB, RGBA, CMY, etc.)
- * @param capabilityType
- * @param precision
- * @param availableChannels
+ * @param {string} capabilityType The type of color mixing capability
+ * @param {number} precision Number of bytes (1 for 8-bit, 2 for 16-bit, etc.)
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @returns {string[]} Array of channel keys
  */
 function processColorMixing(capabilityType, precision, availableChannels) {
   const channels = [];
 
-  for (const color of capabilityType.split('')) {
+  for (const color of capabilityType) {
     const channelKey = getColorName(color);
 
     if (!(channelKey in availableChannels)) {
@@ -220,10 +221,11 @@ function processColorMixing(capabilityType, precision, availableChannels) {
 
 /**
  * Process Pan or Tilt capability
- * @param capabilityType
- * @param element
- * @param precision
- * @param availableChannels
+ * @param {string} capabilityType The type of capability (Pan or Tilt)
+ * @param {object} element The capability XML element
+ * @param {number} precision Number of bytes (1 for 8-bit, 2 for 16-bit, etc.)
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @returns {string[]} Array of channel keys
  */
 function processPanTilt(capabilityType, element, precision, availableChannels) {
   const channelKey = capabilityType;
@@ -247,9 +249,10 @@ function processPanTilt(capabilityType, element, precision, availableChannels) {
 
 /**
  * Process Dimmer capability
- * @param element
- * @param precision
- * @param availableChannels
+ * @param {object} element The capability XML element
+ * @param {number} precision Number of bytes (1 for 8-bit, 2 for 16-bit, etc.)
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @returns {string[]} Array of channel keys
  */
 function processDimmer(element, precision, availableChannels) {
   const name = element.$.name || 'Dimmer';
@@ -269,9 +272,10 @@ function processDimmer(element, precision, availableChannels) {
 
 /**
  * Process Color wheel capability
- * @param element
- * @param precision
- * @param availableChannels
+ * @param {object} element The capability XML element
+ * @param {number} precision Number of bytes (1 for 8-bit, 2 for 16-bit, etc.)
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @returns {string[]} Array of channel keys
  */
 function processColorWheel(element, precision, availableChannels) {
   const name = element.$.name || 'Color';
@@ -301,7 +305,6 @@ function processColorWheel(element, precision, availableChannels) {
  */
 function processCapability(capabilityType, element, startOffset, availableChannels, warnings) {
   const precision = Number.parseInt(element.$.precision || '1', 10);
-  const channels = [];
 
   // Handle color mixing capabilities
   if (KNOWN_COLOR_MIXING_TYPES.has(capabilityType)) {
@@ -329,11 +332,12 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
 /**
  * Process single-channel capabilities (Shutter, Gobo, Effects, etc.)
- * @param capabilityType
- * @param element
- * @param availableChannels
- * @param warnings
- * @param startOffset
+ * @param {string} capabilityType The type of capability
+ * @param {object} element The capability XML element
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @param {string[]} warnings Array to add warnings to
+ * @param {number} startOffset Starting channel offset
+ * @returns {string[]} Array of channel keys
  */
 function processSingleChannel(capabilityType, element, availableChannels, warnings, startOffset) {
   const channels = [];
@@ -561,7 +565,7 @@ function getColorName(letter) {
 
 /**
  * Get string value from XML element
- * @param {any} element XML element or array
+ * @param {string | string[] | object} element XML element or array
  * @returns {string} String value
  */
 function getString(element) {
