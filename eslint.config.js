@@ -29,7 +29,6 @@ const eslintPluginNuxtConfigRecommended = {
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   semi: true,
 });
-stylisticEslintConfig.rules['@stylistic/arrow-parens'] = ['error', 'as-needed'];
 stylisticEslintConfig.rules['@stylistic/function-call-spacing'] = ['error'];
 stylisticEslintConfig.rules['@stylistic/linebreak-style'] = ['error', 'unix'];
 stylisticEslintConfig.rules['@stylistic/multiline-ternary'] = 'off';
