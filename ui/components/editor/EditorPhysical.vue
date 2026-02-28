@@ -159,7 +159,7 @@ export default {
       },
       deep: true,
     },
-    'modelValue.DMXconnector': async function(newValue) {
+    'modelValue.DMXconnector': async function (newValue) {
       if (newValue === '[add-value]' && this.$root._oflRestoreComplete) {
         await this.$nextTick();
         this.$refs.newDmxConnectorInput.focus();

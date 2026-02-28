@@ -3,19 +3,19 @@ import VueForm from 'vue-form';
 
 Vue.use(VueForm, {
   validators: {
-    'step': function(value, stepValue) {
+    'step': function (value, stepValue) {
       return stepValue === 'any' || Number(value) % Number(stepValue) === 0;
     },
-    'data-exclusive-minimum': function(value, exclusiveMinimum) {
+    'data-exclusive-minimum': function (value, exclusiveMinimum) {
       return Number(value) > Number(exclusiveMinimum);
     },
-    'data-exclusive-maximum': function(value, exclusiveMaximum) {
+    'data-exclusive-maximum': function (value, exclusiveMaximum) {
       return Number(value) < Number(exclusiveMaximum);
     },
-    'complete-range': function(range) {
+    'complete-range': function (range) {
       return range === null || (range[0] !== null && range[1] !== null);
     },
-    'valid-range': function(range) {
+    'valid-range': function (range) {
       if (range === null) {
         // allowed range
         return true;
@@ -33,26 +33,26 @@ Vue.use(VueForm, {
 
       return range[0] <= range[1];
     },
-    'categories-not-empty': function(categories) {
+    'categories-not-empty': function (categories) {
       return categories.length > 0;
     },
-    'complete-dimensions': function(dimensions) {
+    'complete-dimensions': function (dimensions) {
       return dimensions === null || (dimensions[0] !== null && dimensions[1] !== null && dimensions[2] !== null);
     },
-    'start-with-uppercase-or-number': function(value) {
+    'start-with-uppercase-or-number': function (value) {
       return /^[\dA-Z]/.test(value);
     },
-    'no-mode-name': function(value) {
+    'no-mode-name': function (value) {
       return !/\bmode\b/i.test(value);
     },
-    'no-fine-channel-name': function(value) {
+    'no-fine-channel-name': function (value) {
       if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
         return false;
       }
 
       return !/\bLSB\b|\bMSB\b/.test(value);
     },
-    'entity-complete': function(value, attributeValue, vnode) {
+    'entity-complete': function (value, attributeValue, vnode) {
       const component = vnode.componentInstance;
 
       if (component.hasNumber) {
@@ -61,13 +61,13 @@ Vue.use(VueForm, {
 
       return true;
     },
-    'entities-have-same-units': function(value, attributeValue, vnode) {
+    'entities-have-same-units': function (value, attributeValue, vnode) {
       return vnode.componentInstance.hasSameUnit;
     },
-    'valid-color-hex-list': function(value) {
+    'valid-color-hex-list': function (value) {
       return /^\s*#[\da-f]{6}(?:\s*,\s*#[\da-f]{6})*\s*$/i.test(value);
     },
-    'max-file-size': function(file, attributeValue) {
+    'max-file-size': function (file, attributeValue) {
       if (typeof file === 'object') {
         let maxSize = Number.parseInt(attributeValue, 10);
 
