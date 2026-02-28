@@ -64,7 +64,7 @@ const enabledRuleParameters = {
   'no-lonely-if': [],
   'no-loop-func': [],
   'no-nested-ternary': [],
-  'no-new-object': [],
+  'no-object-constructor': [],
   'no-prototype-builtins': [],
   'no-restricted-imports': [{
     name: 'fs',
