@@ -76,8 +76,8 @@ const enabledRuleParameters = {
 
   // eslint-plugin-stylistic
   '@stylistic/function-call-spacing': [],
-  '@stylistic/linebreak-style': ['unix'],
-  '@stylistic/no-confusing-arrow': [{ allowParens: true }],
+  '@stylistic/linebreak-style': [],
+  '@stylistic/no-confusing-arrow': [],
 
   // eslint-plugin-import
   'import/extensions': ['ignorePackages'],
