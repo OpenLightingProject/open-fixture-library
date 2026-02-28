@@ -77,62 +77,7 @@ export async function importFixtures(buffer, filename, authorName) {
   fixture.modes = [];
 
   for (const lightjamsMode of modes) {
-    const modeName = lightjamsMode.$.name || '';
-    const modeDescription = lightjamsMode.$.description || '';
-
-    const mode = {};
-
-    // Use description as name if available, otherwise use the name if it doesn't contain "Mode"
-    // If both contain "Mode" or are empty, generate a name based on channel count
-    if (modeDescription && !/\bmode\b/i.test(modeDescription)) {
-      mode.name = modeDescription;
-    }
-    else if (modeName && !/\bmode\b/i.test(modeName)) {
-      mode.name = modeName;
-      if (modeDescription) {
-        mode.shortName = modeDescription;
-      }
-    }
-    else {
-      // Will set name later based on channel count
-      mode.name = null;
-    }
-
-    if (modeName && modeDescription && modeName !== modeDescription && !/\bmode\b/i.test(modeName)) {
-      mode.shortName = modeDescription;
-    }
-
-    // Process capabilities in the order they appear in the XML
-    // Using the $$ array which preserves child element order
-    const capabilities = lightjamsMode.capabilities?.[0];
-    const channelList = [];
-    let channelOffset = 0;
-
-    if (capabilities?.$$) {
-      for (const capabilityElement of capabilities.$$) {
-        const capabilityType = capabilityElement['#name'];
-        const element = capabilityElement;
-
-        const channels = processCapability(
-          capabilityType,
-          element,
-          channelOffset,
-          fixture.availableChannels,
-          out.warnings[fixtureKey],
-        );
-
-        channelList.push(...channels);
-        channelOffset += channels.length;
-      }
-    }
-
-    mode.channels = channelList;
-
-    // Set mode name based on channel count if not already set
-    if (!mode.name) {
-      mode.name = `${channelList.length}-channel`;
-    }
-
+    const mode = processMode(lightjamsMode, fixture.availableChannels, out.warnings[fixtureKey]);
     fixture.modes.push(mode);
   }
 
@@ -147,6 +92,73 @@ export async function importFixtures(buffer, filename, authorName) {
   out.fixtures[fixtureKey] = fixture;
 
   return out;
+}
+
+/**
+ * Process a Lightjams mode and return OFL mode object
+ * @param {object} lightjamsMode The Lightjams mode XML object
+ * @param {object} availableChannels The fixture's availableChannels object
+ * @param {string[]} warnings Array to add warnings to
+ * @returns {object} OFL mode object
+ */
+function processMode(lightjamsMode, availableChannels, warnings) {
+  const modeName = lightjamsMode.$.name || '';
+  const modeDescription = lightjamsMode.$.description || '';
+
+  const mode = {};
+
+  // Use description as name if available, otherwise use the name if it doesn't contain "Mode"
+  // If both contain "Mode" or are empty, generate a name based on channel count
+  if (modeDescription && !/\bmode\b/i.test(modeDescription)) {
+    mode.name = modeDescription;
+  }
+  else if (modeName && !/\bmode\b/i.test(modeName)) {
+    mode.name = modeName;
+    if (modeDescription) {
+      mode.shortName = modeDescription;
+    }
+  }
+  else {
+    // Will set name later based on channel count
+    mode.name = null;
+  }
+
+  if (modeName && modeDescription && modeName !== modeDescription && !/\bmode\b/i.test(modeName)) {
+    mode.shortName = modeDescription;
+  }
+
+  // Process capabilities in the order they appear in the XML
+  // Using the $$ array which preserves child element order
+  const capabilities = lightjamsMode.capabilities?.[0];
+  const channelList = [];
+  let channelOffset = 0;
+
+  if (capabilities?.$$) {
+    for (const capabilityElement of capabilities.$$) {
+      const capabilityType = capabilityElement['#name'];
+      const element = capabilityElement;
+
+      const channels = processCapability(
+        capabilityType,
+        element,
+        channelOffset,
+        availableChannels,
+        warnings,
+      );
+
+      channelList.push(...channels);
+      channelOffset += channels.length;
+    }
+  }
+
+  mode.channels = channelList;
+
+  // Set mode name based on channel count if not already set
+  if (!mode.name) {
+    mode.name = `${channelList.length}-channel`;
+  }
+
+  return mode;
 }
 
 /**
