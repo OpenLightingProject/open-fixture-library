@@ -153,13 +153,13 @@ export default {
     };
   },
   watch: {
-    'localPhysical': {
+    localPhysical: {
       handler() {
         this.$emit('update:model-value', structuredClone(this.localPhysical));
       },
       deep: true,
     },
-    'modelValue.DMXconnector': async function (newValue) {
+    async 'modelValue.DMXconnector'(newValue) {
       if (newValue === '[add-value]' && this.$root._oflRestoreComplete) {
         await this.$nextTick();
         this.$refs.newDmxConnectorInput.focus();
