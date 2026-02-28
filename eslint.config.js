@@ -82,6 +82,7 @@ const enabledRuleParameters = {
   '@stylistic/function-call-spacing': [],
   '@stylistic/linebreak-style': [],
   '@stylistic/no-confusing-arrow': [],
+  '@stylistic/quotes': ['single'],
 
   // eslint-plugin-import
   'import/extensions': ['ignorePackages'],
