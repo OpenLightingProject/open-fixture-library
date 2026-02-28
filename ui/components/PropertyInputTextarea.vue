@@ -19,8 +19,8 @@ export default {
     value: anyProp().required,
   },
   emits: {
-    'input': value => true,
-    'vf:validate': validationData => true,
+    'input': (value) => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {

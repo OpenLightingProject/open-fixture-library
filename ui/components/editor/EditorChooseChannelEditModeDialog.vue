@@ -39,7 +39,7 @@ export default {
   methods: {
     onChooseChannelEditModeDialogOpen() {
       const channelUsedElsewhere = this.fixture.modes.some(
-        mode => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
+        (mode) => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
       );
 
       if (channelUsedElsewhere) {

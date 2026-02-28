@@ -130,7 +130,7 @@ export default {
     },
     isChanged() {
       return this.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     },
     start() {

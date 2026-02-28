@@ -101,7 +101,7 @@ async function runTests() {
 
   if (cliArguments.a) {
     const directoryEntries = await readdir(fixtureDirectoryUrl, { withFileTypes: true });
-    const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+    const manufacturerKeys = directoryEntries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 
     for (const manufacturerKey of manufacturerKeys) {
       const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
@@ -117,7 +117,7 @@ async function runTests() {
   }
   else {
     // sanitize given path
-    fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
+    fixturePaths = fixturePaths.map((relativePath) => path.resolve(relativePath));
     for (const fixturePath of fixturePaths) {
       if (path.extname(fixturePath) !== '.json') {
         // TODO: only produce this warning at a higher verbosity level

@@ -5,7 +5,7 @@ import CoarseChannel from '../../lib/model/CoarseChannel.js';
 
 export default {
   const: {
-    isCapSuitable: capability => capability._channel.isConstant,
+    isCapSuitable: (capability) => capability._channel.isConstant,
     create: (channel, capabilities) => {
       const xmlConst = xmlbuilder.create('const');
       xmlConst.attribute('val', channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT));
@@ -13,7 +13,7 @@ export default {
     },
   },
   dimmer: {
-    isCapSuitable: capability => capability.type === 'Intensity',
+    isCapSuitable: (capability) => capability.type === 'Intensity',
     create: (channel, capabilities) => {
       const xmlDimmer = xmlbuilder.create('dimmer');
 
@@ -32,8 +32,8 @@ export default {
   shutter: {
     isCapSuitable: (capability) => {
       const isShutterCapability = capability.type === 'ShutterStrobe' && ['Open', 'Closed'].includes(capability.shutterEffect);
-      const channelHasOpen = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Open');
-      const channelHasClosed = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === 'Closed');
+      const channelHasOpen = capability._channel.capabilities.some((otherCapability) => otherCapability.shutterEffect === 'Open');
+      const channelHasClosed = capability._channel.capabilities.some((otherCapability) => otherCapability.shutterEffect === 'Closed');
       return isShutterCapability && channelHasOpen && channelHasClosed;
     },
     create: (channel, capabilities) => {
@@ -49,7 +49,7 @@ export default {
     },
   },
   strobe: {
-    isCapSuitable: capability =>
+    isCapSuitable: (capability) =>
       (capability.type === 'ShutterStrobe' && !['Open', 'Closed'].includes(capability.shutterEffect))
       || (capability.type === 'NoFunction' && capability._channel.type === 'Strobe'),
     create: (channel, capabilities) => {
@@ -92,7 +92,7 @@ export default {
     },
   },
   strobeSpeed: {
-    isCapSuitable: capability => capability.type === 'StrobeSpeed',
+    isCapSuitable: (capability) => capability.type === 'StrobeSpeed',
     create: (channel, capabilities) => {
       const xmlSpeed = xmlbuilder.create('strobespeed');
 
@@ -106,7 +106,7 @@ export default {
     },
   },
   strobeDuration: {
-    isCapSuitable: capability => capability.type === 'StrobeDuration',
+    isCapSuitable: (capability) => capability.type === 'StrobeDuration',
     create: (channel, capabilities) => {
       const xmlDuration = xmlbuilder.create('duration');
 
@@ -120,7 +120,7 @@ export default {
     },
   },
   pan: {
-    isCapSuitable: capability => capability.type === 'Pan',
+    isCapSuitable: (capability) => capability.type === 'Pan',
     create: (channel, capabilities) => {
       const xmlPan = xmlbuilder.create('pan');
 
@@ -134,7 +134,7 @@ export default {
     },
   },
   tilt: {
-    isCapSuitable: capability => ['Pan', 'Tilt'].includes(capability.type),
+    isCapSuitable: (capability) => ['Pan', 'Tilt'].includes(capability.type),
     create: (channel, capabilities) => {
       const xmlTilt = xmlbuilder.create('tilt');
 
@@ -148,15 +148,15 @@ export default {
     },
   },
   panTiltSpeed: {
-    isCapSuitable: capability => capability.type === 'PanTiltSpeed',
+    isCapSuitable: (capability) => capability.type === 'PanTiltSpeed',
     create: (channel, capabilities) => {
       const xmlPanTiltSpeed = xmlbuilder.create('ptspeed');
 
       const speedCapabilities = getSingleUnitCapabilities(
-        capabilities.filter(capability => capability.speed !== null), 'speed', '%',
+        capabilities.filter((capability) => capability.speed !== null), 'speed', '%',
       );
       const durationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter(capability => capability.duration !== null), 'duration', '%',
+        capabilities.filter((capability) => capability.duration !== null), 'duration', '%',
       );
 
       for (const capability of speedCapabilities) {
@@ -176,7 +176,7 @@ export default {
     },
   },
   color: {
-    isCapSuitable: capability => capability.type === 'ColorIntensity' || (capability.type === 'NoFunction' && capability._channel.type === 'Single Color'),
+    isCapSuitable: (capability) => capability.type === 'ColorIntensity' || (capability.type === 'NoFunction' && capability._channel.type === 'Single Color'),
     create: (channel, capabilities) => {
       const capabilitiesPerColor = {};
 
@@ -212,14 +212,14 @@ export default {
     },
   },
   colorWheel: {
-    isCapSuitable: capability => capability.isSlotType('Color') || capability.type === 'ColorPreset' || (capability.type === 'WheelRotation' && capability.speed && capability.wheels.some(wheel => wheel.type === 'Color')),
+    isCapSuitable: (capability) => capability.isSlotType('Color') || capability.type === 'ColorPreset' || (capability.type === 'WheelRotation' && capability.speed && capability.wheels.some((wheel) => wheel.type === 'Color')),
     create: (channel, capabilities) => {
       const xmlColorWheel = xmlbuilder.create('colorwheel');
 
       // RGB value for dummy colors. Will be decremented by 1 every time a dummy color is created.
       let greyValue = 0x99;
 
-      const presetCapabilities = capabilities.filter(capability => capability.isSlotType('Color') || capability.type === 'ColorPreset');
+      const presetCapabilities = capabilities.filter((capability) => capability.isSlotType('Color') || capability.type === 'ColorPreset');
 
       // split proportional caps so we only have stepped caps
       for (let index = 0; index < presetCapabilities.length; index++) {
@@ -257,7 +257,7 @@ export default {
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter(capability => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
+        capabilities.filter((capability) => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element('wheelrotation');
@@ -312,8 +312,8 @@ export default {
 
           if (match) {
             const [, startColorName, endColorName] = match;
-            startCapabilityJson.comment = startColorName.replace(/^[a-z]/, firstLetter => firstLetter.toUpperCase());
-            endCapabilityJson.comment = endColorName.replace(/^[a-z]/, firstLetter => firstLetter.toUpperCase());
+            startCapabilityJson.comment = startColorName.replace(/^[a-z]/, (firstLetter) => firstLetter.toUpperCase());
+            endCapabilityJson.comment = endColorName.replace(/^[a-z]/, (firstLetter) => firstLetter.toUpperCase());
           }
         }
 
@@ -325,7 +325,7 @@ export default {
         }
 
         const [startCapability, centerCapability, endCapability] = [startCapabilityJson, centerCapabilityJson, endCapabilityJson].map(
-          capabilityJson => new Capability(capabilityJson, capability._resolution, capability._channel),
+          (capabilityJson) => new Capability(capabilityJson, capability._resolution, capability._channel),
         );
 
         if (capability.slotNumber) {
@@ -344,9 +344,9 @@ export default {
           return null;
         }
 
-        const filterDistinguishableKeys = key => !['dmxRange', '_splitted', 'menuClick'].includes(key);
-        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter(key => filterDistinguishableKeys(key));
-        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter(key => filterDistinguishableKeys(key));
+        const filterDistinguishableKeys = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
+        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => filterDistinguishableKeys(key));
+        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => filterDistinguishableKeys(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
           const value1 = capability1.jsonObject[key];
@@ -390,7 +390,7 @@ export default {
     },
   },
   colorTemperature: {
-    isCapSuitable: capability => capability.type === 'ColorTemperature',
+    isCapSuitable: (capability) => capability.type === 'ColorTemperature',
     create: (channel, capabilities) => {
       const xmlColorTemporary = xmlbuilder.create('colortemp');
 
@@ -406,7 +406,7 @@ export default {
     },
   },
   goboWheel: {
-    isCapSuitable: capability => capability.isSlotType('Gobo') || (capability.type === 'WheelRotation' && capability.speed && capability.wheels.some(wheel => wheel.type === 'Gobo')),
+    isCapSuitable: (capability) => capability.isSlotType('Gobo') || (capability.type === 'WheelRotation' && capability.speed && capability.wheels.some((wheel) => wheel.type === 'Gobo')),
     create: (channel, capabilities) => {
       const xmlGoboWheel = xmlbuilder.create('gobowheel');
 
@@ -414,7 +414,7 @@ export default {
 
       // search for first normal cap and first shaking cap per index
       // further caps of the same index will be ignored (for now)
-      const slotCapabilities = capabilities.filter(capability => capability.isSlotType('Gobo'));
+      const slotCapabilities = capabilities.filter((capability) => capability.isSlotType('Gobo'));
       for (const capability of slotCapabilities) {
         const slotNumber = `${capability.slotNumber[0]}…${capability.slotNumber[1]}`;
 
@@ -464,7 +464,7 @@ export default {
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter(capability => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
+        capabilities.filter((capability) => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlGoboWheel.element('wheelrotation');
@@ -477,7 +477,7 @@ export default {
     },
   },
   goboIndex: { // gobo stencil rotation angle
-    isCapSuitable: capability => capability.type === 'WheelSlotRotation' && capability.wheels.some(wheel => wheel.type === 'Gobo') && capability.angle !== null,
+    isCapSuitable: (capability) => capability.type === 'WheelSlotRotation' && capability.wheels.some((wheel) => wheel.type === 'Gobo') && capability.angle !== null,
     create: (channel, capabilities) => {
       const xmlGoboIndex = xmlbuilder.create('goboindex');
 
@@ -491,7 +491,7 @@ export default {
     },
   },
   goboRotation: { // gobo stencil rotation speed
-    isCapSuitable: capability => capability.type === 'WheelSlotRotation' && capability.wheels.some(wheel => wheel.type === 'Gobo') && capability.speed !== null,
+    isCapSuitable: (capability) => capability.type === 'WheelSlotRotation' && capability.wheels.some((wheel) => wheel.type === 'Gobo') && capability.speed !== null,
     create: (channel, capabilities) => {
       const xmlGoboRotation = xmlbuilder.create('goborotation');
 
@@ -504,7 +504,7 @@ export default {
     },
   },
   goboShake: { // gobo shake speed
-    isCapSuitable: capability => capability.type === 'WheelShake' && capability.wheels.some(wheel => wheel.type === 'Gobo') && capability.wheelSlot === null && capability.shakeSpeed !== null,
+    isCapSuitable: (capability) => capability.type === 'WheelShake' && capability.wheels.some((wheel) => wheel.type === 'Gobo') && capability.wheelSlot === null && capability.shakeSpeed !== null,
     create: (channel, capabilities) => {
       const xmlGoboShake = xmlbuilder.create('goboshake');
 
@@ -517,7 +517,7 @@ export default {
     },
   },
   focus: {
-    isCapSuitable: capability => capability.type === 'Focus',
+    isCapSuitable: (capability) => capability.type === 'Focus',
     create: (channel, capabilities) => {
       const xmlFocus = xmlbuilder.create('focus');
 
@@ -532,7 +532,7 @@ export default {
     },
   },
   frost: {
-    isCapSuitable: capability => capability.type === 'Frost',
+    isCapSuitable: (capability) => capability.type === 'Frost',
     create: (channel, capabilities) => {
       const xmlFrost = xmlbuilder.create('frost');
 
@@ -560,7 +560,7 @@ export default {
     },
   },
   iris: {
-    isCapSuitable: capability => capability.type === 'Iris',
+    isCapSuitable: (capability) => capability.type === 'Iris',
     create: (channel, capabilities) => {
       const xmlIris = xmlbuilder.create('iris');
 
@@ -575,7 +575,7 @@ export default {
     },
   },
   zoom: {
-    isCapSuitable: capability => capability.type === 'Zoom',
+    isCapSuitable: (capability) => capability.type === 'Zoom',
     create: (channel, capabilities) => {
       const xmlZoom = xmlbuilder.create('zoom');
 
@@ -590,12 +590,12 @@ export default {
     },
   },
   prism: {
-    isCapSuitable: capability => capability.type === 'Prism' || (capability.type === 'NoFunction' && capability._channel.type === 'Prism'),
+    isCapSuitable: (capability) => capability.type === 'Prism' || (capability.type === 'NoFunction' && capability._channel.type === 'Prism'),
     create: (channel, capabilities) => {
       const xmlPrism = xmlbuilder.create('prism');
 
-      const hasRotationAngleCapabilities = capabilities.some(capability => capability.angle !== null);
-      const hasRotationSpeedCapabilities = capabilities.some(capability => capability.speed !== null);
+      const hasRotationAngleCapabilities = capabilities.some((capability) => capability.angle !== null);
+      const hasRotationSpeedCapabilities = capabilities.some((capability) => capability.speed !== null);
 
       if (hasRotationAngleCapabilities) {
         xmlPrism.element('prismindex');
@@ -632,7 +632,7 @@ export default {
         });
 
         // add ranges for capabilities without rotation speed
-        const rotationAngleCapabilities = commentGroup.filter(capability => capability.angle !== null);
+        const rotationAngleCapabilities = commentGroup.filter((capability) => capability.angle !== null);
         for (const capability of rotationAngleCapabilities) {
           const xmlRange = getBaseXmlCapability(capability, capability.angle[0].number, capability.angle[1].number);
           xmlRange.attribute('range', capability.angle[1].number - capability.angle[0].number);
@@ -641,7 +641,7 @@ export default {
         }
 
         // add ranges/steps for rotation speed dmx control capabilities
-        const rotationSpeedCapabilities = commentGroup.filter(capability => capability.speed !== null);
+        const rotationSpeedCapabilities = commentGroup.filter((capability) => capability.speed !== null);
         for (const capability of getSingleUnitCapabilities(rotationSpeedCapabilities, 'speed', 'Hz', 0, 5)) {
           const xmlCapability = getRotationSpeedXmlCapability(capability);
           xmlCapability.attribute('handler', 'prismrotation');
@@ -653,7 +653,7 @@ export default {
     },
   },
   prismIndex: { // rotation angle
-    isCapSuitable: capability => capability.type === 'PrismRotation' && capability.angle !== null,
+    isCapSuitable: (capability) => capability.type === 'PrismRotation' && capability.angle !== null,
     create: (channel, capabilities) => {
       const xmlPrismIndex = xmlbuilder.create('prismindex');
 
@@ -667,7 +667,7 @@ export default {
     },
   },
   prismRotation: { // rotation speed
-    isCapSuitable: capability => capability.type === 'PrismRotation' && capability.speed !== null,
+    isCapSuitable: (capability) => capability.type === 'PrismRotation' && capability.speed !== null,
     create: (channel, capabilities) => {
       const xmlPrismRotation = xmlbuilder.create('prismrotation');
 
@@ -680,7 +680,7 @@ export default {
     },
   },
   fog: {
-    isCapSuitable: capability => capability.type === 'Fog' || (capability.type === 'NoFunction' && capability._channel.type === 'Fog'),
+    isCapSuitable: (capability) => capability.type === 'Fog' || (capability.type === 'NoFunction' && capability._channel.type === 'Fog'),
     create: (channel, capabilities) => {
       const xmlFog = xmlbuilder.create('fog');
 
@@ -708,7 +708,7 @@ export default {
     },
   },
   fan: {
-    isCapSuitable: capability => (capability.speed !== null || capability.type === 'NoFunction') && /\bfan\b/i.test(capability._channel.name),
+    isCapSuitable: (capability) => (capability.speed !== null || capability.type === 'NoFunction') && /\bfan\b/i.test(capability._channel.name),
     create: (channel, capabilities) => {
       const xmlFan = xmlbuilder.create('fan');
 
@@ -736,7 +736,7 @@ export default {
     },
   },
   index: { // rotation angle
-    isCapSuitable: capability => capability.angle && capability.type.includes('Rotation'),
+    isCapSuitable: (capability) => capability.angle && capability.type.includes('Rotation'),
     create: (channel, capabilities) => {
       const xmlIndex = xmlbuilder.create('index');
 
@@ -750,7 +750,7 @@ export default {
     },
   },
   rotation: { // rotation speed
-    isCapSuitable: capability => capability.speed !== null && capability.type.match(/(Rotation|Continuous)/),
+    isCapSuitable: (capability) => capability.speed !== null && capability.type.match(/(Rotation|Continuous)/),
     create: (channel, capabilities) => {
       const xmlRotation = xmlbuilder.create('rotation');
 
@@ -763,7 +763,7 @@ export default {
     },
   },
   rawStep: { // only steps
-    isCapSuitable: capability => capability._channel.type !== 'NoFunction' && (capability._channel.capabilities.every(capability_ => capability_.isStep) || capability.usedStartEndEntities.length === 0),
+    isCapSuitable: (capability) => capability._channel.type !== 'NoFunction' && (capability._channel.capabilities.every((capability_) => capability_.isStep) || capability.usedStartEndEntities.length === 0),
     create: (channel, capabilities) => {
       const xmlRawStep = xmlbuilder.create('rawstep');
 
@@ -777,7 +777,7 @@ export default {
     },
   },
   raw: { // steps and ranges
-    isCapSuitable: capability => capability._channel.type !== 'NoFunction' && capability.usedStartEndEntities.length > 0,
+    isCapSuitable: (capability) => capability._channel.type !== 'NoFunction' && capability.usedStartEndEntities.length > 0,
     create: (channel, capabilities) => {
       const xmlRaw = xmlbuilder.create('raw');
 
@@ -824,14 +824,14 @@ function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPerc
   });
 
   // they should all be of the same (wrong) unit, as we converted to the base unit above
-  const capabilitiesWithWrongUnit = dmxControlCapabilities.filter(capability => capability.unit !== allowedUnit);
-  const maxValueWithWrongUnit = Math.max(...(capabilitiesWithWrongUnit.map(capability => Math.max(Math.abs(capability.startValue), Math.abs(capability.endValue)))));
+  const capabilitiesWithWrongUnit = dmxControlCapabilities.filter((capability) => capability.unit !== allowedUnit);
+  const maxValueWithWrongUnit = Math.max(...(capabilitiesWithWrongUnit.map((capability) => Math.max(Math.abs(capability.startValue), Math.abs(capability.endValue)))));
   if (allowedUnit !== '%') {
     // we take the conversion from percent to unit as a linear function f(x) = (m*x + t)
     // where x is the percentage value and f(x) or y is the value in the allowed unit
     const m = (hundredPercentValue - zeroPercentValue) / 100; // delta y / delta x
     const t = zeroPercentValue; // f(0) = m * 0 + t = t
-    const percentToUnit = x => (m * x) + t;
+    const percentToUnit = (x) => (m * x) + t;
 
     for (const capability of capabilitiesWithWrongUnit) {
       capability.unit = allowedUnit;

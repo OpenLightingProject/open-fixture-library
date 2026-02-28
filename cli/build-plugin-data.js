@@ -17,7 +17,7 @@ const allPreviousVersions = {};
 const pluginDirectoryUrl = new URL('../plugins/', import.meta.url);
 
 const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
-const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+const pluginKeys = directoryEntries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 
 for (const pluginKey of pluginKeys) {
   plugins.data[pluginKey] = {};
@@ -39,7 +39,7 @@ for (const [key, data] of Object.entries(allPreviousVersions)) {
 
 // sort plugin data object by key
 plugins.data = Object.fromEntries(
-  Object.keys(plugins.data).toSorted().map(key => [key, plugins.data[key]]),
+  Object.keys(plugins.data).toSorted().map((key) => [key, plugins.data[key]]),
 );
 
 const filePath = fileURLToPath(new URL('plugins.json', pluginDirectoryUrl));

@@ -21,7 +21,7 @@ export default {
     label: stringProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
   },
   computed: {
     localValue: {

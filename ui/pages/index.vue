@@ -112,7 +112,7 @@ export default {
       recentContributors: [],
 
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
+        (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
       ).length,
     };
   },
@@ -151,7 +151,7 @@ export default {
   },
   created() {
     this.lastUpdated = register.lastUpdated.slice(0, 5).map(
-      fixtureKey => ({
+      (fixtureKey) => ({
         key: fixtureKey,
         name: this.getFixtureName(fixtureKey),
         action: register.filesystem[fixtureKey].lastAction,
@@ -194,7 +194,7 @@ export default {
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(
-    key => register.contributors[contributor].fixtures.includes(key),
+    (key) => register.contributors[contributor].fixtures.includes(key),
   );
 }
 </script>

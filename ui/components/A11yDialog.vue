@@ -116,7 +116,7 @@ import { booleanProp, stringProp } from 'vue-ts-types';
 export default {
   props: {
     id: stringProp(
-      id => (typeof id === 'string' && id.endsWith('-dialog') ? undefined : 'id should end with "-dialog".'),
+      (id) => (typeof id === 'string' && id.endsWith('-dialog') ? undefined : 'id should end with "-dialog".'),
     ).required,
     isAlertDialog: booleanProp().withDefault(false),
     shown: booleanProp().withDefault(true),

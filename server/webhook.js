@@ -9,7 +9,7 @@ const http = require('http');
 const pm2config = require('./ecosystem.config.js');
 const secrets = require('./ofl-secrets.json');
 
-const pm2AppConfig = pm2config.apps.find(app => app.name === 'ofl');
+const pm2AppConfig = pm2config.apps.find((app) => app.name === 'ofl');
 
 const deploymentConfig = {
   env: pm2AppConfig.env,
@@ -21,7 +21,7 @@ const deploymentConfig = {
 
 startServer()
   .then(() => console.log('Exited'))
-  .catch(error => console.error('Exited with error', error));
+  .catch((error) => console.error('Exited with error', error));
 
 /**
  * @returns {Promise} Promise that resolves/rejects when the server process terminates.

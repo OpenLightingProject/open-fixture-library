@@ -26,8 +26,8 @@ export default [{
    * @param {Fixture} fixture The Fixture instance, see fixture-model.md
    * @returns {boolean} true if the fixture uses the feature
    */
-  hasFeature: fixture => fixture.coarseChannels.some(
-    channel => channel.fineChannelAliases.length === 1,
+  hasFeature: (fixture) => fixture.coarseChannels.some(
+    (channel) => channel.fineChannelAliases.length === 1,
   ),
 }];
 ```

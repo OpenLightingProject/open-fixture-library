@@ -29,10 +29,10 @@ export default {
     stepOverride: numberProp().optional,
   },
   emits: {
-    'input': value => true,
+    'input': (value) => true,
     'focus': () => true,
     'blur': () => true,
-    'vf:validate': validationData => true,
+    'vf:validate': (validationData) => true,
   },
   computed: {
     min() {

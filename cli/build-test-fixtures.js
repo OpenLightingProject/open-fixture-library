@@ -36,7 +36,7 @@ const markdownPath = fileURLToPath(new URL('../tests/test-fixtures.md', import.m
 const register = await importJson('../fixtures/register.json', import.meta.url);
 
 const allFixtureFeatures = await getFixtureFeatures();
-const featuresUsed = Object.fromEntries(allFixtureFeatures.map(feature => [feature.id, 0]));// check which features each fixture supports
+const featuresUsed = Object.fromEntries(allFixtureFeatures.map((feature) => [feature.id, 0]));// check which features each fixture supports
 
 /** @type {FixtureFeatureResult[]} */
 let fixtureFeatureResults = [];
@@ -134,7 +134,7 @@ async function getFixtureFeatures() {
       }
 
       // check uniqueness of id
-      const featureIdExists = fixtureFeatures.some(feature => feature.id === fixtureFeature.id);
+      const featureIdExists = fixtureFeatures.some((feature) => feature.id === fixtureFeature.id);
       if (featureIdExists) {
         console.error(styleText('red', '[Error]'), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);

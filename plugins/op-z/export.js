@@ -37,7 +37,7 @@ export async function exportFixtures(fixtures, options) {
       // add profile
       exportJson.profiles.push({
         name: modeName,
-        channels: mode.channels.map(channel => getOpZChannelType(channel, fixtureKey)),
+        channels: mode.channels.map((channel) => getOpZChannelType(channel, fixtureKey)),
       });
 
       // add config
@@ -96,7 +96,7 @@ function getOpZChannelType(channel, fixtureKey) {
   };
 
   const channelType = Object.keys(opZChannelTypes).find(
-    type => opZChannelTypes[type](),
+    (type) => opZChannelTypes[type](),
   );
   if (channelType) {
     return channelType;

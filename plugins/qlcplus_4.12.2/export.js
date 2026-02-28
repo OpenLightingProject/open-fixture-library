@@ -322,7 +322,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     }
 
     const modesContainingSwitchingChannel = fixture.modes.filter(
-      mode => mode.getChannelIndex(switchingChannel.key) !== -1,
+      (mode) => mode.getChannelIndex(switchingChannel.key) !== -1,
     );
 
     for (const mode of modesContainingSwitchingChannel) {
@@ -413,7 +413,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
         Head: fixture.categories.includes('Moving Head') || panMax > 0 || tiltMax > 0,
         Fixed: true,
       };
-      const focusType = Object.keys(focusTypeConditions).find(type => focusTypeConditions[type] === true);
+      const focusType = Object.keys(focusTypeConditions).find((type) => focusTypeConditions[type] === true);
 
       return {
         Type: focusType,
@@ -481,15 +481,15 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
  * @returns {number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
  */
 function getPanTiltMax(panOrTilt, channels) {
-  const capabilities = channels.flatMap(channel => channel.capabilities || []);
+  const capabilities = channels.flatMap((channel) => channel.capabilities || []);
 
-  const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === 'deg');
-  const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
-  const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
+  const panTiltCapabilities = capabilities.filter((capability) => capability.type === panOrTilt && capability.angle[0].unit === 'deg');
+  const minAngle = Math.min(...panTiltCapabilities.map((capability) => Math.min(capability.angle[0].number, capability.angle[1].number)));
+  const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
   if (panTiltMax === Number.NEGATIVE_INFINITY) {
-    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
     }
@@ -507,13 +507,13 @@ function getPanTiltMax(panOrTilt, channels) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    channel => channel.pixelKey !== null || (channel instanceof SwitchingChannel && channel.defaultChannel.pixelKey !== null),
+    (channel) => channel.pixelKey !== null || (channel instanceof SwitchingChannel && channel.defaultChannel.pixelKey !== null),
   );
 
   if (hasMatrixChannels) {
     const pixelKeys = mode.fixture.matrix.getPixelKeysByOrder('X', 'Y', 'Z');
     for (const pixelKey of pixelKeys) {
-      const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
+      const channels = mode.channels.filter((channel) => controlsPixelKey(channel, pixelKey));
       const xmlHead = xmlMode.element('Head');
 
       for (const channel of channels) {
@@ -561,9 +561,9 @@ function getFixtureType(fixture) {
   const ignoredCategories = new Set(['Blinder', 'Matrix', 'Stand']);
 
   return fixture.categories.map(
-    category => replaceCategories[category] ?? category,
+    (category) => replaceCategories[category] ?? category,
   ).find(
-    category => !ignoredCategories.has(category),
+    (category) => !ignoredCategories.has(category),
   ) || 'Other';
 
   /**
@@ -574,7 +574,7 @@ function getFixtureType(fixture) {
       return true;
     }
 
-    return fixture.physical.matrixPixelsSpacing.some(spacing => spacing !== 0);
+    return fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
   }
 }
 

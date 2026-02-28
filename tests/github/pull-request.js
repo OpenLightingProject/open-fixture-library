@@ -220,7 +220,7 @@ export async function updateComment(test) {
   }
 
   const commentBlocks = await Promise.all(commentPromises);
-  const comments = commentBlocks.flatMap(block => block.data);
+  const comments = commentBlocks.flatMap((block) => block.data);
 
   let equalFound = false;
   const promises = comments.flatMap((comment) => {

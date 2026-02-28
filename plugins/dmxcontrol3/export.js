@@ -145,7 +145,7 @@ function addFunctions(xml, mode) {
 
     for (const capability of channel.capabilities) {
       const properFunction = Object.keys(ddf3Functions).find(
-        key => ddf3Functions[key].isCapSuitable(capability),
+        (key) => ddf3Functions[key].isCapSuitable(capability),
       );
 
       if (properFunction) {
@@ -191,10 +191,10 @@ function addFunctions(xml, mode) {
         }
       }
 
-      const completeGroups = Math.min(...Object.values(foundFunctions).map(items => items.length));
+      const completeGroups = Math.min(...Object.values(foundFunctions).map((items) => items.length));
       for (let index = 0; index < completeGroups; index++) {
         // take i-th function from each function type
-        const groupFunctions = Object.values(foundFunctions).map(items => items[index]);
+        const groupFunctions = Object.values(foundFunctions).map((items) => items[index]);
         const xmlGroup = group.getXmlGroup(...groupFunctions);
 
         // insert xml group at the position of the first grouped function
@@ -225,9 +225,9 @@ function getChannelsPerPixel(mode) {
   }
 
   const channels = mode.channels.map(
-    channel => (channel instanceof SwitchingChannel ? channel.defaultChannel : channel),
+    (channel) => (channel instanceof SwitchingChannel ? channel.defaultChannel : channel),
   ).filter(
-    channel => !(channel instanceof FineChannel || channel instanceof NullChannel),
+    (channel) => !(channel instanceof FineChannel || channel instanceof NullChannel),
   );
   for (const channel of channels) {
     channelsPerPixel.get(channel.pixelKey).push(channel);
@@ -254,7 +254,7 @@ function addProcedures(xml, mode) {
     }
 
     maintenanceCapabilities.push(...channel.capabilities.filter(
-      capability => capability.type === 'Maintenance' && capability.isStep,
+      (capability) => capability.type === 'Maintenance' && capability.isStep,
     ));
   }
 
@@ -341,7 +341,7 @@ function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute('dmxchannel', index);
 
   const fineIndices = channel.fineChannels.map(
-    fineChannel => mode.getChannelIndex(fineChannel.key),
+    (fineChannel) => mode.getChannelIndex(fineChannel.key),
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {

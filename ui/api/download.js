@@ -77,7 +77,7 @@ router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, ne
   const register = await registerPromise;
   const fixtures = await Promise.all(
     Object.keys(register.filesystem).filter(
-      fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
+      (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
     ).map((fixture) => {
       const [manufacturer, key] = fixture.split('/');
       return fixtureFromRepository(manufacturer, key);

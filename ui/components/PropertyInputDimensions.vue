@@ -59,10 +59,10 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': dimensions => true,
+    'update:model-value': (dimensions) => true,
     'focus': () => true,
     'blur': () => true,
-    'vf:validate': validationData => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {

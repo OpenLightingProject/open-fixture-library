@@ -34,7 +34,7 @@ export default {
         this.capability.typeData.slotNumber,
         this.capability.typeData.slotNumberStart,
         this.capability.typeData.slotNumberEnd,
-      ].filter(slotNumber => typeof slotNumber === 'number');
+      ].filter((slotNumber) => typeof slotNumber === 'number');
 
       if (slotNumbers.length === 0) {
         return [];
@@ -45,7 +45,7 @@ export default {
       const length = max - min + 1;
 
       // array of integers from min to max: [min, min+1, …, max-1, max]
-      const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
+      const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter((slotNumber) => slotNumber >= 1);
 
       if (slotNumbers.at(-1) < slotNumbers[0]) {
         slotNumbersInRange.reverse();

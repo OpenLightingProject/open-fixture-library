@@ -57,12 +57,12 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': range => true,
+    'update:model-value': (range) => true,
     'start-updated': () => true,
     'end-updated': () => true,
     'focus': () => true,
     'blur': () => true,
-    'vf:validate': validationData => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {

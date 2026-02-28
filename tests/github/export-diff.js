@@ -68,20 +68,20 @@ catch (error) {
  */
 async function getDiffTasks(changedComponents) {
   const testFixtures = await importJson('../test-fixtures.json', import.meta.url);
-  const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
+  const testFixtureKeys = testFixtures.map((fixture) => `${fixture.man}/${fixture.key}`);
 
   const plugins = await importJson('../../plugins/plugins.json', import.meta.url);
   const usablePlugins = plugins.exportPlugins.filter(
     // don't diff new plugins and the ofl plugin (which essentially exports the source files)
-    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== 'ofl',
+    (pluginKey) => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== 'ofl',
   );
   const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
-  const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
+  const usableTestFixtures = testFixtureKeys.filter((testFixture) => !addedFixtures.has(testFixture));
 
   /** @type {Task[]} */
   return [...getTasksForModel(), ...(await getTasksForPlugins()), ...getTasksForFixtures()]
     .filter((task, index, array) => {
-      const firstEqualTask = array.find(otherTask =>
+      const firstEqualTask = array.find((otherTask) =>
         task.manufacturerFixture === otherTask.manufacturerFixture
         && task.currentPluginKey === otherTask.currentPluginKey
         && task.comparePluginKey === otherTask.comparePluginKey,
@@ -118,7 +118,7 @@ async function getDiffTasks(changedComponents) {
       || changedComponents.removed.model
     ) {
       for (const manufacturerFixture of usableTestFixtures) {
-        tasks.push(...usablePlugins.map(pluginKey => ({
+        tasks.push(...usablePlugins.map((pluginKey) => ({
           manufacturerFixture,
           currentPluginKey: pluginKey,
           comparePluginKey: pluginKey,
@@ -137,7 +137,7 @@ async function getDiffTasks(changedComponents) {
 
     const changedPlugins = changedComponents.modified.exports;
     for (const changedPlugin of changedPlugins) {
-      tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+      tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
         manufacturerFixture,
         currentPluginKey: changedPlugin,
         comparePluginKey: changedPlugin,
@@ -154,7 +154,7 @@ async function getDiffTasks(changedComponents) {
         const lastVersion = previousVersions.at(-1);
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+          tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
             manufacturerFixture,
             currentPluginKey: addedPlugin,
             comparePluginKey: lastVersion,
@@ -173,7 +173,7 @@ async function getDiffTasks(changedComponents) {
     const tasks = [];
 
     for (const [manufacturerKey, fixtureKey] of changedComponents.modified.fixtures) {
-      tasks.push(...usablePlugins.map(pluginKey => ({
+      tasks.push(...usablePlugins.map((pluginKey) => ({
         manufacturerFixture: `${manufacturerKey}/${fixtureKey}`,
         currentPluginKey: pluginKey,
         comparePluginKey: pluginKey,
@@ -210,7 +210,7 @@ async function performTask(task) {
       lines.push(
         '<strong>Removed files</strong>',
         '<ul>',
-        ...output.removedFiles.map(file => `<li>${file}</li>`),
+        ...output.removedFiles.map((file) => `<li>${file}</li>`),
         '</ul>',
       );
     }
@@ -219,7 +219,7 @@ async function performTask(task) {
       lines.push(
         '<strong>Added files</strong>',
         '<ul>',
-        ...output.addedFiles.map(file => `<li>${file}</li>`),
+        ...output.addedFiles.map((file) => `<li>${file}</li>`),
         '</ul>',
       );
     }

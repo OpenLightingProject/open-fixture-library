@@ -214,7 +214,7 @@ export default {
   async fetch() {
     const plugins = await this.$axios.$get('/api/v1/plugins');
     this.exportPlugins = plugins.exportPlugins.map(
-      pluginKey => ({
+      (pluginKey) => ({
         key: pluginKey,
         name: plugins.data[pluginKey].name,
       }),

@@ -36,8 +36,8 @@ export default {
   },
 };
 
-const isAnimationGoboSlot = slot => slot.type.startsWith('AnimationGobo');
-const isAnimationGobo = capability => isAnimationGoboSlot(capability.wheelSlot[0]) && isAnimationGoboSlot(capability.wheelSlot[1]);
+const isAnimationGoboSlot = (slot) => slot.type.startsWith('AnimationGobo');
+const isAnimationGobo = (capability) => isAnimationGoboSlot(capability.wheelSlot[0]) && isAnimationGoboSlot(capability.wheelSlot[1]);
 
 const specialIconFunctions = {
   ShutterStrobe(capability, iconProperties) {

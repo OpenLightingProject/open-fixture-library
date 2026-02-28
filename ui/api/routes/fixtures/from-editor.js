@@ -55,7 +55,7 @@ async function getFixtureCreateResult(fixtures) {
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
 
-  await Promise.all(fixtures.map(fixture => addFixture(fixture)));
+  await Promise.all(fixtures.map((fixture) => addFixture(fixture)));
 
   return result;
 
@@ -178,8 +178,8 @@ async function getFixtureCreateResult(fixtures) {
     let fixtureKey = slugify(fixture.name);
 
     const otherFixtureKeys = new Set(Object.keys(result.fixtures).filter(
-      key => key.startsWith(manufacturerKey),
-    ).map(key => key.slice(manufacturerKey.length + 1)));
+      (key) => key.startsWith(manufacturerKey),
+    ).map((key) => key.slice(manufacturerKey.length + 1)));
 
     while (otherFixtureKeys.has(fixtureKey)) {
       fixtureKey += '-2';
@@ -262,8 +262,8 @@ async function getFixtureCreateResult(fixtures) {
    */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
-      editorChannel => editorChannel.wheel && editorChannel.wheel.slots.some(
-        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== '',
+      (editorChannel) => editorChannel.wheel && editorChannel.wheel.slots.some(
+        (editorWheelSlot) => editorWheelSlot !== null && editorWheelSlot.type !== '',
       ),
     );
 
@@ -439,7 +439,7 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
       else if (property === 'channels') {
-        mode.channels = from.channels.map(uuid => channelKeyMapping[uuid]);
+        mode.channels = from.channels.map((uuid) => channelKeyMapping[uuid]);
       }
       else if (propertyExistsIn(property, from)) {
         mode[property] = from[property];

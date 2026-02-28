@@ -94,7 +94,7 @@ export default {
     context: objectProp().required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   computed: {
     location() {

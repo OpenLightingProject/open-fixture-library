@@ -53,7 +53,7 @@ export default {
   emits: {
     click: () => true,
     focus: () => true,
-    blur: event => true,
+    blur: (event) => true,
   },
   render(createElement) {
     const classes = {

@@ -258,7 +258,7 @@ export default {
       const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
+        (uuid) => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -268,7 +268,7 @@ export default {
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
-        const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+        const channelMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
 
         const channelPosition = channelMode.channels.indexOf(channelUuid);
         if (channelPosition !== -1) {
@@ -398,7 +398,7 @@ export default {
             left: 0,
             topOffset: 100,
           },
-          isScrollable: target => target === window,
+          isScrollable: (target) => target === window,
         }, () => field.focus());
 
         return;

@@ -99,11 +99,11 @@ export default {
     wide: booleanProp().withDefault(false),
   },
   emits: {
-    'input': value => true,
+    'input': (value) => true,
     'focus': () => true,
     'blur': () => true,
-    'unit-selected': unitString => true,
-    'vf:validate': validationData => true,
+    'unit-selected': (unitString) => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {
@@ -118,15 +118,15 @@ export default {
       return this.schemaProperty.oneOf || [this.schemaProperty];
     },
     enumValues() {
-      const enumSubSchema = this.subSchemas.find(subSchema => 'enum' in subSchema);
+      const enumSubSchema = this.subSchemas.find((subSchema) => 'enum' in subSchema);
 
       return enumSubSchema ? enumSubSchema.enum : [];
     },
     unitNames() {
       return this.subSchemas.filter(
-        subSchema => '$ref' in subSchema && subSchema.$ref.includes('#/units/'),
+        (subSchema) => '$ref' in subSchema && subSchema.$ref.includes('#/units/'),
       ).map(
-        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ''),
+        (subSchema) => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ''),
       );
     },
     units() {
@@ -244,7 +244,7 @@ export default {
       }
 
       this.selectedUnit = Object.keys(this.units).find(
-        unitName => this.units[unitName].unitString === newUnitString,
+        (unitName) => this.units[unitName].unitString === newUnitString,
       );
     },
     async unitSelected() {
@@ -305,12 +305,12 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
   }
 
   if (value === '[no unit]' || typeof value !== 'string') {
-    return unitNames.find(name => units[name].unitString === '');
+    return unitNames.find((name) => units[name].unitString === '');
   }
 
   const unit = value.replace(/^-?\d+(\.\d+)?/, '');
 
-  return unitNames.find(name => units[name].unitString === unit) || '';
+  return unitNames.find((name) => units[name].unitString === unit) || '';
 }
 
 /**

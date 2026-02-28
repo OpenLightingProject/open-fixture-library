@@ -127,10 +127,10 @@ export default {
           return [groupKey, 'All pixels'];
         }
 
-        const constraintAxes = ['x', 'y', 'z'].filter(axis => axis in group);
+        const constraintAxes = ['x', 'y', 'z'].filter((axis) => axis in group);
 
         const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
-          axis => group[axis].some(constraint => /^\d+n/.test(constraint)),
+          (axis) => group[axis].some((constraint) => /^\d+n/.test(constraint)),
         ) || constraintAxes.length > 2 || 'name' in group;
 
         if (shouldShowPixelKeyArray) {
@@ -139,7 +139,7 @@ export default {
 
         const constraintText = constraintAxes.map((axis) => {
           const axisConstraints = group[axis].map(
-            constraint => constraint.replace('>=', '≥ ').replace('<=', '≤ ').replace('=', ''),
+            (constraint) => constraint.replace('>=', '≥ ').replace('<=', '≤ ').replace('=', ''),
           ).join(', ');
 
           return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;

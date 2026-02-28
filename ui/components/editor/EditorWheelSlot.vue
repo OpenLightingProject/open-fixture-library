@@ -102,7 +102,7 @@ export default {
         return /\banimation\b/i.test(this.channel.name) ? 'AnimationGoboStart' : 'Open';
       }
 
-      return this.slotTypes.find(type => this.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
+      return this.slotTypes.find((type) => this.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
     },
     animationGoboEndAfterStart() {
       if (this.slot.type !== 'AnimationGoboEnd') {

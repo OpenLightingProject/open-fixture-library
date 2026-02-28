@@ -92,7 +92,7 @@ export default {
     modelValue: objectProp().optional,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   data: () => {
     return {
