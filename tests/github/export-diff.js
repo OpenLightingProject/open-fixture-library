@@ -117,7 +117,6 @@ async function getDiffTasks(changedComponents) {
       || changedComponents.modified.model
       || changedComponents.removed.model
     ) {
-
       for (const manufacturerFixture of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({
           manufacturerFixture,

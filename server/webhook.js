@@ -53,7 +53,6 @@ function startServer() {
         const body = Buffer.concat(bodyChunks);
         processRequest(request.url, body, request.headers);
       });
-
     }).on('close', resolve).on('error', reject).listen(port);
   });
 }

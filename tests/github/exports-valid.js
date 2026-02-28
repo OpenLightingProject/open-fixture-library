@@ -150,7 +150,6 @@ function getTasksForModel(changedComponents) {
     || changedComponents.modified.model
     || changedComponents.removed.model
   ) {
-
     for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
       tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
     }

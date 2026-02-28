@@ -685,7 +685,6 @@ export default {
       const xmlFog = xmlbuilder.create('fog');
 
       if (capabilities.length > 1) {
-
         for (const capability of capabilities) {
           let xmlCapability;
 
@@ -714,7 +713,6 @@ export default {
       const xmlFan = xmlbuilder.create('fan');
 
       if (capabilities.length > 1) {
-
         for (const capability of capabilities) {
           let xmlCapability;
 
