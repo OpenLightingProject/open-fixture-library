@@ -1,9 +1,9 @@
 import xml2js from 'xml2js';
 
-export const version = `0.1.0`;
+export const version = '0.1.0';
 
 // Supported color mixing types in Lightjams
-const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, `GRBW`, `GRB`, `GBR`, `RBG`, `BRG`, `BGR`];
+const KNOWN_COLOR_MIXING_TYPES = new Set(['RGB', 'RGBA', 'RGBW', 'RGBAW', 'CMY', 'CYM', 'GRBW', 'GRB', 'GBR', 'RBG', 'BRG', 'BGR']);
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -12,7 +12,7 @@ const KNOWN_COLOR_MIXING_TYPES = [`RGB`, `RGBA`, `RGBW`, `RGBAW`, `CMY`, `CYM`, 
  * @returns {Promise<object>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
-  const timestamp = new Date().toISOString().replace(/T.*/, ``);
+  const timestamp = new Date().toISOString().replace(/T.*/, '');
 
   const out = {
     manufacturers: {},
@@ -29,7 +29,7 @@ export async function importFixtures(buffer, filename, authorName) {
   const xml = await parser.parseStringPromise(buffer.toString());
 
   if (!xml.fixture) {
-    throw new Error(`Not a valid Lightjams fixture file.`);
+    throw new Error('Not a valid Lightjams fixture file.');
   }
 
   const lightjamsFixture = xml.fixture;
@@ -48,13 +48,12 @@ export async function importFixtures(buffer, filename, authorName) {
   out.warnings[fixtureKey] = [];
 
   const fixture = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
+    $schema: 'https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json',
     name: fixtureName,
-  };
+    categories: ['Other'] };
 
   // Add categories - we'll need to guess based on capabilities
-  fixture.categories = [`Other`];
-  out.warnings[fixtureKey].push(`Please specify categories.`);
+  out.warnings[fixtureKey].push('Please specify categories.');
 
   // Add metadata
   fixture.meta = {
@@ -62,27 +61,27 @@ export async function importFixtures(buffer, filename, authorName) {
     createDate: timestamp,
     lastModifyDate: timestamp,
     importPlugin: {
-      plugin: `lightjams`,
+      plugin: 'lightjams',
       date: timestamp,
-      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || `1.00`}, revision ${getString(lightjamsFixture.revision) || `1`}, imported by Lightjams plugin version ${version}`,
+      comment: `Lightjams fixture version ${getString(lightjamsFixture.version) || '1.00'}, revision ${getString(lightjamsFixture.revision) || '1'}, imported by Lightjams plugin version ${version}`,
     },
   };
 
   // Process modes
   const modes = lightjamsFixture.Modes?.[0]?.mode || [];
   if (modes.length === 0) {
-    throw new Error(`No modes found in fixture.`);
+    throw new Error('No modes found in fixture.');
   }
 
   fixture.availableChannels = {};
   fixture.modes = [];
 
   for (const lightjamsMode of modes) {
-    const modeName = lightjamsMode.$.name || ``;
-    const modeDescription = lightjamsMode.$.description || ``;
-    
+    const modeName = lightjamsMode.$.name || '';
+    const modeDescription = lightjamsMode.$.description || '';
+
     const mode = {};
-    
+
     // Use description as name if available, otherwise use the name if it doesn't contain "Mode"
     // If both contain "Mode" or are empty, generate a name based on channel count
     if (modeDescription && !/\bmode\b/i.test(modeDescription)) {
@@ -98,7 +97,7 @@ export async function importFixtures(buffer, filename, authorName) {
       // Will set name later based on channel count
       mode.name = null;
     }
-    
+
     if (modeName && modeDescription && modeName !== modeDescription && !/\bmode\b/i.test(modeName)) {
       mode.shortName = modeDescription;
     }
@@ -128,12 +127,12 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     mode.channels = channelList;
-    
+
     // Set mode name based on channel count if not already set
     if (!mode.name) {
       mode.name = `${channelList.length}-channel`;
     }
-    
+
     fixture.modes.push(mode);
   }
 
@@ -159,13 +158,13 @@ export async function importFixtures(buffer, filename, authorName) {
  */
 function addChannelsWithFineness(channelKey, precision, availableChannels) {
   const channels = [];
-  
+
   for (let byte = 0; byte < precision; byte++) {
     if (byte === 0) {
       channels.push(channelKey);
     }
     else {
-      const fineSuffix = byte > 1 ? `^${byte}` : ``;
+      const fineSuffix = byte > 1 ? `^${byte}` : '';
       const fineChannelKey = `${channelKey} fine${fineSuffix}`;
       channels.push(fineChannelKey);
       // Add fine channel alias to the coarse channel
@@ -175,24 +174,27 @@ function addChannelsWithFineness(channelKey, precision, availableChannels) {
       availableChannels[channelKey].fineChannelAliases.push(fineChannelKey);
     }
   }
-  
+
   return channels;
 }
 
 /**
  * Process color mixing capabilities (RGB, RGBA, CMY, etc.)
+ * @param capabilityType
+ * @param precision
+ * @param availableChannels
  */
 function processColorMixing(capabilityType, precision, availableChannels) {
   const channels = [];
-  
-  for (const color of capabilityType.split(``)) {
+
+  for (const color of capabilityType.split('')) {
     const channelKey = getColorName(color);
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         fineChannelAliases: [],
         capability: {
-          type: `ColorIntensity`,
+          type: 'ColorIntensity',
           color: channelKey,
         },
       };
@@ -200,12 +202,16 @@ function processColorMixing(capabilityType, precision, availableChannels) {
 
     channels.push(...addChannelsWithFineness(channelKey, precision, availableChannels));
   }
-  
+
   return channels;
 }
 
 /**
  * Process Pan or Tilt capability
+ * @param capabilityType
+ * @param element
+ * @param precision
+ * @param availableChannels
  */
 function processPanTilt(capabilityType, element, precision, availableChannels) {
   const channelKey = capabilityType;
@@ -218,7 +224,7 @@ function processPanTilt(capabilityType, element, precision, availableChannels) {
       defaultValue: Math.round((defaultValue / max) * 255),
       capability: {
         type: capabilityType,
-        angleStart: `0deg`,
+        angleStart: '0deg',
         angleEnd: `${max}deg`,
       },
     };
@@ -229,16 +235,19 @@ function processPanTilt(capabilityType, element, precision, availableChannels) {
 
 /**
  * Process Dimmer capability
+ * @param element
+ * @param precision
+ * @param availableChannels
  */
 function processDimmer(element, precision, availableChannels) {
-  const name = element.$.name || `Dimmer`;
+  const name = element.$.name || 'Dimmer';
   const channelKey = name;
 
   if (!(channelKey in availableChannels)) {
     availableChannels[channelKey] = {
       fineChannelAliases: [],
       capability: {
-        type: `Intensity`,
+        type: 'Intensity',
       },
     };
   }
@@ -248,17 +257,20 @@ function processDimmer(element, precision, availableChannels) {
 
 /**
  * Process Color wheel capability
+ * @param element
+ * @param precision
+ * @param availableChannels
  */
 function processColorWheel(element, precision, availableChannels) {
-  const name = element.$.name || `Color`;
+  const name = element.$.name || 'Color';
   const channelKey = name;
 
   if (!(channelKey in availableChannels)) {
     availableChannels[channelKey] = {
       fineChannelAliases: [],
       capability: {
-        type: `ColorPreset`,
-        comment: `Color wheel`,
+        type: 'ColorPreset',
+        comment: 'Color wheel',
       },
     };
   }
@@ -276,26 +288,26 @@ function processColorWheel(element, precision, availableChannels) {
  * @returns {string[]} Array of channel keys added
  */
 function processCapability(capabilityType, element, startOffset, availableChannels, warnings) {
-  const precision = Number.parseInt(element.$.precision || `1`, 10);
+  const precision = Number.parseInt(element.$.precision || '1', 10);
   const channels = [];
 
   // Handle color mixing capabilities
-  if (KNOWN_COLOR_MIXING_TYPES.includes(capabilityType)) {
+  if (KNOWN_COLOR_MIXING_TYPES.has(capabilityType)) {
     return processColorMixing(capabilityType, precision, availableChannels);
   }
 
   // Handle Pan/Tilt
-  if (capabilityType === `Pan` || capabilityType === `Tilt`) {
+  if (capabilityType === 'Pan' || capabilityType === 'Tilt') {
     return processPanTilt(capabilityType, element, precision, availableChannels);
   }
 
   // Handle Dimmer
-  if (capabilityType === `Dimmer`) {
+  if (capabilityType === 'Dimmer') {
     return processDimmer(element, precision, availableChannels);
   }
 
   // Handle Color wheel
-  if (capabilityType === `Color`) {
+  if (capabilityType === 'Color') {
     return processColorWheel(element, precision, availableChannels);
   }
 
@@ -305,20 +317,25 @@ function processCapability(capabilityType, element, startOffset, availableChanne
 
 /**
  * Process single-channel capabilities (Shutter, Gobo, Effects, etc.)
+ * @param capabilityType
+ * @param element
+ * @param availableChannels
+ * @param warnings
+ * @param startOffset
  */
 function processSingleChannel(capabilityType, element, availableChannels, warnings, startOffset) {
   const channels = [];
 
   // Handle Shutter
-  if (capabilityType === `Shutter`) {
-    const channelKey = `Shutter`;
+  if (capabilityType === 'Shutter') {
+    const channelKey = 'Shutter';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `ShutterStrobe`,
-          shutterEffect: `Strobe`,
-          helpWanted: `At which DMX values is strobe disabled? When is the lamp constantly on/off?`,
+          type: 'ShutterStrobe',
+          shutterEffect: 'Strobe',
+          helpWanted: 'At which DMX values is strobe disabled? When is the lamp constantly on/off?',
         },
       };
     }
@@ -328,14 +345,14 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Gobo
-  if (capabilityType === `Gobo`) {
-    const channelKey = `Gobo`;
+  if (capabilityType === 'Gobo') {
+    const channelKey = 'Gobo';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `WheelSlot`,
-          wheel: `Gobo`,
+          type: 'WheelSlot',
+          wheel: 'Gobo',
         },
       };
     }
@@ -345,15 +362,15 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle GoboRot
-  if (capabilityType === `GoboRot`) {
-    const name = element.$.name || `Gobo Rotation`;
+  if (capabilityType === 'GoboRot') {
+    const name = element.$.name || 'Gobo Rotation';
     const channelKey = name;
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `WheelSlotRotation`,
-          wheel: `Gobo`,
+          type: 'WheelSlotRotation',
+          wheel: 'Gobo',
         },
       };
     }
@@ -363,15 +380,15 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Zoom
-  if (capabilityType === `Zoom`) {
-    const channelKey = `Zoom`;
+  if (capabilityType === 'Zoom') {
+    const channelKey = 'Zoom';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Zoom`,
-          angleStart: `narrow`,
-          angleEnd: `wide`,
+          type: 'Zoom',
+          angleStart: 'narrow',
+          angleEnd: 'wide',
         },
       };
     }
@@ -381,15 +398,15 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Focus
-  if (capabilityType === `Focus`) {
-    const channelKey = `Focus`;
+  if (capabilityType === 'Focus') {
+    const channelKey = 'Focus';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Focus`,
-          distanceStart: `near`,
-          distanceEnd: `far`,
+          type: 'Focus',
+          distanceStart: 'near',
+          distanceEnd: 'far',
         },
       };
     }
@@ -399,13 +416,13 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Prism
-  if (capabilityType === `Prism`) {
-    const channelKey = `Prism`;
+  if (capabilityType === 'Prism') {
+    const channelKey = 'Prism';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Prism`,
+          type: 'Prism',
         },
       };
     }
@@ -415,15 +432,15 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Iris
-  if (capabilityType === `Iris`) {
-    const channelKey = `Iris`;
+  if (capabilityType === 'Iris') {
+    const channelKey = 'Iris';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Iris`,
-          openPercentStart: `0%`,
-          openPercentEnd: `100%`,
+          type: 'Iris',
+          openPercentStart: '0%',
+          openPercentEnd: '100%',
         },
       };
     }
@@ -433,15 +450,15 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Frost
-  if (capabilityType === `Frost`) {
-    const channelKey = `Frost`;
+  if (capabilityType === 'Frost') {
+    const channelKey = 'Frost';
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Frost`,
-          frostIntensityStart: `0%`,
-          frostIntensityEnd: `100%`,
+          type: 'Frost',
+          frostIntensityStart: '0%',
+          frostIntensityEnd: '100%',
         },
       };
     }
@@ -451,14 +468,14 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Effect and EffectDimmable
-  if (capabilityType === `Effect` || capabilityType === `EffectDimmable`) {
-    const name = element.$.name || `Effect`;
+  if (capabilityType === 'Effect' || capabilityType === 'EffectDimmable') {
+    const name = element.$.name || 'Effect';
     const channelKey = name;
 
     if (!(channelKey in availableChannels)) {
       availableChannels[channelKey] = {
         capability: {
-          type: `Effect`,
+          type: 'Effect',
           effectName: name,
         },
       };
@@ -469,12 +486,12 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   }
 
   // Handle Fixed (unmapped channel)
-  if (capabilityType === `Fixed`) {
-    const value = Number.parseInt(element.$.value || `0`, 10);
-    const name = element.$.name || `Fixed`;
+  if (capabilityType === 'Fixed') {
+    const value = Number.parseInt(element.$.value || '0', 10);
+    const name = element.$.name || 'Fixed';
 
     // Generate a unique channel key for this fixed channel
-    const baseKey = name !== `Fixed` ? name : `Fixed ${startOffset}`;
+    const baseKey = name === 'Fixed' ? `Fixed ${startOffset}` : name;
     let channelKey = baseKey;
     let counter = 1;
 
@@ -487,7 +504,7 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
       defaultValue: Math.round((value / 100) * 255),
       constant: true,
       capability: {
-        type: `Generic`,
+        type: 'Generic',
       },
     };
 
@@ -502,7 +519,7 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
   if (!(channelKey in availableChannels)) {
     availableChannels[channelKey] = {
       capability: {
-        type: `Generic`,
+        type: 'Generic',
       },
     };
   }
@@ -518,14 +535,14 @@ function processSingleChannel(capabilityType, element, availableChannels, warnin
  */
 function getColorName(letter) {
   const colorNames = {
-    R: `Red`,
-    G: `Green`,
-    B: `Blue`,
-    W: `White`,
-    A: `Amber`,
-    C: `Cyan`,
-    M: `Magenta`,
-    Y: `Yellow`,
+    R: 'Red',
+    G: 'Green',
+    B: 'Blue',
+    W: 'White',
+    A: 'Amber',
+    C: 'Cyan',
+    M: 'Magenta',
+    Y: 'Yellow',
   };
   return colorNames[letter] || letter;
 }
@@ -537,9 +554,9 @@ function getColorName(letter) {
  */
 function getString(element) {
   if (Array.isArray(element)) {
-    return element[0] || ``;
+    return element[0] || '';
   }
-  return element || ``;
+  return element || '';
 }
 
 /**
@@ -547,5 +564,5 @@ function getString(element) {
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
-  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ` `).trim().replaceAll(/\s+/g, `-`);
+  return string.toLowerCase().replaceAll(/[^\da-z-]+/g, ' ').trim().replaceAll(/\s+/g, '-');
 }
