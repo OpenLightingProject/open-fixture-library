@@ -122,7 +122,7 @@ export default {
     },
   },
   created() {
-    this.$watch('slotNumber', async function (newSlotNumber) {
+    this.$watch('slotNumber', async (newSlotNumber) => {
       if (!this.channel.wheel.slots[newSlotNumber - 1]) {
         this.$set(this.channel.wheel.slots, newSlotNumber - 1, getEmptyWheelSlot());
         this.open = true;
