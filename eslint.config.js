@@ -32,7 +32,6 @@ const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
 stylisticEslintConfig.rules['@stylistic/function-call-spacing'] = ['error'];
 stylisticEslintConfig.rules['@stylistic/linebreak-style'] = ['error', 'unix'];
 stylisticEslintConfig.rules['@stylistic/no-confusing-arrow'] = ['error', { allowParens: true }];
-stylisticEslintConfig.rules['@stylistic/padded-blocks'] = 'off';
 stylisticEslintConfig.rules['@stylistic/quote-props'] = 'off';
 stylisticEslintConfig.rules['@stylistic/space-before-function-paren'] = ['error', {
   anonymous: 'never',
