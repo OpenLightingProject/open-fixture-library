@@ -29,9 +29,6 @@ const eslintPluginNuxtConfigRecommended = {
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   semi: true,
 });
-stylisticEslintConfig.rules['@stylistic/function-call-spacing'] = ['error'];
-stylisticEslintConfig.rules['@stylistic/linebreak-style'] = ['error', 'unix'];
-stylisticEslintConfig.rules['@stylistic/no-confusing-arrow'] = ['error', { allowParens: true }];
 
 const enabledRuleParameters = {
   // Core ESLint rules
@@ -76,6 +73,11 @@ const enabledRuleParameters = {
   'prefer-rest-params': [],
   'prefer-template': [],
   'radix': [],
+
+  // eslint-plugin-stylistic
+  '@stylistic/function-call-spacing': [],
+  '@stylistic/linebreak-style': ['unix'],
+  '@stylistic/no-confusing-arrow': [{ allowParens: true }],
 
   // eslint-plugin-import
   'import/extensions': ['ignorePackages'],
