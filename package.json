@@ -22,7 +22,7 @@
     "build:plugin-data": "node cli/build-plugin-data.js",
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
-    "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
+    "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json && eslint --fix docs/rest-api.md",
 
     "clean": "rm -rf .nuxt tmp",
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
