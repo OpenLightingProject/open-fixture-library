@@ -27,6 +27,7 @@ const eslintPluginNuxtConfigRecommended = {
 };
 
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
+  arrowParens: true,
   semi: true,
 });
 
