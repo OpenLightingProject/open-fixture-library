@@ -489,9 +489,9 @@ export default {
         this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
           const channel = this.fixture.availableChannels[uuid];
           return (
-            !('coarseChannelId' in channel) ||
-            channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
-            channel.resolution < deselectedChannel.resolution
+            !('coarseChannelId' in channel)
+            || channel.coarseChannelId !== deselectedChannel.coarseChannelId
+            || channel.resolution < deselectedChannel.resolution
           );
         });
         return;
@@ -528,11 +528,11 @@ export default {
       for (const uuid of this.currentModeUnchosenChannelUuids) {
         const channel = this.fixture.availableChannels[uuid];
         if (
-          'coarseChannelId' in channel &&
-          channel.coarseChannelId === coarseChannelId &&
-          channel.resolution < currentResolution &&
-          !this.isChannelSelected(uuid) &&
-          !this.modeHasChannel(uuid)
+          'coarseChannelId' in channel
+          && channel.coarseChannelId === coarseChannelId
+          && channel.resolution < currentResolution
+          && !this.isChannelSelected(uuid)
+          && !this.modeHasChannel(uuid)
         ) {
           this.selectedChannelUuids.push(uuid);
         }

@@ -476,8 +476,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           };
 
           return Object.keys(capabilityTypeRegexps).find(
-            channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
-              channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
+            channelType =>
+              capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType])
+              || channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || 'Generic';
         },
       };

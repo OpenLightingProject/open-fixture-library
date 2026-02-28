@@ -964,10 +964,11 @@ export const capabilityPresets = {
 
   ResetPanTilt: {
     isApplicable: capability =>
-      capability.type === 'Maintenance' &&
-      /\breset\b/i.test(capability.comment) && (
-        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment)) ||
-        /\bposition\b|\bscan\b/i.test(capability.comment)
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && (
+        (/\bpan\b/i.test(capability.comment) && /\btilt\b/i.test(capability.comment))
+        || /\bposition\b|\bscan\b/i.test(capability.comment)
       ),
     importCapability: importHelpers.getMaintenanceCap,
   },
@@ -1021,10 +1022,10 @@ export const capabilityPresets = {
   },
   ResetMotors: {
     isApplicable: capability =>
-      capability.type === 'Maintenance' &&
-      /\breset\b/i.test(capability.comment) &&
-      /\bmotors?\b/i.test(capability.comment) &&
-      !/\ball\b|\btotal\b/i.test(capability.comment),
+      capability.type === 'Maintenance'
+      && /\breset\b/i.test(capability.comment)
+      && /\bmotors?\b/i.test(capability.comment)
+      && !/\ball\b|\btotal\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
   ResetAll: {

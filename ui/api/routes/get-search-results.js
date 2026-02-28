@@ -47,9 +47,11 @@ function queryMatch(searchQuery, fixtureKey) {
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
   const manufacturer = fixtureKey.split('/')[0];
 
-  return manufacturersQuery.length === 0 ||
-    (manufacturersQuery.length === 1 && manufacturersQuery[0] === '') ||
-    manufacturersQuery.includes(manufacturer);
+  return (
+    manufacturersQuery.length === 0
+    || (manufacturersQuery.length === 1 && manufacturersQuery[0] === '')
+    || manufacturersQuery.includes(manufacturer)
+  );
 }
 
 /**
@@ -59,9 +61,11 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
  * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */
 function categoryMatch(categoriesQuery, fixtureKey) {
-  return categoriesQuery.length === 0 ||
-    (categoriesQuery.length === 1 && categoriesQuery[0] === '') ||
-    categoriesQuery.some(
+  return (
+    categoriesQuery.length === 0
+    || (categoriesQuery.length === 1 && categoriesQuery[0] === '')
+    || categoriesQuery.some(
       category => register.categories[category]?.includes(fixtureKey),
-    );
+    )
+  );
 }

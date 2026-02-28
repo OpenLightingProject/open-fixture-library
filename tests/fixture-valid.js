@@ -483,10 +483,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       let dmxRangesInvalid = false;
 
       if (
-        channel.capabilities.length === 1 &&
-        channel.capabilities[0].type === 'ShutterStrobe' &&
-        fixture.mainCategory !== 'Strobe' &&
-        !channel.capabilities[0].helpWanted?.startsWith('At which DMX values is strobe disabled? When is the lamp constantly on/off?')
+        channel.capabilities.length === 1
+        && channel.capabilities[0].type === 'ShutterStrobe'
+        && fixture.mainCategory !== 'Strobe'
+        && !channel.capabilities[0].helpWanted?.startsWith('At which DMX values is strobe disabled? When is the lamp constantly on/off?')
       ) {
         result.errors.push(`Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`);
       }
@@ -1157,9 +1157,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      */
     function isColorChanger() {
       return (
-        hasCapabilityOfType('ColorPreset') ||
-        hasMultipleColorIntensityCapabilities() ||
-        fixture.wheels.some(
+        hasCapabilityOfType('ColorPreset')
+        || hasMultipleColorIntensityCapabilities()
+        || fixture.wheels.some(
           wheel => wheel.slots.some(slot => slot.type === 'Color'),
         )
       );
@@ -1171,10 +1171,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     function hasMultipleColorIntensityCapabilities() {
       return fixture.capabilities.filter(
         capability =>
-          capability.type === 'ColorIntensity' &&
-          capability.color !== 'UV' &&
-          capability.color !== 'Cold White' &&
-          capability.color !== 'Warm White',
+          capability.type === 'ColorIntensity'
+          && capability.color !== 'UV'
+          && capability.color !== 'Cold White'
+          && capability.color !== 'Warm White',
       ).length >= 2;
     }
 

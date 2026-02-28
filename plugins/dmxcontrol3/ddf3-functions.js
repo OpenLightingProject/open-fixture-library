@@ -50,8 +50,8 @@ export default {
   },
   strobe: {
     isCapSuitable: capability =>
-      (capability.type === 'ShutterStrobe' && !['Open', 'Closed'].includes(capability.shutterEffect)) ||
-      (capability.type === 'NoFunction' && capability._channel.type === 'Strobe'),
+      (capability.type === 'ShutterStrobe' && !['Open', 'Closed'].includes(capability.shutterEffect))
+      || (capability.type === 'NoFunction' && capability._channel.type === 'Strobe'),
     create: (channel, capabilities) => {
       const xmlStrobe = xmlbuilder.create('strobe');
 

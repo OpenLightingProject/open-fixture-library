@@ -82,9 +82,9 @@ async function getDiffTasks(changedComponents) {
   return [...getTasksForModel(), ...(await getTasksForPlugins()), ...getTasksForFixtures()]
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
-        task.manufacturerFixture === otherTask.manufacturerFixture &&
-        task.currentPluginKey === otherTask.currentPluginKey &&
-        task.comparePluginKey === otherTask.comparePluginKey,
+        task.manufacturerFixture === otherTask.manufacturerFixture
+        && task.currentPluginKey === otherTask.currentPluginKey
+        && task.comparePluginKey === otherTask.comparePluginKey,
       );
 
       // remove duplicates
@@ -112,9 +112,11 @@ async function getDiffTasks(changedComponents) {
   function getTasksForModel() {
     const tasks = [];
 
-    if (changedComponents.added.model ||
-      changedComponents.modified.model ||
-      changedComponents.removed.model) {
+    if (
+      changedComponents.added.model
+      || changedComponents.modified.model
+      || changedComponents.removed.model
+    ) {
 
       for (const manufacturerFixture of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({

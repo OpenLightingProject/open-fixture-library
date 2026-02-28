@@ -47,10 +47,10 @@ try {
   ]
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
-        task.manufacturerKey === otherTask.manufacturerKey &&
-        task.fixtureKey === otherTask.fixtureKey &&
-        task.pluginKey === otherTask.pluginKey &&
-        task.testKey === otherTask.testKey,
+        task.manufacturerKey === otherTask.manufacturerKey
+        && task.fixtureKey === otherTask.fixtureKey
+        && task.pluginKey === otherTask.pluginKey
+        && task.testKey === otherTask.testKey,
       );
 
       // remove duplicates
@@ -145,9 +145,11 @@ function mapExportTestsToTasks(tests, manufacturerKey, fixtureKey) {
 function getTasksForModel(changedComponents) {
   const tasks = [];
 
-  if (changedComponents.added.model ||
-    changedComponents.modified.model ||
-    changedComponents.removed.model) {
+  if (
+    changedComponents.added.model
+    || changedComponents.modified.model
+    || changedComponents.removed.model
+  ) {
 
     for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
       tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
