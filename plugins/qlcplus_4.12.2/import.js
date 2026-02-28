@@ -160,7 +160,7 @@ function getOflMatrix(qlcPlusFixture) {
 const slotTypeFunctions = {
   Open: {
     isSlotType: (capability, channelGroup, capabilityPreset) => capability._ === 'Open' || capability.$.Res1 === 'Others/open.svg' || capability.$.Res === 'Others/open.svg',
-    addSlotProperties: (capability, slot) => {},
+    addSlotProperties: (capability, slot) => undefined,
   },
   Gobo: {
     isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === 'GoboMacro' : channelGroup === 'Gobo'),
