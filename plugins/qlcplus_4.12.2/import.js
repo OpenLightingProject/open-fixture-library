@@ -588,7 +588,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       Object.assign(capability, parserPerChannelType[channelType](capabilityData));
     }
     else {
-      capability.type = 'Generic',
+      capability.type = 'Generic';
       capability.comment = capabilityName;
     }
 
