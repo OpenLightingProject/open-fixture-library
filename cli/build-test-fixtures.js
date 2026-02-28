@@ -109,7 +109,6 @@ catch (error) {
   console.error(styleText('red', '[Fail]'), 'Could not write test fixtures file:', error);
 }
 
-
 /**
  * @returns {Promise<FixtureFeature[]>} A Promise that resolves to an array of all defined fixture features.
  */

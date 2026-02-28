@@ -19,11 +19,9 @@ const deploymentConfig = {
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
-
 startServer()
   .then(() => console.log('Exited'))
   .catch(error => console.error('Exited with error', error));
-
 
 /**
  * @returns {Promise} Promise that resolves/rejects when the server process terminates.

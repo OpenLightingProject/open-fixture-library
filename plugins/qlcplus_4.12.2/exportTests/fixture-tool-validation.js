@@ -89,7 +89,6 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   }
 }
 
-
 /**
  * @param {string} url The URL to download the file from.
  * @returns {Promise<string>} A Promise that resolves to the downloaded file's content.

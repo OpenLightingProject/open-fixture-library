@@ -45,7 +45,6 @@
         :schema-property="modeProperties.rdmPersonalityIndex" />
     </LabeledInput>
 
-
     <h3>Physical override</h3>
 
     <label>
@@ -63,7 +62,6 @@
         :formstate="formstate"
         :name-prefix="`mode-${index}`" />
     </section>
-
 
     <h3>DMX channels</h3>
 

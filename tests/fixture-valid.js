@@ -79,7 +79,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     return result;
   }
 
-
   const schemaValidate = await getAjvValidator('fixture');
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
@@ -116,8 +115,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   }
 
   return result;
-
-
 
   /**
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
@@ -462,7 +459,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkChannelDmxValues();
     checkCapabilities();
 
-
     /**
      * Check that DMX values used in the channel are correct.
      */
@@ -525,7 +521,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
-
 
         /**
          * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
@@ -633,7 +628,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         if (Object.keys(capabilityTypeChecks).includes(capability.type)) {
           capabilityTypeChecks[capability.type]();
         }
-
 
         /**
          * Check all used start/end entities in the capability.
@@ -825,7 +819,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     for (let channelIndex = 0; channelIndex < mode.channelKeys.length; channelIndex++) {
       checkModeChannelKey(channelIndex);
     }
-
 
     /**
      * Check that mode names comply with the channel count.
@@ -1320,7 +1313,6 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
   }
   set.add(value.toLowerCase());
 }
-
 
 /**
  * @param {string} description The error message.

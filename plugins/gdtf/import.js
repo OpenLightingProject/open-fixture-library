@@ -144,7 +144,6 @@ export async function importFixtures(buffer, filename, authorName) {
     return undefined;
   }
 
-
   /**
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
@@ -167,7 +166,6 @@ export async function importFixtures(buffer, filename, authorName) {
       const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
       mode._oflRdmPersonalityIndex = index;
     }
-
 
     /**
      * @returns {object} Name and DMX personalities of the latest RDM software version (both may be undefined).
@@ -194,7 +192,6 @@ export async function importFixtures(buffer, filename, authorName) {
       };
     }
   }
-
 
   /**
    * Adds wheels to the OFL fixture (if there are any).
@@ -252,7 +249,6 @@ export async function importFixtures(buffer, filename, authorName) {
       };
     }
   }
-
 
   /**
    * Autmatically generates `Name` attributes for GDTF's `<DMXChannel>`,
@@ -319,7 +315,6 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     return relations;
-
 
     /**
      * Parses <ChannelFunction ModeMaster="…">'s relation data.
@@ -510,7 +505,6 @@ export async function importFixtures(buffer, filename, authorName) {
       modeIndices: [modeIndex],
     });
 
-
     /**
      * @returns {string} The channel name.
      */
@@ -627,7 +621,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return capability;
       });
-
 
       /**
        * @param {number} index The index of the capability.
@@ -825,7 +818,6 @@ export async function importFixtures(buffer, filename, authorName) {
         channel.dmxValueResolution = `${maxDmxValueResolution * 8}bit`;
       }
 
-
       /**
        * @returns {number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
        */
@@ -940,7 +932,6 @@ export async function importFixtures(buffer, filename, authorName) {
       }
     }
 
-
     /**
      * Adds the OFL channel key (and fine channel keys) to dmxBreakWrappers'
      * last entry's channels array.
@@ -985,7 +976,6 @@ export async function importFixtures(buffer, filename, authorName) {
       traverseGeometries(gdtfFixture.Geometries[0]);
 
       return geometryReferences;
-
 
       /**
        * Recursively go through the child nodes of a given XML node and add
@@ -1044,7 +1034,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
     replaceSwitchingChannelsInModes(fixture, modeChannelReplacements);
 
-
     /**
      * @param {string} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
      * @returns {object} Simplified switching channel's relations.
@@ -1095,7 +1084,6 @@ export async function importFixtures(buffer, filename, authorName) {
     }
   }
 }
-
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -1211,7 +1199,6 @@ function transformRelations(fixture, switchingChannelRelations) {
   }
 
   return { relationsPerMaster, modeChannelReplacements };
-
 
   /**
    * Adds all implicit fine channel relations for a given relation.

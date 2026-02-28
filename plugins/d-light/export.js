@@ -141,7 +141,6 @@ function addAttribute(xml, mode, attribute, channels) {
   }
 }
 
-
 /**
  * Adds an XML element for the given capability to the XML capability container.
  * @param {Capability} capability A capability of a channels capability list.

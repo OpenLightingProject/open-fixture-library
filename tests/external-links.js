@@ -9,7 +9,6 @@ import { Octokit } from '@octokit/rest';
 
 import SiteCrawler from '../lib/site-crawler.js';
 
-
 const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
 const TIMEOUT = 30_000;
@@ -21,7 +20,6 @@ const excludedUrls = [
   'https://github.com/OpenLightingProject/open-fixture-library/', // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
   'https://web.archive.org/', // Wayback Machine links are designed to be available "forever" and we don't want to put unnecessary load on their servers.
 ];
-
 
 const testStartTime = Date.now();
 let errored = false;
@@ -81,7 +79,6 @@ const testTime = Date.now() - testStartTime;
 console.log();
 console.log(styleText(['greenBright', 'bold'], `Test took ${testTime / 1000}s.`));
 process.exit(errored ? 1 : 0);
-
 
 /**
  * @typedef {object} UrlResult

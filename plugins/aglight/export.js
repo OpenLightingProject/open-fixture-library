@@ -153,7 +153,6 @@ function transformNonNumericValues(fixtureJson) {
   }
 }
 
-
 /**
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
  */

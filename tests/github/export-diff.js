@@ -6,7 +6,6 @@ import diffPluginOutputs from '../../lib/diff-plugin-outputs.js';
 import importJson from '../../lib/import-json.js';
 import * as pullRequest from './pull-request.js';
 
-
 /**
  * @typedef {object} Task
  * @property {string} manufacturerFixture The combined manufacturer / fixture key.
@@ -62,8 +61,6 @@ catch (error) {
   console.error(error);
   process.exit(1);
 }
-
-
 
 /**
  * @param {object} changedComponents The PR's changed OFL components.

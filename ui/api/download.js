@@ -60,7 +60,6 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
   }
 }
 
-
 const router = express.Router();
 
 // support JSON encoded bodies

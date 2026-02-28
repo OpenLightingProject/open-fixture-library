@@ -256,7 +256,6 @@ export default {
         });
       }
 
-
       const rotationCapabilities = getSingleUnitCapabilities(
         capabilities.filter(capability => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
       );
@@ -606,7 +605,6 @@ export default {
         xmlPrism.element('prismrotation');
       }
 
-
       // group adjacent capabilities by comment
       const capabilitiesGroupedByComment = [];
       for (const capability of capabilities) {
@@ -650,7 +648,6 @@ export default {
           xmlStep.importDocument(xmlCapability);
         }
       }
-
 
       return xmlPrism;
     },

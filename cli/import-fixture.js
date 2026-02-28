@@ -67,7 +67,6 @@ catch (error) {
   process.exit(1);
 }
 
-
 /**
  * Checks the command line interface arguments parsed by minimist.
  */

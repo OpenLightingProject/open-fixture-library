@@ -322,7 +322,6 @@ export default {
   },
 };
 
-
 const supportedVideoFormats = {
 
   native: {
@@ -368,7 +367,6 @@ const supportedVideoFormats = {
   },
 
 };
-
 
 /**
  * @param {string} url The video URL.

@@ -566,7 +566,6 @@ function getFixtureType(fixture) {
     category => !ignoredCategories.has(category),
   ) || 'Other';
 
-
   /**
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */

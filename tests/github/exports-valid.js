@@ -123,7 +123,6 @@ catch (error) {
   process.exit(1);
 }
 
-
 /**
  * @param {[pluginKey: string, testKey: string][]} tests An array of export tests.
  * @param {string} manufacturerKey The manufacturer key of the fixture that should be tested.

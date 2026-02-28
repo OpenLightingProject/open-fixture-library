@@ -65,7 +65,6 @@ catch (error) {
   process.exit(1);
 }
 
-
 /**
  * @param {Record<string, unknown>} cliArguments Command line interface arguments parsed by minimist.
  */

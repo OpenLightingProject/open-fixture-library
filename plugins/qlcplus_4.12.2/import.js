@@ -254,7 +254,6 @@ async function getOflWheels(qlcPlusFixture) {
 
   return Object.keys(wheels).length > 0 ? wheels : undefined;
 
-
   /**
    * @param {object} qlcPlusChannel The QLC+ channel object.
    * @returns {Promise<object[]>} A Promise that resolves to an array of OFL slot objects.
@@ -290,7 +289,6 @@ async function getOflWheels(qlcPlusFixture) {
     return slots;
   }
 }
-
 
 const parserPerChannelType = {
   Nothing: () => ({
@@ -549,7 +547,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
   fixture.availableChannels[channelName] = channel;
 
-
   /**
    * @param {object} qlcPlusCapability The QLC+ capability object.
    * @returns {object} The OFL capability object.
@@ -599,7 +596,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
     return capability;
 
-
     /**
      * Deletes the capability's comment if it adds no valuable information.
      */
@@ -643,7 +639,6 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
   }
 
   return physical;
-
 
   /**
    * Handles the Dimensions section.
@@ -841,7 +836,6 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
       warningsArray.push(`Please check 16bit channel '${channelKey}': ${error.message}`);
     }
   }
-
 
   /**
    * @param {string} qlcPlusFineChannel The key of the fine channel.

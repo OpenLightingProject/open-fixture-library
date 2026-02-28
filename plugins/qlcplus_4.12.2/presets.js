@@ -6,7 +6,6 @@ import importJson from '../../lib/import-json.js';
 
 const qlcplusGoboAliasesPromise = importJson('../../resources/gobos/aliases/qlcplus.json', import.meta.url);
 
-
 // ########## Helper functions ##########
 
 export const exportHelpers = {
@@ -245,7 +244,6 @@ const createFocusFarToNearCapability = () => ({
   distanceStart: 'far',
   distanceEnd: 'near',
 });
-
 
 // ########## Channel presets ##########
 
@@ -597,8 +595,6 @@ export function getCapabilityFromChannelPreset(preset, channelName, panMax, tilt
   };
 }
 
-
-
 // ########## Fine channel presets ##########
 
 const fineChannelPresets = {
@@ -706,8 +702,6 @@ export function getFineChannelPreset(fineChannel) {
   ) || null;
 }
 
-
-
 // ########## Capability presets ##########
 
 export const capabilityPresets = {
@@ -728,7 +722,6 @@ export const capabilityPresets = {
       shutterEffect: 'Closed',
     }),
   },
-
 
   // strobe capabilities with specified frequency
 
@@ -777,7 +770,6 @@ export const capabilityPresets = {
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap('RampDown', `${res1}Hz`, `${res2}Hz`),
   },
 
-
   // other strobe capabilities
 
   StrobeRandomSlowToFast: {
@@ -825,7 +817,6 @@ export const capabilityPresets = {
     importCapability: () => importHelpers.getShutterStrobeCap('RampDown', 'fast', 'slow'),
   },
 
-
   // color capabilities
 
   ColorMacro: {
@@ -867,7 +858,6 @@ export const capabilityPresets = {
     }),
   },
 
-
   // gobo capabilities
 
   // TODO: import/export a gobo image as res1
@@ -907,7 +897,6 @@ export const capabilityPresets = {
     }),
   },
 
-
   // prism capabilities
 
   PrismEffectOn: {
@@ -930,7 +919,6 @@ export const capabilityPresets = {
       type: 'NoFunction',
     }),
   },
-
 
   // rotation capabilities
 
@@ -971,7 +959,6 @@ export const capabilityPresets = {
       helpWanted: 'Are these the correct angles?',
     }),
   },
-
 
   // maintenance / reset capabilities
 
@@ -1064,7 +1051,6 @@ export const capabilityPresets = {
     isApplicable: capability => capability.type === 'Maintenance' && /\bsilent\b/i.test(capability.comment) && /\bauto(?:matic)?\b/i.test(capability.comment),
     importCapability: importHelpers.getMaintenanceCap,
   },
-
 
   // generic / other capabilities
 

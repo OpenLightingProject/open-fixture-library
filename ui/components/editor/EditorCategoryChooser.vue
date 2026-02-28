@@ -23,7 +23,6 @@
   </div>
 </template>
 
-
 <script>
 import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';

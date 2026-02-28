@@ -26,7 +26,6 @@ export function followXmlNodeReference(startNode, nodeReference) {
 
   return currentNode;
 
-
   /**
    * @param {object} node The XML object.
    * @returns {object[]} The XML objects of this node's child nodes.
@@ -37,7 +36,6 @@ export function followXmlNodeReference(startNode, nodeReference) {
     );
   }
 }
-
 
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
@@ -72,12 +70,10 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   });
   const sRGB1_to_sRGB255 = RGB1 => RGB1.map(c => c * 255);
 
-
   // parse starting values as array
   const [x, y, Y] = gdtfColorString.split(/\s*,\s*/).map(
     colorComponent => Number.parseFloat(colorComponent),
   );
-
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
   const RGB = sRGB1_to_sRGB255(sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ1_to_XYZ100(xyY_to_XYZ([x, y, Y])))));
@@ -104,7 +100,6 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 
   /* eslint-enable camelcase, @stylistic/space-in-parens, unicorn/no-zero-fractions */
-
 
   /**
    * @param {number} componentValue The red / green /blue component value in the range 0…255.

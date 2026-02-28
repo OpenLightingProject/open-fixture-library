@@ -36,7 +36,6 @@ export async function importFixtureFile({ request }) {
   }
 }
 
-
 /**
  * @param {RequestBody} body The JSON request body.
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.

@@ -100,7 +100,6 @@ function physicalValuesFulfillCondition(value1, value2, predicate) {
   return predicate(value1) && (value2 === null || predicate(value2));
 }
 
-
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions
 const gdtfAttributes = {
   'AnimationWheel(n)': {

@@ -62,7 +62,6 @@
 }
 </style>
 
-
 <script>
 import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
 import HeaderBar from '../components/HeaderBar.vue';

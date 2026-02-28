@@ -55,7 +55,6 @@
       </Validate>
     </LabeledInput>
 
-
     <h4>Bulb</h4>
 
     <LabeledInput :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
@@ -79,7 +78,6 @@
         :name="`${namePrefix}-physical-bulb-lumens`"
         :schema-property="physicalBulbProperties.lumens" /> lm
     </LabeledInput>
-
 
     <h4>Lens</h4>
 

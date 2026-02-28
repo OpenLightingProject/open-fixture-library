@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url';
 import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
 
-
 const requiredEnvironmentVariables = [
   'GITHUB_USER_TOKEN',
   'GITHUB_REPOSITORY',

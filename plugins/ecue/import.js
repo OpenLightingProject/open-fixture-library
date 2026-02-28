@@ -36,7 +36,6 @@ export async function importFixtures(buffer, filename, authorName) {
 
   return out;
 
-
   /**
    * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
    * Calls {@link addFixture} for all contained fixtures.
@@ -61,7 +60,6 @@ export async function importFixtures(buffer, filename, authorName) {
       addFixture(fixture, manufacturerKey);
     }
   }
-
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
@@ -241,7 +239,6 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   fixture.availableChannels[channelKey] = channel;
   fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
 
-
   /**
    * Adds DMX value related properties to channel.
    */
@@ -376,7 +373,6 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     return capability;
-
 
     /**
      * @returns {number[]} The DMX range of this capability.

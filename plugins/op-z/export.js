@@ -50,7 +50,6 @@ export async function exportFixtures(fixtures, options) {
     }
   }
 
-
   return [{
     name: 'dmx.json',
     content: JSON.stringify(exportJson, null, 2),
@@ -58,7 +57,6 @@ export async function exportFixtures(fixtures, options) {
     fixtures,
   }];
 }
-
 
 /**
  * @param {AbstractChannel} channel The OFL channel object.
@@ -106,7 +104,6 @@ function getOpZChannelType(channel, fixtureKey) {
 
   return getKnobType(channel, fixtureKey) || `${defaultValue}`;
 }
-
 
 /**
  * Try to use a `knobX` OP-Z channel type for this channel. A channel used

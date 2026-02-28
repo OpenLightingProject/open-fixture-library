@@ -38,7 +38,6 @@ export async function createFixtureFromEditor({ request }) {
   }
 }
 
-
 /**
  * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
  * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
@@ -126,7 +125,6 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
     }
-
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
@@ -451,7 +449,6 @@ async function getFixtureCreateResult(fixtures) {
     result.fixtures[fixtureKey].modes.push(mode);
   }
 }
-
 
 // helper functions
 
