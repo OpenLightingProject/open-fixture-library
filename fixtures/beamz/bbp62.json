@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "bbp62",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["I"],
+    "createDate": "2025-12-19",
+    "lastModifyDate": "2025-12-19"
+  },
+  "links": {
+    "other": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/11/150.579-BBP62-Uplighter_-Manual_V1.0.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Uv": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightness": "off"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "dimmer-mode"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 ch",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "Uv",
+        "Dimmer"
+      ]
+    }
+  ]
+}
