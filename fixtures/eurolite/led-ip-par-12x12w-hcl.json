@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED IP PAR 12x12W HCL",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Elie.M"],
+    "createDate": "2024-08-31",
+    "lastModifyDate": "2024-08-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.recordcase.de/media/pdf/7c/58/7a/Eurolite-LED-IP-PAR-12x12W-HCL-User-Manual-DE-EN.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.fr/en/mpn51914187-eurolite-led-ip-par-12x12w-hcl.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV"
+      ]
+    }
+  ]
+}
