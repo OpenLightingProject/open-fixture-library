@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PS10W LED PIN SPOT 10W 4-IN-1 DMX",
+  "shortName": "PS10W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Raine M. Ekman"],
+    "createDate": "2024-05-30",
+    "lastModifyDate": "2024-05-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2024/05/151.259-PS10W-LED-Pin-Spot-10W-RGBW-DMX_manual_V1.3.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/ps10w-led-pin-spot-10w-4-in-1-dmx/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Mb6_FTCzp1o"
+    ]
+  },
+  "physical": {
+    "dimensions": [68, 145, 150],
+    "weight": 0.7,
+    "power": 17,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "Random colour",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Auto"
+      ]
+    }
+  ]
+}
