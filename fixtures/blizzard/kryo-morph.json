@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kryo Morph",
+  "shortName": "Kryo",
+  "categories": ["Moving Head", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-25",
+    "lastModifyDate": "2026-01-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.proacousticsusa.com/media/wysiwyg/Kryo.Morph_Manual_Rev_A_Web_.pdf"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/kryo-morph"
+    ]
+  },
+  "physical": {
+    "dimensions": [326, 594, 269],
+    "weight": 34.2,
+    "power": 365,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "HRI 280W Discharge Lamp"
+    },
+    "lens": {
+      "degreesMinMax": [2.5, 20]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo 1 (Fixed)": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Gobo 2 (Rotating)": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Macros"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Rotation": {
+      "capability": {
+        "type": "WheelSlotRotation"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 2 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus 2": {
+      "name": "Focus",
+      "fineChannelAliases": ["Focus 2 fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 5": {
+      "name": "Reserved",
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Gobo 1 (Fixed)",
+        "Prism",
+        "Prism Rotation",
+        "Gobo 2 (Rotating)",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine"
+      ]
+    },
+    {
+      "name": "Small",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Macro",
+        "Color Wheel",
+        "Reserved",
+        "Gobo 1 (Fixed)",
+        "Gobo 2 (Rotating)",
+        "Gobo Rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Zoom",
+        "Focus",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Macro",
+        "Color Wheel",
+        "Reserved",
+        "Reserved 2",
+        "Gobo 1 (Fixed)",
+        "Gobo 2 (Rotating)",
+        "Gobo Rotation",
+        "Reserved 3",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Zoom 2",
+        "Zoom 2 fine",
+        "Focus 2",
+        "Focus 2 fine",
+        "Reserved 4",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Reserved 5"
+      ]
+    }
+  ]
+}
