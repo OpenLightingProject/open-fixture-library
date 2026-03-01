@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SLIM PAR 510",
+  "categories": ["Strobe", "Dimmer", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["QUINTANA"],
+    "createDate": "2025-05-06",
+    "lastModifyDate": "2025-05-06"
+  },
+  "links": {
+    "manual": [
+      "https://algam-akeneo-prod.s3.eu-west-3.amazonaws.com/public/products/a/5/7/5/a575db82df013b32f3158aa1af0684c738beee80_SLIMPAR_510_QUAD___USERMANUAL___2024_09___WEB.pdf"
+    ],
+    "productPage": [
+      "https://www.algam-webstore.fr/algam-lighting-slimpar-510-quad-projecteur-a-led-552305.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ZKWn4Rj_sHY"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 70, 220],
+    "weight": 1.5,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 10W RGBW"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectName": "JUMP",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Effect",
+          "effectName": "SOUND1",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Effect",
+          "effectName": "SOUND 2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 CANAUX",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Program Speed",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
