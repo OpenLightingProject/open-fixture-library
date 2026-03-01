@@ -1,0 +1,2417 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH  Bar S120",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Christian Prison"],
+    "createDate": "2024-12-27",
+    "lastModifyDate": "2024-12-27",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-27",
+      "comment": "created by Q Light Controller Plus (version 4.13.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [1000, 280, 175],
+    "weight": 13.5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 7300,
+      "lumens": 8899
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      4,
+      1,
+      1
+    ]
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Purple  + Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange + Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue + yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow + Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green + Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red + White"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "No function (open)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 (Ring)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 (concentric dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 (square pattern)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 (random dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 (ice)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Color wheel Head 1": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Purple  + Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange + Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue + yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow + Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green + Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red + White"
+        }
+      ]
+    },
+    "Color wheel Head 2": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Purple  + Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange + Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue + yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow + Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green + Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red + White"
+        }
+      ]
+    },
+    "Color wheel Head 3": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Purple  + Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange + Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue + yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow + Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green + Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red + White"
+        }
+      ]
+    },
+    "Color wheel Head 4": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Purple  + Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange + Light blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light blue + yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow + Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue + Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green + Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red + White"
+        }
+      ]
+    },
+    "Gobo Wheel Head 1": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "No function (open)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 (Ring)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 (concentric dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 (square pattern)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 (random dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 (ice)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 2": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "No function (open)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 (Ring)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 (concentric dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 (square pattern)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 (random dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 (ice)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 3": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "No function (open)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 (Ring)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 (concentric dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 (square pattern)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 (random dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 (ice)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 4": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "No function (open)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 (Ring)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 (concentric dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 (square pattern)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 (random dots)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 (ice)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo changes with increasing speed"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Chaser / Show programs / Sound control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Effect",
+          "effectName": "Chaser 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Chaser 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Chaser 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Chaser 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Chaser 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Chaser 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Show program 1"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Show program 2"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Show program 3"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Show program 4"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Show program 5"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Show program 6"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Show program 7"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Show program 8"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Show program 9"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Show program 10"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "Show program 11"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "Show program 12"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "Show program 13"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "Show program 14"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "Show program 15"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "Show program 16"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "Show program 17"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Show program 18"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Show program 19"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Show program 20"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Show program 21"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Show program 22"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Sound control program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Sound control program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Sound control program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Effect",
+          "effectName": "Sound control program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Effect",
+          "effectName": "Sound control program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Effect",
+          "effectName": "Sound control program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Effect",
+          "effectName": "Sound control program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Effect",
+          "effectName": "Sound control program 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Effect",
+          "effectName": "Sound control program 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Effect",
+          "effectName": "Sound control program 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Effect",
+          "effectName": "Sound control program 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Effect",
+          "effectName": "Sound control program 12",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Effect",
+          "effectName": "Sound control program 13",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Effect",
+          "effectName": "Sound control program 14",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Effect",
+          "effectName": "Sound control program 15",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Effect",
+          "effectName": "Sound control program 16",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Effect",
+          "effectName": "Sound control program 17",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Effect",
+          "effectName": "Sound control program 18",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Effect",
+          "effectName": "Sound control program 19",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Effect",
+          "effectName": "Sound control program 20",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Effect",
+          "effectName": "Sound control program 21",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control program 22",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed Chaser + show programs / Sound control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Speed chaser + show programs decreasing // Decreasing microphone sensitivity"
+      }
+    },
+    "PAN/TILT speed Chaser + Motion macros // Sound control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple  + Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange + Light blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light blue + yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow + Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Green + Red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rainbow effect with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Ring)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (concentric dots)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (square pattern)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (random dots)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7 (ice)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect with increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "PAN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "TILT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "PAN/TILT speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "PAN fine adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "TILT fine adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "Pan Head  1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Head  2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Head  3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Head  4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "PAN fine Head 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "PAN fine Head 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "PAN fine Head 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "PAN fine Head 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "TILT Head  1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "TILT Head  2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "TILT Head  3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "TILT Head  4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "TILT fine Head  1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "TILT fine Head  2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "TILT fine Head  3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "TILT fine Head  4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "Master dimmer Head 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer Head 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer Head 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer Head 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "PAN/TILT speed Head 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "PAN/TILT speed Head 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "PAN/TILT speed Head 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "PAN/TILT speed Head 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Strobe Head 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect with increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Strobe Head 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect with increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Strobe Head 3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect with increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Strobe Head 4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect with increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Color wheel Head 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple  + Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange + Light blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light blue + yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow + Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Green + Red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rainbow effect with increasing speed"
+        }
+      ]
+    },
+    "Color wheel Head 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple  + Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange + Light blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light blue + yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow + Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Green + Red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rainbow effect with increasing speed"
+        }
+      ]
+    },
+    "Color wheel Head 3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple  + Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange + Light blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light blue + yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow + Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Green + Red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rainbow effect with increasing speed"
+        }
+      ]
+    },
+    "Color wheel Head 4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Purple  + Orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Orange + Light blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light blue + yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow + Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Blue + Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Green + Red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rainbow effect with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Ring)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (concentric dots)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (square pattern)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (random dots)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7 (ice)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Ring)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (concentric dots)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (square pattern)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (random dots)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7 (ice)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Ring)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (concentric dots)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (square pattern)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (random dots)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7 (ice)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo changes with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel Head 4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Ring)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (concentric ellipses)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (concentric dots)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (square pattern)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (random dots)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (4 boomerang)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7 (ice)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 7 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 6 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 5 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 3 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 2 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shaking with decreasing speed"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo changes with increasing speed"
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Master dimmer",
+        "Chaser / Show programs / Sound control",
+        "Speed Chaser + show programs / Sound control"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "PAN",
+        "TILT",
+        "PAN/TILT speed",
+        "Color wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Master dimmer",
+        "Chaser / Show programs / Sound control",
+        "Speed Chaser + show programs / Sound control"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "PAN",
+        "PAN fine adjustment",
+        "TILT",
+        "TILT fine adjustment",
+        "PAN/TILT speed",
+        "Color wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Master dimmer",
+        "Chaser / Show programs / Sound control",
+        "Speed Chaser + show programs / Sound control"
+      ]
+    },
+    {
+      "name": "38-channel",
+      "shortName": "38ch",
+      "channels": [
+        "Pan Head  1",
+        "PAN fine Head 1",
+        "TILT Head  1",
+        "TILT fine Head  1",
+        "PAN/TILT speed Head 1",
+        "Color wheel Head 1",
+        "Gobo Wheel Head 1",
+        "Strobe Head 1",
+        "Master dimmer Head 1",
+        "Pan Head  2",
+        "PAN fine Head 2",
+        "TILT Head  2",
+        "TILT fine Head  2",
+        "PAN/TILT speed Head 2",
+        "Color wheel Head 2",
+        "Gobo Wheel Head 2",
+        "Strobe Head 2",
+        "Master dimmer Head 2",
+        "Pan Head  3",
+        "PAN fine Head 3",
+        "TILT Head  3",
+        "TILT fine Head  3",
+        "PAN/TILT speed Head 3",
+        "Color wheel Head 3",
+        "Gobo Wheel Head 3",
+        "Strobe Head 3",
+        "Master dimmer Head 3",
+        "Pan Head  4",
+        "PAN fine Head 4",
+        "TILT Head  4",
+        "TILT fine Head  4",
+        "PAN/TILT speed Head 4",
+        "Color wheel Head 4",
+        "Gobo Wheel Head 4",
+        "Strobe Head 4",
+        "Master dimmer Head 4",
+        "Chaser / Show programs / Sound control",
+        "Speed Chaser + show programs / Sound control"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master dimmer",
+        "Chaser / Show programs / Sound control",
+        "PAN/TILT speed Chaser + Motion macros // Sound control",
+        "Color wheel",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
