@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wash led zoom",
+  "shortName": "Aura wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Wash led zoom SC"],
+    "createDate": "2025-03-30",
+    "lastModifyDate": "2025-03-30"
+  },
+  "links": {
+    "manual": [
+      "https://sebastiancucchetti.it"
+    ]
+  },
+  "physical": {
+    "weight": 12,
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "255%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "255%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Function Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Functional Mode Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter",
+        "Focus",
+        "Function Mode",
+        "Functional Mode Speed",
+        "Reserved",
+        "Reserved 2",
+        "Reserved 3",
+        "Reserved 4"
+      ]
+    }
+  ]
+}
