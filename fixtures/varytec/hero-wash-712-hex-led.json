@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "hero Wash 712 hex LED",
+  "shortName": "HeroWash712",
+  "categories": ["Blinder", "Color Changer", "Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["simo-light"],
+    "createDate": "2025-10-31",
+    "lastModifyDate": "2025-10-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/varytec/hero-wash-712/mode-d-emploi?p=45"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel DMX",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
