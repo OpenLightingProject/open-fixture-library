@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MWL7",
+  "shortName": "MWL7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["matthew van pul"],
+    "createDate": "2025-11-01",
+    "lastModifyDate": "2025-11-01"
+  },
+  "comment": "-",
+  "links": {
+    "productPage": [
+      "https://www.n-gear.nl/"
+    ]
+  },
+  "rdm": {
+    "modelId": 8719327286821
+  },
+  "physical": {
+    "dimensions": [18, 24, 18],
+    "weight": 3.195,
+    "power": 70,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Movement speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "n-gear mhl7",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Movement speed",
+        "Reset"
+      ]
+    }
+  ]
+}
