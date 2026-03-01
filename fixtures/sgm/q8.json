@@ -1,0 +1,218 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q8",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Kochi"],
+    "createDate": "2024-07-06",
+    "lastModifyDate": "2024-07-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-07-06",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "weight": 15,
+    "power": 1000,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 53000
+    },
+    "lens": {
+      "name": "PC"
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [152, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse Up",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [176, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse Down",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Prism",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "Prism",
+          "comment": "Raw"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Prism",
+          "comment": "2000K-10000K"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity (Strobe Blinder 1+2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Duration (Strobe 1+2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Rate (Strobe 1+2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "Effect",
+          "effectName": "Halogen Attack"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Effect",
+          "effectName": "Halogen Decay"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "Effect",
+          "effectName": "Halogen Attack and Decay"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "Effect",
+          "effectName": "Random Pixel"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Spikes"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "CTC",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity (Strobe Blinder 1+2)",
+        "Duration (Strobe 1+2)",
+        "Rate (Strobe 1+2)",
+        "Effect"
+      ]
+    }
+  ]
+}
