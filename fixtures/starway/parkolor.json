@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARKOLOR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pascal Denis"],
+    "createDate": "2026-01-27",
+    "lastModifyDate": "2026-01-27"
+  },
+  "links": {
+    "productPage": [
+      "https://starway.eu/fr/produits/parkolor-120hd"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "lumens": 2000
+    }
+  },
+  "availableChannels": {
+    "FADER": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "ZOOM": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "shortName": "7ch",
+      "channels": [
+        "FADER",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "White",
+        "ZOOM"
+      ]
+    }
+  ]
+}
