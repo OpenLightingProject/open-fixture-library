@@ -1,0 +1,386 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Multi FX Bar EZ",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Laser", "Stand", "Strobe"],
+  "meta": {
+    "authors": ["Unbekannter Nr.1"],
+    "createDate": "2025-10-11",
+    "lastModifyDate": "2025-10-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/de/downloads/file/id/1746240921"
+    ]
+  },
+  "physical": {
+    "dimensions": [1147, 414, 80],
+    "weight": 7,
+    "power": 110,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "White PAR1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red PAR1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green PAR1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue PAR1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber PAR1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV PAR1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV PAR2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV PAR3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV PAR4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Derby 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Rotate Derby 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 126],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "clockwise rotation (slow to fast)"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speed": "fast CCW",
+          "comment": "counter clockwise rotation (fast to slow)"
+        }
+      ]
+    },
+    "Red Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue  Derby 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Rotate Derby 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 126],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "clockwise rotation (slow to fast)"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speed": "fast CCW",
+          "comment": "counter clockwise rotation (fast to slow)"
+        }
+      ]
+    },
+    "Strobe Flash 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Strobe Open"
+        }
+      ]
+    },
+    "Strobe Flash 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Flash 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Flash 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "36 Channel",
+      "shortName": "36ch",
+      "channels": [
+        "Red PAR1",
+        "Green PAR1",
+        "Blue PAR1",
+        "White PAR1",
+        "Amber PAR1",
+        "UV PAR1",
+        "Red PAR2",
+        "Green PAR2",
+        "Blue PAR2",
+        "White PAR2",
+        "Amber PAR2",
+        "UV PAR2",
+        "Red PAR3",
+        "Green PAR3",
+        "Blue PAR3",
+        "White PAR3",
+        "Amber PAR3",
+        "UV PAR3",
+        "Red PAR4",
+        "Green PAR4",
+        "Blue PAR4",
+        "White PAR4",
+        "Amber PAR4",
+        "UV PAR4",
+        "Red Derby 1",
+        "Green Derby 1",
+        "Blue Derby 1",
+        "Rotate Derby 1",
+        "Red Derby 2",
+        "Green Derby 2",
+        "Blue  Derby 2",
+        "Rotate Derby 2",
+        "Strobe Flash 1",
+        "Strobe Flash 2",
+        "Strobe Flash 3",
+        "Strobe Flash 4"
+      ]
+    }
+  ]
+}
