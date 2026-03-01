@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB260",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Adiu ! Lightintg"],
+    "createDate": "2025-12-13",
+    "lastModifyDate": "2025-12-13"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/CLB260_User_manual.pdf"
+    ],
+    "productPage": [
+      "https://betopperdj.com/fr/products/betopper-9r-260w-beam-moving-head-light"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=P08ccv7drTY"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 380, 199],
+    "weight": 6.3,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "OSRAM SIRIUS HRI 251W(CLB260-O)",
+      "colorTemperature": 7800,
+      "lumens": 61162
+    },
+    "lens": {
+      "degreesMinMax": [2.8, 2.8]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 207],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "PRISME OFF"
+        },
+        {
+          "dmxRange": [11, 127],
+          "type": "Prism",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "Frost": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": "high",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "OTHER": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 512",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Frost",
+        "OTHER"
+      ]
+    }
+  ]
+}
