@@ -1,0 +1,465 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tiptop Stage 6 x 500mW Moving Head Laser",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["DJohn North"],
+    "createDate": "2024-01-11",
+    "lastModifyDate": "2024-01-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-01-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [950, 300, 190],
+    "weight": 10.45,
+    "power": 120,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Laser dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed (slow to fast)"
+        }
+      ]
+    },
+    "X-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg",
+        "comment": "0-270 degrees"
+      }
+    },
+    "X-axis motor speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Fast to slow"
+      }
+    },
+    "Y1-Y6-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y1-Y6-axis motor speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Laser effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "No effect"
+        },
+        {
+          "dmxRange": [16, 27],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [28, 39],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [40, 51],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [64, 75],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [76, 87],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [88, 99],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [100, 111],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [112, 123],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [124, 135],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [136, 147],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [148, 159],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [160, 171],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [172, 183],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [184, 195],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [196, 207],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [208, 219],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [220, 231],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [232, 243],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        }
+      ]
+    },
+    "Laser effect speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Self-propelled X/Y": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 55],
+          "type": "Effect",
+          "effectName": "No effect"
+        },
+        {
+          "dmxRange": [56, 80],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 1"
+        },
+        {
+          "dmxRange": [81, 105],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 2"
+        },
+        {
+          "dmxRange": [106, 130],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 3"
+        },
+        {
+          "dmxRange": [131, 155],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 4"
+        },
+        {
+          "dmxRange": [156, 180],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 5"
+        },
+        {
+          "dmxRange": [181, 205],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 5 voice controlled"
+        },
+        {
+          "dmxRange": [206, 230],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 6"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Self-propelled effect 6 voice controlled"
+        }
+      ]
+    },
+    "Self-propelled speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Maintenance",
+          "comment": "Machine reset (if value stays for five seconds)"
+        }
+      ]
+    },
+    "Y1-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y2-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y3-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y4-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y5-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Y6-axis motor stroke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Laser 1 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    },
+    "Laser 2 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    },
+    "Laser 3 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    },
+    "Laser 4 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    },
+    "Laser 5 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    },
+    "Laser 6 light": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "On"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Laser dimming",
+        "Strobe",
+        "X-axis motor stroke",
+        "X-axis motor speed",
+        "Y1-Y6-axis motor stroke",
+        "Y1-Y6-axis motor speed",
+        "Laser effect",
+        "Laser effect speed",
+        "Self-propelled X/Y",
+        "Self-propelled speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "23-channel",
+      "shortName": "23ch",
+      "channels": [
+        "Laser dimming",
+        "Strobe",
+        "X-axis motor stroke",
+        "X-axis motor speed",
+        "Y1-axis motor stroke",
+        "Y2-axis motor stroke",
+        "Y3-axis motor stroke",
+        "Y4-axis motor stroke",
+        "Y5-axis motor stroke",
+        "Y6-axis motor stroke",
+        "Y1-Y6-axis motor stroke",
+        "Y1-Y6-axis motor speed",
+        "Laser effect",
+        "Laser effect speed",
+        "Self-propelled X/Y",
+        "Self-propelled speed",
+        "Laser 1 light",
+        "Laser 2 light",
+        "Laser 3 light",
+        "Laser 4 light",
+        "Laser 5 light",
+        "Laser 6 light",
+        "Reset"
+      ]
+    }
+  ]
+}
