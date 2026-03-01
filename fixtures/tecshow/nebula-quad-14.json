@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nebula Quad 14",
+  "shortName": "Nebula Quad 14",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Juanchi Tabasso DJ"],
+    "createDate": "2025-12-01",
+    "lastModifyDate": "2025-12-01"
+  },
+  "comment": "Channels 7 and 8 are not completed on web page for errors loading information. Download the QLC+ Fixture shared for a full functional.",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1BNtWA9S21quD6qykkIP-DhC79rFtbvei/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://amproweb.com/producto/nebula-quad-14/"
+    ],
+    "other": [
+      "https://drive.google.com/file/d/1CH60yxQF2-2AuGji00jimyRo9gh0FfX9/view?usp=sharing"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "dimensions": [180, 180, 80],
+    "weight": 0.9,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "14 x 4-in-1 6W LEDs",
+      "colorTemperature": 6000,
+      "lumens": 1100
+    },
+    "lens": {
+      "name": "LED",
+      "degreesMinMax": [0, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast",
+        "duration": "instant",
+        "comment": "Strobe"
+      }
+    },
+    "Effects": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Function EFX",
+        "speed": "stop"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "EFX Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channels",
+      "shortName": "4Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Channels",
+      "shortName": "8Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Effects",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
