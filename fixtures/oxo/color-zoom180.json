@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color Zoom180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Elsa"],
+    "createDate": "2026-02-03",
+    "lastModifyDate": "2026-02-03"
+  },
+  "links": {
+    "video": [
+      "https://www.cameolight.com/fr/solutions/dj-musiciens/eclairage-statique/projecteurs-a-par/31216/root-par-ip?c=1510"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Zoom"
+      ]
+    }
+  ]
+}
