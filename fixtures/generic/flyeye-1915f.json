@@ -1,0 +1,159 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FLYEYE 1915F",
+  "shortName": "SI 119A",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["mp"],
+    "createDate": "2025-04-16",
+    "lastModifyDate": "2025-04-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.color-imagination.com/FLYEYE1915F.html"
+    ],
+    "productPage": [
+      "https://www.color-imagination.com/FLYEYE1915F.html"
+    ],
+    "video": [
+      "https://www.color-imagination.com/FLYEYE1915F.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RED": {
+      "fineChannelAliases": ["RED fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "STANDARD",
+      "channels": [
+        "Red 2",
+        "Red 2 fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Color Macros",
+        "Strobe",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "No function",
+        "No function 2",
+        "Zoom",
+        "Zoom fine"
+      ]
+    }
+  ]
+}
