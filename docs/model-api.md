@@ -61,13 +61,6 @@ Currently used to create matrix channels.</p>
 </dd>
 </dl>
 
-## Constants
-
-<dl>
-<dt><a href="#channelTypeConstraints">channelTypeConstraints</a></dt>
-<dd></dd>
-</dl>
-
 ## Typedefs
 
 <dl>
@@ -2687,11 +2680,6 @@ Creates a new WheelSlot instance.
 ### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the ceil (end) slot. Null for non-split slots.  
-<a name="channelTypeConstraints"></a>
-
-## channelTypeConstraints
-**Kind**: global constant  
-**Import**: Mode from './Mode.js'  
 <a name="Resolution"></a>
 
 ## Resolution : <code>number</code>
