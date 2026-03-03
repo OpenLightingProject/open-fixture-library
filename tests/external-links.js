@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import '../lib/load-env-file.js';
+
 import http from 'http';
 import https from 'https';
 import { styleText } from 'util';

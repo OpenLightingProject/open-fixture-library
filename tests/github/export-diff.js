@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import '../../lib/load-env-file.js';
+
 import diffPluginOutputs from '../../lib/diff-plugin-outputs.js';
 import importJson from '../../lib/import-json.js';
 import * as pullRequest from './pull-request.js';
