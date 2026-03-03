@@ -50,7 +50,6 @@
 import { objectProp } from 'vue-ts-types';
 import { entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';

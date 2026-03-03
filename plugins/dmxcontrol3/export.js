@@ -1,10 +1,8 @@
 import sanitize from 'sanitize-filename';
 import xmlbuilder from 'xmlbuilder';
-
 import FineChannel from '../../lib/model/FineChannel.js';
 import NullChannel from '../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
-
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 

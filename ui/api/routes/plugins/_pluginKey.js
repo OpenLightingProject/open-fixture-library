@@ -1,5 +1,4 @@
 import importJson from '../../../../lib/import-json.js';
-
 /** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
 /** @import { ApiResponse } from '../../index.js' */
 

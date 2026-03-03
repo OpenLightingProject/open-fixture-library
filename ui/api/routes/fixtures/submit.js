@@ -1,5 +1,4 @@
 import createPullRequest from '../../../../lib/create-github-pr.js';
-
 /** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
 /** @import { ApiResponse } from '../../index.js' */
 /** @import { FixtureCreateResult } from '../../../../lib/types.js' */

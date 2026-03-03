@@ -1,6 +1,5 @@
 import JSZip from 'jszip';
 import xml2js from 'xml2js';
-
 import importJson from '../../lib/import-json.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-values.js';

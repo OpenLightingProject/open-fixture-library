@@ -76,7 +76,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { fixtureProperties } from '../../../lib/schema-properties.js';
-
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';

@@ -69,7 +69,6 @@
 
 <script>
 import register from '../../fixtures/register.json';
-
 import LabeledInput from '../components/LabeledInput.vue';
 
 export default {

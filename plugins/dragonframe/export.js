@@ -1,6 +1,5 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
-
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 // needed for export test

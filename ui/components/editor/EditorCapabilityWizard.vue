@@ -136,7 +136,6 @@ import {
   getEmptyCapability,
   isCapabilityChanged,
 } from '../../assets/scripts/editor-utilities.js';
-
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 

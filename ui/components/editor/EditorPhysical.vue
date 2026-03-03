@@ -114,7 +114,6 @@ import {
   physicalProperties,
   schemaDefinitions,
 } from '../../../lib/schema-properties.js';
-
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputDimensions from '../PropertyInputDimensions.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';

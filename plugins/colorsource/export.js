@@ -1,5 +1,4 @@
 import { v5 as uuidv5 } from 'uuid';
-
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';

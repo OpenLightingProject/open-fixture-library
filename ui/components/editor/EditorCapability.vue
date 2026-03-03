@@ -89,7 +89,6 @@
 import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
 import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
-
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';

@@ -206,7 +206,6 @@
 import { stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
-
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
 import FixturePage from '../fixture-page/FixturePage.vue';

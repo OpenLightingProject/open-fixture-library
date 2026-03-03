@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'url';
 import express from 'express';
 import JSZip from 'jszip';
-
 import importJson from '../../lib/import-json.js';
 import Fixture from '../../lib/model/Fixture.js';
 import Manufacturer from '../../lib/model/Manufacturer.js';

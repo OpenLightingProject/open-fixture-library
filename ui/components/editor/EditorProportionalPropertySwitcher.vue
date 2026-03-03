@@ -190,7 +190,6 @@ import {
   schemaDefinitions,
   unitsSchema,
 } from '../../../lib/schema-properties.js';
-
 import PropertyInputEntity from '../PropertyInputEntity.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';

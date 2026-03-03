@@ -2,12 +2,10 @@
 
 import { readFile } from 'fs/promises';
 import minimist from 'minimist';
-
 import createPullRequest from '../lib/create-github-pr.js';
 import fixtureJsonStringify from '../lib/fixture-json-stringify.js';
 import importJson from '../lib/import-json.js';
 import { checkFixture } from '../tests/fixture-valid.js';
-
 /** @import { FixtureCreateResult } from '../lib/types.js' */
 
 const cliArguments = minimist(process.argv.slice(2), {

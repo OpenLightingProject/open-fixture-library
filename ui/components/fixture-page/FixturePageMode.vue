@@ -65,7 +65,6 @@ ol.mode-channels {
 <script>
 import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
-
 import FixturePageChannel from './FixturePageChannel.vue';
 import FixturePagePhysical from './FixturePagePhysical.vue';
 

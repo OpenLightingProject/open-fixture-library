@@ -4,7 +4,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { styleText } from 'util';
 import minimist from 'minimist';
-
 import importJson from '../lib/import-json.js';
 import { fixtureFromRepository } from '../lib/model.js';
 

@@ -157,7 +157,6 @@ import FineChannel from '../../../lib/model/FineChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 import NullChannel from '../../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
-
 import ChannelTypeIcon from '../ChannelTypeIcon.vue';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledValue from '../LabeledValue.vue';

@@ -1,5 +1,4 @@
 import xml2js from 'xml2js';
-
 import importJson from '../../lib/import-json.js';
 import {
   capabilityPresets,

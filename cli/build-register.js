@@ -4,7 +4,6 @@ import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { styleText } from 'util';
-
 import importJson from '../lib/import-json.js';
 import { Register } from '../lib/register.js';
 

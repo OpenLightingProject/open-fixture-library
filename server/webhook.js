@@ -5,7 +5,6 @@
 const { execSync } = require('child_process');
 const { createHmac, timingSafeEqual } = require('crypto');
 const http = require('http');
-
 const pm2config = require('./ecosystem.config.js');
 const secrets = require('./ofl-secrets.json');
 

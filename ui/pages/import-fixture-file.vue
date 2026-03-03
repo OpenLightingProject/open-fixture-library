@@ -106,7 +106,6 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-
 import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';

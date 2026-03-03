@@ -1,8 +1,7 @@
-import { styleText } from 'util';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-
 import '../lib/load-env-file.js';
 
+import { styleText } from 'util';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import SiteCrawler from '../lib/site-crawler.js';
 
 describe('http-status', () => {

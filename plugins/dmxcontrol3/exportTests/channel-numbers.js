@@ -1,6 +1,5 @@
 import { promisify } from 'util';
 import xml2js from 'xml2js';
-
 import Range from '../../../lib/model/Range.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 

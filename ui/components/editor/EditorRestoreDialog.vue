@@ -37,7 +37,6 @@ import {
   getEmptyPhysical,
   getSanitizedChannel,
 } from '../../assets/scripts/editor-utilities.js';
-
 import A11yDialog from '../A11yDialog.vue';
 
 export default {

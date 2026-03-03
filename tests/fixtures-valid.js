@@ -4,7 +4,6 @@ import { readdir } from 'fs/promises';
 import path from 'path';
 import { styleText } from 'util';
 import minimist from 'minimist';
-
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';

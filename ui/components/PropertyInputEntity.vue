@@ -81,7 +81,6 @@
 <script>
 import { anyProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
 import { unitsSchema } from '../../lib/schema-properties.js';
-
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {

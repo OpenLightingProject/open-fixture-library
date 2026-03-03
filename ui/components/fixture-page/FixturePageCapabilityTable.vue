@@ -130,7 +130,6 @@ th {
 import { instanceOfProp, numberProp } from 'vue-ts-types';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';
-
 import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
 import HelpWantedMessage from '../HelpWantedMessage.vue';
 
