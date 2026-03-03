@@ -470,7 +470,7 @@ Use only in `WheelShake` capabilities!
 
 ### capability.getMenuClickDmxValueWithResolution(desiredResolution) ⇒ <code>number</code>
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
-**Returns**: <code>number</code> - The DMX value to set when this capability is chosen in a lighting software's auto menu, scaled to match the given resolution.  
+**Returns**: <code>number</code> - The DMX value (scaled to the given resolution) to set when this capability is chosen in a lighting software's auto menu, or -1 if the capability should be hidden in the auto menu.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1086,7 +1086,7 @@ Create a new Fixture instance.
 
 ### fixture.comment ⇒ <code>string</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>string</code> - A comment about the fixture (often a note about a incorrectness in the manual). Defaults to an empty string.  
+**Returns**: <code>string</code> - A comment about the fixture (often a note about an incorrectness in the manual). Defaults to an empty string.  
 <a name="Fixture+helpWanted"></a>
 
 ### fixture.helpWanted ⇒ <code>string</code> \| <code>null</code>
