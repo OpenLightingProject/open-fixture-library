@@ -34,9 +34,7 @@
 <script>
 import { booleanProp, objectProp } from 'vue-ts-types';
 import { capabilityTypes } from '../../../lib/schema-properties.js';
-
 import LabeledInput from '../LabeledInput.vue';
-
 import CapabilityBeamAngle from './capabilities/CapabilityBeamAngle.vue';
 import CapabilityBeamPosition from './capabilities/CapabilityBeamPosition.vue';
 import CapabilityBladeInsertion from './capabilities/CapabilityBladeInsertion.vue';

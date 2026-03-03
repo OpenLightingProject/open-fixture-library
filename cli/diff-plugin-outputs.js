@@ -2,7 +2,6 @@
 
 import { styleText } from 'util';
 import minimist from 'minimist';
-
 import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
 import importJson from '../lib/import-json.js';
 

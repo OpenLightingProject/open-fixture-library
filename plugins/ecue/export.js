@@ -1,5 +1,4 @@
 import xmlbuilder from 'xmlbuilder';
-
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
 import NullChannel from '../../lib/model/NullChannel.js';

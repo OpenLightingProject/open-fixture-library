@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'url';
-
 import importJson from '../../lib/import-json.js';
 import { fixtureFromRepository } from '../../lib/model.js';
 import * as pullRequest from './pull-request.js';

@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
 import '../lib/load-env-file.js';
-
 import http from 'http';
 import https from 'https';
 import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
-
 import SiteCrawler from '../lib/site-crawler.js';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';

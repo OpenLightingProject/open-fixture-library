@@ -195,12 +195,9 @@
 import { EmbettyVideo } from 'embetty-vue';
 import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
-
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
-
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';

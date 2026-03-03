@@ -86,7 +86,6 @@
 
 <script>
 import register from '../../fixtures/register.json';
-
 import ConditionalDetails from '../components/ConditionalDetails.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 

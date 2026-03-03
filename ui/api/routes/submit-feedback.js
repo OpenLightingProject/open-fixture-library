@@ -1,6 +1,5 @@
 import createIssue from '../../../lib/create-github-issue.js';
 import { fixtureFromRepository } from '../../../lib/model.js';
-
 /** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
 /** @import { ApiResponse } from '../index.js' */
 

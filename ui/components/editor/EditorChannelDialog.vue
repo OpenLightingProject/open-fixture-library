@@ -309,7 +309,6 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
-
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
@@ -321,7 +320,6 @@ import {
   isCapabilityChanged,
   isChannelChanged,
 } from '../../assets/scripts/editor-utilities.js';
-
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputBoolean from '../PropertyInputBoolean.vue';

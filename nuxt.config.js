@@ -1,6 +1,5 @@
 import { fileURLToPath } from 'url';
 import sass from 'sass';
-
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';

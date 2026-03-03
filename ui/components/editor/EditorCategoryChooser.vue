@@ -26,7 +26,6 @@
 <script>
 import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
-
 import CategoryBadge from '../CategoryBadge.vue';
 
 export default {

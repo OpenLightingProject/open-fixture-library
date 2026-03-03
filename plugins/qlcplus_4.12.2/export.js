@@ -1,11 +1,9 @@
 import sanitize from 'sanitize-filename';
 import xmlbuilder from 'xmlbuilder';
-
 import Capability from '../../lib/model/Capability.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
-
 import {
   exportHelpers,
   getCapabilityPreset,

@@ -53,7 +53,6 @@
 import { booleanProp, objectProp } from 'vue-ts-types';
 import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-
 import PropertyInputText from '../PropertyInputText.vue';
 
 const placeholders = {

@@ -200,10 +200,8 @@
 <script>
 import { numberProp, objectProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
-
 import { modeProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
 import { constants } from '../../assets/scripts/editor-utilities.js';
-
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';

@@ -5,7 +5,6 @@ import express from 'express';
 import { OpenAPIBackend } from 'openapi-backend';
 import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 import { sendJson } from '../../lib/server-response-helpers.js';
-
 import * as routeHandlers from './routes.js';
 
 /**

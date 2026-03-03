@@ -2,11 +2,9 @@
 
 import { colornames as namedColors } from 'color-name-list';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
-
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
-
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);

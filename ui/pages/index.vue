@@ -87,7 +87,6 @@
 
 <script>
 import register from '../../fixtures/register.json';
-
 import DownloadButton from '../components/DownloadButton.vue';
 import FixtureHeader from '../components/FixtureHeader.vue';
 

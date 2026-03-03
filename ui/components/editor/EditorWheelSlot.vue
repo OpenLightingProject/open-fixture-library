@@ -49,10 +49,8 @@
 import { integerProp, objectProp } from 'vue-ts-types';
 import { wheelSlotTypes } from '../../../lib/schema-properties.js';
 import { getEmptyWheelSlot } from '../../assets/scripts/editor-utilities.js';
-
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
-
 import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
 import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
 import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';

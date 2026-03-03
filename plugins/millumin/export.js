@@ -1,5 +1,4 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
-
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 

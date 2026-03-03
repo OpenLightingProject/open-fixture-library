@@ -2,7 +2,6 @@ import https from 'https';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import getAjvErrorMessages from '../../../lib/get-ajv-error-messages.js';
-
 import { supportedOflVersion as SUPPORTED_OFL_VERSION } from '../export.js';
 
 const REPO_BASE_URL = 'https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library';

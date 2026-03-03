@@ -1,6 +1,5 @@
 import sanitize from 'sanitize-filename';
 import xmlbuilder from 'xmlbuilder';
-
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';

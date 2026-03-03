@@ -42,7 +42,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';

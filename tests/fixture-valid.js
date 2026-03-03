@@ -1,5 +1,4 @@
 import { inspect } from 'util';
-
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';

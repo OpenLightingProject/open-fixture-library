@@ -1,6 +1,5 @@
 import importJson from '../../../../lib/import-json.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
-
 /** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
 /** @import { ApiResponse } from '../../index.js' */
 /** @import { FixtureCreateResult } from '../../../../lib/types.js' */
