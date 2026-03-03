@@ -95,15 +95,17 @@ const enabledRuleParameters = {
     ignore: ['^@octokit/rest$'],
   }],
   'import/order': [{
-    groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
-    alphabetize: {
+    'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+    'alphabetize': {
       order: 'asc',
       caseInsensitive: true,
+      orderImportKind: 'desc',
     },
-    named: {
+    'named': {
       enabled: true,
       cjsExports: false,
     },
+    'newlines-between': 'never',
   }],
 
   // eslint-plugin-jsdoc
