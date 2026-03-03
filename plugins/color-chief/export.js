@@ -1,9 +1,8 @@
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 /** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
 /** @import Fixture from '../../lib/model/Fixture.js' */
 /** @import Mode from '../../lib/model/Mode.js' */
-
-import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 /**
  * @typedef {object} ModeChannels

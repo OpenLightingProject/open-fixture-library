@@ -3,20 +3,20 @@ import { inspect } from 'util';
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
+import FineChannel from '../lib/model/FineChannel.js';
+import Fixture from '../lib/model/Fixture.js';
+import NullChannel from '../lib/model/NullChannel.js';
+import SwitchingChannel from '../lib/model/SwitchingChannel.js';
+import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
+import { schemaDefinitions } from '../lib/schema-properties.js';
 /** @import AbstractChannel from '../lib/model/AbstractChannel.js' */
 /** @import Capability from '../lib/model/Capability.js' */
 /** @import CoarseChannel from '../lib/model/CoarseChannel.js' */
-import FineChannel from '../lib/model/FineChannel.js';
-import Fixture from '../lib/model/Fixture.js';
 /** @import Matrix from '../lib/model/Matrix.js' */
 /** @import Meta from '../lib/model/Meta.js' */
-import NullChannel from '../lib/model/NullChannel.js';
 /** @import Physical from '../lib/model/Physical.js' */
 /** @import TemplateChannel from '../lib/model/TemplateChannel.js' */
-import SwitchingChannel from '../lib/model/SwitchingChannel.js';
-import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
 /** @import Wheel from '../lib/model/Wheel.js' */
-import { schemaDefinitions } from '../lib/schema-properties.js';
 
 let initialized = false;
 let register;

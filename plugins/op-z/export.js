@@ -1,9 +1,9 @@
-/** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
-/** @import Fixture from '../../lib/model/Fixture.js' */
 import NullChannel from '../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
+/** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
+/** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = '0.1.0';
 
