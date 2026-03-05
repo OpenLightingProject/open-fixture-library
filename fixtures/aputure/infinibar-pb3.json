@@ -1,0 +1,364 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Infinibar PB3",
+  "shortName": "PB3",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-03-05",
+    "lastModifyDate": "2026-03-05"
+  },
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/Infinibar/All%20Files/INFINIBAR-Product-Manual-V1.0.pdf"
+    ],
+    "productPage": [
+      "https://aputure.com/en-US/products/infinibar-pb3"
+    ]
+  },
+  "physical": {
+    "dimensions": [304, 45, 43],
+    "weight": 0.6,
+    "power": 9,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "lumens": 485
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G/M": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "Minus Green (approx -99% → -1%)"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "Plus Green (approx +1% → +99%)"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "CCT ↔ HSI": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue angle (HSI), 1°–360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Saturation (HSI), 0%–100%"
+      }
+    },
+    "X Coordinate": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 0.8"
+      }
+    },
+    "Y Coordinate": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 0.8"
+      }
+    },
+    "FX Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Paparazzi II"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Lightning III"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "TV III"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Fire III"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pulsing III"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Cop Car III"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Party Lights III"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Fireworks II"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Play/Pause/Stop": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Play"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Generic",
+          "comment": "Pause"
+        },
+        {
+          "dmxRange": [61, 120],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [121, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Effect Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Color Fade"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Color Cycle"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "One Pixel Chase"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Two Pixel Chase"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Three Pixel Chase"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Rainbow"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pixel Fire"
+        },
+        {
+          "dmxRange": [70, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB",
+      "shortName": "CCT_RGB",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G/M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G/M",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI",
+      "shortName": "CCT_HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G/M",
+        "CCT ↔ HSI",
+        "Hue",
+        "Saturation",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI",
+      "shortName": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "xy",
+      "shortName": "xy",
+      "channels": [
+        "Intensity",
+        "X Coordinate",
+        "Y Coordinate",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "System FX - List of Effects",
+      "shortName": "SFX-List",
+      "channels": [
+        "Intensity",
+        "FX Selection"
+      ]
+    },
+    {
+      "name": "Pixel FX - List of Effects",
+      "shortName": "PFX-List",
+      "channels": [
+        "Intensity",
+        "Play/Pause/Stop",
+        "Effect Selection"
+      ]
+    }
+  ]
+}
