@@ -233,7 +233,6 @@ export default {
 };
 
 /**
- * @param {object} axios The Axios instance.
  * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
  * @returns {object} The redirect object.
  */
