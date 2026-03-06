@@ -393,7 +393,7 @@ export default [
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
-  ...eslintPluginVue.configs['flat/vue2-recommended-error'],
+  ...eslintPluginVue.configs['flat/recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
   {

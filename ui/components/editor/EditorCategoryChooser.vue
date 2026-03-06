@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Draggable v-model="selectedCategories" tag="span">
-      <CategoryBadge
-        v-for="cat of value"
-        :key="cat"
-        :category="cat"
-        selected
-        selectable
-        @click="deselect(cat)"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
+    <Draggable v-model="selectedCategories" item-key="." tag="span">
+      <template #item="{ element: cat }">
+        <CategoryBadge
+          :category="cat"
+          selected
+          selectable
+          @click="deselect(cat)"
+          @focus="onFocus()"
+          @blur="onBlur($event)" />
+      </template>
     </Draggable>
 
     <CategoryBadge
@@ -34,38 +34,38 @@ export default {
     CategoryBadge,
   },
   props: {
-    value: arrayProp().required,
+    modelValue: arrayProp().required,
     allCategories: arrayProp().required,
   },
   emits: {
-    input: (value) => true,
+    'update:modelValue': (value) => true,
     focus: () => true,
     blur: () => true,
   },
   computed: {
     selectedCategories: {
       get() {
-        return this.value;
+        return this.modelValue;
       },
       set(newSelectedCategories) {
-        this.$emit('input', newSelectedCategories);
+        this.$emit('update:modelValue', newSelectedCategories);
       },
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        (category) => !this.value.includes(category),
+        (category) => !this.modelValue.includes(category),
       );
     },
   },
   methods: {
     select(selectedCategory) {
-      const updatedCategoryList = [...this.value, selectedCategory];
-      this.$emit('input', updatedCategoryList);
+      const updatedCategoryList = [...this.modelValue, selectedCategory];
+      this.$emit('update:modelValue', updatedCategoryList);
       this.onBlur();
     },
     deselect(deselectedCategory) {
-      const updatedCategoryList = this.value.filter((category) => category !== deselectedCategory);
-      this.$emit('input', updatedCategoryList);
+      const updatedCategoryList = this.modelValue.filter((category) => category !== deselectedCategory);
+      this.$emit('update:modelValue', updatedCategoryList);
       this.onBlur();
     },
     onFocus() {

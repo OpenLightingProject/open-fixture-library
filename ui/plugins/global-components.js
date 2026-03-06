@@ -1,6 +1,8 @@
-import Vue from 'vue';
+import { defineNuxtPlugin } from '#app';
 import OflSvg from '../components/global/OflSvg.vue';
 import OflTime from '../components/global/OflTime.vue';
 
-Vue.component('OflSvg', OflSvg);
-Vue.component('OflTime', OflTime);
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('OflSvg', OflSvg);
+  nuxtApp.vueApp.component('OflTime', OflTime);
+});

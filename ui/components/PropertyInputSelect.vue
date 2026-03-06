@@ -2,7 +2,7 @@
   <select
     v-model="localValue"
     :required="required"
-    :class="{ empty: value === `` }">
+    :class="{ empty: modelValue === `` }">
     <option :disabled="required" value="">unknown</option>
     <option
       v-for="item of schemaProperty.enum"
@@ -22,18 +22,18 @@ export default {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
     additionHint: stringProp().optional,
-    value: anyProp().required,
+    modelValue: anyProp().required,
   },
   emits: {
-    input: (value) => true,
+    'update:modelValue': (value) => true,
   },
   computed: {
     localValue: {
       get() {
-        return this.value;
+        return this.modelValue;
       },
       set(newValue) {
-        this.$emit('input', newValue);
+        this.$emit('update:modelValue', newValue);
       },
     },
   },

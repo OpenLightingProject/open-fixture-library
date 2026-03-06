@@ -65,7 +65,7 @@
     margin-bottom: 0.8rem;
   }
 
-  & ::v-deep summary {
+  & :deep(summary) {
     padding: 0.3rem 0.5rem;
   }
 }

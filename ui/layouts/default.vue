@@ -14,7 +14,7 @@
 
     <div id="content" ref="content" tabindex="-1">
       <ClimateStrikeBanner />
-      <Nuxt />
+      <NuxtPage />
     </div>
 
   </div>
@@ -85,7 +85,7 @@ export default {
     document.addEventListener('touchstart', this.onTouchStart, true);
     document.addEventListener('mousemove', this.onMouseMove, true);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('touchstart', this.onTouchStart, true);
     document.removeEventListener('mousemove', this.onMouseMove, true);
   },

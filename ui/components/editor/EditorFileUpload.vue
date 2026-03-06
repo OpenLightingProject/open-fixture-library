@@ -11,10 +11,6 @@
 import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
 
 export default {
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
   props: {
     required: booleanProp().withDefault(false),
     name: stringProp().required,

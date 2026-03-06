@@ -75,11 +75,11 @@
   margin-top: 2rem;
 }
 
-.search ::v-deep select[multiple] {
+.search :deep(select[multiple]) {
   margin-right: 1ex;
 }
 
-.search ::v-deep details {
+.search :deep(details) {
   margin: 1rem 0;
 }
 </style>
@@ -94,15 +94,12 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+  async setup() {
+    const { data: manufacturers, error } = await useAsyncData('manufacturers', () => $fetch('/api/v1/manufacturers'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { manufacturers };
+    return { manufacturers: manufacturers.value };
   },
   data() {
     return {
@@ -117,45 +114,9 @@ export default {
       isBrowser: false,
     };
   },
-  async fetch() {
-    this.loading = true;
-
-    const sanitizedQuery = getSanitizedQuery(this.$route.query);
-    this.searchQuery = sanitizedQuery.search;
-    this.manufacturersQuery = sanitizedQuery.manufacturers;
-    this.categoriesQuery = sanitizedQuery.categories;
-    this.searchFor = sanitizedQuery.search;
-
-    if (this.detailsInitiallyOpen === null) {
-      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
-    }
-
-    try {
-      this.results = await this.$axios.$post('/api/v1/get-search-results', {
-        searchQuery: sanitizedQuery.search,
-        manufacturersQuery: sanitizedQuery.manufacturers,
-        categoriesQuery: sanitizedQuery.categories,
-      });
-    }
-    catch {
-      this.results = [];
-    }
-    finally {
-      this.loading = false;
-    }
-  },
-  head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : 'Search';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+  async mounted() {
+    this.isBrowser = true;
+    await this.fetchSearchResults();
   },
   computed: {
     fixtureResults() {
@@ -169,14 +130,46 @@ export default {
         };
       });
     },
+    pageTitle() {
+      return this.searchFor ? `Search "${this.searchFor}"` : 'Search';
+    },
   },
   watch: {
-    '$route.query': '$fetch',
-  },
-  mounted() {
-    this.isBrowser = true;
+    '$route.query'() {
+      this.fetchSearchResults();
+    },
   },
   methods: {
+    async fetchSearchResults() {
+      this.loading = true;
+
+      const sanitizedQuery = getSanitizedQuery(this.$route.query);
+      this.searchQuery = sanitizedQuery.search;
+      this.manufacturersQuery = sanitizedQuery.manufacturers;
+      this.categoriesQuery = sanitizedQuery.categories;
+      this.searchFor = sanitizedQuery.search;
+
+      if (this.detailsInitiallyOpen === null) {
+        this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
+      }
+
+      try {
+        this.results = await $fetch('/api/v1/get-search-results', {
+          method: 'POST',
+          body: {
+            searchQuery: sanitizedQuery.search,
+            manufacturersQuery: sanitizedQuery.manufacturers,
+            categoriesQuery: sanitizedQuery.categories,
+          },
+        });
+      }
+      catch {
+        this.results = [];
+      }
+      finally {
+        this.loading = false;
+      }
+    },
     onSubmit() {
       if (this.searchQuery === '') {
         return;

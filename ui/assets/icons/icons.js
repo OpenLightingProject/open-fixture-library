@@ -1,10 +1,8 @@
-// read all SVG files in this directory (and subdirectories) into icons object
-// see https://webpack.js.org/guides/dependency-management/#requirecontext
-// eslint-disable-next-line unicorn/prefer-module
-const resolve = require.context('.', true, /\.svg$/);
+// Read all SVG files in this directory (and subdirectories) using Vite's import.meta.glob
+const svgModules = import.meta.glob('./**/*.svg', { eager: true, query: '?raw', import: 'default' });
 
 const getIconPath = (key) => key.match(/^\.\/(.+)\.svg$/)[1];
 
-export default Object.fromEntries(resolve.keys().map(
-  (key) => [getIconPath(key), resolve(key)],
-));
+export default Object.fromEntries(
+  Object.entries(svgModules).map(([key, value]) => [getIconPath(key), value]),
+);

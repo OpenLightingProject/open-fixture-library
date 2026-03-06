@@ -28,21 +28,17 @@ export default {
     EditorLink,
   },
   inheritAttrs: false,
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
   props: {
     modelValue: arrayProp().required,
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': (value) => true,
+    'update:modelValue': (value) => true,
   },
   methods: {
     async addLink() {
       const newLinks = [...this.modelValue, getEmptyLink()];
-      this.$emit('update:model-value', newLinks);
+      this.$emit('update:modelValue', newLinks);
 
       await this.$nextTick();
       this.$refs.links[newLinks.length - 1].focus();
@@ -53,12 +49,12 @@ export default {
         [key]: value,
       };
 
-      this.$emit('update:model-value', this.modelValue.map(
+      this.$emit('update:modelValue', this.modelValue.map(
         (link) => (link === updateLink ? updatedLink : link),
       ));
     },
     removeLink(removeLink) {
-      this.$emit('update:model-value', this.modelValue.filter(
+      this.$emit('update:modelValue', this.modelValue.filter(
         (link) => link !== removeLink,
       ));
     },

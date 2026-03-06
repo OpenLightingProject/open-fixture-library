@@ -57,28 +57,13 @@ h3 {
 
 <script>
 export default {
-  async asyncData({ $axios, error }) {
-    let plugins;
-    try {
-      plugins = await $axios.$get('/api/v1/plugins');
+  async setup() {
+    const { data: plugins, error } = await useAsyncData('plugins', () => $fetch('/api/v1/plugins'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { plugins };
-  },
-  head() {
-    const title = 'Plugins';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+    useHead({ title: 'Plugins' });
+    return { plugins: plugins.value };
   },
 };
 </script>

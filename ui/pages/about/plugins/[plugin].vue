@@ -72,22 +72,22 @@
 .fixture-usage,
 .file-locations,
 .additional-info {
-  & ::v-deep h2,
-  & ::v-deep h3 {
+  & :deep(h2),
+  & :deep(h3) {
     margin: 1.5rem 0 -0.5rem;
     line-height: 1.3;
   }
 
-  & ::v-deep p {
+  & :deep(p) {
     text-align: justify;
   }
 
-  & ::v-deep code {
+  & :deep(code) {
     padding: 3px 5px;
     background-color: theme-color(header-background);
   }
 
-  & ::v-deep table {
+  & :deep(table) {
     margin: 1rem 0;
     border-collapse: collapse;
     border: 1px solid theme-color(divider);
@@ -110,22 +110,22 @@ export default {
     HelpWantedDialog,
     HelpWantedMessage,
   },
-  async asyncData({ params, $axios, redirect, error }) {
-    const pluginKey = params.plugin;
-    let pluginData;
-    try {
-      pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
+  async setup() {
+    const route = useRoute();
+    const pluginKey = route.params.plugin;
+    const { data: pluginData, error } = await useAsyncData(
+      `plugin-${pluginKey}`,
+      () => $fetch(`/api/v1/plugins/${pluginKey}`),
+    );
+    if (error.value) {
+      throw createError({ statusCode: error.value.statusCode || 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
+    if (pluginKey in pluginData.value.previousVersions) {
+      const newPluginKey = pluginData.value.key;
+      await navigateTo(`/about/plugins/${newPluginKey}`, { redirectCode: 301 });
     }
-
-    if (pluginKey in pluginData.previousVersions) {
-      const newPluginKey = pluginData.key;
-      return redirect(301, `/about/plugins/${newPluginKey}`);
-    }
-
-    return { pluginData };
+    useHead({ title: `${pluginData.value.name} Plugin` });
+    return { pluginData: pluginData.value };
   },
   data() {
     return {
@@ -134,19 +134,6 @@ export default {
         main: 'Main (system) library',
         user: 'User library',
       },
-    };
-  },
-  head() {
-    const title = `${this.pluginData.name} Plugin`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
     };
   },
   computed: {

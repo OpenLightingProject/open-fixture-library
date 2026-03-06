@@ -40,10 +40,6 @@ export default {
   components: {
     PropertyInputNumber,
   },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
   props: {
     modelValue: arrayProp().withDefault(null),
     name: stringProp().required,
@@ -57,7 +53,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': (range) => true,
+    'update:modelValue': (range) => true,
     'start-updated': () => true,
     'end-updated': () => true,
     'focus': () => true,
@@ -78,7 +74,7 @@ export default {
         return this.modelValue ? this.modelValue[0] : null;
       },
       set(startInput) {
-        this.$emit('update:model-value', getRange(startInput, this.end));
+        this.$emit('update:modelValue', getRange(startInput, this.end));
         this.$emit('start-updated');
       },
     },
@@ -87,7 +83,7 @@ export default {
         return this.modelValue ? this.modelValue[1] : null;
       },
       set(endInput) {
-        this.$emit('update:model-value', getRange(this.start, endInput));
+        this.$emit('update:modelValue', getRange(this.start, endInput));
         this.$emit('end-updated');
       },
     },

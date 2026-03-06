@@ -30,18 +30,8 @@ export default {
       ),
     };
   },
-  head() {
-    const title = 'Categories';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+  setup() {
+    useHead({ title: 'Categories' });
   },
 };
 </script>

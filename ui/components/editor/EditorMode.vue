@@ -71,10 +71,9 @@
       tag="div"
       class="mode-channels">
       <input v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
-      <Draggable :list="mode.channels" v-bind="dragOptions">
-        <TransitionGroup class="mode-channels" tag="ol">
+      <Draggable :list="mode.channels" item-key="." v-bind="dragOptions">
+        <template #item="{ element: channelUuid, index: channelIndex }">
           <li
-            v-for="(channelUuid, channelIndex) of mode.channels"
             :key="channelUuid"
             :value="channelIndex + 1"
             :data-channel-uuid="channelUuid">
@@ -113,7 +112,7 @@
             </span>
 
           </li>
-        </TransitionGroup>
+        </template>
       </Draggable>
       <FieldMessages
         :state="formstate"
@@ -133,7 +132,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-mode ::v-deep section {
+.fixture-mode :deep(section) {
   flex-direction: column;
 
   & > .label {

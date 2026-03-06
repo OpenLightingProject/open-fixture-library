@@ -141,7 +141,7 @@
   border-top: 0.4rem solid transparent;
 }
 
-.comment ::v-deep .value {
+.comment :deep(.value) {
   white-space: pre-line;
 }
 
@@ -192,7 +192,7 @@
 </style>
 
 <script>
-import { EmbettyVideo } from 'embetty-vue';
+import EmbettyVideo from '../EmbettyVideo.vue';
 import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
 import Fixture from '../../../lib/model/Fixture.js';

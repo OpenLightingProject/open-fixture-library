@@ -149,7 +149,7 @@ export default {
 
     this.update();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.dialog.destroy();
   },
   methods: {

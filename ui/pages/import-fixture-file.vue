@@ -30,8 +30,8 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey of plugins.importPlugins">
-                <option :key="pluginKey" :value="pluginKey">
+              <template v-for="pluginKey of plugins.importPlugins" :key="pluginKey">
+                <option :value="pluginKey">
                   {{ plugins.data[pluginKey].name }}
                 </option>
               </template>
@@ -117,15 +117,13 @@ export default {
     EditorSubmitDialog,
     LabeledInput,
   },
-  async asyncData({ $axios, error }) {
-    let plugins;
-    try {
-      plugins = await $axios.$get('/api/v1/plugins');
+  async setup() {
+    const { data: plugins, error } = await useAsyncData('plugins', () => $fetch('/api/v1/plugins'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { plugins };
+    useHead({ title: 'Import fixture' });
+    return { plugins: plugins.value };
   },
   data() {
     return {
@@ -136,19 +134,6 @@ export default {
       author: '',
       githubUsername: '',
       honeypot: '',
-    };
-  },
-  head() {
-    const title = 'Import fixture';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
     };
   },
   mounted() {
@@ -216,7 +201,7 @@ export default {
       this.githubComment = '';
 
       await this.$nextTick();
-      this.formstate._reset();
+      Object.keys(this.formstate).forEach(key => { delete this.formstate[key]; }); this.formstate.$submitted = false;
     },
     applyStoredPrefillData() {
       if (!localStorage) {

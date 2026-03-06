@@ -99,15 +99,17 @@ export default {
     FixtureHeader,
     HelpWantedDialog,
   },
-  validate({ params }) {
-    return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
-  },
-  async asyncData({ params, query, $axios, redirect, error }) {
-    const { manufacturerKey, fixtureKey } = params;
+  async setup() {
+    const route = useRoute();
+    const { manufacturerKey, fixtureKey } = route.params;
 
-    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
-    if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
+      throw createError({ statusCode: 404, statusMessage: 'Fixture not found' });
+    }
+
+    const fixtureEntry = register.filesystem[`${manufacturerKey}/${fixtureKey}`];
+    if (fixtureEntry.redirectTo) {
+      await navigateTo(`/${fixtureEntry.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`, { redirectCode: 302 });
     }
 
     let fixtureJson;
@@ -116,15 +118,17 @@ export default {
     let redirectObject;
     try {
       [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
-        $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
-        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
-        $axios.$get('/api/v1/plugins'),
-        fetchRedirectObject($axios, query.redirectFrom),
+        $fetch(`/${manufacturerKey}/${fixtureKey}.json`),
+        $fetch(`/api/v1/manufacturers/${manufacturerKey}`),
+        $fetch('/api/v1/plugins'),
+        fetchRedirectObject(route.query.redirectFrom),
       ]);
     }
     catch (requestError) {
-      return error(requestError);
+      throw createError({ statusCode: requestError.statusCode || 500, statusMessage: requestError.message });
     }
+
+    const runtimeConfig = useRuntimeConfig();
 
     return {
       plugins,
@@ -133,6 +137,7 @@ export default {
       fixtureKey,
       fixtureJson,
       redirect: redirectObject,
+      websiteUrl: runtimeConfig.public.websiteUrl,
     };
   },
   data() {
@@ -140,31 +145,6 @@ export default {
       isBrowser: false,
       helpWantedContext: undefined,
       helpWantedType: '',
-    };
-  },
-  head() {
-    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-      script: [
-        {
-          hid: 'productModelStructuredData',
-          type: 'application/ld+json',
-          json: this.productModelStructuredData,
-        },
-        {
-          hid: 'breadcrumbListStructuredData',
-          type: 'application/ld+json',
-          json: this.breadcrumbListStructuredData,
-        },
-      ],
     };
   },
   computed: {
@@ -179,7 +159,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          url: `${this.$config.websiteUrl}${this.manufacturerKey}`,
+          url: `${this.websiteUrl}${this.manufacturerKey}`,
         },
       };
 
@@ -204,7 +184,7 @@ export default {
             '@type': 'ListItem',
             'position': 1,
             'item': {
-              '@id': `${this.$config.websiteUrl}manufacturers`,
+              '@id': `${this.websiteUrl}manufacturers`,
               'name': 'Manufacturers',
             },
           },
@@ -212,7 +192,7 @@ export default {
             '@type': 'ListItem',
             'position': 2,
             'item': {
-              '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
+              '@id': `${this.websiteUrl}${this.manufacturerKey}`,
               'name': this.fixture.manufacturer.name,
             },
           },
@@ -253,16 +233,15 @@ export default {
 };
 
 /**
- * @param {object} axios The Axios instance.
  * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
  * @returns {object} The redirect object.
  */
-async function fetchRedirectObject(axios, redirectFrom) {
+async function fetchRedirectObject(redirectFrom) {
   if (!redirectFrom) {
     return undefined;
   }
 
-  const redirectJson = await axios.$get(`/${redirectFrom}.json`);
+  const redirectJson = await $fetch(`/${redirectFrom}.json`);
 
   return {
     from: redirectFrom,

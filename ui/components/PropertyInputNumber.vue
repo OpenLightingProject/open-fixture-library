@@ -7,7 +7,7 @@
     :data-exclusive-maximum="exclusiveMaximum"
     :step="step"
     :placeholder="hint"
-    :value="value === `invalid` ? `` : value"
+    :value="modelValue === `invalid` ? `` : modelValue"
     type="number"
     v-on="lazy ? { change: update } : { input: update }"
     @focus="$emit('focus', $event)"
@@ -24,12 +24,12 @@ export default {
     hint: stringProp().optional,
     minimum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
     maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
-    value: anyProp().required,
+    modelValue: anyProp().required,
     lazy: booleanProp().withDefault(false),
     stepOverride: numberProp().optional,
   },
   emits: {
-    'input': (value) => true,
+    'update:modelValue': (value) => true,
     'focus': () => true,
     'blur': () => true,
     'vf:validate': (validationData) => true,
@@ -110,12 +110,12 @@ export default {
     update() {
       const input = this.$el;
       if (input.validity && input.validity.badInput) {
-        this.$emit('input', 'invalid');
+        this.$emit('update:modelValue', 'invalid');
         return;
       }
 
       if (input.value === '') {
-        this.$emit('input', null);
+        this.$emit('update:modelValue', null);
         return;
       }
 
@@ -127,7 +127,7 @@ export default {
         value = 'invalid';
       }
 
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
     },
   },
 };
