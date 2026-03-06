@@ -19,9 +19,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-security',
   ],
-  plugins: [
-    '~/plugins/vee-validate.ts',
-  ],
   fonts: {
     families: [
       { name: 'Lato', provider: 'google', weights: [300, 400, 700] },
@@ -65,6 +62,9 @@ export default defineNuxtConfig({
     },
   },
   security: {
+    rateLimiter: {
+      whiteList: ['127.0.0.1', '::1', 'localhost'],
+    },
     headers: {
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*.ytimg.com', 'https://embetty.open-fixture-library.org'],
@@ -92,27 +92,22 @@ export default defineNuxtConfig({
         },
   },
   sitemap: {
-    hostname: websiteUrl,
-    gzip: true,
     sources: [
-      '/sitemap-manufacturers.xml',
-      '/sitemap-fixtures.xml',
-      '/sitemap-categories.xml',
-      '/sitemap-plugins.xml',
+      '/api/__sitemap__/manufacturers',
+      '/api/__sitemap__/fixtures',
+      '/api/__sitemap__/categories',
+      '/api/__sitemap__/plugins',
     ],
   },
   devtools: { enabled: true },
+  routeRules: {
+    '/**': { cors: true },
+  },
   nitro: {
     srcDir: 'server',
+    preset: 'node-server',
     experimental: {
       openAPI: true,
     },
-    publicAssets: [
-      {
-        dir: 'fixtures',
-        baseURL: '/fixtures',
-        maxAge: 60 * 60 * 24 * 30,
-      },
-    ],
   },
 });

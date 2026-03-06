@@ -108,7 +108,14 @@ const pluginKey = route.params.plugin as string;
 
 const { data: pluginData } = await useFetch(`/api/v1/plugins/${pluginKey}`);
 
-if (pluginData.value && pluginKey in pluginData.value.previousVersions) {
+if (!pluginData.value || 'error' in pluginData.value) {
+  throw createError({
+    statusCode: 404,
+    message: 'Plugin not found',
+  });
+}
+
+if (pluginKey in pluginData.value.previousVersions) {
   const newPluginKey = pluginData.value.key;
   navigateTo(`/about/plugins/${newPluginKey}`, { redirectCode: 301 });
 }

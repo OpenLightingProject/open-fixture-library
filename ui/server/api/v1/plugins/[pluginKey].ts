@@ -1,3 +1,7 @@
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 import plugins from '~~/plugins/plugins.json' with { type: 'json' };
 
 defineRouteMeta({
@@ -54,19 +58,38 @@ export default defineEventHandler(async (event) => {
     resolvedKey = plugins.data[pluginKey].newPlugin;
   }
 
-  const pluginData = await import(`~~/plugins/${resolvedKey}/plugin.json`, { with: { type: 'json' } });
-
-  return {
-    key: resolvedKey,
-    name: pluginData.default.name,
-    previousVersions: pluginData.default.previousVersions || {},
-    description: pluginData.default.description.join('\n'),
-    links: pluginData.default.links,
-    fixtureUsage: pluginData.default.fixtureUsage && pluginData.default.fixtureUsage.join('\n'),
-    fileLocations: pluginData.default.fileLocations,
-    additionalInfo: pluginData.default.additionalInfo && pluginData.default.additionalInfo.join('\n'),
-    helpWanted: pluginData.default.helpWanted,
-    exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
-    importPluginVersion: plugins.data[pluginKey].importPluginVersion,
-  };
+  try {
+    // Get the project root directory properly for both dev and production
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    // Navigate up to project root from .output/server/api/v1/plugins/[pluginKey].ts
+    const projectRoot = join(__dirname, '../..');
+    
+    const pluginPath = join(projectRoot, 'plugins', resolvedKey, 'plugin.json');
+    const pluginJson = readFileSync(pluginPath, 'utf8');
+    const pluginData = JSON.parse(pluginJson);
+    
+    // Add validation to ensure required properties exist
+    if (!pluginData || !pluginData.name) {
+      throw new Error('Plugin data missing required name property');
+    }
+    
+    return {
+      key: resolvedKey,
+      name: pluginData.name,
+      previousVersions: pluginData.previousVersions || {},
+      description: Array.isArray(pluginData.description) ? pluginData.description.join('\n') : pluginData.description || '',
+      links: pluginData.links || {},
+      fixtureUsage: pluginData.fixtureUsage && Array.isArray(pluginData.fixtureUsage) ? pluginData.fixtureUsage.join('\n') : pluginData.fixtureUsage || '',
+      fileLocations: pluginData.fileLocations || {},
+      additionalInfo: pluginData.additionalInfo && Array.isArray(pluginData.additionalInfo) ? pluginData.additionalInfo.join('\n') : pluginData.additionalInfo || '',
+      helpWanted: pluginData.helpWanted || '',
+      exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
+      importPluginVersion: plugins.data[pluginKey].importPluginVersion,
+    };
+  } catch (error) {
+    console.error(`Error loading plugin ${resolvedKey}:`, error);
+    setResponseStatus(event, 500);
+    return { error: `Failed to load plugin ${resolvedKey}` };
+  }
 });

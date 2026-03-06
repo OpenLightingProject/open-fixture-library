@@ -1,7 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import process from 'node:process';
 
-const fixturesDir = resolve('fixtures');
+const fixturesDir = resolve(process.cwd(), 'fixtures');
 
 export default defineEventHandler(async (event) => {
   const manufacturerKey = getRouterParam(event, 'manufacturerKey');
