@@ -16,10 +16,10 @@ export default {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
     hint: stringProp().optional,
-    value: anyProp().required,
+    modelValue: anyProp().required,
   },
   emits: {
-    'input': (value) => true,
+    'update:modelValue': (value) => true,
     'vf:validate': (validationData) => true,
   },
   data() {
@@ -40,7 +40,7 @@ export default {
     },
   },
   watch: {
-    value: {
+    modelValue: {
       handler(newValue) {
         this.localValue = newValue ? String(newValue) : '';
       },
@@ -60,7 +60,7 @@ export default {
       this.$el.focus();
     },
     update() {
-      this.$emit('input', this.localValue);
+      this.$emit('update:modelValue', this.localValue);
     },
   },
 };

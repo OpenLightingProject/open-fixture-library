@@ -45,10 +45,6 @@ export default {
   components: {
     PropertyInputNumber,
   },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
   props: {
     modelValue: arrayProp().withDefault(null),
     hints: arrayProp().withDefault(() => ['x', 'y', 'z']),
@@ -59,7 +55,7 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': (dimensions) => true,
+    'update:modelValue': (dimensions) => true,
     'focus': () => true,
     'blur': () => true,
     'vf:validate': (validationData) => true,
@@ -77,7 +73,7 @@ export default {
         return this.modelValue ? this.modelValue[0] : null;
       },
       set(xInput) {
-        this.$emit('update:model-value', getDimensionsArray(xInput, this.y, this.z));
+        this.$emit('update:modelValue', getDimensionsArray(xInput, this.y, this.z));
       },
     },
     y: {
@@ -85,7 +81,7 @@ export default {
         return this.modelValue ? this.modelValue[1] : null;
       },
       set(yInput) {
-        this.$emit('update:model-value', getDimensionsArray(this.x, yInput, this.z));
+        this.$emit('update:modelValue', getDimensionsArray(this.x, yInput, this.z));
       },
     },
     z: {
@@ -93,7 +89,7 @@ export default {
         return this.modelValue ? this.modelValue[2] : null;
       },
       set(zInput) {
-        this.$emit('update:model-value', getDimensionsArray(this.x, this.y, zInput));
+        this.$emit('update:modelValue', getDimensionsArray(this.x, this.y, zInput));
       },
     },
     dimensionsSpecified() {

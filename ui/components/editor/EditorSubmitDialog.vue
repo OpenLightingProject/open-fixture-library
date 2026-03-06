@@ -182,7 +182,7 @@
   margin: 1rem -1rem -1rem;
   background: theme-color(page-background);
 
-  & ::v-deep .help-wanted .actions {
+  & :deep(.help-wanted .actions) {
     cursor: not-allowed;
 
     a {
@@ -354,18 +354,16 @@ export default {
 
       this.state = 'validating';
       try {
-        const response = await this.$axios.post(
-          this.endpoint,
-          this.requestBody,
-        );
-
-        this.fixtureCreateResult = response.data;
+        this.fixtureCreateResult = await $fetch(this.endpoint, {
+          method: 'POST',
+          body: this.requestBody,
+        });
         this.state = 'ready';
       }
       catch (error) {
         let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
+        if (error.data && error.data.error) {
+          errorMessage = error.data.error;
         }
 
         console.error('There was a problem with the request:', errorMessage);
@@ -389,19 +387,22 @@ export default {
 
       this.state = 'uploading';
       try {
-        const response = await this.$axios.post(
+        const response = await $fetch(
           '/api/v1/fixtures/submit',
-          this.requestBody,
+          {
+            method: 'POST',
+            body: this.requestBody,
+          },
         );
 
-        this.pullRequestUrl = response.data.pullRequestUrl;
+        this.pullRequestUrl = response.pullRequestUrl;
         this.state = 'success';
         this.$emit('success');
       }
       catch (error) {
         let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
+        if (error.data && error.data.error) {
+          errorMessage = error.data.error;
         }
 
         console.error('There was a problem with the request:', errorMessage);

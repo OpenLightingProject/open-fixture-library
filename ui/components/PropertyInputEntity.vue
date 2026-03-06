@@ -90,7 +90,7 @@ export default {
   props: {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
-    value: anyProp().withDefault(''),
+    modelValue: anyProp().withDefault(''),
     associatedEntity: anyProp().optional,
     minNumber: numberProp().optional,
     maxNumber: numberProp().optional,
@@ -98,7 +98,7 @@ export default {
     wide: booleanProp().withDefault(false),
   },
   emits: {
-    'input': (value) => true,
+    'update:modelValue': (value) => true,
     'focus': () => true,
     'blur': () => true,
     'unit-selected': (unitString) => true,
@@ -147,7 +147,7 @@ export default {
     },
     selectedUnit: {
       get() {
-        return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
+        return getSelectedUnit(this.modelValue, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
         if (this.enumValues.includes(newUnit) || newUnit === '') {
@@ -173,11 +173,11 @@ export default {
     },
     selectedNumber: {
       get() {
-        if (typeof this.value !== 'string') {
-          return this.value;
+        if (typeof this.modelValue !== 'string') {
+          return this.modelValue;
         }
 
-        const number = Number.parseFloat(this.value.replace(this.selectedUnit, ''));
+        const number = Number.parseFloat(this.modelValue.replace(this.selectedUnit, ''));
 
         return Number.isNaN(number) ? '' : number;
       },
@@ -229,7 +229,7 @@ export default {
       focusField.focus();
     },
     update(newValue) {
-      this.$emit('input', newValue);
+      this.$emit('update:modelValue', newValue);
     },
 
     /**

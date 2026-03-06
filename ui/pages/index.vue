@@ -95,15 +95,42 @@ export default {
     DownloadButton,
     FixtureHeader,
   },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+  async setup() {
+    const { data: manufacturers, error } = await useAsyncData('manufacturers', () => $fetch('/api/v1/manufacturers'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { manufacturers };
+    const runtimeConfig = useRuntimeConfig();
+    useHead({
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': 'Open Fixture Library',
+            'url': runtimeConfig.public.websiteUrl,
+            'potentialAction': {
+              '@type': 'SearchAction',
+              'target': `${runtimeConfig.public.websiteUrl}search?q={search_term_string}`,
+              'query-input': 'required name=search_term_string',
+            },
+          }),
+        },
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            'name': 'Open Fixture Library',
+            'description': 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+            'url': runtimeConfig.public.websiteUrl,
+            'logo': `${runtimeConfig.public.websiteUrl}ofl-logo.svg`,
+          }),
+        },
+      ],
+    });
+    return { manufacturers: manufacturers.value };
   },
   data() {
     return {
@@ -113,39 +140,6 @@ export default {
       fixtureCount: Object.keys(register.filesystem).filter(
         (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
       ).length,
-    };
-  },
-  head() {
-    return {
-      script: [
-        {
-          hid: 'websiteStructuredData',
-          type: 'application/ld+json',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            'name': 'Open Fixture Library',
-            'url': this.$config.websiteUrl,
-            'potentialAction': {
-              '@type': 'SearchAction',
-              'target': `${this.$config.websiteUrl}search?q={search_term_string}`,
-              'query-input': 'required name=search_term_string',
-            },
-          },
-        },
-        {
-          hid: 'organizationStructuredData',
-          type: 'application/ld+json',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            'name': 'Open Fixture Library',
-            'description': 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
-            'url': this.$config.websiteUrl,
-            'logo': `${this.$config.websiteUrl}ofl-logo.svg`,
-          },
-        },
-      ],
     };
   },
   created() {

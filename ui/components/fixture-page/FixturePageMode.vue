@@ -55,7 +55,7 @@ ol.mode-channels {
   padding-left: 1.9em;
 
   // switched channels
-  ::v-deep ol {
+  :deep(ol) {
     padding-left: 1.1em;
     list-style-type: lower-alpha;
   }
