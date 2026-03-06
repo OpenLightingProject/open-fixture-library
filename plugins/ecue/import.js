@@ -10,6 +10,7 @@ export const version = '0.3.1';
  * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
+  // see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
   const colorNameList = await importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
   const colors = {};
   for (const color of colorNameList) {
