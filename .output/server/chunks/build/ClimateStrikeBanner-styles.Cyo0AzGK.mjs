@@ -1,0 +1,8 @@
+const ClimateStrikeBanner_vue_vue_type_style_index_0_scoped_9a17941a_lang = ".climate-strike[data-v-9a17941a]{color:#fff;text-align:center}.climate-strike a[data-v-9a17941a]{color:#fff;text-decoration:underline;text-decoration-color:#fff9}.climate-strike a[data-v-9a17941a]:focus,.climate-strike a[data-v-9a17941a]:hover{opacity:.8}#climate-strike-banner[data-v-9a17941a]{background:#1b7340;border:.5em solid #1da64a;line-height:1.7;padding:.5em}#climate-strike-overlay[data-v-9a17941a]{background:#1b7340;inset:0;overflow:auto;position:fixed;z-index:1000}#climate-strike-overlay h1[data-v-9a17941a]{background:#1da64a;box-sizing:border-box;font-weight:700;line-height:1.2;margin:2.5em 0 1em;padding:.5em 1em;text-shadow:0 0 5px rgba(27,115,64,.5);transform:skewY(-2.5deg)}#climate-strike-overlay h1 a[data-v-9a17941a]{display:block;font-size:1.8em;text-transform:uppercase}@media(max-width:440px){#climate-strike-overlay h1[data-v-9a17941a]{font-size:1.5em}}#climate-strike-overlay>div h2[data-v-9a17941a]{font-weight:700;line-height:1.2;margin:2em 10px 10px}#climate-strike-overlay>div p[data-v-9a17941a]{margin:10px}#climate-strike-overlay .hashtags[data-v-9a17941a]{font-size:1.5em;margin:3em 0 30px}#climate-strike-overlay .hashtags a[data-v-9a17941a]{display:inline-block;font-family:Inconsolata,Roboto Mono,Source Code Pro,monospace;font-weight:400;margin:4px;padding:0 4px}";
+
+const ClimateStrikeBannerStyles_Cyo0AzGK = [
+  ClimateStrikeBanner_vue_vue_type_style_index_0_scoped_9a17941a_lang
+];
+
+export { ClimateStrikeBannerStyles_Cyo0AzGK as default };
+//# sourceMappingURL=ClimateStrikeBanner-styles.Cyo0AzGK.mjs.map

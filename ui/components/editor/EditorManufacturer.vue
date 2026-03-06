@@ -13,8 +13,8 @@
 
           <option value="" disabled>Please select a manufacturer</option>
 
-          <template v-for="(manufacturer, manufacturerKey) of manufacturers">
-            <option v-if="manufacturerKey !== `$schema`" :key="manufacturerKey" :value="manufacturerKey">
+          <template v-for="(manufacturer, manufacturerKey) of manufacturers" :key="manufacturerKey">
+            <option v-if="manufacturerKey !== `$schema`" :value="manufacturerKey">
               {{ manufacturer.name }}
             </option>
           </template>

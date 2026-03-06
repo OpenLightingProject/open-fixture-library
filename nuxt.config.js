@@ -1,4 +1,4 @@
-import sass from 'sass';
+import * as sass from 'sass';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
@@ -99,6 +99,21 @@ export default defineNuxtConfig({
           silenceDeprecations: ['legacy-js-api'],
         },
       },
+    },
+  },
+
+  nitro: {
+    rollupConfig: {
+      plugins: [
+        {
+          name: 'resolve-import-meta-url',
+          resolveImportMeta(property, { moduleId }) {
+            if (property === 'url') {
+              return `'file://${moduleId.replaceAll('\\', '/')}'`;
+            }
+          },
+        },
+      ],
     },
   },
 

@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="(cap, index) of capabilities">
-        <tr :key="`cap-${index}`" class="capability" :data-capability-type="cap.model.type">
+      <template v-for="(cap, index) of capabilities" :key="`cap-${index}`">
+        <tr class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>

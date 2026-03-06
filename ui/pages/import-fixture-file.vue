@@ -30,8 +30,8 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey of plugins.importPlugins">
-                <option :key="pluginKey" :value="pluginKey">
+              <template v-for="pluginKey of plugins.importPlugins" :key="pluginKey">
+                <option :value="pluginKey">
                   {{ plugins.data[pluginKey].name }}
                 </option>
               </template>

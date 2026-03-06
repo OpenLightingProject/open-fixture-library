@@ -1,0 +1,8 @@
+const EditorSubmitDialog_vue_vue_type_style_index_0_scoped_d7049b4c_lang = ".preview-fixture-title[data-v-d7049b4c]{margin-right:1ex}.preview-fixture-chooser[data-v-d7049b4c]{font-size:1rem;vertical-align:middle;width:350px}.fixture-page[data-v-d7049b4c]{background:rgba(var(--theme-page-background,238,238,238),1);margin:1rem -1rem -1rem;padding:.1rem 1rem 1rem}.fixture-page[data-v-d7049b4c] .help-wanted .actions{cursor:not-allowed}.fixture-page[data-v-d7049b4c] .help-wanted .actions a{opacity:.7;pointer-events:none}.button-bar[data-v-d7049b4c]{background:rgba(var(--theme-dialog-background,255,255,255),1);bottom:0;box-shadow:0 0 4px rgba(var(--theme-icon-inactive,0,0,0),.27);margin:1rem -1rem -1rem;padding:.6rem 1rem 1rem;position:sticky}";
+
+const EditorSubmitDialogStyles_jVOuPLRB = [
+  EditorSubmitDialog_vue_vue_type_style_index_0_scoped_d7049b4c_lang
+];
+
+export { EditorSubmitDialogStyles_jVOuPLRB as default };
+//# sourceMappingURL=EditorSubmitDialog-styles.jVOuPLRB.mjs.map
