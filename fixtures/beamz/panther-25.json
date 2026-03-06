@@ -1,0 +1,221 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 25",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jesper Kirk Jensen"],
+    "createDate": "2026-02-25",
+    "lastModifyDate": "2026-02-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/11/150.460-Panther-25-Led-Spot-Moving-Head_manual_V3.3.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/panther-25-led-spot-moving-head/"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        null,
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-115deg",
+        "angleEnd": "115deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [15, 21],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [22, 28],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [29, 35],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [36, 42],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [43, 49],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [50, 56],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [57, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shutter": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-bit (11 Channels)",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
