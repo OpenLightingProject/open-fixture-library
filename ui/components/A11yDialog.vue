@@ -163,7 +163,7 @@ onMounted(async () => {
 
   const el = document.getElementById(props.id);
   if (!el) return;
-  
+
   dialog.value = new A11yDialog(el);
 
   dialog.value.on('show', () => {

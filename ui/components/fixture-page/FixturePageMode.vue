@@ -92,7 +92,7 @@ onMounted(async () => {
 function openDetails() {
   const el = document.querySelector('.fixture-mode');
   if (!el) return;
-  
+
   for (const details of el.querySelectorAll(`details`)) {
     details.open = true;
   }
@@ -101,7 +101,7 @@ function openDetails() {
 function closeDetails() {
   const el = document.querySelector('.fixture-mode');
   if (!el) return;
-  
+
   for (const details of el.querySelectorAll(`details`)) {
     details.open = false;
   }

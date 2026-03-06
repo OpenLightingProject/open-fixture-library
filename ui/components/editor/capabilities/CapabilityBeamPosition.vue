@@ -79,7 +79,7 @@ function isPropertyEmpty(property: string): boolean {
   const typeData = props.capability.typeData;
   const propKey = property as keyof CapabilityTypeData;
   const startKey = `${property}Start` as keyof CapabilityTypeData;
-  
+
   const isSteppedEmpty = typeData[propKey] === null || typeData[propKey] === '';
   const isProportionalEmpty = typeData[startKey] === null || typeData[startKey] === '';
 

@@ -106,7 +106,6 @@
 
 <script setup lang="ts">
 import scrollIntoView from 'scroll-into-view';
-
 import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
 
 const formstate = ref(getEmptyFormState());
