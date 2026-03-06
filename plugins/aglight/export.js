@@ -24,6 +24,7 @@ export async function exportFixtures(fixtures, options) {
 
   const [manufacturers, namedColors] = await Promise.all([
     importJson('../../fixtures/manufacturers.json', import.meta.url),
+    // see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
     importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url),
   ]);
 
