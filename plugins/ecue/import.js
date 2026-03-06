@@ -1,12 +1,7 @@
-import { colornames as colorNameList } from 'color-name-list';
 import xml2js from 'xml2js';
+import importJson from '../../lib/import-json.js';
 
 export const version = '0.3.1';
-
-const colors = {};
-for (const color of colorNameList) {
-  colors[color.name.toLowerCase().replaceAll(/\s/g, '')] = color.hex;
-}
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -15,6 +10,11 @@ for (const color of colorNameList) {
  * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
+  const colorNameList = await importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
+  const colors = {};
+  for (const color of colorNameList) {
+    colors[color.name.toLowerCase().replaceAll(/\s/g, '')] = color.hex;
+  }
   const timestamp = new Date().toISOString().replace(/T.*/, '');
 
   const out = {
@@ -117,7 +117,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }];
 
     for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
-      addChannelToFixture(ecueChannel, fixture, out.warnings[fixtureKey]);
+      addChannelToFixture(ecueChannel, fixture, out.warnings[fixtureKey], colors);
     }
 
     out.fixtures[fixtureKey] = fixture;
@@ -191,8 +191,9 @@ function getDirectionSuffix(direction) {
  * @param {object} ecueChannel The e:cue channel object.
  * @param {object} fixture The OFL fixture object.
  * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} colors A map from lowercase spaceless color name to hex value.
  */
-function addChannelToFixture(ecueChannel, fixture, warningsArray) {
+function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
   const channel = {};
 
   const channelName = ecueChannel.$.Name.trim();
