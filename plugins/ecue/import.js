@@ -1,6 +1,9 @@
 import xml2js from 'xml2js';
 import importJson from '../../lib/import-json.js';
 
+// see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
+const colorNameListPromise = importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
+
 export const version = '0.3.1';
 
 /**
@@ -10,8 +13,7 @@ export const version = '0.3.1';
  * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
-  // see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
-  const colorNameList = await importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
+  const colorNameList = await colorNameListPromise;
   const colors = {};
   for (const color of colorNameList) {
     colors[color.name.toLowerCase().replaceAll(/\s/g, '')] = color.hex;
