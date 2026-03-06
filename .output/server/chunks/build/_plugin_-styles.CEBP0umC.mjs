@@ -1,8 +1,0 @@
-const _plugin__vue_vue_type_style_index_0_scoped_faeca5a1_lang = ".version-info[data-v-faeca5a1]{margin:-1rem 0 0}.additional-info[data-v-faeca5a1] h2,.additional-info[data-v-faeca5a1] h3,.file-locations[data-v-faeca5a1] h2,.file-locations[data-v-faeca5a1] h3,.fixture-usage[data-v-faeca5a1] h2,.fixture-usage[data-v-faeca5a1] h3,.plugin-description[data-v-faeca5a1] h2,.plugin-description[data-v-faeca5a1] h3{line-height:1.3;margin:1.5rem 0 -.5rem}.additional-info[data-v-faeca5a1] p,.file-locations[data-v-faeca5a1] p,.fixture-usage[data-v-faeca5a1] p,.plugin-description[data-v-faeca5a1] p{text-align:justify}.additional-info[data-v-faeca5a1] code,.file-locations[data-v-faeca5a1] code,.fixture-usage[data-v-faeca5a1] code,.plugin-description[data-v-faeca5a1] code{background-color:rgba(var(--theme-header-background,250,250,250),1);padding:3px 5px}.additional-info[data-v-faeca5a1] table,.file-locations[data-v-faeca5a1] table,.fixture-usage[data-v-faeca5a1] table,.plugin-description[data-v-faeca5a1] table{border:1px solid rgba(var(--theme-divider,0,0,0),.12);border-collapse:collapse;margin:1rem 0}.additional-info[data-v-faeca5a1] table td,.additional-info[data-v-faeca5a1] table th,.file-locations[data-v-faeca5a1] table td,.file-locations[data-v-faeca5a1] table th,.fixture-usage[data-v-faeca5a1] table td,.fixture-usage[data-v-faeca5a1] table th,.plugin-description[data-v-faeca5a1] table td,.plugin-description[data-v-faeca5a1] table th{border:1px solid rgba(var(--theme-divider,0,0,0),.12);padding:1px 1ex}";
-
-const _plugin_Styles_CEBP0umC = [
-  _plugin__vue_vue_type_style_index_0_scoped_faeca5a1_lang
-];
-
-export { _plugin_Styles_CEBP0umC as default };
-//# sourceMappingURL=_plugin_-styles.CEBP0umC.mjs.map
