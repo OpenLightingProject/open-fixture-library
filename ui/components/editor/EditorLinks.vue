@@ -18,50 +18,51 @@
   </div>
 </template>
 
-<script>
-import { arrayProp, objectProp } from 'vue-ts-types';
-import { getEmptyLink } from '../../assets/scripts/editor-utilities.js';
-import EditorLink from './EditorLink.vue';
+<script setup lang="ts">
+import { getEmptyLink } from '@/assets/scripts/editor-utilities.js';
 
-export default {
-  components: {
-    EditorLink,
-  },
-  inheritAttrs: false,
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: arrayProp().required,
-    formstate: objectProp().required,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  methods: {
-    async addLink() {
-      const newLinks = [...this.modelValue, getEmptyLink()];
-      this.$emit('update:model-value', newLinks);
+interface Link {
+  uuid: string;
+  type: string;
+  url: string;
+}
 
-      await this.$nextTick();
-      this.$refs.links[newLinks.length - 1].focus();
-    },
-    updateLinkProperty(updateLink, key, value) {
-      const updatedLink = {
-        ...updateLink,
-        [key]: value,
-      };
+interface Props {
+  modelValue: Link[];
+  formstate: object;
+}
 
-      this.$emit('update:model-value', this.modelValue.map(
-        (link) => (link === updateLink ? updatedLink : link),
-      ));
-    },
-    removeLink(removeLink) {
-      this.$emit('update:model-value', this.modelValue.filter(
-        (link) => link !== removeLink,
-      ));
-    },
-  },
-};
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  'update:model-value': [value: Link[]];
+}>();
+
+const links = ref<any[]>([]);
+
+async function addLink() {
+  const newLinks = [...props.modelValue, getEmptyLink()];
+  emit('update:model-value', newLinks);
+
+  await nextTick();
+  if (links.value[newLinks.length - 1]) {
+    links.value[newLinks.length - 1].focus();
+  }
+}
+
+function updateLinkProperty(updateLink: Link, key: string, value: string) {
+  const updatedLink = {
+    ...updateLink,
+    [key]: value,
+  };
+
+  emit('update:model-value', props.modelValue.map(
+    link => (link === updateLink ? updatedLink : link),
+  ));
+}
+
+function removeLink(removeLink: Link) {
+  emit('update:model-value', props.modelValue.filter(
+    link => link !== removeLink,
+  ));
+}
 </script>

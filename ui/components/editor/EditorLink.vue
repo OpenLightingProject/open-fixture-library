@@ -49,68 +49,62 @@
 }
 </style>
 
-<script>
-import { booleanProp, objectProp } from 'vue-ts-types';
-import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
-import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-import PropertyInputText from '../PropertyInputText.vue';
+<script setup lang="ts">
+import { linksProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
+import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
 
-const placeholders = {
-  manual: 'e.g. https://example.org/fixture/manual.pdf',
-  productPage: 'e.g. https://example.org/fixture',
-  video: 'e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-  other: 'e.g. https://example.org/relevant-page',
+interface Props {
+  link: {
+    type: string;
+    url: string;
+    uuid: string;
+  };
+  canRemove: boolean;
+  formstate: object;
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  'set-type': [value: string];
+  'set-url': [value: string];
+  remove: [];
+}>();
+
+const linkTypeSelect = ref<HTMLSelectElement | null>(null);
+
+const placeholders: Record<string, string> = {
+  manual: `e.g. https://example.org/fixture/manual.pdf`,
+  productPage: `e.g. https://example.org/fixture`,
+  video: `e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+  other: `e.g. https://example.org/relevant-page`,
 };
 
-export default {
-  components: {
-    PropertyInputText,
+const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
+const linkTypes = Object.keys(linksProperties);
+
+const type = computed({
+  get() {
+    return props.link.type;
   },
-  props: {
-    link: objectProp().required,
-    canRemove: booleanProp().required,
-    formstate: objectProp().required,
+  set(value: string) {
+    emit('set-type', value);
   },
-  emits: {
-    'set-type': (type) => true,
-    'set-url': (url) => true,
-    'remove': () => true,
+});
+
+const url = computed({
+  get() {
+    return props.link.url;
   },
-  data() {
-    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
-    return {
-      schemaDefinitions,
-      linkTypes: Object.keys(linksProperties),
-      linkTypeIconNames,
-      linkTypeNames,
-    };
+  set(value: string) {
+    emit('set-url', value);
   },
-  computed: {
-    type: {
-      get() {
-        return this.link.type;
-      },
-      set(type) {
-        this.$emit('set-type', type);
-      },
-    },
-    url: {
-      get() {
-        return this.link.url;
-      },
-      set(url) {
-        this.$emit('set-url', url);
-      },
-    },
-    placeholder() {
-      return placeholders[this.type];
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$refs.linkTypeSelect.focus();
-    },
-  },
-};
+});
+
+const placeholder = computed(() => placeholders[props.type]);
+
+function focus() {
+  linkTypeSelect.value?.focus();
+}
+
+defineExpose({ focus });
 </script>

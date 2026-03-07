@@ -182,175 +182,171 @@
 }
 </style>
 
-<script>
-import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
 import {
   capabilityTypes,
   entitiesSchema,
   schemaDefinitions,
   unitsSchema,
-} from '../../../lib/schema-properties.js';
-import PropertyInputEntity from '../PropertyInputEntity.vue';
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+} from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    PropertyInputEntity,
-    PropertyInputNumber,
-    PropertyInputText,
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: Record<string, any>;
+    dmxRange?: [number, number] | null;
+  };
+  propertyName: string;
+  required?: boolean;
+  hint?: string;
+  formstate?: object;
+}
+
+const props = defineProps<Props>();
+
+const steppedField = ref<any>(null);
+const startField = ref<any>(null);
+const endField = ref<any>(null);
+
+const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);
+const slotNumberSchema = unitsSchema[slotNumberUnit];
+
+const entity = computed(() => {
+  const capabilitySchema = capabilityTypes[props.capability.type];
+  if (!capabilitySchema) {
+    return '';
+  }
+
+  const propertySchema = capabilitySchema.properties[props.propertyName];
+  if (!propertySchema) {
+    return '';
+  }
+
+  return (propertySchema.$ref || '').replace(`definitions.json#/entities/`, '');
+});
+
+const entitySchema = computed(() => {
+  if (entity.value === '') {
+    return null;
+  }
+
+  return entitiesSchema[entity.value];
+});
+
+const propertyDataStepped = computed({
+  get() {
+    return props.capability.typeData[props.propertyName];
   },
-  props: {
-    capability: objectProp().required,
-    propertyName: stringProp().required,
-    required: booleanProp().withDefault(false),
-    hint: stringProp().optional,
-    formstate: objectProp().optional,
+  set(newData) {
+    props.capability.typeData[props.propertyName] = newData;
   },
-  data() {
-    const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace('#/units/', '');
+});
 
-    return {
-      schemaDefinitions,
-      slotNumberSchema: unitsSchema[slotNumberUnit],
-    };
+const propertyDataStart = computed({
+  get() {
+    return props.capability.typeData[`${props.propertyName}Start`];
   },
-  computed: {
-    entity() {
-      const capabilitySchema = capabilityTypes[this.capability.type];
-      if (!capabilitySchema) {
-        return '';
-      }
-
-      const propertySchema = capabilitySchema.properties[this.propertyName];
-      if (!propertySchema) {
-        return '';
-      }
-
-      return (propertySchema.$ref || '').replace('definitions.json#/entities/', '');
-    },
-    entitySchema() {
-      if (this.entity === '') {
-        return null;
-      }
-
-      return entitiesSchema[this.entity];
-    },
-    propertyDataStepped: {
-      get() {
-        return this.capability.typeData[this.propertyName];
-      },
-      set(newData) {
-        this.capability.typeData[this.propertyName] = newData;
-      },
-    },
-    propertyDataStart: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}Start`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}Start`] = newData;
-      },
-    },
-    propertyDataEnd: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}End`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}End`] = newData;
-      },
-    },
-    hasStartEnd: {
-      get() {
-        if (this.propertyDataStepped === null && this.propertyDataStart === null) {
-          throw new Error('Stepped and start value are both null. At least one of them should have a value, e.g. an empty string.');
-        }
-
-        return this.propertyDataStepped === null;
-      },
-      set(shouldHaveStartEnd) {
-        if (shouldHaveStartEnd && !this.hasStartEnd) {
-          const savedData = this.propertyDataStepped;
-          this.propertyDataStepped = null;
-          this.propertyDataStart = savedData;
-          this.propertyDataEnd = savedData;
-        }
-        else if (!shouldHaveStartEnd && this.hasStartEnd) {
-          const savedData = this.propertyDataStart;
-          this.propertyDataStepped = savedData;
-          this.propertyDataStart = null;
-          this.propertyDataEnd = null;
-        }
-      },
-    },
-
-    // slotNumber entity requires a bit of special handling
-    slotNumberStepped: {
-      get() {
-        return this.capability.typeData[this.propertyName];
-      },
-      set(newData) {
-        this.capability.typeData[this.propertyName] = newData === null ? '' : newData;
-      },
-    },
-    slotNumberStart: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}Start`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}Start`] = newData === null ? '' : newData;
-      },
-    },
-    slotNumberEnd: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}End`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}End`] = newData === null ? '' : newData;
-      },
-    },
-
-    swapButtonTabIndex() {
-      return (
-        (
-          this.propertyDataStart === this.propertyDataEnd
-          || this.propertyDataStart === ''
-          || this.propertyDataEnd === ''
-        )
-          ? '-1'
-          : null
-      );
-    },
+  set(newData) {
+    props.capability.typeData[`${props.propertyName}Start`] = newData;
   },
-  methods: {
-    /** @public */
-    focus() {
-      for (const field of ['steppedField', 'startField', 'endField']) {
-        if (this.$refs[field]) {
-          this.$refs[field].focus();
-          return;
-        }
-      }
-    },
-    async focusEndField() {
-      await this.$nextTick();
+});
 
-      if (this.hasStartEnd) {
-        const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
-        focusField.focus();
-      }
-    },
-    onUnitSelected(newUnit) {
-      if (!this.propertyDataStart.endsWith(newUnit)) {
-        this.$refs.startField.setUnitString(newUnit);
-      }
-      if (!this.propertyDataEnd.endsWith(newUnit)) {
-        this.$refs.endField.setUnitString(newUnit);
-      }
-    },
-    swapStartEnd() {
-      [this.propertyDataStart, this.propertyDataEnd] = [this.propertyDataEnd, this.propertyDataStart];
-    },
+const propertyDataEnd = computed({
+  get() {
+    return props.capability.typeData[`${props.propertyName}End`];
   },
-};
+  set(newData) {
+    props.capability.typeData[`${props.propertyName}End`] = newData;
+  },
+});
+
+const hasStartEnd = computed({
+  get() {
+    if (propertyDataStepped.value === null && propertyDataStart.value === null) {
+      throw new Error('Stepped and start value are both null. At least one of them should have a value, e.g. an empty string.');
+    }
+
+    return propertyDataStepped.value === null;
+  },
+  set(shouldHaveStartEnd: boolean) {
+    if (shouldHaveStartEnd && !hasStartEnd.value) {
+      const savedData = propertyDataStepped.value;
+      propertyDataStepped.value = null;
+      propertyDataStart.value = savedData;
+      propertyDataEnd.value = savedData;
+    }
+    else if (!shouldHaveStartEnd && hasStartEnd.value) {
+      const savedData = propertyDataStart.value;
+      propertyDataStepped.value = savedData;
+      propertyDataStart.value = null;
+      propertyDataEnd.value = null;
+    }
+  },
+});
+
+const slotNumberStepped = computed({
+  get() {
+    return props.capability.typeData[props.propertyName];
+  },
+  set(newData) {
+    props.capability.typeData[props.propertyName] = newData === null ? '' : newData;
+  },
+});
+
+const slotNumberStart = computed({
+  get() {
+    return props.capability.typeData[`${props.propertyName}Start`];
+  },
+  set(newData) {
+    props.capability.typeData[`${props.propertyName}Start`] = newData === null ? '' : newData;
+  },
+});
+
+const slotNumberEnd = computed({
+  get() {
+    return props.capability.typeData[`${props.propertyName}End`];
+  },
+  set(newData) {
+    props.capability.typeData[`${props.propertyName}End`] = newData === null ? '' : newData;
+  },
+});
+
+const swapButtonTabIndex = computed(() => {
+  return (propertyDataStart.value === propertyDataEnd.value ||
+    propertyDataStart.value === '' ||
+    propertyDataEnd.value === '') ? '-1' : null;
+});
+
+function focus() {
+  for (const field of [steppedField, startField, endField]) {
+    if (field.value) {
+      field.value.focus();
+      return;
+    }
+  }
+}
+
+async function focusEndField() {
+  await nextTick();
+
+  if (hasStartEnd.value) {
+    const focusField = propertyDataStart.value === '' ? startField.value : endField.value;
+    focusField?.focus();
+  }
+}
+
+function onUnitSelected(newUnit: string) {
+  if (!propertyDataStart.value.endsWith(newUnit)) {
+    startField.value?.setUnitString(newUnit);
+  }
+  if (!propertyDataEnd.value.endsWith(newUnit)) {
+    endField.value?.setUnitString(newUnit);
+  }
+}
+
+function swapStartEnd() {
+  [propertyDataStart.value, propertyDataEnd.value] = [propertyDataEnd.value, propertyDataStart.value];
+}
+
+defineExpose({ focus });
 </script>

@@ -150,25 +150,19 @@
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Physical from '../../../lib/model/Physical.js';
-import LabeledValue from '../LabeledValue.vue';
+<script setup lang="ts">
+import Physical from '~~/lib/model/Physical.js';
 
-export default {
-  components: {
-    LabeledValue,
-  },
-  props: {
-    physical: instanceOfProp(Physical).required,
-  },
-  computed: {
-    powerConnectors() {
-      return Object.entries(this.physical.powerConnectors).map(([name, value]) => ({
-        name,
-        value,
-      }));
-    },
-  },
-};
+interface Props {
+  physical: Physical;
+}
+
+const props = defineProps<Props>();
+
+const powerConnectors = computed(() => {
+  return Object.entries(props.physical.powerConnectors).map(([name, value]) => ({
+    name,
+    value,
+  }));
+});
 </script>

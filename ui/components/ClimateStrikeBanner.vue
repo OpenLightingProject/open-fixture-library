@@ -117,34 +117,28 @@
 }
 </style>
 
-<script>
-export default {
-  data() {
-    return {
-      isClimateStrike: false,
-      showClimateStrikeBanner: false,
-      strikeDateString: '2023-09-15',
-      climateStrikeWebsite: 'https://fridaysforfuture.org/september15/',
-      hashtags: ['climatejustice', 'FridaysForFuture', 'climatestrike', 'EndFossilFuels', 'ClimateForChange'],
-    };
-  },
-  created() {
-    const strikeDate = new Date(this.strikeDateString);
-    strikeDate.setHours(0, 0, 0, 0);
+<script setup lang="ts">
+const isClimateStrike = ref(false);
+const showClimateStrikeBanner = ref(false);
+const strikeDateString = '2023-09-15';
+const climateStrikeWebsite = 'https://fridaysforfuture.org/september15/';
+const hashtags = ['climatejustice', 'FridaysForFuture', 'climatestrike', 'EndFossilFuels', 'ClimateForChange'];
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+const strikeDate = new Date(strikeDateString);
+strikeDate.setHours(0, 0, 0, 0);
 
-    const bannerStartDate = new Date(strikeDate);
-    bannerStartDate.setDate(strikeDate.getDate() - 14);
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
-    this.isClimateStrike = strikeDate.getTime() === today.getTime();
-    this.showClimateStrikeBanner = bannerStartDate.getTime() <= today.getTime() && today.getTime() < strikeDate.getTime();
-  },
-  mounted() {
-    if (this.isClimateStrike) {
-      document.documentElement.style.overflow = 'hidden';
-    }
-  },
-};
+const bannerStartDate = new Date(strikeDate);
+bannerStartDate.setDate(strikeDate.getDate() - 14);
+
+isClimateStrike.value = strikeDate.getTime() === today.getTime();
+showClimateStrikeBanner.value = bannerStartDate.getTime() <= today.getTime() && today.getTime() < strikeDate.getTime();
+
+onMounted(() => {
+  if (isClimateStrike.value) {
+    document.documentElement.style.overflow = 'hidden';
+  }
+});
 </script>

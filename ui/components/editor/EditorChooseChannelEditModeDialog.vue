@@ -24,41 +24,33 @@
   </A11yDialog>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
+<script setup lang="ts">
 import A11yDialog from '../A11yDialog.vue';
 
-export default {
-  components: {
-    A11yDialog,
-  },
-  props: {
-    channel: objectProp().required,
-    fixture: objectProp().required,
-  },
-  methods: {
-    onChooseChannelEditModeDialogOpen() {
-      const channelUsedElsewhere = this.fixture.modes.some(
-        (mode) => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
-      );
+interface Props {
+  channel: object;
+  fixture: object;
+}
 
-      if (channelUsedElsewhere) {
-        // let user first choose if they want to edit all or a duplicate
-        return;
-      }
+const props = defineProps<Props>();
 
-      // else duplicate makes no sense here -> continue directly
-      this.chooseChannelEditMode('edit-all');
-    },
-    async chooseChannelEditMode(editMode) {
-      // close this dialog
-      this.channel.editMode = '';
+function onChooseChannelEditModeDialogOpen() {
+  const channelUsedElsewhere = props.fixture.modes.some(
+    mode => mode.uuid !== props.channel.modeId && mode.channels.includes(props.channel.uuid),
+  );
 
-      await this.$nextTick();
+  if (channelUsedElsewhere) {
+    return;
+  }
 
-      // open channel dialog
-      this.channel.editMode = editMode;
-    },
-  },
-};
+  chooseChannelEditMode(`edit-all`);
+}
+
+async function chooseChannelEditMode(editMode: string) {
+  props.channel.editMode = ``;
+
+  await nextTick();
+
+  props.channel.editMode = editMode;
+}
 </script>

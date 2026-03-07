@@ -118,78 +118,77 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { nextTick } from 'vue';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputBoolean,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      effectPresets: schemaDefinitions.effectPreset.enum,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        effectNameOrPreset: 'effectName',
-        effectName: '',
-        effectPreset: '',
-        speed: '',
-        speedStart: null,
-        speedEnd: null,
-        duration: '',
-        durationStart: null,
-        durationEnd: null,
-        parameter: '',
-        parameterStart: null,
-        parameterEnd: null,
-        soundControlled: null,
-        soundSensitivity: '',
-        soundSensitivityStart: null,
-        soundSensitivityEnd: null,
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      effectNameOrPreset?: string;
+      effectName?: string;
+      effectPreset?: string;
+      speed?: string;
+      speedStart?: string | null;
+      speedEnd?: string | null;
+      duration?: string;
+      durationStart?: string | null;
+      durationEnd?: string | null;
+      parameter?: string;
+      parameterStart?: string | null;
+      parameterEnd?: string | null;
+      soundControlled?: boolean | null;
+      soundSensitivity?: string;
+      soundSensitivityStart?: string | null;
+      soundSensitivityEnd?: string | null;
+      comment?: string;
     };
-  },
-  computed: {
-    /**
-     * Called from {@link EditorCapabilityTypeData}
-     * @public
-     * @returns {string[]} Array of all props to reset to default data when capability is saved.
-     */
-    resetProperties() {
-      const resetProperties = [this.capability.typeData.effectNameOrPreset === 'effectName' ? 'effectPreset' : 'effectName'];
+  };
+  formstate?: object;
+}
 
-      if (!this.capability.typeData.soundControlled) {
-        resetProperties.push('soundSensitivity', 'soundSensitivityStart', 'soundSensitivityEnd');
-      }
+const props = defineProps<Props>();
+const effectNameOrPresetInput = ref<HTMLInputElement | HTMLSelectElement | null>(null);
 
-      return resetProperties;
-    },
-  },
-  methods: {
-    async changeEffectNameOrPreset(newValue) {
-      this.capability.typeData.effectNameOrPreset = newValue;
+const effectPresets = schemaDefinitions.effectPreset.enum;
 
-      await this.$nextTick();
-      this.$refs.effectNameOrPresetInput.focus();
-    },
-  },
+const defaultData = {
+  effectNameOrPreset: 'effectName',
+  effectName: '',
+  effectPreset: '',
+  speed: '',
+  speedStart: null,
+  speedEnd: null,
+  duration: '',
+  durationStart: null,
+  durationEnd: null,
+  parameter: '',
+  parameterStart: null,
+  parameterEnd: null,
+  soundControlled: null,
+  soundSensitivity: '',
+  soundSensitivityStart: null,
+  soundSensitivityEnd: null,
+  comment: '',
 };
+
+const resetProperties = computed(() => {
+  const propsToReset = [props.capability.typeData.effectNameOrPreset === 'effectName' ? 'effectPreset' : 'effectName'];
+
+  if (!props.capability.typeData.soundControlled) {
+    propsToReset.push('soundSensitivity', 'soundSensitivityStart', 'soundSensitivityEnd');
+  }
+
+  return propsToReset;
+});
+
+async function changeEffectNameOrPreset(newValue: string) {
+  props.capability.typeData.effectNameOrPreset = newValue;
+
+  await nextTick();
+  if (effectNameOrPresetInput.value) {
+    (effectNameOrPresetInput.value as { focus: () => void }).focus();
+  }
+}
 </script>

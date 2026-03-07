@@ -37,96 +37,83 @@
   </span>
 </template>
 
-<script>
-import { arrayProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
-import PropertyInputNumber from './PropertyInputNumber.vue';
+<script setup lang="ts">
 
-export default {
-  components: {
-    PropertyInputNumber,
-  },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: arrayProp().withDefault(null),
-    hints: arrayProp().withDefault(() => ['x', 'y', 'z']),
-    schemaProperty: objectProp().required,
-    unit: stringProp().optional,
-    required: booleanProp().withDefault(false),
-    name: stringProp().required,
-    formstate: objectProp().required,
-  },
-  emits: {
-    'update:model-value': (dimensions) => true,
-    'focus': () => true,
-    'blur': () => true,
-    'vf:validate': (validationData) => true,
-  },
-  data() {
-    return {
-      validationData: {
-        'complete-dimensions': '',
-      },
-    };
-  },
-  computed: {
-    x: {
-      get() {
-        return this.modelValue ? this.modelValue[0] : null;
-      },
-      set(xInput) {
-        this.$emit('update:model-value', getDimensionsArray(xInput, this.y, this.z));
-      },
-    },
-    y: {
-      get() {
-        return this.modelValue ? this.modelValue[1] : null;
-      },
-      set(yInput) {
-        this.$emit('update:model-value', getDimensionsArray(this.x, yInput, this.z));
-      },
-    },
-    z: {
-      get() {
-        return this.modelValue ? this.modelValue[2] : null;
-      },
-      set(zInput) {
-        this.$emit('update:model-value', getDimensionsArray(this.x, this.y, zInput));
-      },
-    },
-    dimensionsSpecified() {
-      return this.modelValue !== null;
-    },
-  },
-  mounted() {
-    this.$emit('vf:validate', this.validationData);
-  },
-  methods: {
-    onFocus() {
-      this.$emit('focus');
-    },
-    onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest('.dimensions') !== event.relatedTarget.closest('.dimensions')) {
-        this.$emit('blur');
-      }
-    },
+interface Props {
+  modelValue?: number[] | null;
+  hints?: string[];
+  schemaProperty: {
+    items: object;
+  };
+  unit?: string;
+  required?: boolean;
+  name: string;
+  formstate: object;
+}
 
-    /** @public */
-    focus() {
-      this.$refs.xInput.focus();
-    },
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: null,
+  hints: () => ['x', 'y', 'z'],
+  required: false,
+});
+
+const emit = defineEmits<{
+  'update:model-value': [dimensions: number[] | null];
+  focus: [];
+  blur: [];
+  'vf:validate': [validationData: { 'complete-dimensions': string }];
+}>();
+
+const xInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
+
+const validationData = ref({
+  'complete-dimensions': '',
+});
+
+const x = computed({
+  get: () => props.modelValue ? props.modelValue[0] : null,
+  set: (xInputVal: number | null) => {
+    emit('update:model-value', getDimensionsArray(xInputVal, y.value, z.value));
   },
+});
+
+const y = computed({
+  get: () => props.modelValue ? props.modelValue[1] : null,
+  set: (yInputVal: number | null) => {
+    emit('update:model-value', getDimensionsArray(x.value, yInputVal, z.value));
+  },
+});
+
+const z = computed({
+  get: () => props.modelValue ? props.modelValue[2] : null,
+  set: (zInputVal: number | null) => {
+    emit('update:model-value', getDimensionsArray(x.value, y.value, zInputVal));
+  },
+});
+
+const dimensionsSpecified = computed(() => props.modelValue !== null);
+
+onMounted(() => {
+  emit('vf:validate', validationData.value);
+});
+
+const onFocus = () => {
+  emit('focus');
 };
 
-/**
- * @param {number | null} x X value of the dimensions array or null.
- * @param {number | null} y Y value of the dimensions array or null.
- * @param {number | null} z Z value of the dimensions array or null.
- * @returns {[number, number, number] | null} Dimensions array with the inputs or null if all inputs were null.
- */
-function getDimensionsArray(x, y, z) {
+const onBlur = (event: FocusEvent) => {
+  if (!(event.target && event.relatedTarget) || (event.target as Element).closest('.dimensions') !== (event.relatedTarget as Element)?.closest('.dimensions')) {
+    emit('blur');
+  }
+};
+
+defineExpose({
+  focus: () => {
+    xInput.value?.focus();
+  },
+});
+
+function getDimensionsArray(x: number | null, y: number | null, z: number | null): [number, number, number] | null {
   if (x === null && y === null && z === null) {
     return null;
   }

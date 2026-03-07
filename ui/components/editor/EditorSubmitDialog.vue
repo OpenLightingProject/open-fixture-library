@@ -182,7 +182,7 @@
   margin: 1rem -1rem -1rem;
   background: theme-color(page-background);
 
-  & ::v-deep .help-wanted .actions {
+  & :deep(.help-wanted .actions) {
     cursor: not-allowed;
 
     a {
@@ -202,16 +202,30 @@
 }
 </style>
 
-<script>
-import { stringProp } from 'vue-ts-types';
-import Fixture from '../../../lib/model/Fixture.js';
-import Manufacturer from '../../../lib/model/Manufacturer.js';
-import A11yDialog from '../A11yDialog.vue';
-import DownloadButton from '../DownloadButton.vue';
-import FixturePage from '../fixture-page/FixturePage.vue';
-import FixtureHeader from '../FixtureHeader.vue';
+<script setup lang="ts">
+import Fixture from '~~/lib/model/Fixture.js';
+import Manufacturer from '~~/lib/model/Manufacturer.js';
 
-const stateTitles = {
+interface Props {
+  endpoint: string;
+  githubUsername?: string;
+  githubComment?: string;
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  success: [];
+  reset: [];
+}>();
+
+const state = ref<string>('closed');
+const requestBody = ref<any>(null);
+const error = ref<string | null>(null);
+const pullRequestUrl = ref<string | null>(null);
+const fixtureCreateResult = ref<any>(null);
+const previewFixtureKey = ref<string | null>(null);
+
+const stateTitles: Record<string, string> = {
   closed: 'Closed',
   validating: 'Validating your new fixture…',
   ready: 'Submit your new fixture',
@@ -220,203 +234,182 @@ const stateTitles = {
   success: 'Upload complete',
   error: 'Upload failed',
 };
-const stateTitlesPlural = {
+
+const stateTitlesPlural: Record<string, string> = {
   ready: 'Submit your new fixtures',
   uploading: 'Submitting your new fixtures…',
 };
 
-export default {
-  components: {
-    A11yDialog,
-    DownloadButton,
-    FixturePage,
-    FixtureHeader,
-  },
-  props: {
-    endpoint: stringProp().required,
-    githubUsername: stringProp().optional,
-    githubComment: stringProp().optional,
-  },
-  emits: {
-    success: () => true,
-    reset: () => true,
-  },
-  data() {
-    return {
-      state: 'closed',
-      requestBody: null,
-      error: null,
-      pullRequestUrl: null,
-      fixtureCreateResult: null,
-      previewFixtureKey: null,
-    };
-  },
-  computed: {
-    fixtureKeys() {
-      if (this.fixtureCreateResult === null) {
-        return [];
-      }
+const fixtureKeys = computed(() => {
+  if (fixtureCreateResult.value === null) {
+    return [];
+  }
 
-      return Object.keys(this.fixtureCreateResult.fixtures);
+  return Object.keys(fixtureCreateResult.value.fixtures);
+});
+
+const isPlural = computed(() => fixtureKeys.value.length > 1);
+
+const title = computed(() => {
+  if (state.value in stateTitlesPlural && isPlural.value) {
+    return stateTitlesPlural[state.value];
+  }
+  return stateTitles[state.value];
+});
+
+const rawData = computed(() => {
+  const data = JSON.stringify(requestBody.value, null, 2);
+
+  if (state.value === 'error') {
+    const backticks = '```';
+    return `${backticks}json\n${data}\n\n${error.value}\n${backticks}`;
+  }
+
+  return data;
+});
+
+const hasPreview = computed(() => {
+  if (fixtureCreateResult.value === null) {
+    return false;
+  }
+
+  return Object.values(fixtureCreateResult.value.errors).some(
+    errors => errors.length === 0,
+  );
+});
+
+const hasValidationErrors = computed(() => {
+  if (fixtureCreateResult.value === null) {
+    return false;
+  }
+
+  return Object.values(fixtureCreateResult.value.errors).flat().length > 0;
+});
+
+const hasValidationWarnings = computed(() => {
+  if (fixtureCreateResult.value === null) {
+    return false;
+  }
+
+  return Object.values(fixtureCreateResult.value.warnings).flat().length > 0;
+});
+
+const previewFixture = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  const [manufacturerKey, fixtureKey] = previewFixtureKey.value.split('/');
+
+  const manufacturer = new Manufacturer(manufacturerKey, fixtureCreateResult.value.manufacturers[manufacturerKey]);
+
+  return new Fixture(manufacturer, fixtureKey, fixtureCreateResult.value.fixtures[previewFixtureKey.value]);
+});
+
+const previewFixtureResults = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  return {
+    warnings: fixtureCreateResult.value.warnings[previewFixtureKey.value],
+    errors: fixtureCreateResult.value.errors[previewFixtureKey.value],
+  };
+});
+
+const previewFixtureCreateResult = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  return {
+    manufacturers: fixtureCreateResult.value.manufacturers,
+    fixtures: {
+      [previewFixtureKey.value]: fixtureCreateResult.value.fixtures[previewFixtureKey.value],
     },
-    isPlural() {
-      return this.fixtureKeys.length > 1;
+    warnings: {
+      [previewFixtureKey.value]: previewFixtureResults.value?.warnings,
     },
-    title() {
-      if (this.state in stateTitlesPlural && this.isPlural) {
-        return stateTitlesPlural[this.state];
-      }
-      return stateTitles[this.state];
+    errors: {
+      [previewFixtureKey.value]: previewFixtureResults.value?.errors,
     },
-    rawData() {
-      const rawData = JSON.stringify(this.requestBody, null, 2);
+  };
+});
 
-      if (this.state === 'error') {
-        const backticks = '```';
-        return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
-      }
+async function validate(body: any) {
+  requestBody.value = body;
 
-      return rawData;
-    },
-    hasPreview() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
+  console.log('validate', structuredClone(requestBody.value));
 
-      return Object.values(this.fixtureCreateResult.errors).some(
-        (errors) => errors.length === 0,
-      );
-    },
-    hasValidationErrors() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
+  state.value = 'validating';
+  try {
+    const response = await $fetch(props.endpoint, {
+      method: 'POST',
+      body: requestBody.value,
+    });
 
-      return Object.values(this.fixtureCreateResult.errors).flat().length > 0;
-    },
-    hasValidationWarnings() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
+    fixtureCreateResult.value = response.data;
+    state.value = 'ready';
+  }
+  catch (err: any) {
+    let errorMessage = err.message;
+    if (err.response && err.response.data.error) {
+      errorMessage = err.response.data.error;
+    }
 
-      return Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
-    },
-    previewFixture() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+    console.error('There was a problem with the request:', errorMessage);
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/');
+    error.value = errorMessage;
+    state.value = 'error';
+  }
+}
 
-      const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
+async function onPreview() {
+  previewFixtureKey.value = Object.keys(fixtureCreateResult.value.fixtures)[0];
+  state.value = 'preview';
+}
 
-      return new Fixture(manufacturer, fixtureKey, this.fixtureCreateResult.fixtures[this.previewFixtureKey]);
-    },
-    previewFixtureResults() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+async function onSubmit() {
+  requestBody.value = {
+    fixtureCreateResult: fixtureCreateResult.value,
+    githubUsername: props.githubUsername ?? null,
+    githubComment: props.githubComment ?? null,
+  };
 
-      return {
-        warnings: this.fixtureCreateResult.warnings[this.previewFixtureKey],
-        errors: this.fixtureCreateResult.errors[this.previewFixtureKey],
-      };
-    },
-    previewFixtureCreateResult() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+  console.log('submit', structuredClone(requestBody.value));
 
-      return {
-        manufacturers: this.fixtureCreateResult.manufacturers,
-        fixtures: {
-          [this.previewFixtureKey]: this.fixtureCreateResult.fixtures[this.previewFixtureKey],
-        },
-        warnings: {
-          [this.previewFixtureKey]: this.previewFixtureResults.warnings,
-        },
-        errors: {
-          [this.previewFixtureKey]: this.previewFixtureResults.errors,
-        },
-      };
-    },
-  },
-  methods: {
-    /**
-     * Called from fixture editor to open the dialog.
-     * @public
-     * @param {object} requestBody The data to pass to the API endpoint.
-     */
-    async validate(requestBody) {
-      this.requestBody = requestBody;
+  state.value = 'uploading';
+  try {
+    const response = await $fetch('/api/v1/fixtures/submit', {
+      method: 'POST',
+      body: requestBody.value,
+    });
 
-      console.log('validate', structuredClone(this.requestBody));
+    pullRequestUrl.value = response.data.pullRequestUrl;
+    state.value = 'success';
+    emit('success');
+  }
+  catch (err: any) {
+    let errorMessage = err.message;
+    if (err.response && err.response.data.error) {
+      errorMessage = err.response.data.error;
+    }
 
-      this.state = 'validating';
-      try {
-        const response = await this.$axios.post(
-          this.endpoint,
-          this.requestBody,
-        );
+    console.error('There was a problem with the request:', errorMessage);
 
-        this.fixtureCreateResult = response.data;
-        this.state = 'ready';
-      }
-      catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
+    error.value = errorMessage;
+    state.value = 'error';
+  }
+}
 
-        console.error('There was a problem with the request:', errorMessage);
+function onReset() {
+  state.value = 'closed';
+  emit('reset');
+}
 
-        this.error = errorMessage;
-        this.state = 'error';
-      }
-    },
-    async onPreview() {
-      this.previewFixtureKey = Object.keys(this.fixtureCreateResult.fixtures)[0];
-      this.state = 'preview';
-    },
-    async onSubmit() {
-      this.requestBody = {
-        fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername ?? null,
-        githubComment: this.githubComment ?? null,
-      };
+function onCancel() {
+  state.value = 'closed';
+}
 
-      console.log('submit', structuredClone(this.requestBody));
-
-      this.state = 'uploading';
-      try {
-        const response = await this.$axios.post(
-          '/api/v1/fixtures/submit',
-          this.requestBody,
-        );
-
-        this.pullRequestUrl = response.data.pullRequestUrl;
-        this.state = 'success';
-        this.$emit('success');
-      }
-      catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
-
-        console.error('There was a problem with the request:', errorMessage);
-
-        this.error = errorMessage;
-        this.state = 'error';
-      }
-    },
-    onReset() {
-      this.state = 'closed';
-      this.$emit('reset');
-    },
-    onCancel() {
-      this.state = 'closed';
-    },
-  },
-};
+defineExpose({ validate });
 </script>

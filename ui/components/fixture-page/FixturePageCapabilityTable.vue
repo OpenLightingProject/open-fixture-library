@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="(cap, index) of capabilities">
-        <tr :key="`cap-${index}`" class="capability" :data-capability-type="cap.model.type">
+      <template v-for="(cap, index) of capabilities" :key="`cap-${index}`">
+        <tr class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
@@ -126,52 +126,52 @@ th {
 }
 </style>
 
-<script>
-import { instanceOfProp, numberProp } from 'vue-ts-types';
-import CoarseChannel from '../../../lib/model/CoarseChannel.js';
-import Mode from '../../../lib/model/Mode.js';
-import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
-import HelpWantedMessage from '../HelpWantedMessage.vue';
+<script setup lang="ts">
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import Mode from '~~/lib/model/Mode.js';
 
-export default {
-  components: {
-    CapabilityTypeIcon,
-    HelpWantedMessage,
-  },
-  props: {
-    channel: instanceOfProp(CoarseChannel).required,
-    mode: instanceOfProp(Mode).required,
-    resolutionInMode: numberProp().required,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  computed: {
-    capabilities() {
-      return this.channel.capabilities.map((capability) => {
-        const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
-        const switchChannels = [];
+interface Props {
+  channel: CoarseChannel;
+  mode: Mode;
+  resolutionInMode: number;
+}
 
-        for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
-          const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
+const props = defineProps<Props>();
 
-          if (switchingChannelIndex > -1) {
-            switchChannels.push({
-              key: switchingChannelKey,
-              index: switchingChannelIndex,
-              to: capability.switchChannels[switchingChannelKey],
-            });
-          }
-        }
+defineEmits<{
+  'help-wanted-clicked': [event: unknown];
+}>();
 
-        return {
-          model: capability,
-          dmxRangeStart: dmxRange.start,
-          dmxRangeEnd: dmxRange.end,
-          switchChannels: switchChannels.toSorted((a, b) => a.index - b.index), // ascending indices
-        };
-      });
-    },
-  },
-};
+interface CapabilityData {
+  model: unknown;
+  dmxRangeStart: number;
+  dmxRangeEnd: number;
+  switchChannels: { key: string; index: number; to: string }[];
+}
+
+const capabilities = computed((): CapabilityData[] => {
+  return props.channel.capabilities.map(capability => {
+    const dmxRange = capability.getDmxRangeWithResolution(props.resolutionInMode);
+    const switchChannels = [];
+
+    for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
+      const switchingChannelIndex = props.mode.getChannelIndex(switchingChannelKey);
+
+      if (switchingChannelIndex > -1) {
+        switchChannels.push({
+          key: switchingChannelKey,
+          index: switchingChannelIndex,
+          to: capability.switchChannels[switchingChannelKey],
+        });
+      }
+    }
+
+    return {
+      model: capability,
+      dmxRangeStart: dmxRange.start,
+      dmxRangeEnd: dmxRange.end,
+      switchChannels: switchChannels.sort((a, b) => a.index - b.index),
+    };
+  });
+});
 </script>

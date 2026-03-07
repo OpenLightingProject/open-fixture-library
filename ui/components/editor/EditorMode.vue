@@ -5,7 +5,7 @@
       v-if="fixture.modes.length > 1"
       href="#remove-mode"
       class="icon-button close"
-      @click.prevent="$emit(`remove`)">
+      @click.prevent="$emit('remove')">
       Remove mode
       <OflSvg name="close" />
     </a>
@@ -74,7 +74,7 @@
       <Draggable :list="mode.channels" v-bind="dragOptions">
         <TransitionGroup class="mode-channels" tag="ol">
           <li
-            v-for="(channelUuid, channelIndex) of mode.channels"
+            v-for="(channelUuid, channelIndex) in mode.channels"
             :key="channelUuid"
             :value="channelIndex + 1"
             :data-channel-uuid="channelUuid">
@@ -133,7 +133,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-mode ::v-deep section {
+.fixture-mode :deep(section) {
   flex-direction: column;
 
   & > .label {
@@ -197,153 +197,170 @@
 }
 </style>
 
-<script>
-import { numberProp, objectProp } from 'vue-ts-types';
+<script setup lang="ts">
 import Draggable from 'vuedraggable';
-import { modeProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
-import { constants } from '../../assets/scripts/editor-utilities.js';
-import LabeledInput from '../LabeledInput.vue';
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputText from '../PropertyInputText.vue';
-import EditorPhysical from './EditorPhysical.vue';
 
-export default {
-  components: {
-    Draggable,
-    EditorPhysical,
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-  },
-  props: {
-    mode: objectProp().required,
-    index: numberProp().required,
-    fixture: objectProp().required,
-    formstate: objectProp().required,
-  },
-  emits: {
-    'remove': () => true,
-    'open-channel-editor': (payload) => true,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      modeProperties,
-      dragOptions: {
-        animation: 200,
-        handle: '.drag-handle',
-        emptyInsertThreshold: 20,
-        group: {
-          name: 'mode',
-          pull: 'clone',
-          put: (to, from, dragElement, event) => {
-            if (from === to) {
-              return false;
-            }
+import { modeProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
+import { constants } from '@/assets/scripts/editor-utilities.js';
 
-            const channelUuid = dragElement.getAttribute('data-channel-uuid');
-            const modeUuid = to.el.closest('.fixture-mode').getAttribute('data-mode-uuid');
-            const targetMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
+interface Props {
+  mode: {
+    uuid: string;
+    name: string;
+    shortName?: string;
+    rdmPersonalityIndex?: number;
+    enablePhysicalOverride: boolean;
+    physical?: Record<string, unknown>;
+    channels: string[];
+  };
+  index: number;
+  fixture: {
+    modes: Array<{ uuid: string; channels: string[] }>;
+    availableChannels: Record<string, { coarseChannelId?: string; resolution?: number }>;
+    rdmModelId: number | null;
+  };
+  formstate: Record<string, unknown>;
+}
 
-            if (targetMode.channels.includes(channelUuid)) {
-              // channel already in target mode
-              return false;
-            }
+const props = defineProps<Props>();
 
-            const channel = this.fixture.availableChannels[channelUuid];
-            if (!('coarseChannelId' in channel)) {
-              // normal channels don't need any more validation
-              return true;
-            }
+const emit = defineEmits<{
+  remove: [];
+  'open-channel-editor': [payload: { modeId: string; editMode: string; uuid?: string }];
+}>();
 
-            if (!targetMode.channels.includes(channel.coarseChannelId)) {
-              // fine channels need their coarse channel
-              return false;
-            }
+const firstInput = ref<InstanceType<typeof PropertyInputText> | null>(null);
 
-            if (channel.resolution === constants.RESOLUTION_16BIT) {
-              // next coarser channel is coarse channel, which is in target mode
-              return true;
-            }
+const dragOptions = {
+  animation: 200,
+  handle: '.drag-handle',
+  emptyInsertThreshold: 20,
+  group: {
+    name: 'mode',
+    pull: 'clone',
+    put: (to: { el: HTMLElement }, from: unknown, dragElement: HTMLElement | null) => {
+      if (from === to) {
+        return false;
+      }
 
-            // return whether next coarser channel can be found in target mode
-            return targetMode.channels.some((uuid) => {
-              const otherChannel = this.fixture.availableChannels[uuid];
-              return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.resolution === channel.resolution - 1;
-            });
-          },
-          revertClone: true,
-        },
-      },
-    };
-  },
-  computed: {
-    fixtureEditor() {
-      const vueForm = this.$parent;
-      return vueForm.$parent;
-    },
-    channelListNotEmpty() {
-      return this.mode.channels.length > 0;
-    },
-  },
-  mounted() {
-    if (this.$root._oflRestoreComplete) {
-      this.$refs.firstInput.focus();
-    }
-  },
-  methods: {
-    getChannelName(channelUuid) {
-      return this.fixtureEditor.getChannelName(channelUuid);
-    },
-    editChannel(channelUuid) {
-      this.$emit('open-channel-editor', {
-        modeId: this.mode.uuid,
-        editMode: 'edit-?',
-        uuid: channelUuid,
+      if (!dragElement) return false;
+
+      const channelUuid = dragElement.getAttribute('data-channel-uuid');
+      const modeUuid = to.el.closest('.fixture-mode')?.getAttribute('data-mode-uuid');
+      if (!channelUuid || !modeUuid) return false;
+
+      const targetMode = props.fixture.modes.find(mode => mode.uuid === modeUuid);
+      if (!targetMode) return false;
+
+      if (targetMode.channels.includes(channelUuid)) {
+        return false;
+      }
+
+      const channel = props.fixture.availableChannels[channelUuid];
+      if (!('coarseChannelId' in channel)) {
+        return true;
+      }
+
+      if (!targetMode.channels.includes(channel.coarseChannelId)) {
+        return false;
+      }
+
+      if (channel.resolution === constants.RESOLUTION_16BIT) {
+        return true;
+      }
+
+      return targetMode.channels.some(uuid => {
+        const otherChannel = props.fixture.availableChannels[uuid];
+        return otherChannel?.coarseChannelId === channel.coarseChannelId && otherChannel?.resolution === channel.resolution! - 1;
       });
     },
-    addChannel() {
-      this.$emit('open-channel-editor', {
-        modeId: this.mode.uuid,
-        editMode: 'add-existing',
-      });
-    },
-    isChannelNameUnique(channelUuid) {
-      return this.fixtureEditor.isChannelNameUnique(channelUuid);
-    },
-    isFineChannel(channelUuid) {
-      return 'coarseChannelId' in this.fixture.availableChannels[channelUuid];
-    },
-    moveChannel(channelUuid, delta) {
-      const channelIndex = this.mode.channels.indexOf(channelUuid);
-      const newIndex = channelIndex + delta;
-      if (newIndex < 0 || newIndex >= this.mode.channels.length) {
-        return;
-      }
-
-      this.mode.channels.splice(channelIndex, 1);
-      this.mode.channels.splice(newIndex, 0, channelUuid);
-    },
-    removeChannel(channelUuid) {
-      const channel = this.fixture.availableChannels[channelUuid];
-
-      // first remove the finer channels if any
-      let coarseChannelId = channelUuid;
-      let resolution = constants.RESOLUTION_8BIT;
-      if (this.isFineChannel(channelUuid)) {
-        coarseChannelId = channel.coarseChannelId;
-        resolution = channel.resolution;
-      }
-
-      for (const otherChannel of Object.values(this.fixture.availableChannels)) {
-        if (otherChannel.coarseChannelId === coarseChannelId && otherChannel.resolution > resolution) {
-          this.fixtureEditor.removeChannel(otherChannel.uuid, this.mode.uuid);
-        }
-      }
-
-      // then remove the channel itself
-      this.fixtureEditor.removeChannel(channelUuid, this.mode.uuid);
-    },
+    revertClone: true,
   },
 };
+
+const channelListNotEmpty = computed(() => props.mode.channels.length > 0);
+
+function getFixtureEditor() {
+  const parent = getCurrentInstance()?.parent;
+  if (!parent) return null;
+  const vueForm = parent.exposed || parent.proxy;
+  if (!vueForm) return null;
+  const grandParent = parent.parent;
+  if (!grandParent) return null;
+  return grandParent.exposed || grandParent.proxy;
+}
+
+function getChannelName(channelUuid: string) {
+  const editor = getFixtureEditor();
+  if (!editor || !editor.getChannelName) return channelUuid;
+  return editor.getChannelName(channelUuid);
+}
+
+function editChannel(channelUuid: string) {
+  emit('open-channel-editor', {
+    modeId: props.mode.uuid,
+    editMode: 'edit-?',
+    uuid: channelUuid,
+  });
+}
+
+function addChannel() {
+  emit('open-channel-editor', {
+    modeId: props.mode.uuid,
+    editMode: 'add-existing',
+  });
+}
+
+function isChannelNameUnique(channelUuid: string) {
+  const editor = getFixtureEditor();
+  if (!editor || !editor.isChannelNameUnique) return true;
+  return editor.isChannelNameUnique(channelUuid);
+}
+
+function isFineChannel(channelUuid: string) {
+  return 'coarseChannelId' in props.fixture.availableChannels[channelUuid];
+}
+
+function moveChannel(channelUuid: string, delta: number) {
+  const channelIndex = props.mode.channels.indexOf(channelUuid);
+  const newIndex = channelIndex + delta;
+  if (newIndex < 0 || newIndex >= props.mode.channels.length) {
+    return;
+  }
+
+  props.mode.channels.splice(channelIndex, 1);
+  props.mode.channels.splice(newIndex, 0, channelUuid);
+}
+
+function removeChannel(channelUuid: string) {
+  const channel = props.fixture.availableChannels[channelUuid];
+
+  let coarseChannelId = channelUuid;
+  let resolution = constants.RESOLUTION_8BIT;
+  if (isFineChannel(channelUuid)) {
+    coarseChannelId = channel.coarseChannelId!;
+    resolution = channel.resolution!;
+  }
+
+  for (const otherChannel of Object.values(props.fixture.availableChannels)) {
+    if (otherChannel?.coarseChannelId === coarseChannelId && otherChannel?.resolution! > resolution) {
+      const editor = getFixtureEditor();
+      if (editor?.removeChannel) {
+        editor.removeChannel(otherChannel.uuid, props.mode.uuid);
+      }
+    }
+  }
+
+  const editor = getFixtureEditor();
+  if (editor?.removeChannel) {
+    editor.removeChannel(channelUuid, props.mode.uuid);
+  }
+}
+
+onMounted(() => {
+  const root = getCurrentInstance()?.appContext.app._context.provides;
+  if (window.__oflRestoreComplete) {
+    firstInput.value?.$el?.focus();
+  }
+});
 </script>

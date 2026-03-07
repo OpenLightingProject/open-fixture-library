@@ -23,59 +23,54 @@
   </div>
 </template>
 
-<script>
-import { arrayProp } from 'vue-ts-types';
-import Draggable from 'vuedraggable';
-import CategoryBadge from '../CategoryBadge.vue';
 
-export default {
-  components: {
-    Draggable,
-    CategoryBadge,
+<script setup lang="ts">
+interface Props {
+  value: string[];
+  allCategories: string[];
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  input: [value: string[]];
+  focus: [];
+  blur: [];
+}>();
+
+const selectedCategories = computed({
+  get() {
+    return props.value;
   },
-  props: {
-    value: arrayProp().required,
-    allCategories: arrayProp().required,
+  set(newSelectedCategories: string[]) {
+    emit('input', newSelectedCategories);
   },
-  emits: {
-    input: (value) => true,
-    focus: () => true,
-    blur: () => true,
-  },
-  computed: {
-    selectedCategories: {
-      get() {
-        return this.value;
-      },
-      set(newSelectedCategories) {
-        this.$emit('input', newSelectedCategories);
-      },
-    },
-    unselectedCategories() {
-      return this.allCategories.filter(
-        (category) => !this.value.includes(category),
-      );
-    },
-  },
-  methods: {
-    select(selectedCategory) {
-      const updatedCategoryList = [...this.value, selectedCategory];
-      this.$emit('input', updatedCategoryList);
-      this.onBlur();
-    },
-    deselect(deselectedCategory) {
-      const updatedCategoryList = this.value.filter((category) => category !== deselectedCategory);
-      this.$emit('input', updatedCategoryList);
-      this.onBlur();
-    },
-    onFocus() {
-      this.$emit('focus');
-    },
-    onBlur(event) {
-      if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
-        this.$emit('blur');
-      }
-    },
-  },
-};
+});
+
+const unselectedCategories = computed(() => {
+  return props.allCategories.filter(
+    category => !props.value.includes(category),
+  );
+});
+
+function select(selectedCategory: string) {
+  const updatedCategoryList = [...props.value, selectedCategory];
+  emit('input', updatedCategoryList);
+  emit('blur');
+}
+
+function deselect(deselectedCategory: string) {
+  const updatedCategoryList = props.value.filter(category => category !== deselectedCategory);
+  emit('input', updatedCategoryList);
+  emit('blur');
+}
+
+function onFocus() {
+  emit('focus');
+}
+
+function onBlur(event: FocusEvent) {
+  if (!(event && event.target && event.relatedTarget) || (event.target as HTMLElement).parentNode !== (event.relatedTarget as HTMLElement)?.parentNode) {
+    emit('blur');
+  }
+}
 </script>

@@ -48,20 +48,8 @@ h2 {
 }
 </style>
 
-<script>
-export default {
-  head() {
-    const title = 'About';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-};
+<script setup lang="ts">
+useHead({
+  title: 'About',
+});
 </script>

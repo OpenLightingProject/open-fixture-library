@@ -20,38 +20,36 @@
 }
 </style>
 
-<script>
-import { oneOfTypesProp } from 'vue-ts-types';
-
-export default {
-  props: {
-    error: oneOfTypesProp([Object, Error]).required,
-  },
-  head() {
-    if (this.error.statusCode !== 404) {
-      console.error('Nuxt rendering error:', this.error);
-    }
-
-    const title = this.error.statusCode === 404 ? 'Not Found' : 'Error';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
+<script setup lang="ts">
+interface Error {
+  statusCode: number;
+  message: string;
+  response?: {
+    data?: {
+      error?: string;
     };
-  },
-  computed: {
-    errorMessage() {
-      if (this.error.response && this.error.response.data && this.error.response.data.error) {
-        return this.error.response.data.error;
-      }
+  };
+}
 
-      return this.error.message;
-    },
-  },
-};
+const props = defineProps<{
+  error: Error;
+}>();
+
+const errorMessage = computed(() => {
+  if (props.error.response?.data?.error) {
+    return props.error.response.data.error;
+  }
+
+  return props.error.message;
+});
+
+if (props.error.statusCode !== 404) {
+  console.error('Nuxt rendering error:', props.error);
+}
+
+const title = computed(() => props.error.statusCode === 404 ? 'Not Found' : 'Error');
+
+useHead({
+  title,
+});
 </script>

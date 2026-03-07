@@ -117,7 +117,7 @@
 
       <div class="button-bar">
         <a
-          v-if="isBrowser"
+          v-if="client"
           href="#load-modes"
           class="button primary"
           @click.prevent="modeNumberLoadLimit += modeNumberLoadIncrement">
@@ -126,7 +126,7 @@
         <a
           href="?loadAllModes"
           class="button"
-          :class="isBrowser ? `secondary` : `primary`"
+          :class="client ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
@@ -141,7 +141,7 @@
   border-top: 0.4rem solid transparent;
 }
 
-.comment ::v-deep .value {
+.comment :deep(.value) {
   white-space: pre-line;
 }
 
@@ -191,189 +191,146 @@
 }
 </style>
 
-<script>
-import { EmbettyVideo } from 'embetty-vue';
-import { booleanProp, instanceOfProp } from 'vue-ts-types';
-import register from '../../../fixtures/register.json';
-import Fixture from '../../../lib/model/Fixture.js';
-import { linksProperties } from '../../../lib/schema-properties.js';
-import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-import CategoryBadge from '../../components/CategoryBadge.vue';
-import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
-import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
-import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
-import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
-import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
-import LabeledValue from '../../components/LabeledValue.vue';
+<script setup lang="ts">
+import { EmbettyVideo } from 'embetty-vue-3';
+import register from '~~/fixtures/register.json';
+
+import Fixture from '~~/lib/model/Fixture.js';
+import { linksProperties } from '~~/lib/schema-properties.js';
+
+import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
+
+interface Props {
+  fixture: Fixture;
+  loadAllModes?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  loadAllModes: false,
+});
+
+defineEmits<{
+  'help-wanted-clicked': [event: unknown];
+}>();
+
+const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
+
+const manufacturerColor = ref<string | null>(register.colors[props.fixture.manufacturer.key] || null);
+const client = import.meta.client;
+const modeNumberLoadLimit = ref<number | undefined>(props.loadAllModes ? undefined : 5);
+const modeNumberLoadThreshold = 15;
+const modeNumberLoadIncrement = 10;
+
+const modesLimited = computed(() => props.fixture.modes.length > modeNumberLoadThreshold);
+
+const modes = computed(() => {
+  const modes = props.fixture.modes;
+
+  if (!modesLimited.value) {
+    return modes;
+  }
+
+  return modes.slice(0, modeNumberLoadLimit.value);
+});
+
+const videos = computed(() => {
+  const videoUrls = props.fixture.getLinksOfType(`video`);
+  const embettableVideoData = [];
+
+  for (const url of videoUrls) {
+    if (embettableVideoData.length === VIDEOS_TO_EMBED) {
+      break;
+    }
+
+    const videoData = getEmbettableVideoData(url);
+    if (videoData !== null) {
+      embettableVideoData.push(videoData);
+    }
+  }
+
+  return embettableVideoData;
+});
+
+const links = computed(() => {
+  const links = [];
+
+  for (const linkType of Object.keys(linksProperties)) {
+    let linkDisplayNumber = 1;
+    let linksOfType = props.fixture.getLinksOfType(linkType);
+
+    if (linkType === `video`) {
+      linksOfType = linksOfType.filter(
+        url => !videos.value.some(video => video.url === url),
+      );
+      linkDisplayNumber += videos.value.length;
+    }
+
+    for (const url of linksOfType) {
+      let name = linkTypeNames[linkType];
+      const title = `${name} at ${url}`;
+
+      if (linkType === `other`) {
+        name = url;
+      }
+      else if (linkDisplayNumber > 1) {
+        name += ` ${linkDisplayNumber}`;
+      }
+
+      links.push({
+        url,
+        name,
+        title,
+        type: linkType,
+        iconName: linkTypeIconNames[linkType],
+        hostname: getHostname(url),
+      });
+
+      linkDisplayNumber++;
+    }
+  }
+
+  return links;
+});
 
 const VIDEOS_TO_EMBED = 2;
-
-export default {
-  components: {
-    CategoryBadge,
-    EmbettyVideo,
-    FixturePageMatrix,
-    FixturePageMode,
-    FixturePagePhysical,
-    FixturePageWheel,
-    HelpWantedMessage,
-    LabeledValue,
-  },
-  props: {
-    fixture: instanceOfProp(Fixture).required,
-    loadAllModes: booleanProp().withDefault(false),
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  data() {
-    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
-    return {
-      manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
-      isBrowser: false,
-      modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
-      modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
-      modeNumberLoadIncrement: 10, // how many modes a button click will load
-      linkTypeIconNames,
-      linkTypeNames,
-    };
-  },
-  computed: {
-    modesLimited() {
-      return this.fixture.modes.length > this.modeNumberLoadThreshold;
-    },
-    modes() {
-      const modes = this.fixture.modes;
-
-      if (!this.modesLimited) {
-        return modes;
-      }
-
-      return modes.slice(0, this.modeNumberLoadLimit);
-    },
-
-    /**
-     * @returns {object[]} Array of videos that can be embetted.
-     */
-    videos() {
-      const videoUrls = this.fixture.getLinksOfType('video');
-      const embettableVideoData = [];
-
-      for (const url of videoUrls) {
-        if (embettableVideoData.length === VIDEOS_TO_EMBED) {
-          break;
-        }
-
-        const videoData = getEmbettableVideoData(url);
-        if (videoData !== null) {
-          embettableVideoData.push(videoData);
-        }
-      }
-
-      return embettableVideoData;
-    },
-
-    links() {
-      const links = [];
-
-      for (const linkType of Object.keys(linksProperties)) {
-        let linkDisplayNumber = 1;
-        let linksOfType = this.fixture.getLinksOfType(linkType);
-
-        if (linkType === 'video') {
-          linksOfType = linksOfType.filter(
-            (url) => !this.videos.some((video) => video.url === url),
-          );
-          linkDisplayNumber += this.videos.length;
-        }
-
-        for (const url of linksOfType) {
-          let name = this.linkTypeNames[linkType];
-          const title = `${name} at ${url}`;
-
-          if (linkType === 'other') {
-            name = url;
-          }
-          else if (linkDisplayNumber > 1) {
-            name += ` ${linkDisplayNumber}`;
-          }
-
-          links.push({
-            url,
-            name,
-            title,
-            type: linkType,
-            iconName: this.linkTypeIconNames[linkType],
-            hostname: getHostname(url),
-          });
-
-          linkDisplayNumber++;
-        }
-      }
-
-      return links;
-    },
-  },
-  mounted() {
-    this.isBrowser = true;
-  },
-};
 
 const supportedVideoFormats = {
 
   native: {
     regex: /\.(?:mp4|avi)$/,
-    displayType: (url) => getHostname(url),
-    videoId: (url, match) => url,
-    startAt: (url, match) => 0,
+    displayType: (url: string) => getHostname(url),
+    videoId: (url: string, match: RegExpMatchArray | null) => url,
+    startAt: (url: string, match: RegExpMatchArray | null) => 0,
   },
 
   youtube: {
-    /**
-     * YouTube videos can be in the following format:
-     * - https://www.youtube.com/watch?v={videoId}&otherParameters
-     */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: (url) => 'YouTube',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0,
+    displayType: () => `YouTube`,
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => match?.[2] ?? 0,
   },
 
   vimeo: {
-    /**
-     * Vimeo videos can be in one of the following formats:
-     * - https://vimeo.com/{videoId}
-     * - https://vimeo.com/channels/{channelName}/{videoId}
-     * - https://vimeo.com/groups/{groupId}/videos/{videoId}
-     */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: (url) => 'Vimeo',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0,
+    displayType: () => `Vimeo`,
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => match?.[2] ?? 0,
   },
 
   facebook: {
-    /**
-     * Facebook videos can be in the following format:
-     * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
-     */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: (url) => 'Facebook',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => 0,
+    displayType: () => `Facebook`,
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => 0,
   },
 
 };
 
-/**
- * @param {string} url The video URL.
- * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
- */
-function getEmbettableVideoData(url) {
+function getEmbettableVideoData(url: string) {
   const videoTypes = Object.keys(supportedVideoFormats);
 
   for (const type of videoTypes) {
-    const format = supportedVideoFormats[type];
+    const format = supportedVideoFormats[type as keyof typeof supportedVideoFormats];
     const match = url.match(format.regex);
 
     if (match) {
@@ -390,14 +347,8 @@ function getEmbettableVideoData(url) {
   return null;
 }
 
-/**
- * @param {string} url The URL to extract the hostname from.
- * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
- */
-function getHostname(url) {
-  // adapted from https://stackoverflow.com/a/21553982/451391
+function getHostname(url: string) {
   const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
   return match ? match[1] : url;
 }
-
 </script>
