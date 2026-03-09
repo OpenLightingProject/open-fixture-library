@@ -71,6 +71,7 @@ export default {
         },
       },
     },
+    transpile: ['a11y-dialog', 'embetty-vue', 'vue-ts-types'],
     extend(config, context) {
       // exclude /assets/icons from url-loader
       const iconsPath = fileURLToPath(new URL('ui/assets/icons/', import.meta.url));
@@ -86,16 +87,6 @@ export default {
           removeSVGTagAttrs: false,
         },
       });
-
-      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
-      const javascriptRule = config.module.rules.find((rule) => rule.type === 'javascript/auto');
-      const originalExclude = javascriptRule.exclude;
-      javascriptRule.exclude = {
-        and: [
-          originalExclude,
-          { not: [/node_modules[/\\]a11y-dialog/] },
-        ],
-      };
     },
   },
   render: {
