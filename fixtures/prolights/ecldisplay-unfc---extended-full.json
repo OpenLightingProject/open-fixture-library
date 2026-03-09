@@ -1,0 +1,307 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclDisplay UNFC - Extended full",
+  "shortName": "ECL Ext full",
+  "categories": ["Dimmer", "Effect", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["GioDeca"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.prolights.it/it/product/ECLDISPLAYUNFC"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 170, 280],
+    "weight": 2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "100%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [2, 62],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [65, 125],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 188],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [189, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [191, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Crossfade": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Lineary from CCT layer to Color Mix Layer"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Confront manual for color preset table"
+      }
+    },
+    "Control": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Generic",
+          "comment": "DIMMER CURVE LINEAR"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Generic",
+          "comment": "DIMMER CURVE S-CURVE"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Generic",
+          "comment": "DIMMER CURVE SQUARE LAW"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Generic",
+          "comment": "DIMMER CURVE INVERSE SQUARE LAW"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Generic",
+          "comment": "DIMMER SPEED AUTO"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Generic",
+          "comment": "DIMMER SPEED FAST"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Generic",
+          "comment": "DIMMER SPEED MEDIUM"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Generic",
+          "comment": "DIMMER SPEED SLOW"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 600HZ"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 1200HZ"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 2000HZ"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 4000HZ"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 6000HZ"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Generic",
+          "comment": "LED FREQUENCY 25KHZ"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Generic",
+          "comment": "DMX FAULT HOLD"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Generic",
+          "comment": "DMX FAULT BLACKOUT"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Generic",
+          "comment": "DMX FAULT STAND ALONE"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Generic",
+          "comment": "STAND ALONE MASTER DMX"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Generic",
+          "comment": "STAND ALONE MASTER NODMX"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Generic",
+          "comment": "STAND ALONE SLAVE"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Generic",
+          "comment": "STAND ALONE STATIC COLORS"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Generic",
+          "comment": "STAND ALONE WHITE PRESETS"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Generic",
+          "comment": "STAND ALONE COLOR MACROS"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Generic",
+          "comment": "STAND ALONE MANUAL COLORS"
+        },
+        {
+          "dmxRange": [50, 253],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Generic",
+          "comment": "FACTORY DEFAULT OF CONTROL FUNCTIONS"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Color Temperature",
+        "Crossfade",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Warm White",
+        "Warm White fine",
+        "Color Macros",
+        "Control"
+      ]
+    }
+  ]
+}
