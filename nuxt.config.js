@@ -87,13 +87,13 @@ export default {
         },
       });
 
-      // Transpile a11y-dialog since optional chaining is not supported in Nuxt 2
+      // Transpile ESM dependencies
       const javascriptRule = config.module.rules.find((rule) => rule.type === 'javascript/auto');
       const originalExclude = javascriptRule.exclude;
       javascriptRule.exclude = {
         and: [
           originalExclude,
-          { not: [/node_modules[/\\]a11y-dialog/] },
+          { not: [/node_modules[/\\](?:a11y-dialog|embetty-vue|vue-ts-types)/] },
         ],
       };
     },
