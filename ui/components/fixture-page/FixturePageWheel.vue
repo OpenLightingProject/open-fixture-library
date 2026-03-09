@@ -196,7 +196,7 @@ svg {
   }
 }
 
-figcaption ::v-deep summary {
+figcaption :deep(summary) {
   position: sticky;
   top: 0;
   font-weight: 700;

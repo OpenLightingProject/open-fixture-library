@@ -240,7 +240,7 @@
   font-size: 0.8rem;
 }
 
-.existing-channel-input-container ::v-deep section {
+.existing-channel-input-container :deep(section) {
   display: block;
 }
 
@@ -299,7 +299,7 @@
 }
 
 @media (min-width: $phone) {
-  #channel-dialog ::v-deep .dialog {
+  #channel-dialog :deep(.dialog) {
     width: 80%;
     max-width: 700px;
   }

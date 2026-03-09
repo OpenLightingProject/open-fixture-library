@@ -21,28 +21,12 @@
 </style>
 
 <script>
-import { oneOfTypesProp } from 'vue-ts-types';
-
 export default {
   props: {
-    error: oneOfTypesProp([Object, Error]).required,
-  },
-  head() {
-    if (this.error.statusCode !== 404) {
-      console.error('Nuxt rendering error:', this.error);
-    }
-
-    const title = this.error.statusCode === 404 ? 'Not Found' : 'Error';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+    error: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
     errorMessage() {
@@ -52,6 +36,11 @@ export default {
 
       return this.error.message;
     },
+  },
+  mounted() {
+    if (this.error.statusCode !== 404) {
+      console.error('Nuxt rendering error:', this.error);
+    }
   },
 };
 </script>

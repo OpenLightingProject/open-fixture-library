@@ -1,38 +1,44 @@
+<template>
+  <img
+    v-if="useImage"
+    :src="imageResource.imageDataUrl"
+    :title="imageTitle"
+    class="icon gobo-icon" />
+  <OflSvg
+    v-else
+    v-bind="iconProperties" />
+</template>
+
 <script>
-import { instanceOfProp } from 'vue-ts-types';
 import Capability from '../../lib/model/Capability.js';
 
 export default {
-  functional: true,
   props: {
-    capability: instanceOfProp(Capability).required,
+    capability: {
+      type: Capability,
+      required: true,
+    },
   },
-  render(createElement, context) {
-    const capability = context.props.capability;
-    const wheelSlot = capability.wheelSlot;
-
-    if (capability.type !== 'WheelShake' && wheelSlot !== null && wheelSlot[0] === wheelSlot[1]) {
-      const resource = wheelSlot[0].resource;
-
-      if (resource && resource.hasImage) {
-        const data = {
-          ...context.data,
-          attrs: {
-            ...context.data.attrs,
-            src: resource.imageDataUrl,
-            title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
-          },
-          class: [context.data.class, 'icon', 'gobo-icon'],
-        };
-
-        return createElement('img', data);
+  computed: {
+    useImage() {
+      const cap = this.capability;
+      const ws = cap.wheelSlot;
+      if (cap.type !== 'WheelShake' && ws !== null && ws[0] === ws[1]) {
+        const resource = ws[0].resource;
+        return Boolean(resource && resource.hasImage);
       }
-    }
-
-    return createElement('OflSvg', {
-      ...context.data,
-      props: getIconProperties(capability),
-    });
+      return false;
+    },
+    imageResource() {
+      return this.capability.wheelSlot[0].resource;
+    },
+    imageTitle() {
+      const cap = this.capability;
+      return `Capability type: ${cap.type}, slot ${cap.slotNumber[0]} (${cap.wheelSlot[0].name})`;
+    },
+    iconProperties() {
+      return getIconProperties(this.capability);
+    },
   },
 };
 

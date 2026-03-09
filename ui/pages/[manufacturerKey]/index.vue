@@ -45,40 +45,18 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios, error }) {
-    let manufacturer;
-    try {
-      manufacturer = await $axios.$get(`/api/v1/manufacturers/${params.manufacturerKey}`);
+  async setup() {
+    const route = useRoute();
+    const manufacturerKey = route.params.manufacturerKey;
+    const { data: manufacturer, error } = await useAsyncData(
+      `manufacturer-${manufacturerKey}`,
+      () => $fetch(`/api/v1/manufacturers/${manufacturerKey}`),
+    );
+    if (error.value) {
+      throw createError({ statusCode: error.value.statusCode || 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { manufacturer };
-  },
-  head() {
-    const title = this.manufacturer.name;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-      script: [
-        {
-          hid: 'organizationStructuredData',
-          type: 'application/ld+json',
-          json: this.organizationStructuredData,
-        },
-        {
-          hid: 'itemListStructuredData',
-          type: 'application/ld+json',
-          json: this.itemListStructuredData,
-        },
-      ],
-    };
+    useHead({ title: manufacturer.value.name });
+    return { manufacturer: manufacturer.value };
   },
   computed: {
     fixtures() {
@@ -100,7 +78,7 @@ export default {
         'itemListElement': this.fixtures.map((fixture, index) => ({
           '@type': 'ListItem',
           'position': index + 1,
-          'url': `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+          'url': `${useRuntimeConfig().public.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
         })),
       };
     },

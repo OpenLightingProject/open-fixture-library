@@ -211,8 +211,8 @@ export default {
       selectClicked: false,
     };
   },
-  async fetch() {
-    const plugins = await this.$axios.$get('/api/v1/plugins');
+  async mounted() {
+    const plugins = await $fetch('/api/v1/plugins');
     this.exportPlugins = plugins.exportPlugins.map(
       (pluginKey) => ({
         key: pluginKey,
@@ -247,50 +247,46 @@ export default {
   },
   methods: {
     downloadDataAsFile(blob, filename = '') {
-      if (window.navigator.msSaveBlob) {
-        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
-        // These URLs will no longer resolve as the data backing the URL has been freed."
-        window.navigator.msSaveBlob(blob, filename);
+      const URL = window.URL || window.webkitURL;
+      const downloadUrl = URL.createObjectURL(blob);
+
+      const anchorElement = document.createElement('a');
+
+      if (anchorElement.download === undefined) {
+        // non-HTML5 workaround
+        window.location = downloadUrl;
       }
       else {
-        const URL = window.URL || window.webkitURL;
-        const downloadUrl = URL.createObjectURL(blob);
-
-        const anchorElement = document.createElement('a');
-
-        if (anchorElement.download === undefined) {
-          // non-HTML5 workaround
-          window.location = downloadUrl;
-        }
-        else {
-          anchorElement.href = downloadUrl;
-          anchorElement.download = filename;
-          document.body.append(anchorElement);
-          anchorElement.click();
-        }
-
-        // cleanup
-        setTimeout(() => {
-          URL.revokeObjectURL(downloadUrl);
-          anchorElement.remove();
-        }, 100);
+        anchorElement.href = downloadUrl;
+        anchorElement.download = filename;
+        document.body.append(anchorElement);
+        anchorElement.click();
       }
+
+      // cleanup
+      setTimeout(() => {
+        URL.revokeObjectURL(downloadUrl);
+        anchorElement.remove();
+      }, 100);
     },
     async formattedDownload(pluginKey) {
-      // download the data as a file
-      // for more details, see https://stackoverflow.com/q/16086162/451391
-      const response = await this.$axios.post(
+      const response = await fetch(
         `${this.baseLink}.${pluginKey}`,
-        this.editorFixtures,
-        { responseType: 'blob' },
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.editorFixtures),
+        },
       );
 
-      if (response.data.error) {
-        throw new Error(response.data.error);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || response.statusText);
       }
 
+      const blob = await response.blob();
       let filename = '';
-      const disposition = response.headers['content-disposition'];
+      const disposition = response.headers.get('content-disposition');
       if (disposition && disposition.includes('attachment')) {
         const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
@@ -298,8 +294,7 @@ export default {
           filename = matches[1].replaceAll(/["']/g, '');
         }
       }
-
-      this.downloadDataAsFile(response.data, filename);
+      this.downloadDataAsFile(blob, filename);
     },
     onDownloadButton(event, pluginKey) {
       event.target.blur();

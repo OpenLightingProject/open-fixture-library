@@ -37,9 +37,9 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) of ranges">
+              <template v-for="(range, index) of ranges" :key="range.toString()">
                 {{ index > 0 ? ` or ` : `` }}
-                <span :key="range.toString()" style="white-space: nowrap;">
+                <span style="white-space: nowrap;">
                   {{ range.toString() }}
                 </span>
               </template>

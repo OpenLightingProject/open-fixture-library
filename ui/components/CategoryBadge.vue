@@ -1,3 +1,23 @@
+<template>
+  <a
+    v-if="selectable"
+    :class="classes"
+    :href="`#${encodeURIComponent(category)}`"
+    @click.prevent="$emit('click')"
+    @focus="$emit('focus')"
+    @blur="$emit('blur', $event)">
+    <OflSvg type="fixture" :name="category" />
+    {{ category }}
+  </a>
+  <NuxtLink
+    v-else
+    :class="classes"
+    :to="`/categories/${encodeURIComponent(category)}`">
+    <OflSvg type="fixture" :name="category" />
+    {{ category }}
+  </NuxtLink>
+</template>
+
 <style lang="scss" scoped>
 .category-badge {
   display: inline-block;
@@ -42,62 +62,33 @@
 </style>
 
 <script>
-import { booleanProp, stringProp } from 'vue-ts-types';
-
 export default {
   props: {
-    category: stringProp().required,
-    selected: booleanProp().withDefault(false),
-    selectable: booleanProp().withDefault(false),
+    category: {
+      type: String,
+      required: true,
+    },
+    selected: {
+      type: Boolean,
+      default: false,
+    },
+    selectable: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     click: () => true,
     focus: () => true,
     blur: (event) => true,
   },
-  render(createElement) {
-    const classes = {
-      'category-badge': true,
-      'selected': this.selected,
-    };
-    const children = [
-      createElement('OflSvg', {
-        props: {
-          type: 'fixture',
-          name: this.category,
-        },
-      }),
-      this.category,
-    ];
-
-    if (this.selectable) {
-      // <NuxtLink> is not cancellable, so we render a default <a> instead
-      return createElement('a', {
-        class: classes,
-        attrs: {
-          href: `#${encodeURIComponent(this.category)}`,
-        },
-        on: {
-          click: ($event) => {
-            this.$emit('click');
-            $event.preventDefault();
-          },
-          focus: () => {
-            this.$emit('focus');
-          },
-          blur: ($event) => {
-            this.$emit('blur', $event);
-          },
-        },
-      }, children);
-    }
-
-    return createElement('NuxtLink', {
-      class: classes,
-      props: {
-        to: `/categories/${encodeURIComponent(this.category)}`,
-      },
-    }, children);
+  computed: {
+    classes() {
+      return {
+        'category-badge': true,
+        'selected': this.selected,
+      };
+    },
   },
 };
 </script>

@@ -50,18 +50,8 @@ h2 {
 
 <script>
 export default {
-  head() {
-    const title = 'About';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+  setup() {
+    useHead({ title: 'About' });
   },
 };
 </script>

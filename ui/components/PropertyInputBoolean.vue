@@ -16,20 +16,20 @@ import { booleanProp, stringProp } from 'vue-ts-types';
 export default {
   props: {
     required: booleanProp().withDefault(false),
-    value: booleanProp().withDefault(false),
+    modelValue: booleanProp().withDefault(false),
     name: stringProp().required,
     label: stringProp().required,
   },
   emits: {
-    input: (value) => true,
+    'update:modelValue': (value) => true,
   },
   computed: {
     localValue: {
       get() {
-        return this.value;
+        return this.modelValue;
       },
       set(newValue) {
-        this.$emit('input', newValue ? true : null);
+        this.$emit('update:modelValue', newValue ? true : null);
       },
     },
   },

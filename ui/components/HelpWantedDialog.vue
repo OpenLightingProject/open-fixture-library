@@ -83,16 +83,12 @@ export default {
     LabeledInput,
     LabeledValue,
   },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
   props: {
     type: stringProp().required,
     modelValue: objectProp().optional,
   },
   emits: {
-    'update:model-value': (value) => true,
+    'update:modelValue': (value) => true,
   },
   data: () => {
     return {
@@ -197,13 +193,16 @@ export default {
       localStorage.setItem('prefillGithubUsername', this.githubUsername);
 
       try {
-        const response = await this.$axios.post('/api/v1/submit-feedback', this.sendObject);
+        const response = await $fetch('/api/v1/submit-feedback', {
+          method: 'POST',
+          body: this.sendObject,
+        });
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
+        if (response.error) {
+          throw new Error(response.error);
         }
 
-        this.issueUrl = response.data.issueUrl;
+        this.issueUrl = response.issueUrl;
         this.state = 'success';
       }
       catch (error) {
@@ -223,7 +222,7 @@ export default {
       this.state = 'ready';
       this.issueUrl = null;
       this.error = null;
-      this.$emit('update:model-value', undefined);
+      this.$emit('update:modelValue', undefined);
     },
   },
 };

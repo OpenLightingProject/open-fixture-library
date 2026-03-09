@@ -28,31 +28,18 @@
 import register from '../../../fixtures/register.json';
 
 export default {
-  validate({ params }) {
-    return decodeURIComponent(params.category) in register.categories;
-  },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+  async setup() {
+    const route = useRoute();
+    const category = decodeURIComponent(route.params.category);
+    if (!(category in register.categories)) {
+      throw createError({ statusCode: 404, statusMessage: 'Category not found' });
     }
-    catch (requestError) {
-      return error(requestError);
+    const { data: manufacturers, error } = await useAsyncData('manufacturers', () => $fetch('/api/v1/manufacturers'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    return { manufacturers };
-  },
-  head() {
-    const title = this.categoryName;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+    useHead({ title: category });
+    return { manufacturers: manufacturers.value };
   },
   computed: {
     categoryName() {

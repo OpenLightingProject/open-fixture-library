@@ -164,7 +164,7 @@ header {
       position: absolute;
       inset: 0;
       content: "";
-      background-image: url("~static/ofl-logo.svg");
+      background-image: url("/ofl-logo.svg");
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -239,16 +239,19 @@ export default {
   },
   data() {
     return {
-      searchQuery: this.$router.history.current.query.q || '',
+      searchQuery: '',
       searchFieldFocused: false,
     };
+  },
+  created() {
+    this.searchQuery = this.$route.query.q || '';
   },
   mounted() {
     this.$router.afterEach(() => this.updateSearchQuery());
   },
   methods: {
     updateSearchQuery() {
-      this.searchQuery = this.$router.history.current.query.q || '';
+      this.searchQuery = this.$route.query.q || '';
     },
     focusContent(event) {
       if (event.target?.closest('a')) {
@@ -262,7 +265,7 @@ export default {
           q: this.searchQuery,
         },
       });
-      this.focusContent();
+      this.$emit('focus-content');
     },
   },
 };

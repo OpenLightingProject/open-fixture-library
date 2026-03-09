@@ -159,15 +159,13 @@ export default {
     LabeledInput,
     PropertyInputText,
   },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+  async setup() {
+    const { data: manufacturers, error } = await useAsyncData('manufacturers', () => $fetch('/api/v1/manufacturers'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { manufacturers };
+    useHead({ title: 'Fixture Editor' });
+    return { manufacturers: manufacturers.value };
   },
   data() {
     return {
@@ -179,19 +177,6 @@ export default {
       githubUsername: '',
       honeypot: '',
       schemaDefinitions,
-    };
-  },
-  head() {
-    const title = 'Fixture Editor';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
     };
   },
   watch: {
@@ -428,7 +413,7 @@ export default {
 
       await this.$nextTick();
 
-      this.formstate._reset();
+      Object.keys(this.formstate).forEach(key => { delete this.formstate[key]; }); this.formstate.$submitted = false;
       this.$refs.existingManufacturerSelect.focus();
       window.scrollTo(0, 0);
     },

@@ -49,28 +49,13 @@ h2 {
 
 <script>
 export default {
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+  async setup() {
+    const { data: manufacturers, error } = await useAsyncData('manufacturers', () => $fetch('/api/v1/manufacturers'));
+    if (error.value) {
+      throw createError({ statusCode: 500, statusMessage: error.value.message });
     }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { manufacturers };
-  },
-  head() {
-    const title = 'Manufacturers';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
+    useHead({ title: 'Manufacturers' });
+    return { manufacturers: manufacturers.value };
   },
   computed: {
     letters() {
@@ -101,7 +86,7 @@ export default {
       return letters;
     },
   },
-  destroyed() {
+  unmounted() {
     document.documentElement.style.scrollBehavior = '';
   },
   methods: {

@@ -15,12 +15,29 @@ let cookieName = 'theme';
 const cookieOptions = {
   path: '/',
   maxAge: 60 * 60 * 24 * 7 * 4, // 4 weeks
-  sameSite: true,
+  sameSite: 'strict',
 };
 
 if (process.env.NODE_ENV === 'production') {
   cookieName = '__Host-theme';
   cookieOptions.secure = true;
+}
+
+function setCookie(name, value, options) {
+  let cookieStr = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+  if (options.path) {
+    cookieStr += `; path=${options.path}`;
+  }
+  if (options.maxAge) {
+    cookieStr += `; max-age=${options.maxAge}`;
+  }
+  if (options.sameSite) {
+    cookieStr += `; samesite=${options.sameSite}`;
+  }
+  if (options.secure) {
+    cookieStr += '; secure';
+  }
+  document.cookie = cookieStr;
 }
 
 export default {
@@ -29,20 +46,6 @@ export default {
       cssVariablesSupported: false,
       theme: 'light',
       prefersDarkMediaQuery: null,
-    };
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        'data-theme': this.theme,
-      },
-      meta: [
-        {
-          hid: 'theme-color',
-          name: 'theme-color',
-          content: this.theme === 'dark' ? '#383838' : '#fafafa', // SCSS: theme-color(header-background)
-        },
-      ],
     };
   },
   computed: {
@@ -54,9 +57,16 @@ export default {
     theme: {
       handler(theme) {
         // set cookie for server-side rendering
-        this.$cookies.set(cookieName, theme, cookieOptions);
+        if (typeof document !== 'undefined') {
+          setCookie(cookieName, theme, cookieOptions);
+          document.documentElement.setAttribute('data-theme', theme);
+          // Update theme-color meta tag
+          const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+          if (themeColorMeta) {
+            themeColorMeta.content = theme === 'dark' ? '#383838' : '#fafafa';
+          }
+        }
       },
-      immediate: true,
     },
   },
   mounted() {
@@ -69,15 +79,15 @@ export default {
     window.addEventListener('storage', this.onStorageChange);
 
     this.prefersDarkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    this.prefersDarkMediaQuery.addListener(this.onMediaQueryMatchChange);
+    this.prefersDarkMediaQuery.addEventListener('change', this.onMediaQueryMatchChange);
 
     this.onMediaQueryMatchChange();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('storage', this.onStorageChange);
 
     if (this.prefersDarkMediaQuery) {
-      this.prefersDarkMediaQuery.removeListener(this.onMediaQueryMatchChange);
+      this.prefersDarkMediaQuery.removeEventListener('change', this.onMediaQueryMatchChange);
     }
   },
   methods: {
@@ -90,7 +100,6 @@ export default {
     },
     onStorageChange({ key, newValue }) {
       if (key === storageKey) {
-        // theme changed in another browser tab
         this.theme = newValue || this.getDefaultPreferredTheme();
       }
     },
