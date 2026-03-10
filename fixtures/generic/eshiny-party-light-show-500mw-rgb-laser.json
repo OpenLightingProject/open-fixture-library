@@ -1,0 +1,258 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "eShiny Party Light Show 500mW RGB Laser",
+  "shortName": "eShiny Party Light Show",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Jean Venken"],
+    "createDate": "2026-03-10",
+    "lastModifyDate": "2026-03-10"
+  },
+  "links": {
+    "other": [
+      "http://www.eshiny.com"
+    ]
+  },
+  "physical": {
+    "power": 0.5
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Shutter close"
+        },
+        {
+          "dmxRange": [1, 100],
+          "type": "Effect",
+          "effectName": "Boundary Bounce",
+          "comment": "Boundary Bounce"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Boundary Hide",
+          "comment": "Boundary Hide"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Simplified Mode",
+          "comment": "Simplified Mode"
+        }
+      ]
+    },
+    "Pattern number": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Pattern select",
+        "comment": "Each value corresponds to a unique pattern"
+      }
+    },
+    "Pattern Size": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "X-Axis position": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "45deg",
+        "angleEnd": "130deg",
+        "comment": "X-Axis"
+      }
+    },
+    "Y-Axis position": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "45deg",
+        "angleEnd": "130deg",
+        "comment": "Y-Axis"
+      }
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Original"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "Unique colors"
+        }
+      ]
+    },
+    "Node Brightness": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Normal Pattern",
+          "comment": "Normal pattern"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Blanking lines visible",
+          "comment": "Blanking lines visible"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Blanking + Retrace Lines visible",
+          "comment": "Blanking + Retrace Lines visible"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Nodes Only",
+          "durationStart": "short",
+          "durationEnd": "long",
+          "comment": "Nodes Only"
+        }
+      ]
+    },
+    "Pattern Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "X-Axis scaling": {
+      "capability": {
+        "type": "Generic",
+        "comment": "X-Axis scaling"
+      }
+    },
+    "Y-Axis scaling": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Y-Axis scaling"
+      }
+    },
+    "Mirror Array": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "No Mirror"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Cross-Flower"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "X-Symmetry"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Generic",
+          "comment": "Y-Symmetry"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Generic",
+          "comment": "Diagonal Symmetry"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "XY-Symmetry"
+        }
+      ]
+    },
+    "Dynamic Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "comment": "Dynamic Rotation"
+      }
+    },
+    "Rotation Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Speed Balance": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pattern Distortion": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channnel",
+      "shortName": "15ch",
+      "channels": [
+        "Shutter",
+        "Pattern number",
+        "Pattern Size",
+        "X-Axis position",
+        "Y-Axis position",
+        "Color",
+        "Node Brightness",
+        "Pattern Rotation",
+        "X-Axis scaling",
+        "Y-Axis scaling",
+        "Mirror Array",
+        "Dynamic Rotation",
+        "Rotation Speed",
+        "Speed Balance",
+        "Pattern Distortion"
+      ]
+    }
+  ]
+}
