@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ape Stick L",
+  "shortName": "Ape Stick L",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Daniel Gallerand"],
+    "createDate": "2026-03-10",
+    "lastModifyDate": "2026-03-10"
+  },
+  "links": {
+    "manual": [
+      "https://apelabs.com/manual/"
+    ],
+    "productPage": [
+      "https://apelabs.com/apelight-apestick/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "dimensions": [630, 30, 30],
+    "weight": 0.47,
+    "power": 36,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 360
+    },
+    "lens": {
+      "degreesMinMax": [0, 120]
+    }
+  },
+  "availableChannels": {
+    "Rot": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Grün": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blau": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Warmweiß": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightness": "off"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Stroboskop": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    },
+    "Musik": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Musik"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 CH",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Rot",
+        "Grün",
+        "Blau",
+        "Warmweiß",
+        "Dimmer",
+        "Stroboskop",
+        "Musik"
+      ]
+    }
+  ]
+}
