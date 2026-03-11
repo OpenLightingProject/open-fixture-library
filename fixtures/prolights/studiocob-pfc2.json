@@ -1,0 +1,355 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.5.0/schemas/fixture.json",
+  "name": "StudioCob PFC2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Elie B"],
+    "createDate": "2026-03-11",
+    "lastModifyDate": "2026-03-11"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=42383&ID_USER="
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/STUDIOCOBPFC2"
+    ]
+  },
+  "physical": {
+    "dimensions": [258, 387, 257],
+    "weight": 5.6,
+    "power": 140,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [31, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe Slow to fast"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [131, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Random strobe slow to fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction",
+          "comment": "No function"
+        }
+      ]
+    },
+    "Color Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "No function",
+          "switchChannels": {
+            "Color presets / White presets / Color macro": "Color presets"
+          }
+        },
+        {
+          "dmxRange": [11, 85],
+          "type": "Generic",
+          "comment": "Color presets",
+          "switchChannels": {
+            "Color presets / White presets / Color macro": "Color presets"
+          }
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Generic",
+          "comment": "White presets",
+          "switchChannels": {
+            "Color presets / White presets / Color macro": "White presets"
+          }
+
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Color macro",
+          "switchChannels": {
+            "Color presets / White presets / Color macro": "White macro"
+          }
+        }
+      ]
+    },
+    "Color presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "ColorPreset",
+          "comment": "RGB 100%, 0~100%, 0%",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [29, 56],
+          "type": "ColorPreset",
+          "comment": "RGB 0~100%, 100%, 0%",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [57, 84],
+          "type": "ColorPreset",
+          "comment": "RGB 0%, 100%, 0~100%",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [85, 112],
+          "type": "ColorPreset",
+          "comment": "RGB 0%, 0~100%, 100%",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [113, 140],
+          "type": "ColorPreset",
+          "comment": "RGB 0~100%, 0%, 100%",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [141, 168],
+          "type": "ColorPreset",
+          "comment": "RGB 100%, 0%, 0% ~ 100%",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [169, 196],
+          "type": "ColorPreset",
+          "comment": "RGB 100%, 0% ~ 100%, 0% ~ 100%",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [197, 224],
+          "type": "ColorPreset",
+          "comment": "RGB 0% ~ 100%, 0% ~ 100%, 100%",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "ColorPreset",
+          "comment": "RGBW 100%, 100%, 100%, 100%",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+   "White presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "3000K",
+          "comment": "RGBW 2000K ~ 3000K"
+        },
+        {
+          "dmxRange": [41, 70],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3000K",
+          "colorTemperatureEnd": "4000K",
+          "comment": "RGBW 3000K ~ 4000K"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "5000K",
+          "comment": "RGBW 4000K ~ 5000K"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "6000K",
+          "comment": "RGBW 5000K ~ 6000K"
+        },
+        {
+          "dmxRange": [131, 160],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "7000K",
+          "comment": "RGBW 6000K ~ 7000K"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "8000K",
+          "comment": "RGBW 7000K ~ 8000K"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "9000K",
+          "comment": "RGBW 8000K ~ 9000K"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9000K",
+          "colorTemperatureEnd": "10000K",
+          "comment": "RGBW 9000K ~ 10000K"
+        }
+      ]
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 60],
+          "type": "Generic",
+          "comment": "Auto Program 1"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Generic",
+          "comment": "Auto Program 2"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Generic",
+          "comment": "Auto Program 3"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Generic",
+          "comment": "Auto Program 4"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Generic",
+          "comment": "Auto Program 5 (Auto program1 - 4)"
+        }
+      ]
+    }
+  },
+    "Color macro speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Color macro speed slow to fast"
+      }
+    },
+    "Dimmer fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Dimmer fade fast to slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6 ch",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10 ch",
+      "shortName": "10ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Function",
+        "Color presets / White presets / Color macro",
+        "Color macro speed",
+        "Dimmer fade"
+      ]
+    }
+  ],
+  "fixtureKey": "studiocob-pfc2",
+  "manufacturerKey": "prolights",
+  "oflURL": "https://open-fixture-library.org/prolights/studiocob-pfc2"
+}
