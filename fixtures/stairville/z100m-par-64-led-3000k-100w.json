@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z100M Par 64 LED 3000K 100W",
+  "shortName": "Z100M",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-03-10",
+    "lastModifyDate": "2026-03-10"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/443912_c_443912_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_z100m_par_64_led_3000k_100w.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i7242p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [419, 275, 224],
+    "weight": 3.4,
+    "power": 115,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1x 100 W COB LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [11, 35]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Flash, increasing speed"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Strobe"
+      ]
+    }
+  ]
+}
