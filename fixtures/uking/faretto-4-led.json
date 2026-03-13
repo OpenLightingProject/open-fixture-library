@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FARETTO 4 LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["LKIJ"],
+    "createDate": "2026-03-11",
+    "lastModifyDate": "2026-03-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.amazon.it/dp/B0B9NRVQBN?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_17"
+    ],
+    "productPage": [
+      "https://www.amazon.it/dp/B0B9NRVQBN?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_17"
+    ],
+    "video": [
+      "https://www.amazon.it/vdp/127ef9dfa1de435ab28578dddd3a5c9a?ref=dp_vse_ibvc0"
+    ]
+  },
+  "rdm": {
+    "modelId": 35
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "LKN"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EXTEDED",
+      "rdmPersonalityIndex": 35,
+      "channels": [
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
