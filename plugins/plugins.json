@@ -2,6 +2,7 @@
   "importPlugins": [
     "ecue",
     "gdtf",
+    "lightjams",
     "qlcplus_4.12.2"
   ],
   "exportPlugins": [
@@ -12,6 +13,7 @@
     "dmxcontrol3",
     "dragonframe",
     "ecue",
+    "lightjams",
     "millumin",
     "ofl",
     "op-z",
@@ -63,6 +65,12 @@
     "gdtf": {
       "name": "GDTF 1.0",
       "importPluginVersion": "0.2.0"
+    },
+    "lightjams": {
+      "name": "Lightjams",
+      "importPluginVersion": "0.1.0",
+      "exportPluginVersion": "0.1.0",
+      "exportTests": []
     },
     "millumin": {
       "name": "Millumin",
