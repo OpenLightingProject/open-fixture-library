@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Headgroß",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Kochs"],
+    "createDate": "2026-03-15",
+    "lastModifyDate": "2026-03-15"
+  },
+  "links": {
+    "manual": [
+      "http://www.google.de"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Color": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "color"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Speed",
+        "speed": "slow"
+      }
+    },
+    "Colormix": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "FrostEffect",
+        "effectName": "Frost"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan fin": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "2deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt fin": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ring on": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ring speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Ring Color": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Head 340Watt",
+      "channels": [
+        "Color",
+        "Strobe",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Colormix",
+        "Frost",
+        "Zoom",
+        "Pan",
+        "Pan fin",
+        "Tilt",
+        "Tilt fin",
+        "Macro",
+        "Reset",
+        "Ring on",
+        "Ring speed",
+        "Ring Color"
+      ]
+    }
+  ]
+}
