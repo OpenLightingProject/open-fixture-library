@@ -1,0 +1,281 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED moving head 19x15w RGBW Wash Zoom",
+  "shortName": "LED WASH 19x15w",
+  "categories": ["Moving Head", "Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Simon PROUVEZE"],
+    "createDate": "2025-03-23",
+    "lastModifyDate": "2025-03-23"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/15OvGXkvYhICnkI4pVQejhOPnzvjP2Is8/view"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=KIzySRdayoo&list=TLGGlMwhzWzwLmsyMzAzMjAyNQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 310, 220],
+    "weight": 7.95,
+    "power": 285,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "PAN move 540°": {
+      "fineChannelAliases": ["PAN move 540° fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt move 270°": {
+      "fineChannelAliases": ["Tilt move 270° fine"],
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/tilt SPEED / pan Tilt /TIME": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Time",
+        "timeStart": "0%",
+        "timeEnd": "100%"
+      }
+    },
+    "ZOOM": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "DIMMING": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "RED DIMMER 1": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMER 1": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMER 1": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE DIMMER 1": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED DIMMER 2": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMER 2": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMER 2": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE DIMMER 2": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED DIMMER 3": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN DIMMER 3": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE DIMMER 3": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE DIMMER 3": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Preset pulse / prog jump / prog gradient": {
+      "defaultValue": 21,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "NoFunction",
+          "comment": "prog jump ???"
+        },
+        {
+          "dmxRange": [146, 159],
+          "type": "NoFunction",
+          "comment": "prog gradient"
+        },
+        {
+          "dmxRange": [160, 172],
+          "type": "NoFunction",
+          "comment": "prog pulse ???"
+        },
+        {
+          "dmxRange": [173, 200],
+          "type": "NoFunction",
+          "comment": "auto mode 1"
+        },
+        {
+          "dmxRange": [201, 230],
+          "type": "NoFunction",
+          "comment": "automode 2"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "NoFunction",
+          "comment": "Automode 3"
+        }
+      ]
+    },
+    "Prog spedd adjustement": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "prog spedd adjustement"
+      }
+    },
+    "Activ CH21 / Self prop mode 1 / Self prop mode 2 / voice control mode": {
+      "defaultValue": 23,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "NoFunction",
+          "comment": "activ ch21"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "NoFunction",
+          "comment": "Self prop mode 1"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "NoFunction",
+          "comment": "Self prop mode 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "NoFunction",
+          "comment": "Voice control mode"
+        }
+      ]
+    },
+    "REST": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "REST"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24 CH",
+      "shortName": "24 CH",
+      "channels": [
+        "PAN move 540°",
+        "PAN move 540° fine",
+        "Tilt move 270°",
+        "Tilt move 270° fine",
+        "Pan/tilt SPEED / pan Tilt /TIME",
+        "ZOOM",
+        "DIMMING",
+        "Strobe",
+        "RED DIMMER 1",
+        "GREEN DIMMER 1",
+        "BLUE DIMMER 1",
+        "WHITE DIMMER 1",
+        "RED DIMMER 2",
+        "GREEN DIMMER 2",
+        "BLUE DIMMER 2",
+        "WHITE DIMMER 2",
+        "RED DIMMER 3",
+        "GREEN DIMMER 3",
+        "BLUE DIMMER 3",
+        "WHITE DIMMER 3",
+        "Preset pulse / prog jump / prog gradient",
+        "Prog spedd adjustement",
+        "Activ CH21 / Self prop mode 1 / Self prop mode 2 / voice control mode",
+        "REST"
+      ]
+    }
+  ]
+}
