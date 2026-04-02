@@ -1,0 +1,208 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColourSource Spot V1.0",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Kees Verruijt"],
+    "createDate": "2026-04-02",
+    "lastModifyDate": "2026-04-02"
+  },
+  "comment": "Note this ONLY applies to the 1.0 version; later versions have more channels",
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737512726"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Entertainment-Fixtures/ColorSource-Spot-V/Documentation.aspx"
+    ]
+  },
+  "physical": {
+    "weight": 7.7,
+    "power": 194,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 9498
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Indigo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Lime": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 40],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "duration": "short",
+          "comment": "Dark Strobe"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "duration": "long",
+          "comment": "Bright Strobe"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "randomTiming": true,
+          "comment": "Strobe pulses at random intervals"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Strobe pulses at random intervals and at random intensity levels"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [241, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Fan": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Fan Off; when the fixture gets too hot the intensity is reduced"
+        },
+        {
+          "dmxRange": [20, 249],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Set fan speed; when the fixture gets too hot the intensity is reduced"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Auto"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "stn",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Fan"
+      ]
+    },
+    {
+      "name": "Direct",
+      "shortName": "dir",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Indigo",
+        "Lime",
+        "Strobe",
+        "Fan"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
