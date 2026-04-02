@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJ Lase 150-R MK-III DMX IR",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2025-03-19",
+    "lastModifyDate": "2025-03-19"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_276235_v6_en_online.pdf?_gl=1*1gf58dh*_gcl_au*NjQyMDAwNTA4LjE3MzU5MDQyNDI.*FPAU*NjQyMDAwNTA4LjE3MzU5MDQyNDI.*_ga*MTQ2MDM4MjYzNy4xNjYwNDkzODcx*_ga_QNTG1E3BFT*MTc0MjQyMTgyOS40Mi4xLjE3NDI0MjE4NTguMC4wLjE2MTMzMTQyNTg.*_fplc*V0hkRUFxMm5ZWjdxS2Z1TzhnV3ZBRXloYjJqWWh0Unh3U21FV3N4WkNzOEprN2lGZGtSSTgxWUFHalc5bktJQk5jMld5T0FESWZ3Z1ElMkZCUE9nSURYMlE5UnRlOGVLU29pcnYlMkZJZTJ0JTJGTUR5d21TQ1EzWVRyR3g2T1M4VlV3JTNEJTNE"
+    ]
+  },
+  "availableChannels": {
+    "Operating mode selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ColorPreset",
+          "comment": "Laser of"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "comment": "Automatic show in random order"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Sound controlled automatic show in random order"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "DMX mode: This setting enables the function of the other DMX channels"
+        }
+      ]
+    },
+    "Pattern selection": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Zoom",
+          "angleStart": "wide",
+          "angleEnd": "narrow"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "ColorPreset",
+          "comment": "Zooming in effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "comment": "Zooming out effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Zooming in effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "Y axis rotation": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "359deg"
+      }
+    },
+    "X axis rotation": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "359deg"
+      }
+    },
+    "Z axis rotation": {
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "X-axis mouving": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "359deg"
+      }
+    },
+    "Y-axis moving": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "359deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Operating mode selection",
+        "Pattern selection",
+        "Zoom",
+        "Y axis rotation",
+        "X axis rotation",
+        "Z axis rotation",
+        "X-axis mouving",
+        "Y-axis moving"
+      ]
+    }
+  ]
+}
