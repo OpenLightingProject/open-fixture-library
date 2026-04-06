@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01553 IP65 200W LED Par 14x15W RGBW",
+  "shortName": "ZQ01553 Ip65 LED Par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Mark Passmore"],
+    "createDate": "2026-04-06",
+    "lastModifyDate": "2026-04-06"
+  },
+  "comment": "True 1 and 3-pin DMX PANEL mounted jacks",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ01553-14-RGBW-LEDs-Waterproof-Par-Light.pdf?v=12616135357471410363"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/uking-zq01553-waterproof-par-light?variant=43855348531311"
+    ],
+    "video": [
+      "https://cdn.shopify.com/videos/c/o/v/447b7a4449a4429b9d40c8b7e1c43e6e.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 160, 220],
+    "weight": 4.1,
+    "power": 200,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED RGBW 14 x 15W"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectName": "Strobe Speed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz",
+          "comment": "Slow To Fast"
+        }
+      ]
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "8000K"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "NO Macro",
+          "comment": "NO Macro"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "Effect",
+          "effectName": "Macro Modes"
+        }
+      ]
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "CTO",
+        "Color Macros",
+        "Reserved"
+      ]
+    }
+  ]
+}
