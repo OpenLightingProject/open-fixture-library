@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore FR50z",
+  "shortName": "Encore FR50z",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-04-07",
+    "lastModifyDate": "2026-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11234/ADJ%20ENCORE%20FR50Z%20-%20USER%20MANUAL.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Reserved"
+      ]
+    }
+  ]
+}
