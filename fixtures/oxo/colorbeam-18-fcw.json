@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colorbeam 18 FCW",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["k-led"],
+    "createDate": "2026-04-07",
+    "lastModifyDate": "2026-04-07"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=JWWL-riW0yM"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Macros 2",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
