@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild Wash 648 LED RGB DMX",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Johannes"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/399663_c_399664_399663_399658_399662_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_wild_wash_648_led_rgb_dmx.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [385, 255, 95],
+    "weight": 3.25,
+    "power": 130,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LEDs on, brightness controlled by channel 1"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "LEDs off (blackout)"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "Generic",
+          "comment": "Random impulses, increasing speed"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "Generic",
+          "comment": "Randomly increasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "Generic",
+          "comment": "Randomly decreasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "Generic",
+          "comment": "Random Strobe effect, increasing speed"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Generic",
+          "comment": "Interrupt effect, 5 s to 1 s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
+          "comment": "Strobe effect, speed increasing from approx. 0 Hz to 30 Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "LEDs on, brightness controlled by channel 1"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sound Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Sound control off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound control on, increasing sensitivity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound Control"
+      ]
+    }
+  ]
+}
