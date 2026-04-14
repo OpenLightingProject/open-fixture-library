@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1082",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Élio Sequeira"],
+    "createDate": "2026-04-14",
+    "lastModifyDate": "2026-04-14",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-04-14",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Manual Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Manual Control"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Color selection (Colors Contorted by CH7)"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "Color Shade (Colors Contorted by CH7)"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "Colors Pulse Transform (Speed Contorted by CH7)"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "Color Transition (Speed Contorted by CH7)"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Sound Activated",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Selection / Color Shade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Manual Control",
+        "Color Selection / Color Shade"
+      ]
+    }
+  ]
+}
