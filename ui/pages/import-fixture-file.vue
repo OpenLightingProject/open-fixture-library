@@ -106,8 +106,7 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-
-import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
+import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -121,7 +120,7 @@ export default {
   async asyncData({ $axios, error }) {
     let plugins;
     try {
-      plugins = await $axios.$get(`/api/v1/plugins`);
+      plugins = await $axios.$get('/api/v1/plugins');
     }
     catch (requestError) {
       return error(requestError);
@@ -131,22 +130,22 @@ export default {
   data() {
     return {
       formstate: getEmptyFormState(),
-      plugin: ``,
+      plugin: '',
       file: undefined,
-      githubComment: ``,
-      author: ``,
-      githubUsername: ``,
-      honeypot: ``,
+      githubComment: '',
+      author: '',
+      githubUsername: '',
+      honeypot: '',
     };
   },
   head() {
-    const title = `Import fixture`;
+    const title = 'Import fixture';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -158,7 +157,7 @@ export default {
   methods: {
     async onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector(`.vf-field-invalid`);
+        const field = document.querySelector('.vf-field-invalid');
 
         scrollIntoView(field, {
           time: 300,
@@ -167,14 +166,14 @@ export default {
             left: 0,
             topOffset: 100,
           },
-          isScrollable: target => target === window,
+          isScrollable: (target) => target === window,
         }, () => field.focus());
 
         return;
       }
 
-      if (this.honeypot !== ``) {
-        alert(`Do not fill the "Ignore" fields!`);
+      if (this.honeypot !== '') {
+        alert('Do not fill the "Ignore" fields!');
         return;
       }
 
@@ -190,8 +189,8 @@ export default {
         });
       }
       catch (fileReaderError) {
-        alert(`Could not read the file.`);
-        console.error(`Could not read the file.`, fileReaderError);
+        alert('Could not read the file.');
+        console.error('Could not read the file.', fileReaderError);
       }
 
       /**
@@ -202,11 +201,11 @@ export default {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
 
-          fileReader.addEventListener(`load`, () => {
+          fileReader.addEventListener('load', () => {
             resolve(fileReader.result);
           });
-          fileReader.addEventListener(`error`, reject);
-          fileReader.addEventListener(`abort`, reject);
+          fileReader.addEventListener('error', reject);
+          fileReader.addEventListener('abort', reject);
 
           fileReader.readAsDataURL(file);
         });
@@ -214,7 +213,7 @@ export default {
     },
     async reset() {
       this.file = undefined;
-      this.githubComment = ``;
+      this.githubComment = '';
 
       await this.$nextTick();
       this.formstate._reset();
@@ -224,17 +223,17 @@ export default {
         return;
       }
 
-      if (this.author === ``) {
-        this.author = localStorage.getItem(`prefillAuthor`) || ``;
+      if (this.author === '') {
+        this.author = localStorage.getItem('prefillAuthor') || '';
       }
 
-      if (this.githubUsername === ``) {
-        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      if (this.githubUsername === '') {
+        this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
       }
     },
     storePrefillData() {
-      localStorage.setItem(`prefillAuthor`, this.author);
-      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
+      localStorage.setItem('prefillAuthor', this.author);
+      localStorage.setItem('prefillGithubUsername', this.githubUsername);
     },
   },
 };

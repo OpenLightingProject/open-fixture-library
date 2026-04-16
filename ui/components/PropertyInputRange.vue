@@ -7,7 +7,7 @@
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
         :minimum="rangeMin"
-        :maximum="end !== `invalid` ? end : rangeMax"
+        :maximum="end === `invalid` ? rangeMax : end"
         :required="required || rangeIncomplete"
         :hint="startHint"
         lazy
@@ -20,7 +20,7 @@
         v-model="end"
         :name="`${name}-end`"
         :schema-property="schemaProperty.items"
-        :minimum="start !== `invalid` ? start : rangeMin"
+        :minimum="start === `invalid` ? rangeMin : start"
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
@@ -41,14 +41,14 @@ export default {
     PropertyInputNumber,
   },
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     modelValue: arrayProp().withDefault(null),
     name: stringProp().required,
-    startHint: stringProp().withDefault(`start`),
-    endHint: stringProp().withDefault(`end`),
+    startHint: stringProp().withDefault('start'),
+    endHint: stringProp().withDefault('end'),
     rangeMin: numberProp().optional,
     rangeMax: numberProp().optional,
     schemaProperty: objectProp().required,
@@ -57,18 +57,18 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'update:model-value': range => true,
+    'update:model-value': (range) => true,
     'start-updated': () => true,
     'end-updated': () => true,
-    focus: () => true,
-    blur: () => true,
-    'vf:validate': validationData => true,
+    'focus': () => true,
+    'blur': () => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {
       validationData: {
-        'complete-range': ``,
-        'valid-range': ``,
+        'complete-range': '',
+        'valid-range': '',
       },
     };
   },
@@ -78,8 +78,8 @@ export default {
         return this.modelValue ? this.modelValue[0] : null;
       },
       set(startInput) {
-        this.$emit(`update:model-value`, getRange(startInput, this.end));
-        this.$emit(`start-updated`);
+        this.$emit('update:model-value', getRange(startInput, this.end));
+        this.$emit('start-updated');
       },
     },
     end: {
@@ -87,8 +87,8 @@ export default {
         return this.modelValue ? this.modelValue[1] : null;
       },
       set(endInput) {
-        this.$emit(`update:model-value`, getRange(this.start, endInput));
-        this.$emit(`end-updated`);
+        this.$emit('update:model-value', getRange(this.start, endInput));
+        this.$emit('end-updated');
       },
     },
     rangeIncomplete() {
@@ -96,7 +96,7 @@ export default {
     },
   },
   mounted() {
-    this.$emit(`vf:validate`, this.validationData);
+    this.$emit('vf:validate', this.validationData);
   },
   methods: {
     /** @public */
@@ -104,11 +104,11 @@ export default {
       this.$refs.firstInput.focus();
     },
     onFocus(event) {
-      this.$emit(`focus`);
+      this.$emit('focus');
     },
     onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest(`.range`) !== event.relatedTarget.closest(`.range`)) {
-        this.$emit(`blur`);
+      if (!(event.target && event.relatedTarget) || event.target.closest('.range') !== event.relatedTarget.closest('.range')) {
+        this.$emit('blur');
       }
     },
   },

@@ -1,18 +1,18 @@
 /* Based on the ofl export plugin */
 
-import namedColors from 'color-name-list/dist/colornames.esm.mjs';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
-
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
+/** @import Fixture from '../../lib/model/Fixture.js' */
 
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
+const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectName', 'effectPreset', 'shutterEffect', 'wheel', 'isShaking', 'fogType', 'menuClick']);
 
-const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
-const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
+// see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
+const colorNameListPromise = importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
 
-export const version = `1.0.0`;
+export const version = '1.0.0';
 
 /**
  * @param {Fixture[]} fixtures An array of Fixture objects.
@@ -25,13 +25,16 @@ export const version = `1.0.0`;
 export async function exportFixtures(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || version;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const [manufacturers, namedColors] = await Promise.all([
+    importJson('../../fixtures/manufacturers.json', import.meta.url),
+    colorNameListPromise,
+  ]);
 
   const library = {
     version: displayedPluginVersion,
-    fixtures: fixtures.map(fixture => {
+    fixtures: fixtures.map((fixture) => {
       try {
-        return exportFixture(fixture, manufacturers);
+        return exportFixture(fixture, manufacturers, namedColors);
       }
       catch (error) {
         throw new Error(`Exporting fixture ${fixture.manufacturer.key}/${fixture.key} failed: ${error}`, {
@@ -41,9 +44,9 @@ export async function exportFixtures(fixtures, options) {
     }),
   };
   return [{
-    name: `aglight_fixture_library.json`,
+    name: 'aglight_fixture_library.json',
     content: fixtureJsonStringify(library),
-    mimetype: `application/aglight-fixture-library`,
+    mimetype: 'application/aglight-fixture-library',
     fixtures,
   }];
 }
@@ -51,9 +54,10 @@ export async function exportFixtures(fixtures, options) {
 /**
  * @param {Fixture} fixture The fixture to export.
  * @param {object} manufacturers The manufacturers object.
+ * @param {object[]} namedColors The color names list.
  * @returns {object} The generated fixture JSON.
  */
-function exportFixture(fixture, manufacturers) {
+function exportFixture(fixture, manufacturers, namedColors) {
   const jsonData = structuredClone(fixture.jsonObject);
   jsonData.fixtureKey = fixture.key;
   jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
@@ -66,7 +70,7 @@ function exportFixture(fixture, manufacturers) {
   downgradePhysical(jsonData.physical);
   transformMatrixChannels(jsonData, fixture);
   transformSingleCapabilityToArray(jsonData);
-  transformNonNumericValues(jsonData);
+  transformNonNumericValues(jsonData, namedColors);
 
   for (const mode of jsonData.modes) {
     downgradePhysical(mode.physical);
@@ -97,11 +101,11 @@ function transformMatrixChannels(fixtureJson, fixture) {
   }
 
   const availableAndMatrixChannels = fixture.coarseChannels.filter(
-    channel => !(channel instanceof NullChannel),
+    (channel) => !(channel instanceof NullChannel),
   );
 
   fixtureJson.availableChannels = Object.fromEntries(
-    availableAndMatrixChannels.map(channel => {
+    availableAndMatrixChannels.map((channel) => {
       let channelJsonObject = structuredClone(channel.jsonObject);
 
       if (channel.pixelKey) {
@@ -137,15 +141,16 @@ function transformSingleCapabilityToArray(fixtureJson) {
  * Replace capability properties' entity strings with unitless numbers, and
  * ColorIntensity capabilities' color property with its hex value.
  * @param {object} fixtureJson The fixture whose capabilities should be processed
+ * @param {object[]} namedColors The color names list.
  */
-function transformNonNumericValues(fixtureJson) {
+function transformNonNumericValues(fixtureJson, namedColors) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
       for (const [key, value] of Object.entries(capability)) {
-        if (key === `color`) {
-          processColor(capability);
+        if (key === 'color') {
+          processColor(capability, namedColors);
         }
-        else if (typeof value === `string` && !excludeKeys.has(key)) {
+        else if (typeof value === 'string' && !excludeKeys.has(key)) {
           capability[key] = getEntityNumber(value);
         }
       }
@@ -153,12 +158,12 @@ function transformNonNumericValues(fixtureJson) {
   }
 }
 
-
 /**
  * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
+ * @param {object[]} namedColors The color names list.
  */
-function processColor(capability) {
-  const namedColor = namedColors.find(color => color.name === capability.color);
+function processColor(capability, namedColors) {
+  const namedColor = namedColors.find((color) => color.name === capability.color);
   if (namedColor && namedColor.hex) {
     capability.color = namedColor.hex;
   }
@@ -180,7 +185,7 @@ function getEntityNumber(entityString) {
       return entityString;
     }
 
-    if (entity.unit === `s`) {
+    if (entity.unit === 's') {
       return entity.number * 1000;
     }
 

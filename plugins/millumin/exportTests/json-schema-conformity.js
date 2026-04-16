@@ -2,11 +2,10 @@ import https from 'https';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import getAjvErrorMessages from '../../../lib/get-ajv-error-messages.js';
-
 import { supportedOflVersion as SUPPORTED_OFL_VERSION } from '../export.js';
 
 const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
-const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`];
+const SCHEMA_FILES = ['capability.json', 'channel.json', 'definitions.json', 'fixture.json'];
 
 const schemas = await getSchemas();
 
@@ -31,13 +30,13 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
     verbose: true,
   });
   addFormats(ajv);
-  ajv.addFormat(`color-hex`, true);
+  ajv.addFormat('color-hex', true);
 
-  const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
+  const schemaValidate = ajv.getSchema('https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json');
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
-    throw getAjvErrorMessages(schemaValidate.errors, `fixture`);
+    throw getAjvErrorMessages(schemaValidate.errors, 'fixture');
   }
 }
 
@@ -46,11 +45,11 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
  */
 async function getSchemas() {
   const schemasJson = await Promise.all(SCHEMA_FILES.map(
-    filename => downloadSchema(SCHEMA_BASE_URL + filename),
+    (filename) => downloadSchema(SCHEMA_BASE_URL + filename),
   ));
 
-  const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];
-  const channelSchema = schemasJson[SCHEMA_FILES.indexOf(`channel.json`)];
+  const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf('fixture.json')];
+  const channelSchema = schemasJson[SCHEMA_FILES.indexOf('channel.json')];
 
   // allow automatically added properties (but don't validate them)
   fixtureSchema.properties.fixtureKey = true;
@@ -63,7 +62,7 @@ async function getSchemas() {
 
   // allow new colors from schema version 11.1.0
   // see https://github.com/OpenLightingProject/open-fixture-library/pull/763
-  channelSchema.properties.color.enum.push(`Warm White`, `Cold White`);
+  channelSchema.properties.color.enum.push('Warm White', 'Cold White');
 
   return schemasJson;
 }
@@ -74,18 +73,18 @@ async function getSchemas() {
  */
 function downloadSchema(url) {
   return new Promise((resolve, reject) => {
-    const request = https.get(url, response => {
+    const request = https.get(url, (response) => {
       if (response.statusCode < 200 || response.statusCode > 299) {
         reject(new Error(`Failed to load page, status code: ${response.statusCode}`));
       }
 
-      let body = ``;
-      response.on(`data`, chunk => {
+      let body = '';
+      response.on('data', (chunk) => {
         body += chunk;
       });
-      response.on(`end`, () => resolve(JSON.parse(body)));
+      response.on('end', () => resolve(JSON.parse(body)));
     });
 
-    request.on(`error`, error => reject(error));
+    request.on('error', (error) => reject(error));
   });
 }

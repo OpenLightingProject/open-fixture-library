@@ -58,10 +58,10 @@ export default {
     value: stringProp().optional,
   },
   emits: {
-    focusin: event => true,
-    focusout: event => true,
-    mouseover: event => true,
-    mouseout: event => true,
+    focusin: (event) => true,
+    focusout: (event) => true,
+    mouseover: (event) => true,
+    mouseout: (event) => true,
   },
 };
 </script>

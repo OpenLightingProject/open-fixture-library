@@ -195,12 +195,9 @@
 import { EmbettyVideo } from 'embetty-vue';
 import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
-
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
-
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
@@ -227,7 +224,7 @@ export default {
     loadAllModes: booleanProp().withDefault(false),
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
@@ -259,7 +256,7 @@ export default {
      * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
-      const videoUrls = this.fixture.getLinksOfType(`video`);
+      const videoUrls = this.fixture.getLinksOfType('video');
       const embettableVideoData = [];
 
       for (const url of videoUrls) {
@@ -283,9 +280,9 @@ export default {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 
-        if (linkType === `video`) {
+        if (linkType === 'video') {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url),
+            (url) => !this.videos.some((video) => video.url === url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -294,7 +291,7 @@ export default {
           let name = this.linkTypeNames[linkType];
           const title = `${name} at ${url}`;
 
-          if (linkType === `other`) {
+          if (linkType === 'other') {
             name = url;
           }
           else if (linkDisplayNumber > 1) {
@@ -322,12 +319,11 @@ export default {
   },
 };
 
-
 const supportedVideoFormats = {
 
   native: {
     regex: /\.(?:mp4|avi)$/,
-    displayType: url => getHostname(url),
+    displayType: (url) => getHostname(url),
     videoId: (url, match) => url,
     startAt: (url, match) => 0,
   },
@@ -338,7 +334,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: url => `YouTube`,
+    displayType: (url) => 'YouTube',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -351,7 +347,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: url => `Vimeo`,
+    displayType: (url) => 'Vimeo',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -362,13 +358,12 @@ const supportedVideoFormats = {
      * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
      */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: url => `Facebook`,
+    displayType: (url) => 'Facebook',
     videoId: (url, match) => match[1],
     startAt: (url, match) => 0,
   },
 
 };
-
 
 /**
  * @param {string} url The video URL.

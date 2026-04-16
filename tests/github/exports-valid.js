@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'url';
-
 import importJson from '../../lib/import-json.js';
 import { fixtureFromRepository } from '../../lib/model.js';
 import * as pullRequest from './pull-request.js';
@@ -25,19 +24,19 @@ try {
   await pullRequest.init();
   const changedComponents = await pullRequest.fetchChangedComponents();
 
-  plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  plugins = await importJson('../../plugins/plugins.json', import.meta.url);
 
   exportTests = [];
   for (const exportPluginKey of plugins.exportPlugins) {
     const plugin = plugins.data[exportPluginKey];
 
     exportTests.push(...plugin.exportTests.map(
-      testKey => [exportPluginKey, testKey],
+      (testKey) => [exportPluginKey, testKey],
     ));
   }
 
-  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
-  testFixtureKeys = testFixtures.map(fixture => [fixture.man, fixture.key]);
+  const testFixtures = await importJson('../test-fixtures.json', import.meta.url);
+  testFixtureKeys = testFixtures.map((fixture) => [fixture.man, fixture.key]);
 
   const tasks = [
     ...getTasksForModel(changedComponents),
@@ -46,17 +45,17 @@ try {
     ...getTasksForFixtures(changedComponents),
   ]
     .filter((task, index, array) => {
-      const firstEqualTask = array.find(otherTask =>
-        task.manufacturerKey === otherTask.manufacturerKey &&
-        task.fixtureKey === otherTask.fixtureKey &&
-        task.pluginKey === otherTask.pluginKey &&
-        task.testKey === otherTask.testKey,
+      const firstEqualTask = array.find((otherTask) =>
+        task.manufacturerKey === otherTask.manufacturerKey
+        && task.fixtureKey === otherTask.fixtureKey
+        && task.pluginKey === otherTask.pluginKey
+        && task.testKey === otherTask.testKey,
       );
 
       // remove duplicates
       return task === firstEqualTask;
     })
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
       const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
       const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
@@ -80,27 +79,27 @@ try {
   if (tasks.length === 0) {
     await pullRequest.updateComment({
       fileUrl: new URL(import.meta.url),
-      name: `Export files validity`,
+      name: 'Export files validity',
       lines: [],
     });
     process.exit(0);
   }
 
   const lines = [
-    `Test the exported files of selected fixtures against the plugins' export tests.`,
-    `You can run a plugin's export tests by executing:`,
-    `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
-    ``,
+    'Test the exported files of selected fixtures against the plugins\' export tests.',
+    'You can run a plugin\'s export tests by executing:',
+    '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
+    '',
   ];
 
-  const tooLongMessage = `⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!`;
+  const tooLongMessage = '⚠️ The output of the script is too long to fit in this comment, please run it yourself locally!';
 
   for (const task of tasks) {
     const taskResultLines = await getTaskPromise(task);
 
     // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
     // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
+    if ([...lines, ...taskResultLines, tooLongMessage].join('\r\n').length > 260_000) {
       lines.push(tooLongMessage);
       break;
     }
@@ -110,19 +109,18 @@ try {
 
   await pullRequest.updateComment({
     fileUrl: new URL(import.meta.url),
-    name: `Export files validity`,
+    name: 'Export files validity',
     lines,
   });
 
   if (testErrored) {
-    throw new Error(`Unable to export some fixtures.`);
+    throw new Error('Unable to export some fixtures.');
   }
 }
 catch (error) {
   console.error(error);
   process.exit(1);
 }
-
 
 /**
  * @param {[pluginKey: string, testKey: string][]} tests An array of export tests.
@@ -146,10 +144,11 @@ function mapExportTestsToTasks(tests, manufacturerKey, fixtureKey) {
 function getTasksForModel(changedComponents) {
   const tasks = [];
 
-  if (changedComponents.added.model ||
-    changedComponents.modified.model ||
-    changedComponents.removed.model) {
-
+  if (
+    changedComponents.added.model
+    || changedComponents.modified.model
+    || changedComponents.removed.model
+  ) {
     for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
       tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
     }
@@ -171,7 +170,7 @@ function getTasksForPlugins(changedComponents) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
     for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
-      tasks.push(...pluginExportTests.map(testKey => ({
+      tasks.push(...pluginExportTests.map((testKey) => ({
         manufacturerKey,
         fixtureKey,
         pluginKey: changedPlugin,
@@ -223,43 +222,43 @@ async function getTaskPromise(task) {
   const plugin = await import(`../../plugins/${task.pluginKey}/export.js`);
   const { default: test } = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
 
-  let emoji = `✔️`;
+  let emoji = '✔️';
   const detailListItems = [];
 
   try {
     const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
-        baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
+        baseDirectory: fileURLToPath(new URL('../../', import.meta.url)),
         date: new Date(),
       },
     );
 
-    const resultListItems = await Promise.all(files.map(async file => {
+    const resultListItems = await Promise.all(files.map(async (file) => {
       try {
         await test(file, files);
         return `✔️ ${file.name}`;
       }
       catch (error) {
-        emoji = `❌`;
-        const errors = [error].flat().join(`<br />\n`);
+        emoji = '❌';
+        const errors = [error].flat().join('<br />\n');
         return `<details><summary>❌ ${file.name}</summary>${errors}</details>`;
       }
     }));
     detailListItems.push(...resultListItems);
   }
   catch (error) {
-    emoji = `❗`;
+    emoji = '❗';
     detailListItems.push(`Unable to export fixture: ${error.message}`);
     testErrored = true;
   }
 
   return [
-    `<details>`,
+    '<details>',
     `  <summary>${emoji} <strong>${task.manufacturerKey} / ${task.fixtureKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
-    `  <ul>`,
-    ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
-    `  </ul>`,
-    `</details>`,
+    '  <ul>',
+    ...detailListItems.map((listItem) => `    <li>${listItem}</li>`),
+    '  </ul>',
+    '</details>',
   ];
 }

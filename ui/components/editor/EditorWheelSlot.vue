@@ -48,11 +48,9 @@
 <script>
 import { integerProp, objectProp } from 'vue-ts-types';
 import { wheelSlotTypes } from '../../../lib/schema-properties.js';
-import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
-
+import { getEmptyWheelSlot } from '../../assets/scripts/editor-utilities.js';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
-
 import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
 import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
 import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';
@@ -94,18 +92,18 @@ export default {
     },
     suggestedType() {
       const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      if (previousSlot && previousSlot.type === `AnimationGoboStart`) {
-        return `AnimationGoboEnd`;
+      if (previousSlot && previousSlot.type === 'AnimationGoboStart') {
+        return 'AnimationGoboEnd';
       }
 
       if (this.slotNumber === 1) {
-        return /\banimation\b/i.test(this.channel.name) ? `AnimationGoboStart` : `Open`;
+        return /\banimation\b/i.test(this.channel.name) ? 'AnimationGoboStart' : 'Open';
       }
 
-      return this.slotTypes.find(type => this.channel.name.toLowerCase().includes(type.toLowerCase())) || ``;
+      return this.slotTypes.find((type) => this.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
     },
     animationGoboEndAfterStart() {
-      if (this.slot.type !== `AnimationGoboEnd`) {
+      if (this.slot.type !== 'AnimationGoboEnd') {
         return true;
       }
 
@@ -114,15 +112,15 @@ export default {
       }
 
       const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !previousSlot || previousSlot.type === `AnimationGoboStart`;
+      return !previousSlot || previousSlot.type === 'AnimationGoboStart';
     },
     animationGoboEndValid() {
       const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !previousSlot || previousSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
+      return !previousSlot || previousSlot.type !== 'AnimationGoboStart' || this.slot.type === 'AnimationGoboEnd';
     },
   },
   created() {
-    this.$watch(`slotNumber`, async function(newSlotNumber) {
+    this.$watch('slotNumber', async (newSlotNumber) => {
       if (!this.channel.wheel.slots[newSlotNumber - 1]) {
         this.$set(this.channel.wheel.slots, newSlotNumber - 1, getEmptyWheelSlot());
         this.open = true;

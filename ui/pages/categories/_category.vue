@@ -34,7 +34,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -48,7 +48,7 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -59,11 +59,11 @@ export default {
       return this.$route.params.category;
     },
     categoryClass() {
-      return this.categoryName.toLowerCase().replaceAll(/\W+/g, `-`);
+      return this.categoryName.toLowerCase().replaceAll(/\W+/g, '-');
     },
     fixtures() {
-      return register.categories[this.categoryName].map(fullFixtureKey => {
-        const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
+      return register.categories[this.categoryName].map((fullFixtureKey) => {
+        const [manufacturerKey, fixtureKey] = fullFixtureKey.split('/');
         const manufacturerName = this.manufacturers[manufacturerKey].name;
         const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 
@@ -72,7 +72,7 @@ export default {
           link: `/${fullFixtureKey}`,
           name: `${manufacturerName} ${fixtureName}`,
           categories: Object.keys(register.categories).filter(
-            category => register.categories[category].includes(fullFixtureKey),
+            (category) => register.categories[category].includes(fullFixtureKey),
           ),
           color: this.manufacturers[manufacturerKey].color,
         };

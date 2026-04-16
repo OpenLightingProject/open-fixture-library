@@ -21,9 +21,9 @@ export default {
 };
 
 const channelTypeIcons = {
-  'Multi-Color': `color-changer`,
-  'Fog': `smoke`,
-  'Intensity': `dimmer`,
+  'Multi-Color': 'color-changer',
+  'Fog': 'smoke',
+  'Intensity': 'dimmer',
 };
 
 /**
@@ -33,9 +33,9 @@ const channelTypeIcons = {
 function getIconProperties(channel) {
   if (channel instanceof NullChannel) {
     return {
-      type: `fixture`,
-      name: `NoFunction`,
-      title: `Channel type: NoFunction`,
+      type: 'fixture',
+      name: 'NoFunction',
+      title: 'Channel type: NoFunction',
     };
   }
 
@@ -45,22 +45,22 @@ function getIconProperties(channel) {
 
   if (channel instanceof SwitchingChannel) {
     return {
-      type: `fixture`,
-      name: `switching-channel`,
-      title: `Channel type: Switching Channel`,
+      type: 'fixture',
+      name: 'switching-channel',
+      title: 'Channel type: Switching Channel',
     };
   }
 
-  if (channel.type === `Single Color`) {
+  if (channel.type === 'Single Color') {
     return {
-      type: `color-circle`,
+      type: 'color-circle',
       name: channel.color,
       title: `Channel type: Single Color, ${channel.color}`,
     };
   }
 
   return {
-    type: `fixture`,
+    type: 'fixture',
     name: channelTypeIcons[channel.type] || channel.type,
     title: `Channel type: ${channel.type}`,
   };

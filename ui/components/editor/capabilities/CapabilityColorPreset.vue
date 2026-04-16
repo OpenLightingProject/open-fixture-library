@@ -71,8 +71,7 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
-
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -95,21 +94,21 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`,
+      hint: 'This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        comment: ``,
+        comment: '',
         colors: null,
         colorsStart: null,
         colorsEnd: null,
-        colorsHexString: ``,
+        colorsHexString: '',
         colorsHexStringStart: null,
         colorsHexStringEnd: null,
-        colorTemperature: ``,
+        colorTemperature: '',
         colorTemperatureStart: null,
         colorTemperatureEnd: null,
       },

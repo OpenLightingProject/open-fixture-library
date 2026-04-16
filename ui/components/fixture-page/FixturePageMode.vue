@@ -1,6 +1,6 @@
 <template>
   <section
-    :id="mode.rdmPersonalityIndex !== null ? `rdm-personality-${mode.rdmPersonalityIndex}` : null"
+    :id="mode.rdmPersonalityIndex === null ? null : `rdm-personality-${mode.rdmPersonalityIndex}`"
     class="fixture-mode card">
 
     <h2>{{ mode.name }} mode <code v-if="mode.hasShortName">{{ mode.shortName }}</code></h2>
@@ -65,7 +65,6 @@ ol.mode-channels {
 <script>
 import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
-
 import FixturePageChannel from './FixturePageChannel.vue';
 import FixturePagePhysical from './FixturePagePhysical.vue';
 
@@ -78,7 +77,7 @@ export default {
     mode: instanceOfProp(Mode).required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     return {
@@ -94,18 +93,18 @@ export default {
     // wait for all child components to render
     await this.$nextTick();
 
-    if (!this.$el.querySelector(`details`)) {
+    if (!this.$el.querySelector('details')) {
       this.hasDetails = false;
     }
   },
   methods: {
     openDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = true;
       }
     },
     closeDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = false;
       }
     },

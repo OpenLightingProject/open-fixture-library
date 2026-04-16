@@ -127,7 +127,6 @@ noscript.card {
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
@@ -135,8 +134,7 @@ import {
   getEmptyFixture,
   getEmptyFormState,
   getEmptyMode,
-} from '../assets/scripts/editor-utils.js';
-
+} from '../assets/scripts/editor-utilities.js';
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
 import EditorFixtureInformation from '../components/editor/EditorFixtureInformation.vue';
@@ -164,7 +162,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -178,19 +176,19 @@ export default {
       restoredData: undefined,
       fixture: getEmptyFixture(),
       channel: getEmptyChannel(),
-      githubUsername: ``,
-      honeypot: ``,
+      githubUsername: '',
+      honeypot: '',
       schemaDefinitions,
     };
   },
   head() {
-    const title = `Fixture Editor`;
+    const title = 'Fixture Editor';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -199,7 +197,7 @@ export default {
   watch: {
     fixture: {
       handler() {
-        this.autoSave(`fixture`);
+        this.autoSave('fixture');
       },
       deep: true,
     },
@@ -236,7 +234,7 @@ export default {
     getChannelName(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
 
-      if (`coarseChannelId` in channel) {
+      if ('coarseChannelId' in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
         if (channel.resolution > constants.RESOLUTION_16BIT) {
           name += `^${channel.resolution - 1}`;
@@ -258,7 +256,7 @@ export default {
       const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
+        (uuid) => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -268,7 +266,7 @@ export default {
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
-        const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+        const channelMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
 
         const channelPosition = channelMode.channels.indexOf(channelUuid);
         if (channelPosition !== -1) {
@@ -281,7 +279,7 @@ export default {
 
       // remove fine channels first
       for (const channel of Object.values(this.fixture.availableChannels)) {
-        if (`coarseChannelId` in channel && channel.coarseChannelId === channelUuid) {
+        if ('coarseChannelId' in channel && channel.coarseChannelId === channelUuid) {
           this.removeChannel(channel.uuid);
         }
       }
@@ -304,15 +302,15 @@ export default {
         return;
       }
 
-      if (objectName === `fixture`) {
-        console.log(`autoSave fixture:`, JSON.parse(JSON.stringify(this.fixture, null, 2)));
+      if (objectName === 'fixture') {
+        console.log('autoSave fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)));
       }
-      else if (objectName === `channel`) {
-        console.log(`autoSave channel:`, JSON.parse(JSON.stringify(this.channel, null, 2)));
+      else if (objectName === 'channel') {
+        console.log('autoSave channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
       }
 
       // use an array to be future-proof (maybe we want to support multiple browser tabs sometime)
-      localStorage.setItem(`autoSave`, JSON.stringify([
+      localStorage.setItem('autoSave', JSON.stringify([
         {
           fixture: this.fixture,
           channel: this.channel,
@@ -322,7 +320,7 @@ export default {
     },
 
     clearAutoSave() {
-      localStorage.removeItem(`autoSave`);
+      localStorage.removeItem('autoSave');
     },
 
     /**
@@ -330,10 +328,10 @@ export default {
      */
     restoreAutoSave() {
       try {
-        this.restoredData = JSON.parse(localStorage.getItem(`autoSave`)).pop();
+        this.restoredData = JSON.parse(localStorage.getItem('autoSave')).pop();
 
         if (this.restoredData === undefined) {
-          throw new Error(`this.restoredData is undefined.`);
+          throw new Error('this.restoredData is undefined.');
         }
       }
       catch {
@@ -342,7 +340,7 @@ export default {
         return;
       }
 
-      console.log(`restore`, structuredClone(this.restoredData));
+      console.log('restore', structuredClone(this.restoredData));
     },
 
     /**
@@ -368,28 +366,28 @@ export default {
         }
       }
       catch (parseError) {
-        console.log(`prefill query could not be parsed:`, this.$route.query.prefill, parseError);
+        console.log('prefill query could not be parsed:', this.$route.query.prefill, parseError);
       }
     },
 
     applyStoredPrefillData() {
-      if (this.fixture.metaAuthor === ``) {
-        this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
+      if (this.fixture.metaAuthor === '') {
+        this.fixture.metaAuthor = localStorage.getItem('prefillAuthor') || '';
       }
 
-      if (this.githubUsername === ``) {
-        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      if (this.githubUsername === '') {
+        this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
       }
     },
 
     storePrefillData() {
-      localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
-      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
+      localStorage.setItem('prefillAuthor', this.fixture.metaAuthor);
+      localStorage.setItem('prefillGithubUsername', this.githubUsername);
     },
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector(`.vf-field-invalid`);
+        const field = document.querySelector('.vf-field-invalid');
 
         scrollIntoView(field, {
           time: 300,
@@ -398,14 +396,14 @@ export default {
             left: 0,
             topOffset: 100,
           },
-          isScrollable: target => target === window,
+          isScrollable: (target) => target === window,
         }, () => field.focus());
 
         return;
       }
 
-      if (this.honeypot !== ``) {
-        alert(`Do not fill the "Ignore" fields!`);
+      if (this.honeypot !== '') {
+        alert('Do not fill the "Ignore" fields!');
         return;
       }
 
@@ -420,7 +418,7 @@ export default {
     async reset() {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
-      this.honeypot = ``;
+      this.honeypot = '';
       this.applyStoredPrefillData();
 
       this.$router.push({
@@ -444,10 +442,10 @@ export default {
  */
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
-    useExistingManufacturer: `boolean`,
-    manufacturerKey: `string`,
-    newManufacturerRdmId: `number`,
-    rdmModelId: `number`,
+    useExistingManufacturer: 'boolean',
+    manufacturerKey: 'string',
+    newManufacturerRdmId: 'number',
+    rdmModelId: 'number',
   };
 
   return key in allowedPrefillValues && typeof prefillObject[key] === allowedPrefillValues[key];

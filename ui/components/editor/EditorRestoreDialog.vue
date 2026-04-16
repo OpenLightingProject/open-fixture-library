@@ -36,8 +36,7 @@ import {
   getEmptyMode,
   getEmptyPhysical,
   getSanitizedChannel,
-} from '../../assets/scripts/editor-utils.js';
-
+} from '../../assets/scripts/editor-utilities.js';
 import A11yDialog from '../A11yDialog.vue';
 
 export default {
@@ -45,14 +44,14 @@ export default {
     A11yDialog,
   },
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     modelValue: objectProp().optional,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
     'restore-complete': () => true,
   },
   computed: {
@@ -60,23 +59,23 @@ export default {
       if (this.modelValue === undefined) {
         return undefined;
       }
-      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
+      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
     },
   },
   methods: {
     discardRestored() {
       // put all items except the last one back
-      localStorage.setItem(`autoSave`, JSON.stringify(JSON.parse(localStorage.getItem(`autoSave`)).slice(0, -1)));
+      localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave')).slice(0, -1)));
 
-      this.$emit(`update:model-value`, undefined);
-      this.$emit(`restore-complete`);
+      this.$emit('update:model-value', undefined);
+      this.$emit('restore-complete');
     },
 
     async applyRestored() {
       const modelValue = structuredClone(this.modelValue);
 
       // closes dialog
-      this.$emit(`update:model-value`, undefined);
+      this.$emit('update:model-value', undefined);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
       await this.$nextTick();
@@ -85,7 +84,7 @@ export default {
       this.$parent.channel = getRestoredChannel(modelValue.channel, true);
 
       await this.$nextTick();
-      this.$emit(`restore-complete`);
+      this.$emit('restore-complete');
     },
   },
 };
@@ -121,7 +120,7 @@ function getRestoredFixture(fixture) {
  * @returns {object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {
-  if (`coarseChannelId` in channel) {
+  if ('coarseChannelId' in channel) {
     return Object.assign(getEmptyFineChannel(), channel);
   }
 

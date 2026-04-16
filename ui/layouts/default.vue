@@ -2,9 +2,9 @@
   <div
     id="ofl-root"
     :class="{
-      js: isBrowser,
+      'js': isBrowser,
       'no-js': !isBrowser,
-      touch: isTouchScreen,
+      'touch': isTouchScreen,
       'no-touch': !isTouchScreen,
     }">
 
@@ -62,7 +62,6 @@
 }
 </style>
 
-
 <script>
 import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
 import HeaderBar from '../components/HeaderBar.vue';
@@ -83,12 +82,12 @@ export default {
     this.isBrowser = true;
 
     // adapted from https://stackoverflow.com/a/30303898/451391
-    document.addEventListener(`touchstart`, this.onTouchStart, true);
-    document.addEventListener(`mousemove`, this.onMouseMove, true);
+    document.addEventListener('touchstart', this.onTouchStart, true);
+    document.addEventListener('mousemove', this.onMouseMove, true);
   },
   beforeDestroy() {
-    document.removeEventListener(`touchstart`, this.onTouchStart, true);
-    document.removeEventListener(`mousemove`, this.onMouseMove, true);
+    document.removeEventListener('touchstart', this.onTouchStart, true);
+    document.removeEventListener('mousemove', this.onMouseMove, true);
   },
   methods: {
     focusContent() {

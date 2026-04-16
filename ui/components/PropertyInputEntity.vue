@@ -8,8 +8,8 @@
         class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         required
-        :minimum="minNumber !== undefined ? minNumber : `invalid`"
-        :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
+        :minimum="minNumber === undefined ? `invalid` : minNumber"
+        :maximum="maxNumber === undefined ? `invalid` : maxNumber"
         :name="name ? `${name}-number` : null"
         @focus="onFocus()"
         @blur="onBlur($event)" />
@@ -81,7 +81,6 @@
 <script>
 import { anyProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
 import { unitsSchema } from '../../lib/schema-properties.js';
-
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
@@ -91,7 +90,7 @@ export default {
   props: {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
-    value: anyProp().withDefault(``),
+    value: anyProp().withDefault(''),
     associatedEntity: anyProp().optional,
     minNumber: numberProp().optional,
     maxNumber: numberProp().optional,
@@ -99,17 +98,17 @@ export default {
     wide: booleanProp().withDefault(false),
   },
   emits: {
-    input: value => true,
-    focus: () => true,
-    blur: () => true,
-    'unit-selected': unitString => true,
-    'vf:validate': validationData => true,
+    'input': (value) => true,
+    'focus': () => true,
+    'blur': () => true,
+    'unit-selected': (unitString) => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {
       validationData: {
-        'entity-complete': ``,
-        'entities-have-same-units': ``,
+        'entity-complete': '',
+        'entities-have-same-units': '',
       },
     };
   },
@@ -118,15 +117,15 @@ export default {
       return this.schemaProperty.oneOf || [this.schemaProperty];
     },
     enumValues() {
-      const enumSubSchema = this.subSchemas.find(subSchema => `enum` in subSchema);
+      const enumSubSchema = this.subSchemas.find((subSchema) => 'enum' in subSchema);
 
       return enumSubSchema ? enumSubSchema.enum : [];
     },
     unitNames() {
       return this.subSchemas.filter(
-        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`),
+        (subSchema) => '$ref' in subSchema && subSchema.$ref.includes('#/units/'),
       ).map(
-        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``),
+        (subSchema) => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ''),
       );
     },
     units() {
@@ -134,8 +133,8 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = unitsSchema[unitName];
 
-        const unitString = `pattern` in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : ``;
-        const numberSchema = `pattern` in unitSchema ? unitsSchema.number : unitSchema;
+        const unitString = 'pattern' in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : '';
+        const numberSchema = 'pattern' in unitSchema ? unitsSchema.number : unitSchema;
 
         units[unitName] = {
           unitString,
@@ -151,21 +150,21 @@ export default {
         return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
-        if (this.enumValues.includes(newUnit) || newUnit === ``) {
+        if (this.enumValues.includes(newUnit) || newUnit === '') {
           this.update(newUnit);
         }
-        else if (this.units[newUnit].unitString === ``) {
-          if (this.selectedNumber === ``) {
-            this.update(`[no unit]`);
+        else if (this.units[newUnit].unitString === '') {
+          if (this.selectedNumber === '') {
+            this.update('[no unit]');
           }
           else {
             this.update(Number.parseFloat(this.selectedNumber));
           }
-          this.$emit(`unit-selected`, `[no unit]`);
+          this.$emit('unit-selected', '[no unit]');
         }
         else {
           this.update(this.selectedNumber + this.units[newUnit].unitString);
-          this.$emit(`unit-selected`, this.units[newUnit].unitString);
+          this.$emit('unit-selected', this.units[newUnit].unitString);
         }
       },
     },
@@ -174,22 +173,22 @@ export default {
     },
     selectedNumber: {
       get() {
-        if (typeof this.value !== `string`) {
+        if (typeof this.value !== 'string') {
           return this.value;
         }
 
-        const number = Number.parseFloat(this.value.replace(this.selectedUnit, ``));
+        const number = Number.parseFloat(this.value.replace(this.selectedUnit, ''));
 
-        return Number.isNaN(number) ? `` : number;
+        return Number.isNaN(number) ? '' : number;
       },
       set(newNumber) {
-        if (newNumber === null || newNumber === `invalid`) {
-          newNumber = ``;
+        if (newNumber === null || newNumber === 'invalid') {
+          newNumber = '';
         }
 
-        if (this.units[this.selectedUnit].unitString === ``) {
-          if (newNumber === ``) {
-            this.update(`[no unit]`);
+        if (this.units[this.selectedUnit].unitString === '') {
+          if (newNumber === '') {
+            this.update('[no unit]');
           }
           else {
             this.update(Number.parseFloat(newNumber));
@@ -221,7 +220,7 @@ export default {
     },
   },
   mounted() {
-    this.$emit(`vf:validate`, this.validationData);
+    this.$emit('vf:validate', this.validationData);
   },
   methods: {
     /** @public */
@@ -230,7 +229,7 @@ export default {
       focusField.focus();
     },
     update(newValue) {
-      this.$emit(`input`, newValue);
+      this.$emit('input', newValue);
     },
 
     /**
@@ -239,12 +238,12 @@ export default {
      * @public
      */
     setUnitString(newUnitString) {
-      if (newUnitString === `[no unit]`) {
-        newUnitString = ``;
+      if (newUnitString === '[no unit]') {
+        newUnitString = '';
       }
 
       this.selectedUnit = Object.keys(this.units).find(
-        unitName => this.units[unitName].unitString === newUnitString,
+        (unitName) => this.units[unitName].unitString === newUnitString,
       );
     },
     async unitSelected() {
@@ -257,11 +256,11 @@ export default {
       this.focus();
     },
     onFocus() {
-      this.$emit(`focus`);
+      this.$emit('focus');
     },
     onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest(`.entity-input`) !== event.relatedTarget.closest(`.entity-input`)) {
-        this.$emit(`blur`);
+      if (!(event.target && event.relatedTarget) || event.target.closest('.entity-input') !== event.relatedTarget.closest('.entity-input')) {
+        this.$emit('blur');
       }
     },
   },
@@ -272,12 +271,12 @@ export default {
  * @returns {string} The unit string.
  */
 function parseUnitFromPattern(pattern) {
-  if (!pattern.endsWith(`$`)) {
+  if (!pattern.endsWith('$')) {
     throw new Error(`Pattern does not end with '$': ${pattern}`);
   }
 
-  const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
-  return pattern.slice(lastNumberPartIndex + 1, -1).replaceAll(`\\`, ``);
+  const lastNumberPartIndex = Math.max(pattern.lastIndexOf(')'), pattern.lastIndexOf('?'));
+  return pattern.slice(lastNumberPartIndex + 1, -1).replaceAll('\\', '');
 }
 
 /**
@@ -285,11 +284,11 @@ function parseUnitFromPattern(pattern) {
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
-  if (unitString === ``) {
-    return `number`;
+  if (unitString === '') {
+    return 'number';
   }
 
-  return unitString.replace(`^2`, `²`).replace(`^3`, `³`);
+  return unitString.replace('^2', '²').replace('^3', '³');
 }
 
 /**
@@ -300,17 +299,17 @@ function getUnitDisplayString(unitString) {
  * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
-  if (enumValues.includes(value) || value === ``) {
+  if (enumValues.includes(value) || value === '') {
     return value;
   }
 
-  if (value === `[no unit]` || typeof value !== `string`) {
-    return unitNames.find(name => units[name].unitString === ``);
+  if (value === '[no unit]' || typeof value !== 'string') {
+    return unitNames.find((name) => units[name].unitString === '');
   }
 
-  const unit = value.replace(/^-?\d+(\.\d+)?/, ``);
+  const unit = value.replace(/^-?\d+(\.\d+)?/, '');
 
-  return unitNames.find(name => units[name].unitString === unit) || ``;
+  return unitNames.find((name) => units[name].unitString === unit) || '';
 }
 
 /**
@@ -319,6 +318,6 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
  * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
-  return unitName !== `` && !enumValues.includes(unitName);
+  return unitName !== '' && !enumValues.includes(unitName);
 }
 </script>
