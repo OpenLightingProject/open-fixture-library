@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: "daily"
   workflow_dispatch:
+    inputs:
+      dry-run:
+        type: boolean
+        description: If true, report what would be done without making changes
+        default: false
 
 permissions:
   contents: read
@@ -58,8 +63,11 @@ For each fixture JSON file in the PR:
 
 ## Actions on Flagged PR
 
+Only if `dry-run` input is NOT true:
 1. Add label: `incomplete`
 2. Add comment: "Missing required metadata: Manual and Product Page"
+
+If `dry-run` IS true, only report what would be done - do NOT add labels or comments.
 
 ## Output
 
