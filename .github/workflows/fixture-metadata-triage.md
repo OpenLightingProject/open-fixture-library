@@ -4,18 +4,18 @@ description: Daily triage of PRs with new-fixture/via-editor labels to validate 
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "daily"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pull-requests: write
+  pull-requests: read
 
 safe-outputs:
   add-comment:
-    subject: pull-requests
+    pull-requests: true
   add-labels:
-    subject: pull-requests
+    allowed: [incomplete]
 
 tools:
   github:

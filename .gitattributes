@@ -18,3 +18,5 @@ schemas/*.json linguist-detectable=true
 *.md text eol=lf
 *.ts text eol=lf
 *.vue text eol=lf
+
+.github/workflows/*.lock.yml linguist-generated=true merge=ours
