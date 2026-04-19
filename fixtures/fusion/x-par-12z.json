@@ -1,0 +1,614 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "X-PAR 12Z",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["AERESAD", "Annonymus"],
+    "createDate": "2026-04-19",
+    "lastModifyDate": "2026-04-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-04-19",
+      "comment": "created by Q Light Controller Plus (version 5.1.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [245, 341, 245],
+    "weight": 7,
+    "power": 155,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 15,
+      "lumens": 2520
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [6, 44]
+    }
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Single Flash when value changes",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sync Ramp Up"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sync Ramp Down"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sync Ramp Up-down"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sync Double Flash"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random Strobe"
+        },
+        {
+          "dmxRange": [160, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz",
+          "comment": "Sync Strobe"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control/Settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [1, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Reset all"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 18],
+          "type": "ColorPreset",
+          "comment": "10000K"
+        },
+        {
+          "dmxRange": [19, 21],
+          "type": "ColorPreset",
+          "comment": "9900K"
+        },
+        {
+          "dmxRange": [22, 24],
+          "type": "ColorPreset",
+          "comment": "9800K"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "ColorPreset",
+          "comment": "9700K"
+        },
+        {
+          "dmxRange": [28, 30],
+          "type": "ColorPreset",
+          "comment": "9600K"
+        },
+        {
+          "dmxRange": [31, 33],
+          "type": "ColorPreset",
+          "comment": "9500K"
+        },
+        {
+          "dmxRange": [34, 36],
+          "type": "ColorPreset",
+          "comment": "9400K"
+        },
+        {
+          "dmxRange": [37, 39],
+          "type": "ColorPreset",
+          "comment": "9300K"
+        },
+        {
+          "dmxRange": [40, 42],
+          "type": "ColorPreset",
+          "comment": "9200K"
+        },
+        {
+          "dmxRange": [43, 45],
+          "type": "ColorPreset",
+          "comment": "9100K"
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "ColorPreset",
+          "comment": "9000K"
+        },
+        {
+          "dmxRange": [49, 51],
+          "type": "ColorPreset",
+          "comment": "8900K"
+        },
+        {
+          "dmxRange": [52, 54],
+          "type": "ColorPreset",
+          "comment": "8800K"
+        },
+        {
+          "dmxRange": [55, 57],
+          "type": "ColorPreset",
+          "comment": "8700K"
+        },
+        {
+          "dmxRange": [58, 60],
+          "type": "ColorPreset",
+          "comment": "8600K"
+        },
+        {
+          "dmxRange": [61, 63],
+          "type": "ColorPreset",
+          "comment": "8500K"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "ColorPreset",
+          "comment": "8400K"
+        },
+        {
+          "dmxRange": [67, 69],
+          "type": "ColorPreset",
+          "comment": "8300K"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "ColorPreset",
+          "comment": "8200K"
+        },
+        {
+          "dmxRange": [73, 75],
+          "type": "ColorPreset",
+          "comment": "8100K"
+        },
+        {
+          "dmxRange": [76, 78],
+          "type": "ColorPreset",
+          "comment": "8000K"
+        },
+        {
+          "dmxRange": [79, 81],
+          "type": "ColorPreset",
+          "comment": "7900K"
+        },
+        {
+          "dmxRange": [82, 84],
+          "type": "ColorPreset",
+          "comment": "7800K"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "ColorPreset",
+          "comment": "7700K"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "ColorPreset",
+          "comment": "7600K"
+        },
+        {
+          "dmxRange": [91, 93],
+          "type": "ColorPreset",
+          "comment": "7500K"
+        },
+        {
+          "dmxRange": [94, 96],
+          "type": "ColorPreset",
+          "comment": "7400K"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "ColorPreset",
+          "comment": "7300K"
+        },
+        {
+          "dmxRange": [100, 102],
+          "type": "ColorPreset",
+          "comment": "7200K"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "ColorPreset",
+          "comment": "7100K"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "ColorPreset",
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [109, 111],
+          "type": "ColorPreset",
+          "comment": "6900K"
+        },
+        {
+          "dmxRange": [112, 114],
+          "type": "ColorPreset",
+          "comment": "6800K"
+        },
+        {
+          "dmxRange": [115, 117],
+          "type": "ColorPreset",
+          "comment": "6700K"
+        },
+        {
+          "dmxRange": [118, 120],
+          "type": "ColorPreset",
+          "comment": "6600K"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "ColorPreset",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "ColorPreset",
+          "comment": "6400K"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "ColorPreset",
+          "comment": "6300K"
+        },
+        {
+          "dmxRange": [130, 132],
+          "type": "ColorPreset",
+          "comment": "6200K"
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "ColorPreset",
+          "comment": "6100K"
+        },
+        {
+          "dmxRange": [136, 138],
+          "type": "ColorPreset",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "ColorPreset",
+          "comment": "5900k"
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorPreset",
+          "comment": "5800k"
+        },
+        {
+          "dmxRange": [145, 147],
+          "type": "ColorPreset",
+          "comment": "5700k"
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "ColorPreset",
+          "comment": "5600k"
+        },
+        {
+          "dmxRange": [151, 153],
+          "type": "ColorPreset",
+          "comment": "5500k"
+        },
+        {
+          "dmxRange": [154, 156],
+          "type": "ColorPreset",
+          "comment": "5400k"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "ColorPreset",
+          "comment": "5300k"
+        },
+        {
+          "dmxRange": [160, 162],
+          "type": "ColorPreset",
+          "comment": "5200K"
+        },
+        {
+          "dmxRange": [163, 165],
+          "type": "ColorPreset",
+          "comment": "5100K"
+        },
+        {
+          "dmxRange": [166, 168],
+          "type": "ColorPreset",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [169, 171],
+          "type": "ColorPreset",
+          "comment": "4900K"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "ColorPreset",
+          "comment": "4800K"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "ColorPreset",
+          "comment": "4700K"
+        },
+        {
+          "dmxRange": [178, 180],
+          "type": "ColorPreset",
+          "comment": "4600K"
+        },
+        {
+          "dmxRange": [181, 183],
+          "type": "ColorPreset",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [184, 186],
+          "type": "ColorPreset",
+          "comment": "4400K"
+        },
+        {
+          "dmxRange": [187, 189],
+          "type": "ColorPreset",
+          "comment": "4300K"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "ColorPreset",
+          "comment": "4200K"
+        },
+        {
+          "dmxRange": [193, 195],
+          "type": "ColorPreset",
+          "comment": "4100K"
+        },
+        {
+          "dmxRange": [196, 198],
+          "type": "ColorPreset",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [199, 201],
+          "type": "ColorPreset",
+          "comment": "3900K"
+        },
+        {
+          "dmxRange": [202, 204],
+          "type": "ColorPreset",
+          "comment": "3800K"
+        },
+        {
+          "dmxRange": [205, 207],
+          "type": "ColorPreset",
+          "comment": "3700K"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "ColorPreset",
+          "comment": "3600K"
+        },
+        {
+          "dmxRange": [211, 213],
+          "type": "ColorPreset",
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [214, 216],
+          "type": "ColorPreset",
+          "comment": "3400K"
+        },
+        {
+          "dmxRange": [217, 219],
+          "type": "ColorPreset",
+          "comment": "3300K"
+        },
+        {
+          "dmxRange": [220, 222],
+          "type": "ColorPreset",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "ColorPreset",
+          "comment": "3100K"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "ColorPreset",
+          "comment": "3000K"
+        },
+        {
+          "dmxRange": [229, 231],
+          "type": "ColorPreset",
+          "comment": "2900K"
+        },
+        {
+          "dmxRange": [232, 234],
+          "type": "ColorPreset",
+          "comment": "2800K"
+        },
+        {
+          "dmxRange": [235, 237],
+          "type": "ColorPreset",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "ColorPreset",
+          "comment": "2500K"
+        }
+      ]
+    },
+    "M/G Shift": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Off (no effect)"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "Full plus magenta 100%"
+        },
+        {
+          "dmxRange": [11, 124],
+          "type": "ColorPreset",
+          "comment": "Plus magenta 99%+1%"
+        },
+        {
+          "dmxRange": [125, 140],
+          "type": "ColorPreset",
+          "comment": "Neutral/Noeffect"
+        },
+        {
+          "dmxRange": [141, 254],
+          "type": "ColorPreset",
+          "comment": "Plus Green 1%+99%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Full Plus Green + 100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 11-channel",
+      "shortName": "Standard 11ch",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Zoom",
+        "Control/Settings",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color wheel",
+        "CTC",
+        "M/G Shift"
+      ]
+    }
+  ]
+}
