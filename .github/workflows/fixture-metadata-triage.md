@@ -1,23 +1,26 @@
+---
 name: Fixture Metadata Triage
 description: Daily triage of PRs with new-fixture/via-editor labels to validate fixture JSON metadata
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Daily at midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pull-requests: read
-  issues: read
+  pull-requests: write
+
+safe-outputs:
+  add-comment:
+    subject: pull-requests
+  add-labels:
+    subject: pull-requests
 
 tools:
   github:
     min-integrity: approved
     toolsets: [pull_requests, repos]
-  repo-memory:
-    branch-name: memory/fixture-triage
-
 ---
 
 # Fixture Metadata Triage Agent
