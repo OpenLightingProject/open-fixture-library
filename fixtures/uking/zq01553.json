@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01553",
+  "shortName": "LED IP65",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Maddis"],
+    "createDate": "2025-10-21",
+    "lastModifyDate": "2025-10-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2025/07/ZQ01553-14-RGBW-LEDs-Waterproof-Par-Light.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/uking-zq01553-waterproof-par-light/?srsltid=AfmBOorMgCNUgU4XtA6yLartssI_RJUDSRze34Pdk6lyx8WnGATt2SgM"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 160, 220],
+    "weight": 4.1,
+    "power": 200,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "14x RGBW LED",
+      "colorTemperature": 8000,
+      "lumens": 5957
+    },
+    "lens": {
+      "degreesMinMax": [20, 25]
+    }
+  },
+  "availableChannels": {
+    "Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "8000K"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Chanal",
+      "channels": [
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming"
+      ]
+    },
+    {
+      "name": "8 Chanal",
+      "channels": [
+        "Dimmer",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Strobe",
+        "Color Temperature",
+        "No function"
+      ]
+    }
+  ]
+}
