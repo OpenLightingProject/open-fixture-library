@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Active Winch",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["kobpy"],
+    "createDate": "2026-01-22",
+    "lastModifyDate": "2026-01-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.fos-lighting.eu/uploads/products_0_2_1_635.pdf"
+    ],
+    "productPage": [
+      "https://www.fos-lighting.eu/fos-active-winch-p-635.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8ZowbONtP0M&embeds_referring_euri=https%3A%2F%2Fwww.fos-lighting.eu%2F"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [277, 324, 167],
+    "weight": 9,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Motor Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Motor Movement 2": {
+      "name": "Motor Movement",
+      "fineChannelAliases": ["Motor Movement 2 fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Motor Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4CH",
+      "shortName": "4ch",
+      "channels": [
+        "Motor Movement",
+        "Motor Movement 2",
+        "Motor Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "9CH",
+      "shortName": "9ch",
+      "channels": [
+        "Motor Movement",
+        "Motor Movement 2",
+        "Motor Speed",
+        "Reset",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
