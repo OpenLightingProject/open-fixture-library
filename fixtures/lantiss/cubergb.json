@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CubeRGB",
+  "shortName": "CubeRGB",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Chris"],
+    "createDate": "2026-04-20",
+    "lastModifyDate": "2026-04-20"
+  },
+  "links": {
+    "other": [
+      "http://www.lantiss.ulaval.ca"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 100, 100],
+    "weight": 1,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Variateur": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "shortName": "4ch",
+      "channels": [
+        "Variateur",
+        "Rouge",
+        "Vert",
+        "Bleu"
+      ]
+    }
+  ]
+}
