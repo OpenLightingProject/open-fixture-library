@@ -19,4 +19,6 @@ schemas/*.json linguist-detectable=true
 *.ts text eol=lf
 *.vue text eol=lf
 
+# Mark agent-generated lock files as generated
+# Use 'merge=ours' to avoid manual conflict resolution in automated workflows
 .github/workflows/*.lock.yml linguist-generated=true merge=ours
