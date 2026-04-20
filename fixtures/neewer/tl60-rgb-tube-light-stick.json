@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TL60 RGB Tube Light Stick",
+  "shortName": "TL60 RGB",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["blutaz"],
+    "createDate": "2024-03-31",
+    "lastModifyDate": "2024-03-31"
+  },
+  "links": {
+    "manual": [
+      "https://support.neewer.com/firmware_instruction"
+    ],
+    "productPage": [
+      "https://it.neewer.com/collections/rgb-lights/products/neewer-tl60-rgb-tube-rgbww-light-stick-66602907"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=GyklHZz0MIU&si=u_uiZhWCT8nd2vLt"
+    ],
+    "other": [
+      "https://secure.chamsys.co.uk/fixturefinder/?id=35518"
+    ]
+  },
+  "physical": {
+    "dimensions": [40, 665, 40],
+    "power": 20,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 10000
+    }
+  },
+  "availableChannels": {
+    "Mode Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "CCT Mode"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "HSI Mode"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "FX Mode"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Unknown:"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "RGBCW Mode"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Pixel mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Unknown"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green/Magenta": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "-50>0 Magenta"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic",
+          "comment": "0>+50 Green"
+        }
+      ]
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "10000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Mode Selection",
+        "Dimmer",
+        "CCT",
+        "Green/Magenta"
+      ]
+    }
+  ]
+}
