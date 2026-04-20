@@ -55,8 +55,9 @@ You are an automated triage system for PRs adding new fixtures to the Open Fixtu
 ## Validation Logic
 
 For each fixture JSON file in the PR:
-1. Check if file contains `"$schema": ".../schemas/fixture.json"` 
-2. Parse the `links` object (may be at root level or under a key)
+
+1. Check if file contains `"$schema": ".../schemas/fixture.json"`
+2. Parse the `links` object
 3. If `links.manual` EXISTS and is not empty → valid
 4. If `links.productPage` EXISTS and is not empty → valid
 5. If NEITHER exists OR both are empty → flag the PR
@@ -64,6 +65,7 @@ For each fixture JSON file in the PR:
 ## Actions on Flagged PR
 
 Only if `dry-run` input is NOT true:
+
 1. Add label: `incomplete`
 2. Add comment: "Missing required metadata: Manual and Product Page"
 
@@ -72,6 +74,7 @@ If `dry-run` IS true, only report what would be done - do NOT add labels or comm
 ## Output
 
 Generate a report:
+
 - Total PRs checked this run
 - PRs skipped (no fixture files or already labelled)
 - PRs flagged (incomplete metadata)
