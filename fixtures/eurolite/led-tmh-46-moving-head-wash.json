@@ -31,15 +31,16 @@
     }
   },
   "availableChannels": {
-    "Horizontal (PAN)": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
         "angleEnd": "540deg"
       }
     },
-    "Vertical (TILT)": {
-      "fineChannelAliases": ["Vertical (TILT) fine"],
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -280,40 +281,6 @@
           "comment": "Reset"
         }
       ]
-    },
-    "Horizontal (PAN) 2": {
-      "name": "Horizontal (PAN)",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Horizontal (PAN) 3": {
-      "name": "Horizontal (PAN)",
-      "fineChannelAliases": ["Horizontal (PAN) 3 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Vertical (TILT) 2": {
-      "name": "Vertical (TILT)",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "220deg"
-      }
-    },
-    "Horizontal (PAN) 4": {
-      "name": "Horizontal (PAN)",
-      "fineChannelAliases": ["Horizontal (PAN) 4 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
     }
   },
   "modes": [
@@ -321,10 +288,10 @@
       "name": "18 Channel",
       "shortName": "18Ch",
       "channels": [
-        "Horizontal (PAN) 4",
-        "Horizontal (PAN) 4 fine",
-        "Vertical (TILT)",
-        "Vertical (TILT) fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Strobe",
@@ -345,8 +312,8 @@
       "name": "16 Channel",
       "shortName": "16Ch",
       "channels": [
-        "Horizontal (PAN)",
-        "Vertical (TILT) 2",
+        "Pan",
+        "Tilt",
         "Pan/Tilt Speed",
         "Dimmer",
         "Strobe",
