@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pavotube II 15X",
+  "shortName": "Pavotube II 15X",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-21",
+    "lastModifyDate": "2026-01-21"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691133399987-735452-1124121241512490-PavoTube+II+15C%EF%BC%8F30C+Manual%EF%BC%88NANLITE%EF%BC%89D%E7%89%88+V4+20230315W.pdf"
+    ],
+    "productPage": [
+      "https://wwwhttps://cdn-aliyun.nanlite.com/release/1691133399987-735452-1124121241512490-PavoTube+II+15C%EF%BC%8F30C+Manual%EF%BC%88NANLITE%EF%BC%89D%E7%89%88+V4+20230315W.pdf.nanlite.com/product-pavotube-ii-15c-30c#/en"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=L_hM3DT25Ro"
+    ]
+  },
+  "rdm": {
+    "modelId": 401,
+    "softwareVersion": "latest"
+  },
+  "physical": {
+    "weight": 0.82,
+    "power": 30,
+    "DMXconnector": "3.5mm stereo jack",
+    "bulb": {
+      "type": "Leg",
+      "colorTemperature": 7500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
