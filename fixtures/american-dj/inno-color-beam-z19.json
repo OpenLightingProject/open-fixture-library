@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Inno Color Beam Z19",
+  "shortName": "Inno Color Beam Z19",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Poliforma"],
+    "createDate": "2024-11-28",
+    "lastModifyDate": "2024-11-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/527"
+    ],
+    "productPage": [
+      "https://www.adj.eu/inno-color-beam-z19"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=pKClhHcJQoU"
+    ]
+  },
+  "physical": {
+    "dimensions": [360, 224, 320],
+    "weight": 9,
+    "power": 245,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "19XRGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standart",
+      "shortName": "MOD1",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
