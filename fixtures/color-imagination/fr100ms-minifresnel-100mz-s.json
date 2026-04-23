@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FR100MS MINIFRESNEL 100MZ-S",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Theater der Mitte"],
+    "createDate": "2025-11-18",
+    "lastModifyDate": "2025-11-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.color-imagination.com"
+    ],
+    "productPage": [
+      "https://www.color-imagination.com"
+    ],
+    "video": [
+      "https://www.color-imagination.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 131, 200],
+    "weight": 3.8,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Linear CCT Warm White to Cool White (1400 - 12000K)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cold White"
+      ]
+    }
+  ]
+}
