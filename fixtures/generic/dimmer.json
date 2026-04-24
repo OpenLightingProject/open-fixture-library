@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dimmer",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Abmael"],
+    "createDate": "2026-04-24",
+    "lastModifyDate": "2026-04-24"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "power": 24
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Ribalta 24w",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
