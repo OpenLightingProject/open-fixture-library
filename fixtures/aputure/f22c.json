@@ -1,0 +1,517 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F22C",
+  "shortName": "F22C",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2020-07-14",
+    "lastModifyDate": "2024-10-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-04-26",
+      "comment": "GDTF v1.2 fixture type ID: 65461CE7-4AB1-4867-8D3D-67C956EF2129"
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "open"
+        }
+      ]
+    },
+    "CCT": {
+      "capability": {
+        "type": "Unknown (CCT)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "G/M": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "NO Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "-99  to  -1"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "+1 to +99"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Unknown (G/M)",
+          "physical": 0,
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Color FX1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "Unknown (Reserved)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Unknown (Reserved )",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Strobe1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0Hz",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Strobe Fast"
+        }
+      ]
+    },
+    "H": {
+      "capability": {
+        "type": "Unknown (HSB_Hue)",
+        "physicalStart": "0deg",
+        "physicalEnd": "1deg"
+      }
+    },
+    "S": {
+      "capability": {
+        "type": "Unknown (HSB_Saturation)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "CCT 2": {
+      "name": "CCT",
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Unknown (CCT)",
+          "physical": 3200,
+          "comment": "3200k"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Unknown (CCT)",
+          "physical": 5600,
+          "comment": "5600k"
+        }
+      ]
+    },
+    "Rosco/Lee": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Unknown (Rosco/Lee)",
+          "physical": 0,
+          "comment": "Rosco"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Unknown (Rosco/Lee)",
+          "physical": 0,
+          "comment": "Lee"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Unknown (Rosco/Lee)",
+          "physical": 0,
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Series": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "R-Col/ L-Col"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "R-Cal/L-Col"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "R-Storaro/L-600 Series"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "R-Cinelux/L-Cosmetic"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "R-Reserved/L-700 Series"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Unknown (Series)",
+          "physical": 0,
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Category": {
+      "capability": {
+        "type": "Unknown (Category)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Strobe1 2": {
+      "name": "Strobe1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0Hz",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "25Hz",
+          "comment": "Strobe Fast"
+        }
+      ]
+    },
+    "Lightning": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (Lightning)",
+          "physical": 0,
+          "comment": "Loop"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Unknown (Lightning)",
+          "physical": 0,
+          "comment": "Trigger"
+        },
+        {
+          "dmxRange": [70, 255],
+          "type": "Unknown (Lightning)",
+          "physical": 0,
+          "comment": "Stop"
+        }
+      ]
+    },
+    "FX Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Paparazzi"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Cop Car"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Party Lights"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "Unknown (FX Selection)",
+          "physical": 0,
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "FX1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX3": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX4": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX5": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX6": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1  CCT+RGB 8-bit",
+      "channels": [
+        "Dim",
+        "CCT",
+        "G/M",
+        "Color FX1",
+        "R",
+        "G",
+        "B",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 2 CCT 8-bit",
+      "channels": [
+        "Dim",
+        "CCT",
+        "G/M",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 3 CCT+HSI 8bit",
+      "channels": [
+        "Dim",
+        "CCT",
+        "G/M",
+        "Color FX1",
+        "H",
+        "S",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 4 RGB 8bit",
+      "channels": [
+        "Dim",
+        "R",
+        "G",
+        "B",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 5 HSI 8bit",
+      "channels": [
+        "Dim",
+        "H",
+        "S",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1"
+      ]
+    },
+    {
+      "name": "Mode 6 GEL 8bit",
+      "channels": [
+        "Dim 2",
+        "CCT 2",
+        "Rosco/Lee",
+        "Series",
+        "Category",
+        "Reserved",
+        "Reserved 2",
+        "Strobe1 2"
+      ]
+    },
+    {
+      "name": "Mode 7 FX 8bit",
+      "channels": [
+        "Dim 2",
+        "Lightning",
+        "FX Selection",
+        "FX1",
+        "FX2",
+        "FX3",
+        "FX4",
+        "FX5",
+        "FX6"
+      ]
+    }
+  ]
+}
