@@ -1,0 +1,312 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "60W Mni LED Strobe RGB 3in1",
+  "shortName": "8RGB+4W-Strobe",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Michal Seta"],
+    "createDate": "2025-12-28",
+    "lastModifyDate": "2025-12-28"
+  },
+  "comment": "60W Mni LED Strobe RGB 3in1 8 Partition +White 8000K 4Partition DMX Super Bright Dj Wash Bar Strobe Stage Lighting Effects",
+  "links": {
+    "manual": [
+      "https://cdn.shopifycdn.net/s/files/1/0768/8775/2982/files/8_4_Areas_40W_Strobe_Light.pdf?v=1692870078"
+    ],
+    "productPage": [
+      "https://www.aliexpress.com/item/1005006248280264.html#nav-specification"
+    ],
+    "video": [
+      "https://video.aliexpress-media.com/play/u/ae_sg_item/2005360275/p/1/e/6/t/10301/1100204481244.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 130, 70],
+    "weight": 0.7,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "RED 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "GREEN 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White dimming from dark to bright"
+      }
+    },
+    "Total dimming": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Total dimming from dark to bright"
+      }
+    },
+    "Total strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "50Hz",
+        "comment": "Total strobe from slow to fat"
+      }
+    },
+    "RED 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W1": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "W1 white dimming, from dark to bright"
+      }
+    },
+    "W2": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "W2 white dimming, from dark to bright"
+      }
+    },
+    "W3": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "W3 white dimming, from dark to bright"
+      }
+    },
+    "W4": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "W4 white dimming, from dark to bright"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel (whole lamp)",
+      "shortName": "4ch",
+      "channels": [
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Channel (whole lamp)",
+      "shortName": "6ch",
+      "channels": [
+        "Total dimming",
+        "Total strobe",
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "White"
+      ]
+    },
+    {
+      "name": "24 channel (point control)",
+      "shortName": "24ch",
+      "channels": [
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "RED 5",
+        "GREEN 5",
+        "BLUE 5",
+        "RED 6",
+        "GREEN 6",
+        "BLUE 6",
+        "RED 7",
+        "GREEN 7",
+        "BLUE 7",
+        "RED 8",
+        "GREEN 8",
+        "BLUE 8"
+      ]
+    },
+    {
+      "name": "30 Channel (point control)",
+      "shortName": "30ch",
+      "channels": [
+        "Total dimming",
+        "Total strobe",
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "RED 5",
+        "GREEN 5",
+        "BLUE 5",
+        "RED 6",
+        "GREEN 6",
+        "BLUE 6",
+        "RED 7",
+        "GREEN 7",
+        "BLUE 7",
+        "RED 8",
+        "GREEN 8",
+        "BLUE 8",
+        "W1",
+        "W2",
+        "W3",
+        "W4"
+      ]
+    }
+  ]
+}
