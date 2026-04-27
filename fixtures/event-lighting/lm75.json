@@ -1,0 +1,341 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LM75",
+  "categories": ["Moving Head", "Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-03-02",
+    "lastModifyDate": "2026-03-02"
+  },
+  "links": {
+    "productPage": [
+      "https://eventlighting.com.au/products/lm75"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Dark Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "1"
+        },
+        {
+          "type": "Gobo",
+          "name": "1"
+        },
+        {
+          "type": "Gobo",
+          "name": "2"
+        },
+        {
+          "type": "Gobo",
+          "name": "3"
+        },
+        {
+          "type": "Gobo",
+          "name": "4"
+        },
+        {
+          "type": "Gobo",
+          "name": "5"
+        },
+        {
+          "type": "Gobo",
+          "name": "6"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 9
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [70, 189],
+          "type": "WheelShake",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Prism"
+        }
+      ]
+    },
+    "Gobo and Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 127],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [132, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Blackout during pan/tilit"
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Intensity",
+          "comment": "blackout when colour/gobo switching"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effects": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Read Manual"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Focus",
+        "Prism",
+        "Gobo and Prism Rotation",
+        "Pan/Tilt Speed",
+        "Effects"
+      ]
+    }
+  ]
+}
