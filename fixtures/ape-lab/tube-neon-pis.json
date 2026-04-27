@@ -1,0 +1,1066 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tube Neon Pis",
+  "shortName": "Tube Pixel",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["TONY"],
+    "createDate": "2026-02-15",
+    "lastModifyDate": "2026-02-15"
+  },
+  "links": {
+    "manual": [
+      "https://apelabs.com/manual/#tab-pix"
+    ],
+    "productPage": [
+      "https://apelabs.com/manual/#tab-pix"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8Mu_K_YlDCk"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "weight": 1.2,
+    "power": 43.2,
+    "DMXconnector": "Wireless",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 2700,
+      "lumens": 750
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 2": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 2": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 2": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 2": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 3": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 3": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 3": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 3": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 4": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 4": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 4": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 4": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 5": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 5": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 5": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 5": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 6": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 6": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 6": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 6": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 7": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 7": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 7": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 7": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 8": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 8": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 8": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 8": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 9": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 9": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 9": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 9": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 10": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 10": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 10": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 10": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 11": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 11": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 11": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 11": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 12": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 12": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 12": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 12": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 13": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 13": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 13": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 13": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 14": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 14": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 14": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 14": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 15": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 15": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 15": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 15": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 16": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 16": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 16": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 16": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 17": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 17": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 17": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 17": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 18": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 18": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 18": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 18": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 19": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 19": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 19": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 19": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 20": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 20": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 20": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 20": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 21": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 21": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 21": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 21": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 22": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 22": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 22": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 22": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 23": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 23": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 23": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 23": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 24": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 24": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 24": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 24": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 25": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 25": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 25": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 25": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 26": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 26": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 26": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 26": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 27": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 27": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 27": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 27": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 28": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 28": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 28": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 28": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 29": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 29": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 29": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 29": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 30": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 30": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 30": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 30": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 31": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 31": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 31": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 31": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 32": {
+      "name": "RED",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 32": {
+      "name": "GREEN",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 32": {
+      "name": "BLUE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WARM WHITE 32": {
+      "name": "WARM WHITE",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "128 channels",
+      "shortName": "32 pixels",
+      "rdmPersonalityIndex": 128,
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WARM WHITE",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "WARM WHITE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "WARM WHITE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "WARM WHITE 4",
+        "RED 5",
+        "GREEN 5",
+        "BLUE 5",
+        "WARM WHITE 5",
+        "RED 6",
+        "GREEN 6",
+        "BLUE 6",
+        "WARM WHITE 6",
+        "RED 7",
+        "GREEN 7",
+        "BLUE 7",
+        "WARM WHITE 7",
+        "RED 8",
+        "GREEN 8",
+        "BLUE 8",
+        "WARM WHITE 8",
+        "RED 9",
+        "GREEN 9",
+        "BLUE 9",
+        "WARM WHITE 9",
+        "RED 10",
+        "GREEN 10",
+        "BLUE 10",
+        "WARM WHITE 10",
+        "RED 11",
+        "GREEN 11",
+        "BLUE 11",
+        "WARM WHITE 11",
+        "RED 12",
+        "GREEN 12",
+        "BLUE 12",
+        "WARM WHITE 12",
+        "RED 13",
+        "GREEN 13",
+        "BLUE 13",
+        "WARM WHITE 13",
+        "RED 14",
+        "GREEN 14",
+        "BLUE 14",
+        "WARM WHITE 14",
+        "RED 15",
+        "GREEN 15",
+        "BLUE 15",
+        "WARM WHITE 15",
+        "RED 16",
+        "GREEN 16",
+        "BLUE 16",
+        "WARM WHITE 16",
+        "RED 17",
+        "GREEN 17",
+        "BLUE 17",
+        "WARM WHITE 17",
+        "RED 18",
+        "GREEN 18",
+        "BLUE 18",
+        "WARM WHITE 18",
+        "RED 19",
+        "GREEN 19",
+        "BLUE 19",
+        "WARM WHITE 19",
+        "RED 20",
+        "GREEN 20",
+        "BLUE 20",
+        "WARM WHITE 20",
+        "RED 21",
+        "GREEN 21",
+        "BLUE 21",
+        "WARM WHITE 21",
+        "RED 22",
+        "GREEN 22",
+        "BLUE 22",
+        "WARM WHITE 22",
+        "RED 23",
+        "GREEN 23",
+        "BLUE 23",
+        "WARM WHITE 23",
+        "RED 24",
+        "GREEN 24",
+        "BLUE 24",
+        "WARM WHITE 24",
+        "RED 25",
+        "GREEN 25",
+        "BLUE 25",
+        "WARM WHITE 25",
+        "RED 26",
+        "GREEN 26",
+        "BLUE 26",
+        "WARM WHITE 26",
+        "RED 27",
+        "GREEN 27",
+        "BLUE 27",
+        "WARM WHITE 27",
+        "RED 28",
+        "GREEN 28",
+        "BLUE 28",
+        "WARM WHITE 28",
+        "RED 29",
+        "GREEN 29",
+        "BLUE 29",
+        "WARM WHITE 29",
+        "RED 30",
+        "GREEN 30",
+        "BLUE 30",
+        "WARM WHITE 30",
+        "RED 31",
+        "GREEN 31",
+        "BLUE 31",
+        "WARM WHITE 31",
+        "RED 32",
+        "GREEN 32",
+        "BLUE 32",
+        "WARM WHITE 32"
+      ]
+    }
+  ]
+}
