@@ -1,0 +1,349 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Phantom 130 spot",
+  "shortName": "Phantom 130 spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Clément"],
+    "createDate": "2026-04-27",
+    "lastModifyDate": "2026-04-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/media/attachments/MANUAL/40073_MANUAL_GB_V1.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 40073
+  },
+  "physical": {
+    "dimensions": [330, 210, 460],
+    "weight": 13.1,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 5200
+    },
+    "lens": {
+      "degreesMinMax": [12, 21]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [168, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [204, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Open White"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Rouge"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Jaune"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Vert"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Rose"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Vert Clair"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Bleu Clair"
+        },
+        {
+          "dmxRange": [64, 83],
+          "type": "ColorPreset",
+          "comment": "Blanc/Rouge"
+        },
+        {
+          "dmxRange": [84, 99],
+          "type": "ColorPreset",
+          "comment": "Rouge/Jaune"
+        },
+        {
+          "dmxRange": [100, 114],
+          "type": "ColorPreset",
+          "comment": "Jaune/Vert"
+        },
+        {
+          "dmxRange": [115, 130],
+          "type": "ColorPreset",
+          "comment": "Vert/Orange"
+        },
+        {
+          "dmxRange": [131, 146],
+          "type": "ColorPreset",
+          "comment": "Orange/Rose"
+        },
+        {
+          "dmxRange": [147, 161],
+          "type": "ColorPreset",
+          "comment": "Rose/Vert Clair"
+        },
+        {
+          "dmxRange": [162, 177],
+          "type": "ColorPreset",
+          "comment": "Vert/Bleu Clair"
+        },
+        {
+          "dmxRange": [178, 189],
+          "type": "ColorPreset",
+          "comment": "Bleu Clair/Blanc"
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "Open/Blanc"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Gobo"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Gobo Shake"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Open/Blanc"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12 canaux",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
