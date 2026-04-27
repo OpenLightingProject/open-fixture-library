@@ -577,7 +577,15 @@ export async function importFixtures(buffer, filename, authorName) {
         });
       });
 
-      return gdtfCapabilities.map((gdtfCapability, index) => {
+      // Collapse a channel whose ChannelSets are a fully-redundant
+      // (Closed, …, Open) / (Open, …, Closed) wrapping of a single full-range
+      // Intensity / ColorIntensity capability into one synthesized ChannelSet.
+      const collapseTarget = getCollapseTarget();
+      const collapsedGdtfCapabilities = collapseTarget !== null && allChannelSetsMatchCollapseTarget(collapseTarget)
+        ? [createCollapsedChannelSet()]
+        : gdtfCapabilities;
+
+      return collapsedGdtfCapabilities.map((gdtfCapability, index) => {
         const capability = {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)],
         };
@@ -622,19 +630,94 @@ export async function importFixtures(buffer, filename, authorName) {
       });
 
       /**
+       * @returns {object | null} The shared properties that every ChannelSet of
+       * this channel must match for the channel to collapse into a single
+       * full-range Intensity / ColorIntensity capability, or null if collapse
+       * is not applicable.
+       */
+      function getCollapseTarget() {
+        if (gdtfCapabilities.length < 2) {
+          return null;
+        }
+
+        const channelFunction = gdtfCapabilities[0]._channelFunction;
+        const oflType = getCapabilityTypeData(channelFunction._attribute.$.Name).oflType;
+        if (oflType !== 'Intensity' && oflType !== 'ColorIntensity') {
+          return null;
+        }
+
+        const closedNames = new Set(['Closed', 'closed', 'Min', 'min']);
+        const openNames = new Set(['Open', 'open', 'Max', 'max']);
+
+        const { _physicalFrom: physicalFrom, _physicalTo: physicalTo } = gdtfCapabilities[0];
+        if (physicalFrom === 0 && physicalTo === 1) {
+          return { channelFunction, physicalFrom, physicalTo, lowEndNames: closedNames, highEndNames: openNames };
+        }
+        if (physicalFrom === 1 && physicalTo === 0) {
+          return { channelFunction, physicalFrom, physicalTo, lowEndNames: openNames, highEndNames: closedNames };
+        }
+        return null;
+      }
+
+      /**
+       * @param {object} target The shared properties returned by `getCollapseTarget`.
+       * @returns {boolean} Whether every ChannelSet matches the target's shared
+       * properties and has a Name consistent with its position in the channel.
+       */
+      function allChannelSetsMatchCollapseTarget(target) {
+        const firstName = gdtfCapabilities[0].$.Name;
+        const lastName = gdtfCapabilities.at(-1).$.Name;
+        const middleHasName = gdtfCapabilities.slice(1, -1).some((capability) => capability.$.Name !== '');
+
+        if (
+          (firstName !== '' && !target.lowEndNames.has(firstName))
+          || (lastName !== '' && !target.highEndNames.has(lastName))
+          || middleHasName
+        ) {
+          return false;
+        }
+
+        return gdtfCapabilities.every((capability) =>
+          capability._channelFunction === target.channelFunction
+          && capability._physicalFrom === target.physicalFrom
+          && capability._physicalTo === target.physicalTo,
+        );
+      }
+
+      /**
+       * @returns {object} A synthesized ChannelSet that replaces all of
+       * `gdtfCapabilities` after a successful collapse check, copying the
+       * first ChannelSet's parent references and physical values but with an
+       * empty Name. The downstream `.map(...)` then turns this into a single
+       * OFL capability covering the channel's full DMX range.
+       */
+      function createCollapsedChannelSet() {
+        const firstCapability = gdtfCapabilities[0];
+        return {
+          $: { Name: '' },
+          _logicalChannel: firstCapability._logicalChannel,
+          _channelFunction: firstCapability._channelFunction,
+          _fixture: firstCapability._fixture,
+          _dmxFrom: firstCapability._dmxFrom,
+          _physicalFrom: firstCapability._physicalFrom,
+          _physicalTo: firstCapability._physicalTo,
+        };
+      }
+
+      /**
        * @param {number} index The index of the capability.
        * @returns {[number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
-        const dmxFrom = gdtfCapabilities[index]._dmxFrom;
+        const dmxFrom = collapsedGdtfCapabilities[index]._dmxFrom;
 
-        if (index === gdtfCapabilities.length - 1) {
+        if (index === collapsedGdtfCapabilities.length - 1) {
           // last capability
           const resolution = dmxFrom[1];
           return [Math.pow(256, resolution) - 1, resolution];
         }
 
-        const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+        const [nextDmxFromValue, resolution] = collapsedGdtfCapabilities[index + 1]._dmxFrom;
         return [nextDmxFromValue - 1, resolution];
       }
 
