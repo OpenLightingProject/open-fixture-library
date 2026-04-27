@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SM-250",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-03-02",
+    "lastModifyDate": "2026-03-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/08/SM250_UM_Rev4_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/sm-250/"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 63,
+      "capabilities": [
+        {
+          "dmxRange": [0, 62],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [63, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Snow",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
