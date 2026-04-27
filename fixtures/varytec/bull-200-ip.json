@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bull 200 IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Albert"],
+    "createDate": "2026-03-16",
+    "lastModifyDate": "2026-03-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/3378058/Thomann-Varytec-Bull-200-Ip.html?page=5"
+    ],
+    "productPage": [
+      "https://www.thomann.co.uk/varytec_bull_200_ip.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [343, 292, 235],
+    "weight": 5.5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "200W RGBWW COB LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Fixed Lens",
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Auto Program": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Auto Program",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Curve": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "White Balance": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Strobe",
+        "Color Macros",
+        "Auto Program",
+        "Auto Speed",
+        "Dimmer Curve",
+        "White Balance"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Red 2",
+        "Green",
+        "Blue",
+        "Warm White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Strobe"
+      ]
+    }
+  ]
+}
