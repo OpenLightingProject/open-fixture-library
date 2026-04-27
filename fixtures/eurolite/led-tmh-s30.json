@@ -1,0 +1,505 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-S30",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Paul", "Paul Hill"],
+    "createDate": "2026-02-21",
+    "lastModifyDate": "2026-02-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-02-21",
+      "comment": "created by Q Light Controller Plus (version 5.2.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [0, 0, 47],
+    "weight": 0.16,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Colour Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "White/Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Red/Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green/Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue/Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow/Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue/Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange/Rose Red"
+        },
+        {
+          "type": "Color",
+          "name": "Rose Red"
+        },
+        {
+          "type": "Color",
+          "name": "Rose Red/White"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6 Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7 Shake"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Colour Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "White/Red"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Red/Green"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Green/Blue"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Blue/Yellow"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Yellow/Light Blue"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Light Blue/Orange"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Orange/Rose Red"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Rose Red"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rose Red/White"
+        },
+        {
+          "dmxRange": [80, 166],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Rainbow CCW Decreasing Speed"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Rainbow CW Increasing Speed"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Gobo 1 Shake"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Gobo 2 Shake"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gobo 3 Shake"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Gobo 4 Shake"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Gobo 5 Shake"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 14,
+          "comment": "Gobo 6 Shake"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 15,
+          "comment": "Gobo 7 Shake"
+        },
+        {
+          "dmxRange": [150, 202],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "CCW Gobo Rotation Decreasing Speed"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "CW Gobo Change Decreasing Speed"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 126],
+          "type": "Intensity",
+          "comment": "CCW Gobo Rotation Decreasing Speed"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 255],
+          "type": "Intensity",
+          "comment": "CW Gobo Rotation Increasing Speed"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Internal program, sound control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Intensity",
+          "comment": "Internal Program"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Intensity",
+          "comment": "Sound Control"
+        }
+      ]
+    },
+    "Special functions, reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Intensity",
+          "comment": "PAN Movement"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Intensity",
+          "comment": "TILT Movement"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Intensity",
+          "comment": "PAN/TILT Movement"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "New",
+      "channels": [
+        "Internal program, sound control",
+        "Special functions, reset"
+      ]
+    }
+  ]
+}
