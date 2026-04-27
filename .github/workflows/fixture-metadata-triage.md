@@ -3,8 +3,6 @@ name: Fixture Metadata Triage
 description: Daily triage of PRs with new-fixture/via-editor labels to validate fixture JSON metadata
 
 on:
-  schedule:
-    - cron: "daily"
   workflow_dispatch:
     inputs:
       dry-run:
