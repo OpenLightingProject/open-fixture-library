@@ -1,0 +1,562 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "challenger wash",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["HPZBOOK1", "m-sound"],
+    "createDate": "2026-03-16",
+    "lastModifyDate": "2026-03-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-03-16",
+      "comment": "created by Q Light Controller Plus (version 5.2.0)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Intensity",
+          "comment": "Reset all function"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Intensity",
+          "comment": "Reset Zoom"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Intensity",
+          "comment": "Reset Pan/Tilt"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red_1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red_7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green_7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue_7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White_7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "ColorEffects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 174],
+          "type": "Effect",
+          "effectName": "32 pre-defined colors"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [180, 201],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Color Fade"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectName": "fade on color",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [208, 229],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Color fade"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [235, 249],
+          "type": "Effect",
+          "effectName": "Color change",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pixel Effects": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "(1-16 Effects)"
+      }
+    },
+    "Effect Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "EffectColor"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Control2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Strobe2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "No function2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt speed",
+        "Control",
+        "Zoom",
+        "Strobe",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "ColorEffects",
+        "Pixel Effects",
+        "Effect Color",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "38-channel",
+      "shortName": "38ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Control",
+        "Zoom",
+        "Strobe Speed",
+        "Strobe2",
+        "Dimmer",
+        "Red_1",
+        "Green_1",
+        "Blue_1",
+        "White_1",
+        "Red_2",
+        "Green_2",
+        "Blue_2",
+        "White_2",
+        "Red_3",
+        "Green_3",
+        "Blue_3",
+        "White_3",
+        "Red_4",
+        "Green_4",
+        "Blue_4",
+        "White_4",
+        "Red_5",
+        "Green_5",
+        "Blue_5",
+        "White_5",
+        "Red_6",
+        "Green_6",
+        "Blue_6",
+        "White_6",
+        "Red_7",
+        "Green_7",
+        "Blue_7",
+        "White_7"
+      ]
+    },
+    {
+      "name": "43-channel",
+      "shortName": "43ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Zoom",
+        "No function",
+        "Strobe",
+        "Dimmer",
+        "No function2",
+        "Red_1",
+        "Green_1",
+        "Blue_1",
+        "White_1",
+        "Red_2",
+        "Green_2",
+        "Blue_2",
+        "White_2",
+        "Red_3",
+        "Green_3",
+        "Blue_3",
+        "White_3",
+        "Red_4",
+        "Green_4",
+        "Blue_4",
+        "White_4",
+        "Red_5",
+        "Green_5",
+        "Blue_5",
+        "White_5",
+        "Red_6",
+        "Green_6",
+        "Blue_6",
+        "White_6",
+        "Red_7",
+        "Green_7",
+        "Blue_7",
+        "White_7",
+        "ColorEffects",
+        "Pixel Effects",
+        "Effect Color",
+        "Effect Speed",
+        "Control2"
+      ]
+    }
+  ]
+}
