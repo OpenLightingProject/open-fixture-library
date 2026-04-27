@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colour Raider Uplighter",
+  "shortName": "Uplighter",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-02-24",
+    "lastModifyDate": "2026-02-24"
+  },
+  "links": {
+    "productPage": [
+      "https://www.gear4music.no/no/PA-DJ-and-belysning/Equinox-Colour-Raider-Lithium-Battery-Uplighter-Pack/3MJE?origin=product-ads&gad_source=1&gad_campaignid=22139182920&gbraid=0AAAAADql2pGEvKbYBskLkHD0q2IGZXzF8&gclid=Cj0KCQiAtfXMBhDzARIsAJ0jp3DtWFYJ5xs-Per6RBdEZwErEJD-KI9qNjjZhIIUXWsh1VsaZWtxsJAaAuRaEALw_wcB"
+    ]
+  },
+  "physical": {
+    "weight": 1.9,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red dimmer"
+      }
+    },
+    "Green dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Uplighter",
+      "shortName": "Uplighter",
+      "channels": [
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "White dimmer"
+      ]
+    }
+  ]
+}
