@@ -1,0 +1,360 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "QR-530 XV",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Kees Verruijt"],
+    "createDate": "2026-04-02",
+    "lastModifyDate": "2026-04-02"
+  },
+  "comment": "Awaiting information from supplier wrt documentation",
+  "links": {
+    "productPage": [
+      "https://controllux.com/producten/artikel/far-91000110/queled-qr-530-xv-14x15w-rgbwa-ledpar-ip65-30-xlr5p"
+    ]
+  },
+  "physical": {
+    "dimensions": [205, 205, 185],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED 15x15W RGBWA"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorTemperature",
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Auto Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Auto 9"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Auto 10"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Custom 1"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Custom 2"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Custom 3"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Custom 4"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Custom 5"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Custom 6"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Custom 7"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Custom 8"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Custom 9"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Custom 10"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Preset"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Generic",
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Generic",
+          "comment": "Curve 1"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Curve 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Curve 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Curve 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Tour",
+      "shortName": "tour",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Color Macros",
+        "Strobe",
+        "Auto Program",
+        "Effect Speed",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
