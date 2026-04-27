@@ -1,0 +1,408 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BPar105RGBW V2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["JoshuaLonuzzo"],
+    "createDate": "2025-05-21",
+    "lastModifyDate": "2025-05-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-05-21",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [219, 225, 133],
+    "weight": 3.3,
+    "power": 96,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4500,
+      "lumens": 2600
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Dim curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Intensity",
+          "comment": "Dim Curve - Curve 1 Inverse-square Law"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Intensity",
+          "comment": "Dim Curve - Curve 2 Linear"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Intensity",
+          "comment": "Dim Curve - Curve 3 Square Law"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Intensity",
+          "comment": "Dim Curve - Curve 4 S-Curve"
+        }
+      ]
+    },
+    "Macro Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 14],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [15, 18],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [19, 22],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [27, 30],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [31, 34],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [43, 46],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [47, 50],
+          "type": "ColorPreset",
+          "comment": "Violet"
+        },
+        {
+          "dmxRange": [51, 54],
+          "type": "ColorPreset",
+          "comment": "Aquamarine"
+        },
+        {
+          "dmxRange": [55, 58],
+          "type": "ColorPreset",
+          "comment": "Sky Blue"
+        },
+        {
+          "dmxRange": [59, 62],
+          "type": "ColorPreset",
+          "comment": "Full White"
+        },
+        {
+          "dmxRange": [63, 66],
+          "type": "ColorPreset",
+          "comment": "Cool White"
+        },
+        {
+          "dmxRange": [67, 70],
+          "type": "ColorPreset",
+          "comment": "Warm White"
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "ColorPreset",
+          "comment": "White 3200"
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "ColorPreset",
+          "comment": "White 2500"
+        },
+        {
+          "dmxRange": [79, 82],
+          "type": "ColorPreset",
+          "comment": "Yellow 2"
+        },
+        {
+          "dmxRange": [83, 86],
+          "type": "ColorPreset",
+          "comment": "Straw"
+        },
+        {
+          "dmxRange": [87, 90],
+          "type": "ColorPreset",
+          "comment": "Orange 2"
+        },
+        {
+          "dmxRange": [91, 94],
+          "type": "ColorPreset",
+          "comment": "Light Rose"
+        },
+        {
+          "dmxRange": [95, 98],
+          "type": "ColorPreset",
+          "comment": "Dark Pink"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorPreset",
+          "comment": "Magenta 2"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "ColorPreset",
+          "comment": "Blue 2"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "ColorPreset",
+          "comment": "Med Blue Green"
+        },
+        {
+          "dmxRange": [111, 114],
+          "type": "ColorPreset",
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [115, 118],
+          "type": "ColorPreset",
+          "comment": "Bright Pink"
+        },
+        {
+          "dmxRange": [119, 122],
+          "type": "ColorPreset",
+          "comment": "Medium Blue"
+        },
+        {
+          "dmxRange": [123, 126],
+          "type": "ColorPreset",
+          "comment": "Golden Amber"
+        },
+        {
+          "dmxRange": [127, 130],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber"
+        },
+        {
+          "dmxRange": [131, 134],
+          "type": "ColorPreset",
+          "comment": "Pale Lavendar"
+        },
+        {
+          "dmxRange": [135, 138],
+          "type": "ColorPreset",
+          "comment": "Apricot"
+        },
+        {
+          "dmxRange": [139, 142],
+          "type": "ColorPreset",
+          "comment": "Dark Lavendar"
+        },
+        {
+          "dmxRange": [143, 146],
+          "type": "ColorPreset",
+          "comment": "Chocolate"
+        },
+        {
+          "dmxRange": [147, 150],
+          "type": "ColorPreset",
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [151, 154],
+          "type": "ColorPreset",
+          "comment": "Suprise Pink"
+        },
+        {
+          "dmxRange": [155, 158],
+          "type": "ColorPreset",
+          "comment": "Scarlet"
+        },
+        {
+          "dmxRange": [159, 162],
+          "type": "ColorPreset",
+          "comment": "Suprise Peach"
+        },
+        {
+          "dmxRange": [163, 166],
+          "type": "ColorPreset",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [167, 170],
+          "type": "ColorPreset",
+          "comment": "English Rose"
+        },
+        {
+          "dmxRange": [171, 174],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [175, 178],
+          "type": "ColorPreset",
+          "comment": "Bright Blue"
+        },
+        {
+          "dmxRange": [179, 182],
+          "type": "ColorPreset",
+          "comment": "Alice Blue"
+        },
+        {
+          "dmxRange": [183, 186],
+          "type": "ColorPreset",
+          "comment": "Rose Indigo"
+        },
+        {
+          "dmxRange": [187, 190],
+          "type": "ColorPreset",
+          "comment": "Urban Blue"
+        },
+        {
+          "dmxRange": [191, 194],
+          "type": "ColorPreset",
+          "comment": "Cool Blue"
+        },
+        {
+          "dmxRange": [195, 198],
+          "type": "ColorPreset",
+          "comment": "Light Salmon"
+        },
+        {
+          "dmxRange": [199, 202],
+          "type": "ColorPreset",
+          "comment": "Mayan Sun"
+        },
+        {
+          "dmxRange": [203, 206],
+          "type": "ColorPreset",
+          "comment": "Cherry Rose"
+        },
+        {
+          "dmxRange": [207, 210],
+          "type": "ColorPreset",
+          "comment": "Flesh Pink"
+        },
+        {
+          "dmxRange": [211, 214],
+          "type": "ColorPreset",
+          "comment": "Skeleton Exotic Sangria"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "ColorPreset",
+          "comment": "Light Salmon"
+        }
+      ]
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Dim curve",
+        "Macro Color"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
