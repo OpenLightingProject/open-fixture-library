@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q Batten LEDJ300",
+  "shortName": "QBatten5",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["docmathoc"],
+    "createDate": "2026-04-27",
+    "lastModifyDate": "2026-04-27"
+  },
+  "comment": "5 rgba 5W LED",
+  "links": {
+    "manual": [
+      "https://www.prolight.co.uk/ftp-in/LEDJ300_Manual.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [580, 133, 100],
+    "weight": 1.82,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5W Quad-colour (RGBA) LED x 5"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Master DImmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Colour Changer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "comment": "Colour Macro"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "ColorPreset",
+          "comment": "Colour change"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "ColorPreset",
+          "comment": "Colour fade"
+        }
+      ]
+    },
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Colour Changer 2": {
+      "name": "Colour Changer",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "comment": "Colour Macro"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "ColorPreset",
+          "comment": "Colour Jump"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "ColorPreset",
+          "comment": "Colour Fade"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master DImmer",
+        "Strobe",
+        "Red",
+        "Blue",
+        "Green",
+        "Amber",
+        "Colour Changer"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer / Strobe",
+        "Colour Changer 2"
+      ]
+    },
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    }
+  ]
+}
