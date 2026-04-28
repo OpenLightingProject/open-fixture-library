@@ -1,0 +1,898 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PavoTube II 6XR",
+  "categories": ["Color Changer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2026-04-27",
+    "lastModifyDate": "2026-04-27"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1744281499913-422061-1124121241519342-Nanlite_PavoTubeII6XR_DMXCharts_EN_V1.0_20241211.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-pavotube-ii-6xr#/en"
+    ]
+  },
+  "physical": {
+    "dimensions": [39, 39, 250],
+    "weight": 0.27,
+    "power": 16,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/4": { "x": ["<=2"] },
+      "2/4": { "x": [">=3", "<=4"] },
+      "3/4": { "x": [">=5", "<=6"] },
+      "4/4": { "x": [">=7", "<=8"] }
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "fineChannelAliases": ["Dimmer $pixelKey fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT $pixelKey": {
+      "fineChannelAliases": ["CCT $pixelKey fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "12000K"
+      }
+    },
+    "Green-Magenta Point 8bit $pixelKey": {
+      "name": "Green-Magenta Point $pixelKey",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit $pixelKey": {
+      "name": "Green-Magenta Point $pixelKey",
+      "fineChannelAliases": ["Green-Magenta Point 16bit $pixelKey fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Hue $pixelKey": {
+      "fineChannelAliases": ["Hue $pixelKey fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation $pixelKey": {
+      "fineChannelAliases": ["Saturation $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Cross Fade $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red $pixelKey": {
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point 8bit Master",
+        "Cross Fade Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "CCT Master fine",
+        "Green-Magenta Point 16bit Master",
+        "Green-Magenta Point 16bit Master fine",
+        "Cross Fade Master",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine",
+        "White Master",
+        "White Master fine"
+      ]
+    },
+    {
+      "name": "CCT & RGB 8bit",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point 8bit Master",
+        "Cross Fade Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "CCT & RGB 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "CCT Master fine",
+        "Green-Magenta Point 16bit Master",
+        "Green-Magenta Point 16bit Master fine",
+        "Cross Fade Master",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine"
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point 8bit Master",
+        "Cross Fade Master",
+        "Hue Master",
+        "Saturation Master"
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "CCT Master fine",
+        "Green-Magenta Point 16bit Master",
+        "Green-Magenta Point 16bit Master fine",
+        "Cross Fade Master",
+        "Hue Master",
+        "Hue Master fine",
+        "Saturation Master",
+        "Saturation Master fine"
+      ]
+    },
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer Master",
+        "CCT Master",
+        "Green-Magenta Point 8bit Master"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "CCT Master",
+        "CCT Master fine",
+        "Green-Magenta Point 16bit Master",
+        "Green-Magenta Point 16bit Master fine"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Dimmer Master",
+        "Hue Master",
+        "Saturation Master"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "Hue Master",
+        "Hue Master fine",
+        "Saturation Master",
+        "Saturation Master fine"
+      ]
+    },
+    {
+      "name": "RGBW 8bit",
+      "channels": [
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine",
+        "White Master",
+        "White Master fine"
+      ]
+    },
+    {
+      "name": "RGB 8bit",
+      "channels": [
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "RGB 16bit",
+      "channels": [
+        "Dimmer Master",
+        "Dimmer Master fine",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine"
+      ]
+    },
+    {
+      "name": "CCT & RGBW 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16bit 4pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGBW 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey",
+            "Cross Fade $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine",
+            "Cross Fade $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point 8bit $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "CCT $pixelKey",
+            "CCT $pixelKey fine",
+            "Green-Magenta Point 16bit $pixelKey",
+            "Green-Magenta Point 16bit $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16bit 8pix",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Dimmer $pixelKey fine",
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    }
+  ]
+}
