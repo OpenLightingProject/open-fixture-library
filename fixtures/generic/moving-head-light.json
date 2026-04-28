@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Head Light",
+  "shortName": "Mover-1",
+  "categories": ["Moving Head", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["R"],
+    "createDate": "2026-04-23",
+    "lastModifyDate": "2026-04-23"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/U%60King-Channels-25W-Spotlight-Activated/dp/B0836CXMW6/ref=sr_1_6?crid=3T414CE8KL4UB&dib=eyJ2IjoiMSJ9.dlPFQ3ACWJaNA0fy1QO2TBS0umKSu5-MHCKGo8WWg36_WhbNT6Z-jza11NQkDCzyQ-iRliihjWUW_G5rHOmrAgbp8mDTmZcbZvMCM7EqTNxEYN2_i0bLH3fCo3FlRhRNyDUSpnNKMoPbF7tys3hQrUgT6abOYmi4YsrWGLlXfx1G3tflMfO1NuKV6QagpDW-RCjBKwpxTEQFmpKvuGzY-NwHvdVzmfynz0FvdhvrnVVihhjX2mooi2mAcoXH14NYGBkiLt8eGahjWQh506XUYpKhlj7m73ZlBKjl_fVyqZ4.3SoDsUd8OFg58DOgs_1d5NvHDE4FRddY1CTNHp1h7Ao&dib_tag=se&keywords=mini%2Bgobo%2Bmoving%2Bhead%2Blight&qid=1776903250&sprefix=mini%2Bgobo%2Bmoving%2Bh%2Caps%2C156&sr=8-6&th=1"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "off",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "shortName": "11 CH",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
