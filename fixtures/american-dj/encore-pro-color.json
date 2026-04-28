@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore Pro Color",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["3 Oaks Creative"],
+    "createDate": "2026-04-12",
+    "lastModifyDate": "2026-04-12"
+  },
+  "links": {
+    "manual": [
+      "https://akeneo-asset-proxy.adj-group.workers.dev/dl/files/ENC251__DL__004.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/encore-profile-pro-color"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=VWSxi5kCsYI&time_continue=1&source_ve_path=NzY3NTg&embeds_referring_euri=https%3A%2F%2Fwww.adj.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.adj.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [289, 688, 450],
+    "weight": 9.1,
+    "power": 250,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 10000
+    }
+  },
+  "availableChannels": {
+    "Color Temperature Linear": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 76],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [77, 121],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [122, 166],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [167, 211],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [212, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Temperature Linear",
+        "Color Presets",
+        "Dimmer",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
