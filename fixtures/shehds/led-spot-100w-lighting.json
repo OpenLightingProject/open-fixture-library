@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Spot 100W Lighting",
+  "categories": ["Moving Head", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-04-10",
+    "lastModifyDate": "2026-04-10"
+  },
+  "links": {
+    "productPage": [
+      "https://fr.shehds.com/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "power": 160,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 251],
+          "type": "StrobeSpeed",
+          "speedStart": "4Hz",
+          "speedEnd": "251Hz"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 14 channels",
+      "channels": [
+        "Dimming",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
