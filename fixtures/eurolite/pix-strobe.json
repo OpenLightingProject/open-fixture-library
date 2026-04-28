@@ -1,0 +1,232 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pix Strobe",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["mathew"],
+    "createDate": "2026-04-19",
+    "lastModifyDate": "2026-04-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.bedienungsanleitu.ng/eurolite/led-ip-pix-strobe/anleitung?p=20"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 145, 110],
+    "weight": 3.3,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 4000
+    }
+  },
+  "availableChannels": {
+    "Keine Funktion": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gesamthelligkeit 0-100%"
+      }
+    },
+    "Rot": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0-100%"
+      }
+    },
+    "Grün": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0-100%"
+      }
+    },
+    "Blau": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0-100%"
+      }
+    },
+    "Kaltweiß": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0-100%"
+      }
+    },
+    "Warmweiß": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0-100%"
+      }
+    },
+    "W-CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "comment": "Warmweiß 100-0 / Kaltweiß 0-100"
+        }
+      ]
+    },
+    "Autoprogramme Weiß": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "Programme 1-12"
+        }
+      ]
+    },
+    "Geschwindigkeit": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Geschwindigkeit der Autoprogramme 1-12"
+      }
+    },
+    "Strobe-Effekt 1 Weiß": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "Intensity",
+          "comment": "Strobe-Effekt mit zunehmender Geschwindigkeit"
+        }
+      ]
+    },
+    "Strobe-Effekt 2 Weiß": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Intensity",
+          "comment": "Öffnender Puls-Effekt mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Intensity",
+          "comment": "Schließender Puls-Effekt mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Intensity",
+          "comment": "Zufall-Strobe-Effekt"
+        }
+      ]
+    },
+    "Autoprogramme RGB": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "comment": "Kene Funktion"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "Programme 1-30"
+        }
+      ]
+    },
+    "Geschwindigkeit Auto RGB": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Geschwindigkeit der Autoprogramme 1-30  (RGB)"
+      }
+    },
+    "Strobe-Effekt RGB": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "Intensity",
+          "comment": "Strobe Effekt mi zunehmender Geschwindigkeit"
+        }
+      ]
+    },
+    "Hintergrund Rot": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Mit zunehmender Helligkeit 0-100%"
+      }
+    },
+    "Hintergrund Grün": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Mit zunehmender Helligkeit 0-100%"
+      }
+    },
+    "Hintergrund Blau": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Mit zunehmender Helligkeit 0-100%"
+      }
+    },
+    "Richtung": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Vorwärts"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "Rückwärts"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18 Kanal Modus",
+      "channels": [
+        "Master Dimmer",
+        "Rot",
+        "Grün",
+        "Blau",
+        "Kaltweiß",
+        "Warmweiß",
+        "W-CTO",
+        "Autoprogramme Weiß",
+        "Geschwindigkeit",
+        "Strobe-Effekt 1 Weiß",
+        "Strobe-Effekt 2 Weiß",
+        "Autoprogramme RGB",
+        "Geschwindigkeit Auto RGB",
+        "Strobe-Effekt RGB",
+        "Hintergrund Rot",
+        "Hintergrund Grün",
+        "Hintergrund Blau",
+        "Richtung",
+        "Keine Funktion"
+      ]
+    }
+  ]
+}
