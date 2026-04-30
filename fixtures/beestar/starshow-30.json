@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Starshow 30",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Teknoc'ss"],
+    "createDate": "2026-04-30",
+    "lastModifyDate": "2026-04-30"
+  },
+  "links": {
+    "productPage": [
+      "https://www.electrodepot.fr/jeu-de-lumieres-bee-star-star-show30.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 210, 105],
+    "weight": 2.5,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Zoom",
+          "angleStart": "wide",
+          "angleEnd": "narrow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Zoom auto"
+        }
+      ]
+    },
+    "LR Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Rot Horaire"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Rot Antihoraire"
+        }
+      ]
+    },
+    "HL Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Blade System Rotation": {
+      "capability": {
+        "type": "Rotation"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "60deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "60deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Mode",
+        "Gobo Wheel",
+        "Zoom",
+        "LR Rotation",
+        "HL Rotation",
+        "Blade System Rotation",
+        "Pan",
+        "Tilt"
+      ]
+    }
+  ]
+}
