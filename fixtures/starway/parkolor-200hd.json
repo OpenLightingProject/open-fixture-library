@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParKolor 200HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["TIC ET TAC"],
+    "createDate": "2022-05-13",
+    "lastModifyDate": "2022-05-13"
+  },
+  "links": {
+    "productPage": [
+      "https://www.star-way.com/parkolor-230hdl-changeur-de-couleurs-1-led-cob-de-230w-rvbl-ip65"
+    ],
+    "other": [
+      "https://www.star-way.com/parkolor-230hdl-changeur-de-couleurs-1-led-cob-de-230w-rvbl-ip65"
+    ]
+  },
+  "physical": {
+    "dimensions": [329.5, 215, 370],
+    "weight": 10.3,
+    "power": 200,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "colorTemperature": 10000,
+      "lumens": 2700
+    },
+    "lens": {
+      "name": "ZOOM",
+      "degreesMinMax": [8, 44.5]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [91, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PAR KOLOR 200HD",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
