@@ -1,0 +1,429 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "V-250-1 NovaScan",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Tony Tascioglu"],
+    "createDate": "2026-05-06",
+    "lastModifyDate": "2026-05-06"
+  },
+  "links": {
+    "manual": [
+      "https://web.archive.org/web/20120510033723/http://www.visualeffectsinc.com/visualeffectsweb/products/manuals/novascan250_1.html"
+    ],
+    "productPage": [
+      "https://web.archive.org/web/20120418190450/http://www.visualeffectsinc.com/visualeffectsweb/products/annex/v250_1_nova.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [546.1, 266.7, 203.2],
+    "weight": 8.165,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "EL C 24V 250W (Halogen)"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#8000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Lite Green",
+          "colors": ["#80ff80"]
+        },
+        {
+          "type": "Color",
+          "name": "Lite Blue",
+          "colors": ["#8080ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Lite Red",
+          "colors": ["#ff8080"]
+        },
+        {
+          "type": "Color",
+          "name": "Lite Yellow",
+          "colors": ["#ffff80"]
+        },
+        {
+          "type": "Color",
+          "name": "Lite Magenta",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue/Red",
+          "colors": ["#808080"]
+        },
+        {
+          "type": "Color",
+          "name": "Green/Yellow",
+          "colors": ["#808080"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "3 Hole"
+        },
+        {
+          "type": "Gobo",
+          "name": "Pie"
+        },
+        {
+          "type": "Gobo",
+          "name": "Bullseye"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flowers"
+        },
+        {
+          "type": "Gobo",
+          "name": "Barbells"
+        },
+        {
+          "type": "Gobo",
+          "name": "Spokes"
+        },
+        {
+          "type": "Gobo",
+          "name": "Atom"
+        },
+        {
+          "type": "Gobo",
+          "name": "Zigzag"
+        },
+        {
+          "type": "Gobo",
+          "name": "X"
+        },
+        {
+          "type": "Gobo",
+          "name": "Bubbles"
+        },
+        {
+          "type": "Gobo",
+          "name": "Arrows"
+        },
+        {
+          "type": "Gobo",
+          "name": "Diamonds"
+        },
+        {
+          "type": "Gobo",
+          "name": "Pyramid"
+        },
+        {
+          "type": "Gobo",
+          "name": "Lines"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Lite Green"
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Lite Blue"
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Lite Red"
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Lite Yellow"
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Lite Magenta"
+        },
+        {
+          "dmxRange": [234, 251],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Blue/Red"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Green/Yellow"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "3 Hole"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Pie"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Bullseye"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Flowers"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Barbells"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Spokes"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Atom"
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Zigzag"
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "X"
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Bubbles"
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Arrows"
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Diamonds"
+        },
+        {
+          "dmxRange": [234, 251],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Pyramid"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Lines"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Full Open"
+        },
+        {
+          "dmxRange": [30, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe Slow-Fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Full Open"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "Pan"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "90deg",
+        "comment": "Tilt"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "0-100% Full On"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Pan",
+        "Tilt",
+        "Dimmer"
+      ]
+    }
+  ]
+}
