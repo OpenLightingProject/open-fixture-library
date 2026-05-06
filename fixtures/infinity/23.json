@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "23",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["1"],
+    "createDate": "2026-05-06",
+    "lastModifyDate": "2026-05-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.capture.se/Manual/ru/2021/MediaTab.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
