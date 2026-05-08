@@ -107,8 +107,7 @@
     "Gobo Wheel": {
       "slots": [
         {
-          "type": "Gobo",
-          "name": "Open"
+          "type": "Open"
         },
         {
           "type": "Gobo",
@@ -175,92 +174,77 @@
         {
           "dmxRange": [0, 17],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "White"
+          "slotNumber": 1
         },
         {
           "dmxRange": [18, 35],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Red"
+          "slotNumber": 2
         },
         {
           "dmxRange": [36, 53],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Yellow"
+          "slotNumber": 3
         },
         {
           "dmxRange": [54, 71],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Magenta"
+          "slotNumber": 4
         },
         {
           "dmxRange": [72, 89],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Green"
+          "slotNumber": 5
         },
         {
           "dmxRange": [90, 107],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Orange"
+          "slotNumber": 6
         },
         {
           "dmxRange": [108, 125],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Blue"
+          "slotNumber": 7
         },
         {
           "dmxRange": [126, 143],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Pink"
+          "slotNumber": 8
         },
         {
           "dmxRange": [144, 161],
           "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "Lite Green"
+          "slotNumber": 9
         },
         {
           "dmxRange": [162, 179],
           "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "Lite Blue"
+          "slotNumber": 10
         },
         {
           "dmxRange": [180, 197],
           "type": "WheelSlot",
-          "slotNumber": 11,
-          "comment": "Lite Red"
+          "slotNumber": 11
         },
         {
           "dmxRange": [198, 215],
           "type": "WheelSlot",
-          "slotNumber": 12,
-          "comment": "Lite Yellow"
+          "slotNumber": 12
         },
         {
           "dmxRange": [216, 233],
           "type": "WheelSlot",
-          "slotNumber": 13,
-          "comment": "Lite Magenta"
+          "slotNumber": 13
         },
         {
           "dmxRange": [234, 251],
           "type": "WheelSlot",
-          "slotNumber": 14,
-          "comment": "Blue/Red"
+          "slotNumber": 14
         },
         {
           "dmxRange": [252, 255],
           "type": "WheelSlot",
-          "slotNumber": 15,
-          "comment": "Green/Yellow"
+          "slotNumber": 15
         }
       ]
     },
@@ -269,92 +253,77 @@
         {
           "dmxRange": [0, 17],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open"
+          "slotNumber": 1
         },
         {
           "dmxRange": [18, 35],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "3 Hole"
+          "slotNumber": 2
         },
         {
           "dmxRange": [36, 53],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Pie"
+          "slotNumber": 3
         },
         {
           "dmxRange": [54, 71],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Bullseye"
+          "slotNumber": 4
         },
         {
           "dmxRange": [72, 89],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Flowers"
+          "slotNumber": 5
         },
         {
           "dmxRange": [90, 107],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Barbells"
+          "slotNumber": 6
         },
         {
           "dmxRange": [108, 125],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Spokes"
+          "slotNumber": 7
         },
         {
           "dmxRange": [126, 143],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Atom"
+          "slotNumber": 8
         },
         {
           "dmxRange": [144, 161],
           "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "Zigzag"
+          "slotNumber": 9
         },
         {
           "dmxRange": [162, 179],
           "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "X"
+          "slotNumber": 10
         },
         {
           "dmxRange": [180, 197],
           "type": "WheelSlot",
-          "slotNumber": 11,
-          "comment": "Bubbles"
+          "slotNumber": 11
         },
         {
           "dmxRange": [198, 215],
           "type": "WheelSlot",
-          "slotNumber": 12,
-          "comment": "Arrows"
+          "slotNumber": 12
         },
         {
           "dmxRange": [216, 233],
           "type": "WheelSlot",
-          "slotNumber": 13,
-          "comment": "Diamonds"
+          "slotNumber": 13
         },
         {
           "dmxRange": [234, 251],
           "type": "WheelSlot",
-          "slotNumber": 14,
-          "comment": "Pyramid"
+          "slotNumber": 14
         },
         {
           "dmxRange": [252, 255],
           "type": "WheelSlot",
-          "slotNumber": 15,
-          "comment": "Lines"
+          "slotNumber": 15
         }
       ]
     },
@@ -363,28 +332,24 @@
         {
           "dmxRange": [0, 14],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Blackout"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [15, 29],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Full Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [30, 250],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe Slow-Fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [251, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Full Open"
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -392,24 +357,19 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "180deg",
-        "comment": "Pan"
+        "angleEnd": "180deg"
       }
     },
     "Tilt": {
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "90deg",
-        "comment": "Tilt"
+        "angleEnd": "90deg"
       }
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "0-100% Full On"
+        "type": "Intensity"
       }
     }
   },
