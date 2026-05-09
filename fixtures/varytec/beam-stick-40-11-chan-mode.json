@@ -1,0 +1,324 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam Stick 40 11 Chan Mode",
+  "shortName": "Beam Stick 40",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Ferdinand Daum"],
+    "createDate": "2025-11-22",
+    "lastModifyDate": "2025-11-22"
+  },
+  "comment": "11 Chan Mode",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/593865_r1_en_online.pdf?_gl=1*1exahfw*FPAU*MTM1ODgyNjIzOC4xNzYzODQwODYx*_ga*MjA3NjEyNzcwOS4xNzYzODQwODU5*_ga_QNTG1E3BFT*czE3NjM4NDA4NTkkbzEkZzEkdDE3NjM4NDU4MzUkajkkbDAkaDE4NjAzMDE5MDc.*_fplc*TWJNUklrd2k4QjNWa0JhMzJzeHhaTVFSMGxDQUh3dTFibmxVVHIzem52eGQlMkJkRktGNFBuS09DMkZSM0V5TlBCSWVUbGZzVG51Q1NFbUhNWk54ZkVTbHc0S3ZqUDVnTzY1SldobDNEbmdLMDhzRktuQnRVVTdPOWZFd3lXZkElM0QlM0Q.*_ga_CQB6MP7VD2*czE3NjM4NDA4NTkkbzEkZzEkdDE3NjM4NDU4MzUkajM3JGwwJGgw"
+    ]
+  },
+  "physical": {
+    "dimensions": [1006, 52, 152],
+    "weight": 2.3,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [2, 2]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "60Hz",
+          "comment": "Strobefrequency unknown"
+        }
+      ]
+    },
+    "RGB chaser with random colour or the colour intensity selected on channel 5…10": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "Colour Selection",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffcc00", "#ffffff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Breath effect",
+          "comment": "Breath effect"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Leap effect"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Gradient effect"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Pulse transmission effect"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "Effect",
+          "effectName": "Effect"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "Effect",
+          "effectName": "Effect"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [126, 133],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [134, 141],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [142, 149],
+          "type": "Effect",
+          "effectName": "Effect 15",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [150, 157],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [158, 165],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [166, 173],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [174, 181],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [190, 197],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [198, 205],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [206, 213],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [214, 221],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [222, 229],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Effect",
+          "effectName": "Voice control effect 1"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Effect",
+          "effectName": "Voice control effect 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Voice control effect 3"
+        }
+      ]
+    },
+    "Running speed (slow to fast)": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red chaser colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red chaser colour (0%…100%)"
+      }
+    },
+    "Green chaser colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green chaser colour (0%…100%)"
+      }
+    },
+    "Blue chaser colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue chaser colour (0%…100%)"
+      }
+    },
+    "Red chaser background colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red chaser background colour (0%…100%)"
+      }
+    },
+    "Green chaser background colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green chaser background colour (0%…100%)"
+      }
+    },
+    "Blue chaser background colour (0%…100%)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue chaser background colour (0%…100%)"
+      }
+    },
+    "Pixel effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Pixel effect normal"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectParameter",
+          "parameterStart": "high",
+          "parameterEnd": "low",
+          "comment": "Pixel effect inverted"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-Chan",
+      "shortName": "11 Chan",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "RGB chaser with random colour or the colour intensity selected on channel 5…10",
+        "Running speed (slow to fast)",
+        "Red chaser colour (0%…100%)",
+        "Green chaser colour (0%…100%)",
+        "Blue chaser colour (0%…100%)",
+        "Red chaser background colour (0%…100%)",
+        "Green chaser background colour (0%…100%)",
+        "Blue chaser background colour (0%…100%)",
+        "Pixel effect"
+      ]
+    }
+  ]
+}
