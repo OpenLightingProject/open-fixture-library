@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Dekker",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Joshua Fawcett"],
+    "createDate": "2026-05-13",
+    "lastModifyDate": "2026-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://akeneo-asset-proxy.adj-group.workers.dev/dl/files/MIN961__DL__001.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/mini-dekker"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=NVdXlT4Tggo"
+    ]
+  },
+  "physical": {
+    "dimensions": [198, 218, 200],
+    "weight": 1.7,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Motor Function Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Select Motor Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Rotation Slow - Fast"
+        }
+      ]
+    },
+    "Color Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 84],
+          "type": "Generic",
+          "comment": "Color Mixing"
+        },
+        {
+          "dmxRange": [85, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color Fading Slow - Fast"
+        }
+      ]
+    },
+    "DMX Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "DMX Control"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Maintenance",
+          "comment": "Show Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobing",
+        "Master Dimmer",
+        "Motor Function Control",
+        "Color Selection",
+        "DMX Control"
+      ]
+    }
+  ]
+}
