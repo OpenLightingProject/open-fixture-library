@@ -1,0 +1,167 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusion",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Iain Henshaw"],
+    "createDate": "2026-05-13",
+    "lastModifyDate": "2026-05-13"
+  },
+  "links": {
+    "other": [
+      "http://s1b.com/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 47],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [48, 87],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [88, 127],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [208, 247],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Sound to light"
+        }
+      ]
+    },
+    "Pan/Tilt Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 58],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [59, 110],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [111, 162],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [163, 240],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound to Light"
+        }
+      ]
+    },
+    "Motor Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Macros",
+        "Pan/Tilt Macro",
+        "Motor Speed"
+      ]
+    }
+  ]
+}
