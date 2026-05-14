@@ -1,0 +1,222 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusion 120 Zoom MK2",
+  "shortName": "Fusion120",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Martin"],
+    "createDate": "2025-01-11",
+    "lastModifyDate": "2025-01-11"
+  },
+  "links": {
+    "manual": [
+      "http://www.dundeecentral.co.uk/manuals/Fusion%20100%20Zoom%20Wash%20Manual.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "190deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [10, 245],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction",
+          "comment": "ON"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Color Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Programs",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16Ch",
+      "shortName": "16Ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Presets",
+        "Color Wheel Rotation",
+        "Program Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
