@@ -1,0 +1,205 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "servo color 500",
+  "categories": ["Color Changer", "Dimmer", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["Maxime Ganné"],
+    "createDate": "2022-03-18",
+    "lastModifyDate": "2022-03-18"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/1-PRODUITS%20ARRETES/900352_SERVOCOLOR500/900352_SERVOCOLOR500_FR.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 19],
+          "type": "Effect",
+          "effectName": "UC/RGBTW"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "180deg",
+          "comment": "Pan/Tilt Black Activated"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "180deg",
+          "comment": "Pan/Tilt Black deactivated"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "FAN AUTO"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "FAN SLOW"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "FAN NORMAL"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "FAN FAST"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "AUTO 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "AUTO 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "TEST"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "CUSTOM"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "RESET"
+        },
+        {
+          "dmxRange": [220, 235],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Effect",
+          "effectName": "DIM 0"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "DIM 1"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "DIM 2"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "DIM 3"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "DIM 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "PERSON 1",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe",
+        "Zoom",
+        "Control"
+      ]
+    }
+  ]
+}
