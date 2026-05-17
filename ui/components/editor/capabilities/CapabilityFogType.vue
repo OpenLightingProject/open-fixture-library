@@ -34,41 +34,28 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
+<script setup lang="ts">
+import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      fogTypes: capabilityTypes.Fog.properties.fogType.enum,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: 'Doesn\'t activate fog, only selects the fog type (Fog or Haze).',
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        fogType: '',
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      fogType?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const fogTypes = capabilityTypes.Fog.properties.fogType.enum;
+
+const hint = `Doesn't activate fog, only selects the fog type (Fog or Haze).`;
+
+const defaultData = {
+  fogType: '',
+  comment: '',
 };
 </script>

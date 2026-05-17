@@ -39,6 +39,7 @@ const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)
 
 const api = new OpenAPIBackend({
   definition: fileURLToPath(new URL('openapi.json', import.meta.url)),
+  apiRoot: '/api/v1',
   strict: process.env.NODE_ENV !== 'production',
   ajvOpts: {
     formats: {
@@ -83,8 +84,12 @@ const api = new OpenAPIBackend({
       };
     },
     postResponseHandler({ request, response, operation }) {
-      if (!response || !operation) {
+      if (!response) {
         return null;
+      }
+
+      if (!operation) {
+        return response;
       }
 
       const { statusCode = 200, body } = /** @type {ApiResponse} */ response;
@@ -113,9 +118,20 @@ const api = new OpenAPIBackend({
 });
 
 app.use(async (request, response) => {
-  const { statusCode = 200, body } = await api.handleRequest(request);
+  const result = await api.handleRequest(request);
+
+  if (!result) {
+    if (response && typeof response.setHeader === 'function') {
+      response.statusCode = 500;
+      sendJson(response, { error: 'Internal Server Error' });
+    }
+    return;
+  }
+
+  const { statusCode = 200, body } = result;
   response.statusCode = statusCode;
   sendJson(response, body);
 });
 
+export { api };
 export default app;

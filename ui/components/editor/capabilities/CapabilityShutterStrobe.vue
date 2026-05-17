@@ -79,79 +79,68 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputBoolean,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      shutterEffects: capabilityTypes.ShutterStrobe.properties.shutterEffect.enum,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        shutterEffect: '',
-        soundControlled: null,
-        speed: null,
-        speedStart: '',
-        speedEnd: '',
-        duration: '',
-        durationStart: null,
-        durationEnd: null,
-        randomTiming: null,
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      shutterEffect?: string;
+      soundControlled?: boolean | null;
+      speed?: string | null;
+      speedStart?: string;
+      speedEnd?: string;
+      duration?: string;
+      durationStart?: string | null;
+      durationEnd?: string | null;
+      randomTiming?: boolean | null;
+      comment?: string;
     };
-  },
-  computed: {
-    isStrobeEffect() {
-      return !['', 'Open', 'Closed'].includes(this.capability.typeData.shutterEffect);
-    },
-    strobeEffectName() {
-      return this.capability.typeData.shutterEffect === 'Strobe'
-        ? 'Strobe'
-        : `${this.capability.typeData.shutterEffect} Strobe`;
-    },
+  };
+  formstate?: object;
+}
 
-    /**
-     * Called from {@link EditorCapabilityTypeData}
-     * @public
-     * @returns {string[]} Array of all props to reset to default data when capability is saved.
-     */
-    resetProperties() {
-      if (!this.isStrobeEffect) {
-        return [
-          'soundControlled',
-          'speed',
-          'speedStart',
-          'speedEnd',
-          'duration',
-          'durationStart',
-          'durationEnd',
-          'randomTiming',
-        ];
-      }
+const props = defineProps<Props>();
 
-      return [];
-    },
-  },
+const shutterEffects = capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
+
+const defaultData = {
+  shutterEffect: '',
+  soundControlled: null,
+  speed: null,
+  speedStart: '',
+  speedEnd: '',
+  duration: '',
+  durationStart: null,
+  durationEnd: null,
+  randomTiming: null,
+  comment: '',
 };
+
+const isStrobeEffect = computed(() => {
+  return ['', 'Open', 'Closed'].includes(props.capability.typeData.shutterEffect as string) === false;
+});
+
+const strobeEffectName = computed(() => {
+  return props.capability.typeData.shutterEffect === 'Strobe'
+    ? 'Strobe'
+    : `${props.capability.typeData.shutterEffect} Strobe`;
+});
+
+const resetProperties = computed(() => {
+  if (!isStrobeEffect.value) {
+    return [
+      'soundControlled',
+      'speed',
+      'speedStart',
+      'speedEnd',
+      'duration',
+      'durationStart',
+      'durationEnd',
+      'randomTiming',
+    ];
+  }
+  return [];
+});
 </script>

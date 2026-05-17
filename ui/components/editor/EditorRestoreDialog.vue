@@ -25,8 +25,8 @@
   </A11yDialog>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { computed } from 'vue';
 import {
   getEmptyCapability,
   getEmptyChannel,
@@ -36,64 +36,56 @@ import {
   getEmptyMode,
   getEmptyPhysical,
   getSanitizedChannel,
-} from '../../assets/scripts/editor-utilities.js';
-import A11yDialog from '../A11yDialog.vue';
+} from '@/assets/scripts/editor-utilities.js';
 
-export default {
-  components: {
-    A11yDialog,
-  },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: objectProp().optional,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-    'restore-complete': () => true,
-  },
-  computed: {
-    restoredDate() {
-      if (this.modelValue === undefined) {
-        return undefined;
-      }
-      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
-    },
-  },
-  methods: {
-    discardRestored() {
-      // put all items except the last one back
-      localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave')).slice(0, -1)));
+interface Props {
+  modelValue?: {
+    timestamp: number;
+    fixture: any;
+    channel?: any;
+  };
+}
 
-      this.$emit('update:model-value', undefined);
-      this.$emit('restore-complete');
-    },
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  'update:model-value': [value: undefined];
+  'restore-complete': [];
+}>();
 
-    async applyRestored() {
-      const modelValue = structuredClone(this.modelValue);
+const restoredDate = computed(() => {
+  if (props.modelValue === undefined) {
+    return undefined;
+  }
+  return (new Date(props.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
+});
 
-      // closes dialog
-      this.$emit('update:model-value', undefined);
+function discardRestored() {
+  localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave') || '[]').slice(0, -1)));
 
-      // restoring could open another dialog -> wait for DOM being up-to-date
-      await this.$nextTick();
+  emit('update:model-value', undefined);
+  emit('restore-complete');
+}
 
-      this.$parent.fixture = getRestoredFixture(modelValue.fixture);
-      this.$parent.channel = getRestoredChannel(modelValue.channel, true);
+async function applyRestored() {
+  const modelValue = structuredClone(props.modelValue);
 
-      await this.$nextTick();
-      this.$emit('restore-complete');
-    },
-  },
-};
+  emit('update:model-value', undefined);
 
-/**
- * @param {object} fixture The fixture object from the saved user data.
- * @returns {object} A fixture editor fixture object with all required properties.
- */
-function getRestoredFixture(fixture) {
+  await nextTick();
+
+  const parent = getCurrentInstance()?.proxy?.$parent;
+  if (parent) {
+    parent.fixture = getRestoredFixture(modelValue.fixture);
+    parent.channel = getRestoredChannel(modelValue.channel, true);
+  }
+
+  await nextTick();
+  emit('restore-complete');
+}
+
+import { nextTick, getCurrentInstance } from 'vue';
+
+function getRestoredFixture(fixture: any) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
 
   for (const [index, link] of restoredFixture.links.entries()) {
@@ -114,12 +106,7 @@ function getRestoredFixture(fixture) {
   return restoredFixture;
 }
 
-/**
- * @param {object} channel The channel object from the saved user data.
- * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
- * @returns {object} A fixture editor channel object with all required properties.
- */
-function getRestoredChannel(channel, isChannelDialog) {
+function getRestoredChannel(channel: any, isChannelDialog: boolean) {
   if ('coarseChannelId' in channel) {
     return Object.assign(getEmptyFineChannel(), channel);
   }
@@ -138,7 +125,7 @@ function getRestoredChannel(channel, isChannelDialog) {
     );
   }
 
-  if (isChannelDialog) {
+  if (isChannelDialog && 'wizard' in restoredChannel) {
     restoredChannel.wizard.templateCapability = Object.assign(
       getEmptyCapability(),
       restoredChannel.wizard.templateCapability,

@@ -7,128 +7,129 @@
     :data-exclusive-maximum="exclusiveMaximum"
     :step="step"
     :placeholder="hint"
-    :value="value === `invalid` ? `` : value"
+    :value="value === 'invalid' ? '' : value"
     type="number"
     v-on="lazy ? { change: update } : { input: update }"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)">
 </template>
 
-<script>
-import { anyProp, booleanProp, numberProp, objectProp, oneOfTypesProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  schemaProperty: {
+    minimum?: number;
+    maximum?: number;
+    exclusiveMinimum?: number;
+    exclusiveMaximum?: number;
+    type?: string;
+  };
+  required?: boolean;
+  hint?: string;
+  minimum?: number | string;
+  maximum?: number | string;
+  value: number | string | null;
+  lazy?: boolean;
+  stepOverride?: number;
+}
 
-export default {
-  props: {
-    schemaProperty: objectProp().required,
-    required: booleanProp().withDefault(false),
-    hint: stringProp().optional,
-    minimum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
-    maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
-    value: anyProp().required,
-    lazy: booleanProp().withDefault(false),
-    stepOverride: numberProp().optional,
-  },
-  emits: {
-    'input': (value) => true,
-    'focus': () => true,
-    'blur': () => true,
-    'vf:validate': (validationData) => true,
-  },
-  computed: {
-    min() {
-      if (this.minimum !== undefined && this.minimum !== 'invalid') {
-        return this.minimum;
-      }
+const props = defineProps<Props>();
 
-      if ('minimum' in this.schemaProperty) {
-        return this.schemaProperty.minimum;
-      }
+const emit = defineEmits<{
+  input: [value: number | string | null];
+  focus: [event: FocusEvent];
+  blur: [event: FocusEvent];
+  'vf:validate': [validationData: Record<string, string | null>];
+}>();
 
-      return this.exclusiveMinimum;
-    },
-    max() {
-      if (this.maximum !== undefined && this.maximum !== 'invalid') {
-        return this.maximum;
-      }
+const min = computed(() => {
+  if (props.minimum !== undefined && props.minimum !== 'invalid') {
+    return props.minimum;
+  }
 
-      if ('maximum' in this.schemaProperty) {
-        return this.schemaProperty.maximum;
-      }
+  if ('minimum' in props.schemaProperty) {
+    return props.schemaProperty.minimum;
+  }
 
-      return this.exclusiveMaximum;
-    },
-    exclusiveMinimum() {
-      if ('exclusiveMinimum' in this.schemaProperty) {
-        return this.schemaProperty.exclusiveMinimum;
-      }
+  return exclusiveMinimum.value;
+});
 
-      return null;
-    },
-    exclusiveMaximum() {
-      if ('exclusiveMaximum' in this.schemaProperty) {
-        return this.schemaProperty.exclusiveMaximum;
-      }
+const max = computed(() => {
+  if (props.maximum !== undefined && props.maximum !== 'invalid') {
+    return props.maximum;
+  }
 
-      return null;
-    },
-    step() {
-      if (this.stepOverride !== undefined) {
-        return this.stepOverride;
-      }
-      return this.schemaProperty.type === 'integer' ? 1 : 'any';
-    },
+  if ('maximum' in props.schemaProperty) {
+    return props.schemaProperty.maximum;
+  }
 
-    /**
-     * @public
-     * @returns {Record<string, string | null>} Validation data for vue-form
-     */
-    validationData() {
-      return {
-        'min': this.min === null ? null : `${this.min}`,
-        'max': this.max === null ? null : `${this.max}`,
-        'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
-        'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
-        'step': `${this.step}`,
-        'type': 'number',
-      };
-    },
-  },
-  watch: {
-    validationData: {
-      handler(newValidationData) {
-        this.$emit('vf:validate', newValidationData);
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$el.focus();
-    },
-    update() {
-      const input = this.$el;
-      if (input.validity && input.validity.badInput) {
-        this.$emit('input', 'invalid');
-        return;
-      }
+  return exclusiveMaximum.value;
+});
 
-      if (input.value === '') {
-        this.$emit('input', null);
-        return;
-      }
+const exclusiveMinimum = computed(() => {
+  if ('exclusiveMinimum' in props.schemaProperty) {
+    return props.schemaProperty.exclusiveMinimum;
+  }
 
-      let value;
-      try {
-        value = Number.parseFloat(input.value);
-      }
-      catch {
-        value = 'invalid';
-      }
+  return null;
+});
 
-      this.$emit('input', value);
-    },
-  },
+const exclusiveMaximum = computed(() => {
+  if ('exclusiveMaximum' in props.schemaProperty) {
+    return props.schemaProperty.exclusiveMaximum;
+  }
+
+  return null;
+});
+
+const step = computed(() => {
+  if (props.stepOverride !== undefined) {
+    return props.stepOverride;
+  }
+  return props.schemaProperty.type === 'integer' ? 1 : 'any';
+});
+
+const validationData = computed(() => ({
+  min: min.value === null ? null : `${min.value}`,
+  max: max.value === null ? null : `${max.value}`,
+  'data-exclusive-minimum': exclusiveMinimum.value === null ? null : `${exclusiveMinimum.value}`,
+  'data-exclusive-maximum': exclusiveMaximum.value === null ? null : `${exclusiveMaximum.value}`,
+  step: `${step.value}`,
+  type: 'number',
+}));
+
+watch(validationData, (newValidationData) => {
+  emit('vf:validate', newValidationData);
+}, {
+  deep: true,
+  immediate: true,
+});
+
+const update = () => {
+  const input = document.activeElement as HTMLInputElement;
+  if (input.validity && input.validity.badInput) {
+    emit('input', 'invalid');
+    return;
+  }
+
+  if (input.value === '') {
+    emit('input', null);
+    return;
+  }
+
+  let value: number | string;
+  try {
+    value = Number.parseFloat(input.value);
+  }
+  catch {
+    value = 'invalid';
+  }
+
+  emit('input', value);
 };
+
+defineExpose({
+  focus: () => {
+    (document.activeElement as HTMLElement)?.focus();
+  },
+});
 </script>

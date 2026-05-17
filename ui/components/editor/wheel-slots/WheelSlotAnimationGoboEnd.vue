@@ -2,17 +2,10 @@
   <div class="wheel-slot-type-data" />
 </template>
 
-<script>
-export default {
+<script setup lang="ts">
+defineOptions({
   inheritAttrs: false,
-  data() {
-    return {
-      /**
-       * Used in {@link EditorWheelSlot}
-       * @public
-       */
-      defaultData: {},
-    };
-  },
-};
+});
+
+const defaultData = {};
 </script>

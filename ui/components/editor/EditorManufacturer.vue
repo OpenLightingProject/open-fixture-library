@@ -63,41 +63,31 @@
   </section>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { manufacturerProperties } from '../../../lib/schema-properties.js';
+<script setup lang="ts">
+import { manufacturerProperties } from '~~/lib/schema-properties.js';
+
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-    PropertyInputTextarea,
-  },
-  props: {
-    fixture: objectProp().required,
-    formstate: objectProp().required,
-    manufacturers: objectProp().required,
-  },
-  data() {
-    return {
-      manufacturerProperties,
-    };
-  },
-  watch: {
-    async 'fixture.useExistingManufacturer'(useExisting) {
-      await this.$nextTick();
-      this.$refs[useExisting ? 'existingManufacturerSelect' : 'newManufacturerNameInput'].focus();
-    },
-  },
-  methods: {
-    switchManufacturer(useExisting) {
-      this.fixture.useExistingManufacturer = useExisting;
-    },
-  },
-};
+interface Props {
+  fixture: object;
+  formstate: object;
+  manufacturers: object;
+}
+
+const props = defineProps<Props>();
+
+const existingManufacturerSelect = ref<HTMLSelectElement | null>(null);
+const newManufacturerNameInput = ref<typeof PropertyInputText | null>(null);
+
+watch(() => props.fixture.useExistingManufacturer, async function(useExisting) {
+  await nextTick();
+  (useExisting ? existingManufacturerSelect.value : newManufacturerNameInput.value)?.focus();
+});
+
+function switchManufacturer(useExisting: boolean) {
+  props.fixture.useExistingManufacturer = useExisting;
+}
 </script>
