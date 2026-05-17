@@ -1,0 +1,9 @@
+export { getSearchResults } from './routes/get-search-results.js';
+export { createFeedbackIssue } from './routes/submit-feedback.js';
+export { createFixtureFromEditor } from './routes/fixtures/from-editor.js';
+export { importFixtureFile } from './routes/fixtures/import.js';
+export { submitFixtures } from './routes/fixtures/submit.js';
+export { getManufacturers } from './routes/manufacturers/index.js';
+export { getManufacturerByKey } from './routes/manufacturers/_manufacturerKey.js';
+export { getPlugins } from './routes/plugins/index.js';
+export { getPluginByKey } from './routes/plugins/_pluginKey.js';

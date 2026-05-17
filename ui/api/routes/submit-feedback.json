@@ -1,0 +1,80 @@
+{
+  "post": {
+    "operationId": "createFeedbackIssue",
+    "description": "Takes the input from the client side script and creates a GitHub issue with the given feedback.",
+    "tags": ["root"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["fixture", "capability", "plugin"]
+              },
+              "context": {
+                "type": "string",
+                "description": "The fixture key or plugin key."
+              },
+              "location": {
+                "type": "string",
+                "nullable": true
+              },
+              "helpWanted": {
+                "type": "string",
+                "nullable": true
+              },
+              "message": {
+                "type": "string"
+              },
+              "githubUsername": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "context",
+              "location",
+              "helpWanted",
+              "message",
+              "githubUsername"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Issue created or error occured.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "issueUrl": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "error": {
+                  "type": "string",
+                  "nullable": true
+                }
+              },
+              "required": [
+                "issueUrl",
+                "error"
+              ],
+              "additionalProperties": false
+            },
+            "example": {
+              "issueUrl": "https://github.com/OpenLightingProject/open-fixture-library/issues/1154"
+            }
+          }
+        }
+      }
+    }
+  }
+}
