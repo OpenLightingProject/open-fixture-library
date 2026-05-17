@@ -19,6 +19,9 @@ docker-compose.yml
 .output/
 fixtures/register.json
 
+# opencode agent config
+.opencode/
+
 # Temporary files
 tmp/
 .eslintcache
