@@ -18,7 +18,7 @@ const props = defineProps<Props>();
 
 const isAnimationGoboSlot = (slot: { type: string }) => slot.type.startsWith('AnimationGobo');
 const isAnimationGoboFunc = (capability: Capability) => {
-  const wheelSlot = capability.wheelSlot;
+  const ws = capability.wheelSlot;
   return isAnimationGoboSlot(ws[0]) && isAnimationGoboSlot(ws[1]);
 };
 

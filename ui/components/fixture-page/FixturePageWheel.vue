@@ -297,34 +297,17 @@ const slotTitles = computed(() => {
 });
 
 function getColorCircleSvgFragment(colors: string[], radius: number) {
-  const svgNs = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNs, 'svg');
-  const fragment = document.createDocumentFragment();
-  const circle = document.createElementNS(svgNs, 'circle');
-
-  circle.setAttribute('r', String(radius));
-  circle.setAttribute('fill', colors[0]);
-  svg.appendChild(circle);
+  let markup = `<circle r="${radius}" fill="${colors[0]}"/>`;
 
   if (colors.length >= 2) {
-    const circle2 = document.createElementNS(svgNs, 'circle');
-    circle2.setAttribute('r', String(radius / 2));
-    circle2.setAttribute('fill', colors[1]);
-    svg.appendChild(circle2);
+    markup += `<circle r="${radius / 2}" fill="${colors[1]}"/>`;
   }
 
   if (colors.length >= 3) {
-    const rect = document.createElementNS(svgNs, 'rect');
     const halfRadius = radius / 2;
-    rect.setAttribute('x', String(-halfRadius));
-    rect.setAttribute('y', String(-halfRadius));
-    rect.setAttribute('width', String(radius));
-    rect.setAttribute('height', String(radius));
-    rect.setAttribute('fill', colors[2]);
-    svg.appendChild(rect);
+    markup += `<rect x="${-halfRadius}" y="${-halfRadius}" width="${radius}" height="${radius}" fill="${colors[2]}"/>`;
   }
 
-  fragment.appendChild(svg);
-  return new XMLSerializer().serializeToString(svg);
+  return markup;
 }
 </script>
