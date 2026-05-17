@@ -92,7 +92,7 @@ const enabledRuleParameters = {
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
-    ignore: ['^@octokit/rest$'],
+    ignore: ['^@octokit/rest$', '^uuid$'],
   }],
   'import/order': [{
     'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
@@ -222,6 +222,7 @@ const enabledRuleParameters = {
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
+  'vue/prefer-single-event-payload': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': ['of'],
