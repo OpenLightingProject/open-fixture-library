@@ -701,6 +701,7 @@ This operation does not require authentication
     "man-key/fix-key": []
   }
 }
+
 ```
 
 ### Properties
@@ -723,6 +724,7 @@ This operation does not require authentication
 {
   "error": "Some error message."
 }
+
 ```
 
 ### Properties

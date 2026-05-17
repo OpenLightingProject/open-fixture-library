@@ -92,22 +92,13 @@ export default defineNuxtConfig({
         },
   },
   sitemap: {
-    sources: [
-      '/api/__sitemap__/manufacturers',
-      '/api/__sitemap__/fixtures',
-      '/api/__sitemap__/categories',
-      '/api/__sitemap__/plugins',
-    ],
+    /* sources are auto-generated from Nuxt routes */
   },
   devtools: { enabled: true },
   routeRules: {
     '/**': { cors: true },
   },
   nitro: {
-    srcDir: 'server',
     preset: 'node-server',
-    experimental: {
-      openAPI: true,
-    },
   },
 });
