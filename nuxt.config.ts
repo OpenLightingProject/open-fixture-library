@@ -101,4 +101,5 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server',
   },
+  serverDir: 'ui/server',
 });
