@@ -1,0 +1,504 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "120w moving head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["tonyxforce", "Tonyxforce"],
+    "createDate": "2026-05-18",
+    "lastModifyDate": "2026-05-18",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-05-18",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/White.png",
+          "name": "White"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Red.png",
+          "name": "Red"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Orange.png",
+          "name": "Orange"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Yellow.png",
+          "name": "Yellow"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Green.png",
+          "name": "Green"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Blue.png",
+          "name": "Blue"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Magenta.png",
+          "name": "Magenta"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/cols/Cyan.png",
+          "name": "Cyan"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/WhiteRed.png",
+          "name": "WhiteRed"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/RedOrange.png",
+          "name": "RedOrange"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/OrangeYellow.png",
+          "name": "OrangeYellow"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/YellowGreen.png",
+          "name": "YellowGreen"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/GreenBlue.png",
+          "name": "GreenBlue"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/BlueMagenta.png",
+          "name": "BlueMagenta"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/splitcols/MagentaCyan.png",
+          "name": "MagentaCyan"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Others/rainbow.png",
+          "name": "Auto S>F"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/open.svg",
+          "name": "Open1"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/open.svg",
+          "name": "Open2"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00017.svg",
+          "name": "Squares"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/gobo00024.svg",
+          "name": "Pentalope"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/gobo00123.svg",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00086.svg",
+          "name": "4star"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00005.svg",
+          "name": "Arcs"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00104.svg",
+          "name": "Flower2"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/open.svg",
+          "name": "Open2 shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/SGM/gobo00017.svg",
+          "name": "Squares shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/gobo00024.svg",
+          "name": "Pentalope shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/gobo00123.svg",
+          "name": "Flower shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00086.svg",
+          "name": "4star shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00005.svg",
+          "name": "Arcs shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/Chauvet/gobo00104.svg",
+          "name": "Flower2 shake S>F"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus/others/open.svg",
+          "name": "Auto S>F"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Strobe (Slow to fast)"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "WhiteRed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "RedOrange"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "OrangeYellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "YellowGreen"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "GreenBlue"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "BlueMagenta"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "MagentaCyan"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Auto S>F"
+        }
+      ]
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Open2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Squares"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Pentalope"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Flower"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "4star"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Arcs"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Flower2"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Open2 shake S>F"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Squares shake S>F"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Pentalope shake S>F"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Flower shake S>F"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "4star shake S>F"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Arcs shake S>F"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Flower2 shake S>F"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Auto S>F"
+        }
+      ]
+    },
+    "Prism rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Prism off"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Prism",
+          "comment": "Static prism"
+        },
+        {
+          "dmxRange": [137, 255],
+          "type": "Prism",
+          "comment": "Prism rot S>F"
+        }
+      ]
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "3 sec RST"
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Master dimmer",
+        "Strobe",
+        "Color wheel",
+        "Gobo wheel",
+        "Prism rotation",
+        "Macro",
+        "Reset"
+      ]
+    }
+  ]
+}
