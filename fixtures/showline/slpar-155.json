@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SLPAR 155",
+  "shortName": "SLPAR155",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Jeje"],
+    "createDate": "2026-05-18",
+    "lastModifyDate": "2026-05-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.vari-lite.com/b-dam/vari-lite/products/sl-par-155-zoom/guides-and-manuals/SL_PAR_155_USER_MANUAL.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 220, 317],
+    "weight": 8,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "RGBW",
+      "colorTemperature": 6500,
+      "lumens": 3200
+    },
+    "lens": {
+      "name": "Hand adjustable",
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "comment": "8-Bit control for intensity of LED setting"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open = DMX 0-2"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed = DMX 3-5"
+        },
+        {
+          "dmxRange": [6, 12],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "durationStart": "long",
+          "durationEnd": "short",
+          "comment": "Speed strobe = DMX 6-7 slow DMX 8-10 med DMX 11-12 Fast"
+        },
+        {
+          "dmxRange": [13, 127],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe range = DMX 13-127 (fastest)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "duration": "instant",
+          "comment": "Pulse = Slow rand to Fast 128-133"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Simple 8-Bit",
+      "shortName": "8-Bit",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
