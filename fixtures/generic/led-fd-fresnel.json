@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED FD FRESNEL",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["PO"],
+    "createDate": "2023-03-31",
+    "lastModifyDate": "2023-03-31"
+  },
+  "links": {
+    "productPage": [
+      "https://es.prowallsled.com/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "SPEED OF DIMMER": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "speedStart": "0bpm",
+          "speedEnd": "9bpm",
+          "comment": "DEFAULT"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Speed",
+          "speedStart": "10bpm",
+          "speedEnd": "29bpm",
+          "comment": "TURN OFF SPEED OF DIMMER"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Speed",
+          "speedStart": "30bpm",
+          "speedEnd": "69bpm",
+          "comment": "SPEED OF DIMMER 1"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Speed",
+          "speedStart": "70bpm",
+          "speedEnd": "129bpm",
+          "comment": "SPEED OF DIMMER 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Speed",
+          "speedStart": "130bpm",
+          "speedEnd": "189bpm",
+          "comment": "SPEED OF DIMMER 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Speed",
+          "speedStart": "190bpm",
+          "speedEnd": "255bpm",
+          "comment": "SPEED OF DIMMER 4"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "NO STROBE"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Speed",
+          "speedStart": "11bpm",
+          "speedEnd": "255bpm",
+          "comment": "THE SPEED 0F THE STROBE"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near",
+        "comment": "FOCUS"
+      }
+    },
+    "Focus 2": {
+      "name": "Focus",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "0bpm",
+        "speedEnd": "255bpm",
+        "comment": "SPEED 0F FOCUS"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "FD FRESNEL",
+      "channels": [
+        "Dimmer",
+        "SPEED OF DIMMER",
+        "Strobe",
+        "Focus",
+        "Focus 2"
+      ]
+    }
+  ]
+}
