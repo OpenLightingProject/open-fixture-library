@@ -1,6 +1,7 @@
 <template>
   <div
     id="ofl-root"
+    data-allow-mismatch="class"
     :class="{
       js: client,
       'no-js': !client,
