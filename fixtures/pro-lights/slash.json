@@ -1,0 +1,166 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Slash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Giovanni Basso", "rgm"],
+    "createDate": "2026-04-14",
+    "lastModifyDate": "2026-04-14",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-04-14",
+      "comment": "created by Q Light Controller Plus (version 4.14.1-1)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    },
+    "Gobo wheel": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo index": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlotRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg",
+        "helpWanted": "Are these the correct angles?"
+      }
+    },
+    "Gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Prism Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "Prism rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW",
+        "helpWanted": "Does the prism rotate clockwise or counter-clockwise?"
+      }
+    },
+    "Prism macros": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "prism macros"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan speed",
+        "Color wheel",
+        "Gobo index",
+        "Gobo wheel",
+        "Prism Frost",
+        "Prism rotation",
+        "Prism macros",
+        "Focus",
+        "Strobe",
+        "Master dimmer",
+        "No function"
+      ]
+    }
+  ]
+}
