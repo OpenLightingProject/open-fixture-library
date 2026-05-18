@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SKYBAR V3",
+  "shortName": "SKYBAR V3",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["SKYBAR V3"],
+    "createDate": "2026-05-01",
+    "lastModifyDate": "2026-05-01"
+  },
+  "links": {
+    "manual": [
+      "https://audioeffetti.com/product/documents/MSC/BOOSKYBARV3-01.pdf"
+    ],
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-skybar-v3-p69546.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yPraX3SYl_E&pp=ygUVYm9vbXRvbmUgZGogc2t5YmFyIHYz"
+    ]
+  },
+  "rdm": {
+    "modelId": 65535
+  },
+  "physical": {
+    "dimensions": [1000, 60, 60],
+    "weight": 2.35,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "lumens": 224
+    }
+  },
+  "availableChannels": {
+    "SKYBAR V3": {
+      "highlightValue": 3,
+      "constant": true,
+      "capability": {
+        "type": "Effect",
+        "effectName": "SKY BAR V3"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SKYBAR V3",
+      "shortName": "SKYBAR V3",
+      "channels": [
+        "SKYBAR V3"
+      ]
+    }
+  ]
+}
