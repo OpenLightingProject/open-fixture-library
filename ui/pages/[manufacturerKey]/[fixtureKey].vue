@@ -80,6 +80,12 @@
 <script setup lang="ts">
 import register from '~~/fixtures/register.json';
 
+definePageMeta({
+  validate: (route) => {
+    return route.params.manufacturerKey in register.manufacturers;
+  },
+});
+
 import Fixture from '~~/lib/model/Fixture.js';
 import Manufacturer from '~~/lib/model/Manufacturer.js';
 
