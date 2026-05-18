@@ -199,6 +199,21 @@ interface Plugin {
   name: string;
 }
 
+interface PluginData {
+  name: string;
+  outdated?: boolean;
+  newPlugin?: string;
+  importPluginVersion?: string;
+  exportPluginVersion?: string;
+  exportTests?: string[];
+}
+
+interface PluginsResponse {
+  importPlugins: string[];
+  exportPlugins: string[];
+  data: Record<string, PluginData>;
+}
+
 interface Props {
   fixtureCount?: number;
   editorFixtures?: EditorFixtures;
@@ -213,16 +228,15 @@ const props = withDefaults(defineProps<Props>(), {
   showHelp: false,
 });
 
-const { data: pluginsData } = await useFetch('/api/v1/plugins');
+const { data: pluginsData } = await useFetch<PluginsResponse>('/api/v1/plugins');
 
 const exportPlugins = computed<Plugin[]>(() => {
-  if (!pluginsData.value) return [];
-  return pluginsData.value.exportPlugins.map(
-    pluginKey => ({
-      key: pluginKey,
-      name: pluginsData.value!.data[pluginKey].name,
-    }),
-  );
+  const plugins = pluginsData.value;
+  if (!plugins?.exportPlugins || !plugins.data) return [];
+  return plugins.exportPlugins.flatMap(pluginKey => {
+    const pluginData = plugins.data[pluginKey];
+    return pluginData ? [{ key: pluginKey, name: pluginData.name }] : [];
+  });
 });
 
 const selectClicked = ref(false);
