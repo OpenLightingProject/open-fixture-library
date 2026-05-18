@@ -1,0 +1,218 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stryker Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Mike Pierson"],
+    "createDate": "2026-04-22",
+    "lastModifyDate": "2026-04-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/0a90da7a989ef85f6d9f85fa8b532ce922c90887_Eliminator_Stryker_Wash___User_Manual.pdf?v=17100886368899224972"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/stryker-wash"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=LHZ3qk9AXtk&si=aIug2zXcD-UiFtWT"
+    ]
+  },
+  "physical": {
+    "dimensions": [294, 375, 222],
+    "weight": 8.2,
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [6, 50]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Ring Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 122],
+          "type": "ColorPreset",
+          "comment": "Static 1 thru 23"
+        },
+        {
+          "dmxRange": [123, 181],
+          "type": "Effect",
+          "effectName": "Color Jump, slow to fast",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 240],
+          "type": "Effect",
+          "effectName": "Color Fade, slow to fast",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "Sound Auto Play"
+        }
+      ]
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Special Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "Generic",
+          "comment": "XY Auto Run 1 thru 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Generic",
+          "comment": "Sound XY Auto Run"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "Reset after 3 seconds"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13 Channels",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Ring Macros",
+        "Shutter",
+        "Dimmer",
+        "Zoom",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    }
+  ]
+}
