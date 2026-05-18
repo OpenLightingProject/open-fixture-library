@@ -13,12 +13,12 @@
 
     <ClientOnly placeholder="Fixture editor is loading...">
 
-      <Form
+      <VueForm
         ref="formRef"
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit()">
+        @submit="onSubmit()">
 
         <EditorManufacturer
           :fixture="fixture"
@@ -89,7 +89,7 @@
           <button type="submit" class="save-fixture primary">Create fixture</button>
         </div>
 
-      </Form>
+      </VueForm>
 
       <EditorChannelDialog
         :channel="channel"
