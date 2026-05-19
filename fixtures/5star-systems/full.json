@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Full",
+  "categories": ["Blinder", "Barrel Scanner", "Color Changer", "Dimmer", "Effect", "Fan", "Scanner", "Moving Head", "Flower", "Hazer", "Laser", "Matrix", "Pixel Bar", "Smoke", "Stand", "Strobe", "Other"],
+  "meta": {
+    "authors": ["as"],
+    "createDate": "2026-05-19",
+    "lastModifyDate": "2026-05-19"
+  },
+  "links": {
+    "other": [
+      "https://vi.wikipedia.org/wiki/Schutzstaffel"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "as",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
