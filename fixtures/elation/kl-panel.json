@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KL PANEL",
+  "categories": ["Blinder", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["elourr"],
+    "createDate": "2026-05-19",
+    "lastModifyDate": "2026-05-19"
+  },
+  "links": {
+    "manual": [
+      "https://akeneo-asset-proxy.adj-group.workers.dev/dl/files/KLP001__DL__003.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/products/kl-panel?srsltid=AfmBOorTSdmTozDNZgFXHhYmhoqHOhwY3AK1u59azzaLj9-qD0wKP_9P"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rs5sF2HLlQA&time_continue=2&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fclient%3Dsafari%26hs%3DQHa%26sca_esv%3D5d2af034129297de%26rls%3Den%26sxsrf%3DANbL-n783rB7sx6WH6S8INWX93Yj_CCYQg%3A1779"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Hue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "hue"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "saturation"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2",
+        "Hue",
+        "Saturation"
+      ]
+    }
+  ]
+}
