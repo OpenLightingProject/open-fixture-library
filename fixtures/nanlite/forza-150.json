@@ -1,0 +1,239 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 150",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-12-02",
+    "lastModifyDate": "2024-12-02"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691132659947-335772-1124121241512490-Forza+150%E8%8B%B1%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6%EF%BC%88NANLITE%EF%BC%89B+V2+20210906+W.pdf",
+      "https://cdn-aliyun.nanlite.com/release/1691141210924-405353-1124121241519342-Forza_150_REFERENCE_GUIDE_EN.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-forza-150?t=1694436394118#/en"
+    ]
+  },
+  "physical": {
+    "dimensions": [227, 115, 133],
+    "weight": 1.36,
+    "power": 170,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Fan on"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Mode Daylight": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Daylight Mode"
+      }
+    },
+    "Mode Effect": {
+      "defaultValue": 64,
+      "highlightValue": 64,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Effect Mode"
+      }
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "INT LOOP"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Generic",
+          "comment": "FLASH"
+        },
+        {
+          "dmxRange": [37, 54],
+          "type": "Generic",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Generic",
+          "comment": "STORM"
+        },
+        {
+          "dmxRange": [73, 91],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [92, 109],
+          "type": "Generic",
+          "comment": "PAPARAZZI"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "CANDLE/FIRE"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Generic",
+          "comment": "BAD BULB"
+        },
+        {
+          "dmxRange": [146, 163],
+          "type": "Generic",
+          "comment": "FIREWORK"
+        },
+        {
+          "dmxRange": [164, 182],
+          "type": "Generic",
+          "comment": "EXPLOSION"
+        },
+        {
+          "dmxRange": [183, 200],
+          "type": "Generic",
+          "comment": "WELDING"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Param1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param4": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param6": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Daylight 8bit",
+      "channels": [
+        "Dimmer",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - Daylight",
+      "shortName": "Ultimate Daylight",
+      "channels": [
+        "Dimmer",
+        "Mode Daylight",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4",
+        "Reserved5",
+        "Reserved6",
+        "Reserved7",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - EFFECT",
+      "shortName": "Ultimate EFFECT",
+      "channels": [
+        "Dimmer",
+        "Mode Effect",
+        "Effect Mode",
+        "Param1",
+        "Param2",
+        "Param3",
+        "Param4",
+        "Param5",
+        "Param6",
+        "Fan Control"
+      ]
+    }
+  ]
+}
