@@ -1,9 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "120w moving head",
-  "categories": ["Moving Head"],
+  "categories": [
+    "Moving Head"
+  ],
   "meta": {
-    "authors": ["tonyxforce", "Tonyxforce"],
+    "authors": [
+      "tonyxforce"
+    ],
     "createDate": "2026-05-18",
     "lastModifyDate": "2026-05-18",
     "importPlugin": {
@@ -21,8 +25,6 @@
   },
   "matrix": {
     "pixelCount": [
-      null,
-      null,
       1
     ]
   },
@@ -30,78 +32,115 @@
     "Color wheel": {
       "slots": [
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/White.png",
+          "type": "Color",
+          "colors": [
+            "#ffffff"
+          ],
           "name": "White"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Red.png",
+          "type": "Color",
+          "colors": [
+            "#ff0000"
+          ],
           "name": "Red"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Orange.png",
+          "type": "Color",
+          "colors": [
+            "#ffa500"
+          ],
           "name": "Orange"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Yellow.png",
+          "type": "Color",
+          "colors": [
+            "#ffff00"
+          ],
           "name": "Yellow"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Green.png",
+          "type": "Color",
+          "colors": [
+            "#00ff00"
+          ],
           "name": "Green"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Blue.png",
+          "type": "Color",
+          "colors": [
+            "#0000ff"
+          ],
           "name": "Blue"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Magenta.png",
+          "type": "Color",
+          "colors": [
+            "#ff00ff"
+          ],
           "name": "Magenta"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/cols/Cyan.png",
+          "type": "Color",
+          "colors": [
+            "#00ffff"
+          ],
           "name": "Cyan"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/WhiteRed.png",
+          "type": "Color",
+          "colors": [
+            "#ffffff",
+            "#ff0000"
+          ],
           "name": "WhiteRed"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/RedOrange.png",
+          "type": "Color",
+          "colors": [
+            "#ff0000",
+            "#ffa500"
+          ],
           "name": "RedOrange"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/OrangeYellow.png",
+          "type": "Color",
+          "colors": [
+            "#ffa500",
+            "#ffff00"
+          ],
           "name": "OrangeYellow"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/YellowGreen.png",
+          "type": "Color",
+          "colors": [
+            "#ffff00",
+            "#00ff00"
+          ],
           "name": "YellowGreen"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/GreenBlue.png",
+          "type": "Color",
+          "colors": [
+            "#00ff00",
+            "#0000ff"
+          ],
           "name": "GreenBlue"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/BlueMagenta.png",
+          "type": "Color",
+          "colors": [
+            "#0000ff",
+            "#ff00ff"
+          ],
           "name": "BlueMagenta"
         },
         {
-          "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/splitcols/MagentaCyan.png",
+          "type": "Color",
+          "colors": [
+            "#ff00ff",
+            "#00ffff"
+          ],
           "name": "MagentaCyan"
         },
         {
@@ -198,7 +237,9 @@
   },
   "availableChannels": {
     "Pan": {
-      "fineChannelAliases": ["Pan fine"],
+      "fineChannelAliases": [
+        "Pan fine"
+      ],
       "defaultValue": 0,
       "capability": {
         "type": "Pan",
@@ -207,7 +248,9 @@
       }
     },
     "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
+      "fineChannelAliases": [
+        "Tilt fine"
+      ],
       "dmxValueResolution": "8bit",
       "defaultValue": 127,
       "capability": {
@@ -241,97 +284,130 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 9],
+          "dmxRange": [
+            0,
+            9
+          ],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "White"
+          "slotNumber": 1
         },
         {
-          "dmxRange": [10, 19],
+          "dmxRange": [
+            10,
+            19
+          ],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Red"
+          "slotNumber": 2
         },
         {
-          "dmxRange": [20, 29],
+          "dmxRange": [
+            20,
+            29
+          ],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Orange"
+          "slotNumber": 3
         },
         {
-          "dmxRange": [30, 39],
+          "dmxRange": [
+            30,
+            39
+          ],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Yellow"
+          "slotNumber": 4
         },
         {
-          "dmxRange": [40, 49],
+          "dmxRange": [
+            40,
+            49
+          ],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Green"
+          "slotNumber": 5
         },
         {
-          "dmxRange": [50, 59],
+          "dmxRange": [
+            50,
+            59
+          ],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Blue"
+          "slotNumber": 6
         },
         {
-          "dmxRange": [60, 69],
+          "dmxRange": [
+            60,
+            69
+          ],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Magenta"
+          "slotNumber": 7
         },
         {
-          "dmxRange": [70, 79],
+          "dmxRange": [
+            70,
+            79
+          ],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Cyan"
+          "slotNumber": 8
         },
         {
-          "dmxRange": [80, 89],
+          "dmxRange": [
+            80,
+            89
+          ],
           "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "WhiteRed"
+          "slotNumber": 9
         },
         {
-          "dmxRange": [90, 99],
+          "dmxRange": [
+            90,
+            99
+          ],
           "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "RedOrange"
+          "slotNumber": 10
         },
         {
-          "dmxRange": [100, 109],
+          "dmxRange": [
+            100,
+            109
+          ],
           "type": "WheelSlot",
-          "slotNumber": 11,
-          "comment": "OrangeYellow"
+          "slotNumber": 11
         },
         {
-          "dmxRange": [110, 119],
+          "dmxRange": [
+            110,
+            119
+          ],
           "type": "WheelSlot",
-          "slotNumber": 12,
-          "comment": "YellowGreen"
+          "slotNumber": 12
         },
         {
-          "dmxRange": [120, 129],
+          "dmxRange": [
+            120,
+            129
+          ],
           "type": "WheelSlot",
-          "slotNumber": 13,
-          "comment": "GreenBlue"
+          "slotNumber": 13
         },
         {
-          "dmxRange": [130, 139],
+          "dmxRange": [
+            130,
+            139
+          ],
           "type": "WheelSlot",
-          "slotNumber": 14,
-          "comment": "BlueMagenta"
+          "slotNumber": 14
         },
         {
-          "dmxRange": [140, 149],
+          "dmxRange": [
+            140,
+            149
+          ],
           "type": "WheelSlot",
-          "slotNumber": 15,
-          "comment": "MagentaCyan"
+          "slotNumber": 15
         },
         {
-          "dmxRange": [150, 255],
+          "dmxRange": [
+            150,
+            255
+          ],
           "type": "WheelSlot",
           "slotNumber": 16,
           "comment": "Auto S>F"
@@ -342,97 +418,145 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 9],
+          "dmxRange": [
+            0,
+            9
+          ],
           "type": "WheelSlot",
           "slotNumber": 1,
           "comment": "Open1"
         },
         {
-          "dmxRange": [10, 19],
+          "dmxRange": [
+            10,
+            19
+          ],
           "type": "WheelSlot",
           "slotNumber": 2,
           "comment": "Open2"
         },
         {
-          "dmxRange": [20, 29],
+          "dmxRange": [
+            20,
+            29
+          ],
           "type": "WheelSlot",
           "slotNumber": 3,
           "comment": "Squares"
         },
         {
-          "dmxRange": [30, 39],
+          "dmxRange": [
+            30,
+            39
+          ],
           "type": "WheelSlot",
           "slotNumber": 4,
           "comment": "Pentalope"
         },
         {
-          "dmxRange": [40, 49],
+          "dmxRange": [
+            40,
+            49
+          ],
           "type": "WheelSlot",
           "slotNumber": 5,
           "comment": "Flower"
         },
         {
-          "dmxRange": [50, 59],
+          "dmxRange": [
+            50,
+            59
+          ],
           "type": "WheelSlot",
           "slotNumber": 6,
           "comment": "4star"
         },
         {
-          "dmxRange": [60, 69],
+          "dmxRange": [
+            60,
+            69
+          ],
           "type": "WheelSlot",
           "slotNumber": 7,
           "comment": "Arcs"
         },
         {
-          "dmxRange": [70, 79],
+          "dmxRange": [
+            70,
+            79
+          ],
           "type": "WheelSlot",
           "slotNumber": 8,
           "comment": "Flower2"
         },
         {
-          "dmxRange": [80, 89],
+          "dmxRange": [
+            80,
+            89
+          ],
           "type": "WheelSlot",
           "slotNumber": 9,
           "comment": "Open2 shake S>F"
         },
         {
-          "dmxRange": [90, 99],
+          "dmxRange": [
+            90,
+            99
+          ],
           "type": "WheelSlot",
           "slotNumber": 10,
           "comment": "Squares shake S>F"
         },
         {
-          "dmxRange": [100, 109],
+          "dmxRange": [
+            100,
+            109
+          ],
           "type": "WheelSlot",
           "slotNumber": 11,
           "comment": "Pentalope shake S>F"
         },
         {
-          "dmxRange": [110, 119],
+          "dmxRange": [
+            110,
+            119
+          ],
           "type": "WheelSlot",
           "slotNumber": 12,
           "comment": "Flower shake S>F"
         },
         {
-          "dmxRange": [120, 129],
+          "dmxRange": [
+            120,
+            129
+          ],
           "type": "WheelSlot",
           "slotNumber": 13,
           "comment": "4star shake S>F"
         },
         {
-          "dmxRange": [130, 139],
+          "dmxRange": [
+            130,
+            139
+          ],
           "type": "WheelSlot",
           "slotNumber": 14,
           "comment": "Arcs shake S>F"
         },
         {
-          "dmxRange": [140, 149],
+          "dmxRange": [
+            140,
+            149
+          ],
           "type": "WheelSlot",
           "slotNumber": 15,
           "comment": "Flower2 shake S>F"
         },
         {
-          "dmxRange": [150, 255],
+          "dmxRange": [
+            150,
+            255
+          ],
           "type": "WheelSlot",
           "slotNumber": 16,
           "comment": "Auto S>F"
@@ -443,17 +567,26 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 127],
+          "dmxRange": [
+            0,
+            127
+          ],
           "type": "Prism",
           "comment": "Prism off"
         },
         {
-          "dmxRange": [128, 136],
+          "dmxRange": [
+            128,
+            136
+          ],
           "type": "Prism",
           "comment": "Static prism"
         },
         {
-          "dmxRange": [137, 255],
+          "dmxRange": [
+            137,
+            255
+          ],
           "type": "Prism",
           "comment": "Prism rot S>F"
         }
@@ -469,11 +602,17 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 250],
+          "dmxRange": [
+            0,
+            250
+          ],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [251, 255],
+          "dmxRange": [
+            251,
+            255
+          ],
           "type": "Maintenance",
           "comment": "3 sec RST"
         }
