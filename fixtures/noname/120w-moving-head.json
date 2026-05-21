@@ -174,8 +174,7 @@
         },
         {
           "type": "Gobo",
-          "resource": "gobos/aliases/qlcplus/Others/open.svg",
-          "name": "Auto S>F"
+          "name": "Auto"
         }
       ]
     }
@@ -408,7 +407,9 @@
         {
           "dmxRange": [150, 255],
           "type": "WheelSlot",
-          "slotNumber": 16
+          "slotNumber": 16,
+          "slotNumberStart": 0,
+          "slotNumberEnd": 8
         }
       ]
     },
