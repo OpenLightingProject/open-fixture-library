@@ -19,16 +19,11 @@
       "type": "LED"
     }
   },
-  "matrix": {
-    "pixelCount": [1, 1, 1]
-  },
   "wheels": {
     "Color wheel": {
       "slots": [
         {
-          "type": "Color",
-          "colors": ["#ffffff"],
-          "name": "White"
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -150,32 +145,32 @@
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/SGM/gobo00017.svg",
-          "name": "Squares shake S>F"
+          "name": "Squares"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/others/gobo00024.svg",
-          "name": "Pentalope shake S>F"
+          "name": "Pentalope"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/others/gobo00123.svg",
-          "name": "Flower shake S>F"
+          "name": "Flower"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00086.svg",
-          "name": "4star shake S>F"
+          "name": "4star"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/ClayPaky/gobo00005.svg",
-          "name": "Arcs shake S>F"
+          "name": "Arcs"
         },
         {
           "type": "Gobo",
           "resource": "gobos/aliases/qlcplus/Chauvet/gobo00104.svg",
-          "name": "Flower2 shake S>F"
+          "name": "Flower2"
         },
         {
           "type": "Gobo",
@@ -354,62 +349,66 @@
         {
           "dmxRange": [60, 69],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "Arcs"
+          "slotNumber": 7
         },
         {
           "dmxRange": [70, 79],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "Flower2"
+          "slotNumber": 8
         },
         {
           "dmxRange": [80, 89],
           "type": "WheelShake",
           "slotNumber": 9,
-          "comment": "Open2 shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelShake",
           "slotNumber": 10,
-          "comment": "Squares shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelShake",
           "slotNumber": 11,
-          "comment": "Pentalope shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelShake",
           "slotNumber": 12,
-          "comment": "Flower shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelShake",
           "slotNumber": 13,
-          "comment": "4star shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelShake",
           "slotNumber": 14,
-          "comment": "Arcs shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [140, 149],
           "type": "WheelShake",
           "slotNumber": 15,
-          "comment": "Flower2 shake S>F"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [150, 255],
           "type": "WheelSlot",
-          "slotNumber": 16,
-          "comment": "Auto S>F"
+          "slotNumber": 16
         }
       ]
     },
@@ -454,7 +453,6 @@
       ]
     }
   },
-  "templateChannels": {},
   "modes": [
     {
       "name": "12-channel",
