@@ -61,41 +61,6 @@
           "name": "Cyan"
         },
         {
-          "type": "Color",
-          "colors": ["#ffffff", "#ff0000"],
-          "name": "WhiteRed"
-        },
-        {
-          "type": "Color",
-          "colors": ["#ff0000", "#ffa500"],
-          "name": "RedOrange"
-        },
-        {
-          "type": "Color",
-          "colors": ["#ffa500", "#ffff00"],
-          "name": "OrangeYellow"
-        },
-        {
-          "type": "Color",
-          "colors": ["#ffff00", "#00ff00"],
-          "name": "YellowGreen"
-        },
-        {
-          "type": "Color",
-          "colors": ["#00ff00", "#0000ff"],
-          "name": "GreenBlue"
-        },
-        {
-          "type": "Color",
-          "colors": ["#0000ff", "#ff00ff"],
-          "name": "BlueMagenta"
-        },
-        {
-          "type": "Color",
-          "colors": ["#ff00ff", "#00ffff"],
-          "name": "MagentaCyan"
-        },
-        {
           "type": "AnimationGoboStart",
           "name": "Auto S>F"
         }
@@ -266,42 +231,42 @@
         {
           "dmxRange": [80, 89],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelSlot",
-          "slotNumber": 13
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelShake",
-          "slotNumber": 14
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [140, 149],
           "type": "WheelShake",
-          "slotNumber": 15
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [150, 255],
           "type": "WheelSlot",
-          "slotNumber": 16,
+          "slotNumber": 9,
           "comment": "Auto S>F"
         }
       ]
