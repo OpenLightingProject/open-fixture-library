@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "d",
+  "categories": ["Laser", "Barrel Scanner", "Blinder", "Effect", "Fan", "Smoke"],
+  "meta": {
+    "authors": ["xd"],
+    "createDate": "2026-05-21",
+    "lastModifyDate": "2026-05-21"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=qSjmVBXHuJo"
+    ]
+  },
+  "rdm": {
+    "modelId": 6
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "xd",
+      "channels": [
+        "Red"
+      ]
+    }
+  ]
+}
