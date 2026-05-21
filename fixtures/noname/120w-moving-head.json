@@ -265,9 +265,11 @@
         },
         {
           "dmxRange": [150, 255],
-          "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "Auto S>F"
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -371,10 +373,11 @@
         },
         {
           "dmxRange": [150, 255],
-          "type": "WheelSlot",
-          "slotNumber": 16,
-          "slotNumberStart": 0,
-          "slotNumberEnd": 8
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
