@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "io3uqwlakdn",
+  "categories": ["Barrel Scanner", "Blinder", "Color Changer", "Dimmer", "Effect", "Fan", "Scanner", "Moving Head", "Pixel Bar", "Matrix", "Laser", "Hazer", "Flower", "Other", "Strobe", "Stand", "Smoke"],
+  "meta": {
+    "authors": ["sdvsdv"],
+    "createDate": "2026-05-22",
+    "lastModifyDate": "2026-05-22"
+  },
+  "links": {
+    "productPage": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 33,
+      "lumens": 1
+    },
+    "lens": {
+      "degreesMinMax": [1, 207]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 27,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "mh 100",
+      "channels": [
+        "Intensity",
+        "Dimmer"
+      ]
+    }
+  ]
+}
