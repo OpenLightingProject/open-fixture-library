@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18x3W RGB PAR light",
+  "shortName": "Eyourlife 18x3W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pat"],
+    "createDate": "2026-05-22",
+    "lastModifyDate": "2026-05-22"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/317335_c_317335_v2_r1_en_online_2.pdf"
+    ],
+    "productPage": [
+      "https://www.ebay.com/itm/397562862745?itmmeta=01KKA2VTQ19P4JKHSSMPJSSG1M&hash=item5c9097dc99:g:0wIAAeSwpBZn8r8x&itmprp=enc%3AAQALAAAA4DKQclQvzFwZQpmMrsO4Lurgc1V8vfVxQ0ipCgWtzkHVJHutam3bPiF86XxbT4Oaq5mdxTqUkGYV5FQYTxb3rmNLM4uhBbA%2BZW2HNgLClgnAR6%2BnX2BA8USwbGoslBqKIDXQN%2F0E94mODxaBd73h10cogMSA7GXjl%2F1Abv6AIaMXZMUuanykGG8jd%2Fl5JMoiqp5%2F3%2B6bQUmB410E7PE61sK%2FaBdN6srDbr%2FrPBgHEgd7Wrk8uoJPpCgGV%2BJOYV3Ehguy25xlWTjEMHCcx3ZKQZBrDujDmj39YGYDoWs%2FySGl%7Ctkp%3ABFBMzqvvwppn"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 180, 100],
+    "weight": 1,
+    "power": 54,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Stiff",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macro Modes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Color Jump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color Fade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe",
+        "Macro Modes"
+      ]
+    }
+  ]
+}
