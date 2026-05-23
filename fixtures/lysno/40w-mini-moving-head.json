@@ -1,0 +1,322 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "40W Mini Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Squishy"],
+    "createDate": "2026-05-23",
+    "lastModifyDate": "2026-05-23"
+  },
+  "comment": "Aliexpress 40W Mini Mover with a squared off head and  \"Osram 40w RGBW\"\nLabelled as 21 ch on listing, but shipped with 19 channels mode only.",
+  "links": {
+    "manual": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/S9a9edd17bce44d899252a92518a0c3f1y.pdf?spm=a2g0o.detail.0.0.3a347xoM7xoMNz&file=S9a9edd17bce44d899252a92518a0c3f1y.pdf"
+    ],
+    "productPage": [
+      "https://www.aliexpress.com/item/1005012046113352.html"
+    ]
+  },
+  "availableChannels": {
+    "X": {
+      "fineChannelAliases": ["X fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y": {
+      "fineChannelAliases": ["Y fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dim": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Motor Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red COB": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green COB": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue COB": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White COB": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red AUX": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Green AUX": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Blue AUX": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "COB LED Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Static Dimming",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Static Color Selection"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Breathing Effect"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Jump Effect"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Pulse Effect"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "COB LED Effect Speed": {
+      "defaultValue": "80%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "AUX Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [5, 16],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [17, 28],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [29, 40],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [41, 52],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [53, 64],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [65, 76],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [77, 88],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [89, 100],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [101, 112],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [113, 124],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [125, 136],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [137, 148],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [149, 160],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [161, 172],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [173, 184],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [185, 196],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [197, 208],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [209, 220],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [221, 232],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        }
+      ]
+    },
+    "AUX Effect Speed": {
+      "defaultValue": "80%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Motor Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [50, 100],
+          "type": "Effect",
+          "effectName": "Motor Quick Effect"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Motor Slow Speed Effect"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Effect",
+          "effectName": "Sound Effect",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Motor Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "19-Ch",
+      "shortName": "19ch",
+      "channels": [
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Motor Speed",
+        "Dim",
+        "Strobe",
+        "Red COB",
+        "Green COB",
+        "Blue COB",
+        "White COB",
+        "Red AUX",
+        "Green AUX",
+        "Blue AUX",
+        "COB LED Effect",
+        "COB LED Effect Speed",
+        "AUX Effect",
+        "AUX Effect Speed",
+        "Motor Effect"
+      ]
+    }
+  ]
+}
