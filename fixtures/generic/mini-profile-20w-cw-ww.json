@@ -1,0 +1,234 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Profile 20w CW & WW",
+  "shortName": "Mini Profile",
+  "categories": ["Dimmer", "Blinder", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Aaron"],
+    "createDate": "2026-05-23",
+    "lastModifyDate": "2026-05-23"
+  },
+  "links": {
+    "productPage": [
+      "https://drive.google.com/file/d/1xpK-Kn4St30Y4PjZjzFdIZN0HTR0-pfP/view?usp=sharing"
+    ]
+  },
+  "physical": {
+    "dimensions": [115, 305, 77],
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid"
+    },
+    "lens": {
+      "name": "19/26/36/50"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [12, 19],
+          "type": "ColorTemperature",
+          "colorTemperature": "3100K"
+        },
+        {
+          "dmxRange": [20, 27],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [28, 35],
+          "type": "ColorTemperature",
+          "colorTemperature": "3300K"
+        },
+        {
+          "dmxRange": [36, 43],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [44, 51],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [52, 59],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [60, 67],
+          "type": "ColorTemperature",
+          "colorTemperature": "3700K"
+        },
+        {
+          "dmxRange": [68, 75],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [76, 83],
+          "type": "ColorTemperature",
+          "colorTemperature": "3900K"
+        },
+        {
+          "dmxRange": [84, 91],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [92, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": "4100K"
+        },
+        {
+          "dmxRange": [100, 107],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [108, 115],
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K"
+        },
+        {
+          "dmxRange": [116, 123],
+          "type": "ColorTemperature",
+          "colorTemperature": "4400K"
+        },
+        {
+          "dmxRange": [124, 131],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ColorTemperature",
+          "colorTemperature": "4600K"
+        },
+        {
+          "dmxRange": [140, 147],
+          "type": "ColorTemperature",
+          "colorTemperature": "4700K"
+        },
+        {
+          "dmxRange": [148, 155],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [156, 163],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [164, 171],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [172, 179],
+          "type": "ColorTemperature",
+          "colorTemperature": "5100K"
+        },
+        {
+          "dmxRange": [180, 187],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K"
+        },
+        {
+          "dmxRange": [188, 195],
+          "type": "ColorTemperature",
+          "colorTemperature": "5300K"
+        },
+        {
+          "dmxRange": [196, 203],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [204, 211],
+          "type": "ColorTemperature",
+          "colorTemperature": "5500K"
+        },
+        {
+          "dmxRange": [212, 219],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [220, 227],
+          "type": "ColorTemperature",
+          "colorTemperature": "5700K"
+        },
+        {
+          "dmxRange": [228, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "5800K"
+        },
+        {
+          "dmxRange": [236, 253],
+          "type": "ColorTemperature",
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        }
+      ]
+    },
+    "Delay / Sound /Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Turn on \"delay by controller\""
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "NoFunction",
+          "comment": "Turn off \"delay by controller\""
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "100%",
+          "comment": "On. Mic in unit."
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Dimmer",
+        "CTC",
+        "Delay / Sound /Strobe"
+      ]
+    }
+  ]
+}
