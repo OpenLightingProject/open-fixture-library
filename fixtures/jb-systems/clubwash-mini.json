@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "clubwash mini",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["ivhej"],
+    "createDate": "2026-05-25",
+    "lastModifyDate": "2026-05-25"
+  },
+  "links": {
+    "manual": [
+      "https://audioeffetti.com/product/documents/BEG/B05530-05.pdf"
+    ],
+    "productPage": [
+      "https://jb-systems.eu/clubwash-mini"
+    ]
+  },
+  "availableChannels": {
+    "1 pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "1 pan"
+      ]
+    }
+  ]
+}
