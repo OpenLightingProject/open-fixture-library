@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "dasd",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["dsadd"],
+    "createDate": "2026-05-25",
+    "lastModifyDate": "2026-05-25"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/products/cob-200w-linear-spotlights-with-barn-doors-rgbwa-uv-6in1-cob-par-lights-warm-cold-white-par-lights-stage-lights-dmx512-sound-activated-dj-lights-for-concert-church-wedding-theater"
+    ]
+  },
+  "availableChannels": {
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "22Hz",
+        "speedEnd": "222Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dasd",
+      "channels": [
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
