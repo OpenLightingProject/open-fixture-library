@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["1"],
+    "createDate": "2026-05-27",
+    "lastModifyDate": "2026-05-27"
+  },
+  "links": {
+    "video": [
+      "http://123.com"
+    ]
+  },
+  "availableChannels": {
+    "Magenta": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Magenta"
+      ]
+    }
+  ]
+}
