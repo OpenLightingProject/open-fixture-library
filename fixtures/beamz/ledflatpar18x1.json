@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDFlatPar18x1",
+  "shortName": "Fixture file for generic RGB flat PAR light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["tonyxforce"],
+    "createDate": "2026-05-20",
+    "lastModifyDate": "2026-05-20"
+  },
+  "links": {
+    "manual": [
+      "https://sonomateriel.com/amfile/file/download/file/463/product/3725/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "10Hz",
+        "speedEnd": "40Hz",
+        "comment": "Not actual values"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound Sensitivity",
+        "Strobe"
+      ]
+    }
+  ]
+}
