@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "teszt",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["teszt"],
+    "createDate": "2026-06-02",
+    "lastModifyDate": "2026-06-02"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=jtcpb5Zml3g"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "t"
+  },
+  "physical": {
+    "dimensions": [5, 4, 7],
+    "weight": 6,
+    "power": 33,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 48,
+      "lumens": 48
+    },
+    "lens": {
+      "degreesMinMax": [1, 360]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "fineChannelAliases": ["Shutter fine", "Shutter fine^2"],
+      "capability": {
+        "type": "Effect",
+        "effectName": "teszt"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "teszt",
+      "channels": [
+        "Shutter",
+        "Shutter fine",
+        "Shutter fine^2"
+      ]
+    }
+  ]
+}
