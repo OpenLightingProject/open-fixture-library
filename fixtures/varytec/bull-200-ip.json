@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bull 200 IP",
+  "categories": ["Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["An Millot"],
+    "createDate": "2025-04-29",
+    "lastModifyDate": "2025-04-29"
+  },
+  "comment": "Beam 60°",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_554028_r1_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/varytec_bull_200_ip.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i11159p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [281, 323, 150],
+    "weight": 5.5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4in1 RBGWW COB LED, 200 W"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Strobe effect, increasing speed"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "comment": "Colour macros"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "ColorPreset",
+          "comment": "Colour change, increasing speed"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "ColorPreset",
+          "comment": "Colour blending, increasing speed"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Parameters": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Running speed increasing (if channel 7 = 005…220) | Microphone sensitivity (if channel 7 = 221…255)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Parameters"
+      ]
+    }
+  ]
+}
