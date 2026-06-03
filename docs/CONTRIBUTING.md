@@ -87,4 +87,4 @@ We automatically check code style using [ESLint](https://eslint.org/). Maybe you
 
 * To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
 * Run [tests](testing.md) in the `tests/` directory locally before pushing – that's faster than waiting for the automated GitHub Actions tests in pull requests.
-* Run `npm run build` to be sure that auto-generated contents are up-to-date.
+* Run `npm run build` to be sure that auto-generated contents are up-to-date and fantastic.
