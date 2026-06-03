@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1",
+  "shortName": "1",
+  "categories": ["Barrel Scanner", "Blinder"],
+  "meta": {
+    "authors": ["James"],
+    "createDate": "2026-06-03",
+    "lastModifyDate": "2026-06-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/"
+    ]
+  },
+  "physical": {
+    "dimensions": [5, 5, 5],
+    "weight": 23,
+    "power": 500,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 1,
+      "lumens": 5000
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "1",
+        "speed": "fast",
+        "duration": "instant",
+        "parameter": "small"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extendex",
+      "channels": [
+        "Strobe"
+      ]
+    }
+  ]
+}
