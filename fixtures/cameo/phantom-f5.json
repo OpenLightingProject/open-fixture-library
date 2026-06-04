@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Phantom F5",
+  "shortName": "PhanF5",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Jan Puig"],
+    "createDate": "2026-06-04",
+    "lastModifyDate": "2026-06-04"
+  },
+  "links": {
+    "manual": [
+      "https://portal.adamhall.com/es/downloadcenter/article/CLPHANTOMF5"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/es/soluciones/dj-y-musicos/maquinas-de-niebla-y-efectos/maquinas-hazer-fog/20502/phantom-f5#detail-downloads"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 150, 420],
+    "weight": 7.9,
+    "power": 1450,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Output Volume": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Timer Interval": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "60s"
+        }
+      ]
+    },
+    "Timer Duration": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Time",
+        "timeStart": "0.1s",
+        "timeEnd": "60s"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Output Volume"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Output Volume",
+        "Timer Interval",
+        "Timer Duration"
+      ]
+    }
+  ]
+}
