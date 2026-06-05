@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TEST",
+  "categories": ["Moving Head", "Barrel Scanner", "Blinder", "Color Changer", "Dimmer", "Effect", "Pixel Bar", "Stand", "Smoke"],
+  "meta": {
+    "authors": ["erik"],
+    "createDate": "2026-06-05",
+    "lastModifyDate": "2026-06-05"
+  },
+  "links": {
+    "other": [
+      "https://google.com"
+    ]
+  },
+  "availableChannels": {
+    "Shutter": {
+      "fineChannelAliases": ["Shutter fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "5deg",
+        "angleEnd": "-22deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "zeta",
+      "channels": [
+        "Shutter",
+        "Shutter fine"
+      ]
+    }
+  ]
+}
