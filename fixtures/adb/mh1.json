@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mh1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["jessy"],
+    "createDate": "2026-06-06",
+    "lastModifyDate": "2026-06-06"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=i7Kv2eFtsEE&list=RDi7Kv2eFtsEE&start_radio=1",
+      "https://www.youtube.com/watch?v=i7Kv2eFtsEE&list=RDi7Kv2eFtsEE&start_radio=1",
+      "https://www.youtube.com/watch?v=i7Kv2eFtsEE&list=RDi7Kv2eFtsEE&start_radio=1"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "as",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
