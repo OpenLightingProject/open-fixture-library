@@ -353,8 +353,9 @@ const dmxMax = computed(() => Math.pow(256, props.channel.dmxValueResolution) - 
 
 const currentMode = computed(() => {
   const uuid = props.channel.modeId;
+  if (!uuid) return { channels: [], shortName: '', name: '' };
   const modeIndex = props.fixture.modes.findIndex(mode => mode.uuid === uuid);
-  return props.fixture.modes[modeIndex];
+  return props.fixture.modes[modeIndex] ?? { channels: [], shortName: '', name: '' };
 });
 
 const currentModeUnchosenChannelUuids = computed(() => {

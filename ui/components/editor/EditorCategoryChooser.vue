@@ -2,7 +2,7 @@
   <div>
     <Draggable v-model="selectedCategories" tag="span">
       <CategoryBadge
-        v-for="cat of value"
+        v-for="cat of modelValue"
         :key="cat"
         :category="cat"
         selected
@@ -26,41 +26,42 @@
 
 <script setup lang="ts">
 interface Props {
-  value: string[];
+  modelValue: string[];
   allCategories: string[];
 }
 
 const props = defineProps<Props>();
+import Draggable from 'vuedraggable';
 const emit = defineEmits<{
-  input: [value: string[]];
+  'update:model-value': [value: string[]];
   focus: [];
   blur: [];
 }>();
 
 const selectedCategories = computed({
   get() {
-    return props.value;
+    return props.modelValue;
   },
   set(newSelectedCategories: string[]) {
-    emit('input', newSelectedCategories);
+    emit('update:model-value', newSelectedCategories);
   },
 });
 
 const unselectedCategories = computed(() => {
   return props.allCategories.filter(
-    category => !props.value.includes(category),
+    category => !props.modelValue.includes(category),
   );
 });
 
 function select(selectedCategory: string) {
-  const updatedCategoryList = [...props.value, selectedCategory];
-  emit('input', updatedCategoryList);
+  const updatedCategoryList = [...props.modelValue, selectedCategory];
+  emit('update:model-value', updatedCategoryList);
   emit('blur');
 }
 
 function deselect(deselectedCategory: string) {
-  const updatedCategoryList = props.value.filter(category => category !== deselectedCategory);
-  emit('input', updatedCategoryList);
+  const updatedCategoryList = props.modelValue.filter(category => category !== deselectedCategory);
+  emit('update:model-value', updatedCategoryList);
   emit('blur');
 }
 
