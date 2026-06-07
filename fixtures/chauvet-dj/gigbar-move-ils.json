@@ -1,0 +1,1753 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GigBAR MOVE + ILS",
+  "shortName": "GigBARMoveILS",
+  "categories": ["Stand", "Moving Head", "Color Changer", "Laser", "Strobe"],
+  "meta": {
+    "authors": ["Oele Geirnaert"],
+    "createDate": "2026-06-07",
+    "lastModifyDate": "2026-06-07"
+  },
+  "comment": "Par 1 and Par 2 have independent control in 52-channel mode. Moving heads (Spot 1 & Spot 2) share channels in 30-channel mode. This is the EU version (GIGBARMOVE+ILS, item code 10051948).",
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2024/04/1780820729428_GigBAR_MOVE_ILS_UM_EU_Rev13.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/gigbar-move-ils/"
+    ]
+  },
+  "physical": {
+    "dimensions": [1100, 449, 144],
+    "weight": 14,
+    "power": 250,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED + RGB Laser"
+    }
+  },
+  "availableChannels": {
+    "Par 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Par 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Par 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Par 1 Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Par 1 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Par 1 UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Par 1 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Par 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Par 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Par 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Par 2 Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Par 2 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Par 2 UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Par 2 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Par Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Par Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Par Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Par Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Par White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Par UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Par Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Derby 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Derby 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Derby 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Derby 1 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Derby 1 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Derby 1 Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Derby 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Derby 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Derby 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Derby 2 White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Derby 2 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Derby 2 Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Derby Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Derby Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Derby Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Derby White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Derby Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Derby Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Flash 1 Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White LED 1"
+      }
+    },
+    "Flash 2 Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White LED 2"
+      }
+    },
+    "Flash 3 Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White LED 3"
+      }
+    },
+    "Flash 4 Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White LED 4"
+      }
+    },
+    "Flash Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Laser Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 41],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [42, 77],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [78, 113],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [114, 149],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [150, 185],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [186, 221],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Laser Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot 1 Pan": {
+      "fineChannelAliases": ["Spot 1 Pan Fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Spot 1 Tilt": {
+      "fineChannelAliases": ["Spot 1 Tilt Fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Spot 1 Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Spot 1 Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "ColorPreset",
+          "colors": ["#ff7700"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "ColorPreset",
+          "colors": ["#ffaa55"],
+          "comment": "CTO 400K"
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "colors": ["#aaff00"],
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [65, 189],
+          "type": "ColorPreset",
+          "comment": "Color index"
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot 1 Gobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [54, 63],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 9 shake"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 8 shake"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 7 shake"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 6 shake"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 5 shake"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 4 shake"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 3 shake"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 2 shake"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 1 shake"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot 1 Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Spot 1 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [77, 145],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [146, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Random",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Spot 2 Pan": {
+      "fineChannelAliases": ["Spot 2 Pan Fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Spot 2 Tilt": {
+      "fineChannelAliases": ["Spot 2 Tilt Fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Spot 2 Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Spot 2 Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "ColorPreset",
+          "colors": ["#ff7700"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "ColorPreset",
+          "colors": ["#ffaa55"],
+          "comment": "CTO 400K"
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "colors": ["#aaff00"],
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [65, 189],
+          "type": "ColorPreset",
+          "comment": "Color index"
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot 2 Gobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [54, 63],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 9 shake"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 8 shake"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 7 shake"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 6 shake"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 5 shake"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 4 shake"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 3 shake"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 2 shake"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 1 shake"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot 2 Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Spot 2 Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [77, 145],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [146, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Random",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Spot Pan": {
+      "fineChannelAliases": ["Spot Pan Fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Spot Tilt": {
+      "fineChannelAliases": ["Spot Tilt Fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Spot Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Spot Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "ColorPreset",
+          "colors": ["#ff7700"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "ColorPreset",
+          "colors": ["#ffaa55"],
+          "comment": "CTO 400K"
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "colors": ["#aaff00"],
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [65, 189],
+          "type": "ColorPreset",
+          "comment": "Color index"
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot Gobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [54, 63],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 9 shake"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 8 shake"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 7 shake"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 6 shake"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 5 shake"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 4 shake"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 3 shake"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 2 shake"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Gobo 1 shake"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Spot Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Spot Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [77, 145],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [146, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Random",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Operation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "Effect",
+          "effectName": "Mix 1"
+        },
+        {
+          "dmxRange": [14, 22],
+          "type": "Effect",
+          "effectName": "Mix 2"
+        },
+        {
+          "dmxRange": [23, 31],
+          "type": "Effect",
+          "effectName": "Mix 3"
+        },
+        {
+          "dmxRange": [32, 40],
+          "type": "Effect",
+          "effectName": "Mix 4"
+        },
+        {
+          "dmxRange": [41, 49],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Laser + Strobes"
+        },
+        {
+          "dmxRange": [50, 58],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Laser + Spots"
+        },
+        {
+          "dmxRange": [59, 67],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Strobes + Spots"
+        },
+        {
+          "dmxRange": [68, 76],
+          "type": "Effect",
+          "effectName": "Pars + Laser + Strobes + Spots"
+        },
+        {
+          "dmxRange": [77, 85],
+          "type": "Effect",
+          "effectName": "Derby Lights + Laser + Strobes + Spots"
+        },
+        {
+          "dmxRange": [86, 94],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Laser"
+        },
+        {
+          "dmxRange": [95, 103],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Strobes"
+        },
+        {
+          "dmxRange": [104, 112],
+          "type": "Effect",
+          "effectName": "Pars + Derby Lights + Spots"
+        },
+        {
+          "dmxRange": [113, 121],
+          "type": "Effect",
+          "effectName": "Pars + Laser + Strobes"
+        },
+        {
+          "dmxRange": [122, 130],
+          "type": "Effect",
+          "effectName": "Pars + Laser + Spots"
+        },
+        {
+          "dmxRange": [131, 139],
+          "type": "Effect",
+          "effectName": "Pars + Strobes + Spots"
+        },
+        {
+          "dmxRange": [140, 147],
+          "type": "Effect",
+          "effectName": "Pars and Derby Lights"
+        },
+        {
+          "dmxRange": [148, 155],
+          "type": "Effect",
+          "effectName": "Pars and Laser"
+        },
+        {
+          "dmxRange": [156, 163],
+          "type": "Effect",
+          "effectName": "Pars and Strobes"
+        },
+        {
+          "dmxRange": [164, 171],
+          "type": "Effect",
+          "effectName": "Pars and Spots"
+        },
+        {
+          "dmxRange": [172, 179],
+          "type": "Effect",
+          "effectName": "Derby Lights and Laser"
+        },
+        {
+          "dmxRange": [180, 187],
+          "type": "Effect",
+          "effectName": "Derby Lights and Strobes"
+        },
+        {
+          "dmxRange": [188, 195],
+          "type": "Effect",
+          "effectName": "Derby Lights and Spots"
+        },
+        {
+          "dmxRange": [196, 203],
+          "type": "Effect",
+          "effectName": "Laser and Strobes"
+        },
+        {
+          "dmxRange": [204, 211],
+          "type": "Effect",
+          "effectName": "Laser and Spots"
+        },
+        {
+          "dmxRange": [212, 219],
+          "type": "Effect",
+          "effectName": "Strobes and Spots"
+        },
+        {
+          "dmxRange": [220, 227],
+          "type": "Effect",
+          "effectName": "Pars only"
+        },
+        {
+          "dmxRange": [228, 235],
+          "type": "Effect",
+          "effectName": "Derby Lights only"
+        },
+        {
+          "dmxRange": [236, 243],
+          "type": "Effect",
+          "effectName": "Laser only"
+        },
+        {
+          "dmxRange": [244, 251],
+          "type": "Effect",
+          "effectName": "Strobes only"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Spots only"
+        }
+      ]
+    },
+    "Speed / Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Auto mode speed (CH1 value 0–127)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound mode sensitivity (CH1 value 128–255)"
+        }
+      ]
+    },
+    "Spot XY Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "52-channel",
+      "shortName": "52ch",
+      "channels": [
+        "Par 1 Red",
+        "Par 1 Green",
+        "Par 1 Blue",
+        "Par 1 Amber",
+        "Par 1 White",
+        "Par 1 UV",
+        "Par 1 Strobe",
+        "Par 2 Red",
+        "Par 2 Green",
+        "Par 2 Blue",
+        "Par 2 Amber",
+        "Par 2 White",
+        "Par 2 UV",
+        "Par 2 Strobe",
+        "Derby 1 Red",
+        "Derby 1 Green",
+        "Derby 1 Blue",
+        "Derby 1 White",
+        "Derby 1 Strobe",
+        "Derby 1 Rotation",
+        "Derby 2 Red",
+        "Derby 2 Green",
+        "Derby 2 Blue",
+        "Derby 2 White",
+        "Derby 2 Strobe",
+        "Derby 2 Rotation",
+        "Flash 1 Dimmer",
+        "Flash 2 Dimmer",
+        "Flash 3 Dimmer",
+        "Flash 4 Dimmer",
+        "Flash Strobe",
+        "Laser Color",
+        "Laser Strobe",
+        "Laser Rotation",
+        "Spot 1 Pan",
+        "Spot 1 Pan Fine",
+        "Spot 1 Tilt",
+        "Spot 1 Tilt Fine",
+        "Spot 1 Pan/Tilt Speed",
+        "Spot 1 Color",
+        "Spot 1 Gobo",
+        "Spot 1 Dimmer",
+        "Spot 1 Strobe",
+        "Spot 2 Pan",
+        "Spot 2 Pan Fine",
+        "Spot 2 Tilt",
+        "Spot 2 Tilt Fine",
+        "Spot 2 Pan/Tilt Speed",
+        "Spot 2 Color",
+        "Spot 2 Gobo",
+        "Spot 2 Dimmer",
+        "Spot 2 Strobe"
+      ]
+    },
+    {
+      "name": "30-channel",
+      "shortName": "30ch",
+      "comment": "Both pars and both derbies share channels respectively. Both spots share channels.",
+      "channels": [
+        "Par Red",
+        "Par Green",
+        "Par Blue",
+        "Par Amber",
+        "Par White",
+        "Par UV",
+        "Par Strobe",
+        "Derby Red",
+        "Derby Green",
+        "Derby Blue",
+        "Derby White",
+        "Derby Strobe",
+        "Derby Rotation",
+        "Flash 1 Dimmer",
+        "Flash 2 Dimmer",
+        "Flash 3 Dimmer",
+        "Flash 4 Dimmer",
+        "Flash Strobe",
+        "Laser Color",
+        "Laser Strobe",
+        "Laser Rotation",
+        "Spot Pan",
+        "Spot Pan Fine",
+        "Spot Tilt",
+        "Spot Tilt Fine",
+        "Spot Pan/Tilt Speed",
+        "Spot Color",
+        "Spot Gobo",
+        "Spot Dimmer",
+        "Spot Strobe"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Operation",
+        "Speed / Sound Sensitivity",
+        "Spot XY Speed"
+      ]
+    }
+  ]
+}
