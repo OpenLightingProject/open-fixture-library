@@ -1,0 +1,215 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ES 150 3-in1 (19ch)",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MiniPC", "Anonym"],
+    "createDate": "2026-06-07",
+    "lastModifyDate": "2026-06-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-06-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.4)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "X-motor Electrodeless": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "None"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "Maintenance",
+          "comment": "From slow to fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "From fast to slow"
+        }
+      ]
+    },
+    "Y Axis 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y Axis 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Y Axis 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LS 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "The Laser dims light from to light"
+      }
+    },
+    "LS 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "The Laser dims light from to light"
+      }
+    },
+    "LS 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "The Laser dims light from to light"
+      }
+    },
+    "Strobe 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "None",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "Combined Effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Combined Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "From slow to fast"
+      }
+    },
+    "Macro effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Channel 1 to 18 It's active"
+        },
+        {
+          "dmxRange": [51, 149],
+          "type": "Effect",
+          "effectName": "Ra dom Self-Proppelled"
+        },
+        {
+          "dmxRange": [150, 250],
+          "type": "Effect",
+          "effectName": "Voice activated self proppelled"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "3 seconds reset"
+        }
+      ]
+    }
+  },
+  "modes": []
+}
