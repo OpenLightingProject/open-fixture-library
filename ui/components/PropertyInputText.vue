@@ -20,7 +20,7 @@ interface Props {
   };
   required?: boolean;
   hint?: string;
-  value: string | null;
+  modelValue: string | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  input: [value: string];
+  'update:model-value': [value: string];
   blur: [value: string];
   'vf:validate': [validationData: Record<string, string | null>];
 }>();
@@ -41,7 +41,7 @@ const validationData = computed(() => ({
   maxlength: 'maxLength' in props.schemaProperty ? `${props.schemaProperty.maxLength}` : null,
 }));
 
-watch(() => props.value, (newValue) => {
+watch(() => props.modelValue, (newValue) => {
   localValue.value = newValue ? String(newValue) : '';
 }, {
   immediate: true,
@@ -55,7 +55,7 @@ watch(validationData, (newValidationData) => {
 });
 
 const update = () => {
-  emit('input', localValue.value);
+  emit('update:model-value', localValue.value);
 };
 
 const onBlur = async () => {

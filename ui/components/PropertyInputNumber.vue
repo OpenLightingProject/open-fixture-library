@@ -7,7 +7,7 @@
     :data-exclusive-maximum="exclusiveMaximum"
     :step="step"
     :placeholder="hint"
-    :value="value === 'invalid' ? '' : value"
+    :value="modelValue === 'invalid' ? '' : modelValue"
     type="number"
     v-on="lazy ? { change: update } : { input: update }"
     @focus="$emit('focus', $event)"
@@ -27,7 +27,7 @@ interface Props {
   hint?: string;
   minimum?: number | string;
   maximum?: number | string;
-  value: number | string | null;
+  modelValue: number | string | null;
   lazy?: boolean;
   stepOverride?: number;
 }
@@ -35,7 +35,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  input: [value: number | string | null];
+  'update:model-value': [value: number | string | null];
   focus: [event: FocusEvent];
   blur: [event: FocusEvent];
   'vf:validate': [validationData: Record<string, string | null>];
@@ -107,12 +107,12 @@ watch(validationData, (newValidationData) => {
 const update = () => {
   const input = document.activeElement as HTMLInputElement;
   if (input.validity && input.validity.badInput) {
-    emit('input', 'invalid');
+    emit('update:model-value', 'invalid');
     return;
   }
 
   if (input.value === '') {
-    emit('input', null);
+    emit('update:model-value', null);
     return;
   }
 
@@ -124,7 +124,7 @@ const update = () => {
     value = 'invalid';
   }
 
-  emit('input', value);
+  emit('update:model-value', value);
 };
 
 defineExpose({

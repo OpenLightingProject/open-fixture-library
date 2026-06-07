@@ -2,7 +2,7 @@
   <select
     v-model="localValue"
     :required="required"
-    :class="{ empty: value === '' }">
+    :class="{ empty: modelValue === '' }">
     <option :disabled="required" value="">unknown</option>
     <option
       v-for="item of schemaProperty.enum"
@@ -21,7 +21,7 @@ interface Props {
   };
   required?: boolean;
   additionHint?: string;
-  value: string;
+  modelValue: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,13 +29,13 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  input: [value: string];
+  'update:model-value': [value: string];
 }>();
 
 const localValue = computed({
-  get: () => props.value,
+  get: () => props.modelValue,
   set: (newValue: string) => {
-    emit('input', newValue);
+    emit('update:model-value', newValue);
   },
 });
 

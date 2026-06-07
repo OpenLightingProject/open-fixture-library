@@ -86,7 +86,7 @@ interface Props {
     oneOf?: object[];
   };
   required?: boolean;
-  value: string | number | null;
+  modelValue: string | number | null;
   associatedEntity?: unknown;
   minNumber?: number;
   maxNumber?: number;
@@ -96,12 +96,12 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   required: false,
-  value: '',
+  modelValue: '',
   wide: false,
 });
 
 const emit = defineEmits<{
-  input: [value: string | number | null];
+  'update:model-value': [value: string | number | null];
   focus: [];
   blur: [];
   'unit-selected': [unitString: string];
@@ -151,7 +151,7 @@ const units = computed(() => {
 });
 
 const selectedUnit = computed({
-  get: () => getSelectedUnit(props.value, enumValues.value, unitNames.value, units.value),
+  get: () => getSelectedUnit(props.modelValue, enumValues.value, unitNames.value, units.value),
   set: (newUnit: string) => {
     if (enumValues.value.includes(newUnit) || newUnit === '') {
       update(newUnit);
@@ -176,11 +176,11 @@ const hasNumber = computed(() => hasNumberFunc(selectedUnit.value, enumValues.va
 
 const selectedNumber = computed({
   get: () => {
-    if (typeof props.value !== 'string') {
-      return props.value;
+    if (typeof props.modelValue !== 'string') {
+      return props.modelValue;
     }
 
-    const number = Number.parseFloat(props.value.replace(selectedUnit.value, ''));
+    const number = Number.parseFloat(props.modelValue.replace(selectedUnit.value, ''));
 
     return Number.isNaN(number) ? '' : number;
   },
@@ -227,7 +227,7 @@ const focus = () => {
 };
 
 const update = (newValue: string | number | null) => {
-  emit('input', newValue);
+  emit('update:model-value', newValue);
 };
 
 const setUnitString = (newUnitString: string) => {
