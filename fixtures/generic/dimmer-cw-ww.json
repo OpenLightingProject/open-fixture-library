@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dimmer CW & WW",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Aaron"],
+    "createDate": "2026-06-07",
+    "lastModifyDate": "2026-06-07"
+  },
+  "comment": "\\",
+  "links": {
+    "other": [
+      "https://drive.google.com/file/d/1xpK-Kn4St30Y4PjZjzFdIZN0HTR0-pfP/view?usp=drive_link"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CW": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "WW": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Other": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mini Profile",
+      "channels": [
+        "Dimmer",
+        "CW",
+        "WW",
+        "Strobe Speed",
+        "Other"
+      ]
+    }
+  ]
+}
