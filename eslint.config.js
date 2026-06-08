@@ -354,6 +354,7 @@ const disabledRules = [
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined', // conflicts with `consistent-return`
   'unicorn/prefer-global-this',
+  'unicorn/prefer-https', // there are still many HTTP-only websites
   'unicorn/prefer-node-protocol', // not supported by Nuxt yet
   'vue/multiline-html-element-content-newline',
   'vue/singleline-html-element-content-newline',
