@@ -307,9 +307,8 @@
 </style>
 
 <script setup lang="ts">
+import { randomUUID } from 'node:crypto';
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidv4 } from 'uuid';
-
 import { capabilityTypes, channelProperties } from '~~/lib/schema-properties.js';
 import {
   constants,
@@ -435,7 +434,7 @@ function getFixtureEditor() {
 
 function setEditModeCreate() {
   props.channel.editMode = `create`;
-  props.channel.uuid = uuidv4();
+  props.channel.uuid = randomUUID();
 }
 
 function getChannelName(channelUuid: string) {
@@ -728,7 +727,7 @@ function saveEditedChannel() {
 function saveDuplicatedChannel() {
   const oldChannelKey = props.channel.uuid;
 
-  const newChannelKey = uuidv4();
+  const newChannelKey = randomUUID();
   const newChannel = getSanitizedChannel(props.channel);
   newChannel.uuid = newChannelKey;
   (props.fixture.availableChannels as any)[newChannelKey] = newChannel;
