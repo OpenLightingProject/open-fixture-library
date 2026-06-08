@@ -158,7 +158,7 @@ const enabledRuleParameters = {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
+  'unicorn/prefer-export-from': [{ checkUsedVariables: false }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -351,7 +351,7 @@ const disabledRules = [
   'unicorn/no-process-exit',
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined', // conflicts with `consistent-return`
-  'unicorn/prefer-dom-node-dataset', // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
+  'unicorn/dom-node-dataset', // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
   'unicorn/prefer-global-this',
   'unicorn/prefer-node-protocol', // not supported by Nuxt yet
   'vue/multiline-html-element-content-newline',
