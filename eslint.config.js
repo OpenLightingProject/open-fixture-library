@@ -153,6 +153,7 @@ const enabledRuleParameters = {
   'sonarjs/no-inverted-boolean-check': [],
 
   // eslint-plugin-unicorn
+  'unicorn/dom-node-dataset': [{ preferAttributes: true }],
   'unicorn/import-style': [{
     styles: {
       'fs/promises': { named: true },
@@ -351,7 +352,6 @@ const disabledRules = [
   'unicorn/no-process-exit',
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined', // conflicts with `consistent-return`
-  'unicorn/dom-node-dataset', // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
   'unicorn/prefer-global-this',
   'unicorn/prefer-node-protocol', // not supported by Nuxt yet
   'vue/multiline-html-element-content-newline',
