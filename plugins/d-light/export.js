@@ -62,7 +62,7 @@ function exportFixtureMode(fixture, mode, options) {
         },
         ManufacturerName: fixture.manufacturer.name,
         ModelName: `${fixture.name} (${mode.name})`,
-        creationDate: fixture.meta.createDate.toISOString().split('T')[0],
+        creationDate: fixture.meta.createDate.toISOString().split('T', 1)[0],
       },
     })
     .element('Attributes');

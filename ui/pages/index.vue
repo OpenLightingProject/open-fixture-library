@@ -155,7 +155,7 @@ export default {
         name: this.getFixtureName(fixtureKey),
         action: register.filesystem[fixtureKey].lastAction,
         date: new Date(register.filesystem[fixtureKey].lastActionDate),
-        color: register.colors[fixtureKey.split('/')[0]],
+        color: register.colors[fixtureKey.split('/', 1)[0]],
       }),
     );
 
@@ -178,7 +178,7 @@ export default {
      * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manufacturerKey = fixtureKey.split('/')[0];
+      const manufacturerKey = fixtureKey.split('/', 1)[0];
       const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 
