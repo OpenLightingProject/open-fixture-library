@@ -153,12 +153,13 @@ const enabledRuleParameters = {
   'sonarjs/no-inverted-boolean-check': [],
 
   // eslint-plugin-unicorn
+  'unicorn/dom-node-dataset': [{ preferAttributes: true }],
   'unicorn/import-style': [{
     styles: {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
+  'unicorn/prefer-export-from': [{ checkUsedVariables: false }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -347,12 +348,13 @@ const disabledRules = [
   'sonarjs/pseudo-random',
   'unicorn/consistent-function-scoping',
   'unicorn/filename-case',
+  'unicorn/no-this-outside-of-class', // needed in Vue Options API
   'unicorn/no-null',
   'unicorn/no-process-exit',
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined', // conflicts with `consistent-return`
-  'unicorn/prefer-dom-node-dataset', // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
   'unicorn/prefer-global-this',
+  'unicorn/prefer-https', // there are still many HTTP-only websites
   'unicorn/prefer-node-protocol', // not supported by Nuxt yet
   'vue/multiline-html-element-content-newline',
   'vue/singleline-html-element-content-newline',
