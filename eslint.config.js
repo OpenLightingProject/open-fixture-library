@@ -348,6 +348,7 @@ const disabledRules = [
   'sonarjs/pseudo-random',
   'unicorn/consistent-function-scoping',
   'unicorn/filename-case',
+  'unicorn/no-this-outside-of-class', // needed in Vue Options API
   'unicorn/no-null',
   'unicorn/no-process-exit',
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
