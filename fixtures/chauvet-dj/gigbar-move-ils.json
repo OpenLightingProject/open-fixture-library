@@ -47,56 +47,46 @@
         },
         {
           "type": "Gobo",
-          "resource": "gobos/10-circles",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/10-circles"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/circular-drops",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/circular-drops"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/3-fold-spiral",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/3-fold-spiral"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/dots-go-deeper",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/dots-go-deeper"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/four-dots-in-square",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/four-dots-in-square"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/flattend-circles",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/flattend-circles"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/biohazard",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/biohazard"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/circle-outline",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/circle-outline"
         },
         {
           "type": "Gobo",
-          "resource": "gobos/six_petal_flower",
-          "helpWanted": "Verify exact gobo shape against the physical fixture or a clearer image from the manual."
+          "resource": "gobos/six-petal-flower"
         }
       ]
     },
     "Color Wheel": {
       "slots": [
         {
-          "type": "Open",
-          "name": "White"
+          "type": "Open"
         },
         {
           "type": "Color",
@@ -909,7 +899,8 @@
           ],
           "type": "WheelSlot",
           "wheel": "Color Wheel",
-          "slotNumber": "1-10",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 10,
           "comment": "Color index (intermediate positions)"
         },
         {
@@ -1243,7 +1234,7 @@
             215
           ],
           "type": "ShutterStrobe",
-          "shutterEffect": "Random",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -1383,7 +1374,8 @@
           ],
           "type": "WheelSlot",
           "wheel": "Color Wheel",
-          "slotNumber": "1-10",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 10,
           "comment": "Color index (intermediate positions)"
         },
         {
@@ -1717,7 +1709,7 @@
             215
           ],
           "type": "ShutterStrobe",
-          "shutterEffect": "Random",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -1857,7 +1849,8 @@
           ],
           "type": "WheelSlot",
           "wheel": "Color Wheel",
-          "slotNumber": "1-10",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 10,
           "comment": "Color index (intermediate positions)"
         },
         {
@@ -2191,7 +2184,7 @@
             215
           ],
           "type": "ShutterStrobe",
-          "shutterEffect": "Random",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -2551,7 +2544,6 @@
     {
       "name": "30-channel",
       "shortName": "30ch",
-      "comment": "Both pars and both derbies share channels respectively. Both spots share channels.",
       "channels": [
         "Par Red",
         "Par Green",
