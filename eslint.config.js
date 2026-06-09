@@ -13,6 +13,7 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
+import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
 
 const eslintPluginNuxtConfigRecommended = {
   files: ['**/*.{js,vue}'],
@@ -473,6 +474,13 @@ export default [
   },
   {
     files: ['fixtures/**/*.json'],
+    plugins: {
+      ofl: {
+        rules: {
+          'fixture-json-array-format': fixtureJsonArrayFormatRule,
+        },
+      },
+    },
     rules: {
       // allow alignment of pixel keys in matrix
       '@stylistic/no-multi-spaces': ['error', {
@@ -482,6 +490,7 @@ export default [
       }],
       'jsonc/array-bracket-spacing': 'off',
 
+      'ofl/fixture-json-array-format': 'error',
       'unicorn/prevent-abbreviations': 'off',
     },
   },
