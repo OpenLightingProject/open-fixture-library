@@ -1,0 +1,196 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Litepanel Gemini 2x1",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Bobbi"],
+    "createDate": "2022-01-29",
+    "lastModifyDate": "2022-01-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.litepanels.com/en/products/product/?catalog=1027&product=1605"
+    ],
+    "productPage": [
+      "https://www.litepanels.com/en/products/product/?catalog=1027&product=1605"
+    ],
+    "video": [
+      "https://www.litepanels.com/en/products/product/?catalog=1027&product=1605"
+    ]
+  },
+  "rdm": {
+    "modelId": 7
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "reserved"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 42],
+          "type": "Generic",
+          "comment": "CCT Mode"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Generic",
+          "comment": "HSI Mode"
+        },
+        {
+          "dmxRange": [86, 127],
+          "type": "Generic",
+          "comment": "Gel Mode"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "Generic",
+          "comment": "RGBW Mode"
+        },
+        {
+          "dmxRange": [171, 212],
+          "type": "Generic",
+          "comment": "Effects (loop) Mode"
+        },
+        {
+          "dmxRange": [213, 255],
+          "type": "Generic",
+          "comment": "Presets Trigger Mode"
+        }
+      ]
+    },
+    "DMX Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Fan Auto (Fan On with Full Power)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Fan Delayed (Fan On at Hi Temp)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Fan Max (Maximum Speed Fan)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Fan Off (Power reduced by 50%)"
+        }
+      ]
+    },
+    "Green Offset": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green Offset",
+        "Reserved",
+        "Mode",
+        "DMX Fan Control"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation",
+        "Reserved",
+        "Mode",
+        "DMX Fan Control"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "White",
+        "Red",
+        "Mode",
+        "DMX Fan Control",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
