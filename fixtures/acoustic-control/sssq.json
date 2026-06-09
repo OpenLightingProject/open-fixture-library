@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sssq",
+  "categories": ["Blinder", "Stand", "Scanner", "Effect", "Fan", "Dimmer", "Hazer", "Flower", "Laser", "Moving Head", "Matrix"],
+  "meta": {
+    "authors": ["sasasq"],
+    "createDate": "2026-06-09",
+    "lastModifyDate": "2026-06-09"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=biYepYB33uw"
+    ]
+  },
+  "rdm": {
+    "modelId": 8,
+    "softwareVersion": "qsqsax"
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse",
+        "speedStart": "slow",
+        "speedEnd": "slow",
+        "duration": "instant"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "saaecws",
+      "channels": [
+        "Strobe"
+      ]
+    }
+  ]
+}
