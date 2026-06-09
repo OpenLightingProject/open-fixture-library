@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
 
-  "definitions": {
+  "$defs": {
     "htmlStringLines": {
       "description": "HTML string lines, will be joined by \\n.",
       "type": "array",
@@ -39,18 +39,18 @@
         "type": "string"
       }
     },
-    "description": { "$ref": "#/definitions/htmlStringLines" },
+    "description": { "$ref": "#/$defs/htmlStringLines" },
     "links": {
       "type": "object",
       "minProperties": 1,
-      "additionalProperties": { "$ref": "#/definitions/urlString" },
+      "additionalProperties": { "$ref": "#/$defs/urlString" },
       "default": {
         "Website": "",
         "Fixture library download": "",
         "Fixture format documentation": ""
       }
     },
-    "fixtureUsage": { "$ref": "#/definitions/htmlStringLines" },
+    "fixtureUsage": { "$ref": "#/$defs/htmlStringLines" },
     "fileLocations": {
       "type": "object",
       "minProperties": 1,
@@ -59,14 +59,14 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": { "$ref": "#/definitions/fileLocations" },
+      "additionalProperties": { "$ref": "#/$defs/fileLocations" },
       "default": {
         "Windows": "",
         "Mac OS": "",
         "Linux": ""
       }
     },
-    "additionalInfo": { "$ref": "#/definitions/htmlStringLines" },
+    "additionalInfo": { "$ref": "#/$defs/htmlStringLines" },
     "helpWanted": { "type": "string" }
   },
   "required": ["$schema", "name", "description", "links"],

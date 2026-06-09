@@ -4,12 +4,12 @@
 
   "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
 
-  "definitions": {
+  "$defs": {
     "pixelNumberConstraintArray": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "$ref": "#/definitions/pixelNumberConstraint" }
+      "items": { "$ref": "#/$defs/pixelNumberConstraint" }
     },
     "pixelNumberConstraint": {
       "oneOf": [
@@ -105,9 +105,9 @@
             "type": "object",
             "minProperties": 1,
             "properties": {
-              "x": { "$ref": "#/definitions/pixelNumberConstraintArray" },
-              "y": { "$ref": "#/definitions/pixelNumberConstraintArray" },
-              "z": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "x": { "$ref": "#/$defs/pixelNumberConstraintArray" },
+              "y": { "$ref": "#/$defs/pixelNumberConstraintArray" },
+              "z": { "$ref": "#/$defs/pixelNumberConstraintArray" },
               "name": {
                 "type": "array",
                 "minItems": 1,
