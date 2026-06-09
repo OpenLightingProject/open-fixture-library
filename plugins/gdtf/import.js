@@ -329,7 +329,7 @@ export async function importFixtures(buffer, filename, authorName) {
                 return [];
               }
 
-              const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split('.')[0]);
+              const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split('.', 1)[0]);
 
               const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeFrom, 0);
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
@@ -370,7 +370,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
           // Slave was renamed to Follower in GDTF v0.88
           const followerChannelReference = gdtfRelation.$.Follower || gdtfRelation.$.Slave;
-          const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split('.')[0]);
+          const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split('.', 1)[0]);
           const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
 
           const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom, 0);

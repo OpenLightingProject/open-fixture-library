@@ -77,7 +77,7 @@ export async function exportFixtures(fixtures, options) {
     name: 'UserLibrary.xml',
     content: xml.end({
       pretty: true,
-      indent: '    ',
+      indent: ' '.repeat(4),
     }),
     mimetype: 'application/xml',
     fixtures,

@@ -3,7 +3,7 @@ import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
-import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginNuxt from 'eslint-plugin-nuxt';
@@ -85,16 +85,16 @@ const enabledRuleParameters = {
   '@stylistic/no-confusing-arrow': [],
   '@stylistic/quotes': ['single'],
 
-  // eslint-plugin-import
-  'import/extensions': ['ignorePackages'],
-  'import/first': [],
-  'import/newline-after-import': [],
-  'import/no-commonjs': [{ allowConditionalRequire: false }],
-  'import/no-dynamic-require': [],
-  'import/no-unresolved': [{
+  // eslint-plugin-import-x
+  'import-x/extensions': ['ignorePackages'],
+  'import-x/first': [],
+  'import-x/newline-after-import': [],
+  'import-x/no-commonjs': [{ allowConditionalRequire: false }],
+  'import-x/no-dynamic-require': [],
+  'import-x/no-unresolved': [{
     ignore: ['^@octokit/rest$', '^uuid$'],
   }],
-  'import/order': [{
+  'import-x/order': [{
     'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
     'alphabetize': {
       order: 'asc',
@@ -153,12 +153,13 @@ const enabledRuleParameters = {
   'sonarjs/no-inverted-boolean-check': [],
 
   // eslint-plugin-unicorn
+  'unicorn/dom-node-dataset': [{ preferAttributes: true }],
   'unicorn/import-style': [{
     styles: {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
+  'unicorn/prefer-export-from': [{ checkUsedVariables: false }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -347,12 +348,13 @@ const disabledRules = [
   'sonarjs/pseudo-random',
   'unicorn/consistent-function-scoping',
   'unicorn/filename-case',
+  'unicorn/no-this-outside-of-class', // needed in Vue Options API
   'unicorn/no-null',
   'unicorn/no-process-exit',
   'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined', // conflicts with `consistent-return`
-  'unicorn/prefer-dom-node-dataset', // grepping ability of `getAttribute('data-foo-bar')` is better than `dataset.fooBar`
   'unicorn/prefer-global-this',
+  'unicorn/prefer-https', // there are still many HTTP-only websites
   'unicorn/prefer-node-protocol', // not supported by Nuxt yet
   'vue/multiline-html-element-content-newline',
   'vue/singleline-html-element-content-newline',
@@ -449,7 +451,7 @@ export default [
     files: ['**/*.md/*.js'],
     rules: {
       'jsdoc/require-jsdoc': 'off',
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
     },
   },
   {
@@ -458,7 +460,7 @@ export default [
       sourceType: 'script',
     },
     rules: {
-      'import/no-commonjs': 'off',
+      'import-x/no-commonjs': 'off',
       'unicorn/prefer-module': 'off',
       'unicorn/prefer-top-level-await': 'off',
     },
