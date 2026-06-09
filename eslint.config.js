@@ -13,7 +13,6 @@ import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
 
-
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   arrowParens: true,
   semi: true,
