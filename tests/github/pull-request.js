@@ -39,8 +39,8 @@ export async function checkEnv() {
 export async function init() {
   await checkEnv();
 
-  repoOwner = process.env.GITHUB_REPOSITORY.split('/')[0];
-  repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+  repoOwner = process.env.GITHUB_REPOSITORY.split('/', 1)[0];
+  repoName = process.env.GITHUB_REPOSITORY.split('/', 2)[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
@@ -158,7 +158,7 @@ export async function fetchChangedComponents() {
     if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
       changeSummary.exportTests.push([
         segments[1], // plugin key
-        segments[3].split('.')[0], // test key
+        segments[3].split('.', 1)[0], // test key
       ]);
       return;
     }
@@ -171,7 +171,7 @@ export async function fetchChangedComponents() {
     if (segments[0] === 'fixtures' && segments.length === 3) {
       changeSummary.fixtures.push([
         segments[1], // man key
-        segments[2].split('.')[0], // fix key
+        segments[2].split('.', 1)[0], // fix key
       ]);
     }
   }
@@ -227,7 +227,7 @@ export async function updateComment(test) {
     // get rid of \r linebreaks
     comment.body = comment.body.replaceAll('\r', '');
 
-    if (lines[0] !== comment.body.split('\n')[0]) {
+    if (lines[0] !== comment.body.split('\n', 1)[0]) {
       // the comment was not created by this test script
       return [];
     }

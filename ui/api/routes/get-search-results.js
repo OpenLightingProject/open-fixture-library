@@ -32,7 +32,7 @@ export async function getSearchResults({ request }) {
  * @returns {boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split('/')[0];
+  const manufacturer = fixtureKey.split('/', 1)[0];
   const fixtureData = register.filesystem[fixtureKey];
 
   return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixtureData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
@@ -45,7 +45,7 @@ function queryMatch(searchQuery, fixtureKey) {
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split('/')[0];
+  const manufacturer = fixtureKey.split('/', 1)[0];
 
   return (
     manufacturersQuery.length === 0
