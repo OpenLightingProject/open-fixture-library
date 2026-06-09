@@ -1,0 +1,415 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 500B II",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691141297037-082920-1124121241519342-Forza+500B+II+DMX+%E9%80%9A%E9%81%93%E8%A1%A8%EF%BC%88NANLITE%EF%BC%89V1+20221228+W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-forza-300-300b-500-500b-ii"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 230, 142],
+    "weight": 4.34,
+    "power": 580,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Fan on"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Green-Magenta Point 8bit": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "-80% magenta"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-79%…-1% magenta"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…79% green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "+80% green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit": {
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "-80% magenta"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-79%…-1% magenta"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…79% green"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "+80% green"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strob"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "Mode Effect": {
+      "defaultValue": 64,
+      "highlightValue": 64,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Effect Mode"
+      }
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "CCT LOOP"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Generic",
+          "comment": "INT LOOP"
+        },
+        {
+          "dmxRange": [37, 54],
+          "type": "Generic",
+          "comment": "FLASH"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Generic",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [73, 91],
+          "type": "Generic",
+          "comment": "STORM"
+        },
+        {
+          "dmxRange": [92, 109],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "PAPARAZZI"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Generic",
+          "comment": "CANDLE/FIRE"
+        },
+        {
+          "dmxRange": [146, 163],
+          "type": "Generic",
+          "comment": "BAD BULB"
+        },
+        {
+          "dmxRange": [164, 182],
+          "type": "Generic",
+          "comment": "FIREWORK"
+        },
+        {
+          "dmxRange": [183, 200],
+          "type": "Generic",
+          "comment": "EXPLOSION"
+        },
+        {
+          "dmxRange": [201, 218],
+          "type": "Generic",
+          "comment": "WELDING"
+        },
+        {
+          "dmxRange": [219, 255],
+          "type": "Generic",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Param1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param4": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param6": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param7": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param8": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT 8bit Reduced",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "CCT 16bit Reduced",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Dimmer",
+        "Mode CCT",
+        "CCT",
+        "Green-Magenta Point 8bit",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4",
+        "Reserved5",
+        "Reserved6",
+        "Reserved7",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - EFFECT",
+      "shortName": "Ultimate EFFECT",
+      "channels": [
+        "Dimmer",
+        "Mode Effect",
+        "Effect Mode",
+        "Param1",
+        "Param2",
+        "Param3",
+        "Param4",
+        "Param5",
+        "Param6",
+        "Param7",
+        "Param8",
+        "Fan Control"
+      ]
+    }
+  ]
+}
