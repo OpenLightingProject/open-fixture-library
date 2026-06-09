@@ -3,7 +3,7 @@ import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
-import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginNuxt from 'eslint-plugin-nuxt';
@@ -85,16 +85,16 @@ const enabledRuleParameters = {
   '@stylistic/no-confusing-arrow': [],
   '@stylistic/quotes': ['single'],
 
-  // eslint-plugin-import
-  'import/extensions': ['ignorePackages'],
-  'import/first': [],
-  'import/newline-after-import': [],
-  'import/no-commonjs': [{ allowConditionalRequire: false }],
-  'import/no-dynamic-require': [],
-  'import/no-unresolved': [{
+  // eslint-plugin-import-x
+  'import-x/extensions': ['ignorePackages'],
+  'import-x/first': [],
+  'import-x/newline-after-import': [],
+  'import-x/no-commonjs': [{ allowConditionalRequire: false }],
+  'import-x/no-dynamic-require': [],
+  'import-x/no-unresolved': [{
     ignore: ['^@octokit/rest$', '^uuid$'],
   }],
-  'import/order': [{
+  'import-x/order': [{
     'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
     'alphabetize': {
       order: 'asc',
@@ -451,7 +451,7 @@ export default [
     files: ['**/*.md/*.js'],
     rules: {
       'jsdoc/require-jsdoc': 'off',
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
     },
   },
   {
@@ -460,7 +460,7 @@ export default [
       sourceType: 'script',
     },
     rules: {
-      'import/no-commonjs': 'off',
+      'import-x/no-commonjs': 'off',
       'unicorn/prefer-module': 'off',
       'unicorn/prefer-top-level-await': 'off',
     },
