@@ -16,7 +16,6 @@
 
     <LabeledInput
       :formstate="formstate"
-      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template #label>
@@ -65,68 +64,61 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-import EditorWheelSlots from '../EditorWheelSlots.vue';
+<script setup lang="ts">
+import { nextTick } from 'vue';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    EditorWheelSlots,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    channel: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        slotNumber: '',
-        slotNumberStart: null,
-        slotNumberEnd: null,
-        speedOrAngle: 'speed',
-        speed: '',
-        speedStart: null,
-        speedEnd: null,
-        angle: '',
-        angleStart: null,
-        angleEnd: null,
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      slotNumber?: string;
+      slotNumberStart?: string | null;
+      slotNumberEnd?: string | null;
+      speedOrAngle?: string;
+      speed?: string;
+      speedStart?: string | null;
+      speedEnd?: string | null;
+      angle?: string;
+      angleStart?: string | null;
+      angleEnd?: string | null;
+      comment?: string;
     };
-  },
-  computed: {
-    /**
-     * Called from {@link EditorCapabilityTypeData}
-     * @public
-     * @returns {string[]} Array of all props to reset to default data when capability is saved.
-     */
-    resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
+  };
+  channel: {
+    capabilities?: any[];
+  };
+  formstate?: object;
+}
 
-      return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
-    },
-  },
-  methods: {
-    async changeSpeedOrAngle(newValue) {
-      this.capability.typeData.speedOrAngle = newValue;
+const props = defineProps<Props>();
+const speedOrAngleInput = ref<any>(null);
 
-      await this.$nextTick();
-      this.$refs.speedOrAngleInput.focus();
-    },
-  },
+const defaultData = {
+  slotNumber: '',
+  slotNumberStart: null,
+  slotNumberEnd: null,
+  speedOrAngle: 'speed',
+  speed: '',
+  speedStart: null,
+  speedEnd: null,
+  angle: '',
+  angleStart: null,
+  angleEnd: null,
+  comment: '',
 };
+
+const resetProperties = computed(() => {
+  const resetProperty = props.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
+  return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
+});
+
+async function changeSpeedOrAngle(newValue: string) {
+  props.capability.typeData.speedOrAngle = newValue;
+
+  await nextTick();
+  if (speedOrAngleInput.value) {
+    speedOrAngleInput.value.focus();
+  }
+}
 </script>

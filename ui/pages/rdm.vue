@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="searchFor === `nothing`">
+    <template v-if="searchFor === 'nothing'">
 
       <h1>RDM Lookup</h1>
 
@@ -48,13 +48,13 @@
 
       <h1>RDM {{ searchFor }} not found</h1>
 
-      <template v-if="notFound === `fixture`">
+      <template v-if="notFound === 'fixture'">
         <p>The requested <a :href="`/${manufacturerKey}`">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
         <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
-      <template v-else-if="searchFor === `fixture`">
+      <template v-else-if="searchFor === 'fixture'">
         <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
@@ -67,114 +67,76 @@
   </div>
 </template>
 
-<script>
-import register from '../../fixtures/register.json';
-import LabeledInput from '../components/LabeledInput.vue';
+<script setup lang="ts">
+import register from '~~/fixtures/register.json';
 
-export default {
-  components: {
-    LabeledInput,
-  },
-  async asyncData({ query, $axios, redirect, error }) {
-    const manufacturerId = parseIntOrUndefined(query.manufacturerId);
-    const modelId = parseIntOrUndefined(query.modelId);
-    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
+const route = useRoute();
 
-    if (manufacturerId === undefined) {
-      return {
-        notFound: null,
-        searchFor: 'nothing',
-      };
-    }
+const manufacturerId = parseIntOrUndefined(route.query.manufacturerId as string);
+const modelId = parseIntOrUndefined(route.query.modelId as string);
+const personalityIndex = parseIntOrUndefined(route.query.personalityIndex as string);
 
-    if (!(String(manufacturerId) in register.rdm)) {
-      return {
-        notFound: 'manufacturer',
-        searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
-        manufacturerId,
-        modelId,
-      };
-    }
+const notFound = ref<string | null>(null);
+const searchFor = ref<string>('nothing');
+const manufacturerKey = ref<string | undefined>();
+const manufacturerName = ref<string>('');
+const modelIdRef = ref<number | undefined>();
 
+if (manufacturerId !== undefined) {
+  if (!(String(manufacturerId) in register.rdm)) {
+    notFound.value = 'manufacturer';
+    searchFor.value = modelId === undefined ? 'manufacturer' : 'fixture';
+    manufacturerId; // keep for template
+    modelIdRef.value = modelId;
+  }
+  else {
     const rdmManufacturer = register.rdm[String(manufacturerId)];
 
     if (modelId === undefined || String(modelId) in rdmManufacturer.models) {
-      return redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect);
-    }
-
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-
-    return {
-      notFound: 'fixture',
-      searchFor: 'fixture',
-      manufacturerId,
-      manufacturerKey: rdmManufacturer.key,
-      manufacturerName: manufacturers[rdmManufacturer.key].name,
-      modelId,
-    };
-  },
-  head() {
-    const title = 'RDM Lookup';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  computed: {
-    prefilledFixtureEditorUrl() {
-      if (this.searchFor !== 'fixture') {
-        return '/fixture-editor';
+      if (modelId === undefined) {
+        navigateTo(`/${rdmManufacturer.key}`, { redirectCode: 301 });
       }
+      else {
+        const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
+        navigateTo(`/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`, { redirectCode: 301 });
+      }
+    }
+    else {
+      const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
 
-      const useExistingManufacturer = this.manufacturerKey !== undefined;
-
-      const prefillObject = {
-        useExistingManufacturer,
-        manufacturerKey: useExistingManufacturer ? this.manufacturerKey : undefined,
-        newManufacturerRdmId: useExistingManufacturer ? undefined : this.manufacturerId,
-        rdmModelId: this.modelId,
-      };
-
-      return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
-    },
-  },
-};
-
-/**
- * @param {string | undefined} string The string to parse.
- * @returns {number | undefined} The parsed number, or undefined if the string can't be parsed.
- */
-function parseIntOrUndefined(string) {
-  const number = Number.parseInt(string, 10);
-  return Number.isNaN(number) ? undefined : number;
+      notFound.value = 'fixture';
+      searchFor.value = 'fixture';
+      manufacturerKey.value = rdmManufacturer.key;
+      manufacturerName.value = manufacturers.value?.[rdmManufacturer.key]?.name ?? '';
+      modelIdRef.value = modelId;
+    }
+  }
 }
 
-/**
- * @param {object} rdmManufacturer The manufacturer object that matches the provided RDM manufacturer id.
- * @param {number | undefined} modelId The provided RDM model id, or undefined.
- * @param {number | undefined} personalityIndex The provided RDM personality index, or undefined.
- * @param {(code: number, path: string) => void} redirect The redirect function to be called.
- */
-function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect) {
-  if (modelId === undefined) {
-    redirect(301, `/${rdmManufacturer.key}`);
-    return;
+const prefilledFixtureEditorUrl = computed(() => {
+  if (searchFor.value !== 'fixture') {
+    return '/fixture-editor';
   }
 
-  const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
+  const useExistingManufacturer = manufacturerKey.value !== undefined;
 
-  redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
+  const prefillObject = {
+    useExistingManufacturer,
+    manufacturerKey: useExistingManufacturer ? manufacturerKey.value : undefined,
+    newManufacturerRdmId: useExistingManufacturer ? undefined : manufacturerId,
+    rdmModelId: modelIdRef.value,
+  };
+
+  return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
+});
+
+useHead({
+  title: 'RDM Lookup',
+});
+
+function parseIntOrUndefined(string: string | undefined | null): number | undefined {
+  if (!string) return undefined;
+  const number = Number.parseInt(string, 10);
+  return Number.isNaN(number) ? undefined : number;
 }
 </script>

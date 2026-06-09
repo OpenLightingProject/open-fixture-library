@@ -37,45 +37,34 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputEntity from '../../PropertyInputEntity.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { capabilityTypes, entitiesSchema, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputEntity,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
-    const holdEntityName = holdPropertySchema.$ref.replace('definitions.json#/entities/', '');
-
-    return {
-      schemaDefinitions,
-      holdSchema: entitiesSchema[holdEntityName],
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        parameter: '',
-        parameterStart: null,
-        parameterEnd: null,
-        hold: '',
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      parameter?: string;
+      parameterStart?: string | null;
+      parameterEnd?: string | null;
+      hold?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
+const holdEntityName = holdPropertySchema.$ref.replace('definitions.json#/entities/', '');
+const holdSchema = entitiesSchema[holdEntityName];
+
+const defaultData = {
+  parameter: '',
+  parameterStart: null,
+  parameterEnd: null,
+  hold: '',
+  comment: '',
 };
 </script>

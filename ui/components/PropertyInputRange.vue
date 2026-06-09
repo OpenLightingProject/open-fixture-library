@@ -7,7 +7,7 @@
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
         :minimum="rangeMin"
-        :maximum="end === `invalid` ? rangeMax : end"
+        :maximum="end === 'invalid' ? rangeMax : end"
         :required="required || rangeIncomplete"
         :hint="startHint"
         lazy
@@ -20,7 +20,7 @@
         v-model="end"
         :name="`${name}-end`"
         :schema-property="schemaProperty.items"
-        :minimum="start === `invalid` ? rangeMin : start"
+        :minimum="start === 'invalid' ? rangeMin : start"
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
@@ -32,94 +32,84 @@
   </span>
 </template>
 
-<script>
-import { arrayProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
-import PropertyInputNumber from './PropertyInputNumber.vue';
+<script setup lang="ts">
+interface Props {
+  modelValue?: number[] | null;
+  name: string;
+  startHint?: string;
+  endHint?: string;
+  rangeMin?: number;
+  rangeMax?: number;
+  schemaProperty: {
+    items: object;
+  };
+  unit?: string;
+  required?: boolean;
+  formstate: object;
+}
 
-export default {
-  components: {
-    PropertyInputNumber,
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: null,
+  startHint: 'start',
+  endHint: 'end',
+  required: false,
+});
+
+const emit = defineEmits<{
+  'update:model-value': [range: number[] | null];
+  'start-updated': [];
+  'end-updated': [];
+  focus: [];
+  blur: [];
+  'vf:validate': [validationData: { 'complete-range': string; 'valid-range': string }];
+}>();
+
+const firstInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
+
+const validationData = ref({
+  'complete-range': '',
+  'valid-range': '',
+});
+
+const start = computed({
+  get: () => props.modelValue ? props.modelValue[0] : null,
+  set: (startInput: number | null) => {
+    emit('update:model-value', getRange(startInput, end.value));
+    emit('start-updated');
   },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
+});
+
+const end = computed({
+  get: () => props.modelValue ? props.modelValue[1] : null,
+  set: (endInput: number | null) => {
+    emit('update:model-value', getRange(start.value, endInput));
+    emit('end-updated');
   },
-  props: {
-    modelValue: arrayProp().withDefault(null),
-    name: stringProp().required,
-    startHint: stringProp().withDefault('start'),
-    endHint: stringProp().withDefault('end'),
-    rangeMin: numberProp().optional,
-    rangeMax: numberProp().optional,
-    schemaProperty: objectProp().required,
-    unit: stringProp().optional,
-    required: booleanProp().withDefault(false),
-    formstate: objectProp().required,
-  },
-  emits: {
-    'update:model-value': (range) => true,
-    'start-updated': () => true,
-    'end-updated': () => true,
-    'focus': () => true,
-    'blur': () => true,
-    'vf:validate': (validationData) => true,
-  },
-  data() {
-    return {
-      validationData: {
-        'complete-range': '',
-        'valid-range': '',
-      },
-    };
-  },
-  computed: {
-    start: {
-      get() {
-        return this.modelValue ? this.modelValue[0] : null;
-      },
-      set(startInput) {
-        this.$emit('update:model-value', getRange(startInput, this.end));
-        this.$emit('start-updated');
-      },
-    },
-    end: {
-      get() {
-        return this.modelValue ? this.modelValue[1] : null;
-      },
-      set(endInput) {
-        this.$emit('update:model-value', getRange(this.start, endInput));
-        this.$emit('end-updated');
-      },
-    },
-    rangeIncomplete() {
-      return this.modelValue && (this.start === null || this.end === null);
-    },
-  },
-  mounted() {
-    this.$emit('vf:validate', this.validationData);
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$refs.firstInput.focus();
-    },
-    onFocus(event) {
-      this.$emit('focus');
-    },
-    onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest('.range') !== event.relatedTarget.closest('.range')) {
-        this.$emit('blur');
-      }
-    },
-  },
+});
+
+const rangeIncomplete = computed(() => props.modelValue && (start.value === null || end.value === null));
+
+onMounted(() => {
+  emit('vf:validate', validationData.value);
+});
+
+const onFocus = () => {
+  emit('focus');
 };
 
-/**
- * @param {number | null} start Start value of the range or null.
- * @param {number | null} end End value of the range or null.
- * @returns {[number, number] | null} Range array with the inputs or null if both inputs were null.
- */
-function getRange(start, end) {
+const onBlur = (event: FocusEvent) => {
+  if (!(event.target && event.relatedTarget) || (event.target as Element).closest('.range') !== (event.relatedTarget as Element)?.closest('.range')) {
+    emit('blur');
+  }
+};
+
+defineExpose({
+  focus: () => {
+    firstInput.value?.focus();
+  },
+});
+
+function getRange(start: number | null, end: number | null): number[] | null {
   if (start === null && end === null) {
     return null;
   }

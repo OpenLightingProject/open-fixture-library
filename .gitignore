@@ -16,7 +16,11 @@ docker-compose.yml
 
 # Generated files
 .nuxt/
+.output/
 fixtures/register.json
+
+# opencode agent config
+.opencode/
 
 # Temporary files
 tmp/

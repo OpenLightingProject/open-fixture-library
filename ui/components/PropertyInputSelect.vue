@@ -2,7 +2,7 @@
   <select
     v-model="localValue"
     :required="required"
-    :class="{ empty: value === `` }">
+    :class="{ empty: modelValue === '' }">
     <option :disabled="required" value="">unknown</option>
     <option
       v-for="item of schemaProperty.enum"
@@ -14,34 +14,34 @@
   </select>
 </template>
 
-<script>
-import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  schemaProperty: {
+    enum: string[];
+  };
+  required?: boolean;
+  additionHint?: string;
+  modelValue: string;
+}
 
-export default {
-  props: {
-    schemaProperty: objectProp().required,
-    required: booleanProp().withDefault(false),
-    additionHint: stringProp().optional,
-    value: anyProp().required,
+const props = withDefaults(defineProps<Props>(), {
+  required: false,
+});
+
+const emit = defineEmits<{
+  'update:model-value': [value: string];
+}>();
+
+const localValue = computed({
+  get: () => props.modelValue,
+  set: (newValue: string) => {
+    emit('update:model-value', newValue);
   },
-  emits: {
-    input: (value) => true,
+});
+
+defineExpose({
+  focus: () => {
+    (document.activeElement as HTMLElement)?.focus();
   },
-  computed: {
-    localValue: {
-      get() {
-        return this.value;
-      },
-      set(newValue) {
-        this.$emit('input', newValue);
-      },
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$el.focus();
-    },
-  },
-};
+});
 </script>

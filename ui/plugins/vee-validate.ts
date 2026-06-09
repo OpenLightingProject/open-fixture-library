@@ -1,73 +1,75 @@
-import Vue from 'vue';
-import VueForm from 'vue-form';
+import { defineNuxtPlugin } from '#app';
+import { configure, defineRule } from 'vee-validate';
 
-Vue.use(VueForm, {
-  validators: {
-    'step'(value, stepValue) {
+export default defineNuxtPlugin({
+  name: 'vee-validate',
+  parallel: true,
+  setup() {
+    configure({
+      generateMessage: ({ field }) => `${field} is invalid`,
+    });
+
+    defineRule('step', (value: string, stepValue: string) => {
       return stepValue === 'any' || Number(value) % Number(stepValue) === 0;
-    },
-    'data-exclusive-minimum'(value, exclusiveMinimum) {
+    });
+
+    defineRule('exclusive-minimum', (value: number, exclusiveMinimum: number) => {
       return Number(value) > Number(exclusiveMinimum);
-    },
-    'data-exclusive-maximum'(value, exclusiveMaximum) {
+    });
+
+    defineRule('exclusive-maximum', (value: number, exclusiveMaximum: number) => {
       return Number(value) < Number(exclusiveMaximum);
-    },
-    'complete-range'(range) {
+    });
+
+    defineRule('complete-range', (range: [number | null, number | null] | null) => {
       return range === null || (range[0] !== null && range[1] !== null);
-    },
-    'valid-range'(range) {
+    });
+
+    defineRule('valid-range', (range: [number | null, number | null] | null) => {
       if (range === null) {
-        // allowed range
         return true;
       }
 
       if (range[0] === null || range[1] === null) {
-        // let complete-range validator handle this
         return true;
       }
 
       if (Number.isNaN(range[0]) || Number.isNaN(range[1])) {
-        // let number validator handle this
         return true;
       }
 
       return range[0] <= range[1];
-    },
-    'categories-not-empty'(categories) {
+    });
+
+    defineRule('categories-not-empty', (categories: string[]) => {
       return categories.length > 0;
-    },
-    'complete-dimensions'(dimensions) {
+    });
+
+    defineRule('complete-dimensions', (dimensions: [number | null, number | null, number | null] | null) => {
       return dimensions === null || (dimensions[0] !== null && dimensions[1] !== null && dimensions[2] !== null);
-    },
-    'start-with-uppercase-or-number'(value) {
+    });
+
+    defineRule('start-with-uppercase-or-number', (value: string) => {
       return /^[\dA-Z]/.test(value);
-    },
-    'no-mode-name'(value) {
+    });
+
+    defineRule('no-mode-name', (value: string) => {
       return !/\bmode\b/i.test(value);
-    },
-    'no-fine-channel-name'(value) {
+    });
+
+    defineRule('no-fine-channel-name', (value: string) => {
       if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
         return false;
       }
 
       return !/\bLSB\b|\bMSB\b/.test(value);
-    },
-    'entity-complete'(value, attributeValue, vnode) {
-      const component = vnode.componentInstance;
+    });
 
-      if (component.hasNumber) {
-        return component.selectedNumber !== '' && component.selectedNumber !== null;
-      }
-
-      return true;
-    },
-    'entities-have-same-units'(value, attributeValue, vnode) {
-      return vnode.componentInstance.hasSameUnit;
-    },
-    'valid-color-hex-list'(value) {
+    defineRule('valid-color-hex-list', (value: string) => {
       return /^\s*#[\da-f]{6}(?:\s*,\s*#[\da-f]{6})*\s*$/i.test(value);
-    },
-    'max-file-size'(file, attributeValue) {
+    });
+
+    defineRule('max-file-size', (file: File, attributeValue: string) => {
       if (typeof file === 'object') {
         let maxSize = Number.parseInt(attributeValue, 10);
 
@@ -82,6 +84,6 @@ Vue.use(VueForm, {
       }
 
       return true;
-    },
+    });
   },
 });

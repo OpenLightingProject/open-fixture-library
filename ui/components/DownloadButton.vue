@@ -1,10 +1,10 @@
 <template>
-  <div class="container" :class="{ 'only-select-button': buttonStyle === `select` && !showHelp }">
+  <div class="container" :class="{ 'only-select-button': buttonStyle === 'select' && !showHelp }">
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
-      v-if="buttonStyle === `select`"
+      v-if="buttonStyle === 'select'"
       @click="selectClicked = true"
-      @keyup.enter="$event.target.blur()"
+      @keyup.enter="($event.target as HTMLSelectElement).blur()"
       @change="onDownloadSelectChange($event)"
       @blur="onDownloadSelectBlur($event)">
       <option value="" disabled selected>{{ title }}</option>
@@ -15,13 +15,13 @@
     <div
       v-else
       class="download-button"
-      :class="{ home: buttonStyle === `home` }">
+      :class="{ home: buttonStyle === 'home' }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin of exportPlugins" :key="plugin.key">
           <a
             :href="`${baseLink}.${plugin.key}`"
-            :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"
+            :title="`Download ${plugin.name} fixture definition${isSingle ? '' : 's'}`"
             rel="nofollow"
             @click="onDownloadButton($event, plugin.key)">
             {{ plugin.name }}
@@ -33,7 +33,7 @@
     <NuxtLink
       v-if="showHelp"
       to="/about/plugins"
-      :target="buttonStyle === `home` ? null : `_blank`"
+      :target="buttonStyle === 'home' ? undefined : '_blank'"
       class="help-link">
       <OflSvg name="help-circle-outline" /><span class="name">Download instructions</span>
     </NuxtLink>
@@ -189,156 +189,146 @@ select {
 }
 </style>
 
-<script>
-import { booleanProp, integerProp, objectProp, oneOfProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface EditorFixtures {
+  fixtures: Record<string, unknown>;
+}
 
-export default {
-  props: {
-    // how many fixtures will be downloaded, if !isSingle?
-    fixtureCount: integerProp().withDefault(0),
-    // fixtures from the editor, not yet submitted
-    editorFixtures: objectProp().optional,
-    // the manufacturer key and fixture key of a submitted fixture
-    fixtureKey: stringProp().optional,
-    // the button style: default, 'home' or 'select'
-    buttonStyle: oneOfProp(['default', 'home', 'select']).withDefault('default'),
-    // show the help box
-    showHelp: booleanProp().withDefault(false),
-  },
-  data() {
-    return {
-      exportPlugins: [],
-      selectClicked: false,
-    };
-  },
-  async fetch() {
-    const plugins = await this.$axios.$get('/api/v1/plugins');
-    this.exportPlugins = plugins.exportPlugins.map(
-      (pluginKey) => ({
-        key: pluginKey,
-        name: plugins.data[pluginKey].name,
-      }),
-    );
-  },
-  computed: {
-    // returns whether we're handling only one single fixture here
-    // or all fixtures in a specific format
-    isSingle() {
-      return (this.editorFixtures && Object.keys(this.editorFixtures.fixtures).length === 1) || this.fixtureKey;
-    },
-    title() {
-      if (this.isSingle) {
-        return 'Download as…';
-      }
+interface Plugin {
+  key: string;
+  name: string;
+}
 
-      return `Download all ${this.fixtureCount} fixtures`;
-    },
-    baseLink() {
-      if (this.editorFixtures) {
-        return '/download-editor';
-      }
+interface PluginData {
+  name: string;
+  outdated?: boolean;
+  newPlugin?: string;
+  importPluginVersion?: string;
+  exportPluginVersion?: string;
+  exportTests?: string[];
+}
 
-      if (this.isSingle) {
-        return `/${this.fixtureKey}`;
-      }
+interface PluginsResponse {
+  importPlugins: string[];
+  exportPlugins: string[];
+  data: Record<string, PluginData>;
+}
 
-      return '/download';
-    },
-  },
-  methods: {
-    downloadDataAsFile(blob, filename = '') {
-      if (window.navigator.msSaveBlob) {
-        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
-        // These URLs will no longer resolve as the data backing the URL has been freed."
-        window.navigator.msSaveBlob(blob, filename);
-      }
-      else {
-        const URL = window.URL || window.webkitURL;
-        const downloadUrl = URL.createObjectURL(blob);
+interface Props {
+  fixtureCount?: number;
+  editorFixtures?: EditorFixtures;
+  fixtureKey?: string;
+  buttonStyle?: 'default' | 'home' | 'select';
+  showHelp?: boolean;
+}
 
-        const anchorElement = document.createElement('a');
+const props = withDefaults(defineProps<Props>(), {
+  fixtureCount: 0,
+  buttonStyle: 'default',
+  showHelp: false,
+});
 
-        if (anchorElement.download === undefined) {
-          // non-HTML5 workaround
-          window.location = downloadUrl;
-        }
-        else {
-          anchorElement.href = downloadUrl;
-          anchorElement.download = filename;
-          document.body.append(anchorElement);
-          anchorElement.click();
-        }
+const { data: pluginsData } = await useFetch<PluginsResponse>('/api/v1/plugins');
 
-        // cleanup
-        setTimeout(() => {
-          URL.revokeObjectURL(downloadUrl);
-          anchorElement.remove();
-        }, 100);
-      }
-    },
-    async formattedDownload(pluginKey) {
-      // download the data as a file
-      // for more details, see https://stackoverflow.com/q/16086162/451391
-      const response = await this.$axios.post(
-        `${this.baseLink}.${pluginKey}`,
-        this.editorFixtures,
-        { responseType: 'blob' },
-      );
+const exportPlugins = computed<Plugin[]>(() => {
+  const plugins = pluginsData.value;
+  if (!plugins?.exportPlugins || !plugins.data) return [];
+  return plugins.exportPlugins.flatMap(pluginKey => {
+    const pluginData = plugins.data[pluginKey];
+    return pluginData ? [{ key: pluginKey, name: pluginData.name }] : [];
+  });
+});
 
-      if (response.data.error) {
-        throw new Error(response.data.error);
-      }
+const selectClicked = ref(false);
 
-      let filename = '';
-      const disposition = response.headers['content-disposition'];
-      if (disposition && disposition.includes('attachment')) {
-        const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
-        const matches = filenameRegex.exec(disposition);
-        if (matches && matches[1]) {
-          filename = matches[1].replaceAll(/["']/g, '');
-        }
-      }
+const isSingle = computed(() => {
+  return (props.editorFixtures && Object.keys(props.editorFixtures.fixtures).length === 1) || props.fixtureKey;
+});
 
-      this.downloadDataAsFile(response.data, filename);
-    },
-    onDownloadButton(event, pluginKey) {
-      event.target.blur();
+const title = computed(() => {
+  if (isSingle.value) {
+    return 'Download as…';
+  }
 
-      if (!this.editorFixtures) {
-        // default link target
-        return;
-      }
+  return `Download all ${props.fixtureCount} fixtures`;
+});
 
-      // download the (possibly not yet submitted) editor fixtures
-      event.preventDefault();
-      this.formattedDownload(pluginKey);
-    },
-    onDownloadSelectChange(event) {
-      if (this.selectClicked) {
-        event.target.blur(); // trigger download
-      }
-    },
-    onDownloadSelectBlur(event) {
-      if (event.target.value === '') {
-        // no plugin has been selected
-        return;
-      }
+const baseLink = computed(() => {
+  if (props.editorFixtures) {
+    return '/download-editor';
+  }
 
-      const pluginKey = event.target.value;
+  if (isSingle.value) {
+    return `/${props.fixtureKey}`;
+  }
 
-      // reset the select value to make it feel more like a button
-      event.target.value = '';
-      this.selectClicked = false;
+  return '/download';
+});
 
-      if (!this.editorFixtures) {
-        // download an already submitted fixture
-        window.open(`${this.baseLink}.${pluginKey}`);
-        return;
-      }
+function downloadDataAsFile(blob: Blob, filename = '') {
+  const URL = window.URL || window.webkitURL;
+  const downloadUrl = URL.createObjectURL(blob);
 
-      // download the (possibly not yet submitted) editor fixtures
-      this.formattedDownload(pluginKey);
-    },
-  },
-};
+  const anchorElement = document.createElement('a');
+
+  if (anchorElement.download === undefined) {
+    window.location = downloadUrl;
+  }
+  else {
+    anchorElement.href = downloadUrl;
+    anchorElement.download = filename;
+    document.body.append(anchorElement);
+    anchorElement.click();
+  }
+
+  setTimeout(() => {
+    URL.revokeObjectURL(downloadUrl);
+    anchorElement.remove();
+  }, 100);
+}
+
+async function formattedDownload(pluginKey: string) {
+  const response = await $fetch<Blob>(`${baseLink.value}.${pluginKey}`, {
+    method: 'POST',
+    body: props.editorFixtures,
+    responseType: 'blob',
+  });
+
+  downloadDataAsFile(response, '');
+}
+
+function onDownloadButton(event: MouseEvent, pluginKey: string) {
+  (event.target as HTMLElement).blur();
+
+  if (!props.editorFixtures) {
+    return;
+  }
+
+  event.preventDefault();
+  formattedDownload(pluginKey);
+}
+
+function onDownloadSelectChange(event: Event) {
+  if (selectClicked.value) {
+    (event.target as HTMLSelectElement).blur();
+  }
+}
+
+function onDownloadSelectBlur(event: FocusEvent) {
+  const target = event.target as HTMLSelectElement;
+  if (target.value === '') {
+    return;
+  }
+
+  const pluginKey = target.value;
+  target.value = '';
+  selectClicked.value = false;
+
+  if (!props.editorFixtures) {
+    window.open(`${baseLink.value}.${pluginKey}`);
+    return;
+  }
+
+  formattedDownload(pluginKey);
+}
 </script>
