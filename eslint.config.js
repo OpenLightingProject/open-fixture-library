@@ -1,4 +1,3 @@
-import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
@@ -6,25 +5,14 @@ import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
-import eslintPluginNuxt from 'eslint-plugin-nuxt';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
-
-const eslintPluginNuxtConfigRecommended = {
-  files: ['**/*.{js,vue}'],
-  plugins: {
-    nuxt: fixupPluginRules(eslintPluginNuxt),
-  },
-  rules: {
-    ...eslintPluginNuxt.configs.base.rules,
-    ...eslintPluginNuxt.configs.recommended.rules,
-    'nuxt/require-func-head': 'error',
-  },
-};
+import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
+import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
 
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   arrowParens: true,
@@ -392,7 +380,7 @@ export default [
   stylisticEslintConfig,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginJsdoc.configs['flat/recommended-typescript-flavor'],
-  eslintPluginNuxtConfigRecommended,
+  internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
@@ -473,6 +461,13 @@ export default [
   },
   {
     files: ['fixtures/**/*.json'],
+    plugins: {
+      ofl: {
+        rules: {
+          'fixture-json-array-format': fixtureJsonArrayFormatRule,
+        },
+      },
+    },
     rules: {
       // allow alignment of pixel keys in matrix
       '@stylistic/no-multi-spaces': ['error', {
@@ -482,6 +477,7 @@ export default [
       }],
       'jsonc/array-bracket-spacing': 'off',
 
+      'ofl/fixture-json-array-format': 'error',
       'unicorn/prevent-abbreviations': 'off',
     },
   },
