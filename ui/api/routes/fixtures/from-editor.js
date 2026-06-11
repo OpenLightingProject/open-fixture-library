@@ -16,7 +16,7 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function createFixtureFromEditor({ request }) {
@@ -38,7 +38,7 @@ export async function createFixtureFromEditor({ request }) {
 }
 
 /**
- * @param {object[]} fixtures The raw fixture data from the Fixture Editor.
+ * @param {object[]} fixtures - The raw fixture data from the Fixture Editor.
  * @returns {Promise<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
  */
 async function getFixtureCreateResult(fixtures) {
@@ -59,7 +59,7 @@ async function getFixtureCreateResult(fixtures) {
   return result;
 
   /**
-   * @param {object} fixture The editor fixture object.
+   * @param {object} fixture - The editor fixture object.
    */
   async function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
@@ -133,7 +133,7 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * If a new manufacturer was entered in the editor, it is also saved here.
-   * @param {object} fixture The editor fixture object.
+   * @param {object} fixture - The editor fixture object.
    * @returns {string} The manufacturer key.
    */
   function getManufacturerKey(fixture) {
@@ -165,8 +165,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {object} fixture The editor fixture object.
-   * @param {string} manufacturerKey The manufacturer key of the fixture.
+   * @param {object} fixture - The editor fixture object.
+   * @param {string} manufacturerKey - The manufacturer key of the fixture.
    * @returns {string} The fixture key.
    */
   function getFixtureKey(fixture, manufacturerKey) {
@@ -188,7 +188,7 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {object} from The editor physical object.
+   * @param {object} from - The editor physical object.
    * @returns {object} The OFL physical object.
    */
   function getPhysical(from) {
@@ -217,8 +217,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {object} fixture The OFL fixture object to save the links to.
-   * @param {object[]} editorLinksArray The editor link object array.
+   * @param {object} fixture - The OFL fixture object to save the links to.
+   * @param {object[]} editorLinksArray - The editor link object array.
    */
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
@@ -256,8 +256,8 @@ async function getFixtureCreateResult(fixtures) {
 
   /**
    * Sanitize and save wheels from the editor's channel objects, if there are any.
-   * @param {object} fixture The OFL fixture object to save the wheels to.
-   * @param {object} editorFixture The editor fixture object to get the wheels from.
+   * @param {object} fixture - The OFL fixture object to save the wheels to.
+   * @param {object} editorFixture - The editor fixture object to get the wheels from.
    */
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
@@ -305,9 +305,9 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {string} fixtureKey The key of the fixture to add the channel to.
-   * @param {object} availableChannels All available channels of the editor fixture.
-   * @param {string} channelId The UUID of the channel to add.
+   * @param {string} fixtureKey - The key of the fixture to add the channel to.
+   * @param {object} availableChannels - All available channels of the editor fixture.
+   * @param {string} channelId - The UUID of the channel to add.
    */
   function addAvailableChannel(fixtureKey, availableChannels, channelId) {
     const from = availableChannels[channelId];
@@ -366,8 +366,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {object} channel The OFL channel object.
-   * @param {string} fixtureKey The key of the fixture the channel belongs to.
+   * @param {object} channel - The OFL channel object.
+   * @param {string} fixtureKey - The key of the fixture the channel belongs to.
    * @returns {string} A unique channel key for the fixture.
    */
   function getChannelKey(channel, fixtureKey) {
@@ -386,8 +386,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {string} channelKey The key of the coarse channel.
-   * @param {number} resolution The resolution of the fine channel.
+   * @param {string} channelKey - The key of the coarse channel.
+   * @param {number} resolution - The resolution of the fine channel.
    * @returns {string} The fine channel alias.
    */
   function getFineChannelAlias(channelKey, resolution) {
@@ -396,7 +396,7 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {object} channel The editor channel object.
+   * @param {object} channel - The editor channel object.
    * @returns {object[]} The OFL capability objects.
    */
   function getCapabilities(channel) {
@@ -424,8 +424,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   /**
-   * @param {string} fixtureKey The key of the fixture to add the mode to.
-   * @param {object} from The editor mode object.
+   * @param {string} fixtureKey - The key of the fixture to add the mode to.
+   * @param {object} from - The editor mode object.
    */
   function addMode(fixtureKey, from) {
     const mode = {};
@@ -452,7 +452,7 @@ async function getFixtureCreateResult(fixtures) {
 // helper functions
 
 /**
- * @param {object | null} object The object to check.
+ * @param {object | null} object - The object to check.
  * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
  */
 function isEmptyObject(object) {
@@ -460,8 +460,8 @@ function isEmptyObject(object) {
 }
 
 /**
- * @param {string} property The property key to check.
- * @param {object | null} object The object to check. If it's null, false is returned.
+ * @param {string} property - The property key to check.
+ * @param {object | null} object - The object to check. If it's null, false is returned.
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
@@ -470,8 +470,8 @@ function propertyExistsIn(property, object) {
 }
 
 /**
- * @param {string} property The property key to get the value for.
- * @param {object} from The editor object to get the value from.
+ * @param {string} property - The property key to get the value for.
+ * @param {object} from - The editor object to get the value from.
  * @returns {string} The value from the combobox input, preferring any newly added value.
  */
 function getComboboxInput(property, from) {
@@ -479,7 +479,7 @@ function getComboboxInput(property, from) {
 }
 
 /**
- * @param {string} string The string to slugify.
+ * @param {string} string - The string to slugify.
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {

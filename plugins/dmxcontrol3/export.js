@@ -9,11 +9,11 @@ import ddf3Functions from './ddf3-functions.js';
 export const version = '0.1.2';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -37,12 +37,12 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
- * @param {Mode} mode The mode to export.
- * @param {object} options Global options.
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture} fixture - The fixture to export.
+ * @param {Mode} mode - The mode to export.
+ * @param {object} options - Global options.
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {object} The generated file.
  */
 function exportFixtureMode(fixture, mode, options) {
@@ -75,8 +75,8 @@ function exportFixtureMode(fixture, mode, options) {
 
 /**
  * Adds the information block to the specified XML file.
- * @param {XMLDocument} xml The device definition to add the information to
- * @param {Mode} mode The definition's mode
+ * @param {XMLDocument} xml - The device definition to add the information to
+ * @param {Mode} mode - The definition's mode
  */
 function addInformation(xml, mode) {
   const xmlInfo = xml.element('information');
@@ -100,8 +100,8 @@ function addInformation(xml, mode) {
 
 /**
  * Adds the DMX channels as functions to the specified XML file.
- * @param {XMLDocument} xml The device definition to add the functions to.
- * @param {Mode} mode The definition's mode.
+ * @param {XMLDocument} xml - The device definition to add the functions to.
+ * @param {Mode} mode - The definition's mode.
  */
 function addFunctions(xml, mode) {
   const channelsPerPixel = getChannelsPerPixel(mode);
@@ -135,7 +135,7 @@ function addFunctions(xml, mode) {
   }
 
   /**
-   * @param {CoarseChannel} channel The channel that should be represented as one or more DMXControl functions.
+   * @param {CoarseChannel} channel - The channel that should be represented as one or more DMXControl functions.
    * @returns {XMLElement[]} Functions created by this channel. They are not automatically grouped together.
    */
   function getXmlFunctionsFromChannel(channel) {
@@ -174,7 +174,7 @@ function addFunctions(xml, mode) {
 
   /**
    * Merges and renames the given XML functions. Modifies the array.
-   * @param {XMLElement[]} xmlFunctions Channel-level XML functions.
+   * @param {XMLElement[]} xmlFunctions - Channel-level XML functions.
    */
   function groupXmlFunctions(xmlFunctions) {
     for (const group of ddf3FunctionGroups) {
@@ -208,7 +208,7 @@ function addFunctions(xml, mode) {
 }
 
 /**
- * @param {Mode} mode The definition's mode.
+ * @param {Mode} mode - The definition's mode.
  * @returns {ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
  */
 function getChannelsPerPixel(mode) {
@@ -236,8 +236,8 @@ function getChannelsPerPixel(mode) {
 
 /**
  * Adds the Maintenance capabilities as procedures to the specified XML file.
- * @param {XMLDocument} xml The device definition to add the functions to.
- * @param {Mode} mode The definition's mode.
+ * @param {XMLDocument} xml - The device definition to add the functions to.
+ * @param {Mode} mode - The definition's mode.
  */
 function addProcedures(xml, mode) {
   const maintenanceCapabilities = [];
@@ -288,8 +288,8 @@ function addProcedures(xml, mode) {
 
 /**
  * Combines several XML functions from the individual pixels to a single <matrix> function, if possible.
- * @param {Mode} mode The definition's mode.
- * @param {XmlFunctionsPerPixel} xmlFunctionsPerPixel Pixel keys pointing to its xml functions.
+ * @param {Mode} mode - The definition's mode.
+ * @param {XmlFunctionsPerPixel} xmlFunctionsPerPixel - Pixel keys pointing to its xml functions.
  */
 function addMatrix(mode, xmlFunctionsPerPixel) {
   const matrix = mode.fixture.matrix;
@@ -328,9 +328,9 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
 
 /**
  * Adds name attribute, dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
- * @param {XMLElement} xmlElement The XML element to which the attributes should be added.
- * @param {Mode} mode The definition's mode.
- * @param {CoarseChannel} channel The channel whose data is used.
+ * @param {XMLElement} xmlElement - The XML element to which the attributes should be added.
+ * @param {Mode} mode - The definition's mode.
+ * @param {CoarseChannel} channel - The channel whose data is used.
  */
 function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute('name', channel.name);

@@ -234,7 +234,7 @@ export default {
 
     /**
      * Called by {@link EditorProportionalPropertySwitcher}
-     * @param {string} newUnitString The unit string to set.
+     * @param {string} newUnitString - The unit string to set.
      * @public
      */
     setUnitString(newUnitString) {
@@ -267,7 +267,7 @@ export default {
 };
 
 /**
- * @param {string} pattern The pattern string to parse.
+ * @param {string} pattern - The pattern string to parse.
  * @returns {string} The unit string.
  */
 function parseUnitFromPattern(pattern) {
@@ -280,7 +280,7 @@ function parseUnitFromPattern(pattern) {
 }
 
 /**
- * @param {string} unitString The unit string, as required by the schema.
+ * @param {string} unitString - The unit string, as required by the schema.
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
@@ -292,10 +292,10 @@ function getUnitDisplayString(unitString) {
 }
 
 /**
- * @param {string | number | null} value The value to get the unit from.
- * @param {string[]} enumValues List of allowed keywords.
- * @param {string[]} unitNames List of names of allowed units.
- * @param {Record<string, object>} units Unit data by unit name.
+ * @param {string | number | null} value - The value to get the unit from.
+ * @param {string[]} enumValues - List of allowed keywords.
+ * @param {string[]} unitNames - List of names of allowed units.
+ * @param {Record<string, object>} units - Unit data by unit name.
  * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
@@ -313,8 +313,8 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
 }
 
 /**
- * @param {string} unitName A unit name or keyword.
- * @param {string[]} enumValues List of allowed keywords.
+ * @param {string} unitName - A unit name or keyword.
+ * @param {string[]} enumValues - List of allowed keywords.
  * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
