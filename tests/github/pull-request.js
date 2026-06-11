@@ -266,16 +266,17 @@ export async function updateComment(test) {
 
 /**
  * Tries to append `newLines` to `lines`. If adding `newLines` plus `tooLongMessage`
- * would exceed the byte limit, appends `tooLongMessage` instead and returns `true`.
- * Otherwise appends `newLines` and returns `false`.
+ * (plus any `trailingLines`) would exceed the byte limit, appends `tooLongMessage`
+ * instead and returns `true`. Otherwise appends `newLines` and returns `false`.
  *
  * @param {string[]} lines Accumulated lines so far (mutated in place).
  * @param {string[]} newLines Lines to append.
  * @param {string} tooLongMessage Line to append when truncation is needed.
+ * @param {string[]} trailingLines Lines always appended after the loop (not yet in `lines`), used in the byte check.
  * @returns {boolean} `true` if truncation occurred, `false` otherwise.
  */
-export function appendOrTruncate(lines, newLines, tooLongMessage) {
-  const testContent = [...lines, ...newLines, tooLongMessage].join('\r\n');
+export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
+  const testContent = [...lines, ...newLines, tooLongMessage, ...trailingLines].join('\r\n');
 
   if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
     lines.push(tooLongMessage);

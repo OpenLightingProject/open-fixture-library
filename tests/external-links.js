@@ -7,6 +7,7 @@ import https from 'https';
 import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
+import { appendOrTruncate } from './github/pull-request.js';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
@@ -87,7 +88,7 @@ process.exit(errored ? 1 : 0);
  */
 
 /**
- * Fetches the given URLs in small blocks that reduce the likelyhood of false negatives.
+ * Fetches the given URLs in small blocks that reduce the likelihood of false negatives.
  * Pass / fail messages are constantly outputted to console.
  *
  * @param {string[]} externalUrls The URLs to fetch.
@@ -386,11 +387,6 @@ async function updateGithubIssue(urlResults) {
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split('/').slice(-2).join('/');
-    const rows = Object.entries(linkData).map(([url, statuses]) => {
-      const statusIcons = statuses.map((status) => getStatusEmojiLink(status)).join('&nbsp;');
-      const link = `<a href="${url}" target="_blank">${url}</a>`;
-      return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
-    });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
       '',
@@ -398,10 +394,22 @@ async function updateGithubIssue(urlResults) {
       '',
       '<table>',
       '<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>',
-      ...rows,
-      '</table>',
     ];
-    return lines.join('\n');
+    const tooLongRow = '<tr><td colspan="2">⚠️ The table is too long to fit in this issue body, please run the script yourself locally!</td></tr>';
+    const trailingLines = ['</table>'];
+
+    for (const [url, statuses] of Object.entries(linkData)) {
+      const statusIcons = statuses.map((status) => getStatusEmojiLink(status)).join('&nbsp;');
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      const row = `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
+
+      if (appendOrTruncate(lines, [row], tooLongRow, trailingLines)) {
+        break;
+      }
+    }
+
+    lines.push(...trailingLines);
+    return lines.join('\r\n');
   }
 
   /**
