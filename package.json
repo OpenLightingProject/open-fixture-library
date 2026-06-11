@@ -117,5 +117,10 @@
     "lighting",
     "qlc"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "allowScripts": {
+    "core-js@3.37.1": true,
+    "nuxt@2.18.1": true,
+    "unrs-resolver@1.12.2": true
+  }
 }
