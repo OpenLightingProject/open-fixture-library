@@ -315,7 +315,6 @@ const disabledRules = [
   'jsdoc/no-defaults', // useful for model docs generation
   'jsdoc/require-description',
   'sonarjs/no-os-command-from-path',
-  'sonarjs/no-unsafe-unzip',
   'sonarjs/os-command',
   'sonarjs/pseudo-random',
   'unicorn/consistent-function-scoping',
