@@ -270,9 +270,9 @@ export async function updateComment(test) {
  * instead and returns `true`. Otherwise appends `newLines` and returns `false`.
  *
  * @param {string[]} lines - Accumulated lines so far (mutated in place).
- * @param {string[]} newLines - Lines to append.
+ * @param {readonly string[]} newLines - Lines to append.
  * @param {string} tooLongMessage - Line to append when truncation is needed.
- * @param {string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
+ * @param {readonly string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
  * @returns {boolean} `true` if truncation occurred, `false` otherwise.
  */
 export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
