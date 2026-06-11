@@ -110,6 +110,7 @@ const enabledRuleParameters = {
     },
   }],
   'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
+  'jsdoc/tag-lines': ['never', { startLines: null }],
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
@@ -312,7 +313,6 @@ const disabledRules = [
   'no-console',
   'jsdoc/no-defaults', // useful for model docs generation
   'jsdoc/require-description',
-  'jsdoc/tag-lines',
   'sonarjs/no-os-command-from-path',
   'sonarjs/no-unsafe-unzip',
   'sonarjs/os-command',
