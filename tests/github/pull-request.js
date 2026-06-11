@@ -12,6 +12,8 @@ const requiredEnvironmentVariables = [
   'GITHUB_PR_HEAD_REF',
   'GITHUB_PR_BASE_REF',
 ];
+const GITHUB_BODY_MAX_BYTES = 262_144; // = max 65_536 4-byte Unicode characters
+const RESERVED_COMMENT_BYTES = 2144; // reserve space for comment/issue body header
 
 /** @type {Octokit} */
 let githubClient;
@@ -260,4 +262,26 @@ export async function updateComment(test) {
   }
 
   return Promise.all(promises);
+}
+
+/**
+ * Tries to append `newLines` to `lines`. If adding `newLines` plus `tooLongMessage`
+ * would exceed the byte limit, appends `tooLongMessage` instead and returns `true`.
+ * Otherwise appends `newLines` and returns `false`.
+ *
+ * @param {string[]} lines Accumulated lines so far (mutated in place).
+ * @param {string[]} newLines Lines to append.
+ * @param {string} tooLongMessage Line to append when truncation is needed.
+ * @returns {boolean} `true` if truncation occurred, `false` otherwise.
+ */
+export function appendOrTruncate(lines, newLines, tooLongMessage) {
+  const testContent = [...lines, ...newLines, tooLongMessage].join('\r\n');
+
+  if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
+    lines.push(tooLongMessage);
+    return true;
+  }
+
+  lines.push(...newLines);
+  return false;
 }
