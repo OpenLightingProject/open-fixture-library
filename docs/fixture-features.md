@@ -23,7 +23,7 @@ export default [{
 
   /**
    * Required. Checks if the given fixture uses this feature.
-   * @param {Fixture} fixture - The Fixture instance, see fixture-model.md
+   * @param {Readonly<Fixture>} fixture - The Fixture instance, see fixture-model.md
    * @returns {boolean} true if the fixture uses the feature
    */
   hasFeature: (fixture) => fixture.coarseChannels.some(
