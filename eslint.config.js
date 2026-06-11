@@ -99,6 +99,7 @@ const enabledRuleParameters = {
   // eslint-plugin-jsdoc
   'jsdoc/check-indentation': [],
   'jsdoc/check-syntax': [],
+  'jsdoc/require-hyphen-before-param-description': [],
   'jsdoc/require-jsdoc': [{
     enableFixer: false,
     require: {
