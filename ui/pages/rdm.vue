@@ -153,7 +153,7 @@ export default {
 };
 
 /**
- * @param {string | undefined} string The string to parse.
+ * @param {string | undefined} string - The string to parse.
  * @returns {number | undefined} The parsed number, or undefined if the string can't be parsed.
  */
 function parseIntOrUndefined(string) {
@@ -162,10 +162,10 @@ function parseIntOrUndefined(string) {
 }
 
 /**
- * @param {object} rdmManufacturer The manufacturer object that matches the provided RDM manufacturer id.
- * @param {number | undefined} modelId The provided RDM model id, or undefined.
- * @param {number | undefined} personalityIndex The provided RDM personality index, or undefined.
- * @param {(code: number, path: string) => void} redirect The redirect function to be called.
+ * @param {object} rdmManufacturer - The manufacturer object that matches the provided RDM manufacturer id.
+ * @param {number | undefined} modelId - The provided RDM model id, or undefined.
+ * @param {number | undefined} personalityIndex - The provided RDM personality index, or undefined.
+ * @param {(code: number, path: string) => void} redirect - The redirect function to be called.
  */
 function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect) {
   if (modelId === undefined) {

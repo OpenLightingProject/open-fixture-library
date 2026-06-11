@@ -13,11 +13,11 @@ const registerPromise = importJson('../../fixtures/register.json', import.meta.u
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
- * @param {ServerResponse} response The Node ServerResponse object.
- * @param {string} pluginKey Key of the export plugin to use.
- * @param {Fixture[]} fixtures Array of fixtures to export.
- * @param {string} zipName Name of the zip file (if multiple files should be downloaded).
- * @param {string} errorDesc String describing what fixture(s) should have been downloaded.
+ * @param {ServerResponse} response - The Node ServerResponse object.
+ * @param {string} pluginKey - Key of the export plugin to use.
+ * @param {Fixture[]} fixtures - Array of fixtures to export.
+ * @param {string} zipName - Name of the zip file (if multiple files should be downloaded).
+ * @param {string} errorDesc - String describing what fixture(s) should have been downloaded.
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {

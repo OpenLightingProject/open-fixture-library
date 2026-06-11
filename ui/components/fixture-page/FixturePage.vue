@@ -366,7 +366,7 @@ const supportedVideoFormats = {
 };
 
 /**
- * @param {string} url The video URL.
+ * @param {string} url - The video URL.
  * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
@@ -391,7 +391,7 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url The URL to extract the hostname from.
+ * @param {string} url - The URL to extract the hostname from.
  * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {

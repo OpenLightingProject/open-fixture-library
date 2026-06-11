@@ -148,8 +148,8 @@ async function getFixtureFeatures() {
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
- * @param {FixtureFeatureResult[]} fixtures The fixture feature results.
- * @param {FixtureFeature[]} fixtureFeatures All fixture features.
+ * @param {FixtureFeatureResult[]} fixtures - The fixture feature results.
+ * @param {FixtureFeature[]} fixtureFeatures - All fixture features.
  * @returns {Promise<string>} A Promise that resolves to the markdown code to be used in a markdown file.
  */
 async function getMarkdownCode(fixtures, fixtureFeatures) {

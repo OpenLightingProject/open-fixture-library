@@ -7,9 +7,9 @@ const colorNameListPromise = importJson('../../node_modules/color-name-list/dist
 export const version = '0.3.1';
 
 /**
- * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
+ * @param {Buffer} buffer - The imported file.
+ * @param {string} filename - The imported file's name.
+ * @param {string} authorName - The importer's name.
  * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
@@ -42,7 +42,7 @@ export async function importFixtures(buffer, filename, authorName) {
   /**
    * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
    * Calls {@link addFixture} for all contained fixtures.
-   * @param {object} ecueManufacturer The e:cue manufacturer object.
+   * @param {object} ecueManufacturer - The e:cue manufacturer object.
    */
   function addManufacturer(ecueManufacturer) {
     const manufacturerName = ecueManufacturer.$.Name;
@@ -66,8 +66,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {object} ecueFixture The e:cue fixture object.
-   * @param {string} manufacturerKey The manufacturer key of the fixture.
+   * @param {object} ecueFixture - The e:cue fixture object.
+   * @param {string} manufacturerKey - The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manufacturerKey) {
     const fixture = {
@@ -128,7 +128,7 @@ export async function importFixtures(buffer, filename, authorName) {
 }
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
+ * @param {object} ecueFixture - The e:cue fixture object.
  * @returns {object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
@@ -154,7 +154,7 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
+ * @param {object} ecueFixture - The e:cue fixture object.
  * @returns {object[]} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
@@ -178,7 +178,7 @@ function getCombinedEcueChannels(ecueFixture) {
 }
 
 /**
- * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+ * @param {string | undefined} direction - A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
  * @returns {string} The normalized direction suffix.
  */
 function getDirectionSuffix(direction) {
@@ -191,10 +191,10 @@ function getDirectionSuffix(direction) {
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {object} ecueChannel The e:cue channel object.
- * @param {object} fixture The OFL fixture object.
- * @param {string[]} warningsArray This fixture's warnings array in the `out` object.
- * @param {object} colors A map from lowercase spaceless color name to hex value.
+ * @param {object} ecueChannel - The e:cue channel object.
+ * @param {object} fixture - The OFL fixture object.
+ * @param {string[]} warningsArray - This fixture's warnings array in the `out` object.
+ * @param {object} colors - A map from lowercase spaceless color name to hex value.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
   const channel = {};
@@ -266,8 +266,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
 
   /**
    *
-   * @param {object} ecueRange The e:cue range object.
-   * @param {number} index The index of the capability / range.
+   * @param {object} ecueRange - The e:cue range object.
+   * @param {number} index - The index of the capability / range.
    * @returns {object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
@@ -522,7 +522,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
 }
 
 /**
- * @param {string} string The string to slugify.
+ * @param {string} string - The string to slugify.
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {

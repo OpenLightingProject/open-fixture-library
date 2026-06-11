@@ -86,9 +86,9 @@ export default {
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
- * @param {string | undefined} name Name of the icon (without extension).
- * @param {string | undefined} category The category (directory) of the icon.
- * @param {string | undefined} title An optional (tooltip) title for the icon.
+ * @param {string | undefined} name - Name of the icon (without extension).
+ * @param {string | undefined} category - The category (directory) of the icon.
+ * @param {string | undefined} title - An optional (tooltip) title for the icon.
  * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(name, category = undefined, title) {
@@ -118,8 +118,8 @@ function getSvg(name, category = undefined, title) {
 
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
- * @param {string[]} colors Array of color strings to display.
- * @param {string | undefined} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
+ * @param {string[]} colors - Array of color strings to display.
+ * @param {string | undefined} [title] - Text for the title tag. If this parameter is not given, no title tag will be added.
  * @returns {string} The HTML for displaying the color circle.
  */
 function getColorCircle(colors, title) {
@@ -143,8 +143,8 @@ function getColorCircle(colors, title) {
 }
 
 /**
- * @param {string[]} colors An array of hex colors to fill into the circle.
- * @param {number} radius The radius of the circle.
+ * @param {string[]} colors - An array of hex colors to fill into the circle.
+ * @param {number} radius - The radius of the circle.
  * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
  */
 export function getColorCircleSvgFragment(colors, radius) {
@@ -175,8 +175,8 @@ export function getColorCircleSvgFragment(colors, radius) {
 
 /**
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
- * @param {number} percent Percent of the whole circle.
- * @param {number} radius Radius of the circle.
+ * @param {number} percent - Percent of the whole circle.
+ * @param {number} radius - Radius of the circle.
  * @returns {[number, number]} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {

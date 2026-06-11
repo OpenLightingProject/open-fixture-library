@@ -162,7 +162,7 @@ const specialIconFunctions = {
 };
 
 /**
- * @param {AbstractChannel} capability The capability to get an icon for.
+ * @param {AbstractChannel} capability - The capability to get an icon for.
  * @returns {object} Object containing the props to pass to <OflSvg />
  */
 function getIconProperties(capability) {
@@ -198,7 +198,7 @@ function getIconProperties(capability) {
 }
 
 /**
- * @param {Capability} capability The capability model object.
+ * @param {Capability} capability - The capability model object.
  * @returns {string | null} A string describing the colors of this capability, or null if it has no colors.
  */
 function getColorDescription(capability) {

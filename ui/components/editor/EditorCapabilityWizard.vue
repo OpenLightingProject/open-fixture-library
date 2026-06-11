@@ -140,8 +140,8 @@ import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 /**
- * @param {object} capabilityTypeData The generated capability's type data.
- * @param {number} index The index of the generated capability.
+ * @param {object} capabilityTypeData - The generated capability's type data.
+ * @param {number} index - The index of the generated capability.
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
   if ('effectName' in capabilityTypeData) {
@@ -374,8 +374,8 @@ export default {
 };
 
 /**
- * @param {object} capability The "full" capability object.
- * @param {string} source The source of the capability (inherited or computed).
+ * @param {object} capability - The "full" capability object.
+ * @param {string} source - The source of the capability (inherited or computed).
  * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {

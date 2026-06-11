@@ -97,13 +97,9 @@ const enabledRuleParameters = {
   }],
 
   // eslint-plugin-jsdoc
-  'jsdoc/check-alignment': [],
   'jsdoc/check-indentation': [],
-  'jsdoc/check-param-names': [],
   'jsdoc/check-syntax': [],
-  'jsdoc/check-tag-names': [],
-  'jsdoc/check-types': [],
-  'jsdoc/implements-on-classes': [],
+  'jsdoc/require-hyphen-before-param-description': [],
   'jsdoc/require-jsdoc': [{
     enableFixer: false,
     require: {
@@ -114,16 +110,8 @@ const enabledRuleParameters = {
       FunctionExpression: false,
     },
   }],
-  'jsdoc/require-param': [],
-  'jsdoc/require-param-description': [],
-  'jsdoc/require-param-name': [],
-  'jsdoc/require-param-type': [],
-  'jsdoc/require-returns': [],
-  'jsdoc/require-returns-check': [],
   'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
-  'jsdoc/require-returns-description': [],
-  'jsdoc/require-returns-type': [],
-  'jsdoc/valid-types': [],
+  'jsdoc/tag-lines': ['never', { startLines: null }],
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
@@ -324,14 +312,9 @@ const warnRules = new Set([
 
 const disabledRules = [
   'no-console',
-  'jsdoc/empty-tags',
-  'jsdoc/newline-after-description',
   'jsdoc/no-defaults', // useful for model docs generation
   'jsdoc/require-description',
-  'jsdoc/require-description-complete-sentence',
-  'jsdoc/tag-lines',
   'sonarjs/no-os-command-from-path',
-  'sonarjs/no-unsafe-unzip',
   'sonarjs/os-command',
   'sonarjs/pseudo-random',
   'unicorn/consistent-function-scoping',
@@ -379,7 +362,7 @@ export default [
   eslintJs.configs.recommended,
   stylisticEslintConfig,
   eslintPluginImport.flatConfigs.recommended,
-  eslintPluginJsdoc.configs['flat/recommended-typescript-flavor'],
+  eslintPluginJsdoc.configs['flat/recommended-typescript-flavor-error'],
   internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
