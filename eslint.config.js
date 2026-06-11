@@ -97,13 +97,8 @@ const enabledRuleParameters = {
   }],
 
   // eslint-plugin-jsdoc
-  'jsdoc/check-alignment': [],
   'jsdoc/check-indentation': [],
-  'jsdoc/check-param-names': [],
   'jsdoc/check-syntax': [],
-  'jsdoc/check-tag-names': [],
-  'jsdoc/check-types': [],
-  'jsdoc/implements-on-classes': [],
   'jsdoc/require-jsdoc': [{
     enableFixer: false,
     require: {
@@ -114,16 +109,7 @@ const enabledRuleParameters = {
       FunctionExpression: false,
     },
   }],
-  'jsdoc/require-param': [],
-  'jsdoc/require-param-description': [],
-  'jsdoc/require-param-name': [],
-  'jsdoc/require-param-type': [],
-  'jsdoc/require-returns': [],
-  'jsdoc/require-returns-check': [],
   'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
-  'jsdoc/require-returns-description': [],
-  'jsdoc/require-returns-type': [],
-  'jsdoc/valid-types': [],
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
@@ -379,7 +365,7 @@ export default [
   eslintJs.configs.recommended,
   stylisticEslintConfig,
   eslintPluginImport.flatConfigs.recommended,
-  eslintPluginJsdoc.configs['flat/recommended-typescript-flavor'],
+  eslintPluginJsdoc.configs['flat/recommended-typescript-flavor-error'],
   internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
