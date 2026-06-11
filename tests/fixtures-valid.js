@@ -138,8 +138,8 @@ async function runTests() {
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {string} manufacturerKey The manufacturer key.
- * @param {string} fixtureKey The fixture key.
+ * @param {string} manufacturerKey - The manufacturer key.
+ * @param {string} fixtureKey - The fixture key.
  * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkFixtureFile(manufacturerKey, fixtureKey) {
@@ -214,7 +214,7 @@ async function checkManufacturers() {
 }
 
 /**
- * @param {object} result The result object for a single file.
+ * @param {object} result - The result object for a single file.
  */
 function printFileResult(result) {
   const failed = result.errors.length > 0;

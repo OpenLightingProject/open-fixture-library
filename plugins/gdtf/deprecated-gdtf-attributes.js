@@ -502,9 +502,9 @@ const deprecatedGdtfAttributes = {
 };
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {string} primaryColor The color that this capability is most likely.
- * @param {string} secondaryColor The color that this capability is second most likely.
+ * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
+ * @param {string} primaryColor - The color that this capability is most likely.
+ * @param {string} secondaryColor - The color that this capability is second most likely.
  * @returns {string} Either the primary, or the secondary color.
  */
 function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {

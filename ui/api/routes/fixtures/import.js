@@ -14,7 +14,7 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /**
  * Imports the uploaded fixture file and responds with a FixtureCreateResult.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
 export async function importFixtureFile({ request }) {
@@ -36,7 +36,7 @@ export async function importFixtureFile({ request }) {
 }
 
 /**
- * @param {RequestBody} body The JSON request body.
+ * @param {RequestBody} body - The JSON request body.
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
  */
 async function importFixture(body) {

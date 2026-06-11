@@ -4,7 +4,7 @@ import importJson from '../../../../lib/import-json.js';
 
 /**
  * Returns information about a specific manufacturer.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getManufacturerByKey({ request }) {

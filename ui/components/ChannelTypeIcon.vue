@@ -27,7 +27,7 @@ const channelTypeIcons = {
 };
 
 /**
- * @param {AbstractChannel} channel The channel to get an icon for.
+ * @param {AbstractChannel} channel - The channel to get an icon for.
  * @returns {object} Object containing the props to pass to <OflSvg />
  */
 function getIconProperties(channel) {

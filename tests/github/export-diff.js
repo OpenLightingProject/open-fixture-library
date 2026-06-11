@@ -63,7 +63,7 @@ catch (error) {
 }
 
 /**
- * @param {object} changedComponents The PR's changed OFL components.
+ * @param {object} changedComponents - The PR's changed OFL components.
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
@@ -185,7 +185,7 @@ async function getDiffTasks(changedComponents) {
 }
 
 /**
- * @param {Task} task The export diff task to fulfill.
+ * @param {Task} task - The export diff task to fulfill.
  * @returns {Promise<string[]>} An array of message lines.
  */
 async function performTask(task) {
@@ -253,7 +253,7 @@ async function performTask(task) {
  */
 
 /**
- * @param {object} diffOutput Output object from {@link diffPluginOutputs}.
+ * @param {object} diffOutput - Output object from {@link diffPluginOutputs}.
  * @returns {ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {
@@ -270,7 +270,7 @@ function getChangeFlags(diffOutput) {
 }
 
 /**
- * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
+ * @param {ChangeFlags} changeFlags - Object with flags that tell what changed.
  * @returns {string} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {

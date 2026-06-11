@@ -5,7 +5,7 @@ import { fixtureFromRepository } from '../../../lib/model.js';
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
 export async function createFeedbackIssue({ request }) {

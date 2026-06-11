@@ -28,11 +28,11 @@ export const version = '1.0.0';
 const segmentsPerFile = 4;
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -49,7 +49,7 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Mode} mode The mode to export.
+ * @param {Mode} mode - The mode to export.
  * @returns {object[]} The generated files for this mode.
  */
 function getFilesForMode(mode) {
@@ -97,7 +97,7 @@ function getFilesForMode(mode) {
 }
 
 /**
- * @param {Mode} mode The mode to select the channels from.
+ * @param {Mode} mode - The mode to select the channels from.
  * @returns {ModeChannels} The selected mode channels.
  */
 function getModeChannels(mode) {
@@ -138,7 +138,7 @@ function getModeChannels(mode) {
 }
 
 /**
- * @param {Mode} mode The mode to get the segments for.
+ * @param {Mode} mode - The mode to get the segments for.
  * @returns {AbstractChannel[][]} The mode's channels, grouped by the pixel key they belong to.
  */
 function groupModeChannelsByPixelKey(mode) {
@@ -156,7 +156,7 @@ function groupModeChannelsByPixelKey(mode) {
 
 /**
  * Try to merge consecutive segments with disjunctly defined control elements.
- * @param {SegmentChannels[]} segments The segments to merge.
+ * @param {SegmentChannels[]} segments - The segments to merge.
  */
 function mergeDisjunctSegments(segments) {
   let segmentIndex = 1;
@@ -184,8 +184,8 @@ function mergeDisjunctSegments(segments) {
 }
 
 /**
- * @param {AbstractChannel} channel The channel to check.
- * @param {string} color The color to check.
+ * @param {AbstractChannel} channel - The channel to check.
+ * @param {string} color - The color to check.
  * @returns {boolean} Whether the channel is a color channel with the given color.
  */
 function isColorChannel(channel, color) {
@@ -197,8 +197,8 @@ function isColorChannel(channel, color) {
 }
 
 /**
- * @param {AbstractChannel} channel The channel to check.
- * @param {string} type The type to check.
+ * @param {AbstractChannel} channel - The channel to check.
+ * @param {string} type - The type to check.
  * @returns {boolean} Whether the channel is a channel with the given type.
  */
 function isChannelOfType(channel, type) {
@@ -210,10 +210,10 @@ function isChannelOfType(channel, type) {
 }
 
 /**
- * @param {Mode} mode The mode to get the file name for.
- * @param {number} totalFiles The total number of files for this mode.
- * @param {number} fileIndex The index of the file in this mode's files.
- * @param {'lib' | 'txt'} extension The file extension.
+ * @param {Mode} mode - The mode to get the file name for.
+ * @param {number} totalFiles - The total number of files for this mode.
+ * @param {number} fileIndex - The index of the file in this mode's files.
+ * @param {'lib' | 'txt'} extension - The file extension.
  * @returns {string} The file name.
  */
 function getFileName(mode, totalFiles, fileIndex, extension) {
@@ -222,8 +222,8 @@ function getFileName(mode, totalFiles, fileIndex, extension) {
 }
 
 /**
- * @param {ModeChannels} modeChannels The mode's selected and grouped channels.
- * @param {number} fileIndex The index of the file in this mode's files.
+ * @param {ModeChannels} modeChannels - The mode's selected and grouped channels.
+ * @param {number} fileIndex - The index of the file in this mode's files.
  * @returns {Record<string, AbstractChannel | undefined>} The channels in the order they should appear in the file.
  */
 function getChannelsForFile(modeChannels, fileIndex) {

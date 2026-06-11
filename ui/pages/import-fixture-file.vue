@@ -194,7 +194,7 @@ export default {
       }
 
       /**
-       * @param {File} file A File object from an HTML5 file input.
+       * @param {File} file - A File object from an HTML5 file input.
        * @returns {Promise<string>} Resolves with the file contents as dataURL string.
        */
       function getFileDataUrl(file) {

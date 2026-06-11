@@ -123,7 +123,7 @@ export default [
 ];
 
 /**
- * @param {string} tagName The XML tag name of the new parent element.
+ * @param {string} tagName - The XML tag name of the new parent element.
  * @returns {(...xmlElements: XMLElement[]) => XMLElement} A function that returns a new XML element with the given elements as children.
  */
 function mergeIntoNew(tagName) {
@@ -137,8 +137,8 @@ function mergeIntoNew(tagName) {
 }
 
 /**
- * @param {XMLElement} firstElement The element in which the other elements should be merged into.
- * @param {...XMLElement} xmlElements The elements that should be merge into the first element.
+ * @param {XMLElement} firstElement - The element in which the other elements should be merged into.
+ * @param {...XMLElement} xmlElements - The elements that should be merge into the first element.
  * @returns {XMLElement} The first element with the other elements as children.
  */
 function mergeIntoFirst(firstElement, ...xmlElements) {
@@ -149,7 +149,7 @@ function mergeIntoFirst(firstElement, ...xmlElements) {
 }
 
 /**
- * @param {string} tagName The new XML tag name.
+ * @param {string} tagName - The new XML tag name.
  * @returns {(xmlElement: XMLElement) => XMLElement} A function that alters the given XML element's tag name to the specified new name.
  */
 function rename(tagName) {

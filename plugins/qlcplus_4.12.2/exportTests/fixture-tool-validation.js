@@ -24,8 +24,8 @@ const EXPORTED_FIXTURE_PATH = 'resources/fixtures/manufacturer/fixture.qxf';
  */
 
 /**
- * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @param {ExportFile} exportFile - The file returned by the plugins' export module.
+ * @param {ExportFile[]} allExportFiles - An array of all export files.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testFixtureToolValidation(exportFile, allExportFiles) {
@@ -90,7 +90,7 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 }
 
 /**
- * @param {string} url The URL to download the file from.
+ * @param {string} url - The URL to download the file from.
  * @returns {Promise<string>} A Promise that resolves to the downloaded file's content.
  */
 function downloadFile(url) {

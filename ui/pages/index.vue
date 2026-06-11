@@ -174,7 +174,7 @@ export default {
   },
   methods: {
     /**
-     * @param {string} fixtureKey The combined manufacturer / fixture key.
+     * @param {string} fixtureKey - The combined manufacturer / fixture key.
      * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
@@ -188,7 +188,7 @@ export default {
 };
 
 /**
- * @param {string} contributor The contributor name.
+ * @param {string} contributor - The contributor name.
  * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {

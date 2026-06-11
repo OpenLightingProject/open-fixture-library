@@ -45,7 +45,7 @@ export function getEmptyFixture() {
 }
 
 /**
- * @param {string} linkType The type of the new link.
+ * @param {string} linkType - The type of the new link.
  * @returns {object} An empty fixture link object.
  */
 export function getEmptyLink(linkType = 'manual') {
@@ -124,8 +124,8 @@ export function getEmptyChannel() {
 }
 
 /**
- * @param {string} coarseChannelId The UUID of the coarse channel.
- * @param {number} resolution The resolution of the newly created fine channel.
+ * @param {string} coarseChannelId - The UUID of the coarse channel.
+ * @param {number} resolution - The resolution of the newly created fine channel.
  * @returns {object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
@@ -161,7 +161,7 @@ export function getEmptyWheelSlot() {
 }
 
 /**
- * @param {object} channel The channel object.
+ * @param {object} channel - The channel object.
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
@@ -189,7 +189,7 @@ export function isChannelChanged(channel) {
 }
 
 /**
- * @param {object} capability The capability object.
+ * @param {object} capability - The capability object.
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
@@ -205,7 +205,7 @@ export function isCapabilityChanged(capability) {
 }
 
 /**
- * @param {string | null} hexString A string of comma-separated hex values, or null.
+ * @param {string | null} hexString - A string of comma-separated hex values, or null.
  * @returns {string[] | null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
@@ -225,7 +225,7 @@ export function colorsHexStringToArray(hexString) {
 }
 
 /**
- * @param {object} channel The channel object that shall be sanitized.
+ * @param {object} channel - The channel object that shall be sanitized.
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
