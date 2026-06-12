@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PL-S300D",
+  "shortName": "PL-S300D",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Boris"],
+    "createDate": "2026-06-12",
+    "lastModifyDate": "2026-06-12"
+  },
+  "comment": "300W Bi-color Studio SMD Panel LED Light",
+  "links": {
+    "manual": [
+      "https://www.swit.cc/uploads/2024/07/190833108269.pdf"
+    ],
+    "productPage": [
+      "https://www.swit.cc/index.php?c=article&id=3112"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "colorTemperature": 0
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CTC": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "warm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "panel300D",
+      "channels": [
+        "Dimmer",
+        "CTC"
+      ]
+    }
+  ]
+}
