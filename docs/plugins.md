@@ -38,7 +38,7 @@ A very simple export plugin looks like this:
 export const version = '0.1.0'; // semantic versioning of export plugin
 
 /**
- * @param {Readonly<Fixture[]>} fixtures - An array of Fixture objects, see our fixture model
+ * @param {readonly Fixture[]} fixtures - An array of Fixture objects, see our fixture model
  * @param {Readonly<object>} options - Some global options, for example:
  * @param {string} options.baseDirectory - Absolute path to OFL's root directory
  * @param {Date} options.date - The current time.
@@ -148,7 +148,7 @@ import xml2js from 'xml2js';
  * @param {string} exportFile.name - File name, may include slashes to provide a folder structure.
  * @param {string} exportFile.content - File content.
  * @param {string} exportFile.mimetype - File mime type.
- * @param {Readonly<Fixture[]> | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {readonly Fixture[] | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string | null} exportFile.mode - Mode's shortName if given file only describes a single mode.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
