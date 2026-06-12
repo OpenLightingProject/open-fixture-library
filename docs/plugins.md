@@ -38,8 +38,8 @@ A very simple export plugin looks like this:
 export const version = '0.1.0'; // semantic versioning of export plugin
 
 /**
- * @param {Fixture[]} fixtures - An array of Fixture objects, see our fixture model
- * @param {object} options - Some global options, for example:
+ * @param {readonly Fixture[]} fixtures - An array of Fixture objects, see our fixture model
+ * @param {Readonly<object>} options - Some global options, for example:
  * @param {string} options.baseDirectory - Absolute path to OFL's root directory
  * @param {Date} options.date - The current time.
  * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
@@ -95,7 +95,7 @@ Example:
 export const version = '0.1.0'; // semantic versioning of import plugin
 
 /**
- * @param {Buffer} buffer - The imported file.
+ * @param {Readonly<Buffer>} buffer - The imported file.
  * @param {string} fileName - The imported file's name.
  * @param {string} authorName - The importer's name.
  * @returns {Promise<object, Error>} A Promise that resolves to an out object (see above) or rejects with an error.
@@ -144,11 +144,11 @@ Each test module should be located at `plugins/<plugin-key>/exportTests/<export-
 import xml2js from 'xml2js';
 
 /**
- * @param {object} exportFile - The file returned by the plugins' export module.
+ * @param {Readonly<object>} exportFile - The file returned by the plugins' export module.
  * @param {string} exportFile.name - File name, may include slashes to provide a folder structure.
  * @param {string} exportFile.content - File content.
  * @param {string} exportFile.mimetype - File mime type.
- * @param {Fixture[] | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {(readonly Fixture[]) | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string | null} exportFile.mode - Mode's shortName if given file only describes a single mode.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
