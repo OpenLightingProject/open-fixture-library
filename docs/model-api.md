@@ -215,9 +215,9 @@ Create a new Capability instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The capability data from the channel's JSON. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The capability data from the channel's JSON. |
 | resolution | [<code>Resolution</code>](#Resolution) | How fine this capability is declared. |
-| channel | [<code>Readonly&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel instance this channel is associated to. |
+| channel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel instance this channel is associated to. |
 
 <a name="Capability+jsonObject"></a>
 
@@ -563,8 +563,8 @@ Create a new CoarseChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The channel's identifier, must be unique in the fixture. |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The channel data from the fixture's JSON. |
-| fixture | [<code>Readonly&lt;Fixture&gt;</code>](#Fixture) | The fixture instance this channel is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The channel data from the fixture's JSON. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture instance this channel is associated to. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -902,7 +902,7 @@ Creates a new FineChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The fine channel alias as defined in the coarse channel. |
-| coarseChannel | [<code>Readonly&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The coarse (MSB) channel. |
+| coarseChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The coarse (MSB) channel. |
 
 <a name="FineChannel+coarseChannel"></a>
 
@@ -1023,9 +1023,9 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| manufacturer | [<code>Readonly&lt;Manufacturer&gt;</code>](#Manufacturer) | A Manufacturer instance. |
+| manufacturer | [<code>Readonly.&lt;Manufacturer&gt;</code>](#Manufacturer) | A Manufacturer instance. |
 | key | <code>string</code> | The fixture's unique key. Equals to filename without '.json'. |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The fixture's parsed JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's parsed JSON data. |
 
 <a name="Fixture+manufacturer"></a>
 
@@ -1316,7 +1316,7 @@ Creates a new Manufacturer instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The manufacturer's JSON object. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The manufacturer's JSON object. |
 
 <a name="Manufacturer+name"></a>
 
@@ -1374,7 +1374,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The fixture's JSON object containing the matrix information. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's JSON object containing the matrix information. |
 
 <a name="Matrix+jsonObject"></a>
 
@@ -1522,7 +1522,7 @@ Creates a new Meta instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | A meta object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A meta object from the fixture's JSON data. |
 
 <a name="Meta+authors"></a>
 
@@ -1591,8 +1591,8 @@ Creates a new Mode instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The mode object from the fixture's JSON data. |
-| fixture | [<code>Readonly&lt;Fixture&gt;</code>](#Fixture) | The fixture this mode is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The mode object from the fixture's JSON data. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this mode is associated to. |
 
 <a name="Mode+jsonObject"></a>
 
@@ -1738,7 +1738,7 @@ Uses a unique uuid as channel key.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| fixture | [<code>Readonly&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -2003,7 +2003,7 @@ Creates a new Physical instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | A fixture's or mode's physical JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A fixture's or mode's physical JSON data. |
 
 <a name="Physical+jsonObject"></a>
 
@@ -2249,7 +2249,7 @@ Creates a new Resource instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | An embedded resource object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | An embedded resource object from the fixture's JSON data. |
 
 <a name="Resource+name"></a>
 
@@ -2346,7 +2346,7 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>Readonly&lt;AbstractChannel&gt;</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;AbstractChannel&gt;</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
@@ -2461,8 +2461,8 @@ Creates new TemplateChannel instance. Also clears cache by setting jsonObject.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The templateChannel's key with the required variables. |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
-| fixture | [<code>Readonly&lt;Fixture&gt;</code>](#Fixture) | The Fixture instance. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The Fixture instance. |
 
 <a name="TemplateChannel+allTemplateKeys"></a>
 
@@ -2533,7 +2533,7 @@ Creates a new Wheel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | wheelName | <code>string</code> | The wheel's name, like specified in the JSON. |
-| jsonObject | <code>Readonly&lt;object&gt;</code> | A wheel object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A wheel object from the fixture's JSON data. |
 
 <a name="Wheel+name"></a>
 
@@ -2615,10 +2615,10 @@ Creates a new WheelSlot instance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| jsonObject | <code>Readonly&lt;object&gt;</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
-| wheel | [<code>Readonly&lt;Wheel&gt;</code>](#Wheel) |  | The wheel that this slot belongs to. |
-| floorSlot | [<code>Readonly&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
-| ceilSlot | [<code>Readonly&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| wheel | [<code>Readonly.&lt;Wheel&gt;</code>](#Wheel) |  | The wheel that this slot belongs to. |
+| floorSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
+| ceilSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
 
 <a name="WheelSlot+isSplitSlot"></a>
 
