@@ -148,7 +148,7 @@ import xml2js from 'xml2js';
  * @param {string} exportFile.name - File name, may include slashes to provide a folder structure.
  * @param {string} exportFile.content - File content.
  * @param {string} exportFile.mimetype - File mime type.
- * @param {readonly Fixture[] | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {(readonly Fixture[]) | null} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string | null} exportFile.mode - Mode's shortName if given file only describes a single mode.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
