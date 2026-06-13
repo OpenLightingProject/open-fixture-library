@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par 73 RGB",
+  "shortName": "Par 73 RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2025-03-19",
+    "lastModifyDate": "2025-03-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2706384/Img-Stage-Line-Parl-73rgb.html?page=1#manual"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Programmi Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 1"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 2"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 3"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 4"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 5"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Stroboscopio rosso + verde + blu (= bianco)"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze in e out 1"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con cambi bruschi"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con cambi bruschi e fasi di scuro"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con accensione e dissolvenza out"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenza in e spegnimento"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze in e out 2"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "Sequenza colori con dissolvenze 6"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "lampeggio sincrono con la musica rosso + verde + blu (= bianco)"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "ampeggio sincrono con colori che cambiano"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Programmi Show"
+      ]
+    }
+  ]
+}
