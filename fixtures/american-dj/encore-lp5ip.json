@@ -1,0 +1,451 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore LP5IP",
+  "shortName": "EnLP5IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["HickmanLighting"],
+    "createDate": "2024-04-21",
+    "lastModifyDate": "2024-04-21"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/13355/ADJ%20ENCORE%20LP5IP%20-%20USER%20MANUAL.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/encore-lp5ip"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=1B8vrShd7zw&t=1s"
+    ]
+  },
+  "physical": {
+    "dimensions": [150.6, 209, 255],
+    "weight": 2.4,
+    "power": 32,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 21188,
+      "lumens": 607
+    },
+    "lens": {
+      "degreesMinMax": [9.6, 9.6]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [241, 244],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [245, 248],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [249, 252],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7000K"
+      }
+    },
+    "Color Temperature Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 54],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "2700K"
+        },
+        {
+          "dmxRange": [55, 109],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [110, 164],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [165, 219],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6500K"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 50,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color Macros",
+        "CTC",
+        "Color Temperature Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
