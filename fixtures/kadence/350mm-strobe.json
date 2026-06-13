@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "350MM-STROBE",
+  "shortName": "350MM-STROBE",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Kadence"],
+    "createDate": "2026-06-13",
+    "lastModifyDate": "2026-06-13"
+  },
+  "links": {
+    "manual": [
+      "https://kadence.in/wp-content/uploads/2024/05/350MM-STROBE.pdf?srsltid=AfmBOooitOKipEzscZB5phOtSIvLBvA9duKIX0r3T2NAcwYqpSskvsRD"
+    ],
+    "productPage": [
+      "https://kadence.in/wp-content/uploads/2024/05/350MM-STROBE.pdf?srsltid=AfmBOooitOKipEzscZB5phOtSIvLBvA9duKIX0r3T2NAcwYqpSskvsRD"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Color Macros 2"
+      ]
+    }
+  ]
+}
