@@ -1,0 +1,182 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "36W 36LED RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Boaz Michaely"],
+    "createDate": "2025-10-26",
+    "lastModifyDate": "2025-10-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-10-26",
+      "comment": "created by Q Light Controller Plus (version 5.0.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [185, 185, 84],
+    "weight": 0.7,
+    "power": 31,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB Hopping (slow -> fast)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Prism",
+        "comment": "RGB Hopping (slow -> fast) per CH1-4  AND strobe"
+      }
+    },
+    "Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Strobe (speed with CH6)"
+        },
+        {
+          "dmxRange": [51, 57],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [58, 64],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [65, 71],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [72, 78],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [79, 85],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [86, 92],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [93, 100],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [101, 149],
+          "type": "Effect",
+          "effectName": "Fade Slow"
+        },
+        {
+          "dmxRange": [150, 194],
+          "type": "Effect",
+          "effectName": "Fade Med"
+        },
+        {
+          "dmxRange": [195, 200],
+          "type": "Effect",
+          "effectName": "Fade Fast"
+        },
+        {
+          "dmxRange": [201, 229],
+          "type": "Effect",
+          "effectName": "Hop Slow"
+        },
+        {
+          "dmxRange": [230, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "21Hz",
+          "comment": "Hop - variable speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "No Function"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB Hopping (slow -> fast)",
+        "Strobe Speed",
+        "Modes"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
