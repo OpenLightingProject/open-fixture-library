@@ -1,0 +1,5868 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACME GEMINI (CM 560Z)",
+  "shortName": "CM 560Z",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Malzbier"],
+    "createDate": "2023-08-11",
+    "lastModifyDate": "2025-08-18",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-08-24",
+      "comment": "GDTF v1.2 fixture type ID: E529CAD9-BC53-4856-B247-8D51720DE6D0"
+    }
+  },
+  "comment": "GEMINI (CM 560Z): ACME GEMINI (CM 560Z)",
+  "wheels": {
+    "Color 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#e4cece"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#e4b8b8"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#e42ab8"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#e44bb8"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#e48dce"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#354be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#4b4be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#2a78e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#4077e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 12",
+          "colors": ["#6177e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 13",
+          "colors": ["#5677e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 14",
+          "colors": ["#77a2e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 15",
+          "colors": ["#e4d9e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 16",
+          "colors": ["#c3e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 17",
+          "colors": ["#a2cee4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 18",
+          "colors": ["#358de4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 19",
+          "colors": ["#4be4ce"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 20",
+          "colors": ["#06e477"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 21",
+          "colors": ["#4be403"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 22",
+          "colors": ["#61e440"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 23",
+          "colors": ["#61e461"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 24",
+          "colors": ["#a2e403"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 25",
+          "colors": ["#d9e44b"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 26",
+          "colors": ["#cee420"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 27",
+          "colors": ["#e4a203"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 28",
+          "colors": ["#e48d00"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 29",
+          "colors": ["#df4b01"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 30",
+          "colors": ["#e45635"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 31",
+          "colors": ["#e44b2a"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 32",
+          "colors": ["#e41f20"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 33",
+          "colors": ["#e40500"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "P Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Pan Position"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 100%"
+        },
+        {
+          "dmxRange": [129, 133],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 90%"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 80%"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 70%"
+        },
+        {
+          "dmxRange": [147, 151],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 60%"
+        },
+        {
+          "dmxRange": [153, 157],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 50%"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 40%"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 30%"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 20%"
+        },
+        {
+          "dmxRange": [177, 181],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 10%"
+        },
+        {
+          "dmxRange": [183, 188],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 1%"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 1%"
+        },
+        {
+          "dmxRange": [195, 200],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 10%"
+        },
+        {
+          "dmxRange": [202, 206],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 20%"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 30%"
+        },
+        {
+          "dmxRange": [214, 218],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 40%"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 50%"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 60%"
+        },
+        {
+          "dmxRange": [232, 236],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 70%"
+        },
+        {
+          "dmxRange": [238, 242],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 80%"
+        },
+        {
+          "dmxRange": [244, 248],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 90%"
+        },
+        {
+          "dmxRange": [250, 254],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 100%"
+        }
+      ]
+    },
+    "T Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Tilt Position"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 100%"
+        },
+        {
+          "dmxRange": [129, 133],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 90%"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 80%"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 70%"
+        },
+        {
+          "dmxRange": [147, 151],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 60%"
+        },
+        {
+          "dmxRange": [153, 157],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 50%"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 40%"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 30%"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 20%"
+        },
+        {
+          "dmxRange": [177, 181],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 10%"
+        },
+        {
+          "dmxRange": [183, 188],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 1%"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 1%"
+        },
+        {
+          "dmxRange": [195, 200],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 10%"
+        },
+        {
+          "dmxRange": [202, 206],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 20%"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 30%"
+        },
+        {
+          "dmxRange": [214, 218],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 40%"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 50%"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 60%"
+        },
+        {
+          "dmxRange": [232, 236],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 70%"
+        },
+        {
+          "dmxRange": [238, 242],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 80%"
+        },
+        {
+          "dmxRange": [244, 248],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 90%"
+        },
+        {
+          "dmxRange": [250, 254],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (TiltRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 100%"
+        }
+      ]
+    },
+    " PT Speed": {
+      "capability": {
+        "type": "Unknown (PT Speed)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "highlightValue": 55,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 5": {
+      "name": "White",
+      "highlightValue": 55,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "White 6": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 8": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 9": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 10": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 11": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 12": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 13": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 14": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 15": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 16": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 17": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 18": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 19": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 20": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 21": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 22": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 23": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macro1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "Macro 28"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "Macro 29"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "Macro 30"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "Macro 31"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "Macro 32"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ColorPreset",
+          "comment": "Macro 33"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "ColorPreset",
+          "comment": "Macro 34"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "ColorPreset",
+          "comment": "Macro 35"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "ColorPreset",
+          "comment": "Macro 36"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorPreset",
+          "comment": "Macro 37"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "ColorPreset",
+          "comment": "Macro 38"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "ColorPreset",
+          "comment": "Macro 39"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "ColorPreset",
+          "comment": "Macro 40"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ColorPreset",
+          "comment": "Macro 41"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "ColorPreset",
+          "comment": "Macro 42"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "ColorPreset",
+          "comment": "Macro 43"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "ColorPreset",
+          "comment": "Macro 44"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ColorPreset",
+          "comment": "Macro 45"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorPreset",
+          "comment": "Macro 46"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "ColorPreset",
+          "comment": "Rnd Single"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "ColorPreset",
+          "comment": "Rnd Double"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset",
+          "comment": "No Function"
+        }
+      ]
+    },
+    "Color Macro1 Rate": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physical": 0,
+          "comment": "NO Function"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [129, 157],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [159, 188],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<"
+        },
+        {
+          "dmxRange": [195, 223],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [225, 254],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        }
+      ]
+    },
+    "C1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 33
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 34
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [181, 189],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<"
+        },
+        {
+          "dmxRange": [209, 218],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [220, 228],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open2"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Fast"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open3"
+        }
+      ]
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe Duration": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0s",
+        "durationEnd": "1s"
+      }
+    },
+    "Sh1": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [7, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        }
+      ]
+    },
+    "Effect1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min PulseOpen"
+        },
+        {
+          "dmxRange": [7, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max PulseOpen"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min PulseClose"
+        },
+        {
+          "dmxRange": [52, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max PulseClose"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Pulse"
+        },
+        {
+          "dmxRange": [102, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Pulse"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Unknown (Lightning)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran1"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "highlightValue": 32896,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Sh1 2": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min PulseClose"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max PulseClose"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim 8": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 8 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "NoFeature 1"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Dim Linear"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Square Law"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Inv SQ Law"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "S Curve"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Function 2"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "Frequency Setting"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "Frequency Disable"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "NoFunction",
+          "comment": "NoFeature 3"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "PT Reset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "NoFunction",
+          "comment": "NoFeature 4"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Unknown (All Reset)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "All Reset"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Unknown (Dimmer Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Dim Fast"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Unknown (Dimmer Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Dim Smooth"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "NoFunction",
+          "comment": "NoFeature 5"
+        }
+      ]
+    },
+    "White 24": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "C1 2": {
+      "name": "C1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 33
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 34
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [181, 189],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<"
+        },
+        {
+          "dmxRange": [209, 217],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [219, 228],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Fast"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open 2"
+        }
+      ]
+    },
+    "Color Macro1 2": {
+      "name": "Color Macro1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "Macro 28"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "Macro 29"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "Macro 30"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "Macro 31"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ColorPreset",
+          "comment": "Macro 32"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "ColorPreset",
+          "comment": "Macro 33"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "ColorPreset",
+          "comment": "Macro 34"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "ColorPreset",
+          "comment": "Macro 35"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorPreset",
+          "comment": "Macro 36"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "ColorPreset",
+          "comment": "Macro 37"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "ColorPreset",
+          "comment": "Macro 38"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "ColorPreset",
+          "comment": "Macro 39"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ColorPreset",
+          "comment": "Macro 40"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "ColorPreset",
+          "comment": "Macro 41"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "ColorPreset",
+          "comment": "Macro 42"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "ColorPreset",
+          "comment": "Macro 43"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ColorPreset",
+          "comment": "Macro 44"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorPreset",
+          "comment": "Macro 45"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "ColorPreset",
+          "comment": "Rnd Single"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "ColorPreset",
+          "comment": "Rnd Double"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset",
+          "comment": "Open 2"
+        }
+      ]
+    },
+    "Color Macro1 Rate 2": {
+      "name": "Color Macro1 Rate",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physical": 0,
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [129, 157],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [159, 188],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<"
+        },
+        {
+          "dmxRange": [195, 223],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [225, 254],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (ColorMacro1Rate)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        }
+      ]
+    },
+    "Sh1 3": {
+      "name": "Sh1",
+      "highlightValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "P Rotate 2": {
+      "name": "P Rotate",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Pan Position"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 100%"
+        },
+        {
+          "dmxRange": [129, 133],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 90%"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 80%"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 70%"
+        },
+        {
+          "dmxRange": [147, 151],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 60%"
+        },
+        {
+          "dmxRange": [153, 157],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 50%"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 40%"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 30%"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 20%"
+        },
+        {
+          "dmxRange": [177, 181],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 10%"
+        },
+        {
+          "dmxRange": [183, 188],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CCW 1%"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 1%"
+        },
+        {
+          "dmxRange": [195, 200],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 10%"
+        },
+        {
+          "dmxRange": [202, 206],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW  20%"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 30%"
+        },
+        {
+          "dmxRange": [214, 218],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 40%"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 50%"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 60%"
+        },
+        {
+          "dmxRange": [232, 236],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 70%"
+        },
+        {
+          "dmxRange": [238, 242],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 80%"
+        },
+        {
+          "dmxRange": [244, 248],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 90%"
+        },
+        {
+          "dmxRange": [250, 254],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (PanRotate)",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm",
+          "comment": "CW 100%"
+        }
+      ]
+    },
+    "Function 2": {
+      "name": "Function",
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "NoFeature 1"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Dim Linear"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Square Law"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Inv SQ Law"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "S Curve"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "NoFeature 2"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "Frequency Setting"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "Frequency Disable"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "NoFunction",
+          "comment": "NoFeature 3"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "PT Reset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "NoFunction",
+          "comment": "NoFeature 4"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Unknown (All Reset)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "All Reset"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Unknown (Dimmer Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Dim Fast"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Unknown (Dimmer Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Dim Smooth"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "NoFunction",
+          "comment": "NoFeature 5"
+        }
+      ]
+    },
+    "Sh1 4": {
+      "name": "Sh1",
+      "highlightValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min PulseClose"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max PulseClose"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "White Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 28"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 29"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 30"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 31"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 32"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 33"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 34"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 35"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 36"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 37"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 38"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 39"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 40"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 41"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 42"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 43"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 44"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 45"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 46"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 47"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Macro 48"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Unknown (White Macro)",
+          "physical": 0,
+          "comment": "Open2"
+        }
+      ]
+    },
+    "White Macro Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "NoFeature 1"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [129, 157],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [159, 188],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": ">"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Unknown (White Macro Speed)",
+          "physical": 0,
+          "comment": "Spot"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<"
+        },
+        {
+          "dmxRange": [195, 223],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [225, 254],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (White Macro Speed)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "<<<"
+        }
+      ]
+    },
+    "Sh1 5": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open "
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open "
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Strobe Ran"
+        },
+        {
+          "dmxRange": [241, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "White 25": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Sh1 6": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Strobe Ran"
+        },
+        {
+          "dmxRange": [241, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim 9": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 9 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "White 26": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Sh1 7": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Strobe Ran"
+        },
+        {
+          "dmxRange": [241, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim 10": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 10 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "White 27": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Sh1 8": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Strobe Ran"
+        },
+        {
+          "dmxRange": [241, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim 11": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 11 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "White 28": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Sh1 9": {
+      "name": "Sh1",
+      "highlightValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "min Strobe Ran"
+        },
+        {
+          "dmxRange": [241, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "max Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim 12": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 12 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Color Macro1 3": {
+      "name": "Color Macro1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "Macro 28"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "Macro 29"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "Macro 30"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "Macro 31"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "Macro 32"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ColorPreset",
+          "comment": "Macro 33"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "ColorPreset",
+          "comment": "Macro 34"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "ColorPreset",
+          "comment": "Macro 35"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "ColorPreset",
+          "comment": "Macro 36"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorPreset",
+          "comment": "Macro 37"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "ColorPreset",
+          "comment": "Macro 38"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "ColorPreset",
+          "comment": "Macro 39"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "ColorPreset",
+          "comment": "Macro 40"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ColorPreset",
+          "comment": "Macro 41"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "ColorPreset",
+          "comment": "Macro 42"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "ColorPreset",
+          "comment": "Macro 43"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "ColorPreset",
+          "comment": "Macro 44"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ColorPreset",
+          "comment": "Macro 45"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorPreset",
+          "comment": "Macro 46"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "ColorPreset",
+          "comment": "Rnd Single"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "ColorPreset",
+          "comment": "Rnd Double"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset",
+          "comment": "No Function"
+        }
+      ]
+    },
+    "C1 3": {
+      "name": "C1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 29
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 30
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 31
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 32
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 33
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 34
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "WheelSlot",
+          "wheel": "Color 1",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>>"
+        },
+        {
+          "dmxRange": [181, 189],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">>"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": ">"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<"
+        },
+        {
+          "dmxRange": [209, 218],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<"
+        },
+        {
+          "dmxRange": [220, 228],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "<<<"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open2"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Fast"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "wheel": "Color 1",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Open3"
+        }
+      ]
+    },
+    "Dim 13": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 14": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 15": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 16": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 17": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 18": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 19": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 20": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 21": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 22": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 23": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 24": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 25": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 26": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 27": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 28": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 29": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 30": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1 58 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 5",
+        "White 6",
+        "White 7",
+        "White 8",
+        "White 9",
+        "White 10",
+        "White 11",
+        "White 12",
+        "White 13",
+        "White 14",
+        "White 15",
+        "White 16",
+        "White 17",
+        "White 18",
+        "White 19",
+        "White 20",
+        "White 21",
+        "White 22",
+        "White 23",
+        "Color Macro1",
+        "Color Macro1 Rate",
+        "C1",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 2",
+        "Dim 8",
+        "Dim 8 fine",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 2 25 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White 24",
+        "CTO",
+        "C1 2",
+        "Color Macro1 2",
+        "Color Macro1 Rate 2",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 3",
+        "Dim 8",
+        "Dim 8 fine",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 3 23 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate 2",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White 24",
+        "CTO",
+        "C1 2",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 3",
+        "Dim 8",
+        "Dim 8 fine",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Function 2"
+      ]
+    },
+    {
+      "name": "Mode 4 35+ DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "White",
+        "White 2",
+        "White 4",
+        "White 6",
+        "White 7",
+        "White 8",
+        "White 9",
+        "White 10",
+        "White 11",
+        "White 12",
+        "White 13",
+        "White 14",
+        "White 15",
+        "White 16",
+        "White 17",
+        "White 18",
+        "White 19",
+        "White 20",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 4",
+        "Dim 8",
+        "Dim 8 fine",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 5 27 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White 24",
+        "CTO",
+        "C1 2",
+        "Color Macro1 2",
+        "Color Macro1 Rate 2",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "White Macro",
+        "White Macro Speed",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 3",
+        "Dim 8",
+        "Dim 8 fine",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 6 70 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White 24",
+        "Sh1 5",
+        "Dim 8",
+        "Dim 8 fine",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 25",
+        "Sh1 6",
+        "Dim 9",
+        "Dim 9 fine",
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 26",
+        "Sh1 7",
+        "Dim 10",
+        "Dim 10 fine",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 27",
+        "Sh1 8",
+        "Dim 11",
+        "Dim 11 fine",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 28",
+        "Sh1 9",
+        "Dim 12",
+        "Dim 12 fine",
+        "White",
+        "White 2",
+        "White 4",
+        "White 6",
+        "White 7",
+        "White 8",
+        "White 9",
+        "White 10",
+        "White 11",
+        "White 12",
+        "White 13",
+        "White 14",
+        "White 15",
+        "White 16",
+        "White 17",
+        "White 18",
+        "White 19",
+        "White 20",
+        "Color Macro1 3",
+        "Color Macro1 Rate",
+        "C1 3",
+        "Dim 7",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Zoom",
+        "Zoom fine",
+        "Function"
+      ]
+    },
+    {
+      "name": "Mode 7 55 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "P Rotate",
+        "T Rotate",
+        " PT Speed",
+        "R",
+        "G",
+        "B",
+        "White 24",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 25",
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 26",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 27",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 28",
+        "Dim 7",
+        "Dim 13",
+        "Dim 14",
+        "Dim 15",
+        "Dim 16",
+        "Dim 17",
+        "Dim 18",
+        "Dim 19",
+        "Dim 20",
+        "Dim 21",
+        "Dim 22",
+        "Dim 23",
+        "Dim 24",
+        "Dim 25",
+        "Dim 26",
+        "Dim 27",
+        "Dim 28",
+        "Dim 29",
+        "Dim 30",
+        "Strobe Duration",
+        "Sh1",
+        "Effect1",
+        "Zoom",
+        "Zoom fine",
+        "Sh1 2",
+        "Dim 8",
+        "Dim 8 fine",
+        "Function"
+      ]
+    }
+  ]
+}
