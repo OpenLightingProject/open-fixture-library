@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wak",
+  "categories": ["Moving Head", "Blinder", "Stand", "Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["wak"],
+    "createDate": "2026-06-17",
+    "lastModifyDate": "2026-06-17"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=yJLwSKc3rMM&list=RDyJLwSKc3rMM&start_radio=1"
+    ]
+  },
+  "availableChannels": {
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "wak",
+      "shortName": "wakk",
+      "channels": [
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
