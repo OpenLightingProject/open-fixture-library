@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 35 MKII",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jannis K."],
+    "createDate": "2024-12-05",
+    "lastModifyDate": "2024-12-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.bedienungsanleitu.ng/beamz/panther-35-mkii/anleitung?p=29"
+    ],
+    "productPage": [
+      "https://www.dj-checkpoint.de/de/lichttechnik/movingheads/moving-head-spot/beamz-panther-35-35-watt-led-moving-head-spot-mit-led-ring.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 139],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop",
+          "comment": "Colors 1-7 and Mix 1-6"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 55],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Open + Gobos 1-7"
+        },
+        {
+          "dmxRange": [56, 127],
+          "type": "WheelShake",
+          "shakeSpeed": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Rotation of Gobos"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Automatic Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 159],
+          "type": "Generic",
+          "comment": "Automatic Modes"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Generic",
+          "comment": "Voice Control Modes"
+        }
+      ]
+    },
+    "Pan/Tilt Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "Pan Macro"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "Tilt Macro"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "Pan+Tilt Macro"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Auto Modes": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel Rotation",
+        "Gobo Wheel Rotation",
+        "Strobe",
+        "Intensity",
+        "Pan/Tilt Speed",
+        "Automatic Mode",
+        "Pan/Tilt Macros",
+        "Auto Modes"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel Rotation",
+        "Gobo Wheel Rotation",
+        "Strobe",
+        "Intensity",
+        "Pan/Tilt Speed",
+        "Automatic Mode",
+        "Pan/Tilt Macros",
+        "Auto Modes"
+      ]
+    }
+  ]
+}
