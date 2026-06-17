@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ad",
+  "shortName": "fs",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["D"],
+    "createDate": "2026-06-17",
+    "lastModifyDate": "2026-06-17"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=5fgNSfubqRk&pp=ygUcZHdhcmthZGhpc2ggc29uZyBzb3VuZCBjaGVjaw%3D%3D",
+      "https://www.youtube.com/watch?v=5fgNSfubqRk&pp=ygUcZHdhcmthZGhpc2ggc29uZyBzb3VuZCBjaGVjaw%3D%3D",
+      "https://www.youtube.com/watch?v=5fgNSfubqRk&pp=ygUcZHdhcmthZGhpc2ggc29uZyBzb3VuZCBjaGVjaw%3D%3D"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DZ",
+      "shortName": "HKJ",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
