@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ADJ ENCORE FR50Z",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["JULIEN DONNAT"],
+    "createDate": "2026-06-19",
+    "lastModifyDate": "2026-06-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/encore-fr50z"
+    ],
+    "productPage": [
+      "https://www.adj.eu/encore-fr50z"
+    ],
+    "video": [
+      "https://www.adj.eu/encore-fr50z"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [121, 255],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "dimmer",
+      "channels": [
+        "Dimmer",
+        "Dimmer 2",
+        "Strobe",
+        "Dimmer 3"
+      ]
+    }
+  ]
+}
