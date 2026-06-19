@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dimmer",
+  "shortName": "dimmer",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-06-19",
+    "lastModifyDate": "2026-06-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.artlighting.cz/en/rds-12-led"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [1, 1, 1],
+    "weight": 1,
+    "power": 100
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-bit",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "16-bit",
+      "channels": [
+        "Intensity 2",
+        "Intensity 2 fine"
+      ]
+    }
+  ]
+}
