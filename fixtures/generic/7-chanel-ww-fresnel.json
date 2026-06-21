@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7 Chanel WW Fresnel",
+  "shortName": "7 Chanel WW Fresnel",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["TEST"],
+    "createDate": "2026-06-21",
+    "lastModifyDate": "2026-06-21"
+  },
+  "links": {
+    "productPage": [
+      "https://www.google.ro/index.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Program Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "PRESET",
+        "durationStart": "long",
+        "durationEnd": "short"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Strobe",
+        "Program Duration",
+        "Program Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
