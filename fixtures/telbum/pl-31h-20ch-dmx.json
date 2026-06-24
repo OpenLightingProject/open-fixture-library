@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "‎PL-31H 20ch DMX",
+  "shortName": "‎PL-31H Party Bar",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["A. Guy"],
+    "createDate": "2025-12-23",
+    "lastModifyDate": "2025-12-23"
+  },
+  "comment": "This small PAR bar style fixture has 5/8/20 channel DMX modes. This is the 20 channel profile.",
+  "links": {
+    "productPage": [
+      "https://a.co/d/4qwZgn5"
+    ]
+  },
+  "physical": {
+    "dimensions": [610, 254, 127],
+    "weight": 3,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "PAR 1 - Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR 1 - Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR 1 - Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR 1 - White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "PAR 2 - Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR 2 - Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR 2 - Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR 2 - White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "PAR 3 - Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR 3 - Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR 3 - Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR 3 - White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "PAR 4 - Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR 4 - Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR 4 - Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR 4 - White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "Effect",
+          "effectName": "Static Color Mode",
+          "comment": "Static Color Mode"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "Effect",
+          "effectName": "Color Change Mode",
+          "comment": "Color Change Mode"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "Effect",
+          "effectName": "Color Fade Mode",
+          "comment": "Color Fade Mode"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Effect",
+          "effectName": "Color Chase Mode",
+          "comment": "Color Chase Mode"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Effect",
+          "effectName": "Music Control Program 1",
+          "comment": "Color Change Mode"
+        },
+        {
+          "dmxRange": [220, 249],
+          "type": "Effect",
+          "effectName": "Music Control Program 2",
+          "comment": "Color Change Mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Music Control Program 3",
+          "comment": "Color Change Mode"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "20Ch DMX",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "PAR 1 - Red",
+        "PAR 1 - Green",
+        "PAR 1 - Blue",
+        "PAR 1 - White",
+        "PAR 2 - Red",
+        "PAR 2 - Green",
+        "PAR 2 - Blue",
+        "PAR 2 - White",
+        "PAR 3 - Red",
+        "PAR 3 - Green",
+        "PAR 3 - Blue",
+        "PAR 3 - White",
+        "PAR 4 - Red",
+        "PAR 4 - Green",
+        "PAR 4 - Blue",
+        "PAR 4 - White",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
