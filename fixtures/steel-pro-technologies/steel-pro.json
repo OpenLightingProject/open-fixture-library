@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "steel pro",
+  "shortName": "40x3 par led",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["EJGR"],
+    "createDate": "2023-10-27",
+    "lastModifyDate": "2023-10-27"
+  },
+  "links": {
+    "manual": [
+      "https://lite-tek.com.mx/manuales/PAR-18X10.pdf"
+    ],
+    "productPage": [
+      "https://lite-tek.com.mx/manuales/PAR-18X10.pdf"
+    ],
+    "video": [
+      "https://lite-tek.com.mx/manuales/PAR-18X10.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 123,
+    "softwareVersion": "123"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "1ms",
+        "durationEnd": "50ms"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "40X3 STEEL PRO",
+      "shortName": "40X3 STEEL PRO",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Wheel Rotation",
+        "Strobe Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
