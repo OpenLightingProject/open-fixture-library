@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixel Batten 18x10",
+  "shortName": "Pixel Batten",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Shudarshan"],
+    "createDate": "2025-01-21",
+    "lastModifyDate": "2025-01-21"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=ka4zjs56Czk&ab_channel=MichelleXu-WilledlightLightingProfessional"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [100, 750, 350],
+    "weight": 0.9,
+    "power": 260,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led"
+    },
+    "lens": {
+      "name": "Pixel",
+      "degreesMinMax": [5, 10]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "50Hz"
+      }
+    },
+    "Effect": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Effect"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Effect Speed"
+      }
+    },
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pixel Batten 18x10",
+      "shortName": "18x10Pixel",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Effect",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
