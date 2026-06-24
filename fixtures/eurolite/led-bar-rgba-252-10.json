@@ -1,0 +1,282 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bar RGBA 252/10",
+  "shortName": "LED Bar RGBA",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Ole"],
+    "createDate": "2023-05-24",
+    "lastModifyDate": "2023-05-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51930419-Anleitung-89152-1.400-eurolite-led-bar-252-rgba-10mm-40-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51930419-eurolite-led-bar-252-rgba-10mm-40.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [1075, 90, 65],
+    "weight": 2.6,
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "No Lens",
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Control 2": {
+      "name": "Control",
+      "defaultValue": 13,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "Enables 1 Segment Mode (Red2,3,4 etc are not used)"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Generic",
+          "comment": "Enables 4 Segment mode"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red 2",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red 2",
+        "Green",
+        "Blue",
+        "Amber",
+        "Dimmer",
+        "Control"
+      ]
+    },
+    {
+      "name": "19 Channel (4 Segment)",
+      "shortName": "19ch",
+      "channels": [
+        "Control 2",
+        "Dimmer 2",
+        "Strobe",
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Amber1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Amber2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Amber3",
+        "Red4",
+        "Green4",
+        "Blue4",
+        "Amber4"
+      ]
+    }
+  ]
+}
