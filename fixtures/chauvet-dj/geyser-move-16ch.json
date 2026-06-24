@@ -1,0 +1,271 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Geyser Move 16ch",
+  "categories": ["Smoke", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Brian McDade"],
+    "createDate": "2025-07-22",
+    "lastModifyDate": "2025-07-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2024/11/Geyser_Move_UM_Rev1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/geyser-move/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hriEzYEJGi8&si=5kdBeM7Ocl89lGl6"
+    ]
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "481m^3/min"
+        }
+      ]
+    },
+    "Red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Green"
+        }
+      ]
+    },
+    "Blue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        }
+      ]
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        }
+      ]
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorIntensity",
+          "color": "UV"
+        }
+      ]
+    },
+    "Red 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Green 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Green"
+        }
+      ]
+    },
+    "Blue 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        }
+      ]
+    },
+    "Amber 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        }
+      ]
+    },
+    "UV 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorIntensity",
+          "color": "UV"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Color Macro Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Motor": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 255],
+          "type": "Tilt",
+          "angleStart": "-45deg",
+          "angleEnd": "45deg"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "UV",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Amber 2",
+        "UV 2",
+        "Color Macros",
+        "Color Macro Speed",
+        "Strobe",
+        "Dimmer",
+        "Motor"
+      ]
+    }
+  ]
+}
