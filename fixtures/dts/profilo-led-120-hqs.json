@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PROFILO LED 120 HQS",
+  "shortName": "Profilo 120",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Anto"],
+    "createDate": "2024-06-05",
+    "lastModifyDate": "2024-06-05"
+  },
+  "links": {
+    "productPage": [
+      "https://shop.esl-france.com/decoupes/27073-decoupe-profilo-led-120-hqs-full-rgba-120-w-zoom-20--38--dts.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "255%"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Shutter / Strobe",
+        "Dimmer 3",
+        "Dimmer 2",
+        "Color Temperature",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
