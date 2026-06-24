@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GEM X 21 Hard",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["mkobzar", "Mikhail Kobzar"],
+    "createDate": "2024-12-11",
+    "lastModifyDate": "2024-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [737, 381, 186],
+    "weight": 19.7,
+    "power": 360,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 50000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [110, 110]
+    }
+  },
+  "availableChannels": {
+    "Brightness": {
+      "fineChannelAliases": ["Cold white", "Cold white 2", "Warm white 2", "Cold white 3", "Warm white 3", "Cold white 4", "Warm white 4", "Warm white"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "R dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effects"
+      }
+    },
+    "HUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "R dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R dimmer 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G dimmer 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B dimmer 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R dimmer 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G dimmer 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B dimmer 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Fan set": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "0-100"
+      }
+    },
+    "ССT 2700-10000K": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold",
+        "helpWanted": "Is this the correct direction? Can you provide exact color temperature values in Kelvin?"
+      }
+    },
+    "HSI": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "CCT\nHSI\nRGBCW XY"
+      }
+    },
+    "X": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Y": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel CCT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Number": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Light effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "no effect\nCandle\ncloud passing\nClub\ncolor chase\nCop car\nfire\nFireworks\nstrobe\nLighting\nPaparazzi\nPulsing\nTelevision\nReserved"
+      }
+    },
+    "Light effect 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "CCT"
+      }
+    },
+    "Light effect 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Speed"
+      }
+    },
+    "Light effect 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "No"
+      }
+    },
+    "Light effect 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "No"
+      }
+    },
+    "Light effect 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "No"
+      }
+    },
+    "Cross discoloration ССЕ - RGBW": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "GRN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Balance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT&RGBW 11-channel - 8bit",
+      "shortName": "CCT&RGBW 11ch - 8bit",
+      "channels": [
+        "Brightness",
+        "ССT 2700-10000K",
+        "GRN",
+        "Cross discoloration ССЕ - RGBW",
+        "R dimmer",
+        "G dimmer",
+        "B dimmer",
+        "Cold white",
+        "Warm white",
+        "Fan set",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGBCW 22-channel - 8bit",
+      "shortName": "RGBCW 22ch - 8bit",
+      "channels": [
+        "Brightness",
+        "R dimmer",
+        "G dimmer",
+        "B dimmer",
+        "Cold white",
+        "Warm white",
+        "R dimmer 2",
+        "G dimmer 2",
+        "B dimmer 2",
+        "Cold white 2",
+        "Warm white 2",
+        "R dimmer 3",
+        "G dimmer 3",
+        "B dimmer 3",
+        "Cold white 3",
+        "Warm white 3",
+        "R dimmer 4",
+        "G dimmer 4",
+        "B dimmer 4",
+        "Cold white 4",
+        "Warm white 4",
+        "Fan set"
+      ]
+    },
+    {
+      "name": "CCT 6-channel - 8bit",
+      "shortName": "CCT 6ch - 8bit",
+      "channels": [
+        "Brightness",
+        "Cold white",
+        "ССT 2700-10000K",
+        "X",
+        "GRN",
+        "Fan set",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI 5-channel - 8bit",
+      "shortName": "HSI 5ch - 8bit",
+      "channels": [
+        "Brightness",
+        "HUE",
+        "Saturation",
+        "Fan set",
+        "Strobe"
+      ]
+    }
+  ]
+}
