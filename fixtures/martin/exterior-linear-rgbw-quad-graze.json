@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exterior Linear RGBW/QUAD Graze",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Matthew Wright"],
+    "createDate": "2025-07-19",
+    "lastModifyDate": "2025-07-19"
+  },
+  "comment": "Covers both the 300/310 and 1200/1210 models.",
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/exterior-linear-series-user-manual-43bb9e3e-5799-432c-8cd1-32ab18326622"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/exterior-linear-rgbw-graze#downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=aWcvwgGvTSQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [305, 72, 99],
+    "weight": 1.5,
+    "power": 20,
+    "DMXconnector": "8-Pin Custom Connector",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4000
+    },
+    "lens": {
+      "name": "Graze"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard (300 or 1200)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Extended (1200 Only)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4"
+      ]
+    }
+  ]
+}
