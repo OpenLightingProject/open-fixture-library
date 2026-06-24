@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PST-15W MK2 COB RGBW Floor Spot/Wash",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["ElektrikCow"],
+    "createDate": "2021-11-08",
+    "lastModifyDate": "2021-11-08"
+  },
+  "comment": "Pinspot",
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51916251-Anleitung-99142-1.100-eurolite-led-pst-15w-mk2-cob-rgbw-floor-spot-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51916251-eurolite-led-pst-15w-mk2-cob-rgbw-floor-spot-wash.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rVeYfhA813Y"
+    ]
+  },
+  "physical": {
+    "dimensions": [135, 220, 190],
+    "weight": 1.42,
+    "power": 17,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "15-W-COB"
+    },
+    "lens": {
+      "degreesMinMax": [4, 20]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [5, 125],
+          "type": "Effect",
+          "effectName": "Color Change",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [126, 255],
+          "type": "Effect",
+          "effectName": "Color Fade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe Speed",
+        "Color Presets"
+      ]
+    }
+  ]
+}
