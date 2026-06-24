@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EVOLITE",
+  "shortName": "FR100Z",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["LudoLight"],
+    "createDate": "2025-01-06",
+    "lastModifyDate": "2025-01-06"
+  },
+  "comment": "PC LED 3 CH",
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/products/Evolite-Frz-100ww-13707541.html?utm_source=chatgpt.com"
+    ],
+    "productPage": [
+      "https://www.manualslib.com/products/Evolite-Frz-100ww-13707541.html?utm_source=chatgpt.com"
+    ],
+    "video": [
+      "https://www.manualslib.com/products/Evolite-Frz-100ww-13707541.html?utm_source=chatgpt.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "lens": {
+      "degreesMinMax": [10, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "NO STROB"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "23Hz",
+          "comment": "STROBE"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "NO STROB"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "STROB SLOW"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "NO STROB"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "ALEATOIRE - RANDOM"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 CANAUX",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    }
+  ]
+}
