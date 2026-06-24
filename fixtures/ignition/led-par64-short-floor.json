@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR64 SHORT FLOOR",
+  "shortName": "LED PAR64SF",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MJC-CS Douarnenez"],
+    "createDate": "2025-03-28",
+    "lastModifyDate": "2025-03-28"
+  },
+  "links": {
+    "manual": [
+      "https://bklumitec.com/out/media/25009_BA_E_Ignition_LED-PAR64sf-20x3W-PWM-RGB.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 280, 385],
+    "weight": 3.18,
+    "power": 72,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Special Functions": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "MACROS",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "MACROS DIMMER",
+      "channels": [
+        "Color Macros",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "RGB Strobe Master",
+      "shortName": "RGBSM",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "RGB Strobe Master Special Functions",
+      "shortName": "RGBSM+",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Dimmer",
+        "Special Functions"
+      ]
+    },
+    {
+      "name": "Compatibility",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe",
+        "Special Functions",
+        "Dimmer"
+      ]
+    }
+  ]
+}
