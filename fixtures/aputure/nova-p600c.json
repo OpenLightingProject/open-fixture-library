@@ -1,0 +1,407 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nova P600c",
+  "categories": ["Dimmer", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Hayden Foster"],
+    "createDate": "2024-09-11",
+    "lastModifyDate": "2024-09-11"
+  },
+  "links": {
+    "manual": [
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/NovaP300c-P600c/P600c%20All%20Files/Nova-P600c-User-Manual-English.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/nova-p600c/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=L0V_v_ht5V4"
+    ]
+  },
+  "physical": {
+    "dimensions": [80.2, 48.15, 17.96],
+    "weight": 13.74,
+    "power": 720,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "- 0.9 - - 0.1"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "0.1 - 0.9"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT <-> RGB": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "CCT ↔ HSI": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "1°- 360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 100%"
+      }
+    },
+    "HSI Base CCT": {
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "2000 K - 10000 K"
+      }
+    },
+    "CCT 2": {
+      "name": "CCT",
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Generic",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Generic",
+          "comment": "5600K"
+        }
+      ]
+    },
+    "X Coordinate": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 0.8"
+      }
+    },
+    "Y Coordinate": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0 - 0.8"
+      }
+    },
+    "Rosco / Lee": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Generic",
+          "comment": "Rosco"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Generic",
+          "comment": "Lee"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Series": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "R - Col.corr. / L - Col.corr."
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "R - CalColor / L - Col.Filters"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "R - Storaro / L - 600 Series"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "R - Cinelux / L - Cosmetic"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "R - Reserved / L - 700 Series"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Category": {
+      "capability": {
+        "type": "Generic",
+        "comment": "GEL Category"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT 3": {
+      "name": "CCT",
+      "fineChannelAliases": ["CCT 3 fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Green/Magenta Point 2": {
+      "name": "Green/Magenta Point",
+      "fineChannelAliases": ["Green/Magenta Point 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [9831, 30145],
+          "type": "Generic",
+          "comment": "- 0.9 - - 0.1"
+        },
+        {
+          "dmxRange": [30146, 39976],
+          "type": "Generic",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic",
+          "comment": "1% - 99%"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT <-> RGB 2": {
+      "name": "CCT <-> RGB",
+      "fineChannelAliases": ["CCT <-> RGB 2 fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB 8-bit",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point",
+        "CCT <-> RGB",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "CCT 8-bit",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI 8-bit",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green/Magenta Point",
+        "CCT ↔ HSI",
+        "Hue",
+        "Saturation",
+        "HSI Base CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB 8-bit",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI 8-bit",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "HSI Base CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "GEL 8-bit",
+      "channels": [
+        "Intensity",
+        "CCT 2",
+        "Rosco / Lee",
+        "Series",
+        "Category",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "XY 8-bit",
+      "channels": [
+        "Intensity",
+        "X Coordinate",
+        "Y Coordinate",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & RGB 16-bit",
+      "channels": [
+        "Intensity 2",
+        "CCT 3",
+        "Green/Magenta Point 2",
+        "CCT <-> RGB 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Strobe"
+      ]
+    }
+  ]
+}
