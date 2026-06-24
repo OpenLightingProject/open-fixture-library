@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Gobo Derby Hybrid",
+  "shortName": "led-gobo-derby-hybrid",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2026-04-03",
+    "lastModifyDate": "2026-04-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.firefront.de/pdf/Eurolite-LED-Gobo-Derby-Hybrid-User-Manual-DE-EN.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51918330-eurolite-led-gobo-derby-hybrid.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 260, 265],
+    "weight": 3.15,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "RGBA-LEDs"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "weiße LEDs"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "UV-LEDs"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Show 1-3 per Zufallsprinzip"
+        }
+      ]
+    },
+    "2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 247],
+          "type": "Effect",
+          "effectName": "Showprogramm 1-4 Ablaufgeschwindigkeit langsam > schnell"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Showprogramm 1-4 musikgesteuert"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2 Channel",
+      "shortName": "2ch",
+      "channels": [
+        "1",
+        "2"
+      ]
+    }
+  ]
+}
