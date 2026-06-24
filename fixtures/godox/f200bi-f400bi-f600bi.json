@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F200Bi/F400Bi/F600Bi",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Godox"],
+    "createDate": "2023-11-23",
+    "lastModifyDate": "2023-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230713/1689216323305995.pdf",
+      "https://www.godox.com/static/upload/file/20230713/1689216294825961.pdf",
+      "https://www.godox.com/static/upload/file/20230713/1689216265265540.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-c/2564.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=dn8D3jsOqRQ&t=13s",
+      "https://www.youtube.com/watch?v=2stWQEwFiVM&t=32s"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "8500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8-Bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
