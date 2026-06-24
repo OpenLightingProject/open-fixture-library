@@ -1,0 +1,162 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 60W BEAM LIGHT (WITH LIGHT STRIP)",
+  "shortName": "HY-BA60",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Lode Scheen"],
+    "createDate": "2024-11-20",
+    "lastModifyDate": "2024-11-20"
+  },
+  "links": {
+    "productPage": [
+      "https://www.hongyilights.com/products/60w-beam-moving-head-light-with-ring"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 280, 200],
+    "weight": 4,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Figure out specifications"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "RESET FUNCTION"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [5, 109],
+          "type": "ColorPreset",
+          "comment": "Color selection"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "ColorPreset",
+          "comment": "Self-propelled"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15 channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Reserved",
+        "No function",
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "13 channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Reserved",
+        "No function",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
