@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Godox S60",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-04-05",
+    "lastModifyDate": "2023-04-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230308/1678245240381756.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-a/S60-S60Bi.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rqCCwyHHwFk"
+    ]
+  },
+  "physical": {
+    "dimensions": [264, 107, 100],
+    "weight": 1.36,
+    "power": 77,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 55]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "Brightness",
+          "switchChannels": {
+            "Unused / Effect": "Unused"
+          }
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Generic",
+          "comment": "Effect",
+          "switchChannels": {
+            "Unused / Effect": "Effect"
+          }
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Effect",
+          "effectName": "Flash 1"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Flash 2"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Flash 3"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Storm 1"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Storm 2"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Storm 3"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Broken Bulb"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Mode",
+        "Intensity",
+        "Unused / Effect"
+      ]
+    }
+  ]
+}
