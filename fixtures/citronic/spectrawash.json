@@ -1,0 +1,330 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SpectraWash",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SB"],
+    "createDate": "2025-01-14",
+    "lastModifyDate": "2025-01-14"
+  },
+  "comment": "240W LED stage blinder. 8 RGB segments plus 8 White segments.",
+  "links": {
+    "manual": [
+      "https://avsl.com/assets/manuals/1/5/154056UK.pdf"
+    ],
+    "productPage": [
+      "https://avsl.com/product/154.056UK-spectrabox-240w-led-colour-blinder-and-strobe"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 240, 75],
+    "weight": 3.6,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "Segment 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 5 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 5 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 5 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 6 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 6 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 6 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 7 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 7 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 7 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "Segment 8 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red linear dimmer"
+      }
+    },
+    "Segment 8 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green linear dimmer"
+      }
+    },
+    "Segment 8 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue linear dimmer"
+      }
+    },
+    "White Segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    },
+    "White Segment 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White linear dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "32ch",
+      "channels": [
+        "Segment 1 Red",
+        "Segment 1 Green",
+        "Segment 1 Blue",
+        "Segment 2 Red",
+        "Segment 2 Green",
+        "Segment 2 Blue",
+        "Segment 3 Red",
+        "Segment 3 Green",
+        "Segment 3 Blue",
+        "Segment 4 Red",
+        "Segment 4 Green",
+        "Segment 4 Blue",
+        "Segment 5 Red",
+        "Segment 5 Green",
+        "Segment 5 Blue",
+        "Segment 6 Red",
+        "Segment 6 Green",
+        "Segment 6 Blue",
+        "Segment 7 Red",
+        "Segment 7 Green",
+        "Segment 7 Blue",
+        "Segment 8 Red",
+        "Segment 8 Green",
+        "Segment 8 Blue",
+        "White Segment 1",
+        "White Segment 2",
+        "White Segment 3",
+        "White Segment 4",
+        "White Segment 5",
+        "White Segment 6",
+        "White Segment 7",
+        "White Segment 8"
+      ]
+    }
+  ]
+}
