@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJ Spot 250",
+  "shortName": "AMDJ 250",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["P Hugunin"],
+    "createDate": "2026-06-24",
+    "lastModifyDate": "2026-06-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/d011e8d2f177c692734347c3ec22af9047e94468_dj_spot_250.pdf?v=11828625679947602020"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/dj-spot-250?_su_rec=_pDvk2conrTYaTFiuZokbobj_lxPfCZ1uJGKEN20_GYNlvzZJkLNoVqsioDeYEtrOi6rIE7gybSp1yrqX0scZiu3CM7BS54Wd8jkv5nwSBAqewpofRItE9Qn52VNl0kN7sOeSfYg5FdIhBtZ32GSyo2Tye7VOG00CWmg3pCgbtDJn8zeTv2UFyVA6kA0Oh8ESAm7h3WyaclxN6I1T2n8q9uvG5pwq7gKDzETeKqwoIazXFK0f2DApvc&_su_rec_id=809f0bb6-beb3-4a54-aa67-7c1cfdabf1af-1782331964"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=pBWMtkFd2Fw&pp=ygUgYW1lcmljYW4gZGogc3BvdCAyNTAgbW92aW5nIGhlYWQ%3D"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "DJ SPOT 250"
+  },
+  "physical": {
+    "dimensions": [13.5, 14, 19.5],
+    "weight": 39,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "ZB-EHJ, 24v/250w"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "265deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Rainbow Effect"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DJ Spot 250",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
