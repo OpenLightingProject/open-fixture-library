@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led ParBar 4way",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Tom Mulder"],
+    "createDate": "2023-11-22",
+    "lastModifyDate": "2023-11-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.handleidi.ng/beamz/led-parbar-4-way-150-495/handleiding?p=17"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer"
+      ]
+    }
+  ]
+}
