@@ -1,0 +1,239 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED SLS-12 QCL Floor",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2025-06-26",
+    "lastModifyDate": "2025-06-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915385-Manual-80936-1.30-eurolite-led-sls-12-qcl-12x5w-floor-de_en.pdf?srsltid=AfmBOoqOnbIho2MfVQCFh34YT1AlHsfp-OUTJHPagMT-6o7UmbJr_XHi"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51915383-eurolite-led-sls-12-qcl-floor.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 233, 125],
+    "weight": 1.7,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 x 8 W 4in1 QCL RGBW"
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Preset Colors": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#008000"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Dark Orange",
+          "colors": ["#8b4000"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Green Yellow",
+          "colors": ["#adff2f"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Salmon",
+          "colors": ["#fa8072"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#40e0d0"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#d3d3ff"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#90d5ff"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Dark Blue",
+          "colors": ["#00008b"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Auto mode / Sound mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true,
+          "soundSensitivity": "low"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "soundSensitivity": "low"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Preset Colors",
+        "Auto mode / Sound mode"
+      ]
+    }
+  ]
+}
