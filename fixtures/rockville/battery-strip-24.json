@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Battery Strip 24",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ryan Lindsey"],
+    "createDate": "2023-11-24",
+    "lastModifyDate": "2023-11-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.rockvilleaudio.com/content/Manuals/BATTERY%20STRIP%2024_Manual_OL.pdf"
+    ],
+    "productPage": [
+      "https://www.rockvilleaudio.com/battery-strip-24/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iu0AqZn0C2g&pp=ygUQYmF0dGVyeSBzdHJpcCAyNA%3D%3D"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 60, 60],
+    "weight": 3,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "name": "Main Lens",
+      "degreesMinMax": [35, 35]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "ColorPreset",
+          "comment": "Color Chase 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "ColorPreset",
+          "comment": "Color Chase 2"
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "ColorPreset",
+          "comment": "Color Chase 3"
+        },
+        {
+          "dmxRange": [53, 67],
+          "type": "ColorPreset",
+          "comment": "Color Chase 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "ColorPreset",
+          "comment": "Color Chase 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "ColorPreset",
+          "comment": "Color Chase 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "ColorPreset",
+          "comment": "Color Chase 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "ColorPreset",
+          "comment": "Color Chase 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "ColorPreset",
+          "comment": "Color Chase 9"
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "ColorPreset",
+          "comment": "Color Chase 10"
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "ColorPreset",
+          "comment": "Color Chase 11"
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "ColorPreset",
+          "comment": "Color Chase 12"
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "ColorPreset",
+          "comment": "Color Chase 13"
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "ColorPreset",
+          "comment": "Color Chase 14"
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "ColorPreset",
+          "comment": "Color Chase 15"
+        },
+        {
+          "dmxRange": [233, 247],
+          "type": "ColorPreset",
+          "comment": "Color Chase 16"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
