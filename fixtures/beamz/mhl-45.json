@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MHL 45",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Testing"],
+    "createDate": "2022-12-28",
+    "lastModifyDate": "2022-12-28"
+  },
+  "links": {
+    "manual": [
+      "https://djcity.com.au/product/beamz-mhl74-moving-head-led-wash/?gclid=CjwKCAiAzKqdBhAnEiwAePEjkkhJ7QKjgj_mx0737ZSNv6bBNaHCkW8hyscyA1DHTNP-YBbmXtay1BoChSYQAvD_BwE"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "512deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "140deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
