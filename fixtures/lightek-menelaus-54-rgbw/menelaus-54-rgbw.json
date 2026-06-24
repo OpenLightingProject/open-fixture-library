@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MENELAUS 54 RGBW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["roman"],
+    "createDate": "2026-03-03",
+    "lastModifyDate": "2026-03-03"
+  },
+  "links": {
+    "productPage": [
+      "https://www.askol.co.il/product/%D7%AA%D7%95%D7%9E%D7%A1-%D7%9C%D7%93-lightek-led-menelaus-54-rgbw/?srsltid=AfmBOor2z-OSrEUH_q7eWFUhEw8MdoSDTUssvUhSPT01uHLMhHzh7CCI"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "red",
+      "channels": [
+        "Red"
+      ]
+    }
+  ]
+}
