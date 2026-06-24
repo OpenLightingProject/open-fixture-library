@@ -1,0 +1,343 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Gun",
+  "shortName": "contest/led-gun",
+  "categories": ["Flower", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Doc"],
+    "createDate": "2024-09-26",
+    "lastModifyDate": "2024-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.contest-lighting.com/downloads/LED-GUN_manuel-v4.0-web-en.pdf"
+    ],
+    "other": [
+      "https://www.contest-lighting.com/home/downloads/newbox-ledgun.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [213, 271, 176],
+    "weight": 4,
+    "power": 26,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW CREE LED"
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "availableChannels": {
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [15, 124],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Clockwise, fast to slow rotation"
+        },
+        {
+          "dmxRange": [125, 139],
+          "type": "EffectSpeed",
+          "speed": "stop",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [140, 249],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Counterclockwise, slow to fast rotation"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Dimmer /Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [8, 199],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [200, 247],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Colors": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Color 1",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Color 2",
+          "colors": ["#00ff33"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Color 3",
+          "colors": ["#00ff66"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Color 4",
+          "colors": ["#00ff99"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Color 5",
+          "colors": ["#00ffcc"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Color 6",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Color 7",
+          "colors": ["#00ccff"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Color 8",
+          "colors": ["#0099ff"]
+        },
+        {
+          "dmxRange": [64, 72],
+          "type": "ColorPreset",
+          "comment": "Color 9",
+          "colors": ["#0066ff"]
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "ColorPreset",
+          "comment": "Color 10",
+          "colors": ["#0033ff"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Color 11",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Color 12",
+          "colors": ["#3300ff"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Color 13",
+          "colors": ["#6600ff"]
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Color 14",
+          "colors": ["#9900ff"]
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Color 15",
+          "colors": ["#cc00ff"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Color 16",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Color 17",
+          "colors": ["#ff00cc"]
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Color 18",
+          "colors": ["#ff0099"]
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Color 19",
+          "colors": ["#ff0066"]
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Color 20",
+          "colors": ["#ff0033"]
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Color 21",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Color 22",
+          "colors": ["#ff3300"]
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Color 23",
+          "colors": ["#ff6600"]
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Color 24",
+          "colors": ["#ff9900"]
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Color 25",
+          "colors": ["#ffcc00"]
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Color 26",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Color 27",
+          "colors": ["#ccff00"]
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Color 28",
+          "colors": ["#99ff00"]
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Color 29",
+          "colors": ["#66ff00"]
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Color 30",
+          "colors": ["#66ff00"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "Color 31",
+          "colors": ["#33ff00"]
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Color 32",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Effect 2": {
+      "name": "Effect",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [10, 120],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Clockwise, fast to slow rotation"
+        },
+        {
+          "dmxRange": [121, 134],
+          "type": "EffectSpeed",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [135, 245],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Counterclockwise, slow to fast rotation"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction",
+          "comment": "Off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1Ch",
+      "shortName": "1ch",
+      "channels": [
+        "Effect"
+      ]
+    },
+    {
+      "name": "3Ch",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer /Strobe",
+        "Colors",
+        "Effect 2"
+      ]
+    }
+  ]
+}
