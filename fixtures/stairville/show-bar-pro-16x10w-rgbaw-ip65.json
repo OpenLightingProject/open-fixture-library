@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Show Bar Pro 16x10W RGBAW IP65",
+  "shortName": "ShwBarPro16x10W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MwgK"],
+    "createDate": "2025-10-05",
+    "lastModifyDate": "2025-10-05"
+  },
+  "links": {
+    "productPage": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/379792_c_379792_r1_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1027, 170, 221],
+    "weight": 7.6,
+    "power": 190,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED (Specifikt: 16 st 10W RGBAW 5-i-1 LEDs)",
+      "lumens": 4681
+    },
+    "lens": {
+      "name": "Standard",
+      "degreesMinMax": [20, 50]
+    }
+  },
+  "availableChannels": {
+    "Intensity red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Preprogrammed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Depending on 7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "shortName": "5ch",
+      "channels": [
+        "Intensity red",
+        "Intensity green",
+        "Intensity Blue",
+        "Intensity White",
+        "Intensity Amber"
+      ]
+    },
+    {
+      "name": "7ch",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Intensity red",
+        "Intensity green",
+        "Intensity Blue",
+        "Intensity White",
+        "Intensity Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "9ch",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Intensity red",
+        "Intensity green",
+        "Intensity Blue",
+        "Intensity White",
+        "Intensity Amber",
+        "Preprogrammed",
+        "Depending on 7",
+        "Strobe"
+      ]
+    }
+  ]
+}
