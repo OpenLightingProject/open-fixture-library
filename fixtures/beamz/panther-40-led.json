@@ -1,0 +1,428 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 40 LED",
+  "categories": ["Dimmer", "Effect", "Flower", "Moving Head"],
+  "meta": {
+    "authors": ["Johannes"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2026/03/150.461-Panther-40-Led-Spot-IRC-V3.1.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/panther-40-led-spot-moving-head/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ry75kgETROk"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 172, 240],
+    "weight": 3.3,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [11, 11]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff2b00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff9d00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#3cff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#002aff"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00eeff"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#a600ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Color selection 6+"
+        },
+        {
+          "type": "Color",
+          "name": "Color wheel rotation"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Gobo selection"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Adjust Pan motor movement"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "Adjust Tilt motor movement"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed slow to fast"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [88, 175],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [125, 249],
+          "type": "WheelShake",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
+    },
+    "Scene and Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Whi"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Scene 2 (Empty)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Scene 3 (Empty)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Scene 4 (Empty)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Scene 5 (Empty)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Scene 6 (Empty)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Scene 7 (Empty)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Scene 8 (Empty)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Scene 9 (Empty)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "Program 8 (Empty)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Program 9 (Empty)"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "(Empty)"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "(Empty)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Dimmer",
+        "Gobo Wheel",
+        "Strobe",
+        "Scene and Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}
