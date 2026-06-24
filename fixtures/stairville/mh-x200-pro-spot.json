@@ -1,0 +1,231 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH-x200 Pro Spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2026-04-13",
+    "lastModifyDate": "2026-04-13"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/prod/c_288712_de_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [495, 482, 422],
+    "weight": 20.5,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Drehung 0-max 540 Grad"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [23, 85],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [86, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [101, 165],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [181, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "offen"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "BeamAngle",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [220, 237],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "WheelShake"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Shutter",
+        "Dimmer",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
