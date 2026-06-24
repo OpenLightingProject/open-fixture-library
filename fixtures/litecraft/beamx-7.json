@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beamx.7",
+  "shortName": "Bx.7",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Pyronaut"],
+    "createDate": "2024-07-12",
+    "lastModifyDate": "2024-07-12"
+  },
+  "comment": "Par Can",
+  "links": {
+    "manual": [
+      "https://www.huss-licht-ton.de/images/products_download/User_Manual_21947_1.pdf"
+    ],
+    "productPage": [
+      "https://lmp.de/produkteshop/scheinwerfer-und-komponenten/4961/litecraft-beamx.7-ip"
+    ]
+  },
+  "physical": {
+    "dimensions": [216, 150, 231],
+    "weight": 2.3,
+    "power": 46,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Multicolour LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 99],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2 Chanel",
+      "shortName": "2 Ch",
+      "channels": [
+        "Color Macros",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3 Chanel",
+      "shortName": "3 Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Chanel",
+      "shortName": "4 Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5 Chanel",
+      "shortName": "5 Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "10 Chanel",
+      "shortName": "10 Ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Program Duration",
+        "Program Speed",
+        "Effect Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
