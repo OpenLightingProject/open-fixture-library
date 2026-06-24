@@ -1,0 +1,486 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Beam 8x12 RGBW ",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Michel", "Leander"],
+    "createDate": "2024-09-25",
+    "lastModifyDate": "2024-09-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-09-25",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [973, 132, 73],
+    "weight": 6.3,
+    "power": 81,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      8,
+      1,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "240deg"
+      }
+    },
+    "Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Built-In Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Built-in Effect 1"
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "Effect",
+          "effectName": "Built-in Effect 2"
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "Effect",
+          "effectName": "Built-in Effect 3"
+        },
+        {
+          "dmxRange": [43, 53],
+          "type": "Effect",
+          "effectName": "Built-in Effect 4"
+        },
+        {
+          "dmxRange": [54, 64],
+          "type": "Effect",
+          "effectName": "Built-in Effect 5"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Effect",
+          "effectName": "Built-in Effect 6"
+        },
+        {
+          "dmxRange": [76, 86],
+          "type": "Effect",
+          "effectName": "Built-in Effect 7"
+        },
+        {
+          "dmxRange": [87, 97],
+          "type": "Effect",
+          "effectName": "Built-in Effect 8"
+        },
+        {
+          "dmxRange": [98, 108],
+          "type": "Effect",
+          "effectName": "Built-in Effect 9"
+        },
+        {
+          "dmxRange": [109, 119],
+          "type": "Effect",
+          "effectName": "Built-in Effect 10"
+        },
+        {
+          "dmxRange": [120, 130],
+          "type": "Effect",
+          "effectName": "Built-in Effect 11"
+        },
+        {
+          "dmxRange": [131, 141],
+          "type": "Effect",
+          "effectName": "Built-in Effect 12"
+        },
+        {
+          "dmxRange": [142, 152],
+          "type": "Effect",
+          "effectName": "Built-in Effect 13"
+        },
+        {
+          "dmxRange": [153, 163],
+          "type": "Effect",
+          "effectName": "Built-in Effect 14"
+        },
+        {
+          "dmxRange": [164, 174],
+          "type": "Effect",
+          "effectName": "Built-in Effect 15"
+        },
+        {
+          "dmxRange": [175, 185],
+          "type": "Effect",
+          "effectName": "Built-in Effect 16"
+        },
+        {
+          "dmxRange": [186, 196],
+          "type": "Effect",
+          "effectName": "Built-in Effect 17"
+        },
+        {
+          "dmxRange": [197, 207],
+          "type": "Effect",
+          "effectName": "Built-in Effect 18"
+        },
+        {
+          "dmxRange": [208, 218],
+          "type": "Effect",
+          "effectName": "Built-in Effect 19"
+        },
+        {
+          "dmxRange": [219, 229],
+          "type": "Effect",
+          "effectName": "Built-in Effect 20"
+        },
+        {
+          "dmxRange": [230, 240],
+          "type": "Effect",
+          "effectName": "Built-in Effect 21"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Effect",
+          "effectName": "Built-in Effect 22"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Voice Control"
+        }
+      ]
+    },
+    "Built-in Effect speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Effect speed"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe (Slow To Fast)"
+      }
+    },
+    "Red (Lens 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 1)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 2)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 4)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 5)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 5)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 5)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 5)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 6)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 6)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 6)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 6)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 7)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 7)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 7)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 7)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red (Lens 8)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (Lens 8)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (Lens 8)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White (Lens 8)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Tilt",
+        "Tilt Speed",
+        "Built-In Effects",
+        "Built-in Effect speed",
+        "Master dimmer",
+        "Red (Lens 1)",
+        "Green (Lens 1)",
+        "Blue (Lens 1)",
+        "White (Lens 1)"
+      ]
+    },
+    {
+      "name": "38-channel",
+      "shortName": "38ch",
+      "channels": [
+        "Tilt",
+        "Tilt Speed",
+        "Built-In Effects",
+        "Built-in Effect speed",
+        "Master dimmer",
+        "Strobe",
+        "Red (Lens 1)",
+        "Green (Lens 1)",
+        "Blue (Lens 1)",
+        "White (Lens 1)",
+        "Red (Lens 2)",
+        "Green (Lens 2)",
+        "Blue (Lens 2)",
+        "White (Lens 2)",
+        "Red (Lens 3)",
+        "Green (Lens 3)",
+        "Blue (Lens 3)",
+        "White (Lens 3)",
+        "Red (Lens 4)",
+        "Green (Lens 4)",
+        "Blue (Lens 4)",
+        "White (Lens 4)",
+        "Red (Lens 5)",
+        "Green (Lens 5)",
+        "Blue (Lens 5)",
+        "White (Lens 5)",
+        "Red (Lens 6)",
+        "Green (Lens 6)",
+        "Blue (Lens 6)",
+        "White (Lens 6)",
+        "Red (Lens 7)",
+        "Green (Lens 7)",
+        "Blue (Lens 7)",
+        "White (Lens 7)",
+        "Red (Lens 8)",
+        "Green (Lens 8)",
+        "Blue (Lens 8)",
+        "White (Lens 8)"
+      ]
+    }
+  ]
+}
