@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Double Rainbow RR",
+  "shortName": "RR100",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Jason Lord"],
+    "createDate": "2024-10-17",
+    "lastModifyDate": "2024-10-17"
+  },
+  "comment": "The Double Rainbow (RR) Linear LED, with its two rows of high fidelity RGBTD pixels, creates realistic lighting with vibrant saturated colors and intense white light.",
+  "links": {
+    "manual": [
+      "https://image.vps.videndum.com/lib/fe3a11737364047e741473/m/1/d60ef01b-627a-4ef1-a6dc-1795c78700d9.pdf"
+    ],
+    "productPage": [
+      "https://www.quasarscience.com/collections/lights/products/double-rainbow"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=btKTBvv0b68"
+    ],
+    "other": [
+      "https://help.quasarscience.com/en/overview.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 6,
+    "softwareVersion": "0.9a"
+  },
+  "physical": {
+    "dimensions": [1171, 84.8, 51.8],
+    "weight": 2.6,
+    "power": 100,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 4512.8
+    },
+    "lens": {
+      "name": "n/a",
+      "degreesMinMax": [115.3, 115.3]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 45,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1750K",
+        "colorTemperatureEnd": "10000K",
+        "comment": "3200K default"
+      }
+    },
+    "Tint": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "-100%",
+        "brightnessEnd": "100%",
+        "comment": "+/-Green"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Profile 01: HSIC 8bit - 1pixel",
+      "shortName": "HSIC 8bit",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Tint",
+        "Hue",
+        "Saturation"
+      ]
+    }
+  ]
+}
