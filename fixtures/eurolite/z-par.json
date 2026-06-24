@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z-PAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["LiMa"],
+    "createDate": "2023-11-23",
+    "lastModifyDate": "2023-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51916501-Anleitung-136973-1.200-eurolite-led-z-par-rgbw-4x10w-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51916501-eurolite-led-z-par-rgbw-4x10w.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jHNNSnWji4g&t=4s"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED RGBW"
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [6, 49]
+    }
+  },
+  "availableChannels": {
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "ZoomSpeed"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "40Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 119],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Eurolite Z-PAR",
+      "shortName": "9ch",
+      "channels": [
+        "Zoom",
+        "Effect Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Color Presets"
+      ]
+    }
+  ]
+}
