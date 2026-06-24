@@ -1,17 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED TMH-W36",
-  "shortName": "TMH-W36",
+  "shortName": "TMHW36",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Antti Maasalmi"],
+    "authors": ["Antti Maasalmi, Paul Rogalski"],
     "createDate": "2025-12-19",
-    "lastModifyDate": "2025-12-19"
+    "lastModifyDate": "2026-06-24"
   },
-  "comment": "Moving Head Zoom Wash",
   "links": {
     "manual": [
-      "https://www.manualslib.com/products/Eurolite-Led-Tmh-W36-11095120.html"
+      "https://www.steinigke.de/download/51785880-Manual-127374-1.0000-eurolite-led-tmh-w36-moving-head-zoom-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51785880-eurolite-led-tmh-w36-moving-head-zoom-wash.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=FgVN-SWgsuE"
@@ -32,6 +34,8 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -40,6 +44,8 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -62,27 +68,29 @@
       "capabilities": [
         {
           "dmxRange": [0, 3],
-          "type": "NoFunction",
-          "comment": "Strobe OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [4, 95],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 176],
-          "type": "Effect",
-          "effectName": "Random strobe effect",
-          "comment": "Random pattern, same all range"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [177, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Pulse"
+          "speedEnd": "fast"
         }
       ]
     },
@@ -113,63 +121,73 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "wide",
-        "angleEnd": "narrow"
+        "angleStart": "25deg",
+        "angleEnd": "6deg"
       }
     },
-    "Auto mode, color and move": {
+    "Internal Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [16, 128],
           "type": "Effect",
-          "effectName": "Auto Color and move mode",
-          "comment": "Speed in CHN 14"
+          "effectName": "Auto mode",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [129, 255],
           "type": "Effect",
-          "effectName": "Auto Color and move / sound",
+          "effectName": "Sound control",
           "soundControlled": true,
-          "comment": "Sound Control, sensitivity with CHN 14"
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
         }
       ]
     },
-    "Auto mode speed": {
+    "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Speed and sensitivity for Auto, CHN 13"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
-    "Motion macro": {
+    "Mic Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Maintenance": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "NoFunction",
-          "comment": "OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [21, 100],
-          "type": "PanContinuous",
-          "speed": "slow CW",
-          "comment": "Speed in CHN 5"
+          "type": "Maintenance",
+          "comment": "Pan movement"
         },
         {
           "dmxRange": [101, 200],
-          "type": "TiltContinuous",
-          "speed": "slow CW",
-          "comment": "Speed in CHN 5"
+          "type": "Maintenance",
+          "comment": "Tilt movement"
         },
         {
           "dmxRange": [201, 249],
-          "type": "PanContinuous",
-          "speed": "slow CW",
-          "comment": "PAN and TILT cont. Speed in CHN 5"
+          "type": "Maintenance",
+          "comment": "Pan/Tilt movement"
         },
         {
           "dmxRange": [250, 250],
@@ -178,14 +196,14 @@
         {
           "dmxRange": [251, 255],
           "type": "Maintenance",
-          "comment": "RESET"
+          "comment": "Reset"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "15-Channel",
+      "name": "15-channel",
       "shortName": "15ch",
       "channels": [
         "Pan",
@@ -200,9 +218,9 @@
         "Blue",
         "White",
         "Zoom",
-        "Auto mode, color and move",
-        "Auto mode speed",
-        "Motion macro"
+        "Internal Programs",
+        "Program Speed / Mic Sensitivity",
+        "Maintenance"
       ]
     }
   ]
