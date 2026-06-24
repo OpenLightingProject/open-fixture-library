@@ -1,0 +1,159 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEAM MARI",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["ALADIN"],
+    "createDate": "2025-11-08",
+    "lastModifyDate": "2025-11-08"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=kAYCj8_C6_I&list=RDkAYCj8_C6_I&start_radio=1"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "1deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "PanContinuous"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "250deg"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angle": "250deg"
+      }
+    },
+    "Pan/Tilt Duration 2": {
+      "name": "Pan/Tilt Duration",
+      "fineChannelAliases": ["Pan/Tilt Duration 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "250deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BEAM MARI",
+      "channels": [
+        "Color Wheel",
+        "Strobe",
+        "Dimmer",
+        "Reserved",
+        "Prism",
+        "Prism Rotation",
+        "Reserved 2",
+        "No function",
+        "Focus",
+        "Pan",
+        "Pan/Tilt Duration",
+        "Tilt 2",
+        "Pan/Tilt Duration 2",
+        "Pan/Tilt Speed",
+        "Reserved 3",
+        "Reserved 4"
+      ]
+    }
+  ]
+}
