@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "300W Stage Spitfire Three-headed Spitfire (Pulse Ignition) Three-headed Real Flame Machine DMX Control Concert Performance Party Atmosphere",
+  "shortName": "3-Headed Spitfire Machine",
+  "categories": ["Effect", "Other"],
+  "meta": {
+    "authors": ["Waylon Keane"],
+    "createDate": "2025-02-18",
+    "lastModifyDate": "2025-02-18"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1uAWuDqKIPZsEU9fqyVbFfB042EB7UbZe/view?pli=1"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/300w-stage-spitfire-three-headed-spitfire-pulse-ignition-three-headed-real-flame-machine-dmx-control-concert-performance-party-atmosphere/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=YQ4LbNjRsBQ"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Right Nozzle Intensity": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Middle Nozzle Intensity": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Left Nozzle Intensity": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "All 3 Nozzles": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Flame Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "0.5s",
+        "durationEnd": "5s"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Right Nozzle Intensity",
+        "Middle Nozzle Intensity",
+        "Left Nozzle Intensity",
+        "All 3 Nozzles",
+        "Flame Duration"
+      ]
+    }
+  ]
+}
