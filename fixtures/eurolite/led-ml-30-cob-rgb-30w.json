@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED ML-30 COB RGB 30W",
+  "shortName": "LED ML-30 COB RGB 30W",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["meryl"],
+    "createDate": "2025-08-13",
+    "lastModifyDate": "2025-08-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/products/Eurolite-Led-Ml-30-Cob-Rgb-30w-13380336.html"
+    ],
+    "productPage": [
+      "https://www.bax-shop.fr/multipar-opti-par-a-led/eurolite-ml-30-multipar-a-led-cob-rgb-30-watts-noir?srsltid=AfmBOopav7VFInnSmSUJqEeBGnHpKU3XbKsoYhXnbCmKLNVzOUz4p7Fk"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=3HkPOjpNSFU"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 175, 270],
+    "weight": 2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB"
+    },
+    "lens": {
+      "degreesMinMax": [90, 90]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "1000Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3CH",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5CH",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
