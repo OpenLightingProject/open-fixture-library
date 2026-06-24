@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Slimpar 18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["leosamuele221"],
+    "createDate": "2025-05-27",
+    "lastModifyDate": "2025-05-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.strumentimusicali.net/manuali/2018/01/08/4d/sagitter-slimpar18-it.pdf"
+    ],
+    "productPage": [
+      "https://www.strumentimusicali.net/product_info.php/products_id/53377/sagitter-slimpar-18.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [257, 250, 130],
+    "weight": 2.1,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4244
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 128],
+          "type": "ColorPreset",
+          "comment": "Fade"
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "ColorPreset",
+          "comment": "Color Change"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "Sound Mode (Strobe)"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Color Macro speed (Ch5) - Microphone Sensibility (Ch5)"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe from min to max"
+        }
+      ]
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Red 2",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Presets",
+        "Effect Speed",
+        "Strobe"
+      ]
+    }
+  ]
+}
