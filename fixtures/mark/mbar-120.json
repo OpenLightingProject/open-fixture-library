@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MBAR 120",
+  "shortName": "LED BAR M120",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SUSO"],
+    "createDate": "2021-09-13",
+    "lastModifyDate": "2021-09-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/MBAR120_MANUAL_20160920114805.pdf"
+    ],
+    "productPage": [
+      "https://productos.equipson.es/mbar-120"
+    ],
+    "video": [
+      "https://productos.equipson.es/mbar-120"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 70, 90],
+    "weight": 4,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "BAR LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction",
+          "comment": "NO FUNCION"
+        },
+        {
+          "dmxRange": [12, 251],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "SOUND MODE"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "40Hz",
+        "speedEnd": "40Hz",
+        "comment": "SPEED"
+      }
+    },
+    "FLASH": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "EffectParameter",
+          "parameter": "low"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "EffectParameter",
+          "parameter": "low"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5",
+      "shortName": "M5",
+      "channels": [
+        "RED",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe Speed",
+        "FLASH",
+        "Dimmer"
+      ]
+    }
+  ]
+}
