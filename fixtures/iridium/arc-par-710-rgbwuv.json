@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ARC PAR 710 RGBWUV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["BEN"],
+    "createDate": "2024-05-23",
+    "lastModifyDate": "2024-05-23"
+  },
+  "links": {
+    "manual": [
+      "https://bklumitec.com/en/LIGHT/ARC-Par-710-PRO-IP65-7-x-10W-RGBWA-UV-15.html"
+    ],
+    "productPage": [
+      "https://bklumitec.com/en/LIGHT/ARC-Par-710-PRO-IP65-7-x-10W-RGBWA-UV-15.html"
+    ]
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AMBRE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "ROUE COULEUR": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "PROGRAM": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "SPEED AUTO": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "DIMMER SPEED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "ID ADRESS": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13 CANAUX",
+      "channels": [
+        "DIMMER",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "White",
+        "AMBRE",
+        "UV",
+        "ROUE COULEUR",
+        "Strobe Speed",
+        "PROGRAM",
+        "SPEED AUTO",
+        "DIMMER SPEED",
+        "ID ADRESS"
+      ]
+    }
+  ]
+}
