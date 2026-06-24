@@ -1,0 +1,345 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colorbeam 18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["brioche", "Brioche"],
+    "createDate": "2025-08-21",
+    "lastModifyDate": "2025-08-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-08-21",
+      "comment": "created by Q Light Controller Plus (version 4.14.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [287, 308, 219],
+    "weight": 5.2,
+    "power": 160,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 1"
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 2"
+        },
+        {
+          "dmxRange": [15, 21],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 3"
+        },
+        {
+          "dmxRange": [22, 28],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 4"
+        },
+        {
+          "dmxRange": [29, 35],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 5"
+        },
+        {
+          "dmxRange": [36, 42],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 6"
+        },
+        {
+          "dmxRange": [43, 49],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 7"
+        },
+        {
+          "dmxRange": [50, 56],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 8"
+        },
+        {
+          "dmxRange": [57, 63],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 9"
+        },
+        {
+          "dmxRange": [64, 70],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 10"
+        },
+        {
+          "dmxRange": [71, 78],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 11"
+        },
+        {
+          "dmxRange": [79, 85],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 12"
+        },
+        {
+          "dmxRange": [86, 92],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 13"
+        },
+        {
+          "dmxRange": [93, 99],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 14"
+        },
+        {
+          "dmxRange": [100, 106],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 15"
+        },
+        {
+          "dmxRange": [107, 113],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 16"
+        },
+        {
+          "dmxRange": [114, 120],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 17"
+        },
+        {
+          "dmxRange": [121, 127],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 18"
+        },
+        {
+          "dmxRange": [128, 134],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 19"
+        },
+        {
+          "dmxRange": [135, 141],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 20"
+        },
+        {
+          "dmxRange": [142, 148],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 21"
+        },
+        {
+          "dmxRange": [149, 155],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 22"
+        },
+        {
+          "dmxRange": [156, 163],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 23"
+        },
+        {
+          "dmxRange": [164, 177],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 24"
+        },
+        {
+          "dmxRange": [178, 184],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 25"
+        },
+        {
+          "dmxRange": [185, 191],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 26"
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 27"
+        },
+        {
+          "dmxRange": [199, 205],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 28"
+        },
+        {
+          "dmxRange": [206, 212],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 29"
+        },
+        {
+          "dmxRange": [213, 219],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 30"
+        },
+        {
+          "dmxRange": [220, 226],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 31"
+        },
+        {
+          "dmxRange": [227, 233],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 32"
+        },
+        {
+          "dmxRange": [234, 241],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 33"
+        },
+        {
+          "dmxRange": [242, 248],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 34"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "ColorPreset",
+          "comment": "Pattern Color 35"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Static",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "Effect",
+          "effectName": "Color adjustment"
+        },
+        {
+          "dmxRange": [40, 75],
+          "type": "Effect",
+          "effectName": "Fadein mode"
+        },
+        {
+          "dmxRange": [76, 111],
+          "type": "Effect",
+          "effectName": "Dim mode"
+        },
+        {
+          "dmxRange": [112, 147],
+          "type": "Effect",
+          "effectName": "Fadein Dim mode"
+        },
+        {
+          "dmxRange": [148, 183],
+          "type": "Effect",
+          "effectName": "Automatic color mixing mode"
+        },
+        {
+          "dmxRange": [184, 219],
+          "type": "Effect",
+          "effectName": "3 color jump"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "7 color jump"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Macro"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Macro",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Macro",
+        "Strobe",
+        "Mode",
+        "Dimmer"
+      ]
+    }
+  ]
+}
