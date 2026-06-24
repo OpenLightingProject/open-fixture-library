@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spectra Q15",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["G Allen"],
+    "createDate": "2022-05-31",
+    "lastModifyDate": "2022-05-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.bing.com/search?q=ledj+587+manual&cvid=37c39dcd489e45a28b45bebc46de6663&aqs=edge..69i57j69i64.5916j0j1&pglt=2083&FORM=ANNTA1&PC=HCTS"
+    ]
+  },
+  "rdm": {
+    "modelId": 587
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Q Hex 15",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Strobe 2",
+        "Color Macros",
+        "Color Wheel Rotation",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
