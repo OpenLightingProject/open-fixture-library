@@ -1,0 +1,159 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB LED Blinder",
+  "shortName": "ZQ01496",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Fikkie"],
+    "createDate": "2024-11-10",
+    "lastModifyDate": "2024-11-10"
+  },
+  "comment": "U'King 200W COB Par Light 2x100W Blinder Lighting 2 Eyes LED 2IN1 COB Cool Warm White Lighting Party Bar DMX Stage Lighting",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1fjyWphaflIdyVIrBYuu9yBaoZ3t0fOpU/view"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/200w-double-color-two-eyes-cob-par-light-fill-light-lighting/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Fn3UzaUx3-g"
+    ]
+  },
+  "physical": {
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED"
+    },
+    "lens": {
+      "name": "clear",
+      "degreesMinMax": [170, 170]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100% linear Dimming"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Strobe OFF"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe Slow to fast"
+        }
+      ]
+    },
+    "Macro Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [40, 79],
+          "type": "Effect",
+          "effectName": "color Jump",
+          "comment": "Color Jump"
+        },
+        {
+          "dmxRange": [80, 119],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm",
+          "comment": "Color Gradient"
+        },
+        {
+          "dmxRange": [120, 159],
+          "type": "Effect",
+          "effectName": "Color Pulse Change",
+          "comment": "Color Pulse change"
+        },
+        {
+          "dmxRange": [160, 199],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "Generic",
+          "comment": "automatic mode"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed Slow to Fast - for running effects"
+      }
+    },
+    "Warm White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "comment": "Warm White 1 Intensity"
+      }
+    },
+    "Cold White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White",
+        "comment": "Cold White 1 Intensity"
+      }
+    },
+    "Warm White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "comment": "Warm White 2 Intensity"
+      }
+    },
+    "Cold White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White",
+        "comment": "Cold White 2 Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Macro Effects",
+        "Effect Speed",
+        "Warm White 1",
+        "Cold White 1",
+        "Warm White 2",
+        "Cold White 2"
+      ]
+    }
+  ]
+}
