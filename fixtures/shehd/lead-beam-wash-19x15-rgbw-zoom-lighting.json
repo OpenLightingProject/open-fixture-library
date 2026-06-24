@@ -1,0 +1,264 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEAD BEAM+WASH 19x15 RGBW Zoom Lighting ",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["lasse", "FrancoPiccolo"],
+    "createDate": "2025-04-23",
+    "lastModifyDate": "2025-04-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-04-23",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [240, 380, 250],
+    "weight": 7.9,
+    "power": 380,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5000
+    },
+    "lens": {
+      "degreesMinMax": [8, 55]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program preset": {
+      "defaultValue": 21,
+      "capabilities": [
+        {
+          "dmxRange": [0, 175],
+          "type": "Intensity",
+          "comment": "Preset Colour"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "Intensity",
+          "comment": "Program Jump"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Intensity",
+          "comment": "Program Gradient"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Intensity",
+          "comment": "Program Pulse"
+        }
+      ]
+    },
+    "Program speed": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "Speed",
+        "comment": "Auto run speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "AUTO Modes": {
+      "defaultValue": 23,
+      "capabilities": [
+        {
+          "dmxRange": [50, 99],
+          "type": "Intensity",
+          "comment": "Activation chn 21"
+        },
+        {
+          "dmxRange": [100, 150],
+          "type": "Intensity",
+          "comment": "Self propelled mode 1"
+        },
+        {
+          "dmxRange": [151, 199],
+          "type": "Intensity",
+          "comment": "Self propelled mode 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Intensity",
+          "comment": "Voice Control"
+        }
+      ]
+    },
+    "REST": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "19x15W 24-channelN",
+      "shortName": "19x15W 24chN",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Focus",
+        "Master dimmer",
+        "Strobe",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Program preset",
+        "Program speed",
+        "AUTO Modes",
+        "REST"
+      ]
+    }
+  ]
+}
