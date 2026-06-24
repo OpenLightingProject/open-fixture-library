@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ape Stick L",
+  "categories": ["Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Daniel Gallerand"],
+    "createDate": "2026-03-10",
+    "lastModifyDate": "2026-03-10"
+  },
+  "links": {
+    "manual": [
+      "https://apelabs.com/manual/"
+    ],
+    "productPage": [
+      "https://apelabs.com/apelight-apestick/"
+    ],
+    "video": [
+      "https://share.google/HQ4lSyRjnxMbfKDrm"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "dimensions": [620, 30, 30],
+    "weight": 0.47,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Rot": {
+      "fineChannelAliases": ["Rot fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blau": {
+      "fineChannelAliases": ["Blau fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Grün": {
+      "fineChannelAliases": ["Grün fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Warmweiß": {
+      "fineChannelAliases": ["Warmweiß fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8",
+      "channels": [
+        "Rot",
+        "Rot fine",
+        "Blau",
+        "Blau fine",
+        "Grün",
+        "Grün fine",
+        "Warmweiß",
+        "Warmweiß fine"
+      ]
+    }
+  ]
+}
