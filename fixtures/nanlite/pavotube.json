@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "pavotube",
+  "shortName": "pavotube t8-7x",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["BINBIN"],
+    "createDate": "2023-03-28",
+    "lastModifyDate": "2023-03-28"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=E9DNzAYiPN0"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "power": 7,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "colorTemperature": 2700,
+      "lumens": 106
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "G ET M": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "46%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "CROSSFADE": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "CROSSFADE"
+      }
+    },
+    "Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "STROBE": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1.2Hz"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "StrobeSpeed",
+          "speedStart": "1.6%",
+          "speedEnd": "1.6%",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "StrobeSpeed",
+          "speedStart": "2%",
+          "speedEnd": "2%",
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "StrobeSpeed",
+          "speedStart": "2.4%",
+          "speedEnd": "2.4%",
+          "comment": "Random Medium"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "2.7%",
+          "speedEnd": "100%",
+          "comment": "Variable Strobe(0.4Hz --> 25Hz)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "cct et rgb 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G ET M",
+        "CROSSFADE",
+        "Red Intensity",
+        "Green Intensity",
+        "Blue Intensity",
+        "White Intensity",
+        "STROBE"
+      ]
+    }
+  ]
+}
