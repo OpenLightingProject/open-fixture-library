@@ -1,0 +1,554 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Spot 100W",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mads Vejrup"],
+    "createDate": "2024-10-26",
+    "lastModifyDate": "2024-10-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-10-26",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [250, 350, 200],
+    "weight": 6.1,
+    "power": 160,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "100"
+    },
+    "lens": {
+      "degreesMinMax": [16, 16]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff2600"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#008f00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0433ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#fffb00"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#ff40ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00fdff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light green",
+          "colors": ["#00f900"]
+        },
+        {
+          "type": "Color",
+          "name": "Red/White",
+          "colors": ["#ff2600", "#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green/Red",
+          "colors": ["#008f00", "#ff2600"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue/Green",
+          "colors": ["#0433ff", "#008f00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow/Blue",
+          "colors": ["#fffb00", "#0433ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple/Yellow",
+          "colors": ["#ff40ff", "#fffb00"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyean/Purple",
+          "colors": ["#00fdff", "#ff40ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light green/Cyan",
+          "colors": ["#00f900", "#00fdff"]
+        },
+        {
+          "type": "Color",
+          "name": "White/Light green",
+          "colors": ["#ffffff", "#00f900"]
+        }
+      ]
+    },
+    "Gobo Wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [4, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Open Light",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Light green"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Red/White"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Green/Red"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Blue/Green"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Yellow/Blue"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Purple/Yellow"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Cyean/Purple"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Light green/Cyan"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "White/Light green"
+        },
+        {
+          "dmxRange": [80, 255],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Color wheel rotation (slow to fast)"
+        }
+      ]
+    },
+    "Gobo Wheel 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelRotation",
+          "speed": "fast CW",
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [80, 129],
+          "type": "WheelRotation",
+          "speed": "fast CCW",
+          "comment": "Clockwise rotation (fast to slow)"
+        },
+        {
+          "dmxRange": [130, 220],
+          "type": "WheelRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Anti-clockwise rotation"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelRotation",
+          "speed": "fast CW",
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "WheelRotation",
+          "speed": "fast CCW",
+          "comment": "Clockwise rotation (fast to slow)"
+        },
+        {
+          "dmxRange": [135, 225],
+          "type": "WheelRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Anti-clockwise rotation"
+        }
+      ]
+    },
+    "Gobo 2 Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlotRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Gobo 2 rotation 180˚"
+        },
+        {
+          "dmxRange": [64, 190],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speed": "fast CW",
+          "comment": "Clockwise rotation"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speed": "fast CCW",
+          "comment": "Anti-clockwise rotation"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Prism off"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Prism",
+          "comment": "6-facet Prism on"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "PrismRotation",
+          "speed": "fast CW",
+          "comment": "Prism rotation"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Reset system"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Dimming",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt speed",
+        "Color Wheel",
+        "Gobo Wheel 1",
+        "Gobo Wheel 2",
+        "Gobo 2 Rotation",
+        "Prism",
+        "Focus",
+        "Pan Fine",
+        "Tilt Fine",
+        "Reset"
+      ]
+    }
+  ]
+}
