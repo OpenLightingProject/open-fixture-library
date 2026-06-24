@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ-B93B",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Marina", "Marina Hildebrand"],
+    "createDate": "2021-09-26",
+    "lastModifyDate": "2021-09-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-09-26",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [106, 187, 215],
+    "weight": 0.61,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Function Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Effect",
+          "effectName": "Close Light"
+        },
+        {
+          "dmxRange": [9, 135],
+          "type": "Effect",
+          "effectName": "Dimmer"
+        },
+        {
+          "dmxRange": [136, 240],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "On-Off"
+        }
+      ]
+    },
+    "Red Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Mode Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Effect",
+          "effectName": "No Operation"
+        },
+        {
+          "dmxRange": [9, 31],
+          "type": "Effect",
+          "effectName": "Mode 1 - 4 Color Jump"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Mode 2 - Red background 3 color jump"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Mode 3 - Green background 3 color jump"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Mode 4 - Blue background 3 color jump"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Mode 5 - White background 3 color jump"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "All white slow gradient"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "All white fast gradient"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Red Green gradient"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Red Blue gradient"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Blue Green gradient"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Colorful gradient"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Colorful jump"
+        },
+        {
+          "dmxRange": [224, 240],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [241, 249],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Function Control",
+        "Red Intensity",
+        "Green Intensity",
+        "Blue Intensity",
+        "White Intensity",
+        "Auto Mode Selection"
+      ]
+    }
+  ]
+}
