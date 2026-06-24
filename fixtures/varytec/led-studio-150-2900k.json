@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Studio 150 2900K",
+  "categories": ["Dimmer", "Blinder"],
+  "meta": {
+    "authors": ["An Millot"],
+    "createDate": "2025-04-29",
+    "lastModifyDate": "2025-04-29"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_505149_505150_505210_505211_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/varytec_led_studio_150_2900k.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i11073p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [193, 265, 152],
+    "weight": 2.9,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2900
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "LED Off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LED off"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "LED On"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Impulse effect, increasing speed"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Constantly increasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Constantly decreasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random strobe effect, increasing speed"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "durationStart": "5s",
+          "durationEnd": "1s",
+          "comment": "Impulse effect (short burst with pause, 5s … 1s)"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect, increasing speed (1 … 20 Hz)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "LED off"
+        }
+      ]
+    },
+    "Dimmer Response Behaviour": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "NoFunction",
+          "comment": "Dimmer response behaviour for LED"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction",
+          "comment": "Dimmer response behaviour for halogen"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "NoFunction",
+          "comment": "Linear dimmer curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "NoFunction",
+          "comment": "Exponential dimmer curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "NoFunction",
+          "comment": "Logarithmic dimmer curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction",
+          "comment": "S-curve shaped dimmer curve"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe 2",
+        "Dimmer Response Behaviour",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
