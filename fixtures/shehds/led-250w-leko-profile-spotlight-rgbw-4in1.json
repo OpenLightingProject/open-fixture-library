@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 250W Leko Profile Spotlight RGBW 4IN1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ericl"],
+    "createDate": "2025-08-02",
+    "lastModifyDate": "2025-08-02"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1pQcsyDeQJizag4SRmxRYfm7e2qC3QMvm?usp=sharing"
+    ],
+    "productPage": [
+      "https://shehds.com/products/new-arrival-led-250w-leko-profile-spotlight-rgbw-cool-warm-white-four-leaf-manual-cut-light-barrier-suitable-for-night-clubweddingtheater-stage"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Ou_4j2EbT4s"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 200, 600],
+    "weight": 8.95,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500,
+      "lumens": 14800
+    },
+    "lens": {
+      "degreesMinMax": [17, 30]
+    }
+  },
+  "availableChannels": {
+    "Total Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "soundControlled": true,
+        "speedStart": "1Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 16],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "ColorPreset",
+          "comment": "Color Macro"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 119],
+          "type": "Effect",
+          "effectName": "Jump Color Effect"
+        },
+        {
+          "dmxRange": [120, 179],
+          "type": "Effect",
+          "effectName": "Gradient Color Effect"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Effect",
+          "effectName": "Random Color Effect"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9CH",
+      "shortName": "9ch",
+      "channels": [
+        "Total Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Program",
+        "Program Speed"
+      ]
+    }
+  ]
+}
