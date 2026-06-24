@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SS2-5L-16-RGBW",
+  "shortName": "SS216RGBW",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["JOSE PADILLA"],
+    "createDate": "2026-03-11",
+    "lastModifyDate": "2026-03-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.coloronix.com/Lib/cutsheet/SS2-5L-16-RGBW.pdf"
+    ],
+    "productPage": [
+      "https://www.coloronix.com/1/product/40-adjustable-linear/"
+    ],
+    "video": [
+      "https://www.coloronix.com/1/product/40-adjustable-linear/"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 150, 150],
+    "weight": 7.5,
+    "power": 76,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "colorTemperature": 5000,
+      "lumens": 3018
+    },
+    "lens": {
+      "degreesMinMax": [30, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SSL16RGBW60",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
