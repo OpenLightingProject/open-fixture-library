@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR Z MOVE",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["rw"],
+    "createDate": "2025-12-24",
+    "lastModifyDate": "2025-12-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/Par_Z_Move_-_DMX_Traits.pdf?v=15268065048019902506"
+    ],
+    "productPage": [
+      "https://www.adj.com/cdn/shop/files/Par_Z_Move_-_DMX_Traits.pdf?v=15268065048019902506"
+    ],
+    "video": [
+      "https://www.adj.com/cdn/shop/files/Par_Z_Move_-_DMX_Traits.pdf?v=15268065048019902506"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "PAN": {
+      "fineChannelAliases": ["PAN fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "TILT": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "200deg"
+      }
+    },
+    "TILT 2": {
+      "name": "TILT",
+      "fineChannelAliases": ["TILT 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "200deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "200deg"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 Channel",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Zoom",
+        "No function",
+        "Pan/Tilt Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
