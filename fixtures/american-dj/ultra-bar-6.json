@@ -1,0 +1,472 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ultra Bar 6",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["BLKOUT"],
+    "createDate": "2024-12-02",
+    "lastModifyDate": "2024-12-02"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/6930/ultra_bar_6.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/ultra-bar-6#downloads"
+    ]
+  },
+  "physical": {
+    "dimensions": [63, 90, 560],
+    "weight": 1.6,
+    "power": 22,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBWAUV"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "600Hz",
+          "comment": "Speed is approximate"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros defined": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Color macro chart can be found on page 21 of manual"
+      }
+    },
+    "Sensitivity adjustments": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Sound sensitivity/program speed/strobing speed slow to fast"
+      }
+    },
+    "Program mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Intensity",
+          "comment": "Dimmer mode"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "Generic",
+          "comment": "Color macro chart found on page 21 of manual"
+        },
+        {
+          "dmxRange": [103, 204],
+          "type": "Generic",
+          "comment": "Program mode"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Effect",
+          "effectName": "Sound sensitivity",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Color Macros undefined": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [25, 35],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [36, 46],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [47, 57],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [58, 68],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [69, 79],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [80, 90],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [91, 101],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [102, 112],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [113, 123],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [124, 134],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [135, 145],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [146, 156],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [157, 167],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [168, 178],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [179, 189],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [190, 200],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [201, 211],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [212, 222],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [223, 233],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [234, 244],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Red 1-2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1-2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1-2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 3-4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3-4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3-4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 5-6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 5-6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 5-6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 25],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [26, 35],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [46, 55],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [56, 65],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [66, 75],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [76, 85],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [86, 95],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [96, 105],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [106, 115],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [116, 125],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [126, 135],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [136, 145],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [146, 155],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [156, 165],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [166, 175],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [176, 185],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [186, 195],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [196, 205],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [206, 215],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [216, 225],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Generic",
+          "comment": "Auto run"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Sound Active"
+        }
+      ]
+    },
+    "Program mode 2": {
+      "name": "Program mode",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter / Strobe 2": {
+      "name": "Shutter / Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "600Hz",
+          "comment": "Speed is approximate"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channel RGB",
+      "shortName": "RGB3",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 channel RGB",
+      "shortName": "RGB5",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "6 Channel RGB",
+      "shortName": "RGB6",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros defined",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7 Channel RGB",
+      "shortName": "RGB7",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Sensitivity adjustments",
+        "Program mode",
+        "Color Macros undefined"
+      ]
+    },
+    {
+      "name": "8 Channel RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros undefined",
+        "Programs",
+        "Program mode 2",
+        "Shutter / Strobe 2",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "9 Channel RGB",
+      "channels": [
+        "Red 1-2",
+        "Green 1-2",
+        "Blue 1-2",
+        "Red 3-4",
+        "Green 3-4",
+        "Blue 3-4",
+        "Red 5-6",
+        "Green 5-6",
+        "Blue 5-6"
+      ]
+    },
+    {
+      "name": "11 Channel RGB",
+      "channels": [
+        "Red 1-2",
+        "Green 1-2",
+        "Blue 1-2",
+        "Red 3-4",
+        "Green 3-4",
+        "Blue 3-4",
+        "Red 5-6",
+        "Green 5-6",
+        "Blue 5-6",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
