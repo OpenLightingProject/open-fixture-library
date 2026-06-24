@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fresnel led 250w rgbw",
+  "shortName": "fresnel led 250w rgbw",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["YANN VI"],
+    "createDate": "2025-04-21",
+    "lastModifyDate": "2025-04-21"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1KeCiYzUoUVWzMZEay_tqE3rhehCW6VZY/view"
+    ],
+    "productPage": [
+      "https://shehds.com/products/new-arrival-spotlight-250w-rgbw-with-barndoor-pulse-strobe-for-dj-club-wedding-ktv-theater?srsltid=AfmBOorSLg-oTD8Ijfd4wQahdvEUpzH0MsGWE2t94OjzhYDQn4H1zsWz"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6Es0hEUk9YI&ab_channel=TimBrain"
+    ]
+  },
+  "physical": {
+    "weight": 10.2,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "FRESNEL",
+      "degreesMinMax": [15, 55]
+    }
+  },
+  "availableChannels": {
+    "Intensité": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Préréglages de couleur": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Préréglages de couleur 2": {
+      "name": "Préréglages de couleur",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Vitesse du programme": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "RESET": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 CANAUX",
+      "channels": [
+        "Intensité",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Préréglages de couleur",
+        "Préréglages de couleur 2",
+        "Vitesse du programme",
+        "Zoom",
+        "RESET"
+      ]
+    }
+  ]
+}
