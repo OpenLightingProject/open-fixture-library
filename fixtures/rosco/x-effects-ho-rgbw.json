@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "X-Effects HO RGBW",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Tim Linamen"],
+    "createDate": "2025-01-16",
+    "lastModifyDate": "2025-01-16"
+  },
+  "links": {
+    "manual": [
+      "https://us.rosco.com/sites/default/files/content/resource/2024-03/Rosco_XEffects_LED_UserGuide_v7.pdf"
+    ],
+    "productPage": [
+      "https://us.rosco.com/en/product/x-effects-led-projector-rgbw"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Motor 1 Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Motor 1 Direction": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Motor 2 Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Motor 2 Direction": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Motor 1 Speed",
+        "Motor 1 Direction",
+        "Motor 2 Speed",
+        "Motor 2 Direction",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
