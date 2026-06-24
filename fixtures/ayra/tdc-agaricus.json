@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TDC agaricus",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Pascal04"],
+    "createDate": "2021-11-26",
+    "lastModifyDate": "2021-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/4198796/tdc-agaricus-dmx-led-mushroom-light-effect-user-manual"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/led-lichteffect/ayra-tdc-agaricus-led-lichteffect",
+      "https://www.bax-shop.nl/led-lichteffect/ayra-tdc-agaricus-led-lichteffect"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "75Hz",
+        "speedEnd": "750Hz"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "TDC agaricus",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Wheel Rotation"
+      ]
+    }
+  ]
+}
