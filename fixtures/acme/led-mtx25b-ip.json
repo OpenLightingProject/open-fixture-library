@@ -1,0 +1,604 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED-MTX25B IP",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Vandamned2.0"],
+    "createDate": "2026-04-22",
+    "lastModifyDate": "2026-04-22"
+  },
+  "links": {
+    "manual": [
+      "https://en.acmelighting.com/Uploads/download/file_material/1550106018b2caa763812b0b3c.pdf"
+    ],
+    "productPage": [
+      "https://en.acmelighting.com/old/index/productdetailold?cat_id=195&id=2121"
+    ]
+  },
+  "physical": {
+    "dimensions": [600, 600, 104],
+    "weight": 12.5,
+    "power": 94,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    }
+  },
+  "availableChannels": {
+    "Shows": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Blackout"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [68, 97],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [98, 127],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [128, 157],
+          "type": "Effect",
+          "effectName": "Show 5"
+        },
+        {
+          "dmxRange": [158, 187],
+          "type": "Effect",
+          "effectName": "Show 6"
+        },
+        {
+          "dmxRange": [188, 217],
+          "type": "Effect",
+          "effectName": "Show 7"
+        },
+        {
+          "dmxRange": [218, 247],
+          "type": "Effect",
+          "effectName": "Show 8"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Stand Alone"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Blackout"
+        },
+        {
+          "dmxRange": [8, 67],
+          "type": "Effect",
+          "effectName": "Full On"
+        },
+        {
+          "dmxRange": [68, 127],
+          "type": "Effect",
+          "effectName": "Effects"
+        },
+        {
+          "dmxRange": [128, 187],
+          "type": "Effect",
+          "effectName": "Numbers"
+        },
+        {
+          "dmxRange": [188, 247],
+          "type": "Effect",
+          "effectName": "Letters"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Auto"
+        }
+      ]
+    },
+    "Effect-Number-Letter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "No function"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "Effect 01"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Effect",
+          "effectName": "Effect 02"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Effect",
+          "effectName": "Effect 03"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Effect",
+          "effectName": "Effect 04"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Effect",
+          "effectName": "Effect 05"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Effect",
+          "effectName": "Effect 06"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Effect",
+          "effectName": "Effect 07"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Effect",
+          "effectName": "Effect 08"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Effect",
+          "effectName": "Effect 09"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Effect 27"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Effect 28"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Effect 29"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Effect 30"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Random Effect"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer LED 1-5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 6-10": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 11-15": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 16-20": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 21-25": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer All": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 6": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 7": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 8": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 9": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 10": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 11": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 12": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 13": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 14": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 15": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 16": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 17": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 18": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 19": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 20": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 21": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 22": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 23": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 24": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 25": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Shows"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Mode",
+        "Effect-Number-Letter",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer LED 1-5",
+        "Dimmer LED 6-10",
+        "Dimmer LED 11-15",
+        "Dimmer LED 16-20",
+        "Dimmer LED 21-25",
+        "Mode",
+        "Effect-Number-Letter",
+        "Dimmer All",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "25-channel",
+      "shortName": "25ch",
+      "channels": [
+        "Dimmer LED 1",
+        "Dimmer LED 2",
+        "Dimmer LED 3",
+        "Dimmer LED 4",
+        "Dimmer LED 5",
+        "Dimmer LED 6",
+        "Dimmer LED 7",
+        "Dimmer LED 8",
+        "Dimmer LED 9",
+        "Dimmer LED 10",
+        "Dimmer LED 11",
+        "Dimmer LED 12",
+        "Dimmer LED 13",
+        "Dimmer LED 14",
+        "Dimmer LED 15",
+        "Dimmer LED 16",
+        "Dimmer LED 17",
+        "Dimmer LED 18",
+        "Dimmer LED 19",
+        "Dimmer LED 20",
+        "Dimmer LED 21",
+        "Dimmer LED 22",
+        "Dimmer LED 23",
+        "Dimmer LED 24",
+        "Dimmer LED 25"
+      ]
+    },
+    {
+      "name": "29-channel",
+      "shortName": "29ch",
+      "channels": [
+        "Dimmer LED 1",
+        "Dimmer LED 2",
+        "Dimmer LED 3",
+        "Dimmer LED 4",
+        "Dimmer LED 5",
+        "Dimmer LED 6",
+        "Dimmer LED 7",
+        "Dimmer LED 8",
+        "Dimmer LED 9",
+        "Dimmer LED 10",
+        "Dimmer LED 11",
+        "Dimmer LED 12",
+        "Dimmer LED 13",
+        "Dimmer LED 14",
+        "Dimmer LED 15",
+        "Dimmer LED 16",
+        "Dimmer LED 17",
+        "Dimmer LED 18",
+        "Dimmer LED 19",
+        "Dimmer LED 20",
+        "Dimmer LED 21",
+        "Dimmer LED 22",
+        "Dimmer LED 23",
+        "Dimmer LED 24",
+        "Dimmer LED 25",
+        "Mode",
+        "Effect-Number-Letter",
+        "Dimmer All",
+        "Strobe"
+      ]
+    }
+  ]
+}
