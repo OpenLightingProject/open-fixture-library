@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Zoom Par 18x18W RGBWA UV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["roublarju"],
+    "createDate": "2025-04-30",
+    "lastModifyDate": "2025-04-30"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1uFzqwuQhQsKm3V7uBWvtP0cb-tyS8w2f"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-zoom-par-18x18w-rgbwauv-lighting-dj-disco-stage-lighting-good-for-party-nightclub"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yr0HKw2o5sU&list=TLGG3F_QALe_3WUzMDA0MjAyNQ&ab_channel=ShehdsLighting"
+    ]
+  },
+  "physical": {
+    "dimensions": [34, 23, 28],
+    "weight": 3.85,
+    "power": 324,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "ColorPreset",
+          "comment": "none"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorPreset",
+          "comment": "color mixing"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ColorPreset",
+          "comment": "color mode 1"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "color mode 2"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "ColorPreset",
+          "comment": "colo mode 3"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "sound"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Empty": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "unique-12ch",
+      "shortName": "12ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Color Macros",
+        "Zoom",
+        "Zoom speed",
+        "Empty"
+      ]
+    }
+  ]
+}
