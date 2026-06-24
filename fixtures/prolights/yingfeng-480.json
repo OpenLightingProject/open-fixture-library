@@ -1,0 +1,159 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "YingFeng 480",
+  "shortName": "YF480",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Q_light"],
+    "createDate": "2025-07-09",
+    "lastModifyDate": "2025-07-09"
+  },
+  "links": {
+    "other": [
+      "https://www.yf-light.com/en/pd.jsp?fromColId=107&id=202#_pp=107_621"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [387, 294, 648],
+    "weight": 20,
+    "power": 400,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Halogen",
+      "colorTemperature": 7000,
+      "lumens": 27000
+    },
+    "lens": {
+      "degreesMinMax": [4, 40]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Prism 2": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation 2": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "slow CW"
+      }
+    },
+    "Frost 2": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18CH",
+      "shortName": "18CH",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Shutter",
+        "Dimmer",
+        "Dimmer 2",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Frost",
+        "Focus",
+        "Prism",
+        "Prism Rotation",
+        "Prism 2",
+        "Prism Rotation 2",
+        "Frost 2",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Program Speed",
+        "No function"
+      ]
+    }
+  ]
+}
