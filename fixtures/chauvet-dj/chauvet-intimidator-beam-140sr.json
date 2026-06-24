@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Chauvet Intimidator Beam 140SR",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["G"],
+    "createDate": "2025-09-03",
+    "lastModifyDate": "2025-09-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/07/Intimidator_Beam_140SR_UM_Rev1_WO.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Yug",
+      "channels": [
+        "Prism"
+      ]
+    }
+  ]
+}
