@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CIRRUS 1000",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["RIGHI Thomas"],
+    "createDate": "2025-02-06",
+    "lastModifyDate": "2025-02-06"
+  },
+  "links": {
+    "manual": [
+      "https://static.boomtonedj.com/pdf/manual/69/69937_cirrus1000-manual-fren.pdf"
+    ],
+    "productPage": [
+      "https://www.boomtonedj.com/boomtonedj-cirrus-1000-p69937.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=1rBg_mfni_4"
+    ]
+  },
+  "physical": {
+    "dimensions": [530, 330, 420],
+    "weight": 10,
+    "power": 1000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Effect Speed": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fog Intensity": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Réglage du ventilateur 0-100%",
+      "shortName": "VENTIL",
+      "channels": [
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "Réglage du débit 0-100%",
+      "shortName": "DEBIT",
+      "channels": [
+        "Fog Intensity"
+      ]
+    }
+  ]
+}
