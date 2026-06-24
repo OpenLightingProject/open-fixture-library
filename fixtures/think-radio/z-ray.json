@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z-RAY",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["Dominik Ostrowski"],
+    "createDate": "2025-07-14",
+    "lastModifyDate": "2025-07-14"
+  },
+  "comment": "Wireless DMX.\nUse with Think Radio's STATION-X base station.",
+  "links": {
+    "manual": [
+      "https://thinkrad.io/blogs/z-ray-help"
+    ],
+    "productPage": [
+      "https://thinkrad.io/collections/starter-kits"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gPbr431P4ws",
+      "https://www.youtube.com/watch?v=-n_isDs-_qI",
+      "https://www.youtube.com/watch?v=0x4jQIJjEN4",
+      "https://www.youtube.com/watch?v=n-EzF9Tf3Zg"
+    ]
+  },
+  "physical": {
+    "dimensions": [126, 126, 78],
+    "weight": 0.5,
+    "power": 14.7,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Cree XLamp XM-L Color Gen 2 LED",
+      "lumens": 419
+    },
+    "lens": {
+      "name": "Ledil Fresnel or Zorya types"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "BRIDGE": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Full universe wireless bridge mode. Outputs all 512 channels via 5-pin DMX output."
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Fin": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Fin": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Fin": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Fin": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Fin": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "33Hz",
+        "comment": "0 = Strobe Disabled. 1 = 1.83 Hz. 255 = 33 Hz."
+      }
+    },
+    "Strobe Mark/Space": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long",
+        "comment": "0 = 4% on-time. 255 = 96% on-time."
+      }
+    },
+    "Strobe Q/Smoothness": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long",
+        "comment": "0 = Instantaneous. 255 = Maximum smoothing."
+      }
+    },
+    "Reserved 1": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Amber Internal Glow On/Off": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "Generic",
+        "comment": "0-127 = Off. 128-255 = On."
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16 Channel",
+      "shortName": "16ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Red Fin",
+        "Green Fin",
+        "Blue Fin",
+        "White Fin",
+        "Dimmer",
+        "Dimmer Fin",
+        "Strobe Speed",
+        "Strobe Mark/Space",
+        "Strobe Q/Smoothness",
+        "Reserved 1",
+        "Reserved 2",
+        "Amber Internal Glow On/Off"
+      ]
+    },
+    {
+      "name": "WIRELESS BRIDGE",
+      "shortName": "BRI",
+      "channels": [
+        "BRIDGE"
+      ]
+    }
+  ]
+}
