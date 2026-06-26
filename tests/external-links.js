@@ -9,7 +9,7 @@ import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
 import { appendOrTruncate } from './github/pull-request.js';
 
-const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
 const TIMEOUT = 30_000;
 
