@@ -317,6 +317,7 @@ const disabledRules = [
   'sonarjs/no-os-command-from-path',
   'sonarjs/os-command',
   'sonarjs/pseudo-random',
+  'sonarjs/super-linear-regex',
   'unicorn/consistent-function-scoping',
   'unicorn/filename-case',
   'unicorn/no-this-outside-of-class', // needed in Vue Options API
