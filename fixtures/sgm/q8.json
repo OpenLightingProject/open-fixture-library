@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q8",
+  "shortName": "Q8",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Blure"],
+    "createDate": "2026-06-26",
+    "lastModifyDate": "2026-06-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.sgmlighting.com/products/q%C2%B78"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 56000
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [152, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [176, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Strobe"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperature": "56000K"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "RAW"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Strobe"
+      }
+    },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "EffectParameter",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Halogen Attack"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Halogen Decay"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Halogen Attack and Decay"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Random Pixel"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Spikes"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channel Strobe",
+      "shortName": "10 Channel Strobe",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "CTC",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity 2",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Color Macros"
+      ]
+    }
+  ]
+}
