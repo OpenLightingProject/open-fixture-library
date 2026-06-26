@@ -5,8 +5,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Antti Maasalmi, Paul Rogalski"],
-    "createDate": "2025-12-19",
-    "lastModifyDate": "2026-06-24"
+    "createDate": "2026-06-26",
+    "lastModifyDate": "2026-06-26"
   },
   "links": {
     "manual": [
@@ -168,7 +168,7 @@
         "soundSensitivityEnd": "high"
       }
     },
-    "Maintenance": {
+    "Motion Macros / Reset": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
@@ -176,18 +176,18 @@
         },
         {
           "dmxRange": [21, 100],
-          "type": "Maintenance",
-          "comment": "Pan movement"
+          "type": "Effect",
+          "effectName": "Pan motion macro"
         },
         {
           "dmxRange": [101, 200],
-          "type": "Maintenance",
-          "comment": "Tilt movement"
+          "type": "Effect",
+          "effectName": "Tilt motion macro"
         },
         {
           "dmxRange": [201, 249],
-          "type": "Maintenance",
-          "comment": "Pan/Tilt movement"
+          "type": "Effect",
+          "effectName": "Pan/Tilt motion macro"
         },
         {
           "dmxRange": [250, 250],
@@ -220,7 +220,7 @@
         "Zoom",
         "Internal Programs",
         "Program Speed / Mic Sensitivity",
-        "Maintenance"
+        "Motion Macros / Reset"
       ]
     }
   ]
