@@ -20,13 +20,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Check external links
-        run: node --tls-min-v1.0 tests/external-links.js
-        env:
-          GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
-          NODE_ENV: production
-      - name: Check Markdown Links in all files
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-verbose-mode: 'yes'
+      - parallel:
+          - name: Check external links
+            run: node --tls-min-v1.0 tests/external-links.js
+            env:
+              GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
+              NODE_ENV: production
+          - name: Check Markdown Links in all files
+            uses: gaurav-nelson/github-action-markdown-link-check@v1
+            with:
+              use-verbose-mode: 'yes'
