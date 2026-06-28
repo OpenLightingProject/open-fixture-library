@@ -123,9 +123,9 @@ header {
     margin: 0;
     font-size: 1em;
     line-height: 4.5em;
+    vertical-align: middle;
     color: inherit;
     text-decoration: none;
-    vertical-align: middle;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -133,8 +133,8 @@ header {
 
     &:active,
     &:focus {
-      background-color: theme-color(hover-background);
       outline: 0;
+      background-color: theme-color(hover-background);
     }
 
     @include mobile-hover-emulation((
@@ -239,7 +239,7 @@ export default {
   },
   data() {
     return {
-      searchQuery: this.$router.history.current.query.q || ``,
+      searchQuery: this.$router.history.current.query.q || '',
       searchFieldFocused: false,
     };
   },
@@ -248,16 +248,16 @@ export default {
   },
   methods: {
     updateSearchQuery() {
-      this.searchQuery = this.$router.history.current.query.q || ``;
+      this.searchQuery = this.$router.history.current.query.q || '';
     },
     focusContent(event) {
-      if (event.target?.closest(`a`)) {
-        this.$emit(`focus-content`);
+      if (event.target?.closest('a')) {
+        this.$emit('focus-content');
       }
     },
     search() {
       this.$router.push({
-        path: `/search`,
+        path: '/search',
         query: {
           q: this.searchQuery,
         },
@@ -267,4 +267,3 @@ export default {
   },
 };
 </script>
-

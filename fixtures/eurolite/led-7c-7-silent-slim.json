@@ -1,0 +1,364 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 7C-7 Silent Slim",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["spotlesscoder", "Re:Base"],
+    "createDate": "2024-11-11",
+    "lastModifyDate": "2024-11-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915320-Manual-117485-1.000-eurolite-led-7c-7-silent-slim-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51915320-eurolite-led-7c-7-silent-slim-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tbf4f3Hc1M4"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 255, 110],
+    "weight": 2.4,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold white": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm white": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Preset Colors": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Cold white"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Warm White"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Dark Orange"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Green yellow"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Salmon"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Straw"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        }
+      ]
+    },
+    "Internal Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color temperature": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorPreset",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorPreset",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "comment": "4300K"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "8000K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Effect",
+        "Preset Colors",
+        "Internal Programs",
+        "Color temperature"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV",
+        "Master Dimmer",
+        "Strobe Effect"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Effect",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold white",
+        "Warm white",
+        "Amber",
+        "UV",
+        "Preset Colors",
+        "Internal Programs",
+        "Color temperature"
+      ]
+    }
+  ]
+}

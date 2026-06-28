@@ -10,23 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.1
-      - name: Setup Node.js v20
-        uses: actions/setup-node@v4.0.4
+        uses: actions/checkout@v6.0.3
+      - name: Setup Node.js v24
+        uses: actions/setup-node@v6.4.0
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Check external links
-        run: node --tls-min-v1.0 tests/external-links.js
-        env:
-          GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
-          NODE_ENV: production
-      - name: Check Markdown Links in all files
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-verbose-mode: 'yes'
+      - parallel:
+          - name: Check external links
+            run: node --tls-min-v1.0 tests/external-links.js
+            env:
+              GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
+              NODE_ENV: production
+          - name: Check Markdown Links in all files
+            uses: gaurav-nelson/github-action-markdown-link-check@v1
+            with:
+              use-verbose-mode: 'yes'
