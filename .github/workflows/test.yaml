@@ -9,28 +9,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
-      - name: Setup Node.js v20
-        uses: actions/setup-node@v4.0.0
+        uses: actions/checkout@v6.0.3
+      - name: Setup Node.js v24
+        uses: actions/setup-node@v6.4.0
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Run ESLint
-        run: npm run lint:eslint
-      - name: Run Stylelint
-        run: npm run lint:stylelint -- --formatter compact
-      - name: Run dmx-value-scaling test
-        run: npm run test:dmx-value-scaling
-      - name: Run fixtures-valid test
-        run: npm run test:fixtures-valid
-      - name: Run http-status test
-        run: npm run test:http-status
-      - name: Run built-files-committed test
-        run: npm run test:built-files-committed
+      - parallel:
+          - name: Run ESLint
+            run: npm run lint:eslint
+          - name: Run Stylelint
+            run: npm run lint:stylelint -- --formatter compact
+          - name: Run dmx-value-scaling test
+            run: npm run test:dmx-value-scaling
+          - name: Run fixtures-valid test
+            run: npm run test:fixtures-valid
+          - name: Run http-status test
+            run: npm run test:http-status
+          - name: Run built-files-committed test
+            run: npm run test:built-files-committed
   status:
     name: Status
     runs-on: ubuntu-latest
@@ -42,13 +43,13 @@ jobs:
       GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0 # complete history for all branches and tags
-      - name: Setup Node.js v20
-        uses: actions/setup-node@v4.0.0
+      - name: Setup Node.js v24
+        uses: actions/setup-node@v6.4.0
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
       - name: Install dependencies
         run: |
@@ -56,19 +57,20 @@ jobs:
           npm ci
       - name: Build
         run: npm run build
-      - name: Run export-diff test
-        run: node tests/github/export-diff.js
-      - name: Run exports-valid test
-        run: node tests/github/exports-valid.js
-      - name: Run schema-version-reminder
-        run: node tests/github/schema-version-reminder.js
+      - parallel:
+          - name: Run export-diff test
+            run: node tests/github/export-diff.js
+          - name: Run exports-valid test
+            run: node tests/github/exports-valid.js
+          - name: Run schema-version-reminder
+            run: node tests/github/schema-version-reminder.js
   markdown-link-check:
     name: Markdown Links
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.3
       - name: Check Markdown Links in modified files
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q-Spot 40 CW",
+  "shortName": "CLQS40CW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-10-09",
+    "lastModifyDate": "2024-10-09"
+  },
+  "comment": "Available in black and white housing (WH suffix), not sold anymore.",
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-1935126342"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RzElVR8wCVA"
+    ]
+  },
+  "physical": {
+    "dimensions": [151, 130, 168],
+    "weight": 2.2,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 25]
+    },
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500,
+      "lumens": 1829
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "durationStart": "5s",
+          "durationEnd": "1s",
+          "comment": "Short burst with break"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}

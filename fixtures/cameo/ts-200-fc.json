@@ -1,0 +1,588 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS 200 FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["jhuitila", "Nikita"],
+    "createDate": "2024-11-18",
+    "lastModifyDate": "2024-11-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-204356236",
+      "https://www.cameolight.com/en/downloads/file/id/966404022"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/20479/ts-200-fc"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 370, 310],
+    "weight": 8,
+    "power": 200,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnell"
+    },
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        }
+      ]
+    },
+    "Tint": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "affects only CCT"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "affects only CCT"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "comment": "Yellow warm",
+          "colors": ["#fee283"]
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#40e0d0"]
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#e0b0ff"]
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colorTemperature": "3200K",
+          "colors": ["#fff1e0"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "5600K",
+          "colors": ["#fffffb"]
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "ColorPreset",
+          "comment": "Cold White",
+          "colorTemperature": "8500K",
+          "colors": ["#f4fdff"]
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "12 colors"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "12 colors"
+        }
+      ]
+    },
+    "Color Mode Crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "0s"
+        },
+        {
+          "dmxRange": [6, 105],
+          "type": "Maintenance",
+          "parameterStart": 0.1,
+          "parameterEnd": 10,
+          "comment": "0.1-10s (0.1s Steps)"
+        },
+        {
+          "dmxRange": [106, 214],
+          "type": "Maintenance",
+          "parameterStart": 11,
+          "parameterEnd": 119,
+          "comment": "11-119s (1s Steps)"
+        },
+        {
+          "dmxRange": [215, 244],
+          "type": "Maintenance",
+          "parameterStart": 120,
+          "parameterEnd": 290,
+          "comment": "120-290s (10s Steps)"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Maintenance",
+          "parameterStart": 300,
+          "parameterEnd": 900,
+          "comment": "300-900s (1m Steps)"
+        }
+      ]
+    },
+    "Device Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 77],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Maintenance",
+          "hold": "1.5s",
+          "comment": "Dimmer Response LED"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Maintenance",
+          "hold": "1.5s",
+          "comment": "Dimmer Response Halogen"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Maintenance",
+          "hold": "1.5s",
+          "comment": "DTW (Redshift) on"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Maintenance",
+          "hold": "1.5s",
+          "comment": "DTW (Redshift) off"
+        },
+        {
+          "dmxRange": [86, 97],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent fan"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Auto fan"
+        },
+        {
+          "dmxRange": [102, 123],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Maintenance",
+          "parameter": 650,
+          "hold": "3s",
+          "comment": "PWM Frequency (Hz)"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Maintenance",
+          "parameter": 1530,
+          "hold": "3s",
+          "comment": "PWM Frequency (Hz)"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Maintenance",
+          "parameter": 3600,
+          "hold": "3s",
+          "comment": "PWM Frequency (Hz)"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Maintenance",
+          "parameter": 12000,
+          "hold": "3s",
+          "comment": "PWM Frequency (Hz)"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Maintenance",
+          "parameter": 25000,
+          "hold": "3s",
+          "comment": "PWM Frequency (Hz)"
+        },
+        {
+          "dmxRange": [134, 143],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display on"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display off"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Linear"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Exponential"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Logarithmic"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve S-Curve"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3-channel 2 HSI coarse",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "3-channel 3 CCT coarse",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Tint"
+      ]
+    },
+    {
+      "name": "6-channel Direct",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan"
+      ]
+    },
+    {
+      "name": "12-channel HSI fine",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe functions",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "CCT",
+        "Tint",
+        "Color Macros",
+        "Color Mode Crossfade",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "14-channel Direct fine",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe functions",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan",
+        "CCT",
+        "Tint",
+        "Color Macros",
+        "Color Mode Crossfade",
+        "Device Settings"
+      ]
+    }
+  ]
+}
