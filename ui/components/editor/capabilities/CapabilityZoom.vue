@@ -30,7 +30,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -55,9 +54,9 @@ export default {
        */
       defaultData: {
         angle: null,
-        angleStart: `narrow`,
-        angleEnd: `wide`,
-        comment: ``,
+        angleStart: 'narrow',
+        angleEnd: 'wide',
+        comment: '',
       },
     };
   },

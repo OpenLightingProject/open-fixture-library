@@ -1,133 +1,105 @@
-import { fixupPluginRules } from '@eslint/compat';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
-import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginStylistic from '@stylistic/eslint-plugin';
+import eslintPluginVitest from '@vitest/eslint-plugin';
+import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
-import eslintPluginJsonc from 'eslint-plugin-jsonc';
-import eslintPluginNuxt from 'eslint-plugin-nuxt';
+import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginSonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
+import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
+import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
 
-const eslintPluginNuxtConfigRecommended = {
-  plugins: {
-    nuxt: fixupPluginRules(eslintPluginNuxt),
-  },
-  rules: {
-    ...eslintPluginNuxt.configs.base.rules,
-    ...eslintPluginNuxt.configs.recommended.rules,
-  },
-};
+const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
+  arrowParens: true,
+  semi: true,
+});
 
 const enabledRuleParameters = {
   // Core ESLint rules
   'accessor-pairs': [],
-  'array-bracket-spacing': [],
-  'arrow-parens': [`as-needed`],
-  'arrow-spacing': [],
-  'block-spacing': [],
-  'brace-style': [`stroustrup`],
   'camelcase': [],
-  'comma-dangle': [`always-multiline`],
-  'comma-spacing': [],
-  'comma-style': [],
   'consistent-return': [],
-  'curly': [`all`],
-  'dot-location': [`property`],
+  'curly': ['all'],
   'dot-notation': [],
-  'eol-last': [`always`],
-  'eqeqeq': [`always`, { null: `ignore` }],
-  'func-call-spacing': [],
+  'eqeqeq': ['always', { null: 'ignore' }],
   'getter-return': [],
-  'grouped-accessor-pairs': [`getBeforeSet`],
+  'grouped-accessor-pairs': ['getBeforeSet'],
   'guard-for-in': [],
-  'indent': [2, { SwitchCase: 1 }],
-  'key-spacing': [],
-  'keyword-spacing': [],
-  'linebreak-style': [`unix`],
-  'new-parens': [],
   'no-array-constructor': [],
   'no-bitwise': [],
-  'no-confusing-arrow': [{ allowParens: true }],
   'no-constant-binary-expression': [],
   'no-else-return': [{ allowElseIf: false }],
+  'no-empty': [],
+  'no-empty-function': [],
   'no-irregular-whitespace': [],
   'no-lonely-if': [],
   'no-loop-func': [],
-  'no-mixed-operators': [],
-  'no-multi-spaces': [],
   'no-nested-ternary': [],
-  'no-new-object': [],
+  'no-object-constructor': [],
   'no-prototype-builtins': [],
   'no-restricted-imports': [{
-    name: `fs`,
-    message: `Please use 'fs/promises' instead.`,
+    name: 'fs',
+    message: 'Please use \'fs/promises\' instead.',
   }],
   'no-return-assign': [],
   'no-return-await': [],
   'no-shadow': [{
     builtinGlobals: false,
-    allow: [`_`], // allow placeholder parameters that aren't used anyway
+    allow: ['_'], // allow placeholder parameters that aren't used anyway
   }],
   'no-template-curly-in-string': [],
-  'no-trailing-spaces': [],
-  'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
-  'no-unused-vars': [{ args: `none` }],
+  'no-unsafe-optional-chaining': [{ disallowArithmeticOperators: true }],
+  'no-unused-vars': [{ args: 'none' }],
+  'no-unused-expressions': [],
   'no-useless-assignment': [],
   'no-var': [],
-  'object-curly-spacing': [`always`],
-  'object-shorthand': [`always`, { avoidQuotes: true }],
+  'object-shorthand': [],
   'prefer-arrow-callback': [],
-  'prefer-const': [{ destructuring: `all` }],
+  'prefer-const': [{ destructuring: 'all' }],
   'prefer-object-spread': [],
   'prefer-rest-params': [],
   'prefer-template': [],
-  'quotes': [`backtick`, { allowTemplateLiterals: true }],
   'radix': [],
-  'semi': [],
-  'space-before-blocks': [],
-  'space-before-function-paren': [{
-    anonymous: `never`,
-    named: `never`,
-    asyncArrow: `always`,
-  }],
-  'space-in-parens': [],
-  'space-infix-ops': [],
-  'spaced-comment': [`always`],
-  'template-curly-spacing': [],
 
-  // eslint-plugin-import
-  'import/extensions': [`ignorePackages`],
-  'import/first': [],
-  'import/newline-after-import': [],
-  'import/no-commonjs': [{ allowConditionalRequire: false }],
-  'import/no-dynamic-require': [],
-  'import/no-unresolved': [{
-    ignore: [`^chalk$`, `^@octokit/rest$`],
+  // eslint-plugin-stylistic
+  '@stylistic/curly-newline': ['always'],
+  '@stylistic/function-call-spacing': [],
+  '@stylistic/linebreak-style': [],
+  '@stylistic/no-confusing-arrow': [],
+  '@stylistic/quotes': ['single'],
+
+  // eslint-plugin-import-x
+  'import-x/extensions': ['ignorePackages'],
+  'import-x/first': [],
+  'import-x/newline-after-import': [],
+  'import-x/no-commonjs': [{ allowConditionalRequire: false }],
+  'import-x/no-dynamic-require': [],
+  'import-x/no-unresolved': [{
+    ignore: ['^@octokit/rest$', '^uuid$'],
   }],
-  'import/order': [{
-    groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
-    alphabetize: {
-      order: `asc`,
+  'import-x/order': [{
+    'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+    'alphabetize': {
+      order: 'asc',
       caseInsensitive: true,
+      orderImportKind: 'desc',
     },
-    named: {
+    'named': {
       enabled: true,
       cjsExports: false,
     },
+    'newlines-between': 'never',
   }],
 
   // eslint-plugin-jsdoc
-  'jsdoc/check-alignment': [],
   'jsdoc/check-indentation': [],
-  'jsdoc/check-param-names': [],
   'jsdoc/check-syntax': [],
-  'jsdoc/check-tag-names': [],
-  'jsdoc/check-types': [],
-  'jsdoc/implements-on-classes': [],
+  'jsdoc/require-hyphen-before-param-description': [],
   'jsdoc/require-jsdoc': [{
     enableFixer: false,
     require: {
@@ -138,21 +110,11 @@ const enabledRuleParameters = {
       FunctionExpression: false,
     },
   }],
-  'jsdoc/require-param': [],
-  'jsdoc/require-param-description': [],
-  'jsdoc/require-param-name': [],
-  'jsdoc/require-param-type': [],
-  'jsdoc/require-returns': [],
-  'jsdoc/require-returns-check': [],
-  'jsdoc/require-returns-description': [],
-  'jsdoc/require-returns-type': [],
-  'jsdoc/valid-types': [],
+  'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
+  'jsdoc/tag-lines': ['never', { startLines: null }],
 
   // eslint-plugin-jsonc
   'jsonc/auto': [],
-
-  // eslint-plugin-nuxt
-  'nuxt/require-func-head': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
@@ -167,12 +129,13 @@ const enabledRuleParameters = {
   'sonarjs/no-inverted-boolean-check': [],
 
   // eslint-plugin-unicorn
+  'unicorn/dom-node-dataset': [{ preferAttributes: true }],
   'unicorn/import-style': [{
     styles: {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
+  'unicorn/prefer-export-from': [{ checkUsedVariables: false }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -186,46 +149,49 @@ const enabledRuleParameters = {
       cats: { categories: true },
     },
   }],
+  'unicorn/text-encoding-identifier-case': [{ withDash: true }],
 
   // eslint-plugin-vue
   'vue/block-lang': [{
     script: { allowNoLang: true },
-    style: { lang: `scss` },
+    style: { lang: 'scss' },
     template: { allowNoLang: true },
   }],
   'vue/block-order': [{
-    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
+    order: ['template', 'style[scoped]', 'style:not([scoped])', 'script'],
   }],
   'vue/component-options-name-casing': [],
-  'vue/component-name-in-template-casing': [`PascalCase`, {
+  'vue/component-name-in-template-casing': ['PascalCase', {
     registeredComponentsOnly: false,
   }],
   'vue/enforce-style-attribute': [],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
-    singleline: `never`,
-    multiline: `never`,
+    singleline: 'never',
+    multiline: 'never',
   }],
   'vue/match-component-file-name': [{
-    extensions: [`vue`],
+    extensions: ['vue'],
     shouldMatchCase: true,
   }],
   'vue/match-component-import-name': [],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
-  'vue/no-boolean-default': [`default-false`],
+  'vue/no-boolean-default': ['default-false'],
+  'vue/no-duplicate-class-names': [],
   'vue/no-empty-component-block': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
-      `^Ofl(Svg|Time)$`, // global components
-      `^Nuxt(Link)?$`, `^ClientOnly$`, // Nuxt components
-      `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
+      '^Ofl(Svg|Time)$', // global components
+      '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
+      '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
     ],
   }],
+  'vue/no-undef-directives': [],
   'vue/no-undef-properties': [],
   'vue/no-unused-emit-declarations': [],
   'vue/no-unused-properties': [{
-    groups: [`props`, `data`, `computed`, `methods`, `setup`],
+    groups: ['props', 'data', 'computed', 'methods', 'setup'],
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
@@ -233,12 +199,13 @@ const enabledRuleParameters = {
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
+  'vue/prefer-single-event-payload': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
-  'vue/v-for-delimiter-style': [`of`],
+  'vue/v-for-delimiter-style': ['of'],
   'vue/v-if-else-key': [],
-  'vue/v-on-handler-style': [`inline`],
-  'vue/v-slot-style': [`shorthand`],
+  'vue/v-on-handler-style': ['inline'],
+  'vue/v-slot-style': ['shorthand'],
 
   // Vue 3 migration
   'vue/no-deprecated-data-object-declaration': [],
@@ -265,6 +232,8 @@ const enabledRuleParameters = {
   'vue/no-deprecated-vue-config-keycodes': [],
   'vue/no-expose-after-await': [],
   'vue/no-lifecycle-after-await': [],
+  'vue/no-negated-condition': [],
+  'vue/no-negated-v-if-condition': [],
   'vue/no-watch-after-await': [],
   'vue/prefer-import-from-vue': [],
   'vue/require-explicit-emits': [],
@@ -278,196 +247,232 @@ const enabledRuleParameters = {
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'sonarjs/cognitive-complexity': [],
+  'sonarjs/no-nested-functions': [],
+  'sonarjs/regex-complexity': [],
+  'sonarjs/slow-regex': [],
+  'sonarjs/todo-tag': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
+  'vue/no-v-html': [],
 };
 
-const vueCoreExtensionRules = [
-  `array-bracket-newline`,
-  `array-bracket-spacing`,
-  `array-element-newline`,
-  `arrow-spacing`,
-  `block-spacing`,
-  `brace-style`,
-  `camelcase`,
-  `comma-dangle`,
-  `comma-spacing`,
-  `comma-style`,
-  `dot-location`,
-  `dot-notation`,
-  `eqeqeq`,
-  `func-call-spacing`,
-  `key-spacing`,
-  `keyword-spacing`,
-  `max-len`,
-  `multiline-ternary`,
-  `no-constant-condition`,
-  `no-empty-pattern`,
-  `no-extra-parens`,
-  `no-irregular-whitespace`,
-  `no-loss-of-precision`,
-  `no-restricted-syntax`,
-  `no-sparse-arrays`,
-  `no-useless-concat`,
-  `object-curly-newline`,
-  `object-curly-spacing`,
-  `object-property-newline`,
-  `object-shorthand`,
-  `operator-linebreak`,
-  `prefer-template`,
-  `quote-props`,
-  `space-in-parens`,
-  `space-infix-ops`,
-  `space-unary-ops`,
-  `template-curly-spacing`,
-];
+const vueExtensionRules = {
+  'vue/array-bracket-newline': '@stylistic/array-bracket-newline',
+  'vue/array-bracket-spacing': '@stylistic/array-bracket-spacing',
+  'vue/array-element-newline': '@stylistic/array-element-newline',
+  'vue/arrow-spacing': '@stylistic/arrow-spacing',
+  'vue/block-spacing': '@stylistic/block-spacing',
+  'vue/brace-style': '@stylistic/brace-style',
+  'vue/camelcase': 'camelcase',
+  'vue/comma-dangle': '@stylistic/comma-dangle',
+  'vue/comma-spacing': '@stylistic/comma-spacing',
+  'vue/comma-style': '@stylistic/comma-style',
+  'vue/dot-location': '@stylistic/dot-location',
+  'vue/dot-notation': 'dot-notation',
+  'vue/eqeqeq': 'eqeqeq',
+  'vue/func-call-spacing': '@stylistic/function-call-spacing',
+  'vue/key-spacing': '@stylistic/key-spacing',
+  'vue/keyword-spacing': '@stylistic/keyword-spacing',
+  'vue/max-len': '@stylistic/max-len',
+  'vue/multiline-ternary': '@stylistic/multiline-ternary',
+  'vue/no-console': 'no-console',
+  'vue/no-constant-condition': 'no-constant-condition',
+  'vue/no-empty-pattern': 'no-empty-pattern',
+  'vue/no-extra-parens': '@stylistic/no-extra-parens',
+  'vue/no-implicit-coercion': 'no-implicit-coercion',
+  'vue/no-irregular-whitespace': 'no-irregular-whitespace',
+  'vue/no-loss-of-precision': 'no-loss-of-precision',
+  'vue/no-negated-condition': 'no-negated-condition',
+  'vue/no-restricted-syntax': 'no-restricted-syntax',
+  'vue/no-sparse-arrays': 'no-sparse-arrays',
+  'vue/no-useless-concat': 'no-useless-concat',
+  'vue/object-curly-newline': '@stylistic/object-curly-newline',
+  'vue/object-curly-spacing': '@stylistic/object-curly-spacing',
+  'vue/object-property-newline': '@stylistic/object-property-newline',
+  'vue/object-shorthand': 'object-shorthand',
+  'vue/operator-linebreak': '@stylistic/operator-linebreak',
+  'vue/prefer-template': 'prefer-template',
+  'vue/quote-props': '@stylistic/quote-props',
+  'vue/space-in-parens': '@stylistic/space-in-parens',
+  'vue/space-infix-ops': '@stylistic/space-infix-ops',
+  'vue/space-unary-ops': '@stylistic/space-unary-ops',
+  'vue/template-curly-spacing': '@stylistic/template-curly-spacing',
+};
 
 const warnRules = new Set([
-  `jsdoc/require-jsdoc`,
-  `sonarjs/cognitive-complexity`,
-  `vue/no-mutating-props`,
+  'jsdoc/require-jsdoc',
+  'sonarjs/cognitive-complexity',
+  'sonarjs/no-nested-functions',
+  'sonarjs/regex-complexity',
+  'sonarjs/slow-regex',
+  'sonarjs/todo-tag',
+  'vue/no-mutating-props',
+  'vue/no-v-html',
 ]);
 
 const disabledRules = [
-  `no-console`,
-  `jsdoc/empty-tags`,
-  `jsdoc/newline-after-description`,
-  `jsdoc/no-defaults`, // useful for model docs generation
-  `jsdoc/require-description`,
-  `jsdoc/require-description-complete-sentence`,
-  `jsdoc/tag-lines`,
-  `unicorn/consistent-function-scoping`,
-  `unicorn/filename-case`,
-  `unicorn/no-null`,
-  `unicorn/no-process-exit`,
-  `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
-  `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
-  `unicorn/prefer-global-this`,
-  `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
-  `vue/multiline-html-element-content-newline`,
-  `vue/singleline-html-element-content-newline`,
-  `vuejs-accessibility/form-control-has-label`,
-  `vuejs-accessibility/label-has-for`,
+  'no-console',
+  'jsdoc/no-defaults', // useful for model docs generation
+  'jsdoc/require-description',
+  'sonarjs/no-os-command-from-path',
+  'sonarjs/os-command',
+  'sonarjs/pseudo-random',
+  'sonarjs/super-linear-regex',
+  'unicorn/consistent-function-scoping',
+  'unicorn/filename-case',
+  'unicorn/no-this-outside-of-class', // needed in Vue Options API
+  'unicorn/no-null',
+  'unicorn/no-process-exit',
+  'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
+  'unicorn/no-useless-undefined', // conflicts with `consistent-return`
+  'unicorn/prefer-global-this',
+  'unicorn/prefer-https', // there are still many HTTP-only websites
+  'unicorn/prefer-node-protocol', // not supported by Nuxt yet
+  'vue/multiline-html-element-content-newline',
+  'vue/singleline-html-element-content-newline',
+  'vuejs-accessibility/form-control-has-label',
+  'vuejs-accessibility/label-has-for',
 ];
 
-for (const ruleName of vueCoreExtensionRules) {
-  if (ruleName in enabledRuleParameters) {
-    enabledRuleParameters[`vue/${ruleName}`] = enabledRuleParameters[ruleName];
+const getRuleParameters = (ruleOptions) => (Array.isArray(ruleOptions) ? ruleOptions.slice(1) : []);
+
+for (const [vueRuleName, extendedRuleName] of Object.entries(vueExtensionRules)) {
+  if (enabledRuleParameters[extendedRuleName]) {
+    enabledRuleParameters[vueRuleName] = enabledRuleParameters[extendedRuleName];
+  }
+  else if (eslintJs.configs.recommended.rules[extendedRuleName] && eslintJs.configs.recommended.rules[extendedRuleName] !== 'off') {
+    enabledRuleParameters[vueRuleName] = getRuleParameters(eslintJs.configs.recommended.rules[extendedRuleName]);
+  }
+  else if (stylisticEslintConfig.rules[extendedRuleName] && stylisticEslintConfig.rules[extendedRuleName] !== 'off') {
+    enabledRuleParameters[vueRuleName] = getRuleParameters(stylisticEslintConfig.rules[extendedRuleName]);
   }
 }
 
 export default [
   {
     ignores: [
-      `package-lock.json`,
-      `fixtures/register.json`,
-      `server/ofl-secrets.json`,
-      `.vscode/`,
-      `.nuxt/`,
-      `node_modules/`,
-      `tmp/`,
+      'package-lock.json',
+      'fixtures/register.json',
+      'server/ofl-secrets.json',
+      '.vscode/',
+      '.nuxt/',
+      'node_modules/',
+      'tmp/',
     ],
   },
   eslintJs.configs.recommended,
+  stylisticEslintConfig,
   eslintPluginImport.flatConfigs.recommended,
-  eslintPluginJsdoc.configs[`flat/recommended-typescript-flavor`],
-  eslintPluginNuxtConfigRecommended,
-  eslintPluginPromise.configs[`flat/recommended`],
+  eslintPluginJsdoc.configs['flat/recommended-typescript-flavor-error'],
+  internalNuxt2EslintPlugin.configs.all,
+  eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
-  ...eslintPluginVue.configs[`flat/vue2-recommended`],
-  ...eslintPluginVueA11y.configs[`flat/recommended`],
-  ...eslintPluginJsonc.configs[`flat/recommended-with-json`], // has to be after `vue`
+  ...eslintPluginVue.configs['flat/vue2-recommended-error'],
+  ...eslintPluginVueA11y.configs['flat/recommended'],
+  ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
   {
     linterOptions: {
-      reportUnusedDisableDirectives: `error`,
-      reportUnusedInlineConfigs: `error`,
+      reportUnusedDisableDirectives: 'error',
+      reportUnusedInlineConfigs: 'error',
     },
     languageOptions: {
       globals: globals.node,
-      ecmaVersion: `latest`,
-      sourceType: `module`,
+      ecmaVersion: 2025,
+      sourceType: 'module',
     },
     rules: {
       ...Object.fromEntries(
         Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
           ruleName,
-          [warnRules.has(ruleName) ? `warn` : `error`, ...parameters],
+          [warnRules.has(ruleName) ? 'warn' : 'error', ...parameters],
         ]),
       ),
       ...Object.fromEntries(
-        disabledRules.map(ruleName => [ruleName, `off`]),
+        disabledRules.map((ruleName) => [ruleName, 'off']),
       ),
     },
     settings: {
       jsdoc: {
         tagNamePreference: {
-          augments: `extends`,
-          class: `constructor`,
-          file: `fileoverview`,
-          fires: `emits`,
-          linkcode: `link`,
-          linkplain: `link`,
-          overview: `fileoverview`,
+          augments: 'extends',
+          class: 'constructor',
+          file: 'fileoverview',
+          fires: 'emits',
+          linkcode: 'link',
+          linkplain: 'link',
+          overview: 'fileoverview',
         },
         preferredTypes: {
-          '*': `any`,
-          array: `Array`,
-          Boolean: `boolean`,
-          Number: `number`,
-          Object: `object`,
-          String: `string`,
-          '.<>': `<>`,
-          'Array<>': `[]`,
-          'object<>': `Record<>`,
-          'Object<>': `Record<>`,
+          '*': 'any',
+          'array': 'Array',
+          'Boolean': 'boolean',
+          'Number': 'number',
+          'Object': 'object',
+          'String': 'string',
+          '.<>': '<>',
+          'Array<>': '[]',
+          'object<>': 'Record<>',
+          'Object<>': 'Record<>',
         },
       },
     },
   },
   ...eslintMarkdown.configs.processor,
   {
-    files: [`**/*.md/*.js`],
+    files: ['**/*.md/*.js'],
     rules: {
-      'jsdoc/require-jsdoc': `off`,
-      'import/no-unresolved': `off`,
+      'jsdoc/require-jsdoc': 'off',
+      'import-x/no-unresolved': 'off',
     },
   },
   {
-    files: [`**/*.cjs`, `server/**.js`],
+    files: ['**/*.cjs', 'server/**.js'],
     languageOptions: {
-      sourceType: `script`,
+      sourceType: 'script',
     },
     rules: {
-      'import/no-commonjs': `off`,
-      'unicorn/prefer-module': `off`,
-      'unicorn/prefer-top-level-await': `off`,
+      'import-x/no-commonjs': 'off',
+      'unicorn/prefer-module': 'off',
+      'unicorn/prefer-top-level-await': 'off',
     },
   },
   {
-    files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
+    files: ['ui/layouts/*.vue', 'ui/pages/**/*.vue'],
     rules: {
-      'vue/multi-word-component-names': `off`,
+      'vue/multi-word-component-names': 'off',
     },
   },
   {
-    files: [`fixtures/**/*.json`],
+    files: ['fixtures/**/*.json'],
+    plugins: {
+      ofl: {
+        rules: {
+          'fixture-json-array-format': fixtureJsonArrayFormatRule,
+        },
+      },
+    },
     rules: {
       // allow alignment of pixel keys in matrix
-      'no-multi-spaces': [`error`, {
+      '@stylistic/no-multi-spaces': ['error', {
         exceptions: {
           JSONArrayExpression: true,
         },
       }],
-      'jsonc/array-bracket-spacing': `off`,
+      'jsonc/array-bracket-spacing': 'off',
 
-      'unicorn/prevent-abbreviations': `off`,
+      'ofl/fixture-json-array-format': 'error',
+      'unicorn/prevent-abbreviations': 'off',
     },
   },
   {
-    files: [`.devcontainer/devcontainer.json`],
+    files: ['.devcontainer/devcontainer.json'],
     rules: {
-      'jsonc/no-comments': `off`,
+      'jsonc/no-comments': 'off',
     },
+  },
+  {
+    files: ['tests/*.test.js'],
+    ...eslintPluginVitest.configs.recommended,
   },
 ];

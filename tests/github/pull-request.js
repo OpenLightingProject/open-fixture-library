@@ -2,17 +2,18 @@ import '../../lib/load-env-file.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
-import chalk from 'chalk';
-
 
 const requiredEnvironmentVariables = [
-  `GITHUB_USER_TOKEN`,
-  `GITHUB_REPOSITORY`,
-  `GITHUB_PR_NUMBER`,
-  `GITHUB_PR_HEAD_REF`,
-  `GITHUB_PR_BASE_REF`,
+  'GITHUB_USER_TOKEN',
+  'GITHUB_REPOSITORY',
+  'GITHUB_PR_NUMBER',
+  'GITHUB_PR_HEAD_REF',
+  'GITHUB_PR_BASE_REF',
 ];
+const GITHUB_BODY_MAX_BYTES = 262_144; // = max 65_536 4-byte Unicode characters
+const RESERVED_COMMENT_BYTES = 2144; // reserve space for comment/issue body header
 
 /** @type {Octokit} */
 let githubClient;
@@ -40,8 +41,8 @@ export async function checkEnv() {
 export async function init() {
   await checkEnv();
 
-  repoOwner = process.env.GITHUB_REPOSITORY.split(`/`)[0];
-  repoName = process.env.GITHUB_REPOSITORY.split(`/`)[1];
+  repoOwner = process.env.GITHUB_REPOSITORY.split('/', 1)[0];
+  repoName = process.env.GITHUB_REPOSITORY.split('/', 2)[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
@@ -50,7 +51,8 @@ export async function init() {
   const pr = await githubClient.rest.pulls.get({
     owner: repoOwner,
     repo: repoName,
-    'pull_number': process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
   });
 
   // save PR for later use
@@ -69,8 +71,10 @@ export async function fetchChangedComponents() {
     filePromises.push(githubClient.rest.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
-      'pull_number': process.env.GITHUB_PR_NUMBER,
-      'per_page': 100,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      pull_number: process.env.GITHUB_PR_NUMBER,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      per_page: 100,
       page: index + 1,
     }));
   }
@@ -115,14 +119,14 @@ export async function fetchChangedComponents() {
 
   /**
    * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-   * @param {object} fileData The file object from GitHub.
+   * @param {object} fileData - The file object from GitHub.
    */
   function handleFileData(fileData) {
-    if (fileData.status === `renamed`) {
+    if (fileData.status === 'renamed') {
       // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
       // That's why we simply treat the old file name as removed and the new one as added.
-      handleFile(`added`, fileData.filename);
-      handleFile(`removed`, fileData.previous_filename);
+      handleFile('added', fileData.filename);
+      handleFile('removed', fileData.previous_filename);
     }
     else {
       handleFile(fileData.status, fileData.filename);
@@ -131,45 +135,45 @@ export async function fetchChangedComponents() {
 
   /**
    * Parse the file type by its path and update the change summary of the file's status accordingly.
-   * @param {'added' | 'removed' | 'modified'} fileStatus What happened with the file in this pull request.
-   * @param {string} filePath The file name, relative to the repository's root.
+   * @param {'added' | 'removed' | 'modified'} fileStatus - What happened with the file in this pull request.
+   * @param {string} filePath - The file name, relative to the repository's root.
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
-    const segments = filePath.split(`/`);
+    const segments = filePath.split('/');
 
-    if (segments[0] === `lib` && segments[1] === `model`) {
+    if (segments[0] === 'lib' && segments[1] === 'model') {
       changeSummary.model = true;
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `import.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'import.js') {
       changeSummary.imports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `export.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'export.js') {
       changeSummary.exports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `exportTests`) {
+    if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
       changeSummary.exportTests.push([
         segments[1], // plugin key
-        segments[3].split(`.`)[0], // test key
+        segments[3].split('.', 1)[0], // test key
       ]);
       return;
     }
 
-    if (segments[0] === `schemas`) {
+    if (segments[0] === 'schemas') {
       changeSummary.schema = true;
       return;
     }
 
-    if (segments[0] === `fixtures` && segments.length === 3) {
+    if (segments[0] === 'fixtures' && segments.length === 3) {
       changeSummary.fixtures.push([
         segments[1], // man key
-        segments[2].split(`.`)[0], // fix key
+        segments[2].split('.', 1)[0], // fix key
       ]);
     }
   }
@@ -178,29 +182,29 @@ export async function fetchChangedComponents() {
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.fileUrl).
- * @param {object} test Information about the test script that wants to update the comment.
- * @param {URL} test.fileUrl URL of the test file.
- * @param {string} test.name Heading to be used in the comment
- * @param {string[]} test.lines The comment's lines of text
+ * @param {object} test - Information about the test script that wants to update the comment.
+ * @param {URL} test.fileUrl - URL of the test file.
+ * @param {string} test.name - Heading to be used in the comment
+ * @param {string[]} test.lines - The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 export async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
-    console.warn(chalk.yellow(`Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    console.warn(styleText('yellow', 'Warning:'), 'This PR is created from a forked repository, so there is no write permission for the repo.');
     return undefined;
   }
 
-  const oflRootPath = fileURLToPath(new URL(`../../`, import.meta.url));
+  const oflRootPath = fileURLToPath(new URL('../../', import.meta.url));
   const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
 
   const lines = [
     `<!-- GITHUB-TEST: ${relativeFilePath} -->`,
     `# ${test.name}`,
     `(Output of test script \`${relativeFilePath}\`.)`,
-    ``,
+    '',
     ...test.lines,
   ];
-  const message = lines.join(`\n`);
+  const message = lines.join('\n');
 
   const commentPromises = [];
   for (let index = 0; index < prData.comments / 100; index++) {
@@ -208,22 +212,24 @@ export async function updateComment(test) {
       githubClient.rest.issues.listComments({
         owner: repoOwner,
         repo: repoName,
-        'issue_number': process.env.GITHUB_PR_NUMBER,
-        'per_page': 100,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        issue_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
         page: index + 1,
       }),
     );
   }
 
   const commentBlocks = await Promise.all(commentPromises);
-  const comments = commentBlocks.flatMap(block => block.data);
+  const comments = commentBlocks.flatMap((block) => block.data);
 
   let equalFound = false;
-  const promises = comments.flatMap(comment => {
+  const promises = comments.flatMap((comment) => {
     // get rid of \r linebreaks
-    comment.body = comment.body.replaceAll(`\r`, ``);
+    comment.body = comment.body.replaceAll('\r', '');
 
-    if (lines[0] !== comment.body.split(`\n`)[0]) {
+    if (lines[0] !== comment.body.split('\n', 1)[0]) {
       // the comment was not created by this test script
       return [];
     }
@@ -239,7 +245,8 @@ export async function updateComment(test) {
     return githubClient.rest.issues.deleteComment({
       owner: repoOwner,
       repo: repoName,
-      'comment_id': comment.id,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      comment_id: comment.id,
     });
   });
 
@@ -248,10 +255,34 @@ export async function updateComment(test) {
     promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,
       repo: repoName,
-      'issue_number': process.env.GITHUB_PR_NUMBER,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      issue_number: process.env.GITHUB_PR_NUMBER,
       body: message,
     }));
   }
 
   return Promise.all(promises);
+}
+
+/**
+ * Tries to append `newLines` to `lines`. If adding `newLines` plus `tooLongMessage`
+ * (plus any `trailingLines`) would exceed the byte limit, appends `tooLongMessage`
+ * instead and returns `true`. Otherwise appends `newLines` and returns `false`.
+ *
+ * @param {string[]} lines - Accumulated lines so far (mutated in place).
+ * @param {readonly string[]} newLines - Lines to append.
+ * @param {string} tooLongMessage - Line to append when truncation is needed.
+ * @param {readonly string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
+ * @returns {boolean} `true` if truncation occurred, `false` otherwise.
+ */
+export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
+  const testContent = [...lines, ...newLines, tooLongMessage, ...trailingLines].join('\r\n');
+
+  if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
+    lines.push(tooLongMessage);
+    return true;
+  }
+
+  lines.push(...newLines);
+  return false;
 }
