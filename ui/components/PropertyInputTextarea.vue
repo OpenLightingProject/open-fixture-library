@@ -19,12 +19,12 @@ export default {
     value: anyProp().required,
   },
   emits: {
-    input: value => true,
-    'vf:validate': validationData => true,
+    'input': (value) => true,
+    'vf:validate': (validationData) => true,
   },
   data() {
     return {
-      localValue: ``,
+      localValue: '',
     };
   },
   computed: {
@@ -34,21 +34,21 @@ export default {
      */
     validationData() {
       return {
-        minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
-        maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
+        minlength: 'minLength' in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
+        maxlength: 'maxLength' in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
       };
     },
   },
   watch: {
     value: {
       handler(newValue) {
-        this.localValue = newValue ? String(newValue) : ``;
+        this.localValue = newValue ? String(newValue) : '';
       },
       immediate: true,
     },
     validationData: {
       handler(newValidationData) {
-        this.$emit(`vf:validate`, newValidationData);
+        this.$emit('vf:validate', newValidationData);
       },
       deep: true,
       immediate: true,
@@ -60,7 +60,7 @@ export default {
       this.$el.focus();
     },
     update() {
-      this.$emit(`input`, this.localValue);
+      this.$emit('input', this.localValue);
     },
   },
 };

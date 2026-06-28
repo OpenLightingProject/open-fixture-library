@@ -45,7 +45,9 @@
         <div v-else-if="fieldErrors.step">Please enter a multiple of {{ fieldState.$attrs.step }}.</div>
         <div v-else-if="fieldErrors.email">Please enter an email address.</div>
         <div v-else-if="fieldErrors.url">Please enter a URL.</div>
-        <div v-else-if="fieldErrors.pattern">Has to match pattern.</div> <!-- TODO: include title -->
+        <div v-else-if="fieldErrors.pattern">
+          Has to match pattern<span v-if="fieldState.$attrs.title">: {{ fieldState.$attrs.title }}</span>.
+        </div>
       </div>
 
       <div v-if="hint" class="hint">{{ hint }}</div>
@@ -76,16 +78,28 @@ export default {
     LabeledValue,
   },
   props: {
+    /** The internal name of the input field, used for state tracking. */
     name: stringProp().optional, // TODO: make this required
+    /** The visible label text for the input. */
     label: stringProp().optional,
+    /** Helper text displayed below the input. */
     hint: stringProp().optional,
+    /** The validation state object from the parent form. */
     formstate: objectProp().optional, // TODO: make this required
+    /** Object containing custom validation functions. */
     customValidators: objectProp().optional,
-    // avoid a label tag for multiple inputs, because it's not
-    // supported by Safari
+    /**
+     * Whether this component wraps multiple inputs.
+     * If true, renders a `div` instead of a `label` to avoid browser issues (e.g., Safari).
+     */
     multipleInputs: booleanProp().withDefault(false),
   },
   computed: {
+    /**
+     * Retrieves the specific state object for this field from the global formstate.
+     * Handles nested fields and prevents access errors if formstate is not yet initialized.
+     * @returns {object|null} The field's state object or null if not found.
+     */
     fieldState() {
       if (!this.formstate) {
         return null;
@@ -96,7 +110,7 @@ export default {
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        subFieldName => subFieldName.startsWith(this.name),
+        (subFieldName) => subFieldName.startsWith(this.name),
       );
 
       for (const subFieldName of subFieldNames) {
@@ -112,16 +126,15 @@ export default {
       return {};
     },
     fieldErrors() {
-      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
+      if (!('$valid' in this.fieldState) || this.fieldState.$valid) {
         return {};
       }
 
       return this.fieldState.$error;
     },
     isSelectField() {
-      return this.name === `manufacturerKey` || this.name === `plugin` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
+      return this.name === 'manufacturerKey' || this.name === 'plugin' || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     },
   },
 };
 </script>
-

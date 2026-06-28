@@ -60,7 +60,7 @@ export default {
   async asyncData({ $axios, error }) {
     let plugins;
     try {
-      plugins = await $axios.$get(`/api/v1/plugins`);
+      plugins = await $axios.$get('/api/v1/plugins');
     }
     catch (requestError) {
       return error(requestError);
@@ -68,13 +68,13 @@ export default {
     return { plugins };
   },
   head() {
-    const title = `Plugins`;
+    const title = 'Plugins';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],

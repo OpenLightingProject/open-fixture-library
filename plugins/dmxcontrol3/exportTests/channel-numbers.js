@@ -1,16 +1,15 @@
 import { promisify } from 'util';
 import xml2js from 'xml2js';
-
 import Range from '../../../lib/model/Range.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
- * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {string} exportFile.content File content.
- * @param {string} exportFile.mimetype File mime type.
- * @param {Fixture[]} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {string} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @param {object} exportFile - The file returned by the plugins' export module.
+ * @param {string} exportFile.name - File name, may include slashes to provide a folder structure.
+ * @param {string} exportFile.content - File content.
+ * @param {string} exportFile.mimetype - File mime type.
+ * @param {Fixture[]} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {string} exportFile.mode - Mode's shortName if given file only describes a single mode.
  * @returns {Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
  */
 export default async function testChannelNumbers(exportFile) {
@@ -18,7 +17,7 @@ export default async function testChannelNumbers(exportFile) {
   const parseString = promisify(parser.parseString);
 
   const fixture = exportFile.fixtures[0];
-  const exportMode = fixture.modes.find(mode => mode.shortName === exportFile.mode);
+  const exportMode = fixture.modes.find((mode) => mode.shortName === exportFile.mode);
   const channelCount = exportMode.channels.length;
 
   /** @type {Record<number, Range[]>} */
@@ -29,7 +28,7 @@ export default async function testChannelNumbers(exportFile) {
   const xml = await parseString(exportFile.content);
   const xmlFunctions = xml.device.functions.filter(
     // filter out tags without content
-    xmlFunction => typeof xmlFunction === `object`,
+    (xmlFunction) => typeof xmlFunction === 'object',
   );
   for (const xmlFunction of xmlFunctions) {
     findChannels(xmlFunction, -1);
@@ -43,17 +42,17 @@ export default async function testChannelNumbers(exportFile) {
 
   /**
    * Recursively searches the given XML tree for tags with dmxchannel attributes and capabilities.
-   * @param {XMLElement} xmlNode A single XML node.
-   * @param {number} currentChannelIndex The index of the channel if the xmlNode is inside a function associated to a channel. Else, it's -1.
+   * @param {XMLElement} xmlNode - A single XML node.
+   * @param {number} currentChannelIndex - The index of the channel if the xmlNode is inside a function associated to a channel. Else, it's -1.
    */
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
       const indexAttributes = [
-        `dmxchannel`,
-        `finedmxchannel`,
-        `ultradmxchannel`,
-        `ultrafinedmxchannel`,
-      ].filter(attribute => attribute in xmlNode.$);
+        'dmxchannel',
+        'finedmxchannel',
+        'ultradmxchannel',
+        'ultrafinedmxchannel',
+      ].filter((attribute) => attribute in xmlNode.$);
       for (const attribute of indexAttributes) {
         const channelIndex = Number.parseInt(xmlNode.$[attribute], 10);
 
@@ -61,7 +60,7 @@ export default async function testChannelNumbers(exportFile) {
           usedChannelRanges[channelIndex] = [];
         }
 
-        if (attribute === `dmxchannel`) {
+        if (attribute === 'dmxchannel') {
           currentChannelIndex = channelIndex;
         }
 
@@ -70,14 +69,14 @@ export default async function testChannelNumbers(exportFile) {
         }
       }
 
-      if (`mindmx` in xmlNode.$) {
+      if ('mindmx' in xmlNode.$) {
         // xmlNode is a capability
         addCapability(xmlNode, currentChannelIndex);
       }
     }
 
     for (const tagname of Object.keys(xmlNode)) {
-      if (tagname !== `$`) {
+      if (tagname !== '$') {
         for (const child of xmlNode[tagname]) {
           findChannels(child, currentChannelIndex);
         }
@@ -87,8 +86,8 @@ export default async function testChannelNumbers(exportFile) {
 
   /**
    * Checks the given capability xml and adds the DMX range to the channel's ranges.
-   * @param {XMLElement} xmlNode A <step> or <range> element.
-   * @param {number} channelIndex The index of the channel that contains this capability.
+   * @param {XMLElement} xmlNode - A <step> or <range> element.
+   * @param {number} channelIndex - The index of the channel that contains this capability.
    */
   function addCapability(xmlNode, channelIndex) {
     const mindmx = Number.parseInt(xmlNode.$.mindmx, 10);
@@ -112,7 +111,7 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    if (`minval` in xmlNode.$) {
+    if ('minval' in xmlNode.$) {
       const minval = Number.parseInt(xmlNode.$.minval, 10);
       const maxval = Number.parseInt(xmlNode.$.maxval, 10);
 
@@ -141,7 +140,7 @@ export default async function testChannelNumbers(exportFile) {
           const mergedRanges = Range.getMergedRanges(usedChannelRanges[index]);
 
           if (!areRangesComplete(mergedRanges)) {
-            const usedRanges = mergedRanges.join(`, `);
+            const usedRanges = mergedRanges.join(', ');
             errors.push(`Channel ${index + 1} "${channel.name}" is missing capabilities. Used ranges: ${usedRanges}`);
           }
         }
@@ -152,11 +151,11 @@ export default async function testChannelNumbers(exportFile) {
     }
 
     /**
-     * @param {AbstractChannel} channel The channel to check.
+     * @param {AbstractChannel} channel - The channel to check.
      * @returns {boolean} Whether the given channel is of type NoFunction. If it is a switching channel, the default channel is checked.
      */
     function isNoFunctionChannel(channel) {
-      if (channel.type === `NoFunction`) {
+      if (channel.type === 'NoFunction') {
         return true;
       }
 
@@ -169,7 +168,7 @@ export default async function testChannelNumbers(exportFile) {
   }
 
   /**
-   * @param {Range[]} ranges A channel's found ranges with adjacent ones already merged.
+   * @param {Range[]} ranges - A channel's found ranges with adjacent ones already merged.
    * @returns {boolean} True if there's only one 0…255 range or no range at all.
    */
   function areRangesComplete(ranges) {

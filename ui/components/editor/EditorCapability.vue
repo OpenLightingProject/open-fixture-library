@@ -2,9 +2,9 @@
   <ConditionalDetails :open="capability.open" class="capability">
     <template #summary>
       DMX range
-      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
-      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
-      <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
+      <code :class="{ unset: start === null }">{{ start === null ? min : start }}</code> …
+      <code :class="{ unset: end === null }">{{ end === null ? max : end }}</code>:
+      <span :class="{ unset: capability.type === `` }">{{ capability.type || 'Unset' }}</span>
     </template>
 
     <div class="capability-content">
@@ -88,8 +88,7 @@
 <script>
 import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
-import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
-
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utilities.js';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';
@@ -130,7 +129,7 @@ export default {
     },
     isChanged() {
       return this.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     },
     start() {
@@ -262,16 +261,16 @@ export default {
       }
     },
     async insertCapabilityBefore() {
-      this.$emit(`insert-capability-before`);
+      this.$emit('insert-capability-before');
 
-      const dialog = this.$el.closest(`.dialog`);
+      const dialog = this.$el.closest('.dialog');
       await this.$nextTick();
 
-      const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
+      const newCapability = dialog.querySelector('.capability-editor').children[this.capabilityIndex - 1];
       dialog.scrollTop += newCapability.clientHeight;
     },
     insertCapabilityAfter() {
-      this.$emit(`insert-capability-after`);
+      this.$emit('insert-capability-after');
     },
     removePreviousCapability() {
       this.$delete(this.capabilities, this.capabilityIndex - 1);

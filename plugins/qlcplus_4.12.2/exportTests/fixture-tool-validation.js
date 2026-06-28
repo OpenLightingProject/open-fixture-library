@@ -8,11 +8,11 @@ import importJson from '../../../lib/import-json.js';
 
 const execFile = promisify(execFileAsync);
 
-const GITHUB_BASE_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/`;
-const FIXTURE_TOOL_DIR_PREFIX = path.join(os.tmpdir(), `ofl-qlcplus5-fixture-tool-`);
-const FIXTURE_TOOL_PATH = `resources/fixtures/scripts/fixtures-tool.py`;
-const COLOR_FILTERS_PATH = `resources/colorfilters/namedrgb.qxcf`;
-const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
+const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/mcallegari/qlcplus/master/';
+const FIXTURE_TOOL_DIR_PREFIX = path.join(os.tmpdir(), 'ofl-qlcplus5-fixture-tool-');
+const FIXTURE_TOOL_PATH = 'resources/fixtures/scripts/fixtures-tool.py';
+const COLOR_FILTERS_PATH = 'resources/colorfilters/namedrgb.qxcf';
+const EXPORTED_FIXTURE_PATH = 'resources/fixtures/manufacturer/fixture.qxf';
 
 /**
  * @typedef {object} ExportFile
@@ -24,12 +24,12 @@ const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
  */
 
 /**
- * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @param {ExportFile} exportFile - The file returned by the plugins' export module.
+ * @param {ExportFile[]} allExportFiles - An array of all export files.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testFixtureToolValidation(exportFile, allExportFiles) {
-  if (exportFile.name.startsWith(`gobos/`)) {
+  if (exportFile.name.startsWith('gobos/')) {
     return;
   }
 
@@ -49,30 +49,30 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   await writeFile(colorFiltersPath, namedRgbContent);
 
   // write exported fixture.qxf into fixtures/manufacturer directory
-  await mkdir(path.join(directory, `resources/fixtures/manufacturer`), { recursive: true });
+  await mkdir(path.join(directory, 'resources/fixtures/manufacturer'), { recursive: true });
   await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
   // store used gobos in the gobos/ directory
-  const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
+  const qlcplusGoboAliases = await importJson('../../../resources/gobos/aliases/qlcplus.json', import.meta.url);
   const qlcplusGobos = [
-    `gobos/Others/open.svg`,
-    `gobos/Others/rainbow.png`,
-    ...Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    ...allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
+    'gobos/Others/open.svg',
+    'gobos/Others/rainbow.png',
+    ...Object.keys(qlcplusGoboAliases).map((gobo) => `gobos/${gobo}`),
+    ...allExportFiles.filter((file) => file.name.startsWith('gobos/')).map((file) => file.name),
   ];
 
   for (const gobo of qlcplusGobos) {
-    const goboPath = path.join(directory, `resources`, gobo);
+    const goboPath = path.join(directory, 'resources', gobo);
     const goboDirectory = path.dirname(goboPath);
 
     await mkdir(goboDirectory, { recursive: true });
-    await writeFile(goboPath, ``);
+    await writeFile(goboPath, '');
   }
 
   // call the fixture tool
-  const output = await execFile(fixtureToolPath, [`--validate`, `.`], {
-    cwd: path.join(directory, `resources/fixtures`),
-  }).catch(error => {
+  const output = await execFile(fixtureToolPath, ['--validate', '.'], {
+    cwd: path.join(directory, 'resources/fixtures'),
+  }).catch((error) => {
     if (error.stdout) {
       return {
         stdout: error.stdout,
@@ -82,26 +82,25 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
     throw error;
   });
 
-  const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
+  const lastLine = output.stdout.split('\n').findLast((line) => line !== '');
 
-  if (lastLine !== `1 definitions processed. 0 errors detected`) {
+  if (lastLine !== '1 definitions processed. 0 errors detected') {
     throw output.stdout;
   }
 }
 
-
 /**
- * @param {string} url The URL to download the file from.
+ * @param {string} url - The URL to download the file from.
  * @returns {Promise<string>} A Promise that resolves to the downloaded file's content.
  */
 function downloadFile(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, response => {
-      let data = ``;
-      response.on(`data`, chunk => {
+    https.get(url, (response) => {
+      let data = '';
+      response.on('data', (chunk) => {
         data += chunk;
       });
-      response.on(`end`, () => resolve(data));
-    }).on(`error`, error => reject(error));
+      response.on('end', () => resolve(data));
+    }).on('error', (error) => reject(error));
   });
 }
