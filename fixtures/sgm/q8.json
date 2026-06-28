@@ -17,9 +17,16 @@
     ]
   },
   "physical": {
+    "width": 520,
+    "height": 320,
+    "depth": 166,
+    "weight": 13.5,
+    "power": 630,
+    "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
-      "colorTemperature": 56000
+      "colorTemperature": 5700,
+      "lumens": 53849
     }
   },
   "availableChannels": {
