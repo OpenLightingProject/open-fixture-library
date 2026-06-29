@@ -155,15 +155,11 @@ export default async function testChannelNumbers(exportFile) {
      * @returns {boolean} Whether the given channel is of type NoFunction. If it is a switching channel, the default channel is checked.
      */
     function isNoFunctionChannel(channel) {
-      if (channel.type === 'NoFunction') {
-        return true;
+      while (channel.type !== 'NoFunction' && channel instanceof SwitchingChannel) {
+        channel = channel.defaultChannel;
       }
 
-      if (channel instanceof SwitchingChannel) {
-        return isNoFunctionChannel(channel.defaultChannel);
-      }
-
-      return false;
+      return channel.type === 'NoFunction';
     }
   }
 
