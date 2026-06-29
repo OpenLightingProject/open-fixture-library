@@ -163,16 +163,7 @@ const unicornRules = {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/no-null': 'off',
-  'unicorn/no-process-exit': 'off',
-  'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
-  'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
-  'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
-  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
-  'unicorn/prefer-global-this': 'off',
-  'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
-  'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
-  'unicorn/prevent-abbreviations': ['error', {
+  'unicorn/name-replacements': ['error', {
     replacements: {
       ref: false,
       env: false,
@@ -185,6 +176,15 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-null': 'off',
+  'unicorn/no-process-exit': 'off',
+  'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
+  'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
+  'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
+  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
+  'unicorn/prefer-global-this': 'off',
+  'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
+  'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
   'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
 };
 
