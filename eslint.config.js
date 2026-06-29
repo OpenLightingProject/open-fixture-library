@@ -367,7 +367,11 @@ export default defineConfig([
   internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
-  eslintPluginUnicorn.configs.recommended,
+  {
+    files: ['**/*.js', '**/*.cjs', '**/*.vue'],
+    extends: [eslintPluginUnicorn.configs.recommended],
+    rules: unicornRules,
+  },
   ...eslintPluginVue.configs['flat/vue2-recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
@@ -389,7 +393,6 @@ export default defineConfig([
       ...jsoncRules,
       ...promiseRules,
       ...sonarjsRules,
-      ...unicornRules,
       ...vueRules,
       ...vueA11yRules,
       ...vueExtensionRuleConfigs,
@@ -464,7 +467,6 @@ export default defineConfig([
       'jsonc/array-bracket-spacing': 'off',
 
       'ofl/fixture-json-array-format': 'error',
-      'unicorn/prevent-abbreviations': 'off',
     },
   },
   {
