@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theatre Spot 120 FC",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["jensen"],
+    "createDate": "2026-06-29",
+    "lastModifyDate": "2026-06-29"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/543403_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec_led_theater_spot_120_fc.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i11071p8_yd59vq1a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 160, 260],
+    "weight": 5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "COB-LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "80Hz"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic",
+        "comment": "changing colours"
+      }
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [6, 240],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 254],
+          "type": "Generic",
+          "comment": "Automatik color changes"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer Red",
+        "Dimmer green",
+        "Dimmer blue",
+        "Dimmer white"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Dimmer Red",
+        "Dimmer green",
+        "Dimmer blue",
+        "Dimmer white",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Master Dimmer",
+        "Dimmer Red",
+        "Dimmer green",
+        "Dimmer blue",
+        "Dimmer white",
+        "Color Wheel",
+        "Strobe Speed",
+        "Program Speed"
+      ]
+    }
+  ]
+}
