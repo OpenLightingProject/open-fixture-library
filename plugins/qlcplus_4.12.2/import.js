@@ -761,8 +761,8 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   const match = mode.name.match(/(\d+)(?:\s+|-|)(?:channels?|chan|ch)/i);
   if (match) {
     const [matchedPart, numberOfChannels] = match;
-    mode.shortName = mode.name.replace(matchedPart, `${numberOfChannels}ch`);
-    mode.name = mode.name.replace(matchedPart, `${numberOfChannels}-channel`);
+    mode.shortName = mode.name.replace(matchedPart, () => `${numberOfChannels}ch`);
+    mode.name = mode.name.replace(matchedPart, () => `${numberOfChannels}-channel`);
   }
 
   if ('Physical' in qlcPlusMode) {
