@@ -184,6 +184,7 @@ const unicornRules = {
   'unicorn/no-process-exit': 'off',
   'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
   'unicorn/no-top-level-assignment-in-function': 'off', // module-level state assigned from functions is intentional here
+  'unicorn/no-top-level-side-effects': 'off', // some modules legitimately set up state at import time
   'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
   'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
