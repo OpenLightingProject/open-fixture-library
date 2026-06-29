@@ -167,6 +167,7 @@ const unicornRules = {
     replacements: {
       ref: false,
       env: false,
+      repository: false, // we prefer the full word over `repo`
       man: { manufacturer: true },
       fix: { fixture: true },
       ch: { channel: true },
