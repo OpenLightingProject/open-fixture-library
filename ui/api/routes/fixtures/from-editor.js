@@ -349,11 +349,13 @@ async function getFixtureCreateResult(fixtures) {
     if ('fineChannelAliases' in channel) {
       // find all referencing fine channels
       for (const otherChannel of Object.values(availableChannels)) {
-        if ('coarseChannelId' in otherChannel && otherChannel.coarseChannelId === channelId) {
-          const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
-          channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
-          channelKeyMapping[otherChannel.uuid] = alias;
+        if (!('coarseChannelId' in otherChannel && otherChannel.coarseChannelId === channelId)) {
+          continue;
         }
+
+        const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
+        channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
+        channelKeyMapping[otherChannel.uuid] = alias;
       }
     }
 

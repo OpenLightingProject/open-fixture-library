@@ -121,16 +121,18 @@ function addFunctions(xml, mode) {
   addMatrix(mode, xmlFunctionsPerPixel);
 
   for (const [pixelKey, xmlFunctions] of xmlFunctionsPerPixel) {
-    if (xmlFunctions.length > 0) {
-      const xmlFunctionsContainer = xml.element('functions');
+    if (xmlFunctions.length === 0) {
+      continue;
+    }
 
-      if (pixelKey !== null) {
-        xmlFunctionsContainer.comment(pixelKey);
-      }
+    const xmlFunctionsContainer = xml.element('functions');
 
-      for (const xmlFunction of xmlFunctions) {
-        xmlFunctionsContainer.importDocument(xmlFunction);
-      }
+    if (pixelKey !== null) {
+      xmlFunctionsContainer.comment(pixelKey);
+    }
+
+    for (const xmlFunction of xmlFunctions) {
+      xmlFunctionsContainer.importDocument(xmlFunction);
     }
   }
 

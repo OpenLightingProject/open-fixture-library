@@ -210,10 +210,12 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     for (const [url, linkTypes] of Object.entries(linkTypesPerUrl)) {
-      if (linkTypes.length > 1) {
-        const linkTypesList = linkTypes.join(', ');
-        result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
+      if (linkTypes.length <= 1) {
+        continue;
       }
+
+      const linkTypesList = linkTypes.join(', ');
+      result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
     }
   }
 
@@ -401,16 +403,18 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkChannels() {
     for (const channel of fixture.coarseChannels) {
-      if (!(channel instanceof NullChannel)) {
-        // forbid coexistence of channels 'Red' and 'red'
-        checkUniqueness(
-          definedChannelKeys,
-          channel.key,
-          result,
-          `Channel key '${channel.key}' is already defined (maybe in another letter case).`,
-        );
-        checkChannel(channel);
+      if ((channel instanceof NullChannel)) {
+        continue;
       }
+
+      // forbid coexistence of channels 'Red' and 'red'
+      checkUniqueness(
+        definedChannelKeys,
+        channel.key,
+        result,
+        `Channel key '${channel.key}' is already defined (maybe in another letter case).`,
+      );
+      checkChannel(channel);
     }
   }
 

@@ -54,10 +54,12 @@ for (const manufacturerFixture of Object.keys(register.filesystem)) {
 
   // check all features
   for (const fixtureFeature of allFixtureFeatures) {
-    if (await fixtureFeature.hasFeature(fixture)) {
-      fixtureResult.features.push(fixtureFeature.id);
-      featuresUsed[fixtureFeature.id]++;
+    if (!await fixtureFeature.hasFeature(fixture)) {
+      continue;
     }
+
+    fixtureResult.features.push(fixtureFeature.id);
+    featuresUsed[fixtureFeature.id]++;
   }
 
   fixtureFeatureResults.push(fixtureResult);

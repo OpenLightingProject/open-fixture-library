@@ -12,17 +12,19 @@ export default [
 
       for (const speedCapability of strobespeed.children) {
         for (const strobeCapability of strobe.children) {
-          if (strobeCapability.attribs.type.value !== 'open') {
-            const xmlSpeedRange = xmlStrobe.element('range');
-            xmlSpeedRange.attribs = { ...speedCapability.attribs };
-            xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
-
-            xmlSpeedRange.element('step', {
-              handler: 'strobetype',
-              mindmx: strobeCapability.attribs.mindmx.value,
-              maxdmx: strobeCapability.attribs.maxdmx.value,
-            });
+          if (strobeCapability.attribs.type.value === 'open') {
+            continue;
           }
+
+          const xmlSpeedRange = xmlStrobe.element('range');
+          xmlSpeedRange.attribs = { ...speedCapability.attribs };
+          xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
+
+          xmlSpeedRange.element('step', {
+            handler: 'strobetype',
+            mindmx: strobeCapability.attribs.mindmx.value,
+            maxdmx: strobeCapability.attribs.maxdmx.value,
+          });
         }
       }
 

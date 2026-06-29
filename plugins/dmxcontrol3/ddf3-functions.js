@@ -438,28 +438,30 @@ export default {
       }
 
       for (const { normalCap, shakingCap } of Object.values(capabilitiesPerSlot)) {
-        if (normalCap) {
-          const xmlCapability = getBaseXmlCapability(normalCap);
-          xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
-          xmlCapability.attribute('caption', normalCap.name);
+        if (!normalCap) {
+          continue;
+        }
 
-          if (shakingCap) {
-            let xmlShakeCapability;
+        const xmlCapability = getBaseXmlCapability(normalCap);
+        xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
+        xmlCapability.attribute('caption', normalCap.name);
 
-            if (shakingCap.shakeSpeed) {
-              const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
-              xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
-            }
-            else {
-              xmlShakeCapability = getBaseXmlCapability(shakingCap);
-            }
+        if (shakingCap) {
+          let xmlShakeCapability;
 
-            xmlShakeCapability.attribute('handler', 'goboshake');
-            xmlCapability.importDocument(xmlShakeCapability);
+          if (shakingCap.shakeSpeed) {
+            const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
+            xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
+          }
+          else {
+            xmlShakeCapability = getBaseXmlCapability(shakingCap);
           }
 
-          xmlGoboWheel.importDocument(xmlCapability);
+          xmlShakeCapability.attribute('handler', 'goboshake');
+          xmlCapability.importDocument(xmlShakeCapability);
         }
+
+        xmlGoboWheel.importDocument(xmlCapability);
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
