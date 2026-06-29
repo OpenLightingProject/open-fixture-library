@@ -942,7 +942,8 @@ function hasAliases(qlcPlusChannel) {
  * @param {object[]} switchChannels - The array of switch channels.
  */
 function mergeSimilarSwitchChannels(switchChannels) {
-  for (const [switchChannelIndex, switchChannel] of switchChannels.entries()) {
+  for (let switchChannelIndex = 0; switchChannelIndex < switchChannels.length; switchChannelIndex++) {
+    const switchChannel = switchChannels[switchChannelIndex];
     const switchToEntries = Object.entries(switchChannel.switchTo);
 
     for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
