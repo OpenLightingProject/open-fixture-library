@@ -40,7 +40,7 @@ try {
   const externalUrlSet = new Set();
 
   crawler.addEventListener('externalLinkFound', ({ url }) => {
-    if (!excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
+    if (excludedUrls.every((excludedUrl) => !url.startsWith(excludedUrl))) {
       externalUrlSet.add(url);
       process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
     }
@@ -240,7 +240,7 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
-  const deletedUrls = Object.keys(oldLinkData).filter((url) => !urlResults.some((result) => result.url === url));
+  const deletedUrls = Object.keys(oldLinkData).filter((url) => urlResults.every((result) => result.url !== url));
 
   console.log(`Updating GitHub issue body at https://github.com/${process.env.GITHUB_REPOSITORY}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.rest.issues.update({
