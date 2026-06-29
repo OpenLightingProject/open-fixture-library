@@ -580,8 +580,8 @@ export default {
     },
 
     copyPropertiesFromChannel(channel) {
-      for (const property of Object.keys(channel)) {
-        this.channel[property] = structuredClone(channel[property]);
+      for (const [property, value] of Object.entries(channel)) {
+        this.channel[property] = structuredClone(value);
       }
     },
 
@@ -739,8 +739,7 @@ export default {
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
       if (previousResolution > this.channel.resolution) {
-        for (const channelId of Object.keys(this.fixture.availableChannels)) {
-          const channel = this.fixture.availableChannels[channelId];
+        for (const [channelId, channel] of Object.entries(this.fixture.availableChannels)) {
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
             this.$emit('remove-channel', channelId);
           }

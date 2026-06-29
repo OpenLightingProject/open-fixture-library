@@ -76,7 +76,7 @@ export default {
     letters() {
       const letters = {};
 
-      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+      for (const [manufacturerKey, manufacturer] of Object.entries(this.manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
@@ -92,9 +92,9 @@ export default {
 
         letters[letter].manufacturers.push({
           key: manufacturerKey,
-          name: this.manufacturers[manufacturerKey].name,
-          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
-          color: this.manufacturers[manufacturerKey].color,
+          name: manufacturer.name,
+          fixtureCount: manufacturer.fixtureCount,
+          color: manufacturer.color,
         });
       }
 

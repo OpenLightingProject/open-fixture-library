@@ -142,9 +142,9 @@ export default {
       await this.$nextTick();
 
       const defaultData = this.$refs.typeData.defaultData;
-      for (const property of Object.keys(defaultData)) {
+      for (const [property, value] of Object.entries(defaultData)) {
         if (!(property in this.slot.typeData)) {
-          this.$set(this.slot.typeData, property, defaultData[property]);
+          this.$set(this.slot.typeData, property, value);
         }
       }
     },

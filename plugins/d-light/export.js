@@ -69,8 +69,8 @@ function exportFixtureMode(fixture, mode, options) {
 
   // channels are grouped by their channel type which is called AttributesDefinition in D::Light
   const channelsByAttribute = getChannelsByAttribute(mode.channels);
-  for (const attribute of Object.keys(channelsByAttribute)) {
-    addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
+  for (const [attribute, value] of Object.entries(channelsByAttribute)) {
+    addAttribute(xml, mode, attribute, value);
   }
 
   return {
@@ -281,8 +281,8 @@ function getChannelsByAttribute(channels) {
       EXTRA: ['NoFunction'],
     };
 
-    for (const attribute of Object.keys(oflToDLightMap)) {
-      if (oflToDLightMap[attribute].includes(channel.type)) {
+    for (const [attribute, types] of Object.entries(oflToDLightMap)) {
+      if (types.includes(channel.type)) {
         return attribute;
       }
     }

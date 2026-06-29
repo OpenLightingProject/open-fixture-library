@@ -1326,11 +1326,11 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
       continue;
     }
 
-    for (const switchToChannelKey of Object.keys(modeChannelReplacements[modeIndex])) {
+    for (const [switchToChannelKey, replacementChannelKey] of Object.entries(modeChannelReplacements[modeIndex])) {
       const channelIndex = mode.channels.indexOf(switchToChannelKey);
 
       if (channelIndex !== -1) {
-        mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
+        mode.channels[channelIndex] = replacementChannelKey;
       }
     }
   }
@@ -1343,8 +1343,7 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
  */
 function cleanUpFixture(fixture, warnings) {
   if ('availableChannels' in fixture) {
-    for (const channelKey of Object.keys(fixture.availableChannels)) {
-      const channel = fixture.availableChannels[channelKey];
+    for (const channel of Object.values(fixture.availableChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -1354,8 +1353,7 @@ function cleanUpFixture(fixture, warnings) {
   if ('templateChannels' in fixture) {
     warnings.push('Please fix the visual representation of the matrix.');
 
-    for (const channelKey of Object.keys(fixture.templateChannels)) {
-      const channel = fixture.templateChannels[channelKey];
+    for (const channel of Object.values(fixture.templateChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }

@@ -1013,9 +1013,7 @@ function addSwitchChannelsToCapabilities(switchChannels, oflTriggerChannel) {
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
   // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
-  for (const channelKey of Object.keys(fixture.availableChannels)) {
-    const channel = fixture.availableChannels[channelKey];
-
+  for (const channel of Object.values(fixture.availableChannels)) {
     if (channel.capabilities.length === 1) {
       channel.capability = channel.capabilities[0];
       delete channel.capabilities;

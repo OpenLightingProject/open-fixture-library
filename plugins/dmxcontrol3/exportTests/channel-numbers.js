@@ -75,9 +75,9 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    for (const tagname of Object.keys(xmlNode)) {
+    for (const [tagname, children] of Object.entries(xmlNode)) {
       if (tagname !== '$') {
-        for (const child of xmlNode[tagname]) {
+        for (const child of children) {
           findChannels(child, currentChannelIndex);
         }
       }

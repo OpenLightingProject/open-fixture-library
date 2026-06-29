@@ -219,13 +219,13 @@ async function performTask(task) {
       );
     }
 
-    for (const file of Object.keys(output.changedFiles)) {
+    for (const [file, value] of Object.entries(output.changedFiles)) {
       lines.push(
         '<details>',
         `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
         '',
         '```diff',
-        output.changedFiles[file],
+        value,
         '```',
         '</details>',
       );

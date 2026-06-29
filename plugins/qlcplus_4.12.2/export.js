@@ -310,10 +310,10 @@ function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
   let isAliasAdded = false;
-  for (const alias of Object.keys(capability.switchChannels)) {
+  for (const [alias, switchedChannelKey] of Object.entries(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(switchedChannelKey);
 
     if (defaultChannel === switchedChannel) {
       continue;
@@ -597,8 +597,8 @@ function getChannelType(type) {
     Nothing: ['NoFunction'],
   };
 
-  for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {
-    if (qlcplusChannelTypes[qlcplusType].includes(type)) {
+  for (const [qlcplusType, oflTypes] of Object.entries(qlcplusChannelTypes)) {
+    if (oflTypes.includes(type)) {
       return qlcplusType;
     }
   }

@@ -157,8 +157,7 @@ function addFunctions(xml, mode) {
     }
 
     const xmlFunctions = [];
-    for (const functionKey of Object.keys(functionToCapabilities)) {
-      const capabilities = functionToCapabilities[functionKey];
+    for (const [functionKey, capabilities] of Object.entries(functionToCapabilities)) {
       const functions = ddf3Functions[functionKey].create(channel, capabilities);
       if (Array.isArray(functions)) {
         xmlFunctions.push(...functions);

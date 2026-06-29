@@ -194,11 +194,11 @@ async function getFixtureCreateResult(fixtures) {
   function getPhysical(from) {
     const physical = {};
 
-    for (const property of Object.keys(physicalProperties)) {
-      if (physicalProperties[property].type === 'object') {
+    for (const [property, propertyDefinition] of Object.entries(physicalProperties)) {
+      if (propertyDefinition.type === 'object') {
         physical[property] = {};
 
-        for (const subProperty of Object.keys(physicalProperties[property].properties)) {
+        for (const subProperty of Object.keys(propertyDefinition.properties)) {
           if (propertyExistsIn(subProperty, from[property])) {
             physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
