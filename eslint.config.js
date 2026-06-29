@@ -179,6 +179,7 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
   'unicorn/no-null': 'off',
   'unicorn/no-process-exit': 'off',
   'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
