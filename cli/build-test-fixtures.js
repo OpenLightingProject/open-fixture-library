@@ -116,7 +116,8 @@ catch (error) {
 async function getFixtureFeatures() {
   const fixtureFeatures = [];
 
-  for (const fileName of await readdir(fixtureFeaturesDirectoryUrl)) {
+  const fixtureFeatureFileNames = await readdir(fixtureFeaturesDirectoryUrl);
+  for (const fileName of fixtureFeatureFileNames) {
     if (path.extname(fileName) !== '.js') {
       continue;
     }

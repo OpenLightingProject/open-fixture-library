@@ -307,7 +307,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           result.errors.push(`pixelGroup '${pixelGroupKey}' does not contain any pixelKeys. Please relax the pixel key constraints.`);
         }
 
-        for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
+        const groupPixelKeys = matrix.pixelGroups[pixelGroupKey];
+        for (const pixelKey of groupPixelKeys) {
           if (!matrix.pixelKeys.includes(pixelKey)) {
             result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
           }

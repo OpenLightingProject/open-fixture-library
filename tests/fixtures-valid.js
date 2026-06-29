@@ -105,7 +105,8 @@ async function runTests() {
     for (const manufacturerKey of manufacturerKeys) {
       const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
 
-      for (const file of await readdir(manufacturersDirectoryUrl)) {
+      const manufacturerFiles = await readdir(manufacturersDirectoryUrl);
+      for (const file of manufacturerFiles) {
         if (path.extname(file) !== '.json') {
           continue;
         }

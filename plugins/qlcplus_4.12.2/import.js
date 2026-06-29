@@ -260,7 +260,8 @@ async function getOflWheels(qlcPlusFixture) {
   async function getSlots(qlcPlusChannel) {
     const slots = [];
 
-    for (const capability of (qlcPlusChannel.Capability || [])) {
+    const qlcPlusCapabilities = qlcPlusChannel.Capability || [];
+    for (const capability of qlcPlusCapabilities) {
       if (/\bc?cw\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|rotat|spin/i.test(capability._)) {
         // skip rotation capabilities
         continue;
@@ -773,7 +774,8 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   }
 
   mode.channels = [];
-  for (const channel of (qlcPlusMode.Channel || [])) {
+  const qlcPlusModeChannels = qlcPlusMode.Channel || [];
+  for (const channel of qlcPlusModeChannels) {
     mode.channels[Number.parseInt(channel.$.Number, 10)] = channel._;
   }
 
@@ -904,7 +906,8 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
     const switchChannels = [];
     for (const [index, capability] of qlcPlusChannel.Capability.entries()) {
-      for (const alias of (capability.Alias || [])) {
+      const aliases = capability.Alias || [];
+      for (const alias of aliases) {
         const switchChannel = switchChannels.find((channel) => channel.default === alias.$.Channel && channel.modes.includes(alias.$.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.$.With;
