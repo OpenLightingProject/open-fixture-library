@@ -121,13 +121,15 @@ export default {
   },
   created() {
     this.$watch('slotNumber', async (newSlotNumber) => {
-      if (!this.channel.wheel.slots[newSlotNumber - 1]) {
-        this.$set(this.channel.wheel.slots, newSlotNumber - 1, getEmptyWheelSlot());
-        this.open = true;
-
-        await this.$nextTick();
-        this.slot.type = this.suggestedType;
+      if (this.channel.wheel.slots[newSlotNumber - 1]) {
+        return;
       }
+
+      this.$set(this.channel.wheel.slots, newSlotNumber - 1, getEmptyWheelSlot());
+      this.open = true;
+
+      await this.$nextTick();
+      this.slot.type = this.suggestedType;
     }, {
       immediate: true,
     });

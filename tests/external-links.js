@@ -40,10 +40,12 @@ try {
   const externalUrlSet = new Set();
 
   crawler.addEventListener('externalLinkFound', ({ url }) => {
-    if (excludedUrls.every((excludedUrl) => !url.startsWith(excludedUrl))) {
-      externalUrlSet.add(url);
-      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+    if (excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
+      return;
     }
+
+    externalUrlSet.add(url);
+    process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
   });
 
   const crawlStartTime = Date.now();

@@ -656,18 +656,20 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for ShutterStrobe capabilities.
          */
         function checkShutterStrobeCapability() {
-          if (['Closed', 'Open'].includes(capability.shutterEffect)) {
-            if (capability.isSoundControlled) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
-            }
+          if (!['Closed', 'Open'].includes(capability.shutterEffect)) {
+            return;
+          }
 
-            if (capability.speed !== null || capability.duration !== null) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
-            }
+          if (capability.isSoundControlled) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
+          }
 
-            if (capability.randomTiming) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
-            }
+          if (capability.speed !== null || capability.duration !== null) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+          }
+
+          if (capability.randomTiming) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
           }
         }
 
