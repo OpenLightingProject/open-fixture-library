@@ -135,8 +135,8 @@ async function getFixtureFeatures() {
       }
 
       // check uniqueness of id
-      const featureIdExists = fixtureFeatures.some((feature) => feature.id === fixtureFeature.id);
-      if (featureIdExists) {
+      const isDuplicateFeatureId = fixtureFeatures.some((feature) => feature.id === fixtureFeature.id);
+      if (isDuplicateFeatureId) {
         console.error(styleText('red', '[Error]'), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }

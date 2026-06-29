@@ -829,15 +829,15 @@ export async function importFixtures(buffer, filename, authorName) {
         return gdtfChannel.$.Offset.split(',').length;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Uber')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Uber')) {
         return 4;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Ultra')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Ultra')) {
         return 3;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Fine')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Fine')) {
         return 2;
       }
 
@@ -1029,7 +1029,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelKeys = [channelKey, ...(oflChannel.fineChannelAliases ?? [])];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
-      const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, 'Offset')
+      const channelOffsets = hasNonNoneAttribute(gdtfChannel, 'Offset')
         ? gdtfChannel.$.Offset.split(',')
         : [
             gdtfChannel.$.Coarse,
@@ -1371,7 +1371,7 @@ function cleanUpFixture(fixture, warnings) {
  * @param {string} attribute - The attribute name to check.
  * @returns {boolean} True if the node has the attribute and its value is not "None", false otherwise.
  */
-function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
+function hasNonNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== 'None';
 }
 

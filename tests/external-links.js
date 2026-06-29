@@ -22,7 +22,7 @@ const excludedUrls = [
 ];
 
 const testStartTime = Date.now();
-let errored = false;
+let isErrored = false;
 
 try {
   const crawler = new SiteCrawler();
@@ -74,13 +74,13 @@ try {
 }
 catch (error) {
   console.error(error);
-  errored = true;
+  isErrored = true;
 }
 
 const testTime = Date.now() - testStartTime;
 console.log();
 console.log(styleText(['greenBright', 'bold'], `Test took ${testTime / 1000}s.`));
-process.exit(errored ? 1 : 0);
+process.exit(isErrored ? 1 : 0);
 
 /**
  * @typedef {object} UrlResult

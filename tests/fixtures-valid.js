@@ -65,8 +65,8 @@ try {
 
   // each file
   for (const result of results) {
-    const failed = result.errors.length > 0;
-    totalFails += failed ? 1 : 0;
+    const isFailed = result.errors.length > 0;
+    totalFails += isFailed ? 1 : 0;
     totalWarnings += result.warnings.length;
 
     printFileResult(result);
@@ -219,10 +219,10 @@ async function checkManufacturers() {
  * @param {object} result - The result object for a single file.
  */
 function printFileResult(result) {
-  const failed = result.errors.length > 0;
+  const isFailed = result.errors.length > 0;
 
   console.log(
-    failed ? styleText('red', '[FAIL]') : styleText('green', '[PASS]'),
+    isFailed ? styleText('red', '[FAIL]') : styleText('green', '[PASS]'),
     result.name,
   );
 

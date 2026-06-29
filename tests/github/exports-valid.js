@@ -9,7 +9,7 @@ let plugins;
 let exportTests;
 let testFixtureKeys;
 
-let testErrored = false;
+let isTestErrored = false;
 
 /**
  * @typedef {object} Task
@@ -108,7 +108,7 @@ try {
     lines,
   });
 
-  if (testErrored) {
+  if (isTestErrored) {
     throw new Error('Unable to export some fixtures.');
   }
 }
@@ -245,7 +245,7 @@ async function getTaskPromise(task) {
   catch (error) {
     emoji = '❗';
     detailListItems.push(`Unable to export fixture: ${error.message}`);
-    testErrored = true;
+    isTestErrored = true;
   }
 
   return [

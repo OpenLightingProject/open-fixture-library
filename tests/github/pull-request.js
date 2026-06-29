@@ -224,7 +224,7 @@ export async function updateComment(test) {
   const commentBlocks = await Promise.all(commentPromises);
   const comments = commentBlocks.flatMap((block) => block.data);
 
-  let equalFound = false;
+  let isEqualFound = false;
   const promises = comments.flatMap((comment) => {
     // get rid of \r linebreaks
     comment.body = comment.body.replaceAll('\r', '');
@@ -234,8 +234,8 @@ export async function updateComment(test) {
       return [];
     }
 
-    if (!equalFound && message === comment.body && test.lines.length > 0) {
-      equalFound = true;
+    if (!isEqualFound && message === comment.body && test.lines.length > 0) {
+      isEqualFound = true;
       console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return [];
     }
@@ -250,7 +250,7 @@ export async function updateComment(test) {
     });
   });
 
-  if (!equalFound && test.lines.length > 0) {
+  if (!isEqualFound && test.lines.length > 0) {
     console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
     promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,

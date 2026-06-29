@@ -165,7 +165,7 @@ const slotTypeFunctions = {
     isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === 'GoboMacro' : channelGroup === 'Gobo'),
     addSlotProperties: async (capability, slot) => {
       const goboResource = capability.$.Res1 || capability.$.Res || null;
-      let useResourceName = false;
+      let shouldUseResourceName = false;
 
       if (goboResource) {
         const qlcplusGoboAliases = await qlcplusGoboAliasesPromise;
@@ -177,7 +177,7 @@ const slotTypeFunctions = {
           const resource = await importJson(`../../resources/gobos/${goboKey}.json`, import.meta.url);
 
           if (resource.name === capability._) {
-            useResourceName = true;
+            shouldUseResourceName = true;
           }
         }
         else {
@@ -185,7 +185,7 @@ const slotTypeFunctions = {
         }
       }
 
-      if (!useResourceName) {
+      if (!shouldUseResourceName) {
         slot.name = capability._;
       }
     },

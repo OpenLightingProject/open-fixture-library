@@ -309,7 +309,7 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
 function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
-  let aliasAdded = false;
+  let isAliasAdded = false;
   for (const alias of Object.keys(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
@@ -324,7 +324,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     );
 
     for (const mode of modesContainingSwitchingChannel) {
-      aliasAdded = true;
+      isAliasAdded = true;
       xmlCapability.element({
         Alias: {
           '@Mode': mode.name,
@@ -335,7 +335,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     }
   }
 
-  return aliasAdded;
+  return isAliasAdded;
 }
 
 /**

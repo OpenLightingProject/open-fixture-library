@@ -343,9 +343,9 @@ export default {
           return null;
         }
 
-        const filterDistinguishableKeys = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
-        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => filterDistinguishableKeys(key));
-        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => filterDistinguishableKeys(key));
+        const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
+        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
+        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
           const value1 = capability1.jsonObject[key];

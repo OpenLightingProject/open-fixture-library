@@ -138,12 +138,12 @@ export default {
         return '/fixture-editor';
       }
 
-      const useExistingManufacturer = this.manufacturerKey !== undefined;
+      const shouldUseExistingManufacturer = this.manufacturerKey !== undefined;
 
       const prefillObject = {
-        useExistingManufacturer,
-        manufacturerKey: useExistingManufacturer ? this.manufacturerKey : undefined,
-        newManufacturerRdmId: useExistingManufacturer ? undefined : this.manufacturerId,
+        useExistingManufacturer: shouldUseExistingManufacturer,
+        manufacturerKey: shouldUseExistingManufacturer ? this.manufacturerKey : undefined,
+        newManufacturerRdmId: shouldUseExistingManufacturer ? undefined : this.manufacturerId,
         rdmModelId: this.modelId,
       };
 

@@ -17,7 +17,7 @@ import { schemaDefinitions } from '../lib/schema-properties.js';
 /** @import TemplateChannel from '../lib/model/TemplateChannel.js' */
 /** @import Wheel from '../lib/model/Wheel.js' */
 
-let initialized = false;
+let isInitialized = false;
 let register;
 let plugins;
 
@@ -30,11 +30,11 @@ let plugins;
  * @returns {Promise<ResultData>} A Promise that resolves to the result object containing errors and warnings, if any.
  */
 export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
-  if (!initialized) {
+  if (!isInitialized) {
     register = await importJson('../fixtures/register.json', import.meta.url);
     plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
-    initialized = true;
+    isInitialized = true;
   }
 
   /**
@@ -483,7 +483,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      * Check that the channel's capabilities are valid.
      */
     function checkCapabilities() {
-      let dmxRangesInvalid = false;
+      let hasInvalidDmxRange = false;
 
       if (
         channel.capabilities.length === 1
@@ -499,8 +499,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
-        if (!dmxRangesInvalid) {
-          dmxRangesInvalid = !checkDmxRange(index);
+        if (!hasInvalidDmxRange) {
+          hasInvalidDmxRange = !checkDmxRange(index);
         }
 
         // Use JSON dmxRange rather than rawDmxRange, because that one might throw unhelpful errors
@@ -771,8 +771,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const usesPercentageAngle = capability.angle[0].unit === '%';
-          if (usesPercentageAngle && capability.helpWanted !== 'Can you provide exact angles?') {
+          const isPercentageAngle = capability.angle[0].unit === '%';
+          if (isPercentageAngle && capability.helpWanted !== 'Can you provide exact angles?') {
             result.errors.push(`${errorPrefix} defines an imprecise percentaged angle. Please try to find the value in degrees.`);
           }
         }
@@ -1070,37 +1070,37 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       ['Pixel Bar', 'Stand'],
     ];
 
-    const fixtureIsColorChanger = isColorChanger();
-    const fixtureHasBothPanTiltChannels = hasPanTiltChannels(true);
-    const fixtureHasPanOrTiltChannels = hasPanTiltChannels(false);
+    const isFixtureColorChanger = isColorChanger();
+    const hasBothPanTiltChannels = hasPanTiltChannels(true);
+    const hasPanOrTiltChannels = hasPanTiltChannels(false);
     const isFogTypeFog = isFogType('Fog');
     const isFogTypeHaze = isFogType('Haze');
-    const fixtureIsNotMatrix = isNotMatrix();
-    const fixtureIsPixelBar = isPixelBar();
-    const fixtureIsNotPixelBar = isNotPixelBar();
+    const isFixtureNotMatrix = isNotMatrix();
+    const isFixturePixelBar = isPixelBar();
+    const isFixtureNotPixelBar = isNotPixelBar();
 
     const categories = {
       'Color Changer': {
-        isSuggested: fixtureIsColorChanger,
-        isInvalid: !fixtureIsColorChanger,
+        isSuggested: isFixtureColorChanger,
+        isInvalid: !isFixtureColorChanger,
         suggestedPhrase: 'there are ColorPreset or ColorIntensity capabilities or Color wheel slots',
         invalidPhrase: 'there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots',
       },
       'Moving Head': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasBothPanTiltChannels,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasBothPanTiltChannels,
         suggestedPhrase: 'there are pan and tilt channels',
         invalidPhrase: 'there are not both pan and tilt channels',
       },
       'Scanner': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasPanOrTiltChannels,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasPanOrTiltChannels,
         suggestedPhrase: 'there are pan and tilt channels',
         invalidPhrase: 'there are no pan or tilt channels',
       },
       'Barrel Scanner': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasPanOrTiltChannels,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasPanOrTiltChannels,
         suggestedPhrase: 'there are pan and tilt channels',
         invalidPhrase: 'there are no pan or tilt channels',
       },
@@ -1117,12 +1117,12 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         invalidPhrase: 'there are no Fog/FogType capabilities or none has fogType \'Haze\'',
       },
       'Matrix': {
-        isInvalid: fixtureIsNotMatrix,
+        isInvalid: isFixtureNotMatrix,
         invalidPhrase: 'fixture does not define a matrix',
       },
       'Pixel Bar': {
-        isSuggested: fixtureIsPixelBar,
-        isInvalid: fixtureIsNotPixelBar,
+        isSuggested: isFixturePixelBar,
+        isInvalid: isFixtureNotPixelBar,
         suggestedPhrase: 'matrix pixels are horizontally aligned',
         invalidPhrase: 'no horizontally aligned matrix is defined',
       },
@@ -1184,13 +1184,13 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     /**
-     * @param {boolean} [both=false] - Whether there need to be both Pan and Tilt channels.
-     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'both') a Tilt(Continuous) channel.
+     * @param {boolean} [areBothRequired=false] - Whether there need to be both Pan and Tilt channels.
+     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'areBothRequired') a Tilt(Continuous) channel.
      */
-    function hasPanTiltChannels(both = false) {
+    function hasPanTiltChannels(areBothRequired = false) {
       const hasPan = hasCapabilityOfType('Pan') || hasCapabilityOfType('PanContinuous');
       const hasTilt = hasCapabilityOfType('Tilt') || hasCapabilityOfType('TiltContinuous');
-      return both ? (hasPan && hasTilt) : (hasPan || hasTilt);
+      return areBothRequired ? (hasPan && hasTilt) : (hasPan || hasTilt);
     }
 
     /**

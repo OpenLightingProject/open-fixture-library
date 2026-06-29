@@ -467,8 +467,8 @@ function isEmptyObject(object) {
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
-  const objectValid = object !== undefined && object !== null;
-  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
+  const isObjectValid = object !== undefined && object !== null;
+  return isObjectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
 }
 
 /**
