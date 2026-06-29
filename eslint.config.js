@@ -191,6 +191,7 @@ const unicornRules = {
   'unicorn/prefer-global-this': 'off',
   'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
   'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
+  'unicorn/prefer-number-coercion': 'off', // `Number.parseInt(x, 10)` is intentional and not equivalent to `Number(x)`
   'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
 };
 
