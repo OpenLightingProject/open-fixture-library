@@ -157,6 +157,7 @@ const sonarjsRules = {
 const unicornRules = {
   'unicorn/consistent-class-member-order': 'off', // cosmetic ordering that would separate private helpers from their callers
   'unicorn/consistent-function-scoping': 'off',
+  'unicorn/default-export-style': 'off', // `export default class X {}` breaks jsdoc2md class detection in `build:model-docs`
   'unicorn/dom-node-dataset': ['error', { preferAttributes: true }],
   'unicorn/filename-case': 'off',
   'unicorn/import-style': ['error', {
