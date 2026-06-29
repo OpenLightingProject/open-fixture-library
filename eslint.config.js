@@ -155,6 +155,7 @@ const sonarjsRules = {
 
 // eslint-plugin-unicorn
 const unicornRules = {
+  'unicorn/consistent-class-member-order': 'off', // cosmetic ordering that would separate private helpers from their callers
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/dom-node-dataset': ['error', { preferAttributes: true }],
   'unicorn/filename-case': 'off',
