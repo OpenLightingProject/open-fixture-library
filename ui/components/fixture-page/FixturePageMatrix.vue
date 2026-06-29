@@ -120,12 +120,12 @@ export default {
     pixelGroups() {
       return this.matrix.pixelGroupKeys.map((groupKey) => {
         const group = this.matrix.jsonObject.pixelGroups[groupKey];
-        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
 
         if (group === 'all') {
           return [groupKey, 'All pixels'];
         }
 
+        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
         const constraintAxes = ['x', 'y', 'z'].filter((axis) => axis in group);
 
         const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(

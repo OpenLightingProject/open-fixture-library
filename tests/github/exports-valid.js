@@ -57,23 +57,21 @@ try {
     })
     .toSorted((a, b) => {
       const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
-      const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
-      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-      const testCompare = a.testKey.localeCompare(b.testKey);
-
       if (manufacturerCompare !== 0) {
         return manufacturerCompare;
       }
 
+      const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
       if (fixtureCompare !== 0) {
         return fixtureCompare;
       }
 
+      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
       if (pluginCompare !== 0) {
         return pluginCompare;
       }
 
-      return testCompare;
+      return a.testKey.localeCompare(b.testKey);
     });
 
   if (tasks.length === 0) {

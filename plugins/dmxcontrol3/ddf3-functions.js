@@ -348,14 +348,13 @@ export default {
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
-          const value1 = capability1.jsonObject[key];
-          const value2 = capability2.jsonObject[key];
-
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
             return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
+          const value1 = capability1.jsonObject[key];
+          const value2 = capability2.jsonObject[key];
           return value1 !== value2 && !arraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {

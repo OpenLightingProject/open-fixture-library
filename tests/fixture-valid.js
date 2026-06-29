@@ -49,6 +49,24 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     warnings: [],
   };
 
+  if (!('$schema' in fixtureJson)) {
+    result.errors.push(getErrorString('File does not contain \'$schema\' property.'));
+    return result;
+  }
+
+  if (fixtureJson.$schema.endsWith('/fixture-redirect.json')) {
+    await checkFixtureRedirect();
+    return result;
+  }
+
+  const schemaValidate = await getAjvValidator('fixture');
+  const schemaValid = schemaValidate(fixtureJson);
+  if (!schemaValid) {
+    const errorMessages = getAjvErrorMessages(schemaValidate.errors, 'fixture');
+    result.errors.push(...errorMessages.map((message) => getErrorString('File does not match schema:', message)));
+    return result;
+  }
+
   /** @type {Fixture} */
   let fixture;
 
@@ -67,24 +85,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   const modeNames = new Set();
   /** @type {Set<string>} */
   const modeShortNames = new Set();
-
-  if (!('$schema' in fixtureJson)) {
-    result.errors.push(getErrorString('File does not contain \'$schema\' property.'));
-    return result;
-  }
-
-  if (fixtureJson.$schema.endsWith('/fixture-redirect.json')) {
-    await checkFixtureRedirect();
-    return result;
-  }
-
-  const schemaValidate = await getAjvValidator('fixture');
-  const schemaValid = schemaValidate(fixtureJson);
-  if (!schemaValid) {
-    const errorMessages = getAjvErrorMessages(schemaValidate.errors, 'fixture');
-    result.errors.push(...errorMessages.map((message) => getErrorString('File does not match schema:', message)));
-    return result;
-  }
 
   try {
     const manufacturer = await manufacturerFromRepository(manufacturerKey);
@@ -749,16 +749,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             const minSlotNumber = 1;
             const maxSlotNumber = capability.wheels[0].slots.length;
 
-            const isInRangeExclusive = (number, start, end) => number > start && number < end;
-            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
-
             if (capability.slotNumber[0].equals(capability.slotNumber[1])) {
+              const isInRangeExclusive = (number, start, end) => number > start && number < end;
               if (!isInRangeExclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
                 result.errors.push(`${errorPrefix} references wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
               }
               return;
             }
 
+            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
             if (!isInRangeInclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
               result.errors.push(`${errorPrefix} starts at wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
             }

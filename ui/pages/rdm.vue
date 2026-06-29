@@ -77,8 +77,6 @@ export default {
   },
   async asyncData({ query, $axios, redirect, error }) {
     const manufacturerId = parseIntOrUndefined(query.manufacturerId);
-    const modelId = parseIntOrUndefined(query.modelId);
-    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
 
     if (manufacturerId === undefined) {
       return {
@@ -86,6 +84,8 @@ export default {
         searchFor: 'nothing',
       };
     }
+
+    const modelId = parseIntOrUndefined(query.modelId);
 
     if (!(String(manufacturerId) in register.rdm)) {
       return {
@@ -97,6 +97,7 @@ export default {
     }
 
     const rdmManufacturer = register.rdm[String(manufacturerId)];
+    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
 
     if (modelId === undefined || String(modelId) in rdmManufacturer.models) {
       return redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect);
