@@ -200,7 +200,7 @@ async function checkManufacturers() {
       if ('rdmId' in manufacturerProperties) {
         checkUniqueness(
           uniqueValues.manRdmIds,
-          `${manufacturerProperties.rdmId}`,
+          String(manufacturerProperties.rdmId),
           uniquenessTestResults,
           `Manufacturer RDM ID '${manufacturerProperties.rdmId}' is not unique.`,
         );

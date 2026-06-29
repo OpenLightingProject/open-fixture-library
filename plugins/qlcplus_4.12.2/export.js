@@ -266,7 +266,7 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res1 !== null) {
       xmlCapability.attribute('Res1', preset.res1);
 
-      if (`${preset.res1}`.startsWith('ofl/')) {
+      if (String(preset.res1).startsWith('ofl/')) {
         customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }

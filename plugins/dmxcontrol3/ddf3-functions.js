@@ -546,7 +546,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFrostOn = capability.frostIntensity[0].number > 0;
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFrostOn}`);
+            xmlCapability.attribute('value', String(isFrostOn));
           }
           else {
             xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
@@ -698,7 +698,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFogOn}`);
+            xmlCapability.attribute('value', String(isFogOn));
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -726,7 +726,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFanOn}`);
+            xmlCapability.attribute('value', String(isFanOn));
           }
 
           xmlFan.importDocument(xmlCapability);

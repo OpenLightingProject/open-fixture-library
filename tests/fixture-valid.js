@@ -1263,7 +1263,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
     checkUniqueness(
       uniqueValues.fixRdmIdsInMan[manufacturerKey],
-      `${fixture.rdm.modelId}`,
+      String(fixture.rdm.modelId),
       result,
       `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manufacturerKey}.`,
     );
@@ -1277,7 +1277,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       if (mode.rdmPersonalityIndex !== null) {
         checkUniqueness(
           rdmPersonalityIndices,
-          `${mode.rdmPersonalityIndex}`,
+          String(mode.rdmPersonalityIndex),
           result,
           `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`,
         );

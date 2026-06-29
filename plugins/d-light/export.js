@@ -185,7 +185,7 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
 
   if (channel instanceof FineChannel) {
     // for fine channels, this is simply the coarse channel's index
-    return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+    return String(mode.getChannelIndex(channel.coarseChannel.key) + 1);
   }
 
   if (attribute === 'FOCUS') {
