@@ -524,8 +524,8 @@ export async function importFixtures(buffer, filename, authorName) {
      * @returns {object[]} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
-      let minPhysicalValue = Number.POSITIVE_INFINITY;
-      let maxPhysicalValue = Number.NEGATIVE_INFINITY;
+      let minPhysicalValue = Infinity;
+      let maxPhysicalValue = -Infinity;
 
       // save all <ChannelSet> XML nodes in a flat list
       const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
