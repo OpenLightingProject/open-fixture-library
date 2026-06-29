@@ -477,7 +477,7 @@ function propertyExistsIn(property, object) {
  * @returns {string} The value from the combobox input, preferring any newly added value.
  */
 function getComboboxInput(property, from) {
-  return (from[property] === '[add-value]' && from[`${property}New`] !== '') ? from[`${property}New`] : from[property];
+  return from[(from[property] === '[add-value]' && from[`${property}New`] !== '') ? `${property}New` : property];
 }
 
 /**

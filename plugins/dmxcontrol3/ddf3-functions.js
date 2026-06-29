@@ -362,7 +362,7 @@ export default {
         }
 
         const capabilityJson = {};
-        const preferredJsonObject = capability1.jsonObject._splitted ? capability2.jsonObject : capability1.jsonObject; // we prefer unsplitted capability
+        const preferredJsonObject = (capability1.jsonObject._splitted ? capability2 : capability1).jsonObject; // we prefer unsplitted capability
         for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
         }

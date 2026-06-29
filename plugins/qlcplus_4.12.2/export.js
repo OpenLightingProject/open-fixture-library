@@ -355,9 +355,7 @@ function addMode(xml, mode, createPhysical) {
   }
 
   for (const [index, channel] of mode.channels.entries()) {
-    const uniqueName = channel instanceof SwitchingChannel
-      ? channel.defaultChannel.uniqueName
-      : channel.uniqueName;
+    const uniqueName = (channel instanceof SwitchingChannel ? channel.defaultChannel : channel).uniqueName;
 
     xmlMode.element({
       Channel: {

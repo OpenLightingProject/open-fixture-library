@@ -125,7 +125,7 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const hasGlobalPhysical = 'Physical' in qlcPlusFixture;
 
   if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
-    fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
+    fixture.physical = getOflPhysical((hasGlobalPhysical ? qlcPlusFixture : firstPhysicalMode).Physical[0]);
 
     if (qlcPlusFixture.Type[0] === 'LED Bar (Pixels)') {
       fixture.physical.matrixPixels = {
