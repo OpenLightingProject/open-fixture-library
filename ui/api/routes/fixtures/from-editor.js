@@ -235,7 +235,7 @@ async function getFixtureCreateResult(fixtures) {
         urlObject.pathname = 'watch';
         urlObject.search = `?${queryParameterString}`;
 
-        return urlObject.toString();
+        return urlObject.href;
       }
 
       return url;
