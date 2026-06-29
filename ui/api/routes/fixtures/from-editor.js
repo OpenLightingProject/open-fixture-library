@@ -71,64 +71,74 @@ async function getFixtureCreateResult(fixtures) {
     };
 
     for (const property of Object.keys(fixtureProperties)) {
-      switch (property) {
-        case 'physical': {
-          const physical = getPhysical(fixture.physical);
-          if (!isEmptyObject(physical)) {
-            result.fixtures[key].physical = physical;
-          }
-          break;
-        }
-        case 'meta': {
-          const now = new Date().toISOString().replace(/T.*/, '');
-
-          result.fixtures[key].meta = {
-            authors: [fixture.metaAuthor],
-            createDate: now,
-            lastModifyDate: now,
-          };
-          break;
-        }
-        case 'links': {
-          addLinks(result.fixtures[key], fixture.links);
-          break;
-        }
-        case 'availableChannels': {
-          result.fixtures[key].availableChannels = {};
-          for (const channelId of Object.keys(fixture.availableChannels)) {
-            addAvailableChannel(key, fixture.availableChannels, channelId);
-          }
-          break;
-        }
-        default: {
-          if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
-            result.fixtures[key].rdm = {
-              modelId: fixture.rdmModelId,
-            };
-            if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
-              result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
-            }
-          }
-          else if (property === 'modes') {
-            result.fixtures[key].modes = [];
-            for (const mode of fixture.modes) {
-              addMode(key, mode);
-            }
-          }
-          else if (property === 'wheels') {
-            addWheels(result.fixtures[key], fixture);
-          }
-          else if (propertyExistsIn(property, fixture)) {
-            result.fixtures[key][property] = fixture[property];
-          }
-        }
-      }
+      addFixtureProperty(fixture, key, property);
     }
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
+  }
+
+  /**
+   * Adds a single editor fixture property to the resulting OFL fixture.
+   * @param {object} fixture - The editor fixture object.
+   * @param {string} key - The fixture's manufacturer/fixture key.
+   * @param {string} property - The fixture property to add.
+   */
+  function addFixtureProperty(fixture, key, property) {
+    switch (property) {
+      case 'physical': {
+        const physical = getPhysical(fixture.physical);
+        if (!isEmptyObject(physical)) {
+          result.fixtures[key].physical = physical;
+        }
+        return;
+      }
+      case 'meta': {
+        const now = new Date().toISOString().replace(/T.*/, '');
+
+        result.fixtures[key].meta = {
+          authors: [fixture.metaAuthor],
+          createDate: now,
+          lastModifyDate: now,
+        };
+        return;
+      }
+      case 'links': {
+        addLinks(result.fixtures[key], fixture.links);
+        return;
+      }
+      case 'availableChannels': {
+        result.fixtures[key].availableChannels = {};
+        for (const channelId of Object.keys(fixture.availableChannels)) {
+          addAvailableChannel(key, fixture.availableChannels, channelId);
+        }
+        return;
+      }
+      default: {
+        if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
+          result.fixtures[key].rdm = {
+            modelId: fixture.rdmModelId,
+          };
+          if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
+            result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+          }
+        }
+        else if (property === 'modes') {
+          result.fixtures[key].modes = [];
+          for (const mode of fixture.modes) {
+            addMode(key, mode);
+          }
+        }
+        else if (property === 'wheels') {
+          addWheels(result.fixtures[key], fixture);
+        }
+        else if (propertyExistsIn(property, fixture)) {
+          result.fixtures[key][property] = fixture[property];
+        }
+      }
+    }
   }
 
   /**

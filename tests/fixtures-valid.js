@@ -105,12 +105,9 @@ async function runTests() {
     for (const manufacturerKey of manufacturerKeys) {
       const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
 
-      const manufacturerFiles = await readdir(manufacturersDirectoryUrl);
+      const manufacturerDirectoryFiles = await readdir(manufacturersDirectoryUrl);
+      const manufacturerFiles = manufacturerDirectoryFiles.filter((file) => path.extname(file) === '.json');
       for (const file of manufacturerFiles) {
-        if (path.extname(file) !== '.json') {
-          continue;
-        }
-
         const fixtureKey = path.basename(file, '.json');
         promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
       }

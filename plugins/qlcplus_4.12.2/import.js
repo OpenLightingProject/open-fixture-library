@@ -944,31 +944,42 @@ function hasAliases(qlcPlusChannel) {
 function mergeSimilarSwitchChannels(switchChannels) {
   for (let switchChannelIndex = 0; switchChannelIndex < switchChannels.length; switchChannelIndex++) {
     const switchChannel = switchChannels[switchChannelIndex];
-    const switchToEntries = Object.entries(switchChannel.switchTo);
 
-    for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
-      const otherSwitchChannel = switchChannels[index];
-
-      if (otherSwitchChannel.default !== switchChannel.default) {
-        continue;
-      }
-
-      const otherSwitchTo = otherSwitchChannel.switchTo;
-      const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
-        ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
-      );
-
-      if (!switchToSame) {
-        continue;
-      }
-
-      switchChannel.modes.push(...otherSwitchChannel.modes);
-      switchChannels.splice(index, 1);
-      index--;
-    }
+    mergeDuplicatesInto(switchChannels, switchChannelIndex);
 
     const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
     switchChannel.key = [...alternatives].join(' / ');
+  }
+}
+
+/**
+ * Merges all switch channels that are equal to the one at the given index into it, removing them from the array.
+ * @param {object[]} switchChannels - The array of switch channels (mutated in place).
+ * @param {number} switchChannelIndex - The index of the switch channel that duplicates are merged into.
+ */
+function mergeDuplicatesInto(switchChannels, switchChannelIndex) {
+  const switchChannel = switchChannels[switchChannelIndex];
+  const switchToEntries = Object.entries(switchChannel.switchTo);
+
+  for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
+    const otherSwitchChannel = switchChannels[index];
+
+    if (otherSwitchChannel.default !== switchChannel.default) {
+      continue;
+    }
+
+    const otherSwitchTo = otherSwitchChannel.switchTo;
+    const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
+      ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
+    );
+
+    if (!switchToSame) {
+      continue;
+    }
+
+    switchChannel.modes.push(...otherSwitchChannel.modes);
+    switchChannels.splice(index, 1);
+    index--;
   }
 }
 

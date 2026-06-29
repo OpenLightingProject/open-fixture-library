@@ -53,6 +53,17 @@ for (const manufacturerFixture of Object.keys(register.filesystem)) {
   };
 
   // check all features
+  await addMatchingFeatures(fixture, fixtureResult);
+
+  fixtureFeatureResults.push(fixtureResult);
+}
+
+/**
+ * Adds the IDs of all fixture features that the given fixture supports to the result.
+ * @param {object} fixture - The fixture to check.
+ * @param {FixtureFeatureResult} fixtureResult - The result object to add matching feature IDs to.
+ */
+async function addMatchingFeatures(fixture, fixtureResult) {
   for (const fixtureFeature of allFixtureFeatures) {
     if (!await fixtureFeature.hasFeature(fixture)) {
       continue;
@@ -61,8 +72,6 @@ for (const manufacturerFixture of Object.keys(register.filesystem)) {
     fixtureResult.features.push(fixtureFeature.id);
     featuresUsed[fixtureFeature.id]++;
   }
-
-  fixtureFeatureResults.push(fixtureResult);
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
