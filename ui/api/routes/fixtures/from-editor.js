@@ -381,7 +381,7 @@ async function getFixtureCreateResult(fixtures) {
       while (availableChannelKeys.includes(`${channelKey} ${appendNumber}`)) {
         appendNumber++;
       }
-      channelKey = `${channelKey} ${appendNumber}`;
+      channelKey += ` ${appendNumber}`;
     }
 
     return channelKey;
