@@ -56,8 +56,8 @@ const coreRules = {
   }],
   'no-template-curly-in-string': 'error',
   'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
-  'no-unused-vars': ['error', { args: 'none' }],
   'no-unused-expressions': 'error',
+  'no-unused-vars': ['error', { args: 'none' }],
   'no-useless-assignment': 'error',
   'no-var': 'error',
   'object-shorthand': 'error',
@@ -108,6 +108,7 @@ const jsdocRules = {
   'jsdoc/check-indentation': 'error',
   'jsdoc/check-syntax': 'error',
   'jsdoc/no-defaults': 'off', // useful for model docs generation
+  'jsdoc/prefer-import-tag': ['error', { enableFixer: true, exemptTypedefs: false }],
   'jsdoc/require-description': 'off',
   'jsdoc/require-hyphen-before-param-description': 'error',
   'jsdoc/require-jsdoc': ['error', {
@@ -120,7 +121,6 @@ const jsdocRules = {
       FunctionExpression: false,
     },
   }],
-  'jsdoc/prefer-import-tag': ['error', { enableFixer: true, exemptTypedefs: false }],
   'jsdoc/tag-lines': ['error', 'never', { startLines: null }],
 };
 
@@ -142,18 +142,15 @@ const promiseRules = {
 
 // eslint-plugin-sonarjs
 const sonarjsRules = {
+  'sonarjs/cognitive-complexity': 'warn', // reduced from `error` in the preset
   'sonarjs/no-inverted-boolean-check': 'error',
-
+  'sonarjs/no-nested-functions': 'warn', // reduced from `error` in the preset
   'sonarjs/no-os-command-from-path': 'off',
   'sonarjs/os-command': 'off',
   'sonarjs/pseudo-random': 'off',
+  'sonarjs/regex-complexity': 'warn', // reduced from `error` in the preset
   'sonarjs/super-linear-regex': 'off',
-
-  // already enabled at error in the preset, but reduced to `warn`
-  'sonarjs/cognitive-complexity': 'warn',
-  'sonarjs/no-nested-functions': 'warn',
-  'sonarjs/regex-complexity': 'warn',
-  'sonarjs/todo-tag': 'warn',
+  'sonarjs/todo-tag': 'warn', // reduced from `error` in the preset
 };
 
 // eslint-plugin-unicorn
@@ -201,10 +198,10 @@ const vueRules = {
   'vue/block-order': ['error', {
     order: ['template', 'style[scoped]', 'style:not([scoped])', 'script'],
   }],
-  'vue/component-options-name-casing': 'error',
   'vue/component-name-in-template-casing': ['error', 'PascalCase', {
     registeredComponentsOnly: false,
   }],
+  'vue/component-options-name-casing': 'error',
   'vue/enforce-style-attribute': 'error',
   'vue/html-button-has-type': 'error',
   'vue/html-closing-bracket-newline': ['error', {
@@ -217,10 +214,12 @@ const vueRules = {
   }],
   'vue/match-component-import-name': 'error',
   'vue/max-attributes-per-line': ['error', { singleline: 3 }],
+  'vue/multiline-html-element-content-newline': 'off',
   'vue/next-tick-style': 'error',
   'vue/no-boolean-default': ['error', 'default-false'],
   'vue/no-duplicate-class-names': 'error',
   'vue/no-empty-component-block': 'error',
+  'vue/no-mutating-props': 'warn', // reduced from `error` in the preset
   'vue/no-undef-components': ['error', {
     ignorePatterns: [
       '^Ofl(Svg|Time)$', // global components
@@ -237,23 +236,18 @@ const vueRules = {
   }],
   'vue/no-unused-refs': 'error',
   'vue/no-use-v-else-with-v-for': 'error',
+  'vue/no-v-html': 'warn', // reduced from `error` in the preset
   'vue/no-v-text': 'error',
   'vue/prefer-prop-type-boolean-first': 'error',
   'vue/prefer-separate-static-class': 'error',
   'vue/prefer-single-event-payload': 'error',
   'vue/prefer-true-attribute-shorthand': 'error',
   'vue/require-direct-export': 'error',
+  'vue/singleline-html-element-content-newline': 'off',
   'vue/v-for-delimiter-style': ['error', 'of'],
   'vue/v-if-else-key': 'error',
   'vue/v-on-handler-style': ['error', 'inline'],
   'vue/v-slot-style': ['error', 'shorthand'],
-
-  'vue/multiline-html-element-content-newline': 'off',
-  'vue/singleline-html-element-content-newline': 'off',
-
-  // already enabled at error in the preset, but reduced to `warn`
-  'vue/no-mutating-props': 'warn',
-  'vue/no-v-html': 'warn',
 
   // Vue 3 migration
   'vue/no-deprecated-data-object-declaration': 'error',
@@ -292,11 +286,10 @@ const vueRules = {
 
 // eslint-plugin-vuejs-accessibility
 const vueA11yRules = {
-  'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
-  'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
-
   'vuejs-accessibility/form-control-has-label': 'off',
   'vuejs-accessibility/label-has-for': 'off',
+  'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
+  'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
 };
 
 const vueExtensionRules = {
