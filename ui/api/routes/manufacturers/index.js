@@ -13,10 +13,10 @@ export async function getManufacturers(context) {
 
   const manufacturerData = {};
 
-  for (const manufacturerKey of Object.keys(manufacturers)) {
+  for (const [manufacturerKey, manufacturer] of Object.entries(manufacturers)) {
     if (manufacturerKey !== '$schema') {
       manufacturerData[manufacturerKey] = {
-        name: manufacturers[manufacturerKey].name,
+        name: manufacturer.name,
         fixtureCount: register.manufacturers[manufacturerKey].length,
         color: register.colors[manufacturerKey],
       };

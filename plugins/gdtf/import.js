@@ -172,7 +172,8 @@ export async function importFixtures(buffer, filename, authorName) {
     function getLatestSoftwareVersion() {
       let maxSoftwareVersion = undefined;
 
-      for (const rdmVersion of rdmData.SoftwareVersionID || []) {
+      const softwareVersions = rdmData.SoftwareVersionID || [];
+      for (const rdmVersion of softwareVersions) {
         if (!maxSoftwareVersion || rdmVersion.$.Value > maxSoftwareVersion.$.Value) {
           maxSoftwareVersion = rdmVersion;
         }
@@ -255,9 +256,11 @@ export async function importFixtures(buffer, filename, authorName) {
    * already defined.
    */
   function autoGenerateGdtfNameAttributes() {
-    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
+    const gdtfModes = gdtfFixture.DMXModes[0].DMXMode;
+    for (const gdtfMode of gdtfModes) {
       // add default Name attributes, so that the references work later
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
         // auto-generate <DMXChannel> Name attribute
         const geometry = gdtfChannel.$.Geometry.split('.').pop();
         gdtfChannel.$.Name = `${geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
@@ -406,8 +409,10 @@ export async function importFixtures(buffer, filename, authorName) {
     const availableChannels = [];
     const templateChannels = [];
 
-    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
+    const gdtfModes = gdtfFixture.DMXModes[0].DMXMode;
+    for (const gdtfMode of gdtfModes) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
         if (gdtfChannel.$.DMXBreak === 'Overwrite') {
           addChannel(templateChannels, gdtfChannel);
         }
@@ -524,8 +529,8 @@ export async function importFixtures(buffer, filename, authorName) {
      * @returns {object[]} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
-      let minPhysicalValue = Number.POSITIVE_INFINITY;
-      let maxPhysicalValue = Number.NEGATIVE_INFINITY;
+      let minPhysicalValue = Infinity;
+      let maxPhysicalValue = -Infinity;
 
       // save all <ChannelSet> XML nodes in a flat list
       const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
@@ -829,15 +834,15 @@ export async function importFixtures(buffer, filename, authorName) {
         return gdtfChannel.$.Offset.split(',').length;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Uber')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Uber')) {
         return 4;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Ultra')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Ultra')) {
         return 3;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Fine')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Fine')) {
         return 2;
       }
 
@@ -945,7 +950,8 @@ export async function importFixtures(buffer, filename, authorName) {
       /** @type {DmxBreakWrapper[]} */
       const dmxBreakWrappers = [];
 
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
         if (dmxBreakWrappers.length === 0 || dmxBreakWrappers.at(-1).dmxBreak !== gdtfChannel.$.DMXBreak) {
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
@@ -1029,7 +1035,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelKeys = [channelKey, ...(oflChannel.fineChannelAliases ?? [])];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
-      const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, 'Offset')
+      const channelOffsets = hasNonNoneAttribute(gdtfChannel, 'Offset')
         ? gdtfChannel.$.Offset.split(',')
         : [
             gdtfChannel.$.Coarse,
@@ -1123,10 +1129,11 @@ export async function importFixtures(buffer, filename, authorName) {
     function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
 
-      for (const [switchingChannelKey, relations] of Object.entries(relationsPerMaster[triggerChannelKey])) {
+      const masterRelations = relationsPerMaster[triggerChannelKey];
+      for (const [switchingChannelKey, relations] of Object.entries(masterRelations)) {
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          (otherKey) => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
+          (otherKey) => JSON.stringify(masterRelations[otherKey]) === JSON.stringify(relations),
         );
 
         if (addedSwitchingChannelKey) {
@@ -1326,11 +1333,12 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
       continue;
     }
 
-    for (const switchToChannelKey of Object.keys(modeChannelReplacements[modeIndex])) {
+    const channelReplacements = modeChannelReplacements[modeIndex];
+    for (const [switchToChannelKey, replacementChannelKey] of Object.entries(channelReplacements)) {
       const channelIndex = mode.channels.indexOf(switchToChannelKey);
 
       if (channelIndex !== -1) {
-        mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
+        mode.channels[channelIndex] = replacementChannelKey;
       }
     }
   }
@@ -1343,8 +1351,7 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
  */
 function cleanUpFixture(fixture, warnings) {
   if ('availableChannels' in fixture) {
-    for (const channelKey of Object.keys(fixture.availableChannels)) {
-      const channel = fixture.availableChannels[channelKey];
+    for (const channel of Object.values(fixture.availableChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -1354,8 +1361,7 @@ function cleanUpFixture(fixture, warnings) {
   if ('templateChannels' in fixture) {
     warnings.push('Please fix the visual representation of the matrix.');
 
-    for (const channelKey of Object.keys(fixture.templateChannels)) {
-      const channel = fixture.templateChannels[channelKey];
+    for (const channel of Object.values(fixture.templateChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -1371,7 +1377,7 @@ function cleanUpFixture(fixture, warnings) {
  * @param {string} attribute - The attribute name to check.
  * @returns {boolean} True if the node has the attribute and its value is not "None", false otherwise.
  */
-function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
+function hasNonNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== 'None';
 }
 

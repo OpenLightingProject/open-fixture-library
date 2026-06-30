@@ -152,14 +152,14 @@ export default {
         const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
         const switchChannels = [];
 
-        for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
+        for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
           const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
 
           if (switchingChannelIndex > -1) {
             switchChannels.push({
               key: switchingChannelKey,
               index: switchingChannelIndex,
-              to: capability.switchChannels[switchingChannelKey],
+              to: switchToChannelKey,
             });
           }
         }

@@ -359,9 +359,9 @@ export default {
 
       try {
         const prefillObject = JSON.parse(this.$route.query.prefill);
-        for (const key of Object.keys(prefillObject)) {
+        for (const [key, value] of Object.entries(prefillObject)) {
           if (isPrefillable(prefillObject, key)) {
-            this.fixture[key] = prefillObject[key];
+            this.fixture[key] = value;
           }
         }
       }

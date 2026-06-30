@@ -147,7 +147,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > Number.NEGATIVE_INFINITY) {
+    if (panTiltMax > -Infinity) {
       return panTiltMax;
     }
 

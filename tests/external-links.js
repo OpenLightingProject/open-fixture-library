@@ -9,7 +9,7 @@ import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
 import { appendOrTruncate } from './github/pull-request.js';
 
-const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
+const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
 const TIMEOUT = 30_000;
 
@@ -22,7 +22,7 @@ const excludedUrls = [
 ];
 
 const testStartTime = Date.now();
-let errored = false;
+let isErrored = false;
 
 try {
   const crawler = new SiteCrawler();
@@ -40,10 +40,12 @@ try {
   const externalUrlSet = new Set();
 
   crawler.addEventListener('externalLinkFound', ({ url }) => {
-    if (!excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
-      externalUrlSet.add(url);
-      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+    if (excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
+      return;
     }
+
+    externalUrlSet.add(url);
+    process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
   });
 
   const crawlStartTime = Date.now();
@@ -72,13 +74,13 @@ try {
 }
 catch (error) {
   console.error(error);
-  errored = true;
+  isErrored = true;
 }
 
 const testTime = Date.now() - testStartTime;
 console.log();
 console.log(styleText(['greenBright', 'bold'], `Test took ${testTime / 1000}s.`));
-process.exit(errored ? 1 : 0);
+process.exit(isErrored ? 1 : 0);
 
 /**
  * @typedef {object} UrlResult
@@ -240,7 +242,7 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
-  const deletedUrls = Object.keys(oldLinkData).filter((url) => !urlResults.some((result) => result.url === url));
+  const deletedUrls = Object.keys(oldLinkData).filter((url) => urlResults.every((result) => result.url !== url));
 
   console.log(`Updating GitHub issue body at https://github.com/${process.env.GITHUB_REPOSITORY}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.rest.issues.update({
