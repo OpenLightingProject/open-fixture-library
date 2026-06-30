@@ -304,6 +304,11 @@ export function getHeadSha() {
  * only renders GitHub's "Apply suggestion" button when posted via the review API
  * (not via `updateComment` / `issues.createComment`).
  *
+ * The review is always posted with `event: 'REQUEST_CHANGES'`. This is intentional:
+ * it lets the cleanup step dismiss prior reviews (GitHub's API only allows dismissing
+ * APPROVED or CHANGES_REQUESTED reviews, not COMMENTED ones). The review is informational
+ * (not blocking merge by itself) — the inline suggestions can be applied with one click.
+ *
  * Cleanup: any prior review whose body starts with the marker (derived from
  * `test.fileUrl`) is dismissed, and its individual review comments are deleted.
  * This keeps the PR clean across re-runs.
@@ -352,6 +357,17 @@ export async function updateReview(test) {
 
   const dismissPromises = existingReviews
     .filter((review) => review.body && review.body.startsWith(marker))
+    .filter((review) => {
+      // GitHub only allows dismissing APPROVED or CHANGES_REQUESTED reviews.
+      // Our own prior reviews are posted with event: 'COMMENT', which can't be
+      // dismissed via the API. Skip them — the inline comments will still be
+      // deleted in step 2, so the review shell ends up empty.
+      if (review.state === 'COMMENTED') {
+        console.log(`Skipping dismissal of review ${review.id} (state COMMENTED cannot be dismissed; comments will be deleted).`);
+        return false;
+      }
+      return true;
+    })
     .map((review) => {
       console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return githubClient.rest.pulls.dismissReview({
@@ -414,7 +430,7 @@ export async function updateReview(test) {
     // eslint-disable-next-line camelcase -- required by GitHub API
     commit_id: getHeadSha(),
     body: `${marker}\n${test.body}`,
-    event: 'COMMENT',
+    event: 'REQUEST_CHANGES',
     comments: test.comments.map((comment) => ({
       ...comment,
       side: comment.side || 'RIGHT',
