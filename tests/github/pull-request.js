@@ -310,8 +310,11 @@ export function getHeadSha() {
  * (not blocking merge by itself) — the inline suggestions can be applied with one click.
  *
  * Cleanup: any prior review whose body starts with the marker (derived from
- * `test.fileUrl`) is dismissed, and its individual review comments are deleted.
- * This keeps the PR clean across re-runs.
+ * `test.fileUrl`) AND has state `CHANGES_REQUESTED` is dismissed. The inline review
+ * comments that belong to any marked review (regardless of state) are deleted. The
+ * marker check ensures we only touch our own reviews, never human ones. The state
+ * check handles the cases GitHub won't let us dismiss (COMMENTED, DISMISSED) and
+ * is a no-op for already-dismissed reviews.
  *
  * If both `test.body` and `test.comments` are empty, the function only performs cleanup
  * (dismiss prior reviews, delete orphan comments) and skips creating a new review. This
@@ -355,19 +358,20 @@ export async function updateReview(test) {
   const reviewBlocks = await Promise.all(reviewPromises);
   const existingReviews = reviewBlocks.flatMap((block) => block.data);
 
-  const dismissPromises = existingReviews
-    .filter((review) => review.body && review.body.startsWith(marker))
-    .filter((review) => {
-      // GitHub only allows dismissing APPROVED or CHANGES_REQUESTED reviews.
-      // Our own prior reviews are posted with event: 'COMMENT', which can't be
-      // dismissed via the API. Skip them — the inline comments will still be
-      // deleted in step 2, so the review shell ends up empty.
-      if (review.state === 'COMMENTED') {
-        console.log(`Skipping dismissal of review ${review.id} (state COMMENTED cannot be dismissed; comments will be deleted).`);
-        return false;
-      }
-      return true;
-    })
+  // Identify reviews posted by this test (matched by the hidden marker in their body).
+  // These IDs are used both to filter the dismissal candidates and to identify
+  // which inline review comments belong to our reviews for deletion.
+  const markedReviews = existingReviews.filter((review) => review.body && review.body.startsWith(marker));
+  const markedReviewIds = new Set(markedReviews.map((review) => review.id));
+
+  // 1) Dismiss prior reviews from this test.
+  // GitHub's API only allows dismissing APPROVED or CHANGES_REQUESTED reviews.
+  // We always post our own reviews with event: 'REQUEST_CHANGES', so combining
+  // the marker check with this state filter is sufficient — old COMMENTED reviews
+  // (from before the event was changed) and already-DISMISSED reviews are skipped
+  // automatically, and human reviews don't have the marker so they're never touched.
+  const dismissPromises = markedReviews
+    .filter((review) => review.state === 'CHANGES_REQUESTED')
     .map((review) => {
       console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return githubClient.rest.pulls.dismissReview({
@@ -401,10 +405,13 @@ export async function updateReview(test) {
   const commentBlocks = await Promise.all(commentPromises);
   const existingComments = commentBlocks.flatMap((block) => block.data);
 
+  // The marker only appears in the review body, not in the comment body, so we
+  // match comments by their parent review's ID (which is reliably in the API
+  // response as `pull_request_review_id`).
   const deletePromises = existingComments
-    .filter((comment) => comment.body && comment.body.startsWith(marker))
+    .filter((comment) => markedReviewIds.has(comment.pull_request_review_id))
     .map((comment) => {
-      console.log(`Deleting old review comment ${comment.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      console.log(`Deleting old review comment ${comment.id} (from marked review) at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return githubClient.rest.pulls.deleteReviewComment({
         owner: repoOwner,
         repo: repoName,
@@ -413,7 +420,9 @@ export async function updateReview(test) {
       });
     });
 
-  await Promise.all([...dismissPromises, ...deletePromises]);
+  // Use allSettled so a dismissal failure (e.g. a state we don't expect) doesn't
+  // abort the inline-comment deletion. Both should be best-effort cleanup.
+  await Promise.allSettled([...dismissPromises, ...deletePromises]);
 
   // 3) Post the new review, unless the caller only wanted cleanup.
   if (test.body === '' && test.comments.length === 0) {
