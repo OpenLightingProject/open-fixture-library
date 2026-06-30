@@ -308,6 +308,11 @@ export function getHeadSha() {
  * `test.fileUrl`) is dismissed, and its individual review comments are deleted.
  * This keeps the PR clean across re-runs.
  *
+ * If both `test.body` and `test.comments` are empty, the function only performs cleanup
+ * (dismiss prior reviews, delete orphan comments) and skips creating a new review. This
+ * is useful for "nothing to remind about" cases where a prior review should be cleared
+ * without leaving a stub.
+ *
  * @param {object} test - Information about the test script that wants to update the review.
  * @param {URL} test.fileUrl - URL of the test file. Used to derive the marker.
  * @param {string} test.body - The review summary body (shown once, above the inline comments).
@@ -394,7 +399,12 @@ export async function updateReview(test) {
 
   await Promise.all([...dismissPromises, ...deletePromises]);
 
-  // 3) Post the new review.
+  // 3) Post the new review, unless the caller only wanted cleanup.
+  if (test.body === '' && test.comments.length === 0) {
+    console.log(`Skipping review creation at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} (no body, no comments — cleanup-only mode).`);
+    return undefined;
+  }
+
   console.log(`Creating review at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} with ${test.comments.length} inline comment(s).`);
   return githubClient.rest.pulls.createReview({
     owner: repoOwner,
@@ -431,4 +441,33 @@ export async function getFileContent(filePath, ref) {
   }
 
   return Buffer.from(data.content, 'base64').toString('utf-8');
+}
+
+/**
+ * Fetch the unified diff patch for a file in the PR. Returns null if the patch is not
+ * available (e.g., file too large, binary file, or no diff).
+ * @param {string} filePath - Path of the file relative to the repo root.
+ * @returns {Promise<string|null>} The unified diff patch, or null if not available.
+ */
+export async function getFilePatch(filePath) {
+  // Paginate listFiles to find the file (up to 10 pages × 100 = 1000 files)
+  const filePromises = [];
+  for (let index = 0; index < 10; index++) {
+    filePromises.push(
+      githubClient.rest.pulls.listFiles({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
+        page: index + 1,
+      }),
+    );
+  }
+
+  const blocks = await Promise.all(filePromises);
+  const files = blocks.flatMap((block) => block.data);
+  const file = files.find((f) => f.filename === filePath);
+  return file ? file.patch : null;
 }
