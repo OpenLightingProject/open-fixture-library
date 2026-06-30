@@ -354,14 +354,14 @@ export async function updateReview(test) {
     .filter((review) => review.body && review.body.startsWith(marker))
     .map((review) => {
       console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-      return githubClient.rest.pulls.updateReview({
+      return githubClient.rest.pulls.dismissReview({
         owner: repoOwner,
         repo: repoName,
         // eslint-disable-next-line camelcase -- required by GitHub API
         pull_number: process.env.GITHUB_PR_NUMBER,
         // eslint-disable-next-line camelcase -- required by GitHub API
         review_id: review.id,
-        state: 'DISMISSED',
+        message: 'Superseded by a new run of the metadata-update-reminder test.',
       });
     });
 
