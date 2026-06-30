@@ -286,3 +286,128 @@ export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines 
   lines.push(...newLines);
   return false;
 }
+
+/**
+ * @returns {string} The SHA of the head commit of the current pull request.
+ * @throws {Error} If `init()` has not been called.
+ */
+export function getHeadSha() {
+  if (!prData) {
+    throw new Error('init() must be called before getHeadSha().');
+  }
+  return prData.head.sha;
+}
+
+/**
+ * Posts (or updates) a pull request review with a summary body and an array of inline
+ * review comments. Each inline comment may contain a `suggestion` code block, which
+ * only renders GitHub's "Apply suggestion" button when posted via the review API
+ * (not via `updateComment` / `issues.createComment`).
+ *
+ * Cleanup: any prior review whose body starts with the marker (derived from
+ * `test.fileUrl`) is dismissed, and its individual review comments are deleted.
+ * This keeps the PR clean across re-runs.
+ *
+ * @param {object} test - Information about the test script that wants to update the review.
+ * @param {URL} test.fileUrl - URL of the test file. Used to derive the marker.
+ * @param {string} test.body - The review summary body (shown once, above the inline comments).
+ * @param {{path: string, line: number, side?: 'LEFT'|'RIGHT', body: string}[]} test.comments - The inline review comments to attach. Each is anchored to a specific line in a file.
+ * @returns {Promise} A promise that is fulfilled once all GitHub operations have completed.
+ */
+export async function updateReview(test) {
+  if (prData.head.repo.full_name !== prData.base.repo.full_name) {
+    console.warn(styleText('yellow', 'Warning:'), 'This PR is created from a forked repository, so there is no write permission for the repo.');
+    return undefined;
+  }
+
+  const oflRootPath = fileURLToPath(new URL('../../', import.meta.url));
+  const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
+  const marker = `<!-- GITHUB-TEST-REVIEW: ${relativeFilePath} -->`;
+
+  // 1) Dismiss any prior reviews from this test.
+  // Paginate up to 5 pages of 100 (500 reviews) — more than enough for typical re-runs,
+  // and prevents silently missing old reviews on long-lived PRs.
+  const reviewPromises = [];
+  for (let index = 0; index < 5; index++) {
+    reviewPromises.push(
+      githubClient.rest.pulls.listReviews({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
+        page: index + 1,
+      }),
+    );
+  }
+
+  const reviewBlocks = await Promise.all(reviewPromises);
+  const existingReviews = reviewBlocks.flatMap((block) => block.data);
+
+  const dismissPromises = existingReviews
+    .filter((review) => review.body && review.body.startsWith(marker))
+    .map((review) => {
+      console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.updateReview({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        review_id: review.id,
+        state: 'DISMISSED',
+      });
+    });
+
+  // 2) Delete any prior review comments from this test (orphan cleanup).
+  // Paginate using prData.review_comments count, mirroring the updateComment pattern.
+  const commentPromises = [];
+  for (let index = 0; index < prData.review_comments / 100; index++) {
+    commentPromises.push(
+      githubClient.rest.pulls.listReviewComments({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
+        page: index + 1,
+      }),
+    );
+  }
+
+  const commentBlocks = await Promise.all(commentPromises);
+  const existingComments = commentBlocks.flatMap((block) => block.data);
+
+  const deletePromises = existingComments
+    .filter((comment) => comment.body && comment.body.startsWith(marker))
+    .map((comment) => {
+      console.log(`Deleting old review comment ${comment.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.deleteReviewComment({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        comment_id: comment.id,
+      });
+    });
+
+  await Promise.all([...dismissPromises, ...deletePromises]);
+
+  // 3) Post the new review.
+  console.log(`Creating review at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} with ${test.comments.length} inline comment(s).`);
+  return githubClient.rest.pulls.createReview({
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    commit_id: getHeadSha(),
+    body: `${marker}\n${test.body}`,
+    event: 'COMMENT',
+    comments: test.comments.map((comment) => ({
+      ...comment,
+      side: comment.side || 'RIGHT',
+    })),
+  });
+}
