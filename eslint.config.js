@@ -301,11 +301,9 @@ const vueExtensionRules = {
 };
 
 const warnRules = new Set([
-  'jsdoc/require-jsdoc',
   'sonarjs/cognitive-complexity',
   'sonarjs/no-nested-functions',
   'sonarjs/regex-complexity',
-  'sonarjs/slow-regex',
   'sonarjs/todo-tag',
   'vue/no-mutating-props',
   'vue/no-v-html',
