@@ -250,9 +250,7 @@ const enabledRuleParameters = {
   'sonarjs/cognitive-complexity': [],
   'sonarjs/no-nested-functions': [],
   'sonarjs/regex-complexity': [],
-  'sonarjs/slow-regex': [],
   'sonarjs/todo-tag': [],
-  'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
   'vue/no-v-html': [],
 };
