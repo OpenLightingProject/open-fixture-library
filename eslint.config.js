@@ -20,8 +20,8 @@ const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   semi: true,
 });
 
-const enabledRuleParameters = {
-  // Core ESLint rules
+// Core ESLint rules
+const coreRules = {
   'accessor-pairs': [],
   'camelcase': [],
   'consistent-return': [],
@@ -66,15 +66,19 @@ const enabledRuleParameters = {
   'prefer-rest-params': [],
   'prefer-template': [],
   'radix': [],
+};
 
-  // eslint-plugin-stylistic
+// eslint-plugin-stylistic
+const stylisticRules = {
   '@stylistic/curly-newline': ['always'],
   '@stylistic/function-call-spacing': [],
   '@stylistic/linebreak-style': [],
   '@stylistic/no-confusing-arrow': [],
   '@stylistic/quotes': ['single'],
+};
 
-  // eslint-plugin-import-x
+// eslint-plugin-import-x
+const importRules = {
   'import-x/extensions': ['ignorePackages'],
   'import-x/first': [],
   'import-x/newline-after-import': [],
@@ -96,8 +100,10 @@ const enabledRuleParameters = {
     },
     'newlines-between': 'never',
   }],
+};
 
-  // eslint-plugin-jsdoc
+// eslint-plugin-jsdoc
+const jsdocRules = {
   'jsdoc/check-indentation': [],
   'jsdoc/check-syntax': [],
   'jsdoc/require-hyphen-before-param-description': [],
@@ -113,11 +119,15 @@ const enabledRuleParameters = {
   }],
   'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
   'jsdoc/tag-lines': ['never', { startLines: null }],
+};
 
-  // eslint-plugin-jsonc
+// eslint-plugin-jsonc
+const jsoncRules = {
   'jsonc/auto': [],
+};
 
-  // eslint-plugin-promise
+// eslint-plugin-promise
+const promiseRules = {
   'promise/no-callback-in-promise': [],
   'promise/no-multiple-resolved': [],
   'promise/no-nesting': [],
@@ -125,11 +135,21 @@ const enabledRuleParameters = {
   'promise/no-return-in-finally': [],
   'promise/prefer-await-to-then': [],
   'promise/valid-params': [],
+};
 
-  // eslint-plugin-sonarjs
+// eslint-plugin-sonarjs
+const sonarjsRules = {
   'sonarjs/no-inverted-boolean-check': [],
 
-  // eslint-plugin-unicorn
+  // already enabled at error in the preset, but reduced to `warn` (see `warnRules`)
+  'sonarjs/cognitive-complexity': [],
+  'sonarjs/no-nested-functions': [],
+  'sonarjs/regex-complexity': [],
+  'sonarjs/todo-tag': [],
+};
+
+// eslint-plugin-unicorn
+const unicornRules = {
   'unicorn/dom-node-dataset': [{ preferAttributes: true }],
   'unicorn/import-style': [{
     styles: {
@@ -151,8 +171,10 @@ const enabledRuleParameters = {
     },
   }],
   'unicorn/text-encoding-identifier-case': [{ withDash: true }],
+};
 
-  // eslint-plugin-vue
+// eslint-plugin-vue
+const vueRules = {
   'vue/block-lang': [{
     script: { allowNoLang: true },
     style: { lang: 'scss' },
@@ -242,17 +264,28 @@ const enabledRuleParameters = {
   'vue/require-toggle-inside-transition': [],
   'vue/v-on-event-hyphenation': [],
 
-  // eslint-plugin-vuejs-accessibility
-  'vuejs-accessibility/no-aria-hidden-on-focusable': [],
-  'vuejs-accessibility/no-role-presentation-on-focusable': [],
-
-  // already included in presets, but needed here because we reduce severity to `warn`
-  'sonarjs/cognitive-complexity': [],
-  'sonarjs/no-nested-functions': [],
-  'sonarjs/regex-complexity': [],
-  'sonarjs/todo-tag': [],
+  // already enabled at error in the preset, but reduced to `warn` (see `warnRules`)
   'vue/no-mutating-props': [],
   'vue/no-v-html': [],
+};
+
+// eslint-plugin-vuejs-accessibility
+const vueA11yRules = {
+  'vuejs-accessibility/no-aria-hidden-on-focusable': [],
+  'vuejs-accessibility/no-role-presentation-on-focusable': [],
+};
+
+const enabledRuleParameters = {
+  ...coreRules,
+  ...stylisticRules,
+  ...importRules,
+  ...jsdocRules,
+  ...jsoncRules,
+  ...promiseRules,
+  ...sonarjsRules,
+  ...unicornRules,
+  ...vueRules,
+  ...vueA11yRules,
 };
 
 const vueExtensionRules = {
