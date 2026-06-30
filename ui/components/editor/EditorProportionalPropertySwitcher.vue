@@ -349,7 +349,9 @@ export default {
       }
     },
     swapStartEnd() {
-      [this.propertyDataStart, this.propertyDataEnd] = [this.propertyDataEnd, this.propertyDataStart];
+      const start = this.propertyDataStart;
+      this.propertyDataStart = this.propertyDataEnd;
+      this.propertyDataEnd = start;
     },
   },
 };

@@ -343,19 +343,18 @@ export default {
           return null;
         }
 
-        const filterDistinguishableKeys = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
-        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => filterDistinguishableKeys(key));
-        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => filterDistinguishableKeys(key));
+        const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
+        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
+        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
-          const value1 = capability1.jsonObject[key];
-          const value2 = capability2.jsonObject[key];
-
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
             return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
+          const value1 = capability1.jsonObject[key];
+          const value2 = capability2.jsonObject[key];
           return value1 !== value2 && !arraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {
@@ -363,7 +362,7 @@ export default {
         }
 
         const capabilityJson = {};
-        const preferredJsonObject = capability1.jsonObject._splitted ? capability2.jsonObject : capability1.jsonObject; // we prefer unsplitted capability
+        const preferredJsonObject = (capability1.jsonObject._splitted ? capability2 : capability1).jsonObject; // we prefer unsplitted capability
         for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
         }
@@ -438,28 +437,30 @@ export default {
       }
 
       for (const { normalCap, shakingCap } of Object.values(capabilitiesPerSlot)) {
-        if (normalCap) {
-          const xmlCapability = getBaseXmlCapability(normalCap);
-          xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
-          xmlCapability.attribute('caption', normalCap.name);
+        if (!normalCap) {
+          continue;
+        }
 
-          if (shakingCap) {
-            let xmlShakeCapability;
+        const xmlCapability = getBaseXmlCapability(normalCap);
+        xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
+        xmlCapability.attribute('caption', normalCap.name);
 
-            if (shakingCap.shakeSpeed) {
-              const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
-              xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
-            }
-            else {
-              xmlShakeCapability = getBaseXmlCapability(shakingCap);
-            }
+        if (shakingCap) {
+          let xmlShakeCapability;
 
-            xmlShakeCapability.attribute('handler', 'goboshake');
-            xmlCapability.importDocument(xmlShakeCapability);
+          if (shakingCap.shakeSpeed) {
+            const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
+            xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
+          }
+          else {
+            xmlShakeCapability = getBaseXmlCapability(shakingCap);
           }
 
-          xmlGoboWheel.importDocument(xmlCapability);
+          xmlShakeCapability.attribute('handler', 'goboshake');
+          xmlCapability.importDocument(xmlShakeCapability);
         }
+
+        xmlGoboWheel.importDocument(xmlCapability);
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
@@ -544,7 +545,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFrostOn = capability.frostIntensity[0].number > 0;
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFrostOn}`);
+            xmlCapability.attribute('value', String(isFrostOn));
           }
           else {
             xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
@@ -696,7 +697,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFogOn}`);
+            xmlCapability.attribute('value', String(isFogOn));
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -724,7 +725,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFanOn}`);
+            xmlCapability.attribute('value', String(isFanOn));
           }
 
           xmlFan.importDocument(xmlCapability);

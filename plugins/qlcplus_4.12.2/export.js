@@ -266,7 +266,7 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res1 !== null) {
       xmlCapability.attribute('Res1', preset.res1);
 
-      if (`${preset.res1}`.startsWith('ofl/')) {
+      if (String(preset.res1).startsWith('ofl/')) {
         customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }
@@ -309,11 +309,11 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
 function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
-  let aliasAdded = false;
-  for (const alias of Object.keys(capability.switchChannels)) {
+  let isAliasAdded = false;
+  for (const [alias, switchedChannelKey] of Object.entries(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(switchedChannelKey);
 
     if (defaultChannel === switchedChannel) {
       continue;
@@ -324,7 +324,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     );
 
     for (const mode of modesContainingSwitchingChannel) {
-      aliasAdded = true;
+      isAliasAdded = true;
       xmlCapability.element({
         Alias: {
           '@Mode': mode.name,
@@ -335,7 +335,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     }
   }
 
-  return aliasAdded;
+  return isAliasAdded;
 }
 
 /**
@@ -355,9 +355,7 @@ function addMode(xml, mode, createPhysical) {
   }
 
   for (const [index, channel] of mode.channels.entries()) {
-    const uniqueName = channel instanceof SwitchingChannel
-      ? channel.defaultChannel.uniqueName
-      : channel.uniqueName;
+    const uniqueName = (channel instanceof SwitchingChannel ? channel.defaultChannel : channel).uniqueName;
 
     xmlMode.element({
       Channel: {
@@ -486,7 +484,7 @@ function getPanTiltMax(panOrTilt, channels) {
   const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
-  if (panTiltMax === Number.NEGATIVE_INFINITY) {
+  if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
@@ -597,8 +595,8 @@ function getChannelType(type) {
     Nothing: ['NoFunction'],
   };
 
-  for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {
-    if (qlcplusChannelTypes[qlcplusType].includes(type)) {
+  for (const [qlcplusType, oflTypes] of Object.entries(qlcplusChannelTypes)) {
+    if (oflTypes.includes(type)) {
       return qlcplusType;
     }
   }

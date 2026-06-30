@@ -145,10 +145,10 @@ import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
   if ('effectName' in capabilityTypeData) {
-    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
+    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, () => String(index + 1));
   }
   if ('comment' in capabilityTypeData) {
-    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
+    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, () => String(index + 1));
   }
 }
 
