@@ -53,14 +53,25 @@ for (const manufacturerFixture of Object.keys(register.filesystem)) {
   };
 
   // check all features
-  for (const fixtureFeature of allFixtureFeatures) {
-    if (await fixtureFeature.hasFeature(fixture)) {
-      fixtureResult.features.push(fixtureFeature.id);
-      featuresUsed[fixtureFeature.id]++;
-    }
-  }
+  await addMatchingFeatures(fixture, fixtureResult);
 
   fixtureFeatureResults.push(fixtureResult);
+}
+
+/**
+ * Adds the IDs of all fixture features that the given fixture supports to the result.
+ * @param {object} fixture - The fixture to check.
+ * @param {FixtureFeatureResult} fixtureResult - The result object to add matching feature IDs to.
+ */
+async function addMatchingFeatures(fixture, fixtureResult) {
+  for (const fixtureFeature of allFixtureFeatures) {
+    if (!await fixtureFeature.hasFeature(fixture)) {
+      continue;
+    }
+
+    fixtureResult.features.push(fixtureFeature.id);
+    featuresUsed[fixtureFeature.id]++;
+  }
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
@@ -114,7 +125,8 @@ catch (error) {
 async function getFixtureFeatures() {
   const fixtureFeatures = [];
 
-  for (const fileName of await readdir(fixtureFeaturesDirectoryUrl)) {
+  const fixtureFeatureFileNames = await readdir(fixtureFeaturesDirectoryUrl);
+  for (const fileName of fixtureFeatureFileNames) {
     if (path.extname(fileName) !== '.js') {
       continue;
     }
@@ -133,8 +145,8 @@ async function getFixtureFeatures() {
       }
 
       // check uniqueness of id
-      const featureIdExists = fixtureFeatures.some((feature) => feature.id === fixtureFeature.id);
-      if (featureIdExists) {
+      const isDuplicateFeatureId = fixtureFeatures.some((feature) => feature.id === fixtureFeature.id);
+      if (isDuplicateFeatureId) {
         console.error(styleText('red', '[Error]'), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }

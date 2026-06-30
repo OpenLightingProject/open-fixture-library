@@ -155,7 +155,9 @@ const sonarjsRules = {
 
 // eslint-plugin-unicorn
 const unicornRules = {
+  'unicorn/consistent-class-member-order': 'off', // cosmetic ordering that would separate private helpers from their callers
   'unicorn/consistent-function-scoping': 'off',
+  'unicorn/default-export-style': 'off', // `export default class X {}` breaks jsdoc2md class detection in `build:model-docs`
   'unicorn/dom-node-dataset': ['error', { preferAttributes: true }],
   'unicorn/filename-case': 'off',
   'unicorn/import-style': ['error', {
@@ -163,19 +165,11 @@ const unicornRules = {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/no-null': 'off',
-  'unicorn/no-process-exit': 'off',
-  'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
-  'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
-  'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
-  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
-  'unicorn/prefer-global-this': 'off',
-  'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
-  'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
-  'unicorn/prevent-abbreviations': ['error', {
+  'unicorn/name-replacements': ['error', {
     replacements: {
       ref: false,
       env: false,
+      repository: false, // we prefer the full word over `repo`
       man: { manufacturer: true },
       fix: { fixture: true },
       ch: { channel: true },
@@ -185,6 +179,21 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
+  'unicorn/no-null': 'off',
+  'unicorn/no-process-exit': 'off',
+  'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
+  'unicorn/no-top-level-assignment-in-function': 'off', // module-level state assigned from functions is intentional here
+  'unicorn/no-top-level-side-effects': 'off', // some modules legitimately set up state at import time
+  'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
+  'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
+  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
+  'unicorn/prefer-global-this': 'off',
+  'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
+  'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
+  'unicorn/prefer-number-coercion': 'off', // `Number.parseInt(x, 10)` is intentional and not equivalent to `Number(x)`
+  'unicorn/prefer-private-class-fields': 'off', // `#private` members are not documented by jsdoc2md in `build:model-docs`
+  'unicorn/prefer-uint8array-base64': 'off', // `Uint8Array.fromBase64()`/`toBase64()` are not available in the supported Node.js/browser versions yet
   'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
 };
 
@@ -367,7 +376,11 @@ export default defineConfig([
   internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
-  eslintPluginUnicorn.configs.recommended,
+  {
+    files: ['**/*.js', '**/*.cjs', '**/*.vue'],
+    extends: [eslintPluginUnicorn.configs.recommended],
+    rules: unicornRules,
+  },
   ...eslintPluginVue.configs['flat/vue2-recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
@@ -389,7 +402,6 @@ export default defineConfig([
       ...jsoncRules,
       ...promiseRules,
       ...sonarjsRules,
-      ...unicornRules,
       ...vueRules,
       ...vueA11yRules,
       ...vueExtensionRuleConfigs,
@@ -464,7 +476,6 @@ export default defineConfig([
       'jsonc/array-bracket-spacing': 'off',
 
       'ofl/fixture-json-array-format': 'error',
-      'unicorn/prevent-abbreviations': 'off',
     },
   },
   {
