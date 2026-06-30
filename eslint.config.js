@@ -2,6 +2,7 @@ import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
+import { defineConfig } from 'eslint/config';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
@@ -348,7 +349,7 @@ for (const [vueRuleName, extendedRuleName] of Object.entries(vueExtensionRules))
   }
 }
 
-export default [
+export default defineConfig([
   {
     ignores: [
       'package-lock.json',
@@ -475,4 +476,4 @@ export default [
     files: ['tests/*.test.js'],
     ...eslintPluginVitest.configs.recommended,
   },
-];
+]);
