@@ -2,6 +2,7 @@ import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
+import { defineConfig } from 'eslint/config';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
@@ -19,70 +20,75 @@ const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
   semi: true,
 });
 
-const enabledRuleParameters = {
-  // Core ESLint rules
-  'accessor-pairs': [],
-  'camelcase': [],
-  'consistent-return': [],
-  'curly': ['all'],
-  'dot-notation': [],
-  'eqeqeq': ['always', { null: 'ignore' }],
-  'getter-return': [],
-  'grouped-accessor-pairs': ['getBeforeSet'],
-  'guard-for-in': [],
-  'no-array-constructor': [],
-  'no-bitwise': [],
-  'no-constant-binary-expression': [],
-  'no-else-return': [{ allowElseIf: false }],
-  'no-empty': [],
-  'no-empty-function': [],
-  'no-irregular-whitespace': [],
-  'no-lonely-if': [],
-  'no-loop-func': [],
-  'no-nested-ternary': [],
-  'no-object-constructor': [],
-  'no-prototype-builtins': [],
-  'no-restricted-imports': [{
+// Core ESLint rules
+const coreRules = {
+  'accessor-pairs': 'error',
+  'camelcase': 'error',
+  'consistent-return': 'error',
+  'curly': ['error', 'all'],
+  'dot-notation': 'error',
+  'eqeqeq': ['error', 'always', { null: 'ignore' }],
+  'getter-return': 'error',
+  'grouped-accessor-pairs': ['error', 'getBeforeSet'],
+  'guard-for-in': 'error',
+  'no-array-constructor': 'error',
+  'no-bitwise': 'error',
+  'no-console': 'off',
+  'no-constant-binary-expression': 'error',
+  'no-else-return': ['error', { allowElseIf: false }],
+  'no-empty': 'error',
+  'no-empty-function': 'error',
+  'no-irregular-whitespace': 'error',
+  'no-lonely-if': 'error',
+  'no-loop-func': 'error',
+  'no-nested-ternary': 'error',
+  'no-object-constructor': 'error',
+  'no-prototype-builtins': 'error',
+  'no-restricted-imports': ['error', {
     name: 'fs',
     message: 'Please use \'fs/promises\' instead.',
   }],
-  'no-return-assign': [],
-  'no-return-await': [],
-  'no-shadow': [{
+  'no-return-assign': 'error',
+  'no-return-await': 'error',
+  'no-shadow': ['error', {
     builtinGlobals: false,
     allow: ['_'], // allow placeholder parameters that aren't used anyway
   }],
-  'no-template-curly-in-string': [],
-  'no-unsafe-optional-chaining': [{ disallowArithmeticOperators: true }],
-  'no-unused-vars': [{ args: 'none' }],
-  'no-unused-expressions': [],
-  'no-useless-assignment': [],
-  'no-var': [],
-  'object-shorthand': [],
-  'prefer-arrow-callback': [],
-  'prefer-const': [{ destructuring: 'all' }],
-  'prefer-object-spread': [],
-  'prefer-rest-params': [],
-  'prefer-template': [],
-  'radix': [],
+  'no-template-curly-in-string': 'error',
+  'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
+  'no-unused-expressions': 'error',
+  'no-unused-vars': ['error', { args: 'none' }],
+  'no-useless-assignment': 'error',
+  'no-var': 'error',
+  'object-shorthand': 'error',
+  'prefer-arrow-callback': 'error',
+  'prefer-const': ['error', { destructuring: 'all' }],
+  'prefer-object-spread': 'error',
+  'prefer-rest-params': 'error',
+  'prefer-template': 'error',
+  'radix': 'error',
+};
 
-  // eslint-plugin-stylistic
-  '@stylistic/curly-newline': ['always'],
-  '@stylistic/function-call-spacing': [],
-  '@stylistic/linebreak-style': [],
-  '@stylistic/no-confusing-arrow': [],
-  '@stylistic/quotes': ['single'],
+// eslint-plugin-stylistic
+const stylisticRules = {
+  '@stylistic/curly-newline': ['error', 'always'],
+  '@stylistic/function-call-spacing': 'error',
+  '@stylistic/linebreak-style': 'error',
+  '@stylistic/no-confusing-arrow': 'error',
+  '@stylistic/quotes': ['error', 'single'],
+};
 
-  // eslint-plugin-import-x
-  'import-x/extensions': ['ignorePackages'],
-  'import-x/first': [],
-  'import-x/newline-after-import': [],
-  'import-x/no-commonjs': [{ allowConditionalRequire: false }],
-  'import-x/no-dynamic-require': [],
-  'import-x/no-unresolved': [{
+// eslint-plugin-import-x
+const importRules = {
+  'import-x/extensions': ['error', 'ignorePackages'],
+  'import-x/first': 'error',
+  'import-x/newline-after-import': 'error',
+  'import-x/no-commonjs': ['error', { allowConditionalRequire: false }],
+  'import-x/no-dynamic-require': 'error',
+  'import-x/no-unresolved': ['error', {
     ignore: ['^@octokit/rest$', '^uuid$'],
   }],
-  'import-x/order': [{
+  'import-x/order': ['error', {
     'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
     'alphabetize': {
       order: 'asc',
@@ -95,12 +101,17 @@ const enabledRuleParameters = {
     },
     'newlines-between': 'never',
   }],
+};
 
-  // eslint-plugin-jsdoc
-  'jsdoc/check-indentation': [],
-  'jsdoc/check-syntax': [],
-  'jsdoc/require-hyphen-before-param-description': [],
-  'jsdoc/require-jsdoc': [{
+// eslint-plugin-jsdoc
+const jsdocRules = {
+  'jsdoc/check-indentation': 'error',
+  'jsdoc/check-syntax': 'error',
+  'jsdoc/no-defaults': 'off', // useful for model docs generation
+  'jsdoc/prefer-import-tag': ['error', { enableFixer: true, exemptTypedefs: false }],
+  'jsdoc/require-description': 'off',
+  'jsdoc/require-hyphen-before-param-description': 'error',
+  'jsdoc/require-jsdoc': ['error', {
     enableFixer: false,
     require: {
       FunctionDeclaration: true,
@@ -110,36 +121,55 @@ const enabledRuleParameters = {
       FunctionExpression: false,
     },
   }],
-  'jsdoc/prefer-import-tag': [{ enableFixer: true, exemptTypedefs: false }],
-  'jsdoc/tag-lines': ['never', { startLines: null }],
+  'jsdoc/tag-lines': ['error', 'never', { startLines: null }],
+};
 
-  // eslint-plugin-jsonc
-  'jsonc/auto': [],
+// eslint-plugin-jsonc
+const jsoncRules = {
+  'jsonc/auto': 'error',
+};
 
-  // eslint-plugin-promise
-  'promise/no-callback-in-promise': [],
-  'promise/no-multiple-resolved': [],
-  'promise/no-nesting': [],
-  'promise/no-promise-in-callback': [],
-  'promise/no-return-in-finally': [],
-  'promise/prefer-await-to-then': [],
-  'promise/valid-params': [],
+// eslint-plugin-promise
+const promiseRules = {
+  'promise/no-callback-in-promise': 'error',
+  'promise/no-multiple-resolved': 'error',
+  'promise/no-nesting': 'error',
+  'promise/no-promise-in-callback': 'error',
+  'promise/no-return-in-finally': 'error',
+  'promise/prefer-await-to-then': 'error',
+  'promise/valid-params': 'error',
+};
 
-  // eslint-plugin-sonarjs
-  'sonarjs/no-inverted-boolean-check': [],
+// eslint-plugin-sonarjs
+const sonarjsRules = {
+  'sonarjs/cognitive-complexity': 'warn', // reduced from `error` in the preset
+  'sonarjs/no-inverted-boolean-check': 'error',
+  'sonarjs/no-nested-functions': 'warn', // reduced from `error` in the preset
+  'sonarjs/no-os-command-from-path': 'off',
+  'sonarjs/os-command': 'off',
+  'sonarjs/pseudo-random': 'off',
+  'sonarjs/regex-complexity': 'warn', // reduced from `error` in the preset
+  'sonarjs/super-linear-regex': 'off',
+  'sonarjs/todo-tag': 'warn', // reduced from `error` in the preset
+};
 
-  // eslint-plugin-unicorn
-  'unicorn/dom-node-dataset': [{ preferAttributes: true }],
-  'unicorn/import-style': [{
+// eslint-plugin-unicorn
+const unicornRules = {
+  'unicorn/consistent-class-member-order': 'off', // cosmetic ordering that would separate private helpers from their callers
+  'unicorn/consistent-function-scoping': 'off',
+  'unicorn/default-export-style': 'off', // `export default class X {}` breaks jsdoc2md class detection in `build:model-docs`
+  'unicorn/dom-node-dataset': ['error', { preferAttributes: true }],
+  'unicorn/filename-case': 'off',
+  'unicorn/import-style': ['error', {
     styles: {
       'fs/promises': { named: true },
     },
   }],
-  'unicorn/prefer-export-from': [{ checkUsedVariables: false }],
-  'unicorn/prevent-abbreviations': [{
+  'unicorn/name-replacements': ['error', {
     replacements: {
       ref: false,
       env: false,
+      repository: false, // we prefer the full word over `repo`
       man: { manufacturer: true },
       fix: { fixture: true },
       ch: { channel: true },
@@ -149,111 +179,126 @@ const enabledRuleParameters = {
       cats: { categories: true },
     },
   }],
-  'unicorn/text-encoding-identifier-case': [{ withDash: true }],
+  'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
+  'unicorn/no-null': 'off',
+  'unicorn/no-process-exit': 'off',
+  'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
+  'unicorn/no-top-level-assignment-in-function': 'off', // module-level state assigned from functions is intentional here
+  'unicorn/no-top-level-side-effects': 'off', // some modules legitimately set up state at import time
+  'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
+  'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
+  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
+  'unicorn/prefer-global-this': 'off',
+  'unicorn/prefer-https': 'off', // there are still many HTTP-only websites
+  'unicorn/prefer-node-protocol': 'off', // not supported by Nuxt yet
+  'unicorn/prefer-number-coercion': 'off', // `Number.parseInt(x, 10)` is intentional and not equivalent to `Number(x)`
+  'unicorn/prefer-private-class-fields': 'off', // `#private` members are not documented by jsdoc2md in `build:model-docs`
+  'unicorn/prefer-uint8array-base64': 'off', // `Uint8Array.fromBase64()`/`toBase64()` are not available in the supported Node.js/browser versions yet
+  'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
+};
 
-  // eslint-plugin-vue
-  'vue/block-lang': [{
+// eslint-plugin-vue
+const vueRules = {
+  'vue/block-lang': ['error', {
     script: { allowNoLang: true },
     style: { lang: 'scss' },
     template: { allowNoLang: true },
   }],
-  'vue/block-order': [{
+  'vue/block-order': ['error', {
     order: ['template', 'style[scoped]', 'style:not([scoped])', 'script'],
   }],
-  'vue/component-options-name-casing': [],
-  'vue/component-name-in-template-casing': ['PascalCase', {
+  'vue/component-name-in-template-casing': ['error', 'PascalCase', {
     registeredComponentsOnly: false,
   }],
-  'vue/enforce-style-attribute': [],
-  'vue/html-button-has-type': [],
-  'vue/html-closing-bracket-newline': [{
+  'vue/component-options-name-casing': 'error',
+  'vue/enforce-style-attribute': 'error',
+  'vue/html-button-has-type': 'error',
+  'vue/html-closing-bracket-newline': ['error', {
     singleline: 'never',
     multiline: 'never',
   }],
-  'vue/match-component-file-name': [{
+  'vue/match-component-file-name': ['error', {
     extensions: ['vue'],
     shouldMatchCase: true,
   }],
-  'vue/match-component-import-name': [],
-  'vue/max-attributes-per-line': [{ singleline: 3 }],
-  'vue/next-tick-style': [],
-  'vue/no-boolean-default': ['default-false'],
-  'vue/no-duplicate-class-names': [],
-  'vue/no-empty-component-block': [],
-  'vue/no-undef-components': [{
+  'vue/match-component-import-name': 'error',
+  'vue/max-attributes-per-line': ['error', { singleline: 3 }],
+  'vue/multiline-html-element-content-newline': 'off',
+  'vue/next-tick-style': 'error',
+  'vue/no-boolean-default': ['error', 'default-false'],
+  'vue/no-duplicate-class-names': 'error',
+  'vue/no-empty-component-block': 'error',
+  'vue/no-mutating-props': 'warn', // reduced from `error` in the preset
+  'vue/no-undef-components': ['error', {
     ignorePatterns: [
       '^Ofl(Svg|Time)$', // global components
       '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
       '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
     ],
   }],
-  'vue/no-undef-directives': [],
-  'vue/no-undef-properties': [],
-  'vue/no-unused-emit-declarations': [],
-  'vue/no-unused-properties': [{
+  'vue/no-undef-directives': 'error',
+  'vue/no-undef-properties': 'error',
+  'vue/no-unused-emit-declarations': 'error',
+  'vue/no-unused-properties': ['error', {
     groups: ['props', 'data', 'computed', 'methods', 'setup'],
     ignorePublicMembers: true,
   }],
-  'vue/no-unused-refs': [],
-  'vue/no-use-v-else-with-v-for': [],
-  'vue/no-v-text': [],
-  'vue/prefer-prop-type-boolean-first': [],
-  'vue/prefer-separate-static-class': [],
-  'vue/prefer-single-event-payload': [],
-  'vue/prefer-true-attribute-shorthand': [],
-  'vue/require-direct-export': [],
-  'vue/v-for-delimiter-style': ['of'],
-  'vue/v-if-else-key': [],
-  'vue/v-on-handler-style': ['inline'],
-  'vue/v-slot-style': ['shorthand'],
+  'vue/no-unused-refs': 'error',
+  'vue/no-use-v-else-with-v-for': 'error',
+  'vue/no-v-html': 'warn', // reduced from `error` in the preset
+  'vue/no-v-text': 'error',
+  'vue/prefer-prop-type-boolean-first': 'error',
+  'vue/prefer-separate-static-class': 'error',
+  'vue/prefer-single-event-payload': 'error',
+  'vue/prefer-true-attribute-shorthand': 'error',
+  'vue/require-direct-export': 'error',
+  'vue/singleline-html-element-content-newline': 'off',
+  'vue/v-for-delimiter-style': ['error', 'of'],
+  'vue/v-if-else-key': 'error',
+  'vue/v-on-handler-style': ['error', 'inline'],
+  'vue/v-slot-style': ['error', 'shorthand'],
 
   // Vue 3 migration
-  'vue/no-deprecated-data-object-declaration': [],
-  // 'vue/no-deprecated-destroyed-lifecycle': [], // impossible to fix in Vue 2 (without Composition API)
-  'vue/no-deprecated-dollar-listeners-api': [],
-  'vue/no-deprecated-dollar-scopedslots-api': [],
-  'vue/no-deprecated-events-api': [],
-  'vue/no-deprecated-filter': [],
-  'vue/no-deprecated-functional-template': [],
-  'vue/no-deprecated-html-element-is': [],
-  'vue/no-deprecated-inline-template': [],
-  'vue/no-deprecated-model-definition': [{
+  'vue/no-deprecated-data-object-declaration': 'error',
+  // 'vue/no-deprecated-destroyed-lifecycle': 'error', // impossible to fix in Vue 2 (without Composition API)
+  'vue/no-deprecated-dollar-listeners-api': 'error',
+  'vue/no-deprecated-dollar-scopedslots-api': 'error',
+  'vue/no-deprecated-events-api': 'error',
+  'vue/no-deprecated-filter': 'error',
+  'vue/no-deprecated-functional-template': 'error',
+  'vue/no-deprecated-html-element-is': 'error',
+  'vue/no-deprecated-inline-template': 'error',
+  'vue/no-deprecated-model-definition': ['error', {
     allowVue3Compat: true,
   }],
-  'vue/no-deprecated-props-default-this': [],
-  'vue/no-deprecated-router-link-tag-prop': [],
-  'vue/no-deprecated-scope-attribute': [],
-  'vue/no-deprecated-slot-attribute': [],
-  'vue/no-deprecated-slot-scope-attribute': [],
-  'vue/no-deprecated-v-bind-sync': [],
-  'vue/no-deprecated-v-is': [],
-  'vue/no-deprecated-v-on-native-modifier': [],
-  'vue/no-deprecated-v-on-number-modifiers': [],
-  'vue/no-deprecated-vue-config-keycodes': [],
-  'vue/no-expose-after-await': [],
-  'vue/no-lifecycle-after-await': [],
-  'vue/no-negated-condition': [],
-  'vue/no-negated-v-if-condition': [],
-  'vue/no-watch-after-await': [],
-  'vue/prefer-import-from-vue': [],
-  'vue/require-explicit-emits': [],
-  'vue/require-slots-as-functions': [],
-  'vue/require-toggle-inside-transition': [],
-  'vue/v-on-event-hyphenation': [],
+  'vue/no-deprecated-props-default-this': 'error',
+  'vue/no-deprecated-router-link-tag-prop': 'error',
+  'vue/no-deprecated-scope-attribute': 'error',
+  'vue/no-deprecated-slot-attribute': 'error',
+  'vue/no-deprecated-slot-scope-attribute': 'error',
+  'vue/no-deprecated-v-bind-sync': 'error',
+  'vue/no-deprecated-v-is': 'error',
+  'vue/no-deprecated-v-on-native-modifier': 'error',
+  'vue/no-deprecated-v-on-number-modifiers': 'error',
+  'vue/no-deprecated-vue-config-keycodes': 'error',
+  'vue/no-expose-after-await': 'error',
+  'vue/no-lifecycle-after-await': 'error',
+  'vue/no-negated-condition': 'error',
+  'vue/no-negated-v-if-condition': 'error',
+  'vue/no-watch-after-await': 'error',
+  'vue/prefer-import-from-vue': 'error',
+  'vue/require-explicit-emits': 'error',
+  'vue/require-slots-as-functions': 'error',
+  'vue/require-toggle-inside-transition': 'error',
+  'vue/v-on-event-hyphenation': 'error',
+};
 
-  // eslint-plugin-vuejs-accessibility
-  'vuejs-accessibility/no-aria-hidden-on-focusable': [],
-  'vuejs-accessibility/no-role-presentation-on-focusable': [],
-
-  // already included in presets, but needed here because we reduce severity to `warn`
-  'sonarjs/cognitive-complexity': [],
-  'sonarjs/no-nested-functions': [],
-  'sonarjs/regex-complexity': [],
-  'sonarjs/slow-regex': [],
-  'sonarjs/todo-tag': [],
-  'unicorn/no-array-for-each': [],
-  'vue/no-mutating-props': [],
-  'vue/no-v-html': [],
+// eslint-plugin-vuejs-accessibility
+const vueA11yRules = {
+  'vuejs-accessibility/form-control-has-label': 'off',
+  'vuejs-accessibility/label-has-for': 'off',
+  'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
+  'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
 };
 
 const vueExtensionRules = {
@@ -299,55 +344,20 @@ const vueExtensionRules = {
   'vue/template-curly-spacing': '@stylistic/template-curly-spacing',
 };
 
-const warnRules = new Set([
-  'jsdoc/require-jsdoc',
-  'sonarjs/cognitive-complexity',
-  'sonarjs/no-nested-functions',
-  'sonarjs/regex-complexity',
-  'sonarjs/slow-regex',
-  'sonarjs/todo-tag',
-  'vue/no-mutating-props',
-  'vue/no-v-html',
-]);
+const extendableRuleConfigs = {
+  ...eslintJs.configs.recommended.rules,
+  ...coreRules,
+  ...stylisticEslintConfig.rules,
+  ...stylisticRules,
+};
 
-const disabledRules = [
-  'no-console',
-  'jsdoc/no-defaults', // useful for model docs generation
-  'jsdoc/require-description',
-  'sonarjs/no-os-command-from-path',
-  'sonarjs/os-command',
-  'sonarjs/pseudo-random',
-  'unicorn/consistent-function-scoping',
-  'unicorn/filename-case',
-  'unicorn/no-this-outside-of-class', // needed in Vue Options API
-  'unicorn/no-null',
-  'unicorn/no-process-exit',
-  'unicorn/no-useless-switch-case', // explicit "useless" switch chases are documentation
-  'unicorn/no-useless-undefined', // conflicts with `consistent-return`
-  'unicorn/prefer-global-this',
-  'unicorn/prefer-https', // there are still many HTTP-only websites
-  'unicorn/prefer-node-protocol', // not supported by Nuxt yet
-  'vue/multiline-html-element-content-newline',
-  'vue/singleline-html-element-content-newline',
-  'vuejs-accessibility/form-control-has-label',
-  'vuejs-accessibility/label-has-for',
-];
+const vueExtensionRuleConfigs = Object.fromEntries(
+  Object.entries(vueExtensionRules)
+    .map(([vueRuleName, extendedRuleName]) => [vueRuleName, extendableRuleConfigs[extendedRuleName]])
+    .filter(([, extendedConfig]) => extendedConfig !== undefined),
+);
 
-const getRuleParameters = (ruleOptions) => (Array.isArray(ruleOptions) ? ruleOptions.slice(1) : []);
-
-for (const [vueRuleName, extendedRuleName] of Object.entries(vueExtensionRules)) {
-  if (enabledRuleParameters[extendedRuleName]) {
-    enabledRuleParameters[vueRuleName] = enabledRuleParameters[extendedRuleName];
-  }
-  else if (eslintJs.configs.recommended.rules[extendedRuleName] && eslintJs.configs.recommended.rules[extendedRuleName] !== 'off') {
-    enabledRuleParameters[vueRuleName] = getRuleParameters(eslintJs.configs.recommended.rules[extendedRuleName]);
-  }
-  else if (stylisticEslintConfig.rules[extendedRuleName] && stylisticEslintConfig.rules[extendedRuleName] !== 'off') {
-    enabledRuleParameters[vueRuleName] = getRuleParameters(stylisticEslintConfig.rules[extendedRuleName]);
-  }
-}
-
-export default [
+export default defineConfig([
   {
     ignores: [
       'package-lock.json',
@@ -366,7 +376,11 @@ export default [
   internalNuxt2EslintPlugin.configs.all,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginSonarjs.configs.recommended,
-  eslintPluginUnicorn.configs.recommended,
+  {
+    files: ['**/*.js', '**/*.cjs', '**/*.vue'],
+    extends: [eslintPluginUnicorn.configs.recommended],
+    rules: unicornRules,
+  },
   ...eslintPluginVue.configs['flat/vue2-recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
@@ -381,15 +395,16 @@ export default [
       sourceType: 'module',
     },
     rules: {
-      ...Object.fromEntries(
-        Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
-          ruleName,
-          [warnRules.has(ruleName) ? 'warn' : 'error', ...parameters],
-        ]),
-      ),
-      ...Object.fromEntries(
-        disabledRules.map((ruleName) => [ruleName, 'off']),
-      ),
+      ...coreRules,
+      ...stylisticRules,
+      ...importRules,
+      ...jsdocRules,
+      ...jsoncRules,
+      ...promiseRules,
+      ...sonarjsRules,
+      ...vueRules,
+      ...vueA11yRules,
+      ...vueExtensionRuleConfigs,
     },
     settings: {
       jsdoc: {
@@ -461,7 +476,6 @@ export default [
       'jsonc/array-bracket-spacing': 'off',
 
       'ofl/fixture-json-array-format': 'error',
-      'unicorn/prevent-abbreviations': 'off',
     },
   },
   {
@@ -474,4 +488,4 @@ export default [
     files: ['tests/*.test.js'],
     ...eslintPluginVitest.configs.recommended,
   },
-];
+]);

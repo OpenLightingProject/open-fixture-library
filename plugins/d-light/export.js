@@ -69,8 +69,8 @@ function exportFixtureMode(fixture, mode, options) {
 
   // channels are grouped by their channel type which is called AttributesDefinition in D::Light
   const channelsByAttribute = getChannelsByAttribute(mode.channels);
-  for (const attribute of Object.keys(channelsByAttribute)) {
-    addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
+  for (const [attribute, value] of Object.entries(channelsByAttribute)) {
+    addAttribute(xml, mode, attribute, value);
   }
 
   return {
@@ -185,7 +185,7 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
 
   if (channel instanceof FineChannel) {
     // for fine channels, this is simply the coarse channel's index
-    return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+    return String(mode.getChannelIndex(channel.coarseChannel.key) + 1);
   }
 
   if (attribute === 'FOCUS') {
@@ -281,8 +281,8 @@ function getChannelsByAttribute(channels) {
       EXTRA: ['NoFunction'],
     };
 
-    for (const attribute of Object.keys(oflToDLightMap)) {
-      if (oflToDLightMap[attribute].includes(channel.type)) {
+    for (const [attribute, types] of Object.entries(oflToDLightMap)) {
+      if (types.includes(channel.type)) {
         return attribute;
       }
     }

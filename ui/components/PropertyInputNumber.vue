@@ -84,11 +84,11 @@ export default {
      */
     validationData() {
       return {
-        'min': this.min === null ? null : `${this.min}`,
-        'max': this.max === null ? null : `${this.max}`,
-        'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
-        'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
-        'step': `${this.step}`,
+        'min': this.min === null ? null : String(this.min),
+        'max': this.max === null ? null : String(this.max),
+        'data-exclusive-minimum': this.exclusiveMinimum === null ? null : String(this.exclusiveMinimum),
+        'data-exclusive-maximum': this.exclusiveMaximum === null ? null : String(this.exclusiveMaximum),
+        'step': String(this.step),
         'type': 'number',
       };
     },

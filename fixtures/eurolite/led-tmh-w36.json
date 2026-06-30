@@ -1,0 +1,227 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-W36",
+  "shortName": "TMHW36",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Antti Maasalmi, Paul Rogalski"],
+    "createDate": "2026-06-26",
+    "lastModifyDate": "2026-06-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51785880-Manual-127374-1.0000-eurolite-led-tmh-w36-moving-head-zoom-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51785880-eurolite-led-tmh-w36-moving-head-zoom-wash.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FgVN-SWgsuE"
+    ]
+  },
+  "physical": {
+    "dimensions": [155, 255, 145],
+    "weight": 2.5,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [4, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 176],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "helpWanted": "Is there actually no variation in strobe speed across the DMX range?"
+        },
+        {
+          "dmxRange": [177, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "25deg",
+        "angleEnd": "6deg"
+      }
+    },
+    "Internal Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Mic Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Motion Macros / Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Effect",
+          "effectName": "Pan motion macro"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Tilt motion macro"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Effect",
+          "effectName": "Pan/Tilt motion macro"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Internal Programs",
+        "Program Speed / Mic Sensitivity",
+        "Motion Macros / Reset"
+      ]
+    }
+  ]
+}

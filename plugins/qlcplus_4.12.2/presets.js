@@ -70,7 +70,7 @@ export const importHelpers = {
     return capability;
   },
 
-  getShutterStrobeCap: (shutterEffect, speedStart = '', speedEnd = '', randomTiming = false) => {
+  getShutterStrobeCap: (shutterEffect, speedStart = '', speedEnd = '', isRandomTiming = false) => {
     const capability = {
       type: 'ShutterStrobe',
       shutterEffect,
@@ -84,7 +84,7 @@ export const importHelpers = {
       capability.speed = speedStart;
     }
 
-    if (randomTiming) {
+    if (isRandomTiming) {
       capability.randomTiming = true;
     }
 

@@ -1,5 +1,27 @@
 import xmlbuilder from 'xmlbuilder';
 
+/**
+ * Adds a `<range>` element for a single strobe/strobespeed capability combination, unless the strobe capability is of type "open".
+ * @param {object} xmlStrobe - The parent `<strobe>` XML element.
+ * @param {object} speedCapability - The strobespeed capability providing the range attributes.
+ * @param {object} strobeCapability - The strobe capability providing the type and DMX range.
+ */
+function addStrobeSpeedRange(xmlStrobe, speedCapability, strobeCapability) {
+  if (strobeCapability.attribs.type.value === 'open') {
+    return;
+  }
+
+  const xmlSpeedRange = xmlStrobe.element('range');
+  xmlSpeedRange.attribs = { ...speedCapability.attribs };
+  xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
+
+  xmlSpeedRange.element('step', {
+    handler: 'strobetype',
+    mindmx: strobeCapability.attribs.mindmx.value,
+    maxdmx: strobeCapability.attribs.maxdmx.value,
+  });
+}
+
 export default [
   {
     functions: ['strobe', 'strobespeed'],
@@ -12,17 +34,7 @@ export default [
 
       for (const speedCapability of strobespeed.children) {
         for (const strobeCapability of strobe.children) {
-          if (strobeCapability.attribs.type.value !== 'open') {
-            const xmlSpeedRange = xmlStrobe.element('range');
-            xmlSpeedRange.attribs = { ...speedCapability.attribs };
-            xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
-
-            xmlSpeedRange.element('step', {
-              handler: 'strobetype',
-              mindmx: strobeCapability.attribs.mindmx.value,
-              maxdmx: strobeCapability.attribs.maxdmx.value,
-            });
-          }
+          addStrobeSpeedRange(xmlStrobe, speedCapability, strobeCapability);
         }
       }
 

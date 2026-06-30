@@ -87,18 +87,16 @@ async function getDiffTasks(changedComponents) {
     })
     .toSorted((a, b) => {
       const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
-      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
-      const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
-
       if (manufacturerFixtureCompare !== 0) {
         return manufacturerFixtureCompare;
       }
 
+      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       if (currentPluginCompare !== 0) {
         return currentPluginCompare;
       }
 
-      return comparePluginCompare;
+      return a.comparePluginKey.localeCompare(b.comparePluginKey);
     });
 
   /**
@@ -219,13 +217,13 @@ async function performTask(task) {
       );
     }
 
-    for (const file of Object.keys(output.changedFiles)) {
+    for (const [file, value] of Object.entries(output.changedFiles)) {
       lines.push(
         '<details>',
         `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
         '',
         '```diff',
-        output.changedFiles[file],
+        value,
         '```',
         '</details>',
       );

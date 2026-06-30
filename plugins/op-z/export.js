@@ -75,7 +75,7 @@ function getOpZChannelType(channel, fixtureKey) {
   const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const opZChannelTypes = {
-    [`${defaultValue}`]: () => channel.isConstant || channel.type === 'Shutter',
+    [String(defaultValue)]: () => channel.isConstant || channel.type === 'Shutter',
     red: () => channel.color === 'Red',
     green: () => channel.color === 'Green',
     blue: () => channel.color === 'Blue',
@@ -102,7 +102,7 @@ function getOpZChannelType(channel, fixtureKey) {
     return channelType;
   }
 
-  return getKnobType(channel, fixtureKey) || `${defaultValue}`;
+  return getKnobType(channel, fixtureKey) || String(defaultValue);
 }
 
 /**

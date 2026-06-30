@@ -19,18 +19,19 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Run ESLint
-        run: npm run lint:eslint
-      - name: Run Stylelint
-        run: npm run lint:stylelint -- --formatter compact
-      - name: Run dmx-value-scaling test
-        run: npm run test:dmx-value-scaling
-      - name: Run fixtures-valid test
-        run: npm run test:fixtures-valid
-      - name: Run http-status test
-        run: npm run test:http-status
-      - name: Run built-files-committed test
-        run: npm run test:built-files-committed
+      - parallel:
+          - name: Run ESLint
+            run: npm run lint:eslint
+          - name: Run Stylelint
+            run: npm run lint:stylelint -- --formatter compact
+          - name: Run dmx-value-scaling test
+            run: npm run test:dmx-value-scaling
+          - name: Run fixtures-valid test
+            run: npm run test:fixtures-valid
+          - name: Run http-status test
+            run: npm run test:http-status
+          - name: Run built-files-committed test
+            run: npm run test:built-files-committed
   status:
     name: Status
     runs-on: ubuntu-latest
@@ -56,14 +57,15 @@ jobs:
           npm ci
       - name: Build
         run: npm run build
-      - name: Run export-diff test
-        run: node tests/github/export-diff.js
-      - name: Run exports-valid test
-        run: node tests/github/exports-valid.js
-      - name: Run schema-version-reminder
-        run: node tests/github/schema-version-reminder.js
-      - name: Run metadata-update-reminder
-        run: node tests/github/metadata-update-reminder.js
+      - parallel:
+          - name: Run export-diff test
+            run: node tests/github/export-diff.js
+          - name: Run exports-valid test
+            run: node tests/github/exports-valid.js
+          - name: Run schema-version-reminder
+            run: node tests/github/schema-version-reminder.js
+          - name: Run metadata-update-reminder
+            run: node tests/github/metadata-update-reminder.js
   markdown-link-check:
     name: Markdown Links
     runs-on: ubuntu-latest
