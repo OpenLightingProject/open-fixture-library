@@ -411,3 +411,24 @@ export async function updateReview(test) {
     })),
   });
 }
+
+/**
+ * Fetch the UTF-8 text content of a file at a specific ref.
+ * @param {string} filePath - Path of the file relative to the repo root.
+ * @param {string} ref - The git ref (branch name, tag, or commit SHA) to fetch from.
+ * @returns {Promise<string>} The file content as a UTF-8 string.
+ */
+export async function getFileContent(filePath, ref) {
+  const { data } = await githubClient.rest.repos.getContent({
+    owner: repoOwner,
+    repo: repoName,
+    path: filePath,
+    ref,
+  });
+
+  if (Array.isArray(data) || data.type !== 'file') {
+    throw new Error(`${filePath} at ${ref} is not a regular file.`);
+  }
+
+  return Buffer.from(data.content, 'base64').toString('utf-8');
+}
