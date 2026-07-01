@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LPC1818 CRI/LIME",
+  "shortName": "LPC1818",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["neuil"],
+    "createDate": "2026-07-01",
+    "lastModifyDate": "2026-07-01"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/18x18W_RGBWA_UV_Par_Light_User_Manual_5f020ddd-a8b6-4622-8c62-d83ebe5617d2.pdf?v=1753086383"
+    ],
+    "productPage": [
+      "https://betopperdj.com/fr/products/betopper-lpc1818-upgraded-18x18w-lime-amber-uv-rgb-led-par-light-8pcs?utm_source=google&utm_medium=cpc&utm_campaign=Search-Brand-EU&utm_content=Brand%20product&gad_source=1&gad_campaignid=22502257810&gbraid=0AAAAA_fDo50dbTDsQCGT9ad1-rgYJlviF&gclid=Cj0KCQjw9ZLSBhCcARIsAEhGKgM8fN33LK_f33ylgsl-2mXsyJXtpIas1mPFQ8TIGtl_kgnArW5Kt1saAplxEALw_wcB"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=K6Uy4YdwD98"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 400, 20],
+    "weight": 2.6,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 3600
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "No function": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CTO": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11CH",
+      "shortName": "11CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Strobe",
+        "No function",
+        "Program Speed",
+        "CTO"
+      ]
+    }
+  ]
+}
