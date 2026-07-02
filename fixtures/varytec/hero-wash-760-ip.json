@@ -1,0 +1,476 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Wash 760 IP",
+  "shortName": "Hero Wash",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["hasc tec"],
+    "createDate": "2023-01-17",
+    "lastModifyDate": "2026-01-25",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-06-23",
+      "comment": "GDTF v1.2 fixture type ID: 7E29816A-DC0F-4032-8AAC-DD23228EE72A"
+    }
+  },
+  "comment": "Fully Featured and Realistic implementation of the 760 IP",
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Red Orange",
+          "colors": ["#e41b01"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Amber",
+          "colors": ["#e47200"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow Amber",
+          "colors": ["#e4b000"]
+        },
+        {
+          "type": "Color",
+          "name": "Greenish Yellow",
+          "colors": ["#e4e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Yellow Green",
+          "colors": ["#a7e401"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Yellow Green",
+          "colors": ["#58e402"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Teal",
+          "colors": ["#03e417"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00e43a"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#04e486"]
+        },
+        {
+          "type": "Color",
+          "name": "Aqua",
+          "colors": ["#03e4bc"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Aqua",
+          "colors": ["#07e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Green Blue",
+          "colors": ["#81e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Lavender",
+          "colors": ["#8158e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Purple",
+          "colors": ["#8601e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Medium Purple",
+          "colors": ["#c300e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Mid Rose",
+          "colors": ["#e404e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Muave",
+          "colors": ["#e4015f"]
+        },
+        {
+          "type": "Color",
+          "name": "Nice Magenta",
+          "colors": ["#e40042"]
+        },
+        {
+          "type": "Color",
+          "name": "Warm Magenta",
+          "colors": ["#e40215"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Red",
+          "colors": ["#e42525"]
+        },
+        {
+          "type": "Color",
+          "name": "Straw",
+          "colors": ["#e47253"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark CTB",
+          "colors": ["#5271e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green",
+          "colors": ["#52e452"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#5a2fe4"]
+        },
+        {
+          "type": "Color",
+          "name": "Lighter Purple",
+          "colors": ["#d46ce4"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#e477e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Rose",
+          "colors": ["#e43133"]
+        },
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Mix"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Pos MSpeed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "0 %"
+        },
+        {
+          "dmxRange": [1, 62],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "25 %"
+        },
+        {
+          "dmxRange": [64, 126],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "50 %"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "75 %"
+        },
+        {
+          "dmxRange": [192, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "100 %"
+        }
+      ]
+    },
+    "Sh1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "helpWanted": "What does physical value 0…1 mean?"
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "Color Macro1": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color FX1": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Color FX2": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Color Mix MSpeed": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "RedBack": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (RedBack)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "GreenBack": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (GreenBack)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "BlueBack": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (BlueBack)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "WhiteBack": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Unknown (WhiteBack)",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "Fixture Global Reset": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "22 Channel",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Pos MSpeed",
+        "Zoom",
+        "Dim",
+        "Sh1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "CTO",
+        "Color Macro1",
+        "Color FX1",
+        "Color FX2",
+        "Color Mix MSpeed",
+        "RedBack",
+        "GreenBack",
+        "BlueBack",
+        "WhiteBack",
+        "Fixture Global Reset"
+      ]
+    }
+  ]
+}
