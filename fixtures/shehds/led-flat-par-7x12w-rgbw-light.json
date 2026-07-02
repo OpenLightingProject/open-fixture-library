@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 7x12W RGBW Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gustas Savickas"],
+    "createDate": "2024-01-11",
+    "lastModifyDate": "2024-01-11"
+  },
+  "comment": "Listed as 7x12w (total 84w), but clearly isn't. From my measurements it's ~20w total.",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1_E-cwaRPF2HxD61_goiq9XS-XMAeTPIf/view"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/shehds-led-par-7x12w-rgbw-stage-lighting"
+    ]
+  },
+  "physical": {
+    "dimensions": [17.9, 11.3, 17.8],
+    "weight": 0.9,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Default",
+        "comment": "Haven't figured out what these do, spec sheet - empty"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Function speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Function speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
