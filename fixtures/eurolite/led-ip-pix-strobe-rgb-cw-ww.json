@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED IP PIX Strobe RGB CW WW",
+  "shortName": "LED IP PIX Strobe",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["G"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2025-03-31",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-07-08",
+      "comment": "GDTF v1.2 fixture type ID: 5B17B112-12D0-4331-9280-04956FC78AAF"
+    }
+  },
+  "comment": "LED IP PIX Strobe RGB CW/WW",
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "32ch",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    }
+  ]
+}
