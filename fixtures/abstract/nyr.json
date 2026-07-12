@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "nyr",
+  "shortName": "nt",
+  "categories": ["Smoke", "Blinder", "Laser"],
+  "meta": {
+    "authors": ["35"],
+    "createDate": "2026-07-12",
+    "lastModifyDate": "2026-07-12"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=KNbW4XEwuH4&list=RDKNbW4XEwuH4&start_radio=1"
+    ]
+  },
+  "rdm": {
+    "modelId": 53,
+    "softwareVersion": "453"
+  },
+  "physical": {
+    "dimensions": [28, 10, 12],
+    "weight": 18,
+    "power": 11,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 5,
+      "lumens": 4
+    }
+  },
+  "availableChannels": {
+    "Strobe Speed": {
+      "fineChannelAliases": ["Strobe Speed fine", "Strobe Speed fine^2"],
+      "highlightValue": "233%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "fast CW",
+        "speedEnd": "fast CW"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "fede",
+      "channels": [
+        "Strobe Speed",
+        "Strobe Speed fine",
+        "Strobe Speed fine^2"
+      ]
+    }
+  ]
+}
