@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AF-150 DMX",
+  "shortName": "AF-150",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["AlbinE"],
+    "createDate": "2023-03-15",
+    "lastModifyDate": "2023-03-15"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_305148_v7_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/se/stairville_af_150_dmx_fog_machine.htm?gclid=EAIaIQobChMIrJi0lrvd_QIVxOtRCh2TSgAEEAAYASAAEgI1hPD_BwE"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 450, 265],
+    "weight": 5.5,
+    "power": 800,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutput": "110m^3/min"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fog",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}
