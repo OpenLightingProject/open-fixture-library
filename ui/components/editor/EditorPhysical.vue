@@ -160,10 +160,12 @@ watch(
 watch(
   () => props.modelValue.DMXconnector,
   async (newValue) => {
-    if (newValue === '[add-value]' && (instance?.proxy?.$root as any)?._oflRestoreComplete) {
-      await nextTick();
-      newDmxConnectorInput.value?.focus();
+    if (newValue !== '[add-value]' || !(instance?.proxy?.$root as any)?._oflRestoreComplete) {
+      return;
     }
+
+    await nextTick();
+    newDmxConnectorInput.value?.focus();
   }
 );
 

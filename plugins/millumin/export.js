@@ -8,11 +8,11 @@ export const version = '0.4.0';
 export const supportedOflVersion = '7.3.0';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -30,7 +30,7 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
+ * @param {Fixture} fixture - The fixture to export.
  * @returns {object} The generated fixture JSON file.
  */
 function getFixtureFile(fixture) {
@@ -83,7 +83,7 @@ function getFixtureFile(fixture) {
 /**
  * Replaces the fixture's categories array with one that only includes categories
  * from the supported OFL schema version.
- * @param {string[]} categories The fixture's categories array.
+ * @param {string[]} categories - The fixture's categories array.
  * @returns {string[]} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
@@ -119,8 +119,8 @@ function getDowngradedCategories(categories) {
 /**
  * Replaces the fixture's physical JSON object with one that fits to the supported OFL schema version.
  * Specifically, the outdated focus property (with type, panMax and tiltMax) is generated and added if needed.
- * @param {object} jsonPhysical The physical JSON that should be downgraded. May be an empty object.
- * @param {Fixture} fixture The fixture whose physical data should be downgraded.
+ * @param {object} jsonPhysical - The physical JSON that should be downgraded. May be an empty object.
+ * @param {Fixture} fixture - The fixture whose physical data should be downgraded.
  * @returns {object} The downgraded physical JSON object.
  */
 function getDowngradedFixturePhysical(jsonPhysical, fixture) {
@@ -147,7 +147,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > Number.NEGATIVE_INFINITY) {
+    if (panTiltMax > -Infinity) {
       return panTiltMax;
     }
 
@@ -188,8 +188,8 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
 }
 
 /**
- * @param {object | undefined} jsonMatrix The matrix JSON data (if present) that should be downgraded.
- * @param {Fixture} fixture The fixture the matrix belongs to.
+ * @param {object | undefined} jsonMatrix - The matrix JSON data (if present) that should be downgraded.
+ * @param {Fixture} fixture - The fixture the matrix belongs to.
  * @returns {object} A downgraded version of the specified matrix object.
  */
 function getDowngradedMatrix(jsonMatrix, fixture) {
@@ -203,9 +203,9 @@ function getDowngradedMatrix(jsonMatrix, fixture) {
 }
 
 /**
- * @param {string} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
- * @param {object} jsonChannel The channel JSON data that should be downgraded.
- * @param {Fixture} fixture The fixture the channel belongs to.
+ * @param {string} channelKey - A key that exists in given channelObject and specifies the channel that should be downgraded.
+ * @param {object} jsonChannel - The channel JSON data that should be downgraded.
+ * @param {Fixture} fixture - The fixture the channel belongs to.
  * @returns {object} A downgraded version of the specified channel object.
  */
 function getDowngradedChannel(channelKey, jsonChannel, fixture) {
@@ -262,10 +262,10 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
 /**
  * Saves the given data (or value, if given) into obj[property] if data is valid,
  * i.e. it is neither undefined, nor null, nor false.
- * @param {object} object The object where the property should be created.
- * @param {string} property The name of the property added to obj.
- * @param {unknown} data If this is valid, the property is added to obj.
- * @param {unknown} value The property value, if data is valid. Defaults to `data`.
+ * @param {object} object - The object where the property should be created.
+ * @param {string} property - The name of the property added to obj.
+ * @param {unknown} data - If this is valid, the property is added to obj.
+ * @param {unknown} value - The property value, if data is valid. Defaults to `data`.
  */
 function addIfValidData(object, property, data, value) {
   if (value === undefined) {

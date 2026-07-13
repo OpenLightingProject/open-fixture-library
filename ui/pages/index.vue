@@ -173,6 +173,7 @@ useHead({
         url: config.public.websiteUrl,
         potentialAction: {
           '@type': 'SearchAction',
+          // eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- `{search_term_string}` is a literal schema.org SearchAction placeholder
           target: `${config.public.websiteUrl}search?q={search_term_string}`,
           'query-input': 'required name=search_term_string',
         },

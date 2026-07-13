@@ -15,11 +15,11 @@ const colorNameListPromise = importJson('../../node_modules/color-name-list/dist
 export const version = '1.0.0';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -52,9 +52,9 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
- * @param {object} manufacturers The manufacturers object.
- * @param {object[]} namedColors The color names list.
+ * @param {Fixture} fixture - The fixture to export.
+ * @param {object} manufacturers - The manufacturers object.
+ * @param {object[]} namedColors - The color names list.
  * @returns {object} The generated fixture JSON.
  */
 function exportFixture(fixture, manufacturers, namedColors) {
@@ -81,7 +81,7 @@ function exportFixture(fixture, manufacturers, namedColors) {
 
 /**
  * Removes `powerConnectors` from physical.
- * @param {object|undefined} physicalJsonData The physical object to transform.
+ * @param {object|undefined} physicalJsonData - The physical object to transform.
  */
 function downgradePhysical(physicalJsonData) {
   if (physicalJsonData) {
@@ -92,8 +92,8 @@ function downgradePhysical(physicalJsonData) {
 /**
  * Resolves matrix channels in modes' channel lists.
  * It also adds the resolved template channels to `availableChannels` and adds a `pixelKey` property.
- * @param {object} fixtureJson The fixture JSON object where the resolved matrix channels should be saved to.
- * @param {Fixture} fixture The fixture whose template channels should be resolved.
+ * @param {object} fixtureJson - The fixture JSON object where the resolved matrix channels should be saved to.
+ * @param {Fixture} fixture - The fixture whose template channels should be resolved.
  */
 function transformMatrixChannels(fixtureJson, fixture) {
   for (const [index, mode] of fixture.modes.entries()) {
@@ -125,23 +125,25 @@ function transformMatrixChannels(fixtureJson, fixture) {
 /**
  * All channels with a single capability are converted to `capabilities: [capability]`,
  * and a `singleCapability` attribute with the value true is added.
- * @param {object} fixtureJson The fixture whose channels should be processed
+ * @param {object} fixtureJson - The fixture whose channels should be processed
  */
 function transformSingleCapabilityToArray(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
-    if (channel.capability) {
-      channel.capabilities = [channel.capability];
-      channel.singleCapability = true;
-      delete channel.capability;
+    if (!channel.capability) {
+      continue;
     }
+
+    channel.capabilities = [channel.capability];
+    channel.singleCapability = true;
+    delete channel.capability;
   }
 }
 
 /**
  * Replace capability properties' entity strings with unitless numbers, and
  * ColorIntensity capabilities' color property with its hex value.
- * @param {object} fixtureJson The fixture whose capabilities should be processed
- * @param {object[]} namedColors The color names list.
+ * @param {object} fixtureJson - The fixture whose capabilities should be processed
+ * @param {object[]} namedColors - The color names list.
  */
 function transformNonNumericValues(fixtureJson, namedColors) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
@@ -159,8 +161,8 @@ function transformNonNumericValues(fixtureJson, namedColors) {
 }
 
 /**
- * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
- * @param {object[]} namedColors The color names list.
+ * @param {object} capability - The capability where the color name in the color attribute should be replaced with its hex value
+ * @param {object[]} namedColors - The color names list.
  */
 function processColor(capability, namedColors) {
   const namedColor = namedColors.find((color) => color.name === capability.color);
@@ -174,7 +176,7 @@ function processColor(capability, namedColors) {
 }
 
 /**
- * @param {string} entityString The property value where the entity number should be extracted from.
+ * @param {string} entityString - The property value where the entity number should be extracted from.
  * @returns {number | string} A unitless number, or the original property value if it can't be parsed as an entity.
  */
 function getEntityNumber(entityString) {

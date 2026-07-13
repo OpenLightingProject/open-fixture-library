@@ -31,8 +31,8 @@ const emit = defineEmits<{
 const localValue = ref('');
 
 const validationData = computed(() => ({
-  minlength: 'minLength' in props.schemaProperty ? `${props.schemaProperty.minLength}` : null,
-  maxlength: 'maxLength' in props.schemaProperty ? `${props.schemaProperty.maxLength}` : null,
+  minlength: 'minLength' in props.schemaProperty ? String(props.schemaProperty.minLength) : null,
+  maxlength: 'maxLength' in props.schemaProperty ? String(props.schemaProperty.maxLength) : null,
 }));
 
 watch(() => props.modelValue, (newValue) => {

@@ -274,9 +274,9 @@ function applyQueryPrefillData() {
 
   try {
     const prefillObject = JSON.parse(route.query.prefill as string);
-    for (const key of Object.keys(prefillObject)) {
+    for (const [key, value] of Object.entries(prefillObject)) {
       if (isPrefillable(prefillObject, key)) {
-        (fixture.value as Record<string, unknown>)[key] = prefillObject[key];
+        (fixture.value as Record<string, unknown>)[key] = value;
       }
     }
   }

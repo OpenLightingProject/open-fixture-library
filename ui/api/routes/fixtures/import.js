@@ -14,7 +14,7 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /**
  * Imports the uploaded fixture file and responds with a FixtureCreateResult.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
 export async function importFixtureFile({ request }) {
@@ -36,7 +36,7 @@ export async function importFixtureFile({ request }) {
 }
 
 /**
- * @param {RequestBody} body The JSON request body.
+ * @param {RequestBody} body - The JSON request body.
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
  */
 async function importFixture(body) {
@@ -47,14 +47,19 @@ async function importFixture(body) {
   }
 
   const plugin = await import(`../../../../plugins/${body.plugin}/import.js`);
-  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
-    Buffer.from(body.fileContentBase64, 'base64'),
-    body.fileName,
-    body.author,
-  ).catch((parseError) => {
+  let importResult;
+  try {
+    importResult = await plugin.importFixtures(
+      Buffer.from(body.fileContentBase64, 'base64'),
+      body.fileName,
+      body.author,
+    );
+  }
+  catch (parseError) {
     parseError.message = `Parse error (${parseError.message})`;
     throw parseError;
-  });
+  }
+  const { manufacturers, fixtures, warnings } = importResult;
 
   /** @type {FixtureCreateResult} */
   const result = {

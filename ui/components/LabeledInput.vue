@@ -99,12 +99,14 @@ const fieldState = computed(() => {
   );
 
   for (const subFieldName of subFieldNames) {
-    if (formstate.$error?.[subFieldName]) {
-      const fieldState = formstate[subFieldName] as { $touched?: boolean; $submitted?: boolean };
+    if (!formstate.$error?.[subFieldName]) {
+      continue;
+    }
 
-      if (fieldState.$touched || fieldState.$submitted) {
-        return fieldState;
-      }
+    const fieldState = formstate[subFieldName] as { $touched?: boolean; $submitted?: boolean };
+
+    if (fieldState.$touched || fieldState.$submitted) {
+      return fieldState;
     }
   }
 

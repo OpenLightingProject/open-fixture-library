@@ -60,7 +60,9 @@ const restoredDate = computed(() => {
 });
 
 function discardRestored() {
-  localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave') || '[]').slice(0, -1)));
+  // put all items except the last one back
+  const autoSaveItems = JSON.parse(localStorage.getItem('autoSave') || '[]');
+  localStorage.setItem('autoSave', JSON.stringify(autoSaveItems.slice(0, -1)));
 
   emit('update:model-value', undefined);
   emit('restore-complete');

@@ -12,6 +12,8 @@ const requiredEnvironmentVariables = [
   'GITHUB_PR_HEAD_REF',
   'GITHUB_PR_BASE_REF',
 ];
+const GITHUB_BODY_MAX_BYTES = 262_144; // = max 65_536 4-byte Unicode characters
+const RESERVED_COMMENT_BYTES = 2144; // reserve space for comment/issue body header
 
 /** @type {Octokit} */
 let githubClient;
@@ -117,7 +119,7 @@ export async function fetchChangedComponents() {
 
   /**
    * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-   * @param {object} fileData The file object from GitHub.
+   * @param {object} fileData - The file object from GitHub.
    */
   function handleFileData(fileData) {
     if (fileData.status === 'renamed') {
@@ -133,8 +135,8 @@ export async function fetchChangedComponents() {
 
   /**
    * Parse the file type by its path and update the change summary of the file's status accordingly.
-   * @param {'added' | 'removed' | 'modified'} fileStatus What happened with the file in this pull request.
-   * @param {string} filePath The file name, relative to the repository's root.
+   * @param {'added' | 'removed' | 'modified'} fileStatus - What happened with the file in this pull request.
+   * @param {string} filePath - The file name, relative to the repository's root.
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
@@ -180,10 +182,10 @@ export async function fetchChangedComponents() {
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.fileUrl).
- * @param {object} test Information about the test script that wants to update the comment.
- * @param {URL} test.fileUrl URL of the test file.
- * @param {string} test.name Heading to be used in the comment
- * @param {string[]} test.lines The comment's lines of text
+ * @param {object} test - Information about the test script that wants to update the comment.
+ * @param {URL} test.fileUrl - URL of the test file.
+ * @param {string} test.name - Heading to be used in the comment
+ * @param {string[]} test.lines - The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 export async function updateComment(test) {
@@ -222,7 +224,7 @@ export async function updateComment(test) {
   const commentBlocks = await Promise.all(commentPromises);
   const comments = commentBlocks.flatMap((block) => block.data);
 
-  let equalFound = false;
+  let isEqualFound = false;
   const promises = comments.flatMap((comment) => {
     // get rid of \r linebreaks
     comment.body = comment.body.replaceAll('\r', '');
@@ -232,8 +234,8 @@ export async function updateComment(test) {
       return [];
     }
 
-    if (!equalFound && message === comment.body && test.lines.length > 0) {
-      equalFound = true;
+    if (!isEqualFound && message === comment.body && test.lines.length > 0) {
+      isEqualFound = true;
       console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return [];
     }
@@ -248,7 +250,7 @@ export async function updateComment(test) {
     });
   });
 
-  if (!equalFound && test.lines.length > 0) {
+  if (!isEqualFound && test.lines.length > 0) {
     console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
     promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,
@@ -260,4 +262,27 @@ export async function updateComment(test) {
   }
 
   return Promise.all(promises);
+}
+
+/**
+ * Tries to append `newLines` to `lines`. If adding `newLines` plus `tooLongMessage`
+ * (plus any `trailingLines`) would exceed the byte limit, appends `tooLongMessage`
+ * instead and returns `true`. Otherwise appends `newLines` and returns `false`.
+ *
+ * @param {string[]} lines - Accumulated lines so far (mutated in place).
+ * @param {readonly string[]} newLines - Lines to append.
+ * @param {string} tooLongMessage - Line to append when truncation is needed.
+ * @param {readonly string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
+ * @returns {boolean} `true` if truncation occurred, `false` otherwise.
+ */
+export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
+  const testContent = [...lines, ...newLines, tooLongMessage, ...trailingLines].join('\r\n');
+
+  if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
+    lines.push(tooLongMessage);
+    return true;
+  }
+
+  lines.push(...newLines);
+  return false;
 }

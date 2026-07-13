@@ -71,7 +71,7 @@ const letters = computed(() => {
     return result;
   }
 
-  for (const manufacturerKey of Object.keys(manufacturers.value)) {
+  for (const [manufacturerKey, manufacturer] of Object.entries(manufacturers.value)) {
     let letter = manufacturerKey.charAt(0).toUpperCase();
 
     if (!/^[A-Z]$/.test(letter)) {
@@ -87,9 +87,9 @@ const letters = computed(() => {
 
     result[letter].manufacturers.push({
       key: manufacturerKey,
-      name: manufacturers.value[manufacturerKey].name,
-      fixtureCount: manufacturers.value[manufacturerKey].fixtureCount,
-      color: manufacturers.value[manufacturerKey].color,
+      name: manufacturer.name,
+      fixtureCount: manufacturer.fixtureCount,
+      color: manufacturer.color,
     });
   }
 

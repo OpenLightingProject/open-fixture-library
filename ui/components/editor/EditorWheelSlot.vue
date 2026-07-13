@@ -108,14 +108,16 @@ const animationGoboEndValid = computed(() => {
 watch(
   () => props.slotNumber,
   async (newSlotNumber) => {
-    if (!props.channel.wheel?.slots[newSlotNumber - 1]) {
-      props.channel.wheel.slots[newSlotNumber - 1] = getEmptyWheelSlot();
-      open.value = true;
+    if (props.channel.wheel?.slots[newSlotNumber - 1]) {
+      return;
+    }
 
-      await nextTick();
-      if (slot.value) {
-        slot.value.type = suggestedType.value;
-      }
+    props.channel.wheel.slots[newSlotNumber - 1] = getEmptyWheelSlot();
+    open.value = true;
+
+    await nextTick();
+    if (slot.value) {
+      slot.value.type = suggestedType.value;
     }
   },
   { immediate: true }
@@ -126,9 +128,9 @@ async function changeSlotType() {
 
   if (typeData.value) {
     const defaultData = typeData.value.defaultData;
-    for (const property of Object.keys(defaultData)) {
+    for (const [property, value] of Object.entries(defaultData)) {
       if (!(property in slot.value.typeData)) {
-        slot.value.typeData[property] = defaultData[property];
+        slot.value.typeData[property] = value;
       }
     }
   }

@@ -113,12 +113,13 @@ function onTouchStart() {
 }
 
 onMounted(() => {
-  document.addEventListener('touchstart', onTouchStart, true);
-  document.addEventListener('mousemove', onMouseMove, true);
+  // adapted from https://stackoverflow.com/a/30303898/451391
+  document.addEventListener('touchstart', onTouchStart, { capture: true });
+  document.addEventListener('mousemove', onMouseMove, { capture: true });
 });
 
 onBeforeUnmount(() => {
-  document.removeEventListener('touchstart', onTouchStart, true);
-  document.removeEventListener('mousemove', onMouseMove, true);
+  document.removeEventListener('touchstart', onTouchStart, { capture: true });
+  document.removeEventListener('mousemove', onMouseMove, { capture: true });
 });
 </script>

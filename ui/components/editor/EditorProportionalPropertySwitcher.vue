@@ -256,6 +256,8 @@ const propertyDataEnd = computed({
     return props.capability.typeData[`${props.propertyName}End`];
   },
   set(newData) {
+  },
+  set(newData) {
     props.capability.typeData[`${props.propertyName}End`] = newData;
   },
 });
@@ -345,7 +347,9 @@ function onUnitSelected(newUnit: string) {
 }
 
 function swapStartEnd() {
-  [propertyDataStart.value, propertyDataEnd.value] = [propertyDataEnd.value, propertyDataStart.value];
+  const start = propertyDataStart.value;
+  propertyDataStart.value = propertyDataEnd.value;
+  propertyDataEnd.value = start;
 }
 
 defineExpose({ focus });

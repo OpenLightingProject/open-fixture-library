@@ -36,9 +36,9 @@ const emit = defineEmits<{
 const localValue = ref('');
 
 const validationData = computed(() => ({
-  pattern: 'pattern' in props.schemaProperty ? `${props.schemaProperty.pattern}` : null,
-  minlength: 'minLength' in props.schemaProperty ? `${props.schemaProperty.minLength}` : null,
-  maxlength: 'maxLength' in props.schemaProperty ? `${props.schemaProperty.maxLength}` : null,
+  pattern: 'pattern' in props.schemaProperty ? props.schemaProperty.pattern : null,
+  minlength: 'minLength' in props.schemaProperty ? String(props.schemaProperty.minLength) : null,
+  maxlength: 'maxLength' in props.schemaProperty ? String(props.schemaProperty.maxLength) : null,
 }));
 
 watch(() => props.modelValue, (newValue) => {

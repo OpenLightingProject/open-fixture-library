@@ -18,11 +18,11 @@ import {
 export const version = '1.3.2';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -56,12 +56,12 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
- * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @param {Fixture} fixture - The fixture to export.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
+ * @param {object} customGobos - An object where gobo resources not included in QLC+ can be added to.
  * @returns {Promise<object>} The generated fixture file.
  */
 async function getFixtureFile(fixture, options, customGobos) {
@@ -121,9 +121,9 @@ async function getFixtureFile(fixture, options, customGobos) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {CoarseChannel} channel The OFL channel object.
- * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @param {object} xml - The xmlbuilder <FixtureDefinition> object.
+ * @param {CoarseChannel} channel - The OFL channel object.
+ * @param {object} customGobos - An object where gobo resources not included in QLC+ can be added to.
  */
 async function addChannel(xml, channel, customGobos) {
   const channelType = getChannelType(channel.type);
@@ -167,9 +167,9 @@ async function addChannel(xml, channel, customGobos) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {FineChannel} fineChannel The OFL fine channel object.
- * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @param {object} xml - The xmlbuilder <FixtureDefinition> object.
+ * @param {FineChannel} fineChannel - The OFL fine channel object.
+ * @param {object} customGobos - An object where gobo resources not included in QLC+ can be added to.
  */
 async function addFineChannel(xml, fineChannel, customGobos) {
   if (!fineChannel.fixture.allChannels.includes(fineChannel)) {
@@ -234,9 +234,9 @@ async function addFineChannel(xml, fineChannel, customGobos) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
- * @param {Capability} capability The OFL capability object.
- * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @param {object} xmlChannel - The xmlbuilder <Channel> object.
+ * @param {Capability} capability - The OFL capability object.
+ * @param {object} customGobos - An object where gobo resources not included in QLC+ can be added to.
  */
 async function addCapability(xmlChannel, capability, customGobos) {
   const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
@@ -266,7 +266,7 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res1 !== null) {
       xmlCapability.attribute('Res1', preset.res1);
 
-      if (`${preset.res1}`.startsWith('ofl/')) {
+      if (String(preset.res1).startsWith('ofl/')) {
         customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }
@@ -278,9 +278,9 @@ async function addCapability(xmlChannel, capability, customGobos) {
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} capability The OFL capability object.
- * @param {object} customGobos An object where gobo resources not included in QLC+ can be added to.
+ * @param {object} xmlCapability - The xmlbuilder <Capability> object.
+ * @param {Capability} capability - The OFL capability object.
+ * @param {object} customGobos - An object where gobo resources not included in QLC+ can be added to.
  */
 async function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
   if (capability.colors !== null && capability.colors.allColors.length <= 2) {
@@ -302,18 +302,18 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} capability The OFL capability object.
+ * @param {object} xmlCapability - The xmlbuilder <Capability> object.
+ * @param {Capability} capability - The OFL capability object.
  * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
 function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
-  let aliasAdded = false;
-  for (const alias of Object.keys(capability.switchChannels)) {
+  let isAliasAdded = false;
+  for (const [alias, switchedChannelKey] of Object.entries(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(switchedChannelKey);
 
     if (defaultChannel === switchedChannel) {
       continue;
@@ -324,7 +324,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     );
 
     for (const mode of modesContainingSwitchingChannel) {
-      aliasAdded = true;
+      isAliasAdded = true;
       xmlCapability.element({
         Alias: {
           '@Mode': mode.name,
@@ -335,13 +335,13 @@ function addCapabilityAliases(xmlCapability, capability) {
     }
   }
 
-  return aliasAdded;
+  return isAliasAdded;
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {Mode} mode The OFL mode object.
- * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
+ * @param {object} xml - The xmlbuilder <FixtureDefinition> object.
+ * @param {Mode} mode - The OFL mode object.
+ * @param {boolean} createPhysical - Whether to add a Physical XML element to the mode.
  */
 function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
@@ -355,9 +355,7 @@ function addMode(xml, mode, createPhysical) {
   }
 
   for (const [index, channel] of mode.channels.entries()) {
-    const uniqueName = channel instanceof SwitchingChannel
-      ? channel.defaultChannel.uniqueName
-      : channel.uniqueName;
+    const uniqueName = (channel instanceof SwitchingChannel ? channel.defaultChannel : channel).uniqueName;
 
     xmlMode.element({
       Channel: {
@@ -373,10 +371,10 @@ function addMode(xml, mode, createPhysical) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
- * @param {Physical} physical The OFL physical object.
- * @param {Fixture} fixture The OFL fixture object.
- * @param {Mode | null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
+ * @param {object} xmlParentNode - The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
+ * @param {Physical} physical - The OFL physical object.
+ * @param {Fixture} fixture - The OFL fixture object.
+ * @param {Mode | null} mode - The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
   const panMax = getPanTiltMax('Pan', mode?.channels ?? fixture.coarseChannels);
@@ -474,8 +472,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 }
 
 /**
- * @param {'Pan' | 'Tilt'} panOrTilt Whether to return pan max or tilt max.
- * @param {CoarseChannel[]} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
+ * @param {'Pan' | 'Tilt'} panOrTilt - Whether to return pan max or tilt max.
+ * @param {CoarseChannel[]} channels - The channels in which to look for pan/tilt angles, e.g. all mode channels.
  * @returns {number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
  */
 function getPanTiltMax(panOrTilt, channels) {
@@ -486,7 +484,7 @@ function getPanTiltMax(panOrTilt, channels) {
   const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
-  if (panTiltMax === Number.NEGATIVE_INFINITY) {
+  if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
@@ -500,8 +498,8 @@ function getPanTiltMax(panOrTilt, channels) {
 
 /**
  * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearance in JSON).
- * @param {XMLElement} xmlMode The Mode tag to which the Head tags should be added
- * @param {Mode} mode The fixture's mode whose pixels should be determined.
+ * @param {XMLElement} xmlMode - The Mode tag to which the Head tags should be added
+ * @param {Mode} mode - The fixture's mode whose pixels should be determined.
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
@@ -523,8 +521,8 @@ function addHeads(xmlMode, mode) {
   }
 
   /**
-   * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
+   * @param {AbstractChannel} channel - A channel from a mode's channel list.
+   * @param {string} pixelKey - The pixel to check for.
    * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
@@ -546,7 +544,7 @@ function addHeads(xmlMode, mode) {
 
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
- * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
+ * @param {Fixture} fixture - The Fixture instance whose QLC+ type has to be determined.
  * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
@@ -578,7 +576,7 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
+ * @param {string} type - Our own OFL channel type.
  * @returns {string} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
@@ -597,8 +595,8 @@ function getChannelType(type) {
     Nothing: ['NoFunction'],
   };
 
-  for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {
-    if (qlcplusChannelTypes[qlcplusType].includes(type)) {
+  for (const [qlcplusType, oflTypes] of Object.entries(qlcplusChannelTypes)) {
+    if (oflTypes.includes(type)) {
       return qlcplusType;
     }
   }

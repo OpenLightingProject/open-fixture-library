@@ -70,7 +70,7 @@ export const importHelpers = {
     return capability;
   },
 
-  getShutterStrobeCap: (shutterEffect, speedStart = '', speedEnd = '', randomTiming = false) => {
+  getShutterStrobeCap: (shutterEffect, speedStart = '', speedEnd = '', isRandomTiming = false) => {
     const capability = {
       type: 'ShutterStrobe',
       shutterEffect,
@@ -84,7 +84,7 @@ export const importHelpers = {
       capability.speed = speedStart;
     }
 
-    if (randomTiming) {
+    if (isRandomTiming) {
       capability.randomTiming = true;
     }
 
@@ -164,7 +164,7 @@ export const importHelpers = {
   },
 
   /**
-   * @param {string | undefined} direction A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
+   * @param {string | undefined} direction - A string containing something like "CW", "CCW", "clockwise", "counter-clockwise".
    * @returns {string} The normalized direction suffix.
    */
   getDirectionSuffix(direction) {
@@ -178,8 +178,8 @@ export const importHelpers = {
   /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
-   * @param {string} capabilityName The capability name to extract information from.
-   * @param {object} capability The OFL capability object to add found properties to.
+   * @param {string} capabilityName - The capability name to extract information from.
+   * @param {object} capability - The OFL capability object to add found properties to.
    * @returns {string} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, capability) {
@@ -560,7 +560,7 @@ const channelPresets = {
 };
 
 /**
- * @param {CoarseChannel} channel The OFL channel object.
+ * @param {CoarseChannel} channel - The OFL channel object.
  * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 export function getChannelPreset(channel) {
@@ -574,10 +574,10 @@ export function getChannelPreset(channel) {
 }
 
 /**
- * @param {string} preset The channel preset to import.
- * @param {string} channelName The channel name.
- * @param {number} panMax The maximum pan angle, or 0.
- * @param {number} tiltMax The maximum tilt angle, or 0.
+ * @param {string} preset - The channel preset to import.
+ * @param {string} channelName - The channel name.
+ * @param {number} panMax - The maximum pan angle, or 0.
+ * @param {number} tiltMax - The maximum tilt angle, or 0.
  * @returns {object} The OFL capability object.
  */
 export function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
@@ -687,7 +687,7 @@ const fineChannelPresets = {
 };
 
 /**
- * @param {FineChannel} fineChannel The OFL fine channel object.
+ * @param {FineChannel} fineChannel - The OFL fine channel object.
  * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 export function getFineChannelPreset(fineChannel) {
@@ -1128,7 +1128,7 @@ export const capabilityPresets = {
  */
 
 /**
- * @param {Capability} capability The OFL capability object.
+ * @param {Capability} capability - The OFL capability object.
  * @returns {Promise<CapabilityPreset | null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
  */
 export async function getCapabilityPreset(capability) {
@@ -1149,8 +1149,8 @@ export async function getCapabilityPreset(capability) {
 }
 
 /**
- * @param {string} preset The capability preset to import.
- * @param {object} capabilityData Additional data about capability and channel.
+ * @param {string} preset - The capability preset to import.
+ * @param {object} capabilityData - Additional data about capability and channel.
  * @returns {object} The OFL capability object.
  */
 export function getCapabilityFromCapabilityPreset(preset, capabilityData) {

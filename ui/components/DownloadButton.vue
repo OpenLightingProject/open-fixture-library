@@ -272,7 +272,8 @@ function downloadDataAsFile(blob: Blob, filename = '') {
   const anchorElement = document.createElement('a');
 
   if (anchorElement.download === undefined) {
-    window.location = downloadUrl;
+    // non-HTML5 workaround
+    window.location.assign(downloadUrl);
   }
   else {
     anchorElement.href = downloadUrl;

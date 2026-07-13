@@ -421,10 +421,12 @@ const submitButtonTitle = computed(() => {
 });
 
 watch(() => props.channel, () => {
-  if (isChannelChanged(props.channel)) {
-    emit(`channel-changed`);
-    channelChanged.value = true;
+  if (!isChannelChanged(props.channel)) {
+    return;
   }
+
+  emit(`channel-changed`);
+  channelChanged.value = true;
 }, { deep: true });
 
 function getFixtureEditor() {
@@ -559,8 +561,8 @@ async function onChannelDialogOpen() {
 }
 
 function copyPropertiesFromChannel(channel: object) {
-  for (const property of Object.keys(channel)) {
-    (props.channel as any)[property] = structuredClone((channel as any)[property]);
+  for (const [property, value] of Object.entries(channel)) {
+    (props.channel as any)[property] = structuredClone(value);
   }
 }
 
@@ -711,8 +713,7 @@ function saveEditedChannel() {
   props.fixture.availableChannels[props.channel.uuid] = getSanitizedChannel(props.channel);
 
   if (previousResolution > props.channel.resolution) {
-    for (const channelId of Object.keys(props.fixture.availableChannels)) {
-      const channel = props.fixture.availableChannels[channelId];
+    for (const [channelId, channel] of Object.entries(props.fixture.availableChannels)) {
       if (channel.coarseChannelId === props.channel.uuid && channel.resolution > props.channel.resolution) {
         emit(`remove-channel`, channelId);
       }

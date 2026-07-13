@@ -4,12 +4,12 @@ import Range from '../../../lib/model/Range.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
- * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {string} exportFile.content File content.
- * @param {string} exportFile.mimetype File mime type.
- * @param {Fixture[]} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {string} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @param {object} exportFile - The file returned by the plugins' export module.
+ * @param {string} exportFile.name - File name, may include slashes to provide a folder structure.
+ * @param {string} exportFile.content - File content.
+ * @param {string} exportFile.mimetype - File mime type.
+ * @param {Fixture[]} exportFile.fixtures - Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {string} exportFile.mode - Mode's shortName if given file only describes a single mode.
  * @returns {Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
  */
 export default async function testChannelNumbers(exportFile) {
@@ -42,8 +42,8 @@ export default async function testChannelNumbers(exportFile) {
 
   /**
    * Recursively searches the given XML tree for tags with dmxchannel attributes and capabilities.
-   * @param {XMLElement} xmlNode A single XML node.
-   * @param {number} currentChannelIndex The index of the channel if the xmlNode is inside a function associated to a channel. Else, it's -1.
+   * @param {XMLElement} xmlNode - A single XML node.
+   * @param {number} currentChannelIndex - The index of the channel if the xmlNode is inside a function associated to a channel. Else, it's -1.
    */
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
@@ -75,9 +75,9 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    for (const tagname of Object.keys(xmlNode)) {
+    for (const [tagname, children] of Object.entries(xmlNode)) {
       if (tagname !== '$') {
-        for (const child of xmlNode[tagname]) {
+        for (const child of children) {
           findChannels(child, currentChannelIndex);
         }
       }
@@ -86,8 +86,8 @@ export default async function testChannelNumbers(exportFile) {
 
   /**
    * Checks the given capability xml and adds the DMX range to the channel's ranges.
-   * @param {XMLElement} xmlNode A <step> or <range> element.
-   * @param {number} channelIndex The index of the channel that contains this capability.
+   * @param {XMLElement} xmlNode - A <step> or <range> element.
+   * @param {number} channelIndex - The index of the channel that contains this capability.
    */
   function addCapability(xmlNode, channelIndex) {
     const mindmx = Number.parseInt(xmlNode.$.mindmx, 10);
@@ -151,24 +151,20 @@ export default async function testChannelNumbers(exportFile) {
     }
 
     /**
-     * @param {AbstractChannel} channel The channel to check.
+     * @param {AbstractChannel} channel - The channel to check.
      * @returns {boolean} Whether the given channel is of type NoFunction. If it is a switching channel, the default channel is checked.
      */
     function isNoFunctionChannel(channel) {
-      if (channel.type === 'NoFunction') {
-        return true;
+      while (channel.type !== 'NoFunction' && channel instanceof SwitchingChannel) {
+        channel = channel.defaultChannel;
       }
 
-      if (channel instanceof SwitchingChannel) {
-        return isNoFunctionChannel(channel.defaultChannel);
-      }
-
-      return false;
+      return channel.type === 'NoFunction';
     }
   }
 
   /**
-   * @param {Range[]} ranges A channel's found ranges with adjacent ones already merged.
+   * @param {Range[]} ranges - A channel's found ranges with adjacent ones already merged.
    * @returns {boolean} True if there's only one 0…255 range or no range at all.
    */
   function areRangesComplete(ranges) {

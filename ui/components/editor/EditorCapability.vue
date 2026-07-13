@@ -228,8 +228,8 @@ function onEndUpdated() {
 
 function clear() {
   const emptyCapability = getEmptyCapability();
-  for (const property of Object.keys(emptyCapability)) {
-    capability.value[property as keyof typeof capability.value] = emptyCapability[property as keyof typeof emptyCapability];
+  for (const [property, value] of Object.entries(emptyCapability)) {
+    capability.value[property as keyof typeof capability.value] = value as typeof capability.value[keyof typeof capability.value];
   }
   collapseWithNeighbors();
 }

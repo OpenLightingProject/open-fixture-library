@@ -10,11 +10,11 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 export const version = '0.3.0';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -57,18 +57,18 @@ export async function exportFixtures(fixtures, options) {
     Tiles: {},
   });
 
-  for (const manufacturer of Object.keys(manufacturers)) {
+  for (const manufacturer of Object.values(manufacturers)) {
     const manufacturerAttributes = {
       _CreationDate: timestamp,
       _ModifiedDate: timestamp,
-      Name: manufacturers[manufacturer].data.name,
-      Comment: manufacturers[manufacturer].data.comment,
-      Web: manufacturers[manufacturer].data.website || '',
+      Name: manufacturer.data.name,
+      Comment: manufacturer.data.comment,
+      Web: manufacturer.data.website || '',
     };
     xmlTiles.element('Manufacturer', manufacturerAttributes);
 
     const xmlManufacturerFixtures = xmlFixtures.element('Manufacturer', manufacturerAttributes);
-    for (const fixture of manufacturers[manufacturer].fixtures) {
+    for (const fixture of manufacturer.fixtures) {
       addFixture(xmlManufacturerFixtures, fixture);
     }
   }
@@ -85,8 +85,8 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {object} xmlManufacturer The xmlbuilder <Manufacturer> object.
- * @param {Fixture} fixture The OFL fixture object.
+ * @param {object} xmlManufacturer - The xmlbuilder <Manufacturer> object.
+ * @param {Fixture} fixture - The OFL fixture object.
  */
 function addFixture(xmlManufacturer, fixture) {
   try {
@@ -121,8 +121,8 @@ function addFixture(xmlManufacturer, fixture) {
 }
 
 /**
- * @param {object} xmlFixture The xmlbuilder <Fixture> object.
- * @param {Mode} mode The OFL mode object.
+ * @param {object} xmlFixture - The xmlbuilder <Fixture> object.
+ * @param {Mode} mode - The OFL mode object.
  */
 function handleMode(xmlFixture, mode) {
   let viewPosCount = 1;
@@ -188,7 +188,7 @@ function handleMode(xmlFixture, mode) {
 }
 
 /**
- * @param {Fixture} fixture The OFL fixture object.
+ * @param {Fixture} fixture - The OFL fixture object.
  * @returns {string} The comment to use in the exported fixture.
  */
 function getFixtureComment(fixture) {
@@ -200,7 +200,7 @@ function getFixtureComment(fixture) {
 }
 
 /**
- * @param {CoarseChannel} channel The OFL channel object.
+ * @param {CoarseChannel} channel - The OFL channel object.
  * @returns {string} The e:cue channel type for the channel.
  */
 function getChannelType(channel) {
@@ -236,9 +236,9 @@ function getChannelType(channel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel*> object.
- * @param {CoarseChannel} channel The OFL channel object.
- * @param {number} resolution The resolution of the channel in the current mode.
+ * @param {object} xmlChannel - The xmlbuilder <Channel*> object.
+ * @param {CoarseChannel} channel - The OFL channel object.
+ * @param {number} resolution - The resolution of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, resolution) {
   for (const capability of channel.capabilities) {
@@ -254,7 +254,7 @@ function addCapabilities(xmlChannel, channel, resolution) {
 }
 
 /**
- * @param {Date} date The date to format.
+ * @param {Date} date - The date to format.
  * @returns {string} The date in YYYY-MM-DD#HH:mm:ss format.
  */
 function dateToString(date) {

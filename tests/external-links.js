@@ -7,8 +7,9 @@ import https from 'https';
 import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
+import { appendOrTruncate } from './github/pull-request.js';
 
-const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
+const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
 const TIMEOUT = 30_000;
 
@@ -21,7 +22,7 @@ const excludedUrls = [
 ];
 
 const testStartTime = Date.now();
-let errored = false;
+let isErrored = false;
 
 try {
   const crawler = new SiteCrawler();
@@ -39,10 +40,12 @@ try {
   const externalUrlSet = new Set();
 
   crawler.addEventListener('externalLinkFound', ({ url }) => {
-    if (!excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
-      externalUrlSet.add(url);
-      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+    if (excludedUrls.some((excludedUrl) => url.startsWith(excludedUrl))) {
+      return;
     }
+
+    externalUrlSet.add(url);
+    process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
   });
 
   const crawlStartTime = Date.now();
@@ -71,13 +74,13 @@ try {
 }
 catch (error) {
   console.error(error);
-  errored = true;
+  isErrored = true;
 }
 
 const testTime = Date.now() - testStartTime;
 console.log();
 console.log(styleText(['greenBright', 'bold'], `Test took ${testTime / 1000}s.`));
-process.exit(errored ? 1 : 0);
+process.exit(isErrored ? 1 : 0);
 
 /**
  * @typedef {object} UrlResult
@@ -87,10 +90,10 @@ process.exit(errored ? 1 : 0);
  */
 
 /**
- * Fetches the given URLs in small blocks that reduce the likelyhood of false negatives.
+ * Fetches the given URLs in small blocks that reduce the likelihood of false negatives.
  * Pass / fail messages are constantly outputted to console.
  *
- * @param {string[]} externalUrls The URLs to fetch.
+ * @param {string[]} externalUrls - The URLs to fetch.
  * @returns {Promise<UrlResult[]>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
  */
 async function fetchExternalUrls(externalUrls) {
@@ -137,7 +140,7 @@ async function fetchExternalUrls(externalUrls) {
 }
 
 /**
- * @param {string} url The URL to check.
+ * @param {string} url - The URL to check.
  * @returns {Promise<UrlResult>} Status of the checked url.
  */
 async function testExternalLink(url) {
@@ -151,7 +154,7 @@ async function testExternalLink(url) {
   return resultHEAD;
 
   /**
-   * @param {string} method The HTTP requests method, e.g. GET or HEAD.
+   * @param {string} method - The HTTP requests method, e.g. GET or HEAD.
    * @returns {Promise<UrlResult>} Status of the url which has been requested with the given method.
    */
   function getResult(method) {
@@ -195,7 +198,7 @@ async function testExternalLink(url) {
 /**
  * Updates the GitHub issue for broken links.
  *
- * @param {UrlResult[]} urlResults Fetch results of all external URLs.
+ * @param {UrlResult[]} urlResults - Fetch results of all external URLs.
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
@@ -239,7 +242,7 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
-  const deletedUrls = Object.keys(oldLinkData).filter((url) => !urlResults.some((result) => result.url === url));
+  const deletedUrls = Object.keys(oldLinkData).filter((url) => urlResults.every((result) => result.url !== url));
 
   console.log(`Updating GitHub issue body at https://github.com/${process.env.GITHUB_REPOSITORY}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.rest.issues.update({
@@ -265,7 +268,7 @@ async function updateGithubIssue(urlResults) {
    */
 
   /**
-   * @param {string} body The current GitHub issue body.
+   * @param {string} body - The current GitHub issue body.
    * @returns {LinkData} The link data that is read from the body.
    */
   function getLinkDataFromBody(body) {
@@ -367,7 +370,7 @@ async function updateGithubIssue(urlResults) {
   }
 
   /**
-   * @param {LinkStatus} status The status to get the linked emoji for.
+   * @param {LinkStatus} status - The status to get the linked emoji for.
    * @returns {string} An emoji, wrapped in a link to the failed job if applicable.
    */
   function getStatusEmojiLink(status) {
@@ -381,16 +384,11 @@ async function updateGithubIssue(urlResults) {
   }
 
   /**
-   * @param {LinkData} linkData The new link data from which to create the issue body.
+   * @param {LinkData} linkData - The new link data from which to create the issue body.
    * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
     const scriptName = import.meta.url.split('/').slice(-2).join('/');
-    const rows = Object.entries(linkData).map(([url, statuses]) => {
-      const statusIcons = statuses.map((status) => getStatusEmojiLink(status)).join('&nbsp;');
-      const link = `<a href="${url}" target="_blank">${url}</a>`;
-      return `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
-    });
     const lines = [
       `*Auto-generated content by \`${scriptName}\`.*`,
       '',
@@ -398,10 +396,22 @@ async function updateGithubIssue(urlResults) {
       '',
       '<table>',
       '<tr><th nowrap>today … 6 days ago</th><th>URL</th></tr>',
-      ...rows,
-      '</table>',
     ];
-    return lines.join('\n');
+    const tooLongRow = '<tr><td colspan="2">⚠️ The table is too long to fit in this issue body, please run the script yourself locally!</td></tr>';
+    const trailingLines = ['</table>'];
+
+    for (const [url, statuses] of Object.entries(linkData)) {
+      const statusIcons = statuses.map((status) => getStatusEmojiLink(status)).join('&nbsp;');
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      const row = `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
+
+      if (appendOrTruncate(lines, [row], tooLongRow, trailingLines)) {
+        break;
+      }
+    }
+
+    lines.push(...trailingLines);
+    return lines.join('\r\n');
   }
 
   /**
@@ -487,7 +497,7 @@ async function updateGithubIssue(urlResults) {
 }
 
 /**
- * @param {string} message The error message.
+ * @param {string} message - The error message.
  * @returns {string} The emoji to display for that error message.
  */
 function getFailedEmoji(message) {

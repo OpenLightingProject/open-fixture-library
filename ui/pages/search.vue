@@ -130,7 +130,7 @@ const fixtureResults = computed(() => {
 });
 
 /**
- * @param {object} query The raw query returned by Vue Router
+ * @param {object} query - The raw query returned by Vue Router
  * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query: Record<string, unknown>) {

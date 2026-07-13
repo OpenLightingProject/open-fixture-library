@@ -167,10 +167,10 @@ const insertIndex = computed(() => {
 
 function replaceHashWithIndex(capabilityTypeData: object, index: number) {
   if (`effectName` in capabilityTypeData) {
-    (capabilityTypeData as { effectName: string }).effectName = (capabilityTypeData as { effectName: string }).effectName.replace(/#/, index + 1);
+    (capabilityTypeData as { effectName: string }).effectName = (capabilityTypeData as { effectName: string }).effectName.replace(/#/, () => String(index + 1));
   }
   if (`comment` in capabilityTypeData) {
-    (capabilityTypeData as { comment: string }).comment = (capabilityTypeData as { comment: string }).comment.replace(/#/, index + 1);
+    (capabilityTypeData as { comment: string }).comment = (capabilityTypeData as { comment: string }).comment.replace(/#/, () => String(index + 1));
   }
 }
 

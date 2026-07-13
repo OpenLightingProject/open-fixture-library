@@ -1,6 +1,6 @@
 /**
- * @param {object} startNode The XML object the reference should be resolved against.
- * @param {string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
+ * @param {object} startNode - The XML object the reference should be resolved against.
+ * @param {string} nodeReference - A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
  * @returns {object | null} The referenced XML node object, or null if it could not be found.
  */
 export function followXmlNodeReference(startNode, nodeReference) {
@@ -27,7 +27,7 @@ export function followXmlNodeReference(startNode, nodeReference) {
   return currentNode;
 
   /**
-   * @param {object} node The XML object.
+   * @param {object} node - The XML object.
    * @returns {object[]} The XML objects of this node's child nodes.
    */
   function getChildNodes(node) {
@@ -40,7 +40,7 @@ export function followXmlNodeReference(startNode, nodeReference) {
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
  * See https://wolfcrow.com/blog/what-is-the-difference-between-cie-lab-cie-rgb-cie-xyy-and-cie-xyz/
- * @param {string} gdtfColorString A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
+ * @param {string} gdtfColorString - A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
  * @returns {string} The RGB hex code string in the form "#rrggbb".
  */
 export function getRgbColorFromGdtfColor(gdtfColorString) {
@@ -76,7 +76,9 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   );
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
-  const RGB = sRGB1_to_sRGB255(sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ1_to_XYZ100(xyY_to_XYZ([x, y, Y])))));
+  const XYZ100 = XYZ1_to_XYZ100(xyY_to_XYZ([x, y, Y]));
+  const sRGB1 = sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ100));
+  const RGB = sRGB1_to_sRGB255(sRGB1);
 
   let r, g, b;
   if (Y > 1) {
@@ -102,7 +104,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   /* eslint-enable camelcase, @stylistic/space-in-parens, unicorn/no-zero-fractions */
 
   /**
-   * @param {number} componentValue The red / green /blue component value in the range 0…255.
+   * @param {number} componentValue - The red / green /blue component value in the range 0…255.
    * @returns {string} The component value encoded as a two-digit hex number.
    */
   function getHexComponent(componentValue) {
@@ -112,7 +114,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
 }
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
  */
 export function normalizeAngularSpeedDirection(gdtfCapability) {
   if (/CCW|counter[\s-]*clockwise/.test(gdtfCapability.$.Name)) {

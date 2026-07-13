@@ -113,12 +113,12 @@ const pixelSizing = computed(() => {
 const pixelGroups = computed(() => {
   return props.matrix.pixelGroupKeys.map(groupKey => {
     const group = props.matrix.jsonObject.pixelGroups[groupKey];
-    const resolvedPixelsKeys = props.matrix.pixelGroups[groupKey];
 
     if (group === `all`) {
       return [groupKey, `All pixels`];
     }
 
+    const resolvedPixelsKeys = props.matrix.pixelGroups[groupKey];
     const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
 
     const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(

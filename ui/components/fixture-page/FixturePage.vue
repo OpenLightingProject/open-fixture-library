@@ -260,7 +260,7 @@ const links = computed(() => {
 
     if (linkType === `video`) {
       linksOfType = linksOfType.filter(
-        url => !videos.value.some(video => video.url === url),
+        url => videos.value.every(video => video.url !== url),
       );
       linkDisplayNumber += videos.value.length;
     }

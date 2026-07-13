@@ -118,12 +118,12 @@ const prefilledFixtureEditorUrl = computed(() => {
     return '/fixture-editor';
   }
 
-  const useExistingManufacturer = manufacturerKey.value !== undefined;
+  const shouldUseExistingManufacturer = manufacturerKey.value !== undefined;
 
   const prefillObject = {
-    useExistingManufacturer,
-    manufacturerKey: useExistingManufacturer ? manufacturerKey.value : undefined,
-    newManufacturerRdmId: useExistingManufacturer ? undefined : manufacturerId,
+    useExistingManufacturer: shouldUseExistingManufacturer,
+    manufacturerKey: shouldUseExistingManufacturer ? manufacturerKey.value : undefined,
+    newManufacturerRdmId: shouldUseExistingManufacturer ? undefined : manufacturerId,
     rdmModelId: modelIdRef.value,
   };
 

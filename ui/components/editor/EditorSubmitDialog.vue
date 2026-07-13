@@ -352,10 +352,7 @@ async function validate(body: any) {
     state.value = 'ready';
   }
   catch (err: any) {
-    let errorMessage = err.message;
-    if (err.response && err.response.data.error) {
-      errorMessage = err.response.data.error;
-    }
+    const errorMessage = err.response?.data.error ?? err.message;
 
     console.error('There was a problem with the request:', errorMessage);
 
@@ -390,10 +387,7 @@ async function onSubmit() {
     emit('success');
   }
   catch (err: any) {
-    let errorMessage = err.message;
-    if (err.response && err.response.data.error) {
-      errorMessage = err.response.data.error;
-    }
+    const errorMessage = err.response?.data.error ?? err.message;
 
     console.error('There was a problem with the request:', errorMessage);
 

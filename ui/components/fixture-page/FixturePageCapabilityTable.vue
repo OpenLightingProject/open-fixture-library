@@ -154,14 +154,14 @@ const capabilities = computed((): CapabilityData[] => {
     const dmxRange = capability.getDmxRangeWithResolution(props.resolutionInMode);
     const switchChannels = [];
 
-    for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
+    for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
       const switchingChannelIndex = props.mode.getChannelIndex(switchingChannelKey);
 
       if (switchingChannelIndex > -1) {
         switchChannels.push({
           key: switchingChannelKey,
           index: switchingChannelIndex,
-          to: capability.switchChannels[switchingChannelKey],
+          to: switchToChannelKey,
         });
       }
     }

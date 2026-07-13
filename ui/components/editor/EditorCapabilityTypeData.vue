@@ -59,9 +59,9 @@ watch(
 
     if (capabilityTypeData.value?.defaultData) {
       const defaultData = capabilityTypeData.value.defaultData;
-      for (const property of Object.keys(defaultData)) {
+      for (const [property, value] of Object.entries(defaultData)) {
         if (!(property in props.capability.typeData)) {
-          props.capability.typeData[property] = defaultData[property];
+          props.capability.typeData[property] = value;
         }
       }
     }

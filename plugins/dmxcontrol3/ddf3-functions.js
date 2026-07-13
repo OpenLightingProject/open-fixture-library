@@ -72,7 +72,7 @@ export default {
       return xmlStrobe;
 
       /**
-       * @param {Capability} capability A ShutterStrobe capability, excluding Open and Closed or a NoFunction capability
+       * @param {Capability} capability - A ShutterStrobe capability, excluding Open and Closed or a NoFunction capability
        * @returns {string} The strobe type that should be used in the DMXControl capability.
        */
       function getStrobeType(capability) {
@@ -268,7 +268,7 @@ export default {
       return xmlColorWheel;
 
       /**
-       * @param {Capability} capability A capability with different start/end values.
+       * @param {Capability} capability - A capability with different start/end values.
        * @returns {Capability[]} One capability representing the start value and one representing the end value.
        */
       function getSplittedCapabilities(capability) {
@@ -334,8 +334,8 @@ export default {
       }
 
       /**
-       * @param {Capability} capability1 A capability.
-       * @param {Capability} capability2 Another capability.
+       * @param {Capability} capability1 - A capability.
+       * @param {Capability} capability2 - Another capability.
        * @returns {Capability|null} A capability that combines the values of both given capabilities. Null if merging was not possible.
        */
       function getMergedCapability(capability1, capability2) {
@@ -343,19 +343,18 @@ export default {
           return null;
         }
 
-        const filterDistinguishableKeys = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
-        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => filterDistinguishableKeys(key));
-        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => filterDistinguishableKeys(key));
+        const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
+        const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
+        const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
         const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
-          const value1 = capability1.jsonObject[key];
-          const value2 = capability2.jsonObject[key];
-
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
             return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
+          const value1 = capability1.jsonObject[key];
+          const value2 = capability2.jsonObject[key];
           return value1 !== value2 && !arraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {
@@ -363,7 +362,7 @@ export default {
         }
 
         const capabilityJson = {};
-        const preferredJsonObject = capability1.jsonObject._splitted ? capability2.jsonObject : capability1.jsonObject; // we prefer unsplitted capability
+        const preferredJsonObject = (capability1.jsonObject._splitted ? capability2 : capability1).jsonObject; // we prefer unsplitted capability
         for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
         }
@@ -375,7 +374,7 @@ export default {
       }
 
       /**
-       * @param {Capability} capability A capability.
+       * @param {Capability} capability - A capability.
        * @returns {string} A color from the given capability's color data if there's only one color. A generic (and probably unique) grey color instead.
        */
       function getColor(capability) {
@@ -438,28 +437,30 @@ export default {
       }
 
       for (const { normalCap, shakingCap } of Object.values(capabilitiesPerSlot)) {
-        if (normalCap) {
-          const xmlCapability = getBaseXmlCapability(normalCap);
-          xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
-          xmlCapability.attribute('caption', normalCap.name);
+        if (!normalCap) {
+          continue;
+        }
 
-          if (shakingCap) {
-            let xmlShakeCapability;
+        const xmlCapability = getBaseXmlCapability(normalCap);
+        xmlCapability.attribute('type', normalCap.isSlotType('Open') ? 'open' : 'gobo');
+        xmlCapability.attribute('caption', normalCap.name);
 
-            if (shakingCap.shakeSpeed) {
-              const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
-              xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
-            }
-            else {
-              xmlShakeCapability = getBaseXmlCapability(shakingCap);
-            }
+        if (shakingCap) {
+          let xmlShakeCapability;
 
-            xmlShakeCapability.attribute('handler', 'goboshake');
-            xmlCapability.importDocument(xmlShakeCapability);
+          if (shakingCap.shakeSpeed) {
+            const [dmxControlCapability] = getSingleUnitCapabilities([shakingCap], 'shakeSpeed', 'Hz', 0, 20);
+            xmlShakeCapability = getBaseXmlCapability(shakingCap, dmxControlCapability.startValue, dmxControlCapability.endValue);
+          }
+          else {
+            xmlShakeCapability = getBaseXmlCapability(shakingCap);
           }
 
-          xmlGoboWheel.importDocument(xmlCapability);
+          xmlShakeCapability.attribute('handler', 'goboshake');
+          xmlCapability.importDocument(xmlShakeCapability);
         }
+
+        xmlGoboWheel.importDocument(xmlCapability);
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
@@ -544,7 +545,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFrostOn = capability.frostIntensity[0].number > 0;
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFrostOn}`);
+            xmlCapability.attribute('value', String(isFrostOn));
           }
           else {
             xmlCapability = getBaseXmlCapability(capability, capability.frostIntensity[0].number, capability.frostIntensity[1].number);
@@ -696,7 +697,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFogOn}`);
+            xmlCapability.attribute('value', String(isFogOn));
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -724,7 +725,7 @@ export default {
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
-            xmlCapability.attribute('value', `${isFanOn}`);
+            xmlCapability.attribute('value', String(isFanOn));
           }
 
           xmlFan.importDocument(xmlCapability);
@@ -802,11 +803,11 @@ export default {
 
 /**
  * Converts all property values to the allowed unit.
- * @param {Capability[]} capabilities Array of capabilities that use the given property.
- * @param {string} property Name of the property whose values should be normalized.
- * @param {string} allowedUnit The unit all capabilities should be converted to. Must be a base unit (i. e. no `ms` but `s`) or `%`.
- * @param {number} zeroPercentValue The equivalent of 0% in the allowed unit. Must be used if allowedUnit is not percent.
- * @param {number} hundredPercentValue The equivalent of 100% in the allowed unit. Must be used if allowedUnit is not percent.
+ * @param {Capability[]} capabilities - Array of capabilities that use the given property.
+ * @param {string} property - Name of the property whose values should be normalized.
+ * @param {string} allowedUnit - The unit all capabilities should be converted to. Must be a base unit (i. e. no `ms` but `s`) or `%`.
+ * @param {number} zeroPercentValue - The equivalent of 0% in the allowed unit. Must be used if allowedUnit is not percent.
+ * @param {number} hundredPercentValue - The equivalent of 100% in the allowed unit. Must be used if allowedUnit is not percent.
  * @returns {DmxControlCapability[]} Array of objects wrapping the original capabilities.
  */
 function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPercentValue, hundredPercentValue) {
@@ -855,9 +856,9 @@ function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPerc
 
 /**
  * This function already handles swapping DMX start/end if the given start/end value is inverted (i.e. decreasing).
- * @param {Capability} capability The capability to use as data source.
- * @param {number|null} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely chosen. Omit if minval/maxval should not be added.
- * @param {number|null} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely chosen. Omit if minval/maxval should not be added.
+ * @param {Capability} capability - The capability to use as data source.
+ * @param {number|null} startValue - The start value of an start/end entity, e.g. speedStart. Unit can be freely chosen. Omit if minval/maxval should not be added.
+ * @param {number|null} endValue - The end value of an start/end entity, e.g. speedEnd. Unit can be freely chosen. Omit if minval/maxval should not be added.
  * @returns {XMLElement} A <step> or <range> with mindmx, maxdmx and, optionally, minval and maxval attributes.
  */
 function getBaseXmlCapability(capability, startValue = null, endValue = null) {
@@ -887,7 +888,7 @@ function getBaseXmlCapability(capability, startValue = null, endValue = null) {
 }
 
 /**
- * @param {DmxControlCapability} capability The DMX control capability; i.e. speed is in Hz.
+ * @param {DmxControlCapability} capability - The DMX control capability; i.e. speed is in Hz.
  * @returns {XMLElement} A capability xml element with the proper stop/cw/ccw type
  */
 function getRotationSpeedXmlCapability(capability) {
@@ -903,8 +904,8 @@ function getRotationSpeedXmlCapability(capability) {
 }
 
 /**
- * @param {Array} array1 First array to compare.
- * @param {Array} array2 Second array to compare.
+ * @param {Array} array1 - First array to compare.
+ * @param {Array} array2 - Second array to compare.
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
 function arraysEqual(array1, array2) {

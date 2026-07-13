@@ -23,16 +23,16 @@ const channelTypeIcons: Record<string, string> = {
 };
 
 function getIconProperties(channel: AbstractChannel): { type: string; name: string; title: string; colors?: string[] } {
+  while (channel instanceof FineChannel) {
+    channel = channel.coarseChannel;
+  }
+
   if (channel instanceof NullChannel) {
     return {
       type: 'fixture',
       name: 'NoFunction',
       title: 'Channel type: NoFunction',
     };
-  }
-
-  if (channel instanceof FineChannel) {
-    return getIconProperties(channel.coarseChannel);
   }
 
   if (channel instanceof SwitchingChannel) {

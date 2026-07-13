@@ -65,22 +65,6 @@ const max = computed(() => {
   return exclusiveMaximum.value;
 });
 
-const exclusiveMinimum = computed(() => {
-  if ('exclusiveMinimum' in props.schemaProperty) {
-    return props.schemaProperty.exclusiveMinimum;
-  }
-
-  return null;
-});
-
-const exclusiveMaximum = computed(() => {
-  if ('exclusiveMaximum' in props.schemaProperty) {
-    return props.schemaProperty.exclusiveMaximum;
-  }
-
-  return null;
-});
-
 const step = computed(() => {
   if (props.stepOverride !== undefined) {
     return props.stepOverride;
@@ -89,11 +73,11 @@ const step = computed(() => {
 });
 
 const validationData = computed(() => ({
-  min: min.value === null ? null : `${min.value}`,
-  max: max.value === null ? null : `${max.value}`,
-  'data-exclusive-minimum': exclusiveMinimum.value === null ? null : `${exclusiveMinimum.value}`,
-  'data-exclusive-maximum': exclusiveMaximum.value === null ? null : `${exclusiveMaximum.value}`,
-  step: `${step.value}`,
+  min: min.value === null ? null : String(min.value),
+  max: max.value === null ? null : String(max.value),
+  'data-exclusive-minimum': exclusiveMinimum.value === null ? null : String(exclusiveMinimum.value),
+  'data-exclusive-maximum': exclusiveMaximum.value === null ? null : String(exclusiveMaximum.value),
+  step: String(step.value),
   type: 'number',
 }));
 
