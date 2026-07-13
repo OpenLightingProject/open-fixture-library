@@ -1,0 +1,349 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Mini Spider Light",
+  "shortName": "MiniSpider",
+  "categories": ["Effect", "Strobe"],
+  "meta": {
+    "authors": ["Rytis"],
+    "createDate": "2022-11-17",
+    "lastModifyDate": "2022-11-17"
+  },
+  "comment": "LED Mini Spider Light 8x10W",
+  "links": {
+    "video": [
+      "https://video.aliexpress-media.com/play/u/ae_sg_item/2206920344344/p/1/e/6/t/10301/282124492640.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [274, 145, 115],
+    "weight": 2.01,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LED"
+    }
+  },
+  "availableChannels": {
+    "Tilt Head1": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Tilt Head2": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Sum Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "stop",
+          "comment": "No strobe"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed from slow to fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [137, 146],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [147, 156],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [157, 166],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [167, 176],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [177, 186],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [187, 196],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [197, 206],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [207, 216],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [217, 226],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [227, 236],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [237, 246],
+          "type": "Effect",
+          "effectName": "Effect 24 Self Multi-effects"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "Effect 25 Sound"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "From fast to slow"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Generic",
+          "comment": "For 5 seconds to reset"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Tilt Head1 2": {
+      "name": "Tilt Head1",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "60deg",
+        "angleEnd": "150deg"
+      }
+    },
+    "Tilt Head2 2": {
+      "name": "Tilt Head2",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "60deg",
+        "angleEnd": "150deg"
+      }
+    },
+    "LED1 Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED2 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED3 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED4 Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED5 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED6 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED7 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "LED8 Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Tilt Head1",
+        "Tilt Head2",
+        "Sum Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Tilt Head1 2",
+        "Tilt Head2 2",
+        "Sum Dimmer",
+        "Strobe",
+        "LED1 Dimming",
+        "LED2 Dimming",
+        "LED3 Dimming",
+        "LED4 Dimming",
+        "LED5 Dimming",
+        "LED6 Dimming",
+        "LED7 Dimming",
+        "LED8 Dimming",
+        "Effect",
+        "Effect Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
