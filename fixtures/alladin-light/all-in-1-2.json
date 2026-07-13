@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "All-in 1/2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Alessandro Bella"],
+    "createDate": "2021-09-22",
+    "lastModifyDate": "2021-09-22"
+  },
+  "comment": "Flexible led light",
+  "links": {
+    "manual": [
+      "https://aladdin-lights.com/media/"
+    ],
+    "productPage": [
+      "https://aladdin-lights.com/aladdin-all-in-2/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Led",
+      "degreesMinMax": [140, 140]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2900K",
+        "colorTemperatureEnd": "6100K"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CT-RGB",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
