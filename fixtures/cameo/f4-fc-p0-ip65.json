@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F4 FC P0 IP65",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Robert"],
+    "createDate": "2021-12-16",
+    "lastModifyDate": "2021-12-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/818491/Cameo-F4-Fc-Po-Ip65.html#manual"
+    ]
+  },
+  "physical": {
+    "dimensions": [433, 420, 531],
+    "weight": 23,
+    "power": 350,
+    "DMXconnector": "5-pin XLR IP65",
+    "lens": {
+      "degreesMinMax": [14, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "User color 1": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer2": {
+      "fineChannelAliases": ["Dimmer2 fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 CH DIM",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer2"
+      ]
+    }
+  ]
+}
