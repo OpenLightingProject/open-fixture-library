@@ -1,0 +1,724 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorWash 250 AT",
+  "shortName": "colorwash250",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Blubberfield"],
+    "createDate": "2022-05-12",
+    "lastModifyDate": "2022-05-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.robe.cz/colorwash-250-at#downloads"
+    ],
+    "productPage": [
+      "https://www.robe.cz/colorwash-250-at"
+    ]
+  },
+  "physical": {
+    "dimensions": [419, 502, 438],
+    "weight": 20.5,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Compact high-pressure metal halide lamp - Philips MSD 250/2"
+    },
+    "lens": {
+      "name": "Front fresnel lens of diameter 158 mm"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Focus": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "25.5s"
+        }
+      ]
+    },
+    "Power/Special functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pan/Tilt speed mode"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Pan/Tilt time mode"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Disabled blackout while colour wheel moving"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Blackout while colour wheel moving"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Disabled blackout while colour wheel moving"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Lamp on, reset"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Colour system reset"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Dimmer strobe reset"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Zoom/effect wheel reset"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Total reset"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "Lamp off"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Pan/Tilt Macro selection": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Disabled pan/tilt macro"
+        },
+        {
+          "dmxRange": [10, 31],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Figure of circle (from small to large)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Figure of horizontal eight (from small to large)"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Figure of vertical eight (from small to large)"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Figure of rectangle (from small to large)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Figure of triangle (from small to large)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Figure of star (from small to large)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Figure of cross (from small to large)"
+        }
+      ]
+    },
+    "Pan/Tilt Macro speed": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "No macro generation"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Generic",
+          "comment": "Macro generation from fast to slow-forwards"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Generic",
+          "comment": "No macro generation"
+        },
+        {
+          "dmxRange": [130, 255],
+          "type": "Generic",
+          "comment": "Macro generation from slow to fast-backwards"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Open White"
+        },
+        {
+          "dmxRange": [1, 17],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "Dark red"
+        },
+        {
+          "dmxRange": [19, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "ColorPreset",
+          "comment": "Dark blue"
+        },
+        {
+          "dmxRange": [37, 53],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [55, 71],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K",
+          "comment": "CTF 3200K"
+        },
+        {
+          "dmxRange": [73, 89],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "6000K",
+          "comment": "CTF 6000K"
+        },
+        {
+          "dmxRange": [91, 107],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "ColorPreset",
+          "comment": "UV Filter"
+        },
+        {
+          "dmxRange": [109, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Dark red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Dark blue"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K",
+          "comment": "CTF 3200K"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "6000K",
+          "comment": "CTF 6000K"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "UV Filter"
+        },
+        {
+          "dmxRange": [190, 215],
+          "type": "ColorPreset",
+          "comment": "Forwards rainbow effect from fast to slow"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Rotation",
+          "speed": "stop",
+          "comment": "No rotation"
+        },
+        {
+          "dmxRange": [218, 243],
+          "type": "ColorPreset",
+          "comment": "Backwards rainbow effect from slow to fast"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "ColorPreset",
+          "comment": "Random colour selection by audio control"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Auto random colour selection from fast to slow"
+        }
+      ]
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Speed of CMY + Dimmer": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "CMY Color macros": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Macro 28"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Macro 29"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Generic",
+          "comment": "Macro 30 - Random rainbow effect from fast to slow"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Generic",
+          "comment": "Random macro selection by audio control"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Auto random macro selection from fast to slow"
+        }
+      ]
+    },
+    "Effect Wheel": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "Effect",
+          "effectName": "Full beam",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [71, 179],
+          "type": "Generic",
+          "comment": "Beam shaper"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic",
+          "comment": "Swivelling beam effect from slow to fast"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "15s"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Pan/Tilt Macro selection",
+        "Pan/Tilt Macro speed",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Speed of CMY + Dimmer",
+        "CMY Color macros",
+        "Effect Wheel",
+        "Zoom",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
