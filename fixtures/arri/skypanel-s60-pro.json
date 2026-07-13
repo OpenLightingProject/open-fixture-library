@@ -1,32 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Skypanel S30C",
+  "name": "Skypanel S60 Pro",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
-    "authors": ["Jean-François Losson", "JonahKr", "Dyami Caliri"],
-    "createDate": "2018-10-17",
-    "lastModifyDate": "2022-08-10"
+    "authors": ["Dyami Caliri"],
+    "createDate": "2025-06-07",
+    "lastModifyDate": "2025-06-07"
   },
   "links": {
     "manual": [
-      "https://www.arri.com/resource/blob/31208/e3a435411261f80aee556508014ce2dd/arri-skypanel-user-manual-en-nov2018-l03301-data.pdf",
-      "https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf"
+      "https://arri.canto.de/b/TL7RJ"
     ],
     "productPage": [
-      "https://www.arri.com/en/lighting/led-panel-lights/skypanel-classic/s30-c"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=Qq9xhKwpZqc"
+      "https://www.arri.com/en/lighting/led-panel-lights/skypanel-pro"
     ]
   },
-  "rdm": {
-    "modelId": 514,
-    "softwareVersion": "4.1"
-  },
   "physical": {
-    "dimensions": [499, 133, 397],
-    "weight": 8,
-    "power": 220,
+    "dimensions": [688, 347, 133],
+    "weight": 12.8,
+    "power": 420,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
@@ -207,7 +199,8 @@
         },
         {
           "dmxRange": [154, 201],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "comment": "Use Fan Mode of Fixture Menu"
         },
         {
           "dmxRange": [202, 249],
@@ -215,139 +208,1413 @@
           "comment": "Fan At Full Speed"
         },
         {
-          "dmxRange": [250, 250],
-          "type": "NoFunction",
-          "helpWanted": "Is this capability really here? Or is it just a typo in the manual?"
-        },
-        {
-          "dmxRange": [251, 255],
+          "dmxRange": [250, 255],
           "type": "Maintenance",
           "comment": "Fan off"
         }
       ]
     },
-    "Presets": {
+    "Favorites": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 11],
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "Favorite 1"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Favorite 2"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "Favorite 3"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "comment": "Favorite 4"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "comment": "Favorite 5"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "comment": "Favorite 6"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "Favorite 7"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "Favorite 8"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "Favorite 9"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "comment": "Favorite 10"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "ColorPreset",
+          "comment": "Favorite 11"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "ColorPreset",
+          "comment": "Favorite 12"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "ColorPreset",
+          "comment": "Favorite 13"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "ColorPreset",
+          "comment": "Favorite 14"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "ColorPreset",
+          "comment": "Favorite 15"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "ColorPreset",
+          "comment": "Favorite 16"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "ColorPreset",
+          "comment": "Favorite 17"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "ColorPreset",
+          "comment": "Favorite 18"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "ColorPreset",
+          "comment": "Favorite 19"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "comment": "Favorite 20"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "comment": "Favorite 21"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "comment": "Favorite 22"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "ColorPreset",
+          "comment": "Favorite 23"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "ColorPreset",
+          "comment": "Favorite 24"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "ColorPreset",
+          "comment": "Favorite 25"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "ColorPreset",
+          "comment": "Favorite 26"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "ColorPreset",
+          "comment": "Favorite 27"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "ColorPreset",
+          "comment": "Favorite 28"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "ColorPreset",
+          "comment": "Favorite 29"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "ColorPreset",
+          "comment": "Favorite 30"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "ColorPreset",
+          "comment": "Favorite 31"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "ColorPreset",
+          "comment": "Favorite 32"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "ColorPreset",
+          "comment": "Favorite 33"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "ColorPreset",
+          "comment": "Favorite 34"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "ColorPreset",
+          "comment": "Favorite 35"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "comment": "Favorite 36"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "ColorPreset",
+          "comment": "Favorite 37"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "ColorPreset",
+          "comment": "Favorite 38"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "ColorPreset",
+          "comment": "Favorite 39"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "comment": "Favorite 40"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "ColorPreset",
+          "comment": "Favorite 41"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Favorite 42"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "ColorPreset",
+          "comment": "Favorite 43"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "ColorPreset",
+          "comment": "Favorite 44"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "ColorPreset",
+          "comment": "Favorite 45"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "ColorPreset",
+          "comment": "Favorite 46"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "ColorPreset",
+          "comment": "Favorite 47"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "ColorPreset",
+          "comment": "Favorite 48"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "ColorPreset",
+          "comment": "Favorite 49"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "ColorPreset",
+          "comment": "Favorite 50"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorPreset",
+          "comment": "Favorite 51"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "ColorPreset",
+          "comment": "Favorite 52"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "ColorPreset",
+          "comment": "Favorite 53"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "ColorPreset",
+          "comment": "Favorite 54"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ColorPreset",
+          "comment": "Favorite 55"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "ColorPreset",
+          "comment": "Favorite 56"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "ColorPreset",
+          "comment": "Favorite 57"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "ColorPreset",
+          "comment": "Favorite 58"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorPreset",
+          "comment": "Favorite 59"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "ColorPreset",
+          "comment": "Favorite 60"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "ColorPreset",
+          "comment": "Favorite 61"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "ColorPreset",
+          "comment": "Favorite 62"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "ColorPreset",
+          "comment": "Favorite 63"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "ColorPreset",
+          "comment": "Favorite 64"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "ColorPreset",
+          "comment": "Favorite 65"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "ColorPreset",
+          "comment": "Favorite 66"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "ColorPreset",
+          "comment": "Favorite 67"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "ColorPreset",
+          "comment": "Favorite 68"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "ColorPreset",
+          "comment": "Favorite 69"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "ColorPreset",
+          "comment": "Favorite 70"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "ColorPreset",
+          "comment": "Favorite 71"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "ColorPreset",
+          "comment": "Favorite 72"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "ColorPreset",
+          "comment": "Favorite 73"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "ColorPreset",
+          "comment": "Favorite 74"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "ColorPreset",
+          "comment": "Favorite 75"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "ColorPreset",
+          "comment": "Favorite 76"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "ColorPreset",
+          "comment": "Favorite 77"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "comment": "Favorite 78"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "ColorPreset",
+          "comment": "Favorite 79"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "ColorPreset",
+          "comment": "Favorite 80"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "ColorPreset",
+          "comment": "Favorite 81"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorPreset",
+          "comment": "Favorite 82"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "ColorPreset",
+          "comment": "Favorite 83"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "ColorPreset",
+          "comment": "Favorite 84"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "ColorPreset",
+          "comment": "Favorite 85"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "ColorPreset",
+          "comment": "Favorite 86"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "comment": "Favorite 87"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "ColorPreset",
+          "comment": "Favorite 88"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "ColorPreset",
+          "comment": "Favorite 89"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "ColorPreset",
+          "comment": "Favorite 90"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "ColorPreset",
+          "comment": "Favorite 91"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "ColorPreset",
+          "comment": "Favorite 92"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "ColorPreset",
+          "comment": "Favorite 93"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "ColorPreset",
+          "comment": "Favorite 94"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "ColorPreset",
+          "comment": "Favorite 95"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "ColorPreset",
+          "comment": "Favorite 96"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "ColorPreset",
+          "comment": "Favorite 97"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "ColorPreset",
+          "comment": "Favorite 98"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "ColorPreset",
+          "comment": "Favorite 99"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "ColorPreset",
+          "comment": "Favorite 100"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "ColorPreset",
+          "comment": "Favorite 101"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "ColorPreset",
+          "comment": "Favorite 102"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "Favorite 103"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "comment": "Favorite 104"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "comment": "Favorite 105"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "ColorPreset",
+          "comment": "Favorite 106"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "ColorPreset",
+          "comment": "Favorite 107"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "comment": "Favorite 108"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "comment": "Favorite 109"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "Favorite 110"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "Favorite 111"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "ColorPreset",
+          "comment": "Favorite 112"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "ColorPreset",
+          "comment": "Favorite 113"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "ColorPreset",
+          "comment": "Favorite 114"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "ColorPreset",
+          "comment": "Favorite 115"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "Favorite 116"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "comment": "Favorite 117"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "comment": "Favorite 118"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Favorite 119"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "ColorPreset",
+          "comment": "Favorite 120"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "ColorPreset",
+          "comment": "Favorite 121"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ColorPreset",
+          "comment": "Favorite 122"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "ColorPreset",
+          "comment": "Favorite 123"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "ColorPreset",
+          "comment": "Favorite 124"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Favorite 125"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "ColorPreset",
+          "comment": "Favorite 126"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorPreset",
+          "comment": "Favorite 127"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "ColorPreset",
+          "comment": "Favorite 128"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "ColorPreset",
+          "comment": "Favorite 129"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "ColorPreset",
+          "comment": "Favorite 130"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ColorPreset",
+          "comment": "Favorite 131"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "ColorPreset",
+          "comment": "Favorite 132"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "ColorPreset",
+          "comment": "Favorite 133"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "ColorPreset",
+          "comment": "Favorite 134"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "ColorPreset",
+          "comment": "Favorite 135"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "comment": "Favorite 136"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "comment": "Favorite 137"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "ColorPreset",
+          "comment": "Favorite 138"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "ColorPreset",
+          "comment": "Favorite 139"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "ColorPreset",
+          "comment": "Favorite 140"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "ColorPreset",
+          "comment": "Favorite 141"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "ColorPreset",
+          "comment": "Favorite 142"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "ColorPreset",
+          "comment": "Favorite 143"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "ColorPreset",
+          "comment": "Favorite 144"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "ColorPreset",
+          "comment": "Favorite 145"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "ColorPreset",
+          "comment": "Favorite 146"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "ColorPreset",
+          "comment": "Favorite 147"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "ColorPreset",
+          "comment": "Favorite 148"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "ColorPreset",
+          "comment": "Favorite 149"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "ColorPreset",
+          "comment": "Favorite 150"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "ColorPreset",
+          "comment": "Favorite 151"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "ColorPreset",
+          "comment": "Favorite 152"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "ColorPreset",
+          "comment": "Favorite 153"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "ColorPreset",
+          "comment": "Favorite 154"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "ColorPreset",
+          "comment": "Favorite 155"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "ColorPreset",
+          "comment": "Favorite 156"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "ColorPreset",
+          "comment": "Favorite 157"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "ColorPreset",
+          "comment": "Favorite 158"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "ColorPreset",
+          "comment": "Favorite 159"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "ColorPreset",
+          "comment": "Favorite 160"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "ColorPreset",
+          "comment": "Favorite 161"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "ColorPreset",
+          "comment": "Favorite 162"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "ColorPreset",
+          "comment": "Favorite 163"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "ColorPreset",
+          "comment": "Favorite 164"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "ColorPreset",
+          "comment": "Favorite 165"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "ColorPreset",
+          "comment": "Favorite 166"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "ColorPreset",
+          "comment": "Favorite 167"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "ColorPreset",
+          "comment": "Favorite 168"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "ColorPreset",
+          "comment": "Favorite 169"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "ColorPreset",
+          "comment": "Favorite 170"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "ColorPreset",
+          "comment": "Favorite 171"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ColorPreset",
+          "comment": "Favorite 172"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "ColorPreset",
+          "comment": "Favorite 173"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "ColorPreset",
+          "comment": "Favorite 174"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "ColorPreset",
+          "comment": "Favorite 175"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "ColorPreset",
+          "comment": "Favorite 176"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "ColorPreset",
+          "comment": "Favorite 177"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "ColorPreset",
+          "comment": "Favorite 178"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "ColorPreset",
+          "comment": "Favorite 179"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "ColorPreset",
+          "comment": "Favorite 180"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ColorPreset",
+          "comment": "Favorite 181"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "ColorPreset",
+          "comment": "Favorite 182"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "ColorPreset",
+          "comment": "Favorite 183"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "ColorPreset",
+          "comment": "Favorite 184"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "ColorPreset",
+          "comment": "Favorite 185"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "ColorPreset",
+          "comment": "Favorite 186"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "ColorPreset",
+          "comment": "Favorite 187"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "ColorPreset",
+          "comment": "Favorite 188"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "ColorPreset",
+          "comment": "Favorite 189"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "ColorPreset",
+          "comment": "Favorite 190"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "ColorPreset",
+          "comment": "Favorite 191"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ColorPreset",
+          "comment": "Favorite 192"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "ColorPreset",
+          "comment": "Favorite 193"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "ColorPreset",
+          "comment": "Favorite 194"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "ColorPreset",
+          "comment": "Favorite 195"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "ColorPreset",
+          "comment": "Favorite 196"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "ColorPreset",
+          "comment": "Favorite 197"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ColorPreset",
+          "comment": "Favorite 198"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "comment": "Favorite 199"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "ColorPreset",
+          "comment": "Favorite 200"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "ColorPreset",
+          "comment": "Favorite 201"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "ColorPreset",
+          "comment": "Favorite 202"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "ColorPreset",
+          "comment": "Favorite 203"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "ColorPreset",
+          "comment": "Favorite 204"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "ColorPreset",
+          "comment": "Favorite 205"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "ColorPreset",
+          "comment": "Favorite 206"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "ColorPreset",
+          "comment": "Favorite 207"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "ColorPreset",
+          "comment": "Favorite 208"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "ColorPreset",
+          "comment": "Favorite 209"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "ColorPreset",
+          "comment": "Favorite 210"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "ColorPreset",
+          "comment": "Favorite 211"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "ColorPreset",
+          "comment": "Favorite 212"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "ColorPreset",
+          "comment": "Favorite 213"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "ColorPreset",
+          "comment": "Favorite 214"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "ColorPreset",
+          "comment": "Favorite 215"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "ColorPreset",
+          "comment": "Favorite 216"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "ColorPreset",
+          "comment": "Favorite 217"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "ColorPreset",
+          "comment": "Favorite 218"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "ColorPreset",
+          "comment": "Favorite 219"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "ColorPreset",
+          "comment": "Favorite 220"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "ColorPreset",
+          "comment": "Favorite 221"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ColorPreset",
+          "comment": "Favorite 222"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "ColorPreset",
+          "comment": "Favorite 223"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "ColorPreset",
+          "comment": "Favorite 224"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "ColorPreset",
+          "comment": "Favorite 225"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "ColorPreset",
+          "comment": "Favorite 226"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "ColorPreset",
+          "comment": "Favorite 227"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "ColorPreset",
+          "comment": "Favorite 228"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "ColorPreset",
+          "comment": "Favorite 229"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "ColorPreset",
+          "comment": "Favorite 230"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "ColorPreset",
+          "comment": "Favorite 231"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "ColorPreset",
+          "comment": "Favorite 232"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "ColorPreset",
+          "comment": "Favorite 233"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "ColorPreset",
+          "comment": "Favorite 234"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "ColorPreset",
+          "comment": "Favorite 235"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "ColorPreset",
+          "comment": "Favorite 236"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "ColorPreset",
+          "comment": "Favorite 237"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ColorPreset",
+          "comment": "Favorite 238"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "ColorPreset",
+          "comment": "Favorite 239"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "ColorPreset",
+          "comment": "Favorite 240"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorPreset",
+          "comment": "Favorite 241"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "ColorPreset",
+          "comment": "Favorite 242"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "ColorPreset",
+          "comment": "Favorite 243"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "ColorPreset",
+          "comment": "Favorite 244"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "ColorPreset",
+          "comment": "Favorite 245"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Favorite 246"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [12, 23],
-          "type": "ColorPreset",
-          "comment": "Preset 01 - User Defined"
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "comment": "Load Preset 01"
         },
         {
-          "dmxRange": [24, 35],
-          "type": "ColorPreset",
-          "comment": "Preset 02 - User Defined"
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "comment": "Load Preset 02"
         },
         {
-          "dmxRange": [36, 47],
-          "type": "ColorPreset",
-          "comment": "Preset 03 - User Defined"
+          "dmxRange": [30, 34],
+          "type": "Maintenance",
+          "comment": "Load Preset 03"
         },
         {
-          "dmxRange": [48, 59],
-          "type": "ColorPreset",
-          "comment": "Preset 04 - User Defined"
+          "dmxRange": [35, 39],
+          "type": "Maintenance",
+          "comment": "Load Preset 04"
         },
         {
-          "dmxRange": [60, 71],
-          "type": "ColorPreset",
-          "comment": "Preset 05 - User Defined"
+          "dmxRange": [40, 44],
+          "type": "Maintenance",
+          "comment": "Load Preset 05"
         },
         {
-          "dmxRange": [72, 83],
-          "type": "ColorPreset",
-          "comment": "Preset 06 - User Defined"
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "comment": "Load Preset 06"
         },
         {
-          "dmxRange": [84, 95],
-          "type": "ColorPreset",
-          "comment": "Preset 07 - User Defined"
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "comment": "Load Preset 07"
         },
         {
-          "dmxRange": [96, 107],
-          "type": "ColorPreset",
-          "comment": "Preset 08 - User Defined"
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "comment": "Load Preset 08"
         },
         {
-          "dmxRange": [108, 119],
-          "type": "ColorPreset",
-          "comment": "Preset 09 - User Defined"
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "comment": "Load Preset 09"
         },
         {
-          "dmxRange": [120, 131],
-          "type": "ColorPreset",
-          "comment": "Preset 10 - User Defined"
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "comment": "Load Preset 10"
         },
         {
-          "dmxRange": [132, 143],
-          "type": "ColorPreset",
-          "colorTemperature": "2900K",
-          "comment": "Preset 01",
-          "colors": ["#ffb165"]
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "comment": "High Speed Mode Off"
         },
         {
-          "dmxRange": [144, 155],
-          "type": "ColorPreset",
-          "colorTemperature": "3200K",
-          "comment": "Preset 02",
-          "colors": ["#ffbb78"]
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "comment": "High Speed Mode On"
         },
         {
-          "dmxRange": [156, 167],
-          "type": "ColorPreset",
-          "colorTemperature": "5600K",
-          "comment": "Preset 03",
-          "colors": ["#ffe8d5"]
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "Dimmer Smoothing Off"
         },
         {
-          "dmxRange": [168, 179],
-          "type": "ColorPreset",
-          "colorTemperature": "6500K",
-          "comment": "Preset 04",
-          "colors": ["#fff9fd"]
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "Dimmer Smoothing On"
         },
         {
-          "dmxRange": [180, 191],
-          "type": "ColorPreset",
-          "comment": "Preset 05 - 120° Hue, 100% Saturation"
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Unlink CRMX"
         },
         {
-          "dmxRange": [192, 203],
-          "type": "ColorPreset",
-          "comment": "Preset 06 - 240° Hue, 100% Saturation"
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Vari Fan"
         },
         {
-          "dmxRange": [204, 215],
-          "type": "ColorPreset",
-          "comment": "Preset 07 - Rosco 3408",
-          "colorTemperature": "5600K",
-          "colors": ["#fcc286"]
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "High Temp"
         },
         {
-          "dmxRange": [216, 227],
-          "type": "ColorPreset",
-          "comment": "Preset 08 - Lee 187",
-          "colorTemperature": "3200K",
-          "colors": ["#f5e4d7"]
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "comment": "Low Noise"
         },
         {
-          "dmxRange": [228, 239],
-          "type": "ColorPreset",
-          "comment": "Preset 09 - Rosco 3152",
-          "colorTemperature": "3200K",
-          "colors": ["#f5802c"]
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA Vari Fan"
         },
         {
-          "dmxRange": [240, 255],
-          "type": "ColorPreset",
-          "comment": "Preset 10 - Lee 162",
-          "colorTemperature": "3200K",
-          "colors": ["#fcded8"]
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA High Temp"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA Low Noise"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Maintenance",
+          "comment": "Tungsten Mode Off"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Maintenance",
+          "comment": "Tungsten Mode On"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Maintenance",
+          "comment": "Exponential Dimming Curve"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimming Curve"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Maintenance",
+          "comment": "Linear Dimming Curve"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Maintenance",
+          "comment": "S Curve Dimming Curve"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Maintenance",
+          "comment": "Match Clasic S60-C Off"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Maintenance",
+          "comment": "Match Clasic S60-C Light Engine G1"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Maintenance",
+          "comment": "Match Clasic S60-C Light Engine G2+"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
         }
       ]
     },
@@ -375,61 +1642,24 @@
         "comment": "Gel 1 … Gel 2"
       }
     },
-    "Gel Transition Type": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 51],
-          "type": "Maintenance",
-          "comment": "Direct"
-        },
-        {
-          "dmxRange": [52, 102],
-          "type": "Maintenance",
-          "comment": "Through White Point"
-        },
-        {
-          "dmxRange": [103, 153],
-          "type": "Maintenance",
-          "comment": "Through Black Point"
-        },
-        {
-          "dmxRange": [154, 204],
-          "type": "Maintenance",
-          "comment": "Over White Point"
-        },
-        {
-          "dmxRange": [205, 255],
-          "type": "Maintenance",
-          "comment": "Under White Point"
-        }
-      ]
-    },
     "Gel 1, CCT": {
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "ColorTemperature",
-          "colorTemperature": "3200K"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "5600K"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
     },
     "Gel 1, Color Matching": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 84],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "Best Color"
         },
         {
-          "dmxRange": [85, 170],
+          "dmxRange": [128, 170],
           "type": "Maintenance",
           "comment": "Brightest"
         },
@@ -493,9 +1723,9 @@
         {
           "dmxRange": [153, 255],
           "type": "Maintenance",
-          "comment": "Cinelux",
+          "comment": "Roscolux",
           "switchChannels": {
-            "Gel 1 Rosco": "Gel 1, Rosco Cinelux"
+            "Gel 1 Rosco": "Gel 1, Rosco Roscolux"
           }
         }
       ]
@@ -1031,7 +2261,7 @@
         }
       ]
     },
-    "Gel 1, Rosco Cinelux": {
+    "Gel 1, Rosco Roscolux": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -2545,29 +3775,22 @@
     },
     "Gel 2, CCT": {
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "ColorTemperature",
-          "colorTemperature": "3200K"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "5600K"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
     },
     "Gel 2, Color Matching": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 84],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "Best Color"
         },
         {
-          "dmxRange": [85, 170],
+          "dmxRange": [128, 170],
           "type": "Maintenance",
           "comment": "Brightest"
         },
@@ -2631,9 +3854,9 @@
         {
           "dmxRange": [153, 255],
           "type": "Maintenance",
-          "comment": "Cinelux",
+          "comment": "Roscolux",
           "switchChannels": {
-            "Gel 2 Rosco": "Gel 2, Rosco Cinelux"
+            "Gel 2 Rosco": "Gel 2, Rosco Roscolux"
           }
         }
       ]
@@ -3169,7 +4392,7 @@
         }
       ]
     },
-    "Gel 2, Rosco Cinelux": {
+    "Gel 2, Rosco Roscolux": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -4701,9 +5924,9 @@
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4714,9 +5937,9 @@
         "Color Temperature",
         "Green-Magenta Point 8bit",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4730,9 +5953,9 @@
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4745,9 +5968,9 @@
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4758,9 +5981,9 @@
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4784,9 +6007,9 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4800,9 +6023,9 @@
         "Green-Magenta Point 16bit",
         "Green-Magenta Point 16bit fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4822,9 +6045,9 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4842,9 +6065,9 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4858,104 +6081,9 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P11: CCT & RGBW 8/16bit",
-      "shortName": "P11",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P12: CCT 8/16bit",
-      "shortName": "P12",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P13: CCT & HSI 8/16bit",
-      "shortName": "P13",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
-        "Hue",
-        "Hue fine",
-        "Saturation",
-        "Saturation fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P14: RGBW 8/16bit",
-      "shortName": "P14",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P15: HSI 8/16bit",
-      "shortName": "P15",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Hue",
-        "Hue fine",
-        "Saturation",
-        "Saturation fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4974,11 +6102,11 @@
         "Gel 2, Brand",
         "Gel 2, Category",
         "Gel 2",
-        "Gel Transition Type",
+        "Reserved for future use",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4999,11 +6127,11 @@
         "Gel 2, Brand",
         "Gel 2, Category",
         "Gel 2",
-        "Gel Transition Type",
+        "Reserved for future use",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     }
   ]
