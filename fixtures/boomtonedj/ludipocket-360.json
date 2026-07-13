@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ludipocket 360",
+  "shortName": "Ludipocket 360",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Scanner"],
+  "meta": {
+    "authors": ["Jack LIGHT"],
+    "createDate": "2021-11-22",
+    "lastModifyDate": "2021-11-22"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/50/50157_ludipocket360manual2016enfr.pdf"
+    ],
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-ludipocket-360-p50157.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=SWAWGKqTHm0"
+    ]
+  },
+  "physical": {
+    "dimensions": [360, 285, 245],
+    "weight": 3.65,
+    "power": 12,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt 1": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt 2": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Indigo",
+          "comment": "DIMMER MODE"
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "ColorPreset",
+          "comment": "Chang Color"
+        },
+        {
+          "dmxRange": [8, 140],
+          "type": "ColorPreset",
+          "comment": "Fondu Color"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Chan Parameter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "Chan Activation CH1 to CH7 and CH9 to CH14"
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Generic",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "CH6 to CH7"
+      }
+    },
+    "Dimmer Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red 1 to Red 8"
+      }
+    },
+    "Dimmer Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green 1 to Green 8"
+      }
+    },
+    "Dimmer Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue 1 to Blue8"
+      }
+    },
+    "Dimmer White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White 1 to White 8"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Ch 14",
+      "channels": [
+        "Pan",
+        "Tilt 1",
+        "Tilt 2",
+        "Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Mode",
+        "Chan Parameter",
+        "Program Speed",
+        "Dimmer Red",
+        "Dimmer Green",
+        "Dimmer Blue",
+        "Dimmer White",
+        "Reset"
+      ]
+    }
+  ]
+}
