@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving 135 Matrix",
+  "shortName": "Wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Sluk"],
+    "createDate": "2021-11-09",
+    "lastModifyDate": "2021-11-09"
+  },
+  "links": {
+    "manual": [
+      "https://productos.equipson.es/moving-135-matrix"
+    ],
+    "productPage": [
+      "https://productos.equipson.es/moving-135-matrix"
+    ],
+    "video": [
+      "https://productos.equipson.es/moving-135-matrix"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pan Fino": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Tilt Fino": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Velocidad": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer General": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Estrobo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer Rojo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer Azul": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer Blanco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Mezcla de color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Led Matrix": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Programas": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 220],
+          "type": "Generic",
+          "comment": "Habilita los primeros 15 canales"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Generic",
+          "comment": "Cambio por salto"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "Cambio gradual"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Control de sonido"
+        }
+      ]
+    },
+    "Programas internos para control de velocidad": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Control del sonido, Auto y Reseteo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 64],
+          "type": "Generic",
+          "comment": "Sin efecto"
+        },
+        {
+          "dmxRange": [65, 128],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "Generic",
+          "comment": "Control de audio"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Generic",
+          "comment": "Reseteo"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Canales",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan Fino",
+        "Tilt Fino",
+        "Velocidad",
+        "Dimmer General",
+        "Estrobo",
+        "Dimmer Rojo",
+        "Dimmer Verde",
+        "Dimmer Azul",
+        "Dimmer Blanco",
+        "Mezcla de color",
+        "Led Matrix",
+        "Programas",
+        "Programas internos para control de velocidad",
+        "Control del sonido, Auto y Reseteo"
+      ]
+    }
+  ]
+}
