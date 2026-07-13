@@ -23,6 +23,14 @@ let repoName;
 let prData;
 
 /**
+ * @typedef {object} ReviewComment
+ * @property {string} path - File path (relative to the repo root) the comment is anchored to.
+ * @property {number} line - 1-indexed line number in the new version of the file.
+ * @property {'LEFT' | 'RIGHT'} [side] - Diff side. Defaults to 'RIGHT' if omitted.
+ * @property {string} body - The comment body. May contain a `suggestion` code block.
+ */
+
+/**
  * Checks if the environment variables for GitHub operations are correct.
  * @returns {Promise} Rejects an error message if the environment is not correct.
  */
@@ -324,7 +332,7 @@ export function getHeadSha() {
  * @param {object} test - Information about the test script that wants to update the review.
  * @param {URL} test.fileUrl - URL of the test file. Used to derive the marker.
  * @param {string} test.body - The review summary body (shown once, above the inline comments).
- * @param {{path: string, line: number, side?: 'LEFT'|'RIGHT', body: string}[]} test.comments - The inline review comments to attach. Each is anchored to a specific line in a file.
+ * @param {ReviewComment[]} test.comments - The inline review comments to attach. Each is anchored to a specific line in a file.
  * @returns {Promise} A promise that is fulfilled once all GitHub operations have completed.
  */
 export async function updateReview(test) {
@@ -337,94 +345,9 @@ export async function updateReview(test) {
   const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
   const marker = `<!-- GITHUB-TEST-REVIEW: ${relativeFilePath} -->`;
 
-  // 1) Dismiss any prior reviews from this test.
-  // Paginate up to 5 pages of 100 (500 reviews) — more than enough for typical re-runs,
-  // and prevents silently missing old reviews on long-lived PRs.
-  const reviewPromises = [];
-  for (let index = 0; index < 5; index++) {
-    reviewPromises.push(
-      githubClient.rest.pulls.listReviews({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
+  await cleanupPriorReviews(marker);
 
-  const reviewBlocks = await Promise.all(reviewPromises);
-  const existingReviews = reviewBlocks.flatMap((block) => block.data);
-
-  // Identify reviews posted by this test (matched by the hidden marker in their body).
-  // These IDs are used both to filter the dismissal candidates and to identify
-  // which inline review comments belong to our reviews for deletion.
-  const markedReviews = existingReviews.filter((review) => review.body && review.body.startsWith(marker));
-  const markedReviewIds = new Set(markedReviews.map((review) => review.id));
-
-  // 1) Dismiss prior reviews from this test.
-  // GitHub's API only allows dismissing APPROVED or CHANGES_REQUESTED reviews.
-  // We always post our own reviews with event: 'REQUEST_CHANGES', so combining
-  // the marker check with this state filter is sufficient — old COMMENTED reviews
-  // (from before the event was changed) and already-DISMISSED reviews are skipped
-  // automatically, and human reviews don't have the marker so they're never touched.
-  const dismissPromises = markedReviews
-    .filter((review) => review.state === 'CHANGES_REQUESTED')
-    .map((review) => {
-      console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-      return githubClient.rest.pulls.dismissReview({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        review_id: review.id,
-        message: 'Superseded by a new run of the metadata-update-reminder test.',
-      });
-    });
-
-  // 2) Delete any prior review comments from this test (orphan cleanup).
-  // Paginate using prData.review_comments count, mirroring the updateComment pattern.
-  const commentPromises = [];
-  for (let index = 0; index < prData.review_comments / 100; index++) {
-    commentPromises.push(
-      githubClient.rest.pulls.listReviewComments({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
-
-  const commentBlocks = await Promise.all(commentPromises);
-  const existingComments = commentBlocks.flatMap((block) => block.data);
-
-  // The marker only appears in the review body, not in the comment body, so we
-  // match comments by their parent review's ID (which is reliably in the API
-  // response as `pull_request_review_id`).
-  const deletePromises = existingComments
-    .filter((comment) => markedReviewIds.has(comment.pull_request_review_id))
-    .map((comment) => {
-      console.log(`Deleting old review comment ${comment.id} (from marked review) at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-      return githubClient.rest.pulls.deleteReviewComment({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        comment_id: comment.id,
-      });
-    });
-
-  // Use allSettled so a dismissal failure (e.g. a state we don't expect) doesn't
-  // abort the inline-comment deletion. Both should be best-effort cleanup.
-  await Promise.allSettled([...dismissPromises, ...deletePromises]);
-
-  // 3) Post the new review, unless the caller only wanted cleanup.
+  // Post the new review, unless the caller only wanted cleanup.
   if (test.body === '' && test.comments.length === 0) {
     console.log(`Skipping review creation at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} (no body, no comments — cleanup-only mode).`);
     return undefined;
@@ -445,6 +368,114 @@ export async function updateReview(test) {
       side: comment.side || 'RIGHT',
     })),
   });
+}
+
+/**
+ * Paginate `pulls.listReviews` and return the flat array of review objects.
+ * @returns {Promise<object[]>} All reviews on the current PR (up to 500).
+ */
+async function fetchExistingReviews() {
+  // Paginate up to 5 pages of 100 (500 reviews) — more than enough for typical re-runs,
+  // and prevents silently missing old reviews on long-lived PRs.
+  const reviewPromises = [];
+  for (let index = 0; index < 5; index++) {
+    reviewPromises.push(
+      githubClient.rest.pulls.listReviews({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
+        page: index + 1,
+      }),
+    );
+  }
+
+  const reviewBlocks = await Promise.all(reviewPromises);
+  return reviewBlocks.flatMap((block) => block.data);
+}
+
+/**
+ * Paginate `pulls.listReviewComments` and return the flat array of review comment objects.
+ * @returns {Promise<object[]>} All inline review comments on the current PR.
+ */
+async function fetchExistingReviewComments() {
+  // Paginate using prData.review_comments count, mirroring the updateComment pattern.
+  const commentPromises = [];
+  for (let index = 0; index < prData.review_comments / 100; index++) {
+    commentPromises.push(
+      githubClient.rest.pulls.listReviewComments({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        per_page: 100,
+        page: index + 1,
+      }),
+    );
+  }
+
+  const commentBlocks = await Promise.all(commentPromises);
+  return commentBlocks.flatMap((block) => block.data);
+}
+
+/**
+ * Dismiss prior reviews posted by this test and delete their inline review comments.
+ *
+ * Reviews and comments are matched to this test by a hidden marker (derived from
+ * `test.fileUrl`). The state filter (`CHANGES_REQUESTED`) means we never try to
+ * dismiss reviews we couldn't have posted (APPROVED/COMMENTED/DISMISSED) and
+ * never touch human reviews (which lack the marker). Inline comments are
+ * matched by their parent review's `pull_request_review_id` because the marker
+ * only appears in the review body, not in the comment body.
+ *
+ * `Promise.allSettled` is used so a single failure does not abort the remaining
+ * cleanup; all cleanup is best-effort.
+ *
+ * @param {string} marker - The hidden HTML marker identifying reviews from this test.
+ * @returns {Promise<void>} Resolves when all cleanup operations have completed (success or failure).
+ */
+async function cleanupPriorReviews(marker) {
+  const existingReviews = await fetchExistingReviews();
+
+  // Identify reviews posted by this test (matched by the hidden marker in their body).
+  // These IDs are used both to filter the dismissal candidates and to identify
+  // which inline review comments belong to our reviews for deletion.
+  const markedReviews = existingReviews.filter((review) => review.body && review.body.startsWith(marker));
+  const markedReviewIds = new Set(markedReviews.map((review) => review.id));
+
+  const dismissPromises = markedReviews
+    .filter((review) => review.state === 'CHANGES_REQUESTED')
+    .map((review) => {
+      console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.dismissReview({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        review_id: review.id,
+        message: 'Superseded by a new run of the metadata-update-reminder test.',
+      });
+    });
+
+  const existingComments = await fetchExistingReviewComments();
+
+  const deletePromises = existingComments
+    .filter((comment) => markedReviewIds.has(comment.pull_request_review_id))
+    .map((comment) => {
+      console.log(`Deleting old review comment ${comment.id} (from marked review) at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.deleteReviewComment({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        comment_id: comment.id,
+      });
+    });
+
+  await Promise.allSettled([...dismissPromises, ...deletePromises]);
 }
 
 /**
@@ -469,10 +500,10 @@ export async function getFileContent(filePath, ref) {
 }
 
 /**
- * Fetch the unified diff patch for a file in the PR. Returns null if the patch is not
+ * Fetch the unified diff patch for a file in the PR. Returns undefined if the patch is not
  * available (e.g., file too large, binary file, or no diff).
  * @param {string} filePath - Path of the file relative to the repo root.
- * @returns {Promise<string|null>} The unified diff patch, or null if not available.
+ * @returns {Promise<string | undefined>} The unified diff patch, or undefined if not available.
  */
 export async function getFilePatch(filePath) {
   // Paginate listFiles to find the file (up to 10 pages × 100 = 1000 files)
@@ -493,6 +524,5 @@ export async function getFilePatch(filePath) {
 
   const blocks = await Promise.all(filePromises);
   const files = blocks.flatMap((block) => block.data);
-  const file = files.find((f) => f.filename === filePath);
-  return file ? file.patch : null;
+  return files.find((f) => f.filename === filePath)?.patch;
 }
