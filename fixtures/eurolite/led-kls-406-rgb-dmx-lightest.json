@@ -1,0 +1,333 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED KLS-406 RGB DMX Lightest",
+  "shortName": "KLS 406",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["dreey"],
+    "createDate": "2025-05-29",
+    "lastModifyDate": "2025-05-29"
+  },
+  "comment": "Disconitued Model",
+  "links": {
+    "manual": [
+      "https://asta.tu-berlin.de/wp-content/uploads/2020/06/Bedienungsanleitung_KLS-406.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=PVmQfnbpqcM&si=sdv9n0R-ISUFiLqM"
+    ]
+  },
+  "physical": {
+    "dimensions": [55, 295, 1870],
+    "weight": 11,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1080 of 10mm LEDs"
+    }
+  },
+  "availableChannels": {
+    "Internal Sound Controlled mode": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "low"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "flash with increased speed"
+        },
+        {
+          "dmxRange": [70, 139],
+          "type": "StrobeSpeed",
+          "speedStart": "71Hz",
+          "speedEnd": "138Hz",
+          "comment": "chasing flash with increased speed L-R"
+        },
+        {
+          "dmxRange": [140, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "209Hz",
+          "speedEnd": "140Hz"
+        },
+        {
+          "dmxRange": [210, 253],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "210Hz",
+          "speedEnd": "253Hz"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    },
+    "SPOT 1 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "RED"
+      }
+    },
+    "SPOT 1 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 1 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 2 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 2 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 2 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 3 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 3 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 3 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 4 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 4 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 4 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 5 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 5 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 5 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 6 RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 6 GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SPOT 6 BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Sound",
+      "shortName": "SND",
+      "channels": [
+        "Internal Sound Controlled mode"
+      ]
+    },
+    {
+      "name": "DMX Controlled",
+      "shortName": "DMX",
+      "channels": [
+        "Internal Sound Controlled mode",
+        "Master Dimmer",
+        "Strobe",
+        "SPOT 1 RED",
+        "SPOT 1 GREEN",
+        "SPOT 1 BLUE",
+        "SPOT 2 RED",
+        "SPOT 2 GREEN",
+        "SPOT 2 BLUE",
+        "SPOT 3 RED",
+        "SPOT 3 GREEN",
+        "SPOT 3 BLUE",
+        "SPOT 4 RED",
+        "SPOT 4 GREEN",
+        "SPOT 4 BLUE",
+        "SPOT 5 RED",
+        "SPOT 5 GREEN",
+        "SPOT 5 BLUE",
+        "SPOT 6 RED",
+        "SPOT 6 GREEN",
+        "SPOT 6 BLUE"
+      ]
+    }
+  ]
+}
