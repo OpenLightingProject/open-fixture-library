@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Power Battern MkII",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Dominic Smith"],
+    "createDate": "2025-11-21",
+    "lastModifyDate": "2025-11-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolight.co.uk/ftp-in/EQLED032_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.prolight.co.uk/ftp-in/EQLED032_Manual.pdf"
+    ],
+    "video": [
+      "https://www.prolight.co.uk/ftp-in/EQLED032_Manual.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 1000, 100],
+    "weight": 5,
+    "power": 30,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Multi Function": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Multi-Effect"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-CH",
+      "shortName": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-CH",
+      "shortName": "RGB /w Dimmer",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7-CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Multi Function",
+        "Program Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
