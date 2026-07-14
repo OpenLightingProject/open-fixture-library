@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Flood Light 336pcs",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gregg Carreno"],
+    "createDate": "2023-11-16",
+    "lastModifyDate": "2023-11-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.ablights.cl/index.php?go=producto&id-producto=686.pdf"
+    ],
+    "productPage": [
+      "https://www.ablights.cl/index.php?go=producto&id-producto=686"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 200, 40],
+    "weight": 2.5,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [17, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "5Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Sound Activation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe Speed",
+        "Sound Activation"
+      ]
+    }
+  ]
+}
