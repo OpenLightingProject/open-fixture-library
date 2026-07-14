@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PFE 100",
+  "shortName": "pfe100",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Elias"],
+    "createDate": "2025-02-26",
+    "lastModifyDate": "2025-02-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/40001982-Anleitung-96392-1.100-eurolite-led-pfe-100-rgbw-profile-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn40001982-eurolite-led-pfe-100-rgbw-profile-spot.html"
+    ]
+  },
+  "physical": {
+    "weight": 11,
+    "power": 137,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 11500
+    },
+    "lens": {
+      "degreesMinMax": [14, 41]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUp"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channel",
+      "shortName": "9CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Macros 2",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
