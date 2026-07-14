@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor Stage PAR 12x3W Tri",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Albert"],
+    "createDate": "2026-03-16",
+    "lastModifyDate": "2026-03-16"
+  },
+  "comment": "PAR Can Outdoor",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_256293_v2_r2_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.co.uk/stairville_outdoor_stage_par_12x3w_tri.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [184, 184, 170],
+    "weight": 3.5,
+    "power": 42,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 x 3 W Tri-Color LED (RGB)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Auto Programs"
+      }
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Curve": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Curve"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
