@@ -1,0 +1,529 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sharbar",
+  "shortName": "Sharbar",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["remyzik"],
+    "createDate": "2025-01-26",
+    "lastModifyDate": "2025-01-27",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-04-29",
+      "comment": "GDTF v1.2 fixture type ID: DADDED13-23E3-47F3-B422-98DA37DA308E"
+    }
+  },
+  "availableChannels": {
+    "Dummy": {
+      "fineChannelAliases": ["Dummy fine"],
+      "capability": {
+        "type": "Unknown (Dummy)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Dummy 2": {
+      "name": "Dummy",
+      "fineChannelAliases": ["Dummy 2 fine"],
+      "capability": {
+        "type": "Unknown (Dummy)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Dummy 3": {
+      "name": "Dummy",
+      "fineChannelAliases": ["Dummy 3 fine"],
+      "capability": {
+        "type": "Unknown (Dummy)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Dummy 4": {
+      "name": "Dummy",
+      "fineChannelAliases": ["Dummy 4 fine"],
+      "capability": {
+        "type": "Unknown (Dummy)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "Color Macro1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [4, 69],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Strobe S>F"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [75, 140],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Pulse S>F"
+        },
+        {
+          "dmxRange": [141, 206],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Pulse F>S"
+        },
+        {
+          "dmxRange": [207, 211],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [212, 224],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Random Slow"
+        },
+        {
+          "dmxRange": [225, 237],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Random Mid"
+        },
+        {
+          "dmxRange": [238, 250],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 256],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [257, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Narrow"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Wide"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P 2": {
+      "name": "P",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P 3": {
+      "name": "P",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P 4": {
+      "name": "P",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P 5": {
+      "name": "P",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "P 6": {
+      "name": "P",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg"
+      }
+    },
+    "Function": {
+      "highlightValue": 104,
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "Fixture Global Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "P/T Reset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Global Reset"
+        }
+      ]
+    },
+    "FX1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX1 Rate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz"
+      }
+    },
+    "FX1 Adjust1": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "FX2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "FX2 Rate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz"
+      }
+    },
+    "FX2 Adjust1": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "fineChannelAliases": ["R 2 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "fineChannelAliases": ["G 2 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "fineChannelAliases": ["B 2 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Function 2": {
+      "name": "Function",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Shape + Pixel RGBW - 54 ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Dummy 3",
+        "Dummy 3 fine",
+        "Dummy 4",
+        "Dummy 4 fine",
+        "CTO",
+        "Color Macro1",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "P",
+        "P 2",
+        "P 3",
+        "P 4",
+        "P 5",
+        "P 6",
+        "Function",
+        "Fixture Global Reset",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Adjust1",
+        "FX2",
+        "FX2 Rate",
+        "FX2 Adjust1"
+      ]
+    },
+    {
+      "name": "Shape - 30 ch",
+      "channels": [
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "White 2",
+        "White 2 fine",
+        "CTO",
+        "Color Macro1",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "P",
+        "P 2",
+        "P 3",
+        "P 4",
+        "P 5",
+        "P 6",
+        "Function 2",
+        "Fixture Global Reset",
+        "FX1",
+        "FX1 Rate",
+        "FX1 Adjust1",
+        "FX2",
+        "FX2 Rate",
+        "FX2 Adjust1"
+      ]
+    },
+    {
+      "name": "Standard + Pixel RGBW - 48 ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Dummy 3",
+        "Dummy 3 fine",
+        "Dummy 4",
+        "Dummy 4 fine",
+        "CTO",
+        "Color Macro1",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "P",
+        "P 2",
+        "P 3",
+        "P 4",
+        "P 5",
+        "P 6",
+        "Function",
+        "Fixture Global Reset"
+      ]
+    },
+    {
+      "name": "Standard - 24 ch",
+      "channels": [
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "White 2",
+        "White 2 fine",
+        "CTO",
+        "Color Macro1",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "P",
+        "P 2",
+        "P 3",
+        "P 4",
+        "P 5",
+        "P 6",
+        "Function 2",
+        "Fixture Global Reset"
+      ]
+    }
+  ]
+}
