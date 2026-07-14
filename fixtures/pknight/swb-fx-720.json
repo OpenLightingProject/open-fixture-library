@@ -1,0 +1,1982 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SWB FX 720",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Matt Psencik"],
+    "createDate": "2023-12-16",
+    "lastModifyDate": "2023-12-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-12-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [1000, 70, 150],
+    "weight": 2.9,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RGB Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Outer Red, Green,and Blue Strobe Effects"
+      }
+    },
+    "RGB Animation Presets (RGB Mode)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Effect",
+          "effectName": "Effect 27"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Effect",
+          "effectName": "Effect 28"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Effect",
+          "effectName": "Effect 29"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Effect",
+          "effectName": "Effect 30"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Effect",
+          "effectName": "Effect 31"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Effect",
+          "effectName": "Effect 32"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Effect",
+          "effectName": "Effect 33"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Effect",
+          "effectName": "Effect 34"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Effect",
+          "effectName": "Effect 35"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Effect",
+          "effectName": "Effect 36"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Effect",
+          "effectName": "Effect 37"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Effect",
+          "effectName": "Effect 38"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Effect",
+          "effectName": "Effect 39"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Effect",
+          "effectName": "Effect 40"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Effect",
+          "effectName": "Effect 41"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Effect",
+          "effectName": "Effect 42"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Effect",
+          "effectName": "Effect 43"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Effect",
+          "effectName": "Effect 44"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Effect",
+          "effectName": "Effect 45"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Effect",
+          "effectName": "Effect 46"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Effect",
+          "effectName": "Effect 47"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Effect",
+          "effectName": "Effect 48"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Effect",
+          "effectName": "Effect 49"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Effect",
+          "effectName": "Effect 50"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Effect",
+          "effectName": "Effect 51"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Effect",
+          "effectName": "Effect 52"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Effect",
+          "effectName": "Effect 53"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Effect",
+          "effectName": "Effect 54"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "Effect",
+          "effectName": "Effect 55"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "Effect",
+          "effectName": "Effect 56"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Effect",
+          "effectName": "Effect 57"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "Effect",
+          "effectName": "Effect 58"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Effect",
+          "effectName": "Effect 59"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Effect",
+          "effectName": "Effect 60"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Effect",
+          "effectName": "Effect 61"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Effect",
+          "effectName": "Effect 62"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectName": "Effect 63"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Effect",
+          "effectName": "Effect 64"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Effect",
+          "effectName": "Effect 65"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Effect",
+          "effectName": "Effect 66"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "Effect",
+          "effectName": "Effect 67"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Effect",
+          "effectName": "Effect 68"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "Effect",
+          "effectName": "Effect 69"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Effect",
+          "effectName": "Effect 70"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Effect",
+          "effectName": "Effect 71"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Effect",
+          "effectName": "Effect 72"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Effect",
+          "effectName": "Effect 73"
+        },
+        {
+          "dmxRange": [148, 149],
+          "type": "Effect",
+          "effectName": "Effect 74"
+        },
+        {
+          "dmxRange": [150, 151],
+          "type": "Effect",
+          "effectName": "Effect 75"
+        },
+        {
+          "dmxRange": [152, 153],
+          "type": "Effect",
+          "effectName": "Effect 76"
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "Effect",
+          "effectName": "Effect 77"
+        },
+        {
+          "dmxRange": [156, 157],
+          "type": "Effect",
+          "effectName": "Effect 78"
+        },
+        {
+          "dmxRange": [158, 159],
+          "type": "Effect",
+          "effectName": "Effect 79"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Effect",
+          "effectName": "Effect 80"
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "Effect",
+          "effectName": "Effect 81"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Effect",
+          "effectName": "Effect 82"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Effect",
+          "effectName": "Effect 83"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Effect",
+          "effectName": "Effect 84"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Effect",
+          "effectName": "Effect 85"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Effect",
+          "effectName": "Effect 86"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Effect",
+          "effectName": "Effect 87"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Effect",
+          "effectName": "Effect 88"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Effect",
+          "effectName": "Effect 89"
+        },
+        {
+          "dmxRange": [180, 181],
+          "type": "Effect",
+          "effectName": "Effect 90"
+        },
+        {
+          "dmxRange": [182, 183],
+          "type": "Effect",
+          "effectName": "Effect 91"
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "Effect",
+          "effectName": "Effect 92"
+        },
+        {
+          "dmxRange": [186, 187],
+          "type": "Effect",
+          "effectName": "Effect 93"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Effect",
+          "effectName": "Effect 94"
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Effect",
+          "effectName": "Effect 95"
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "Effect",
+          "effectName": "Effect 96"
+        },
+        {
+          "dmxRange": [194, 195],
+          "type": "Effect",
+          "effectName": "Effect 97"
+        },
+        {
+          "dmxRange": [196, 197],
+          "type": "Effect",
+          "effectName": "Effect 98"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Effect",
+          "effectName": "Effect 99"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "Effect",
+          "effectName": "Effect 100"
+        },
+        {
+          "dmxRange": [202, 203],
+          "type": "Effect",
+          "effectName": "Effect 101"
+        },
+        {
+          "dmxRange": [204, 205],
+          "type": "Effect",
+          "effectName": "Effect 102"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Effect",
+          "effectName": "Effect 103"
+        },
+        {
+          "dmxRange": [208, 209],
+          "type": "Effect",
+          "effectName": "Effect 104"
+        },
+        {
+          "dmxRange": [210, 211],
+          "type": "Effect",
+          "effectName": "Effect 105"
+        },
+        {
+          "dmxRange": [212, 213],
+          "type": "Effect",
+          "effectName": "Effect 106"
+        },
+        {
+          "dmxRange": [214, 215],
+          "type": "Effect",
+          "effectName": "Effect 107"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Effect",
+          "effectName": "Effect 108"
+        },
+        {
+          "dmxRange": [218, 219],
+          "type": "Effect",
+          "effectName": "Effect 109"
+        },
+        {
+          "dmxRange": [220, 221],
+          "type": "Effect",
+          "effectName": "Effect 110"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "Effect",
+          "effectName": "Effect 111"
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Effect",
+          "effectName": "Effect 112"
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "Effect",
+          "effectName": "Effect 113"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "Effect",
+          "effectName": "Effect 114"
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "Effect",
+          "effectName": "Effect 115"
+        },
+        {
+          "dmxRange": [232, 233],
+          "type": "Effect",
+          "effectName": "Effect 116"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Effect",
+          "effectName": "Effect 117"
+        },
+        {
+          "dmxRange": [236, 237],
+          "type": "Effect",
+          "effectName": "Effect 118"
+        },
+        {
+          "dmxRange": [238, 239],
+          "type": "Effect",
+          "effectName": "Effect 119"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "Effect",
+          "effectName": "Effect 120"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "Effect",
+          "effectName": "Effect 121"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Effect",
+          "effectName": "Effect 122"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "Effect",
+          "effectName": "Effect 123"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "Effect",
+          "effectName": "Effect 124"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "Effect",
+          "effectName": "Effect 125"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "Effect",
+          "effectName": "Effect 126"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Effect",
+          "effectName": "Effect 127"
+        }
+      ]
+    },
+    "RGB Animation Speed (RGB Speed)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Adjust Speed of RGB Animations"
+      }
+    },
+    "W Effect Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Inner White Strobe Effects"
+      }
+    },
+    "White Animation Presets (W MODE)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Effect",
+          "effectName": "Effect 27"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Effect",
+          "effectName": "Effect 28"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Effect",
+          "effectName": "Effect 29"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Effect",
+          "effectName": "Effect 30"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Effect",
+          "effectName": "Effect 31"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Effect 32"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Effect 33"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Effect 34"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Effect 35"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Effect 36"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Effect 37"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Effect 38"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Effect 39"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Effect",
+          "effectName": "Effect 40"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Effect",
+          "effectName": "Effect 41"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Effect 42"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Effect 43"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Effect 44"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Effect 45"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Effect 46"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Effect 47"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Effect 48"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Effect 49"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Effect 50"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Effect 51"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Effect 52"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Effect 53"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Effect 54"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Effect 55"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Effect 56"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Effect 57"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Effect 58"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Effect",
+          "effectName": "Effect 59"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "Effect 60"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Effect 61"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Effect 62"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Effect 63"
+        }
+      ]
+    },
+    "White Animation Speed (W Speed)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "RGBW Strobe Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "RGBW Strobe Effect Speed"
+      }
+    },
+    "RGBW Animation Presets (RGBW Mode)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Effect",
+          "effectName": "Effect 27"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Effect",
+          "effectName": "Effect 28"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Effect",
+          "effectName": "Effect 29"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Effect",
+          "effectName": "Effect 30"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Effect",
+          "effectName": "Effect 31"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Effect",
+          "effectName": "Effect 32"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Effect",
+          "effectName": "Effect 33"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Effect",
+          "effectName": "Effect 34"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Effect",
+          "effectName": "Effect 35"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Effect",
+          "effectName": "Effect 36"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Effect",
+          "effectName": "Effect 37"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Effect",
+          "effectName": "Effect 38"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Effect",
+          "effectName": "Effect 39"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Effect",
+          "effectName": "Effect 40"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Effect",
+          "effectName": "Effect 41"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Effect",
+          "effectName": "Effect 42"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Effect",
+          "effectName": "Effect 43"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Effect",
+          "effectName": "Effect 44"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Effect",
+          "effectName": "Effect 45"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Effect",
+          "effectName": "Effect 46"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Effect",
+          "effectName": "Effect 47"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Effect",
+          "effectName": "Effect 48"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Effect",
+          "effectName": "Effect 49"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Effect",
+          "effectName": "Effect 50"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Effect",
+          "effectName": "Effect 51"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Effect",
+          "effectName": "Effect 52"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Effect",
+          "effectName": "Effect 53"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Effect",
+          "effectName": "Effect 54"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "Effect",
+          "effectName": "Effect 55"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "Effect",
+          "effectName": "Effect 56"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Effect",
+          "effectName": "Effect 57"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "Effect",
+          "effectName": "Effect 58"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Effect",
+          "effectName": "Effect 59"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Effect",
+          "effectName": "Effect 60"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Effect",
+          "effectName": "Effect 61"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Effect",
+          "effectName": "Effect 62"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectName": "Effect 63"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Effect",
+          "effectName": "Effect 64"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Effect",
+          "effectName": "Effect 65"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Effect",
+          "effectName": "Effect 66"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "Effect",
+          "effectName": "Effect 67"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Effect",
+          "effectName": "Effect 68"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "Effect",
+          "effectName": "Effect 69"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Effect",
+          "effectName": "Effect 70"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Effect",
+          "effectName": "Effect 71"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Effect",
+          "effectName": "Effect 72"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Effect",
+          "effectName": "Effect 73"
+        },
+        {
+          "dmxRange": [148, 149],
+          "type": "Effect",
+          "effectName": "Effect 74"
+        },
+        {
+          "dmxRange": [150, 151],
+          "type": "Effect",
+          "effectName": "Effect 75"
+        },
+        {
+          "dmxRange": [152, 153],
+          "type": "Effect",
+          "effectName": "Effect 76"
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "Effect",
+          "effectName": "Effect 77"
+        },
+        {
+          "dmxRange": [156, 157],
+          "type": "Effect",
+          "effectName": "Effect 78"
+        },
+        {
+          "dmxRange": [158, 159],
+          "type": "Effect",
+          "effectName": "Effect 79"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Effect",
+          "effectName": "Effect 80"
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "Effect",
+          "effectName": "Effect 81"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Effect",
+          "effectName": "Effect 82"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Effect",
+          "effectName": "Effect 83"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Effect",
+          "effectName": "Effect 84"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Effect",
+          "effectName": "Effect 85"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Effect",
+          "effectName": "Effect 86"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Effect",
+          "effectName": "Effect 87"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Effect",
+          "effectName": "Effect 88"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Effect",
+          "effectName": "Effect 89"
+        },
+        {
+          "dmxRange": [180, 181],
+          "type": "Effect",
+          "effectName": "Effect 90"
+        },
+        {
+          "dmxRange": [182, 183],
+          "type": "Effect",
+          "effectName": "Effect 91"
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "Effect",
+          "effectName": "Effect 92"
+        },
+        {
+          "dmxRange": [186, 187],
+          "type": "Effect",
+          "effectName": "Effect 93"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Effect",
+          "effectName": "Effect 94"
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Effect",
+          "effectName": "Effect 95"
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "Effect",
+          "effectName": "Effect 96"
+        },
+        {
+          "dmxRange": [194, 195],
+          "type": "Effect",
+          "effectName": "Effect 97"
+        },
+        {
+          "dmxRange": [196, 197],
+          "type": "Effect",
+          "effectName": "Effect 98"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Effect",
+          "effectName": "Effect 99"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "Effect",
+          "effectName": "Effect 100"
+        },
+        {
+          "dmxRange": [202, 203],
+          "type": "Effect",
+          "effectName": "Effect 101"
+        },
+        {
+          "dmxRange": [204, 205],
+          "type": "Effect",
+          "effectName": "Effect 102"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Effect",
+          "effectName": "Effect 103"
+        },
+        {
+          "dmxRange": [208, 209],
+          "type": "Effect",
+          "effectName": "Effect 104"
+        },
+        {
+          "dmxRange": [210, 211],
+          "type": "Effect",
+          "effectName": "Effect 105"
+        },
+        {
+          "dmxRange": [212, 213],
+          "type": "Effect",
+          "effectName": "Effect 106"
+        },
+        {
+          "dmxRange": [214, 215],
+          "type": "Effect",
+          "effectName": "Effect 107"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Effect",
+          "effectName": "Effect 108"
+        },
+        {
+          "dmxRange": [218, 219],
+          "type": "Effect",
+          "effectName": "Effect 109"
+        },
+        {
+          "dmxRange": [220, 221],
+          "type": "Effect",
+          "effectName": "Effect 110"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "Effect",
+          "effectName": "Effect 111"
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Effect",
+          "effectName": "Effect 112"
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "Effect",
+          "effectName": "Effect 113"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "Effect",
+          "effectName": "Effect 114"
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "Effect",
+          "effectName": "Effect 115"
+        },
+        {
+          "dmxRange": [232, 233],
+          "type": "Effect",
+          "effectName": "Effect 116"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Effect",
+          "effectName": "Effect 117"
+        },
+        {
+          "dmxRange": [236, 237],
+          "type": "Effect",
+          "effectName": "Effect 118"
+        },
+        {
+          "dmxRange": [238, 239],
+          "type": "Effect",
+          "effectName": "Effect 119"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "Effect",
+          "effectName": "Effect 120"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "Effect",
+          "effectName": "Effect 121"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Effect",
+          "effectName": "Effect 122"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "Effect",
+          "effectName": "Effect 123"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "Effect",
+          "effectName": "Effect 124"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "Effect",
+          "effectName": "Effect 125"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "Effect",
+          "effectName": "Effect 126"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Effect",
+          "effectName": "Effect 127"
+        }
+      ]
+    },
+    "RGBW Animation Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed of RGBW Animations"
+      }
+    },
+    "Background Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Color 0"
+        },
+        {
+          "dmxRange": [10, 15],
+          "type": "Effect",
+          "effectName": "Color 1"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "Effect",
+          "effectName": "Color 2"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "Effect",
+          "effectName": "Color 3"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "Effect",
+          "effectName": "Color 4"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "Effect",
+          "effectName": "Color 5"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "Effect",
+          "effectName": "Color 6"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "Effect",
+          "effectName": "Color 7"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "Effect",
+          "effectName": "Color 8"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "Effect",
+          "effectName": "Color 9"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "Effect",
+          "effectName": "Color 10"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "Effect",
+          "effectName": "Color 11"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "Effect",
+          "effectName": "Color 12"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "Effect",
+          "effectName": "Color 13"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "Effect",
+          "effectName": "Color 14"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "Effect",
+          "effectName": "Color 15"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Effect",
+          "effectName": "Color 16"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "Effect",
+          "effectName": "Color 17"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "Effect",
+          "effectName": "Color 18"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "Effect",
+          "effectName": "Color 19"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "Effect",
+          "effectName": "Color 20"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "Effect",
+          "effectName": "Color 21"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "Effect",
+          "effectName": "Color 22"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "Effect",
+          "effectName": "Color 23"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "Effect",
+          "effectName": "Color 24"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "Effect",
+          "effectName": "Color 25"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Effect",
+          "effectName": "Color 26"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Effect",
+          "effectName": "Color 27"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Effect",
+          "effectName": "Color 28"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Effect",
+          "effectName": "Color 29"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Effect",
+          "effectName": "Color 30"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Effect",
+          "effectName": "Color 31"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Effect",
+          "effectName": "Color 32"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectName": "Color 33"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Effect",
+          "effectName": "Color 34"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Effect",
+          "effectName": "Color 35"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "Effect",
+          "effectName": "Color 36"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "Effect",
+          "effectName": "Color 37"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "Effect",
+          "effectName": "Color 38"
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "Effect",
+          "effectName": "Color 39"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Color 40"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Color 41"
+        }
+      ]
+    },
+    "Background Color Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Total Dimmer",
+        "RGB Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB Animation Presets (RGB Mode)",
+        "RGB Animation Speed (RGB Speed)",
+        "W Effect Strobe Speed",
+        "White",
+        "White Animation Presets (W MODE)",
+        "White Animation Speed (W Speed)",
+        "RGBW Strobe Speed",
+        "RGBW Animation Presets (RGBW Mode)",
+        "RGBW Animation Speed",
+        "Background Color",
+        "Background Color Dimmer"
+      ]
+    }
+  ]
+}
