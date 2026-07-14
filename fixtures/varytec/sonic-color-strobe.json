@@ -1,0 +1,266 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sonic Color Strobe",
+  "categories": ["Blinder", "Strobe", "Other"],
+  "meta": {
+    "authors": ["Stoff"],
+    "createDate": "2026-02-06",
+    "lastModifyDate": "2026-02-06"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/de/varytec_colors_sonicstrobe.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=loksq55ijCU"
+    ]
+  },
+  "physical": {
+    "dimensions": [476, 241, 88],
+    "weight": 3.9,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speed": "10Hz"
+        }
+      ]
+    },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "duration": "long"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        }
+      ]
+    },
+    "Red Segment1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red Segment2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red Segment3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red Segment4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Segment4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Segment4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Programm1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Programm2"
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Programm3"
+        },
+        {
+          "dmxRange": [53, 82],
+          "type": "Effect",
+          "effectName": "Programm4"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Programm5"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Programm6"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Programm7"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Programm8"
+        }
+      ]
+    },
+    "Effect Speeed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Color BG": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Automatic Presets"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Effect direction": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Direction1"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Direction2"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "22 Chanel",
+      "channels": [
+        "Strobe",
+        "Strobe Speed",
+        "Strobe Duration",
+        "Intensity",
+        "Strobe Speed Effect",
+        "Red Segment1",
+        "Green Segment1",
+        "Blue Segment1",
+        "Red Segment2",
+        "Green Segment2",
+        "Blue Segment2",
+        "Red Segment3",
+        "Green Segment3",
+        "Blue Segment3",
+        "Red Segment4",
+        "Green Segment4",
+        "Blue Segment4",
+        "Effect",
+        "Effect Speeed",
+        "Color Presets",
+        "Color BG",
+        "Effect direction"
+      ]
+    }
+  ]
+}
