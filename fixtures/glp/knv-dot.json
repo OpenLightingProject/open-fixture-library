@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KNV DOT",
+  "shortName": "KNV DOT",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Anomynous"],
+    "createDate": "2022-10-04",
+    "lastModifyDate": "2022-10-04"
+  },
+  "comment": "This is just a Test",
+  "links": {
+    "manual": [
+      "https://www.glp.de/en/component/djcatalog2/?format=raw&task=download&fid=889"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/component/djcatalog2/item?id=64:knv-dot&cid=17:creative-led-system"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=IS3Y4rduqOw"
+    ]
+  },
+  "physical": {
+    "dimensions": [98, 78, 98],
+    "weight": 0.7,
+    "power": 34,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1* White 30W white LED 16*0,25W RGB LED"
+    }
+  },
+  "availableChannels": {
+    "Red coarse": {
+      "fineChannelAliases": ["Red coarse fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green coarse": {
+      "fineChannelAliases": ["Green coarse fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White coarse": {
+      "fineChannelAliases": ["White coarse fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "fineChannelAliases": ["Shutter / Strobe fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 39],
+          "type": "NoFunction",
+          "comment": "Sync ramp up slow > fast"
+        },
+        {
+          "dmxRange": [40, 74],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true,
+          "comment": "Sync ramp down slow > fast"
+        },
+        {
+          "dmxRange": [75, 109],
+          "type": "NoFunction",
+          "comment": "Sync ramp up-down slow > fast"
+        },
+        {
+          "dmxRange": [110, 144],
+          "type": "NoFunction",
+          "comment": "Sync double flash slow >fast"
+        },
+        {
+          "dmxRange": [145, 179],
+          "type": "NoFunction",
+          "comment": "Random pixel slow > fast"
+        },
+        {
+          "dmxRange": [180, 214],
+          "type": "NoFunction",
+          "comment": "Random strobe slow > fast"
+        },
+        {
+          "dmxRange": [215, 249],
+          "type": "NoFunction",
+          "comment": "Sync strobe 0.289 > 16.67 Hz"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "NoFunction",
+          "comment": "Hyperspeed"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "NoFunction",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Control Settings": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 1: RGBW 16-bit",
+      "shortName": "RGBW 16-bit",
+      "channels": [
+        "Red coarse",
+        "Red coarse fine",
+        "Green coarse",
+        "Green coarse fine",
+        "Blue",
+        "Blue fine",
+        "White coarse",
+        "White coarse fine",
+        "Shutter / Strobe",
+        "Shutter / Strobe fine"
+      ]
+    },
+    {
+      "name": "DMX 7: RGBW 25-pixel, 16-bit",
+      "shortName": "RGBW 25-pixel, 16-bit",
+      "channels": [
+        "Shutter / Strobe",
+        "Control Settings",
+        "Red coarse",
+        "Red coarse fine",
+        "Green coarse",
+        "Green coarse fine",
+        "Blue",
+        "Blue fine",
+        "White coarse",
+        "White coarse fine"
+      ]
+    }
+  ]
+}
