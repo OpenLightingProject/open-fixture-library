@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Starball LED 3W",
+  "shortName": "Starball",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Gamby"],
+    "createDate": "2024-04-09",
+    "lastModifyDate": "2024-04-09"
+  },
+  "comment": "Mirror Ball Effect",
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/222"
+    ],
+    "productPage": [
+      "https://www.adj.eu/starball-led-dmx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=--zDT5OUrks&si=EEX6or_Ts9Fbv-TC"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 210, 179],
+    "weight": 1.8,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 199],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Dimmer"
+        },
+        {
+          "dmxRange": [200, 247],
+          "type": "StrobeSpeed",
+          "speedStart": "1%",
+          "speedEnd": "100%",
+          "comment": "Strobing Slow-Fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Rotation",
+          "speed": "0rpm",
+          "comment": "No Rotation"
+        },
+        {
+          "dmxRange": [10, 120],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "CW Fast-Slow"
+        },
+        {
+          "dmxRange": [121, 134],
+          "type": "Rotation",
+          "speed": "0rpm",
+          "comment": "No Rotation"
+        },
+        {
+          "dmxRange": [135, 245],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Rotation",
+          "speed": "0rpm",
+          "comment": "No Rotation"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-Ch",
+      "channels": [
+        "Dimmer",
+        "Rotation"
+      ]
+    }
+  ]
+}
