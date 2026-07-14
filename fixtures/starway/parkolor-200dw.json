@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParKolor 200DW",
+  "shortName": "ParKolor",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dario"],
+    "createDate": "2025-04-20",
+    "lastModifyDate": "2025-04-20"
+  },
+  "comment": "5ch",
+  "links": {
+    "manual": [
+      "https://tech.starway.eu/225485_PARKOLOR200DW/225485_PARKOLOR200DW_US.pdf"
+    ],
+    "productPage": [
+      "https://starway.eu/fr/produits/parkolor-200dw"
+    ],
+    "other": [
+      "https://tech.starway.eu/225485_PARKOLOR200DW/225485_PARKOLOR200DW_FT.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [329, 370, 215],
+    "weight": 10,
+    "power": 400,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED COB 400 CW + WW",
+      "colorTemperature": 2700,
+      "lumens": 18000
+    },
+    "lens": {
+      "name": "beam",
+      "degreesMinMax": [10, 47]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 2,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [91, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ParKolor 200DW",
+      "shortName": "ParKolor",
+      "channels": [
+        "Intensity",
+        "Shutter",
+        "Cold White",
+        "Warm White",
+        "Zoom"
+      ]
+    }
+  ]
+}
