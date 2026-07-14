@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F1500 Fazer with Flightcase",
+  "shortName": "F1500",
+  "categories": ["Hazer", "Smoke"],
+  "meta": {
+    "authors": ["Lerk"],
+    "createDate": "2023-05-23",
+    "lastModifyDate": "2023-05-23"
+  },
+  "comment": "The ETEC F1500 is a professional tour haze machine built into a sturdy flight case. This haze machine operates with traditional water-based fog fluid and has a short warm-up time as well as a large fog output. The F1500 features a clear LCD display with timer function, manual fog output, and continuous fog output. This haze machine is an affordable alternative due to the use of traditional water-based fog fluid.",
+  "links": {
+    "productPage": [
+      "https://www.elcotec-electronic.de/Nebel-und-Effektmaschinen/Nebeleffekte/Hazer-Fazer/ETEC-F1500-Fazer-Dunstnebelmaschine-im-Flightcase::136763.html",
+      "https://www.etec-professional.de/product_info.php?products_id=136763",
+      "https://www.amazon.de/dp/B07XF1H6W3"
+    ]
+  },
+  "physical": {
+    "dimensions": [395, 250, 440],
+    "weight": 13.5,
+    "power": 1000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Haze Amount": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "default",
+      "channels": [
+        "Haze Amount",
+        "Fan Speed"
+      ]
+    }
+  ]
+}
