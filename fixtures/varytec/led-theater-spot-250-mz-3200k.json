@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theater Spot 250 MZ 3200K",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Benjamin Burkhardt"],
+    "createDate": "2026-02-15",
+    "lastModifyDate": "2026-02-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-02-15",
+      "comment": "created by Q Light Controller Plus (version 5.2.0)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 52]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe-Effekt": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 110],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe with rising speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [111, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe (burst) with rising speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Kanal-Modus",
+      "channels": [
+        "Dimmer",
+        "Strobe-Effekt",
+        "Focus"
+      ]
+    }
+  ]
+}
