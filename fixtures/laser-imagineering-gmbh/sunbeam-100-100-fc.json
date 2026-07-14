@@ -1,0 +1,960 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sunbeam 100 / 100 FC",
+  "shortName": "Sunbeam 100 / 100 FC",
+  "categories": ["Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2023-11-01",
+    "lastModifyDate": "2023-11-01"
+  },
+  "comment": "WORKS FOR 1st GENERATION SUNBEAM 100 AND FOR SUNBEAM 100 FC AS WELL !!",
+  "links": {
+    "manual": [
+      "http://www.lightpower-files.de/Assets/LI_Bedienungsanleitung_Sunbeam_50_100_FC.pdf"
+    ],
+    "productPage": [
+      "http://laser-imagineering.de/produkte/sunbeam-fc/"
+    ]
+  },
+  "rdm": {
+    "modelId": 712
+  },
+  "physical": {
+    "dimensions": [1007, 100, 88],
+    "weight": 7.5,
+    "power": 250,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "RGB LEDs Red 625nm / Green 527nm / Blue 457nm"
+    },
+    "lens": {
+      "degreesMinMax": [20, 25]
+    }
+  },
+  "availableChannels": {
+    "RED 1st GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 1st GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 1st GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 2nd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 2nd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 2nd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 3rd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 3rd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 3rd GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 4th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 4th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 4th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 5th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 5th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 5th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 6th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 6th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 6th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 7th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 7th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 7th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 8th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 8th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE  8th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 9th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 9th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 9th  GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 10th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 10th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 10th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "BLUE 8th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "BLUE 8th  GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "BLUE 9th GROUP": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 1st": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "BLUE 8th GROUP 2": {
+      "name": "BLUE 8th GROUP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 9": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 10": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "BLUE 20": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "GREEN 20": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "RED 20": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "RED 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 11": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 12": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 13": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 13": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 13": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 14": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 14": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 14": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 15": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 15": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 15": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "BLUE 19": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "RED 19": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "GREEN 19": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "BLUE 18": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "GREEN 18": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "RED 18": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "BLUE 17": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "GREEN 17": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "RED 17": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "BLUE 16": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "GREEN 16": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "RED 16": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3",
+      "shortName": "3",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE"
+      ]
+    },
+    {
+      "name": "6 CH 2 Groups",
+      "shortName": "6",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP"
+      ]
+    },
+    {
+      "name": "9 CH 3 Groups",
+      "shortName": "9",
+      "channels": [
+        "RED 1st GROUP",
+        "BLUE 1st GROUP",
+        "GREEN 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP"
+      ]
+    },
+    {
+      "name": "12 CH 4 Groups",
+      "shortName": "12",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP",
+        "RED 4th GROUP",
+        "GREEN 4th GROUP",
+        "BLUE 4th GROUP"
+      ]
+    },
+    {
+      "name": "15 G - 1+2+3+4 Linked",
+      "shortName": "15 G",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP",
+        "RED 4th GROUP",
+        "GREEN 4th GROUP",
+        "BLUE 4th GROUP",
+        "RED 5th GROUP",
+        "GREEN 5th GROUP",
+        "BLUE 5th GROUP"
+      ]
+    },
+    {
+      "name": "15 P - 1+16+31+46 Linked",
+      "shortName": "15 P",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP",
+        "RED 4th GROUP",
+        "GREEN 4th GROUP",
+        "BLUE 4th GROUP",
+        "RED 5th GROUP",
+        "GREEN 5th GROUP",
+        "BLUE 5th GROUP"
+      ]
+    },
+    {
+      "name": "30 G - 1+2 Linked",
+      "shortName": "30 G",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP",
+        "RED 4th GROUP",
+        "GREEN 4th GROUP",
+        "BLUE 4th GROUP",
+        "RED 5th GROUP",
+        "GREEN 5th GROUP",
+        "BLUE 5th GROUP",
+        "RED 6th GROUP",
+        "GREEN 6th GROUP",
+        "BLUE 6th GROUP",
+        "RED 7th GROUP",
+        "GREEN 7th GROUP",
+        "BLUE 7th GROUP",
+        "RED 8th GROUP",
+        "GREEN 8th GROUP",
+        "BLUE 8th  GROUP",
+        "RED 9th GROUP",
+        "GREEN 9th GROUP",
+        "BLUE 9th  GROUP",
+        "RED 10th GROUP",
+        "GREEN 10th GROUP",
+        "BLUE 10th GROUP"
+      ]
+    },
+    {
+      "name": "30 P - 1+31 Linked",
+      "shortName": "30 P",
+      "channels": [
+        "RED 1st GROUP",
+        "GREEN 1st GROUP",
+        "BLUE 1st GROUP",
+        "RED 2nd GROUP",
+        "GREEN 2nd GROUP",
+        "BLUE 2nd GROUP",
+        "RED 3rd GROUP",
+        "GREEN 3rd GROUP",
+        "BLUE 3rd GROUP",
+        "RED 4th GROUP",
+        "GREEN 4th GROUP",
+        "BLUE 4th GROUP",
+        "RED 5th GROUP",
+        "GREEN 5th GROUP",
+        "BLUE 5th GROUP",
+        "RED 6th GROUP",
+        "GREEN 6th GROUP",
+        "BLUE 6th GROUP",
+        "RED 7th GROUP",
+        "GREEN 7th GROUP",
+        "BLUE 7th GROUP",
+        "RED 8th GROUP",
+        "GREEN 8th GROUP",
+        "BLUE  8th GROUP",
+        "RED 9th GROUP",
+        "GREEN 9th GROUP",
+        "BLUE 9th GROUP",
+        "RED 10th GROUP",
+        "GREEN 10th GROUP",
+        "BLUE 10th GROUP"
+      ]
+    },
+    {
+      "name": "60 - INDIVIDUAL",
+      "shortName": "60",
+      "channels": [
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "RED 5",
+        "GREEN 5",
+        "BLUE 5",
+        "RED 6",
+        "GREEN 6",
+        "BLUE 6",
+        "RED 7",
+        "GREEN 7",
+        "BLUE 7",
+        "RED 8",
+        "GREEN 8",
+        "BLUE 8",
+        "RED 9",
+        "GREEN 9",
+        "BLUE 9",
+        "RED 10",
+        "GREEN 10",
+        "BLUE 10",
+        "RED 11",
+        "GREEN 11",
+        "BLUE 11",
+        "RED 12",
+        "GREEN 12",
+        "BLUE 12",
+        "RED 13",
+        "GREEN 13",
+        "BLUE 13",
+        "RED 14",
+        "GREEN 14",
+        "BLUE 14",
+        "RED 15",
+        "GREEN 15",
+        "BLUE 15",
+        "RED 16",
+        "GREEN 16",
+        "BLUE 16",
+        "RED 17",
+        "GREEN 17",
+        "BLUE 17",
+        "RED 18",
+        "GREEN 18",
+        "BLUE 18",
+        "RED 19",
+        "GREEN 19",
+        "BLUE 19",
+        "RED 20",
+        "GREEN 20",
+        "BLUE 20"
+      ]
+    }
+  ]
+}
