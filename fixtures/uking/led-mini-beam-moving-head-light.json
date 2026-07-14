@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Mini Beam Moving Head Light",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Ken"],
+    "createDate": "2025-02-24",
+    "lastModifyDate": "2025-02-24"
+  },
+  "comment": "The webpage calls this ZQ-B28, but also ZQ02040.",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B28.pdf",
+      "https://drive.google.com/file/d/19NJR8D2iBqtC7w1jeJ8Mru2RjcRh6o0J/view"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/b28-moving-head-light-mini-10w-spot-lighting/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=i3cKhddBVJg"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 160, 160],
+    "weight": 2.15,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "At which values is the strobe disabled?"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 127],
+          "type": "Effect",
+          "effectName": "Auto mode 1"
+        },
+        {
+          "dmxRange": [128, 249],
+          "type": "Effect",
+          "effectName": "Auto mode 2"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "ch13",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto Programs",
+        "Reset"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "ch11",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
