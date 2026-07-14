@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ECO SLIM 180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ukr"],
+    "createDate": "2024-11-20",
+    "lastModifyDate": "2024-11-20"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1waW-bUpJlhu8VLPgIlE4rlhSX3RuzYjS/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://kinson.pro/172-foco-de-led-180w-rgb-blanco-ambar-8435453107488.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=M_-dEiuVVlg"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "2ch",
+      "channels": [
+        "Color Wheel",
+        "Strobe"
+      ]
+    }
+  ]
+}
