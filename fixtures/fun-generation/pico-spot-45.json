@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pico Spot 45",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Fabian Ebert"],
+    "createDate": "2023-10-28",
+    "lastModifyDate": "2023-10-28"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_424284_v4_de_online.pdf"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "weiß"
+        },
+        {
+          "type": "Color",
+          "name": "rot"
+        },
+        {
+          "type": "Color",
+          "name": "orange"
+        },
+        {
+          "type": "Color",
+          "name": "gelb"
+        },
+        {
+          "type": "Color",
+          "name": "grün"
+        },
+        {
+          "type": "Color",
+          "name": "blau"
+        },
+        {
+          "type": "Color",
+          "name": "cyan"
+        },
+        {
+          "type": "Color",
+          "name": "lila"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Drehung pan": {
+      "fineChannelAliases": ["Drehung pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "Drehung tilt": {
+      "fineChannelAliases": ["Drehung tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "200deg"
+      }
+    },
+    "Motorgeschwindigkeit": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [88, 175],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [125, 249],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Program Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11",
+      "channels": [
+        "Drehung pan",
+        "Drehung tilt",
+        "Drehung pan fine",
+        "Drehung tilt fine",
+        "Motorgeschwindigkeit",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe",
+        "Program Duration",
+        "Program Speed"
+      ]
+    }
+  ]
+}
