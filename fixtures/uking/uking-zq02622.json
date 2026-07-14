@@ -1,0 +1,555 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Uking ZQ02622",
+  "shortName": "Laser ZQ02622",
+  "categories": ["Moving Head", "Laser"],
+  "meta": {
+    "authors": ["Koxicain"],
+    "createDate": "2026-04-23",
+    "lastModifyDate": "2026-04-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ02622-2W-RGB-Laser-Projector-with-Bluetooth-APP.pdf?v=7146540284542821173"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/uking-zq02622-moving-head-light"
+    ],
+    "video": [
+      "https://cdn.shopify.com/videos/c/o/v/b2f1abf4cf4c4235a23c4c9814dd47eb.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 320, 210],
+    "weight": 4.4,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "2W Full-Color Laser (Red: 350MW: 635nm Green: 350MW: 520nm Blue: 1.3W: 445nm)"
+    },
+    "lens": {
+      "degreesMinMax": [0, 50]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Horizontal and vertical motor speed"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Total dimming off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "Total dimming on"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "The value is kept for 5 seconds and the motor is reset"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Mixing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 34],
+          "type": "ColorPreset",
+          "comment": "White-Red-Blue-Purple-Cyan-Yellow-Green (Fixed color selection)"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Overall color change (Water flow rate is controlled by CH4)"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Pattern initial color (Water flow rate is controlled by CH4)"
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "ColorPreset",
+          "comment": "Colorful rainbow colors (Water flow rate is controlled byCH4)"
+        },
+        {
+          "dmxRange": [47, 66],
+          "type": "ColorPreset",
+          "comment": "2 segment color selection 2 value steps (water flowspeedis controlledby CH4)"
+        },
+        {
+          "dmxRange": [67, 96],
+          "type": "ColorPreset",
+          "comment": "3-segment color selection 2 -value stepping (water flowspeediscontrolled by CH4)"
+        },
+        {
+          "dmxRange": [97, 126],
+          "type": "ColorPreset",
+          "comment": "4-segment color selection 2 value steps (water flowspeedis controlledby CH4)"
+        },
+        {
+          "dmxRange": [127, 150],
+          "type": "ColorPreset",
+          "comment": "8-segment color selection 2 value steps (water flowspeedis controlledby CH4)"
+        },
+        {
+          "dmxRange": [151, 174],
+          "type": "ColorPreset",
+          "comment": "16-segment color selection 2 value steps (water flowspeedis controlled by CH4)"
+        },
+        {
+          "dmxRange": [175, 214],
+          "type": "ColorPreset",
+          "comment": "32-segment color selection 2 value steps (water flowspeedis controlledby CH4)"
+        },
+        {
+          "dmxRange": [215, 247],
+          "type": "ColorPreset",
+          "comment": "Analog color mixing: 32 kinds of analog color mixing (analogmodulation is effective)"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Color gradient (Water flow rate is controlled by CH4)"
+        }
+      ]
+    },
+    "Color Flow": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Color does not flow"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "ColorPreset",
+          "comment": "Color flows in a positive direction, speed changes fromslowtofast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "Colors flow in reverse, speed from slow to fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "Built-in graphic group 1 (basic geometric patterns)"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Generic",
+          "comment": "Built-in graphic group 2 (basic geometric patterns)"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Generic",
+          "comment": "Built-in pattern group 3 (edge bright spot pattern)"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Generic",
+          "comment": "Built-in graphics group 4 (dot graphics)"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Generic",
+          "comment": "Built-in graphics group 5 (animation)"
+        },
+        {
+          "dmxRange": [125, 255],
+          "type": "NoFunction",
+          "comment": "No function, reserved"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "capability": {
+        "type": "IrisEffect",
+        "effectName": "Pattern selection (pattern grouping is controlled by CH14)"
+      }
+    },
+    "Manual Pattern Size": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow",
+        "comment": "Manual selection of pattern size"
+      }
+    },
+    "Pattern size selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Pattern size selection"
+        },
+        {
+          "dmxRange": [16, 55],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Speed selection from small to large"
+        },
+        {
+          "dmxRange": [56, 95],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Speed selection from high to low"
+        },
+        {
+          "dmxRange": [96, 135],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Size scaling speed selection"
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Two-point irregular cycle scaling"
+        },
+        {
+          "dmxRange": [176, 215],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Irregular three-point circular zoom"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Four-point irregular cycle scaling"
+        }
+      ]
+    },
+    "Rotation angle selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angle": "1deg",
+          "comment": "Rotation angle selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "angle": "1deg",
+          "comment": "Positive rotation speed selection"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "angle": "1deg",
+          "comment": "Reverse rotation speed selection"
+        }
+      ]
+    },
+    "Horizontal flip position selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Horizontal flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Horizontal flip speed selection"
+        }
+      ]
+    },
+    "Vertical flip position selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Vertical flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Vertical flip speed selection"
+        }
+      ]
+    },
+    "Horizontal position selection": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Horizontal position selection"
+      }
+    },
+    "Vertical position selection": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Vertical position selection"
+      }
+    },
+    "Waves": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "No waves"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "Generic",
+          "comment": "X-direction wave amplitude and speed adjustment (amplitudefromsmall to large, speed from slow to fast, one gear for every32values,8gears in total)"
+        }
+      ]
+    },
+    "Gradient": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "No gradient"
+        },
+        {
+          "dmxRange": [2, 63],
+          "type": "Generic",
+          "comment": "Manual Gradient 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Manual Gradient 2"
+        },
+        {
+          "dmxRange": [128, 153],
+          "type": "Generic",
+          "comment": "Automatic gradual drawing (increase)"
+        },
+        {
+          "dmxRange": [154, 179],
+          "type": "Generic",
+          "comment": "Automatic Gradient (Subtraction)"
+        },
+        {
+          "dmxRange": [180, 205],
+          "type": "Generic",
+          "comment": "Automatic gradual drawing (increase first, then decrease - reversedirection)"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Automatic gradual drawing (increase first, then decrease - samedirection)"
+        }
+      ]
+    },
+    "Built In Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 202],
+          "type": "Generic",
+          "comment": "Built-in effects radio selection , Manual shaking head (color CH12control , CH12 = 0 default color, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [203, 210],
+          "type": "Generic",
+          "comment": "Line effect , Manual shaking head (color CH12 control , CH12=0default color, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [211, 218],
+          "type": "Generic",
+          "comment": "Animation effects , Manual shaking head (color CH12 control , CH12=0 default color, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [219, 226],
+          "type": "Generic",
+          "comment": "Outdoor landmarks , Manual shaking head (color CH12 control , CH12= 0 default color, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [227, 234],
+          "type": "Generic",
+          "comment": "All effects , Manual shaking head (color CH12 control , CH12=0default color, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [235, 242],
+          "type": "Generic",
+          "comment": "Line effect , Automatic shaking (color CH12 control , CH12=0defaultcolor, speed CH2 6 control)"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "Generic",
+          "comment": "All effects , Automatic shaking (color controlled by CH12, CH12=0default color, speed controlled by CH2 6 )"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "EffectSpeed",
+          "speed": "stop",
+          "comment": "System default speed"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Manually adjust the built-in effect speed fromslowto fast"
+        }
+      ]
+    },
+    "Auxiliary light aperture": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Iris",
+          "openPercent": "closed",
+          "comment": "Auxiliary light aperture closed"
+        },
+        {
+          "dmxRange": [2, 69],
+          "type": "Generic",
+          "comment": "Auxiliary light aperture color selection"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Auxiliary light aperture color jump"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Auxiliary light aperture color gradient"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "Generic",
+          "comment": "Auxiliary light aperture macro effect selection"
+        }
+      ]
+    },
+    "Auxiliary light aperture flow speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Auxiliary light aperture flow speed from slow to fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Horizontal position",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Reset",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Mixing",
+        "Color Flow",
+        "Gobo Wheel",
+        "Pattern Selection",
+        "Manual Pattern Size",
+        "Pattern size selection",
+        "Rotation angle selection",
+        "Horizontal flip position selection",
+        "Vertical flip position selection",
+        "Horizontal position selection",
+        "Vertical position selection",
+        "Waves",
+        "Gradient",
+        "Built In Effects",
+        "Program Speed",
+        "Auxiliary light aperture",
+        "Auxiliary light aperture flow speed"
+      ]
+    }
+  ]
+}
