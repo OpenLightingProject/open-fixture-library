@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParKolor 120HD V2",
+  "shortName": "ParKolor 120HD V2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pascal Denis"],
+    "createDate": "2026-01-31",
+    "lastModifyDate": "2026-01-31"
+  },
+  "links": {
+    "manual": [
+      "https://tech.starway.eu/225465_PARKOLOR120HD/225465_PARKOLOR120HD_FR.pdf"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "degreesMinMax": [7, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "SHUTTER": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 255
+      }
+    },
+    "RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "ZOOM": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "SHUTTER 2": {
+      "name": "SHUTTER",
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ZOOM 2": {
+      "name": "ZOOM",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 canaux",
+      "shortName": "ParKolor 7 canaux",
+      "channels": [
+        "Dimmer",
+        "SHUTTER",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "ZOOM"
+      ]
+    },
+    {
+      "name": "7 CANAUX EXTRA",
+      "channels": [
+        "Dimmer",
+        "SHUTTER 2",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "ZOOM 2"
+      ]
+    }
+  ]
+}
