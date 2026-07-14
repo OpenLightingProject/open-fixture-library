@@ -1,114 +1,241 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "CS-1000RGB",
-  "categories": ["Laser", "Color Changer"],
+  "categories": ["Laser"],
   "meta": {
-    "authors": ["Jo"],
-    "createDate": "2018-07-26",
-    "lastModifyDate": "2018-09-04"
+    "authors": ["Mattia Gusmerini"],
+    "createDate": "2025-08-13",
+    "lastModifyDate": "2025-08-13"
   },
   "links": {
     "manual": [
-      "https://www.laserworld.com/en/download-file-49-CS_1000RGB_D_E_F_MKIII_web.html"
-    ],
-    "productPage": [
-      "https://www.laserworld.com/en/laserworld-cs/laserworld-cs-1000rgb.html"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=u9m3_SWDQeU"
+      "https://audioeffetti.com/product/documents/LAS/CS-1000RGBMK4-01.pdf"
     ]
   },
-  "helpWanted": "Most information about the capabilities of the channels are missing.",
-  "physical": {
-    "dimensions": [220, 155, 145],
-    "weight": 3.15,
-    "power": 60,
-    "bulb": {
-      "type": "650nm / 532nm / 445nm RGB Laser diodes"
-    }
-  },
   "availableChannels": {
-    "Mode": {
+    "Intensity": {
       "capability": {
-        "type": "Maintenance"
+        "type": "Intensity"
       }
     },
-    "Pattern": {
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine", "Intensity 2 fine^2"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Pattern select": {
       "capability": {
         "type": "Generic"
       }
     },
-    "Circular Movement": {
+    "Rotation (Z-axis)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation"
+        }
+      ]
+    },
+    "X-axis Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "comment": "Rotation Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "comment": "Rotation Speed"
+        }
+      ]
+    },
+    "Y-axis Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "comment": "Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "comment": "Speed"
+        }
+      ]
+    },
+    "X-axis Movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Movement position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Movement speed"
+        }
+      ]
+    },
+    "Y-axis Movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Movement Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Side X": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "comment": "from big to small"
       }
     },
-    "Y Rotation": {
+    "Side Y": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "comment": "from big to small"
       }
     },
-    "X Rotation": {
+    "Pattern gradient": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "comment": "Gradient speed"
       }
     },
-    "Horizontal Movement": {
-      "defaultValue": "50%",
+    "Scan speed / Points": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Change": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Generic",
+          "comment": "Original color"
+        },
+        {
+          "dmxRange": [25, 199],
+          "type": "Generic",
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "Automatic color change effect"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "Rainbow color change effect"
+        }
+      ]
+    },
+    "Color Wheel Rotation": {
       "capability": {
-        "type": "BeamPosition",
-        "horizontalAngleStart": "0deg",
-        "horizontalAngleEnd": "40deg"
+        "type": "Generic",
+        "comment": "Speed adjustment"
       }
     },
-    "Vertical Movement": {
-      "defaultValue": "50%",
+    "No function": {
       "capability": {
-        "type": "BeamPosition",
-        "verticalAngleStart": "0deg",
-        "verticalAngleEnd": "40deg"
+        "type": "NoFunction"
       }
     },
-    "Manual Zoom": {
+    "Operation mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Generic",
+          "comment": "DMX mode"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Generic",
+          "comment": "Sound mode"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "Auto mode"
+        }
+      ]
+    },
+    "Red": {
       "capability": {
-        "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
+        "type": "ColorIntensity",
+        "color": "Red"
       }
     },
-    "Pattern Buildup": {
+    "Green": {
       "capability": {
-        "type": "Generic"
+        "type": "ColorIntensity",
+        "color": "Green"
       }
     },
-    "Dot Effect with Strobe": {
+    "Blue": {
       "capability": {
-        "type": "Generic"
-      }
-    },
-    "Color": {
-      "capability": {
-        "type": "ColorPreset",
-        "helpWanted": "Which colors can be selected at which DMX values?"
+        "type": "ColorIntensity",
+        "color": "Blue"
       }
     }
   },
   "modes": [
     {
-      "name": "11-channel",
-      "shortName": "11ch",
+      "name": "Standard",
       "channels": [
-        "Mode",
-        "Pattern",
-        "Circular Movement",
-        "Y Rotation",
-        "X Rotation",
-        "Horizontal Movement",
-        "Vertical Movement",
-        "Manual Zoom",
-        "Pattern Buildup",
-        "Dot Effect with Strobe",
-        "Color"
+        "Intensity 2",
+        "Pattern select",
+        "Rotation (Z-axis)",
+        "X-axis Rotation",
+        "Y-axis Rotation",
+        "X-axis Movement",
+        "Y-axis Movement",
+        "Side X",
+        "Side Y",
+        "Pattern gradient",
+        "Scan speed / Points",
+        "Color Change",
+        "Color Wheel Rotation",
+        "No function",
+        "Operation mode",
+        "Red",
+        "Green",
+        "Blue"
       ]
     }
   ]
