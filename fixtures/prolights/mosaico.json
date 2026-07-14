@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mosaico",
+  "shortName": "mosaico",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["David MARTINET"],
+    "createDate": "2025-05-15",
+    "lastModifyDate": "2025-05-15"
+  },
+  "links": {
+    "manual": [
+      "https://shop.esl-france.com/index.php?controller=attachment&id_attachment=15298"
+    ],
+    "productPage": [
+      "https://shop.esl-france.com/projecteurs-en-saillie/25355-projecteur-de-gobos-mosaico-led-250-w-8-500-k-ip66-prolights.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [425, 303, 453],
+    "weight": 19.3,
+    "power": 250,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500,
+      "lumens": 10512
+    },
+    "lens": {
+      "degreesMinMax": [12.9, 46.5]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pilse_effect in sequences"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Shutter effect slow to fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color1": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "Open",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "Color1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "Color2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "Color3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "Color4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "Color5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "Color6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "Color7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "comment": "Color8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "comment": "Color9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "comment": "Color10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "comment": "Color11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "ColorPreset",
+          "comment": "Color12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Color13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Color14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Color16"
+        },
+        {
+          "dmxRange": [64, 94],
+          "type": "ColorPreset",
+          "comment": "Fast to Slow(Forward Spin)"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [97, 127],
+          "type": "ColorPreset",
+          "comment": "Slow to Fast(Revers Spin)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "Positing from Position 1 to Position 15"
+        }
+      ]
+    },
+    "Color2": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "Color1"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "Color2"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "Color3"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "Color4"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "Color5"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "Color6"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "Color7"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "Color8"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "comment": "Color9"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "comment": "Color10"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "comment": "Color11"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "comment": "Color12"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Color13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Color14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Color15"
+        },
+        {
+          "dmxRange": [64, 94],
+          "type": "ColorPreset",
+          "comment": "Fast to Slow(Forward Spin)"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [97, 127],
+          "type": "ColorPreset",
+          "comment": "Slow to Fast(Revers Spin)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "Positing from Position 1 to Position 15"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "Position1"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Generic",
+          "comment": "Position2"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Generic",
+          "comment": "Position3"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Generic",
+          "comment": "Position4"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Generic",
+          "comment": "Position5"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Generic",
+          "comment": "Position6"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Generic",
+          "comment": "Position7"
+        },
+        {
+          "dmxRange": [41, 55],
+          "type": "Generic",
+          "comment": "Position 1 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [56, 70],
+          "type": "Generic",
+          "comment": "Position 2 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [71, 85],
+          "type": "Generic",
+          "comment": "Position 3 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [86, 100],
+          "type": "Generic",
+          "comment": "Position 4 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [101, 115],
+          "type": "Generic",
+          "comment": "Position 5 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [116, 130],
+          "type": "Generic",
+          "comment": "Position 6 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [131, 145],
+          "type": "Generic",
+          "comment": "Position 7 Shaking slow to fast"
+        },
+        {
+          "dmxRange": [146, 199],
+          "type": "Generic",
+          "comment": "Fast to Slow(Forward Spin)"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [202, 255],
+          "type": "Generic",
+          "comment": "Slow to Fast(Revers Spin)"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PrismRotation",
+          "speed": "0%",
+          "comment": "Prism Off"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "PrismRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "PrismRotation",
+          "speed": "0%"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Stencil Rotation": {
+      "fineChannelAliases": ["Gobo Stencil Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Generic",
+          "comment": "Positioning from 0-360 degrees (Indexing)"
+        },
+        {
+          "dmxRange": [192, 221],
+          "type": "Generic",
+          "comment": "Fast to Slow"
+        },
+        {
+          "dmxRange": [222, 225],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Generic",
+          "comment": "Slow to Fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Color1",
+        "Color2",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Prism Rotation",
+        "Gobo Stencil Rotation",
+        "Gobo Stencil Rotation fine"
+      ]
+    }
+  ]
+}
