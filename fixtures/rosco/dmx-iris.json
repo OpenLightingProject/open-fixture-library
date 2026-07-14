@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DMX iris",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Tim Linamen"],
+    "createDate": "2025-01-28",
+    "lastModifyDate": "2025-01-28"
+  },
+  "links": {
+    "manual": [
+      "https://us.rosco.com/sites/default/files/content/resource/2022-03/Rosco%20DMX%20Iris%20Manual%203_2.pdf"
+    ],
+    "productPage": [
+      "https://us.rosco.com/en/product/dmx-iris"
+    ],
+    "video": [
+      "https://www.youtube.com/embed/XcY2KDikwYo"
+    ]
+  },
+  "availableChannels": {
+    "Open to close": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Close to open": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open"
+      }
+    },
+    "Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Open to close"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Close to open"
+      ]
+    },
+    {
+      "name": "3",
+      "channels": [
+        "Open to close",
+        "Speed"
+      ]
+    },
+    {
+      "name": "4",
+      "channels": [
+        "Close to open",
+        "Speed"
+      ]
+    }
+  ]
+}
