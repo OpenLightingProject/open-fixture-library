@@ -1,0 +1,166 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Alfie XL",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["AstroN"],
+    "createDate": "2023-09-04",
+    "lastModifyDate": "2023-09-04"
+  },
+  "links": {
+    "other": [
+      "http://abc.com"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Pan (Slow to fast)": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "Empty"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "PanContinuous",
+          "speed": "fast CW"
+        }
+      ]
+    },
+    "Tilt": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angle": "0deg"
+      }
+    },
+    "Tilt rotation": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Tilt",
+        "angle": "0deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Y1": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Y2": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto Led": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto Led speed": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto X/Y": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Mode": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Alfie",
+      "channels": [
+        "Pan",
+        "Pan (Slow to fast)",
+        "Tilt",
+        "Tilt rotation",
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Y1",
+        "Y2",
+        "Auto Led",
+        "Auto Led speed",
+        "Auto X/Y",
+        "Mode"
+      ]
+    }
+  ]
+}
