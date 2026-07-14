@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED STAIRVILLE A",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["valerio maggi"],
+    "createDate": "2026-06-28",
+    "lastModifyDate": "2026-06-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/stairville/par-56/mode-d-emploi"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/stairville_par-led.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=39ow6kZeCyI"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
