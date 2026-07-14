@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par 54 x 3w RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["J.Gagnon"],
+    "createDate": "2024-03-06",
+    "lastModifyDate": "2024-03-06"
+  },
+  "comment": "Par led 3-in-1 RGB DMX",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/LPC007_User_Manual.pdf"
+    ],
+    "productPage": [
+      "https://betopperdj.com/collections/par-light/products/betopper-54x3w-rgb-3-in-1-full-color-led-par-light-lpc007"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Jtm47_6rYnQ&t=3s"
+    ]
+  },
+  "physical": {
+    "dimensions": [235, 235, 295],
+    "weight": 5,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 2500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red color"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green color"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue color"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Strobe from slow to fast"
+      }
+    },
+    "Effet": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Intensity",
+          "comment": "DMX Dimming"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Color output (8 type)"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high",
+          "comment": "Shade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Transform"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Pulse transform"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound activated"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Red"
+        },
+        {
+          "dmxRange": [31, 60],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Green"
+        },
+        {
+          "dmxRange": [61, 92],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Blue"
+        },
+        {
+          "dmxRange": [93, 123],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated White"
+        },
+        {
+          "dmxRange": [124, 154],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Yellow"
+        },
+        {
+          "dmxRange": [155, 185],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Violet"
+        },
+        {
+          "dmxRange": [186, 216],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Change"
+        },
+        {
+          "dmxRange": [217, 247],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated White"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-activated Change color"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "LPC007",
+      "shortName": "LPC007",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Effet",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
