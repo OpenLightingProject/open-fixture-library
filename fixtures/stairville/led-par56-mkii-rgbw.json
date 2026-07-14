@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Par56 MKII RGBW",
+  "shortName": "Par56 RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Pepas"],
+    "createDate": "2025-03-11",
+    "lastModifyDate": "2025-03-11"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/274643_c_274638_274643_375068_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.pt/stairville_led_par56_mkii_rgbw_10mm_black.htm?__cTr=4047e7b5-d1b7-4cc3-9c99-80c74f6c8f70"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
