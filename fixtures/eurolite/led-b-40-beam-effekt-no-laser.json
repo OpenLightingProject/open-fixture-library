@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED B-40 Beam Effekt (no laser)",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Daniel Köbsch"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-10-31",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [320, 380, 320],
+    "weight": 3,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan/Rotatio": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "comment": "Keine Rotation"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "comment": "PAN-Rotation rückwärts mit abnehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [128, 137],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "comment": "Keine Rotation"
+        },
+        {
+          "dmxRange": [138, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "comment": "PAN-Rotation vorwärts mit zunehmender Geschwindigkeit"
+        }
+      ]
+    },
+    "Colour": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "comment": "Rot"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Grün"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "Blau"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Rot + Grün"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "Rot + Blau"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Grün + Blau"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Rot + Grün + Blau"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "comment": "No Funktion"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "comment": "Strobe-Effekt mit zunehmender Geschwindigkeit"
+        }
+      ]
+    },
+    "Internes Programm": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "comment": "Keine Funktion"
+        },
+        {
+          "dmxRange": [11, 249],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "comment": "Musikgesteuerter Modus"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Pan/Rotatio",
+        "Colour",
+        "Strobe",
+        "Internes Programm"
+      ]
+    }
+  ]
+}
