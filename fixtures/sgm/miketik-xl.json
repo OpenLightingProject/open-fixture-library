@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Miketik XL",
+  "shortName": "MimetikXL",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["ilofX"],
+    "createDate": "2024-03-08",
+    "lastModifyDate": "2024-03-08"
+  },
+  "comment": "Sagitter Mimetik XL",
+  "links": {
+    "manual": [
+      "https://beta.b2b.proel.com/image/data/sagitter/SG_MIMETIKXL_MANUAL.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [305, 190, 440],
+    "weight": 7.3,
+    "power": 1500,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "comment": "Smoke Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "default",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
