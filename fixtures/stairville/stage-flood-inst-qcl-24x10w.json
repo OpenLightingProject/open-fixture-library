@@ -1,0 +1,852 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Flood Inst QCL 24x10W",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Florentin Walter"],
+    "createDate": "2023-10-21",
+    "lastModifyDate": "2023-10-21"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/345855_c_345855_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/stairville_stage_flood_inst_qcl_24x10w.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [427, 190, 196],
+    "weight": 12.5,
+    "power": 248,
+    "bulb": {
+      "type": "24 QCL 10 W LED (RGBW Chip)"
+    },
+    "lens": {
+      "name": "Beam angle",
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "wheels": {
+    "Hue": {
+      "slots": [
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Color Presets": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "RGBW"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue"
+      }
+    },
+    "Saturation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Speed adjustment, if one of the preprogrammed automatic programmes is active (channel 8)"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Fade speed adjustment, if one of the preprogrammed automatic programmes is active (channel 8)"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Red 100 %, intensity green (0 % to 100 % fade-in; if channel 7 = 0, no change), blue 0 %, white 0 %"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Red 100 %, intensity green (0 % to 100 % fade-in; if channel 7 = 0, no change), blue 0 %, white 0 %"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Red 0 %, green 100 %, intensity blue (0 % to 100 % fade-in; if channel 7 = 0, no change), white 0 %"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Red 0 %, intensity green (0 % to 100 % fade-in; if channel 7 = 0, no change), blue 100 %, white 0 %"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Intensity red (0 % to 100 % fade-in; if channel 7 = 0, no change), green 0 %, blue 100 %, white 0 %"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "Red 100 %, green 0 %, intensity blue (0 % to 100 % fade-in; if channel 7 = 0, no change), white 0 %"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Red 100 %, green 0 %, blue 0 %, intensity white (0 % to 100 % fade-in; if channel 7 = 0, no change)"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "Red 100 %, green 0 %, blue 0 %, intensity white (0 % to 100 % fade-in; if channel 7 = 0, no change)"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Generic",
+          "comment": "Colour transitions, speed is controlled via channel 7"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Generic",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "Generic",
+          "comment": "White 1"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "Generic",
+          "comment": "White 2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "Generic",
+          "comment": "White 3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Generic",
+          "comment": "White 4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Generic",
+          "comment": "White 5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Generic",
+          "comment": "White 6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Generic",
+          "comment": "White 7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Generic",
+          "comment": "White 8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Generic",
+          "comment": "White 9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Generic",
+          "comment": "White 10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "White 11"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect (0 Hz to 20 Hz) of channels 1 to 5"
+        }
+      ]
+    },
+    "Preprogrammed automatic shows": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Preprogrammed automatic show 10"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "NoFunction",
+          "comment": "No function"
+        }
+      ]
+    },
+    "Speed (Preprogrammed automatic shows)": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed, if preprogrammed automatic shows are enabled (channel 8, values 10...109)"
+      }
+    },
+    "Dimmer speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Dimmer is off, changes of dimmer and RGBW are done linearly"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Dimmer speed 1"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Dimmer speed 2"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Generic",
+          "comment": "Dimmer speed 3"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Dimmer speed 4"
+        }
+      ]
+    },
+    "Determination of ID addresses for the set DMX address": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "All IDs"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "ID1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "ID2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "ID3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "ID4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "ID5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "ID6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "ID7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "ID8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "ID9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "ID10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "ID11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "ID12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "ID13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "ID14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "ID15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "ID16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "ID17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "ID18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "ID19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "ID20"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Generic",
+          "comment": "ID1"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Generic",
+          "comment": "ID2"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Generic",
+          "comment": "ID3"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Generic",
+          "comment": "ID4"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Generic",
+          "comment": "ID5"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Generic",
+          "comment": "ID6"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Generic",
+          "comment": "ID7"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Generic",
+          "comment": "ID8"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Generic",
+          "comment": "ID9"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Generic",
+          "comment": "ID10"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Generic",
+          "comment": "ID11"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Generic",
+          "comment": "ID12"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Generic",
+          "comment": "ID13"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Generic",
+          "comment": "ID14"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Generic",
+          "comment": "ID15"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Generic",
+          "comment": "ID16"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Generic",
+          "comment": "ID17"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Generic",
+          "comment": "ID18"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Generic",
+          "comment": "ID19"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Generic",
+          "comment": "ID20"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Generic",
+          "comment": "ID21"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Generic",
+          "comment": "ID22"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Generic",
+          "comment": "ID23"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Generic",
+          "comment": "ID24"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Generic",
+          "comment": "ID25"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Generic",
+          "comment": "ID26"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Generic",
+          "comment": "ID27"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Generic",
+          "comment": "ID28"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Generic",
+          "comment": "ID29"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Generic",
+          "comment": "ID30"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Generic",
+          "comment": "ID31"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Generic",
+          "comment": "ID32"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Generic",
+          "comment": "ID33"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Generic",
+          "comment": "ID34"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Generic",
+          "comment": "ID35"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Generic",
+          "comment": "ID36"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Generic",
+          "comment": "ID37"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Generic",
+          "comment": "ID38"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Generic",
+          "comment": "ID39"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Generic",
+          "comment": "ID40"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Generic",
+          "comment": "ID41"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Generic",
+          "comment": "ID42"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Generic",
+          "comment": "ID43"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Generic",
+          "comment": "ID44"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Generic",
+          "comment": "ID45"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "ID46"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel Arc.1",
+      "shortName": "Arc.1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "3-channel HSV",
+      "shortName": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel Ar1.d",
+      "shortName": "Ar1.d",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel Arc.2",
+      "shortName": "Arc.2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5-channel Ac2.d",
+      "shortName": "Ac2.d",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel Ac2.s",
+      "shortName": "Ac2.s",
+      "channels": [
+        "Dimmer",
+        "Red 2",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11-channel STAGE",
+      "shortName": "STAGE",
+      "channels": [
+        "Dimmer",
+        "Red 3",
+        "Green 2",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Strobe 2",
+        "Preprogrammed automatic shows",
+        "Speed (Preprogrammed automatic shows)",
+        "Dimmer speed",
+        "Determination of ID addresses for the set DMX address"
+      ]
+    }
+  ]
+}
