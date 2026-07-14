@@ -1,0 +1,270 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Dekker LZR",
+  "categories": ["Laser", "Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-18",
+    "lastModifyDate": "2026-01-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/ADJ_Mini_Dekker_LZR_-_User_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/mini-dekker-lzr"
+    ],
+    "other": [
+      "https://www.adj.com/cdn/shop/files/ADJ_Mini_Dekker_LZR_-_DMX_Traits.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [198, 218, 205],
+    "weight": 1.7
+  },
+  "availableChannels": {
+    "Show mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 98],
+          "type": "Effect",
+          "effectName": "LED, Laser, Strobe"
+        },
+        {
+          "dmxRange": [99, 169],
+          "type": "Effect",
+          "effectName": "LED"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "Laser"
+        }
+      ]
+    },
+    "Show speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 247],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true
+        }
+      ]
+    },
+    "RGBW Color macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 22],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [23, 35],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [36, 48],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [49, 61],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [62, 74],
+          "type": "ColorPreset",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [75, 87],
+          "type": "ColorPreset",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [88, 100],
+          "type": "ColorPreset",
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [101, 113],
+          "type": "ColorPreset",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [114, 126],
+          "type": "ColorPreset",
+          "comment": "Green + White"
+        },
+        {
+          "dmxRange": [127, 139],
+          "type": "ColorPreset",
+          "comment": "Blue + White"
+        },
+        {
+          "dmxRange": [140, 152],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [153, 165],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White"
+        },
+        {
+          "dmxRange": [166, 191],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White"
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White"
+        },
+        {
+          "dmxRange": [199, 225],
+          "type": "ColorPreset",
+          "comment": "Color Fade (1 color), slow to fast"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "ColorPreset",
+          "comment": "Color Fade (Mixed), Slow to fast"
+        }
+      ]
+    },
+    "LED Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 244],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Laser Color Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Effect",
+          "effectName": "Red"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "Effect",
+          "effectName": "Green"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "Effect",
+          "effectName": "Red + Green"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "Effect",
+          "effectName": "Red on, Green flash"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Effect",
+          "effectName": "Green on, Red flash"
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "Effect",
+          "effectName": "Red + Green flash"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Red + Green alternate flash"
+        }
+      ]
+    },
+    "Laser strobing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 244],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Sound active mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "LED motor control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Select Motor position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Show mode",
+        "Show speed"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Show mode",
+        "Show speed",
+        "RGBW Color macro",
+        "Laser Color Control",
+        "LED Strobe",
+        "Laser strobing",
+        "LED motor control"
+      ]
+    }
+  ]
+}
