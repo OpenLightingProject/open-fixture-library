@@ -1,0 +1,312 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "G-4 Wash RGBAM",
+  "shortName": "g4-wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Max Jöhnk"],
+    "createDate": "2024-08-08",
+    "lastModifyDate": "2024-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://sgmlight.com/Admin/Public/DWSDownload.aspx?File=\\Files\\Files\\Perfion\\StrRDDATAUserManualFileGroup\\G-4\\FileRDDATAUserManualG4WEB\\SGM%20G-4%20Series%20User%20Manual%20(Rev%20C).pdf"
+    ],
+    "productPage": [
+      "https://sgmlight.com/products/g%C2%B74-wash"
+    ]
+  },
+  "physical": {
+    "dimensions": [219, 465, 255],
+    "weight": 10,
+    "power": 250,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [9, 76]
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": 10,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [18, 88],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [89, 108],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Open"
+        },
+        {
+          "dmxRange": [109, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Close"
+        },
+        {
+          "dmxRange": [129, 178],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Strobe - Random"
+        },
+        {
+          "dmxRange": [179, 198],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [199, 208],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Double Strobe"
+        },
+        {
+          "dmxRange": [209, 218],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Triple Strobe"
+        },
+        {
+          "dmxRange": [219, 228],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "White Noise"
+        },
+        {
+          "dmxRange": [229, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "defaultValue": 182,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorTemperature",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-106.5deg",
+        "angleEnd": "106.5deg"
+      }
+    },
+    "Pan Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control Channel": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Mint": {
+      "fineChannelAliases": ["Mint fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "comment": "Mint"
+      }
+    },
+    "Color Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimming Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Plus Minus Green": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fan Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Frequence Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18 Channels (Default)",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "Macro",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "CTC",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan Mode",
+        "Zoom",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "Studio",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "Macro",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Mint",
+        "Mint fine",
+        "CTC",
+        "Color Mode",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan Mode",
+        "Zoom",
+        "Dimming Mode",
+        "Plus Minus Green",
+        "Fan Control",
+        "Frequence Control",
+        "Control Channel"
+      ]
+    }
+  ]
+}
