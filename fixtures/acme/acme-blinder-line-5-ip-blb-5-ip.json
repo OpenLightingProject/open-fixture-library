@@ -1,0 +1,945 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACME BLINDER LINE 5 IP ( BLB 5 IP )",
+  "shortName": "(BLB 5 IP)",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["andreas"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2024-11-07",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-07-16",
+      "comment": "GDTF v1.2 fixture type ID: 11DFDC9D-3C02-4A47-8303-1339D62C96FD"
+    }
+  },
+  "comment": "BLINDER LINE 5 IP (BLB 5 IP): ACME BLINDER LINE 5 IP (BLB 5 IP)5*150W",
+  "rdm": {
+    "modelId": 4977
+  },
+  "wheels": {
+    "Wheel color": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#894d00"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#813800"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#810c2f"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#7d2f80"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#b8004b"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#48327f"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#0084f2"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#005cde"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#0043e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#0048e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 12",
+          "colors": ["#0058e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 13",
+          "colors": ["#005ee4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 14",
+          "colors": ["#0069e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 15",
+          "colors": ["#0075e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 16",
+          "colors": ["#009be4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 17",
+          "colors": ["#03abe4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 18",
+          "colors": ["#07b8e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 19",
+          "colors": ["#05e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 20",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 21",
+          "colors": ["#1fe403"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 22",
+          "colors": ["#35e402"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 23",
+          "colors": ["#4be400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 24",
+          "colors": ["#61e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 25",
+          "colors": ["#99df00"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 26",
+          "colors": ["#bbe600"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 27",
+          "colors": ["#cbdc00"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 28",
+          "colors": ["#e4b803"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 29",
+          "colors": ["#e4a203"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 30",
+          "colors": ["#e48d04"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 31",
+          "colors": ["#e46100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 32",
+          "colors": ["#e44b02"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 33",
+          "colors": ["#e40100"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Null"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Wireless: On"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Wireless: Off"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Null"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Curve: Linear"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": " Square Law"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": " Inv SQ Law"
+        },
+        {
+          "dmxRange": [60, -1],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "S Curve"
+        },
+        {
+          "dmxRange": [0, 99],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Unknown (LEDZoneMode)",
+          "physical": 0,
+          "comment": "Setting Enable"
+        },
+        {
+          "dmxRange": [110, -1],
+          "type": "Unknown (LEDZoneMode)",
+          "physical": 0,
+          "comment": "Setting Disable"
+        },
+        {
+          "dmxRange": [0, 122],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "900Hz"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1000Hz"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1100Hz"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1200Hz"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1300Hz"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1400Hz"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "1500Hz"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "2500Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "4000Hz"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "5000Hz"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "6000Hz"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "10Hz"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "15Hz"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "20Hz"
+        },
+        {
+          "dmxRange": [137, -1],
+          "type": "Unknown (LEDFrequency)",
+          "physical": "0Hz",
+          "comment": "25Hz"
+        },
+        {
+          "dmxRange": [0, 179],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Speed: Fast"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Speed: Smooth"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Speed: Tungsten"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Unknown (Dummy)",
+          "physical": 0,
+          "comment": "Invert Pixel: No"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Unknown (Dummy)",
+          "physical": 0,
+          "comment": "Invert Pixel: Yes"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Start Mode: High"
+        },
+        {
+          "dmxRange": [231, -1],
+          "type": "Maintenance",
+          "parameter": 0,
+          "comment": "Start Mode: Low"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        }
+      ]
+    },
+    "Frost1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Unknown (Open)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Frost",
+          "frostIntensityStart": 0,
+          "frostIntensityEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Frost",
+          "frostIntensityStart": 0,
+          "frostIntensityEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Unknown (Frost 0--100%)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        }
+      ]
+    },
+    "Sh1": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [17, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open 2"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open 3"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Pulse Close"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 4"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Strobe Ran"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open 5"
+        }
+      ]
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": 0,
+        "colorTemperatureEnd": 1
+      }
+    },
+    "C1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 16],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [17, 23],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 30],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [31, 37],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [38, 44],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [45, 51],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [52, 58],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [59, 65],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [66, 72],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [80, 86],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [87, 93],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [94, 100],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [101, 107],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [108, 114],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [115, 121],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [129, 135],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [136, 142],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [143, 149],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [150, 156],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [157, 163],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [164, 170],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [171, 177],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [178, 184],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [185, 191],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 28,
+          "comment": "Color 31"
+        },
+        {
+          "dmxRange": [199, 205],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 29,
+          "comment": "Color 27"
+        },
+        {
+          "dmxRange": [206, 212],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 30,
+          "comment": "Color 30"
+        },
+        {
+          "dmxRange": [213, 219],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 31,
+          "comment": "Color 32"
+        },
+        {
+          "dmxRange": [220, 226],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 32,
+          "comment": "Color 28"
+        },
+        {
+          "dmxRange": [227, 233],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 33,
+          "comment": "Color 29"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "WheelSlot",
+          "wheel": "Wheel color",
+          "slotNumber": 34
+        }
+      ]
+    },
+    "Color Macro1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 40],
+          "type": "ColorPreset",
+          "comment": "Macro1 "
+        },
+        {
+          "dmxRange": [41, 65],
+          "type": "ColorPreset",
+          "comment": "Macro2"
+        },
+        {
+          "dmxRange": [66, 90],
+          "type": "ColorPreset",
+          "comment": "Macro3"
+        },
+        {
+          "dmxRange": [91, 115],
+          "type": "ColorPreset",
+          "comment": "Macro4"
+        },
+        {
+          "dmxRange": [116, 140],
+          "type": "ColorPreset",
+          "comment": "Macro5"
+        },
+        {
+          "dmxRange": [141, 165],
+          "type": "ColorPreset",
+          "comment": "Macro6"
+        },
+        {
+          "dmxRange": [166, 190],
+          "type": "ColorPreset",
+          "comment": "Macro7"
+        },
+        {
+          "dmxRange": [191, 215],
+          "type": "ColorPreset",
+          "comment": "Macro8"
+        },
+        {
+          "dmxRange": [216, 240],
+          "type": "ColorPreset",
+          "comment": "Macro9"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "Macro10"
+        }
+      ]
+    },
+    "Color Macro1 Rate": {
+      "capability": {
+        "type": "Unknown (ColorMacro1Rate)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 2 30DMX",
+      "channels": [
+        "White",
+        "R",
+        "G",
+        "B",
+        "Amber"
+      ]
+    },
+    {
+      "name": "Mode 1 14DMX",
+      "channels": [
+        "Function",
+        "Frost1",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "White 2",
+        "R",
+        "G",
+        "B",
+        "Amber",
+        "CTO",
+        "C1",
+        "Color Macro1",
+        "Color Macro1 Rate"
+      ]
+    }
+  ]
+}
