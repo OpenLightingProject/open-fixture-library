@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DOT-258Z",
+  "shortName": "dot258",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Alejandro Carrasco"],
+    "createDate": "2024-10-22",
+    "lastModifyDate": "2024-10-22"
+  },
+  "links": {
+    "manual": [
+      "https://sunstar.com.mx/productos/dot-285z-3378/#"
+    ],
+    "productPage": [
+      "https://sunstar.com.mx/productos/dot-285z-3378/"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DOT-258Z",
+      "shortName": "dot258",
+      "channels": [
+        "Intensity",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effect",
+        "Effect Speed",
+        "Focus",
+        "No function"
+      ]
+    }
+  ]
+}
