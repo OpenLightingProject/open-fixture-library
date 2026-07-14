@@ -1,0 +1,215 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FLAT PAR CWWW9",
+  "categories": ["Blinder", "Dimmer"],
+  "meta": {
+    "authors": ["Sam"],
+    "createDate": "2024-07-10",
+    "lastModifyDate": "2024-07-10"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/7054/flat_par_cwww9.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.eu/flat-par-cwww9"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=zj9izw1JnUs"
+    ]
+  },
+  "physical": {
+    "dimensions": [272, 230, 105],
+    "weight": 2.8,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 740
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K",
+          "comment": "3400K"
+        },
+        {
+          "dmxRange": [14, 27],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K",
+          "comment": "3800K"
+        },
+        {
+          "dmxRange": [28, 41],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [42, 55],
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K",
+          "comment": "4300K"
+        },
+        {
+          "dmxRange": [56, 69],
+          "type": "ColorTemperature",
+          "colorTemperature": "4600K",
+          "comment": "4600k"
+        },
+        {
+          "dmxRange": [70, 83],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K",
+          "comment": "4800k"
+        },
+        {
+          "dmxRange": [84, 97],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [98, 111],
+          "type": "ColorTemperature",
+          "colorTemperature": "5100K",
+          "comment": "5100K"
+        },
+        {
+          "dmxRange": [112, 125],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K",
+          "comment": "5400K"
+        },
+        {
+          "dmxRange": [126, 139],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [140, 153],
+          "type": "ColorTemperature",
+          "colorTemperature": "5800K",
+          "comment": "5800K"
+        },
+        {
+          "dmxRange": [154, 167],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [168, 181],
+          "type": "ColorTemperature",
+          "colorTemperature": "6200K",
+          "comment": "6200"
+        },
+        {
+          "dmxRange": [182, 195],
+          "type": "ColorTemperature",
+          "colorTemperature": "6400K",
+          "comment": "6400K"
+        },
+        {
+          "dmxRange": [196, 209],
+          "type": "ColorTemperature",
+          "colorTemperature": "6600K",
+          "comment": "6600K"
+        },
+        {
+          "dmxRange": [210, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "6800K",
+          "comment": "6800K"
+        },
+        {
+          "dmxRange": [224, 236],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K",
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [237, 248],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K",
+          "comment": "7200K"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "7400K",
+          "comment": "7400K"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "2Hz",
+        "speedEnd": "15Hz",
+        "comment": "specific Hz values N/A"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Color Temperature",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Color Temperature",
+        "Strobe",
+        "Intensity"
+      ]
+    }
+  ]
+}
