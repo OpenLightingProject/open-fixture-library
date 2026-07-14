@@ -1,0 +1,451 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR PRO 270 5-IN-1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["XaviP"],
+    "createDate": "2025-11-17",
+    "lastModifyDate": "2025-11-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-11-17",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [230, 230, 240],
+    "weight": 3,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [132, 137],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [138, 143],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [144, 149],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [150, 155],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [156, 161],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [192, 197],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Speed (when macro channel 180 ~ 233 )"
+          }
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Sensivity (when macro channel 234 ~ 255 )"
+          }
+        },
+        {
+          "dmxRange": [240, 245],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Sensivity (when macro channel 234 ~ 255 )"
+          }
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed (when macro channel 180 ~ 233 ) / Sensivity (when macro channel 234 ~ 255 )": "Sensivity (when macro channel 234 ~ 255 )"
+          }
+        }
+      ]
+    },
+    "Speed (when macro channel 180 ~ 233 )": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed"
+      }
+    },
+    "Sensivity (when macro channel 234 ~ 255 )": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Sensivity (low -> high)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Macro",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Macro"
+      ]
+    }
+  ]
+}
