@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Light Panel",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Johannes"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://manuals.easygates.co.uk/PDF/misc/nanoleaf-dmx-adapter-manual.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 300, 5],
+    "weight": 0.2,
+    "power": 5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
