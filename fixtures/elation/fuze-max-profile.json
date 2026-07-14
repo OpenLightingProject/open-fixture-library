@@ -1,0 +1,754 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fuze Max Profile",
+  "categories": ["Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["Emil Vöhringer"],
+    "createDate": "2025-08-10",
+    "lastModifyDate": "2025-08-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.elationlighting.com/cdn/shop/files/ELATION_FUZE_MAX_PROFILE_-_DMX_TRAITS.pdf?v=1977180708653498243"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "AnimationWheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "AnimationGoboStart",
+          "name": "AnimationWheel"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Mint": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "CTC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 23],
+          "type": "ColorTemperature",
+          "colorTemperature": "2400K"
+        },
+        {
+          "dmxRange": [24, 85],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2400K",
+          "colorTemperatureEnd": "8500K"
+        },
+        {
+          "dmxRange": [86, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8500K"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [1, 60],
+          "type": "NoFunction",
+          "comment": "//Todo: Virtual Swatchbook see DMX Traits in Manual"
+        },
+        {
+          "dmxRange": [61, 179],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [180, 201],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [208, 229],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "NoFunction",
+          "comment": "//Todo: Fast Random Color Scroll"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "NoFunction",
+          "comment": "//Todo: Medium Random Color Scroll"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "NoFunction",
+          "comment": "//Todo: Slow Random Color Scroll"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        }
+      ]
+    },
+    "CTC Crossfade": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlotRotation",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlotRotation",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlotRotation",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlotRotation",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlotRotation",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlotRotation",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "WheelShake",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "WheelShake",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "WheelShake",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "WheelShake",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "WheelShake",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "WheelShake",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Rotation 2": {
+      "name": "Gobo Rotation",
+      "fineChannelAliases": ["Gobo Rotation 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [78, 93],
+          "type": "WheelShake",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [94, 109],
+          "type": "WheelShake",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [110, 125],
+          "type": "WheelShake",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [126, 141],
+          "type": "WheelShake",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [142, 157],
+          "type": "WheelShake",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [158, 173],
+          "type": "WheelShake",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [174, 189],
+          "type": "WheelShake",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [8, 130],
+          "type": "Prism",
+          "angle": "2deg"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "Prism",
+          "angle": "4deg"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Iris": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Iris",
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "IrisEffect",
+          "effectName": "Pulse Opening",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "IrisEffect",
+          "effectName": "Pulse Closing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "0%",
+        "frostIntensityEnd": "100%"
+      }
+    },
+    "Frost 2": {
+      "name": "Frost",
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "AnimationWheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        }
+      ]
+    },
+    "AnimationWheelRotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Blade Insertion": {
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 2": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 3": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 4": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 5": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 5,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 6": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 6,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 7": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 7,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 8": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 8,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade Insertion 9": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 9,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "40ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "Mint",
+        "Amber",
+        "CTC",
+        "Color Wheel",
+        "CTC Crossfade",
+        "Gobo Rotation",
+        "Gobo Rotation 2",
+        "Gobo Rotation 2 fine",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Iris",
+        "Frost",
+        "Frost 2",
+        "AnimationWheel",
+        "AnimationWheelRotation",
+        "Blade Insertion",
+        "Blade Insertion 2",
+        "Blade Insertion 3",
+        "Blade Insertion 4",
+        "Blade Insertion 5",
+        "Blade Insertion 6",
+        "Blade Insertion 7",
+        "Blade Insertion 8",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
