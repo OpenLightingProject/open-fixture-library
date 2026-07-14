@@ -1,0 +1,643 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rivale",
+  "shortName": "Rivale",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["hans"],
+    "createDate": "2024-03-14",
+    "lastModifyDate": "2024-03-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.ayrton.eu/produit/rivale-profile/"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rot. gobo 7"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo wheel rotation forwards from fast to slow"
+        },
+        {
+          "type": "Gobo",
+          "name": "No rot"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo wheel rotation f backwards from slow to fast"
+        }
+      ]
+    },
+    "Fixed Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Animation wheel": {
+      "slots": [
+        {
+          "type": "AnimationGoboStart"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan Motor continuous rotation": {
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "fast CW"
+      }
+    },
+    "Tilt Motor continuous rotation": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "fast CW"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Auto Focus": {
+      "fineChannelAliases": ["Auto Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "fineChannelAliases": ["CTO fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "CTP": {
+      "fineChannelAliases": ["CTP fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [78, 189],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo shakes"
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Fixed Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 189],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [190, 221],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Animation wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Prism 1": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism 1 Rotation": {
+      "fineChannelAliases": ["Prism 1 Rotation fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Prism 2": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism 2 Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Prism 1 Rotation 2": {
+      "name": "Prism 1 Rotation",
+      "fineChannelAliases": ["Prism 1 Rotation 2 fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Prism 2 Rotation 2": {
+      "name": "Prism 2 Rotation",
+      "fineChannelAliases": ["Prism 2 Rotation 2 fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Frost": {
+      "fineChannelAliases": ["Frost fine"],
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Blade 1A": {
+      "fineChannelAliases": ["Blade 1A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 1B": {
+      "fineChannelAliases": ["Blade 1B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2A": {
+      "fineChannelAliases": ["Blade 2A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2B": {
+      "fineChannelAliases": ["Blade 2B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3A": {
+      "fineChannelAliases": ["Blade 3A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Bottom",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3B": {
+      "fineChannelAliases": ["Blade 3B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Bottom",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4A": {
+      "fineChannelAliases": ["Blade 4A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4B": {
+      "fineChannelAliases": ["Blade 4B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "All Blade Rotation": {
+      "fineChannelAliases": ["All Blade Rotation fine"],
+      "capability": {
+        "type": "BladeRotation",
+        "blade": "Top",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Control, reset, internal programs:": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Pan Motor continuous rotation",
+        "Tilt Motor continuous rotation",
+        "Shutter / Strobe",
+        "Intensity",
+        "Intensity fine",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Auto Focus",
+        "Auto Focus fine",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "CTO fine",
+        "CTP",
+        "CTP fine",
+        "Reserved",
+        "Reserved 2",
+        "Reserved 3",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Fixed Gobo Wheel",
+        "Animation wheel",
+        "Iris",
+        "Iris fine",
+        "Prism 1",
+        "Prism 1 Rotation 2",
+        "Prism 1 Rotation 2 fine",
+        "Prism 2",
+        "Prism 2 Rotation 2",
+        "Prism 2 Rotation 2 fine",
+        "Frost",
+        "Frost fine",
+        "Blade 1A",
+        "Blade 1A fine",
+        "Blade 1B",
+        "Blade 1B fine",
+        "Blade 2A",
+        "Blade 2A fine",
+        "Blade 2B",
+        "Blade 2B fine",
+        "Blade 3A",
+        "Blade 3A fine",
+        "Blade 3B",
+        "Blade 3B fine",
+        "Blade 4A",
+        "Blade 4A fine",
+        "Blade 4B",
+        "Blade 4B fine",
+        "All Blade Rotation",
+        "All Blade Rotation fine",
+        "Control, reset, internal programs:"
+      ]
+    }
+  ]
+}
