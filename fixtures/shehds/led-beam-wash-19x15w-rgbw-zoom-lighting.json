@@ -1,0 +1,316 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Beam+Wash 19x15W RGBW Zoom Lighting",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Paul Schuh", "franco Piccolo"],
+    "createDate": "2025-04-25",
+    "lastModifyDate": "2025-04-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-04-25",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [310, 400, 220],
+    "weight": 7.7,
+    "power": 285,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 8000
+    },
+    "lens": {
+      "degreesMinMax": [8, 55]
+    }
+  },
+  "availableChannels": {
+    "X axis rotation": {
+      "fineChannelAliases": ["X-axis fine-tuning"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y axis rotation": {
+      "fineChannelAliases": ["Y-axis fine-tuning"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "XY speed adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red 1 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3 Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 175],
+          "type": "Effect",
+          "effectName": "Preset Color"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "Effect",
+          "effectName": "Program Jump"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Effect",
+          "effectName": "Program Gradient"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Program Pulse"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Program Speed Adjustment",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Program Activation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Program Activation"
+        },
+        {
+          "dmxRange": [100, 150],
+          "type": "Effect",
+          "effectName": "Self-propelled mode (1)"
+        },
+        {
+          "dmxRange": [151, 199],
+          "type": "Effect",
+          "effectName": "Self-propelled mode (2)"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Audio control mode"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Red Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "X axis rotation",
+        "X-axis fine-tuning",
+        "Y axis rotation",
+        "Y-axis fine-tuning",
+        "XY speed adjustment",
+        "Master Dimmer",
+        "Strobe",
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "White Dimmer",
+        "Focus",
+        "Program Selection",
+        "Program Speed",
+        "Program Activation",
+        "Reset"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "X axis rotation",
+        "X-axis fine-tuning",
+        "Y axis rotation",
+        "Y-axis fine-tuning",
+        "XY speed adjustment",
+        "Focus",
+        "Master Dimmer",
+        "Strobe",
+        "Red 1 Dimmer",
+        "Green 1 Dimmer",
+        "Blue 1 Dimmer",
+        "White 1 Dimmer",
+        "Red 2 Dimmer",
+        "Green 2 Dimmer",
+        "Blue 2 Dimmer",
+        "White 2 Dimmer",
+        "Red 3 Dimmer",
+        "Green 3 Dimmer",
+        "Blue 3 Dimmer",
+        "White 3 Dimmer",
+        "Program Selection",
+        "Program Speed",
+        "Program Activation",
+        "Reset"
+      ]
+    }
+  ]
+}
