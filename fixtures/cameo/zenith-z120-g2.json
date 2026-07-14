@@ -1,0 +1,345 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "zenith Z120 G2",
+  "categories": ["Color Changer", "Blinder", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Jérôme"],
+    "createDate": "2023-09-29",
+    "lastModifyDate": "2023-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/fr/solutions/prestataires/eclairage-exterieur/projecteur-d-exterieur/20016/zenit-z120-g2#detail-specifications"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/fr/solutions/prestataires/eclairage-exterieur/projecteur-d-exterieur/20016/zenit-z120-g2#detail-description"
+    ]
+  },
+  "physical": {
+    "dimensions": [invalid, invalid, 300],
+    "weight": "invalid",
+    "power": 180,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "fineChannelAliases": ["Strobe fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "durationStart": "5s",
+          "durationEnd": "1s",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "durationStart": "long",
+          "durationEnd": "short"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "StrobeDuration",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorIntensity",
+          "color": "Indigo"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorIntensity",
+          "color": "Cold White"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorTemperature",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Device setting": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 27],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [28, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 93],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [94, 115],
+          "type": "Speed",
+          "speed": "800Hz"
+        },
+        {
+          "dmxRange": [116, 137],
+          "type": "Speed",
+          "speed": "1200Hz"
+        },
+        {
+          "dmxRange": [138, 159],
+          "type": "Speed",
+          "speed": "2000Hz"
+        },
+        {
+          "dmxRange": [160, 181],
+          "type": "Speed",
+          "speed": "3600Hz"
+        },
+        {
+          "dmxRange": [182, 203],
+          "type": "Speed",
+          "speed": "12000Hz"
+        },
+        {
+          "dmxRange": [204, 225],
+          "type": "Speed",
+          "speed": "25000Hz"
+        },
+        {
+          "dmxRange": [226, 247],
+          "type": "Zoom",
+          "angle": "closed"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11 channel",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Zoom",
+        "Dimmer 2",
+        "Device setting"
+      ]
+    }
+  ]
+}
