@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FX Party Bar",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Lars van der Bijl"],
+    "createDate": "2024-03-14",
+    "lastModifyDate": "2024-03-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/PURElight-FX-Party-Bar/art-LIG0016875-000"
+    ]
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Generic",
+          "comment": "APXX - PAR automatic"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "Generic",
+          "comment": "AFXX - effects automatic"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "Generic",
+          "comment": "ANXX - PAR and effects automatic"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "Generic",
+          "comment": "SPXX - PAR sound controled"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Generic",
+          "comment": "SFXX - effects sound controlled"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "SNXX - PAR and effects sound controlled"
+        }
+      ]
+    },
+    "AP/SP": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "AP01/SP01"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "AP02/SP02"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "AP03/SP03"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "AP04/SP04"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "AP05/SP05"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "AP06/SP06"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "AP07/SP07"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "AP08/SP08"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "AP09/SP09"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic",
+          "comment": "AP10/SP10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "AP11/SP11"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Generic",
+          "comment": "AP12/SP12"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "AP13/SP13"
+        }
+      ]
+    },
+    "AF/SF": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "AF02/SF02"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "AF03/SF03"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "AF04/SF04"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "AF05/SF05"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "AF06/SF06"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Generic",
+          "comment": "AF07/SF07"
+        }
+      ]
+    },
+    "AN/SN": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "AN01/SN01"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "AN02/SN02"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "AN03/SN03"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "AN04/SN04"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "AN05/SN05"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "AN06/SN06"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "AN07/SN07"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "AN08/SN08"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "AN09/SN09"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Generic",
+          "comment": "AN10/SN10"
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Function",
+      "channels": [
+        "Mode"
+      ]
+    },
+    {
+      "name": "Program AP/SP",
+      "channels": [
+        "AP/SP"
+      ]
+    },
+    {
+      "name": "Program AF/SF",
+      "channels": [
+        "AF/SF"
+      ]
+    },
+    {
+      "name": "Program AN/SN",
+      "channels": [
+        "AN/SN"
+      ]
+    },
+    {
+      "name": "Speed",
+      "channels": [
+        "Speed"
+      ]
+    }
+  ]
+}
